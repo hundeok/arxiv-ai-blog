@@ -157,6 +157,10 @@ def generate_blog_posts():
         if api_key:
             try:
                 md_content = generate_post_with_gemini(paper, full_text)
+                korean_title_preview = "[Gemini 번역] " + paper['title'][:40] + "..."
+                first_line = md_content.split('\n')[0].replace('# ', '').strip()
+                if first_line:
+                    korean_title_preview = first_line
             except Exception as e:
                 print(f"Error calling Gemini: {e}")
                 md_content = mock_generate_post(paper, full_text)
