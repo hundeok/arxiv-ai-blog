@@ -43,11 +43,11 @@ export default function AdBanner({ format = 'auto', className = '', position = '
       </div>
       
       {/* 
-        추후 발급받을 애드센스 코드를 아래에 삽입합니다.
+        추후 구글 심사가 완료되면 아래 주석( {/* 와 */} )을 지우면 실제 광고가 송출됩니다.
         <ins className="adsbygoogle"
              style={{ display: 'block' }}
-             data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-             data-ad-slot="XXXXXXXXXX"
+             data-ad-client="ca-pub-8295877269663675"
+             data-ad-slot="XXXXXXXXXX" 
              data-ad-format={format}
              data-full-width-responsive="true"></ins> 
       */}
