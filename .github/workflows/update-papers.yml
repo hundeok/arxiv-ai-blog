@@ -24,15 +24,11 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install pypdf google-generativeai urllib3 tweepy
+        pip install pypdf google-generativeai urllib3
         
     - name: Run Auto Blogger Script
       env:
         GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        TWITTER_API_KEY: ${{ secrets.TWITTER_API_KEY }}
-        TWITTER_API_SECRET: ${{ secrets.TWITTER_API_SECRET }}
-        TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
-        TWITTER_ACCESS_SECRET: ${{ secrets.TWITTER_ACCESS_SECRET }}
       run: |
         cd backend
         python process_content.py
