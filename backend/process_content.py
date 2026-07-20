@@ -112,7 +112,7 @@ python3 process_content.py
     return markdown_content
 
 def generate_blog_posts():
-    papers = fetch_latest_cs_ai_papers(max_results=30) # Increased to 30 to build a solid initial database
+    papers = fetch_latest_cs_ai_papers(max_results=100) # Increased to 100 for a larger initial database and daily safety margin
     
     output_dir = os.path.join(os.path.dirname(__file__), "..", "frontend", "public", "content")
     os.makedirs(output_dir, exist_ok=True)
