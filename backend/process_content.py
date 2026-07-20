@@ -183,8 +183,27 @@ def generate_blog_posts():
             time.sleep(15)
         
     meta_path = os.path.join(output_dir, "metadata.json")
+    
+    # Load existing metadata to accumulate papers over time
+    existing_meta = []
+    if os.path.exists(meta_path):
+        try:
+            with open(meta_path, 'r', encoding='utf-8') as f:
+                existing_meta = json.load(f)
+        except Exception as e:
+            print(f"Could not load existing metadata: {e}")
+            
+    # Merge new metadata into existing metadata (avoid duplicates by ID)
+    merged_dict = {item['id']: item for item in existing_meta}
+    for item in metadata_list:
+        merged_dict[item['id']] = item
+        
+    # Convert back to list and sort by published date (descending, newest first)
+    final_meta = list(merged_dict.values())
+    final_meta.sort(key=lambda x: x.get('published', ''), reverse=True)
+    
     with open(meta_path, 'w', encoding='utf-8') as f:
-        json.dump(metadata_list, f, ensure_ascii=False, indent=2)
+        json.dump(final_meta, f, ensure_ascii=False, indent=2)
         
     # Generate SEO Sitemap
     sitemap_path = os.path.join(os.path.dirname(__file__), "..", "frontend", "public", "sitemap.xml")
