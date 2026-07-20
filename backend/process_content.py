@@ -4,12 +4,36 @@ import urllib.request
 import time
 from pypdf import PdfReader
 import google.generativeai as genai
+import tweepy
 from fetch_papers import fetch_latest_cs_ai_papers
 
 # Configure API Key if available
 api_key = os.environ.get("GEMINI_API_KEY")
 if api_key:
     genai.configure(api_key=api_key)
+
+# Configure Twitter API if available
+TWITTER_API_KEY = os.environ.get("TWITTER_API_KEY")
+TWITTER_API_SECRET = os.environ.get("TWITTER_API_SECRET")
+TWITTER_ACCESS_TOKEN = os.environ.get("TWITTER_ACCESS_TOKEN")
+TWITTER_ACCESS_SECRET = os.environ.get("TWITTER_ACCESS_SECRET")
+
+def post_to_twitter(korean_title):
+    if not all([TWITTER_API_KEY, TWITTER_API_SECRET, TWITTER_ACCESS_TOKEN, TWITTER_ACCESS_SECRET]):
+        return
+    try:
+        client = tweepy.Client(
+            consumer_key=TWITTER_API_KEY,
+            consumer_secret=TWITTER_API_SECRET,
+            access_token=TWITTER_ACCESS_TOKEN,
+            access_token_secret=TWITTER_ACCESS_SECRET
+        )
+        # 280 character limit
+        tweet_text = f"🔥 오늘의 AI 논문 요약\n\n{korean_title[:200]}\n\n자세한 비유와 요약본 읽어보기 👇\nhttps://arxiv-ai-blog.vercel.app/\n\n#AI논문 #인공지능 #개발자"
+        client.create_tweet(text=tweet_text)
+        print(f"🐦 Successfully posted to Twitter!")
+    except Exception as e:
+        print(f"🐦 Failed to post to Twitter: {e}")
 
 def download_and_parse_pdf(pdf_link, paper_id):
     """Downloads a PDF and extracts its text."""
@@ -158,6 +182,15 @@ def generate_blog_posts():
             try:
                 md_content = generate_post_with_gemini(paper, full_text)
                 korean_title_preview = "[Gemini 번역] " + paper['title'][:40] + "..."
+                
+                # Extract the actual translated title for Twitter if it exists
+                first_line = md_content.split('\n')[0].replace('# ', '').strip()
+                if first_line:
+                    korean_title_preview = first_line
+                    
+                # Post to Twitter for newly translated successful papers
+                post_to_twitter(korean_title_preview)
+                
             except Exception as e:
                 print(f"Error calling Gemini: {e}")
                 md_content = mock_generate_post(paper, full_text)
