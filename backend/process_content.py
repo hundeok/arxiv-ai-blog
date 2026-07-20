@@ -187,6 +187,23 @@ def generate_blog_posts():
     with open(meta_path, 'w', encoding='utf-8') as f:
         json.dump(metadata_list, f, ensure_ascii=False, indent=2)
         
+    # Generate SEO Sitemap
+    sitemap_path = os.path.join(os.path.dirname(__file__), "..", "frontend", "public", "sitemap.xml")
+    
+    sitemap_content = '<?xml version="1.0" encoding="UTF-8"?>\n'
+    sitemap_content += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+    
+    # Add root URL
+    sitemap_content += '  <url>\n    <loc>https://arxiv-ai-blog.vercel.app/</loc>\n    <changefreq>daily</changefreq>\n    <priority>1.0</priority>\n  </url>\n'
+    
+    # Add paper URLs (In our React app, we might not have dynamic routes yet, but let's assume hash routing or query params if needed, or simply the main page)
+    # Since it's a SPA without explicit dynamic routes (just conditionally rendering MarkdownViewer), the main page is what matters. 
+    # But to index specific papers, React Router would be needed. For now, indexing the main page daily is the most important part.
+    sitemap_content += '</urlset>'
+    
+    with open(sitemap_path, 'w', encoding='utf-8') as f:
+        f.write(sitemap_content)
+        
     print(f"\n✅ Successfully processed {len(papers)} papers in {output_dir}")
 
 if __name__ == "__main__":
