@@ -5,7 +5,7 @@ import time
 from pypdf import PdfReader
 import google.generativeai as genai
 from fetch_papers import fetch_latest_cs_ai_papers
-import concurrent.futures
+import signal
 
 # Configure API Key if available
 api_key = os.environ.get("GEMINI_API_KEY")
@@ -163,15 +163,18 @@ def generate_blog_posts():
             success = False
             for attempt in range(max_retries):
                 try:
-                    # Enforce a strict timeout without using 'with' to prevent wait=True deadlocks
-                    executor = concurrent.futures.ThreadPoolExecutor(max_workers=1)
-                    future = executor.submit(generate_post_with_gemini, paper, full_text)
+                    # Enforce a strict timeout using signal alarm
+                    def timeout_handler(signum, frame):
+                        raise TimeoutError("408 Request Timeout: Gemini API took longer than 180 seconds.")
+                    
+                    signal.signal(signal.SIGALRM, timeout_handler)
+                    signal.alarm(180) # Set timeout to 180 seconds to allow for long PDFs
+                    
                     try:
-                        md_content = future.result(timeout=60)
-                        executor.shutdown(wait=False)
-                    except concurrent.futures.TimeoutError:
-                        executor.shutdown(wait=False, cancel_futures=True)
-                        raise Exception("408 Request Timeout: Gemini API took longer than 60 seconds. Hanging aborted.")
+                        md_content = generate_post_with_gemini(paper, full_text)
+                    finally:
+                        signal.alarm(0) # Disable the alarm if successful or error occurred
+                        
                     korean_title_preview = "[Gemini 번역] " + paper['title'][:40] + "..."
                     first_line = md_content.split('\n')[0].replace('# ', '').strip()
                     if first_line:
