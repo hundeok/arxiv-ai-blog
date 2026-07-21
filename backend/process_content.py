@@ -20,6 +20,27 @@ api_key = os.environ.get("GEMINI_API_KEY")
 if api_key:
     genai.configure(api_key=api_key)
 
+# Large arXiv PDFs can exceed a model request limit. Keep the beginning (paper
+# context and method) and the end (results and conclusion) when truncation is
+# needed, rather than silently sending an oversized request.
+MAX_PROMPT_TEXT_CHARS = 120_000
+
+def text_for_prompt(full_text):
+    if len(full_text) <= MAX_PROMPT_TEXT_CHARS:
+        return full_text
+
+    opening_chars = 90_000
+    closing_chars = MAX_PROMPT_TEXT_CHARS - opening_chars
+    print(
+        f"Paper text is {len(full_text):,} characters; "
+        f"using a {MAX_PROMPT_TEXT_CHARS:,}-character excerpt for Gemini."
+    )
+    return (
+        full_text[:opening_chars]
+        + "\n\n[... middle of paper omitted for request-size safety ...]\n\n"
+        + full_text[-closing_chars:]
+    )
+
 def download_and_parse_pdf(pdf_link, paper_id):
     """Downloads a PDF and extracts its text."""
     temp_dir = os.path.join(os.path.dirname(__file__), "temp")
@@ -73,7 +94,7 @@ def generate_post_with_gemini(paper, full_text):
     PDF 링크: {paper['pdf_link']}
     
     [논문 전체 텍스트 시작]
-    {full_text}
+    {text_for_prompt(full_text)}
     [논문 전체 텍스트 끝]
     """
     
@@ -127,6 +148,9 @@ def generate_blog_posts():
     os.makedirs(output_dir, exist_ok=True)
     
     metadata_list = []
+    generated_count = 0
+    skipped_count = 0
+    failed_papers = []
     
     for idx, paper in enumerate(papers):
         print(f"\n--- Processing [{idx+1}/{len(papers)}]: {paper['title']}")
@@ -161,10 +185,16 @@ def generate_blog_posts():
                     "authors": paper['authors'][:2],
                     "tags": ["AI", "Full-PDF", "Gemini"]
                 })
+                skipped_count += 1
                 continue
                 
         # If we reach here, we need to process it
-        full_text = download_and_parse_pdf(paper['pdf_link'], safe_id)
+        try:
+            full_text = download_and_parse_pdf(paper['pdf_link'], safe_id)
+        except Exception as e:
+            print(f"Failed to download or parse {paper['title']}: {e}")
+            failed_papers.append(paper['title'])
+            continue
         
         if api_key:
             max_retries = 3
@@ -203,6 +233,7 @@ def generate_blog_posts():
             
             if not success:
                 print(f"Failed to translate paper after retries: {paper['title']}. Skipping.")
+                failed_papers.append(paper['title'])
                 continue
         else:
             md_content = mock_generate_post(paper, full_text)
@@ -220,6 +251,7 @@ def generate_blog_posts():
             "authors": paper['authors'][:2],
             "tags": ["AI", "Full-PDF", "Gemini"]
         })
+        generated_count += 1
         
         if api_key:
             print("Sleeping for 15 seconds to respect free tier rate limits (5 RPM)...")
@@ -265,7 +297,24 @@ def generate_blog_posts():
     with open(sitemap_path, 'w', encoding='utf-8') as f:
         f.write(sitemap_content)
         
-    print(f"\n✅ Successfully processed {len(papers)} papers in {output_dir}")
+    print(
+        f"\nGeneration summary: fetched={len(papers)}, generated={generated_count}, "
+        f"skipped={skipped_count}, failed={len(failed_papers)}"
+    )
+    if failed_papers:
+        print("Failed papers:")
+        for title in failed_papers:
+            print(f"- {title}")
+
+    # No new papers is healthy when the latest feed is already published. A run
+    # that tried work but produced nothing is not healthy and must be visible in
+    # GitHub Actions instead of looking like a successful update.
+    if failed_papers and generated_count == 0:
+        raise RuntimeError(
+            f"No new posts were generated; {len(failed_papers)} paper(s) failed."
+        )
+
+    print(f"✅ Content update completed in {output_dir}")
 
 if __name__ == "__main__":
     generate_blog_posts()

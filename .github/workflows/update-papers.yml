@@ -6,15 +6,24 @@ on:
     - cron: '0 0 * * *'
   workflow_dispatch: # 수동 실행 버튼 활성화
 
+# A generation run can take more than 20 minutes. Queue runs instead of letting
+# simultaneous checkouts race to commit to main.
+concurrency:
+  group: arxiv-paper-update
+  cancel-in-progress: false
+
 jobs:
   update-papers:
     runs-on: ubuntu-latest
+    timeout-minutes: 45
     permissions:
       contents: write
     
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
       
     - name: Set up Python
       uses: actions/setup-python@v5
