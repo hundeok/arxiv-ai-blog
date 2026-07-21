@@ -123,7 +123,10 @@ def generate_blog_posts():
         print(f"\n--- Processing [{idx+1}/{len(papers)}]: {paper['title']}")
         
         safe_id = ''.join(c if c.isalnum() else '_' for c in paper['title'][:30]).lower()
-        filename = f"post_{idx}_{safe_id}.md"
+        
+        # Search for any existing file containing this safe_id (to handle older files with idx in name)
+        existing_files = [f for f in os.listdir(output_dir) if safe_id in f and f.endswith('.md')]
+        filename = existing_files[0] if existing_files else f"post_{safe_id}.md"
         filepath = os.path.join(output_dir, filename)
         
         # Check if we already processed this paper successfully
