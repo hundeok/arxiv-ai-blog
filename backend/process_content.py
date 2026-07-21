@@ -30,6 +30,7 @@ FALLBACK_PROMPT_TEXT_CHARS = 8_000
 DEFAULT_OUTPUT_TOKENS = 4_096
 FALLBACK_OUTPUT_TOKENS = 2_048
 DEFAULT_BATCH_SIZE = 3
+GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-3.1-flash-lite")
 
 def text_for_prompt(full_text, max_chars=MAX_PROMPT_TEXT_CHARS):
     if len(full_text) <= max_chars:
@@ -80,7 +81,7 @@ def generate_post_with_gemini(
 ):
     """Uses Gemini to read the full text and generate a structured blog post."""
     print("Calling Gemini API...")
-    model = genai.GenerativeModel('gemini-flash-latest')
+    model = genai.GenerativeModel(GEMINI_MODEL)
     
     prompt = f"""
     너는 최고 수준의 AI 기술 블로거이자 개발자 멘토야. 
