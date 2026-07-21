@@ -5,6 +5,7 @@ import time
 from pypdf import PdfReader
 import google.generativeai as genai
 from fetch_papers import fetch_latest_cs_ai_papers
+import concurrent.futures
 
 # Configure API Key if available
 api_key = os.environ.get("GEMINI_API_KEY")
@@ -112,7 +113,7 @@ python3 process_content.py
     return markdown_content
 
 def generate_blog_posts():
-    papers = fetch_latest_cs_ai_papers(max_results=15) # Fetch 15 papers to strictly stay within the 20 RPD free tier limit
+    papers = fetch_latest_cs_ai_papers(max_results=20) # Paid tier unlocked, fetch 20 papers
     
     output_dir = os.path.join(os.path.dirname(__file__), "..", "frontend", "public", "content")
     os.makedirs(output_dir, exist_ok=True)
@@ -162,7 +163,14 @@ def generate_blog_posts():
             success = False
             for attempt in range(max_retries):
                 try:
-                    md_content = generate_post_with_gemini(paper, full_text)
+                    # Wrap the API call in a ThreadPoolExecutor to enforce a strict timeout of 60 seconds
+                    with concurrent.futures.ThreadPoolExecutor(max_workers=1) as executor:
+                        future = executor.submit(generate_post_with_gemini, paper, full_text)
+                        try:
+                            md_content = future.result(timeout=60)
+                        except concurrent.futures.TimeoutError:
+                            raise Exception("408 Request Timeout: Gemini API took longer than 60 seconds. Hanging aborted.")
+                            
                     korean_title_preview = "[Gemini 번역] " + paper['title'][:40] + "..."
                     first_line = md_content.split('\n')[0].replace('# ', '').strip()
                     if first_line:
@@ -175,6 +183,9 @@ def generate_blog_posts():
                     if "429" in error_msg or "ResourceExhausted" in error_msg or "quota" in error_msg.lower():
                         print("Rate limit hit. Waiting 30 seconds before retrying...")
                         time.sleep(30)
+                    elif "408" in error_msg or "Timeout" in error_msg:
+                        print("Timeout hit. Waiting 10 seconds before retrying...")
+                        time.sleep(10)
                     else:
                         break # Break on 400 or other non-retriable errors
             
