@@ -163,14 +163,15 @@ def generate_blog_posts():
             success = False
             for attempt in range(max_retries):
                 try:
-                    # Wrap the API call in a ThreadPoolExecutor to enforce a strict timeout of 60 seconds
-                    with concurrent.futures.ThreadPoolExecutor(max_workers=1) as executor:
-                        future = executor.submit(generate_post_with_gemini, paper, full_text)
-                        try:
-                            md_content = future.result(timeout=60)
-                        except concurrent.futures.TimeoutError:
-                            raise Exception("408 Request Timeout: Gemini API took longer than 60 seconds. Hanging aborted.")
-                            
+                    # Enforce a strict timeout without using 'with' to prevent wait=True deadlocks
+                    executor = concurrent.futures.ThreadPoolExecutor(max_workers=1)
+                    future = executor.submit(generate_post_with_gemini, paper, full_text)
+                    try:
+                        md_content = future.result(timeout=60)
+                        executor.shutdown(wait=False)
+                    except concurrent.futures.TimeoutError:
+                        executor.shutdown(wait=False, cancel_futures=True)
+                        raise Exception("408 Request Timeout: Gemini API took longer than 60 seconds. Hanging aborted.")
                     korean_title_preview = "[Gemini 번역] " + paper['title'][:40] + "..."
                     first_line = md_content.split('\n')[0].replace('# ', '').strip()
                     if first_line:
