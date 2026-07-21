@@ -14,10 +14,19 @@ const SystemStatus = ({ totalPapers }) => {
       fontSize: '0.85rem',
       color: 'var(--text-secondary)'
     }}>
-      {/* Status Indicator */}
+      {/* Status Indicator with Micro-visualization */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
         <div className="status-pulse"></div>
         <span style={{ fontWeight: 600, color: '#4ade80' }}>Pipeline Active</span>
+        
+        {/* Techy Data Stream Waveform */}
+        <div className="data-stream">
+          <div className="bar"></div>
+          <div className="bar"></div>
+          <div className="bar"></div>
+          <div className="bar"></div>
+          <div className="bar"></div>
+        </div>
       </div>
 
       <div style={{ width: '1px', height: '16px', background: 'rgba(255,255,255,0.1)' }}></div>

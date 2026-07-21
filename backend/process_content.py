@@ -113,7 +113,7 @@ python3 process_content.py
     return markdown_content
 
 def generate_blog_posts():
-    papers = fetch_latest_cs_ai_papers(max_results=20) # Paid tier unlocked, fetch 20 papers
+    papers = fetch_latest_cs_ai_papers(max_results=10) # 10 papers per run as requested
     
     output_dir = os.path.join(os.path.dirname(__file__), "..", "frontend", "public", "content")
     os.makedirs(output_dir, exist_ok=True)

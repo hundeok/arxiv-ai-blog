@@ -156,3 +156,37 @@ h1, h2, h3 {
     box-shadow: 0 0 0 0 rgba(74, 222, 128, 0);
   }
 }
+
+/* Micro-visualization Data Stream */
+.data-stream {
+  display: flex;
+  align-items: flex-end;
+  height: 14px;
+  gap: 2px;
+  margin-left: 8px;
+}
+
+.data-stream .bar {
+  width: 3px;
+  background-color: #4ade80;
+  border-radius: 1px;
+  animation: stream 1s ease-in-out infinite;
+  opacity: 0.8;
+}
+
+.data-stream .bar:nth-child(1) { animation-delay: 0.0s; height: 4px; }
+.data-stream .bar:nth-child(2) { animation-delay: 0.2s; height: 10px; }
+.data-stream .bar:nth-child(3) { animation-delay: 0.4s; height: 6px; }
+.data-stream .bar:nth-child(4) { animation-delay: 0.1s; height: 14px; }
+.data-stream .bar:nth-child(5) { animation-delay: 0.5s; height: 8px; }
+
+@keyframes stream {
+  0%, 100% {
+    transform: scaleY(0.3);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
