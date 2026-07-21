@@ -43,7 +43,7 @@ export default function AdBanner({ format = 'auto', className = '', position = '
       </div>
       
       {/* 
-        추후 구글 심사가 완료되면 아래 주석( {/* 와 */} )을 지우면 실제 광고가 송출됩니다.
+        추후 구글 심사가 완료되면 아래 주석을 지우면 실제 광고가 송출됩니다.
         <ins className="adsbygoogle"
              style={{ display: 'block' }}
              data-ad-client="ca-pub-8295877269663675"

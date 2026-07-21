@@ -2,6 +2,8 @@ import os
 import json
 import urllib.request
 import time
+import warnings
+warnings.filterwarnings("ignore", category=FutureWarning)
 from pypdf import PdfReader
 import google.generativeai as genai
 from fetch_papers import fetch_latest_cs_ai_papers
