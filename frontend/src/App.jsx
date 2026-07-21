@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PaperCard from './components/PaperCard';
 import MarkdownViewer from './components/MarkdownViewer';
 import AdBanner from './components/AdBanner';
+import SystemStatus from './components/SystemStatus';
 
 function App() {
   const [papers, setPapers] = useState([]);
@@ -35,9 +36,7 @@ function App() {
         <main>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
             <h2 style={{ fontSize: '1.5rem', fontWeight: 600 }}>Latest Decoded Papers</h2>
-            <div style={{ padding: '0.5rem 1rem', background: 'rgba(255,255,255,0.05)', borderRadius: '8px', fontSize: '0.875rem' }}>
-              Auto-sync enabled
-            </div>
+            <SystemStatus totalPapers={papers.length} />
           </div>
           
           {papers.length === 0 ? (
