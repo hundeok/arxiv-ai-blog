@@ -28,6 +28,8 @@ backend/temp/
 backend/__pycache__/
 *.pyc
 
-# DO NOT IGNORE .env in production if we rely on it, but wait:
-# Vercel will handle environment variables, so we SHOULD ignore local .env
+# Local credentials must never be committed. Production and GitHub Actions
+# receive their values from their respective secret stores.
 .env
+.env.*
+!.env.example
