@@ -112,7 +112,7 @@ python3 process_content.py
     return markdown_content
 
 def generate_blog_posts():
-    papers = fetch_latest_cs_ai_papers(max_results=80) # Fetch 80 papers for initial database
+    papers = fetch_latest_cs_ai_papers(max_results=15) # Fetch 15 papers to strictly stay within the 20 RPD free tier limit
     
     output_dir = os.path.join(os.path.dirname(__file__), "..", "frontend", "public", "content")
     os.makedirs(output_dir, exist_ok=True)
@@ -155,16 +155,29 @@ def generate_blog_posts():
         full_text = download_and_parse_pdf(paper['pdf_link'], safe_id)
         
         if api_key:
-            try:
-                md_content = generate_post_with_gemini(paper, full_text)
-                korean_title_preview = "[Gemini 번역] " + paper['title'][:40] + "..."
-                first_line = md_content.split('\n')[0].replace('# ', '').strip()
-                if first_line:
-                    korean_title_preview = first_line
-            except Exception as e:
-                print(f"Error calling Gemini: {e}")
-                md_content = mock_generate_post(paper, full_text)
-                korean_title_preview = "[파싱 성공/번역 에러] " + paper['title'][:40] + "..."
+            max_retries = 3
+            success = False
+            for attempt in range(max_retries):
+                try:
+                    md_content = generate_post_with_gemini(paper, full_text)
+                    korean_title_preview = "[Gemini 번역] " + paper['title'][:40] + "..."
+                    first_line = md_content.split('\n')[0].replace('# ', '').strip()
+                    if first_line:
+                        korean_title_preview = first_line
+                    success = True
+                    break
+                except Exception as e:
+                    error_msg = str(e)
+                    print(f"Error calling Gemini (Attempt {attempt+1}/{max_retries}): {error_msg}")
+                    if "429" in error_msg or "ResourceExhausted" in error_msg or "quota" in error_msg.lower():
+                        print("Rate limit hit. Waiting 30 seconds before retrying...")
+                        time.sleep(30)
+                    else:
+                        break # Break on 400 or other non-retriable errors
+            
+            if not success:
+                print(f"Failed to translate paper after retries: {paper['title']}. Skipping.")
+                continue
         else:
             md_content = mock_generate_post(paper, full_text)
             korean_title_preview = "[PDF 100% 파싱 완료] " + paper['title'][:40] + "..."
