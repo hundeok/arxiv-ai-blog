@@ -27,6 +27,8 @@ if api_key:
 # the abstract and method; the ending usually contains results and conclusions.
 MAX_PROMPT_TEXT_CHARS = 15_000
 FALLBACK_PROMPT_TEXT_CHARS = 8_000
+DEFAULT_OUTPUT_TOKENS = 4_096
+FALLBACK_OUTPUT_TOKENS = 2_048
 DEFAULT_BATCH_SIZE = 3
 
 def text_for_prompt(full_text, max_chars=MAX_PROMPT_TEXT_CHARS):
@@ -70,7 +72,12 @@ def download_and_parse_pdf(pdf_link, paper_id):
     os.remove(pdf_path)
     return text
 
-def generate_post_with_gemini(paper, full_text, max_prompt_chars=MAX_PROMPT_TEXT_CHARS):
+def generate_post_with_gemini(
+    paper,
+    full_text,
+    max_prompt_chars=MAX_PROMPT_TEXT_CHARS,
+    max_output_tokens=DEFAULT_OUTPUT_TOKENS,
+):
     """Uses Gemini to read the full text and generate a structured blog post."""
     print("Calling Gemini API...")
     model = genai.GenerativeModel('gemini-flash-latest')
@@ -106,7 +113,7 @@ def generate_post_with_gemini(paper, full_text, max_prompt_chars=MAX_PROMPT_TEXT
         prompt,
         generation_config=genai.types.GenerationConfig(
             temperature=0.3,
-            max_output_tokens=4096,
+            max_output_tokens=max_output_tokens,
         ),
     )
     return response.text
@@ -229,8 +236,13 @@ def generate_blog_posts():
                             if attempt == 0
                             else FALLBACK_PROMPT_TEXT_CHARS
                         )
+                        output_tokens = (
+                            DEFAULT_OUTPUT_TOKENS
+                            if attempt == 0
+                            else FALLBACK_OUTPUT_TOKENS
+                        )
                         md_content = generate_post_with_gemini(
-                            paper, full_text, prompt_chars
+                            paper, full_text, prompt_chars, output_tokens
                         )
                     finally:
                         signal.alarm(0) # Disable the alarm if successful or error occurred
@@ -249,7 +261,7 @@ def generate_blog_posts():
                         time.sleep(15)
                     elif "408" in error_msg or "Timeout" in error_msg:
                         print(
-                            "Timeout hit. Retrying with a shorter paper excerpt in 5 seconds..."
+                            "Timeout hit. Retrying with a shorter excerpt and concise output in 5 seconds..."
                         )
                         time.sleep(5)
                     else:
