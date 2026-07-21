@@ -23,14 +23,16 @@ if api_key:
 # Large arXiv PDFs can exceed a model request limit. Keep the beginning (paper
 # context and method) and the end (results and conclusion) when truncation is
 # needed, rather than silently sending an oversized request.
-MAX_PROMPT_TEXT_CHARS = 120_000
+# Keep well below the legacy Gemini SDK request-size limit. The opening covers
+# the abstract and method; the ending usually contains results and conclusions.
+MAX_PROMPT_TEXT_CHARS = 30_000
 DEFAULT_BATCH_SIZE = 3
 
 def text_for_prompt(full_text):
     if len(full_text) <= MAX_PROMPT_TEXT_CHARS:
         return full_text
 
-    opening_chars = 90_000
+    opening_chars = int(MAX_PROMPT_TEXT_CHARS * 0.75)
     closing_chars = MAX_PROMPT_TEXT_CHARS - opening_chars
     print(
         f"Paper text is {len(full_text):,} characters; "
