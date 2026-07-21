@@ -25,18 +25,19 @@ if api_key:
 # needed, rather than silently sending an oversized request.
 # Keep well below the legacy Gemini SDK request-size limit. The opening covers
 # the abstract and method; the ending usually contains results and conclusions.
-MAX_PROMPT_TEXT_CHARS = 30_000
+MAX_PROMPT_TEXT_CHARS = 15_000
+FALLBACK_PROMPT_TEXT_CHARS = 8_000
 DEFAULT_BATCH_SIZE = 3
 
-def text_for_prompt(full_text):
-    if len(full_text) <= MAX_PROMPT_TEXT_CHARS:
+def text_for_prompt(full_text, max_chars=MAX_PROMPT_TEXT_CHARS):
+    if len(full_text) <= max_chars:
         return full_text
 
-    opening_chars = int(MAX_PROMPT_TEXT_CHARS * 0.75)
-    closing_chars = MAX_PROMPT_TEXT_CHARS - opening_chars
+    opening_chars = int(max_chars * 0.75)
+    closing_chars = max_chars - opening_chars
     print(
         f"Paper text is {len(full_text):,} characters; "
-        f"using a {MAX_PROMPT_TEXT_CHARS:,}-character excerpt for Gemini."
+        f"using a {max_chars:,}-character excerpt for Gemini."
     )
     return (
         full_text[:opening_chars]
@@ -69,7 +70,7 @@ def download_and_parse_pdf(pdf_link, paper_id):
     os.remove(pdf_path)
     return text
 
-def generate_post_with_gemini(paper, full_text):
+def generate_post_with_gemini(paper, full_text, max_prompt_chars=MAX_PROMPT_TEXT_CHARS):
     """Uses Gemini to read the full text and generate a structured blog post."""
     print("Calling Gemini API...")
     model = genai.GenerativeModel('gemini-flash-latest')
@@ -97,7 +98,7 @@ def generate_post_with_gemini(paper, full_text):
     PDF 링크: {paper['pdf_link']}
     
     [논문 전체 텍스트 시작]
-    {text_for_prompt(full_text)}
+    {text_for_prompt(full_text, max_prompt_chars)}
     [논문 전체 텍스트 끝]
     """
     
@@ -223,7 +224,14 @@ def generate_blog_posts():
                     signal.alarm(120)
                     
                     try:
-                        md_content = generate_post_with_gemini(paper, full_text)
+                        prompt_chars = (
+                            MAX_PROMPT_TEXT_CHARS
+                            if attempt == 0
+                            else FALLBACK_PROMPT_TEXT_CHARS
+                        )
+                        md_content = generate_post_with_gemini(
+                            paper, full_text, prompt_chars
+                        )
                     finally:
                         signal.alarm(0) # Disable the alarm if successful or error occurred
                         
@@ -240,7 +248,9 @@ def generate_blog_posts():
                         print("Rate limit hit. Waiting 15 seconds before retrying...")
                         time.sleep(15)
                     elif "408" in error_msg or "Timeout" in error_msg:
-                        print("Timeout hit. Waiting 5 seconds before retrying...")
+                        print(
+                            "Timeout hit. Retrying with a shorter paper excerpt in 5 seconds..."
+                        )
                         time.sleep(5)
                     else:
                         break # Break on 400 or other non-retriable errors
