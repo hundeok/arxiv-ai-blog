@@ -10,6 +10,12 @@ from fetch_papers import fetch_latest_cs_ai_papers
 import signal
 
 # Configure API Key if available
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass
+
 api_key = os.environ.get("GEMINI_API_KEY")
 if api_key:
     genai.configure(api_key=api_key)
