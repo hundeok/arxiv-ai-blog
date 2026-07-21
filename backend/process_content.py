@@ -24,6 +24,7 @@ if api_key:
 # context and method) and the end (results and conclusion) when truncation is
 # needed, rather than silently sending an oversized request.
 MAX_PROMPT_TEXT_CHARS = 120_000
+DEFAULT_BATCH_SIZE = 3
 
 def text_for_prompt(full_text):
     if len(full_text) <= MAX_PROMPT_TEXT_CHARS:
@@ -98,7 +99,13 @@ def generate_post_with_gemini(paper, full_text):
     [논문 전체 텍스트 끝]
     """
     
-    response = model.generate_content(prompt)
+    response = model.generate_content(
+        prompt,
+        generation_config=genai.types.GenerationConfig(
+            temperature=0.3,
+            max_output_tokens=4096,
+        ),
+    )
     return response.text
 
 def mock_generate_post(paper, full_text):
@@ -142,7 +149,12 @@ python3 process_content.py
     return markdown_content
 
 def generate_blog_posts():
-    papers = fetch_latest_cs_ai_papers(max_results=10) # 10 papers per run as requested
+    try:
+        batch_size = int(os.environ.get("MAX_RESULTS", DEFAULT_BATCH_SIZE))
+    except ValueError:
+        batch_size = DEFAULT_BATCH_SIZE
+    batch_size = max(1, min(batch_size, DEFAULT_BATCH_SIZE))
+    papers = fetch_latest_cs_ai_papers(max_results=batch_size)
     
     output_dir = os.path.join(os.path.dirname(__file__), "..", "frontend", "public", "content")
     os.makedirs(output_dir, exist_ok=True)
@@ -197,16 +209,16 @@ def generate_blog_posts():
             continue
         
         if api_key:
-            max_retries = 3
+            max_retries = 2
             success = False
             for attempt in range(max_retries):
                 try:
                     # Enforce a strict timeout using signal alarm
                     def timeout_handler(signum, frame):
-                        raise TimeoutError("408 Request Timeout: Gemini API took longer than 180 seconds.")
+                        raise TimeoutError("408 Request Timeout: Gemini API took longer than 120 seconds.")
                     
                     signal.signal(signal.SIGALRM, timeout_handler)
-                    signal.alarm(180) # Set timeout to 180 seconds to allow for long PDFs
+                    signal.alarm(120)
                     
                     try:
                         md_content = generate_post_with_gemini(paper, full_text)
@@ -223,11 +235,11 @@ def generate_blog_posts():
                     error_msg = str(e)
                     print(f"Error calling Gemini (Attempt {attempt+1}/{max_retries}): {error_msg}")
                     if "429" in error_msg or "ResourceExhausted" in error_msg or "quota" in error_msg.lower():
-                        print("Rate limit hit. Waiting 30 seconds before retrying...")
-                        time.sleep(30)
+                        print("Rate limit hit. Waiting 15 seconds before retrying...")
+                        time.sleep(15)
                     elif "408" in error_msg or "Timeout" in error_msg:
-                        print("Timeout hit. Waiting 10 seconds before retrying...")
-                        time.sleep(10)
+                        print("Timeout hit. Waiting 5 seconds before retrying...")
+                        time.sleep(5)
                     else:
                         break # Break on 400 or other non-retriable errors
             
@@ -254,8 +266,8 @@ def generate_blog_posts():
         generated_count += 1
         
         if api_key:
-            print("Sleeping for 15 seconds to respect free tier rate limits (5 RPM)...")
-            time.sleep(15)
+            print("Sleeping for 5 seconds between papers...")
+            time.sleep(5)
         
     meta_path = os.path.join(output_dir, "metadata.json")
     
