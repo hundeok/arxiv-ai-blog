@@ -39,8 +39,20 @@ const SystemStatus = ({ totalPapers }) => {
         </div>
         
         <div style={{ display: 'flex', flexDirection: 'column' }}>
-          <span style={{ fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.05em', opacity: 0.7 }}>Daily Quota</span>
-          <span style={{ color: 'var(--text-primary)', fontWeight: 600 }}>15 <span style={{ opacity: 0.5 }}>max</span></span>
+          <span style={{ fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.05em', opacity: 0.7, color: '#38bdf8' }}>API Control</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
+            <span style={{ color: 'var(--text-primary)', fontWeight: 600 }}>10 <span style={{ opacity: 0.5, fontSize: '0.75rem' }}>/day</span></span>
+            <span style={{ 
+              background: 'rgba(56, 189, 248, 0.15)', 
+              color: '#38bdf8', 
+              padding: '2px 6px', 
+              borderRadius: '4px', 
+              fontSize: '0.65rem', 
+              fontWeight: 700 
+            }}>
+              &lt; $0.05
+            </span>
+          </div>
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column' }}>
