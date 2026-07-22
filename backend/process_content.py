@@ -29,7 +29,7 @@ MAX_PROMPT_TEXT_CHARS = 15_000
 FALLBACK_PROMPT_TEXT_CHARS = 8_000
 DEFAULT_OUTPUT_TOKENS = 4_096
 FALLBACK_OUTPUT_TOKENS = 2_048
-DEFAULT_BATCH_SIZE = 3
+DEFAULT_BATCH_SIZE = 15
 GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-3.1-flash-lite")
 
 def text_for_prompt(full_text, max_chars=MAX_PROMPT_TEXT_CHARS):
@@ -164,7 +164,7 @@ def generate_blog_posts():
         batch_size = int(os.environ.get("MAX_RESULTS", DEFAULT_BATCH_SIZE))
     except ValueError:
         batch_size = DEFAULT_BATCH_SIZE
-    batch_size = max(1, min(batch_size, DEFAULT_BATCH_SIZE))
+    batch_size = max(1, min(batch_size, 50))
     papers = fetch_latest_cs_ai_papers(max_results=batch_size)
     
     output_dir = os.path.join(os.path.dirname(__file__), "..", "frontend", "public", "content")
@@ -220,7 +220,7 @@ def generate_blog_posts():
             continue
         
         if api_key:
-            max_retries = 2
+            max_retries = 3
             success = False
             for attempt in range(max_retries):
                 try:
@@ -258,8 +258,8 @@ def generate_blog_posts():
                     error_msg = str(e)
                     print(f"Error calling Gemini (Attempt {attempt+1}/{max_retries}): {error_msg}")
                     if "429" in error_msg or "ResourceExhausted" in error_msg or "quota" in error_msg.lower():
-                        print("Rate limit hit. Waiting 15 seconds before retrying...")
-                        time.sleep(15)
+                        print("Rate limit hit. Waiting 45 seconds before retrying...")
+                        time.sleep(45)
                     elif "408" in error_msg or "Timeout" in error_msg:
                         print(
                             "Timeout hit. Retrying with a shorter excerpt and concise output in 5 seconds..."
