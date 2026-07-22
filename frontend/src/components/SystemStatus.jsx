@@ -18,7 +18,7 @@ const SystemStatus = ({ totalPapers, status }) => {
   const healthy = lastRun?.health !== 'degraded';
   const generated = lastRun?.generated ?? 0;
   const retryCount = status?.retry_count ?? 0;
-  const usage = lastRun?.usage;
+  const usage = lastRun?.usage || status?.last_run?.usage;
   const next = retryCount && status?.next_retry_at ? status.next_retry_at : status?.next_scheduled_at;
   const nextLabel = retryCount && status?.next_retry_at ? '다음 재시도' : '다음 자동 실행';
   return (
@@ -83,7 +83,7 @@ const SystemStatus = ({ totalPapers, status }) => {
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column' }}>
-          <span style={{ fontSize: '0.7rem', letterSpacing: '0.05em', opacity: 0.7 }}>이번 비용 추정</span>
+          <span style={{ fontSize: '0.7rem', letterSpacing: '0.05em', opacity: 0.7 }}>최근 API 비용 추정</span>
           <span style={{ color: 'var(--text-primary)', fontWeight: 600 }}>${usage?.estimated_usd?.toFixed(4) ?? '0.0000'} <span style={{ opacity: 0.5, fontSize: '0.75rem' }}>{usage?.total_tokens?.toLocaleString?.() ?? 0} tokens</span></span>
         </div>
       </div>
