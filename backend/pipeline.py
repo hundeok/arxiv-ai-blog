@@ -413,6 +413,7 @@ def audit_card_copy(state: dict[str, Any]) -> dict[str, Any]:
         model=MODEL, contents=prompt,
         config=types.GenerateContentConfig(max_output_tokens=3072, response_mime_type="application/json"),
     )
+    usage = read_usage(response)
     try:
         copy = json.loads(response.text or "{}")
     except json.JSONDecodeError as error:
@@ -427,9 +428,28 @@ def audit_card_copy(state: dict[str, Any]) -> dict[str, Any]:
         record["korean_title"] = title
         record["korean_subtitle"] = subtitle
         record["updated_at"] = now_iso()
+    # Retry only malformed card copy with a tiny isolated request. This keeps
+    # the quality bar strict without rejecting an otherwise useful batch.
+    for record_id in invalid[:]:
+        record = next(record for record in records if record["id"] == record_id)
+        retry = client.models.generate_content(
+            model=MODEL,
+            contents=f"""다음 논문 제목의 한국어 카드 문구를 JSON으로만 작성하라: {{"title":"...","subtitle":"..."}}. 영어 알파벳 금지(AI·LLM·GPT·GEAR 제외). Qwen2는 큐원2, Claude 3.5는 클로드 3.5처럼 숫자는 반드시 아라비아 숫자로 유지한다. 부제목은 25~70자 한국어 한 문장이다.\n\n{record['paper']['title']}""",
+            config=types.GenerateContentConfig(max_output_tokens=256, response_mime_type="application/json"),
+        )
+        add_usage(usage, read_usage(retry))
+        try:
+            item = json.loads(retry.text or "{}")
+        except json.JSONDecodeError:
+            continue
+        title, subtitle = item.get("title", "").strip(), item.get("subtitle", "").strip()
+        if is_korean_title(title) and is_korean_card_subtitle(subtitle):
+            record["korean_title"], record["korean_subtitle"] = title, subtitle
+            record["updated_at"] = now_iso()
+            invalid.remove(record_id)
     if invalid:
         raise RuntimeError(f"card quality validation failed for: {', '.join(invalid)}")
-    return read_usage(response)
+    return usage
 
 
 def retry_at(attempts: int) -> str:
