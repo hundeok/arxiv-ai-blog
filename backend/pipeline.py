@@ -202,6 +202,8 @@ def download_pdf_text(paper: dict[str, Any]) -> str:
 def prompt_for(paper: dict[str, Any], paper_text: str) -> str:
     return f"""너는 신뢰할 수 있는 AI 연구 해설자다. 아래 arXiv 논문 발췌만을 근거로 한국어 Markdown 해설을 작성해라. 원문에 없는 실험 수치나 주장을 만들지 마라.
 
+출력의 첫 줄은 반드시 이 논문의 핵심을 45자 이내 한국어 제목으로 쓴 `# 제목` 형식이어야 한다. 인사말, 역할 소개, 요청을 받았다는 말은 절대 쓰지 마라.
+
 반드시 다음 H2 섹션을 포함해라:
 ## ✨ 3줄 핵심 요약
 ## 📖 쉽게 풀어쓴 1분 핵심
@@ -224,6 +226,9 @@ def prompt_for(paper: dict[str, Any], paper_text: str) -> str:
 
 
 def validate_markdown(markdown: str) -> None:
+    title = markdown.lstrip().splitlines()[0] if markdown.strip() else ""
+    if not title.startswith("# ") or len(title.removeprefix("# ").strip()) < 4:
+        raise ValueError("generated Markdown is missing a usable H1 title")
     missing = [section for section in REQUIRED_SECTIONS if section not in markdown]
     if missing:
         raise ValueError(f"missing required sections: {', '.join(missing)}")
@@ -309,7 +314,7 @@ def run() -> dict[str, Any]:
                 "next_retry_at": None,
                 "last_error": None,
                 "updated_at": now_iso(),
-                "korean_title": markdown.splitlines()[0].lstrip("# ").strip() or paper["title"],
+                "korean_title": markdown.lstrip().splitlines()[0].removeprefix("# ").strip(),
             })
             report["generated"] += 1
         except Exception as error:

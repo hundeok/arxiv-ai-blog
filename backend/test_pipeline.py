@@ -15,7 +15,7 @@ class PipelineUnitTests(unittest.TestCase):
         self.assertIn("중간 원문 생략", compact)
 
     def test_markdown_validation_requires_structure(self):
-        valid = "\n".join(f"## {section}\n" + "내용 " * 100 for section in pipeline.REQUIRED_SECTIONS)
+        valid = "# 검증 가능한 한국어 제목\n\n" + "\n".join(f"## {section}\n" + "내용 " * 100 for section in pipeline.REQUIRED_SECTIONS)
         pipeline.validate_markdown(valid)
         with self.assertRaises(ValueError):
             pipeline.validate_markdown("## ✨ 3줄 핵심 요약\n짧은 글")
