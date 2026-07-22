@@ -202,7 +202,7 @@ def download_pdf_text(paper: dict[str, Any]) -> str:
 def prompt_for(paper: dict[str, Any], paper_text: str) -> str:
     return f"""너는 신뢰할 수 있는 AI 연구 해설자다. 아래 arXiv 논문 발췌만을 근거로 한국어 Markdown 해설을 작성해라. 원문에 없는 실험 수치나 주장을 만들지 마라.
 
-출력의 첫 줄은 반드시 이 논문의 핵심을 45자 이내 한국어 제목으로 쓴 `# 제목` 형식이어야 한다. 인사말, 역할 소개, 요청을 받았다는 말은 절대 쓰지 마라.
+출력의 첫 줄은 반드시 논문의 영어 제목을 자연스러운 한국어로 완벽하게 번역하여 `# 한국어 제목` 형식으로 작성해야 한다. (영어 그대로 출력 금지). 인사말, 역할 소개, 요청을 받았다는 말은 절대 쓰지 마라.
 
 반드시 다음 H2 섹션을 포함해라:
 ## ✨ 3줄 핵심 요약
@@ -288,7 +288,7 @@ def rebuild_metadata(state: dict[str, Any]) -> None:
             "korean_title": record.get("korean_title", paper["title"]),
             "published": paper.get("published", "")[:10],
             "authors": paper.get("authors", [])[:2],
-            "tags": ["AI", "arXiv", "Korean summary"],
+            "tags": ["AI", "arXiv", "🇺🇸 ➔ 🇰🇷"],
         })
     items.sort(key=lambda item: item.get("published", ""), reverse=True)
     atomic_json_write(METADATA_PATH, items)
