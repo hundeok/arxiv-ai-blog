@@ -13,6 +13,7 @@ on:
         options:
           - publish
           - translate_titles
+          - audit_cards
         default: publish
       batch_size:
         description: 'Papers to publish in this run (1-5)'
@@ -69,6 +70,8 @@ jobs:
         cd backend
         if [ "${{ inputs.operation || 'publish' }}" = "translate_titles" ]; then
           python process_content.py --translate-titles
+        elif [ "${{ inputs.operation || 'publish' }}" = "audit_cards" ]; then
+          python process_content.py --audit-cards
         else
           python process_content.py
         fi

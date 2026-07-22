@@ -59,7 +59,7 @@ export default function PaperCard({ paper, onClick }) {
         WebkitBoxOrient: 'vertical',
         overflow: 'hidden'
       }}>
-        {paper.original_title}
+        {paper.korean_subtitle || paper.original_title}
       </p>
       
       <div style={{ marginTop: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>

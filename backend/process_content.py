@@ -2,7 +2,7 @@
 
 import sys
 
-from pipeline import run, translate_existing_titles
+from pipeline import audit_existing_cards, run, translate_existing_titles
 
 
 def generate_blog_posts():
@@ -12,5 +12,7 @@ def generate_blog_posts():
 if __name__ == "__main__":
     if "--translate-titles" in sys.argv:
         translate_existing_titles()
+    elif "--audit-cards" in sys.argv:
+        audit_existing_cards()
     else:
         generate_blog_posts()

@@ -293,6 +293,10 @@ def is_korean_title(title: str) -> bool:
     return hangul >= 4 and all(allowed.fullmatch(word) for word in english_words)
 
 
+def is_korean_card_subtitle(text: str) -> bool:
+    return 12 <= len(text) <= 90 and is_korean_title(text)
+
+
 def generate_markdown(paper: dict[str, Any], full_text: str) -> tuple[str, dict[str, Any]]:
     api_key = os.environ.get("GEMINI_API_KEY")
     if not api_key:
@@ -391,6 +395,43 @@ def translate_titles(state: dict[str, Any]) -> dict[str, Any]:
     return usage
 
 
+def audit_card_copy(state: dict[str, Any]) -> dict[str, Any]:
+    """Quality-pass every visible card title and subtitle in one bounded request."""
+    records = [record for record in state["papers"].values() if record.get("status") == "published"]
+    api_key = os.environ.get("GEMINI_API_KEY")
+    if not api_key:
+        raise RuntimeError("GEMINI_API_KEY is not configured")
+    source = {record["id"]: record["paper"]["title"] for record in records}
+    prompt = f"""아래 arXiv 논문 목록의 카드 문구를 한국어로 교정하라. JSON 객체만 출력한다.
+각 id 값은 {{"title":"대제목", "subtitle":"짧은 한국어 부제목"}} 형식이다.
+규칙: 영어 단어·고유명사는 한글로 번역/음역하고 AI, LLM, GPT, GEAR만 영어로 남긴다. 모델 번호와 수치는 반드시 아라비아 숫자로 보존한다(예: Claude 3.5는 클로드 3.5, Meta Llama 3는 메타 라마 3). 숫자를 삼·점·오처럼 한글로 쓰지 않는다. 부제목은 제목을 반복하지 않는 1문장, 25~70자, 자연스러운 한국어다.
+
+{json.dumps(source, ensure_ascii=False)}
+"""
+    client = genai.Client(api_key=api_key)
+    response = client.models.generate_content(
+        model=MODEL, contents=prompt,
+        config=types.GenerateContentConfig(max_output_tokens=3072, response_mime_type="application/json"),
+    )
+    try:
+        copy = json.loads(response.text or "{}")
+    except json.JSONDecodeError as error:
+        raise RuntimeError("card quality audit did not return JSON") from error
+    invalid = []
+    for record in records:
+        item = copy.get(record["id"], {})
+        title, subtitle = item.get("title", "").strip(), item.get("subtitle", "").strip()
+        if not is_korean_title(title) or not is_korean_card_subtitle(subtitle):
+            invalid.append(record["id"])
+            continue
+        record["korean_title"] = title
+        record["korean_subtitle"] = subtitle
+        record["updated_at"] = now_iso()
+    if invalid:
+        raise RuntimeError(f"card quality validation failed for: {', '.join(invalid)}")
+    return read_usage(response)
+
+
 def retry_at(attempts: int) -> str:
     minutes = min(24 * 60, 30 * (2 ** max(0, attempts - 1)))
     return (datetime.now(timezone.utc) + timedelta(minutes=minutes)).isoformat()
@@ -440,6 +481,7 @@ def rebuild_metadata(state: dict[str, Any]) -> None:
             "filename": record["filename"],
             "original_title": paper["title"],
             "korean_title": record.get("korean_title", paper["title"]),
+            "korean_subtitle": record.get("korean_subtitle", record.get("korean_title", paper["title"])),
             "published": paper.get("published", "")[:10],
             "authors": paper.get("authors", [])[:2],
             "tags": ["AI", "arXiv", "🇺🇸 ➔ 🇰🇷"],
@@ -537,6 +579,19 @@ def translate_existing_titles() -> None:
     atomic_json_write(STATUS_PATH, status_payload(state, report))
 
 
+def audit_existing_cards() -> None:
+    state = load_state()
+    state.setdefault("usage_total", empty_usage())
+    state.setdefault("last_publication_run", state.get("last_run"))
+    usage = audit_card_copy(state)
+    add_usage(state["usage_total"], usage)
+    rebuild_metadata(state)
+    report = {"started_at": now_iso(), "finished_at": now_iso(), "discovered": 0, "selected": 0, "generated": 0, "failed": 0, "skipped": 0, "health": "healthy", "failures": [], "usage": usage, "message": "Quality-audited Korean card titles and subtitles."}
+    state["last_run"] = report
+    atomic_json_write(STATE_PATH, state)
+    atomic_json_write(STATUS_PATH, status_payload(state, report))
+
+
 if __name__ == "__main__":
     import sys
 
@@ -544,5 +599,7 @@ if __name__ == "__main__":
         bootstrap_existing_content()
     elif "--translate-titles" in sys.argv:
         translate_existing_titles()
+    elif "--audit-cards" in sys.argv:
+        audit_existing_cards()
     else:
         run()
