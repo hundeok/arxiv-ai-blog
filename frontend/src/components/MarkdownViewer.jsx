@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
+import 'katex/dist/katex.min.css';
 import { ArrowLeft } from 'lucide-react';
 import AdBanner from './AdBanner';
 
-export default function MarkdownViewer({ filename, onBack }) {
+export default function MarkdownViewer({ filename, paper, onBack }) {
   const [content, setContent] = useState('');
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    if (!filename) return;
     // Fetch the markdown content from public folder
     fetch(`/content/${filename}`)
       .then(res => {
@@ -24,6 +28,14 @@ export default function MarkdownViewer({ filename, onBack }) {
         setLoading(false);
       });
   }, [filename]);
+  useEffect(() => {
+    if (!paper) return;
+    document.title = `${paper.korean_title} | ArXiv Translator AI`;
+    const description = paper.korean_subtitle || paper.korean_title;
+    let meta = document.querySelector('meta[name="description"]');
+    if (!meta) { meta = document.createElement('meta'); meta.name = 'description'; document.head.appendChild(meta); }
+    meta.content = description;
+  }, [paper]);
 
   if (loading) {
     return (
@@ -61,7 +73,7 @@ export default function MarkdownViewer({ filename, onBack }) {
       <AdBanner position="in-article" />
       
       <div className="markdown-body">
-        <ReactMarkdown>{content}</ReactMarkdown>
+        <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>{content}</ReactMarkdown>
       </div>
 
       <AdBanner position="in-article" />

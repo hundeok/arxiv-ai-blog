@@ -7,7 +7,8 @@ import SystemStatus from './components/SystemStatus';
 function App() {
   const [papers, setPapers] = useState([]);
   const [pipelineStatus, setPipelineStatus] = useState(null);
-  const [selectedFilename, setSelectedFilename] = useState(null);
+  const initialId = window.location.pathname.match(/^\/papers\/([^/]+)$/)?.[1] || null;
+  const [selectedId, setSelectedId] = useState(initialId);
 
   useEffect(() => {
     // Load metadata.json from public directory
@@ -21,6 +22,13 @@ function App() {
       .then(data => setPipelineStatus(data))
       .catch(() => setPipelineStatus(null));
   }, []);
+  useEffect(() => {
+    const onPopState = () => setSelectedId(window.location.pathname.match(/^\/papers\/([^/]+)$/)?.[1] || null);
+    window.addEventListener('popstate', onPopState);
+    return () => window.removeEventListener('popstate', onPopState);
+  }, []);
+  const selectPaper = (paper) => { window.history.pushState({}, '', `/papers/${paper.id}`); setSelectedId(paper.id); };
+  const selectedPaper = papers.find(paper => paper.id === selectedId);
 
   return (
     <div style={{ padding: '2rem', maxWidth: '1200px', margin: '0 auto' }}>
@@ -33,10 +41,10 @@ function App() {
         </p>
       </header>
 
-      {selectedFilename ? (
+      {selectedId ? (
         <MarkdownViewer 
-          filename={selectedFilename} 
-          onBack={() => setSelectedFilename(null)} 
+          filename={selectedPaper?.filename} paper={selectedPaper}
+          onBack={() => { window.history.pushState({}, '', '/'); setSelectedId(null); }} 
         />
       ) : (
         <main>
@@ -60,7 +68,7 @@ function App() {
                   <React.Fragment key={paper.id}>
                     <PaperCard 
                       paper={paper} 
-                      onClick={setSelectedFilename}
+                      onClick={() => selectPaper(paper)}
                     />
                     {/* Add an in-feed ad banner after every 5th card */}
                     {(index + 1) % 5 === 0 && (
