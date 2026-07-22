@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 
-const id = import.meta.env.VITE_GA_MEASUREMENT_ID;
+// A GA measurement ID is public by design. Environment configuration can
+// override this value for forks or future properties.
+const id = import.meta.env.VITE_GA_MEASUREMENT_ID || 'G-V4G2FBSDMG';
 
 export default function Analytics({ page }) {
   useEffect(() => {
