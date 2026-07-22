@@ -4,6 +4,7 @@ const MarkdownViewer = lazy(() => import('./components/MarkdownViewer'));
 import AdBanner from './components/AdBanner';
 import SystemStatus from './components/SystemStatus';
 import Analytics from './components/Analytics';
+import { track } from './components/Analytics';
 
 function App() {
   const [papers, setPapers] = useState([]);
@@ -28,7 +29,7 @@ function App() {
     window.addEventListener('popstate', onPopState);
     return () => window.removeEventListener('popstate', onPopState);
   }, []);
-  const selectPaper = (paper) => { window.history.pushState({}, '', `/papers/${paper.id}`); setSelectedId(paper.id); };
+  const selectPaper = (paper) => { track('paper_open', { paper_id: paper.id, paper_title: paper.korean_title }); window.history.pushState({}, '', `/papers/${paper.id}`); setSelectedId(paper.id); };
   const selectedPaper = papers.find(paper => paper.id === selectedId);
 
   return (
@@ -42,6 +43,9 @@ function App() {
           Demystifying the latest Artificial Intelligence research through automated, high-quality Korean summaries.
         </p>
       </header>
+      <footer style={{ margin: '4rem 0 1rem', textAlign: 'center', fontSize: '0.8rem', color: 'var(--text-secondary)' }}>
+        <a href="/about/">소개</a> · <a href="/contact/">문의</a> · <a href="/privacy/">개인정보처리방침</a> · <a href="/ai-policy/">AI·저작권 고지</a>
+      </footer>
 
       {selectedId ? (
         <Suspense fallback={<div style={{ padding: '4rem', textAlign: 'center' }}>논문을 불러오는 중입니다.</div>}><MarkdownViewer 

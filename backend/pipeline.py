@@ -220,7 +220,15 @@ def merge_discovery(state: dict[str, Any], papers: list[dict[str, Any]]) -> None
 def select_work(state: dict[str, Any]) -> list[dict[str, Any]]:
     now = datetime.now(timezone.utc)
     candidates = [record for record in state["papers"].values() if retry_due(record, now)]
-    candidates.sort(key=lambda record: record.get("paper", {}).get("published", ""), reverse=True)
+    def priority(record: dict[str, Any]) -> int:
+        paper = record.get("paper", {})
+        text = f"{paper.get('title', '')} {paper.get('summary', '')}".lower()
+        practical = sum(word in text for word in ("agent", "reasoning", "benchmark", "evaluation", "safety", "retrieval", "code"))
+        explanatory = min(20, len(paper.get("summary", "")) // 80)
+        score = practical * 10 + explanatory
+        record["priority_score"] = score
+        return score
+    candidates.sort(key=lambda record: (priority(record), record.get("paper", {}).get("published", "")), reverse=True)
     return candidates[:BATCH_SIZE]
 
 
