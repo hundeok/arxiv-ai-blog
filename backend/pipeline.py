@@ -201,6 +201,8 @@ def retry_due(record: dict[str, Any], now: datetime) -> bool:
 
 
 def merge_discovery(state: dict[str, Any], papers: list[dict[str, Any]]) -> None:
+    # Retention policy: discovery is additive only. Published records are never
+    # pruned when they leave arXiv's latest-results window.
     existing_titles = {
         record.get("paper", {}).get("title"): record
         for record in state["papers"].values()
@@ -229,7 +231,17 @@ def select_work(state: dict[str, Any]) -> list[dict[str, Any]]:
         record["priority_score"] = score
         return score
     candidates.sort(key=lambda record: (priority(record), record.get("paper", {}).get("published", "")), reverse=True)
-    return candidates[:BATCH_SIZE]
+    selected: list[dict[str, Any]] = []
+    for record in candidates:
+        title = record.get("paper", {}).get("title", "")
+        # Avoid filling a single run with near-identical topics; defer rather
+        # than discard, so the archive remains complete over time.
+        if any(title_similarity(title, other.get("paper", {}).get("title", "")) >= 0.45 for other in selected):
+            continue
+        selected.append(record)
+        if len(selected) == BATCH_SIZE:
+            break
+    return selected
 
 
 def title_similarity(left: str, right: str) -> float:
@@ -534,6 +546,7 @@ def rebuild_metadata(state: dict[str, Any]) -> None:
     ]
     # Preserve the timestamp returned by arXiv for ordering; the displayed date
     # intentionally remains compact (YYYY-MM-DD).
+    # Newest first in the UI; old publications remain in the archive forever.
     records.sort(key=lambda record: (record.get("paper", {}).get("published", ""), record.get("id", "")), reverse=True)
     items = []
     for record in records:

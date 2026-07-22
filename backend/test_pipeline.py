@@ -42,6 +42,11 @@ class PipelineUnitTests(unittest.TestCase):
         older = {"id": "old", "filename": "old.md", "status": "published", "paper": {"published": "2026-07-21T10:00:00+00:00"}}
         self.assertEqual(sorted([older, newer], key=lambda record: (record["paper"]["published"], record["id"]), reverse=True)[0]["id"], "new")
 
+    def test_discovery_never_prunes_published_archive(self):
+        state = {"papers": {"kept": {"id": "kept", "status": "published", "paper": {"title": "Archived", "published": "2026-01-01"}}}}
+        pipeline.merge_discovery(state, [])
+        self.assertIn("kept", state["papers"])
+
 
 if __name__ == "__main__":
     unittest.main()
