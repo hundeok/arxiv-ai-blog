@@ -1,6 +1,10 @@
 import React from 'react';
 
-const SystemStatus = ({ totalPapers }) => {
+const SystemStatus = ({ totalPapers, status }) => {
+  const lastRun = status?.last_run;
+  const healthy = lastRun?.health !== 'degraded';
+  const generated = lastRun?.generated ?? 0;
+  const retryCount = status?.retry_count ?? 0;
   return (
     <div style={{
       display: 'flex',
@@ -17,7 +21,9 @@ const SystemStatus = ({ totalPapers }) => {
       {/* Status Indicator with Micro-visualization */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
         <div className="status-pulse"></div>
-        <span style={{ fontWeight: 600, color: '#4ade80' }}>Pipeline Active</span>
+        <span style={{ fontWeight: 600, color: healthy ? '#4ade80' : '#f87171' }}>
+          {healthy ? 'Pipeline healthy' : 'Pipeline needs retry'}
+        </span>
         
         {/* Techy Data Stream Waveform */}
         <div className="data-stream">
@@ -39,9 +45,9 @@ const SystemStatus = ({ totalPapers }) => {
         </div>
         
         <div style={{ display: 'flex', flexDirection: 'column' }}>
-          <span style={{ fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.05em', opacity: 0.7, color: '#38bdf8' }}>API Control</span>
+          <span style={{ fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.05em', opacity: 0.7, color: '#38bdf8' }}>Last run</span>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
-            <span style={{ color: 'var(--text-primary)', fontWeight: 600 }}>10 <span style={{ opacity: 0.5, fontSize: '0.75rem' }}>/day</span></span>
+            <span style={{ color: 'var(--text-primary)', fontWeight: 600 }}>{generated} <span style={{ opacity: 0.5, fontSize: '0.75rem' }}>new</span></span>
             <span style={{ 
               background: 'rgba(56, 189, 248, 0.15)', 
               color: '#38bdf8', 
@@ -50,14 +56,14 @@ const SystemStatus = ({ totalPapers }) => {
               fontSize: '0.65rem', 
               fontWeight: 700 
             }}>
-              &lt; $0.05
+              {retryCount} retry
             </span>
           </div>
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column' }}>
-          <span style={{ fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.05em', opacity: 0.7 }}>Next Sync</span>
-          <span style={{ color: 'var(--text-primary)', fontWeight: 600 }}>09:00 <span style={{ opacity: 0.5 }}>KST</span></span>
+          <span style={{ fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.05em', opacity: 0.7 }}>Schedule</span>
+          <span style={{ color: 'var(--text-primary)', fontWeight: 600 }}>Every 6h</span>
         </div>
       </div>
     </div>

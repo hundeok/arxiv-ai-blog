@@ -6,6 +6,7 @@ import SystemStatus from './components/SystemStatus';
 
 function App() {
   const [papers, setPapers] = useState([]);
+  const [pipelineStatus, setPipelineStatus] = useState(null);
   const [selectedPaperId, setSelectedPaperId] = useState(null);
 
   useEffect(() => {
@@ -14,6 +15,11 @@ function App() {
       .then(res => res.json())
       .then(data => setPapers(data))
       .catch(err => console.error("Failed to load metadata", err));
+
+    fetch('/content/pipeline-status.json')
+      .then(res => res.ok ? res.json() : null)
+      .then(data => setPipelineStatus(data))
+      .catch(() => setPipelineStatus(null));
   }, []);
 
   return (
@@ -36,7 +42,7 @@ function App() {
         <main>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
             <h2 style={{ fontSize: '1.5rem', fontWeight: 600 }}>Latest Decoded Papers</h2>
-            <SystemStatus totalPapers={papers.length} />
+            <SystemStatus totalPapers={papers.length} status={pipelineStatus} />
           </div>
           
           {papers.length === 0 ? (

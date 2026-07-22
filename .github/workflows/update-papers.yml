@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
     inputs:
       batch_size:
-        description: 'Number of latest papers to process (1-15)'
+        description: 'Papers to publish in this run (1-5)'
         required: false
         default: '3'
 
@@ -20,7 +20,7 @@ concurrency:
 jobs:
   update-papers:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 25
     permissions:
       contents: write
     
@@ -52,7 +52,8 @@ jobs:
     - name: Run Auto Blogger Script
       env:
         GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        MAX_RESULTS: ${{ inputs.batch_size || '3' }}
+        BATCH_SIZE: ${{ inputs.batch_size || '3' }}
+        DISCOVERY_LIMIT: '30'
         GEMINI_MODEL: gemini-3.1-flash-lite
       run: |
         cd backend
@@ -63,3 +64,7 @@ jobs:
       with:
         commit_message: "Auto-update: New ArXiv papers decoded by AI"
         file_pattern: "frontend/public/content/* frontend/public/sitemap.xml"
+
+    - name: Verify pipeline health
+      run: |
+        python -c "import json; report=json.load(open('frontend/public/content/pipeline-status.json', encoding='utf-8'))['last_run']; print(report); assert report['health'] == 'healthy', 'All selected papers failed; retry state was saved for the next run.'"
