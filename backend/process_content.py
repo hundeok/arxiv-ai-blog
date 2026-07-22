@@ -1,6 +1,8 @@
 """Backward-compatible entry point for the stateful publishing pipeline."""
 
-from pipeline import run
+import sys
+
+from pipeline import run, translate_existing_titles
 
 
 def generate_blog_posts():
@@ -8,4 +10,7 @@ def generate_blog_posts():
 
 
 if __name__ == "__main__":
-    generate_blog_posts()
+    if "--translate-titles" in sys.argv:
+        translate_existing_titles()
+    else:
+        generate_blog_posts()

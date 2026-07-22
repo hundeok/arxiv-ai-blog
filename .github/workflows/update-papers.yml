@@ -2,10 +2,18 @@ name: Daily ArXiv Paper Update
 
 on:
   schedule:
-    # Every six hours. Small batches finish reliably and keep up with new papers.
-    - cron: '0 */6 * * *'
+    # Three sequential papers every four hours: up to 18/day without burst traffic.
+    - cron: '0 */4 * * *'
   workflow_dispatch:
     inputs:
+      operation:
+        description: 'Operation to run'
+        required: false
+        type: choice
+        options:
+          - publish
+          - translate_titles
+        default: publish
       batch_size:
         description: 'Papers to publish in this run (1-5)'
         required: false
@@ -55,9 +63,15 @@ jobs:
         BATCH_SIZE: ${{ inputs.batch_size || '3' }}
         DISCOVERY_LIMIT: '30'
         GEMINI_MODEL: gemini-3.1-flash-lite
+        GEMINI_INPUT_USD_PER_MILLION: '0.25'
+        GEMINI_OUTPUT_USD_PER_MILLION: '1.50'
       run: |
         cd backend
-        python process_content.py
+        if [ "${{ inputs.operation || 'publish' }}" = "translate_titles" ]; then
+          python process_content.py --translate-titles
+        else
+          python process_content.py
+        fi
         
     - name: Commit and Push changes
       uses: stefanzweifel/git-auto-commit-action@v5

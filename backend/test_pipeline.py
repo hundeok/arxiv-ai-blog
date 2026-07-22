@@ -26,6 +26,16 @@ class PipelineUnitTests(unittest.TestCase):
             "2607_18228v1",
         )
 
+    def test_title_validation_rejects_english_fallback(self):
+        self.assertTrue(pipeline.is_korean_title("긴 문맥 추론을 개선하는 AI 기법"))
+        self.assertFalse(pipeline.is_korean_title("A Long English Research Paper Title"))
+
+    def test_usage_estimation_accumulates(self):
+        total = pipeline.empty_usage()
+        pipeline.add_usage(total, {"model": "test", "requests": 1, "prompt_tokens": 1_000_000, "output_tokens": 1_000_000, "thought_tokens": 0, "total_tokens": 2_000_000, "estimated_usd": 1.75})
+        self.assertEqual(total["requests"], 1)
+        self.assertEqual(total["estimated_usd"], 1.75)
+
 
 if __name__ == "__main__":
     unittest.main()

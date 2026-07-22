@@ -35,9 +35,12 @@ MODEL = os.environ.get("GEMINI_MODEL", "gemini-3.1-flash-lite")
 DISCOVERY_LIMIT = int(os.environ.get("DISCOVERY_LIMIT", "30"))
 BATCH_SIZE = max(1, min(int(os.environ.get("BATCH_SIZE", "3")), 5))
 REQUEST_TIMEOUT_SECONDS = 90
-MAX_ATTEMPTS_PER_RUN = 2
 PRIMARY_INPUT_CHARS = 12_000
 FALLBACK_INPUT_CHARS = 6_000
+# Gemini 3.1 Flash-Lite paid-tier list price, USD per million text tokens.
+# Keep these configurable: the AI Studio invoice remains the source of truth.
+INPUT_USD_PER_MILLION = float(os.environ.get("GEMINI_INPUT_USD_PER_MILLION", "0.25"))
+OUTPUT_USD_PER_MILLION = float(os.environ.get("GEMINI_OUTPUT_USD_PER_MILLION", "1.50"))
 
 REQUIRED_SECTIONS = (
     "3줄 핵심 요약",
@@ -51,6 +54,50 @@ REQUIRED_SECTIONS = (
 
 def now_iso() -> str:
     return datetime.now(timezone.utc).isoformat()
+
+
+def empty_usage() -> dict[str, Any]:
+    return {
+        "model": MODEL,
+        "requests": 0,
+        "prompt_tokens": 0,
+        "output_tokens": 0,
+        "thought_tokens": 0,
+        "total_tokens": 0,
+        "estimated_usd": 0.0,
+    }
+
+
+def read_usage(response: Any) -> dict[str, Any]:
+    """Extract billable token counts from the Gemini response defensively."""
+    metadata = getattr(response, "usage_metadata", None)
+    if metadata is None:
+        return empty_usage()
+
+    def count(name: str) -> int:
+        return int(getattr(metadata, name, 0) or 0)
+
+    prompt = count("prompt_token_count")
+    output = count("candidates_token_count")
+    thoughts = count("thoughts_token_count")
+    total = count("total_token_count") or prompt + output + thoughts
+    return {
+        "model": MODEL,
+        "requests": 1,
+        "prompt_tokens": prompt,
+        "output_tokens": output,
+        "thought_tokens": thoughts,
+        "total_tokens": total,
+        # Gemini prices thought tokens as output tokens.
+        "estimated_usd": round((prompt * INPUT_USD_PER_MILLION + (output + thoughts) * OUTPUT_USD_PER_MILLION) / 1_000_000, 8),
+    }
+
+
+def add_usage(target: dict[str, Any], usage: dict[str, Any]) -> None:
+    target["model"] = usage.get("model", MODEL)
+    for key in ("requests", "prompt_tokens", "output_tokens", "thought_tokens", "total_tokens"):
+        target[key] = int(target.get(key, 0)) + int(usage.get(key, 0))
+    target["estimated_usd"] = round(float(target.get("estimated_usd", 0)) + float(usage.get("estimated_usd", 0)), 8)
 
 
 def atomic_json_write(path: Path, value: Any) -> None:
@@ -229,6 +276,8 @@ def validate_markdown(markdown: str) -> None:
     title = markdown.lstrip().splitlines()[0] if markdown.strip() else ""
     if not title.startswith("# ") or len(title.removeprefix("# ").strip()) < 4:
         raise ValueError("generated Markdown is missing a usable H1 title")
+    if not is_korean_title(title.removeprefix("# ").strip()):
+        raise ValueError("generated title is not sufficiently Korean")
     missing = [section for section in REQUIRED_SECTIONS if section not in markdown]
     if missing:
         raise ValueError(f"missing required sections: {', '.join(missing)}")
@@ -236,7 +285,14 @@ def validate_markdown(markdown: str) -> None:
         raise ValueError("generated Markdown is too short")
 
 
-def generate_markdown(paper: dict[str, Any], full_text: str) -> str:
+def is_korean_title(title: str) -> bool:
+    """Reject English-paper-title fallbacks while allowing short AI acronyms."""
+    hangul = len(re.findall(r"[가-힣]", title))
+    latin = len(re.findall(r"[A-Za-z]", title))
+    return hangul >= 4 and latin <= hangul + 8
+
+
+def generate_markdown(paper: dict[str, Any], full_text: str) -> tuple[str, dict[str, Any]]:
     api_key = os.environ.get("GEMINI_API_KEY")
     if not api_key:
         raise RuntimeError("GEMINI_API_KEY is not configured")
@@ -260,7 +316,7 @@ def generate_markdown(paper: dict[str, Any], full_text: str) -> str:
             )
             markdown = response.text
             validate_markdown(markdown)
-            return markdown
+            return markdown, read_usage(response)
         except Exception as error:  # preserve both attempts in the persistent queue
             errors.append(str(error))
         finally:
@@ -268,9 +324,82 @@ def generate_markdown(paper: dict[str, Any], full_text: str) -> str:
     raise RuntimeError(" | ".join(errors))
 
 
+def translate_titles(state: dict[str, Any]) -> dict[str, Any]:
+    """Translate legacy titles in one inexpensive API request; never overwrite a valid title."""
+    candidates = [
+        record for record in state["papers"].values()
+        if record.get("status") == "published"
+        and not is_korean_title(record.get("korean_title", ""))
+    ]
+    usage = empty_usage()
+    if not candidates:
+        return usage
+
+    api_key = os.environ.get("GEMINI_API_KEY")
+    if not api_key:
+        raise RuntimeError("GEMINI_API_KEY is not configured")
+    source = {record["id"]: record["paper"]["title"] for record in candidates}
+    prompt = f"""아래 arXiv 논문 제목을 자연스러운 한국어 제목으로 번역하라.
+입력 id를 키, 번역 제목을 값으로 하는 JSON 객체만 출력하라. 원문 영어 문장을 그대로 쓰지 말고, AI·LLM·GPT·GEAR 같은 통용 약어만 유지할 수 있다.
+
+{json.dumps(source, ensure_ascii=False)}
+"""
+    client = genai.Client(api_key=api_key)
+    response = client.models.generate_content(
+        model=MODEL,
+        contents=prompt,
+        config=types.GenerateContentConfig(max_output_tokens=2048, response_mime_type="application/json"),
+    )
+    usage = read_usage(response)
+    try:
+        response_titles = json.loads(response.text or "{}")
+    except json.JSONDecodeError as error:
+        raise RuntimeError("title translation did not return JSON") from error
+    translated = {
+        record_id: title.strip().lstrip("# ").strip()
+        for record_id, title in response_titles.items()
+        if record_id in state["papers"] and isinstance(title, str) and is_korean_title(title.strip().lstrip("# ").strip())
+    }
+    missing = [record["id"] for record in candidates if record["id"] not in translated]
+    if missing:
+        raise RuntimeError(f"title translation validation failed for: {', '.join(missing)}")
+    for record in candidates:
+        record["korean_title"] = translated[record["id"]]
+        record["updated_at"] = now_iso()
+    return usage
+
+
 def retry_at(attempts: int) -> str:
     minutes = min(24 * 60, 30 * (2 ** max(0, attempts - 1)))
     return (datetime.now(timezone.utc) + timedelta(minutes=minutes)).isoformat()
+
+
+def next_scheduled_at() -> str:
+    """GitHub cron schedule: every four hours on the hour, expressed in UTC."""
+    now = datetime.now(timezone.utc).replace(minute=0, second=0, microsecond=0)
+    return (now + timedelta(hours=4 - (now.hour % 4))).isoformat()
+
+
+def status_payload(state: dict[str, Any], report: dict[str, Any]) -> dict[str, Any]:
+    retry_times = [
+        record.get("next_retry_at") for record in state["papers"].values()
+        if record.get("status") == "retry" and record.get("next_retry_at")
+    ]
+    return {
+        "last_run": report,
+        "last_publication_run": state.get("last_publication_run", report),
+        "published_count": len(load_json(METADATA_PATH, [])),
+        "retry_count": sum(record.get("status") == "retry" for record in state["papers"].values()),
+        "next_retry_at": min(retry_times) if retry_times else None,
+        "next_scheduled_at": next_scheduled_at(),
+        "schedule_hours": 4,
+        "usage_total": state.get("usage_total", empty_usage()),
+        "pricing": {
+            "input_usd_per_million": INPUT_USD_PER_MILLION,
+            "output_usd_per_million": OUTPUT_USD_PER_MILLION,
+            "note": "Estimate from Gemini response token metadata; AI Studio billing is authoritative.",
+        },
+    }
 
 
 def rebuild_metadata(state: dict[str, Any]) -> None:
@@ -296,16 +425,19 @@ def rebuild_metadata(state: dict[str, Any]) -> None:
 
 def run() -> dict[str, Any]:
     state = load_state()
+    state.setdefault("usage_total", empty_usage())
     discovered = fetch_latest_cs_ai_papers(max_results=DISCOVERY_LIMIT)
     merge_discovery(state, discovered)
     work = select_work(state)
-    report = {"started_at": now_iso(), "discovered": len(discovered), "selected": len(work), "generated": 0, "failed": 0, "skipped": 0, "health": "healthy", "failures": []}
+    report = {"started_at": now_iso(), "discovered": len(discovered), "selected": len(work), "generated": 0, "failed": 0, "skipped": 0, "health": "healthy", "failures": [], "usage": empty_usage()}
 
     for record in work:
         paper = record["paper"]
         try:
             source_text = download_pdf_text(paper)
-            markdown = generate_markdown(paper, source_text)
+            markdown, usage = generate_markdown(paper, source_text)
+            add_usage(report["usage"], usage)
+            add_usage(state["usage_total"], usage)
             filename = record["filename"]
             atomic_text_write(CONTENT_DIR / filename, markdown)
             record.update({
@@ -333,12 +465,9 @@ def run() -> dict[str, Any]:
     if report["selected"] and report["failed"] == report["selected"]:
         report["health"] = "degraded"
     state["last_run"] = report
+    state["last_publication_run"] = report
     atomic_json_write(STATE_PATH, state)
-    atomic_json_write(STATUS_PATH, {
-        "last_run": report,
-        "published_count": len(load_json(METADATA_PATH, [])),
-        "retry_count": sum(record.get("status") == "retry" for record in state["papers"].values()),
-    })
+    atomic_json_write(STATUS_PATH, status_payload(state, report))
     print("Pipeline summary:", json.dumps(report, ensure_ascii=False))
     return report
 
@@ -346,6 +475,7 @@ def run() -> dict[str, Any]:
 def bootstrap_existing_content() -> None:
     """Create durable state for the posts that predate the queue pipeline."""
     state = load_state()
+    state.setdefault("usage_total", empty_usage())
     rebuild_metadata(state)
     report = {
         "started_at": now_iso(),
@@ -361,11 +491,26 @@ def bootstrap_existing_content() -> None:
     }
     state["last_run"] = report
     atomic_json_write(STATE_PATH, state)
-    atomic_json_write(STATUS_PATH, {
-        "last_run": report,
-        "published_count": len(load_json(METADATA_PATH, [])),
-        "retry_count": 0,
-    })
+    atomic_json_write(STATUS_PATH, status_payload(state, report))
+
+
+def translate_existing_titles() -> None:
+    state = load_state()
+    state.setdefault("usage_total", empty_usage())
+    # Maintenance must not replace the last real publication result in the UI.
+    state.setdefault("last_publication_run", state.get("last_run"))
+    usage = translate_titles(state)
+    add_usage(state["usage_total"], usage)
+    rebuild_metadata(state)
+    report = {
+        "started_at": now_iso(), "finished_at": now_iso(), "discovered": 0,
+        "selected": 0, "generated": 0, "failed": 0, "skipped": 0,
+        "health": "healthy", "failures": [], "usage": usage,
+        "message": "Translated legacy card titles to Korean.",
+    }
+    state["last_run"] = report
+    atomic_json_write(STATE_PATH, state)
+    atomic_json_write(STATUS_PATH, status_payload(state, report))
 
 
 if __name__ == "__main__":
@@ -373,5 +518,7 @@ if __name__ == "__main__":
 
     if "--bootstrap" in sys.argv:
         bootstrap_existing_content()
+    elif "--translate-titles" in sys.argv:
+        translate_existing_titles()
     else:
         run()
