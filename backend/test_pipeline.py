@@ -36,6 +36,11 @@ class PipelineUnitTests(unittest.TestCase):
         self.assertEqual(total["requests"], 1)
         self.assertEqual(total["estimated_usd"], 1.75)
 
+    def test_metadata_order_prefers_full_arxiv_timestamp(self):
+        newer = {"id": "new", "filename": "new.md", "status": "published", "paper": {"published": "2026-07-21T18:00:00+00:00"}}
+        older = {"id": "old", "filename": "old.md", "status": "published", "paper": {"published": "2026-07-21T10:00:00+00:00"}}
+        self.assertEqual(sorted([older, newer], key=lambda record: (record["paper"]["published"], record["id"]), reverse=True)[0]["id"], "new")
+
 
 if __name__ == "__main__":
     unittest.main()

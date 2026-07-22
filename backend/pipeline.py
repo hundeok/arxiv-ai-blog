@@ -403,12 +403,15 @@ def status_payload(state: dict[str, Any], report: dict[str, Any]) -> dict[str, A
 
 
 def rebuild_metadata(state: dict[str, Any]) -> None:
+    records = [
+        record for record in state["papers"].values()
+        if record.get("status") == "published" and (CONTENT_DIR / record["filename"]).exists()
+    ]
+    # Preserve the timestamp returned by arXiv for ordering; the displayed date
+    # intentionally remains compact (YYYY-MM-DD).
+    records.sort(key=lambda record: (record.get("paper", {}).get("published", ""), record.get("id", "")), reverse=True)
     items = []
-    for record in state["papers"].values():
-        if record.get("status") != "published":
-            continue
-        if not (CONTENT_DIR / record["filename"]).exists():
-            continue
+    for record in records:
         paper = record["paper"]
         items.append({
             "id": record["id"],
@@ -419,7 +422,6 @@ def rebuild_metadata(state: dict[str, Any]) -> None:
             "authors": paper.get("authors", [])[:2],
             "tags": ["AI", "arXiv", "🇺🇸 ➔ 🇰🇷"],
         })
-    items.sort(key=lambda item: item.get("published", ""), reverse=True)
     atomic_json_write(METADATA_PATH, items)
 
 
