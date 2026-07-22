@@ -554,6 +554,13 @@ def rebuild_metadata(state: dict[str, Any]) -> None:
         urls.append(f"  <url><loc>{canonical}</loc><lastmod>{item['published']}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>")
     sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <url><loc>' + SITE_URL + '/</loc><changefreq>daily</changefreq><priority>1.0</priority></url>\n' + "\n".join(urls) + "\n</urlset>\n"
     atomic_text_write(CONTENT_DIR.parent / "sitemap.xml", sitemap)
+    sitemap_index = f'''<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap><loc>{SITE_URL}/sitemap.xml</loc></sitemap>
+</sitemapindex>
+'''
+    atomic_text_write(CONTENT_DIR.parent / "sitemap-index.xml", sitemap_index)
+    atomic_text_write(CONTENT_DIR.parent / "robots.txt", f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}/sitemap-index.xml\n")
 
 
 def run() -> dict[str, Any]:
