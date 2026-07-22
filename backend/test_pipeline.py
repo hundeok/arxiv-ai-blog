@@ -29,6 +29,7 @@ class PipelineUnitTests(unittest.TestCase):
     def test_title_validation_rejects_english_fallback(self):
         self.assertTrue(pipeline.is_korean_title("긴 문맥 추론을 개선하는 AI 기법"))
         self.assertFalse(pipeline.is_korean_title("A Long English Research Paper Title"))
+        self.assertFalse(pipeline.is_korean_title("Appearance Pointers: 확산 모델 영역 제어"))
 
     def test_usage_estimation_accumulates(self):
         total = pipeline.empty_usage()

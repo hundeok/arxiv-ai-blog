@@ -286,10 +286,11 @@ def validate_markdown(markdown: str) -> None:
 
 
 def is_korean_title(title: str) -> bool:
-    """Reject English-paper-title fallbacks while allowing short AI acronyms."""
+    """Allow Korean titles and only the universally understood AI acronyms."""
     hangul = len(re.findall(r"[가-힣]", title))
-    latin = len(re.findall(r"[A-Za-z]", title))
-    return hangul >= 4 and latin <= hangul + 8
+    english_words = re.findall(r"[A-Za-z][A-Za-z0-9.-]*", title)
+    allowed = re.compile(r"(?:AI|LLM|GPT(?:-?\d+)?|GEAR)", re.IGNORECASE)
+    return hangul >= 4 and all(allowed.fullmatch(word) for word in english_words)
 
 
 def generate_markdown(paper: dict[str, Any], full_text: str) -> tuple[str, dict[str, Any]]:
@@ -340,7 +341,7 @@ def translate_titles(state: dict[str, Any]) -> dict[str, Any]:
         raise RuntimeError("GEMINI_API_KEY is not configured")
     source = {record["id"]: record["paper"]["title"] for record in candidates}
     prompt = f"""아래 arXiv 논문 제목을 자연스러운 한국어 제목으로 번역하라.
-입력 id를 키, 번역 제목을 값으로 하는 JSON 객체만 출력하라. 원문 영어 문장을 그대로 쓰지 말고, AI·LLM·GPT·GEAR 같은 통용 약어만 유지할 수 있다.
+입력 id를 키, 번역 제목을 값으로 하는 JSON 객체만 출력하라. 제목의 영어 단어·제품명·고유명사도 모두 자연스러운 한글 음역 또는 번역으로 바꿔라. AI·LLM·GPT·GEAR 같은 통용 약어만 영어로 남길 수 있다.
 
 {json.dumps(source, ensure_ascii=False)}
 """
