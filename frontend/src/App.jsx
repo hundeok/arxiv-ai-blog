@@ -7,7 +7,7 @@ import SystemStatus from './components/SystemStatus';
 function App() {
   const [papers, setPapers] = useState([]);
   const [pipelineStatus, setPipelineStatus] = useState(null);
-  const [selectedPaperId, setSelectedPaperId] = useState(null);
+  const [selectedFilename, setSelectedFilename] = useState(null);
 
   useEffect(() => {
     // Load metadata.json from public directory
@@ -33,10 +33,10 @@ function App() {
         </p>
       </header>
 
-      {selectedPaperId ? (
+      {selectedFilename ? (
         <MarkdownViewer 
-          paperId={selectedPaperId} 
-          onBack={() => setSelectedPaperId(null)} 
+          filename={selectedFilename} 
+          onBack={() => setSelectedFilename(null)} 
         />
       ) : (
         <main>
@@ -60,7 +60,7 @@ function App() {
                   <React.Fragment key={paper.id}>
                     <PaperCard 
                       paper={paper} 
-                      onClick={setSelectedPaperId}
+                      onClick={setSelectedFilename}
                     />
                     {/* Add an in-feed ad banner after every 5th card */}
                     {(index + 1) % 5 === 0 && (

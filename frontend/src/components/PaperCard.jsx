@@ -11,7 +11,7 @@ export default function PaperCard({ paper, onClick }) {
         position: 'relative',
         overflow: 'hidden'
       }}
-      onClick={() => onClick(paper.id)}
+      onClick={() => onClick(paper.filename)}
       onMouseEnter={(e) => {
         e.currentTarget.style.transform = 'translateY(-4px)';
         e.currentTarget.style.background = 'var(--bg-card-hover)';

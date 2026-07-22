@@ -3,14 +3,17 @@ import ReactMarkdown from 'react-markdown';
 import { ArrowLeft } from 'lucide-react';
 import AdBanner from './AdBanner';
 
-export default function MarkdownViewer({ paperId, onBack }) {
+export default function MarkdownViewer({ filename, onBack }) {
   const [content, setContent] = useState('');
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     // Fetch the markdown content from public folder
-    fetch(`/content/${paperId}.md`)
-      .then(res => res.text())
+    fetch(`/content/${filename}`)
+      .then(res => {
+        if (!res.ok) throw new Error("Not Found");
+        return res.text();
+      })
       .then(text => {
         setContent(text);
         setLoading(false);
@@ -20,7 +23,7 @@ export default function MarkdownViewer({ paperId, onBack }) {
         setContent('# Error loading content\nFailed to load the translated paper.');
         setLoading(false);
       });
-  }, [paperId]);
+  }, [filename]);
 
   if (loading) {
     return (
