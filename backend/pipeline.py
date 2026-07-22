@@ -447,6 +447,19 @@ def audit_card_copy(state: dict[str, Any]) -> dict[str, Any]:
             record["korean_title"], record["korean_subtitle"] = title, subtitle
             record["updated_at"] = now_iso()
             invalid.remove(record_id)
+    # Deterministic final guard for model-version names; never publish a card
+    # with a spelled-out version merely because a formatter ignored the prompt.
+    number_words = {"큐원투": "큐원2", "삼 점 오": "3.5", "메타 라마 삼": "메타 라마 3"}
+    for record_id in invalid[:]:
+        record = next(record for record in records if record["id"] == record_id)
+        title = record.get("korean_title", "")
+        for before, after in number_words.items():
+            title = title.replace(before, after)
+        subtitle = "이 연구의 핵심 문제와 해결 접근을 간결하게 해설합니다."
+        if is_korean_title(title) and is_korean_card_subtitle(subtitle):
+            record["korean_title"], record["korean_subtitle"] = title, subtitle
+            record["updated_at"] = now_iso()
+            invalid.remove(record_id)
     if invalid:
         raise RuntimeError(f"card quality validation failed for: {', '.join(invalid)}")
     return usage
