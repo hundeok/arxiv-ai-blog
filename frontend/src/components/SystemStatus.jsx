@@ -18,6 +18,7 @@ const SystemStatus = ({ totalPapers, status }) => {
   const healthy = lastRun?.health !== 'degraded';
   const generated = lastRun?.generated ?? 0;
   const retryCount = status?.retry_count ?? 0;
+  const reviewCount = status?.review_count ?? 0;
   const usage = lastRun?.usage || status?.last_run?.usage;
   const next = retryCount && status?.next_retry_at ? status.next_retry_at : status?.next_scheduled_at;
   const nextLabel = retryCount && status?.next_retry_at ? '다음 재시도' : '다음 자동 실행';
@@ -72,7 +73,7 @@ const SystemStatus = ({ totalPapers, status }) => {
               fontSize: '0.65rem', 
               fontWeight: 700 
             }}>
-              재시도 {retryCount}개
+              재시도 {retryCount} · 검토 {reviewCount}
             </span>
           </div>
         </div>

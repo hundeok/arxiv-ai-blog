@@ -3,6 +3,7 @@ import PaperCard from './components/PaperCard';
 const MarkdownViewer = lazy(() => import('./components/MarkdownViewer'));
 import AdBanner from './components/AdBanner';
 import SystemStatus from './components/SystemStatus';
+import Analytics from './components/Analytics';
 
 function App() {
   const [papers, setPapers] = useState([]);
@@ -32,6 +33,7 @@ function App() {
 
   return (
     <div style={{ padding: '2rem', maxWidth: '1200px', margin: '0 auto' }}>
+      <Analytics page={selectedId ? `/papers/${selectedId}` : '/'} />
       <header style={{ marginBottom: '4rem', textAlign: 'center', paddingTop: '2rem' }}>
         <h1 style={{ fontSize: '3.5rem', marginBottom: '1rem' }}>
           ArXiv <span className="gradient-text">Translator AI</span>

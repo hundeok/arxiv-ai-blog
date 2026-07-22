@@ -224,6 +224,23 @@ def select_work(state: dict[str, Any]) -> list[dict[str, Any]]:
     return candidates[:BATCH_SIZE]
 
 
+def title_similarity(left: str, right: str) -> float:
+    """Cheap deterministic duplicate guard; AI judgement is not used to delete work."""
+    tokens = lambda value: set(re.findall(r"[a-z0-9가-힣]+", value.lower()))
+    a, b = tokens(left), tokens(right)
+    return len(a & b) / len(a | b) if a and b else 0.0
+
+
+def review_reason(record: dict[str, Any], state: dict[str, Any]) -> str | None:
+    title = record.get("paper", {}).get("title", "")
+    for other in state["papers"].values():
+        if other.get("id") == record.get("id") or other.get("status") != "published":
+            continue
+        if title_similarity(title, other.get("paper", {}).get("title", "")) >= 0.82:
+            return f"Potential duplicate of {other['id']}"
+    return None
+
+
 def compact_text(text: str, max_chars: int) -> str:
     if len(text) <= max_chars:
         return text
@@ -489,6 +506,7 @@ def status_payload(state: dict[str, Any], report: dict[str, Any]) -> dict[str, A
         "last_publication_run": state.get("last_publication_run", report),
         "published_count": len(load_json(METADATA_PATH, [])),
         "retry_count": sum(record.get("status") == "retry" for record in state["papers"].values()),
+        "review_count": sum(record.get("status") == "review" for record in state["papers"].values()),
         "next_retry_at": min(retry_times) if retry_times else None,
         "next_scheduled_at": next_scheduled_at(),
         "schedule_hours": 4,
@@ -551,6 +569,11 @@ def run() -> dict[str, Any]:
 
     for record in work:
         if state["daily_usage"]["estimated_usd"] >= DAILY_BUDGET_USD:
+            report["skipped"] += 1
+            continue
+        reason = review_reason(record, state)
+        if reason:
+            record.update({"status": "review", "last_error": reason, "updated_at": now_iso()})
             report["skipped"] += 1
             continue
         paper = record["paper"]
