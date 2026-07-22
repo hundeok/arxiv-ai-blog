@@ -362,8 +362,29 @@ def translate_titles(state: dict[str, Any]) -> dict[str, Any]:
         if record_id in state["papers"] and isinstance(title, str) and is_korean_title(title.strip().lstrip("# ").strip())
     }
     missing = [record["id"] for record in candidates if record["id"] not in translated]
+    # A batch response can retain product names despite its instructions. Retry
+    # only those titles with a stricter, isolated prompt instead of weakening
+    # the publication rule for every future post.
+    for record in candidates:
+        if record["id"] not in missing:
+            continue
+        retry_prompt = f"""다음 논문 제목을 한국어 카드 제목으로 번역하라. 영어 알파벳을 단 한 글자도 쓰지 마라. 제품명과 고유명사도 한글로 음역하라. 예: Qwen은 큐원, Claude는 클로드, Meta Llama는 메타 라마, VLM은 시각언어모델이다. 제목만 출력하라.
+
+{record['paper']['title']}
+"""
+        retry_response = client.models.generate_content(
+            model=MODEL,
+            contents=retry_prompt,
+            config=types.GenerateContentConfig(max_output_tokens=128),
+        )
+        add_usage(usage, read_usage(retry_response))
+        lines = (retry_response.text or "").strip().splitlines()
+        title = lines[0].lstrip("# ").strip() if lines else ""
+        if is_korean_title(title):
+            translated[record["id"]] = title
+    missing = [record["id"] for record in candidates if record["id"] not in translated]
     if missing:
-        raise RuntimeError(f"title translation validation failed for: {', '.join(missing)}")
+        raise RuntimeError(f"title translation validation failed after strict retries: {', '.join(missing)}")
     for record in candidates:
         record["korean_title"] = translated[record["id"]]
         record["updated_at"] = now_iso()
