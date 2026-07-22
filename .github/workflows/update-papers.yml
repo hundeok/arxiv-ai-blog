@@ -9,7 +9,7 @@ on:
       batch_size:
         description: 'Number of latest papers to process (1-15)'
         required: false
-        default: '15'
+        default: '3'
 
 # A generation run can take more than 20 minutes. Queue runs instead of letting
 # simultaneous checkouts race to commit to main.
@@ -52,7 +52,7 @@ jobs:
     - name: Run Auto Blogger Script
       env:
         GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        MAX_RESULTS: ${{ inputs.batch_size || '15' }}
+        MAX_RESULTS: ${{ inputs.batch_size || '3' }}
         GEMINI_MODEL: gemini-3.1-flash-lite
       run: |
         cd backend
