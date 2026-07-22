@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import PaperCard from './components/PaperCard';
-import MarkdownViewer from './components/MarkdownViewer';
+const MarkdownViewer = lazy(() => import('./components/MarkdownViewer'));
 import AdBanner from './components/AdBanner';
 import SystemStatus from './components/SystemStatus';
 
@@ -42,10 +42,10 @@ function App() {
       </header>
 
       {selectedId ? (
-        <MarkdownViewer 
+        <Suspense fallback={<div style={{ padding: '4rem', textAlign: 'center' }}>논문을 불러오는 중입니다.</div>}><MarkdownViewer 
           filename={selectedPaper?.filename} paper={selectedPaper}
           onBack={() => { window.history.pushState({}, '', '/'); setSelectedId(null); }} 
-        />
+        /></Suspense>
       ) : (
         <main>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>

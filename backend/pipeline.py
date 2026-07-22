@@ -8,6 +8,7 @@ validated Markdown file has been written successfully.
 from __future__ import annotations
 
 import json
+import html
 import os
 import re
 import signal
@@ -30,6 +31,7 @@ CONTENT_DIR = ROOT / "frontend" / "public" / "content"
 STATE_PATH = CONTENT_DIR / "pipeline-state.json"
 STATUS_PATH = CONTENT_DIR / "pipeline-status.json"
 METADATA_PATH = CONTENT_DIR / "metadata.json"
+SITE_URL = "https://arxiv-ai-blog.vercel.app"
 
 MODEL = os.environ.get("GEMINI_MODEL", "gemini-3.1-flash-lite")
 DISCOVERY_LIMIT = int(os.environ.get("DISCOVERY_LIMIT", "30"))
@@ -520,6 +522,17 @@ def rebuild_metadata(state: dict[str, Any]) -> None:
             "tags": ["AI", "arXiv", "🇺🇸 ➔ 🇰🇷"],
         })
     atomic_json_write(METADATA_PATH, items)
+    urls = []
+    for item in items:
+        slug = item["id"]
+        source = (CONTENT_DIR / item["filename"]).read_text(encoding="utf-8")
+        body = html.escape(re.sub(r"^#{1,6}\s*", "", source, flags=re.MULTILINE))
+        canonical = f"{SITE_URL}/papers/{slug}"
+        page = f'''<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{html.escape(item['korean_title'])} | ArXiv Translator AI</title><meta name="description" content="{html.escape(item.get('korean_subtitle', item['korean_title']))}"><link rel="canonical" href="{canonical}"><script type="application/ld+json">{json.dumps({"@context":"https://schema.org","@type":"Article","headline":item['korean_title'],"datePublished":item['published'],"url":canonical,"author":[{"@type":"Person","name":name} for name in item['authors']]}, ensure_ascii=False)}</script></head><body><main><a href="/">← 전체 논문</a><article><h1>{html.escape(item['korean_title'])}</h1><p>{html.escape(item.get('korean_subtitle', ''))}</p><pre>{body}</pre></article></main></body></html>'''
+        atomic_text_write(CONTENT_DIR.parent / "papers" / slug / "index.html", page)
+        urls.append(f"  <url><loc>{canonical}</loc><lastmod>{item['published']}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>")
+    sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <url><loc>' + SITE_URL + '/</loc><changefreq>daily</changefreq><priority>1.0</priority></url>\n' + "\n".join(urls) + "\n</urlset>\n"
+    atomic_text_write(CONTENT_DIR.parent / "sitemap.xml", sitemap)
 
 
 def run() -> dict[str, Any]:
