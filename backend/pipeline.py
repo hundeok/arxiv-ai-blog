@@ -36,6 +36,7 @@ SITE_URL = "https://arxiv-ai-blog.vercel.app"
 MODEL = os.environ.get("GEMINI_MODEL", "gemini-3.1-flash-lite")
 DISCOVERY_LIMIT = int(os.environ.get("DISCOVERY_LIMIT", "30"))
 BATCH_SIZE = max(1, min(int(os.environ.get("BATCH_SIZE", "3")), 5))
+DAILY_BUDGET_USD = float(os.environ.get("DAILY_BUDGET_USD", "0.15"))
 REQUEST_TIMEOUT_SECONDS = 90
 PRIMARY_INPUT_CHARS = 12_000
 FALLBACK_INPUT_CHARS = 6_000
@@ -540,18 +541,26 @@ def rebuild_metadata(state: dict[str, Any]) -> None:
 def run() -> dict[str, Any]:
     state = load_state()
     state.setdefault("usage_total", empty_usage())
+    today = datetime.now(timezone.utc).date().isoformat()
+    if state.get("daily_usage", {}).get("date") != today:
+        state["daily_usage"] = {"date": today, "estimated_usd": 0.0, "publications": 0}
     discovered = fetch_latest_cs_ai_papers(max_results=DISCOVERY_LIMIT)
     merge_discovery(state, discovered)
     work = select_work(state)
     report = {"started_at": now_iso(), "discovered": len(discovered), "selected": len(work), "generated": 0, "failed": 0, "skipped": 0, "health": "healthy", "failures": [], "usage": empty_usage()}
 
     for record in work:
+        if state["daily_usage"]["estimated_usd"] >= DAILY_BUDGET_USD:
+            report["skipped"] += 1
+            continue
         paper = record["paper"]
         try:
             source_text = download_pdf_text(paper)
             markdown, usage = generate_markdown(paper, source_text)
             add_usage(report["usage"], usage)
             add_usage(state["usage_total"], usage)
+            state["daily_usage"]["estimated_usd"] = round(state["daily_usage"]["estimated_usd"] + usage["estimated_usd"], 8)
+            state["daily_usage"]["publications"] += 1
             filename = record["filename"]
             atomic_text_write(CONTENT_DIR / filename, markdown)
             record.update({

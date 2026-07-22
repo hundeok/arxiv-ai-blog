@@ -3,7 +3,7 @@ name: Daily ArXiv Paper Update
 on:
   schedule:
     # Three sequential papers every four hours: up to 18/day without burst traffic.
-    - cron: '0 */4 * * *'
+    - cron: '0 */3 * * *'
   workflow_dispatch:
     inputs:
       operation:
@@ -61,11 +61,12 @@ jobs:
     - name: Run Auto Blogger Script
       env:
         GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        BATCH_SIZE: ${{ inputs.batch_size || '3' }}
+        BATCH_SIZE: ${{ inputs.batch_size || '4' }}
         DISCOVERY_LIMIT: '30'
         GEMINI_MODEL: gemini-3.1-flash-lite
         GEMINI_INPUT_USD_PER_MILLION: '0.25'
         GEMINI_OUTPUT_USD_PER_MILLION: '1.50'
+        DAILY_BUDGET_USD: '0.15'
       run: |
         cd backend
         if [ "${{ inputs.operation || 'publish' }}" = "translate_titles" ]; then
