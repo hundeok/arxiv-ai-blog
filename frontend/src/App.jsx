@@ -10,10 +10,15 @@ import { track } from './components/Analytics';
 function App() {
   const [papers, setPapers] = useState([]);
   const [pipelineStatus, setPipelineStatus] = useState(null);
-  const initialId = window.location.pathname.match(/^\/papers\/([^/]+)$/)?.[1] || null;
+  const params = new URLSearchParams(window.location.search);
+  const p = params.get('p');
+  const initialId = p || window.location.pathname.match(/^\/papers\/([^/]+)$/)?.[1] || null;
   const [selectedId, setSelectedId] = useState(initialId);
 
   useEffect(() => {
+    if (p) {
+      window.history.replaceState({}, '', `/papers/${p}`);
+    }
     // Load metadata.json from public directory
     fetch('/content/metadata.json')
       .then(res => res.json())

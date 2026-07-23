@@ -71,9 +71,16 @@ export default function MarkdownViewer({ filename, paper, onBack }) {
       </button>
 
       <AdBanner position="in-article" />
-      
       <div className="markdown-body">
-        <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>{content}</ReactMarkdown>
+        <ReactMarkdown 
+          remarkPlugins={[remarkMath]} 
+          rehypePlugins={[rehypeKatex]}
+          components={{
+            a: ({node, ...props}) => <a {...props} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)', textDecoration: 'none' }} />
+          }}
+        >
+          {content}
+        </ReactMarkdown>
       </div>
 
       <AdBanner position="in-article" />
