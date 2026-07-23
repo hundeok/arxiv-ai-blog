@@ -1,0 +1,58 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PathAgentBench: 전체 슬라이드 병리 이미지에서 증거 탐색형 비전-언어 모델 벤치마킹 | ArXiv Translator AI</title><meta name="description" content="PathAgentBench: 전체 슬라이드 병리 이미지에서 증거 탐색형 비전-언어 모델 벤치마킹"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2607_19261v1"><meta property="og:type" content="article"><meta property="og:title" content="PathAgentBench: 전체 슬라이드 병리 이미지에서 증거 탐색형 비전-언어 모델 벤치마킹"><meta property="og:description" content="PathAgentBench: 전체 슬라이드 병리 이미지에서 증거 탐색형 비전-언어 모델 벤치마킹"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2607_19261v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="PathAgentBench: 전체 슬라이드 병리 이미지에서 증거 탐색형 비전-언어 모델 벤치마킹"><meta name="twitter:description" content="PathAgentBench: 전체 슬라이드 병리 이미지에서 증거 탐색형 비전-언어 모델 벤치마킹"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2607_19261v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "PathAgentBench: 전체 슬라이드 병리 이미지에서 증거 탐색형 비전-언어 모델 벤치마킹", "description": "PathAgentBench: 전체 슬라이드 병리 이미지에서 증거 탐색형 비전-언어 모델 벤치마킹", "datePublished": "2026-07-21", "url": "https://arxiv-ai-blog.vercel.app/papers/2607_19261v1", "author": [{"@type": "Person", "name": "Dankai Liao"}, {"@type": "Person", "name": "Tianyi Zhang"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2607_19261v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2607_19261v1"});gtag('event', 'paper_view', {"paper_id": "2607_19261v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>PathAgentBench: 전체 슬라이드 병리 이미지에서 증거 탐색형 비전-언어 모델 벤치마킹</h1><p>PathAgentBench: 전체 슬라이드 병리 이미지에서 증거 탐색형 비전-언어 모델 벤치마킹</p><pre>PathAgentBench: 전체 슬라이드 병리 이미지에서 증거 탐색형 비전-언어 모델 벤치마킹
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** PathAgentBench: Benchmarking Evidence-Seeking Vision-Language Models on Whole-Slide Pathology Image
+&gt; - **저자:** Dankai Liao, Tianyi Zhang, Yufeng Wu, Xinyue Zhang, Qiaochu Xue, Zeyu Liu, Dachun Zhao, Linghan Cai, Yueming Jin
+&gt; - **발행일:** 2026-07-21
+&gt; - **PDF 링크:** [PathAgentBench: Benchmarking Evidence-Seeking Vision-Language Models on Whole-Slide Pathology Image](https://arxiv.org/pdf/2607.19261v1)
+
+
+✨ 3줄 핵심 요약
+- 전체 슬라이드 이미지(WSI)에서 모델이 스스로 증거를 찾아 진단하는 능력을 평가하는 &#x27;PathAgentBench&#x27;를 제안합니다.
+- 멀티스케일 추론 능력은 우수하지만, 텍스트 지시에 따라 병변 영역을 정확히 찾아내는 위치 추적 능력은 매우 저조한 것으로 나타났습니다.
+- 향후 연구 방향을 추론 중심에서 안정적인 증거 확보 및 공간적 정렬 기술 개발로 전환할 필요성을 제시합니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+기존 병리 인공지능 연구는 이미 잘린 작은 이미지 조각을 분석하는 데 그쳤습니다. 그러나 실제 병리 전문의는 거대한 슬라이드 전체를 살피며 여러 배율에서 증거를 찾아 진단합니다. &#x27;PathAgentBench&#x27;는 모델이 스스로 전체 슬라이드를 탐색하며 증거를 찾고, 이를 바탕으로 진단을 내리는 과정을 평가합니다. 연구 결과, 모델들은 주어진 정보를 종합해 결론을 내리는 능력은 뛰어나지만, 정작 슬라이드 속에서 특정 병변 위치를 정확히 짚어내는 능력은 단순한 추측보다 못하다는 한계가 드러났습니다.
+
+🎯 배경 및 문제점
+대부분의 병리 모델은 미리 잘려진 패치(patch)나 특징값(feature)을 기반으로 평가됩니다. 이로 인해 모델이 기가픽셀(gigapixel) 단위의 전체 슬라이드에서 직접 증거를 확보하는 능력은 검증되지 않았습니다. 실제 임상 환경처럼 멀티스케일 데이터를 연계하여 능동적으로 탐색하는 시스템을 구축하고 평가하는 표준적인 도구가 부족한 상황입니다.
+
+💡 핵심 기술 및 아키텍처
+본 벤치마크는 진단 과정을 트리 구조로 체계화했습니다.
+- **평가 항목:** 이미지-텍스트 해석, 텍스트 기반 검색, 병변 위치 추적, 멀티스케일 증거 통합의 4가지 능력을 다룹니다.
+- **데이터셋:** 1,822개의 TCGA 슬라이드와 17,135개의 진단 경로를 10명의 전문의가 직접 주석을 달아 구성했습니다.
+- **테스트:** 20개의 다양한 모델(범용, 의료용, 병리 특화)을 대상으로 수행되었으며, 190개의 유방암 슬라이드를 사용한 자율 탐색 테스트도 포함되었습니다.
+
+📊 실험 결과 분석
+- **증거 통합:** 최상위 모델들은 주어진 정보를 결합하여 진단을 내리는 작업에서 93% 이상의 정확도를 보였습니다.
+- **위치 추적:** 텍스트 지시에 따른 영역 식별(Mean IoU)은 0.09 미만으로, 단순 중심점 기반 휴리스틱 방식보다 성능이 떨어졌습니다.
+- **자율 탐색:** 자율 탐색 시 종양을 발견하는 확률은 낮은 배율(2.5x)에서는 52.2%였으나, 높은 배율(40x)로 갈수록 2.02%까지 급격히 하락했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+이번 연구는 병리 인공지능이 임상 현장에 도입되기 위해서는 단순한 패턴 인식이 아닌, 스스로 근거를 찾는 능력이 필수임을 시사합니다. 향후 연구는 단순히 추론 성능을 높이는 것을 넘어, 병변을 정확히 찾아내는 공간적 정렬 학습, 탐색 오류를 복구하는 백트래킹(backtracking) 기술, 그리고 실시간 임상 적용을 위한 효율적인 시스템 구축으로 이어져야 합니다. 현재로서는 이 벤치마크 모델들이 임상적 완전성을 갖추었다고 보기 어려우므로, 추가적인 보완과 검증이 필요합니다.
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;결국 터질 게 터졌군요. 멀티모달 모델들의 그럴듯한 &#x27;추론&#x27; 능력에 취해 정작 병리 진단의 핵심인 &#x27;공간적 근거 확보&#x27;가 얼마나 부실했는지 적나라하게 드러났습니다. IoU 0.09라니, 이건 모델이 병변을 본 게 아니라 단순히 텍스트 확률 분포로 찍고 있는 수준입니다. 임상 도입은커녕 논문용 장난감에 불과해요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에선 이거 도입했다간 바로 오진으로 소송감입니다. 모델들이 40x 배율에서 헤매는 건 단순히 성능 문제라기보단, 기가픽셀 이미지를 다루는 VLM의 토큰 효율성과 Attention 구조가 이 미친듯한 해상도를 못 버티는 게 크죠. 벡트래킹 기술은커녕 Inference 속도부터 잡아야 할 판인데, 벤치마크 점수 높이려고 모델 덩치만 키우는 건 좀 아니지 않나요?&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;두 분 다 너무 비관적인 거 아니에요? 그래도 93%의 통합 추론 성능은 고무적이죠! 이제 &#x27;탐색&#x27;에 최적화된 Agentic Workflow만 제대로 붙이면 판도가 바뀔 겁니다. 벌써 해외 커뮤니티에선 이거 해결하려고 Reinforcement Learning으로 탐색 경로 최적화하는 코드 돌려보고 있다고요. 다음 SOTA는 무조건 이 벤치마크 점수 갈아치우는 놈이 먹습니다, 지켜보시죠!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
