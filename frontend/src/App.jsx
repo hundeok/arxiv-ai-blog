@@ -45,9 +45,7 @@ function App() {
           Demystifying the latest Artificial Intelligence research through automated, high-quality Korean summaries.
         </p>
       </header>
-      <footer style={{ margin: '4rem 0 1rem', textAlign: 'center', fontSize: '0.8rem', color: 'var(--text-secondary)' }}>
-        <a href="/about/">소개</a> · <a href="/contact/">문의</a> · <a href="/privacy/">개인정보처리방침</a> · <a href="/ai-policy/">AI·저작권 고지</a>
-      </footer>
+
 
       {selectedId ? (
         <Suspense fallback={<div style={{ padding: '4rem', textAlign: 'center' }}>논문을 불러오는 중입니다.</div>}><MarkdownViewer 
@@ -56,8 +54,8 @@ function App() {
         /></Suspense>
       ) : (
         <main>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
-            <h2 style={{ fontSize: '1.5rem', fontWeight: 600 }}>Latest Decoded Papers</h2>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', marginBottom: '3rem' }}>
+            <h2 style={{ fontSize: '1.75rem', fontWeight: 700, margin: 0 }}>Latest Decoded Papers</h2>
             <SystemStatus totalPapers={papers.length} status={pipelineStatus} />
           </div>
           
@@ -89,6 +87,13 @@ function App() {
           )}
         </main>
       )}
+      
+      <footer style={{ margin: '6rem 0 2rem', textAlign: 'center', fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
+        <a href="/about/" style={{ color: 'inherit', textDecoration: 'none' }}>소개</a> ·{' '}
+        <a href="/contact/" style={{ color: 'inherit', textDecoration: 'none' }}>문의</a> ·{' '}
+        <a href="/privacy/" style={{ color: 'inherit', textDecoration: 'none' }}>개인정보처리방침</a> ·{' '}
+        <a href="/ai-policy/" style={{ color: 'inherit', textDecoration: 'none' }}>AI·저작권 고지</a>
+      </footer>
     </div>
   );
 }

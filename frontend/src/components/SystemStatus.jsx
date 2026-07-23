@@ -25,6 +25,7 @@ const SystemStatus = ({ totalPapers, status }) => {
   return (
     <div style={{
       display: 'flex',
+      flexWrap: 'wrap',
       alignItems: 'center',
       gap: '1.5rem',
       padding: '0.75rem 1.25rem',
@@ -55,7 +56,7 @@ const SystemStatus = ({ totalPapers, status }) => {
       <div style={{ width: '1px', height: '16px', background: 'rgba(255,255,255,0.1)' }}></div>
 
       {/* Stats */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+      <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '1.5rem' }}>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           <span style={{ fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.05em', opacity: 0.7 }}>Decoded</span>
           <span style={{ color: 'var(--text-primary)', fontWeight: 600 }}>{totalPapers} <span style={{ opacity: 0.5 }}>papers</span></span>
