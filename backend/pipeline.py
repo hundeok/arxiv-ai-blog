@@ -365,6 +365,31 @@ def is_korean_card_subtitle(text: str) -> bool:
     return 12 <= len(text) <= 90 and is_korean_title(text)
 
 
+def generate_ai_comments(client: genai.Client, markdown: str) -> tuple[str, dict[str, Any]]:
+    prompt = f"""너는 세계 최고 수준의 AI 연구자, 엔지니어, 대학원생들이 모인 익명 커뮤니티의 봇이다.
+아래 논문 요약을 읽고, 3개의 각기 다른 페르소나가 논문을 두고 티키타카(토론)하는 리플 3개를 작성해라.
+반드시 아래 JSON 배열 형식으로만 출력해라 (Markdown 코드블록 없이 순수 JSON만).
+
+[
+  {{ "author": "깐깐한 교수님", "avatar": "🧑‍🔬", "role": "AI Researcher", "content": "..." }},
+  {{ "author": "판교 10년차 ML엔지니어", "avatar": "👨‍💻", "role": "ML Engineer", "content": "..." }},
+  {{ "author": "트렌드에 미친 대학원생", "avatar": "🎓", "role": "Ph.D Student", "content": "..." }}
+]
+
+리플 내용은 서로 이어지거나 논쟁을 벌이는 형태면 더 좋다. 실무적인 관점, 한계점 지적, 호들갑 등 다채롭게 구성해라.
+
+논문 요약:
+{markdown}"""
+    response = client.models.generate_content(
+        model=MODEL, contents=prompt, config=types.GenerateContentConfig(
+            max_output_tokens=800,
+            temperature=0.8,
+            response_mime_type="application/json"
+        )
+    )
+    return response.text.strip(), read_usage(response)
+
+
 def generate_markdown(paper: dict[str, Any], full_text: str) -> tuple[str, dict[str, Any]]:
     api_key = os.environ.get("GEMINI_API_KEY")
     if not api_key:
@@ -417,6 +442,13 @@ def generate_markdown(paper: dict[str, Any], full_text: str) -> tuple[str, dict[
             else:
                 markdown = metadata_block + markdown
                 
+            try:
+                comments_json, comments_usage = generate_ai_comments(client, markdown)
+                add_usage(usage, comments_usage)
+                markdown += f"\n\n<script type=\"application/json\" id=\"ai-comments\">\n{comments_json}\n</script>\n"
+            except Exception as e:
+                print(f"Failed to generate comments: {e}") # Non-fatal error
+
             return markdown, usage
         except Exception as error:  # preserve both attempts in the persistent queue
             errors.append(str(error))

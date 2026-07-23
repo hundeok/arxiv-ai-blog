@@ -8,6 +8,7 @@ import AdBanner from './AdBanner';
 
 export default function MarkdownViewer({ filename, paper, onBack }) {
   const [content, setContent] = useState('');
+  const [aiComments, setAiComments] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -19,6 +20,15 @@ export default function MarkdownViewer({ filename, paper, onBack }) {
         return res.text();
       })
       .then(text => {
+        const commentsMatch = text.match(/<script type="application\/json" id="ai-comments">\s*([\s\S]*?)\s*<\/script>/);
+        if (commentsMatch) {
+          try {
+            setAiComments(JSON.parse(commentsMatch[1]));
+            text = text.replace(commentsMatch[0], '');
+          } catch (e) {
+            console.error("Failed to parse AI comments", e);
+          }
+        }
         setContent(text);
         setLoading(false);
       })
@@ -84,6 +94,60 @@ export default function MarkdownViewer({ filename, paper, onBack }) {
       </div>
 
       <AdBanner position="in-article" />
+
+      {/* AI Comments Section */}
+      {aiComments.length > 0 && (
+        <div style={{ marginTop: '4rem', padding: '2rem', background: 'rgba(255,255,255,0.02)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.1)' }}>
+          <h3 style={{ fontSize: '1.25rem', marginBottom: '2rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            🔥 <span>AI 전문가 패널 토론</span>
+          </h3>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+            {aiComments.map((comment, i) => (
+              <div key={i} style={{ display: 'flex', gap: '1rem' }}>
+                <div style={{ fontSize: '2rem' }}>{comment.avatar}</div>
+                <div>
+                  <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.5rem', marginBottom: '0.25rem' }}>
+                    <span style={{ fontWeight: 600, color: 'var(--text-primary)' }}>{comment.author}</span>
+                    <span style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>{comment.role}</span>
+                  </div>
+                  <div style={{ color: 'var(--text-secondary)', lineHeight: 1.6, fontSize: '0.95rem' }}>
+                    {comment.content}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Human Comments (Giscus) */}
+      <div style={{ marginTop: '4rem' }}>
+        <h3 style={{ fontSize: '1.25rem', marginBottom: '1.5rem', paddingBottom: '0.5rem', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
+          💬 독자 의견 남기기
+        </h3>
+        {/* We use dangerouslySetInnerHTML to run the Giscus script */}
+        <section 
+          ref={elem => {
+            if (!elem || elem.hasChildNodes()) return;
+            const script = document.createElement('script');
+            script.src = "https://giscus.app/client.js";
+            script.setAttribute("data-repo", "hundeok/arxiv-ai-blog");
+            script.setAttribute("data-repo-id", "R_kgDOMuG60w"); 
+            script.setAttribute("data-category", "General");
+            script.setAttribute("data-category-id", "DIC_kwDOMuG6084ChzT9"); // Placeholders, user will need to replace
+            script.setAttribute("data-mapping", "pathname");
+            script.setAttribute("data-strict", "0");
+            script.setAttribute("data-reactions-enabled", "1");
+            script.setAttribute("data-emit-metadata", "0");
+            script.setAttribute("data-input-position", "bottom");
+            script.setAttribute("data-theme", "dark");
+            script.setAttribute("data-lang", "ko");
+            script.crossOrigin = "anonymous";
+            script.async = true;
+            elem.appendChild(script);
+          }}
+        />
+      </div>
     </div>
   );
 }
