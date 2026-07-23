@@ -4,6 +4,7 @@ import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import 'katex/dist/katex.min.css';
 import { ArrowLeft } from 'lucide-react';
+import Giscus from '@giscus/react';
 import AdBanner from './AdBanner';
 
 export default function MarkdownViewer({ filename, paper, onBack }) {
@@ -125,27 +126,19 @@ export default function MarkdownViewer({ filename, paper, onBack }) {
         <h3 style={{ fontSize: '1.25rem', marginBottom: '1.5rem', paddingBottom: '0.5rem', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
           💬 독자 의견 남기기
         </h3>
-        {/* We use dangerouslySetInnerHTML to run the Giscus script */}
-        <section 
-          ref={elem => {
-            if (!elem || elem.hasChildNodes()) return;
-            const script = document.createElement('script');
-            script.src = "https://giscus.app/client.js";
-            script.setAttribute("data-repo", "hundeok/arxiv-ai-blog");
-            script.setAttribute("data-repo-id", "R_kgDOTdtoLQ"); 
-            script.setAttribute("data-category", "General");
-            script.setAttribute("data-category-id", "DIC_kwDOTdtoLc4DBzAq");
-            script.setAttribute("data-mapping", "pathname");
-            script.setAttribute("data-strict", "0");
-            script.setAttribute("data-reactions-enabled", "1");
-            script.setAttribute("data-emit-metadata", "0");
-            script.setAttribute("data-input-position", "bottom");
-            script.setAttribute("data-theme", "dark");
-            script.setAttribute("data-lang", "ko");
-            script.crossOrigin = "anonymous";
-            script.async = true;
-            elem.appendChild(script);
-          }}
+        <Giscus
+          id="comments"
+          repo="hundeok/arxiv-ai-blog"
+          repoId="R_kgDOTdtoLQ"
+          category="General"
+          categoryId="DIC_kwDOTdtoLc4DBzAq"
+          mapping="pathname"
+          strict="0"
+          reactionsEnabled="1"
+          emitMetadata="0"
+          inputPosition="bottom"
+          theme="dark"
+          lang="ko"
         />
       </div>
     </div>
