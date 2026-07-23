@@ -1,4 +1,5 @@
 import React, { useState, useEffect, lazy, Suspense } from 'react';
+import { Analytics as VercelAnalytics } from '@vercel/analytics/react';
 import PaperCard from './components/PaperCard';
 const MarkdownViewer = lazy(() => import('./components/MarkdownViewer'));
 import AdBanner from './components/AdBanner';
@@ -35,6 +36,7 @@ function App() {
   return (
     <div style={{ padding: '2rem', maxWidth: '1200px', margin: '0 auto' }}>
       <Analytics page={selectedId ? `/papers/${selectedId}` : '/'} paperId={selectedId} />
+      <VercelAnalytics />
       <header style={{ marginBottom: '4rem', textAlign: 'center', paddingTop: '2rem' }}>
         <h1 style={{ fontSize: '3.5rem', marginBottom: '1rem' }}>
           ArXiv <span className="gradient-text">Translator AI</span>
