@@ -388,8 +388,27 @@ def generate_markdown(paper: dict[str, Any], full_text: str) -> tuple[str, dict[
                 ),
             )
             markdown = response.text
-            validate_markdown(markdown)
-            return markdown, read_usage(response)
+            try:
+                validate_markdown(markdown)
+            except ValueError as e:
+                if "sufficiently Korean" in str(e):
+                    retry_prompt = f"다음 논문 제목을 한국어로 자연스럽게 번역하라. 제목만 텍스트로 출력하라.\n\n{paper['title']}"
+                    retry_response = client.models.generate_content(
+                        model=MODEL, contents=retry_prompt, config=types.GenerateContentConfig(max_output_tokens=64)
+                    )
+                    new_title = (retry_response.text or "").strip().lstrip("#").strip()
+                    if new_title:
+                        lines = markdown.splitlines()
+                        lines[0] = f"# {new_title}"
+                        markdown = "\n".join(lines)
+                        validate_markdown(markdown)
+                else:
+                    raise e
+            
+            usage = read_usage(response)
+            if "retry_response" in locals():
+                add_usage(usage, read_usage(retry_response))
+            return markdown, usage
         except Exception as error:  # preserve both attempts in the persistent queue
             errors.append(str(error))
         finally:
@@ -539,9 +558,9 @@ def retry_at(attempts: int) -> str:
 
 
 def next_scheduled_at() -> str:
-    """GitHub cron schedule: every four hours on the hour, expressed in UTC."""
+    """GitHub cron schedule: every three hours on the hour, expressed in UTC."""
     now = datetime.now(timezone.utc).replace(minute=0, second=0, microsecond=0)
-    return (now + timedelta(hours=4 - (now.hour % 4))).isoformat()
+    return (now + timedelta(hours=3 - (now.hour % 3))).isoformat()
 
 
 def status_payload(state: dict[str, Any], report: dict[str, Any]) -> dict[str, Any]:
@@ -557,7 +576,7 @@ def status_payload(state: dict[str, Any], report: dict[str, Any]) -> dict[str, A
         "review_count": sum(record.get("status") == "review" for record in state["papers"].values()),
         "next_retry_at": min(retry_times) if retry_times else None,
         "next_scheduled_at": next_scheduled_at(),
-        "schedule_hours": 4,
+        "schedule_hours": 3,
         "usage_total": state.get("usage_total", empty_usage()),
         "pricing": {
             "input_usd_per_million": INPUT_USD_PER_MILLION,
@@ -665,8 +684,12 @@ def run() -> dict[str, Any]:
 
     rebuild_metadata(state)
     report["finished_at"] = now_iso()
-    if report["selected"] and report["failed"] == report["selected"]:
-        report["health"] = "degraded"
+    if report["selected"]:
+        if report["failed"] == report["selected"]:
+            report["health"] = "degraded"
+        elif report["failed"] >= report["selected"] / 2:
+            report["health"] = "warning"
+            
     state["last_run"] = report
     state["last_publication_run"] = report
     atomic_json_write(STATE_PATH, state)
