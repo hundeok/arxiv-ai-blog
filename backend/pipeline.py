@@ -339,11 +339,9 @@ def validate_markdown(markdown: str) -> None:
 
 
 def is_korean_title(title: str) -> bool:
-    """Allow Korean titles and only the universally understood AI acronyms."""
+    """Allow titles that contain a reasonable amount of Korean (indicating it was translated), without strictly banning English proper nouns."""
     hangul = len(re.findall(r"[가-힣]", title))
-    english_words = re.findall(r"[A-Za-z][A-Za-z0-9.-]*", title)
-    allowed = re.compile(r"(?:AI|LLM|GPT(?:-?\d+)?|GEAR)", re.IGNORECASE)
-    return hangul >= 4 and all(allowed.fullmatch(word) for word in english_words)
+    return hangul >= 4
 
 
 def is_korean_card_subtitle(text: str) -> bool:
