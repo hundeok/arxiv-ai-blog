@@ -132,9 +132,9 @@ export default function MarkdownViewer({ filename, paper, onBack }) {
             const script = document.createElement('script');
             script.src = "https://giscus.app/client.js";
             script.setAttribute("data-repo", "hundeok/arxiv-ai-blog");
-            script.setAttribute("data-repo-id", "R_kgDOMuG60w"); 
+            script.setAttribute("data-repo-id", "R_kgDOTdtoLQ"); 
             script.setAttribute("data-category", "General");
-            script.setAttribute("data-category-id", "DIC_kwDOMuG6084ChzT9"); // Placeholders, user will need to replace
+            script.setAttribute("data-category-id", "DIC_kwDOTdtoLc4DBzAq");
             script.setAttribute("data-mapping", "pathname");
             script.setAttribute("data-strict", "0");
             script.setAttribute("data-reactions-enabled", "1");
