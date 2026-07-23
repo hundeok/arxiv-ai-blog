@@ -408,6 +408,15 @@ def generate_markdown(paper: dict[str, Any], full_text: str) -> tuple[str, dict[
             usage = read_usage(response)
             if "retry_response" in locals():
                 add_usage(usage, read_usage(retry_response))
+                
+            # Programmatically inject the original paper info block
+            metadata_block = f"\n> **원본 논문 정보**\n> - **제목:** {paper['title']}\n> - **저자:** {', '.join(paper['authors'])}\n> - **발행일:** {paper['published'][:10]}\n> - **PDF 링크:** [보러가기]({paper['pdf_link']})\n\n"
+            lines = markdown.splitlines()
+            if lines and lines[0].startswith("# "):
+                markdown = lines[0] + "\n" + metadata_block + "\n".join(lines[1:])
+            else:
+                markdown = metadata_block + markdown
+                
             return markdown, usage
         except Exception as error:  # preserve both attempts in the persistent queue
             errors.append(str(error))
