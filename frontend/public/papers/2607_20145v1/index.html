@@ -1,0 +1,37 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SLAI T-Rex: Ascend SuperPOD에서의 DeepSeek-V4 제품군에 대한 전체 매개변수 사후 학습 | ArXiv Translator AI</title><meta name="description" content="SLAI T-Rex: Ascend SuperPOD에서의 DeepSeek-V4 제품군에 대한 전체 매개변수 사후 학습"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2607_20145v1"><meta property="og:type" content="article"><meta property="og:title" content="SLAI T-Rex: Ascend SuperPOD에서의 DeepSeek-V4 제품군에 대한 전체 매개변수 사후 학습"><meta property="og:description" content="SLAI T-Rex: Ascend SuperPOD에서의 DeepSeek-V4 제품군에 대한 전체 매개변수 사후 학습"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2607_20145v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="SLAI T-Rex: Ascend SuperPOD에서의 DeepSeek-V4 제품군에 대한 전체 매개변수 사후 학습"><meta name="twitter:description" content="SLAI T-Rex: Ascend SuperPOD에서의 DeepSeek-V4 제품군에 대한 전체 매개변수 사후 학습"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "SLAI T-Rex: Ascend SuperPOD에서의 DeepSeek-V4 제품군에 대한 전체 매개변수 사후 학습", "description": "SLAI T-Rex: Ascend SuperPOD에서의 DeepSeek-V4 제품군에 대한 전체 매개변수 사후 학습", "datePublished": "2026-07-22", "url": "https://arxiv-ai-blog.vercel.app/papers/2607_20145v1", "author": [{"@type": "Person", "name": "Dongfang Li"}, {"@type": "Person", "name": "Xiaodong Luo"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2607_20145v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2607_20145v1"});gtag('event', 'paper_view', {"paper_id": "2607_20145v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>SLAI T-Rex: Ascend SuperPOD에서의 DeepSeek-V4 제품군에 대한 전체 매개변수 사후 학습</h1><p>SLAI T-Rex: Ascend SuperPOD에서의 DeepSeek-V4 제품군에 대한 전체 매개변수 사후 학습</p><pre>SLAI T-Rex: Ascend SuperPOD에서의 DeepSeek-V4 제품군에 대한 전체 매개변수 사후 학습
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** SLAI T-Rex: Full-Parameter Post-training of the DeepSeek-V4 Family on Ascend SuperPOD
+&gt; - **저자:** Dongfang Li, Xiaodong Luo, Ruoyu Sun, Xuhui Chen, Linyuan Qiu, Jian Meng, Zhengxuan Lu, Yiting Wang, Yucheng Xie, Tao Guo, Tianxiang Fang, Jing Li, Sihang Chen, Shihao Hong, Chang Liu, Weihua Dai, Zirong Zeng, Ziwei Zhu, Zhuohan Wang, Zhengjun Yue, Igor Vasilyev, Min Liu, Weijian Sun, Xin Chen, Yingmeng Gao, Jinhua Zhou, Taolue Chen, Chenwei Wu, Dong Zhang, Wenlong Jin, Jinmin Xiang, Barkova Maria, Ushakov Anton, Xianfei Jin, Tian Ding, Zhihang Lin, Qian Chen, Linxin Yang, Mingzhe Yang, Bingwei Zhang, Hongzhang Yang, Fangxue Zhang, Shijun Qin, Jie Yu, Cuihua Hu, Tolstykh Vasiliy, Nosov Ivan, Abdullin Amir, Zhichen Zhou, Xin Zhang, Zhixiong Ning, Xutong Zhao, Junjie Huang, Jiajun Liu, Weiyan Kong, Zheng Zhang, Wenhan Luo, Lin Hu, Yangbo Guo, Li Zeng, Shihao Zeng, Baotian Hu, Min Zhang, Haizhou Li, Zhiquan Luo
+&gt; - **발행일:** 2026-07-22
+&gt; - **PDF 링크:** [보러가기](https://arxiv.org/pdf/2607.20145v1)
+
+
+✨ 3줄 핵심 요약
+* **플랫폼 최적화:** GPU 중심 환경이 아닌 Ascend NPU SuperPOD에서 대규모 MoE(Mixture-of-Experts) 모델을 효율적으로 학습하기 위한 계층적 최적화 프레임워크 &#x27;SLAI T-Rex&#x27;를 구축했습니다.
+* **학습 효율 개선:** 모델 수준의 병렬 처리 및 커널 최적화를 통해 기존 오픈소스 레시피 대비 MFU(모델 FLOPs 활용도)를 11.67%에서 34.22%로 2.93배 향상했습니다.
+* **도메인 특화 성능:** 운영 연구(OR) 분야에 특화된 지속적 사전 학습(CPT) 및 미세 조정(SFT)을 통해 71.81%의 Pass@1 점수를 기록하며 기존 모델들보다 우수한 성능을 입증했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+대규모 언어 모델(LLM)을 학습하려면 엄청난 메모리와 처리 능력이 필요하며, 보통 엔비디아 GPU를 중심으로 시스템이 구축됩니다. 본 연구는 Ascend NPU라는 다른 컴퓨팅 환경에서도 이러한 거대 모델을 효율적으로 학습할 수 있는 &#x27;SLAI T-Rex&#x27; 시스템을 개발했습니다. 이 시스템은 학습 중 병목 현상을 해결하는 커널 최적화와 모델 구조 최적화를 통해 학습 속도를 3배 가까이 높였습니다. 또한, 수학적 모델링과 코드 생성이 복잡한 &#x27;운영 연구(OR)&#x27; 문제를 전문적으로 풀 수 있도록 학습 데이터와 과정을 개선하여, 기존 모델들을 능가하는 정확도를 달성했습니다.
+
+🎯 배경 및 문제점
+* **시스템적 한계:** 조 단위 매개변수를 가진 MoE 모델의 사후 학습은 극심한 메모리 압박, 통신 오버헤드, 커널 실행 비효율성 등 분산 학습 과정에서 큰 시스템적 어려움을 겪습니다.
+* **플랫폼 불균형:** 대부분의 대규모 LLM 학습 시스템이 GPU 기반 클러스터에 집중되어 있어, Ascend NPU와 같은 대안적 환경에서의 학습 최적화 사례가 부족합니다.
+* **도메인 복잡성:** 운영 연구(OR)는 수학적 공식화, 구조적 추론, 정확한 코드 생성이 동시에 요구되는 복잡한 작업으로, 일반적인 모델이 해결하기 어려운 구조적 오류를 자주 노출합니다.
+
+💡 핵심 기술 및 아키텍처
+* **SLAI T-Rex 프레임워크:** 모델 병렬성, 계산-통신 오케스트레이션, 저수준 커널 실행을 포괄하는 계층적 최적화 프레임워크입니다.
+* **커널 최적화:** &#x27;AuraKernel&#x27; 성능 최적화 에이전트를 도입하고, Ascend NPU에 맞춘 커널 융합 및 재작성을 통해 병목 현상을 해결했습니다.
+* **CPT-SFT 파이프라인:** 도메인 데이터와 검증된 합성 데이터를 결합한 OR 특화 학습 데이터셋을 구축했습니다. 특히, 단순히 데이터 양을 늘리기보다 모델링 오류 수리, 출력 계약 준수, 추론 체크리스트를 통한 데이터 품질 관리에 집중했습니다.
+
+📊 실험 결과 분석
+* **학습 효율성:** 최적화 과정을 통해 MFU(모델 FLOPs 활용도)를 34.22%까지 끌어올려, 오픈소스 레시피 대비 2.93배의 성능 향상을 달성했습니다.
+* **전문 성능:** OR 태스크에서 10K개의 고품질 SFT 샘플을 학습한 모델은 Pass@1 점수 71.81%를 기록했습니다. 이는 비교 대상인 GPT-5.4-Mini보다 3.98%p, 기존 DeepSeek-V4-Flash 모델보다 11.27%p 높은 수치입니다.
+* **구조적 개선:** 특히 구조적 정확도를 측정하는 B4O-ORGEval 지표에서 CPT 후 SFT를 진행했을 때 성능이 크게 향상되어, 도메인 사전 지식 주입의 효과를 입증했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **플랫폼 다변화:** GPU 의존도를 낮추고 Ascend NPU와 같은 다양한 컴퓨팅 인프라에서 최첨단 AI 모델을 학습할 수 있는 기술적 경로를 제시했습니다.
+* **실무적 특화:** 수학적 모델링과 같이 높은 정확도가 요구되는 전문 분야에서 모델의 추론 및 구조적 이해 능력을 극대화할 수 있는 사후 학습 방법론을 제공합니다.
+* **오픈 이니셔티브:** 데이터 클리닝 도구, 평가 모듈, 프롬프트 템플릿 및 최적화된 AscendC 커널을 공개하여 향후 관련 연구의 재현성과 확장을 지원할 계획입니다.</pre></article></main></body></html>

@@ -1,0 +1,33 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>동적 루브릭을 통한 거대언어모델 평가자와 정책의 공동 진화 | ArXiv Translator AI</title><meta name="description" content="동적 루브릭을 통한 거대언어모델 평가자와 정책의 공동 진화"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2607_20083v1"><meta property="og:type" content="article"><meta property="og:title" content="동적 루브릭을 통한 거대언어모델 평가자와 정책의 공동 진화"><meta property="og:description" content="동적 루브릭을 통한 거대언어모델 평가자와 정책의 공동 진화"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2607_20083v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="동적 루브릭을 통한 거대언어모델 평가자와 정책의 공동 진화"><meta name="twitter:description" content="동적 루브릭을 통한 거대언어모델 평가자와 정책의 공동 진화"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "동적 루브릭을 통한 거대언어모델 평가자와 정책의 공동 진화", "description": "동적 루브릭을 통한 거대언어모델 평가자와 정책의 공동 진화", "datePublished": "2026-07-22", "url": "https://arxiv-ai-blog.vercel.app/papers/2607_20083v1", "author": [{"@type": "Person", "name": "Beining Wang"}, {"@type": "Person", "name": "Weihang Su"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2607_20083v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2607_20083v1"});gtag('event', 'paper_view', {"paper_id": "2607_20083v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>동적 루브릭을 통한 거대언어모델 평가자와 정책의 공동 진화</h1><p>동적 루브릭을 통한 거대언어모델 평가자와 정책의 공동 진화</p><pre>동적 루브릭을 통한 거대언어모델 평가자와 정책의 공동 진화
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Co-Evolving LLM Evaluators and Policies via DynamicRubric
+&gt; - **저자:** Beining Wang, Weihang Su, Hongtao Tian, Hao Kong, Tao Yang, Ting Yao, Qingyi Pan, Yueyue Wu, Qingyao Ai, Min Zhang, Yiqun Liu
+&gt; - **발행일:** 2026-07-22
+&gt; - **PDF 링크:** [보러가기](https://arxiv.org/pdf/2607.20083v1)
+
+
+✨ 3줄 핵심 요약
+*   언어 모델 성능이 향상될수록 모델이 생성한 답변들의 품질 차이가 미세해져 기존 평가 방식으로는 모델 개선에 필요한 신호(score gap)를 얻기 어렵다는 한계를 지적합니다.
+*   &#x27;DynamicRubric&#x27;은 현재 모델이 생성한 답변 집합을 보고 그 즉시 평가 기준(루브릭)을 동적으로 생성하여, 미세한 품질 차이를 명확한 수치로 변환하는 프레임워크입니다.
+*   실제 위챗 검색 AI 서비스에 적용되어 매일 수천만 건의 요청을 처리하며 성능 개선을 입증했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+거대언어모델(LLM)을 학습시킬 때는 모델이 만든 답변을 평가하고 그 점수를 바탕으로 학습하는 과정이 중요합니다. 하지만 모델이 똑똑해질수록 답변들이 다 비슷비슷해져서, 무엇이 더 나은 답변인지 구분하기가 매우 어려워집니다. 이 논문은 마치 채점 기준표(Rubric)를 미리 정해두는 것이 아니라, 모델이 생성한 답변들을 살펴보고 &#x27;지금 이 답변들 사이에서 어떤 차이를 찾아내어 점수를 매길지&#x27;를 실시간으로 결정하는 방식을 제안합니다. 이를 통해 모델은 더욱 정교한 피드백을 받아 지속적으로 발전할 수 있습니다.
+
+🎯 배경 및 문제점
+LLM 성능이 좋아지면 생성된 답변 간의 품질 차이가 사라지는 &#x27;평가 병목 현상&#x27;이 발생합니다. 기존의 보상 모델이나 정적인 평가 방식은 이러한 미세한 차이를 구분하지 못하거나, 잘못된 방향의 학습 신호를 제공합니다. 이는 모델 최적화를 방해하는 주요 원인이 됩니다.
+
+💡 핵심 기술 및 아키텍처
+*   **동적 루브릭(DynamicRubric):** 고정된 기준 대신, 현재 정책(모델)이 생성한 답변들을 분석하여 해당 답변 집합 내에서 유의미한 차이를 식별하는 이진(Yes/No) 루브릭을 생성합니다.
+*   **검증기(Verifier) 기반 집계:** 생성된 루브릭을 바탕으로 각 답변을 독립적으로 평가하고, Yes/No 판단 결과를 가중치에 따라 점수로 합산합니다.
+*   **공동 진화(Co-evolution):** 평가자가 정책을 감독하고, 정책의 개선에 따라 평가자 또한 더 세밀한 루브릭을 생성하도록 순환적으로 학습합니다.
+
+📊 실험 결과 분석
+*   8B 파라미터 기반 모델에서 실험 결과, 70B 파라미터의 보상 모델이나 235B 파라미터의 정적 루브릭 생성기보다 우수한 평가 성능과 강력한 감독 신호를 제공했습니다.
+*   논문은 DynamicRubric을 사용한 모델이 추론 및 코딩 작업에서 성능 향상을 보였다고 보고합니다.
+*   *참고: 구체적인 성능 향상 수치(%)는 제공된 발췌문 내에 명시되어 있지 않습니다.*
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+이 기술은 위챗 검색의 AI 답변 서비스에 완전히 배포되어, 매일 수천만 건의 온라인 트래픽을 처리하며 주요 핵심 지표를 개선하는 데 기여하고 있습니다. 본 연구는 평가자가 감독하는 모델이 성능이 향상됨에 따라 평가자 또한 함께 진화해야 한다는 원칙을 실무적으로 입증했습니다.</pre></article></main></body></html>

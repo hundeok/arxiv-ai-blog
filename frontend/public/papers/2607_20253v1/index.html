@@ -1,0 +1,42 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>전체 노래 생성을 위한 최전선 돌파: 계층적 자기회귀 계획과 흐름 매칭 렌더링의 결합 | ArXiv Translator AI</title><meta name="description" content="전체 노래 생성을 위한 최전선 돌파: 계층적 자기회귀 계획과 흐름 매칭 렌더링의 결합"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2607_20253v1"><meta property="og:type" content="article"><meta property="og:title" content="전체 노래 생성을 위한 최전선 돌파: 계층적 자기회귀 계획과 흐름 매칭 렌더링의 결합"><meta property="og:description" content="전체 노래 생성을 위한 최전선 돌파: 계층적 자기회귀 계획과 흐름 매칭 렌더링의 결합"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2607_20253v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="전체 노래 생성을 위한 최전선 돌파: 계층적 자기회귀 계획과 흐름 매칭 렌더링의 결합"><meta name="twitter:description" content="전체 노래 생성을 위한 최전선 돌파: 계층적 자기회귀 계획과 흐름 매칭 렌더링의 결합"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "전체 노래 생성을 위한 최전선 돌파: 계층적 자기회귀 계획과 흐름 매칭 렌더링의 결합", "description": "전체 노래 생성을 위한 최전선 돌파: 계층적 자기회귀 계획과 흐름 매칭 렌더링의 결합", "datePublished": "2026-07-22", "url": "https://arxiv-ai-blog.vercel.app/papers/2607_20253v1", "author": [{"@type": "Person", "name": "Junyu Dai"}, {"@type": "Person", "name": "Xinyue Fan"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2607_20253v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2607_20253v1"});gtag('event', 'paper_view', {"paper_id": "2607_20253v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>전체 노래 생성을 위한 최전선 돌파: 계층적 자기회귀 계획과 흐름 매칭 렌더링의 결합</h1><p>전체 노래 생성을 위한 최전선 돌파: 계층적 자기회귀 계획과 흐름 매칭 렌더링의 결합</p><pre>전체 노래 생성을 위한 최전선 돌파: 계층적 자기회귀 계획과 흐름 매칭 렌더링의 결합
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Pushing the Frontier of Full-Song Generation: Hierarchical Autoregressive Planning Meets Flow-Matching Rendering
+&gt; - **저자:** Junyu Dai, Xinyue Fan, Weiqin Li, Xiangang Li, Yunjia Li, Bin Ma, Yukun Ma, Chongjia Ni, Yufei Shi, Haoxu Wang, Menglin Wu, Jianwei Yu, Huaicheng Zhang, Han Zhao, Shengkui Zhao, Haina Zhu
+&gt; - **발행일:** 2026-07-22
+&gt; - **PDF 링크:** [보러가기](https://arxiv.org/pdf/2607.20253v1)
+
+
+✨ 3줄 핵심 요약
+*   가사, 텍스트 설명, 음악적 속성을 입력받아 고품질의 전체 노래를 생성하는 통합 프레임워크를 제안합니다.
+*   계층적 자기회귀 모델(hybird-LM)로 음악을 구성하고, 흐름 매칭(FullDiT)을 통해 고충실도 오디오를 렌더링합니다.
+*   멜로디 가이드 기반의 커버 곡 생성 및 도구적 음악 생성 기능을 포함하며, 다양한 벤치마크에서 우수한 성과를 보였습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+기존의 음악 생성 AI는 긴 노래의 구조를 잡거나 보컬과 반주를 자연스럽게 조화시키는 데 어려움을 겪었습니다. 이 논문은 음악을 &#x27;설계&#x27;하는 단계와 &#x27;실제 소리로 렌더링&#x27;하는 단계를 분리하여 이 문제를 해결했습니다. 
+먼저 &#x27;hybird-LM&#x27;이 노래의 구조와 내용을 토큰 단위로 계획하고, &#x27;FullDiT&#x27;라는 모델이 이 계획을 바탕으로 고해상도(48kHz 스테레오) 오디오를 생성합니다. 특히 실제 노래와 유사한 긴 문맥을 처리할 수 있어 곡 전체의 일관성을 유지하며, 복잡한 멜로디 조절 기능을 통해 기존 노래를 새로운 스타일로 바꾸는 커버 곡 생성까지 가능하게 했습니다.
+
+🎯 배경 및 문제점
+음악은 보컬, 멜로디, 반주, 리듬 등 복잡한 요소가 얽혀 있어 전체 노래를 생성하는 것은 매우 까다로운 작업입니다. 
+*   **표현의 한계:** 기존의 단순한 토큰화 방식으로는 복잡한 음악적 다양성을 충분히 담아내기 어렵습니다.
+*   **긴 문맥 모델링의 어려움:** 노래의 절(verse)과 후렴(chorus) 반복, 일관된 분위기 유지 등 긴 시간 동안의 음악적 흐름을 유지하는 것이 어렵습니다.
+*   **품질 저하:** 음질을 높이는 과정에서 국소적인 예측 오류가 발생할 수 있으며, 이는 최종 음질 저하로 이어집니다.
+
+💡 핵심 기술 및 아키텍처
+제안된 시스템은 4가지 핵심 모듈로 구성됩니다.
+1.  **시맨틱 토크나이저:** 오디오를 8개의 코드북 RVQ 토큰으로 변환하여 효율적인 표현을 제공합니다.
+2.  **hybird-LM:** 계층적 자기회귀 방식으로 전체 노래의 구조를 계획합니다.
+3.  **FullDiT:** 연속적인 VAE 잠재 공간에서 흐름 매칭(Flow Matching)을 수행하여 고품질의 오디오를 렌더링합니다. 특히 8192 프레임의 긴 문맥을 비인과적 자기 주의(non-causal self-attention)로 처리합니다.
+4.  **2단계 멜로디 모듈:** 참조 오디오에서 멜로디 정보를 추출하여 커버 곡 생성 시 원본의 선율을 유지하도록 돕습니다.
+*   **기술적 특징:** &#x27;오류 대응식 교란자 조건화(EDMC)&#x27;를 도입해 학습과 실제 생성 시 발생할 수 있는 토큰 예측 오차를 줄이고 모델의 견고함을 높였습니다.
+
+📊 실험 결과 분석
+*   **성능:** &#x27;Artificial Analysis Music with Vocals&#x27; 리더보드에서 Elo 점수 1,129점을 기록하며 2~3위권의 경쟁력을 확보했습니다.
+*   **지표:** SongBench 및 AudioBox-Aesthetic 벤치마크 결과, 멜로디, 편곡, 음악성, 믹싱 등 다양한 항목에서 우수한 평가를 받았습니다. 특히 자연스러움과 음악적 일관성 측면에서 높은 점수를 얻었습니다.
+*   **한계:** 노래의 구조적 조직화(section organization)와 전개 방식은 향후 개선이 필요한 영역으로 확인되었습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+*   **창작 도구:** 가사와 간단한 설명만으로 작곡가 수준의 노래를 생성할 수 있어 콘텐츠 크리에이터의 작업 효율을 획기적으로 높일 수 있습니다.
+*   **커버 곡 생성:** 특정 스타일을 유지하면서도 기존 곡의 멜로디를 보존하는 커버 생성 기술은 음악 편곡 및 리믹스 분야에 새로운 가능성을 제시합니다.
+*   **산업적 활용:** 도구적 음악(instrumental) 생성 및 고품질 배경 음악 제작에 즉각적으로 활용될 수 있으며, 상업적 수준의 48kHz 스테레오 오디오 렌더링 능력을 갖추어 실무 적용성이 높습니다.</pre></article></main></body></html>
