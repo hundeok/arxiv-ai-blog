@@ -27,3 +27,20 @@ The scheduled GitHub Actions workflow reads `GEMINI_API_KEY` from the repository
 ## Deployment
 
 Import the repository in Vercel with `frontend` as the Root Directory. Vercel uses the `npm run build` script and deploys the generated static site. No Gemini key is required in Vercel because generation happens in GitHub Actions.
+
+## Observability
+
+The production GA4 property is configured with measurement ID `G-V4G2FBSDMG`.
+The tag is present both in the React application and in generated static paper
+pages, so visits from Google Search are measured as well as in-app navigation.
+
+| Event | Meaning | Key parameter |
+| --- | --- | --- |
+| `page_view` | Any home or paper page view | `page_path` |
+| `paper_open` | A visitor clicked a paper card on the home page | `paper_id` |
+| `paper_view` | A paper article was displayed, including direct search visits | `paper_id` |
+
+Use **GA4 → Reports → Realtime** to validate a deployment. Standard reports
+normally take up to 24 hours to populate. In Search Console, submit only
+`/sitemap-index.xml`; it references the generated `/sitemap.xml`. The pipeline
+regenerates both files and `robots.txt` on every successful publication run.

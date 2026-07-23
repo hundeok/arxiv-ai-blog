@@ -47,6 +47,13 @@ class PipelineUnitTests(unittest.TestCase):
         pipeline.merge_discovery(state, [])
         self.assertIn("kept", state["papers"])
 
+    def test_static_pages_include_same_analytics_events_as_spa(self):
+        tag = pipeline.static_analytics_tag("/papers/2607_20379v1", "2607_20379v1")
+        self.assertIn("G-V4G2FBSDMG", tag)
+        self.assertIn("'page_view'", tag)
+        self.assertIn("'paper_view'", tag)
+        self.assertIn('"paper_id": "2607_20379v1"', tag)
+
 
 if __name__ == "__main__":
     unittest.main()

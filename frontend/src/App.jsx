@@ -29,12 +29,12 @@ function App() {
     window.addEventListener('popstate', onPopState);
     return () => window.removeEventListener('popstate', onPopState);
   }, []);
-  const selectPaper = (paper) => { track('paper_open', { paper_id: paper.id, paper_title: paper.korean_title }); window.history.pushState({}, '', `/papers/${paper.id}`); setSelectedId(paper.id); };
+  const selectPaper = (paper) => { track('paper_open', { paper_id: paper.id }); window.history.pushState({}, '', `/papers/${paper.id}`); setSelectedId(paper.id); };
   const selectedPaper = papers.find(paper => paper.id === selectedId);
 
   return (
     <div style={{ padding: '2rem', maxWidth: '1200px', margin: '0 auto' }}>
-      <Analytics page={selectedId ? `/papers/${selectedId}` : '/'} />
+      <Analytics page={selectedId ? `/papers/${selectedId}` : '/'} paperId={selectedId} />
       <header style={{ marginBottom: '4rem', textAlign: 'center', paddingTop: '2rem' }}>
         <h1 style={{ fontSize: '3.5rem', marginBottom: '1rem' }}>
           ArXiv <span className="gradient-text">Translator AI</span>

@@ -32,6 +32,7 @@ STATE_PATH = CONTENT_DIR / "pipeline-state.json"
 STATUS_PATH = CONTENT_DIR / "pipeline-status.json"
 METADATA_PATH = CONTENT_DIR / "metadata.json"
 SITE_URL = "https://arxiv-ai-blog.vercel.app"
+GA_MEASUREMENT_ID = os.environ.get("GA_MEASUREMENT_ID", "G-V4G2FBSDMG").strip()
 
 MODEL = os.environ.get("GEMINI_MODEL", "gemini-3.1-flash-lite")
 DISCOVERY_LIMIT = int(os.environ.get("DISCOVERY_LIMIT", "30"))
@@ -118,6 +119,18 @@ def atomic_text_write(path: Path, value: str) -> None:
         handle.write(value)
         temp_path = Path(handle.name)
     temp_path.replace(path)
+
+
+def static_analytics_tag(page_path: str, paper_id: str | None = None) -> str:
+    """Return a minimal GA4 tag for crawlable, non-React article pages."""
+    if not GA_MEASUREMENT_ID:
+        return ""
+    page_view = json.dumps({"page_path": page_path, "page_location": f"{SITE_URL}{page_path}"}, ensure_ascii=False)
+    paper_view = ""
+    if paper_id:
+        paper_view = f"gtag('event', 'paper_view', {json.dumps({'paper_id': paper_id, 'content_type': 'paper'}, ensure_ascii=False)});"
+    return f'''<script async src="https://www.googletagmanager.com/gtag/js?id={html.escape(GA_MEASUREMENT_ID, quote=True)}"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments);}}gtag('js',new Date());gtag('config',{json.dumps(GA_MEASUREMENT_ID)},{{send_page_view:false}});gtag('event','page_view',{page_view});{paper_view}</script>'''
 
 
 def load_json(path: Path, default: Any) -> Any:
@@ -570,7 +583,8 @@ def rebuild_metadata(state: dict[str, Any]) -> None:
         canonical = f"{SITE_URL}/papers/{slug}"
         description = html.escape(item.get('korean_subtitle', item['korean_title']))
         title = html.escape(item['korean_title'])
-        page = f'''<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{title} | ArXiv Translator AI</title><meta name="description" content="{description}"><link rel="canonical" href="{canonical}"><meta property="og:type" content="article"><meta property="og:title" content="{title}"><meta property="og:description" content="{description}"><meta property="og:url" content="{canonical}"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="{title}"><meta name="twitter:description" content="{description}"><script type="application/ld+json">{json.dumps({"@context":"https://schema.org","@type":"Article","headline":item['korean_title'],"description":item.get('korean_subtitle', ''),"datePublished":item['published'],"url":canonical,"author":[{"@type":"Person","name":name} for name in item['authors']]}, ensure_ascii=False)}</script></head><body><main><a href="/">← 전체 논문</a><article><h1>{title}</h1><p>{description}</p><pre>{body}</pre></article></main></body></html>'''
+        analytics = static_analytics_tag(f"/papers/{slug}", slug)
+        page = f'''<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{title} | ArXiv Translator AI</title><meta name="description" content="{description}"><link rel="canonical" href="{canonical}"><meta property="og:type" content="article"><meta property="og:title" content="{title}"><meta property="og:description" content="{description}"><meta property="og:url" content="{canonical}"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="{title}"><meta name="twitter:description" content="{description}"><script type="application/ld+json">{json.dumps({"@context":"https://schema.org","@type":"Article","headline":item['korean_title'],"description":item.get('korean_subtitle', ''),"datePublished":item['published'],"url":canonical,"author":[{"@type":"Person","name":name} for name in item['authors']]}, ensure_ascii=False)}</script>{analytics}</head><body><main><a href="/">← 전체 논문</a><article><h1>{title}</h1><p>{description}</p><pre>{body}</pre></article></main></body></html>'''
         atomic_text_write(CONTENT_DIR.parent / "papers" / slug / "index.html", page)
         urls.append(f"  <url><loc>{canonical}</loc><lastmod>{item['published']}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>")
     sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <url><loc>' + SITE_URL + '/</loc><changefreq>daily</changefreq><priority>1.0</priority></url>\n' + "\n".join(urls) + "\n</urlset>\n"
