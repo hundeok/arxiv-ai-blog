@@ -36,8 +36,8 @@ GA_MEASUREMENT_ID = os.environ.get("GA_MEASUREMENT_ID", "G-V4G2FBSDMG").strip()
 
 MODEL = os.environ.get("GEMINI_MODEL", "gemini-3.1-flash-lite")
 DISCOVERY_LIMIT = int(os.environ.get("DISCOVERY_LIMIT", "30"))
-BATCH_SIZE = max(1, min(int(os.environ.get("BATCH_SIZE", "3")), 5))
-DAILY_BUDGET_USD = float(os.environ.get("DAILY_BUDGET_USD", "0.15"))
+BATCH_SIZE = max(1, min(int(os.environ.get("BATCH_SIZE", "3")), 20))
+DAILY_BUDGET_USD = float(os.environ.get("DAILY_BUDGET_USD", "0.50"))
 REQUEST_TIMEOUT_SECONDS = 90
 PRIMARY_INPUT_CHARS = 12_000
 FALLBACK_INPUT_CHARS = 6_000

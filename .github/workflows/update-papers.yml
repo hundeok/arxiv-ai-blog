@@ -16,9 +16,9 @@ on:
           - audit_cards
         default: publish
       batch_size:
-        description: 'Papers to publish in this run (1-5)'
+        description: 'Papers to publish in this run (1-20)'
         required: false
-        default: '3'
+        default: '5'
 
 # A generation run can take more than 20 minutes. Queue runs instead of letting
 # simultaneous checkouts race to commit to main.
@@ -68,7 +68,7 @@ jobs:
         GEMINI_MODEL: gemini-3.1-flash-lite
         GEMINI_INPUT_USD_PER_MILLION: '0.25'
         GEMINI_OUTPUT_USD_PER_MILLION: '1.50'
-        DAILY_BUDGET_USD: '0.15'
+        DAILY_BUDGET_USD: '0.50'
       run: |
         cd backend
         if [ "${{ inputs.operation || 'publish' }}" = "translate_titles" ]; then
