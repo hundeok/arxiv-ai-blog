@@ -632,6 +632,22 @@ def rebuild_metadata(state: dict[str, Any]) -> None:
     atomic_text_write(CONTENT_DIR.parent / "robots.txt", f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}/sitemap-index.xml\n")
 
 
+def notify_telegram(title: str, url: str) -> None:
+    token = os.environ.get("TELEGRAM_BOT_TOKEN")
+    chat_id = os.environ.get("TELEGRAM_CHAT_ID")
+    if not token or not chat_id:
+        return
+    text = f"🚀 <b>새 논문 요약이 올라왔습니다!</b>\n\n📌 <b>{html.escape(title)}</b>\n\n🔗 <a href='{url}'>바로 읽기</a>"
+    try:
+        req = Request(
+            f"https://api.telegram.org/bot{token}/sendMessage",
+            data=json.dumps({"chat_id": chat_id, "text": text, "parse_mode": "HTML"}).encode("utf-8"),
+            headers={"Content-Type": "application/json"}
+        )
+        urlopen(req, timeout=10)
+    except Exception as e:
+        print("Telegram notify failed:", e)
+
 def run() -> dict[str, Any]:
     state = load_state()
     state.setdefault("usage_total", empty_usage())
@@ -670,6 +686,7 @@ def run() -> dict[str, Any]:
                 "updated_at": now_iso(),
                 "korean_title": markdown.lstrip().splitlines()[0].removeprefix("# ").strip(),
             })
+            notify_telegram(record["korean_title"], f"{SITE_URL}/papers/{record['id']}")
             report["generated"] += 1
         except Exception as error:
             record["attempts"] = int(record.get("attempts", 0)) + 1

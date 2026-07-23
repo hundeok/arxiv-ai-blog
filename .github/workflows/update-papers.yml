@@ -61,6 +61,8 @@ jobs:
     - name: Run Auto Blogger Script
       env:
         GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         BATCH_SIZE: ${{ inputs.batch_size || '4' }}
         DISCOVERY_LIMIT: '30'
         GEMINI_MODEL: gemini-3.1-flash-lite
