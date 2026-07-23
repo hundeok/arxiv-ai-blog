@@ -55,8 +55,8 @@ function App() {
       ) : (
         <main>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', marginBottom: '3rem' }}>
-            <h2 style={{ fontSize: '1.75rem', fontWeight: 700, margin: 0 }}>Latest Decoded Papers</h2>
             <SystemStatus totalPapers={papers.length} status={pipelineStatus} />
+            <h2 style={{ fontSize: '1.75rem', fontWeight: 700, margin: 0, marginTop: '1rem' }}>Latest Decoded Papers</h2>
           </div>
           
           {papers.length === 0 ? (
