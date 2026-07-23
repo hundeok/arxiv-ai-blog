@@ -275,11 +275,28 @@ def review_reason(record: dict[str, Any], state: dict[str, Any]) -> str | None:
 
 
 def compact_text(text: str, max_chars: int) -> str:
+    # 1. 꼬리 자르기: 영양가 없는 References(참고문헌) 및 Appendix 통째로 날리기
+    # 정규식: 줄바꿈 뒤에 숫자가 붙을 수도 있는 References/Bibliography 탐색 (문서 후반부 50% 이후만 적용)
+    ref_match = re.search(r'\n(?:[0-9]+\.?\s*)?(?:References|REFERENCES|Bibliography|BIBLIOGRAPHY)\s*\n', text)
+    if ref_match and ref_match.start() > len(text) * 0.5:
+        text = text[:ref_match.start()]
+        
     if len(text) <= max_chars:
         return text
-    opening = int(max_chars * 0.75)
-    closing = max_chars - opening
-    return text[:opening] + "\n\n[중간 원문 생략]\n\n" + text[-closing:]
+        
+    # 2. 스마트 3단 절삭: 서론(35%) + 본론(핵심 방법론 35%) + 결론(30%) 살리기
+    part_1 = int(max_chars * 0.35)
+    part_2 = int(max_chars * 0.35)
+    part_3 = max_chars - part_1 - part_2
+    
+    opening = text[:part_1]
+    
+    middle_start = (len(text) // 2) - (part_2 // 2)
+    middle = text[middle_start:middle_start + part_2]
+    
+    closing = text[-part_3:]
+    
+    return opening + "\n\n[...문맥 생략 (Introduction 끝)...]\n\n" + middle + "\n\n[...문맥 생략 (Methodology 끝)...]\n\n" + closing
 
 
 def download_pdf_text(paper: dict[str, Any]) -> str:
