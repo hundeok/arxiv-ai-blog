@@ -1,0 +1,74 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>능동적 관찰자를 위한 시험 | ArXiv Translator AI</title><meta name="description" content="능동적 관찰자를 위한 시험"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2607_16165v1"><meta property="og:type" content="article"><meta property="og:title" content="능동적 관찰자를 위한 시험"><meta property="og:description" content="능동적 관찰자를 위한 시험"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2607_16165v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="능동적 관찰자를 위한 시험"><meta name="twitter:description" content="능동적 관찰자를 위한 시험"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2607_16165v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "능동적 관찰자를 위한 시험", "description": "능동적 관찰자를 위한 시험", "datePublished": "2026-07-17", "url": "https://arxiv-ai-blog.vercel.app/papers/2607_16165v1", "author": [{"@type": "Person", "name": "Jiarui Zhang"}, {"@type": "Person", "name": "Muzi Tao"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2607_16165v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2607_16165v1"});gtag('event', 'paper_view', {"paper_id": "2607_16165v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>능동적 관찰자를 위한 시험</h1><p>능동적 관찰자를 위한 시험</p><pre>능동적 관찰자를 위한 시험
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** An Exam for Active Observers
+&gt; - **저자:** Jiarui Zhang, Muzi Tao, Shangshang Wang, Ollie Liu, Xuezhe Ma, Willie Neiswanger
+&gt; - **발행일:** 2026-07-17
+&gt; - **PDF 링크:** [An Exam for Active Observers](https://arxiv.org/pdf/2607.16165v1)
+
+
+✨ 3줄 핵심 요약
+- 현재의 멀티모달 대규모 언어 모델(MLLM)들이 &#x27;능동적 관찰(active observation)&#x27; 능력을 갖췄는지 평가하는 새로운 벤치마크 &#x27;ActiveVision&#x27;을 제안함.
+- 최신 모델들(GPT-5.5, Claude Fable 5 등)은 인간의 평균 정답률(96.1%)에 비해 현저히 낮은 성능을 보이며, 대다수 과제에서 0점을 기록함.
+- 모델이 스스로 코드를 작성해 문제를 해결하려 해도 능동적 지각 능력의 부재로 인해 실질적인 성능 향상에는 한계가 있음을 확인함.
+
+📖 쉽게 풀어쓴 1분 핵심
+인간은 무언가를 볼 때 한 번에 모든 것을 파악하지 않습니다. 궁금한 부분을 다시 훑어보거나(스캐닝), 선을 따라 추적하거나, 세부 정보를 비교하는 &#x27;능동적 관찰&#x27; 과정을 거칩니다. 연구진은 현재의 AI 모델들이 이런 능력을 갖췄는지 확인하기 위해 17가지의 시각적 과제로 구성된 &#x27;ActiveVision&#x27; 시험을 만들었습니다. 결과는 충격적이었습니다. 인간은 쉽게 해결하는 문제들을 최첨단 AI 모델들은 거의 풀지 못했습니다. 이는 AI가 겉보기엔 똑똑해 보여도, 정보를 주도적으로 재확인하며 사고하는 &#x27;인지적 과정&#x27;이 아직 미흡하다는 것을 증명합니다.
+
+🎯 배경 및 문제점
+- **능동적 관찰의 부재:** 기존 벤치마크들은 AI가 능동적으로 시각 정보를 재탐색하고 가설을 검증하는지 측정하지 못함.
+- **성능 포화의 함정:** MMMU-Pro 등 기존 벤치마크에서는 모델 성능이 포화 상태에 이르러 변별력을 잃었으나, 실제 현장(로봇 공학, 의료, 제조 등)에서 요구되는 심층적인 시각적 추론 능력은 여전히 검증되지 않음.
+- **단일 시선 이상의 필요성:** 현실의 많은 과제는 여러 번의 시선 고정과 예측, 재확인 루프를 반복해야 해결 가능함.
+
+💡 핵심 기술 및 아키텍처
+- **ActiveVision 벤치마크:** 3개 범주, 총 17개의 시각적 과제로 구성.
+- **2단계 생성 파이프라인:** 
+    1. 결정론적 파이썬 스크립트로 정확한 정답(Ground Truth)이 포함된 기하학적 구조 생성.
+    2. 생성된 구조를 실제 환경처럼 느껴지도록 포토리얼리스틱한 이미지로 렌더링(GPT-image-2 활용). 
+- **설계 의도:** 모델이 단순히 이미지를 묘사하는 것이 아니라, 스캐닝, 추적, 비교 등 특정 인지적 작업 수행을 강제하도록 설계됨.
+
+📊 실험 결과 분석
+- **모델별 성적:** 
+    - GPT-5.5(최상위 추론 노력 단계): 10.6%의 과제 해결, 17개 과제 중 11개에서 0점.
+    - Claude Fable 5: 3.5%의 과제 해결.
+    - 인간 참가자 평균: 96.1%.
+- **추론 노력과 도구 사용:** 모델에게 더 많은 추론 시간이나 외부 코드 실행 도구를 제공해도 격차를 좁히는 데 한계가 있음. 특히 복잡한 구조를 추적하는 과제에서 성능 실패가 두드러짐.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+- **기술적 이정표:** &#x27;능동적 관찰&#x27;을 단순한 주장이 아닌 측정 가능한 수치로 전환하여 향후 AI 아키텍처와 학습 목표의 방향성을 제시함.
+- **실무 적용:** 
+    - **의료:** 방사선 사진에서 병변을 놓치지 않는 스캐닝 능력 향상.
+    - **제조 및 과학:** 정밀한 부품 검사, 세포 계수, 생물학적 구조의 순차적 추적 등 고도의 주의력이 필요한 영역.
+- **결론:** 모델이 시각적 증거를 사고 과정 속에서 지속적으로 재확인할 수 있도록 &#x27;지각-추론 루프&#x27;를 완성하는 것이 차세대 AI 발전의 핵심 과제임.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Observers | USA Ultimate](https://usaultimate.org/observers/)
+&gt; - [Active Participants vs. Observers in Educational Simulations: Impact on Practical Skills Exam Results in Nursing Education: An Exploratory Design - ScienceDirect](https://www.sciencedirect.com/science/article/abs/pii/S1557308725000162)
+&gt; - [Observer reactivity - Pass the Big ABA Exam Glossary - Pass the Big ABA Exam](https://passthebigabaexam.com/glossary/observer-reactivity/)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;결국 터질 게 터졌군요. 그동안 MMLU나 MMMU 점수 놀이에 취해 모델들이 단순히 정적인 이미지 캡셔닝을 잘하는 걸 지능이라 착각해왔죠. 이번 ActiveVision 벤치마크는 AI가 &#x27;지각(Perception)&#x27;과 &#x27;추론(Reasoning)&#x27;을 분리해서 처리하지 못하고, 정보의 불확실성을 능동적으로 해소하는 루프가 완전히 단절되어 있음을 적나라하게 보여줍니다. 11개 과제에서 0점이라니, 학계에서 당장 반성해야 할 지표입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 모델이 0점 찍는 거 보니까 현타 오네요. 실무에서는 이미 에이전트가 코드 실행하게 해서 시각적 문제 풀게 하는데, 이게 단순히 &#x27;도구 사용(Tool-use)&#x27;의 문제가 아니라 &#x27;어디를 봐야 할지(Focusing)&#x27;를 결정하는 정책 자체가 아예 학습이 안 된 겁니다. 결국 vision encoder단에서 고정된 피처만 뽑아내니, 복잡한 추적 작업에선 아예 길을 잃는 거죠. 이거 해결하려면 임베딩 공간부터 뜯어고쳐야 할 텐데, 인프라 비용 어쩔 겁니까?&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;선배님, 인프라 고민할 때가 아닙니다! 지금 트위터에서는 벌써 이 논문 보고 &#x27;Vision-Language 모델의 종말&#x27;이라며 난리 났어요. 단순히 모델 사이즈 키우는 시대는 끝났고, 이제는 이 &#x27;지각-추론 루프&#x27;를 완성하는 아키텍처를 누가 먼저 논문으로 내느냐가 관건인 듯합니다. 다음 주 학회에서 이 벤치마크 기반으로 SOTA 갈아치우는 논문 쏟아질 텐데, 저희 랩도 당장 연구 방향 틀어야 할 것 같습니다. 일단 내일부터 코드 돌려보죠!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
