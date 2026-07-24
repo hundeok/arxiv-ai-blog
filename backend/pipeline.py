@@ -23,7 +23,7 @@ from google import genai
 from google.genai import types
 from pypdf import PdfReader
 
-from fetch_papers import fetch_latest_cs_ai_papers
+from fetch_papers import fetch_trending_papers
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -734,7 +734,7 @@ def run() -> dict[str, Any]:
     today = datetime.now(timezone.utc).date().isoformat()
     if state.get("daily_usage", {}).get("date") != today:
         state["daily_usage"] = {"date": today, "estimated_usd": 0.0, "publications": 0}
-    discovered = fetch_latest_cs_ai_papers(max_results=DISCOVERY_LIMIT)
+    discovered = fetch_trending_papers(max_results=DISCOVERY_LIMIT)
     merge_discovery(state, discovered)
     work = select_work(state)
     report = {"started_at": now_iso(), "discovered": len(discovered), "selected": len(work), "generated": 0, "failed": 0, "skipped": 0, "health": "healthy", "failures": [], "usage": empty_usage()}
