@@ -365,6 +365,38 @@ def is_korean_card_subtitle(text: str) -> bool:
     return 12 <= len(text) <= 90 and is_korean_title(text)
 
 
+def fetch_related_links(paper: dict[str, Any]) -> str:
+    try:
+        from duckduckgo_search import DDGS
+        query = f'"{paper["title"]}"'
+        
+        links_markdown = "\n\n> **🔗 함께 읽어볼 만한 관련 문서**\n"
+        with DDGS() as ddgs:
+            results = list(ddgs.text(query, max_results=3))
+            
+            if not results:
+                results = list(ddgs.text(paper["title"], max_results=3))
+                
+            if not results:
+                return ""
+                
+            # Filter out the exact arxiv URL if it shows up
+            valid_links = 0
+            for res in results:
+                title = res.get('title', '').replace('[', '').replace(']', '')
+                url = res.get('href', '')
+                if title and url and paper['pdf_link'].replace('.pdf', '') not in url:
+                    links_markdown += f"> - [{title}]({url})\n"
+                    valid_links += 1
+            
+            if valid_links > 0:
+                return links_markdown + "\n"
+            return ""
+    except Exception as e:
+        print(f"Failed to fetch related links: {e}")
+        return ""
+
+
 def generate_ai_comments(client: genai.Client, markdown: str) -> tuple[str, dict[str, Any]]:
     prompt = f"""너는 세계 최고 수준의 AI 연구자, 엔지니어, 대학원생들이 모인 익명 커뮤니티의 봇이다.
 아래 논문 요약을 읽고, 3개의 각기 다른 페르소나가 논문을 두고 티키타카(토론)하는 리플 3개를 작성해라.
@@ -441,6 +473,13 @@ def generate_markdown(paper: dict[str, Any], full_text: str) -> tuple[str, dict[
                 markdown = lines[0] + "\n" + metadata_block + "\n".join(lines[1:])
             else:
                 markdown = metadata_block + markdown
+                
+            try:
+                related_links = fetch_related_links(paper)
+                if related_links:
+                    markdown += related_links
+            except Exception as e:
+                print(f"Failed to append related links: {e}")
                 
             try:
                 comments_json, comments_usage = generate_ai_comments(client, markdown)
