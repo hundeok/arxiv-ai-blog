@@ -367,7 +367,7 @@ def is_korean_card_subtitle(text: str) -> bool:
 
 def fetch_related_links(paper: dict[str, Any]) -> str:
     try:
-        from duckduckgo_search import DDGS
+        from ddgs import DDGS
         query = f'"{paper["title"]}"'
         
         links_markdown = "\n\n> **🔗 함께 읽어볼 만한 관련 문서**\n"
