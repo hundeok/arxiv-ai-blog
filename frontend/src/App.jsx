@@ -4,6 +4,7 @@ import PaperCard from './components/PaperCard';
 const MarkdownViewer = lazy(() => import('./components/MarkdownViewer'));
 import AdBanner from './components/AdBanner';
 import SystemStatus from './components/SystemStatus';
+import TrendingTicker from './components/TrendingTicker';
 import Analytics from './components/Analytics';
 import { track } from './components/Analytics';
 
@@ -61,6 +62,7 @@ function App() {
         <main>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', marginBottom: '3rem' }}>
             <SystemStatus totalPapers={papers.length} status={pipelineStatus} />
+            <TrendingTicker />
             <h2 style={{ fontSize: '1.75rem', fontWeight: 700, margin: 0, marginTop: '1rem' }}>Latest Decoded Papers</h2>
           </div>
           
