@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>평균-점수 이산 확산: 점수 엔트로피를 위한 사후 평균 노이즈 제거기 | ArXiv Translator AI</title><meta name="description" content="평균-점수 이산 확산: 점수 엔트로피를 위한 사후 평균 노이즈 제거기"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2607_21372v1"><meta property="og:type" content="article"><meta property="og:title" content="평균-점수 이산 확산: 점수 엔트로피를 위한 사후 평균 노이즈 제거기"><meta property="og:description" content="평균-점수 이산 확산: 점수 엔트로피를 위한 사후 평균 노이즈 제거기"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2607_21372v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="평균-점수 이산 확산: 점수 엔트로피를 위한 사후 평균 노이즈 제거기"><meta name="twitter:description" content="평균-점수 이산 확산: 점수 엔트로피를 위한 사후 평균 노이즈 제거기"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2607_21372v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "평균-점수 이산 확산: 점수 엔트로피를 위한 사후 평균 노이즈 제거기", "description": "평균-점수 이산 확산: 점수 엔트로피를 위한 사후 평균 노이즈 제거기", "datePublished": "2026-07-23", "url": "https://arxiv-ai-blog.vercel.app/papers/2607_21372v1", "author": [{"@type": "Person", "name": "Jingyuan Li"}, {"@type": "Person", "name": "Xiaoyi Jiang"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2607_21372v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2607_21372v1"});gtag('event', 'paper_view', {"paper_id": "2607_21372v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>평균-점수 이산 확산: 점수 엔트로피를 위한 사후 평균 노이즈 제거기</h1><p>평균-점수 이산 확산: 점수 엔트로피를 위한 사후 평균 노이즈 제거기</p><pre>평균-점수 이산 확산: 점수 엔트로피를 위한 사후 평균 노이즈 제거기
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Mean-to-Score Discrete Diffusion: Posterior-Mean Denoisers for Score Entropy
+&gt; - **저자:** Jingyuan Li, Xiaoyi Jiang, Yixuan Jiang, Wei Liu, Yi Zhu, Zuoqiang Shi, Pipi Hu
+&gt; - **발행일:** 2026-07-23
+&gt; - **PDF 링크:** [Mean-to-Score Discrete Diffusion: Posterior-Mean Denoisers for Score Entropy](https://arxiv.org/pdf/2607.21372v1)
+
+
+✨ 3줄 핵심 요약
+* 기존 점수 엔트로피 이산 확산(SEDD) 모델은 베이즈 실현 가능성(Bayes realizability)을 보장하지 못해 부정확한 샘플링 가중치를 생성하는 문제가 있습니다.
+* 본 논문은 네트워크가 직접 점수를 예측하는 대신 &#x27;사후 평균&#x27;을 예측하여 점수로 변환하는 &#x27;Mean-to-Score(M2S)&#x27; 기법을 제안합니다.
+* M2S는 CIFAR-10 및 대규모 언어 모델링 실험에서 기존 모델보다 우수한 성능과 샘플링 품질을 입증했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+이산 확산 모델은 데이터를 노이즈로 오염시킨 뒤, 이를 순서대로 복원하며 새로운 데이터를 생성합니다. 기존 기술인 SEDD는 복원 과정에서 각 단계마다 &#x27;점수(score)&#x27;라는 값을 예측하는데, 이 과정에서 수학적으로 모순된 값이 나올 수 있습니다. 이는 결과적으로 모델이 데이터의 원본 분포와 일치하지 않는 이상한 값을 만들게 합니다. 본 논문에서는 네트워크가 점수를 직접 계산하게 하는 대신, 확률적으로 가장 적절한 &#x27;평균값&#x27;을 먼저 추론한 뒤 이를 점수로 바꾸는 M2S 방식을 도입했습니다. 이를 통해 모델이 항상 수학적으로 올바른 경로로 데이터 복원을 수행하도록 강제하여, 생성 품질을 크게 향상했습니다.
+
+🎯 배경 및 문제점
+* **베이즈 실현 가능성 부족:** SEDD는 양수라는 조건만 만족하면 어떤 점수든 출력할 수 있으나, 이는 단일 원본 데이터 토큰으로부터 도출된 결합 확률을 의미하지 않습니다.
+* **샘플링 오류:** 기존 SEDD 모델을 분석한 결과, 약 1/4의 점수 벡터가 좌표 범위를 위반하며, 절반 이상은 개별 좌표는 정상이나 사후 분포와 물리적으로 양립할 수 없는 값을 가집니다. 이로 인해 유한 단계 샘플링 과정에서 음수의 가중치가 발생합니다.
+* **사후 투영의 한계:** 원시 점수를 &#x27;브리지 폴리토프(bridge polytope)&#x27;로 투영하여 오류를 수정할 수 있으나, 이는 본질적인 해결책이 아니며 추가적인 연산이 필요합니다.
+
+💡 핵심 기술 및 아키텍처
+* **Mean-to-Score (M2S) 설계:** 네트워크가 점수를 직접 추정하지 않고, 데이터의 &#x27;사후 평균(posterior mean)&#x27;을 예측하게 설계했습니다.
+* **커널 의존적 선형 매핑:** 예측된 사후 평균을 커널에 따라 정확하게 점수로 변환하는 선형 매핑 방식을 사용합니다.
+* **구조적 강제:** M2S는 학습 단계에서부터 베이즈 실현 가능성을 수학적으로 강제합니다. 균일 오염 모델에서는 확률 단체를 브리지 폴리토프로 매핑하며, 흡수 마스크 오염 모델에서는 기존 MD4 목적함수를 정확히 복구합니다.
+
+📊 실험 결과 분석
+* **CIFAR-10 (28.4M 파라미터):** 기존 모델 대비 테스트 BPD는 3.173에서 3.129로, FID-50k는 42.83에서 28.09로 크게 개선되었습니다.
+* **OpenWebText (170M 파라미터, 262B 토큰):** 모든 샘플링 단계에서 SEDD, GIDD, Neural CTMC 등 기존 베이스라인을 압도했습니다.
+* **생성 품질:** 128단계 샘플링 시 생성 PPL(Perplexity)이 기존 모델(183.6)보다 우수한 143.3을 기록했습니다.
+* **투영 효과:** SEDD 모델의 점수를 브리지 폴리토프로 투영했을 때, 음수 가중치가 제거되고 PPL이 203.6에서 175.1로 낮아졌습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **생성 모델의 신뢰성 향상:** 확산 모델의 수학적 결함을 해결함으로써, 이미지나 텍스트 생성 시 발생하는 비정상적인 결과물(Artifact)을 효과적으로 줄일 수 있습니다.
+* **효율적인 샘플링:** 별도의 사후 보정 과정 없이도 높은 품질의 데이터를 생성할 수 있어, 실시간 응용 분야에서 계산 효율성을 높일 수 있습니다.
+* **확장성:** 텍스트와 이미지 등 대규모 데이터를 다루는 다양한 이산 도메인 확산 모델의 학습 및 샘플링 안정성을 높이는 표준 기법으로 활용 가능합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2607.21372 Mean-to-Score Discrete Diffusion: Posterior-Mean ...](https://arxiv.org/abs/2607.21372)
+&gt; - [Mean-to-Score Discrete Diffusion: Posterior-Mean Denoisers ...](https://arxiv.deeppaper.ai/papers/2607.21372v1)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;SEDD의 고질적인 베이즈 실현 가능성(Bayes realizability) 문제를 단순히 투영법으로 땜질하는 게 아니라, 구조적으로 사후 평균(posterior mean) 예측 모델로 전환한 접근은 높게 평가함. 수학적 정합성을 강제하면서도 CIFAR-10에서 FID를 저 정도로 낮췄다는 건, 결국 그동안 우리가 확률 분포의 기하학적 제약을 얼마나 안일하게 무시해왔는지 보여주는 증거지.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 수학적으론 우아한데, 실무 입장에선 &#x27;사후 평균&#x27; 예측이 추론 속도나 메모리 관점에서 얼마나 오버헤드를 먹느냐가 관건이겠네요. 그래도 기존에 매 단계마다 브리지 폴리토프 투영하느라 연산 잡아먹던 거 생각하면, 차라리 아키텍처 수준에서 깔끔하게 정돈된 게 배포하기엔 훨씬 낫습니다. 바로 프로덕션 코드에 태워봐야겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;아, 이거 며칠 전부터 랩실에서 난리 났습니다! 다들 SEDD 튜닝하다가 음수 가중치 때문에 멘탈 터졌는데, M2S 도입하니까 PPL이 드라마틱하게 잡히더라고요. 이제 이산 확산 모델 논문들 전부 다 M2S 베이스라인으로 새로 돌려야 할 판인데... 논문 리비전할 생각에 벌써 머리가 아프네요. 그래도 성능 향상은 확실히 뽕 차오릅니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
