@@ -940,7 +940,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-07-24T10:58:29.252652+00:00",
+      "updated_at": "2026-07-24T19:17:26.329499+00:00",
       "paper": {
         "title": "Train the Model, Not the Reader: Decodability Supervision for Verifiable Activation Explanations",
         "summary": "Natural-language autoencoders score explanations of hidden activations by reconstruction: an explanation is deemed faithful if the activation can be regenerated from it. The test is structurally insensitive to individual false claims: if flipping a claim does not change the reconstruction, the claim is never penalized. We show the test is passed in two ways, neither faithful. On a released Qwen-2.5-7B verbalizer, explanations reconstruct well above chance while ~2% of specific claims are reconstruction-dependent, so the score tracks gist, not specific facts. Under exact synthetic ground truth, the standard recipe develops co-adapted private codes (false wording the reconstruction depends on) in 5/5 runs, and fixes that leave the target model unchanged do not help. We contribute two audit protocols, the grounded-vs-true cross and the evaluator swap, and RECAP (Readable Encodings via Co-trained Auxiliary Predictors): linear heads trained alongside the target model to keep designated content decodable. On RECAP-trained sandbox models, fresh verbalizers state the designated content truly and the codes vanish, at a +0.001-nat cost. This replicates on a pretrained Pythia-160M: the content becomes reliably probe-decodable, though a fresh verbalizer conveys it only in part (truth 0.44-0.46 vs a near-zero control). For interpretability, high reconstruction does not certify individual claims. For AI safety, RECAP makes designated internal content independently checkable against probes rather than asserted by prose a model can game: an independent probe scores the verbalizer's true claims above its false ones (AUC 0.96, vs 0.82 without RECAP). Against an adversary that edits an explanation to maximize the reconstruction score while lying (suppressing ~87% of its lie penalty), the RECAP probe still flags the lies (AUC 0.95) while the control probe collapses to chance (0.51).",
@@ -1823,11 +1823,11 @@
     "2607_21498v1": {
       "id": "2607_21498v1",
       "filename": "post_2607_21498v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-07-24T02:06:46.988807+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-07-24T16:34:37.442424+00:00",
+      "updated_at": "2026-07-24T19:18:06.372601+00:00",
       "paper": {
         "title": "Artificial Epanorthosis: Why large language models overuse a classical rhetorical figure, and how to mitigate it",
         "summary": "A rhetorical figure that Cicero and Quintilian catalogued two thousand years ago reappears, systematically, in the text of large language models: epanorthosis, the self-correction of the specimen «This is not a course. It is a journey of transformation». This essay argues that the overuse is a trained disposition, driven mainly by a training distribution rich in promotional prose and by preference tuning (RLHF) that rewards confident, emphatic phrasing; the left-to-right nature of generation is an amplifier rather than the root cause. Building on evidence that models diverge from human rhetorical style, and on Fontanier's classification of epanorthosis as a figure of thought, it sets out a programme that scores the figure against genre-specific human baselines through an Epanorthosis Index (density relative to the human rate). A first measurement, on three sizes of one instruction-tuned model family, finds mis-calibration by register in both directions: the models overshoot in oratory (about twofold, near threefold in Italian, concentrated in the larger tiers) and undershoot in informal question-and-answer writing, while matching humans in argument, journalism, and encyclopedic prose. Three constructive contributions follow: a survey of mitigation techniques centred on lightweight LoRA adapters; a demonstration, in Italian, that a one-line instruction cuts the figure by half to nearly three-quarters and that a supervised-fine-tuning adapter removes it almost entirely, with a scaling coefficient that dials the reduction back onto the human rate; and the argument that the target is calibration to the human rate for each genre, not elimination. It closes on the stakes: the real risk is that we begin to write like the machines.",
@@ -1837,7 +1837,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2607.21498v1"
       },
-      "priority_score": 20
+      "priority_score": 20,
+      "korean_title": "인공적 에판오르토시스: 거대 언어 모델은 왜 고전적 수사법을 과도하게 사용하는가, 그리고 이를 어떻게 완화할 것인가"
     },
     "2607_21495v1": {
       "id": "2607_21495v1",
@@ -2655,7 +2656,7 @@
       "attempts": 0,
       "next_retry_at": "2026-07-24T05:44:40.608411+00:00",
       "last_error": null,
-      "updated_at": "2026-07-24T10:58:29.252596+00:00",
+      "updated_at": "2026-07-24T19:17:26.329474+00:00",
       "paper": {
         "title": "Moving Alphabet: A Controlled Study of Training Data for Text-to-Video Generation",
         "summary": "Text-to-video generation has advanced significantly over the past five years through scaling of model size, data, and compute. Unlike model architecture, training data is often underexplored. Real-world data curation is complex and non-trivial, involving clip selection from raw videos and captioning to create video-text pairs for learning text-to-video mappings. We study how data distribution and caption quality impact text-to-video models. To enable controlled experiments, we introduce Moving Alphabet, a procedural testbed that renders letters with varying fonts, colors, sizes, and positions, moving in different directions and speeds against a black background. This design allows precise control over data distribution and caption quality by corrupting ground-truth metadata. Our experiments yield three findings: a) a diverse and balanced distribution of video content and duration is critical for generalization; b) caption quality significantly affects both model performance and training efficiency, suggesting that text-to-video models are bounded by video understanding capabilities; and c) classifier-free guidance and fine-tuning on high-quality data provide partial recovery from models trained on corrupted captions, but cannot fully compensate for poor pre-training data. We believe these insights can inform the development of large-scale text-to-video models, and we advocate for greater attention to the science of pre-training data.",
@@ -2677,7 +2678,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-07-24T13:25:45.363741+00:00",
+      "updated_at": "2026-07-24T19:17:26.329478+00:00",
       "paper": {
         "title": "Differentiable Logic Gate Networks for Low-Latency EEG Classification on Edge Devices",
         "summary": "Real-time EEG classification on edge devices is bottlenecked by the floating-point arithmetic of conventional neural networks. We investigated Differentiable Logic Gate Networks (Diff-Logic) as a hardware-native alternative that compiles models into pure Boolean circuits executable via bitwise CPU operations. Through rigorous iso-parameter experiments across four EEG datasets spanning two classification tasks, binary dementia detection and 3-class emotion recognition, we compared Diff-Logic against matched-capacity Multi-Layer Perceptron (MLP) and Binarized Neural Network (BNN) baselines at four complexity tiers (50k-500k parameters). On dementia screening, Diff-Logic achieved 80.2% Macro F1, outperforming the MLP baseline by 6.8%. On emotion recognition, the MLP retained a moderate performance advantage but incurred a 2.3$\\times$ higher latency and 14$\\times$ larger model size when deployed on a power-constrained (7W) Nvidia Jetson Orin Nano CPU (Single-core). Critically, Diff-Logic inference time remained nearly constant across a 10$\\times$ increase in model scale, achieving a peak speedup of 2.9$\\times$ over MLPs at the largest complexity tier. Our results establish logic-based neural architectures as a practical paradigm for resource-constrained brain-computer interfaces, achieving competitive or superior performance while natively satisfying the latency and memory constraints of portable edge deployment. Code is available on GitHub: https://github.com/Shyamal-Dharia/eeg-difflogic",
@@ -2699,7 +2700,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-07-24T10:58:29.252624+00:00",
+      "updated_at": "2026-07-24T19:17:26.329481+00:00",
       "paper": {
         "title": "LLMs Get Lost in Evolving User Intent",
         "summary": "As LLMs become more capable, they are increasingly deployed as collaborative agents, taking on user-delegated tasks through iterative interaction. Yet genuine interaction is inherently dynamic: users rarely specify their intent upfront, instead disclosing, revising, and reshaping it as the conversation unfolds. Despite this, LLMs are still predominantly evaluated or trained in single-turn, fully-specified settings, leaving open a fundamental question: how well do LLMs track and act on user intent as it evolves over the course of a conversation? To study this, we introduce a framework that transforms static, single-turn tasks into dynamic multi-turn conversations in which the user's intent evolves across turns--incrementally revealed, revised, and at times redirected mid-conversation--while preserving each task's original evaluation protocol, enabling existing benchmarks to be reused as controlled testbeds without new annotation. Across multiple tasks, we surface a consistent phenomenon: strong static-setting performance does not transfer to the evolving-intent setting, with substantial drops across model families. Our findings point to a fundamental gap: today's LLMs do not yet faithfully track and act on the user's evolving intent, a capability invisible to static evaluation yet critical for future collaborative agents.",
@@ -2721,7 +2722,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-07-24T16:35:47.834709+00:00",
+      "updated_at": "2026-07-24T19:17:26.329484+00:00",
       "paper": {
         "title": "Recurrent Sinusoidal INRs for Efficient High-Fidelity Representation",
         "summary": "We study sinusoidal recurrence as an iterative mechanism for harmonic spectral enrichment in implicit neural representations (INRs). Our analysis reveals that sinusoidal activations induce a harmonic line spectrum, providing a spectral account of how recurrent unrolling enriches the effective spectral support. We realize this principle with a shared sinusoidal block that iteratively refines the latent representation. We empirically validate the resulting spectral behavior against feed-forward INRs, non-sinusoidal recurrent variants, and equilibrium-style sinusoidal models. Complementing this analysis, we evaluate the proposed architecture across image and 3D representation tasks. On RGB image benchmarks, our method achieves higher fidelity than feed-forward baselines with fewer parameters and fewer optimization steps, and it further transfers favorably to super-resolution, NeRF, and SDF tasks.",
@@ -2772,7 +2773,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-07-24T10:58:29.252647+00:00",
+      "updated_at": "2026-07-24T19:17:26.329496+00:00",
       "paper": {
         "title": "An Exam for Active Observers",
         "summary": "Human vision is a closed loop: gaze is continuously redirected by intermediate hypotheses rather than a single snapshot. Decades of psychophysics and cognitive science have argued that this active observation is essential for a wide range of tasks. Whether today's multimodal large language models (MLLMs) exercise active observation is an empirical question that current vision-language benchmarks do not answer. We introduce ActiveVision, a benchmark that makes active observation measurable for MLLMs, comprising 17 tasks across 3 categories. Tasks are designed to force repeated visual perception rather than a single static description. Frontier MLLMs collapse on ActiveVision: the highest-scoring model we evaluate, GPT-5.5 at the highest exposed reasoning-effort tier, solves only 10.6% of items and scores zero on 11 of the 17 tasks, and even Claude Fable 5, despite topping most reasoning and coding leaderboards, solves just 3.5%, far behind three human participants who average 96.1%. Furthermore, much of the gap persists even when models write and run their own vision code: such code is unreliable on realistic imagery, and catching its failures itself requires the active perception the models lack. Together, these results indicate that current MLLMs lack robust active visual observation, motivating architectures and training objectives that close the perception-reasoning loop.",
@@ -2855,7 +2856,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-07-24T10:58:59.905563+00:00",
+      "updated_at": "2026-07-24T19:17:26.329487+00:00",
       "paper": {
         "title": "Self-Supervised Learning of Structured Dynamics from Videos",
         "summary": "Understanding motion in video is a fundamental challenge for visual learning, as frame-to-frame change entangles two sources of dynamics: camera motion and object motion. This decomposition has remained underexplored in representation learning, partly because these factors are tightly coupled in natural videos and difficult to supervise separately. Yet recovering it is important for learning robust motion representations that separate meaningful object dynamics from camera-induced variation. We study whether such structured motion representations can be recovered from frozen features of a pretrained image vision transformer. We propose the Structured Dynamics Model (SDM), which explicitly separates the dominant source of temporal change from residual dynamics through future-feature prediction, rather than representing video change with a single entangled latent or with unstructured, spatially dense transition tokens. Training combines self-supervised learning on real video with weak supervision of scene dynamics on synthetic Kubric data. We evaluate SDM on ProbeMotion, a new evaluation suite spanning synthetic and real videos with camera motion, object motion, and combined dynamics. SDM outperforms backbone baselines using global CLS or average-pooled features, and compares favorably to strongly supervised representations such as VGGT on several probes, despite using substantially weaker supervision. These results suggest that pretrained image models can be readily repurposed into structured video-dynamics representations, providing a useful inductive bias for learning and analyzing latent video dynamics.",
@@ -2869,11 +2870,101 @@
       },
       "priority_score": 30,
       "korean_title": "비디오로부터 구조화된 역학의 자기지도 학습"
+    },
+    "2607_19238v1": {
+      "id": "2607_19238v1",
+      "filename": "post_2607_19238v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-07-24T19:17:35.303871+00:00",
+      "paper": {
+        "title": "FinanceComplexQA: Benchmarking Agentic Reasoning on Industrial-grade Financial Documents",
+        "summary": "Agentic Reasoning has become a transformative force in financial analysis due to its ability to integrate large-scale information and generate reliable and accurate content. However, when handling complex real-world problems, different agents still show significant performance variation. In this work, we design Finance-LaTeX SKILL, a skill for synthesizing financial documents with complex layouts based on expert knowledge. Using an agent workflow built on this skill, we generate 2,000 professional financial documents along with 6,000 high-quality question-answer pairs. To evaluate the overall capability of agents, we introduce FinanceComplexQA, a comprehensive open-ended generation benchmark for financial documents that closely resembles real-world scenarios. It contains 2,026 deep research tasks targeting 1009 financial documents. FinanceComplexQA has 8 key features: bilingual support; coverage of six mainstream scenarios and seven tasks; expert-level document reasoning questions; deep research of complex layouts; relatively stable and permanent reference answers; and precise evaluation through an Agent-as-a-Judge with multiple evaluation metrics. Using FinanceComplexQA, we conduct a comprehensive evaluation of leading RAG systems and agentic reasoning tools for financial document QA. Through identifying and analyzing failure cases, we provide an in-depth study of their capabilities in numerical computation, multi-hop reasoning, content summarization, and industry analysis.",
+        "published": "2026-07-21T16:08:27Z",
+        "authors": [
+          "Xianfu Cheng",
+          "Shiwei Zhang",
+          "Jiyu Zhao",
+          "Jian Yang",
+          "Xinyuan Wang",
+          "Ming Zhou",
+          "Weixiao Zhou",
+          "Xiangyuan Guan",
+          "Xiang Li",
+          "Zhenhe Wu",
+          "Ziyi Ni",
+          "Zhoujun Li",
+          "Bingjing Xu"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2607.19238v1"
+      },
+      "priority_score": 58,
+      "korean_title": "FinanceComplexQA: 산업용 금융 문서를 위한 에이전트 추론 벤치마크"
+    },
+    "2607_04763v2": {
+      "id": "2607_04763v2",
+      "filename": "post_2607_04763v2.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-07-24T19:17:45.393552+00:00",
+      "paper": {
+        "title": "Multi-Turn On-Policy Distillation with Prefix Replay",
+        "summary": "We study on-policy distillation (OPD) for agentic tasks, where an LLM agent interacts with an environment over multiple turns and a student imitates a teacher over these multi-turn interaction histories. Fully online OPD is costly because each update requires fresh student rollouts through the environment and teacher queries at visited histories. We propose Replayed-Prefix On-Policy Distillation (ReOPD), an off-environment alternative that reuses pre-collected teacher trajectories as replayed prefixes: the student acts at selected steps, while the teacher provides dense per-step supervision without executing new environment interactions. We show that multi-turn OPD introduces a prefix trap: making histories more student-on-policy improves relevance to the student, but can query the teacher on histories where its target is unreliable. This creates a two-sided distribution shift between student occupancy and teacher reliability. ReOPD addresses this by treating multi-turn OPD as a reliability-aware prefix distribution design and implements it with a simple step-decaying sampling schedule that emphasizes early, lower-shift prefixes. Across mathematical reasoning with Python and search environments over multiple teacher and student model scales, ReOPD preserves or improves OPD-level accuracy, uses zero tool calls during student training, and is at least 4$\\times$ faster per rollout than OPD. ReOPD therefore turns expensive agent-environment interaction into a reusable offline resource, enabling scalable distillation across tools, tasks, and environments.",
+        "published": "2026-07-06T07:56:53Z",
+        "authors": [
+          "Baohao Liao",
+          "Hanze Dong",
+          "Christof Monz",
+          "Xinxing Xu",
+          "Li Dong",
+          "Furu Wei"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2607.04763v2"
+      },
+      "priority_score": 39,
+      "korean_title": "접두사 재생을 활용한 다회차 온-정책 증류"
+    },
+    "2607_21553v1": {
+      "id": "2607_21553v1",
+      "filename": "post_2607_21553v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-07-24T19:17:57.060501+00:00",
+      "paper": {
+        "title": "SANA-Video 2.0: Hybrid Linear Attention with Attention Residuals for Efficient Video Generation",
+        "summary": "We introduce SANA-Video 2.0, a hybrid video diffusion transformer instantiated at 5B and 14B scales under a unified architecture. Designed to generate high-quality video up to 720p on a single GPU, SANA-Video 2.0 matches full-softmax video DiTs in quality while retaining the favorable long-sequence scaling of linear attention. To avoid quadratic attention throughout, Hybrid Linear-Softmax Attention combines gated linear attention for O(N)-dominated mixing with periodic gated-softmax anchors at a 3:1 ratio, restoring the full-rank token interactions that pure linear attention lacks. To propagate these refreshed representations across depth, Block Attention Residuals (AttnRes) route completed block summaries into later linear layers, enabling anchor-feature reuse and boosting deep-layer effective rank by ~12%. Through from-scratch training, SANA-Video 2.0 learns the complete hybrid directly rather than linearizing pretrained models, with reduced-resolution proxy studies establishing 25% softmax as the optimal quality-efficiency trade-off. With 40-step sampling, SANA-Video 2.0 achieves a VBench score of 84.30 in 13.2s at 480p on a single H100, remaining competitive with far larger softmax video DiTs at a fraction of the latency. Its compiled DiT forward pass is 3.2x faster than a matched full-softmax baseline at 720p/60s, a gap that expands with video duration. Furthermore, full-stack Sol-Engine optimization (kernel fusion, caching, and sparse attention) accelerates this hardware-friendly backbone by a further 3.58x, bringing the 5B pipeline to 13.06s at 720p/5s and making it 120x faster than Wan 2.2-A14B on one H100. Overall, our hybrid design recovers softmax-level expressiveness at substantially reduced cost, unlocking scalable long, high resolution video generation.",
+        "published": "2026-07-23T17:36:05Z",
+        "authors": [
+          "Junsong Chen",
+          "Jincheng Yu",
+          "Yitong Li",
+          "Shuchen Xue",
+          "Haozhe Liu",
+          "Jingyu Xin",
+          "Yuyang Zhao",
+          "Tian Ye",
+          "Zhangjie Wu",
+          "Zian Wang",
+          "Daquan Zhou",
+          "Ping Luo",
+          "Song Han",
+          "Enze Xie"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2607.21553v1"
+      },
+      "priority_score": 20,
+      "korean_title": "SANA-Video 2.0: 효율적인 비디오 생성을 위한 하이브리드 선형 어텐션 및 어텐션 레지듀얼"
     }
   },
   "last_run": {
-    "started_at": "2026-07-24T16:34:37.443442+00:00",
-    "discovered": 30,
+    "started_at": "2026-07-24T19:17:26.330281+00:00",
+    "discovered": 10,
     "selected": 4,
     "generated": 4,
     "failed": 0,
@@ -2883,26 +2974,26 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 20663,
-      "output_tokens": 5844,
+      "prompt_tokens": 19920,
+      "output_tokens": 5658,
       "thought_tokens": 0,
-      "total_tokens": 26507,
-      "estimated_usd": 0.01393175
+      "total_tokens": 25578,
+      "estimated_usd": 0.013467
     },
-    "finished_at": "2026-07-24T16:35:47.881530+00:00"
+    "finished_at": "2026-07-24T19:18:06.402535+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 159,
-    "prompt_tokens": 395890,
-    "output_tokens": 119009,
+    "requests": 167,
+    "prompt_tokens": 415810,
+    "output_tokens": 124667,
     "thought_tokens": 0,
-    "total_tokens": 514899,
-    "estimated_usd": 0.277486
+    "total_tokens": 540477,
+    "estimated_usd": 0.290953
   },
   "last_publication_run": {
-    "started_at": "2026-07-24T16:34:37.443442+00:00",
-    "discovered": 30,
+    "started_at": "2026-07-24T19:17:26.330281+00:00",
+    "discovered": 10,
     "selected": 4,
     "generated": 4,
     "failed": 0,
@@ -2912,17 +3003,17 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 20663,
-      "output_tokens": 5844,
+      "prompt_tokens": 19920,
+      "output_tokens": 5658,
       "thought_tokens": 0,
-      "total_tokens": 26507,
-      "estimated_usd": 0.01393175
+      "total_tokens": 25578,
+      "estimated_usd": 0.013467
     },
-    "finished_at": "2026-07-24T16:35:47.881530+00:00"
+    "finished_at": "2026-07-24T19:18:06.402535+00:00"
   },
   "daily_usage": {
     "date": "2026-07-24",
-    "estimated_usd": 0.1162625,
-    "publications": 34
+    "estimated_usd": 0.1297295,
+    "publications": 38
   }
 }

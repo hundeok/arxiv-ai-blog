@@ -1,0 +1,67 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>접두사 재생을 활용한 다회차 온-정책 증류 | ArXiv Translator AI</title><meta name="description" content="접두사 재생을 활용한 다회차 온-정책 증류"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2607_04763v2"><meta property="og:type" content="article"><meta property="og:title" content="접두사 재생을 활용한 다회차 온-정책 증류"><meta property="og:description" content="접두사 재생을 활용한 다회차 온-정책 증류"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2607_04763v2"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="접두사 재생을 활용한 다회차 온-정책 증류"><meta name="twitter:description" content="접두사 재생을 활용한 다회차 온-정책 증류"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2607_04763v2");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "접두사 재생을 활용한 다회차 온-정책 증류", "description": "접두사 재생을 활용한 다회차 온-정책 증류", "datePublished": "2026-07-06", "url": "https://arxiv-ai-blog.vercel.app/papers/2607_04763v2", "author": [{"@type": "Person", "name": "Baohao Liao"}, {"@type": "Person", "name": "Hanze Dong"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2607_04763v2", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2607_04763v2"});gtag('event', 'paper_view', {"paper_id": "2607_04763v2", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>접두사 재생을 활용한 다회차 온-정책 증류</h1><p>접두사 재생을 활용한 다회차 온-정책 증류</p><pre>접두사 재생을 활용한 다회차 온-정책 증류
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Multi-Turn On-Policy Distillation with Prefix Replay
+&gt; - **저자:** Baohao Liao, Hanze Dong, Christof Monz, Xinxing Xu, Li Dong, Furu Wei
+&gt; - **발행일:** 2026-07-06
+&gt; - **PDF 링크:** [Multi-Turn On-Policy Distillation with Prefix Replay](https://arxiv.org/pdf/2607.04763v2)
+
+
+✨ 3줄 핵심 요약
+* **ReOPD(Replayed-Prefix On-Policy Distillation)**는 LLM 에이전트 학습 시 환경과의 상호작용 없이, 미리 수집된 교사의 경로를 재사용하여 효율적으로 모델을 증류합니다.
+* &#x27;접두사 함정(prefix trap)&#x27; 문제를 해결하기 위해 학습 과정에서 초기 단계의 경로에 높은 가중치를 두는 &#x27;단계별 감쇠(step-decaying)&#x27; 스케줄링을 도입했습니다.
+* 기존의 온-정책 증류(OPD) 대비 환경 호출 횟수를 0으로 줄이고, 롤아웃 속도를 최소 4배 이상 향상하면서도 동일하거나 더 나은 성능을 유지합니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+에이전트 모델을 학습시킬 때, 모델이 환경과 실제로 상호작용하며 데이터를 얻는 &#x27;온-정책 증류(OPD)&#x27; 방식은 매번 환경을 호출해야 하므로 비용이 매우 큽니다. 본 연구에서는 이를 개선하기 위해 **ReOPD**를 제안합니다. 이 방식은 교사 모델이 이미 탐험한 경로를 &#x27;접두사(Prefix)&#x27;로 활용합니다. 학습 시 환경을 새로 호출하는 대신, 기록된 경로의 특정 지점까지는 교사의 기록을 따라가고, 그 다음 단계에서만 학생 모델이 직접 행동을 결정하게 합니다. 이때 학습이 진행될수록 학생과 교사 간의 신뢰도 차이가 벌어지는 문제를 &#x27;단계별 가중치 감쇠&#x27; 기술로 해결하여, 성능 저하 없이 학습 효율을 극적으로 높였습니다.
+
+🎯 배경 및 문제점
+* **비용 문제:** 완전한 온라인 방식의 온-정책 증류(OPD)는 매 업데이트마다 실시간 환경 상호작용과 교사 모델의 추론이 필요하여 매우 비용이 많이 듭니다.
+* **접두사 함정(Prefix Trap):** 다회차 상호작용에서 접두사를 재사용하면 두 가지 문제가 발생합니다. 하나는 학생 모델이 실제 도달할 경로와 교사의 경로가 일치하지 않는 &#x27;분포 이동(distribution shift)&#x27; 현상이고, 다른 하나는 경로가 길어질수록 교사의 판단 신뢰도가 떨어지는 문제입니다.
+
+💡 핵심 기술 및 아키텍처
+* **환경 없는 오프라인 증류:** 기존의 실시간 환경 상호작용을 배제하고, 미리 수집된 교사의 궤적(trajectory)을 재사용합니다.
+* **신뢰도 기반 가중치 설계:** 경로가 길어질수록 오류가 누적될 위험이 높으므로, 초기 단계의 경로에 더 큰 가중치를 부여하고 후반부로 갈수록 가중치를 낮추는 &#x27;단계별 감쇠(step-decaying) 샘플링 스케줄&#x27;을 적용했습니다.
+* **구현:** 학생 모델은 교사가 제공한 접두사 기록을 바탕으로 특정 시점에서만 행동하며, 교사의 조건부 확률을 목표로 학습합니다.
+
+📊 실험 결과 분석
+* **속도 개선:** 수학 문제 풀이 및 검색 환경 등에서 OPD 대비 롤아웃 당 시간을 최소 4배에서 최대 9.1배까지 단축했습니다.
+* **성능 유지:** Qwen3-4B 모델을 학생으로, Qwen3-8B를 교사로 사용한 실험 결과, 기존 OPD 방식과 동등하거나 더 나은 정확도를 기록했습니다.
+* **환경 호출:** 학습 과정 중 도구 호출(Tool call) 횟수를 0으로 줄여 자원 효율성을 극대화했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **대규모 증류의 대중화:** 환경 상호작용이라는 병목 현상을 제거함으로써, 다양한 도구(Tool), 작업(Task), 환경에 걸쳐 더 크고 복잡한 에이전트 모델을 저비용으로 학습할 수 있는 토대를 마련했습니다.
+* **데이터 재사용:** 강화학습(RL) 과정에서 생성된 교사의 데이터를 버리지 않고 증류를 위한 자원으로 재활용할 수 있어, 데이터 활용 측면에서 매우 경제적입니다.
+* **실무 적용:** 고비용의 실시간 환경 연동이 어려운 상황에서도 정교한 에이전트 모델을 구축하고자 하는 기업이나 연구 현장에 즉각적으로 적용 가능한 효율적인 대안이 될 것으로 기대됩니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2607.04763 Multi-Turn On-Policy Distillation with Prefix Replay](https://arxiv.org/abs/2607.04763)
+&gt; - [Multi-Turn On-Policy Distillation with Prefix Replay](https://arxiv.org/html/2607.04763v1)
+&gt; - [Multi-Turn On-Policy Distillation with Prefix Replay Baohao Liao∗†12](https://arxiv.org/pdf/2607.04763)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;이론적으로 &#x27;Prefix Trap&#x27;을 단계별 감쇠 스케줄링으로 완화했다는 점은 흥미롭지만, 실제 환경 피드백이 전무한 상태에서 분포 이동(Distribution Shift) 문제를 완전히 해결했다고 보기 어렵습니다. 특히 장기 의존성(Long-horizon) 문제에서 단순 재사용이 과연 오프라인 강화학습의 한계를 극복할 수 있을지 의문이 드네요. 수렴성에 대한 엄밀한 증명 없이 성능만 나열하는 건 현업의 전형적인 호들갑입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 일리는 있지만, 엔지니어 입장에서는 &#x27;환경 호출 0회&#x27;라는 사실만으로도 기립박수 칩니다. 매번 API 비용 태우면서 롤아웃 돌리느라 며칠씩 걸리던 작업이 4배 이상 빨라진다면, 이건 프로덕션 레벨에서 &#x27;가성비&#x27;가 차원이 다른 이야기거든요. 일단 파이프라인에 태워서 실무 데이터로 검증해보는 게 급선무일 듯합니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;두 분 의견 다 일리가 있네요! 근데 이거 지금 커뮤니티에서 난리 났어요. ReOPD 방식으로 Qwen3 4B가 8B 성능 따라가는 거 보니까, 이제 에이전트 학습 비용 때문에 쩔쩔매던 랩실들 다 이거 파고들 것 같아요. 교수님은 엄밀함 지적하시지만, 사실 이런 효율성 개선 논문이 결국 SOTA 파라미터 다이어트의 핵심 아니겠어요? 당장 구현 코드 뜯어봐야겠네요.&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

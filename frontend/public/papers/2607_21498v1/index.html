@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>인공적 에판오르토시스: 거대 언어 모델은 왜 고전적 수사법을 과도하게 사용하는가, 그리고 이를 어떻게 완화할 것인가 | ArXiv Translator AI</title><meta name="description" content="인공적 에판오르토시스: 거대 언어 모델은 왜 고전적 수사법을 과도하게 사용하는가, 그리고 이를 어떻게 완화할 것인가"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2607_21498v1"><meta property="og:type" content="article"><meta property="og:title" content="인공적 에판오르토시스: 거대 언어 모델은 왜 고전적 수사법을 과도하게 사용하는가, 그리고 이를 어떻게 완화할 것인가"><meta property="og:description" content="인공적 에판오르토시스: 거대 언어 모델은 왜 고전적 수사법을 과도하게 사용하는가, 그리고 이를 어떻게 완화할 것인가"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2607_21498v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="인공적 에판오르토시스: 거대 언어 모델은 왜 고전적 수사법을 과도하게 사용하는가, 그리고 이를 어떻게 완화할 것인가"><meta name="twitter:description" content="인공적 에판오르토시스: 거대 언어 모델은 왜 고전적 수사법을 과도하게 사용하는가, 그리고 이를 어떻게 완화할 것인가"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2607_21498v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "인공적 에판오르토시스: 거대 언어 모델은 왜 고전적 수사법을 과도하게 사용하는가, 그리고 이를 어떻게 완화할 것인가", "description": "인공적 에판오르토시스: 거대 언어 모델은 왜 고전적 수사법을 과도하게 사용하는가, 그리고 이를 어떻게 완화할 것인가", "datePublished": "2026-07-23", "url": "https://arxiv-ai-blog.vercel.app/papers/2607_21498v1", "author": [{"@type": "Person", "name": "Federico Boggia"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2607_21498v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2607_21498v1"});gtag('event', 'paper_view', {"paper_id": "2607_21498v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>인공적 에판오르토시스: 거대 언어 모델은 왜 고전적 수사법을 과도하게 사용하는가, 그리고 이를 어떻게 완화할 것인가</h1><p>인공적 에판오르토시스: 거대 언어 모델은 왜 고전적 수사법을 과도하게 사용하는가, 그리고 이를 어떻게 완화할 것인가</p><pre>인공적 에판오르토시스: 거대 언어 모델은 왜 고전적 수사법을 과도하게 사용하는가, 그리고 이를 어떻게 완화할 것인가
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Artificial Epanorthosis: Why large language models overuse a classical rhetorical figure, and how to mitigate it
+&gt; - **저자:** Federico Boggia
+&gt; - **발행일:** 2026-07-23
+&gt; - **PDF 링크:** [Artificial Epanorthosis: Why large language models overuse a classical rhetorical figure, and how to mitigate it](https://arxiv.org/pdf/2607.21498v1)
+
+
+✨ 3줄 핵심 요약
+* 거대 언어 모델(LLM)은 &quot;이것은 ~가 아니다. 이것은 ~이다&quot;와 같은 &#x27;에판오르토시스(자기 수정 수사법)&#x27;를 인간보다 과도하게 사용하는 경향이 있습니다.
+* 이러한 현상은 주로 홍보성 데이터 학습과 자신감 있는 어조를 선호하도록 유도하는 RLHF(인간 피드백 기반 강화학습)의 결과입니다.
+* 연구는 LoRA 어댑터와 같은 경량화 기법이나 간단한 프롬프트 조정을 통해, 이 수사법을 인간 수준으로 보정하여 자연스러운 문장을 만드는 방법을 제시합니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+우리가 흔히 접하는 챗봇이나 광고 문구에서 &quot;~가 아닙니다. ~입니다&quot;라는 식의 강조형 문장을 자주 발견할 수 있습니다. 이는 고대 수사학에서 &#x27;에판오르토시스&#x27;라고 부르는 기법입니다. 논문은 AI가 왜 이런 식의 말투를 고착화하게 되었는지 분석합니다. AI는 학습 과정에서 더 설득력 있고 확신에 찬 어조를 내도록 훈련받는데, 이 과정에서 해당 수사법이 지나치게 반복되는 부작용이 발생합니다. 저자는 이를 없애는 것이 아니라, 인간이 글을 쓰는 수준에 맞춰 적절히 조절(Calibration)하는 것이 중요하며, 이를 위한 실질적인 기술적 해결책을 제안합니다.
+
+🎯 배경 및 문제점
+* **현상:** LLM은 답변의 권위를 높이기 위해 자기 수정적 강조 문구를 습관적으로 생성합니다.
+* **원인:** 모델의 사전 학습 데이터 중 홍보성 문구의 비중이 높고, RLHF를 통해 확신에 찬 어조를 보상받는 훈련 방식이 이를 강화했습니다.
+* **문제점:** 기계적인 문체로 인해 인간 고유의 자연스러운 표현 방식과 괴리가 생기며, 사용자가 AI가 생성한 글임을 쉽게 알아채게 만드는 &#x27;수사학적 지문&#x27;으로 작용합니다.
+
+💡 핵심 기술 및 아키텍처
+* **에판오르토시스 지수(Epanorthosis Index):** 인간의 글쓰기 속도와 비교하여 해당 수사법의 밀도를 측정하는 지표입니다.
+* **LoRA 어댑터:** 모델 전체를 재학습하지 않고도, 특정 수사법의 밀도를 낮추거나 조절할 수 있는 경량화된 어댑터 기술을 적용했습니다.
+* **계층적 제어:** 문맥에 맞춰 수사법 사용 빈도를 조절할 수 있는 &#x27;다이얼&#x27; 형태의 제어 기능을 지향합니다.
+
+📊 실험 결과 분석
+* **편향성 발견:** 연설문 장르에서는 인간보다 약 2배(이탈리아어의 경우 3배 가까이) 더 자주 해당 기법을 사용하며, 정보성 Q&amp;A 장르에서는 오히려 사용 빈도가 낮음을 확인했습니다.
+* **완화 효과:** 이탈리아어 실험에서 단 한 줄의 프롬프트만으로도 수사법 사용 빈도를 1/2에서 3/4 수준으로 줄일 수 있었습니다.
+* **미세 조정:** 지도 미세 조정(SFT) 어댑터를 사용하면 해당 수사법을 거의 제거하거나, 필요에 따라 인간 수준의 비율로 정밀하게 되돌릴 수 있음을 입증했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **글쓰기의 인간성 회복:** AI가 만든 글이 획일화된 말투를 탈피하여, 장르와 목적에 맞는 보다 인간적이고 자연스러운 문체를 구사할 수 있게 합니다.
+* **실무 적용:** 마케팅 문구 생성, 뉴스 작성, 학술적 글쓰기 등 각 장르별로 요구되는 수사적 밀도를 정밀하게 제어하여 AI 콘텐츠의 가독성과 신뢰도를 높일 수 있습니다.
+* **경고:** 저자는 기술의 핵심 위험으로 &#x27;우리가 기계처럼 글을 쓰기 시작할 위험&#x27;을 지적하며, AI의 언어 습관이 인간의 언어 습관을 역으로 잠식하지 않도록 보정하는 작업의 중요성을 강조합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2607.21498 Artificial Epanorthosis: Why large language ...](https://arxiv.org/abs/2607.21498)
+&gt; - [Artificial Epanorthosis: Why large language models overuse a ...](https://papers.cool/arxiv/2607.21498)
+&gt; - [Artificial Epanorthosis: Why large language models overuse a ...](https://arxivtldr.org/abs/2607.21498)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문 제목을 보고 흥미롭다 생각했는데, 결국 RLHF가 모델의 수사적 정체성을 과하게 편향시킨다는 고전적인 문제를 지적하는군요. 에판오르토시스 지수라는 개념은 신선하지만, 이게 과연 단순한 수사법의 문제일까요? 언어 모델이 확신에 찬 어조를 보상받는 과정에서 논리적 비약까지 세트로 학습되고 있다는 점이 더 우려스럽습니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로입니다. 현업에선 지금 RLHF 데이터셋에 있는 &#x27;홍보성 말투&#x27;를 걸러내느라 다들 골머리를 앓고 있거든요. LoRA 어댑터로 이걸 제어한다는 건 실무적으로 아주 매력적인 접근입니다. 파이프라인 전체를 다시 학습시킬 필요 없이, 서빙 레이어 직전에 스타일 제어 어댑터 하나만 끼우면 되니까요. 이거 바로 우리 팀 프로덕트에 테스트해봐야겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;다들 너무 기술적으로만 보시는 거 아니에요? ㅋㅋㅋ 저는 이 논문이 &#x27;AI 냄새&#x27;를 지우는 중요한 분기점이 될 거라 봅니다. 요새 AI 글은 딱 보면 &#x27;아, 이거 챗GPT가 썼네&#x27; 싶은 그 특유의 폼이 있잖아요? 에판오르토시스 밀도를 조절하는 것만으로도 LLM의 &#x27;언어적 지문&#x27;을 지울 수 있다면, 앞으로 프롬프트 엔지니어링의 판도가 완전히 바뀔 것 같아요. 논문 당장 클럽하우스에서 발제해야겠네요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
