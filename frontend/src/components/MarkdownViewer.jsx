@@ -132,7 +132,8 @@ export default function MarkdownViewer({ filename, paper, onBack }) {
           repoId="R_kgDOTdtoLQ"
           category="General"
           categoryId="DIC_kwDOTdtoLc4DBzAq"
-          mapping="pathname"
+          mapping="specific"
+          term={paper ? paper.korean_title : "ArXiv Translator"}
           strict="0"
           reactionsEnabled="1"
           emitMetadata="0"
