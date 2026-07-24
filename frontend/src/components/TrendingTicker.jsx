@@ -10,7 +10,7 @@ export default function TrendingTicker() {
       .then(data => {
         if (Array.isArray(data)) {
           const papers = data
-            .slice(0, 10)
+            .slice(0, 20)
             .filter(item => item.paper?.title && item.paper?.id)
             .map(item => ({ title: item.paper.title, id: item.paper.id }));
           setTrending(papers);
@@ -102,7 +102,7 @@ export default function TrendingTicker() {
           75% { transform: scale(1.1) rotate(2deg); opacity: 1; }
         }
         .ticker-wrapper {
-          animation: ticker 40s linear infinite;
+          animation: ticker 80s linear infinite;
         }
         .ticker-wrapper:hover {
           animation-play-state: paused;
