@@ -1,0 +1,71 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>FVAttn: 비디오 생성을 위한 런타임 부하 분산을 갖춘 적응형 희소 어텐션 | ArXiv Translator AI</title><meta name="description" content="FVAttn: 비디오 생성을 위한 런타임 부하 분산을 갖춘 적응형 희소 어텐션"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2607_16190v1"><meta property="og:type" content="article"><meta property="og:title" content="FVAttn: 비디오 생성을 위한 런타임 부하 분산을 갖춘 적응형 희소 어텐션"><meta property="og:description" content="FVAttn: 비디오 생성을 위한 런타임 부하 분산을 갖춘 적응형 희소 어텐션"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2607_16190v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="FVAttn: 비디오 생성을 위한 런타임 부하 분산을 갖춘 적응형 희소 어텐션"><meta name="twitter:description" content="FVAttn: 비디오 생성을 위한 런타임 부하 분산을 갖춘 적응형 희소 어텐션"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2607_16190v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "FVAttn: 비디오 생성을 위한 런타임 부하 분산을 갖춘 적응형 희소 어텐션", "description": "FVAttn: 비디오 생성을 위한 런타임 부하 분산을 갖춘 적응형 희소 어텐션", "datePublished": "2026-07-17", "url": "https://arxiv-ai-blog.vercel.app/papers/2607_16190v1", "author": [{"@type": "Person", "name": "Hao Liu"}, {"@type": "Person", "name": "Chenghuan Huang"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2607_16190v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2607_16190v1"});gtag('event', 'paper_view', {"paper_id": "2607_16190v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>FVAttn: 비디오 생성을 위한 런타임 부하 분산을 갖춘 적응형 희소 어텐션</h1><p>FVAttn: 비디오 생성을 위한 런타임 부하 분산을 갖춘 적응형 희소 어텐션</p><pre>FVAttn: 비디오 생성을 위한 런타임 부하 분산을 갖춘 적응형 희소 어텐션
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** FVAttn: Adaptive Sparse Attention with Runtime Load Balancing for Video Generation
+&gt; - **저자:** Hao Liu, Chenghuan Huang, Ye Huang, Zhiying Wen, Hao Liu, Mohan Zhang, Chen Li, Ziyang Ma, Jing Lyu, Jiangsu Du
+&gt; - **발행일:** 2026-07-17
+&gt; - **PDF 링크:** [FVAttn: Adaptive Sparse Attention with Runtime Load Balancing for Video Generation](https://arxiv.org/pdf/2607.16190v1)
+
+
+✨ 3줄 핵심 요약
+*   비디오 생성 모델에서 발생하는 &#x27;희소 어텐션의 부하 불균형&#x27; 문제를 해결하는 시스템입니다.
+*   런타임에 GPU 간 부하를 실시간으로 재분배하고, 남는 자원을 활용해 추가 연산을 수행하여 효율을 극대화합니다.
+*   FlashAttention 대비 4.41배의 어텐션 속도 향상과 2.02~2.11배의 전체 추론 속도 개선을 달성했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+비디오 생성 모델(Video DiT)은 긴 영상을 처리할 때 &#x27;어텐션&#x27;이라는 연산에 매우 많은 시간이 소요됩니다. 이를 해결하기 위해 필요한 부분만 골라내는 &#x27;희소 어텐션(Sparse Attention)&#x27; 기법이 쓰이지만, 각 GPU에 할당된 연산량이 제각각이라 특정 GPU가 끝날 때까지 모두가 기다려야 하는 병목 현상이 발생합니다. 
+
+FVAttn은 이 문제를 &#x27;런타임 부하 분산(RLB)&#x27;으로 해결합니다. 작업이 한쪽으로 쏠리면 즉시 연산 일부를 다른 GPU로 옮기고, 여유가 생긴 GPU에는 추가 연산을 시켜 자원을 알뜰하게 씁니다. 결과적으로 전체적인 기다림 시간을 획기적으로 줄여 비디오 생성 속도를 높였습니다.
+
+🎯 배경 및 문제점
+*   **병목 현상:** 고해상도 비디오 생성 시 어텐션 연산이 전체 추론 시간의 74.1%(Wan2.2-14B 기준)를 차지합니다.
+*   **부하 불균형:** 기존의 &#x27;Top-p 라우팅&#x27; 방식은 각 헤드별로 연산량을 유동적으로 조절하는데, 이 과정에서 GPU별로 작업 부하가 불균등해집니다.
+*   **연산 지연:** 여러 GPU가 병렬로 작동할 때 가장 느린 GPU(Straggler)가 전체 시스템의 속도를 늦추는 문제가 발생합니다.
+
+💡 핵심 기술 및 아키텍처
+*   **런타임 부하 분산 (RLB):** 어텐션 헤드들 중 연산량이 많은 무거운 헤드를 P2P 통신을 통해 다른 GPU로 옮겨 최장 연산 경로(Critical Path)를 단축합니다.
+*   **슬랙 기반 희소 증강 (SASA):** 부하 분산 후에도 여유가 있는(비임계) GPU에 고가치의 블록 연산을 추가로 할당하여, 대기 시간을 유효한 연산 시간으로 전환합니다.
+*   **중첩 최적화 (Overlap/Opt.):** 스케줄링, 데이터 이동, 연산 과정을 겹쳐서 처리함으로써 오버헤드를 숨기고 성능을 높입니다.
+
+📊 실험 결과 분석
+*   **부하 균형:** Wan2.2 I2V 모델에서 평균 부하 불균형 지수를 1.34에서 1.08로 개선했습니다.
+*   **속도 향상:** FlashAttention 대비 어텐션 연산 속도를 4.41배 높였으며, 전체 DiT 추론 속도는 2.02~2.11배 빨라졌습니다.
+*   **품질 유지:** 속도 개선에도 불구하고 경쟁력 있는 비디오 생성 품질을 유지했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+*   **실무적 의의:** 고비용의 비디오 생성 서비스를 운영하는 기업이 동일한 하드웨어 환경에서 훨씬 빠르게 더 많은 영상을 생성할 수 있게 합니다.
+*   **한계점:** 희소성이 적은 짧은 시퀀스나 일반 이미지 생성 작업에서는 효과가 감소합니다.
+*   **확장성:** 현재 Ulysses-style 병렬 처리에 최적화되어 있으나, 향후 Ring Attention 등 다양한 분산 처리 환경으로의 확장이 가능할 것으로 예상됩니다.
+*   **하드웨어 의존성:** GPU 간 통신 대역폭이 충분한 환경에서 더 뛰어난 성능을 발휘합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Deep Learning Monitor - Find new Arxiv papers, tweets and Reddit posts for you](https://deeplearn.org/)
+&gt; - [FVAttn: Adaptive Sparse Attention with Runtime Load Balancing...](https://arxiv.org/html/2607.16190)
+&gt; - [Paper page - FVAttn: Adaptive Sparse Attention with Runtime Load...](https://huggingface.co/papers/2607.16190)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문은 흥미롭지만, 런타임 부하 분산(RLB) 과정에서 발생하는 P2P 통신 오버헤드가 과연 얼마나 엄밀하게 제어되었는지 의문이군요. 특히 데이터 이동 비용이 연산 이득을 상쇄하는 임계점을 명확히 제시하지 않으면, 대규모 클러스터 환경에서는 오히려 노이즈가 될 수 있습니다. 이론적 우아함은 인정하나 실질적인 프로덕션 환경에서의 강건성 검증이 더 필요해 보입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 통신 오버헤드가 관건이죠. 하지만 현업 입장에서 &#x27;가장 느린 녀석(Straggler)&#x27; 때문에 전체 인프라 효율이 박살 나는 걸 보고 있으면, 이 정도의 trade-off는 감지덕지입니다. 당장 Wan2.2 모델 추론 속도 2배 향상이면 GPU 인스턴스 비용 절감액이 어마어마할 텐데, 인프라 팀 입장에선 당장 도입 테스트해 볼 가치가 충분합니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 4.41배 속도 향상이라니 미쳤네요! FlashAttention도 한계가 올 때가 됐다고 생각했는데, 결국 &#x27;동적 스케줄링&#x27;이 답이었군요. 교수님은 오버헤드 걱정하시지만, 지금 이 속도면 모델 사이즈 키워서 더 고퀄리티 비디오 뽑아낼 생각에 벌써 가슴이 뜁니다. 내일 바로 코드 뜯어보고 우리 랩 서버에 올려봐야겠어요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
