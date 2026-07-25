@@ -1,0 +1,72 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>공리를 포함한 계획 수립을 위한 논리적 회귀 | ArXiv Translator AI</title><meta name="description" content="공리를 포함한 계획 수립을 위한 논리적 회귀"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2607_21414v1"><meta property="og:type" content="article"><meta property="og:title" content="공리를 포함한 계획 수립을 위한 논리적 회귀"><meta property="og:description" content="공리를 포함한 계획 수립을 위한 논리적 회귀"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2607_21414v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="공리를 포함한 계획 수립을 위한 논리적 회귀"><meta name="twitter:description" content="공리를 포함한 계획 수립을 위한 논리적 회귀"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2607_21414v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "공리를 포함한 계획 수립을 위한 논리적 회귀", "description": "공리를 포함한 계획 수립을 위한 논리적 회귀", "datePublished": "2026-07-23", "url": "https://arxiv-ai-blog.vercel.app/papers/2607_21414v1", "author": [{"@type": "Person", "name": "Connor Little"}, {"@type": "Person", "name": "Christian Muise"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2607_21414v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2607_21414v1"});gtag('event', 'paper_view', {"paper_id": "2607_21414v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>공리를 포함한 계획 수립을 위한 논리적 회귀</h1><p>공리를 포함한 계획 수립을 위한 논리적 회귀</p><pre>공리를 포함한 계획 수립을 위한 논리적 회귀
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Logical Regression for Planning with Axioms
+&gt; - **저자:** Connor Little, Christian Muise
+&gt; - **발행일:** 2026-07-23
+&gt; - **PDF 링크:** [Logical Regression for Planning with Axioms](https://arxiv.org/pdf/2607.21414v1)
+
+
+✨ 3줄 핵심 요약
+*   본 논문은 복잡한 공리(Axiom)가 포함된 도메인에서 자동 계획 수립을 위해 &#x27;논리적 회귀(Logical Regression)&#x27;를 근사적으로 계산하는 새로운 방법론을 제시합니다.
+*   제안된 기법은 상태의 일부 변수만을 고려하는 &#x27;부분 상태(Partial States)&#x27;를 생성하여, 계획 실행 모니터링 시 고려해야 할 변수 수를 최대 70%까지 줄였습니다.
+*   실험 결과, 예기치 않은 환경 변화가 발생했을 때 재계획 없이 복구하는 성공률이 여러 도메인에서 50% 이상을 기록했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+자동 계획(Automated Planning) 시스템은 초기 상태에서 목표 상태로 가는 경로를 찾습니다. 이때 &#x27;공리&#x27;라는 규칙이 있으면 복잡한 현상을 효율적으로 표현할 수 있지만, 계산 비용이 매우 높다는 단점이 있습니다. 연구진은 이 공리들을 완벽하게 계산하는 대신, 필요한 정보만 추출하는 &#x27;근사적 논리적 회귀&#x27; 방법을 고안했습니다. 이 방법을 통해 계획 실행 중 문제가 생겼을 때, 전체를 다시 계산(재계획)하는 대신 핵심적인 부분만 확인하여 빠르게 복구할 수 있게 되었습니다.
+
+🎯 배경 및 문제점
+*   **공리의 유용성과 한계**: 공리는 파생 변수의 진릿값을 정의하여 탐색 공간을 줄여주지만, 구현 복잡도가 높아 많은 계획 수립 시스템에서 지원하지 않습니다.
+*   **논리적 회귀의 어려움**: 논리적 회귀는 특정 행동이 목표를 달성하기 위한 가장 일반적인 조건을 찾는 과정인데, 공리가 포함되면 이 계산이 매우 복잡하고 비용이 많이 듭니다.
+*   **실행 모니터링의 필요성**: 예측 불가능한 환경에서 계획대로 실행되지 않을 때, 에이전트가 실패를 방지하고 적절히 대응할 방법이 필요합니다.
+
+💡 핵심 기술 및 아키텍처
+*   **근사적 논리적 회귀**: 완전한 회귀 공식 대신, 최소한의 부분 상태만을 사용하여 목표를 달성할 수 있는 조건을 근사합니다.
+*   **세 가지 방법론**:
+    1.  **나이브(Naive) 방식**: 모든 기본 변수를 유지하여 공리 계산을 원상태와 동일하게 보존(기준점 역할).
+    2.  **관련 변수(Relevant Variables) 방식**: 특정 공리 계산에 직접적/간접적으로 영향을 주는 변수만 식별하여 포함.
+    3.  **후처리(Post-processing) 방식**: 원하는 결과를 도출하기 위해 필요한 특정 공리 집합을 선택.
+*   **실행 모니터링**: 생성된 부분 상태를 활용해 실행 중인 계획이 여전히 유효한지 감시하며, 상황 변화 시 재계획 없이 복구를 시도합니다.
+
+📊 실험 결과 분석
+*   **변수 감소**: 실행 모니터링 과정에서 고려해야 할 변수 수를 최대 70%까지 줄였습니다.
+*   **복구율**: 실험 대상인 8개 도메인에서 약 절반(50%) 이상의 경우에 재계획 없이 성공적으로 상황을 복구했습니다.
+*   **계획 접미사(Suffix) 길이**: 표 3을 통해 확인한 결과, 실행 모니터는 대개 계획의 중간 지점에서 복구를 수행할 수 있음을 보였습니다. (단, 도메인별 편차가 존재함)
+*   **성능 비교**: 현재의 벤치마크 환경에서는 매 단계마다 후처리를 적용하는 것보다 목표 상태에만 적용하는 것이 전반적인 성능상 차이가 거의 없음을 확인했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+*   **계산 효율화**: 재계획 횟수를 줄임으로써 복잡한 환경에서의 계획 수립 시스템의 연산 시간을 크게 절약할 수 있습니다.
+*   **견고한 실행**: 예기치 못한 변화가 발생하는 불확실한 실무 환경(예: 로봇 제어, 자동화 공정 등)에서 계획이 실패하지 않고 유연하게 대처하는 능력을 높여줍니다.
+*   **향후 연구 방향**: 현재는 결정론적 도메인에 초점이 맞춰져 있으나, 향후 조건부/비결정론적 효과까지 확장하고 공리가 풍부하게 포함된 벤치마크 데이터를 추가 확보할 계획입니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Logical Regression for Planning with Axioms](https://arxiv.org/html/2607.21414)
+&gt; - [2607.21414 Logical Regression for Planning with Axioms](https://arxiv.org/abs/2607.21414)
+&gt; - [Logical Regression for Planning with Axioms](https://chatpaper.com/paper/313044)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논리적 회귀의 근사화라, 개념 자체는 흥미롭지만 &#x27;부분 상태&#x27;가 가진 정보 손실에 대한 이론적 보장이 부족해 보입니다. 특히 도메인 전반에 걸쳐 공리 계산의 복잡도를 줄였다고는 하나, 복구 실패 시 발생하는 재계획의 오버헤드가 최악의 경우(Worst-case)에 어떻게 수렴하는지 명확한 증명이 없군요. 학술적으로는 좀 더 엄밀한 분석이 필요해 보입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님, 이론적 완결성도 중요하지만 현업에서는 70% 변수 감소와 50%의 재계획 방어율이면 당장 프로덕션에 올려볼 만한 수치입니다. 로봇 제어나 물류 자동화에서 재계획(Replanning) 호출하느라 프로세스 멈추는 게 제일 골치 아픈데, 이 정도면 휴리스틱 보정용으로 충분히 실무 적용 가치가 있겠는데요?&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;판교 선배님 말씀이 맞아요! 70% 변수 다이어트면 LLM 에이전트 환경에서 공리 추론할 때 토큰 효율도 엄청나겠는데요? 결정론적 도메인뿐만 아니라 이걸 확률적 모델이랑 엮어서 CoT(Chain-of-Thought)에 녹여내면 곧바로 탑티어 학회 챌린지 감 아닌가요? 바로 구현체 뜯어보러 갑니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
