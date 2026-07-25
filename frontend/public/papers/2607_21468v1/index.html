@@ -1,0 +1,66 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>씽크잉크(Thinkink): 거대언어모델(LLM)과 함께하는 2차원 공간적 잉크 기반 상호작용 | ArXiv Translator AI</title><meta name="description" content="씽크잉크(Thinkink): 거대언어모델(LLM)과 함께하는 2차원 공간적 잉크 기반 상호작용"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2607_21468v1"><meta property="og:type" content="article"><meta property="og:title" content="씽크잉크(Thinkink): 거대언어모델(LLM)과 함께하는 2차원 공간적 잉크 기반 상호작용"><meta property="og:description" content="씽크잉크(Thinkink): 거대언어모델(LLM)과 함께하는 2차원 공간적 잉크 기반 상호작용"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2607_21468v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="씽크잉크(Thinkink): 거대언어모델(LLM)과 함께하는 2차원 공간적 잉크 기반 상호작용"><meta name="twitter:description" content="씽크잉크(Thinkink): 거대언어모델(LLM)과 함께하는 2차원 공간적 잉크 기반 상호작용"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2607_21468v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "씽크잉크(Thinkink): 거대언어모델(LLM)과 함께하는 2차원 공간적 잉크 기반 상호작용", "description": "씽크잉크(Thinkink): 거대언어모델(LLM)과 함께하는 2차원 공간적 잉크 기반 상호작용", "datePublished": "2026-07-23", "url": "https://arxiv-ai-blog.vercel.app/papers/2607_21468v1", "author": [{"@type": "Person", "name": "Mohammad Hasan Payandeh"}, {"@type": "Person", "name": "Daniel Vogel"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2607_21468v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2607_21468v1"});gtag('event', 'paper_view', {"paper_id": "2607_21468v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>씽크잉크(Thinkink): 거대언어모델(LLM)과 함께하는 2차원 공간적 잉크 기반 상호작용</h1><p>씽크잉크(Thinkink): 거대언어모델(LLM)과 함께하는 2차원 공간적 잉크 기반 상호작용</p><pre>씽크잉크(Thinkink): 거대언어모델(LLM)과 함께하는 2차원 공간적 잉크 기반 상호작용
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Thinkink: 2D Spatial Ink-native Interaction with LLMs
+&gt; - **저자:** Mohammad Hasan Payandeh, Daniel Vogel, Jian Zhao
+&gt; - **발행일:** 2026-07-23
+&gt; - **PDF 링크:** [Thinkink: 2D Spatial Ink-native Interaction with LLMs](https://arxiv.org/pdf/2607.21468v1)
+
+
+✨ 3줄 핵심 요약
+* **씽크잉크(Thinkink)**는 사용자가 캔버스에 직접 손글씨를 쓰거나 스케치하여 LLM과 아이디어를 주고받는 &#x27;잉크 네이티브(ink-native)&#x27; 방식의 도구입니다.
+* 기존의 채팅형 인터페이스와 달리, 아이디어를 2차원 공간에 자유롭게 배치하고 LLM의 응답 또한 잉크 형태로 캔버스에 직접 통합하여 시각화합니다.
+* 사용자와 LLM이 공유하는 캔버스 내에서 시맨틱 트리(semantic tree)와 상태 머신(state machine)을 통해 상호작용의 효율성을 높였습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+우리는 종종 아이디어를 짤 때 종이에 자유롭게 적고 그리며 생각합니다. 하지만 기존의 AI(챗봇)는 대화창에 갇혀 있어 이러한 &#x27;공간적&#x27; 사고 흐름을 방해하곤 합니다. **씽크잉크**는 사용자가 종이에 적듯 캔버스에 생각을 펼치면, AI가 그 옆에 바로 답을 적어주는 도구입니다. 예를 들어, 사용자가 로고 아이디어를 스케치하면 AI가 그 주변에 관련 질문이나 디자인 아이디어를 손글씨 형태로 바로 띄워줍니다. 덕분에 사용자는 AI와 함께 캔버스 위에서 끊김 없이 창의적인 생각을 이어갈 수 있습니다.
+
+🎯 배경 및 문제점
+사람들은 생각을 외부로 꺼내 정리할 때 손글씨와 스케치를 즐겨 사용합니다. 그러나 기존의 LLM 인터페이스는 비선형적인 2차원적 사고방식과 맞지 않는 &#x27;채팅형&#x27; 구조를 가지고 있습니다. 연구진은 사용자가 아이디어를 발산하고 수렴하는 과정에서 LLM이 능동적인 파트너가 되어야 함에도 불구하고, 현재의 도구들은 잉크 기반의 작업 흐름과 AI 통합 사이의 연결고리가 부족하다는 점을 문제로 지적했습니다.
+
+💡 핵심 기술 및 아키텍처
+* **공간적 잉크 기반 인터페이스:** 모든 입력과 출력이 하나의 2차원 캔버스에서 이루어지며, 텍스트뿐만 아니라 스케치까지 통합적으로 처리합니다.
+* **시맨틱 트리(Semantic Tree):** 캔버스에 적힌 잉크 데이터를 구조화하여 시스템이 사용자의 의도를 더 명확히 해석하도록 돕습니다.
+* **상태 머신(State Machine) UI:** 사용자가 현재 어떤 모드(단순 노트 작성 또는 AI와의 상호작용)에 있는지 명확히 인지하고 조절할 수 있도록 돕는 UI 시스템을 구축했습니다.
+
+📊 실험 결과 분석
+본 논문은 총 세 단계의 연구를 통해 설계되었습니다.
+* **형성 연구(N=12):** 디지털 잉크 활용 방식과 사용자 니즈를 파악했습니다.
+* **진단 연구(N=6):** 기술적 프로토타입을 통해 인간-AI 상호작용의 한계를 식별했습니다.
+* **사용성 연구(N=10):** 최종적으로 구현된 씽크잉크를 활용해 사용자의 아이디어 생성 과정을 관찰했습니다.
+분석 결과, 사용자들은 공간적 캔버스를 통한 시각적 큰 그림 유지를 매우 긍정적으로 평가했으나, 동시에 너무 간결한 UI로 인해 모드 전환이 모호하거나, AI의 개입 시점 제어 및 오타 수정/실행 취소(Undo) 기능의 부재 등에서 개선이 필요하다는 반응을 보였습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+이 연구는 LLM을 단순한 &#x27;질의응답 기계&#x27;가 아닌, **&#x27;캔버스 위의 아이디어 파트너&#x27;**로 전환할 수 있는 새로운 인터페이스 방향성을 제시합니다. 향후 디자인 창의성 작업, 수학적 사고, 혹은 복잡한 기획 업무에서 사용자가 AI와 잉크를 매개로 협업하는 도구의 표준이 될 가능성을 보여줍니다. 특히, 사용자의 숙련도에 따라 인터페이스를 조정하는 &#x27;적응형 인터페이스(adaptive disclosure)&#x27; 도입이 실무 적용의 핵심 과제가 될 전망입니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Thinkink: 2D Spatial Ink-native Interaction with LLMs](https://arxiv.org/html/2607.21468)
+&gt; - [PhD Seminar • Human–Computer Interaction • Thinkink: 2D Spatial Ink-native Interaction with LLMs | Cheriton School of Computer Science | University of Waterloo](https://uwaterloo.ca/computer-science/events/phd-seminar-hci-thinkink-2d-spatial-ink-native-interaction-with-llms)
+&gt; - [Human-Computer Interaction](https://arxiv.org/list/cs.HC/recent)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;공간적 사고를 LLM 인터페이스로 가져오려는 시도 자체는 가상하지만, 시맨틱 트리 구조의 확장성과 잉크 데이터의 모호성 해결책이 부족해 보입니다. 특히 사용자의 비선형적 입력이 LLM의 컨텍스트 윈도우에서 어떻게 정렬되는지, 그 &#x27;손실 없는 매핑&#x27;에 대한 엄밀한 검증이 부족하군요. 학술적 흥미는 있으나 상용화 단계의 견고함은 의문입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로입니다. 당장 Undo/Redo도 구현 안 된 상태라면 프로덕션 레벨에선 &#x27;장난감&#x27; 수준이죠. 특히 잉크 기반 시맨틱 트리 파싱할 때 발생하는 레이턴시를 어떻게 잡았을지가 관건인데, 논문에선 그 부분에 대한 성능 지표가 너무 빈약하네요. 당장 우리 팀 앱에 붙이기엔 트레이드 오프가 너무 큽니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;두 분 너무 차가우신 거 아니에요? ㅋㅋㅋ 채팅창에서 벗어나 캔버스 위에서 아이데이션 한다는 경험 자체가 혁신적인 건데! 상태 머신 UI 도입해서 모드 전환 꾀한 것도 나름 세련된 시도 아닌가요? 잉크 데이터의 노이즈는 모델 튜닝으로 잡으면 될 문제고, 저는 이거 당장 코드 뜯어보고 싶어서 손이 근질거립니다. 다들 너무 비판만 하지 마시고, 캔버스 인터페이스의 미래를 좀 즐기자고요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

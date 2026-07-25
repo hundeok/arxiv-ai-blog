@@ -1,0 +1,70 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>홀수 주기의 섀넌 용량에 대한 개선된 하한값 | ArXiv Translator AI</title><meta name="description" content="홀수 주기의 섀넌 용량에 대한 개선된 하한값"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2607_21517v1"><meta property="og:type" content="article"><meta property="og:title" content="홀수 주기의 섀넌 용량에 대한 개선된 하한값"><meta property="og:description" content="홀수 주기의 섀넌 용량에 대한 개선된 하한값"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2607_21517v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="홀수 주기의 섀넌 용량에 대한 개선된 하한값"><meta name="twitter:description" content="홀수 주기의 섀넌 용량에 대한 개선된 하한값"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2607_21517v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "홀수 주기의 섀넌 용량에 대한 개선된 하한값", "description": "홀수 주기의 섀넌 용량에 대한 개선된 하한값", "datePublished": "2026-07-23", "url": "https://arxiv-ai-blog.vercel.app/papers/2607_21517v1", "author": [{"@type": "Person", "name": "Nathaniel Itty"}, {"@type": "Person", "name": "Christopher D. Rosin"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2607_21517v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2607_21517v1"});gtag('event', 'paper_view', {"paper_id": "2607_21517v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>홀수 주기의 섀넌 용량에 대한 개선된 하한값</h1><p>홀수 주기의 섀넌 용량에 대한 개선된 하한값</p><pre>홀수 주기의 섀넌 용량에 대한 개선된 하한값
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Improved lower bounds for the Shannon capacity of odd cycles
+&gt; - **저자:** Nathaniel Itty, Christopher D. Rosin, Chase Carstensen, Daniel Reichman
+&gt; - **발행일:** 2026-07-23
+&gt; - **PDF 링크:** [Improved lower bounds for the Shannon capacity of odd cycles](https://arxiv.org/pdf/2607.21517v1)
+
+
+✨ 3줄 핵심 요약
+- 홀수 주기 그래프($C_7, C_{11}, C_{13}$)의 섀넌 용량(Shannon capacity)에 대해 더 높은 하한값을 제시했습니다.
+- 대형 언어 모델(LLM)과 반복적인 프롬프팅 기법을 활용하여 기존의 조합론적 구성 방법을 개선했습니다.
+- 특정 그래프의 독립 집합 크기를 키움으로써, 노이즈가 있는 채널의 통신 효율을 나타내는 섀넌 용량의 하한을 수치적으로 높였습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+섀넌 용량은 노이즈가 있는 통신 채널에서 오류 없이 정보를 보낼 수 있는 최대 속도를 의미합니다. 수학적으로는 그래프의 &#x27;독립 집합&#x27; 크기를 구하는 문제와 직결되는데, 특히 홀수 주기의 경우 그 값을 정확히 구하는 것이 매우 어렵기로 유명합니다. 본 연구팀은 최신 LLM(ChatGPT-5.6 Sol Pro)을 활용해 기존보다 더 큰 독립 집합을 찾아내는 방식으로 $C_7, C_{11}, C_{13}$ 그래프의 섀넌 용량 하한을 경신했습니다. 이는 복잡한 조합론적 문제를 해결하는 데 AI가 강력한 도구가 될 수 있음을 시사합니다.
+
+🎯 배경 및 문제점
+- **섀넌 용량**: 정보 이론의 기초가 되는 개념으로, 그래프 이론적으로는 해당 그래프의 강한 곱(strong product)의 독립 집합 수로 정의됩니다.
+- **난제**: $C_5$의 섀넌 용량은 $\sqrt{5}$로 알려져 있으나, 다른 홀수 주기 그래프(예: $C_7$ 등)의 정확한 값은 여전히 미해결 난제로 남아 있습니다.
+- **한계**: 기존 연구들은 최적화 솔버(Gurobi 등)를 활용했으나, 계산 복잡도로 인해 성과를 내기 어려웠습니다. 연구진은 AI 기반의 탐색 기법을 통해 이 한계를 돌파하고자 했습니다.
+
+💡 핵심 기술 및 아키텍처
+- **AI 기반 탐색**: 반복적인 프롬프팅 전략을 사용하여 LLM이 특정 조건을 만족하는 &#x27;사이클 코드(Cycle Code)&#x27;를 생성하도록 유도했습니다.
+- **반복적 개선**: 모델이 초기 구성안을 제시하면, 이를 바탕으로 추가적인 제약 사항과 목표치를 주어 성능을 점진적으로 높였습니다.
+- **검증**: AI가 생성한 독립 집합의 유효성과 구성 가능성은 연구자들이 직접 수동으로 검증하였습니다.
+
+📊 실험 결과 분석
+본 연구를 통해 도출된 새로운 하한값은 다음과 같습니다(기존 수치와 비교):
+- **$C_7$**: $\Theta(C_7) \ge 134753^{1/10} &gt; 3.258020$ (기존: $367^{1/5} &gt; 3.257865$)
+- **$C_{11}$**: $\Theta(C_{11}) \ge 21909^{1/6} &gt; 5.289773$ (기존: $148^{1/3} &gt; 5.289572$)
+- **$C_{13}$**: $\Theta(C_{13}) \ge 62530^{1/6} &gt; 6.300109$ (기존: $247^{1/3} &gt; 6.274305$)
+*주: 모든 개선 수치는 본 논문의 Table 1에 근거함.*
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+- **조합론적 탐색의 혁신**: 명시적 구성이 어려운 난해한 조합론적 문제에서 LLM이 효율적인 해를 찾는 전략적 파트너가 될 수 있음을 입증했습니다.
+- **정보 이론 연구 가속화**: 섀넌 용량과 같은 기초 수학적 문제에 대해 하한값을 개선함으로써 통신 이론의 최적화 가능성을 높였습니다.
+- **실무 확장성**: 본 연구에서 사용된 LLM 프롬프팅 방식은 다른 조합론적 설계 문제나 코드 구성 문제에도 즉각 적용 가능한 프레임워크를 제공합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2607.21517 Improved lower bounds for the Shannon capacity of odd cycles](https://arxiv.org/abs/2607.21517)
+&gt; - [Improved lower bounds for the Shannon capacity of odd cycles](https://arxiv.org/html/2607.21517)
+&gt; - [Information Theory](https://arxiv.org/list/cs.IT/new)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;조합론적 난제에 LLM을 투입했다는 점은 흥미롭지만, 솔직히 &#x27;수학적 통찰&#x27;보다는 &#x27;대규모 탐색&#x27;에 의존한 결과물로 보이는군요. LLM이 생성한 구성안을 사후 검증하는 방식이 과연 순수 수학적 진보로 볼 수 있을지 의문입니다. 엄밀함이 결여된 발견이 정보 이론의 본질적 이해에 얼마나 기여할지 신중해야 합니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님, 현업에서는 그 &#x27;엄밀함&#x27;만큼이나 &#x27;수치적 개선&#x27;이 중요합니다. Gurobi로도 안 풀리던 걸 LLM 프롬프팅 루프 돌려서 하한값이라도 밀어 올린 거면 실무적으론 엄청난 아웃풋이죠. 다만, 이게 범용적인 프레임워크가 될지는 의문이네요. 특정 그래프마다 프롬프트 튜닝하느라 며칠씩 갈아 넣을 거 생각하면... 배보다 배꼽이 더 큰 거 아닐까요?&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;두 분 다 너무 보수적이신 거 아니에요? 핵심은 LLM이 이제 단순 코딩이나 요약을 넘어, 최적화 문제의 &#x27;휴리스틱 탐색 엔진&#x27;으로 기능하기 시작했다는 거예요! 깐깐한 교수님은 정통성을 따지시지만, 이제 이런 식으로 하한값이 갱신되는 게 트렌드라고요. 일단 저는 당장 제 연구실 파이프라인에 이 &#x27;반복적 프롬프팅&#x27; 기법 이식하러 갑니다. 실험 결과 빨리 뽑아내는 사람이 이기는 시대잖아요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
