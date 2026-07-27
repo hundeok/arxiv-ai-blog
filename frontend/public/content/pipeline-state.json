@@ -1808,7 +1808,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-07-26T21:54:58.948897+00:00",
+      "updated_at": "2026-07-27T16:54:19.073216+00:00",
       "paper": {
         "title": "Agentic Context Management: Solving Agent Memory and Cost by Treating Them as Lifecycle and Architecture Problems",
         "summary": "Production AI agents' failures are less often due to an inability to reason well and more often because they cannot manage what is in their reasoning context: conversation histories, large prompts, large tool definitions, and ballooning tool outputs. Agents drown in their own accumulating history while paying a token cost that grows every turn, producing missing recalls within and across conversations. The incumbent response treats this as a storage-and-retrieval problem. We argue that framing is too narrow. Actively managing what an agent holds in mind is a lifecycle, not merely a store: it spans deciding what to remember, extracting and structuring it, choosing the right store per data type, consolidating and forgetting while preserving provenance, deciding what is relevant now, anticipating what is needed next, and compacting context to a budget without losing what matters. In serious production this operates not over a single user but across an organizational scope hierarchy. We name this discipline Agentic Context Management (ACM) and decompose it into five primitives: architecting, ingesting, scoping, anticipating, and compacting & consolidation. We then make the economic case: naive context accumulation grows token cost quadratically in conversation length, crude summarization buys linear cost at the price of an accuracy cliff, and only validated compaction achieves linear cost with preserved fidelity. We describe a reference implementation, Maximem Synap, that realizes the five primitives as a multi-tenant service and reports 92% on LongMemEval and 93.2% on LoCoMo under the configuration detailed in Section 6. We close with dimensions existing benchmarks do not yet capture, latency, token efficiency, and context-rot resistance, and the frontier of decision-level and organization-level context the category points toward.",
@@ -2715,7 +2715,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-07-26T19:01:55.897712+00:00",
+      "updated_at": "2026-07-27T16:54:19.073212+00:00",
       "paper": {
         "title": "LLMs Get Lost in Evolving User Intent",
         "summary": "As LLMs become more capable, they are increasingly deployed as collaborative agents, taking on user-delegated tasks through iterative interaction. Yet genuine interaction is inherently dynamic: users rarely specify their intent upfront, instead disclosing, revising, and reshaping it as the conversation unfolds. Despite this, LLMs are still predominantly evaluated or trained in single-turn, fully-specified settings, leaving open a fundamental question: how well do LLMs track and act on user intent as it evolves over the course of a conversation? To study this, we introduce a framework that transforms static, single-turn tasks into dynamic multi-turn conversations in which the user's intent evolves across turns--incrementally revealed, revised, and at times redirected mid-conversation--while preserving each task's original evaluation protocol, enabling existing benchmarks to be reused as controlled testbeds without new annotation. Across multiple tasks, we surface a consistent phenomenon: strong static-setting performance does not transfer to the evolving-intent setting, with substantial drops across model families. Our findings point to a fundamental gap: today's LLMs do not yet faithfully track and act on the user's evolving intent, a capability invisible to static evaluation yet critical for future collaborative agents.",
@@ -2737,7 +2737,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-07-26T19:01:55.897716+00:00",
+      "updated_at": "2026-07-27T16:54:19.073221+00:00",
       "paper": {
         "title": "Recurrent Sinusoidal INRs for Efficient High-Fidelity Representation",
         "summary": "We study sinusoidal recurrence as an iterative mechanism for harmonic spectral enrichment in implicit neural representations (INRs). Our analysis reveals that sinusoidal activations induce a harmonic line spectrum, providing a spectral account of how recurrent unrolling enriches the effective spectral support. We realize this principle with a shared sinusoidal block that iteratively refines the latent representation. We empirically validate the resulting spectral behavior against feed-forward INRs, non-sinusoidal recurrent variants, and equilibrium-style sinusoidal models. Complementing this analysis, we evaluate the proposed architecture across image and 3D representation tasks. On RGB image benchmarks, our method achieves higher fidelity than feed-forward baselines with fewer parameters and fewer optimization steps, and it further transfers favorably to super-resolution, NeRF, and SDF tasks.",
@@ -2871,7 +2871,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-07-26T19:01:55.897720+00:00",
+      "updated_at": "2026-07-27T16:54:19.073224+00:00",
       "paper": {
         "title": "Self-Supervised Learning of Structured Dynamics from Videos",
         "summary": "Understanding motion in video is a fundamental challenge for visual learning, as frame-to-frame change entangles two sources of dynamics: camera motion and object motion. This decomposition has remained underexplored in representation learning, partly because these factors are tightly coupled in natural videos and difficult to supervise separately. Yet recovering it is important for learning robust motion representations that separate meaningful object dynamics from camera-induced variation. We study whether such structured motion representations can be recovered from frozen features of a pretrained image vision transformer. We propose the Structured Dynamics Model (SDM), which explicitly separates the dominant source of temporal change from residual dynamics through future-feature prediction, rather than representing video change with a single entangled latent or with unstructured, spatially dense transition tokens. Training combines self-supervised learning on real video with weak supervision of scene dynamics on synthetic Kubric data. We evaluate SDM on ProbeMotion, a new evaluation suite spanning synthetic and real videos with camera motion, object motion, and combined dynamics. SDM outperforms backbone baselines using global CLS or average-pooled features, and compares favorably to strongly supervised representations such as VGGT on several probes, despite using substantially weaker supervision. These results suggest that pretrained image models can be readily repurposed into structured video-dynamics representations, providing a useful inductive bias for learning and analyzing latent video dynamics.",
@@ -2893,7 +2893,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-07-26T19:01:55.897677+00:00",
+      "updated_at": "2026-07-27T16:54:19.073206+00:00",
       "paper": {
         "title": "FinanceComplexQA: Benchmarking Agentic Reasoning on Industrial-grade Financial Documents",
         "summary": "Agentic Reasoning has become a transformative force in financial analysis due to its ability to integrate large-scale information and generate reliable and accurate content. However, when handling complex real-world problems, different agents still show significant performance variation. In this work, we design Finance-LaTeX SKILL, a skill for synthesizing financial documents with complex layouts based on expert knowledge. Using an agent workflow built on this skill, we generate 2,000 professional financial documents along with 6,000 high-quality question-answer pairs. To evaluate the overall capability of agents, we introduce FinanceComplexQA, a comprehensive open-ended generation benchmark for financial documents that closely resembles real-world scenarios. It contains 2,026 deep research tasks targeting 1009 financial documents. FinanceComplexQA has 8 key features: bilingual support; coverage of six mainstream scenarios and seven tasks; expert-level document reasoning questions; deep research of complex layouts; relatively stable and permanent reference answers; and precise evaluation through an Agent-as-a-Judge with multiple evaluation metrics. Using FinanceComplexQA, we conduct a comprehensive evaluation of leading RAG systems and agentic reasoning tools for financial document QA. Through identifying and analyzing failure cases, we provide an in-depth study of their capabilities in numerical computation, multi-hop reasoning, content summarization, and industry analysis.",
@@ -2925,7 +2925,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-07-26T19:01:55.897697+00:00",
+      "updated_at": "2026-07-27T16:54:19.073193+00:00",
       "paper": {
         "title": "Multi-Turn On-Policy Distillation with Prefix Replay",
         "summary": "We study on-policy distillation (OPD) for agentic tasks, where an LLM agent interacts with an environment over multiple turns and a student imitates a teacher over these multi-turn interaction histories. Fully online OPD is costly because each update requires fresh student rollouts through the environment and teacher queries at visited histories. We propose Replayed-Prefix On-Policy Distillation (ReOPD), an off-environment alternative that reuses pre-collected teacher trajectories as replayed prefixes: the student acts at selected steps, while the teacher provides dense per-step supervision without executing new environment interactions. We show that multi-turn OPD introduces a prefix trap: making histories more student-on-policy improves relevance to the student, but can query the teacher on histories where its target is unreliable. This creates a two-sided distribution shift between student occupancy and teacher reliability. ReOPD addresses this by treating multi-turn OPD as a reliability-aware prefix distribution design and implements it with a simple step-decaying sampling schedule that emphasizes early, lower-shift prefixes. Across mathematical reasoning with Python and search environments over multiple teacher and student model scales, ReOPD preserves or improves OPD-level accuracy, uses zero tool calls during student training, and is at least 4$\\times$ faster per rollout than OPD. ReOPD therefore turns expensive agent-environment interaction into a reusable offline resource, enabling scalable distillation across tools, tasks, and environments.",
@@ -2950,7 +2950,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-07-26T19:01:55.897729+00:00",
+      "updated_at": "2026-07-27T16:54:19.073228+00:00",
       "paper": {
         "title": "SANA-Video 2.0: Hybrid Linear Attention with Attention Residuals for Efficient Video Generation",
         "summary": "We introduce SANA-Video 2.0, a hybrid video diffusion transformer instantiated at 5B and 14B scales under a unified architecture. Designed to generate high-quality video up to 720p on a single GPU, SANA-Video 2.0 matches full-softmax video DiTs in quality while retaining the favorable long-sequence scaling of linear attention. To avoid quadratic attention throughout, Hybrid Linear-Softmax Attention combines gated linear attention for O(N)-dominated mixing with periodic gated-softmax anchors at a 3:1 ratio, restoring the full-rank token interactions that pure linear attention lacks. To propagate these refreshed representations across depth, Block Attention Residuals (AttnRes) route completed block summaries into later linear layers, enabling anchor-feature reuse and boosting deep-layer effective rank by ~12%. Through from-scratch training, SANA-Video 2.0 learns the complete hybrid directly rather than linearizing pretrained models, with reduced-resolution proxy studies establishing 25% softmax as the optimal quality-efficiency trade-off. With 40-step sampling, SANA-Video 2.0 achieves a VBench score of 84.30 in 13.2s at 480p on a single H100, remaining competitive with far larger softmax video DiTs at a fraction of the latency. Its compiled DiT forward pass is 3.2x faster than a matched full-softmax baseline at 720p/60s, a gap that expands with video duration. Furthermore, full-stack Sol-Engine optimization (kernel fusion, caching, and sparse attention) accelerates this hardware-friendly backbone by a further 3.58x, bringing the 5B pipeline to 13.06s at 720p/5s and making it 120x faster than Wan 2.2-A14B on one H100. Overall, our hybrid design recovers softmax-level expressiveness at substantially reduced cost, unlocking scalable long, high resolution video generation.",
@@ -3367,11 +3367,11 @@
     "2607_22400v1": {
       "id": "2607_22400v1",
       "filename": "post_2607_22400v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-07-27T06:23:03.606873+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-07-27T12:16:43.743115+00:00",
+      "updated_at": "2026-07-27T16:54:50.391144+00:00",
       "paper": {
         "title": "A Self-Calibrating Agentic AI Framework for Autonomous Edge Resource Allocation",
         "summary": "Large Language Models (LLMs) are increasingly deployed as autonomous agents, transitioning from static conversational interfaces to dynamic systems capable of complex reasoning, tool execution, and decision-making. However, the operational reliability of these agentic AI systems is fundamentally challenged by the absence of reliable ground truth in open-ended environments and the risk of increasing operational drift over time. To address this challenge, we propose and experimentally evaluate an agentic AI framework, designed to enforce autonomous integrity within LLM-driven systems. We design a self-calibration mechanism that mitigates drift and dynamically approximates ground truth by incorporating an ARIMA forecaster, without requiring continuous human oversight. To demonstrate the effectiveness and reliability of our methodology, we apply it to the complex domain of profiling the resource usage of zero-knowledge workloads in edge computing networks. Experimental results show that the proposed self-calibrating agentic framework successfully profiles the zero-knowledge workloads, achieving a higher accuracy than baseline LLM agents by 91.7% for resource usage prediction and improving the prediction speed by 71.7% compared to pure profiling, establishing a robust foundation for deploying autonomous AI in decentralized infrastructures. Furthermore, the ground truth generation using the proposed ARIMA leaping algorithm is 52% faster than a standard ARIMA forecasting algorithm, while achieving the same accuracy.",
@@ -3385,7 +3385,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2607.22400v1"
       },
-      "priority_score": 39
+      "priority_score": 39,
+      "korean_title": "자율적 엣지 자원 할당을 위한 자기 보정형 에이전트 AI 프레임워크"
     },
     "2607_22393v1": {
       "id": "2607_22393v1",
@@ -3532,11 +3533,11 @@
     "2607_22365v1": {
       "id": "2607_22365v1",
       "filename": "post_2607_22365v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-07-27T06:23:03.606901+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-07-27T12:16:43.743140+00:00",
+      "updated_at": "2026-07-27T16:55:01.024650+00:00",
       "paper": {
         "title": "Learning Structural Convergence: A Neuro-Symbolic Benchmark for Temporal Reasoning",
         "summary": "High-complexity operational environments require methods that detect and anticipate temporally distributed patterns rather than classify isolated events. This paper introduces TRACTA (Temporal Reasoning and Capability-Trajectory Analysis), a controlled synthetic benchmark for temporal structural reasoning in high-complexity event-driven systems, instantiated through Multi-Domain Operations (MDO)-like scenarios. The benchmark includes three tasks: early_warning, pattern_detection, and run_classification, and compares raw-event neural models, a contract-lite semantic baseline, and a neuro-symbolic configuration operating on semantically grounded trajectories. Results show that raw event-level learning remains informative, but learned temporal modeling over semantic capability and contextual direct-impact trajectories achieves the highest aggregate point estimates, with the largest margins on the temporal tasks. Ablation analysis indicates that capability dynamics, contextual impacts, and temporal structure contribute complementary information. Shortcut diagnostics indicate that the most direct cross-run global-identifier shortcut is controlled in the primary neural input view, while residual shallow signals remain. Overall, the findings support a bounded methodological conclusion: in controlled synthetic settings, semantically grounded trajectories provide an effective representation for temporal structural reasoning, supporting further investigation of semantic interfaces between event data, structured representations, and temporal learning.",
@@ -3548,7 +3549,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2607.22365v1"
       },
-      "priority_score": 39
+      "priority_score": 39,
+      "korean_title": "학습된 구조적 수렴: 시간적 추론을 위한 신경-심볼릭 벤치마크"
     },
     "2607_22361v1": {
       "id": "2607_22361v1",
@@ -3664,11 +3666,88 @@
         "pdf_link": "https://arxiv.org/pdf/2607.22334v1"
       },
       "priority_score": 27
+    },
+    "2607_14277v1": {
+      "id": "2607_14277v1",
+      "filename": "post_2607_14277v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-07-27T16:54:38.900200+00:00",
+      "paper": {
+        "title": "Multi-Head Latent Control: A Unified Interface for LLM Agent Decision Making",
+        "summary": "Large language models are increasingly deployed as agents, but reliable agentic behavior requires more than next-token prediction. At inference time, it is preferred that an agent can decide whether to proceed with its current reasoning, defer to a stronger model, request additional information, invoke external tools, or abstain under the given setup. Existing approaches address these decisions through prompt-level routing, external orchestration, or task-specific fine-tuning, which primarily rely on input-side signals, and are often costly and difficult to maintain as model backbones evolve. We ask whether such control decisions can be inferred directly from a model's latent generation process. We introduce Multi-Head Latent Control, a lightweight layer that reads hidden-state trajectories from a frozen LLM or VLM to produce deployment-time control signals. A Capability Head predicts whether the current model can solve the instance or should defer to a stronger collaborator, while a Resolution Head predicts appropriate resolution decision Clarification, Tool Use, Abstention, or Direct Answering. Both heads are trained only on latent traces from the same frozen LLM backbone, enabling post hoc adaptation without modifying the model. Across language and vision-language settings, Multi-Head Latent Control consistently improves the quality-cost tradeoff of multi-model systems, enabling early handoff from partial generations and more accurate intervention decisions. In routed execution (small + large model), it reduces large-model usage by up to 90.7 percent on AndroidWorld and 27-53 percent on average across benchmarks, while retaining most of large-model performance. Additionally, the learned control signals improve tool-use decision quality, yielding up to +158 percent relative score gain and 65.5 percent fewer missed-required tool calls.",
+        "published": "2026-07-15T18:36:54Z",
+        "authors": [
+          "Amirhosein Ghasemabadi",
+          "Ruichen Chen",
+          "Bahador Rashidi",
+          "Di Niu"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2607.14277v1"
+      },
+      "priority_score": 50,
+      "korean_title": "다중 헤드 잠재 제어: LLM 에이전트 의사결정을 위한 통합 인터페이스"
+    },
+    "2607_12756v1": {
+      "id": "2607_12756v1",
+      "filename": "post_2607_12756v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-07-27T16:54:19.073242+00:00",
+      "last_error": null,
+      "updated_at": "2026-07-27T16:54:19.073243+00:00",
+      "paper": {
+        "title": "VisCo: Leveraging Large Language Models as Intrinsic Encoders for Visual Token Compression",
+        "summary": "Vision-language models (VLMs) process large numbers of visual tokens, resulting in substantial inference latency and memory overhead. This has motivated extensive research on visual token compression. While training-free strategies rely on heuristic metrics and suffer significant performance degradation under high compression ratios, many training-based methods introduce external compression modules that force the VLM backbone to adapt, incurring substantial retraining cost and compromising VLMs' priors. Effective visual token compression hinges on strong information encoding, a capability already present in pretrained VLMs but underutilized by existing approaches. Motivated by this, we propose VisCo, a training-efficient self-compression framework that reuses the pretrained VLM itself as an intrinsic compressor. VisCo is a parameter-sharing autoencoder that compresses visual information using a small set of memory tokens and transfers hierarchical information from encoding to decoding. Experiments show that VisCo surpasses prior methods across all evaluated compression ratios, with larger gains under more aggressive compression, and remains stable even in the extreme single-token setting. Moreover, when combined with the original visual tokens, the learned memory tokens can even improve the base model, suggesting that VisCo captures complementary representations beyond compression.",
+        "published": "2026-07-14T13:21:36Z",
+        "authors": [
+          "Yupeng Zheng",
+          "Kai Zou",
+          "Bin Liu",
+          "Nenghai Yu"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2607.12756v1"
+      },
+      "priority_score": 27
+    },
+    "2607_22529v1": {
+      "id": "2607_22529v1",
+      "filename": "post_2607_22529v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-07-27T16:54:29.950684+00:00",
+      "paper": {
+        "title": "Skill Self-Play: Pushing the Frontier of LLM Capability with Co-Evolving Skills",
+        "summary": "LLM training is shifting from manual design and annotation to interaction-driven self-evolution. However, existing self-evolutionary methods face a fundamental dilemma between task diversity and verification reliability: environment-bound methods obtain precise feedback but confine learning to narrow domains, while open-ended self-generation broadens the task space but lacks reliable verification, allowing misleading rewards to pollute the training loop. We identify agent skills as a powerful middle ground to reconcile this tension: each skill ensures deep, verifiable execution in a specific scenario, while dynamic routing across skills maintains open-ended task variety. Leveraging this insight, we introduce Skill Self-Play (Skill-SP), a co-evolutionary framework comprising a proposer, a solver, and a dynamic skill controller. Orchestrated via a reinforcement learning loop, these components co-evolve in a continuous self-play loop: the proposer generates challenging tasks conditioned on dynamically sampled skills; the solver explores candidate solutions to push its capability boundaries; and the skill controller collects execution feedback to update and expand the skill library. This interactive co-evolution effectively bridges the gap between structured verification and open-ended exploration. Empirical evaluations on tool-use and reasoning benchmarks demonstrate that Skill-SP, serving as a robust evolution engine, consistently pushes the performance ceiling of competent backbones while catalyzing striking turnarounds for initially misaligned models. Our code is available at https://github.com/Qwen-Applications/skill-self-play.",
+        "published": "2026-07-24T17:59:22Z",
+        "authors": [
+          "Siyuan Huang",
+          "Pengyu Cheng",
+          "Haotian Liu",
+          "Tao Chen",
+          "Yihao Liu",
+          "Jingwei Ni",
+          "Shijie Zhou",
+          "Ziyi Yang",
+          "Gangwei Jiang",
+          "Mengyu Zhou",
+          "Yu Cheng",
+          "Xiaoxi Jiang",
+          "Guanjun Jiang"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2607.22529v1"
+      },
+      "priority_score": 70,
+      "korean_title": "기술 자가 학습: 상호 진화하는 기술을 통한 거대 언어 모델 능력의 한계 확장"
     }
   },
   "last_run": {
-    "started_at": "2026-07-27T12:16:43.744243+00:00",
-    "discovered": 30,
+    "started_at": "2026-07-27T16:54:19.074249+00:00",
+    "discovered": 10,
     "selected": 4,
     "generated": 4,
     "failed": 0,
@@ -3678,26 +3757,26 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 18610,
-      "output_tokens": 5787,
+      "prompt_tokens": 19850,
+      "output_tokens": 5775,
       "thought_tokens": 0,
-      "total_tokens": 24397,
-      "estimated_usd": 0.013333
+      "total_tokens": 25625,
+      "estimated_usd": 0.013625
     },
-    "finished_at": "2026-07-27T12:18:18.499132+00:00"
+    "finished_at": "2026-07-27T16:55:01.083192+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 213,
-    "prompt_tokens": 530238,
-    "output_tokens": 158439,
+    "requests": 221,
+    "prompt_tokens": 550088,
+    "output_tokens": 164214,
     "thought_tokens": 0,
-    "total_tokens": 688677,
-    "estimated_usd": 0.370218
+    "total_tokens": 714302,
+    "estimated_usd": 0.383843
   },
   "last_publication_run": {
-    "started_at": "2026-07-27T12:16:43.744243+00:00",
-    "discovered": 30,
+    "started_at": "2026-07-27T16:54:19.074249+00:00",
+    "discovered": 10,
     "selected": 4,
     "generated": 4,
     "failed": 0,
@@ -3707,17 +3786,17 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 18610,
-      "output_tokens": 5787,
+      "prompt_tokens": 19850,
+      "output_tokens": 5775,
       "thought_tokens": 0,
-      "total_tokens": 24397,
-      "estimated_usd": 0.013333
+      "total_tokens": 25625,
+      "estimated_usd": 0.013625
     },
-    "finished_at": "2026-07-27T12:18:18.499132+00:00"
+    "finished_at": "2026-07-27T16:55:01.083192+00:00"
   },
   "daily_usage": {
     "date": "2026-07-27",
-    "estimated_usd": 0.02686875,
-    "publications": 8
+    "estimated_usd": 0.04049375,
+    "publications": 12
   }
 }
