@@ -7,8 +7,13 @@ def fetch_latest_cs_ai_papers(max_results=3):
     url = f'https://export.arxiv.org/api/query?search_query=cat:cs.AI&sortBy=submittedDate&sortOrder=descending&max_results={max_results}'
     
     print(f"Fetching from ArXiv: {url}")
-    response = urllib.request.urlopen(url)
-    data = response.read()
+    try:
+        req = urllib.request.Request(url, headers={'User-Agent': 'ArxivAIBlog/1.0 (https://github.com/hundeok/arxiv-ai-blog)'})
+        response = urllib.request.urlopen(req)
+        data = response.read()
+    except Exception as e:
+        print(f"Error fetching from ArXiv API: {e}")
+        return []
     
     root = ET.fromstring(data)
     namespace = {'atom': 'http://www.w3.org/2005/Atom'}
@@ -61,7 +66,8 @@ def fetch_trending_papers(max_results=10):
         arxiv_url = f'https://export.arxiv.org/api/query?id_list={id_list}'
         print(f"Fetching from ArXiv by IDs: {arxiv_url}")
         
-        response = urllib.request.urlopen(arxiv_url)
+        req = urllib.request.Request(arxiv_url, headers={'User-Agent': 'ArxivAIBlog/1.0 (https://github.com/hundeok/arxiv-ai-blog)'})
+        response = urllib.request.urlopen(req)
         xml_data = response.read()
         
         root = ET.fromstring(xml_data)
