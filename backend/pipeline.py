@@ -728,6 +728,22 @@ def notify_telegram(title: str, url: str) -> None:
     except Exception as e:
         print("Telegram notify failed:", e)
 
+def notify_telegram_error(error_msg: str) -> None:
+    token = os.environ.get("TELEGRAM_BOT_TOKEN")
+    chat_id = os.environ.get("TELEGRAM_CHAT_ID")
+    if not token or not chat_id:
+        return
+    text = f"🚨 <b>파이프라인 치명적 오류 발생!</b>\n\n<pre>{html.escape(error_msg[:2000])}</pre>"
+    try:
+        req = Request(
+            f"https://api.telegram.org/bot{token}/sendMessage",
+            data=json.dumps({"chat_id": chat_id, "text": text, "parse_mode": "HTML"}).encode("utf-8"),
+            headers={"Content-Type": "application/json"}
+        )
+        urlopen(req, timeout=10)
+    except Exception as e:
+        print("Telegram error notify failed:", e)
+
 def run() -> dict[str, Any]:
     state = load_state()
     state.setdefault("usage_total", empty_usage())

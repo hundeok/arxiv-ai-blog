@@ -9,7 +9,7 @@ def fetch_latest_cs_ai_papers(max_results=3):
     print(f"Fetching from ArXiv: {url}")
     try:
         req = urllib.request.Request(url, headers={'User-Agent': 'ArxivAIBlog/1.0 (https://github.com/hundeok/arxiv-ai-blog)'})
-        response = urllib.request.urlopen(req)
+        response = urllib.request.urlopen(req, timeout=20)
         data = response.read()
     except Exception as e:
         print(f"Error fetching from ArXiv API: {e}")
@@ -49,7 +49,7 @@ def fetch_trending_papers(max_results=10):
     try:
         hf_url = "https://huggingface.co/api/daily_papers"
         req = urllib.request.Request(hf_url, headers={'User-Agent': 'Mozilla/5.0'})
-        response = urllib.request.urlopen(req)
+        response = urllib.request.urlopen(req, timeout=20)
         data = json.loads(response.read())
         
         arxiv_ids = []
@@ -67,7 +67,7 @@ def fetch_trending_papers(max_results=10):
         print(f"Fetching from ArXiv by IDs: {arxiv_url}")
         
         req = urllib.request.Request(arxiv_url, headers={'User-Agent': 'ArxivAIBlog/1.0 (https://github.com/hundeok/arxiv-ai-blog)'})
-        response = urllib.request.urlopen(req)
+        response = urllib.request.urlopen(req, timeout=20)
         xml_data = response.read()
         
         root = ET.fromstring(xml_data)
