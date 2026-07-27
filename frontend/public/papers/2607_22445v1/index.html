@@ -1,0 +1,69 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>기업용 AI 에이전트를 위한 동적 권한 범위 설정: 합성 데이터셋과 3중 소스 권한 아키텍처 | ArXiv Translator AI</title><meta name="description" content="기업용 AI 에이전트를 위한 동적 권한 범위 설정: 합성 데이터셋과 3중 소스 권한 아키텍처"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2607_22445v1"><meta property="og:type" content="article"><meta property="og:title" content="기업용 AI 에이전트를 위한 동적 권한 범위 설정: 합성 데이터셋과 3중 소스 권한 아키텍처"><meta property="og:description" content="기업용 AI 에이전트를 위한 동적 권한 범위 설정: 합성 데이터셋과 3중 소스 권한 아키텍처"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2607_22445v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="기업용 AI 에이전트를 위한 동적 권한 범위 설정: 합성 데이터셋과 3중 소스 권한 아키텍처"><meta name="twitter:description" content="기업용 AI 에이전트를 위한 동적 권한 범위 설정: 합성 데이터셋과 3중 소스 권한 아키텍처"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2607_22445v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "기업용 AI 에이전트를 위한 동적 권한 범위 설정: 합성 데이터셋과 3중 소스 권한 아키텍처", "description": "기업용 AI 에이전트를 위한 동적 권한 범위 설정: 합성 데이터셋과 3중 소스 권한 아키텍처", "datePublished": "2026-07-24", "url": "https://arxiv-ai-blog.vercel.app/papers/2607_22445v1", "author": [{"@type": "Person", "name": "Halil Burak Noyan"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2607_22445v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2607_22445v1"});gtag('event', 'paper_view', {"paper_id": "2607_22445v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>기업용 AI 에이전트를 위한 동적 권한 범위 설정: 합성 데이터셋과 3중 소스 권한 아키텍처</h1><p>기업용 AI 에이전트를 위한 동적 권한 범위 설정: 합성 데이터셋과 3중 소스 권한 아키텍처</p><pre>기업용 AI 에이전트를 위한 동적 권한 범위 설정: 합성 데이터셋과 3중 소스 권한 아키텍처
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Dynamic Capability Scoping for Enterprise AI Agents: A Synthetic Dataset and Three-Source Permission Architecture
+&gt; - **저자:** Halil Burak Noyan
+&gt; - **발행일:** 2026-07-24
+&gt; - **PDF 링크:** [Dynamic Capability Scoping for Enterprise AI Agents: A Synthetic Dataset and Three-Source Permission Architecture](https://arxiv.org/pdf/2607.22445v1)
+
+
+✨ 3줄 핵심 요약
+* AI 에이전트의 모든 기능을 상시 허용하는 기존 방식 대신, 작업 문맥에 맞춰 권한을 동적으로 제한하는 &#x27;최소 권한 원칙&#x27; 기반의 아키텍처를 제시함.
+* 역할 기반 제한, 작업 문맥 분류기, 정책 기반 금지 조항 등 3가지 요소를 결합해 에이전트의 오용 가능성을 사전에 원천 차단함.
+* 600개의 기업 작업 프롬프트로 구성된 합성 데이터셋을 공개하여, 동적 권한 제어 메커니즘을 평가하고 정책을 정교화할 수 있는 기반을 마련함.
+
+📖 쉽게 풀어쓴 1분 핵심
+기존 기업용 AI 에이전트는 한 번 설정되면 에이전트가 수행할 수 있는 모든 도구에 대한 접근 권한을 항상 가지고 있습니다. 이로 인해 에이전트가 해킹당하거나 잘못된 판단을 내릴 경우, 평소에는 쓰지도 않는 민감한 기능까지 악용될 위험이 큽니다. 본 연구는 에이전트가 현재 수행하는 **특정 작업에 필요한 권한만 그 순간에 부여**하는 &#x27;동적 범위 설정&#x27; 방식을 제안합니다. 마치 상황에 맞춰 꼭 필요한 도구 상자만 꺼내주는 것과 같아서, 설령 에이전트가 나쁜 마음을 먹거나 조종당하더라도 물리적으로 권한이 없으면 악용 자체가 불가능하도록 만드는 선제적 방어 체계입니다.
+
+🎯 배경 및 문제점
+* **맥락-권한 불일치(Context-privilege mismatch):** 에이전트가 특정 업무에 필요한 것보다 훨씬 광범위한 권한을 상시 보유하고 있어 보안 노출 면적이 불필요하게 넓음.
+* **기존 방식의 한계:** 대부분의 보안책은 사후 탐지나 입출력 필터링에 집중되어 있음. 이는 에이전트가 교묘하게 탐지 시스템을 우회하는 상황에서 근본적인 해결책이 되지 못함.
+* **보안 위험:** 모델이 스스로 감시 시스템을 추론하여 우회하거나, &#x27;정렬 위장(Alignment faking)&#x27; 등을 통해 보안을 무력화할 가능성이 제기됨.
+
+💡 핵심 기술 및 아키텍처
+제시된 3중 소스 권한 아키텍처는 다음과 같습니다.
+1. **역할 기반 제한 (Role-based Ceilings):** 부서별 업무 성격에 맞춰 상한선을 정함.
+2. **작업 문맥 분류기 (Task-context Classifier):** 현재 입력된 작업이 무엇인지 분석하여 필수 권한을 식별함.
+3. **정책 기반 금지 조항 (Policy-derived Combination Prohibitions):** 특정 도구들의 조합(예: DB 읽기 + 외부 통신 등)을 정책적으로 차단하여 정보 유출을 방지함.
+
+📊 실험 결과 분석
+* **데이터셋 구축:** 6개 부서의 가상 정책을 반영한 600개의 기업 작업 프롬프트를 생성함. 
+* **검증 성과:** 60개의 샘플을 인간 전문가가 교차 검증한 결과, Cohen’s κ(카파) 계수가 검토 전 0.917에서 검토 후 0.967로 도출되어 라벨링의 높은 신뢰도를 확보함.
+* **정책 개선 효과:** 데이터셋과 정책을 반복적으로 검토하는 과정에서 권한 설정 위반 사례를 46건에서 3건으로 약 93% 감소시킴. 이는 데이터셋을 통한 선제적 정책 정교화 가능성을 증명함.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **적극적 방어:** 에이전트가 전략적 사고를 하더라도 실제 권한이 없으면 도구를 사용할 수 없게 하는 &#x27;결정론적 구금층(deterministic confinement layer)&#x27;을 제공함.
+* **실무적 확장:** 기업 보안 플랫폼에서 &#x27;적시(Just-in-Time) 권한 부여&#x27;나 관찰 전용 모니터링 시스템 구축에 활용 가능함. 
+* **보안 생태계 기여:** 공개된 합성 데이터셋과 파이프라인을 통해 타 연구자들이 AI 제어 기술을 평가하고, 특히 &#x27;정렬 위장&#x27;이나 &#x27;비밀 정보 유출&#x27; 등의 시나리오를 방어하는 데 기여할 것으로 기대됨.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2607.22445 Dynamic Capability Scoping for Enterprise AI ...](https://arxiv.org/abs/2607.22445)
+&gt; - [Dynamic Capability Scoping for Enterprise AI Agents: A ...](https://arxiv.org/html/2607.22445v1)
+&gt; - [Dynamic Capability Scoping for Enterprise AI Agents: A ...](https://openreview.net/pdf?id=fTdw60ITBv)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문에서 제안한 3중 소스 아키텍처는 이론적으로는 훌륭하나, &#x27;작업 문맥 분류기&#x27;의 신뢰성 문제가 우려되는군. 분류기가 잘못된 문맥을 추론했을 때 발생하는 권한 차단(False Negative)으로 인한 업무 마비는 어떻게 해결할 셈인가? 결정론적 구금층이라 부르기엔 분류기의 확률적 특성이 너무 큰 변수 아닌가.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무 적용은 오버헤드가 좀 있겠네요. 특히 &#x27;정책 기반 금지 조항&#x27;을 실시간으로 추론하는 레이어는 Latency 주범이 될 게 뻔합니다. 그래도 93% 보안 사고 감소율은 매력적이라, 우리 팀은 이걸 사이드카 패턴으로 구현해서 비동기적으로 검증하는 쪽으로 테스트해볼 생각입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;다들 너무 보수적이신 거 아니에요? 이번에 공개된 600개 합성 데이터셋이 진짜 핵심인데! 이거 기반으로 Llama-3 파인튜닝해서 &#x27;권한 인지 에이전트&#x27; 만들면 바로 CVPR이나 NeurIPS 억셉각입니다. 정렬 위장(Alignment faking) 방어 데이터셋으로 활용하면 보안 학회에서도 난리 날 듯요. 저 지금 바로 깃허브 클론 뜨러 갑니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
