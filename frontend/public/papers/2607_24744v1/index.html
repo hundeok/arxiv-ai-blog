@@ -1,0 +1,65 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>체화된 조작을 위한 데이터 피라미드 | ArXiv Translator AI</title><meta name="description" content="체화된 조작을 위한 데이터 피라미드"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2607_24744v1"><meta property="og:type" content="article"><meta property="og:title" content="체화된 조작을 위한 데이터 피라미드"><meta property="og:description" content="체화된 조작을 위한 데이터 피라미드"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2607_24744v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="체화된 조작을 위한 데이터 피라미드"><meta name="twitter:description" content="체화된 조작을 위한 데이터 피라미드"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2607_24744v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "체화된 조작을 위한 데이터 피라미드", "description": "체화된 조작을 위한 데이터 피라미드", "datePublished": "2026-07-27", "url": "https://arxiv-ai-blog.vercel.app/papers/2607_24744v1", "author": [{"@type": "Person", "name": "Yifan Ye"}, {"@type": "Person", "name": "Yankai Fu"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2607_24744v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2607_24744v1"});gtag('event', 'paper_view', {"paper_id": "2607_24744v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>체화된 조작을 위한 데이터 피라미드</h1><p>체화된 조작을 위한 데이터 피라미드</p><pre>체화된 조작을 위한 데이터 피라미드
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Data Pyramid for Embodied Manipulation
+&gt; - **저자:** Yifan Ye, Yankai Fu, Yaoxu Lv, Bohan Hou, Jun Cen, Lingdong Kong, Duo Zheng, Tianxing Chen, Jiaming Liu, Ziang Cao, Yunfan Lou, Wei Chow, Xian Sun, Yingshuo Wang, Kuangzhi Ge, Xiaowei Chi, Xidong Zhang, Zhibo Pang, Yiwu Zhong, Sirui Han, Zhihe Lu, Weihao Yuan, Qifeng Chen, Michael Yu Wang, Yao Mu, Ziwei Liu, Jianfei Yang, Ping Luo, Shanghang Zhang
+&gt; - **발행일:** 2026-07-27
+&gt; - **PDF 링크:** [Data Pyramid for Embodied Manipulation](https://arxiv.org/pdf/2607.24744v1)
+
+
+✨ 3줄 핵심 요약
+* 체화된 지능(Embodied Intelligence) 모델 학습을 위해 데이터를 5단계 계층 구조인 &#x27;데이터 피라미드&#x27;로 체계화했습니다.
+* 실제 로봇 데이터부터 범용 시각-언어 데이터까지 각 소스의 확장성과 로봇 정렬 정도에 따른 장단점을 분석했습니다.
+* 최적의 데이터 혼합 전략과 표준화 등 체화된 AI 발전을 위한 6가지 핵심 도전 과제를 제시했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+일반적인 인공지능이 인터넷의 방대한 텍스트와 이미지로 학습한다면, 로봇은 물리적 행동이 포함된 특수한 데이터가 필요합니다. 이 논문은 로봇 학습에 쓰이는 다양한 데이터를 **①실제 로봇 데이터, ②UMI 스타일 데이터, ③1인칭/3인칭 관점 데이터, ④시뮬레이션 데이터, ⑤범용 시각-언어 데이터**라는 5개의 층으로 나눈 &#x27;데이터 피라미드&#x27;를 제안합니다. 이 구조를 통해 연구자들은 어떤 데이터를, 어떤 비율로 섞어 학습시키는 것이 로봇의 인지, 계획, 행동 능력 향상에 효과적인지 체계적으로 파악할 수 있는 가이드를 얻게 됩니다.
+
+🎯 배경 및 문제점
+인터넷 데이터만으로는 로봇의 물리적 조작 능력을 확보하기 어렵습니다. 로봇 학습에는 관찰 결과와 실제 물리적 상태, 행동이 긴밀하게 연결된 데이터가 필수적입니다. 그러나 현재는 각 데이터 소스의 특성(데이터 품질, 다양성, 재사용성, 물리적 정확도 등)에 대한 정리가 부족하고, 최적의 데이터 조합 방법(데이터 레시피)이 명확히 정립되어 있지 않아 모델 설계에 어려움이 있습니다.
+
+💡 핵심 기술 및 아키텍처
+데이터 피라미드는 **확장성(Scalability)**과 **로봇 정렬(Robot Alignment)**이라는 두 축을 중심으로 구성됩니다.
+* **실제 로봇 데이터:** 가장 직접적인 지도 정보를 제공하나 구축 비용이 높음.
+* **UMI 스타일 데이터:** 휴대 가능한 수집 방식과 엔드 이펙터 제어 정보를 제공.
+* **1인칭/3인칭 관점 데이터:** 인간의 활동과 객체 상호작용을 담고 있으나 로봇 신체와의 차이(Embodiement Gap)가 존재.
+* **시뮬레이션 데이터:** 통제된 환경에서 대규모 생성 가능.
+* **범용 시각-언어 데이터:** 방대한 사전 지식을 제공하지만 로봇의 물리적 행동과의 연결성이 낮음.
+
+📊 실험 결과 분석
+본 논문은 실험 수치를 직접 제시하지 않는 리뷰 및 분석 논문입니다. 대신 최근의 체화된 파운데이션 모델들이 어떻게 다양한 데이터 소스를 선택, 정렬, 혼합하는지 분석했습니다. 특히 최근 모델들이 단일 데이터 소스에 의존하기보다, 피라미드 각 계층의 데이터를 혼합하여 활용하는 추세임을 확인했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+이 연구는 체화된 AI를 연구하는 실무자들에게 로봇 학습의 나침반 역할을 합니다. 제시된 6가지 도전 과제(대규모 촉각 데이터셋 구축, 실패 및 복구 데이터 수집, 데이터 수집 파이프라인 확장, 행동 공간의 표준화 등)는 차세대 로봇 시스템 설계를 위한 로드맵을 제공합니다. 이는 향후 로봇이 복잡한 환경에서 더욱 정교하고 범용적으로 행동할 수 있는 모델을 개발하는 데 기여할 것으로 기대됩니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [DataLadder: A Simulation-Enabled Interconversion Toolchain for the Embodied Data Pyramid](https://arxiv.org/html/2606.16776)
+&gt; - [Efficient Vision-Language-Action Models for Embodied Manipulation: A Systematic Survey](https://arxiv.org/html/2510.17111v1)
+&gt; - [2025-3-18 GR00T N1: An Open Foundation Model for Generalist Humanoid Robots](https://d1qx31qr3h6wln.cloudfront.net/publications/GR00T_1_Whitepaper.pdf)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;데이터 피라미드 개념 자체는 정갈하지만, 결국 &#x27;어떻게 정렬할 것인가&#x27;에 대한 수학적 정형화가 부족해. 단순히 소스를 분류하는 것만으로는 Embodiment Gap 문제를 해결할 수 없지. 특히 범용 비전-언어 데이터를 로봇 행동 공간으로 맵핑할 때 발생하는 노이즈를 어떻게 제어할지에 대한 구체적인 방법론이 빠져있는 게 아쉽군.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 맞지만, 현업 입장에서는 이런 가이드라인이라도 고마운 상황입니다. 매번 데이터 섞을 때마다 감으로 &#x27;이거 넣으면 잘 되겠지&#x27; 하던 리소스 낭비를 줄일 로드맵이 나왔다는 것만으로도 의미가 커요. 다만, 6가지 도전 과제 중 &#x27;실패 및 복구 데이터&#x27; 수집은 비용 문제로 우리 팀에선 당장 적용하기엔 현실적 장벽이 너무 높네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;두 분 다 너무 진지하신 거 아닌가요?ㅋㅋ 이번 논문 핵심은 그냥 &#x27;데이터 소스별 가중치 전략&#x27;의 표준이 잡혔다는 거잖아요! 이제 논문 쓸 때 &#x27;데이터 피라미드 기반 혼합 전략 적용함&#x27; 한 줄 적으면 빌드업 바로 끝납니다. 저는 당장 시뮬레이션 데이터랑 VLA 데이터 믹스해서 SOTA 찍어보러 갑니다. 이게 바로 체화된 AI의 힙함이죠!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
