@@ -1,0 +1,66 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>인덱싱: 그 시작과 끝 | ArXiv Translator AI</title><meta name="description" content="인덱싱: 그 시작과 끝"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2607_22361v1"><meta property="og:type" content="article"><meta property="og:title" content="인덱싱: 그 시작과 끝"><meta property="og:description" content="인덱싱: 그 시작과 끝"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2607_22361v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="인덱싱: 그 시작과 끝"><meta name="twitter:description" content="인덱싱: 그 시작과 끝"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2607_22361v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "인덱싱: 그 시작과 끝", "description": "인덱싱: 그 시작과 끝", "datePublished": "2026-07-24", "url": "https://arxiv-ai-blog.vercel.app/papers/2607_22361v1", "author": [{"@type": "Person", "name": "Alexander Kozachinskiy"}, {"@type": "Person", "name": "Vicente Opazo"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2607_22361v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2607_22361v1"});gtag('event', 'paper_view', {"paper_id": "2607_22361v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>인덱싱: 그 시작과 끝</h1><p>인덱싱: 그 시작과 끝</p><pre>인덱싱: 그 시작과 끝
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Indexing: the Beginning and the End
+&gt; - **저자:** Alexander Kozachinskiy, Vicente Opazo, Felipe Urrutia
+&gt; - **발행일:** 2026-07-24
+&gt; - **PDF 링크:** [Indexing: the Beginning and the End](https://arxiv.org/pdf/2607.22361v1)
+
+
+✨ 3줄 핵심 요약
+* 입력 데이터에서 특정 위치의 값을 찾아내는 &#x27;인덱싱(Indexing)&#x27; 과제를 통해 현대 딥러닝 아키텍처의 정보 처리 한계를 분석했습니다.
+* 인덱스 위치(입력의 끝 혹은 시작)에 따라 모델별로 해결 가능한 계층 수의 차이가 있음을 이론적으로 증명했습니다.
+* RNN, SSM, 선형 어텐션(Linear-attention) 등 모델별 성능 차이는 실제 실험에서도 시퀀스 길이가 길어질수록 이론적 예측과 일치하게 나타났습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+이 논문은 AI 모델이 데이터를 어떻게 &quot;찾아내는지(Retrieval)&quot;를 연구합니다. 핵심 과제는 &quot;n개의 비트 중 i번째 값을 찾아라&quot;라는 인덱싱 작업입니다. 연구진은 인덱스가 입력의 끝에 있는지, 처음에 있는지에 따라 모델마다 이를 처리하는 난이도가 완전히 다르다는 점을 수학적으로 밝혀냈습니다. 예를 들어, 인덱스가 뒤에 오면 일반적인 소프트맥스 트랜스포머는 한 번의 연산(1층)으로 해결 가능하지만, RNN이나 선형 어텐션 모델은 더 많은 층을 쌓아도 해결하기 어렵다는 것을 보였습니다. 이는 모델의 구조 자체가 특정 정보를 처리할 때 물리적인 &#x27;병목 현상&#x27;을 겪는다는 것을 의미합니다.
+
+🎯 배경 및 문제점
+딥러닝 모델의 표현력(Expressivity)을 이해하기 위해 기본적인 수학적 추상화 과제인 &#x27;기본 프리미티브(Fundamental primitives)&#x27;를 연구하는 것이 중요합니다. 기존 연구는 함수 합성이나 통신 복잡도 등을 통해 트랜스포머의 한계를 분석해 왔습니다. 본 연구는 인덱싱이라는 매우 단순한 작업을 통해, 현대의 주요 아키텍처인 RNN, SSM, 트랜스포머들이 정보를 보존하고 전달하는 방식의 근본적인 차이를 규명하고자 했습니다.
+
+💡 핵심 기술 및 아키텍처
+* **인덱싱 프리미티브**: 입력을 $n$비트와 인덱스 $i$로 구성하고, $i$번째 비트 값을 출력하게 하는 단순한 작업입니다.
+* **인과적 복잡도(Causal Complexity)**: 마스킹된(Masked) 아키텍처에서 정보가 흐르는 경로를 분석하는 도구로, 모델이 무한 정밀도 연산을 수행하더라도 넘을 수 없는 이론적 한계치를 정의합니다.
+* **비교 대상 아키텍처**: 소프트맥스 트랜스포머, 선형 어텐션 트랜스포머, 상태 공간 모델(SSM, 예: Mamba), RNN.
+
+📊 실험 결과 분석
+* **이론과의 일치**: 실험(최대 길이 $n=64$) 결과, 이론적으로 해결이 가능하다고 예측된 모델들은 높은 학습 성공률을 보인 반면, 이론적 한계가 명확한 모델들은 시퀀스 길이가 길어질수록 성공률이 급격히 낮아졌습니다.
+* **길이에 따른 변화**: $n=8$에서는 모든 모델이 성공하는 경우가 많았으나, $n=64$가 되면 이론적 뒷받침이 없는 모델들은 학습에 실패했습니다.
+* **특이점**: 인덱스가 입력의 앞에 올 경우 RNN이 유리하며(1층으로 해결), 나머지 구조들은 2층 이상의 복잡도가 필요함을 확인했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **모델 설계의 지침**: 특정 유형의 검색이나 시퀀스 추론이 필요한 작업에서 어떤 아키텍처를 선택해야 하는지에 대한 이론적 근거를 제공합니다.
+* **성능 한계 인지**: 단순히 파라미터 수를 늘리는 것만으로는 해결할 수 없는 정보 처리 구조상의 한계가 존재함을 시사합니다.
+* **후속 연구 가치**: 이 연구는 모델의 해석 가능성(Mechanistic Interpretability) 분야에서 더욱 복잡한 정보 처리 과정을 이해하는 기초가 될 것이며, 효율적인 시퀀스 모델 아키텍처 개발에 기여할 것으로 기대됩니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2607.22361 Indexing: the Beginning and the End - arXiv.org](https://arxiv.org/abs/2607.22361)
+&gt; - [Indexing: the Beginning and the End - arXiv.org](https://arxiv.org/pdf/2607.22361)
+&gt; - [Indexing: the Beginning and the End - arXiv.org](https://arxiv.org/html/2607.22361v1)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;이 논문은 단순한 &#x27;인덱싱&#x27; 과제를 통해 아키텍처의 근본적인 표현력 한계를 명확히 짚어냈군요. 최근 LLM의 규모 경쟁에만 매몰된 학계에 시사하는 바가 큽니다. 특히 인과적 복잡도(Causal Complexity) 관점에서 트랜스포머와 SSM의 정보 흐름 효율을 이론적으로 규명한 점은 매우 학구적입니다. 다만, 실제 대규모 데이터셋에서도 이 이론적 병목이 동일하게 작용할지는 의문이네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에선 &#x27;이론적 한계&#x27;보다 &#x27;학습 난이도&#x27;가 더 문제죠. 특히 $n=64$에서 벌써 모델들이 뻗어버리는 걸 보니, Mamba나 선형 어텐션 기반 모델들이 왜 특정 도메인에서 고전하는지 데이터로 증명된 셈이네요. 현업에선 당장 프로덕션에 올릴 때 인덱싱 작업이 잦은 구조라면 아키텍처 재설계를 심각하게 고민해야 할 것 같습니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;선배님들, 역시 이게 그 &#x27;구조적 문해력&#x27; 문제인가 보네요! 인덱스 위치에 따라 모델별로 층수가 갈린다는 게 너무 흥미롭지 않나요? 이제 &#x27;더 큰 모델&#x27;이 아니라 &#x27;데이터 흐름에 최적화된 토폴로지&#x27;를 찾는 논문들이 쏟아질 것 같아요. 당장 내일 랩미팅 때 이 논문 들고 가서 요즘 유행하는 SSM계열 싹 다 털어봐야겠네요. 완전 핫합니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

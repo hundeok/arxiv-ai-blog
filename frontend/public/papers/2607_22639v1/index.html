@@ -1,0 +1,74 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TRACE: 기업용 LLM을 위한 지식 보존형 파라메트릭 도구 검색을 위한 비즈니스 규칙 기반 추론 커리큘럼 | ArXiv Translator AI</title><meta name="description" content="TRACE: 기업용 LLM을 위한 지식 보존형 파라메트릭 도구 검색을 위한 비즈니스 규칙 기반 추론 커리큘럼"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2607_22639v1"><meta property="og:type" content="article"><meta property="og:title" content="TRACE: 기업용 LLM을 위한 지식 보존형 파라메트릭 도구 검색을 위한 비즈니스 규칙 기반 추론 커리큘럼"><meta property="og:description" content="TRACE: 기업용 LLM을 위한 지식 보존형 파라메트릭 도구 검색을 위한 비즈니스 규칙 기반 추론 커리큘럼"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2607_22639v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="TRACE: 기업용 LLM을 위한 지식 보존형 파라메트릭 도구 검색을 위한 비즈니스 규칙 기반 추론 커리큘럼"><meta name="twitter:description" content="TRACE: 기업용 LLM을 위한 지식 보존형 파라메트릭 도구 검색을 위한 비즈니스 규칙 기반 추론 커리큘럼"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2607_22639v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "TRACE: 기업용 LLM을 위한 지식 보존형 파라메트릭 도구 검색을 위한 비즈니스 규칙 기반 추론 커리큘럼", "description": "TRACE: 기업용 LLM을 위한 지식 보존형 파라메트릭 도구 검색을 위한 비즈니스 규칙 기반 추론 커리큘럼", "datePublished": "2026-06-22", "url": "https://arxiv-ai-blog.vercel.app/papers/2607_22639v1", "author": [{"@type": "Person", "name": "Sai Shruthi Sistla"}, {"@type": "Person", "name": "Ashutosh Hathidara"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2607_22639v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2607_22639v1"});gtag('event', 'paper_view', {"paper_id": "2607_22639v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>TRACE: 기업용 LLM을 위한 지식 보존형 파라메트릭 도구 검색을 위한 비즈니스 규칙 기반 추론 커리큘럼</h1><p>TRACE: 기업용 LLM을 위한 지식 보존형 파라메트릭 도구 검색을 위한 비즈니스 규칙 기반 추론 커리큘럼</p><pre>TRACE: 기업용 LLM을 위한 지식 보존형 파라메트릭 도구 검색을 위한 비즈니스 규칙 기반 추론 커리큘럼
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** TRACE: Business Rule-Grounded Reasoning Curriculum for Knowledge-Preserving Parametric Tool Retrieval in Enterprise LLMs
+&gt; - **저자:** Sai Shruthi Sistla, Ashutosh Hathidara, Christopher Toukmaji, Mayank Shrivastava, Karthikeyan Asokkumar
+&gt; - **발행일:** 2026-06-22
+&gt; - **PDF 링크:** [TRACE: Business Rule-Grounded Reasoning Curriculum for Knowledge-Preserving Parametric Tool Retrieval in Enterprise LLMs](https://arxiv.org/pdf/2607.22639v1)
+
+
+✨ 3줄 핵심 요약
+* 기존 파라메트릭 도구 검색 방식은 학습 과정에서 도구 지식을 파괴하고 추론 속도가 느린 문제가 있었습니다.
+* TRACE는 추론 과정을 먼저 생성한 뒤 도구 토큰을 출력하도록 학습하여 도구 지식을 유지하고 검색 정확도를 높였습니다.
+* 단일 빔 탐색(single-beam greedy decoding)을 사용하여 실시간 프로덕션 환경에서 즉시 배포 가능한 성능을 달성했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+기업용 AI 챗봇이 수천 개의 도구 중 올바른 API를 선택하는 것은 매우 어렵습니다. 기존 기술인 &#x27;파라메트릭 도구 검색&#x27;은 인공지능이 도구를 잘 찾게 만드는 과정에서 오히려 도구에 대한 지식을 잊어버리는 치명적인 단점이 있었습니다. 또한, 답을 찾기 위해 여러 경우의 수를 따지는 &#x27;빔 탐색&#x27; 방식은 속도가 너무 느려 실시간 서비스에 부적합했습니다. 
+
+연구진이 개발한 **TRACE**는 도구를 선택하기 전, &quot;왜 이 도구가 적절한지&quot;에 대한 논리적 사고 과정을 먼저 생성하도록 AI를 가르칩니다. 이 과정에서 도메인 전문가가 정의한 비즈니스 규칙을 학습에 활용함으로써, AI가 정확한 판단을 내리면서도 기존에 학습한 지식을 잃지 않게 만들었습니다. 결과적으로 아주 빠른 속도로 정답 도구를 찾아내는 모델을 구현했습니다.
+
+🎯 배경 및 문제점
+* **지식 파괴:** 기존 파라메트릭 검색 학습 방식은 모델이 기존에 알고 있던 도구 지식을 학습 중에 훼손하는 문제를 겪음.
+* **느린 응답 속도:** constrained beam search 방식은 실시간 서비스에 적용하기에는 너무 느림.
+* **복잡한 비즈니스 규칙:** 기업 환경에서는 API 정책, 버전 변경 등 복잡한 비즈니스 규칙을 이해해야 올바른 도구를 선택할 수 있으나, 기존 임베딩 기반 검색은 이를 전혀 추적하지 못해 오류의 주원인이 됨.
+
+💡 핵심 기술 및 아키텍처
+TRACE는 2단계 커리큘럼 학습 방식을 사용합니다.
+* **Stage 1 (기반 다지기):** LoRA(Low-Rank Adaptation)를 사용하여 기존 도구 지식을 보존하는 SFT(지도 미세 조정) 수행.
+* **Stage 2 (핵심 기여):** &#x27;생각의 사슬(Chain-of-thought)&#x27;을 활용하여 도구 토큰을 출력하기 전 추론 과정을 생성하도록 학습.
+    * 비즈니스 규칙과 결합된 질의 데이터를 학습에 활용하여 모델이 도메인 규칙을 고려하도록 유도함.
+    * 단일 빔 탐색이 가능하도록 학습 목적을 최적화하여 실시간 서비스 성능 확보.
+
+📊 실험 결과 분석
+* **지식 보존 및 향상:** MCQ(객관식) 정확도는 Stage 1 대비 3.2%p, QA(질의응답) 탐색 정확도는 9%p 향상됨.
+* **검색 성능(Recall):** 임베딩 기반 베이스라인 모델과 비교했을 때 비약적인 성능 향상을 기록함.
+    * Domain A: 임베딩 방식 ~27% → TRACE ~86%
+    * Domain B: 임베딩 방식 ~52% → TRACE ~60%
+* **실시간성:** 모든 결과는 단일 빔 탐색(single-beam greedy decoding)을 통해 도출되어 프로덕션 수준의 지연 시간(latency)을 확보함.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **엔터프라이즈 AI 최적화:** 수천 개의 사내 API를 다루는 기업용 AI 코파일럿(Copilot)의 검색 정확도를 획기적으로 개선할 수 있습니다.
+* **비즈니스 규칙 준수:** 단순 의미 일치도를 넘어, 기업의 보안 정책이나 도메인 규칙을 준수해야 하는 복잡한 작업 자동화에 필수적인 기술입니다.
+* **현장 배포 가능성:** 연구에 사용된 카탈로그는 2개의 제품군에 걸쳐 8,300개 이상의 도구를 포함하고 있어, 실제 대규모 기업 환경에서의 실질적인 적용 가능성을 증명했습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2607.22639 TRACE: Business Rule-Grounded Reasoning Curriculum for ...](https://arxiv.org/abs/2607.22639)
+&gt; - [Paper page - TRACE: Business Rule-Grounded Reasoning Curriculum for ...](https://huggingface.co/papers/2607.22639)
+&gt; - [Daily Papers - Hugging Face](https://huggingface.co/papers/date/2026-07-28)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문의 아이디어 자체는 &#x27;CoT를 통한 파라메트릭 도구 검색&#x27;이라는 점에서 흥미롭습니다만, 학습 과정에서 LoRA를 사용해 도구 지식 파괴를 막았다는 주장을 100% 신뢰하기는 어렵군요. 비즈니스 규칙이 복잡해질수록 CoT의 추론 경로가 길어지며 발생하는 Latency 문제는 빔 탐색을 안 쓴다고 해결될 수준이 아닙니다. 이 논문이 정말로 범용적인 엔터프라이즈 환경에서 견고한 성능을 낼지, 아니면 특정 데이터셋에 과적합된 결과일지 검증이 필요합니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에선 &#x27;범용성&#x27;이 핵심이죠. 8,300개 도구를 Greedy로 돌려 86% Recall을 뽑았다는 건, 엔지니어 입장에선 당장 프로덕션에 올려보고 싶은 수치긴 합니다. 기존 임베딩 기반 Retrieval이 복잡한 사내 API 정책 앞에서는 거의 무용지물이라 매번 튜닝하느라 고생했는데, &#x27;비즈니스 규칙 기반 추론 커리큘럼&#x27;이라는 접근이 그 고통을 덜어줄 수 있을지 기대되네요. 일단 사내 데이터셋으로 벤치마크부터 돌려봐야겠습니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 다들 반응이 냉담하시네요! 저는 이 논문이 Agentic Workflow의 게임 체인저라고 봅니다. 기존의 복잡한 Constrained Search에서 벗어나 CoT로 문맥을 이해하게 만든 건 정말 영리한 설계예요. 3.2%p 성능 향상이 작아 보일지 몰라도, 엔터프라이즈 레벨에서 &#x27;지식 파괴 없는 미세 조정&#x27;은 성배와 같거든요. 당장 내일 아침 학회 세미나에서 이 논문으로 발표할 건데, 벌써부터 랩실 동기들 반응이 기대되네요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
