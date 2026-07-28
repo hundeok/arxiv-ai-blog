@@ -3657,11 +3657,11 @@
     "2607_22334v1": {
       "id": "2607_22334v1",
       "filename": "post_2607_22334v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-07-27T06:23:03.606919+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-07-27T12:16:43.743158+00:00",
+      "updated_at": "2026-07-28T11:12:41.010867+00:00",
       "paper": {
         "title": "Cross-Tokenizer On-Policy Distillation via Byte-Prefix Marginalization",
         "summary": "Open-weight language models from different families exhibit complementary capabilities, motivating their consolidation into a compact student through on-policy distillation (OPD). However, full-vocabulary OPD typically assumes a shared tokenizer, while existing cross-tokenizer methods may discard teacher probability mass or assign it to student tokens with unrelated content. We introduce Byte-Prefix Marginalization (BPM), which re-expresses the teacher's next-token distribution over the student vocabulary in a shared byte space. Specifically, BPM assigns each teacher token's probability to the longest student token whose byte representation is a prefix of the teacher token's bytes, aggregates mass mapped to the same student token, and places otherwise unmatched mass in an explicit residual category. This produces a vocabulary-complete, byte-aligned, and mass-preserving target for dense OPD. The target exactly recovers the teacher-induced byte-prefix marginal when the relevant prefix does not span multiple teacher tokens (a condition satisfied at more than 99% of training positions) and uses a mass-preserving, chain-factorized lower bound otherwise. Across Qwen3-32B, GLM-Z1-9B-0414, and MiniMax-M2.7 as teachers, BPM consistently outperforms current cross-tokenizer methods on six mathematics and programming benchmarks, improving six-benchmark avg@8 by 3.7-6.6 points over the strongest baselines.",
@@ -3677,7 +3677,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2607.22334v1"
       },
-      "priority_score": 27
+      "priority_score": 27,
+      "korean_title": "바이트 접두사 주변화(Byte-Prefix Marginalization)를 통한 교차 토크나이저 온폴리시 증류"
     },
     "2607_14277v1": {
       "id": "2607_14277v1",
@@ -3759,11 +3760,11 @@
     "2607_18314v1": {
       "id": "2607_18314v1",
       "filename": "post_2607_18314v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-07-27T19:18:37.688035+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-07-28T08:23:45.673053+00:00",
+      "updated_at": "2026-07-28T11:12:19.089598+00:00",
       "paper": {
         "title": "Interactive Training 2: Auditable Control Plane for Live Model Training",
         "summary": "Experiment trackers show how training is progressing, but changing a live run still usually requires trainer-specific code. We present Interactive Training 2, an open-source control plane for steering training through a shared protocol. Training applications declare which settings and actions they expose, humans and automated controllers submit requests through the same interface, and the training loop validates and applies them at safe control points. A customized Aim workspace combines live metrics and controls with a chronological record of requests and outcomes. We demonstrate the system across five NLP and reinforcement-learning workflows. The released code and traces provide a reusable foundation for auditable human- and agent-guided training.",
@@ -3777,7 +3778,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2607.18314v1"
       },
-      "priority_score": 29
+      "priority_score": 29,
+      "korean_title": "인터랙티브 트레이닝 2: 실시간 모델 학습을 위한 감사 가능한 제어 평면"
     },
     "2607_22798v1": {
       "id": "2607_22798v1",
@@ -3786,7 +3788,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-07-28T08:23:45.673035+00:00",
+      "updated_at": "2026-07-28T11:12:02.109196+00:00",
       "paper": {
         "title": "StateAct: Program State, before Pixels, for Long-Horizon Computer-Use Agents",
         "summary": "Computer-use agents are usually improved by strengthening perception: better models for reading a screenshot and choosing where to click. Yet a screenshot is only a lossy rendering of the underlying program state, e.g., the files, application backends, and DOM that hold the task data. Different states can produce the same pixels, while code can inspect and modify that state directly. StateAct is a code-first, multi-agent harness built around this distinction. Its main agent works directly with program state by using code, while a dedicated GUI subagent handles screenshot-and-click interaction on the few subgoals that need it, just 28 of 108 tasks and 1.1% of main-agent steps. The same direct access to program state also supports verification: an independent finish gate double-checks the saved result for structural failures, e.g., output that is missing, unsaved, or written to the wrong path. To stay on track over hundreds of steps, the main agent hands subgoals to fresh subagents, keeping its own context focused. On OSWorld 2.0, StateAct lifts Claude Opus 4.8 from 20.6% to 26.9% on binary success, and from 54.8% to 61.6% on partial success, at ~ 9x lower cost per task than the same model driven by screenshots alone; a code-only variant with no GUI subagent reaches only 45.9% partial, below that screenshot-based baseline's 54.8%. In general, grounding action, verification, and memory in state, what we call state-grounding, shifts the main bottleneck from perception toward reasoning: failures depend more on what the agent thinks than on what it sees.",
@@ -3845,7 +3847,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-07-28T08:24:27.898402+00:00",
+      "updated_at": "2026-07-28T11:12:02.109168+00:00",
       "paper": {
         "title": "Oxygen-TryOn: Fashion-Native Foundation Model for Any-item Virtual Try-On",
         "summary": "We present Oxygen-TryOn, a unified foundation model for any-item virtual try-on. Rather than repurposing a general-purpose image editor, Oxygen-TryOn is fashion-native, built for try-on through a dedicated data engine and try-on-specific training. Given one or more reference items (clean product shots or in-the-wild worn-on photos) and a single target subject image, it synthesizes a photorealistic image of the subject wearing the items across virtually any fashion category. Prior systems handle a single garment category in a studio setting, and recent multi-reference methods remain garment-centric; in contrast, Oxygen-TryOn supports diverse items and scenarios, including full- and half-body views, a variable number of references, and free multi-item composition, while faithfully preserving both subject identity and item appearance. Instead of mask-based inpainting, we reformulate try-on as a multi-reference, understanding-driven generation task. We build a data engine that collects, manufactures, annotates, and filters high-quality try-on data at scale, and design a three-stage recipe of continued pre-training (CPT), supervised fine-tuning (SFT), and reinforcement learning (RL). The RL stage uses a hybrid reward combining an in-house try-on reward model with a proprietary, rubric-guided general-purpose model, jointly supervising fine-grained consistency and instruction-level quality. It also follows general editing instructions (e.g., pose changes) in the same pass. Across public benchmarks and our in-house Oxygen-TryOn Bench, it achieves state-of-the-art consistency and realism on single-item try-on and leads on multi-item try-on, matching or surpassing both leading proprietary systems (Nano Banana Pro, GPT-Image-2, Seedream5 Lite) and open-source models (FLUX.2).",
@@ -3877,7 +3879,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-07-28T08:23:45.673017+00:00",
+      "updated_at": "2026-07-28T11:12:02.109190+00:00",
       "paper": {
         "title": "IndicTalk: A Large-Scale Persona-Based Multilingual Conversational Corpus for Indic Languages",
         "summary": "Large Language Models (LLMs) have transformed conversational AI, yet high-quality multilingual code-mixed dialogue resources remain scarce, particularly for Indic languages where speakers naturally alternate between English and their native language in both native-script and Romanized forms. We present IndicTalk, one of the largest multilingual Indic code-mixed conversational corpora, comprising over 13,28,604 event-grounded multi-turn conversations across 18 language varieties covering 9 Indic languages. The corpus is generated through a fully automated pipeline that combines real-world news grounding, persona-conditioned dialogue generation using multilingual LLMs, and automatic quality validation. Extensive linguistic, automatic, and human evaluations demonstrate that IndicTalk produces fluent, coherent, and naturally code-mixed conversations across both script variants. We will release IndicTalk to support the development and evaluation of multilingual conversational AI for underrepresented Indic languages. The dataset is available at: https://huggingface.co/datasets/LingoIITGN/IndicTalk .",
@@ -3894,11 +3896,11 @@
     "2607_23855v1": {
       "id": "2607_23855v1",
       "filename": "post_2607_23855v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-07-28T05:41:14.728934+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-07-28T08:23:45.673041+00:00",
+      "updated_at": "2026-07-28T11:12:29.540670+00:00",
       "paper": {
         "title": "OmniVAE: An Audio-Video VAE with Cross-Modal Alignment for Joint Generation",
         "summary": "Recent generative models are moving beyond silent video or standalone audio synthesis toward the joint generation of synchronized audio and video. Despite this progress, jointly generating audio and video with fine-grained cross-modal correspondence remains challenging due to their fundamental structural differences. Most existing methods use audio and video VAEs trained separately. As a result, the two latent spaces lack cross-modal alignment, leaving the downstream generative model to learn cross-modal synchronization from scratch. We present OmniVAE, a jointly trained audio-video VAE that learns fine-grained semantic alignment between audio and video latent representations. Beyond reconstruction, OmniVAE uses a segment-level audio-video contrastive objective to capture temporal-semantic correspondence and align the two latent spaces. In parallel, it distills features from pretrained modality-specific semantic encoders into each modality, improving the downstream learnability of both latent spaces. Extensive experiments show that both objectives consistently improve the learnability of the latent spaces, translating into higher generation quality and more accurate cross-modal synchronization in downstream text-to-audio-video generation. These findings underscore the importance of learning unified representations as a foundation for omnimodal modeling.1",
@@ -3933,7 +3935,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2607.23855v1"
       },
-      "priority_score": 27
+      "priority_score": 27,
+      "korean_title": "OmniVAE: 통합 생성을 위한 교차 모달 정렬을 갖춘 오디오-비디오 VAE"
     },
     "2607_23822v1": {
       "id": "2607_23822v1",
@@ -3942,7 +3945,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-07-28T08:23:45.673045+00:00",
+      "updated_at": "2026-07-28T11:12:02.109204+00:00",
       "paper": {
         "title": "DriveDNA: A Large-Scale Multimodal Naturalistic Driving Dataset and Benchmark for Driving Style Identification",
         "summary": "Driving style captures stable, driver-specific patterns in how a vehicle is driven. In naturalistic data, however, this signal is hard to isolate because drivers are observed in different vehicles, on different roads, and under different conditions, so models may mistake vehicle- or situation-specific regularities for driver-specific style. We introduce DriveDNA, a large-scale naturalistic dataset and benchmark for personalized driving-style modeling, comprising 4,121 drives from 465 drivers across 115 vehicle models and totaling 975 hours of human-controlled driving at 10 Hz with forward video, collected from community drivers in everyday use. DriveDNA defines driving style as a consistent, driver-specific behavioral pattern in how a vehicle moves under similar conditions. The benchmark evaluates this signal through three core tasks: few-shot driver re-identification, personalized behavior prediction, and condition-matched comparison, and provides behavioral annotations plus 276,248 rule-generated maneuver events across six classes with large-scale human auditing. We evaluate baselines spanning classical descriptors, supervised and self-supervised time-series encoders, multimodal fusion, probabilistic prediction, and zero-shot foundation models under a fixed multi-seed protocol. Learned representations substantially outperform classical descriptors on unseen drivers (AUROC .935 vs. .707) and retain driver-specific information under matched driving conditions, while descriptor performance approaches chance. Video-only models achieve comparable re-identification accuracy but exhibit severe route leakage, showing that strong recognition may arise from contextual shortcuts rather than driving behavior. These findings show that reliable driving-style evaluation must assess both the behavioral value of learned representations and their robustness to vehicle, drive, and condition confounds.",
@@ -3964,7 +3967,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-07-28T08:23:45.673057+00:00",
+      "updated_at": "2026-07-28T11:12:02.109222+00:00",
       "paper": {
         "title": "Data Pyramid for Embodied Manipulation",
         "summary": "Multimodal foundation models learned to see and to speak by consuming the whole internet. Embodied agents admit no such shortcut, since they require data that couple observations with physical states and actions. These signals can be provided, to varying degrees, by multiple data sources. In this work, we organize the embodied data ecosystem as a \"pyramid\" spanning five complementary sources: real-robot data, UMI-style data, egocentric and exocentric data, simulation data, and general vision-language data. We organize the pyramid around the tension between scalability and robot alignment, and further characterize each source in terms of data quality, diversity, reusability, and physical fidelity. We then analyze recent embodied foundation models through the lens of their data recipes, examining how different sources are selected, aligned, and mixed during pretraining. For embodied brain models, vision-language-action models, and world-action models alike, we relate data composition to capabilities in perception, reasoning, planning, action generation, and world prediction. We close by discussing six open challenges: building large-scale tactile datasets, collecting failure and recovery data, developing scalable data-collection pipelines, aligning actions across embodiments, leveraging egocentric data for dexterous manipulation, and designing principled data recipes for robot learning. We hope this work paves the foundation for the design of next-generation embodied systems.",
@@ -4012,7 +4015,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-07-28T08:23:45.673061+00:00",
+      "updated_at": "2026-07-28T11:12:02.109225+00:00",
       "paper": {
         "title": "The Physics of Multi-Turn Long-Horizon Planning: From Pre-training to Post-training via Single- and Multi-Teacher On-Policy Agentic Distillation",
         "summary": "Multi-turn long-horizon planning is critical for foundation model agents, yet how to fundamentally improve it remains unclear. Existing models are trained on uncontrollable and opaque Internet data, making it difficult to identify how planning ability is acquired, shaped, and integrated. To address this challenge, we introduce a unified and controlled multi-turn environment that enables precise control. It allows systematically study long-horizon planning across three stages. (1) Planning ability acquisition during pre-training. We study data format, distribution, and quality. Explicit world model construction through CoT state transition modeling yields stronger long-horizon generalization. Atomic skills alone are insufficient for compositional generalization, whereas a litte long-horizon data works. Moreover, suboptimal trajectories severely impair performance because errors amplify over long horizons. (2) Planning ability shaping via GRPO and OPD post-training. Through mutual information, we distinguish general planning patterns from task-specific planning knowledge. For planning patterns, we identify three application regions of post-training: unnecessary, effective, and unsupported. OPD has a broader effective region than GRPO under low-quality and long-horizon settings, as it provides more consistent update directions. For planning knowledge, distilling unseen procedures from a teacher with different knowledge may impair student's prior world modeling without fully establishing new knowledge. (3) Planning ability integration through MOPD post-training. We show that multi-teacher on-policy distillation (MOPD) integrates capabilities by converging to shared planning-pattern across environments. Compatible patterns enable cross-environment generalization, partially shared patterns support continual learning, while completely conflicting patterns cause severe interference.",
@@ -4057,7 +4060,7 @@
       "attempts": 0,
       "next_retry_at": "2026-07-28T08:23:45.673075+00:00",
       "last_error": null,
-      "updated_at": "2026-07-28T08:23:45.673077+00:00",
+      "updated_at": "2026-07-28T11:12:02.109229+00:00",
       "paper": {
         "title": "DecoupleMix: Decoupled Ratio Search and Convex Allocation for Scalable VLM Data Recipes",
         "summary": "While data curation for Vision Language Models (VLMs) is increasingly active, public practice for constructing pretraining mixtures remains largely heuristic: practitioners stack datasets that pass quality filters, set cross-domain ratios by intuition, and lack a principled, attributable criterion for admitting new data, while frontier recipes remain undisclosed. We formulate data construction as a systematic mixture-optimization problem and turn it into a reproducible engineering discipline by decoupling the mixture into two orthogonal sub-problems: inter-class ratios across capabilities and intra-class ratios within a category. For inter-class allocation, we use a single-variable iterative search; for intra-class composition, we apply a multidimensional, dataset-level assessment scoring Quality and Difficulty, and formulate selection as a constrained convex optimization with a diversity objective. The DecoupleMix framework delivers two critical capabilities: guiding what data to collect next and rendering dataset validation a controlled, attributable experiment. Experiments show our approach consistently surpasses heuristic baselines. Moreover, optimal ratios discovered on small-scale proxies transfer seamlessly to larger scales without retuning. Using 80B additional multimodal continue-pretraining tokens, our VLM is competitive with strong open-source models trained with substantially larger multimodal budgets.",
@@ -4074,10 +4077,30 @@
         "pdf_link": "https://arxiv.org/pdf/2607.24516v1"
       },
       "priority_score": 17
+    },
+    "2607_23402v1": {
+      "id": "2607_23402v1",
+      "filename": "post_2607_23402v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-07-28T11:12:10.044557+00:00",
+      "paper": {
+        "title": "Characterizing Warp Divergence from Pascal to Blackwell",
+        "summary": "Since Volta introduced Independent Thread Scheduling (ITS), NVIDIA GPUs have been widely assumed to handle warp divergence in a fixed manner. We test this assumption across Ampere, Hopper, and datacenter and consumer Blackwell GPUs, using pre-ITS Pascal as a baseline. Combining cycle-accurate microbenchmarks, hardware counters, and static analysis of compiler-generated SASS, we separate stable behavior from architectural change. Across all tested generations, divergent paths serialize linearly with the number of paths $k$, following $T(k) \\approx sk$ with no super-linear reconvergence penalty. Warp execution efficiency falls as $32/k$, the penalty is independent of occupancy, and predication removes the serialization cost. The same behavior appears on Pascal, showing that this programmer-visible cost model predates ITS. The compiler-emitted reconvergence machinery, however, has changed substantially. Pascal uses a per-warp SSY/SYNC instruction stack, whereas later generations use barrier-register instructions. Deferred reconvergence beyond the immediate post-dominator falls from 29 cases on Ampere to 2 on Blackwell. Blackwell also introduces a two-tier convergence-barrier classification, uniform-branch instructions, and explicit partial-mask warp synchronization, none of which appear on Ampere or Hopper. Controlled bit-flip experiments indicate that the new barrier class is a static compiler classification with no observable runtime effect in our tests. Thus, divergence retains a stable and predictable performance cost even as NVIDIA's control-flow ISA and reconvergence mechanisms continue to evolve.",
+        "published": "2026-07-26T00:47:07Z",
+        "authors": [
+          "Alpin Dale"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2607.23402v1"
+      },
+      "priority_score": 30,
+      "korean_title": "파스칼부터 블랙웰까지의 워프 발 divergence 특성 분석"
     }
   },
   "last_run": {
-    "started_at": "2026-07-28T08:23:45.674016+00:00",
+    "started_at": "2026-07-28T11:12:02.110170+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -4088,25 +4111,25 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 19263,
-      "output_tokens": 5834,
+      "prompt_tokens": 19570,
+      "output_tokens": 5705,
       "thought_tokens": 0,
-      "total_tokens": 25097,
-      "estimated_usd": 0.01356675
+      "total_tokens": 25275,
+      "estimated_usd": 0.01345
     },
-    "finished_at": "2026-07-28T08:24:38.819544+00:00"
+    "finished_at": "2026-07-28T11:12:41.075475+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 261,
-    "prompt_tokens": 651424,
-    "output_tokens": 193517,
+    "requests": 269,
+    "prompt_tokens": 670994,
+    "output_tokens": 199222,
     "thought_tokens": 0,
-    "total_tokens": 844941,
-    "estimated_usd": 0.4531315
+    "total_tokens": 870216,
+    "estimated_usd": 0.4665815
   },
   "last_publication_run": {
-    "started_at": "2026-07-28T08:23:45.674016+00:00",
+    "started_at": "2026-07-28T11:12:02.110170+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -4117,17 +4140,17 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 19263,
-      "output_tokens": 5834,
+      "prompt_tokens": 19570,
+      "output_tokens": 5705,
       "thought_tokens": 0,
-      "total_tokens": 25097,
-      "estimated_usd": 0.01356675
+      "total_tokens": 25275,
+      "estimated_usd": 0.01345
     },
-    "finished_at": "2026-07-28T08:24:38.819544+00:00"
+    "finished_at": "2026-07-28T11:12:41.075475+00:00"
   },
   "daily_usage": {
     "date": "2026-07-28",
-    "estimated_usd": 0.04086875,
-    "publications": 12
+    "estimated_usd": 0.05431875,
+    "publications": 16
   }
 }

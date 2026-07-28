@@ -1,0 +1,70 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>인터랙티브 트레이닝 2: 실시간 모델 학습을 위한 감사 가능한 제어 평면 | ArXiv Translator AI</title><meta name="description" content="인터랙티브 트레이닝 2: 실시간 모델 학습을 위한 감사 가능한 제어 평면"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2607_18314v1"><meta property="og:type" content="article"><meta property="og:title" content="인터랙티브 트레이닝 2: 실시간 모델 학습을 위한 감사 가능한 제어 평면"><meta property="og:description" content="인터랙티브 트레이닝 2: 실시간 모델 학습을 위한 감사 가능한 제어 평면"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2607_18314v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="인터랙티브 트레이닝 2: 실시간 모델 학습을 위한 감사 가능한 제어 평면"><meta name="twitter:description" content="인터랙티브 트레이닝 2: 실시간 모델 학습을 위한 감사 가능한 제어 평면"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2607_18314v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "인터랙티브 트레이닝 2: 실시간 모델 학습을 위한 감사 가능한 제어 평면", "description": "인터랙티브 트레이닝 2: 실시간 모델 학습을 위한 감사 가능한 제어 평면", "datePublished": "2026-07-17", "url": "https://arxiv-ai-blog.vercel.app/papers/2607_18314v1", "author": [{"@type": "Person", "name": "Wentao Zhang"}, {"@type": "Person", "name": "Xuanhe Pan"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2607_18314v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2607_18314v1"});gtag('event', 'paper_view', {"paper_id": "2607_18314v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>인터랙티브 트레이닝 2: 실시간 모델 학습을 위한 감사 가능한 제어 평면</h1><p>인터랙티브 트레이닝 2: 실시간 모델 학습을 위한 감사 가능한 제어 평면</p><pre>인터랙티브 트레이닝 2: 실시간 모델 학습을 위한 감사 가능한 제어 평면
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Interactive Training 2: Auditable Control Plane for Live Model Training
+&gt; - **저자:** Wentao Zhang, Xuanhe Pan, Han Zhou, Yang Lu, Yuntian Deng
+&gt; - **발행일:** 2026-07-17
+&gt; - **PDF 링크:** [Interactive Training 2: Auditable Control Plane for Live Model Training](https://arxiv.org/pdf/2607.18314v1)
+
+
+✨ 3줄 핵심 요약
+* **범용적 제어 프로토콜:** 모델 학습 과정에서 특정 프레임워크에 종속되지 않고 학습 설정이나 액션을 실시간으로 조정할 수 있는 공통 인터페이스를 제공합니다.
+* **학습 루프의 안전성 보장:** 사용자가 요청한 변경 사항을 학습 루프가 정의한 &#x27;안전한 제어 지점(Control Point)&#x27;에서만 반영하여 학습 중단이나 오류를 방지합니다.
+* **감사 가능한 기록(Audit Trail):** 누가, 어떤 요청을 했고, 그 결과가 무엇인지 모든 과정을 기록하여 학습 과정의 투명성과 재현성을 높였습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+보통 AI 모델을 학습시킬 때, 중간에 학습률을 바꾸거나 데이터를 조정하려면 매번 코드를 수정해야 하는 번거로움이 있습니다. &#x27;인터랙티브 트레이닝 2&#x27;는 이런 과정을 표준화한 도구입니다. 개발자가 학습 중에 바꿀 수 있는 항목(설정값, 액션 등)을 미리 정해두면, 사람이나 AI 에이전트가 공통된 방식으로 요청을 보낼 수 있습니다. 학습 프로그램은 이 요청을 무작정 수행하는 대신, 안전한 타이밍에만 적용합니다. 마치 학습 과정 전체를 기록하는 &#x27;블랙박스&#x27;처럼 동작하여, 어떤 판단으로 학습이 개선되었는지 모든 기록을 남깁니다.
+
+🎯 배경 및 문제점
+* **파편화된 도구:** 기존 실험 추적 도구는 상태를 보여주기만 할 뿐, 실시간으로 개입하여 학습을 제어하는 표준화된 방법이 부족했습니다.
+* **복잡한 수동 개입:** 실시간 개입이 필요한 경우, 실험마다 각기 다른 콜백 함수나 맞춤형 코드를 작성해야 했습니다.
+* **설명 가능성 결여:** 학습 도중 내린 결정들이 기록되지 않아, 결과값이 왜 변했는지 사후에 추적하기 어려웠습니다.
+
+💡 핵심 기술 및 아키텍처
+* **공통 제어 평면(Control Plane):** 학습 코드와 외부 제어기(사람, LLM, 스크립트 등) 사이의 인터페이스 역할을 합니다.
+* **안전한 제어 지점:** `session.step()`을 통해 학습 루프 내에서만 데이터 변경이 일어나도록 설계하여 시스템의 안정성을 유지합니다.
+* **통합 저널링(Journal):** 메트릭, 제어 요청, 결과, 체크포인트, LLM의 판단 근거 등을 타임라인에 따라 하나의 기록물로 생성합니다.
+* **유연한 연결 방식:** `Trainer` 클래스 래핑, 옵티마이저 패칭, 혹은 직접 통합 등 학습 환경에 맞춰 다양한 방식으로 제어 기능을 연결할 수 있습니다.
+
+📊 실험 결과 분석
+본 논문은 5가지 NLP 및 강화학습 워크플로우(감정 분류, 감정 혼합, 레이어별 GPT 학습, Muon-AdamW GPT, RLVR Countdown)에 이 시스템을 적용했습니다. 
+* 실험 결과, 모든 워크플로우에서 제어 평면을 통한 개입이 가능했음을 확인했습니다.
+* 구체적인 성과 예시로, 감정 분류 작업에서는 검증 손실(Validation loss)을 0.354에서 0.220으로, RLVR Countdown 작업에서는 정답률을 0.032에서 0.232로 개선하는 성과를 보였습니다. 
+* 단, 제시된 수치는 해당 워크플로우별로 기록된 성과이며, 시스템의 일반적인 성능 향상 폭은 환경마다 다를 수 있음을 밝힙니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **효율적인 연구 환경:** 연구자가 학습 중인 모델을 즉각적으로 수정하고 개선할 수 있어 실험 시간을 단축할 수 있습니다.
+* **AI 감독 연구의 토대:** 사람이 직접 개입하거나 AI 에이전트가 학습을 관리하는 과정을 감사할 수 있게 함으로써, 더욱 안전하고 체계적인 학습 자동화 시스템 구축이 가능합니다.
+* **실무적 한계:** 현재 LLM의 응답 속도에 따른 학습 지연 이슈가 존재하며, 고위험 작업에는 별도의 승인 절차나 안전 가이드라인이 추가로 필요하다고 저자들은 명시했습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2607.18314 Interactive Training 2: Auditable Control Plane ...](https://arxiv.org/abs/2607.18314)
+&gt; - [Interactive Training 2: Auditable Control Plane for Live ...](https://prismix.dev/news/c91cd75e1a56)
+&gt; - [Interactive Training 2: Auditable Control Plane for Live ...](https://arxiv.org/html/2607.18314v1)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문은 읽어봤네. 제어 평면(Control Plane)을 도입해 학습 과정을 표준화하고 감사(Audit) 기능을 넣은 건 학술적으로 의미가 있어. 다만, &#x27;안전한 제어 지점&#x27;에서의 동기화 오버헤드가 대규모 분산 학습 환경에서도 과연 안정적으로 유지될지 의문이군. 실험 데이터가 소규모 워크플로우에 치중된 점은 아쉬워.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 오버헤드 이슈는 현업에서 치명적이죠. 저도 깃헙 코드 쓱 봤는데, 프레임워크 종속성을 낮춘 건 칭찬할 만하지만, 결국 프로덕션에서 돌리려면 저널링 데이터 저장 비용이랑 에이전트 연동 시 발생하는 래턴시가 관건이겠네요. 그래도 매번 코드 수정하고 다시 돌리느라 날린 GPU 시간 생각하면, 인터랙티브하게 수정 가능한 래퍼 자체는 꽤 매력적인데요?&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 형님들! 이거 대박 아닌가요? 이제 &#x27;학습 중에 LLM 에이전트가 실시간으로 하이퍼파라미터 튜닝하고 학습 기록까지 다 남겨주는&#x27; 자율 학습 파이프라인 바로 구축 가능하겠는데요? 논문 저자들이 RLVR 작업에서 정답률 0.032에서 0.232로 뻥튀기한 거 보면, 이거 활용해서 논문 3개는 더 뽑을 수 있을 듯. 제가 바로 프로토타입 돌려보고 후기 올리겠습니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
