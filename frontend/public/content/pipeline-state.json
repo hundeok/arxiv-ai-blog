@@ -4094,7 +4094,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-07-29T08:29:53.882262+00:00",
+      "updated_at": "2026-07-29T11:19:13.195227+00:00",
       "paper": {
         "title": "Characterizing Warp Divergence from Pascal to Blackwell",
         "summary": "Since Volta introduced Independent Thread Scheduling (ITS), NVIDIA GPUs have been widely assumed to handle warp divergence in a fixed manner. We test this assumption across Ampere, Hopper, and datacenter and consumer Blackwell GPUs, using pre-ITS Pascal as a baseline. Combining cycle-accurate microbenchmarks, hardware counters, and static analysis of compiler-generated SASS, we separate stable behavior from architectural change. Across all tested generations, divergent paths serialize linearly with the number of paths $k$, following $T(k) \\approx sk$ with no super-linear reconvergence penalty. Warp execution efficiency falls as $32/k$, the penalty is independent of occupancy, and predication removes the serialization cost. The same behavior appears on Pascal, showing that this programmer-visible cost model predates ITS. The compiler-emitted reconvergence machinery, however, has changed substantially. Pascal uses a per-warp SSY/SYNC instruction stack, whereas later generations use barrier-register instructions. Deferred reconvergence beyond the immediate post-dominator falls from 29 cases on Ampere to 2 on Blackwell. Blackwell also introduces a two-tier convergence-barrier classification, uniform-branch instructions, and explicit partial-mask warp synchronization, none of which appear on Ampere or Hopper. Controlled bit-flip experiments indicate that the new barrier class is a static compiler classification with no observable runtime effect in our tests. Thus, divergence retains a stable and predictable performance cost even as NVIDIA's control-flow ISA and reconvergence mechanisms continue to evolve.",
@@ -4114,7 +4114,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-07-29T08:29:53.882217+00:00",
+      "updated_at": "2026-07-29T11:19:13.195190+00:00",
       "paper": {
         "title": "UltraViT: Latency-Optimized On-device Vision Encoder for Large Vision-Language Models",
         "summary": "Large Vision-Language Models (LVLMs) remain bottlenecked by massive computational footprints, precluding their deployment on resource-constrained edge devices. While efforts to compress LVLMs focus heavily on vision token reduction or smaller language models, the vision encoder is largely overlooked, typically deployed as a monolithic, computationally heavy feature extractor. Moreover, there is no previous effort that designs a vision encoder for LVLMs directly optimized for on-device latency. In this paper, we present UltraViT, a vision encoder for LVLMs, explicitly designed and optimized for on-device performance. Specifically, by taking into account real on-device latencies, we systematically design a pyramidal architecture that strategically integrates and adapts heterogeneous spatial mixers at the macro-block level. Furthermore, to pre-train UltraViT, we propose a novel two-stage generative pre-training strategy: cultivating rich spatial features via dense distillation, followed by direct generative supervision from a capacity-mixed frozen LLM. Compared to standard contrastive and SSL, we show that our pre-training is much more effective for achieving high-level semantic grounding for UltraViT needed for the subsequent generative multimodal alignment of LVLM training. Extensive experiments demonstrate that our on-device latency-informed design combined with our tailored training strategy establishes a new state-of-the-art for efficient LVLM encoding, significantly outperforming existing encoder-centric baselines while operating on-device at nearly 1.7xthe speed.",
@@ -4140,7 +4140,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-07-28T16:30:17.926387+00:00",
+      "updated_at": "2026-07-29T11:19:13.195239+00:00",
       "paper": {
         "title": "TRACE: Business Rule-Grounded Reasoning Curriculum for Knowledge-Preserving Parametric Tool Retrieval in Enterprise LLMs",
         "summary": "Parametric retrieval enables LLMs to retrieve tools implicitly by assigning each API a unique virtual token and training the model to generate it via constrained beam search. Toolsense shows that this regime has two critical drawbacks: it destroys parametric tool knowledge during training, and its beam-search decoding is too slow for real-time deployment. We introduce TRACE (Tool Retrieval via Augmented Chain-of-thought and Enterprise rules), a two-stage curriculum that resolves this dissociation. Stage 1 reuses the multi-format memorization SFT from ToolSense to seed tool knowledge with LoRA. Stage 2 is our core contribution: the model is trained to emit a thinking trace before producing a JSON list of tool tokens, using two data sources -- RRB pairs from ToolSense and queries synthesized to target business rules curated by domain experts -- both augmented with reasoning traces. This training objective preserves Stage 1 MCQ and QA probing accuracy while enabling single-beam greedy decoding at production latency. Evaluated on a combined enterprise catalog of 8,300+ tools across two enterprise product lines, TRACE training for Stage 2 not only preserves but improves tool understanding: MCQ accuracy gains +3.2 pp and QA probing gains +9 pp over Stage 1. On retrieval, TRACE achieves ~86% recall on Domain A and ~60% on Domain B -- compared to embedding baseline performance of ~27% & ~52% -- both with single-beam greedy decoding, making it directly deployable at production latency.",
@@ -4164,7 +4164,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-07-29T08:29:53.882298+00:00",
+      "updated_at": "2026-07-29T11:19:13.195237+00:00",
       "paper": {
         "title": "WorldDiT: A Unified Diffusion Architecture for World and Action Modeling",
         "summary": "Many recent robot policies pursue stronger control by using large pretrained vision-language models (VLMs) as the action backbone. We introduce WorldDiT, a unified diffusion transformer architecture that couples action generation with visual world modeling and achieves strong performance without a large pretrained VLM action backbone. During training, a single diffusion transformer generates continuous action chunks and predicts normalized RGB patch targets from future camera frames. Across four LIBERO simulation suites, WorldDiT lies on the reported Pareto frontier for total model parameters and mean success among methods reporting all four suites. These results provide a strong sub-billion-parameter baseline for future scaling studies.",
@@ -4187,7 +4187,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-07-29T08:29:53.882284+00:00",
+      "updated_at": "2026-07-29T11:19:13.195230+00:00",
       "paper": {
         "title": "Bitcoin Price Direction Prediction via Regime-Aware Multi-Modal Fusion of Social Sentiment and Technical Features",
         "summary": "Bitcoin price prediction on sub-daily timescales is a hard open problem in computational finance. Bitcoin exhibits fat-tailed returns, non-stationary dynamics, and a price discovery process influenced by social discourse on Reddit and Twitter. Conventional approaches fuse OHLCV technical features with sentiment via static concatenation, applying identical fusion weights regardless of market state. This is inconsistent with the behavioural finance literature, which shows that retail sentiment is most predictive during volatile periods and noisy during calm ones. This paper proposes Regime-Aware Multi-Modal Learning (RAML), which conditions fusion of sentiment and price features on a dynamically detected binary market regime. Rolling 24-hour volatility partitions observations into stable and volatile regimes; a learnable sigmoid gate adjusts the weight of the sentiment embedding relative to the price embedding, trusting sentiment more during volatility and price dynamics more during stable phases. The system is evaluated on 3,491 hourly observations (July 2024-September 2025), combining Bitcoin OHLCV data with Reddit /r/Bitcoin FinBERT sentiment. Four models are compared - price-only BiLSTM, sentiment-only classifier, static-concatenation BiLSTM, and RAML - across 3-hour and 6-hour horizons, with an ablation study isolating the sentiment branch, regime detection, and adaptive fusion. RAML achieves macro-F1 of 0.5474 (3h) and 0.5513 (6h), with the highest AUC at 3 hours (0.5084), indicating better calibration. Ablation confirms every component is necessary, and replacing adaptive weighting with concatenation causes recall collapse at 6 hours (F1: 0.14). These results establish regime-conditioned adaptive fusion as a necessary design principle for multi-modal financial forecasting.",
@@ -4431,11 +4431,11 @@
     "2607_25718v1": {
       "id": "2607_25718v1",
       "filename": "post_2607_25718v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-07-29T02:02:35.971554+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-07-29T02:02:35.971556+00:00",
+      "updated_at": "2026-07-29T11:19:32.900436+00:00",
       "paper": {
         "title": "Tools Are Not Islands: Set-Level Tool Retrieval for LLM Agents via Query-Conditioned Hyperedge Prediction",
         "summary": "Large language model (LLM) agents increasingly rely on invoking external tools to complete real-world tasks. Tool retrieval, which selects a small task-relevant subset from a library of thousands of tools before the agent acts, has therefore become a critical component of LLM agent pipelines. However, existing retrievers either score each tool in isolation or assemble the tool set sequentially, so the joint utility of a candidate set is never evaluated as a whole. In this paper, we propose HYSET, short for HYperedge-based SEt-level Tool retrieval. Our contributions are threefold: (i) we formulate tool retrieval as query-conditioned hyperedge prediction on a tool co-invocation hypergraph, under which the tool set itself becomes the unit of scoring and most existing retrieval paradigms reduce to restricted instances; (ii) we capture size-dependent tool compatibility through cardinality-specific interactions; and (iii) we design HYSET as a pre-selection module requiring no modification to the downstream agent. Experiments on ToolBench demonstrate that HYSET consistently outperforms state-of-the-art baselines in both tool retrieval performance and end-to-end task success. Beyond the in-domain setting, HYSET further supports zero-shot/few-shot transfer, generalizing to held-out tools/categories and unseen domains with minimal supervision.",
@@ -4448,7 +4448,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2607.25718v1"
       },
-      "priority_score": 36
+      "priority_score": 36,
+      "korean_title": "도구는 섬이 아니다: 쿼리 조건부 하이퍼에지 예측을 통한 LLM 에이전트의 세트 단위 도구 검색"
     },
     "2607_25687v1": {
       "id": "2607_25687v1",
@@ -4553,11 +4554,11 @@
     "2607_25675v1": {
       "id": "2607_25675v1",
       "filename": "post_2607_25675v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-07-29T02:02:35.971587+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-07-29T02:02:35.971589+00:00",
+      "updated_at": "2026-07-29T11:19:23.050631+00:00",
       "paper": {
         "title": "DecoEvo: Score-Decoupled Co-Evolution of Solver and Rubric-Generator Skills in Text Space",
         "summary": "Text-space optimization adapts large language models (LLMs) by editing external natural-language artifacts rather than model weights, so the optimized artifacts remain inspectable and the model can be treated as a black box. However, most existing text-space methods keep evaluation fixed. On open-ended tasks, this can become a bottleneck: once the solver improves on the criteria a rubric measures, omitted dimensions remain invisible to the optimization signal. Simply evolving the rubric is also unreliable when updates are selected by the current solver's score, because apparent progress can come from making the rubric easier to satisfy. We introduce DecoEvo (Decoupled Co-Evolution), which co-evolves a solver skill and a rubric-generator skill under decoupled objectives without using gold rubrics during optimization. The solver skill is updated using criterion-level feedback, while the rubric-generator skill is revised through complementary audits of requirement coverage and response discrimination that are independent of aggregate solver score. This separation focuses generator updates on newly exposed solver weaknesses, reducing repeated emphasis on criteria the solver already satisfies. Under each benchmark's official evaluation, DecoEvo outperforms all compared methods across five benchmarks and three LLM backbones, yielding 2.8--5.0\\% relative gains over SkillOpt in the five-benchmark average.",
@@ -4579,7 +4580,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2607.25675v1"
       },
-      "priority_score": 37
+      "priority_score": 37,
+      "korean_title": "DecoEvo: 텍스트 공간에서의 문제 해결사 및 루브릭 생성기 스킬의 점수 독립적 공동 진화"
     },
     "2607_25669v1": {
       "id": "2607_25669v1",
@@ -4640,11 +4642,11 @@
     "2607_25663v1": {
       "id": "2607_25663v1",
       "filename": "post_2607_25663v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-07-29T02:02:35.971607+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-07-29T02:02:35.971609+00:00",
+      "updated_at": "2026-07-29T11:19:42.221602+00:00",
       "paper": {
         "title": "Localized Adaptation Reveals Distinct Learning Signatures in Transformers",
         "summary": "Transformer adaptation is typically distributed across model depth, even when the intended change is narrow. We investigate how adaptation site shapes what a model learns, how well that learning generalizes, and how selectively it is applied. We introduce a controlled benchmark spanning five objectives (lexical binding, factual association, behavioral policy learning, causal mapping, and procedural reasoning) and define each objective's \"adaptation geometry\" as its profile of acquisition, transfer, and boundedness under full-stack and early-, middle-, or late-layer LoRA. The objectives exhibit distinct geometries. Lexical binding favors early-layer adaptation for acquisition and boundedness but requires broader updates for transfer; factual association favors later layers among localized adapters; behavioral learning separates late-layer action acquisition from middle-layer policy gating; and causal and procedural transfer benefit most from middle- or full-stack adaptation. These patterns largely persist under parameter-matched controls, and most corresponding directional contrasts replicate across five model families. These findings establish adaptation site as a key design variable for controlling what models learn, generalize, and leave unchanged.",
@@ -4655,7 +4657,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2607.25663v1"
       },
-      "priority_score": 35
+      "priority_score": 35,
+      "korean_title": "국소적 적응을 통한 트랜스포머의 고유한 학습 특성 규명"
     },
     "2607_25659v1": {
       "id": "2607_25659v1",
@@ -4876,11 +4879,11 @@
     "2607_25630v1": {
       "id": "2607_25630v1",
       "filename": "post_2607_25630v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-07-29T02:02:35.971670+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-07-29T02:02:35.971671+00:00",
+      "updated_at": "2026-07-29T11:19:52.307204+00:00",
       "paper": {
         "title": "A Human-in-the-Loop Corpus for LLM-Based Simplification of Scientific Summaries",
         "summary": "Interdisciplinary research is accelerating, yet scientific papers remain difficult to understand outside their home fields. We study large language model (LLM)-based simplification of scientific texts and present a human-in-the-loop workflow that transforms expert summaries into more accessible versions for non-specialists. Using SciSummNet as the source corpus, we first generate baseline simplifications with GPT-4o-mini. In Phase 1, readers from STEM fields outside computer science identify difficult sentences and phrases and compare the original and GPT-simplified summaries in terms of comprehensibility, naturalness, and simplicity. In Phase 2, computer science experts use this feedback to create expert-edited reference simplifications. We release the resulting corpus together with human judgments and automatic evaluation results. The Phase 1 judgments show a clear preference for the GPT-generated summaries in terms of comprehensibility and simplicity, while qualitative analysis of the Phase 2 edits highlights the importance of preserving domain-specific terminology and the strength of scientific claims. The resulting resource supports the training and benchmarking of simplification systems for cross-disciplinary scientific communication.",
@@ -4891,7 +4894,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2607.25630v1"
       },
-      "priority_score": 35
+      "priority_score": 35,
+      "korean_title": "과학 요약문의 LLM 기반 간소화를 위한 인간 참여형 말뭉치"
     },
     "2607_25626v1": {
       "id": "2607_25626v1",
@@ -4923,7 +4927,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-07-29T08:29:53.882240+00:00",
+      "updated_at": "2026-07-29T11:19:13.195208+00:00",
       "paper": {
         "title": "PerceptionBench: Evaluating Atomic Visual Perception in Multimodal Large Language Models",
         "summary": "We introduce PerceptionBench, a benchmark specifically designed to evaluate the atomic visual perception capabilities of Multimodal Large Language Models (MLLMs). Existing benchmarks often fail to isolate perception: holistic evaluations conflate perceptual errors with failures in reasoning or domain knowledge, while application-driven benchmarks only cover narrow, fragmented domains shaped by heuristic designs. To address these limitations, PerceptionBench adopts a bottom-up approach: by diagnosing the earliest failure points in the responses of frontier MLLMs across 42 existing benchmarks, we construct an error taxonomy whose perception branch defines ten atomic perceptual capabilities. Guided by this taxonomy, we construct 3,000 verified questions with short, unambiguous answers, each isolating a single capability, with difficulty stemming from perception rather than reasoning or knowledge. Benchmark results across sixteen frontier MLLMs reveal that atomic perception remains largely unsolved---no model reaches 60\\% accuracy, perception-related hallucination is the weakest capability on average, and similar overall scores conceal sharply divergent capability profiles. PerceptionBench thus provides a capability-level standard for measuring and diagnosing the visual perception boundaries of MLLMs.",
@@ -4975,7 +4979,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-07-29T08:29:53.882249+00:00",
+      "updated_at": "2026-07-29T11:19:13.195212+00:00",
       "paper": {
         "title": "A New Role for Relevance: Guiding Corpus Interaction in Agentic Search",
         "summary": "Relevance is a query-dependent estimate of whether a document or excerpt contains useful evidence. Existing retrieval agents use relevance to select top-$k$ content, but document relevance alone cannot localize, compose, or verify the evidence required by complex questions. Direct Corpus Interaction (DCI) enables such fine-grained operations through grep-style exploration, but its relevance-agnostic search can expose useful clues late and delay convergence. Recent advances use relevance to narrow the corpus into a working space for interaction. Once interaction begins, however, relevance still does not directly guide which documents grep searches first or distinguish informative excerpts from a broad set of matches to let LLMs see them first. We introduce the Relevance-Aware RipGrep Search Agent (RARG), which turns relevance into an execution prior for corpus interaction. RARG provides coarse-to-fine relevance guidance: it orders documents for sequential 'ripgrep' traversal to expose globally relevant clues earlier, initializes promising entry points with query-relevant paragraphs, and reranks grep matches to surface informative excerpts that document-level ranking may otherwise obscure. Across challenging browse question answering and reasoning-intensive retrieval, RARG improves the accuracy--efficiency frontier over retrieval-based and direct-interaction agents. These results demonstrate that relevance-aware interaction enables faster and more reliable search convergence.",
@@ -4999,7 +5003,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-07-29T08:30:05.029718+00:00",
+      "updated_at": "2026-07-29T11:19:13.195224+00:00",
       "paper": {
         "title": "Novel Claim or Déjà Vu? Rethinking \"Contamination-Free'' Dynamic Evaluation for Multimodal Automated Fact-Checking",
         "summary": "Multimodal automated fact-checking (MAFC) verifies claims by retrieving and reasoning over external evidence. However, most existing static benchmarks risk contamination: they primarily consist of outdated claims verifiable using an LLM's internal knowledge without external evidence. This can inflate performance estimates and fail to reflect true capability on novel claims that require up-to-date information. To address this, emerging dynamic benchmarks collect claims published after LLMs' knowledge cut-off dates, assuming they are uncontaminated. This work revisits this assumption by empirically studying contamination risks in both the state-of-the-art (SOTA) static AVeriTeC benchmark and our newly constructed dynamic ClaimReview2025Q4 benchmark, as well as their impact on MAFC evaluation. Our experiments yield 16 findings, highlighting three key results: (1) Dynamic evaluation reduces but does not eliminate contamination risks, as 17.09\\%--29.30\\% of post-cut-off claims remain potentially contaminated; (2) Many newly published claims can be verified either directly or by synthesizing multiple pieces of public knowledge available before the cut-off; and (3) Contamination can induce statistically significant inflation in MAFC performance, increasing Macro-F1 by up to 11.34 points and distorting system rankings. In light of these findings, we re-evaluate SOTA LLMs under a strictly contamination-controlled setting. Our study provides practical guidelines for trustworthy MAFC evaluation.",
@@ -5024,7 +5028,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-07-29T08:30:14.324647+00:00",
+      "updated_at": "2026-07-29T11:19:13.195233+00:00",
       "paper": {
         "title": "Shieldstral",
         "summary": "We introduce Shieldstral, a 3B-parameter policy-adaptive multimodal safety classifier that matches or outperforms models nearly 7$\\times$ its size on text safety benchmarks and sets a new state of the art on multimodal safety classification. Shieldstral formulates content moderation as a binary question-answering task. This simple formulation unifies diverse moderation tasks into a single yes/no problem, enabling heterogeneous safety datasets with divergent taxonomies to be consolidated under one training framework. We present the data construction recipe, covering curation and generation of approximately 54.1M samples and a fine-grained evaluation set to evaluate policy adaptability. Together, these enable a small adaptive model to match or outperform much larger models.",
@@ -5046,10 +5050,31 @@
       },
       "priority_score": 39,
       "korean_title": "Shieldstral: 정책 적응형 다중 모달 안전 분류기"
+    },
+    "2607_24176v1": {
+      "id": "2607_24176v1",
+      "filename": "post_2607_24176v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-07-29T11:19:13.195218+00:00",
+      "last_error": null,
+      "updated_at": "2026-07-29T11:19:13.195220+00:00",
+      "paper": {
+        "title": "Where Quality Breaks in Compressed Short-Text Generation: Staged Bottleneck Localization",
+        "summary": "Compressed short-text generators can fail in two different places: the codec may discard information before generation starts, or the latent generator may produce weak codes. Without separating these failure modes, researchers can spend compute improving the wrong component. We study this problem in a controlled 64-to-16 TinyStories case study built from a hierarchical VQ-VAE-2 codec and a masked discrete diffusion generator (MDLM). We use a staged validation protocol that separates codec reconstruction fidelity, latent generation quality, and auxiliary latent diagnostics under one shared external GPT-2 scorer, while reporting complementary semantic metrics for the geometry study. In the tested configuration, codec reconstruction alone raises median external perplexity from 15.17 to 27.36 (+80.4%) and p95 from 25.10 to 98.91 (+294.1%), showing that the dominant quality loss appears before latent generation begins. Under the same scorer, code-space MDLM remains materially stronger than token-space diffusion, reducing mean, median, and p95 by 32.9%, 30.9%, and 36.6%, respectively. Geometry-aware regularization improves local latent proxies but does not improve decoded-text metrics in the available runs. The contribution is methodological rather than algorithmic: the paper presents a reusable staged diagnosis for one concrete pipeline and shows that, in this setting, codec fidelity rather than latent denoising sets the practical quality ceiling.",
+        "published": "2026-07-27T09:02:44Z",
+        "authors": [
+          "Alexey Gavrilov",
+          "Alan-Barsag Gazzaev",
+          "Sergey Muravyov"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2607.24176v1"
+      },
+      "priority_score": 28
     }
   },
   "last_run": {
-    "started_at": "2026-07-29T08:29:53.883341+00:00",
+    "started_at": "2026-07-29T11:19:13.196076+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -5060,25 +5085,25 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 20317,
-      "output_tokens": 5921,
+      "prompt_tokens": 20360,
+      "output_tokens": 5752,
       "thought_tokens": 0,
-      "total_tokens": 26238,
-      "estimated_usd": 0.01396075
+      "total_tokens": 26112,
+      "estimated_usd": 0.013718
     },
-    "finished_at": "2026-07-29T08:30:31.212144+00:00"
+    "finished_at": "2026-07-29T11:19:52.381777+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 319,
-    "prompt_tokens": 796847,
-    "output_tokens": 236902,
+    "requests": 327,
+    "prompt_tokens": 817207,
+    "output_tokens": 242654,
     "thought_tokens": 0,
-    "total_tokens": 1033749,
-    "estimated_usd": 0.55456475
+    "total_tokens": 1059861,
+    "estimated_usd": 0.56828275
   },
   "last_publication_run": {
-    "started_at": "2026-07-29T08:29:53.883341+00:00",
+    "started_at": "2026-07-29T11:19:13.196076+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -5089,17 +5114,17 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 20317,
-      "output_tokens": 5921,
+      "prompt_tokens": 20360,
+      "output_tokens": 5752,
       "thought_tokens": 0,
-      "total_tokens": 26238,
-      "estimated_usd": 0.01396075
+      "total_tokens": 26112,
+      "estimated_usd": 0.013718
     },
-    "finished_at": "2026-07-29T08:30:31.212144+00:00"
+    "finished_at": "2026-07-29T11:19:52.381777+00:00"
   },
   "daily_usage": {
     "date": "2026-07-29",
-    "estimated_usd": 0.04260925,
-    "publications": 12
+    "estimated_usd": 0.05632725,
+    "publications": 16
   }
 }
