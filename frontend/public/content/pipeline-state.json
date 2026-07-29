@@ -4094,7 +4094,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-07-29T11:19:13.195227+00:00",
+      "updated_at": "2026-07-29T13:55:34.962220+00:00",
       "paper": {
         "title": "Characterizing Warp Divergence from Pascal to Blackwell",
         "summary": "Since Volta introduced Independent Thread Scheduling (ITS), NVIDIA GPUs have been widely assumed to handle warp divergence in a fixed manner. We test this assumption across Ampere, Hopper, and datacenter and consumer Blackwell GPUs, using pre-ITS Pascal as a baseline. Combining cycle-accurate microbenchmarks, hardware counters, and static analysis of compiler-generated SASS, we separate stable behavior from architectural change. Across all tested generations, divergent paths serialize linearly with the number of paths $k$, following $T(k) \\approx sk$ with no super-linear reconvergence penalty. Warp execution efficiency falls as $32/k$, the penalty is independent of occupancy, and predication removes the serialization cost. The same behavior appears on Pascal, showing that this programmer-visible cost model predates ITS. The compiler-emitted reconvergence machinery, however, has changed substantially. Pascal uses a per-warp SSY/SYNC instruction stack, whereas later generations use barrier-register instructions. Deferred reconvergence beyond the immediate post-dominator falls from 29 cases on Ampere to 2 on Blackwell. Blackwell also introduces a two-tier convergence-barrier classification, uniform-branch instructions, and explicit partial-mask warp synchronization, none of which appear on Ampere or Hopper. Controlled bit-flip experiments indicate that the new barrier class is a static compiler classification with no observable runtime effect in our tests. Thus, divergence retains a stable and predictable performance cost even as NVIDIA's control-flow ISA and reconvergence mechanisms continue to evolve.",
@@ -4114,7 +4114,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-07-29T11:19:13.195190+00:00",
+      "updated_at": "2026-07-29T13:55:34.962201+00:00",
       "paper": {
         "title": "UltraViT: Latency-Optimized On-device Vision Encoder for Large Vision-Language Models",
         "summary": "Large Vision-Language Models (LVLMs) remain bottlenecked by massive computational footprints, precluding their deployment on resource-constrained edge devices. While efforts to compress LVLMs focus heavily on vision token reduction or smaller language models, the vision encoder is largely overlooked, typically deployed as a monolithic, computationally heavy feature extractor. Moreover, there is no previous effort that designs a vision encoder for LVLMs directly optimized for on-device latency. In this paper, we present UltraViT, a vision encoder for LVLMs, explicitly designed and optimized for on-device performance. Specifically, by taking into account real on-device latencies, we systematically design a pyramidal architecture that strategically integrates and adapts heterogeneous spatial mixers at the macro-block level. Furthermore, to pre-train UltraViT, we propose a novel two-stage generative pre-training strategy: cultivating rich spatial features via dense distillation, followed by direct generative supervision from a capacity-mixed frozen LLM. Compared to standard contrastive and SSL, we show that our pre-training is much more effective for achieving high-level semantic grounding for UltraViT needed for the subsequent generative multimodal alignment of LVLM training. Extensive experiments demonstrate that our on-device latency-informed design combined with our tailored training strategy establishes a new state-of-the-art for efficient LVLM encoding, significantly outperforming existing encoder-centric baselines while operating on-device at nearly 1.7xthe speed.",
@@ -4164,7 +4164,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-07-29T11:19:13.195237+00:00",
+      "updated_at": "2026-07-29T13:55:34.962228+00:00",
       "paper": {
         "title": "WorldDiT: A Unified Diffusion Architecture for World and Action Modeling",
         "summary": "Many recent robot policies pursue stronger control by using large pretrained vision-language models (VLMs) as the action backbone. We introduce WorldDiT, a unified diffusion transformer architecture that couples action generation with visual world modeling and achieves strong performance without a large pretrained VLM action backbone. During training, a single diffusion transformer generates continuous action chunks and predicts normalized RGB patch targets from future camera frames. Across four LIBERO simulation suites, WorldDiT lies on the reported Pareto frontier for total model parameters and mean success among methods reporting all four suites. These results provide a strong sub-billion-parameter baseline for future scaling studies.",
@@ -4187,7 +4187,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-07-29T11:19:13.195230+00:00",
+      "updated_at": "2026-07-29T13:55:34.962224+00:00",
       "paper": {
         "title": "Bitcoin Price Direction Prediction via Regime-Aware Multi-Modal Fusion of Social Sentiment and Technical Features",
         "summary": "Bitcoin price prediction on sub-daily timescales is a hard open problem in computational finance. Bitcoin exhibits fat-tailed returns, non-stationary dynamics, and a price discovery process influenced by social discourse on Reddit and Twitter. Conventional approaches fuse OHLCV technical features with sentiment via static concatenation, applying identical fusion weights regardless of market state. This is inconsistent with the behavioural finance literature, which shows that retail sentiment is most predictive during volatile periods and noisy during calm ones. This paper proposes Regime-Aware Multi-Modal Learning (RAML), which conditions fusion of sentiment and price features on a dynamically detected binary market regime. Rolling 24-hour volatility partitions observations into stable and volatile regimes; a learnable sigmoid gate adjusts the weight of the sentiment embedding relative to the price embedding, trusting sentiment more during volatility and price dynamics more during stable phases. The system is evaluated on 3,491 hourly observations (July 2024-September 2025), combining Bitcoin OHLCV data with Reddit /r/Bitcoin FinBERT sentiment. Four models are compared - price-only BiLSTM, sentiment-only classifier, static-concatenation BiLSTM, and RAML - across 3-hour and 6-hour horizons, with an ablation study isolating the sentiment branch, regime detection, and adaptive fusion. RAML achieves macro-F1 of 0.5474 (3h) and 0.5513 (6h), with the highest AUC at 3 hours (0.5084), indicating better calibration. Ablation confirms every component is necessary, and replacing adaptive weighting with concatenation causes recall collapse at 6 hours (F1: 0.14). These results establish regime-conditioned adaptive fusion as a necessary design principle for multi-modal financial forecasting.",
@@ -4325,11 +4325,11 @@
     "2607_25790v1": {
       "id": "2607_25790v1",
       "filename": "post_2607_25790v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-07-29T02:02:35.971521+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-07-29T02:02:35.971522+00:00",
+      "updated_at": "2026-07-29T13:55:46.780378+00:00",
       "paper": {
         "title": "SpectONet: A Physics-Guided Spectral Deep Operator Network for Euler-Bernoulli Beam Dynamics",
         "summary": "This paper proposes a novel physics-guided spectral deep operator network, termed SpectONet, for solving Euler-Bernoulli beam (EBB) vibration problems. The proposed framework integrates the operator-learning capability of DeepONet with physics-informed constraints and Chebyshev-Gauss-Lobatto (CGL) sensor placement. Unlike conventional DeepONet frameworks, which commonly employ uniformly distributed sensors, SpectONet uses nonuniform spectral sensor locations with a higher concentration of points near the domain boundaries. This sampling strategy improves the finite-dimensional representation of boundary-sensitive structural responses while requiring only a limited number of branch-network inputs. The governing beam equation, together with the associated initial and boundary conditions, incorporated into the training objective to promote physically consistent and generalizable predictions. Numerical experiments on three synthetic EBB vibration problems and a real-world bridge vibration dataset demonstrate the effectiveness of the proposed framework. Comparisons with strong baselines such as, Vanilla DeepONet, PI-DeepONet, PINN, and CNN-UNet show that SpectONet consistently achieves lower prediction errors across all considered evaluation metrics. In particular, SpectONet achieves at least \\(64\\%\\) improvement over the considered baseline models across the three synthetic problems and at least \\(37\\%\\) for the real-world problems. These results demonstrate that SpectONet provides an accurate, computationally efficient, and physically consistent operator-learning framework for structural vibration analysis.",
@@ -4341,16 +4341,17 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2607.25790v1"
       },
-      "priority_score": 30
+      "priority_score": 30,
+      "korean_title": "오일러-베르누이 보 동역학을 위한 물리학 유도 스펙트럼 딥 오퍼레이터 네트워크: SpectONet"
     },
     "2607_25748v1": {
       "id": "2607_25748v1",
       "filename": "post_2607_25748v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-07-29T02:02:35.971527+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-07-29T02:02:35.971529+00:00",
+      "updated_at": "2026-07-29T13:55:55.401648+00:00",
       "paper": {
         "title": "Loss Invariance Determines What Concept Layers Encode: Volume Grounding in Echocardiography",
         "summary": "Objective: Concept bottleneck models route prediction through interpretable intermediate variables, and their validity is normally judged by how accurately those variables are predicted. We ask whether that judgement is sufficient, using left ventricular volumes as the concepts underlying ejection fraction estimation from echocardiographic video.   Methods: A video transformer encoder was trained on a publicly available echocardiography dataset. End-systolic and end-diastolic volumes formed a concept layer from which ejection fraction was computed analytically, with no residual path to the output. We compared training under an ejection fraction objective alone against training with additional supervision of the volumes in millilitres, and evaluated both on 1276 held-out studies.   Results: The concept bottleneck did not increase ejection fraction error relative to direct regression, at 6.89 against 7.13 mean absolute error. Without volume supervision, however, the spread of predicted volumes collapsed to 0.1 millilitres against reference spreads of 35.7 and 45.7 millilitres, while correlation was partly preserved. We show that this follows from an invariance property of the objective: ejection fraction is a ratio and is unchanged when both volumes are rescaled, so the loss determines the concept layer only up to scale. Supervision in absolute units reduced volume error from 89.8 to 25.8 millilitres at a cost of 0.4 in ejection fraction error.   Conclusion: Concept accuracy alone can conceal a concept layer that carries no physical scale.   Significance: Interpretable intermediate variables in clinical models should be validated against the invariance structure of the training objective, not only against prediction accuracy.",
@@ -4361,7 +4362,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2607.25748v1"
       },
-      "priority_score": 30
+      "priority_score": 30,
+      "korean_title": "손실 불변성이 개념 계층의 인코딩을 결정한다: 심장 초음파 영상의 심실 용적 접지"
     },
     "2607_25736v1": {
       "id": "2607_25736v1",
@@ -4410,11 +4412,11 @@
     "2607_25726v1": {
       "id": "2607_25726v1",
       "filename": "post_2607_25726v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-07-29T02:02:35.971547+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-07-29T02:02:35.971549+00:00",
+      "updated_at": "2026-07-29T13:56:05.786786+00:00",
       "paper": {
         "title": "Nudging Sustainable Choices through LLM-Generated Recommendation Explanations",
         "summary": "Recommender systems mediate everyday consumption, offering a promising channel for encouraging sustainable choices. Prior research shows that explanations influence users' perceptions of recommendations and can support more informed decisions. We argue that explanations can also serve as behavioral nudges by foregrounding sustainability information at the moment of choice. This study investigates how different behavioral framings of sustainability information in recommendation explanations affect user choices and perceptions. Using generative AI, we generate sustainability-aware explanations by drawing on nudge theory and validate them through human evaluation and LLM-as-a-judge audits. Building on this foundation, we conduct two randomized studies ($N = 529$) in a low involvement domain (instant coffee) and a high involvement domain (hotel bookings), in which participants choose among preference matched recommendations accompanied by these explanations. Our results show that, across both domains, merely disclosing sustainability information in explanations does not change choices, whereas framing that information or invoking a descriptive social norm significantly increases sustainable selections and eases decision-making. Notably, perception and behavior diverge, as plain disclosure improves explanation evaluations without translating into more sustainable selection behavior. Our work demonstrates how LLMs can generate theory-grounded explanations at scale, pointing toward practical explanation-based interventions for social good. We conclude by discussing implications for adaptive explanation design with generative AI.",
@@ -4426,7 +4428,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2607.25726v1"
       },
-      "priority_score": 30
+      "priority_score": 30,
+      "korean_title": "LLM이 생성한 추천 설명을 통한 지속 가능한 선택 유도"
     },
     "2607_25718v1": {
       "id": "2607_25718v1",
@@ -4590,7 +4593,7 @@
       "attempts": 0,
       "next_retry_at": "2026-07-29T02:02:35.971594+00:00",
       "last_error": null,
-      "updated_at": "2026-07-29T02:02:35.971596+00:00",
+      "updated_at": "2026-07-29T13:55:34.962212+00:00",
       "paper": {
         "title": "OmniDelta: Skill-Driven Budget Allocation for Token Compression in OmniLLMs",
         "summary": "Emerging Omni-modal Large Language Models (OmniLLMs) enable unified understanding of text, audio, and video, but their long audio-video token sequences introduce substantial memory and inference costs. Existing compression methods mainly focus on selecting important tokens under fixed budgets, leaving the preceding budget-allocation problem underexplored. We show that direct query-to-audio/video similarity is unreliable for inter-modal budget allocation, and that uniform intra-modal budgets can miss key evidence while retaining redundant content. To address these limitations, we propose OmniDelta, a training-free, skill-driven framework that couples intent-aware inter-modal allocation with content-aware intra-modal allocation. OmniDelta first constructs audio and video skill pools to shift the fixed retained-token budget according to query demand, then reallocates modality budgets over audio segments and video frames using local complexity and temporal redundancy. The resulting local budgets can be combined with existing pruning strategies, preserving the total retained-token ratio while changing where the budget is spent. Experiments on four audio-video benchmarks with two Qwen2.5-Omni models show that OmniDelta establishes a new accuracy-efficiency Pareto frontier across pruning ratios. At 25% token retention on Qwen2.5-Omni-7B, OmniDelta reduces GPU memory by 22.0% and achieves a 1.64x end-to-end speedup over full-token inference.",
@@ -4716,11 +4719,11 @@
     "2607_25655v1": {
       "id": "2607_25655v1",
       "filename": "post_2607_25655v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-07-29T02:02:35.971626+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-07-29T02:02:35.971627+00:00",
+      "updated_at": "2026-07-29T13:56:17.533648+00:00",
       "paper": {
         "title": "Engine-Equal, Human-Unequal: A Reproducible Outcome Skew in Engine-Assessed Equal Chess Positions",
         "summary": "Among chess opening positions that a strong engine judges essentially equal (Stockfish 18 evaluation within 10 centipawns of zero, depth-stable) and that humans actually reach on Lichess (October 2025; 1,661 positions, 16.1M occurrences), human results are not balanced. Positions carry outcome skews, each the gap between its games' actual results and what the players' ratings predict, whose directions are stable properties of the naturally-reached position: some positions favour White, others Black. These skews reproduce across three re-partitions -- disjoint player-account sets (primary), time, and disjoint rating bands -- and on an out-of-sample month eight months later. On the primary split, each position's skew is measured once in each account group, and the replication slope asks how well one measurement predicts the other after removing rating and opening-family effects: one means undiminished carry-over; zero, no linear relation. We find 0.69 (family-clustered 95% CI [0.65, 0.74]), rising to 0.94 on the most-popular, best-measured positions. The slope's value depends on the position mix. Existence is the invariant claim: it survives every tighter evaluation band, search depth, calibration, and popularity cutoff we test, and replicates within blitz and rapid separately. The typical skew is small (median $|δ| \\approx 0.018$, about two percentage points of White score), yet it reproduces, position by position, across disjoint accounts. At these positions the disfavoured side also thinks longer. Even where the evaluation is most confident, it is not a sufficient statistic for human outcomes. The result is observational, and the causal question is left to a pre-registered randomised companion study.",
@@ -4730,7 +4733,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2607.25655v1"
       },
-      "priority_score": 30
+      "priority_score": 30,
+      "korean_title": "엔진은 동등하게 평가하나, 인간은 불균등한 체스 포지션: 결과의 재현 가능한 편향성"
     },
     "2607_25648v1": {
       "id": "2607_25648v1",
@@ -4927,7 +4931,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-07-29T11:19:13.195208+00:00",
+      "updated_at": "2026-07-29T13:55:34.962207+00:00",
       "paper": {
         "title": "PerceptionBench: Evaluating Atomic Visual Perception in Multimodal Large Language Models",
         "summary": "We introduce PerceptionBench, a benchmark specifically designed to evaluate the atomic visual perception capabilities of Multimodal Large Language Models (MLLMs). Existing benchmarks often fail to isolate perception: holistic evaluations conflate perceptual errors with failures in reasoning or domain knowledge, while application-driven benchmarks only cover narrow, fragmented domains shaped by heuristic designs. To address these limitations, PerceptionBench adopts a bottom-up approach: by diagnosing the earliest failure points in the responses of frontier MLLMs across 42 existing benchmarks, we construct an error taxonomy whose perception branch defines ten atomic perceptual capabilities. Guided by this taxonomy, we construct 3,000 verified questions with short, unambiguous answers, each isolating a single capability, with difficulty stemming from perception rather than reasoning or knowledge. Benchmark results across sixteen frontier MLLMs reveal that atomic perception remains largely unsolved---no model reaches 60\\% accuracy, perception-related hallucination is the weakest capability on average, and similar overall scores conceal sharply divergent capability profiles. PerceptionBench thus provides a capability-level standard for measuring and diagnosing the visual perception boundaries of MLLMs.",
@@ -4979,7 +4983,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-07-29T11:19:13.195212+00:00",
+      "updated_at": "2026-07-29T13:55:34.962232+00:00",
       "paper": {
         "title": "A New Role for Relevance: Guiding Corpus Interaction in Agentic Search",
         "summary": "Relevance is a query-dependent estimate of whether a document or excerpt contains useful evidence. Existing retrieval agents use relevance to select top-$k$ content, but document relevance alone cannot localize, compose, or verify the evidence required by complex questions. Direct Corpus Interaction (DCI) enables such fine-grained operations through grep-style exploration, but its relevance-agnostic search can expose useful clues late and delay convergence. Recent advances use relevance to narrow the corpus into a working space for interaction. Once interaction begins, however, relevance still does not directly guide which documents grep searches first or distinguish informative excerpts from a broad set of matches to let LLMs see them first. We introduce the Relevance-Aware RipGrep Search Agent (RARG), which turns relevance into an execution prior for corpus interaction. RARG provides coarse-to-fine relevance guidance: it orders documents for sequential 'ripgrep' traversal to expose globally relevant clues earlier, initializes promising entry points with query-relevant paragraphs, and reranks grep matches to surface informative excerpts that document-level ranking may otherwise obscure. Across challenging browse question answering and reasoning-intensive retrieval, RARG improves the accuracy--efficiency frontier over retrieval-based and direct-interaction agents. These results demonstrate that relevance-aware interaction enables faster and more reliable search convergence.",
@@ -5003,7 +5007,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-07-29T11:19:13.195224+00:00",
+      "updated_at": "2026-07-29T13:55:34.962216+00:00",
       "paper": {
         "title": "Novel Claim or Déjà Vu? Rethinking \"Contamination-Free'' Dynamic Evaluation for Multimodal Automated Fact-Checking",
         "summary": "Multimodal automated fact-checking (MAFC) verifies claims by retrieving and reasoning over external evidence. However, most existing static benchmarks risk contamination: they primarily consist of outdated claims verifiable using an LLM's internal knowledge without external evidence. This can inflate performance estimates and fail to reflect true capability on novel claims that require up-to-date information. To address this, emerging dynamic benchmarks collect claims published after LLMs' knowledge cut-off dates, assuming they are uncontaminated. This work revisits this assumption by empirically studying contamination risks in both the state-of-the-art (SOTA) static AVeriTeC benchmark and our newly constructed dynamic ClaimReview2025Q4 benchmark, as well as their impact on MAFC evaluation. Our experiments yield 16 findings, highlighting three key results: (1) Dynamic evaluation reduces but does not eliminate contamination risks, as 17.09\\%--29.30\\% of post-cut-off claims remain potentially contaminated; (2) Many newly published claims can be verified either directly or by synthesizing multiple pieces of public knowledge available before the cut-off; and (3) Contamination can induce statistically significant inflation in MAFC performance, increasing Macro-F1 by up to 11.34 points and distorting system rankings. In light of these findings, we re-evaluate SOTA LLMs under a strictly contamination-controlled setting. Our study provides practical guidelines for trustworthy MAFC evaluation.",
@@ -5058,7 +5062,7 @@
       "attempts": 0,
       "next_retry_at": "2026-07-29T11:19:13.195218+00:00",
       "last_error": null,
-      "updated_at": "2026-07-29T11:19:13.195220+00:00",
+      "updated_at": "2026-07-29T13:55:34.962235+00:00",
       "paper": {
         "title": "Where Quality Breaks in Compressed Short-Text Generation: Staged Bottleneck Localization",
         "summary": "Compressed short-text generators can fail in two different places: the codec may discard information before generation starts, or the latent generator may produce weak codes. Without separating these failure modes, researchers can spend compute improving the wrong component. We study this problem in a controlled 64-to-16 TinyStories case study built from a hierarchical VQ-VAE-2 codec and a masked discrete diffusion generator (MDLM). We use a staged validation protocol that separates codec reconstruction fidelity, latent generation quality, and auxiliary latent diagnostics under one shared external GPT-2 scorer, while reporting complementary semantic metrics for the geometry study. In the tested configuration, codec reconstruction alone raises median external perplexity from 15.17 to 27.36 (+80.4%) and p95 from 25.10 to 98.91 (+294.1%), showing that the dominant quality loss appears before latent generation begins. Under the same scorer, code-space MDLM remains materially stronger than token-space diffusion, reducing mean, median, and p95 by 32.9%, 30.9%, and 36.6%, respectively. Geometry-aware regularization improves local latent proxies but does not improve decoded-text metrics in the available runs. The contribution is methodological rather than algorithmic: the paper presents a reusable staged diagnosis for one concrete pipeline and shows that, in this setting, codec fidelity rather than latent denoising sets the practical quality ceiling.",
@@ -5071,10 +5075,30 @@
         "pdf_link": "https://arxiv.org/pdf/2607.24176v1"
       },
       "priority_score": 28
+    },
+    "2607_22117v1": {
+      "id": "2607_22117v1",
+      "filename": "post_2607_22117v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-07-29T13:55:34.962181+00:00",
+      "last_error": null,
+      "updated_at": "2026-07-29T13:55:34.962194+00:00",
+      "paper": {
+        "title": "Projection Pursuit CPCANet for Domain Generalization",
+        "summary": "Domain Generalization (DG) aims to learn representations robust to distribution shifts. Recent geometric alignment methods, such as CPCANet, extract domain-invariant structures through batch-wise Common Principal Component Analysis (CPCA). However, CPCANet suffers from rank-deficient covariance estimation due to the small-sample-size issue in mini-batch training. To address this limitation, we propose Projection Pursuit CPCANet (PP-CPCANet), a covariance-free framework that learns a global orthogonal basis on the Stiefel manifold and jointly optimizes it with network parameters via the Cayley transform. We further introduce a symmetry-breaking detached-median PP dispersion objective to extract common principal components (CPCs) with dense and robust optimization signals. Experiments on four DG benchmarks show that PP-CPCANet achieves SOTA performance while maintaining stable training.",
+        "published": "2026-07-24T09:11:34Z",
+        "authors": [
+          "Yu-Hsi Chen",
+          "Abd-Krim Seghouane"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2607.22117v1"
+      },
+      "priority_score": 21
     }
   },
   "last_run": {
-    "started_at": "2026-07-29T11:19:13.196076+00:00",
+    "started_at": "2026-07-29T13:55:34.963249+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -5085,25 +5109,25 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 20360,
-      "output_tokens": 5752,
+      "prompt_tokens": 19879,
+      "output_tokens": 5615,
       "thought_tokens": 0,
-      "total_tokens": 26112,
-      "estimated_usd": 0.013718
+      "total_tokens": 25494,
+      "estimated_usd": 0.01339225
     },
-    "finished_at": "2026-07-29T11:19:52.381777+00:00"
+    "finished_at": "2026-07-29T13:56:17.620311+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 327,
-    "prompt_tokens": 817207,
-    "output_tokens": 242654,
+    "requests": 335,
+    "prompt_tokens": 837086,
+    "output_tokens": 248269,
     "thought_tokens": 0,
-    "total_tokens": 1059861,
-    "estimated_usd": 0.56828275
+    "total_tokens": 1085355,
+    "estimated_usd": 0.581675
   },
   "last_publication_run": {
-    "started_at": "2026-07-29T11:19:13.196076+00:00",
+    "started_at": "2026-07-29T13:55:34.963249+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -5114,17 +5138,17 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 20360,
-      "output_tokens": 5752,
+      "prompt_tokens": 19879,
+      "output_tokens": 5615,
       "thought_tokens": 0,
-      "total_tokens": 26112,
-      "estimated_usd": 0.013718
+      "total_tokens": 25494,
+      "estimated_usd": 0.01339225
     },
-    "finished_at": "2026-07-29T11:19:52.381777+00:00"
+    "finished_at": "2026-07-29T13:56:17.620311+00:00"
   },
   "daily_usage": {
     "date": "2026-07-29",
-    "estimated_usd": 0.05632725,
-    "publications": 16
+    "estimated_usd": 0.0697195,
+    "publications": 20
   }
 }
