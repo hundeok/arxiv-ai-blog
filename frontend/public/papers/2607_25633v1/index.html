@@ -1,0 +1,70 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>구문 주도 주입: 거대 언어 모델을 위한 언어 기반의 편집 중심 코드 믹싱 핑거프린트 | ArXiv Translator AI</title><meta name="description" content="구문 주도 주입: 거대 언어 모델을 위한 언어 기반의 편집 중심 코드 믹싱 핑거프린트"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2607_25633v1"><meta property="og:type" content="article"><meta property="og:title" content="구문 주도 주입: 거대 언어 모델을 위한 언어 기반의 편집 중심 코드 믹싱 핑거프린트"><meta property="og:description" content="구문 주도 주입: 거대 언어 모델을 위한 언어 기반의 편집 중심 코드 믹싱 핑거프린트"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2607_25633v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="구문 주도 주입: 거대 언어 모델을 위한 언어 기반의 편집 중심 코드 믹싱 핑거프린트"><meta name="twitter:description" content="구문 주도 주입: 거대 언어 모델을 위한 언어 기반의 편집 중심 코드 믹싱 핑거프린트"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2607_25633v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "구문 주도 주입: 거대 언어 모델을 위한 언어 기반의 편집 중심 코드 믹싱 핑거프린트", "description": "구문 주도 주입: 거대 언어 모델을 위한 언어 기반의 편집 중심 코드 믹싱 핑거프린트", "datePublished": "2026-07-28", "url": "https://arxiv-ai-blog.vercel.app/papers/2607_25633v1", "author": [{"@type": "Person", "name": "Yongyi Cui"}, {"@type": "Person", "name": "Yue Li"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2607_25633v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2607_25633v1"});gtag('event', 'paper_view', {"paper_id": "2607_25633v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>구문 주도 주입: 거대 언어 모델을 위한 언어 기반의 편집 중심 코드 믹싱 핑거프린트</h1><p>구문 주도 주입: 거대 언어 모델을 위한 언어 기반의 편집 중심 코드 믹싱 핑거프린트</p><pre>구문 주도 주입: 거대 언어 모델을 위한 언어 기반의 편집 중심 코드 믹싱 핑거프린트
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Construction-Driven Injection: Linguistically-Grounded Edit-Based Code-Mixing Fingerprints for Large Language Models
+&gt; - **저자:** Yongyi Cui, Yue Li, Tianbao Jiang, Xin Yi
+&gt; - **발행일:** 2026-07-28
+&gt; - **PDF 링크:** [Construction-Driven Injection: Linguistically-Grounded Edit-Based Code-Mixing Fingerprints for Large Language Models](https://arxiv.org/pdf/2607.25633v1)
+
+
+✨ 3줄 핵심 요약
+* 기존 LLM 워터마킹은 지문 생성과 주입 단계가 분리되어 있어 자연스러움과 보안성 간의 트레이드오프 문제가 존재함.
+* 본 논문은 &#x27;구문 주도 주입(Construction-Driven Injection)&#x27; 프레임워크를 제안하여 지문 생성 단계부터 주입을 고려해 최적화함.
+* 다국어 지식 기반의 코드 믹싱과 영 공간(null-space) 투영 기법을 통해 모델 성능 저하 없이 안정적인 소유권 확인이 가능함을 입증함.
+
+📖 쉽게 풀어쓴 1분 핵심
+거대 언어 모델(LLM)은 귀중한 지적 재산이지만, 모델이 공개되면 무단 배포나 상업적 오용에 노출되기 쉽습니다. 이를 방지하기 위해 모델에 특수한 &#x27;지문(fingerprint)&#x27;을 심어 소유권을 확인하는 기술이 중요해졌습니다. 기존 기술은 모델이 알아보기 쉽게 하려다 일반적인 질문에 오작동하거나, 반대로 암호처럼 복잡하게 만들어 통계적 분석에 걸리는 등 한계가 있었습니다. 이 논문은 여러 언어를 섞어 만든 자연스러운 지문을, 모델 내부의 언어 표현 공간에 최적화하여 주입하는 새로운 방식을 선보였습니다. 결과적으로 모델의 지능은 유지하면서, 소유자만이 확실하게 확인 가능한 안정적인 &#x27;꼬리표&#x27;를 남길 수 있게 되었습니다.
+
+🎯 배경 및 문제점
+* **기존 방식의 한계:** 
+    * **자연어 지문(NLF):** 일반적인 문구와 유사해 의도치 않게 작동하는 &#x27;우발적 활성화&#x27; 문제가 빈번함.
+    * **난해한 지문(IF):** 통계적으로 이상치가 명확해 퍼플렉서티(Perplexity) 기반 탐지 기술로 쉽게 걸러짐.
+* **구조적 결함:** 기존 방법론들은 지문을 만드는 단계와 모델 가중치에 심는 단계가 분리(decoupling)되어 있어, 주입 과정에서 지문의 언어적 특성을 고려한 최적화가 불가능함.
+
+💡 핵심 기술 및 아키텍처
+* **LCF(Linguistically-grounded Code-mixing Fingerprints):** 저자원 언어들을 &#x27;의미 밀도 치환 규칙&#x27;과 &#x27;문법 기반 혼합&#x27;으로 결합하여 생성함. 자연스러움은 유지하면서도 통계적으로 튀지 않는 지문을 만듦.
+* **LCFEdit:** 
+    * **영 공간(null-space) 투영:** 모델의 기존 지식을 보존하기 위해, 고자원 다국어 표현에서 도출된 영 공간 투영을 사용하여 주입.
+    * **언어 간 정렬(Across-lingual alignment):** 지문의 언어 표현 공간을 목표로 가중치 업데이트가 이루어지도록 유도하여 주입의 안정성을 높임.
+
+📊 실험 결과 분석
+* **성능 유지:** 여러 모델(Qwen, Llama 시리즈) 대상 실험에서 LCFEdit은 모델의 추론 정확도와 퍼플렉서티에 미치는 영향이 무시할 수 있을 정도로 작음(유틸리티 저하 최소화).
+* **확인 능력:** 12개 언어 대상 테스트에서 거의 완벽한 지문 탐지 성공률(FSR)을 보였으며, 일반적인 자연어 문장과 비교했을 때 우발적 활성화 비율은 0%로 나타남(발췌 데이터 기준).
+* **안정성:** 다양한 레이어 구성 실험을 통해 최적의 주입 지점을 도출하였으며, 기존 방법론(MCEdit, FPEdit, PREE 등) 대비 모든 성능 지표에서 우수한 결과를 입증함.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **지적 재산권 보호:** 클라우드 서비스 등을 통해 API 형태로 배포되는 LLM의 무단 복제나 미세 조정(Fine-tuning)을 통한 모델 탈취를 방지하는 실질적 해결책 제공.
+* **블랙박스 검증:** 화이트박스 접근권 없이도 모델에 특정 질문을 던져 나오는 반응만으로 소유권을 확인할 수 있어 실무 적용이 매우 간편함.
+* **글로벌 호환성:** 코드 믹싱 기술을 활용해 다국어 환경의 LLM에서도 동일하게 적용 가능하며, 특정 언어에 편향되지 않은 안정적인 소유권 추적이 가능함.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Construction-Driven Injection: Linguistically-Grounded](https://arxiv.org/html/2607.25633v1)
+&gt; - [Construction-Driven Injection: Linguistically-Grounded Edit ...](https://papers.cool/arxiv/2607.25633)
+&gt; - [Computation and Language - arXiv.org](https://arxiv.org/list/cs.CL/recent)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;영 공간(null-space) 투영을 통해 가중치 업데이트의 부작용을 최소화하려는 시도 자체는 학술적으로 정교해 보이네. 다만, 이 지문이 모델의 파인튜닝 과정이나 Pruning을 거친 뒤에도 과연 견고하게 보존될 수 있을지 의문이야. 강건성(Robustness) 테스트에 대한 섹션이 다소 빈약한데, 적대적 공격으로 지문을 변조하려는 시도에 대해선 어떻게 방어할 건가?&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에선 강건성이 핵심이죠. 특히 서빙 환경에서 모델이 API 형태로 배포될 때, 가벼운 Quantization이나 지식 증류를 거치면 저런 미세한 코드 믹싱 패턴은 다 날아갈 가능성이 높습니다. 그래도 런타임 추론 시에 블랙박스 검증이 가능하다는 점은 매력적이네요. 근데 이거 프로덕션 환경에 올리려면 지문 삽입 시 모델의 Latency 오버헤드를 얼마나 감수해야 하는지, 그 데이터가 없어서 좀 불안하네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;선배님, 이건 성능 문제가 아니라 &#x27;도장 찍기&#x27; 게임이에요! 요즘 모델 탈취가 워낙 심해서 이런 논문 나오면 기업들 바로 PoC 들어갈 겁니다. 특히 영 공간 투영 기법은 타겟 모델의 성능 저하가 거의 제로에 가깝다는 게 킬포인트인데, 이게 진짜 사실이라면 모델 소유권 증명 시장의 게임 체인저 아닌가요? 지금 당장 구현체 뜯어보러 갑니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
