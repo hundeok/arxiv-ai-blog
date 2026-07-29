@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>추론하면서 추측하기: 공동 에이전트-예측기 강화학습을 통한 에이전트의 다음 도구 호출 예측 학습 | ArXiv Translator AI</title><meta name="description" content="추론하면서 추측하기: 공동 에이전트-예측기 강화학습을 통한 에이전트의 다음 도구 호출 예측 학습"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2607_25816v1"><meta property="og:type" content="article"><meta property="og:title" content="추론하면서 추측하기: 공동 에이전트-예측기 강화학습을 통한 에이전트의 다음 도구 호출 예측 학습"><meta property="og:description" content="추론하면서 추측하기: 공동 에이전트-예측기 강화학습을 통한 에이전트의 다음 도구 호출 예측 학습"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2607_25816v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="추론하면서 추측하기: 공동 에이전트-예측기 강화학습을 통한 에이전트의 다음 도구 호출 예측 학습"><meta name="twitter:description" content="추론하면서 추측하기: 공동 에이전트-예측기 강화학습을 통한 에이전트의 다음 도구 호출 예측 학습"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2607_25816v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "추론하면서 추측하기: 공동 에이전트-예측기 강화학습을 통한 에이전트의 다음 도구 호출 예측 학습", "description": "추론하면서 추측하기: 공동 에이전트-예측기 강화학습을 통한 에이전트의 다음 도구 호출 예측 학습", "datePublished": "2026-07-28", "url": "https://arxiv-ai-blog.vercel.app/papers/2607_25816v1", "author": [{"@type": "Person", "name": "Jiabao Ji"}, {"@type": "Person", "name": "Yujian Liu"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2607_25816v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2607_25816v1"});gtag('event', 'paper_view', {"paper_id": "2607_25816v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>추론하면서 추측하기: 공동 에이전트-예측기 강화학습을 통한 에이전트의 다음 도구 호출 예측 학습</h1><p>추론하면서 추측하기: 공동 에이전트-예측기 강화학습을 통한 에이전트의 다음 도구 호출 예측 학습</p><pre>추론하면서 추측하기: 공동 에이전트-예측기 강화학습을 통한 에이전트의 다음 도구 호출 예측 학습
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Speculate While You Reason: Teaching Agents to Predict Their Next Tool Call via Joint Agent-Speculator RL
+&gt; - **저자:** Jiabao Ji, Yujian Liu, Li An, Rohit Jain, Gungor Polatkan, Siyu Zhu, Shiyu Chang
+&gt; - **발행일:** 2026-07-28
+&gt; - **PDF 링크:** [Speculate While You Reason: Teaching Agents to Predict Their Next Tool Call via Joint Agent-Speculator RL](https://arxiv.org/pdf/2607.25816v1)
+
+
+✨ 3줄 핵심 요약
+* 기존의 외부 도구 예측 모델과 에이전트 간의 불일치(speculator-agent gap) 문제를 해결하기 위해, 에이전트 스스로 다음 도구 호출을 예측하는 &#x27;자기 예측 에이전트(self-speculating agent)&#x27;를 제안함.
+* 강화학습을 통해 동일한 모델 내에서 에이전트 모드와 예측기 모드를 모두 수행하며, KV 캐시를 재사용하여 도구 호출 대기 시간을 줄임.
+* SearchQA 및 대화형 도구 사용 작업에서 이전 모델 대비 도구 호출 예측 정확도를 유의미하게 향상시킴.
+
+📖 쉽게 풀어쓴 1분 핵심
+대규모 언어 모델 기반 에이전트가 외부 도구(검색, 데이터베이스 등)를 사용할 때 가장 큰 병목 현상은 도구 호출 결과가 나올 때까지 기다리는 &#x27;대기 시간&#x27;입니다. 이를 해결하기 위해 미리 다음에 호출할 도구를 예측하고 실행하는 &#x27;도구 호출 예측&#x27; 방식이 존재하지만, 기존에는 이를 위해 별도의 보조 모델을 따로 두어야 했습니다. 이 논문은 별도의 모델 없이, 에이전트 본체가 스스로 다음 호출을 예측하게 만드는 &#x27;자기 예측 에이전트&#x27;를 제안합니다. 이는 에이전트가 수행한 실제 결과물을 학습 데이터로 활용하여, 도구 호출 지연 시간을 효과적으로 숨기면서도 작업 성공률을 유지합니다.
+
+🎯 배경 및 문제점
+* **대기 시간 문제:** 에이전트가 도구를 호출하면 결과를 얻기까지 네트워크 지연 등이 발생하여 추론 시간의 상당 부분이 대기로 소모됨.
+* **예측기-에이전트 간극:** 기존 도구 예측 모델(speculator)은 별도의 독립된 모델로 운영되는 경우가 많아, 정작 에이전트가 수행하려는 실제 행동과 예측 간의 불일치가 발생함.
+* **자원 낭비:** 별도의 보조 모델과 독립적인 KV 캐시를 운용하는 것은 시스템 복잡도를 높이고 효율성을 떨어뜨림.
+
+💡 핵심 기술 및 아키텍처
+* **자기 예측 에이전트(Self-speculating Agent):** 별도 모델 없이 단일 모델이 에이전트 모드와 예측기 모드를 겸함. 예측기 모드에서는 부분적인 추론 경로(trajectory)를 보고 다음 도구 호출을 예측함.
+* **공동 강화학습(Joint Agent-Speculator RL):** 에이전트의 실제 수행 결과(rollouts)를 예측기의 학습 타겟으로 활용하며, 두 모드를 교대로 업데이트함.
+* **학습 안정화 기법:** RL 시작 전 SFT(지도 미세 조정) 워밍업, 모드 전환 시 최적화 상태(optimizer state) 초기화, 무의미한 도구 반복 호출에 대한 페널티 부여 등을 통해 학습 효율을 높임.
+
+📊 실험 결과 분석
+* **예측 성능 향상:** Qwen3-4B 모델의 경우 다음 도구 호출 Hit@1 정확도가 44.1에서 61.2로, Qwen3.5-4B 모델은 48.9에서 66.3으로 크게 향상됨.
+* **성능 유지:** 도구 호출 예측 정확도를 높이면서도, 에이전트 본연의 작업 성공률은 기존 수준을 유지함.
+* **데이터:** 논문 내 실험 결과 수치는 제시된 성능 지표(Hit@1)에 근거함.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **대기 시간 단축:** 실시간 데이터 검색이나 복잡한 API 호출이 빈번한 환경에서 에이전트의 응답 속도를 획기적으로 개선할 수 있음.
+* **적용 범위:** 읽기 전용 도구(검색, 데이터베이스 조회 등) 환경에 즉시 적용 가능하며, 도구 호출 시 발생하는 오버헤드를 효과적으로 상쇄함.
+* **주의사항:** 데이터 변경이나 결제 등 외부 상태를 변화시키는 도구 호출에는 부적합할 수 있으며, 실제 서비스 시에는 안전한 호출과 상태 변화 호출을 구분하는 정책이 필요함.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Speculative Actions: A Lossless Framework for Faster Agentic Systems](https://arxiv.org/html/2510.04371v1)
+&gt; - [Agentic RL: Frameworks and Best Practices](https://cameronrwolfe.substack.com/p/agentic-rl)
+&gt; - [Speculative Interaction Agents: Building Real-Time Agents with Asynchronous I/O and Speculative Tool Calling](https://arxiv.org/html/2605.13360v2)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;이 논문의 &#x27;Self-speculating&#x27; 접근 방식은 흥미롭지만, 공동 강화학습(Joint RL) 과정에서 에이전트의 추론 경로(Trajectory)가 예측기의 편향에 잠식될 위험은 없는지 의문이 드네. 특히 모드 전환 시 최적화 상태를 초기화하는 방식은 실무적 타협일 뿐 이론적 엄밀함은 부족해 보여.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 일리가 있지만, 현업에선 일단 레이턴시부터 잡아야 합니다. KV 캐시 재사용으로 리소스 낭비 줄인 것만 해도 대박이죠. 다만, 말씀하신 대로 상태 변경(Side-effect)이 발생하는 API에서 예측이 빗나갔을 때의 롤백 로직이 논문에 명확하지 않은데, 이걸 프로덕션에 올리려면 안전 장치가 추가로 필요할 것 같네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;선배님들, 그건 제쳐두고 Hit@1 정확도가 20% 가까이 뛴 건 진짜 미친 수치 아닌가요? 요즘 에이전트 레이턴시 때문에 다들 골머리 앓는데, 이거 당장 우리 랩 세미나 주제로 발제하겠습니다! RL 안정화 기법만 잘 튜닝하면 SOTA 찍는 건 시간문제일 듯요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
