@@ -4598,7 +4598,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-07-29T16:17:36.380745+00:00",
+      "updated_at": "2026-07-30T01:52:27.887587+00:00",
       "paper": {
         "title": "OmniDelta: Skill-Driven Budget Allocation for Token Compression in OmniLLMs",
         "summary": "Emerging Omni-modal Large Language Models (OmniLLMs) enable unified understanding of text, audio, and video, but their long audio-video token sequences introduce substantial memory and inference costs. Existing compression methods mainly focus on selecting important tokens under fixed budgets, leaving the preceding budget-allocation problem underexplored. We show that direct query-to-audio/video similarity is unreliable for inter-modal budget allocation, and that uniform intra-modal budgets can miss key evidence while retaining redundant content. To address these limitations, we propose OmniDelta, a training-free, skill-driven framework that couples intent-aware inter-modal allocation with content-aware intra-modal allocation. OmniDelta first constructs audio and video skill pools to shift the fixed retained-token budget according to query demand, then reallocates modality budgets over audio segments and video frames using local complexity and temporal redundancy. The resulting local budgets can be combined with existing pruning strategies, preserving the total retained-token ratio while changing where the budget is spent. Experiments on four audio-video benchmarks with two Qwen2.5-Omni models show that OmniDelta establishes a new accuracy-efficiency Pareto frontier across pruning ratios. At 25% token retention on Qwen2.5-Omni-7B, OmniDelta reduces GPU memory by 22.0% and achieves a 1.64x end-to-end speedup over full-token inference.",
@@ -4673,11 +4673,11 @@
     "2607_25659v1": {
       "id": "2607_25659v1",
       "filename": "post_2607_25659v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-07-29T02:02:35.971613+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-07-29T02:02:35.971615+00:00",
+      "updated_at": "2026-07-30T01:53:26.968226+00:00",
       "paper": {
         "title": "CoRT: Counterfactual Replay for Token-Level Rubric-Guided Policy Optimization",
         "summary": "Rubric-based reinforcement learning enriches language model training by evaluating model outputs against explicit criteria. Yet in GRPO-style pipelines, these structured judgments are reduced to a scalar response-level reward and converted into a response-level advantage, which is broadcast uniformly to all generated tokens. This leaves no explicit mechanism for allocating credit within a response, even when different criteria are grounded in different spans, formatting decisions, or semantic choices. We propose CoRT, a token-level credit weighting method for rubric-conditioned GRPO. Instead of training an auxiliary token scoring model, CoRT uses counterfactual replay to rescore the same sampled response under the original rubric-conditioned prompt and a matched criteria-free prompt. The resulting tokenwise log-likelihood contrasts serve as a proxy for dependence on the rubric context. CoRT maps these contrasts to bounded, response-normalized weights and uses them to redistribute the signed GRPO advantage across tokens, without introducing an auxiliary scorer or changing the response-level reward. Experiments across instruction-tuned models and reward granularities show that CoRT improves over matched response-level GRPO in the vast majority of comparisons, with an average gain of 4.4 percentage points. The method remains competitive with learned token-level credit baselines while avoiding a separate relevance-learning stage. These results suggest that policy-internal counterfactual likelihood contrasts provide an effective training signal for within-response credit allocation while retaining the simplicity and stability of GRPO.",
@@ -4694,7 +4694,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2607.25659v1"
       },
-      "priority_score": 20
+      "priority_score": 20,
+      "korean_title": "CoRT: 토큰 단위 루브릭 기반 정책 최적화를 위한 반사실적 리플레이"
     },
     "2607_25656v1": {
       "id": "2607_25656v1",
@@ -4822,11 +4823,11 @@
     "2607_25637v1": {
       "id": "2607_25637v1",
       "filename": "post_2607_25637v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-07-29T02:02:35.971651+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-07-29T02:02:35.971652+00:00",
+      "updated_at": "2026-07-30T01:53:07.328224+00:00",
       "paper": {
         "title": "F(AI)2R: Who Did What, and Who Checked? Verifiable AI Provenance as an Executable Skill",
         "summary": "F(AI)2R is FAIR research with AI in the loop, twice: an AI-assisted authoring pass and a machine-readable audit pass over every artefact. AI systems now draft, refactor, and verify research artefacts, yet their contributions are rarely recorded in a form a later human or machine can audit. Building on the original F(AI)2R experiment, we generalize its provenance model beyond scholarly writing into aiprov, a PROV-O extension covering any AI-in-the-loop artefact, and we package the method as an executable skill that an AI agent operates itself: setup asks the human operator for their ORCID ID, resolves their identity from the public registry, and scaffolds continuous integration that gates every push on graph conformance and publishes the current build of this very paper. The paper is its own case study. Every activity, claim, and source in its production is recorded in the repository's provenance graph under two invariants: no parentless claim, and verification rungs that only humans may grant.",
@@ -4836,7 +4837,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2607.25637v1"
       },
-      "priority_score": 22
+      "priority_score": 22,
+      "korean_title": "F(AI)2R: 누가 무엇을 했고, 누가 검증했는가? 실행 가능한 기술로서의 검증 가능한 AI 출처 관리"
     },
     "2607_25634v1": {
       "id": "2607_25634v1",
@@ -4939,7 +4941,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-07-29T21:55:13.632625+00:00",
+      "updated_at": "2026-07-30T01:52:27.887570+00:00",
       "paper": {
         "title": "PerceptionBench: Evaluating Atomic Visual Perception in Multimodal Large Language Models",
         "summary": "We introduce PerceptionBench, a benchmark specifically designed to evaluate the atomic visual perception capabilities of Multimodal Large Language Models (MLLMs). Existing benchmarks often fail to isolate perception: holistic evaluations conflate perceptual errors with failures in reasoning or domain knowledge, while application-driven benchmarks only cover narrow, fragmented domains shaped by heuristic designs. To address these limitations, PerceptionBench adopts a bottom-up approach: by diagnosing the earliest failure points in the responses of frontier MLLMs across 42 existing benchmarks, we construct an error taxonomy whose perception branch defines ten atomic perceptual capabilities. Guided by this taxonomy, we construct 3,000 verified questions with short, unambiguous answers, each isolating a single capability, with difficulty stemming from perception rather than reasoning or knowledge. Benchmark results across sixteen frontier MLLMs reveal that atomic perception remains largely unsolved---no model reaches 60\\% accuracy, perception-related hallucination is the weakest capability on average, and similar overall scores conceal sharply divergent capability profiles. PerceptionBench thus provides a capability-level standard for measuring and diagnosing the visual perception boundaries of MLLMs.",
@@ -5015,7 +5017,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-07-29T21:55:13.632648+00:00",
+      "updated_at": "2026-07-30T01:52:27.887590+00:00",
       "paper": {
         "title": "Novel Claim or Déjà Vu? Rethinking \"Contamination-Free'' Dynamic Evaluation for Multimodal Automated Fact-Checking",
         "summary": "Multimodal automated fact-checking (MAFC) verifies claims by retrieving and reasoning over external evidence. However, most existing static benchmarks risk contamination: they primarily consist of outdated claims verifiable using an LLM's internal knowledge without external evidence. This can inflate performance estimates and fail to reflect true capability on novel claims that require up-to-date information. To address this, emerging dynamic benchmarks collect claims published after LLMs' knowledge cut-off dates, assuming they are uncontaminated. This work revisits this assumption by empirically studying contamination risks in both the state-of-the-art (SOTA) static AVeriTeC benchmark and our newly constructed dynamic ClaimReview2025Q4 benchmark, as well as their impact on MAFC evaluation. Our experiments yield 16 findings, highlighting three key results: (1) Dynamic evaluation reduces but does not eliminate contamination risks, as 17.09\\%--29.30\\% of post-cut-off claims remain potentially contaminated; (2) Many newly published claims can be verified either directly or by synthesizing multiple pieces of public knowledge available before the cut-off; and (3) Contamination can induce statistically significant inflation in MAFC performance, increasing Macro-F1 by up to 11.34 points and distorting system rankings. In light of these findings, we re-evaluate SOTA LLMs under a strictly contamination-controlled setting. Our study provides practical guidelines for trustworthy MAFC evaluation.",
@@ -5040,7 +5042,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-07-29T21:55:13.632657+00:00",
+      "updated_at": "2026-07-30T01:52:27.887609+00:00",
       "paper": {
         "title": "Shieldstral",
         "summary": "We introduce Shieldstral, a 3B-parameter policy-adaptive multimodal safety classifier that matches or outperforms models nearly 7$\\times$ its size on text safety benchmarks and sets a new state of the art on multimodal safety classification. Shieldstral formulates content moderation as a binary question-answering task. This simple formulation unifies diverse moderation tasks into a single yes/no problem, enabling heterogeneous safety datasets with divergent taxonomies to be consolidated under one training framework. We present the data construction recipe, covering curation and generation of approximately 54.1M samples and a fine-grained evaluation set to evaluate policy adaptability. Together, these enable a small adaptive model to match or outperform much larger models.",
@@ -5088,11 +5090,11 @@
     "2607_22117v1": {
       "id": "2607_22117v1",
       "filename": "post_2607_22117v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-07-29T13:55:34.962181+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-07-29T21:55:13.632604+00:00",
+      "updated_at": "2026-07-30T01:53:17.432066+00:00",
       "paper": {
         "title": "Projection Pursuit CPCANet for Domain Generalization",
         "summary": "Domain Generalization (DG) aims to learn representations robust to distribution shifts. Recent geometric alignment methods, such as CPCANet, extract domain-invariant structures through batch-wise Common Principal Component Analysis (CPCA). However, CPCANet suffers from rank-deficient covariance estimation due to the small-sample-size issue in mini-batch training. To address this limitation, we propose Projection Pursuit CPCANet (PP-CPCANet), a covariance-free framework that learns a global orthogonal basis on the Stiefel manifold and jointly optimizes it with network parameters via the Cayley transform. We further introduce a symmetry-breaking detached-median PP dispersion objective to extract common principal components (CPCs) with dense and robust optimization signals. Experiments on four DG benchmarks show that PP-CPCANet achieves SOTA performance while maintaining stable training.",
@@ -5103,7 +5105,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2607.22117v1"
       },
-      "priority_score": 21
+      "priority_score": 21,
+      "korean_title": "도메인 일반화를 위한 투영 추적 CPCANet"
     },
     "2607_25565v1": {
       "id": "2607_25565v1",
@@ -5112,7 +5115,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-07-29T21:55:13.632661+00:00",
+      "updated_at": "2026-07-30T01:52:27.887606+00:00",
       "paper": {
         "title": "ReDesign: Recovering Editable Design Structures from Images via Agentic Decomposition",
         "summary": "Recovering an editable design file from a raster image is a common and costly bottleneck in modern design workflows, yet remains challenging since editability depends on recovering multi-modal attributes, such as typography, vector geometry, colors, grouping, and layer ordering. We present ReDesign, an agentic framework that grows an editable layer hierarchy by selecting and composing specialized tools across modalities. To keep this long decision process reliable despite imperfect tool outputs, we introduce graceful verification at each expansion, which provides local accept, prune, or retry feedback that prevents error accumulation and avoids large scale reruns. To evaluate editability at scale, we introduce the Figma Edit Replay Benchmark, consisting of 909 raw Figma files and 14,796 controlled edit instructions that replay edits on reconstructed outputs. Across this benchmark and standard reconstruction metrics, ReDesign achieves strong visual fidelity while delivering the highest editability across layout, color, and text edits, outperforming layered decomposition baselines and serial tool use pipelines.",
@@ -5137,7 +5140,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-07-29T21:55:26.227661+00:00",
+      "updated_at": "2026-07-30T01:52:27.887595+00:00",
       "paper": {
         "title": "Uncovering Latent Reasoning Strategies in Language Models",
         "summary": "A language model $p_θ(y \\mid x)$ trained on reasoning tasks learns to solve problems via multiple distinct strategies, yet these strategies are implicit and entangled within the model's response distribution. We study the problem of decomposing the response distribution of a given pretrained language model into a structured, strategy-conditioned representation. Specifically, we learn a latent-variable factorization $p_θ(y \\mid x) \\leadsto (r_φ(z \\mid x), g_φ(y \\mid x,z))$, where a router $r$ maps each input to a distribution over latent strategies $z$ and a generator $g$ produces the response conditioned on that strategy. A key challenge is that the generator, initialized from the base model, already represents $p_θ(y \\mid x)$ without using $z$. Standard variational inference therefore gives the model no incentive to route information through $z$ and can yield a severe form of posterior collapse. To address this, we propose a variational objective that measures fractional information gain relative to the base model's response loss and concentrates reconstruction pressure on tokens with high base model surprisal, encouraging $z$ to encode strategy-relevant response variation. We introduce a benchmark of multi-strategy algorithmic tasks and show that this objective recovers latent codes aligned with distinct reference strategies while preserving the base model's response distribution.",
@@ -5158,7 +5161,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-07-29T21:55:43.575624+00:00",
+      "updated_at": "2026-07-30T01:52:27.887613+00:00",
       "paper": {
         "title": "Reinforcement Learning for Code Optimization",
         "summary": "RL for code correctness is now established: have the model generate a program, run it against hidden test cases, and reward solutions that pass. Extending this to code optimization seems straightforward: just add execution time to the reward. But in practice, once timing drives the reward, small problems in measurement noise, reward sparsity, or GRPO instability overwhelm the signal and make RL fail: generated solutions are barely faster, and more of them can fail. We make execution time learnable through three stages: (1) how code is tested, by building DMC-Optim with large optimization tests and a calibrated sandbox; (2) how speed is turned into reward, by composing correctness and speed in the RL environment and using an offline simulator to predict the most promising configurations; and (3) how the model learns from that reward, by adapting GRPO and evaluation to the sparser, noisier timed-execution setting. On DMC-Optim, the strongest optimization-aware configurations improve strict top-50% pass@1 from 18.0% to 31.3% on Qwen 2.5 7B and from 30.7% to 50.4% on CWM 32B. These gains further increase at stricter percentiles such as top-30%, with 125% relative improvement for CWM 32B, while preserving pure-correctness scores. When the timing sandbox is degraded, robust optimization RL reaches 100% to 200% improvement over standard RLVR, depending on the evaluation criterion. On LCB, CWM 32B wins up to 83% of median-sample speed comparisons against standard RLVR. Relative to the fastest correct human submissions per problem, it reaches about half the human rate of complexity-class improvements (14% vs. 28%).",
@@ -5174,10 +5177,53 @@
       },
       "priority_score": 40,
       "korean_title": "코드 최적화를 위한 강화학습"
+    },
+    "2607_25802v2": {
+      "id": "2607_25802v2",
+      "filename": "post_2607_25802v2.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-07-30T01:52:27.887579+00:00",
+      "last_error": null,
+      "updated_at": "2026-07-30T01:52:27.887582+00:00",
+      "paper": {
+        "title": "Explicit Layer Modeling for Video Object Insertion and Layer Decomposition",
+        "summary": "Most video editing systems still lack explicit layered video representations, limiting their ability to perform realistic compositing, object reuse, and consistent manipulation. This limitation is especially pronounced in video object insertion and video layer decomposition, where existing methods rely on implicit inference or per-scene optimization due to the absence of explicit foreground-layer supervision. We introduce TriLayer, a large-scale triplet video dataset containing aligned composite, background, and foreground videos, where the foreground layers include both object appearance and associated visual effects. This explicit supervision enables models to learn layered video representations directly rather than inferring them implicitly. Building on this dataset, we propose DBL-Diffusion, a dual-branch diffusion framework that jointly models RGB composites and RGBA foreground layers through shared denoising and cross-branch interaction. We instantiate the framework in two tasks: DBL-Insert for layered object insertion, which generates explicit RGBA layers for realistic compositing and flexible post-editing, and DBL-Decompose for video layer decomposition, which recovers foreground and background layers using triplet supervision. Experiments demonstrate that explicit layer modeling substantially improves both insertion fidelity and decomposition quality.",
+        "published": "2026-07-28T14:48:30Z",
+        "authors": [
+          "Kyujin Han",
+          "Seungjoo Shin",
+          "Sunghyun Cho"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2607.25802v2"
+      },
+      "priority_score": 17
+    },
+    "2607_25310v1": {
+      "id": "2607_25310v1",
+      "filename": "post_2607_25310v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-07-30T01:52:57.514281+00:00",
+      "paper": {
+        "title": "Human-in-the-Loop Signature Bootstrapping for UAV Hyperspectral PFM-1 Mine Detection",
+        "summary": "Hyperspectral imaging (HSI) is useful for material discrimination, but operational mine screening also depends on how many false alarms must be inspected before targets are found. This paper studies PFM-1 landmine detection in unmanned aerial vehicle (UAV) visible and near-infrared (VNIR) HSI using spectral angle mapper (SAM), matched filter (MF), adaptive coherence estimator (ACE), and constrained energy minimization (CEM). We compare a ground-measured SVC signature, a fully informed in-scene core-pixel signature, and a simulated human-in-the-loop signature bootstrap. Besides receiver operating characteristic area under the curve and average precision, we report target-discovery curves and spatial candidate-review counts. Full-review bootstrapping reaches the fully informed in-scene signature case after all seven target regions are verified, but the required inspection effort varies strongly: ACE confirms all regions in two rounds and nine candidate inspections, whereas the SAM variants need thousands of candidate reviews for their final target locations. Code is available at https://github.com/SagarLekhak/IEEE_WHISPERS_2026_UAV_HSI_PFM1.",
+        "published": "2026-07-28T05:46:01Z",
+        "authors": [
+          "Sagar Lekhak",
+          "Prasanna Reddy Pulakurthi",
+          "Emmett J. Ientilucci"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2607.25310v1"
+      },
+      "priority_score": 24,
+      "korean_title": "무인항공기(UAV) 초분광 PFM-1 지뢰 탐지를 위한 인간 개입형 시그니처 부트스트래핑"
     }
   },
   "last_run": {
-    "started_at": "2026-07-29T21:55:13.633603+00:00",
+    "started_at": "2026-07-30T01:52:27.888502+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -5188,25 +5234,25 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 20220,
-      "output_tokens": 5611,
+      "prompt_tokens": 21612,
+      "output_tokens": 5907,
       "thought_tokens": 0,
-      "total_tokens": 25831,
-      "estimated_usd": 0.0134715
+      "total_tokens": 27519,
+      "estimated_usd": 0.0142635
     },
-    "finished_at": "2026-07-29T21:56:01.970397+00:00"
+    "finished_at": "2026-07-30T01:53:27.057000+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 359,
-    "prompt_tokens": 895767,
-    "output_tokens": 265939,
+    "requests": 367,
+    "prompt_tokens": 917379,
+    "output_tokens": 271846,
     "thought_tokens": 0,
-    "total_tokens": 1161706,
-    "estimated_usd": 0.62285025
+    "total_tokens": 1189225,
+    "estimated_usd": 0.63711375
   },
   "last_publication_run": {
-    "started_at": "2026-07-29T21:55:13.633603+00:00",
+    "started_at": "2026-07-30T01:52:27.888502+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -5217,17 +5263,17 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 20220,
-      "output_tokens": 5611,
+      "prompt_tokens": 21612,
+      "output_tokens": 5907,
       "thought_tokens": 0,
-      "total_tokens": 25831,
-      "estimated_usd": 0.0134715
+      "total_tokens": 27519,
+      "estimated_usd": 0.0142635
     },
-    "finished_at": "2026-07-29T21:56:01.970397+00:00"
+    "finished_at": "2026-07-30T01:53:27.057000+00:00"
   },
   "daily_usage": {
-    "date": "2026-07-29",
-    "estimated_usd": 0.11089475,
-    "publications": 32
+    "date": "2026-07-30",
+    "estimated_usd": 0.0142635,
+    "publications": 4
   }
 }
