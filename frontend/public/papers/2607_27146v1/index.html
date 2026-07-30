@@ -1,0 +1,65 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MindForge: 소스 코드 없는 프로그램 합성을 통한 소형 언어 모델의 전 생애주기 소프트웨어 엔지니어링 학습 | ArXiv Translator AI</title><meta name="description" content="MindForge: 소스 코드 없는 프로그램 합성을 통한 소형 언어 모델의 전 생애주기 소프트웨어 엔지니어링 학습"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2607_27146v1"><meta property="og:type" content="article"><meta property="og:title" content="MindForge: 소스 코드 없는 프로그램 합성을 통한 소형 언어 모델의 전 생애주기 소프트웨어 엔지니어링 학습"><meta property="og:description" content="MindForge: 소스 코드 없는 프로그램 합성을 통한 소형 언어 모델의 전 생애주기 소프트웨어 엔지니어링 학습"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2607_27146v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="MindForge: 소스 코드 없는 프로그램 합성을 통한 소형 언어 모델의 전 생애주기 소프트웨어 엔지니어링 학습"><meta name="twitter:description" content="MindForge: 소스 코드 없는 프로그램 합성을 통한 소형 언어 모델의 전 생애주기 소프트웨어 엔지니어링 학습"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2607_27146v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "MindForge: 소스 코드 없는 프로그램 합성을 통한 소형 언어 모델의 전 생애주기 소프트웨어 엔지니어링 학습", "description": "MindForge: 소스 코드 없는 프로그램 합성을 통한 소형 언어 모델의 전 생애주기 소프트웨어 엔지니어링 학습", "datePublished": "2026-07-29", "url": "https://arxiv-ai-blog.vercel.app/papers/2607_27146v1", "author": [{"@type": "Person", "name": "Yihao Chen"}, {"@type": "Person", "name": "Shi Chang"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2607_27146v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2607_27146v1"});gtag('event', 'paper_view', {"paper_id": "2607_27146v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>MindForge: 소스 코드 없는 프로그램 합성을 통한 소형 언어 모델의 전 생애주기 소프트웨어 엔지니어링 학습</h1><p>MindForge: 소스 코드 없는 프로그램 합성을 통한 소형 언어 모델의 전 생애주기 소프트웨어 엔지니어링 학습</p><pre>MindForge: 소스 코드 없는 프로그램 합성을 통한 소형 언어 모델의 전 생애주기 소프트웨어 엔지니어링 학습
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** MindForge: Teaching Small Language Models Whole-Life-Cycle Software Engineering via Source-Free Program Synthesis
+&gt; - **저자:** Yihao Chen, Shi Chang, Khaled Chawa, Feng Lin, Boyuan Chen, Shaowei Wang, Ahmed E. Hassan
+&gt; - **발행일:** 2026-07-29
+&gt; - **PDF 링크:** [MindForge: Teaching Small Language Models Whole-Life-Cycle Software Engineering via Source-Free Program Synthesis](https://arxiv.org/pdf/2607.27146v1)
+
+
+✨ 3줄 핵심 요약
+* **MindForge**는 오픈소스 프로그램을 소스 코드 없이 컴파일된 실행 파일과 문서만으로 구성된 환경으로 자동 변환하여 학습 데이터로 활용합니다.
+* 소형 모델인 **Qwen3.6-27B**를 이 환경으로 미세 조정(Fine-tuning)한 결과, 프로그램 합성 테스트(ProgramBench) 통과율을 37.98%에서 49.51%로 대폭 향상했습니다.
+* 다양한 소프트웨어 엔지니어링 벤치마크에서 훨씬 규모가 큰 대형 모델들과 대등하거나 더 우수한 성능을 입증했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+기존 코딩 인공지능들은 주로 기존 코드를 수정하는 작업에는 능숙하지만, 처음부터 완전히 새로운 프로그램을 만드는 것은 여전히 매우 어려운 과제입니다. 그 이유는 학습을 위한 적절한 환경과 데이터가 부족하기 때문입니다. &#x27;MindForge&#x27;는 오픈소스 프로젝트를 활용해 인공지능이 소스 코드를 직접 보지 않고도 실행 파일과 문서만으로 소프트웨어 개발 전 과정을 학습할 수 있는 &#x27;소스 프리(Source-free)&#x27; 환경을 구축했습니다. 이를 통해 270억 개의 매개변수만 가진 소형 모델도 대규모 언어 모델 수준의 프로그래밍 실력을 갖추게 되었습니다.
+
+🎯 배경 및 문제점
+현재 코딩 에이전트들은 버그 수정이나 기능 추가와 같은 기존 코드 수정 업무에서는 큰 발전을 이루었습니다. 그러나 완전히 새로운 프로그램을 처음부터 개발하는 것은 여전히 난제로, 기존의 벤치마크에서 최첨단 모델들조차 1% 미만의 과제만 해결하는 수준입니다. 이러한 문제를 해결할 전 생애주기 소프트웨어 엔지니어링 학습 환경이 부재하다는 점이 가장 큰 장애물로 지적되었습니다.
+
+💡 핵심 기술 및 아키텍처
+* **자동화된 파이프라인**: 오픈소스 CLI 프로그램을 컴파일된 실행 파일과 문서만 남은 환경으로 자동 변환합니다.
+* **학습 전략**: GLM-5.2 모델을 교사 모델로 활용하여 프로그램 합성 과정을 데이터화하고, 이를 바탕으로 소형 모델(Qwen3.6-27B)을 미세 조정합니다.
+* **소스 프리(Source-free) 환경**: 원본 소스 코드에 의존하지 않고도 에이전트가 소프트웨어 개발 주기를 이해하고 수행할 수 있도록 설계되었습니다.
+
+📊 실험 결과 분석
+* **성능 향상**: MindForge로 학습된 27B 모델은 기존 Qwen3.6-27B 모델의 테스트 통과율을 37.98%에서 49.51%로 높였습니다.
+* **경쟁력**: 이는 훨씬 큰 규모의 모델들과 비교해도 뒤처지지 않는 수준입니다.
+* **범용성**: 7개의 미학습 소프트웨어 엔지니어링 벤치마크(RepoZero-C2Rust, DeepSWE, SWE-bench 등)에서 일관된 성능 향상을 보였습니다. 
+    * *예시(절대값 상승폭):* RepoZero-C2Rust에서 31.00점, DeepSWE에서 14.16점, NL2Repo-Bench(테스트 포함)에서 10.70점 등.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+이번 연구는 소형 언어 모델이 거대 모델의 컴퓨팅 자원 없이도 전문적인 소프트웨어 엔지니어링 과제를 수행할 수 있음을 보여줍니다. 기업들은 고비용의 대형 모델을 사용하는 대신, 특정 엔지니어링 작업에 특화된 소형 모델을 구축하여 효율적인 자동화 도구를 개발할 수 있습니다. 이는 개발자의 생산성을 높이고, 복잡한 신규 프로젝트 생성 및 레거시 시스템의 언어 전환, 버그 수정 등을 자동화하는 데 실질적인 기여를 할 것으로 기대됩니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2607.27146 MindForge: Teaching Small Language Models Whole-Life-Cycle Software Engineering via Source-Free Program Synthesis](https://arxiv.org/abs/2607.27146)
+&gt; - [MindForge: Teaching Small Language Models Whole-Life-Cycle Software Engineering via Source-Free Program Synthesis](https://arxiv.org/html/2607.27146)
+&gt; - [MindForge: Teaching Small Language Models Whole-Life-Cycle...](https://arxiv.org/html/2607.27146v1)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;소스 코드 없이 실행 파일과 문서만으로 추론을 강제했다는 점은 흥미롭군요. 다만, 교사 모델인 GLM-5.2가 생성한 합성 데이터에 내재된 편향(bias)이 소형 모델인 Qwen3.6-27B에 얼마나 전이되었을지 검증이 필요합니다. 벤치마크 점수 올리기에 급급해 모델이 &#x27;블랙박스적 암기&#x27;를 수행한 것은 아닌지 의문이 드는군요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님, 학계에서는 암기라고 보실지 모르겠지만 실무에선 이 정도 퍼포먼스면 당장 프로덕션에 올려보고 싶네요. 27B 규모에서 이 정도 추론 능력이면 인프라 비용 획기적으로 줄일 수 있거든요. 다만, 실제 레거시 프로젝트의 복잡한 의존성 문제를 해결할 수 있을지가 관건입니다. 컴파일 타임 에러를 얼마나 &#x27;스스로&#x27; 처리하는지가 핵심일 것 같은데, 논문에서는 그 부분을 너무 낙관적으로 본 것 같기도 하고요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;두 분 다 너무 진지하신 거 아닌가요? ㅎㅎ 소스 프리로 학습해서 이 정도로 성능 펌핑 시켰다는 것 자체가 지금 학계에서 완전 핫한데요! 이제 LLM이 코드 텍스트만 읽는 게 아니라, 진짜 &#x27;빌드&#x27;의 과정을 이해하기 시작했다는 게 중요하죠. 이거 당장 다음 학회 챌린지 데이터셋으로 쓸 것 같은데, 저도 오늘 밤새서 바로 돌려봐야겠네요! 🚀&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
