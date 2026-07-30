@@ -1,0 +1,75 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CADENCE: 커버리지 적응형 온폴리시 증류를 통한 추론 격차 해소 | ArXiv Translator AI</title><meta name="description" content="CADENCE: 커버리지 적응형 온폴리시 증류를 통한 추론 격차 해소"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2607_16955v1"><meta property="og:type" content="article"><meta property="og:title" content="CADENCE: 커버리지 적응형 온폴리시 증류를 통한 추론 격차 해소"><meta property="og:description" content="CADENCE: 커버리지 적응형 온폴리시 증류를 통한 추론 격차 해소"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2607_16955v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="CADENCE: 커버리지 적응형 온폴리시 증류를 통한 추론 격차 해소"><meta name="twitter:description" content="CADENCE: 커버리지 적응형 온폴리시 증류를 통한 추론 격차 해소"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2607_16955v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "CADENCE: 커버리지 적응형 온폴리시 증류를 통한 추론 격차 해소", "description": "CADENCE: 커버리지 적응형 온폴리시 증류를 통한 추론 격차 해소", "datePublished": "2026-07-18", "url": "https://arxiv-ai-blog.vercel.app/papers/2607_16955v1", "author": [{"@type": "Person", "name": "Satyam Kumar"}, {"@type": "Person", "name": "Saurabh Jha"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2607_16955v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2607_16955v1"});gtag('event', 'paper_view', {"paper_id": "2607_16955v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>CADENCE: 커버리지 적응형 온폴리시 증류를 통한 추론 격차 해소</h1><p>CADENCE: 커버리지 적응형 온폴리시 증류를 통한 추론 격차 해소</p><pre>CADENCE: 커버리지 적응형 온폴리시 증류를 통한 추론 격차 해소
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** CADENCE: Closing the Reasoning Gap via Coverage-Adaptive On-Policy Distillation
+&gt; - **저자:** Satyam Kumar, Saurabh Jha
+&gt; - **발행일:** 2026-07-18
+&gt; - **PDF 링크:** [CADENCE: Closing the Reasoning Gap via Coverage-Adaptive On-Policy Distillation](https://arxiv.org/pdf/2607.16955v1)
+
+
+✨ 3줄 핵심 요약
+*   **문제 해결:** 소형 언어 모델의 온폴리시 지식 증류 과정에서 발생하는 &#x27;콜드 스타트 붕괴&#x27;, &#x27;다이버전스 스케줄링 불균형&#x27;, &#x27;이진 보상 희소성&#x27; 문제를 해결하는 CADENCE 프레임워크를 제안했습니다.
+*   **핵심 기술:** 6가지 혁신적 구성 요소(COV A, FTB, CCD, LAP, EMR, BSD)와 안정화 메커니즘을 결합하여, 학생 모델이 교사 모델의 추론 능력을 더 효율적으로 학습하도록 설계했습니다.
+*   **성과:** 0.5B 규모의 학생 모델이 3B 교사 모델의 추론 성능 격차를 76.2%까지 좁혔으며, 일반 소비자용 하드웨어(Apple Mac Studio)만으로 데이터센터 수준의 효율을 달성했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+큰 인공지능(교사 모델)의 지능을 작은 모델(학생 모델)로 옮기는 &#x27;지식 증류&#x27;는 모델 경량화를 위해 필수적입니다. 하지만 기존 방식은 학생이 추론을 시작조차 못 하거나(콜드 스타트), 학습 방향을 제대로 잡지 못하는 문제가 있었습니다. CADENCE는 모델이 추론하는 동안 스스로 경로를 수정하고, 틀린 답이라도 정답에 가까우면 부분 점수를 주며, 추론 과정의 불필요한 길이를 줄이는 등 6가지 정교한 장치를 도입했습니다. 결과적으로 훨씬 적은 자원으로도 똑똑한 소형 모델을 만들 수 있게 되었습니다.
+
+🎯 배경 및 문제점
+온폴리시 증류 과정에서 발생하는 세 가지 주요 실패 모드를 지목합니다.
+1.  **콜드 스타트 붕괴(Cold-start collapse):** 학습 초기 학생 모델이 교사의 추론 패턴을 전혀 생성하지 못해 학습 신호가 소실되는 현상.
+2.  **상태 비인지적 스케줄링(State-agnostic divergence scheduling):** 프롬프트마다 난이도가 다름에도 일률적인 시간 기반 학습 스케줄을 사용하여 최적화가 저하되는 문제.
+3.  **이진 보상 희소성(Binary reward sparsity):** 성공/실패로만 평가하면 부분적으로 정답에 근접한 추론 과정의 정보를 활용하지 못하고 버리게 됨.
+
+💡 핵심 기술 및 아키텍처
+CADENCE는 DRIFT 메커니즘을 기초로 다음 6가지 핵심 컴포넌트를 적용합니다.
+*   **(A) COV A:** 커버리지에 따라 모델의 학습 속도를 조절하는 적응형 스케줄러.
+*   **(B) FTB:** 추론의 핵심인 &#x27;분기 토큰&#x27; 위치에 그래디언트를 집중시키는 부스팅 기술.
+*   **(C) CCD:** 수치적 근접도를 기반으로 오답에도 부분 점수를 부여해 보상 신호를 풍부하게 개선.
+*   **(D) LAP:** 추론이 정답일 경우, 불필요하게 긴 답변을 지양하고 간결한 답변을 선호하도록 유도.
+*   **(E) EMR:** 추론 토큰들의 엔트로피를 정규화하여 모델의 자신감을 보정.
+*   **(F) BSD:** 학습 후반부에 정답 여부를 확인하여 한 번 더 스스로 학습하는 부트스트래핑 단계.
+
+📊 실험 결과 분석
+GSM8K 및 MATH-500 벤치마크에서 5번의 시드(seed)를 통해 검증했습니다.
+*   **성능:** 0.5B 학생 모델이 3B 교사 모델 대비 GSM8K에서 72.1±0.4%의 성능을 달성하여 기존 대비 성능 격차의 76.2%를 극복했습니다.
+*   **비교:** 가장 강력한 기존 베이스라인(DRIFT+이진 보상)보다 GSM8K에서 +4.4±0.7점 높은 점수를 기록했습니다.
+*   **효율성:** 모든 실험은 64GB 통합 메모리를 갖춘 Apple Mac Studio에서 수행되어, 고가의 데이터센터 장비 없이도 고성능 추론 모델 학습이 가능함을 입증했습니다.
+*   **참고:** CCD 기술을 통해 비제로 보상(nonzero-reward) 비율을 기존 49%에서 약 55%로 향상시켰습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+*   **엣지 AI:** 고성능 추론 모델을 일반 소비자용 PC나 모바일 기기에서도 구동할 수 있는 길을 열었습니다.
+*   **비용 절감:** 데이터센터급 하드웨어 없이도 고도화된 추론 성능을 확보할 수 있어, 기업들의 모델 개발 비용을 획기적으로 낮출 수 있습니다.
+*   **신뢰성:** EMR(엔트로피 매칭 정규화) 도입을 통해 모델이 자신의 예측 불확실성을 더 잘 인지하고 소통하게 함으로써 실제 서비스에서의 안정성을 높였습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [GitHub - chrisliu298/awesome-on-policy-distillation: A curated collection of papers, technical reports, frameworks, and tools for on-policy distillation (OPD) of large language models · GitHub](https://github.com/chrisliu298/awesome-on-policy-distillation)
+&gt; - [GitHub - nick7nlp/Awesome-LLM-On-Policy-Distillation: A curated collection of papers and resources on On-Policy Distillation for Large Language Models. · GitHub](https://github.com/nick7nlp/Awesome-LLM-On-Policy-Distillation)
+&gt; - [CADENCE: Closing the Reasoning Gap via Coverage-Adaptive...](https://arxiv.org/pdf/2607.16955)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문 제목 보고 또 단순한 성능 올리기인가 싶었는데, CCD를 통한 보상 밀도 개선과 FTB의 그래디언트 집중 전략은 이론적으로 꽤 탄탄해 보이는군. 다만, 6개의 컴포넌트를 동시에 튜닝하는 하이퍼파라미터 최적화가 논문만큼 실무에서 견고하게 작동할지는 의문이야. ablation study가 충분히 뒷받침되었는지 확인해봐야겠어.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 하이퍼파라미터 지옥이 예상되긴 하지만, Apple Mac Studio에서 0.5B 모델로 이 정도 성능 뽑아낸 건 실무자 입장에서 솔깃하네요. 데이터센터 인프라 없이 엣지에서 추론 모델 튜닝이 가능하다면 사내 PoC 비용 절감에 엄청난 기회가 될 것 같습니다. 당장 다음 스프린트에 우리 데이터셋으로 벤치마크 돌려봐야겠어요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;다들 성능이랑 비용 이야기만 하시는데, EMR로 엔트로피 정규화해서 모델 자신감 보정한 건 진짜 신의 한 수 아닌가요? 온폴리시 증류에서 고질적인 &#x27;자신감 넘치는 오답&#x27; 문제까지 잡은 거면 이건 진짜 학계와 업계 양쪽에서 킬러 논문 될 각인데요? 빨리 깃허브 코드 뜯어봐야겠습니다. 며칠 밤샐 각오해야겠네요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

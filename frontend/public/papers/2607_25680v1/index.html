@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>라쇼몽 정렬 | ArXiv Translator AI</title><meta name="description" content="라쇼몽 정렬"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2607_25680v1"><meta property="og:type" content="article"><meta property="og:title" content="라쇼몽 정렬"><meta property="og:description" content="라쇼몽 정렬"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2607_25680v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="라쇼몽 정렬"><meta name="twitter:description" content="라쇼몽 정렬"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2607_25680v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "라쇼몽 정렬", "description": "라쇼몽 정렬", "datePublished": "2026-07-28", "url": "https://arxiv-ai-blog.vercel.app/papers/2607_25680v1", "author": [{"@type": "Person", "name": "Moisés Santos"}, {"@type": "Person", "name": "Peter van der Putten"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2607_25680v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2607_25680v1"});gtag('event', 'paper_view', {"paper_id": "2607_25680v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>라쇼몽 정렬</h1><p>라쇼몽 정렬</p><pre>라쇼몽 정렬
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Rashomon Alignment
+&gt; - **저자:** Moisés Santos, Peter van der Putten, Bernhard Pfahringer, Carlos Soares
+&gt; - **발행일:** 2026-07-28
+&gt; - **PDF 링크:** [Rashomon Alignment](https://arxiv.org/pdf/2607.25680v1)
+
+
+✨ 3줄 핵심 요약
+* 모델 간 기능적 유사성을 평가하는 새로운 지표인 &#x27;라쇼몽 정렬(Rashomon Alignment, RA)&#x27;을 제안합니다.
+* 기존 데이터 분포 기반 평가의 한계를 극복하기 위해, 전체 데이터 공간에서 균일하게 샘플링하는 기하학적 관점(gRA)을 도입했습니다.
+* 92개 데이터셋 실험을 통해 기하학적 정렬이 기존 분포 기반 평가를 보완하여 모델의 구조적 차이를 더 정확히 포착함을 입증했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+기존 머신러닝 모델의 유사성을 비교할 때는 주로 우리가 가진 &#x27;학습 데이터&#x27; 위에서 모델들이 얼마나 비슷하게 예측하는지를 보았습니다. 하지만 이는 데이터가 없는 공간에서의 모델 행동을 무시한다는 한계가 있습니다. 이 논문은 데이터가 존재하는 특정 영역에만 국한되지 않고, 전체 데이터 공간을 균일하게 훑어 모델의 결정 경계가 얼마나 일치하는지 측정하는 &#x27;기하학적 라쇼몽 정렬(gRA)&#x27;을 제안합니다. 이를 통해 모델의 성능(정확도)이 비슷하더라도 실제 내부 구조가 얼마나 다른지 정밀하게 분석할 수 있습니다.
+
+🎯 배경 및 문제점
+* **기존 지표의 한계:** 기존 유사성 측정 방식(분포 기반)은 실제 데이터가 관측된 영역에만 집중합니다. 따라서 데이터가 부족하거나 특정 영역에 편중된 경우, 전체적인 모델의 구조적 유사성을 제대로 반영하지 못합니다.
+* **환경 변화 문제:** 데이터 분포가 변하면(concept change) 기존 데이터 기반의 유사성 지표는 신뢰성을 잃게 됩니다.
+* **성능의 함정:** 단순히 예측 정확도(accuracy)가 비슷하다고 해서 모델의 내부 결정 경계까지 유사한 것은 아닙니다. 기존 방식은 이러한 구조적 차이를 간과할 위험이 있습니다.
+
+💡 핵심 기술 및 아키텍처
+* **분포적 라쇼몽 정렬(dRA):** 관측된 데이터 분포를 기반으로 모델 간 유사성을 평가합니다.
+* **기하학적 라쇼몽 정렬(gRA):** 데이터가 존재하는 전체 공간(변수 도메인 정의 공간)에서 균일하게 샘플링하여 모델의 결정 경계를 비교합니다. 이는 특정 데이터 분포에 의존하지 않는 독립적인 평가가 가능하게 합니다.
+* **보완적 관계:** gRA는 dRA보다 엄격한 기준을 제시하며, 두 지표를 함께 사용할 때 모델 간의 진정한 구조적 유사성을 파악할 수 있습니다.
+
+📊 실험 결과 분석
+* **데이터셋:** 92개의 UCI 머신러닝 저장소 데이터셋을 사용하여 가지치기(pruned)된 결정 트리와 그렇지 않은 트리를 비교했습니다.
+* **상관관계:** gRA와 dRA 사이에는 0.745의 강한 양의 상관관계가 확인되었습니다.
+* **중요 발견:** 일부 데이터셋에서는 dRA는 높지만(0.8 이상) gRA는 낮은(0.3 미만) 경우가 관찰되었습니다. 이는 모델이 테스트 데이터상에서는 비슷해 보이지만, 실제 전체 공간에서는 매우 다르게 작동함을 시사하며, 기존 방식이 유사성을 과대평가할 수 있음을 보여줍니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **모델 선택 및 앙상블:** 예측 성능은 비슷하더라도 내부 구조가 다른 모델들을 조합하여 더 견고한 앙상블 시스템을 구축할 수 있습니다.
+* **해석 가능성 향상:** 모델이 결정 경계를 어떻게 형성하는지 더 깊이 이해함으로써, 블랙박스 모델의 구조적 특징을 파악하는 데 활용될 수 있습니다.
+* **신뢰성 검증:** 데이터 분포가 변하는 실전 환경에서 모델이 얼마나 일관되게 행동할지 예측하는 지표로 사용 가능합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Rashomon effect - Wikipedia](https://en.wikipedia.org/wiki/Rashomon_effect)
+&gt; - [Rashomon - Wikipedia](https://en.wikipedia.org/wiki/Rashomon)
+&gt; - [&quot;Rashomon&quot;-Style - TV Tropes](https://tvtropes.org/pmwiki/pmwiki.php/Main/RashomonStyle)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;데이터 분포에 의존적인 기존 지표들의 한계를 &#x27;기하학적 관점&#x27;으로 돌파하려 한 시도는 훌륭합니다. 다만, 고차원 데이터 공간에서 균일 샘플링이 가지는 &#x27;차원의 저주&#x27; 문제를 gRA가 어떻게 견고하게 방어할지 논문에서 충분히 다뤄졌는지 의문이군요. 실제 현업에서 쓰기엔 계산 복잡도가 상당할 것 같습니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에선 바로 쓰기엔 무겁죠. 하지만 dRA는 높은데 gRA는 낮은 케이스를 걸러낼 수 있다는 점은 매력적이네요. 프로덕션 환경에서 모델 드리프트 왔을 때, &#x27;성능은 비슷한데 왜 느낌이 다르지?&#x27; 싶던 의문들을 정량화할 수 있다면 앙상블 조합 짜는 데 꽤 유용할 것 같습니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 92개 데이터셋 돌린 정성 인정합니다! 요즘 다들 LLM 파인튜닝 지표에만 매몰되어 있는데, 이렇게 모델의 결정 경계 자체를 기하학적으로 뜯어보는 논문이 나오니 신선하네요. 제 졸업 논문도 이 gRA 지표를 LLM의 로직 일관성 평가에 이식해보면 재밌을 것 같은데요?&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
