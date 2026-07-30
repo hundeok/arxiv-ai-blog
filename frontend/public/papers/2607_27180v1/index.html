@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HumanCLAW: 시각-언어 모델은 신체를 통해 행동할 수 있는가? | ArXiv Translator AI</title><meta name="description" content="HumanCLAW: 시각-언어 모델은 신체를 통해 행동할 수 있는가?"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2607_27180v1"><meta property="og:type" content="article"><meta property="og:title" content="HumanCLAW: 시각-언어 모델은 신체를 통해 행동할 수 있는가?"><meta property="og:description" content="HumanCLAW: 시각-언어 모델은 신체를 통해 행동할 수 있는가?"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2607_27180v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="HumanCLAW: 시각-언어 모델은 신체를 통해 행동할 수 있는가?"><meta name="twitter:description" content="HumanCLAW: 시각-언어 모델은 신체를 통해 행동할 수 있는가?"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2607_27180v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "HumanCLAW: 시각-언어 모델은 신체를 통해 행동할 수 있는가?", "description": "HumanCLAW: 시각-언어 모델은 신체를 통해 행동할 수 있는가?", "datePublished": "2026-07-29", "url": "https://arxiv-ai-blog.vercel.app/papers/2607_27180v1", "author": [{"@type": "Person", "name": "Siyao Li"}, {"@type": "Person", "name": "Jiawei Gu"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2607_27180v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2607_27180v1"});gtag('event', 'paper_view', {"paper_id": "2607_27180v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>HumanCLAW: 시각-언어 모델은 신체를 통해 행동할 수 있는가?</h1><p>HumanCLAW: 시각-언어 모델은 신체를 통해 행동할 수 있는가?</p><pre>HumanCLAW: 시각-언어 모델은 신체를 통해 행동할 수 있는가?
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** HumanCLAW: Can Vision-Language Models Act Through a Body?
+&gt; - **저자:** Siyao Li, Jiawei Gu, Shuai Liu, Kairui Hu, Zekun Li, Linjie Li, Chengcheng Tang, Po-Chen Wu, Ivan Shugurov, Lingni Ma, Michael Zollhoefer, Sizhe An, Abhay Mittal, Amy Zhao, Ranjay Krishna, Manling Li, Ziwei Liu, Chuan Guo
+&gt; - **발행일:** 2026-07-29
+&gt; - **PDF 링크:** [HumanCLAW: Can Vision-Language Models Act Through a Body?](https://arxiv.org/pdf/2607.27180v1)
+
+
+✨ 3줄 핵심 요약
+* **평가 프레임워크 도입**: VLM의 &#x27;행동 지능&#x27;을 측정하기 위해 의사결정과 저수준 모터 제어를 분리한 &#x27;HumanCLAW&#x27;를 제안합니다.
+* **벤치마크 결과**: 최신 VLM 9종을 테스트한 결과, 최고 성능 모델의 성공률이 16.8%에 그치며 인간 수준의 신체적 행동 수행에 한계를 보였습니다.
+* **근본 원인**: VLM은 외부 상황 인식은 가능하나, 자신의 신체 위치나 상태를 파악하는 &#x27;신체 자각(embodied self-awareness)&#x27; 능력이 결여되어 있습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+최신 인공지능인 VLM(시각-언어 모델)은 사물을 인식하고 이해하는 데는 능숙하지만, 이를 바탕으로 실제 몸을 움직여 행동하는 것은 별개의 문제입니다. 지금까지는 로봇이 넘어지거나 모터 제어에 실패하면 모델의 판단력 문제인지, 기계적 오류인지 구분하기 어려웠습니다. 연구진은 모터 제어 오류를 배제하고 오직 모델의 &#x27;판단력&#x27;만을 측정할 수 있는 평가 환경을 만들었습니다. 실험 결과, 모델들은 주변 환경은 잘 보지만 정작 자신의 몸이 어디에 있고, 목표물과 얼마나 가까운지, 장애물에 부딪혔는지 등을 알지 못하는 &#x27;유령과 같은&#x27; 상태임이 드러났습니다.
+
+🎯 배경 및 문제점
+기존 VLM은 물리적 신체를 제어하는 데 있어 두 가지 큰 장벽에 직면해 있습니다.
+1. **제어와 판단의 혼재**: 로봇의 물리적 제어 실패(넘어짐, 균형 상실 등)로 인해 모델의 의사결정이 올바른지 판단하기 어렵습니다.
+2. **신체 표현의 복잡성**: 인간과 같은 복잡한 신체 움직임을 일일이 텍스트로 명령하기에는 차원이 너무 방대하여 기존 방식으로는 평가가 불가능했습니다.
+
+💡 핵심 기술 및 아키텍처
+* **HumanCLAW 프레임워크**: VLM이 원자 단위의 기술 명령(atomic skill command)을 내리면, 이를 하위 제어기에서 연속적인 신체 동작으로 변환합니다.
+* **하프-피직스(Half-Physics) 시뮬레이션**: 중력, 충돌 등 물리 법칙은 적용하되, 로봇의 균형 유지나 모터 제어 오류는 제거하여 모델의 의사결정만을 순수하게 평가합니다.
+* **스킬 어댑터(Skill Adapters)**: 걷기, 앉기 등 특정 동작을 수행하는 어댑터를 설계하여 모델이 일반적인 언어 명령으로 신체를 움직이게 합니다.
+
+📊 실험 결과 분석
+* **HumanCLAW-Bench**: 41개의 실내 환경에서 1,218개의 에피소드를 테스트했습니다.
+* **성공률**: 최신 VLM 9종을 시험한 결과, 전체 태스크 성공률은 최고 16.8%에 불과했습니다.
+* **결론**: 모델들은 목표물을 식별하는 능력은 충분하지만, 자신의 신체 상태를 인식하는 &#x27;신체 자각&#x27; 능력이 부족하여 이동 및 상호작용 단계에서 실패가 집중되었습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **차세대 AI 에이전트의 지표**: 단순히 보는 것을 넘어 실제 환경에서 행동해야 하는 로봇 및 자율 에이전트 개발에 중요한 평가 기준을 제시합니다.
+* **연구 방향성 제시**: 더 많은 데이터를 학습시키는 것보다, 공간 메모리, 신체 자각, 내부 신체 모델을 구축하는 방향이 Embodied AI(구현된 지능) 발전에 핵심임을 시사합니다.
+* **확장 가능성**: 새로운 동작 기술을 추가할 때 전체 시스템을 재학습할 필요 없이 어댑터만 추가하면 되는 확장성 있는 구조를 제안하여 실무 적용의 편의성을 높였습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [HumanCLAW: Can Vision-Language Models Act Through a Body?](https://arxiv.org/html/2607.27180)
+&gt; - [HumanCLAW: Can Vision-Language Models Act Through a Body?](https://human-claw.github.io/)
+&gt; - [GitHub - worldbench/awesome-embodied-data-pyramid: 🔥 Data Pyramid for Embodied Manipulation: A Survey](https://github.com/worldbench/awesome-embodied-data-pyramid)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;성공률 16.8%라니, 참담하군요. 다들 멀티모달 모델이 세상을 다 이해한 것처럼 떠들지만, 정작 자신의 신체조차 &#x27;외계인&#x27; 보듯 한다는 게 이번 연구로 증명되었습니다. &#x27;신체 자각&#x27; 없는 지능은 결국 그림 속의 떡일 뿐, 제어와 판단을 분리한 이 프레임워크는 학술적으로 아주 시의적절한 지적입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에선 이거 도입하면 바로 통곡입니다. 모델이 명령은 내리는데 정작 로봇이 자기 팔 위치도 모르고 헛손질하는 걸 보면 혈압 오르거든요. 하프-피직스 시뮬레이션으로 제어 변수를 걷어낸 건 좋지만, 결국 현장에선 저 &#x27;스킬 어댑터&#x27;를 얼마나 잘게 쪼개고 유지보수하느냐가 관건이겠네요. 16.8%면 프로덕션은커녕 프로토타입도 위험합니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;선배님, 그래도 16.8%가 어디예요! 이제 &#x27; Embodied AI&#x27; 트렌드는 데이터 양치기에서 내부 신체 모델링으로 확실히 넘어갔네요. 이거 보자마자 논문 제목에 &#x27;Self-Awareness&#x27; 키워드 넣어서 제안서 수정 들어갔습니다. 다들 VLM 튜닝에 목숨 걸 때, 우리는 신체 좌표계 임베딩하는 쪽으로 파보면 네이처나 CVPR 노려볼 만하지 않을까요?&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
