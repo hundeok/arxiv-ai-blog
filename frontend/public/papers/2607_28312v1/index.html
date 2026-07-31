@@ -1,0 +1,66 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>객체 흐름: 스트리밍 영상 이해를 위한 잠재 객체 메모리 앵커 | ArXiv Translator AI</title><meta name="description" content="객체 흐름: 스트리밍 영상 이해를 위한 잠재 객체 메모리 앵커"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2607_28312v1"><meta property="og:type" content="article"><meta property="og:title" content="객체 흐름: 스트리밍 영상 이해를 위한 잠재 객체 메모리 앵커"><meta property="og:description" content="객체 흐름: 스트리밍 영상 이해를 위한 잠재 객체 메모리 앵커"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2607_28312v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="객체 흐름: 스트리밍 영상 이해를 위한 잠재 객체 메모리 앵커"><meta name="twitter:description" content="객체 흐름: 스트리밍 영상 이해를 위한 잠재 객체 메모리 앵커"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2607_28312v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "객체 흐름: 스트리밍 영상 이해를 위한 잠재 객체 메모리 앵커", "description": "객체 흐름: 스트리밍 영상 이해를 위한 잠재 객체 메모리 앵커", "datePublished": "2026-07-30", "url": "https://arxiv-ai-blog.vercel.app/papers/2607_28312v1", "author": [{"@type": "Person", "name": "Mingkang Dong"}, {"@type": "Person", "name": "Muxin Pu"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2607_28312v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2607_28312v1"});gtag('event', 'paper_view', {"paper_id": "2607_28312v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>객체 흐름: 스트리밍 영상 이해를 위한 잠재 객체 메모리 앵커</h1><p>객체 흐름: 스트리밍 영상 이해를 위한 잠재 객체 메모리 앵커</p><pre>객체 흐름: 스트리밍 영상 이해를 위한 잠재 객체 메모리 앵커
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** ObjectStream: Latent Objects as Memory Anchors for Streaming Video Understanding
+&gt; - **저자:** Mingkang Dong, Muxin Pu, Jie Li, Bohan Guo, Songruo Chen, Bin Ren, Xu Zheng, Chen Zhao, Tianwen Qian, Mohamed Elhoseiny, Yuqian Fu
+&gt; - **발행일:** 2026-07-30
+&gt; - **PDF 링크:** [ObjectStream: Latent Objects as Memory Anchors for Streaming Video Understanding](https://arxiv.org/pdf/2607.28312v1)
+
+
+✨ 3줄 핵심 요약
+* **객체 중심 메모리**: 영상 스트리밍에서 외부 탐지기 없이 잠재적 객체를 &#x27;메모리 앵커&#x27;로 활용하여 시각 정보를 효율적으로 조직화합니다.
+* **학습 불필요**: 기존 Video-LLM 모델을 수정하지 않고도 객체의 이력, 변화, 최근 문맥을 유지하여 추론 능력을 극대화합니다.
+* **성능 및 효율성**: 실시간 스트리밍 환경에서 GPU 메모리와 응답 속도(TTFT)를 약 50% 절감하면서도 벤치마크 성능을 크게 향상했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+기존의 영상 스트리밍 AI는 방대한 데이터를 처리할 때 무엇이 중요한지 결정하기 어려워 기억 용량이 부족하거나 과거 정보를 놓치기 일쑤였습니다. **ObjectStream**은 영상 속의 중요한 &#x27;객체(사물)&#x27;를 중심으로 기억을 저장하는 방식을 도입했습니다. 마치 사람이 영상을 볼 때 사물의 움직임과 변화를 중심으로 기억하는 것과 비슷합니다. 별도의 복잡한 객체 인식 도구 없이도 AI가 자체적으로 객체를 파악하고 추적하여, 적은 메모리로도 긴 영상의 핵심 내용을 정확히 기억하고 추론할 수 있게 합니다.
+
+🎯 배경 및 문제점
+영상 스트리밍 이해 모델은 미래의 질문을 알 수 없는 상태에서 끊임없이 들어오는 시각 정보를 처리해야 합니다. 기존 방식들은 주로 중요도가 높은 토큰을 선별하거나 시간적 중복을 제거하는 데 그쳤고, 시간 흐름에 따라 지속적으로 변화하는 &#x27;객체&#x27;를 중심으로 기억을 체계화하지 못했습니다. 이로 인해 메모리와 응답 시간(Latency) 제약 속에서 긴 문맥을 유지하는 데 한계가 있었습니다.
+
+💡 핵심 기술 및 아키텍처
+* **잠재 객체 발견(Latent Object Discovery)**: 별도의 외부 탐지기 없이 Video-LLM 내부의 시각 토큰을 공간적으로 결합하여 객체 단위의 잠재 정보를 생성합니다.
+* **지속적 메모리 앵커(Persistent Anchors)**: 프레임 간 객체를 연결하여 시간적 일관성을 유지하고, 메모리 제한 내에서 최근성, 중요도, 일관성에 따라 객체를 선별적으로 유지(eviction)합니다.
+* **객체 중심 증거 보존(Evidence Retention)**: 단순히 전체 토큰 중 상위 점수만 뽑는 대신, 객체별로 중요 토큰을 할당하여 물체의 변화와 이력을 더 정밀하게 저장합니다.
+
+📊 실험 결과 분석
+* **실시간 성능**: Qwen2.5-VL-7B 모델에 적용 시 OVO-Bench에서 성능 점수가 10.0포인트 향상되었으며, GPU 메모리 사용량과 TTFT(첫 토큰 생성 시간)를 약 50% 감소시켰습니다.
+* **오프라인 효율성**: 오프라인 긴 영상 벤치마크에서 전체 토큰의 82.5%를 버리면서도 기존 전체 토큰을 사용하는 모델보다 더 뛰어난 성능을 보였습니다.
+* **비교 분석**: 타 방식(Patch Top-K, DINOv2 클러스터링, SAM+DINOv2)과 비교했을 때, 정확도와 효율성(메모리 및 속도) 사이에서 가장 균형 잡힌 성능을 기록했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **웨어러블 기기**: 사용자의 시선을 따라가는 실시간 영상 분석 서비스에서 메모리 제약을 극복하고 정확한 정보를 제공할 수 있습니다.
+* **자율 시스템 및 로봇**: 로봇이 주변 환경의 사물을 지속적으로 추적하고 상호작용의 맥락을 이해하는 데 활용될 수 있습니다.
+* **영상 모니터링**: 라이브 CCTV 등에서 중요한 객체의 상태 변화를 효율적으로 기록하고 검색하는 인공지능 시스템의 기초 기술로 적용 가능합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [What Should a Streaming Video Model Remember?](https://arxiv.org/html/2606.16353)
+&gt; - [A Simple Baseline for Streaming Video Understanding](https://arxiv.org/html/2604.02317)
+&gt; - [CurveStream: Boosting Streaming Video Understanding in MLLMs via Curvature-Aware Hierarchical Visual Memory Management](https://arxiv.org/html/2603.19571v1)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문은 흥미로우나, &#x27;잠재적 객체&#x27;를 탐지기 없이 추출한다는 논리가 과연 얼마나 견고한가? 토큰 간의 공간적 결합만으로 의미 있는 객체를 정의할 수 있다는 가정은 매우 위험해 보인다. 특히 가려짐(Occlusion)이 잦은 실시간 스트리밍 환경에서 과연 앵커가 객체의 정체성을 제대로 유지할지, 실험 데이터의 편향성은 없는지 면밀히 검증할 필요가 있겠군.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 일리가 있지만, 일단 실무자 입장에선 TTFT 50% 절감이라는 숫자가 너무 매력적이네요. 외부 Detector를 붙이지 않고 모델 내부 토큰만 활용한다는 건 배포 난이도를 획기적으로 낮춰준다는 뜻이거든요. 복잡한 파이프라인 없이 Qwen2.5-VL 같은 모델에 바로 붙여 쓸 수 있다는 게 이 논문의 진짜 가치 아닐까요? 당장 프로덕션에 적용해서 오버헤드 체크해보고 싶네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 다들 반응이 너무 정적이시네요! 지금 중요한 건 토큰을 82.5%나 버리는데도 성능이 오른다는 그 &#x27;압축 효율&#x27;이라구요. LLM도 KV 캐시 때문에 난리인데, 영상 모델에서 이렇게 효율적인 메모리 관리 기법이 나오면 나중에 멀티모달 에이전트 구현할 때 이게 표준이 될 것 같아요. 이번 학회 무조건 &#x27;Accept&#x27; 예상해봅니다. 다들 이거 레포지토리 스타 찍으셨죠?&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

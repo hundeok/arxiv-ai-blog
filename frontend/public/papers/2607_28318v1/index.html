@@ -1,0 +1,72 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PathView-Bench: 다중 모달 거대 언어 모델은 병리 영상에 대한 세밀한 다중 스케일 이해를 달성할 수 있는가? | ArXiv Translator AI</title><meta name="description" content="PathView-Bench: 다중 모달 거대 언어 모델은 병리 영상에 대한 세밀한 다중 스케일 이해를 달성할 수 있는가?"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2607_28318v1"><meta property="og:type" content="article"><meta property="og:title" content="PathView-Bench: 다중 모달 거대 언어 모델은 병리 영상에 대한 세밀한 다중 스케일 이해를 달성할 수 있는가?"><meta property="og:description" content="PathView-Bench: 다중 모달 거대 언어 모델은 병리 영상에 대한 세밀한 다중 스케일 이해를 달성할 수 있는가?"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2607_28318v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="PathView-Bench: 다중 모달 거대 언어 모델은 병리 영상에 대한 세밀한 다중 스케일 이해를 달성할 수 있는가?"><meta name="twitter:description" content="PathView-Bench: 다중 모달 거대 언어 모델은 병리 영상에 대한 세밀한 다중 스케일 이해를 달성할 수 있는가?"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2607_28318v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "PathView-Bench: 다중 모달 거대 언어 모델은 병리 영상에 대한 세밀한 다중 스케일 이해를 달성할 수 있는가?", "description": "PathView-Bench: 다중 모달 거대 언어 모델은 병리 영상에 대한 세밀한 다중 스케일 이해를 달성할 수 있는가?", "datePublished": "2026-07-30", "url": "https://arxiv-ai-blog.vercel.app/papers/2607_28318v1", "author": [{"@type": "Person", "name": "Zongyi Chen"}, {"@type": "Person", "name": "Yu Liang"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2607_28318v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2607_28318v1"});gtag('event', 'paper_view', {"paper_id": "2607_28318v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>PathView-Bench: 다중 모달 거대 언어 모델은 병리 영상에 대한 세밀한 다중 스케일 이해를 달성할 수 있는가?</h1><p>PathView-Bench: 다중 모달 거대 언어 모델은 병리 영상에 대한 세밀한 다중 스케일 이해를 달성할 수 있는가?</p><pre>PathView-Bench: 다중 모달 거대 언어 모델은 병리 영상에 대한 세밀한 다중 스케일 이해를 달성할 수 있는가?
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** PathView-Bench: Can Multimodal Large Language Models Achieve Fine-grained Multiscale Understanding of Pathology Images?
+&gt; - **저자:** Zongyi Chen, Yu Liang, Jie Lin, Liansheng Wang
+&gt; - **발행일:** 2026-07-30
+&gt; - **PDF 링크:** [PathView-Bench: Can Multimodal Large Language Models Achieve Fine-grained Multiscale Understanding of Pathology Images?](https://arxiv.org/pdf/2607.28318v1)
+
+
+✨ 3줄 핵심 요약
+* 기존 병리 AI 벤치마크는 최종 진단 결과 위주로 평가되어, 모델의 근본적인 시각적 이해 능력을 검증하는 데 한계가 있습니다.
+* PathView-Bench는 23개의 공공 데이터셋을 표준화하여, 국소 영역(Region-FOV)과 전체 슬라이드(Slide-FOV) 수준에서 정밀한 시각적 추론을 평가합니다.
+* 18개의 대표 모델을 실험한 결과, 높은 진단 성능을 보이더라도 세밀한 시각적 정량화나 공간적 추론 능력은 부족하다는 사실이 확인되었습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+병리 진단 AI를 평가할 때, 그동안은 모델이 내놓은 &quot;암이다/아니다&quot; 같은 최종 결론만 확인했습니다. 하지만 모델이 정말로 영상 속의 암세포를 정확히 찾아내고 세밀하게 분석했는지는 알기 어려웠습니다. 연구팀이 개발한 **PathView-Bench**는 모델이 암세포를 직접 가리키거나(Grounding), 세포 수를 세거나(Counting), 조직의 위치 관계를 파악하는지 등 ‘시각적 숙련도’를 구체적으로 시험합니다. 평가 결과, 똑똑해 보이는 모델들도 막상 기초적인 시각적 분석 작업에서는 여전히 많은 오류를 범하고 있음이 드러났습니다.
+
+🎯 배경 및 문제점
+* **텍스트 중심 평가의 한계:** 기존 벤치마크는 진단 정답 여부나 리포트 생성 능력에 치중해 있어, 모델이 실제 영상을 바탕으로 논리적 추론을 수행하는지 확인하기 어렵습니다.
+* **시각적 근거 부족:** 모델이 이미지 없이도 의학적 지식만으로 정답을 맞히는 경우가 발생하여, 실제 시각적 이해도를 평가하는 데 불확실성이 존재합니다.
+* **다중 스케일의 어려움:** 병리 영상은 국소적인 세포 구조와 전체적인 슬라이드 구조를 모두 이해해야 하지만, 기존 벤치마크는 이러한 다중 스케일(Multiscale) 이해도를 충분히 측정하지 못합니다.
+
+💡 핵심 기술 및 아키텍처
+* **시각적 기반의 벤치마크:** 61,673장의 영상과 308,070개의 샘플을 기반으로 14개의 VQA(시각적 질의응답) 스타일 과제를 구성했습니다.
+* **평가 체계:** &#x27;국소 영역(Region-FOV)&#x27;에서는 객체 분류, 정량화, 공간 관계를 평가하고, &#x27;전체 슬라이드(Slide-FOV)&#x27;에서는 거시적 분석을 수행합니다.
+* **정보 부족 판단(FOV-trap):** 정보가 충분하지 않은 경우 모델이 함부로 추측하지 않고 &quot;정보가 부족하다&quot;라고 답할 수 있는지 판단하는 논리적 거부 능력을 포함합니다.
+* **표준화된 프로토콜:** 23개 데이터셋의 7백만 개 이상의 주석을 수작업으로 검수하고 표준화하여 확정적인 정답을 도출할 수 있는 구조를 마련했습니다.
+
+📊 실험 결과 분석
+* **상위 모델의 한계:** 18개의 범용 및 의료 특화 모델을 실험한 결과, 고차원적인 진단 능력이 반드시 세밀한 시각적 이해로 이어지지는 않았습니다.
+* **정량적 수치:** 외부 벤치마크에서 높은 성적을 거둔 모델들조차 특정 작업에서는 낮은 성능을 보였습니다. 
+    * 레지온 그라운딩(Lesion Grounding): 0.274
+    * 면적 추정(Area Estimation): 0.360
+    * 밀도 위치 파악(Density Localization): 0.422
+* **결론:** 높은 수준의 진단 답변이 항상 정확한 시각적 근거를 바탕으로 한 것은 아니며, 모델은 여전히 공간적 추론과 정량화 작업에서 상당한 보완이 필요합니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **의료 AI 개발 방향 전환:** 단순한 결과 일치도를 넘어, 모델이 진단에 이르는 과정의 시각적 근거를 평가하는 새로운 표준을 제시했습니다.
+* **신뢰성 향상:** 향후 실제 병리 현장에서 모델이 시각적 정보를 왜곡 없이 처리하는지 검증하는 도구로 활용될 수 있습니다.
+* **임상적 한계 명시:** 본 벤치마크는 연구용 데이터셋 중심이므로 임상 배치 즉시 활용보다는, 모델의 근본적인 시각 이해도를 개선하기 위한 훈련 및 평가 도구로서 가치가 큽니다. 향후 임상 워크플로우를 반영한 데이터로 확장될 예정입니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [PathView-Bench: Can Multimodal Large Language Models Achieve...](https://arxiv.org/html/2607.28318)
+&gt; - [PathView-Bench: Can Multimodal Large Language Models Achieve...](https://arxiv.org/pdf/2607.28318)
+&gt; - [2607.28318 PathView-Bench: Can Multimodal Large Language...](https://arxiv.org/abs/2607.28318)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;결국 터질 게 터졌군요. 그동안 의료 LLM들이 텍스트 통계적 확률로 &#x27;그럴싸한 진단명&#x27;만 읊어대는 &#x27;환각의 향연&#x27;을 펼치고 있었다는 게 이 벤치마크로 증명되었습니다. 0.274라는 Lesion Grounding 점수는 학계로서 매우 부끄러운 수준입니다. 시각적 근거 없이 결과만 맞추는 건 진단이 아니라 그냥 찍기죠.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀 맞습니다. 현업에서는 &#x27;모델이 왜 이 진단을 내렸는지&#x27; 시각화해서 보여달라는 요구가 제일 큰데, SOTA 모델들도 정량화 작업에서 0.3점대라니... 이거 프로덕션에 올리면 바로 의료사고 각입니다. 특히 FOV-trap 설정은 진짜 잘했네요. 모델들이 모르는 걸 모른다고 말하게 만드는 게 얼마나 어려운지 다들 아시잖아요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 23개 데이터셋 7백만 개 주석 표준화라니 저자들 노고가 느껴지네요... 근데 다들 결과만 보고 계시지만, 저는 이 &#x27;정보 부족 판단&#x27; 메커니즘이 오히려 다음 모델 학습의 핵심이 될 것 같아요. 이번 벤치마크 덕분에 SOTA 모델들 다 털리면서, 다들 이제 VLM 구조 뜯어고치느라 밤 좀 새겠는데요? 논문 리스트에 바로 추가합니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
