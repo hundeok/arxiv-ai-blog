@@ -1,0 +1,67 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>OPLD: 다중 모달 추론을 위한 온-정책 잠재 증류 | ArXiv Translator AI</title><meta name="description" content="OPLD: 다중 모달 추론을 위한 온-정책 잠재 증류"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2607_28154v1"><meta property="og:type" content="article"><meta property="og:title" content="OPLD: 다중 모달 추론을 위한 온-정책 잠재 증류"><meta property="og:description" content="OPLD: 다중 모달 추론을 위한 온-정책 잠재 증류"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2607_28154v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="OPLD: 다중 모달 추론을 위한 온-정책 잠재 증류"><meta name="twitter:description" content="OPLD: 다중 모달 추론을 위한 온-정책 잠재 증류"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2607_28154v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "OPLD: 다중 모달 추론을 위한 온-정책 잠재 증류", "description": "OPLD: 다중 모달 추론을 위한 온-정책 잠재 증류", "datePublished": "2026-07-30", "url": "https://arxiv-ai-blog.vercel.app/papers/2607_28154v1", "author": [{"@type": "Person", "name": "Shoutai Zhu"}, {"@type": "Person", "name": "Tianyang Xu"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2607_28154v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2607_28154v1"});gtag('event', 'paper_view', {"paper_id": "2607_28154v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>OPLD: 다중 모달 추론을 위한 온-정책 잠재 증류</h1><p>OPLD: 다중 모달 추론을 위한 온-정책 잠재 증류</p><pre>OPLD: 다중 모달 추론을 위한 온-정책 잠재 증류
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** OPLD: On-Policy Latent Distillation for Multimodal Reasoning
+&gt; - **저자:** Shoutai Zhu, Tianyang Xu, Bin Sun, Mingyuan Xu, Yu Liu, Qinzhen Guo
+&gt; - **발행일:** 2026-07-30
+&gt; - **PDF 링크:** [OPLD: On-Policy Latent Distillation for Multimodal Reasoning](https://arxiv.org/pdf/2607.28154v1)
+
+
+✨ 3줄 핵심 요약
+* OPLD는 다중 모달 모델의 추론 능력을 &#x27;잠재 공간(latent space)&#x27;으로 내면화하는 새로운 학습 프레임워크입니다.
+* 교사 모델은 외부 보조 정보(이미지, 텍스트)를 활용하고, 학생 모델은 이를 학습하여 추론 과정 중 보조 정보 없이도 고차원적 추론을 수행합니다.
+* 기존의 단순한 특징 정렬 방식과 달리, 추론 과정 전반을 모방하도록 설계되어 다중 모달 벤치마크에서 우수한 성능을 보입니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+기존의 다중 모달 모델은 문제를 풀 때 보조 이미지나 상세한 설명이 없으면 추론 능력이 떨어지는 한계가 있었습니다. OPLD는 마치 &#x27;모범 답안을 보고 공부하는 학생&#x27;처럼 작동합니다. 교사 모델은 모든 힌트를 보고 추론하는 법을 알고, 학생 모델은 그 과정을 따라 하며 자신만의 &#x27;생각하는 방식(잠재 표현)&#x27;을 배웁니다. 학습이 끝나면 학생 모델은 힌트 없이도 교사처럼 복잡한 시각적 논리 문제를 해결할 수 있게 됩니다.
+
+🎯 배경 및 문제점
+* **기존 추론의 한계:** 기존의 &#x27;생각의 사슬(CoT)&#x27; 방식은 외부의 보조 이미지나 도구에 과도하게 의존하여, 모델 스스로 추론하는 능력이 부족합니다.
+* **잠재 공간 학습의 한계:** 추론 과정을 잠재 공간(latent space)으로 옮긴 기존 연구들은 추론 상태가 아닌 단순한 시각적 특징의 모방에 그쳐, 추론의 본질적인 과정을 내면화하지 못했습니다.
+
+💡 핵심 기술 및 아키텍처
+* **교사-학생 구조:** 교사는 시각적 힌트와 텍스트 추론 데이터를 보고, 학생은 원본 정보만 입력받습니다.
+* **잠재 증류(Latent Distillation):** 학생 모델이 추론하는 동안 교사의 추론 궤적과 토큰 분포를 정렬하여, 학생이 시각적 데이터가 아닌 &#x27;추론 패턴&#x27; 자체를 배우도록 강제합니다.
+* **추론 내면화:** 이 과정을 통해 학생 모델은 별도의 외부 이미지나 도구 없이도 추론 단계마다 적절한 내부 상태를 생성하여 문제를 해결합니다.
+
+📊 실험 결과 분석
+* OPLD는 다양한 다중 모달 벤치마크에서 기존의 잠재 추론 방식들을 능가하는 성능을 보였습니다.
+* 연구진은 OPLD가 다중 모달 작업(테트리스, 상세 시각 추론, 직소 퍼즐 등)에서 교사 모델의 추론 논리를 효과적으로 학습하여 정답을 맞히는 것을 확인했습니다.
+* 구체적인 수치는 본 발췌문에서 제공하지 않았으나, 기존 방식 대비 더 효과적인 패러다임임을 강조하고 있습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **추론 효율성:** 복잡한 외부 도구나 보조 이미지 생성이 필요 없어, 실제 서비스 환경에서 모델의 추론 속도와 효율성을 크게 높일 수 있습니다.
+* **범용적 시각 추론:** 복잡한 기하학적 변환이나 다단계 논리가 필요한 시각적 문제 해결 능력이 향상되어, 로봇 제어나 정교한 이미지 분석 도구 개발에 활용될 수 있습니다.
+* **지식 전이:** 뛰어난 성능을 가진 거대 모델의 추론 논리를 더 작고 가벼운 모델로 효율적으로 이전하는 기술적 기반이 됩니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [OPLD: On-Policy Latent Distillation for Multimodal Reasoning](https://arxiv.org/abs/2607.28154)
+&gt; - [OPLD: On-Policy Latent Distillation for Multimodal Reasoning](https://arxiv.org/html/2607.28154v1)
+&gt; - [OPLD: On-Policy Latent Distillation for Multimodal Reasoning | Cool ...](https://papers.cool/arxiv/2607.28154)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문의 아이디어 자체는 흥미롭지만, &#x27;잠재 공간의 추론 패턴&#x27;을 정렬한다는 것이 수학적으로 얼마나 견고한지에 대한 의문이 듭니다. 특히 온-정책(On-policy) 학습 과정에서 교사의 분포와 학생의 분포가 발산하지 않도록 제어하는 구체적인 정규화 기법이 부족해 보이는데, 단순히 토큰 분포 정렬만으로 충분히 내면화가 이루어졌다고 주장할 수 있을지 의문입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 이론적 엄밀함은 따져봐야겠지만, 현업 입장에서는 &#x27;보조 이미지 없이 추론&#x27;할 수 있다는 것 하나만으로도 엄청난 효용입니다. 매번 힌트를 생성하고 외부 도구를 호출하는 오버헤드가 추론 레이턴시를 얼마나 깎아먹는지 아시잖아요. 만약 이게 경량 모델에서도 비슷한 성능이 나온다면, 실무에 즉시 도입할 가치가 충분합니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 다들 너무 진지하신 거 아닌가요? 지금 학계는 OPLD로 난리예요! 기존 CoT 방식들이 외부 의존성 때문에 &#x27;껍데기 추론&#x27;만 했다면, 이건 진짜 &#x27;뇌를 이식&#x27;하는 느낌이잖아요. 내일 바로 오픈소스 레포 파서 벤치마크 돌려볼 생각인데, 이거 검증만 제대로 되면 다음 SOTA는 OPLD 기반 모델들이 다 휩쓸 것 같습니다. 교수님, 저 이거 랩 미팅 때 세미나 해도 될까요?&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
