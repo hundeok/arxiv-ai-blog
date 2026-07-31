@@ -1,0 +1,66 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>BM25의 확장성 승리: 검색 증강 생성 패러다임의 스케일링 연구 | ArXiv Translator AI</title><meta name="description" content="BM25의 확장성 승리: 검색 증강 생성 패러다임의 스케일링 연구"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2607_26497v2"><meta property="og:type" content="article"><meta property="og:title" content="BM25의 확장성 승리: 검색 증강 생성 패러다임의 스케일링 연구"><meta property="og:description" content="BM25의 확장성 승리: 검색 증강 생성 패러다임의 스케일링 연구"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2607_26497v2"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="BM25의 확장성 승리: 검색 증강 생성 패러다임의 스케일링 연구"><meta name="twitter:description" content="BM25의 확장성 승리: 검색 증강 생성 패러다임의 스케일링 연구"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2607_26497v2");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "BM25의 확장성 승리: 검색 증강 생성 패러다임의 스케일링 연구", "description": "BM25의 확장성 승리: 검색 증강 생성 패러다임의 스케일링 연구", "datePublished": "2026-07-29", "url": "https://arxiv-ai-blog.vercel.app/papers/2607_26497v2", "author": [{"@type": "Person", "name": "Pengyu Wang"}, {"@type": "Person", "name": "Benfeng Xu"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2607_26497v2", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2607_26497v2"});gtag('event', 'paper_view', {"paper_id": "2607_26497v2", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>BM25의 확장성 승리: 검색 증강 생성 패러다임의 스케일링 연구</h1><p>BM25의 확장성 승리: 검색 증강 생성 패러다임의 스케일링 연구</p><pre>BM25의 확장성 승리: 검색 증강 생성 패러다임의 스케일링 연구
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** BM25 Wins at Scale: A Scaling Study of Retrieval-Augmented Generation Paradigms
+&gt; - **저자:** Pengyu Wang, Benfeng Xu, Shaohan Wang, Xin Zeng, Huarui Wu, Lei Zhang, Licheng Zhang
+&gt; - **발행일:** 2026-07-29
+&gt; - **PDF 링크:** [BM25 Wins at Scale: A Scaling Study of Retrieval-Augmented Generation Paradigms](https://arxiv.org/pdf/2607.26497v2)
+
+
+✨ 3줄 핵심 요약
+* 검색 증강 생성(RAG) 기법들의 성능은 말뭉치 크기에 따라 달라지는 &#x27;교차점(crossover)&#x27;이 존재하며, 일정 규모 이상에서는 BM25가 가장 우수한 성능을 보입니다.
+* 파일 시스템 기반 에이전트는 소규모 말뭉치에서 강력하지만 규모가 커질수록 효율성이 급격히 저하되는 반면, BM25는 별도의 LLM 구축 비용 없이 대규모 환경에서 최적의 성능을 유지합니다.
+* 그래프 기반 RAG는 높은 구축 비용과 확장성 한계로 인해 대규모 환경 적용이 어려우며, 에이전트식 추론은 전체 검색 후 보조적인 수단으로 활용될 때 가장 효과적입니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+RAG(검색 증강 생성) 시스템을 구축할 때 어떤 기술을 선택해야 할지는 데이터의 양에 따라 다릅니다. 이 연구는 말뭉치 크기를 450배까지 확장하며 실험한 결과, 약 1,000만 개의 말뭉치 토큰을 기준으로 성능의 역전이 일어남을 발견했습니다. 소규모 데이터에서는 AI 에이전트가 직접 문서를 찾는 방식이 유리하지만, 데이터가 커질수록 전체 문서를 체계적으로 탐색하는 &#x27;BM25(단어 기반 검색)&#x27; 방식이 훨씬 빠르고 정확해집니다. 따라서 엔터프라이즈 수준의 방대한 데이터를 다룰 때는 BM25를 기본으로 채택하고, 필요한 경우에만 에이전트 방식을 결합하는 전략이 권장됩니다.
+
+🎯 배경 및 문제점
+기존의 RAG 연구들은 서로 다른 벤치마크와 단일 크기의 말뭉치에서 평가되어, 데이터 규모가 커짐에 따라 정확도와 비용이 어떻게 변하는지(scaling)에 대한 명확한 기준이 없었습니다. 특히 기업용 지식 베이스처럼 문서가 지속적으로 늘어나는 환경에서 각 RAG 방식(Lexical, Dense, Graph, Agentic)의 확장성을 검증할 필요성이 제기되었습니다.
+
+💡 핵심 기술 및 아키텍처
+* **BM25 (Lexical Retrieval):** 인덱싱 비용이 낮고 글로벌 랭킹을 통해 대규모 말뭉치에서 높은 효율성을 보입니다.
+* **파일 시스템 에이전트:** LLM의 반복적 도구 호출을 통해 데이터를 검색하지만, 말뭉치가 커질수록 순차적 탐색 비용이 39배 증가하는 단점이 있습니다.
+* **그래프 기반 RAG:** LLM을 이용해 엔티티와 관계를 추출하지만, 데이터 규모가 커짐에 따라 구축 과정의 복잡도와 비용이 한계에 도달합니다.
+* **통합 평가 환경:** Qwen3.6-27B 모델을 독자 모델로 사용하여 동일한 조건에서 정확도, 토큰 소모량, 지연 시간을 측정했습니다.
+
+📊 실험 결과 분석
+* **성능 역전:** 약 1,000만 개의 말뭉치 토큰 규모에서 BM25가 파일 시스템 에이전트를 추월했습니다.
+* **확장성:** 말뭉치가 최대 규모(601M 토큰)에 도달했을 때 BM25의 성능은 다른 방식들과 약 20포인트 이상의 격차를 보이며 우위를 점했습니다.
+* **비용 효율성:** BM25는 LLM 기반 구축 과정 없이도 Pareto 최적점(가장 낮은 비용으로 최고의 성능)을 달성했습니다.
+* **에이전트 결합:** 단순 검색 대신 BM25로 사전 후보군을 정렬한 뒤 에이전트를 사용하면, 전체 토큰 소모량은 1/9 수준으로 줄고 문서 재현율(recall)은 대폭 향상되는 것으로 나타났습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+기업용 데이터베이스와 같은 대규모 시스템에서는 복잡한 그래프 기반 RAG보다 BM25를 기본 검색 엔진으로 설정하는 것이 훨씬 효과적입니다. 실무자는 전체 검색이 필요한 경우 BM25로 후보 문서를 먼저 좁힌 뒤, 그 위에서 에이전트식 추론을 수행하는 하이브리드 아키텍처를 도입함으로써 비용 절감과 성능 향상을 동시에 도모할 수 있습니다. 그래프 기반 기법은 관계형 질문이 주를 이루는 특정 환경에서만 제한적으로 검토하는 것이 좋습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2607.26497 BM25 Wins at Scale: A Scaling Study of Retrieval ...](https://arxiv.org/abs/2607.26497)
+&gt; - [BM25 Wins at Scale: A Scaling Study of Retrieval-Augmented ...](https://arxiv.org/html/2607.26497v2)
+&gt; - [BM25 Wins at Scale: A Scaling Study of Retrieval-Augmented ...](https://huggingface.co/papers/2607.26497)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;결국 &#x27;Simple is Best&#x27;라는 공학의 고전적 교훈으로 회귀하는군요. 그간 복잡한 그래프와 에이전트 아키텍처에 매몰되어 정작 스케일링 법칙을 간과했던 연구 행태에 경종을 울리는 논문입니다. 특히 1,000만 토큰이라는 변곡점은 실제 기업용 RAG 시스템 설계 시 반드시 참고해야 할 유의미한 지표라고 봅니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로입니다. 현업에서는 그래프 RAG 구축하다가 인덱싱 비용 폭사해서 프로젝트 엎는 경우를 너무 많이 봤거든요. BM25를 베이스라인으로 깔고 하이브리드로 접근하는 게 비용 효율 면에서 압도적입니다. 에이전트 굴리는 건 비용과 레이턴시 때문에라도 극히 제한적으로 써야지, 모든 걸 에이전트에게 맡기는 건 현실성이 없죠.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;아니, 다들 너무 올드한 거 아니에요? 힙한 그래프 RAG나 에이전틱 RAG가 죽었다는 건 아니죠! 결국 BM25로 후보군을 &#x27;필터링&#x27;하고 상위단에서 에이전트가 &#x27;추론&#x27;하는 하이브리드 방식이 정답이라는 거잖아요. 이건 RAG의 종말이 아니라, 오히려 시스템 최적화가 다음 단계로 진화했다는 증거라고요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
