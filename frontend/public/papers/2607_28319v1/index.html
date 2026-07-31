@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>공정성 가지치기: 차분 활성화를 통한 GLU-MLP 계층 내 인구통계학적 편향 위치 탐색 | ArXiv Translator AI</title><meta name="description" content="공정성 가지치기: 차분 활성화를 통한 GLU-MLP 계층 내 인구통계학적 편향 위치 탐색"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2607_28319v1"><meta property="og:type" content="article"><meta property="og:title" content="공정성 가지치기: 차분 활성화를 통한 GLU-MLP 계층 내 인구통계학적 편향 위치 탐색"><meta property="og:description" content="공정성 가지치기: 차분 활성화를 통한 GLU-MLP 계층 내 인구통계학적 편향 위치 탐색"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2607_28319v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="공정성 가지치기: 차분 활성화를 통한 GLU-MLP 계층 내 인구통계학적 편향 위치 탐색"><meta name="twitter:description" content="공정성 가지치기: 차분 활성화를 통한 GLU-MLP 계층 내 인구통계학적 편향 위치 탐색"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2607_28319v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "공정성 가지치기: 차분 활성화를 통한 GLU-MLP 계층 내 인구통계학적 편향 위치 탐색", "description": "공정성 가지치기: 차분 활성화를 통한 GLU-MLP 계층 내 인구통계학적 편향 위치 탐색", "datePublished": "2026-07-30", "url": "https://arxiv-ai-blog.vercel.app/papers/2607_28319v1", "author": [{"@type": "Person", "name": "Pere Martra"}, {"@type": "Person", "name": "Eugenio Martínez Cámara"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2607_28319v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2607_28319v1"});gtag('event', 'paper_view', {"paper_id": "2607_28319v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>공정성 가지치기: 차분 활성화를 통한 GLU-MLP 계층 내 인구통계학적 편향 위치 탐색</h1><p>공정성 가지치기: 차분 활성화를 통한 GLU-MLP 계층 내 인구통계학적 편향 위치 탐색</p><pre>공정성 가지치기: 차분 활성화를 통한 GLU-MLP 계층 내 인구통계학적 편향 위치 탐색
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Fairness Pruning: Locating Demographic Bias in GLU-MLP Layers via Differential Activations
+&gt; - **저자:** Pere Martra, Eugenio Martínez Cámara, Alfonso Ureña López
+&gt; - **발행일:** 2026-07-30
+&gt; - **PDF 링크:** [Fairness Pruning: Locating Demographic Bias in GLU-MLP Layers via Differential Activations](https://arxiv.org/pdf/2607.28319v1)
+
+
+✨ 3줄 핵심 요약
+* **편향의 국소화:** 거대언어모델(LLM)의 인구통계학적 편향은 모델 전체에 퍼져있지 않고, 특정 뉴런에 집중되어 있으며 특히 최종 계층(final layer)에서 강하게 나타납니다.
+* **외과적 개입:** 편향을 유발하는 특정 뉴런만을 골라 제거(zeroing)하는 방식은 모델의 추론 및 일반 지식 능력을 99.49% 유지하면서도 편향을 제어할 수 있음을 보여줍니다.
+* **분리 가능한 회로:** 인구통계학적 편향 처리를 담당하는 신경망 회로와 모델의 일반적인 성능을 담당하는 회로는 서로 분리되어 존재한다는 사실이 입증되었습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+거대언어모델은 학습 데이터에 포함된 사회적 편향을 그대로 흡수합니다. 본 연구는 이러한 편향을 수정하기 위해 거대하고 복잡한 재학습 대신, &#x27;공정성 가지치기(Fairness Pruning)&#x27;라는 방법을 제안합니다. 연구진은 모델이 인구통계학적 속성(인종, 나이, 종교 등)을 처리할 때 다르게 반응하는 특정 뉴런들을 찾아내어, 이 뉴런들의 값을 0으로 만드는 실험을 했습니다. 결과적으로 모델의 지능은 거의 훼손하지 않으면서도 편향된 출력을 조절할 수 있는 가능성을 확인했습니다. 이는 모델을 뜯어고치지 않고도 특정 회로만 정밀하게 조정할 수 있는 &#x27;외과적 수술&#x27;의 시작점과 같습니다.
+
+🎯 배경 및 문제점
+* **구조적 문제:** 모델 내 편향은 단순한 오류가 아니라 훈련 과정에서 가중치에 고착화된 표현(learned representations)이기 때문에 제거가 어렵습니다.
+* **기존 방법의 한계:** 데이터 필터링, 미세 조정, 후처리 등의 방식은 편향을 유발하는 가중치와 유용한 일반 능력을 담당하는 가중치를 구분하지 못해, 편향을 줄이려다 모델의 성능까지 저하시키는 위험이 있습니다.
+* **자원 소모:** 희소 오토인코더(SAE)를 이용한 해석은 연산 자원이 많이 필요하여 연구 환경 외에서는 적용하기 어렵습니다.
+
+💡 핵심 기술 및 아키텍처
+* **차분 활성화(Differential Activations):** 대조적인 프롬프트 쌍을 사용해 특정 인구통계학적 속성이 입력될 때만 다르게 반응하는 뉴런을 찾아냅니다.
+* **GLU-MLP 계층 타겟팅:** GLU 구조 내의 `down_proj` 입력 지점을 평가하여 bias 신호를 측정합니다.
+* **공정성 가지치기(Fairness Pruning):** 편향된 것으로 판명된 소수의 뉴런을 &#x27;0&#x27;으로 만들어(zeroing) 모델의 행동을 변화시킵니다. 실험에서는 최대 40개의 뉴런만을 제거했습니다.
+
+📊 실험 결과 분석
+* **위치 집중도:** 대부분의 편향 신호는 모델의 마지막 계층에 집중되어 있습니다.
+* **효율성:** Llama-3.2-1B 모델에서 전체 MLP 너비의 0.031% 미만에 해당하는 최대 40개의 뉴런만 제거해도 추론 및 일반 지식 능력을 평균 99.49% 유지했습니다.
+* **양방향 효과:** 제거된 뉴런들은 고정된 방향의 편향만 가진 것이 아니라, 스테레오타입을 강화하거나 완화하는 뉴런이 섞여 있어, 결과적으로는 비단조적인 편향 변화가 나타났습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **정밀 제어 가능성:** 모델 전체를 재학습할 필요 없이 편향된 행동만을 선택적으로 조절할 수 있는 기반 기술이 마련되었습니다.
+* **효율적인 편향 수정:** 연산 자원이 제한적인 환경에서도 해석 가능성 기법을 통해 모델의 안전성을 높일 수 있는 경로를 제시했습니다.
+* **향후 과제:** 이번 연구는 편향의 크기뿐만 아니라 &#x27;방향성&#x27;을 결정하는 뉴런을 정밀하게 제어하는 &#x27;활성화 조향(activation steering)&#x27; 기술로 발전하여, 고용, 의료, 금융 등 편향에 민감한 분야에서 더욱 안전한 LLM 구축에 기여할 것으로 기대됩니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Fairness Pruning: Locating Demographic Bias in GLU-MLP Layers...](https://arxiv.org/pdf/2607.28319)
+&gt; - [2607.28319 Fairness Pruning: Locating Demographic Bias in...](https://arxiv.org/abs/2607.28319)
+&gt; - [Pere Martra - Manning Publications Co. | LinkedIn](https://es.linkedin.com/in/pere-martra)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문의 논리적 흐름은 흥미로우나, 과연 &#x27;제로잉(zeroing)&#x27;이 모델의 일반화 성능을 진정으로 보존하는지에 대해서는 회의적입니다. 0.031%의 뉴런만 건드려도 99.49%의 성능이 유지된다는 결과가 과연 분포 외 데이터(OOD)에서도 동일하게 나타날까요? 특정 뉴런을 죽이는 것이 일시적인 &#x27;편향 완화&#x27;처럼 보일 뿐, 잠재적인 모델 붕괴(model collapse)의 트리거가 될 수 있음을 간과한 것은 아닌지 우려스럽군요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 일리가 있지만, 실무자 입장에선 이게 &#x27;구세주&#x27;입니다. 매번 RLHF 돌리고 미세 조정하느라 수억 원씩 태우는 것보다, 프로덕션 레벨에서 특정 편향만 핀셋으로 뽑아낼 수 있다면 가성비가 엄청나거든요. 다만, 특정 계층에만 편향이 집중된다는 전제가 모델 아키텍처가 바뀔 때마다 깨질 텐데, 매번 저걸 찾아서 튜닝할 생각을 하니 벌써 퇴근이 늦어지는 기분이네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;다들 너무 보수적이신 거 아니에요? 이번 논문은 &#x27;해석 가능성(Interpretability)&#x27;의 승리입니다! SAE 없이 차분 활성화로 회로를 분리해냈다는 것 자체가 학계의 큰 진전인데 말이죠. 선배님, 퇴근 걱정 마세요. 저거 자동화해서 모델마다 편향 뉴런 찾아주는 스크립트 하나 짜두면 제 학위 논문 주제로 딱일 것 같은데요? 바로 구현 들어갑니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
