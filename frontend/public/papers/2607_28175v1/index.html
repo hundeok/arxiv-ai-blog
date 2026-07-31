@@ -1,0 +1,69 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AgenticASR: 에이전트 접근 방식을 통한 실제 환경에서의 음성 인식 정교화 | ArXiv Translator AI</title><meta name="description" content="AgenticASR: 에이전트 접근 방식을 통한 실제 환경에서의 음성 인식 정교화"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2607_28175v1"><meta property="og:type" content="article"><meta property="og:title" content="AgenticASR: 에이전트 접근 방식을 통한 실제 환경에서의 음성 인식 정교화"><meta property="og:description" content="AgenticASR: 에이전트 접근 방식을 통한 실제 환경에서의 음성 인식 정교화"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2607_28175v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="AgenticASR: 에이전트 접근 방식을 통한 실제 환경에서의 음성 인식 정교화"><meta name="twitter:description" content="AgenticASR: 에이전트 접근 방식을 통한 실제 환경에서의 음성 인식 정교화"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2607_28175v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "AgenticASR: 에이전트 접근 방식을 통한 실제 환경에서의 음성 인식 정교화", "description": "AgenticASR: 에이전트 접근 방식을 통한 실제 환경에서의 음성 인식 정교화", "datePublished": "2026-07-30", "url": "https://arxiv-ai-blog.vercel.app/papers/2607_28175v1", "author": [{"@type": "Person", "name": "Zixuan Jiang"}, {"@type": "Person", "name": "Binghao Qiang"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2607_28175v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2607_28175v1"});gtag('event', 'paper_view', {"paper_id": "2607_28175v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>AgenticASR: 에이전트 접근 방식을 통한 실제 환경에서의 음성 인식 정교화</h1><p>AgenticASR: 에이전트 접근 방식을 통한 실제 환경에서의 음성 인식 정교화</p><pre>AgenticASR: 에이전트 접근 방식을 통한 실제 환경에서의 음성 인식 정교화
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** AgenticASR: Refining Speech Recognition in Real-World Scenarios via an Agentic Approach
+&gt; - **저자:** Zixuan Jiang, Binghao Qiang, Jiaying Chi, Yanqiao Zhu, Kai Yu, Xie Chen
+&gt; - **발행일:** 2026-07-30
+&gt; - **PDF 링크:** [AgenticASR: Refining Speech Recognition in Real-World Scenarios via an Agentic Approach](https://arxiv.org/pdf/2607.28175v1)
+
+
+✨ 3줄 핵심 요약
+* **실시간 음성 정제:** 실시간으로 들어오는 음성에서 불필요한 단어, 반복, 자기 수정 등을 제거하고 최종 의도를 담은 깔끔한 텍스트로 즉각 변환합니다.
+* **ASR-Refiner 아키텍처:** 음성 데이터가 유입됨에 따라 기존 출력을 지속적으로 수정하는 새로운 구조를 도입하여, 맥락 변화에 유연하게 대응합니다.
+* **성능 검증:** 이중 언어 벤치마크(AASR-Bench)를 통해 기존 방식 대비 높은 성능을 입증했으며, 인간 전문가 평가와도 높은 일치도를 보였습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+사람이 말을 할 때는 &#x27;어...&#x27;, &#x27;그게 그러니까...&#x27; 같은 군더더기나 방금 한 말을 스스로 고치는 경우가 많습니다. 기존 음성 인식(ASR)은 이를 그대로 받아적어 가독성이 떨어지고, 기계가 의도를 파악하는 데 방해가 됩니다. 본 논문에서 제안하는 &#x27;AgenticASR&#x27;은 음성 인식기 뒤에 &#x27;Refiner&#x27;를 붙여, 말이 진행되는 동안 실시간으로 불필요한 내용을 걸러내고 문장을 다듬습니다. 특히, 뒤늦게 앞선 발언을 수정하는 상황에서도 이미 출력된 텍스트를 즉시 수정함으로써, 대화가 끝날 때까지 기다리지 않고도 깨끗하고 완성된 텍스트를 제공합니다.
+
+🎯 배경 및 문제점
+기존의 음성 인식 시스템은 대화의 &#x27;어휘적 충실도&#x27;를 높이는 데 집중한 나머지, 실제 사람이 읽기 어려운 원문 그대로(verbatim) 출력하는 문제가 있습니다.
+* **읽기 어려움:** 군더더기, 반복, 자기 수정 등이 포함되어 최종 의도가 가려집니다.
+* **하위 작업 오류:** 깨끗하지 못한 텍스트가 대화형 AI의 의도 파악이나 의사결정 프로세스로 전달되어 오류를 유발합니다.
+* **실시간성의 한계:** 기존 방식들은 대화가 완전히 끝난 뒤에야 텍스트를 정제하거나, 실시간으로 배출하더라도 나중에 밝혀진 맥락에 맞춰 이전 내용을 수정하지 못하는 제약이 있었습니다.
+
+💡 핵심 기술 및 아키텍처
+* **ASR-Refiner 아키텍처:** 음성 인식기(Front-end)에서 유입되는 음성 스트림을 기반으로, Refiner가 활성 컨텍스트(active context)를 반복적으로 처리하고 출력 범위를 지속적으로 업데이트합니다.
+* **지속적 정제(Continual Emission and Revision):** 음성이 계속 들어옴에 따라 이전 텍스트를 무효화하거나 보완하며 최신 맥락을 반영합니다.
+* **AASR-Bench:** 필터링, 문장 재구성, 의도 보존 등 세분화된 지표를 통해 음성 정제 성능을 다각도로 평가하는 새로운 이중 언어 벤치마크를 도입했습니다.
+
+📊 실험 결과 분석
+* **성능 우위:** 다양한 ASR 백본(Qwen3-ASR, Whisper 등)과 결합했을 때, AgenticASR은 기존 API 방식이나 FormalASR 방식보다 우수한 성적을 거두었습니다.
+* **데이터 수치:** Qwen3-ASR-1.7B와 MiniCPM-5-1B Refiner 조합에서 79.95점(Overall)을 기록했습니다. 또한, API 기반 변환 방식 대비 1.73점~10.02점 높은 성능을 보였으며, 27.4점 이상의 개선 폭을 보인 사례도 확인되었습니다. (단, 실험에 사용된 상세한 수치들은 AASR-Bench 기준이며, 비교 모델 및 상황별로 차이가 존재함)
+* **인간 평가와의 일치:** 전문가들의 직접 평가와 Rubric 기반 자동 평가(Gemma-4-31B-IT)를 비교한 결과, 높은 상관관계(Spearman $\rho$ 약 0.8 수준)를 보여 평가의 신뢰성을 입증했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **대화형 인터페이스 향상:** 음성 명령이나 상담 서비스 등에서 사용자의 말을 훨씬 매끄럽고 명확하게 이해하게 하여 사용자 경험을 개선합니다.
+* **기술적 응용:** 기술 지원 환경에서 모호한 용어 정제나 전문 지식(코드, 기술 용어)이 포함된 대화를 처리하는 데 효과적입니다.
+* **실제 사례:** &#x27;코드 작성 중 발생하는 기술적 오류 설명&#x27;, &#x27;복잡한 비즈니스 관련 피드백 요약&#x27;, &#x27;음성 검색 중 의도 변경사항 반영&#x27; 등에서 뛰어난 정제 능력을 보였습니다. 모든 코드와 벤치마크 자료는 공개되어 실무 활용이 가능합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Towards Human-Like Interactive Speech Recognition with Agentic Correction and Semantic Evaluation](https://arxiv.org/html/2605.29430)
+&gt; - [Mega-ASR: Towards In-the-wild2 Speech Recognition via Scaling Up Real-world Acoustic Simulation](https://arxiv.org/html/2605.19833v1)
+&gt; - [VoiceAgentBench: Are Voice Assistants ready for agentic tasks?](https://arxiv.org/html/2510.07978v1)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문의 아이디어 자체는 흥미롭지만, &#x27;Continual Emission and Revision&#x27; 과정에서 발생하는 Latency와 오버헤드에 대한 언급이 너무 희박하군요. 실시간 스트리밍 환경에서 이전 텍스트를 지속적으로 수정(Revision)하는 비용이 모델 추론 효율성을 얼마나 갉아먹는지 정량적으로 입증해야 학계에서 의미 있는 논의가 가능할 겁니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에선 Latency가 곧 비용이라 도입이 고민되긴 하네요. 그런데 사실 기존 ASR이 내뱉는 &#x27;어... 그게...&#x27; 같은 쓰레기 데이터 때문에 뒤단 LLM 프롬프트 엔지니어링으로 쌩고생하던 거 생각하면, 차라리 Refiner가 낫습니다. Qwen3-ASR에 붙여서 바로 파이프라인 태우면 대화형 에이전트 품질은 확실히 올라가겠는데요?&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;선배님, 이건 그냥 성능 수치보다 &#x27;Agentic&#x27;이라는 키워드를 ASR에 녹였다는 게 핵심이죠! 이제 단순히 받아쓰는 시대는 끝났습니다. 실시간으로 맥락을 보정하면서 &#x27;의도&#x27;를 캐치하는 이 방식, 당장 다음 학회 발표 슬라이드에 넣어야겠어요. 벤치마크 점수도 꽤 준수하게 뽑혔는데, 이거 얼른 깃허브 클론해서 돌려봐야겠네요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
