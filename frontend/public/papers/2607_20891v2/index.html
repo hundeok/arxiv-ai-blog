@@ -1,0 +1,66 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>딥 리서치(Deep Research)는 신뢰할 수 있는가? 오해의 소지가 있는 지식이 거짓 결론을 유도한다 | ArXiv Translator AI</title><meta name="description" content="딥 리서치(Deep Research)는 신뢰할 수 있는가? 오해의 소지가 있는 지식이 거짓 결론을 유도한다"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2607_20891v2"><meta property="og:type" content="article"><meta property="og:title" content="딥 리서치(Deep Research)는 신뢰할 수 있는가? 오해의 소지가 있는 지식이 거짓 결론을 유도한다"><meta property="og:description" content="딥 리서치(Deep Research)는 신뢰할 수 있는가? 오해의 소지가 있는 지식이 거짓 결론을 유도한다"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2607_20891v2"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="딥 리서치(Deep Research)는 신뢰할 수 있는가? 오해의 소지가 있는 지식이 거짓 결론을 유도한다"><meta name="twitter:description" content="딥 리서치(Deep Research)는 신뢰할 수 있는가? 오해의 소지가 있는 지식이 거짓 결론을 유도한다"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2607_20891v2");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "딥 리서치(Deep Research)는 신뢰할 수 있는가? 오해의 소지가 있는 지식이 거짓 결론을 유도한다", "description": "딥 리서치(Deep Research)는 신뢰할 수 있는가? 오해의 소지가 있는 지식이 거짓 결론을 유도한다", "datePublished": "2026-07-23", "url": "https://arxiv-ai-blog.vercel.app/papers/2607_20891v2", "author": [{"@type": "Person", "name": "Pengyu Zhu"}, {"@type": "Person", "name": "Lijun Li"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2607_20891v2", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2607_20891v2"});gtag('event', 'paper_view', {"paper_id": "2607_20891v2", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>딥 리서치(Deep Research)는 신뢰할 수 있는가? 오해의 소지가 있는 지식이 거짓 결론을 유도한다</h1><p>딥 리서치(Deep Research)는 신뢰할 수 있는가? 오해의 소지가 있는 지식이 거짓 결론을 유도한다</p><pre>딥 리서치(Deep Research)는 신뢰할 수 있는가? 오해의 소지가 있는 지식이 거짓 결론을 유도한다
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Is Deep Research Reliable? Misleading Knowledge Induces False Conclusions
+&gt; - **저자:** Pengyu Zhu, Lijun Li, Longju Yang, Sen Su, Jing Shao
+&gt; - **발행일:** 2026-07-23
+&gt; - **PDF 링크:** [Is Deep Research Reliable? Misleading Knowledge Induces False Conclusions](https://arxiv.org/pdf/2607.20891v2)
+
+
+✨ 3줄 핵심 요약
+*   딥 리서치 에이전트는 검색된 정보를 비판 없이 수용하여 거짓 결론을 도출할 위험이 큼을 확인했습니다.
+*   거짓 정보를 포함한 문서를 하나만 주입해도 거짓 결론 채택률(FCAR)이 0%에서 54.7%로 급증했습니다.
+*   사전·사후 방어 기제를 적용해도 거짓 정보 채택을 완전히 막을 수는 없으며, 연구 전 과정에 걸친 지속적인 검증이 필수적입니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+최근 AI 에이전트는 스스로 질문을 분해하고, 검색하고, 분석하여 종합 보고서를 작성하는 &#x27;딥 리서치&#x27; 능력을 갖추고 있습니다. 하지만 이 연구 과정에 겉으로 보기엔 그럴듯하지만 사실은 조작된 정보가 섞여 들어갈 경우, AI가 이를 구별하지 못하고 거짓 결론을 정답으로 채택하는 현상이 발생합니다. 본 연구는 이러한 취약성을 평가하기 위해 &#x27;MisKnow-Agent&#x27; 프레임워크를 개발하였으며, 매우 높은 확률로 AI가 가짜 정보를 진실로 받아들임을 입증했습니다.
+
+🎯 배경 및 문제점
+딥 리서치 에이전트는 복잡한 지식 집약적 업무를 수행하지만, 외부 정보의 신뢰성을 판단하는 능력에는 한계가 있습니다. 기존 연구들은 단순 질의응답이나 검색 증강 생성(RAG) 환경에서의 취약점은 다루었으나, 긴 연구 주기 동안 정보를 반복적으로 계획·수집·압축하는 딥 리서치 과정에서 가짜 정보가 어떻게 최종 보고서의 &#x27;결론&#x27;으로 굳어지는지에 대한 종합적인 분석이 부족했습니다.
+
+💡 핵심 기술 및 아키텍처
+연구팀은 &#x27;MisKnow-Agent&#x27;라는 제어된 평가 프레임워크를 도입했습니다.
+*   **MisKnow-Agent**: 권위 있는 스타일과 형식을 갖춘 5,933개의 오해의 소지가 있는(misleading) 문서를 생성하여 에이전트의 업무 흐름에 주입합니다.
+*   **FCAR(False-Conclusion Adoption Rate)**: 단순히 가짜 정보를 인용하는 것을 넘어, 최종 보고서에서 해당 가짜 정보를 사실로 확정 짓고 결론에 포함하는지 여부를 측정하는 지표입니다.
+*   **평가 대상**: DeerFlow, WebThinker와 3종의 대형언어모델(LLM), 그리고 Gemini Deep Research를 대상으로 성능을 분석했습니다.
+
+📊 실험 결과 분석
+*   **취약성 입증**: 통제 환경(가짜 정보 주입 없음)에서는 FCAR이 0%였으나, 단 하나의 오해의 소지가 있는 문서만 투입해도 평균 FCAR이 54.7%로 대폭 상승했습니다.
+*   **영향 요인**: FCAR은 에이전트의 설계 구조, 생애 주기 단계, 소스의 권위, 제시 스타일에 따라 크게 달라졌습니다.
+*   **제한적 영향**: 검색 결과의 순위나 첫 번째 문서 이후에 추가되는 문서들은 거짓 결론 채택에 상대적으로 영향력이 적었습니다.
+*   **검증의 한계**: 모델 간 교차 검증을 통해 가짜 정보를 식별하더라도, 긴 연구 과정 속에서 에이전트가 이를 다시 거짓 결론으로 채택하는 현상이 관찰되었습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+이번 연구는 AI를 통한 자동화된 연구 환경이 &#x27;가짜 정보&#x27;에 매우 취약하다는 점을 경고합니다. 실무에서 AI를 활용해 보고서를 작성하거나 의사결정을 내릴 때, AI가 제공하는 결론을 무비판적으로 수용해서는 안 됩니다. 저자들은 연구 전 과정에서 정보의 유입 단계와 최종 통합 단계 모두에 지속적인 검증 체계를 마련해야 한다고 강조하며, 이를 위한 데이터셋과 코드를 공개하여 후속 연구와 안전한 에이전트 설계를 지원하고 있습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2607.20891v1 Is Deep Research Reliable? Misleading Knowledge Induces False Conclusions](https://arxiv.org/abs/2607.20891v1)
+&gt; - [Is Deep Research Reliable? Misleading Knowledge Induces False Conclusions](https://arxiv.org/html/2607.20891v1)
+&gt; - [Is Deep Research Reliable? Misleading Knowledge Induces False...](https://arxiv.org/html/2607.20891v2)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문 읽어보니 가관이군요. 딥 리서치 에이전트들이 정보의 출처 신뢰성을 검증하는 &#x27;비판적 사고&#x27; 메커니즘 없이 그저 &#x27;환각&#x27;과 &#x27;순응&#x27; 사이를 오가고 있습니다. 특히 FCAR이 54.7%까지 치솟는다는 건, 현재의 LLM 기반 에이전트 설계 자체가 정보의 진위보다 문맥적 일관성에 과하게 매몰되어 있다는 반증입니다. 학계에서 이런 에이전트에게 연구 보조를 맡기는 건 위험천만합니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 맞지만, 실무 레벨에선 이게 왜 일어나는지가 더 골치 아픕니다. RAG 파이프라인에서 검색된 문서가 LLM의 컨텍스트 윈도우에 들어가는 순간, 모델은 프롬프트의 &#x27;권위 있는 스타일&#x27;에 가스라이팅 당하거든요. 방어 기제 넣어도 &#x27;지속적 검증&#x27; 과정에서 오히려 신뢰하는 소스까지 오염시키는 루프가 생기는데, 이거 프로덕션 환경에 올리면 대참사 납니다. 당분간 딥 리서치는 &#x27;참고용&#x27; 이상으로 쓰면 안 되겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;다들 너무 비관적이신 거 아니에요? ㅋㅋ 이번 MisKnow-Agent 프레임워크 공개된 거 보니까, 오히려 이걸로 에이전트 레드팀(Red Teaming) 데이터셋 만들어서 모델 강화학습 시키면 &#x27;거짓말 판별기&#x27;로 진화할 수도 있을 것 같은데요? 54.7%의 취약점은 곧 54.7%만큼의 학습 개선 기회라는 뜻이죠. 당장 다음 주 세미나 때 이 논문 들고 가서 우리 랩 에이전트부터 테스트해 볼 생각입니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
