@@ -1,0 +1,67 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MANTA: 자기 진화형 다중 에이전트 시스템을 위한 다중 에이전트 네트워크 토폴로지 적응 | ArXiv Translator AI</title><meta name="description" content="MANTA: 자기 진화형 다중 에이전트 시스템을 위한 다중 에이전트 네트워크 토폴로지 적응"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2607_28527v1"><meta property="og:type" content="article"><meta property="og:title" content="MANTA: 자기 진화형 다중 에이전트 시스템을 위한 다중 에이전트 네트워크 토폴로지 적응"><meta property="og:description" content="MANTA: 자기 진화형 다중 에이전트 시스템을 위한 다중 에이전트 네트워크 토폴로지 적응"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2607_28527v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="MANTA: 자기 진화형 다중 에이전트 시스템을 위한 다중 에이전트 네트워크 토폴로지 적응"><meta name="twitter:description" content="MANTA: 자기 진화형 다중 에이전트 시스템을 위한 다중 에이전트 네트워크 토폴로지 적응"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2607_28527v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "MANTA: 자기 진화형 다중 에이전트 시스템을 위한 다중 에이전트 네트워크 토폴로지 적응", "description": "MANTA: 자기 진화형 다중 에이전트 시스템을 위한 다중 에이전트 네트워크 토폴로지 적응", "datePublished": "2026-07-30", "url": "https://arxiv-ai-blog.vercel.app/papers/2607_28527v1", "author": [{"@type": "Person", "name": "Mao-xun Huang"}, {"@type": "Person", "name": "Jerry Wang"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2607_28527v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2607_28527v1"});gtag('event', 'paper_view', {"paper_id": "2607_28527v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>MANTA: 자기 진화형 다중 에이전트 시스템을 위한 다중 에이전트 네트워크 토폴로지 적응</h1><p>MANTA: 자기 진화형 다중 에이전트 시스템을 위한 다중 에이전트 네트워크 토폴로지 적응</p><pre>MANTA: 자기 진화형 다중 에이전트 시스템을 위한 다중 에이전트 네트워크 토폴로지 적응
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** MANTA: Multi-Agent Network Topology Adaptation for Self-Evolving Multi-Agent Systems
+&gt; - **저자:** Mao-xun Huang, Jerry Wang, Yi-Cheng Lai, Zhengxin Zhang, Claire Cardie, Hen-Hsen Huang
+&gt; - **발행일:** 2026-07-30
+&gt; - **PDF 링크:** [MANTA: Multi-Agent Network Topology Adaptation for Self-Evolving Multi-Agent Systems](https://arxiv.org/pdf/2607.28527v1)
+
+
+✨ 3줄 핵심 요약
+- MANTA는 다중 에이전트 시스템이 실행 중에 통신 구조(토폴로지)를 스스로 변경하고 진화시킬 수 있게 하는 프레임워크입니다.
+- 실행 중 협업 과정을 모니터링하여 구조적 결함이 발견되면 역할, 통신 경로, 정보 가시성 등을 실시간으로 조정합니다.
+- 5개 벤치마크 테스트에서 평균 74.0점을 기록하며 기존 최고 성능 모델보다 5.8%포인트 높은 성과를 거두었습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+기존의 다중 에이전트 시스템은 일을 시작하기 전에 미리 정해진 규칙(토폴로지)에 따라 대화하고 협업했습니다. 하지만 MANTA는 다릅니다. 이 시스템은 문제를 풀다가 &quot;지금 우리 조직 구조가 비효율적이네&quot;라고 판단되면, 실시간으로 에이전트의 역할이나 정보를 주고받는 방식을 즉시 수정합니다. 마치 축구 경기 도중 전략이 안 풀리면 실시간으로 포메이션을 바꾸는 것과 같은 원리입니다. 이를 통해 처음 정해진 틀에 갇히지 않고, 문제 상황에 맞춰 최적화된 협업 구조를 스스로 만들어냅니다.
+
+🎯 배경 및 문제점
+대규모 언어 모델(LLM) 기반의 다중 에이전트 시스템은 복잡한 문제를 풀 때 핵심적인 역할을 합니다. 그러나 기존 시스템들은 통신 토폴로지(누가 누구와 대화하고 정보를 공유할지 등)를 설계 단계에서 고정하거나, 실행 전 최적화의 대상으로만 다루어 왔습니다. 이로 인해 작업 수행 도중 협업 환경이 비효율적으로 변해도 이를 유연하게 대처하지 못하는 한계가 있었습니다.
+
+💡 핵심 기술 및 아키텍처
+- **추론 시점 적응(Inference-time Adaptation):** 사전에 정의된 구조에 머무르지 않고, 작업 수행 중 협업의 흔적을 감시하여 필요시 구조를 수정합니다.
+- **상태 비저장 설계(Stateless Design):** 에이전트 자체가 상태를 저장하지 않고, 별도의 공유 저장소(패킷 저장소, 증거 원장 등)를 통해 정보를 관리합니다.
+- **토폴로지 변이(Topology Mutation):** 시스템이 구조적 결함을 감지하면 현재 사양을 변경하고, 공유 컨텍스트 컨트롤러를 재설정하여 즉각적으로 새로운 통신 규칙이 적용되도록 합니다. 
+- **안정적 유지:** 이전 단계에서 생성된 데이터는 유실되지 않으며, 변경 후에도 이전 단계의 성과를 보존하여 최적의 결과를 선택할 수 있도록 설계되었습니다.
+
+📊 실험 결과 분석
+정보 검색, 도구 사용, 계획 수립, 워크플로우 실행, 수학적 추론 등 5개 벤치마크 분야에서 성능을 평가했습니다.
+- MANTA는 평균 **74.0점**을 획득했습니다.
+- 이는 기존의 가장 강력한 베이스라인 모델보다 **5.8%포인트** 높은 수치입니다.
+- 특히 &#x27;PlanCraft&#x27; 벤치마크에서 가장 우수한 성적을 기록했습니다. 
+(※ 이외의 구체적인 벤치마크 수치나 비교 대상 모델의 명칭 등은 발췌문에 명시되지 않았습니다.)
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+MANTA의 등장은 AI 에이전트 시스템이 단순히 &#x27;개별 지능&#x27;을 높이는 단계를 넘어, &#x27;조직적 협업의 구조&#x27;를 스스로 혁신하는 단계로 나아갔음을 의미합니다. 복잡한 프로젝트를 수행하는 실무 환경에서 MANTA를 적용하면, 초기에 완벽한 업무 분담을 설계하지 못했더라도 실행 과정에서 최적의 협업 효율을 스스로 찾아낼 수 있어 자동화된 워크플로우의 복원력과 문제 해결 능력이 획기적으로 개선될 것으로 기대됩니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [MANTA: Multi-Agent Network Topology Adaptation for...](https://arxiv.org/html/2607.28527v1)
+&gt; - [AI 팀이 스스로 조직을 바꾼다? MANTA 논문이 뒤집는 멀티에이전트의...](https://wikidocs.net/blog/@rudah96/27175/)
+&gt; - [2607.28527 MANTA: Multi-Agent Network Topology Adaptation ...](https://arxiv.org/abs/2607.28527)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문은 흥미로우나, &#x27;실시간 토폴로지 변이&#x27;가 가져올 시스템 안정성에 대한 수학적 보장이 부족해 보입니다. 에이전트가 구조를 스스로 변경하는 과정에서 발생하는 컨텍스트 스위칭 비용과 그로 인한 잠재적 환각 증폭은 어떻게 통제할 생각입니까? 5.8% 성능 향상이 통계적으로 유의미한지, 아니면 단순한 구조적 변동성이 가져온 과적합인지 명확한 검증이 필요합니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에선 &#x27;변경 비용&#x27;이 제일 골칫거리죠. 당장 서빙 환경에서 토폴로지가 매번 바뀌면 로그 트래킹은 어떻게 할 거고, 에러 발생 시 디버깅은 도대체 어떻게 합니까? 아이디어는 참신하지만, 프로덕션 레벨에서 이걸 도입하려면 상태 추적 불가능성을 해결할 별도의 옵저버빌리티(Observability) 레이어가 필수겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;아니 다들 너무 보수적인 거 아니에요? ㅋㅋㅋ 이제 &#x27;정적인 그래프&#x27;는 구시대 유물이라니까요! MANTA가 보여준 &#x27;조직 구조의 자가 진화&#x27;는 LLM이 단순 챗봇을 넘어 진짜 &#x27;가상 오피스&#x27;를 구축할 수 있다는 증거잖아요. 당장 이번 주 세미나 때 이거 코드 뜯어보고 우리 연구실 에이전트 프레임워크에 붙여볼 생각입니다. 안 되면 말고, 일단 찍먹은 해봐야죠!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

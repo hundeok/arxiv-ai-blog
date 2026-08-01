@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ORCA-bench: 언어 모델 에이전트의 온콜(On-call) 준비도는 어느 정도인가? | ArXiv Translator AI</title><meta name="description" content="ORCA-bench: 언어 모델 에이전트의 온콜(On-call) 준비도는 어느 정도인가?"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2607_28545v1"><meta property="og:type" content="article"><meta property="og:title" content="ORCA-bench: 언어 모델 에이전트의 온콜(On-call) 준비도는 어느 정도인가?"><meta property="og:description" content="ORCA-bench: 언어 모델 에이전트의 온콜(On-call) 준비도는 어느 정도인가?"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2607_28545v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="ORCA-bench: 언어 모델 에이전트의 온콜(On-call) 준비도는 어느 정도인가?"><meta name="twitter:description" content="ORCA-bench: 언어 모델 에이전트의 온콜(On-call) 준비도는 어느 정도인가?"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2607_28545v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "ORCA-bench: 언어 모델 에이전트의 온콜(On-call) 준비도는 어느 정도인가?", "description": "ORCA-bench: 언어 모델 에이전트의 온콜(On-call) 준비도는 어느 정도인가?", "datePublished": "2026-07-30", "url": "https://arxiv-ai-blog.vercel.app/papers/2607_28545v1", "author": [{"@type": "Person", "name": "Albert Gong"}, {"@type": "Person", "name": "Kyuseong Choi"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2607_28545v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2607_28545v1"});gtag('event', 'paper_view', {"paper_id": "2607_28545v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>ORCA-bench: 언어 모델 에이전트의 온콜(On-call) 준비도는 어느 정도인가?</h1><p>ORCA-bench: 언어 모델 에이전트의 온콜(On-call) 준비도는 어느 정도인가?</p><pre>ORCA-bench: 언어 모델 에이전트의 온콜(On-call) 준비도는 어느 정도인가?
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** ORCA-bench: How Ready Are Language Model Agents for Oncall?
+&gt; - **저자:** Albert Gong, Kyuseong Choi, Abhineet Agarwal, Jason Schechner, Ryan Huang, Raj Agrawal, Anish Agarwal, Raaz Dwivedi
+&gt; - **발행일:** 2026-07-30
+&gt; - **PDF 링크:** [ORCA-bench: How Ready Are Language Model Agents for Oncall?](https://arxiv.org/pdf/2607.28545v1)
+
+
+✨ 3줄 핵심 요약
+* **온콜 업무 특화 벤치마크:** 실무 환경과 유사한 마이크로서비스 시스템에서 로그, 메트릭, 트레이스를 분석하여 장애 근본 원인을 찾아내는 &#x27;ORCA-bench&#x27;를 제안합니다.
+* **낮은 해결 정확도:** 최신 AI 모델들의 중간 난이도 장애 해결 정확도는 25.3%에 불과하며, 난이도가 올라갈수록 성능이 급격히 저하됩니다.
+* **모델의 한계:** 가장 성능이 낮은 모델은 장애 보고서의 40%에서 사실이 아닌 근본 원인을 만들어내는 환각(Hallucination) 현상을 보였습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+현대 IT 서비스는 수많은 마이크로서비스로 얽혀 있어 장애 발생 시 원인을 파악하는 &#x27;온콜(On-call)&#x27; 업무가 매우 어렵습니다. 기존의 AI 코딩 에이전트들은 주로 소스 코드 수정에는 능숙하지만, 복잡한 실무 환경에서 노이즈가 섞인 로그와 모니터링 데이터를 분석해 장애 원인을 찾아내는 능력은 검증된 바가 부족했습니다. 본 논문은 실제와 유사한 인프라 환경에서 AI가 장애 진단을 얼마나 잘 수행하는지 평가합니다. 실험 결과, 현재의 최고 수준 AI 모델들조차 실무 현장에 투입되기에는 정확도가 크게 부족하며, 여전히 많은 오류를 범하고 있음이 확인되었습니다.
+
+🎯 배경 및 문제점
+기존의 소프트웨어 공학 벤치마크는 주로 정적인 코드 저장소에서의 디버깅을 다뤘습니다. 하지만 실제 서비스 장애(RCA)는 다음과 같은 이유로 차원이 다른 도전을 요구합니다.
+* **모호한 입력:** &quot;체크아웃이 안 된다&quot;는 식의 모호한 사용자 불만에서 시작해야 함.
+* **복잡한 데이터:** 수많은 메트릭, 로그, 트레이스 속에서 상관관계를 추론해야 함.
+* **시간 격차:** 장애 발생 후 몇 시간이 지난 뒤에 대응을 시작하는 경우가 많음.
+
+💡 핵심 기술 및 아키텍처
+ORCA-bench는 실제 프로덕션 수준의 환경을 구현하여 에이전트를 테스트합니다.
+* **통합 관측 환경:** Prometheus(메트릭), Jaeger(트레이스), OpenSearch(로그) 인터페이스를 Grafana와 함께 제공.
+* **평가 데이터:** 1,079개의 근본 원인 분석(RCA) 작업을 포함하며, 숙련된 SRE(사이트 신뢰성 엔지니어)가 검증한 정답지 사용.
+* **평가 지표:** 인간 검증과 모델 기반 판단(LLM-as-a-judge)을 병행하여 정확도와 환각률을 측정.
+
+📊 실험 결과 분석
+* **낮은 해결 능력:** 5개의 최신 에이전트 모델을 테스트한 결과, 중간 난이도에서는 최고 25.3%, 어려운 난이도에서는 최고 10.0%의 정확도를 기록했습니다.
+* **환각 현상:** 가장 낮은 성능을 보인 모델은 사례의 40%에서 사실과 무관한 근본 원인을 지어냈습니다.
+* **데이터 의존성:** 소스 코드 접근 권한을 제거했을 때 모든 평가지표가 하락하여, 모델들이 코드와 관측 데이터를 종합적으로 판단하는 것이 중요함이 입증되었습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+이 연구는 현재의 AI 에이전트들이 실무 수준의 시스템 안정성을 전적으로 책임지기에는 무리가 있음을 시사합니다. 논문에서 언급된 결과는 이상적인 환경에서 측정된 &#x27;하한선&#x27;에 가깝기 때문에, 실제 복잡하고 역동적인 대규모 서비스에 적용하기 위해서는 더욱 정교한 엔지니어링 투자가 필요합니다. 연구진은 데이터셋을 공개하여 에이전트 모델들이 실무 장애 대응 역량을 향상할 수 있도록 기여하고 있습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2607.28545 ORCA-bench: How Ready Are Language Model Agents for Oncall?](https://arxiv.org/abs/2607.28545)
+&gt; - [ORCA-bench: How Ready Are Language Model Agents for Oncall?](https://arxiv.org/html/2607.28545)
+&gt; - [Computation and Language](https://arxiv.org/list/cs.CL/pastweek?skip=1&amp;show=25)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;벤치마크 설계 자체는 훌륭하나, 25%라는 처참한 정확도는 모델의 추론 능력 부재라기보다 시계열 데이터와 구조적 인과관계를 매핑하는 멀티모달 에이전트의 구조적 결함으로 보입니다. 로그의 노이즈를 필터링하는 파이프라인조차 제대로 구축되지 않은 상태에서 &#x27;에이전트&#x27;라 부르는 게 맞는지 의문이네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에선 단순 추론보다 Grafana/Jaeger 쿼리를 얼마나 정확히 날리느냐가 핵심인데, 모델들이 환각까지 일으키면 알람 대응하다가 오히려 장애를 더 키우는 &#x27;AI 봇 킬러&#x27;가 될 겁니다. 당분간 우리 팀 SRE들은 에이전트에게 쿼리 권한 줄 생각도 없습니다. 로그 분석 자동화는 갈 길이 머네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;다들 너무 부정적이신 거 아닌가요? ORCA-bench 데이터셋이 공개됐다는 게 중요하죠! 이제 이 벤치마크 점수 올리려고 &#x27;RAG for Observability&#x27;나 &#x27;Chain-of-Thought for RCA&#x27; 같은 논문들 쏟아져 나올 텐데, 벌써부터 며칠 밤샐 생각에 가슴이 웅장해지네요. 이번 학기에 이 데이터셋으로 SOTA 한번 찍어보겠습니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
