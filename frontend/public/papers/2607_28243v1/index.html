@@ -1,0 +1,67 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>에고제네시스: 온라인 앵커 투영 메모리와 동작-3D RoPE를 활용한 1인칭 세계-동작 모델링 | ArXiv Translator AI</title><meta name="description" content="에고제네시스: 온라인 앵커 투영 메모리와 동작-3D RoPE를 활용한 1인칭 세계-동작 모델링"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2607_28243v1"><meta property="og:type" content="article"><meta property="og:title" content="에고제네시스: 온라인 앵커 투영 메모리와 동작-3D RoPE를 활용한 1인칭 세계-동작 모델링"><meta property="og:description" content="에고제네시스: 온라인 앵커 투영 메모리와 동작-3D RoPE를 활용한 1인칭 세계-동작 모델링"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2607_28243v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="에고제네시스: 온라인 앵커 투영 메모리와 동작-3D RoPE를 활용한 1인칭 세계-동작 모델링"><meta name="twitter:description" content="에고제네시스: 온라인 앵커 투영 메모리와 동작-3D RoPE를 활용한 1인칭 세계-동작 모델링"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2607_28243v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "에고제네시스: 온라인 앵커 투영 메모리와 동작-3D RoPE를 활용한 1인칭 세계-동작 모델링", "description": "에고제네시스: 온라인 앵커 투영 메모리와 동작-3D RoPE를 활용한 1인칭 세계-동작 모델링", "datePublished": "2026-07-30", "url": "https://arxiv-ai-blog.vercel.app/papers/2607_28243v1", "author": [{"@type": "Person", "name": "Zexuan Yan"}, {"@type": "Person", "name": "Yuzhou Wu"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2607_28243v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2607_28243v1"});gtag('event', 'paper_view', {"paper_id": "2607_28243v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>에고제네시스: 온라인 앵커 투영 메모리와 동작-3D RoPE를 활용한 1인칭 세계-동작 모델링</h1><p>에고제네시스: 온라인 앵커 투영 메모리와 동작-3D RoPE를 활용한 1인칭 세계-동작 모델링</p><pre>에고제네시스: 온라인 앵커 투영 메모리와 동작-3D RoPE를 활용한 1인칭 세계-동작 모델링
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** EgoGenesis: Egocentric World-Action Modeling with Online Anchored Projective Memory and Action-3D RoPE
+&gt; - **저자:** Zexuan Yan, Yuzhou Wu, Yue Ma, Zonghang He, Kaibo Yin, Xiaobing Tu, Yinggui Wang, Jinkui Ren, Xiantao Zhang, Shijian Wang, Jinghong Liu, Linfeng Zhang
+&gt; - **발행일:** 2026-07-30
+&gt; - **PDF 링크:** [EgoGenesis: Egocentric World-Action Modeling with Online Anchored Projective Memory and Action-3D RoPE](https://arxiv.org/pdf/2607.28243v1)
+
+
+✨ 3줄 핵심 요약
+* **데이터 부족 해결**: 로봇 학습에 필요한 고품질 1인칭 조작 영상 데이터를 생성하여 실제 로봇의 학습 데이터를 증강합니다.
+* **정밀 제어 기술**: 영상 생성 시 3D 장면을 유지하는 &#x27;OAPM&#x27;과 동작 궤적을 정밀하게 반영하는 &#x27;A3D-RoPE&#x27;를 도입했습니다.
+* **성능 향상**: 실제 로봇의 조작 성공률을 단일 팔 작업에서 77%에서 84%로, 이중 팔 작업에서 53%에서 70%로 크게 개선했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+로봇이 사람처럼 능숙하게 물체를 다루려면 다양한 환경과 상황이 담긴 1인칭 영상 데이터가 필요합니다. 하지만 이를 실제 로봇으로 일일이 촬영하는 것은 비용이 많이 들고 위험합니다. &#x27;에고제네시스(EgoGenesis)&#x27;는 기존의 부족한 실제 데이터를 기반으로, 로봇이 수행할 작업을 고품질의 영상으로 합성해내는 시뮬레이터입니다. 특히 단순히 영상을 만드는 것을 넘어, 로봇의 움직임과 물체 간의 상호작용이 물리적으로 자연스럽게 유지되도록 정밀하게 제어하여, 결과적으로 로봇의 실제 작업 성공률을 비약적으로 높였습니다.
+
+🎯 배경 및 문제점
+로봇 학습을 위한 &#x27;세계-동작 모델(World-Action Models)&#x27;은 방대한 1인칭 데이터가 필수적입니다. 그러나 기존 방식에는 다음과 같은 한계가 있었습니다.
+* **데이터 수집의 어려움**: 물리적인 로봇 조작은 시간과 비용이 많이 들고, 하드웨어 파손 위험이 있습니다.
+* **생성 모델의 한계**: 기존 영상 생성 모델들은 카메라 움직임이나 로봇 그리퍼(집게)의 궤적을 명확하게 제어하지 못해, 생성된 영상에서 물체가 흔들리거나 손/집게의 위치가 어긋나는 &#x27;드리프트(Drift)&#x27; 현상이 발생했습니다.
+
+💡 핵심 기술 및 아키텍처
+에고제네시스는 영상 생성의 품질과 물리적 일관성을 높이기 위해 두 가지 핵심 기술을 제안합니다.
+* **온라인 앵커 투영 메모리(OAPM)**: 첫 프레임의 3D 장면을 기준(Anchor)으로 고정하고, 영상을 생성하는 동안 최근 상태를 주기적으로 갱신하여 장면의 일관성을 유지합니다.
+* **동작-3D 회전 위치 임베딩(A3D-RoPE)**: 카메라 좌표계를 고려한 3D 회전 좌표를 사용하여 로봇 그리퍼의 움직임을 인코딩합니다. 이를 통해 골격 정보와 영상 간의 상호작용을 정밀하게 제어하여 동작의 정확도를 높입니다.
+
+📊 실험 결과 분석
+* **데이터 증강 효과**: 400개의 실제 로봇 궤적에 400개의 에고제네시스 합성 궤적을 추가하여 학습한 결과, 훈련 데이터에 포함되지 않은 환경에서의 실제 로봇 성공률이 단일 팔 작업은 77%에서 84%로, 이중 팔 작업은 53%에서 70%로 향상되었습니다.
+* **기존 모델 대비 우위**: 기존 생성 모델(Wan2.1 등)에서 나타나던 장면 이탈이나 오버피팅 현상을 효과적으로 해결하여, 물체와의 접촉이나 물리적 상호작용이 훨씬 더 자연스럽게 묘사되었습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **로봇 학습 가속화**: 고비용의 실물 데이터 수집 과정을 줄이고, 시뮬레이션 데이터를 통해 로봇의 조작 능력을 효율적으로 확장할 수 있습니다.
+* **실무 적용**: 물류 창고에서의 제품 포장, 가사 노동 지원 등 다양한 분야에서 로봇이 새로운 환경에 빠르게 적응하고 정교한 작업을 수행하는 데 기여할 수 있습니다.
+* **범용성**: 특정 형태의 로봇에 국한되지 않고, 사람의 손이나 로봇 그리퍼 등 다양한 조작기(Embodiment)에 적용 가능한 범용적인 데이터 생성 플랫폼으로 활용될 수 있습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [EgoGenesis: Egocentric World-Action Modeling with Online...](https://arxiv.org/html/2607.28243)
+&gt; - [EgoGenesis: Egocentric World-Action Modeling with Online...](https://arxiv.org/pdf/2607.28243)
+&gt; - [2607.28243v1 EgoGenesis: Egocentric World-Action Modeling...](https://arxiv.org/abs/2607.28243v1)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;OAPM을 통한 3D 일관성 유지 시도는 가상하지만, 근본적인 물리 법칙의 미분 불가능성을 생성 모델이 얼마나 견고하게 추론할 수 있을지 의문이 드네요. 특히 동적 환경에서의 드리프트 현상을 메모리 갱신만으로 해결했다는 주장은 좀 더 엄밀한 안정성 증명이 필요해 보입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님, 현업에서는 &#x27;완벽한 물리적 증명&#x27;보다 &#x27;성공률 17% 상승&#x27;이라는 숫자가 훨씬 중요합니다. A3D-RoPE로 그리퍼 궤적 제어한 건 정말 실무적인 한 수네요. 다만, 이걸 실제 공장에 배포할 때 추론 비용이랑 레이턴시 문제를 어떻게 잡을지가 관건인데, 온디바이스 최적화는 고려하고 있나요?&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 다들 반응이 너무 차가우신 거 아니에요? 지금 Hugging Face에서 EgoGenesis 데모 돌려봤는데 퀄리티 미쳤습니다. 로봇 팔이 물체 잡는 모션 블러 없이 깔끔하게 떨어지는 거 보고 바로 논문 깃헙 스타 찍었습니다. 제 졸업 논문은 이걸로 데이터 파이프라인 짜서 3개월 당길 수 있을 것 같아요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
