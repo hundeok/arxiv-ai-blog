@@ -1,0 +1,67 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>더 많이 샘플링하고, 덜 숙고하라: 1.5B에서 7B 모델까지, 동일 토큰 비용에서 &#x27;셀프-리파인(Self-Refine)&#x27;과 &#x27;리플렉션(Reflexion)&#x27;은 반복 샘플링보다 성능이 떨어진다 | ArXiv Translator AI</title><meta name="description" content="더 많이 샘플링하고, 덜 숙고하라: 1.5B에서 7B 모델까지, 동일 토큰 비용에서 &#x27;셀프-리파인(Self-Refine)&#x27;과 &#x27;리플렉션(Reflexion)&#x27;은 반복 샘플링보다 성능이 떨어진다"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2607_28576v1"><meta property="og:type" content="article"><meta property="og:title" content="더 많이 샘플링하고, 덜 숙고하라: 1.5B에서 7B 모델까지, 동일 토큰 비용에서 &#x27;셀프-리파인(Self-Refine)&#x27;과 &#x27;리플렉션(Reflexion)&#x27;은 반복 샘플링보다 성능이 떨어진다"><meta property="og:description" content="더 많이 샘플링하고, 덜 숙고하라: 1.5B에서 7B 모델까지, 동일 토큰 비용에서 &#x27;셀프-리파인(Self-Refine)&#x27;과 &#x27;리플렉션(Reflexion)&#x27;은 반복 샘플링보다 성능이 떨어진다"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2607_28576v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="더 많이 샘플링하고, 덜 숙고하라: 1.5B에서 7B 모델까지, 동일 토큰 비용에서 &#x27;셀프-리파인(Self-Refine)&#x27;과 &#x27;리플렉션(Reflexion)&#x27;은 반복 샘플링보다 성능이 떨어진다"><meta name="twitter:description" content="더 많이 샘플링하고, 덜 숙고하라: 1.5B에서 7B 모델까지, 동일 토큰 비용에서 &#x27;셀프-리파인(Self-Refine)&#x27;과 &#x27;리플렉션(Reflexion)&#x27;은 반복 샘플링보다 성능이 떨어진다"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2607_28576v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "더 많이 샘플링하고, 덜 숙고하라: 1.5B에서 7B 모델까지, 동일 토큰 비용에서 '셀프-리파인(Self-Refine)'과 '리플렉션(Reflexion)'은 반복 샘플링보다 성능이 떨어진다", "description": "더 많이 샘플링하고, 덜 숙고하라: 1.5B에서 7B 모델까지, 동일 토큰 비용에서 '셀프-리파인(Self-Refine)'과 '리플렉션(Reflexion)'은 반복 샘플링보다 성능이 떨어진다", "datePublished": "2026-07-30", "url": "https://arxiv-ai-blog.vercel.app/papers/2607_28576v1", "author": [{"@type": "Person", "name": "Iliya Mirzaei"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2607_28576v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2607_28576v1"});gtag('event', 'paper_view', {"paper_id": "2607_28576v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>더 많이 샘플링하고, 덜 숙고하라: 1.5B에서 7B 모델까지, 동일 토큰 비용에서 &#x27;셀프-리파인(Self-Refine)&#x27;과 &#x27;리플렉션(Reflexion)&#x27;은 반복 샘플링보다 성능이 떨어진다</h1><p>더 많이 샘플링하고, 덜 숙고하라: 1.5B에서 7B 모델까지, 동일 토큰 비용에서 &#x27;셀프-리파인(Self-Refine)&#x27;과 &#x27;리플렉션(Reflexion)&#x27;은 반복 샘플링보다 성능이 떨어진다</p><pre>더 많이 샘플링하고, 덜 숙고하라: 1.5B에서 7B 모델까지, 동일 토큰 비용에서 &#x27;셀프-리파인(Self-Refine)&#x27;과 &#x27;리플렉션(Reflexion)&#x27;은 반복 샘플링보다 성능이 떨어진다
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Sample More, Reflect Less: Self-Refine and Reflexion Lose to Repeated Sampling at Equal Token Cost, from 1.5B to 7B
+&gt; - **저자:** Iliya Mirzaei
+&gt; - **발행일:** 2026-07-30
+&gt; - **PDF 링크:** [Sample More, Reflect Less: Self-Refine and Reflexion Lose to Repeated Sampling at Equal Token Cost, from 1.5B to 7B](https://arxiv.org/pdf/2607.28576v1)
+
+
+✨ 3줄 핵심 요약
+* 언어 모델의 성능을 높이기 위해 제안된 복잡한 추론 기법들은 단순히 생성 텍스트의 양을 늘려 정확도를 높이는 경우가 많습니다.
+* 동일한 토큰 비용을 기준으로 비교했을 때, 모델이 스스로를 평가(자기 성찰)하는 기법들은 단순 반복 샘플링보다 성능이 낮습니다.
+* 모델 규모가 커질수록 자기 평가의 비효율성은 줄어들지만, 여전히 단순 다수결 투표 방식보다 우월하다고 보기 어렵습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+AI 모델의 추론 능력을 키우기 위해 &#x27;스스로 비판하기&#x27;, &#x27;성찰하고 다시 쓰기&#x27;, &#x27;자기 답변 검토하기&#x27; 등 다양한 기법들이 제시되어 왔습니다. 하지만 이런 기법들은 대개 더 많은 토큰(텍스트)을 생성하게 만듭니다. 논문은 이 점에 주목하여, 동일한 양의 토큰을 사용할 때 &#x27;복잡한 성찰 기법&#x27;과 &#x27;단순히 여러 번 질문해서 가장 많이 나온 답을 고르는 것&#x27; 중 무엇이 더 나은지 실험했습니다. 결과적으로, 모델이 스스로를 검토하게 하는 것보다 단순히 여러 번 샘플링하여 다수결로 답을 정하는 것이 비용 대비 훨씬 효과적임이 증명되었습니다.
+
+🎯 배경 및 문제점
+많은 연구가 언어 모델을 재학습시키지 않고도 추론 능력을 높일 수 있다고 주장합니다. 그러나 이러한 기법들은 공통적으로 &#x27;더 많은 텍스트 생성&#x27;을 유발합니다. 기존 연구들은 단순한 기본 모델보다 성능이 높다는 점만 강조할 뿐, 늘어난 비용만큼의 가치가 있는지에 대한 엄밀한 검증이 부족했습니다. 즉, &quot;복잡한 기법의 덕분인지, 아니면 단순히 글을 더 많이 써서 정확해진 것인지&quot;가 모호한 상태였습니다.
+
+💡 핵심 기술 및 아키텍처
+연구진은 1.5B, 3B, 7B 파라미터를 가진 모델을 대상으로 수학 벤치마크 실험을 진행했습니다.
+* **비교 대상:** Self-Refine, Reflexion 등 자기 성찰 기법들.
+* **기준점(Baseline):** 동일한 비용(생성 토큰 수) 내에서 여러 번 샘플링하여 가장 빈도가 높은 답을 선택하는 방식.
+* **검증 방식:** 모든 기법의 생성 토큰을 정확히 계측하여 동일한 비용 환경에서 1:1 비교를 수행.
+
+📊 실험 결과 분석
+* **자기 성찰의 한계:** 18건의 비교 실험에서 모델이 스스로 결과물을 검토하는 모든 방식이 실패했습니다.
+* **비용 대비 효율:** Best-of-N(8개 샘플 중 하나 선택) 기법의 경우, 모델에게 직접 선택하게 하는 것보다 단순히 다수결로 답을 집계하는 것이 1.5B 모델에서 8.0~11.3점 더 높은 정확도를 보였습니다. 7B 모델에서는 차이가 줄어들었지만, 여전히 자기 평가 방식이 우월하다는 근거는 발견되지 않았습니다.
+* **Reflexion의 오류:** Reflexion 기법은 작은 모델에서 자기 검토가 전혀 실행되지 않아 단일 답변 생성 모델로 변질되는 현상이 발견되었습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **연구 방법론의 개선:** 앞으로 언어 모델 추론 기법을 제안하는 연구들은 반드시 &#x27;반복 샘플링 기본값&#x27;과 동일 비용 비교 곡선을 제시해야 합니다.
+* **실무 적용:** 모델의 추론 정확도가 중요한 환경에서 복잡한 성찰 프롬프트를 사용하는 것보다, 단순 반복 샘플링 후 다수결(Majority Voting)을 취하는 것이 비용 효율성 측면에서 훨씬 합리적인 전략이 될 수 있습니다.
+* **주의점:** 본 연구는 7B 이하의 모델을 대상으로 했으며, 그 이상의 대규모 모델이나 개방형 질문(Open-ended tasks)에서의 성능은 추가 검증이 필요합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2607.28576 Sample More, Reflect Less: Self-Refine and ...](https://arxiv.org/abs/2607.28576)
+&gt; - [PDF Sample More, Reflect Less: Self-Refine and Reflexion ...](https://www.semanticscholar.org/paper/Sample-More,-Reflect-Less:-Self-Refine-and-Lose-to-Mirzaei/5318e0689869614b1efebff574dd80943e3b97ad)
+&gt; - [Sample More, Reflect Less: Self-Refine and Reflexion Lose to ...](https://www.emergentmind.com/papers/2607.28576)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;최근 몇 년간 &#x27;Self-Refine&#x27;이나 &#x27;Reflexion&#x27; 같은 그럴싸한 방법론들이 쏟아져 나왔지만, 사실 대부분은 모델의 고유한 추론 능력을 개선한다기보다 단순히 연산량을 늘려 확률적 이득을 보는 것에 불과했습니다. 이 논문이 그 가설을 아주 정교하게 박살 냈군요. &#x27;동일 토큰 비용&#x27;이라는 기준점은 학계에서 당연히 지켰어야 할 기본인데, 이제야 제대로 된 비교 문헌이 나왔습니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로입니다. 현업에서는 latency가 생명인데, 복잡한 성찰 루프 돌리느라 텍스트 잔뜩 생성하는 것보다 그냥 병렬로 여러 번 샘플링해서 Majority Voting 때리는 게 비용 효율도 좋고 구현도 훨씬 깔끔하죠. 특히 작은 모델에서 Reflexion 쓰면 툭하면 hallucination이 feedback loop 타면서 엉뚱한 곳으로 튀는데, 이 논문이 그 비효율을 수치로 딱 찍어주니 속이 다 시원하네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;두 분 말씀도 맞지만, 사실 LLM 커뮤니티에서는 이제 &#x27;성찰&#x27; 자체가 아니라 시스템 프롬프트로 주입하는 &#x27;생각의 방식&#x27; 자체가 가치가 있는지에 더 관심이 쏠려있어요. 물론 비용 대비 효율은 이 논문이 완승이지만, 대규모 모델에서 나타나는 emergent property까지 무시할 순 없지 않을까요? 7B 이하에서만 테스트했다는 한계점이 있으니, 곧 70B 모델 대상으로 &#x27;반복 샘플링 vs 성찰&#x27; 제대로 붙여서 반박 논문 나올 것 같은데 팝콘 준비해야겠네요.&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
