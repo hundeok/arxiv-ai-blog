@@ -1,0 +1,66 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>탐색적 모델링: 제3의 사전 학습 축과 종단간 생성의 잠금 해제 | ArXiv Translator AI</title><meta name="description" content="탐색적 모델링: 제3의 사전 학습 축과 종단간 생성의 잠금 해제"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2607_27372v1"><meta property="og:type" content="article"><meta property="og:title" content="탐색적 모델링: 제3의 사전 학습 축과 종단간 생성의 잠금 해제"><meta property="og:description" content="탐색적 모델링: 제3의 사전 학습 축과 종단간 생성의 잠금 해제"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2607_27372v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="탐색적 모델링: 제3의 사전 학습 축과 종단간 생성의 잠금 해제"><meta name="twitter:description" content="탐색적 모델링: 제3의 사전 학습 축과 종단간 생성의 잠금 해제"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2607_27372v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "탐색적 모델링: 제3의 사전 학습 축과 종단간 생성의 잠금 해제", "description": "탐색적 모델링: 제3의 사전 학습 축과 종단간 생성의 잠금 해제", "datePublished": "2026-07-29", "url": "https://arxiv-ai-blog.vercel.app/papers/2607_27372v1", "author": [{"@type": "Person", "name": "Alexi Gladstone"}, {"@type": "Person", "name": "Heng Ji"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2607_27372v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2607_27372v1"});gtag('event', 'paper_view', {"paper_id": "2607_27372v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>탐색적 모델링: 제3의 사전 학습 축과 종단간 생성의 잠금 해제</h1><p>탐색적 모델링: 제3의 사전 학습 축과 종단간 생성의 잠금 해제</p><pre>탐색적 모델링: 제3의 사전 학습 축과 종단간 생성의 잠금 해제
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Explorative Modeling: Unlocking a Third Pretraining Axis and End-to-End Generation
+&gt; - **저자:** Alexi Gladstone, Heng Ji, Yilun Du
+&gt; - **발행일:** 2026-07-29
+&gt; - **PDF 링크:** [Explorative Modeling: Unlocking a Third Pretraining Axis and End-to-End Generation](https://arxiv.org/pdf/2607.27372v1)
+
+
+✨ 3줄 핵심 요약
+* 기존 생성 모델의 한계인 &#x27;비(非) 종단간 학습&#x27; 문제를 해결하기 위해, 학습 루프에서 다수의 후보를 생성하고 최적의 결과를 선택하는 &#x27;탐색적 모델링(Explorative Modeling)&#x27;을 제안합니다.
+* 탐색은 모델 크기와 데이터 양에 이은 &#x27;제3의 사전 학습 축&#x27;으로 작용하며, 규모가 커질수록 성능 향상폭이 단조 증가하는 특성을 보입니다.
+* 탐색적 모델(XM)은 기존 모델 대비 FLOP 효율 4.1배, 샘플 효율 6.2배, 파라미터 효율 47% 향상을 달성하며, 추론 단계를 획기적으로 줄인 종단간 생성을 구현합니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+현재의 생성 모델(확산 모델 등)은 학습 방식과 추론 방식이 달라, 학습 중에 본 적 없는 데이터에 노출될 때 발생하는 오류가 누적되는 문제가 있습니다. 연구팀은 이를 해결하고자 학습 과정에서 모델이 여러 후보를 만들어보고 그중 가장 좋은 것을 선택하게 하는 &#x27;탐색적 모델링&#x27;을 도입했습니다. 이는 단순히 모델의 크기를 키우거나 데이터를 늘리는 것 이상의 효과를 내며, 특히 모델 규모가 커질수록 그 효율성이 배가되는 강력한 학습 패러다임입니다.
+
+🎯 배경 및 문제점
+딥러닝 분야에서 &#x27;종단간(End-to-End) 학습&#x27;은 수작업 설계를 배제하고 직접 데이터를 통해 학습하여 성능을 극대화해왔습니다. 그러나 생성 모델은 예외적으로, 학습 시와 추론 시의 생성 방식이 서로 다른 비종단간 방식을 취하고 있습니다(예: 확산 모델의 단계적 노이즈 제거). 이로 인해 추론 과정에서 오차가 누적되고 성능 저하가 발생합니다. 본 논문은 이러한 &#x27;생성 절차의 분해&#x27;가 근본적인 문제라고 지적합니다.
+
+💡 핵심 기술 및 아키텍처
+* **탐색적 모델링(Explorative Modeling):** 학습 루프를 분해하여 모델이 생성한 K개의 후보 중 데이터와 가장 일치하는 결과를 선택하여 학습합니다. 이를 통해 예측이 모호해지는 대신 특정 모드(mode)에 확고하게 수렴하도록 돕습니다.
+* **제3의 사전 학습 축:** 기존의 &#x27;파라미터 크기&#x27;와 &#x27;데이터 양&#x27;이라는 두 축 외에 &#x27;탐색(Exploration)&#x27;이라는 새로운 차원을 추가하여, 모델의 생성적 표현력을 능동적으로 확장합니다.
+
+📊 실험 결과 분석
+* **효율성 극대화:** 탐색을 통해 기존 대비 FLOP 효율 4.1배, 샘플 효율 6.2배, 파라미터 효율 47% 향상을 기록했습니다.
+* **확장성(Scaling):** 탐색을 통해 얻는 이득은 규모가 커질수록 증가합니다. 데이터 규모에 따라 7%에서 36%로, 모델 크기에 따라 13%에서 23%로 향상폭이 커졌으며, 연산량을 3배로 늘렸을 때 효율 이득은 2배 이상 증가했습니다.
+* **성능 기록:** ImageNet 데이터셋에서 유도(guidance) 없이 FID 1.43이라는 최신 수준(near-state-of-the-art)의 성능을 달성했습니다.
+* **추론 속도:** 제어 작업에서 기존 확산 모델 대비 16~256배 적은 추론 단계로 동일한 성능을 냅니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **생성 모델의 패러다임 전환:** 생성 모델을 더 종단간 모델에 가깝게 구현함으로써, 복잡한 단계적 절차 없이도 고품질의 출력을 생성할 수 있게 합니다.
+* **자원 최적화:** 동일한 컴퓨팅 자원을 투입하더라도 탐색적 모델링을 적용하면 더 높은 효율로 모델을 학습시킬 수 있어, 고비용 AI 학습의 경제성을 개선할 수 있습니다.
+* **일반화 성능 향상:** 탐색에 더 많은 학습 컴퓨팅을 할애함으로써 모델의 일반화 능력을 직접적으로 개선하는 효과를 거두었습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Paper page - Explorative Modeling: Unlocking a Third Pretraining Axis ...](https://huggingface.co/papers/2607.27372)
+&gt; - [GitHub - alexiglad/XM: PyTorch Code for Explorative Modeling: Unlocking ...](https://github.com/alexiglad/XM)
+&gt; - [Explorative Modeling: Third Pretraining Axis](https://www.emergentmind.com/papers/2607.27372)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문은 흥미로우나 &#x27;탐색(Exploration)&#x27;이라는 명칭을 제3의 축으로 명명하는 것은 다소 학술적 비약이 있네. 학습 시 후보군 생성과 선택을 반복하는 과정이 기존의 강화학습이나 자기 주도 학습 내의 오프라인 탐색 메커니즘과 어떻게 근본적으로 다른지 명확한 증명이 부족해. 단순히 연산량을 더 투입해 얻은 효율 개선을 새로운 패러다임으로 포장한 건 아닌지 의심스럽군.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 일리가 있지만, 실무자 입장에선 &#x27;효율 4.1배&#x27;라는 수치가 너무 매력적인데요? 추론 단계에서 16~256배 적은 스텝으로 동일 성능을 낸다면 이건 배포 비용이랑 직결되는 문제거든요. 다만, 학습 루프에서 매번 K개의 후보를 생성하는 구조면 GPU VRAM 터질 텐데, 인프라 비용 대비 실효성 검증이 더 필요할 것 같습니다. 대규모 클러스터에서 실제 학습 안정성이 보장될지 궁금하네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;아니 교수님, 실무자님, 일단 이 논문은 ImageNet에서 가이드 없이 FID 1.43 찍은 것만으로도 게임 끝난 거 아닌가요? 지금 랩실에서 바로 코드 돌려보고 있는데, 기존 확산 모델의 긴 추론 시간 때문에 고민하던 프로젝트에 딱입니다. &#x27;제3의 축&#x27;이 마케팅 용어든 뭐든, 스케일링 법칙을 새로 썼다는 것 자체가 지금 AI 씬에서 가장 뜨거운 이슈라구요! 당장 논문 리뷰 발표 준비해야겠네요.&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
