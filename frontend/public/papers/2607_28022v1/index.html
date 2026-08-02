@@ -1,0 +1,69 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Flux-OPD: 진화하는 문맥을 활용한 온-폴리시 증류 기법 | ArXiv Translator AI</title><meta name="description" content="Flux-OPD: 진화하는 문맥을 활용한 온-폴리시 증류 기법"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2607_28022v1"><meta property="og:type" content="article"><meta property="og:title" content="Flux-OPD: 진화하는 문맥을 활용한 온-폴리시 증류 기법"><meta property="og:description" content="Flux-OPD: 진화하는 문맥을 활용한 온-폴리시 증류 기법"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2607_28022v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Flux-OPD: 진화하는 문맥을 활용한 온-폴리시 증류 기법"><meta name="twitter:description" content="Flux-OPD: 진화하는 문맥을 활용한 온-폴리시 증류 기법"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2607_28022v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Flux-OPD: 진화하는 문맥을 활용한 온-폴리시 증류 기법", "description": "Flux-OPD: 진화하는 문맥을 활용한 온-폴리시 증류 기법", "datePublished": "2026-07-30", "url": "https://arxiv-ai-blog.vercel.app/papers/2607_28022v1", "author": [{"@type": "Person", "name": "Yuran Wang"}, {"@type": "Person", "name": "Zekun Wang"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2607_28022v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2607_28022v1"});gtag('event', 'paper_view', {"paper_id": "2607_28022v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>Flux-OPD: 진화하는 문맥을 활용한 온-폴리시 증류 기법</h1><p>Flux-OPD: 진화하는 문맥을 활용한 온-폴리시 증류 기법</p><pre>Flux-OPD: 진화하는 문맥을 활용한 온-폴리시 증류 기법
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Flux-OPD: On-Policy Distillation with Evolving Contexts
+&gt; - **저자:** Yuran Wang, Zekun Wang, Bohan Zeng, Ruixu Zhang, Wenxuan Liu, Liu Yang, Yifan Dai, Yang Shi, Bozhou Li, Chengzhuo Tong, Daili Hua, Yuanxing Zhang, Wentao Zhang
+&gt; - **발행일:** 2026-07-30
+&gt; - **PDF 링크:** [Flux-OPD: On-Policy Distillation with Evolving Contexts](https://arxiv.org/pdf/2607.28022v1)
+
+
+✨ 3줄 핵심 요약
+* 개방형 도메인 학습의 한계를 극복하기 위해, 학생 모델의 성능에 따라 실시간으로 진화하는 문맥(Context)을 학습 감독 신호로 활용하는 Flux-OPD를 제안합니다.
+* 기존 방식의 불안정한 증류 타겟 문제를 해결하기 위해, 문맥이 없는 교사 모델을 기준점(Anchor)으로 삼고 문맥 간의 차이를 보정 신호로 주입하는 방식을 도입했습니다.
+* 실험 결과, 기존의 온-폴리시 증류(OPD) 및 온라인 경험 학습(OEL) 방식보다 학습 안정성이 높고 일반화 성능이 뛰어남을 확인했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+대형 언어 모델을 학습시킬 때, 정답이 명확하지 않은 개방형 문제에서는 모델이 무엇을 잘해야 하는지 알려주기가 어렵습니다. 기존에는 문맥(Context)을 이용해 교사 모델의 지식을 학생에게 전달했지만, 학습이 진행될수록 문맥의 정보가 고정되어 더 이상 학습에 도움이 되지 않는 문제가 있었습니다. 이를 해결하고자 연구진은 학생의 성장에 맞춰 문맥도 함께 진화시키는 Flux-OPD를 고안했습니다. 마치 공부를 잘하게 될수록 난이도 높은 참고서를 활용하듯, 모델이 성장함에 따라 새로운 문맥을 반영하여 학습 효율을 극대화하는 방식입니다.
+
+🎯 배경 및 문제점
+* **검증 가능한 보상의 부재:** 개방형 도메인에서는 강화학습에 필요한 명확한 보상 체계를 설정하기가 어렵습니다.
+* **고정된 문맥의 한계:** 학습 초기에 추출된 문맥은 학생 모델이 습득하고 나면 추가적인 정보 가치를 상실합니다.
+* **학습 불안정성:** 진화하는 문맥을 직접 증류 타겟으로 사용하면 학습 목표가 자주 바뀌고, 서로 충돌하는 정보들로 인해 학습이 불안정해지는 문제가 발생합니다.
+
+💡 핵심 기술 및 아키텍처
+* **역 KL 다이버전스 분해:** 연구진은 목적 함수를 분석하여 증류 과정에서 교사 모델 간의 충돌 정도를 측정하는 지표를 식별했습니다.
+* **문맥적 보정(Contextual Correction):** 문맥이 없는 안정적인 교사 모델을 기준점으로 고정하고, 여기에 문맥에 따른 차이값만을 보정 신호로 주입하여 학습 목표를 안정화합니다.
+* **문맥적 가중치 조절(Contextual Weighting):** 교사 모델들 간의 정보가 일치하면 보정 강도를 높이고, 충돌이 발생하면 강도를 낮추는 방식으로 학습의 신뢰성을 확보합니다.
+* **반복적 훈련:** 학습 과정을 여러 단계로 나누어, 매 단계마다 최신 학생 모델의 경로에서 새로운 문맥을 추출하고 이를 다음 단계의 학습에 반영합니다.
+
+📊 실험 결과 분석
+* **학습 안정성:** 기존의 OEL 방식은 문맥 업데이트 시 학습 손실(Loss) 급등 현상이 나타났으나, Flux-OPD는 손실과 기울기 규범(Gradient Norm) 모두 안정적인 흐름을 유지했습니다.
+* **성능 우위:** IF-Eval 벤치마크 결과, Flux-OPD는 기존 OPD 대비 높은 엄격한 정확도(Strict Accuracy)를 기록하며 뛰어난 도메인 간 일반화 능력을 입증했습니다.
+* **교사 모델 영향:** 8B 규모의 모델에서는 보정 강도를 일괄적으로 줄이는 스케일링(Scaling) 기법이, 32B 규모에서는 특정 범위로 강도를 제어하는 클리핑(Clipping) 기법이 더 효과적임을 확인했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **개방형 AI 학습 효율화:** 정답이 없는 창의적 글쓰기나 복잡한 추론 작업에서 모델의 학습 효율을 비약적으로 높일 수 있는 기반을 제공합니다.
+* **맞춤형 학습 시스템:** 모델이 학습 데이터를 스스로 진화시키며 학습함으로써, 별도의 복잡한 보상 설계 없이도 실무 현장의 복잡한 요구 사항을 더 정밀하게 반영하는 AI 개발이 가능해집니다.
+* **범용적 일반화:** 의료 분야 등 특정 도메인에서 학습한 지식을 다른 영역으로 확장할 때 더 높은 성능을 기대할 수 있어, 다양한 산업군의 AI 모델 고도화에 기여할 것으로 예상됩니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [A Survey of On-Policy Distillation for Large Language Models](https://arxiv.org/html/2604.00626v3)
+&gt; - [GitHub - chrisliu298/awesome-on-policy-distillation: A curated collection of papers, technical reports, frameworks, and tools for on-policy distillation (OPD) of large language models · GitHub](https://github.com/chrisliu298/awesome-on-policy-distillation)
+&gt; - [On-Policy Distillation - Thinking Machines Lab](https://thinkingmachines.ai/blog/on-policy-distillation/)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;이 논문에서 제안한 &#x27;역 KL 다이버전스 분해&#x27;를 통한 보정 메커니즘은 이론적으로는 깔끔해 보이나, 실제 학습 과정에서 문맥이 진화하는 속도와 학생 모델의 파라미터 업데이트 속도 사이의 동기화 문제를 어떻게 완벽히 제어하겠다는 건지 의문이 드는군요. 특히 문맥적 가중치 조절 시 발생하는 미분 불가능한 지점들은 어떻게 처리했는지 ablation study가 더 필요해 보입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무 적용 시엔 매 단계마다 문맥을 추출하고 반영하는 오버헤드가 상당할 것 같습니다. 특히 32B 모델에서 적용한 Clipping 기법이 학습 안정성엔 기여하겠지만, 실시간 서비스 파이프라인에 이 구조를 올리려면 인프라 단에서 리소스 관리가 꽤 까다롭겠네요. 그래도 Loss 급등 현상을 잡았다는 점은 칭찬할 만합니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;다들 너무 회의적이시네요! 기존 OEL 방식에서 늘 터지던 학습 안정성 문제를 Anchor 모델 하나로 해결했다는 아이디어 자체가 엄청난 거 아닌가요? IF-Eval 벤치마크 결과 보니까 일반화 성능도 확실히 잡은 것 같은데, 이거 당장 다음 세미나 주제로 들고 가서 우리 랩 모델에도 바로 적용해 볼 생각입니다. 완전 핫한 논문인데요?&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
