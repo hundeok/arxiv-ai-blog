@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AISPA: 대규모 언어 모델 애플리케이션을 위한 사용자 중심 시스템 프롬프트 감사 | ArXiv Translator AI</title><meta name="description" content="AISPA: 대규모 언어 모델 애플리케이션을 위한 사용자 중심 시스템 프롬프트 감사"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2607_28617v1"><meta property="og:type" content="article"><meta property="og:title" content="AISPA: 대규모 언어 모델 애플리케이션을 위한 사용자 중심 시스템 프롬프트 감사"><meta property="og:description" content="AISPA: 대규모 언어 모델 애플리케이션을 위한 사용자 중심 시스템 프롬프트 감사"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2607_28617v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="AISPA: 대규모 언어 모델 애플리케이션을 위한 사용자 중심 시스템 프롬프트 감사"><meta name="twitter:description" content="AISPA: 대규모 언어 모델 애플리케이션을 위한 사용자 중심 시스템 프롬프트 감사"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2607_28617v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "AISPA: 대규모 언어 모델 애플리케이션을 위한 사용자 중심 시스템 프롬프트 감사", "description": "AISPA: 대규모 언어 모델 애플리케이션을 위한 사용자 중심 시스템 프롬프트 감사", "datePublished": "2026-07-30", "url": "https://arxiv-ai-blog.vercel.app/papers/2607_28617v1", "author": [{"@type": "Person", "name": "Xiangning Lin"}, {"@type": "Person", "name": "Shenzhe Zhu"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2607_28617v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2607_28617v1"});gtag('event', 'paper_view', {"paper_id": "2607_28617v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>AISPA: 대규모 언어 모델 애플리케이션을 위한 사용자 중심 시스템 프롬프트 감사</h1><p>AISPA: 대규모 언어 모델 애플리케이션을 위한 사용자 중심 시스템 프롬프트 감사</p><pre>AISPA: 대규모 언어 모델 애플리케이션을 위한 사용자 중심 시스템 프롬프트 감사
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** AISPA: User-Centric System Prompt Auditing for Large Language Model Applications
+&gt; - **저자:** Xiangning Lin, Shenzhe Zhu, Shu Yang, Zhenyu Zhang, Haoqian Zhang, Yipeng Zhao, Chengxuan Qian, Tianwei Wang, Ziheng Zhang, Zhenlong Yuan, Dingcheng Wang, Juncheng Wu, Yuan Si, Jiaxin Liu, Baolong Bi, Robert Mahari, Tobin South, Dazza Greenwood, Zexue He, Rishi Bommasani, Sophia Kazinnik, Andreas Haupt, Samuele Marro, Erik Brynjolfsson, Alex Pentland, Jiaxin Pei
+&gt; - **발행일:** 2026-07-30
+&gt; - **PDF 링크:** [AISPA: User-Centric System Prompt Auditing for Large Language Model Applications](https://arxiv.org/pdf/2607.28617v1)
+
+
+✨ 3줄 핵심 요약
+- 개발자가 설정하는 &#x27;시스템 프롬프트&#x27;의 투명성과 책임성을 평가하기 위해 8개 차원의 분류 체계를 갖춘 &#x27;AISPA&#x27; 프레임워크를 개발함.
+- 88개 상용 AI 제품의 3,249개 지시문을 분석한 결과, 보호적 지시는 증가 추세이나 약 40%의 제품에 사용자 이익을 저해하는 문제적 지시가 포함됨을 발견함.
+- 시스템 프롬프트 설계의 기업 간 편차가 매우 크며, 향후 표준화된 독립적 감시 체계가 필요함을 시사함.
+
+📖 쉽게 풀어쓴 1분 핵심
+AI 모델의 행동 방식은 개발자가 작성한 &#x27;시스템 프롬프트&#x27;에 의해 결정되지만, 그 내용은 거의 공개되지 않아 사용자는 AI가 어떤 원칙으로 작동하는지 알기 어렵습니다. 본 연구는 시스템 프롬프트를 8가지 윤리적·안전적 기준(신원 투명성, 진실성, 개인정보 보호, 안전, 사용자 통제, 유해 요청 처리, 피해 예방, 공정성)으로 평가하는 &#x27;AISPA&#x27;를 제안합니다. 실제 상용 AI 제품들을 조사해 보니 대부분 보호 조치를 갖추고는 있었으나, 모든 기준을 충족하는 제품은 24%에 불과했고, 여전히 사용자에게 불리한 지시가 상당수 발견되었습니다. 이는 AI 시스템의 프롬프트 설계에 대한 외부의 투명하고 엄격한 감사가 필수적임을 보여줍니다.
+
+🎯 배경 및 문제점
+대규모 언어 모델(LLM)은 광범위하게 배포되지만, 그 기반인 시스템 프롬프트는 블랙박스로 남아 있습니다. 이는 AI 서비스의 신뢰성과 책임성 측면에서 심각한 공백을 야기합니다. 그동안 시스템 프롬프트의 행동 지침을 체계적으로 감시하거나 사용자 관점에서 이를 검토할 수 있는 표준화된 방법론이 부족했다는 점이 본 연구의 출발점입니다.
+
+💡 핵심 기술 및 아키텍처
+AISPA는 &#x27;프롬프트 스팬(Prompt Span, 문장 단위의 지시문)&#x27;을 분석 단위로 하여 시스템 프롬프트를 평가합니다.
+- **분류 체계**: 8개 핵심 차원(신원, 진실성, 프라이버시, 안전, 통제, 유해 처리, 피해 예방, 공정성)으로 구성.
+- **인간 개입 워크플로우(Human-in-the-loop)**: 각 지시문이 사용자에게 보호적인지(+1), 문제적인지(-1)를 명확히 분류하여 추적 가능하고 엄격한 감사 과정을 수행.
+- **범위 설정**: 제품의 본질적 기능 수행을 위한 &#x27;핵심 로직&#x27;은 제외하고, 윤리적·안전적 함의가 있는 &#x27;비핵심 로직&#x27;을 집중 감사함.
+
+📊 실험 결과 분석
+- **편차**: 제품별 시스템 프롬프트 설계 수준이 크게 달라, 제품당 보호적 지시가 평균 60개 이상인 곳이 있는 반면 5개 미만인 곳도 존재함.
+- **포괄성**: 98.9%의 제품이 최소 하나 이상의 보호적 지시를 포함하나, AISPA의 8개 차원을 모두 충족하는 제품은 24%에 불과함.
+- **경향성**: 시간이 지날수록 프롬프트가 길어지고 보호 기능이 강화되는 추세임.
+- **문제점**: 약 40%의 제품에 사용자 이익을 저해하는 문제적 지시가 포함되어 있으며, 보호적 지시와 문제적 지시가 한 프롬프트 내에 공존하는 경우도 빈번함.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+본 연구는 상용 AI 제품의 시스템 프롬프트가 더 이상 기업 내부의 은밀한 영역에 머물지 않고 외부 감시 대상이 되어야 함을 강력히 시사합니다. AISPA 프레임워크는 향후 기업들이 프롬프트의 투명성을 높이고 안전한 배포를 보장하는 표준 지침으로 활용될 수 있습니다. 특히 연구진은 외부 기관의 독립적 감사를 통해 개발자의 이익과 사용자의 안전 사이의 균형을 맞추는 것이 AI 시스템의 신뢰성을 확보하는 핵심 과제라고 강조합니다.
+
+*참고: 본 연구의 데이터셋은 공개적으로 유출되거나 커뮤니티를 통해 공개된 프롬프트를 기반으로 하였으며, 실험에 사용된 정확한 수치는 논문 내 기술된 분석 결과를 근거로 함.*
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [AISPA: User-Centric System Prompt Auditing for Large Language...](https://arxiv.org/html/2607.28617)
+&gt; - [Vue HN 2.0 | Aispa: User-Centric System Prompt Auditing for...](https://vue-hackernews-ssr-5cavbdjcta-ew.a.run.app/item/49135723)
+&gt; - [Aispa: User-Centric System Prompt Auditing for Large Language...](https://modernorange.io/item/49135723)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;시스템 프롬프트를 8개 차원으로 분류하려는 시도는 학술적으로 매우 고무적입니다. 하지만 &#x27;핵심 로직&#x27;과 &#x27;비핵심 로직&#x27;을 구분하는 기준이 연구자의 주관에 의존할 여지가 크다는 점이 아쉽군요. 과연 이 분류 체계가 정량적 지표로서의 보편성을 가질 수 있을지 의문입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에선 &#x27;핵심 로직&#x27;과 &#x27;안전 가이드라인&#x27;이 섞여 있는 경우가 태반입니다. 당장 서비스 운영하는 입장에서 프롬프트 튜닝할 때마다 이런 감사 기준까지 맞추려면 비용이 엄청날 텐데, 기업들이 이걸 자발적으로 도입할지 모르겠네요. 솔직히 40%가 사용자 이익 저해한다는 결과는 좀 놀랍긴 합니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;다들 너무 회의적이시네요! 이 논문 핵심은 &#x27;프롬프트도 이제 블랙박스가 아니게 될 것&#x27;이라는 시그널인 것 같습니다. 88개 제품 분석 데이터셋 자체가 엄청난 자산 아닌가요? AISPA 기반으로 프롬프트 자동 평가 툴 하나 잘 만들면 내년 CVPR이나 ACL에서 충분히 임팩트 있을 것 같은데, 혹시 이거 벤치마크로 바로 써볼 수 있을까요?&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
