@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>복제 가능한 문맥 기반의 안전장치는 대규모 언어 모델에 신뢰할 수 있는 안전성을 제공할 수 없다 | ArXiv Translator AI</title><meta name="description" content="복제 가능한 문맥 기반의 안전장치는 대규모 언어 모델에 신뢰할 수 있는 안전성을 제공할 수 없다"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2607_27951v1"><meta property="og:type" content="article"><meta property="og:title" content="복제 가능한 문맥 기반의 안전장치는 대규모 언어 모델에 신뢰할 수 있는 안전성을 제공할 수 없다"><meta property="og:description" content="복제 가능한 문맥 기반의 안전장치는 대규모 언어 모델에 신뢰할 수 있는 안전성을 제공할 수 없다"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2607_27951v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="복제 가능한 문맥 기반의 안전장치는 대규모 언어 모델에 신뢰할 수 있는 안전성을 제공할 수 없다"><meta name="twitter:description" content="복제 가능한 문맥 기반의 안전장치는 대규모 언어 모델에 신뢰할 수 있는 안전성을 제공할 수 없다"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2607_27951v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "복제 가능한 문맥 기반의 안전장치는 대규모 언어 모델에 신뢰할 수 있는 안전성을 제공할 수 없다", "description": "복제 가능한 문맥 기반의 안전장치는 대규모 언어 모델에 신뢰할 수 있는 안전성을 제공할 수 없다", "datePublished": "2026-07-30", "url": "https://arxiv-ai-blog.vercel.app/papers/2607_27951v1", "author": [{"@type": "Person", "name": "Pingyu Wu"}, {"@type": "Person", "name": "Lingyao Zhu"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2607_27951v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2607_27951v1"});gtag('event', 'paper_view', {"paper_id": "2607_27951v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>복제 가능한 문맥 기반의 안전장치는 대규모 언어 모델에 신뢰할 수 있는 안전성을 제공할 수 없다</h1><p>복제 가능한 문맥 기반의 안전장치는 대규모 언어 모델에 신뢰할 수 있는 안전성을 제공할 수 없다</p><pre>복제 가능한 문맥 기반의 안전장치는 대규모 언어 모델에 신뢰할 수 있는 안전성을 제공할 수 없다
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Safeguards Based on Copyable Context Cannot Provide Reliable Safety for LLMs
+&gt; - **저자:** Pingyu Wu, Lingyao Zhu, Weiming Zhang, Nenghai Yu
+&gt; - **발행일:** 2026-07-30
+&gt; - **PDF 링크:** [Safeguards Based on Copyable Context Cannot Provide Reliable Safety for LLMs](https://arxiv.org/pdf/2607.27951v1)
+
+
+✨ 3줄 핵심 요약
+*   현행 LLM 안전장치는 실제 사용 목적을 확인하기 전에 응답을 결정하므로, 동일한 요청을 하는 정상 사용자와 악의적 사용자를 구분할 수 없는 근본적 한계가 있습니다.
+*   유용한 기능 제공, 신뢰할 수 있는 안전성, 자유로운 접근(개방형 환경)이라는 세 가지 요소는 동시에 양립할 수 없는 &#x27;안전의 삼중고(Safety Trilemma)&#x27;를 겪습니다.
+*   안전성을 높이려면 복제 불가능한 정보를 포함하는 &#x27;신뢰할 수 있는 자격 증명(Trusted Credential)&#x27;을 도입하여 실제 사용 환경을 예측해야 합니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+대규모 언어 모델(LLM)은 질문을 받으면 그것이 나중에 어떻게 쓰일지 모르는 상태에서 답변을 내놓습니다. 이때 공격자가 정상 사용자처럼 정교하게 질문을 꾸미면, 인공지능은 이를 구별하지 못하고 유해한 정보를 제공하게 됩니다. 연구진은 현재의 안전장치 방식으로는 악용 가능성을 0으로 만들 수 없음을 수학적으로 증명했습니다. 이를 해결하려면 단순히 대화 내용이나 프롬프트만 분석할 것이 아니라, 공격자가 위조하거나 복제할 수 없는 사용자의 실제 신원이나 환경 정보(신뢰 증명)를 결합해야 한다는 점을 제시합니다.
+
+🎯 배경 및 문제점
+*   **이중 사용(Dual-use) 문제**: 같은 정보가 전문가에게는 유용한 도구가 되고, 공격자에게는 위협 수단이 될 수 있습니다.
+*   **판단 시점의 오류**: 현재의 안전장치는 사용자가 답변을 받은 뒤 실제로 무엇을 할지 확인하기 전에 답변 여부를 결정합니다.
+*   **복제 가능한 증거**: 기존의 대화 이력, 의도 표현, 요청 형태 등은 공격자가 쉽게 모방할 수 있어, 이를 근거로 한 필터링은 보안의 근본적인 &#x27;바닥(floor)&#x27;을 제거하지 못합니다.
+
+💡 핵심 기술 및 아키텍처
+*   **안전의 삼중고**: 유용한 기능, 신뢰성 있는 안전, 개방된 접근 권한 세 가지를 동시에 달성하는 것은 불가능함을 입증했습니다.
+*   **복제 불가 신호(Trusted Signal)**: 단순한 텍스트 기반 증거를 넘어, 사용자의 실제 권한, 플랫폼 상태, 연속성 등을 포함한 &#x27;복제 불가능한 정보&#x27;를 검증 과정에 추가할 것을 제안합니다.
+*   **수학적 모델링**: 논문은 악의적 사용자로부터 발생하는 정보 지원(attacker assistance)의 최소 수준을 수학적으로 공식화하여, 현행 방식의 물리적 한계를 증명했습니다.
+
+📊 실험 결과 분석
+*   논문은 실험적 수치를 제시하기보다 이론적 증명과 기존 연구 결과들에 대한 재해석을 중심으로 합니다.
+*   다양한 안전장치(필터링, 거부 정책 등)가 기능을 강화할수록 정상적인 업무까지 방해하는 &#x27;오탐(Over-refusal)&#x27; 현상이 발생함을 기존 연구 사례들을 통해 확인했습니다.
+*   복제 가능한 정보에만 의존할 경우, 안전성을 강화하려 할수록 유용한 답변 능력이 떨어지거나 공격자가 얻는 이득이 특정 수준 이하로 내려가지 않는 현상을 수학적으로 뒷받침했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+*   **보안 패러다임 전환**: LLM의 안전성을 단순히 프롬프트 필터링으로 해결하려는 시도에서 벗어나, 하드웨어 인증이나 신뢰할 수 있는 사용자 계정 확인 등 외부 보안 체계와의 결합이 필수적임을 시사합니다.
+*   **실무 적용**: 실제 현업에서는 API 사용 시 하드웨어 기반 인증, 사용자 역할 기반 접근 제어(RBAC), 지속적인 신원 확인 절차를 통합하여 안전한 언어 모델 환경을 구축해야 합니다.
+*   **한계점 명시**: 이 연구는 모델 가중치를 사용자가 직접 내려받아 수정하는 &#x27;오픈 모델&#x27; 환경이 아닌, API 형태로 제공되는 폐쇄형(Closed) 서비스 환경을 전제로 합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Paper page - Safeguards Based on Copyable Context Cannot...](https://huggingface.co/papers/2607.27951)
+&gt; - [Safeguards Based on Copyable Context Cannot Provide Reliable...](https://arxiv.org/html/2607.27951)
+&gt; - [Safeguards Based on Copyable Context Cannot Provide Reliable...](https://deeplearn.org/arxiv/798275/safeguards-based-on-copyable-context-cannot-provide-reliable-safety-for-llms)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문을 읽어보니 결국 &#x27;안전의 삼중고&#x27;를 수학적으로 깔끔하게 정리했군요. 그동안 업계가 프롬프트 인젝션 방어에만 매몰되어, 정작 &#x27;컨텍스트의 복제 가능성&#x27;이라는 근본적인 정보 이론적 한계를 간과하고 있었습니다. 보안의 본질은 결국 식별되지 않은 주체에 대한 신뢰를 어떻게 정의하느냐인데, 이 논문은 그 담론을 하드웨어 수준의 신뢰 증명(Trusted Credential)으로 끌어올렸다는 점에서 학술적 가치가 큽니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀은 이론적으로 완벽하지만, 현업 입장에선 머리가 아프네요. &#x27;복제 불가능한 신호&#x27;를 도입하라는 건 결국 모든 API 호출마다 하드웨어 보안 모듈(HSM)이나 복잡한 인증 절차를 끼워 넣으라는 건데, 안 그래도 Latency에 민감한 서비스 환경에서 UX는 어쩌라는 건지... 당장 프로덕션에서 오탐(Over-refusal) 줄이기도 벅찬데 아키텍처를 뒤엎어야 할 판입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;아니, 다들 너무 진지하신 거 아니에요? 어차피 오픈 모델 생태계는 이 논문의 가정에서 벗어나 있는데, API 서비스 위주로만 논의하는 게 좀 구시대적이지 않나요? &#x27;복제 불가능한 신호&#x27;를 로컬 모델 환경에서 어떻게 구현할지가 진짜 핫한 연구 주제가 될 것 같은데, 하드웨어 보안 칩이랑 연동된 로컬 추론 가속기 같은 쪽으로 엣지 AI 보안 논문 쏟아지겠네요. 저 벌써 관련 아이디어로 피칭 준비합니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

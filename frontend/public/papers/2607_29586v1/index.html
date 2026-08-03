@@ -1,0 +1,64 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TraceViT: 시각적 추상 추론을 위한 근거 기반 추적 지도 학습 | ArXiv Translator AI</title><meta name="description" content="TraceViT: 시각적 추상 추론을 위한 근거 기반 추적 지도 학습"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2607_29586v1"><meta property="og:type" content="article"><meta property="og:title" content="TraceViT: 시각적 추상 추론을 위한 근거 기반 추적 지도 학습"><meta property="og:description" content="TraceViT: 시각적 추상 추론을 위한 근거 기반 추적 지도 학습"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2607_29586v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="TraceViT: 시각적 추상 추론을 위한 근거 기반 추적 지도 학습"><meta name="twitter:description" content="TraceViT: 시각적 추상 추론을 위한 근거 기반 추적 지도 학습"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2607_29586v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "TraceViT: 시각적 추상 추론을 위한 근거 기반 추적 지도 학습", "description": "TraceViT: 시각적 추상 추론을 위한 근거 기반 추적 지도 학습", "datePublished": "2026-07-31", "url": "https://arxiv-ai-blog.vercel.app/papers/2607_29586v1", "author": [{"@type": "Person", "name": "Binnan Liu"}, {"@type": "Person", "name": "Yechi Ma"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2607_29586v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2607_29586v1"});gtag('event', 'paper_view', {"paper_id": "2607_29586v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>TraceViT: 시각적 추상 추론을 위한 근거 기반 추적 지도 학습</h1><p>TraceViT: 시각적 추상 추론을 위한 근거 기반 추적 지도 학습</p><pre>TraceViT: 시각적 추상 추론을 위한 근거 기반 추적 지도 학습
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** TraceViT: Grounded Trace Supervision for Visual Abstract Reasoning
+&gt; - **저자:** Binnan Liu, Yechi Ma, Tian Xie, Wei Hua
+&gt; - **발행일:** 2026-07-31
+&gt; - **PDF 링크:** [TraceViT: Grounded Trace Supervision for Visual Abstract Reasoning](https://arxiv.org/pdf/2607.29586v1)
+
+
+✨ 3줄 핵심 요약
+* 기존의 반복형 시각 추론 모델은 최종 결과물만 학습했으나, TraceViT는 중간 변환 단계까지 구조적으로 학습하는 &#x27;근거 기반 추적 지도 학습&#x27; 방식을 도입했습니다.
+* 프로그램 실행으로 생성된 단계적 변환 체인을 &#x27;Soft Trace Alignment&#x27; 기법으로 정렬하여, 모델이 예측 과정의 논리적 순서를 강제하면서도 자유롭게 연산할 수 있게 했습니다.
+* 그 결과 ARC-AGI-1 벤치마크에서 67.8%의 pass@2 성능을 기록하며 중간 상태 감독의 유효성을 입증했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+복잡한 퍼즐을 풀 때 결과만 맞히는 것이 아니라, &quot;어떤 순서로 조각을 옮겼는가&quot;라는 풀이 과정을 따라 하는 모델입니다. TraceViT는 입력부터 출력까지 이어지는 단계별 상태를 프로그램으로 미리 생성합니다. 모델은 반복 루프를 돌면서 이 중간 상태들을 참조하며 정답을 찾아갑니다. 특히, 정해진 시간표에 맞추라는 강박 대신 &#x27;순서&#x27;만 준수하도록 유연하게 학습함으로써 시각적 추론의 효율과 정확도를 높였습니다.
+
+🎯 배경 및 문제점
+ARC(Abstraction and Reasoning Corpus)와 같은 추상 추론 과제에서 기존의 &#x27;반복형 시각 추론기&#x27;는 매 반복마다 예측값을 생성하지만, 오직 최종 결과물에 대해서만 학습 신호를 받습니다. 이로 인해 중간 단계의 연산 과정이 통제되지 않아 복잡한 변환 규칙을 학습하는 데 한계가 있었습니다. 이를 해결하기 위해 인간의 풀이 과정이나 언어 설명을 활용하려 했으나, 이들은 데이터가 부족하거나 직접적인 그리드 상태 값으로 사용하기 어렵다는 문제가 있었습니다.
+
+💡 핵심 기술 및 아키텍처
+* **변환 체인 활용:** 프로그램 기반 과제 구현을 통해 입력에서 출력까지의 중간 그리드 상태를 &#x27;의미론적으로 단조로운 변환 체인&#x27;으로 분해했습니다.
+* **근거 구조 (Grounding):** 과제 규칙을 담은 &#x27;Task Reference&#x27;와 현재 그리드의 상태를 요약하는 &#x27;Object Workspace&#x27;를 매 반복마다 주입하여 모델이 문맥을 놓치지 않게 했습니다.
+* **Soft Trace Alignment:** 중간 단계의 길이가 루프 반복 횟수와 일치하지 않아도 정렬이 가능하도록 &#x27;소프트 최소값(soft-min) 동적 계획법&#x27;을 적용했습니다. 이를 통해 모델은 순서만 따르되, 각 단계를 처리하는 속도는 스스로 결정합니다.
+
+📊 실험 결과 분석
+* **성능:** TraceViT는 ARC-AGI-1에서 67.8%의 pass@2를, ARC-AGI-2에서 24.3%를 달성했습니다.
+* **학습 효용:** 추적 지도 학습(Trace supervision)은 그 자체로는 성능에 큰 도움이 되지 않으나, 근거 구조(Grounding)와 결합했을 때 비로소 유의미한 성능 향상을 보였습니다.
+* **오류 분석:** 400개 과제 분석 결과, 전체 오류의 상당 부분이 모델이 정답을 후보군에서 아예 생성하지 못하는 &#x27;커버리지(Coverage) 오류&#x27;에서 기인함이 밝혀졌습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+이 연구는 복잡한 시각적 문제를 단계별로 분해하여 푸는 모델의 가능성을 보여주었습니다. 특히, 최종 정답뿐만 아니라 &#x27;중간 과정(Trace)&#x27;을 감독하는 방식은 논리적 추론이 필수적인 다양한 도메인으로 확장될 수 있습니다. 현재는 프로그램으로 구현 가능한 과제에 국한되어 있으나, 향후 인간의 시연이나 학습된 분해 방식을 통해 더 넓은 영역의 추론 문제 해결에 기여할 것으로 기대됩니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2607.29586 TraceViT: Grounded Trace Supervision for Visual ...](https://arxiv.org/abs/2607.29586)
+&gt; - [TraceViT: Grounded Trace Supervision for Visual Abstract ...](https://arxivtldr.org/abs/2607.29586)
+&gt; - [TraceViT: Grounded Trace Supervision for Visual Abstract ...](https://papers.fzhiy.net/papers/2607-29586.html)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;Soft Trace Alignment라니, 이론적 접근은 흥미롭지만 결국 &#x27;커버리지 오류&#x27;가 지적된 점을 보면 범용성에는 의문이 남는군요. 중간 상태를 명시적으로 감독하는 것이 학습 효율은 높일지 몰라도, 모델이 고정된 로직 체인에 과적합될 위험은 없을까요? 논리적 유연성이 아닌 데이터 증강의 일종으로 보일 여지가 큽니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에선 바로 쓰기 좀 애매하네요. 일단 프로그램으로 중간 상태를 다 생성해야 한다는 것 자체가 데이터 파이프라인 구축할 때 지옥일 텐데... ARC 같은 벤치마크 점수 올리려고 엔지니어링 리소스 갈아 넣는 느낌이 강합니다. 그래도 추론 과정(Trace)을 가시화해서 디버깅할 수 있다는 점은 현업에서 꽤 매력적인 포인트겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;선배님, 이건 그냥 점수 놀이가 아니에요! &#x27;중간 상태 감독&#x27;이라는 아이디어 자체가 지금 SOTA 찍는 모델들이 놓치고 있는 추론의 &#x27;Process&#x27;를 건드린 거잖아요. 67.8%면 엄청난 건데, 다들 벤치마크 점수에만 매몰되지 말고 이 아키텍처를 어떻게 확장할지 고민해야 하는 거 아닌가요? 저는 이거 바로 구현 들어갑니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
