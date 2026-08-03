@@ -1,0 +1,69 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AgentHPOBench: 순차적 하이퍼파라미터 최적화를 위한 LLM 에이전트 평가 벤치마크 | ArXiv Translator AI</title><meta name="description" content="AgentHPOBench: 순차적 하이퍼파라미터 최적화를 위한 LLM 에이전트 평가 벤치마크"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2607_29626v1"><meta property="og:type" content="article"><meta property="og:title" content="AgentHPOBench: 순차적 하이퍼파라미터 최적화를 위한 LLM 에이전트 평가 벤치마크"><meta property="og:description" content="AgentHPOBench: 순차적 하이퍼파라미터 최적화를 위한 LLM 에이전트 평가 벤치마크"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2607_29626v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="AgentHPOBench: 순차적 하이퍼파라미터 최적화를 위한 LLM 에이전트 평가 벤치마크"><meta name="twitter:description" content="AgentHPOBench: 순차적 하이퍼파라미터 최적화를 위한 LLM 에이전트 평가 벤치마크"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2607_29626v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "AgentHPOBench: 순차적 하이퍼파라미터 최적화를 위한 LLM 에이전트 평가 벤치마크", "description": "AgentHPOBench: 순차적 하이퍼파라미터 최적화를 위한 LLM 에이전트 평가 벤치마크", "datePublished": "2026-07-31", "url": "https://arxiv-ai-blog.vercel.app/papers/2607_29626v1", "author": [{"@type": "Person", "name": "Tianyu Huai"}, {"@type": "Person", "name": "Tingshuo Fan"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2607_29626v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2607_29626v1"});gtag('event', 'paper_view', {"paper_id": "2607_29626v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>AgentHPOBench: 순차적 하이퍼파라미터 최적화를 위한 LLM 에이전트 평가 벤치마크</h1><p>AgentHPOBench: 순차적 하이퍼파라미터 최적화를 위한 LLM 에이전트 평가 벤치마크</p><pre>AgentHPOBench: 순차적 하이퍼파라미터 최적화를 위한 LLM 에이전트 평가 벤치마크
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** AgentHPOBench: A Benchmark For Evaluating LLM Agents as Sequential Hyperparameter Optimizers
+&gt; - **저자:** Tianyu Huai, Tingshuo Fan, Xinchi Chen, Yining Zheng, Yuxin Wang, Shuang Chen, Jie Zhou, Xuanjing Huang
+&gt; - **발행일:** 2026-07-31
+&gt; - **PDF 링크:** [AgentHPOBench: A Benchmark For Evaluating LLM Agents as Sequential Hyperparameter Optimizers](https://arxiv.org/pdf/2607.29626v1)
+
+
+✨ 3줄 핵심 요약
+- LLM 에이전트가 실험 결과와 로그를 해석하여 하이퍼파라미터를 스스로 개선할 수 있는지 평가하는 벤치마크 &#x27;AgentHPOBench&#x27;를 제안함.
+- 7개 연구 분야의 30개 실행 가능한 머신러닝 과제로 구성되어, 실제 연구 워크플로우에서의 에이전트 성능을 측정함.
+- 현존하는 에이전트들은 기초적인 최적화 능력은 보이나, 지속적인 반복 개선 및 복잡한 로그 진단에는 한계가 있음을 확인함.
+
+📖 쉽게 풀어쓴 1분 핵심
+기존의 AI 벤치마크는 주로 코드 생성이나 결과물의 정답 여부만을 확인하는 &#x27;정적 평가&#x27;에 치중해 왔습니다. 하지만 실제 연구 현장에서는 실험 결과를 보고 다음 실험의 설정을 바꾸는 &#x27;반복적인 시행착오&#x27;가 필수적입니다. AgentHPOBench는 에이전트가 스스로 하이퍼파라미터를 조정하며 최적의 결과에 도달하는지 평가하는 환경입니다. 마치 실제 연구자가 실험을 수행하듯, 에이전트가 이전 실험의 로그와 데이터를 분석해 다음 실험 조건을 제안하는 능력을 체계적으로 시험합니다.
+
+🎯 배경 및 문제점
+- **평가 환경의 부재:** 기존 벤치마크는 정적 코드 생성이나 전체 연구 워크플로우를 포괄적으로 다뤄, 하이퍼파라미터 최적화(HPO)에 특화된 에이전트의 판단력을 정밀하게 측정하기 어려움.
+- **연구적 맥락 누락:** 기존 HPO 벤치마크는 하이퍼파라미터와 결과 수치만 제공할 뿐, 실제 연구 환경에서 중요한 &#x27;실험 로그&#x27;와 &#x27;절차적 맥락&#x27;을 생략하고 있음.
+- **필요성:** 에이전트가 실험 데이터에서 근거를 추출하여 차기 실험을 개선하는 &#x27;실제 연구 환경에서의 최적화 능력&#x27; 검증이 필요함.
+
+💡 핵심 기술 및 아키텍처
+- **실행형 벤치마크:** 30개의 실제 머신러닝 연구 과제를 포함하며, 에이전트는Baseline 설정 이후 주어진 인터페이스를 통해 순차적으로 하이퍼파라미터를 수정함.
+- **다층적 데이터 제공:** 에이전트에게 하이퍼파라미터 설정뿐만 아니라, 실험 과정에서 생성된 지표(Metric)와 실행 로그(Log)를 모두 제공함.
+- **통합 평가 프로토콜:** 12개의 다양한 에이전트와 기존 HPO 베이스라인을 동일한 조건에서 비교할 수 있도록 설계함.
+
+📊 실험 결과 분석
+- **최적화 역량 확인:** 현재의 LLM 에이전트들은 도메인 전반에 걸쳐 유의미한 수준의 최적화 능력을 보여줌.
+- **한계점 도출:** 
+    - 성능을 개선하다가 중간에 탐색을 멈추거나, 더 나은 설정을 찾고도 이전의 좋지 않은 설정으로 돌아가는 등의 일관성 부족 현상이 관찰됨.
+    - 복잡한 오류 진단 및 장기적인 반복 개선 과정에서 여전히 명확한 한계가 존재함.
+- **모델별 반응:** 일부 모델(예: Claude Sonnet 4.6 등)은 초기의 잘못된 실험 방향을 수정하고 성능을 회복하는 능력을 보인 반면, 일부 모델은 개선 시도 없이 기본 설정만을 반복하는 등 모델별 대응 방식이 크게 차이 남.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+- **연구 자동화 가속:** 본 벤치마크를 통해 에이전트의 실험 설계 능력을 객관적으로 평가함으로써, 자율적인 과학적 발견을 위한 AI 연구원(Scientific Agent) 개발의 기준점을 마련함.
+- **실무적 적용:** 머신러닝 모델 개발 시 시간 소모적인 하이퍼파라미터 튜닝 작업을 에이전트가 효과적으로 대행할 수 있는 가능성을 제시하며, 향후 에이전트의 의사결정 신뢰성을 높이는 지표로 활용될 것임.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2607.29626 AgentHPOBench: A Benchmark For Evaluating LLM ...](https://arxiv.org/abs/2607.29626)
+&gt; - [GitHub - OpenMOSS/AgentHPOBench](https://github.com/OpenMOSS/AgentHPOBench)
+&gt; - [AgentHPOBench: A Benchmark For Evaluating LLM Agents as ...](https://www.emergentmind.com/papers/2607.29626)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;이 벤치마크는 흥미롭지만, 솔직히 &#x27;실험 로그를 해석한다&#x27;는 정의 자체가 모호합니다. 모델이 단순히 로그의 상관관계를 통계적으로 흉내 내는 것인지, 아니면 정말 물리적인 실험적 가설을 세우고 연역적으로 접근하는지 구분할 수 있나요? 그냥 베이지안 최적화에 LLM 껍데기만 씌운 건 아닌지 우려되네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 베이지안 최적화가 훨씬 빠르고 효율적인 경우가 많죠. 하지만 실무에선 단순 파라미터 튜닝보다 &#x27;왜 에러가 나는지&#x27; 로그를 보고 환경 설정을 바꾸는 게 더 큰 일입니다. 모델이 멍청하게 같은 에러를 반복하지 않게 만드는 게 핵심인데, 이번 벤치마크에서 그 &#x27;일관성 부족&#x27;을 꼬집은 건 꽤 의미 있다고 봅니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;두 분 다 너무 진지하신 거 아닌가요? 저는 벤치마크 자체보다 Claude Sonnet 4.6이 &#x27;실험 방향을 수정했다&#x27;는 대목에 꽂혔습니다! 이거야말로 진정한 &#x27;Scientific Agent&#x27;로 가는 첫걸음이죠. 깃허브 당장 스타 눌러놓고, 내일 랩 세미나 때 이거 기반으로 우리 실험 자동화 시스템 붙여보자고 교수님 설득해볼 예정입니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
