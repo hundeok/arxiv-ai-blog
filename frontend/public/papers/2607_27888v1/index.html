@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>모든 토큰이 동등한 가치를 갖지는 않는다: 긴 추론 과정(Long-CoT)을 위한 반사실적 민감도 신용 재할당 | ArXiv Translator AI</title><meta name="description" content="모든 토큰이 동등한 가치를 갖지는 않는다: 긴 추론 과정(Long-CoT)을 위한 반사실적 민감도 신용 재할당"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2607_27888v1"><meta property="og:type" content="article"><meta property="og:title" content="모든 토큰이 동등한 가치를 갖지는 않는다: 긴 추론 과정(Long-CoT)을 위한 반사실적 민감도 신용 재할당"><meta property="og:description" content="모든 토큰이 동등한 가치를 갖지는 않는다: 긴 추론 과정(Long-CoT)을 위한 반사실적 민감도 신용 재할당"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2607_27888v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="모든 토큰이 동등한 가치를 갖지는 않는다: 긴 추론 과정(Long-CoT)을 위한 반사실적 민감도 신용 재할당"><meta name="twitter:description" content="모든 토큰이 동등한 가치를 갖지는 않는다: 긴 추론 과정(Long-CoT)을 위한 반사실적 민감도 신용 재할당"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2607_27888v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "모든 토큰이 동등한 가치를 갖지는 않는다: 긴 추론 과정(Long-CoT)을 위한 반사실적 민감도 신용 재할당", "description": "모든 토큰이 동등한 가치를 갖지는 않는다: 긴 추론 과정(Long-CoT)을 위한 반사실적 민감도 신용 재할당", "datePublished": "2026-07-30", "url": "https://arxiv-ai-blog.vercel.app/papers/2607_27888v1", "author": [{"@type": "Person", "name": "Qiangqiang He"}, {"@type": "Person", "name": "Zhongheng Wu"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2607_27888v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2607_27888v1"});gtag('event', 'paper_view', {"paper_id": "2607_27888v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>모든 토큰이 동등한 가치를 갖지는 않는다: 긴 추론 과정(Long-CoT)을 위한 반사실적 민감도 신용 재할당</h1><p>모든 토큰이 동등한 가치를 갖지는 않는다: 긴 추론 과정(Long-CoT)을 위한 반사실적 민감도 신용 재할당</p><pre>모든 토큰이 동등한 가치를 갖지는 않는다: 긴 추론 과정(Long-CoT)을 위한 반사실적 민감도 신용 재할당
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Not All Tokens Deserve Equal Credit: Counterfactual Sensitivity Credit Reallocation for Long-CoT Reasoning
+&gt; - **저자:** Qiangqiang He, Zhongheng Wu, ZiJian Wang
+&gt; - **발행일:** 2026-07-30
+&gt; - **PDF 링크:** [Not All Tokens Deserve Equal Credit: Counterfactual Sensitivity Credit Reallocation for Long-CoT Reasoning](https://arxiv.org/pdf/2607.27888v1)
+
+
+✨ 3줄 핵심 요약
+* 기존 강화학습(GRPO)은 추론 과정의 모든 토큰에 동일한 보상을 분배하지만, 실제로는 토큰마다 기여도가 다릅니다.
+* &#x27;반사실적 민감도&#x27;를 분석한 결과, 기존 방식은 실제 추론 내용보다 단순히 표면적인 변화에 민감하게 반응하는 토큰에 불필요한 가중치를 부여하고 있었습니다.
+* 이를 개선한 CSCR 기법은 민감도가 높은 토큰의 신용을 낮추고 재조정함으로써, 수학적 추론 벤치마크에서 기존 GRPO 대비 향상된 성능을 보입니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+AI가 긴 문장으로 논리적인 추론(Long-CoT)을 할 때, 현재의 학습 방식은 &#x27;정답&#x27;이라는 결과가 나오면 그 과정을 구성한 모든 단어(토큰)에 똑같이 잘했다는 점수를 줍니다. 하지만 연구 결과, AI가 정답을 맞혔을 때나 틀렸을 때 똑같이 민감하게 변하는 토큰들은 실제 추론의 핵심이 아니라 단순히 &#x27;문맥상 쉽게 대체 가능한 단어&#x27;인 경우가 많았습니다. 이 연구는 AI가 정답 도출에 진짜 기여한 토큰에 집중하도록 만드는 &#x27;CSCR(반사실적 민감도 신용 재할당)&#x27;이라는 방식을 제안합니다.
+
+🎯 배경 및 문제점
+* **기존 방법의 한계:** GRPO와 같은 방식은 응답 전체의 보상을 모든 토큰에 균일하게 뿌립니다. 또한, 스스로를 가르치는 방식(OPSD)은 정답에 맞춘 이동이 신뢰할 만한 방향이라고 가정하지만, 실제로는 그 방향성이 모호합니다.
+* **토큰 민감도 문제:** 연구진이 정답/오답 상황을 가정해 테스트한 결과, 대부분의 토큰은 정답 여부와 상관없이 비슷하게 변했습니다. 즉, 학습 신호가 실제 추론 내용이 아닌, 단순히 바꾸기 쉬운 표면적인 단어들에 집중되고 있었습니다.
+
+💡 핵심 기술 및 아키텍처
+* **CSCR (Counterfactual Sensitivity Credit Reallocation):** GRPO를 확장한 방식입니다.
+* **작동 원리:**
+    1. 특정 토큰이 &#x27;반사실적 민감도(결과와 무관하게 변하는 성질)&#x27;가 높을수록 해당 토큰의 신용(Credit)을 줄입니다.
+    2. 토큰 수준의 장점(Advantage)을 다시 정규화하여 전체 보상 예산과 Verifier(검증기)가 설정한 올바른 방향성을 유지합니다.
+* 이 방식은 복잡한 구조 변경 없이도 AI가 추론의 핵심 내용에 더 큰 가중치를 두도록 유도합니다.
+
+📊 실험 결과 분석
+* CSCR은 수학적 추론 벤치마크에서 동일한 계산량을 가진 기존 GRPO 베이스라인을 일관되게 능가합니다.
+* 구체적인 수치는 논문 발췌본 내에 명시되어 있지 않습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **추론 모델 효율화:** 긴 추론 과정이 필요한 법률, 수학, 복잡한 논리 문제 해결 시 AI의 응답 신뢰도를 높일 수 있습니다.
+* **학습 효율성:** AI가 문장의 핵심 논리 구조와 부차적인 문구의 중요도를 구분하게 함으로써, 데이터와 연산 자원을 더욱 효율적으로 활용하여 성능을 개선할 수 있습니다.
+* **할루시네이션 완화:** 무의미한 반복이나 표면적 단어에 집착하는 현상을 줄여, 더욱 논리적이고 정제된 답변을 생성하는 데 기여할 것으로 기대됩니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Computer Science](https://arxiv.org/list/cs/pastweek?skip=325&amp;show=250)
+&gt; - [Artificial Intelligence](https://arxiv.org/list/cs.AI/pastweek?skip=58&amp;show=50)
+&gt; - [Computer Science Jul 2026](https://arxiv.org/list/cs/2026-07?skip=13000&amp;show=100)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;GRPO의 보상 할당 문제를 &#x27;반사실적 민감도&#x27;라는 개념으로 접근한 건 흥미롭지만, 과연 이게 일반화 가능한지 의문이 드네요. 단순히 토큰의 민감도를 낮추는 게 추론의 &#x27;인과적 핵심&#x27;을 포착한다고 단정할 수 있을까요? 자칫 잘못하면 모델이 복잡한 추론 로직보다 덜 민감한 고정 관념에 안주하게 될 위험이 있습니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 일반화가 관건이긴 한데, 실무 입장에서는 GRPO 돌릴 때마다 쓸데없는 토큰들에 그라디언트 낭비되는 게 늘 골치였거든요. 연산 자원 효율화 측면에서 CSCR은 꽤 매력적인 최적화 포인트가 될 것 같습니다. 다만 추론 시점의 오버헤드가 얼마나 늘어날지가 배포 전 검증 포인트겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;다들 너무 보수적이신 거 아니에요? ㅋㅋ 이번 CSCR 논문은 그동안 우리가 &#x27;Long-CoT은 토큰이 길수록 좋다&#x27;고만 믿었던 맹점을 찌른 거잖아요. 이제 보상 재할당만 잘해도 할루시네이션 잡을 수 있다는 건데, 이거 빨리 구현해서 벤치마크 점수 뽑아봐야겠어요. 오늘 바로 코드 뜯어봅니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

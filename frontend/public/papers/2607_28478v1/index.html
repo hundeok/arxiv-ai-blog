@@ -1,0 +1,62 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>거리에 세차장까지 걸어가시겠습니까? 상식적 추론에서 거대 언어 모델의 현저성 편향 밝히기 | ArXiv Translator AI</title><meta name="description" content="거리에 세차장까지 걸어가시겠습니까? 상식적 추론에서 거대 언어 모델의 현저성 편향 밝히기"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2607_28478v1"><meta property="og:type" content="article"><meta property="og:title" content="거리에 세차장까지 걸어가시겠습니까? 상식적 추론에서 거대 언어 모델의 현저성 편향 밝히기"><meta property="og:description" content="거리에 세차장까지 걸어가시겠습니까? 상식적 추론에서 거대 언어 모델의 현저성 편향 밝히기"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2607_28478v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="거리에 세차장까지 걸어가시겠습니까? 상식적 추론에서 거대 언어 모델의 현저성 편향 밝히기"><meta name="twitter:description" content="거리에 세차장까지 걸어가시겠습니까? 상식적 추론에서 거대 언어 모델의 현저성 편향 밝히기"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2607_28478v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "거리에 세차장까지 걸어가시겠습니까? 상식적 추론에서 거대 언어 모델의 현저성 편향 밝히기", "description": "거리에 세차장까지 걸어가시겠습니까? 상식적 추론에서 거대 언어 모델의 현저성 편향 밝히기", "datePublished": "2026-07-30", "url": "https://arxiv-ai-blog.vercel.app/papers/2607_28478v1", "author": [{"@type": "Person", "name": "Zheng Wu"}, {"@type": "Person", "name": "Chenhao Xue"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2607_28478v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2607_28478v1"});gtag('event', 'paper_view', {"paper_id": "2607_28478v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>거리에 세차장까지 걸어가시겠습니까? 상식적 추론에서 거대 언어 모델의 현저성 편향 밝히기</h1><p>거리에 세차장까지 걸어가시겠습니까? 상식적 추론에서 거대 언어 모델의 현저성 편향 밝히기</p><pre>거리에 세차장까지 걸어가시겠습니까? 상식적 추론에서 거대 언어 모델의 현저성 편향 밝히기
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Would You Walk to the Car Wash? Revealing the Salience Bias of Large Language Models in Commonsense Reasoning
+&gt; - **저자:** Zheng Wu, Chenhao Xue, Shijie Zheng, Yijie Lu, Cheng Yang, Zhuosheng Zhang
+&gt; - **발행일:** 2026-07-30
+&gt; - **PDF 링크:** [Would You Walk to the Car Wash? Revealing the Salience Bias of Large Language Models in Commonsense Reasoning](https://arxiv.org/pdf/2607.28478v1)
+
+
+✨ 3줄 핵심 요약
+* 거대 언어 모델(LLM)은 입력 데이터의 무관한 수치나 세부 정보에 매몰되어 정작 중요한 상식적 전제를 놓치는 &#x27;현저성 편향(Salience Bias)&#x27;을 보입니다.
+* 이는 모델의 지식이 부족한 것이 아니라, 잘못된 질문 방식이 핵심 상식을 억압하여 발생하는 &#x27;지식 억제(Knowledge Suppression)&#x27; 현상입니다.
+* 재학습 없이도 질문 방식(프롬프트)을 개선하는 것만으로 모델의 논리적 오류를 상당 부분 해결할 수 있습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+우리는 흔히 AI가 똑똑하다고 생각하지만, 때로는 매우 멍청한 실수를 합니다. 예를 들어 &quot;50미터 떨어진 세차장까지 걸어가라&quot;는 질문을 하면, AI는 &quot;50미터&quot;라는 숫자 정보에 집중한 나머지 &#x27;자동차를 세차하려면 차를 타고 가야 한다&#x27;는 기본 상식을 무시하고 &quot;걸어가라&quot;는 황당한 조언을 내놓습니다. 이 논문은 이런 현상을 &#x27;현저성 편향&#x27;이라 정의했습니다. 연구 결과, AI가 상식을 모르는 게 아니라, 질문 속에 포함된 불필요한 정보가 AI의 판단력을 가로막고 있다는 사실을 밝혀냈습니다. 따라서 질문 방식만 살짝 바꾸어도 AI는 훨씬 똑똑하고 상식적인 답변을 내놓을 수 있습니다.
+
+🎯 배경 및 문제점
+LLM은 수학 문제나 코딩처럼 모든 정보가 유용한 환경에서는 뛰어난 성능을 보입니다. 그러나 일상적인 상식 추론 문제에서는 모델이 질문에 포함된 불필요한 단서(현저한 정보)에 과도하게 고착되는 현상이 발생합니다. 연구진은 이러한 &#x27;현저성 편향&#x27;이 모델의 근본적인 지식 부재인지, 아니면 질문의 프레이밍(구조)에 의한 일시적 마비인지 규명하고자 했습니다.
+
+💡 핵심 기술 및 아키텍처
+연구진은 상식적 함정이 포함된 4가지 차원의 데이터셋 &#x27;SaliTrap&#x27;을 구축했습니다. 이를 통해 모델의 성능을 평가하고, 질문에서 상황 설정을 제거하거나 상식적 전제를 먼저 확인하도록 유도하는 등 다양한 프롬프팅 기법을 적용했습니다. 특히 모델에게 질문 전제 조건의 타당성을 먼저 묻는 &#x27;맥락 없는 지식 탐색(Context-free Knowledge Probe)&#x27; 기법을 통해, 모델 내부에 잠재된 상식을 끄집어내는 실험을 진행했습니다.
+
+📊 실험 결과 분석
+* **광범위한 편향:** 12개의 최신 LLM을 평가한 결과, 모든 모델에서 현저성 편향이 발견되었습니다.
+* **지식 억제 입증:** 질문의 상황 설정을 제거하고 핵심 상식만을 물었을 때, 기존에 실패했던 사례의 90% 이상이 올바르게 해결되었습니다. 이는 모델이 이미 상식을 보유하고 있으나, 편향된 정보에 의해 억압받고 있었음을 증명합니다.
+* **프롬프팅의 효과:** 복잡한 재학습 없이도 물리적 전제를 확인하는 가벼운 프롬프팅만으로 모델의 논리 오류를 효과적으로 줄일 수 있음이 확인되었습니다. (실험 수치는 논문 내 표 7 참조)
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+이번 연구는 LLM의 추론 성능을 향상시키는 방식을 &#x27;모델 모델링(모델 훈련)&#x27;에서 &#x27;지식 도출(프롬프팅)&#x27;로 재정의합니다. 실무자들은 AI 비서가 사용자의 질문에 단순히 맞추려 하기보다, 질문 속의 모순을 먼저 파악하도록 설계함으로써 물리적으로 불가능한 계획을 생성하는 등의 오류를 방지할 수 있습니다. 이는 AI의 신뢰성을 높이고, 사용자가 AI를 비판적으로 검토하지 않고 그대로 따랐을 때 발생할 수 있는 현실적 자원 낭비를 줄이는 데 기여할 것입니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Would You Walk to the Car Wash? Revealing the Salience Bias of...](https://arxiv.org/pdf/2607.28478)
+&gt; - [Wuzheng02/SaliTrap: Research code for &quot;Would You Walk to the Car...](https://github.com/Wuzheng02/SaliTrap)
+&gt; - [huggingface.co/papers/2607.28478.md](https://huggingface.co/papers/2607.28478.md)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;현저성 편향(Salience Bias)을 지식 억제(Knowledge Suppression)로 해석한 점은 흥미롭군요. 하지만 단순히 프롬프팅으로 해결 가능하다는 결론은 근본적인 모델 구조의 결함을 덮으려는 미봉책에 불과합니다. 모델이 왜 주의(Attention) 메커니즘에서 유독 숫자나 특정 키워드에 가중치를 두는지, 그 레이어별 활성화를 뜯어보지 않으면 이건 그저 &#x27;프롬프트 엔지니어링의 승리&#x27;일 뿐입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 일리가 있지만, 실무에서는 &#x27;당장 수정 가능한 것&#x27;이 중요합니다. 매번 모델 재학습(Fine-tuning) 돌릴 수도 없잖아요. 논문에서 제시한 &#x27;맥락 없는 지식 탐색&#x27; 기법을 우리 서비스 RAG 파이프라인에 적용해보니, 확실히 환각 증상이 눈에 띄게 줄었습니다. 거창한 아키텍처 개선보다 이런 &#x27;프롬프트 가이드&#x27;가 실제 프로덕션 비용을 훨씬 아껴줍니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 50미터 세차장 예시 너무 웃픈데요? ㅋㅋㅋ 사실 우리 다들 LLM 쓰면서 &#x27;왜 이렇게 멍청한 답을 하지?&#x27; 싶을 때가 많았는데 이게 다 현저성 편향 때문이었다니! 이제 &#x27;질문 전제 타당성 체크&#x27; 프롬프트 넣는 게 상식이 되겠네요. SaliTrap 데이터셋 당장 클론해서 제 실험에도 돌려봐야겠어요. 님들, 이건 학회 데드라인 직전에 꿀 빨기 딱 좋은 논문입니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
