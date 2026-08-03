@@ -1,0 +1,69 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>적외선 시각-언어 모델을 위한 타겟형 의미 공격: QR 구조 기반 열 트리거 | ArXiv Translator AI</title><meta name="description" content="적외선 시각-언어 모델을 위한 타겟형 의미 공격: QR 구조 기반 열 트리거"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2607_29445v1"><meta property="og:type" content="article"><meta property="og:title" content="적외선 시각-언어 모델을 위한 타겟형 의미 공격: QR 구조 기반 열 트리거"><meta property="og:description" content="적외선 시각-언어 모델을 위한 타겟형 의미 공격: QR 구조 기반 열 트리거"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2607_29445v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="적외선 시각-언어 모델을 위한 타겟형 의미 공격: QR 구조 기반 열 트리거"><meta name="twitter:description" content="적외선 시각-언어 모델을 위한 타겟형 의미 공격: QR 구조 기반 열 트리거"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2607_29445v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "적외선 시각-언어 모델을 위한 타겟형 의미 공격: QR 구조 기반 열 트리거", "description": "적외선 시각-언어 모델을 위한 타겟형 의미 공격: QR 구조 기반 열 트리거", "datePublished": "2026-07-31", "url": "https://arxiv-ai-blog.vercel.app/papers/2607_29445v1", "author": [{"@type": "Person", "name": "Xiang Chen"}, {"@type": "Person", "name": "Yingying Zhao"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2607_29445v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2607_29445v1"});gtag('event', 'paper_view', {"paper_id": "2607_29445v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>적외선 시각-언어 모델을 위한 타겟형 의미 공격: QR 구조 기반 열 트리거</h1><p>적외선 시각-언어 모델을 위한 타겟형 의미 공격: QR 구조 기반 열 트리거</p><pre>적외선 시각-언어 모델을 위한 타겟형 의미 공격: QR 구조 기반 열 트리거
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** QR-Structured Thermal Triggers for Targeted Semantic Attacks on Infrared Vision-Language Models
+&gt; - **저자:** Xiang Chen, Yingying Zhao, Chao Li, Jiaju Han, Ben Zhang, Ang Li, Jiahuan Long, Yiwei Wei, Jiujiang Guo, Chengyin Hu
+&gt; - **발행일:** 2026-07-31
+&gt; - **PDF 링크:** [QR-Structured Thermal Triggers for Targeted Semantic Attacks on Infrared Vision-Language Models](https://arxiv.org/pdf/2607.29445v1)
+
+
+✨ 3줄 핵심 요약
+* **새로운 공격 기법**: 적외선 시각-언어 모델(IR-VLM)을 대상으로, 모델 학습이나 내부 데이터 접근 없이 목표한 개념으로 인식 결과를 유도하는 &#x27;QR-STT&#x27; 프레임워크를 제안했습니다.
+* **스텔스 설계**: QR 코드의 구조적 특징을 활용하여 시각적 눈에 띄지 않으면서도, 적외선 이미지의 &#x27;차갑고 뜨거운&#x27; 영역을 정밀하게 조절하여 모델의 의미론적 판단을 왜곡합니다.
+* **높은 범용성**: 분류(Classification) 작업에서 최적화된 공격은 이미지 캡셔닝 및 시각적 질의응답(VQA)과 같은 생성형 작업으로도 전이되어 모델 전체의 신뢰성을 위협합니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+최근 적외선 이미지를 언어로 해석하는 IR-VLM 기술이 발전하고 있습니다. 연구진은 이 모델들이 특정 개념(예: 강아지, 자동차 등)으로 잘못 인식하게 만드는 공격 방법인 &#x27;QR-STT&#x27;를 개발했습니다. 이 방식은 QR 코드처럼 생긴 패턴을 적외선 이미지에 아주 미세하게 심는 것인데, 단순히 이미지를 방해하는 수준이 아니라 특정 단어를 지목하여 모델의 사고방식을 조종합니다. 흥미로운 점은 공격자가 원하는 대로 모델이 &quot;이건 자동차야&quot;라고 말하게 하거나, 질문에 편향된 답을 하도록 유도할 수 있다는 것입니다. 모델을 직접 수정하거나 학습시키지 않아도 외부에서 수행 가능한 &#x27;블랙박스&#x27; 공격 기법입니다.
+
+🎯 배경 및 문제점
+기존의 적외선 감지기는 정해진 범주 내에서만 인식했으나, IR-VLM은 광범위한 언어 개념을 공유 공간에서 매핑하므로 새로운 보안 위험에 노출되어 있습니다.
+* **목표 지향적 오류**: 기존 공격은 단순히 인식 방해에 그쳤으나, 공격자가 원하는 특정 개념으로 모델의 출력을 강제로 조종(Semantic Steering)하는 위협이 새롭게 대두되었습니다.
+* **구조적 취약점**: 적외선 도메인에서의 구조적 변조나 크로스 모달(시각-언어 간) 정렬의 안정성에 대한 연구가 부족했습니다.
+
+💡 핵심 기술 및 아키텍처
+QR-STT는 QR 코드의 구조를 활용하여 공격의 정밀도와 스텔스 성능을 동시에 확보합니다.
+* **모듈 기반 구성**: QR 그리드를 고정 영역(구조 유지용)과 편집 가능 영역(공격용)으로 분리합니다. 편집 영역의 각 모듈은 &#x27;차가움&#x27;, &#x27;중립&#x27;, &#x27;뜨거움&#x27; 상태로 나뉘어 적외선 강도를 조절합니다.
+* **하이브리드 최적화**: 이산적인 모듈 배치와 연속적인 렌더링 파라미터(위치, 크기, 강도, 블러 등)를 결합하여 처리하는 3단계 검색 과정을 거칩니다.
+* **스텔스 보존**: 이미지 강도 조절과 블러 처리를 통해 디지털 아티팩트를 억제하여 사람이 감지하기 어려운 시각적 은밀성을 유지합니다.
+
+📊 실험 결과 분석
+* **성능 지표**: 여러 CLIP 기반 인코더에서 타겟 개념으로의 인식 전환이 성공적으로 이루어졌습니다.
+* **작업 간 전이**: 분류 태스크에서 학습된 공격이 캡셔닝 및 VQA 모델로 전이되어, 생성 수준의 의미론적 편향을 유도함을 확인했습니다.
+* **구성 요소 효과**: 모듈의 위상(Topology)을 최적화하는 과정이 공격 성공률(ASR)에 가장 큰 영향을 미쳤으며, 스텔스 렌더링 기술은 이미지 유사도(SSIM) 유지에 필수적인 역할을 했습니다. 
+*(참고: 구체적인 수치는 논문 내 표와 차트 등을 통해 제시되었으나, 본 문맥 내에 ASR 및 SSIM의 정확한 백분율 수치는 명시되지 않음)*
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **보안 위협 가시화**: 자율주행, 야간 감시, 구조 활동 등 적외선 센서가 필수적인 분야에서 IR-VLM을 사용할 때 발생할 수 있는 보안 취약점을 증명했습니다.
+* **강건성 평가의 중요성**: 이 연구는 IR-VLM 모델 개발 시 구조적 공격에 대한 방어 로직을 필수적으로 포함해야 함을 시사하며, 차세대 인공지능 안전성 평가의 핵심적인 기준으로 활용될 수 있습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [QR-Structured Thermal Triggers for Targeted Semantic Attacks on...](https://arxiv.org/pdf/2607.29445)
+&gt; - [Computer Vision and Pattern Recognition](https://arxiv.org/list/cs.CV/recent)
+&gt; - [OntoLogX: Ontology-Guided Knowledge Graph Extraction from Cybersecurity Logs with Large Language Models - Daily Arxiv - 안광섭 ex)haebom](https://slashpage.com/haebom/daily_arxiv?lang=en&amp;tl=ja&amp;post=4w67rj24g8k91m5yq8ep)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;이 논문은 적외선 도메인의 물리적 특성과 VLM의 의미론적 정렬을 교묘하게 엮어낸 점은 인정하지만, 실제 현장 환경에서의 노이즈 강건성(Robustness) 검증이 너무 빈약합니다. QR 구조가 실제 환경의 온도 편차나 대기 산란 환경에서도 과연 유효한 공격 벡터로 작동할지 의문이네요. 학술적 참신함은 있으나 실전 배치 모델에 즉각적인 위협이 된다고 보기엔 비약이 큽니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 필드 환경은 변수가 너무 많죠. 하지만 실무자 입장에서 &#x27;블랙박스 공격&#x27;으로 VQA 모델의 출력을 특정 방향으로 튈 수 있게 만든다는 건 보안 관점에서 꽤 아찔합니다. 특히 자율주행 야간 주행 시 적외선 센서가 이런 식의 타겟 공격을 받으면, 모델 학습 데이터에 없던 &#x27;엣지 케이스&#x27;를 강제로 주입당하는 꼴이거든요. 방어 측면에서 적외선 입력단에 QR 패턴 필터링을 거는 전처리가 시급해 보입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 근데 다들 너무 진지하신 거 아닌가요? 저는 이 &#x27;QR-STT&#x27; 아이디어가 너무 힙한데요! 단순 노이즈 공격이 아니라 물리적 트리거를 QR 형태로 구조화해서 시각적 스텔스까지 챙긴 건 진짜 논문 제목부터 &#x27;나 학회 뚫을 거임&#x27;이라고 적혀있는 수준인데... 이거 그대로 젠레이티브 모델에 응용해서 &#x27;적외선 딥페이크&#x27;나 &#x27;의미론적 조작&#x27; 더 세게 들어갈 수 있을 것 같아요. 다음 학회 데드라인까지 이거 변형해서 써먹을 논문 10개는 더 나올 듯요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
