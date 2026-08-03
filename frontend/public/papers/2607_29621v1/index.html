@@ -1,0 +1,73 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CENDRe: 자연스러운 도메인 표현을 이용한 개념 추출 | ArXiv Translator AI</title><meta name="description" content="CENDRe: 자연스러운 도메인 표현을 이용한 개념 추출"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2607_29621v1"><meta property="og:type" content="article"><meta property="og:title" content="CENDRe: 자연스러운 도메인 표현을 이용한 개념 추출"><meta property="og:description" content="CENDRe: 자연스러운 도메인 표현을 이용한 개념 추출"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2607_29621v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="CENDRe: 자연스러운 도메인 표현을 이용한 개념 추출"><meta name="twitter:description" content="CENDRe: 자연스러운 도메인 표현을 이용한 개념 추출"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2607_29621v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "CENDRe: 자연스러운 도메인 표현을 이용한 개념 추출", "description": "CENDRe: 자연스러운 도메인 표현을 이용한 개념 추출", "datePublished": "2026-07-31", "url": "https://arxiv-ai-blog.vercel.app/papers/2607_29621v1", "author": [{"@type": "Person", "name": "Antonia Holzapfel"}, {"@type": "Person", "name": "Andres Felipe Posada Moreno"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2607_29621v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2607_29621v1"});gtag('event', 'paper_view', {"paper_id": "2607_29621v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>CENDRe: 자연스러운 도메인 표현을 이용한 개념 추출</h1><p>CENDRe: 자연스러운 도메인 표현을 이용한 개념 추출</p><pre>CENDRe: 자연스러운 도메인 표현을 이용한 개념 추출
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** CENDRe: Concept Extraction with Natural Domain Representations
+&gt; - **저자:** Antonia Holzapfel, Andres Felipe Posada Moreno, Sebastian Trimpe
+&gt; - **발행일:** 2026-07-31
+&gt; - **PDF 링크:** [CENDRe: Concept Extraction with Natural Domain Representations](https://arxiv.org/pdf/2607.29621v1)
+
+
+✨ 3줄 핵심 요약
+* **도메인 확장:** 기존 시간 도메인에 국한된 개념 추출(CE) 방식을 주파수 도메인까지 확장하여 모델의 판단 근거를 더 폭넓게 분석합니다.
+* **자동 개념 설정:** 실루엣 기반 집계 방식을 통해 사용자가 미리 설정하지 않아도 데이터에 최적화된 개념 개수를 자동으로 결정합니다.
+* **정확한 위치 추적:** 입력 신호의 차별적인 영역을 집중적으로 강조하는 마스크 생성 기술을 통해 모델의 예측 근거를 시각적으로 투명하게 제시합니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+딥러닝 모델, 특히 합성곱 신경망(CNN)이 시계열 데이터를 분류할 때 &quot;왜 그런 결과를 내놓았는지&quot; 이해하는 것은 산업 현장에서 매우 중요합니다. 기존 방식들은 주로 시간 흐름에만 집중하거나, 사람이 미리 몇 개의 특징(개념)을 찾을지 정해줘야 하는 한계가 있었습니다. 
+
+본 논문에서 제안한 **CENDRe**는 이 문제를 해결합니다. 모델이 학습한 잠재 공간을 분석해 주파수와 시간 영역 모두에서 중요한 특징을 스스로 찾아냅니다. 특히 푸리에 변환과 같은 수학적 기법을 통해 모델이 특정 주파수 대역을 보고 판단했는지까지 짚어내며, 복잡한 설정 없이도 모델의 판단 논리를 효과적으로 설명해 줍니다.
+
+🎯 배경 및 문제점
+* **기존 방법의 한계:** 
+    1. **시간 도메인 편향:** 주파수 기반 특징을 학습한 모델을 제대로 설명하지 못함.
+    2. **개념 수 설정 문제:** 사용자가 미리 개념 개수(K)를 지정해야 하여 주관적 편향이 개입됨.
+    3. **부정확한 위치 추적:** 모델의 판단 근거와 실제 설명 마스크가 어긋나는 경우가 빈번함.
+* **필요성:** 산업 설비 진단이나 의료 진단처럼 잘못된 예측이 큰 비용 손실을 초래하는 도메인에서는 신뢰할 수 있는 설명 가능 인공지능(XAI)이 필수적임.
+
+💡 핵심 기술 및 아키텍처
+* **2단계 클러스터링:** 잠재 공간의 데이터를 단계적으로 군집화하며, 실루엣 점수를 활용해 최적의 개념 개수를 자동 산출.
+* **그라디언트 기반 위치 추적:** 잠재 표현과 프로토타입을 대비시킨 점수(Presence Score)의 기울기를 통해, 모델 예측에 결정적인 기여를 한 입력 영역을 마스크 형태로 도출.
+* **가역적 매핑:** 입력 신호를 푸리에 변환과 같은 가역적 연산을 통해 분석함으로써, 시간 영역의 설명을 주파수 영역의 위치 정보로 즉각 변환.
+* **관련성 점수 산출:** 추출된 각 개념이 특정 클래스 분류에 얼마나 기여했는지 정량화.
+
+📊 실험 결과 분석
+* **합성 데이터셋:** 상태 최신(SOTA) 방법들과 비교했을 때, 표현의 정확도(Representation Correctness)는 대등한 수준을 유지하면서 중요도 정확도(Importance Correctness) 면에서는 훨씬 뛰어난 성능을 보임.
+* **실제 데이터 적용:** 베어링 고장 진단 데이터에서 기존 시간 도메인 방법들이 포착하지 못한 실제 고장 진단 시 중요하게 여겨지는 특정 주파수 대역들을 성공적으로 추출함.
+* **연산 효율:** 개념 개수를 자동으로 결정하는 CENDRe의 변형 모델들은 고정된 K값을 사용하는 기존 방식들에 비해 6~9배 빠르게 동작함 (원문 표 8, 9 참조).
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **산업 유지보수:** 베어링 등 회전 기계의 고장 진단 시, 모델이 물리적인 고장 주파수를 제대로 보고 판단하는지 검증 가능.
+* **의료 시스템:** 생체 신호 분석 시 모델의 진단 근거를 의학적으로 해석 가능한 도메인(주파수 분석 등)으로 제시하여 신뢰도 향상.
+* **블랙박스 모델 신뢰성:** Spurious correlation(가짜 상관관계)에 의존하는 모델을 걸러내고, 실제 유의미한 패턴을 학습하도록 유도하여 인공지능 배포의 안전성을 확보함.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [CENDRe: Concept Extraction with Natural Domain Representations](https://arxiv.org/abs/2607.29621)
+&gt; - [CENDRe: Concept Extraction with Natural Domain Representations](https://www.emergentmind.com/papers/2607.29621)
+&gt; - [CENDRe: Concept Extraction with Natural Domain Representations](https://www.weekinpapers.com/paper/2607.29621v1)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;CENDRe의 접근 방식은 흥미로우나, &#x27;실루엣 기반의 자동 개념 개수 산출&#x27;이 과연 복잡한 비정상 데이터 분포에서도 Robust하게 작동할지 의문입니다. 특히 2단계 클러스터링 과정에서 발생하는 연산 효율이 실제 고차원 시계열 데이터셋에서도 논문에서 주장하는 6~9배의 속도 이득을 유지할 수 있을지 엄밀한 검증이 필요해 보입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에선 클러스터링 오버헤드가 좀 걸리긴 하겠네요. 하지만 현장에서 고장 진단 모델 배포할 때 가장 큰 리스크가 &#x27;왜 이 모델이 여기서 알람을 띄웠나&#x27;를 설명 못 하는 거거든요. 푸리에 변환으로 주파수 도메인까지 긁어와서 마스킹 해준다면 도메인 전문가인 엔지니어들을 설득하기 훨씬 수월할 것 같습니다. 일단 PoC부터 돌려봐야겠는데요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 드디어 XAI에도 주파수 도메인 개념이 제대로 도입되네요! 다들 너무 비판적이야~ 요즘 SOTA들은 다들 속도랑 해석력 두 마리 토끼 잡으려고 난리인데, 이 정도면 졸업 논문 레퍼런스로 완벽한 거 아닌가요? 저도 당장 내일 실험 세팅에 넣어서 베어링 데이터 말고 생체 신호 쪽에도 적용해볼래요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
