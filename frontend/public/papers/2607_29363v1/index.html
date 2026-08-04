@@ -1,0 +1,64 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>저프레임 속도 및 고차원 연속 토큰을 사용한 안정적인 자기회귀 음성 생성 | ArXiv Translator AI</title><meta name="description" content="저프레임 속도 및 고차원 연속 토큰을 사용한 안정적인 자기회귀 음성 생성"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2607_29363v1"><meta property="og:type" content="article"><meta property="og:title" content="저프레임 속도 및 고차원 연속 토큰을 사용한 안정적인 자기회귀 음성 생성"><meta property="og:description" content="저프레임 속도 및 고차원 연속 토큰을 사용한 안정적인 자기회귀 음성 생성"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2607_29363v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="저프레임 속도 및 고차원 연속 토큰을 사용한 안정적인 자기회귀 음성 생성"><meta name="twitter:description" content="저프레임 속도 및 고차원 연속 토큰을 사용한 안정적인 자기회귀 음성 생성"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2607_29363v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "저프레임 속도 및 고차원 연속 토큰을 사용한 안정적인 자기회귀 음성 생성", "description": "저프레임 속도 및 고차원 연속 토큰을 사용한 안정적인 자기회귀 음성 생성", "datePublished": "2026-07-31", "url": "https://arxiv-ai-blog.vercel.app/papers/2607_29363v1", "author": [{"@type": "Person", "name": "Yi Luo"}, {"@type": "Person", "name": "Rongzhi Gu"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2607_29363v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2607_29363v1"});gtag('event', 'paper_view', {"paper_id": "2607_29363v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>저프레임 속도 및 고차원 연속 토큰을 사용한 안정적인 자기회귀 음성 생성</h1><p>저프레임 속도 및 고차원 연속 토큰을 사용한 안정적인 자기회귀 음성 생성</p><pre>저프레임 속도 및 고차원 연속 토큰을 사용한 안정적인 자기회귀 음성 생성
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Stable Autoregressive Speech Generation with Low-Frame-Rate High-Dimensional Continuous Tokens
+&gt; - **저자:** Yi Luo, Rongzhi Gu, Jixun Yao
+&gt; - **발행일:** 2026-07-31
+&gt; - **PDF 링크:** [Stable Autoregressive Speech Generation with Low-Frame-Rate High-Dimensional Continuous Tokens](https://arxiv.org/pdf/2607.29363v1)
+
+
+✨ 3줄 핵심 요약
+* 음성 생성 시 &#x27;데이터 표현의 정보량&#x27;과 &#x27;자기회귀(AR) 모델의 안정성&#x27; 사이의 상충 관계를 해결하기 위한 새로운 프레임워크를 제안했습니다.
+* Locodec(토크나이저)과 MP-ELD(생성 모델)를 결합하여, 저프레임 속도에서도 고차원 정보와 높은 재구성 품질을 유지합니다.
+* 외부의 사전 학습된 언어 모델(SSL/ASR 등) 없이도 장시간 음성 생성 시 발생하는 오차 누적을 효과적으로 억제합니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+음성 생성 모델은 더 많은 정보를 담은 데이터를 사용할수록 소리는 정교해지지만, 생성 과정에서 오차가 누적되어 나중에는 소리가 일그러지거나 무너지는 문제가 발생합니다. 이 논문은 정보를 압축하면서도 정교함을 잃지 않는 **Locodec** 토크나이저와, 생성 중 경로를 분리하여 오차를 스스로 교정하는 **MP-ELD** 생성기를 설계했습니다. 결과적으로 8Hz의 낮은 프레임 속도에서도 높은 품질의 음성을 안정적으로 생성할 수 있게 되었습니다.
+
+🎯 배경 및 문제점
+음성 생성 모델에서 고차원/고대역폭 토큰을 사용하면 음질은 좋아지지만, 자기회귀(AR) 과정에서 작은 오차가 미래의 출력값에 피드백되어 시간이 지날수록 음량, 음색, 속도 등이 어긋나는 &#x27;분포 드리프트(Distribution Drift)&#x27; 현상이 발생합니다. 기존 모델들은 정보량과 안정성 사이에서 선택을 강요받았으며, 이를 극복하는 것이 최신 음성·멀티모달 모델의 핵심 과제입니다.
+
+💡 핵심 기술 및 아키텍처
+1. **Locodec**: 저차원 핵심 매니폴드와 고차원 좌표를 분리하여 학습하는 토크나이저입니다. 고차원 토큰을 예측하기 쉽게 설계하여 정보 손실을 최소화합니다.
+2. **MP-ELD (Multi-Path Information-Routing Encoder-LM-Decoder)**: 오차 누적의 주원인인 &#x27;경로 간 정보 충돌&#x27;을 해결하기 위해 정보를 기능별 채널로 나누어 전달합니다.
+3. **잔여 Classifier-Free Guidance (CFG)**: 다중 경로 정보를 구조화된 잔여 수정 방식으로 활용하여 특정 역할별로 가이드를 적용, 오차 누적을 방지합니다.
+
+📊 실험 결과 분석
+* **사양**: 8Hz 프레임 속도와 768차원 토큰을 사용하여 실험했습니다.
+* **성능**: 사전 학습된 외부 모델(SSL, ASR, 텍스트 모델 등)을 전혀 사용하지 않고도 경쟁력 있는 단어 오류율(WER)을 달성했습니다.
+* **안정성**: 장시간 음성 합성 시에도 음성 품질이 안정적으로 유지됨을 확인했습니다. (구체적인 수치 데이터는 본 발췌본에 포함되어 있지 않습니다.)
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+이 기술은 음성 합성뿐만 아니라 이미지, 비디오 등 시퀀스 생성 전반에 걸쳐 활용될 수 있습니다. 특히 스트리밍 환경에서 높은 재구성 품질과 긴 호흡의 안정성을 동시에 요구하는 서비스에 큰 이점을 제공합니다. 또한, 복잡한 사전 학습 모델 없이도 고성능을 낼 수 있어 모델 경량화 및 추론 비용 절감에 기여할 것으로 기대됩니다. 향후에는 다중 화자 상호작용이나 복합 음향 장면과 같은 보다 긴 형태의 생성 분야로 확장될 가능성이 큽니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Stable Autoregressive Speech Generation with Low-Frame-Rate...](https://arxiv.org/html/2607.29363)
+&gt; - [2607.29363 Stable Autoregressive Speech Generation with...](https://arxiv.org/abs/2607.29363)
+&gt; - [Stable Autoregressive Speech Generation with Low-Frame-Rate...](https://arxiv.org/pdf/2607.29363)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;8Hz 프레임 레이트에서 고차원 연속 토큰을 다루면서 외부 SSL 모델 없이 안정성을 확보했다는 점은 이론적으로 흥미롭군. 하지만 MP-ELD의 다중 경로 라우팅이 복잡한 음향 환경이나 다중 화자 데이터셋에서도 일관된 매니폴드 표현을 유지할 수 있을지는 의문이야. 실험 결과의 안정성 지표가 구체적으로 누락된 점이 아쉽군.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에선 &#x27;안정성&#x27;의 정의가 중요하죠. 8Hz면 추론 속도는 확실히 이득이겠네요. 저도 외부 ASR 의존성을 걷어낼 수 있다는 점이 제일 매력적입니다. 다만, 현업에서 이 정도 아키텍처면 학습 시 하이퍼파라미터 튜닝 지옥이 열릴 게 뻔한데, 실제 서빙 환경에서 추론 오버헤드나 구현 복잡도를 어떻게 관리할지가 관건이겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;선배님, 이건 그냥 성능 수치가 문제가 아니라 &#x27;패러다임의 전환&#x27;입니다! 다들 비싼 사전 학습 모델 갖다 쓰느라 바쁜데, 순수 자기회귀 모델로 오차 누적을 잡았다는 것 자체가 대박 아닌가요? 오늘 당장 깃허브 리포지토리 확인해보고 우리 랩 세미나 발제 자료로 준비해야겠어요. 당장 테스트 해보고 싶어서 근질근질하네요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

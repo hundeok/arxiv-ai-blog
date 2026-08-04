@@ -1,0 +1,75 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>약한 모델에서 강한 모델로의 온-폴리시 증류 (Weak-to-Strong On-Policy Distillation) | ArXiv Translator AI</title><meta name="description" content="약한 모델에서 강한 모델로의 온-폴리시 증류 (Weak-to-Strong On-Policy Distillation)"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2607_26246v1"><meta property="og:type" content="article"><meta property="og:title" content="약한 모델에서 강한 모델로의 온-폴리시 증류 (Weak-to-Strong On-Policy Distillation)"><meta property="og:description" content="약한 모델에서 강한 모델로의 온-폴리시 증류 (Weak-to-Strong On-Policy Distillation)"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2607_26246v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="약한 모델에서 강한 모델로의 온-폴리시 증류 (Weak-to-Strong On-Policy Distillation)"><meta name="twitter:description" content="약한 모델에서 강한 모델로의 온-폴리시 증류 (Weak-to-Strong On-Policy Distillation)"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2607_26246v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "약한 모델에서 강한 모델로의 온-폴리시 증류 (Weak-to-Strong On-Policy Distillation)", "description": "약한 모델에서 강한 모델로의 온-폴리시 증류 (Weak-to-Strong On-Policy Distillation)", "datePublished": "2026-07-28", "url": "https://arxiv-ai-blog.vercel.app/papers/2607_26246v1", "author": [{"@type": "Person", "name": "Fangxu Yu"}, {"@type": "Person", "name": "Zinan Lin"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2607_26246v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2607_26246v1"});gtag('event', 'paper_view', {"paper_id": "2607_26246v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>약한 모델에서 강한 모델로의 온-폴리시 증류 (Weak-to-Strong On-Policy Distillation)</h1><p>약한 모델에서 강한 모델로의 온-폴리시 증류 (Weak-to-Strong On-Policy Distillation)</p><pre>약한 모델에서 강한 모델로의 온-폴리시 증류 (Weak-to-Strong On-Policy Distillation)
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Weak-to-Strong On-Policy Distillation
+&gt; - **저자:** Fangxu Yu, Zinan Lin, Xiaodong Liu, Weijia Xu, Michael Xu, Tianyi Zhou, Jianfeng Gao
+&gt; - **발행일:** 2026-07-28
+&gt; - **PDF 링크:** [Weak-to-Strong On-Policy Distillation](https://arxiv.org/pdf/2607.26246v1)
+
+
+✨ 3줄 핵심 요약
+* **새로운 증류 패러다임:** 강력한 교사 모델 없이도, 여러 개의 약한 모델을 활용해 학생 모델의 성능을 향상시키는 W2S-OPD 프레임워크를 제안합니다.
+* **로짓 공간의 대조 학습:** 두 약한 모델(대조 쌍)의 로짓 차이를 통해 핵심 역량 방향을 추출하고, 이를 학생 모델의 기반 모델에 결합하여 학습시킵니다.
+* **성능 검증:** 수학 및 코드 생성 벤치마크에서 기존 온-폴리시 증류(OPD)를 능가하며, 학생 모델보다 약한 모델들로부터도 학습하여 학생 모델의 자체 성능을 상회하는 결과를 보였습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+보통 인공지능 모델을 학습시킬 때는 나보다 뛰어난 &#x27;선생님&#x27; 모델이 필요합니다. 하지만 현실에서는 나보다 똑똑한 모델이 없거나, 구하기 어려운 경우가 많습니다. 본 논문은 이 문제를 해결하기 위해 &#x27;약한 모델들&#x27;을 활용합니다. 특정 대조 조건(예: RL 학습 전후, 크기가 다른 모델 등)을 가진 두 개의 약한 모델을 선택하고, 이 둘의 차이에서 정답을 찾아내는 방향(능력)을 찾아냅니다. 학생 모델은 이 정보를 바탕으로 스스로 문제를 풀며 학습하여, 결과적으로 자신보다 약한 모델들에게서도 가르침을 얻어 성능을 끌어올립니다.
+
+🎯 배경 및 문제점
+기존의 온-폴리시 증류(OPD)는 학생 모델의 롤아웃(실행 경로)을 활용해 교사의 지식을 전달받지만, 다음과 같은 한계가 있습니다.
+* **강력한 교사 의존성:** 학생보다 뛰어난 교사 모델이 필수적입니다.
+* **확장성 한계:** 최전선 모델의 경우 더 큰 교사 모델을 찾기 어렵습니다.
+* **비용 문제:** 여러 도메인 전문가를 통합하는 방식은 학생 모델 규모에서의 학습 비용이 너무 큽니다.
+
+💡 핵심 기술 및 아키텍처
+W2S-OPD는 &#x27;프록시 교사(Proxy Teacher)&#x27;를 구축하여 문제를 해결합니다.
+1. **대조 쌍 구성:** 다음 세 가지 방식 중 하나를 선택해 대조 쌍을 만듭니다.
+    * RL 학습 전/후 모델 비교 (학습된 기술 분리)
+    * 규모가 다른 두 베이스 모델 비교 (규모에 따른 능력 분리)
+    * 정답/오답 힌트가 포함된 모델 비교 (인스턴스별 방향성 분리)
+2. **로짓 대조(Logit Contrast):** 두 모델의 로짓 차이를 계산하여 능력이 향상되는 방향을 추출합니다.
+3. **증류 과정:** 이 방향성을 학생 모델에 더해 프록시 교사를 만들고, 학생 모델이 자신의 롤아웃에서 역방향 KL 발산(Reverse KL)을 최소화하도록 학습시킵니다.
+
+📊 실험 결과 분석
+* **수학 및 코드 벤치마크:** 총 4개의 수학 및 3개의 코드 벤치마크에서 OPD보다 일관되게 우수한 성능을 기록했습니다.
+* **학습 효과:** 학생 모델(8B)이 자신보다 작은 모델(4B, 0.6B)들로부터 지식을 습득하여, 기존의 일반적인 OPD 방식은 물론, 자신의 초기 성능까지 뛰어넘었습니다.
+* **학습 신호의 차이:** 실험을 통해 RL 대비 및 힌트 대조는 &#x27;추론 체계&#x27;를, 규모 대조는 &#x27;문제 해결 절차&#x27;를 강조하는 서로 다른 학습 신호를 제공함을 확인했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **데이터 효율성:** 더 뛰어난 교사 모델 없이도 공개된 작은 모델들을 조합해 고성능 모델을 만들 수 있어, 모델 학습의 진입 장벽을 낮춥니다.
+* **범용적 적용:** 특정 도메인에 국한되지 않고 수학적 추론, 코드 생성 등 복합적인 과제에서 성능 향상을 입증했습니다.
+* **미래 전망:** 이 연구는 최첨단 모델이 자신보다 저렴하고 약한 감독 소스로부터 지속적으로 향상될 수 있는 새로운 학습 패러다임의 가능성을 제시합니다. 
+
+*(참고: 논문 발췌문 내 상세 실험 수치는 그림 1의 요약된 평균 정확도 지표를 기준으로 작성되었습니다.)*
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Weak-to-Strong On-Policy Distillation](https://arxiv.org/html/2607.26246v1)
+&gt; - [GitHub - Yu-Fangxu/W2S-OPD: Weak-to-Strong On-Policy Distillation · GitHub](https://github.com/Yu-Fangxu/W2S-OPD)
+&gt; - [2607.26246 Weak-to-Strong On-Policy Distillation](https://arxiv.org/abs/2607.26246)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;이론적으로는 흥미롭지만, 로짓 대조를 통한 방향성 추출이 과연 &#x27;지식의 증류&#x27;인지 아니면 단순히 노이즈를 필터링하며 최적화 경로를 좁히는 &#x27;정규화&#x27;의 일종인지 명확히 구분할 필요가 있겠군요. 특히 RL 전후 모델의 차이를 추론 능력의 본질로 간주하는 것은 논리적 비약이 있을 수 있습니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 일리가 있지만, 실무자 입장에선 &#x27;SOTA급 교사가 없어도 된다&#x27;는 점만으로도 눈이 돌아갑니다. 매번 거대 모델 추론 비용 태우느라 인프라팀이랑 싸우는 것도 지치거든요. 다만, 현업에서 이 방식이 복잡한 데이터셋에서도 로짓 밸런싱이 잘 먹힐지, 그리고 파이프라인 복잡도 대비 리턴이 확실할지는 검증이 좀 필요해 보입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;선배님들, 이게 핵심이에요! 지금 중요한 건 모델 크기가 아니라 &#x27;어떻게 약한 애들끼리 시너지를 내느냐&#x27;잖아요. 8B가 4B한테 배우는 게 가능하다면 데이터 증강이나 SFT에 쏟는 돈을 획기적으로 줄일 수 있다는 건데, 이건 당장 다음 주 랩 미팅 때 바로 구현해봐야 합니다. 벌써 GitHub 스타 찍고 왔습니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

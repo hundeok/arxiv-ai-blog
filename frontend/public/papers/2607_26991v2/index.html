@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>RL$^2$-VLA: 시각-언어-행동 모델을 위한 테스트 타임 스케일링 기반 적응형 강화학습 잠재 합성 조정 | ArXiv Translator AI</title><meta name="description" content="RL$^2$-VLA: 시각-언어-행동 모델을 위한 테스트 타임 스케일링 기반 적응형 강화학습 잠재 합성 조정"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2607_26991v2"><meta property="og:type" content="article"><meta property="og:title" content="RL$^2$-VLA: 시각-언어-행동 모델을 위한 테스트 타임 스케일링 기반 적응형 강화학습 잠재 합성 조정"><meta property="og:description" content="RL$^2$-VLA: 시각-언어-행동 모델을 위한 테스트 타임 스케일링 기반 적응형 강화학습 잠재 합성 조정"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2607_26991v2"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="RL$^2$-VLA: 시각-언어-행동 모델을 위한 테스트 타임 스케일링 기반 적응형 강화학습 잠재 합성 조정"><meta name="twitter:description" content="RL$^2$-VLA: 시각-언어-행동 모델을 위한 테스트 타임 스케일링 기반 적응형 강화학습 잠재 합성 조정"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2607_26991v2");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "RL$^2$-VLA: 시각-언어-행동 모델을 위한 테스트 타임 스케일링 기반 적응형 강화학습 잠재 합성 조정", "description": "RL$^2$-VLA: 시각-언어-행동 모델을 위한 테스트 타임 스케일링 기반 적응형 강화학습 잠재 합성 조정", "datePublished": "2026-07-29", "url": "https://arxiv-ai-blog.vercel.app/papers/2607_26991v2", "author": [{"@type": "Person", "name": "Derek Ming Siang Tan"}, {"@type": "Person", "name": "Shailesh Shailesh"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2607_26991v2", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2607_26991v2"});gtag('event', 'paper_view', {"paper_id": "2607_26991v2", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>RL$^2$-VLA: 시각-언어-행동 모델을 위한 테스트 타임 스케일링 기반 적응형 강화학습 잠재 합성 조정</h1><p>RL$^2$-VLA: 시각-언어-행동 모델을 위한 테스트 타임 스케일링 기반 적응형 강화학습 잠재 합성 조정</p><pre>RL$^2$-VLA: 시각-언어-행동 모델을 위한 테스트 타임 스케일링 기반 적응형 강화학습 잠재 합성 조정
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** RL$^2$-VLA: Adaptive RL Latent Compositional Steering with Test-Time Scaling for Vision-Language-Action Models
+&gt; - **저자:** Derek Ming Siang Tan, Shailesh Shailesh, Srikrishna Iyer, William Wei Jie Teo, Yuanliang Ju, Qiao Gu, Guillaume Sartoretti
+&gt; - **발행일:** 2026-07-29
+&gt; - **PDF 링크:** [RL$^2$-VLA: Adaptive RL Latent Compositional Steering with Test-Time Scaling for Vision-Language-Action Models](https://arxiv.org/pdf/2607.26991v2)
+
+
+✨ 3줄 핵심 요약
+* **적응형 조정 전략**: VLA(시각-언어-행동) 모델의 실패가 예상될 때만 강화학습 기반의 행동 조정(Steering)을 수행하여 불필요한 행동 왜곡을 방지합니다.
+* **성능 향상**: SIMPLER 및 PolaRiS 벤치마크의 도메인 이탈(OOD) 환경에서 성공률을 최대 17.3% 향상시켰습니다.
+* **실무적 모듈성**: 사전 학습된 VLA 모델을 재학습할 필요 없이, 추론 단계에서 독립적으로 적용 가능한 모듈형 프레임워크입니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+로봇 모델(VLA)은 정형화된 환경에서는 잘 작동하지만, 새로운 환경에서는 실패하는 경우가 많습니다. 기존의 수정 방법들은 모델이 이미 잘하고 있을 때도 무리하게 개입하여 오히려 성능을 떨어뜨리는 문제가 있었습니다. **RL$^2$-VLA**는 모델의 내부 상태를 분석해 &quot;실패가 예상될 때만&quot; 강화학습으로 학습된 보조 정책을 가동합니다. 이를 통해 평소에는 기존 모델의 안정적인 판단을 따르고, 위기 상황에서는 다양한 대안 행동을 생성하여 성공 확률을 획기적으로 높였습니다.
+
+🎯 배경 및 문제점
+* **도메인 이탈(OOD) 취약성**: VLA 모델은 훈련되지 않은 새로운 환경에서 성능이 크게 저하됩니다.
+* **비효율적 개입**: 기존의 추론 단계 조정 방식은 기본 정책(Base Policy)이 성공할 가능성이 높을 때도 개입하여, 오히려 잘 작동하던 행동을 왜곡하는 부작용이 있습니다.
+* **행동 다양성 부족**: 기존 방식들은 비슷한 실패 패턴을 반복하는 경향이 있어, 문제 해결을 위한 충분한 행동 다양성을 제공하지 못합니다.
+
+💡 핵심 기술 및 아키텍처
+* **잠재 공간 강화학습(Offline RL on VLA Latents)**: VLA 모델의 잠재 공간(Latents) 정보를 바탕으로 가벼운 강화학습 정책을 훈련하여, 모방 학습 범위를 벗어난 다양한 행동 대안을 생성합니다.
+* **속도 필드 합성(Velocity Composition)**: VLA의 흐름(Flow) 속도와 강화학습 정책의 속도를 가중치에 따라 조합하여 최적의 행동을 유도합니다.
+* **실패 감지 모듈(Failure Detection)**: SAFE 프레임워크를 기반으로, 내부 특징값을 분석하여 실패가 예측되는 시점에만 조정을 활성화하는 적응형 스위칭 메커니즘을 적용했습니다.
+
+📊 실험 결과 분석
+* **성능 개선**: SIMPLER 및 PolaRiS 벤치마크 도메인 이탈 설정에서 최대 17.3%의 성공률 개선을 확인했습니다.
+* **적응형 제어 효과**: 실패를 감지하여 대응하는 적응형 방식이 비적응형 방식보다 평균 14.2% 높은 성능 향상을 보였습니다.
+* **검증**: 시뮬레이션뿐만 아니라 실제 로봇 환경 실험에서도 도구 조작 실패를 회피하거나 복구하는 등 강력한 전이 성능을 입증했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **범용 로봇 모델의 신뢰성 강화**: 로봇이 복잡한 환경이나 변화하는 작업 조건에서도 실패를 스스로 인지하고 행동을 교정할 수 있게 하여 범용 로봇 상용화에 기여합니다.
+* **모듈형 설계**: 대규모 모델을 처음부터 다시 학습시킬 필요 없이, 기존 VLA 모델 위에 덧붙이는 &#x27;플러그인&#x27; 형태로 적용할 수 있어 배포 비용이 낮습니다.
+* **향후 활용**: 현재는 실패 감지 모델 학습을 위해 일부 온라인 데이터 수집이 필요하나, 향후 대규모 오프라인 데이터를 활용하는 방향으로 개선될 경우 실무 적용 가능성은 더욱 커질 것으로 기대됩니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [RL²-VLA: Adaptive RL Latent Compositional Steering with...](https://rl2-vla.github.io/)
+&gt; - [RL^2-VLA: Adaptive RL Latent Compositional Steering with...](https://arxiv.org/pdf/2607.26991)
+&gt; - [marmotlab/RL2-VLA: RL²-VLA: Adaptive RL Latent Compositional...](https://github.com/marmotlab/RL2-VLA)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문의 아이디어 자체는 &#x27;조건부 개입&#x27;이라는 관점에서 꽤 직관적이고 우아하군요. 하지만 &#x27;실패 감지 모듈&#x27;의 신뢰도가 떨어질 경우 발생하는 false positive가 전체 시스템의 결정론적 성격을 어떻게 해칠지에 대한 분석이 부족해 보입니다. 이론적 보장(Theoretical Guarantee) 없이 단순히 17% 향상이라는 결과만으로는 실제 산업 현장에서의 안전성을 담보하기 어렵지 않을까요?&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님, 현업에서는 그 &#x27;우아함&#x27;보다 &#x27;모듈성&#x27;에 더 눈이 갑니다. 100B 넘는 VLA를 매번 파인튜닝하는 건 비용적으로 재앙이거든요. 플러그인 형태로 얹을 수 있다는 건 실무자 입장에선 신세계죠. 다만, 리얼타임 추론 시점의 오버헤드가 관건인데, 런타임 성능 수치는 벤치마크만큼 잘 나올지 데모 영상만 봐선 모르겠네요. 당장 프로덕션에 태우기엔 레이턴시가 좀 걱정됩니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;두 분 다 너무 보수적이시네요! 지금 학계에선 이 &#x27;Test-time Scaling&#x27;이랑 &#x27;Steering&#x27; 키워드가 핵심인데, VLA에 RL을 붙여서 잠재 공간을 컨트롤했다는 게 힙하잖아요? 특히 굳이 전체를 다시 학습 안 시켜도 된다는 점에서 이건 당장 다음 학회 휩쓸 논문입니다. 저는 벌써 깃헙 리포지토리 스타 찍고 로컬 환경에 돌려보는 중이에요. 일단 성공하면 랩미팅 때 발표하고 교수님 설득해볼 겁니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
