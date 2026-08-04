@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>GPTQ-2D: 삼차 시간 복잡도의 양방향 적응형 반올림 | ArXiv Translator AI</title><meta name="description" content="GPTQ-2D: 삼차 시간 복잡도의 양방향 적응형 반올림"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2607_27042v1"><meta property="og:type" content="article"><meta property="og:title" content="GPTQ-2D: 삼차 시간 복잡도의 양방향 적응형 반올림"><meta property="og:description" content="GPTQ-2D: 삼차 시간 복잡도의 양방향 적응형 반올림"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2607_27042v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="GPTQ-2D: 삼차 시간 복잡도의 양방향 적응형 반올림"><meta name="twitter:description" content="GPTQ-2D: 삼차 시간 복잡도의 양방향 적응형 반올림"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2607_27042v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "GPTQ-2D: 삼차 시간 복잡도의 양방향 적응형 반올림", "description": "GPTQ-2D: 삼차 시간 복잡도의 양방향 적응형 반올림", "datePublished": "2026-07-29", "url": "https://arxiv-ai-blog.vercel.app/papers/2607_27042v1", "author": [{"@type": "Person", "name": "Jiale Chen"}, {"@type": "Person", "name": "Torsten Hoefler"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2607_27042v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2607_27042v1"});gtag('event', 'paper_view', {"paper_id": "2607_27042v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>GPTQ-2D: 삼차 시간 복잡도의 양방향 적응형 반올림</h1><p>GPTQ-2D: 삼차 시간 복잡도의 양방향 적응형 반올림</p><pre>GPTQ-2D: 삼차 시간 복잡도의 양방향 적응형 반올림
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** GPTQ-2D: Cubic-Time Two-Sided Adaptive Rounding
+&gt; - **저자:** Jiale Chen, Torsten Hoefler, Dan Alistarh
+&gt; - **발행일:** 2026-07-29
+&gt; - **PDF 링크:** [GPTQ-2D: Cubic-Time Two-Sided Adaptive Rounding](https://arxiv.org/pdf/2607.27042v1)
+
+
+✨ 3줄 핵심 요약
+* **양방향 최적화:** 기존의 단방향(One-sided) 적응형 반올림을 행렬의 좌우 양쪽 기저 행렬을 포함하는 양방향(Two-sided) 문제로 확장했습니다.
+* **연산 효율성:** 기존 방식이 사차(Quartic) 시간 복잡도를 요구했던 것과 달리, 행렬의 반대각선(Anti-diagonal)을 병렬 처리하는 방식으로 삼차(Cubic) 시간 복잡도를 달성했습니다.
+* **결과 동일성:** 제안된 GPTQ-2D 알고리즘은 기존의 직관적인 사차 시간 방식과 수학적으로 완전히 동일한 반올림 경로를 보장합니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+GPTQ는 인공지능 모델의 가중치를 정수로 반올림할 때 사용하는 대표적인 기술입니다. 기존 방식은 행렬의 한쪽 면만 고려했지만, 실제로는 양쪽에서 작용하는 복잡한 관계를 계산해야 할 때가 많습니다. 이를 단순히 수학적으로 확장하면 계산량이 기하급수적으로 늘어나는 문제가 발생합니다. 본 논문은 데이터를 처리하는 순서를 &#x27;반대각선&#x27; 방향으로 재배치하여, 독립적인 원소들을 동시에 계산함으로써 계산 속도를 획기적으로 줄였습니다. 이를 통해 정확도는 그대로 유지하면서 훨씬 빠르게 양방향 반올림을 수행할 수 있게 되었습니다.
+
+🎯 배경 및 문제점
+- **단방향의 한계:** 기존 GPTQ는 행렬의 한쪽 기저 행렬(Basis matrix)만을 고려하여 $O(m^2n)$의 비용으로 작동합니다.
+- **양방향 문제의 복잡성:** 좌우 양쪽 기저 행렬($A, B$)을 모두 고려하는 양방향 반올림은 벡터화(Vectorization)할 경우 $O(m^2n^2)$의 사차 시간 복잡도가 발생합니다.
+- **최적화 필요성:** 동일한 결과를 산출하면서도 더 효율적으로 계산할 수 있는 알고리즘 설계가 필요했습니다.
+
+💡 핵심 기술 및 아키텍처
+- **Kronecker 구조 활용:** 양방향 문제는 Kronecker 곱으로 표현되며, 이를 통해 반대각선 상의 원소들이 서로 독립적임을 발견했습니다.
+- **반대각선 병렬 처리:** 같은 반대각선에 위치한 원소들을 병렬로 처리하고, 오차 전파를 행과 열로 나누어 처리하는 &#x27;Lazy update&#x27; 방식을 적용했습니다.
+- **알고리즘 최적화:** 불필요하게 전체 행렬을 갱신하던 기존 방식 대신, 행과 열 단위로 오차를 전달하여 전체 연산량을 $O(mn \cdot \max(m, n))$으로 단축했습니다.
+
+📊 실험 결과 분석
+- **성능:** 정사각형 행렬 기준, 기존 사차($O(n^4)$) 대비 삼차($O(n^3)$) 시간 복잡도를 달성했습니다.
+- **정확성:** 제안하는 알고리즘은 기존의 직렬 방식과 수학적으로 완전히 동일한 반올림 경로(Trajectory)와 결과를 생성함을 이론적으로 증명했습니다(Theorem 1 및 2).
+- **데이터 구조:** 메모리 효율을 위해 팽창된 기울기 배열(Padded skew array)을 사용하여 연산 효율을 높였습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+- **모델 경량화:** 행렬 분해(Kronecker-factored Hessian 등)를 사용하는 신경망 양자화 과정에서 효율적인 반올림을 가능하게 합니다.
+- **적용의 한계:** 본 연구는 최적의 반올림 경로를 찾는 계산 규칙 그 자체를 제시하는 것이며, 실제 사용되는 기저 행렬($A, B$)을 추정하는 별도의 모델링 문제는 다루지 않습니다.
+- **확장성:** 기존 단방향 GPTQ를 포함하는 일반화된 알고리즘으로서, 향후 더 정교한 가중치 압축 기술의 기반이 될 수 있습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Literature Review GPTQ-2D: Cubic-Time Two-Sided Adaptive Rounding](https://www.themoonlight.io/en/review/gptq-2d-cubic-time-two-sided-adaptive-rounding)
+&gt; - [GPTQ-2D: Cubic-Time Two-Sided Adaptive Rounding](https://chatpaper.com/de/paper/315072)
+&gt; - [2607.27042 GPTQ-2D: Cubic-Time Two-Sided Adaptive Rounding](https://arxiv.org/abs/2607.27042)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;이론적으로 동일한 반올림 경로를 보장하면서 $O(n^4)$를 $O(n^3)$으로 줄였다는 점은 수치 해석학적으로 훌륭한 기여입니다. 다만, 실제 모델의 Hessian matrix가 Kronecker 구조를 완벽히 따르지 않는 현실적인 노이즈 상황에서, 이 양방향 최적화가 어느 정도의 일반화 성능 향상을 가져올지가 관건이겠군요. 단순한 수학적 증명을 넘어 실측 데이터에서의 강건성을 더 검증해봐야 할 논문입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에선 &#x27;어디서든 잘 돌아가는가&#x27;가 핵심이죠. 반대각선 병렬 처리로 $O(n^3)$까지 내린 건 정말 반가운 소식이네요. 기존 쿼틱 복잡도 때문에 대형 모델 양자화할 때마다 밤새던 기억이 나는데, 이 구현체 나오면 바로 프로덕션 파이프라인에 태워봐야겠습니다. 다만 팽창된 기울기 배열로 인한 메모리 오버헤드가 실제 GPU 캐시 히트율에 어떤 영향을 줄지는 벤치마크를 찍어봐야 알겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 드디어 GPTQ의 고질적인 단방향 한계가 깨졌네요! 요즘 안 그래도 Kronecker-factored 기법들이 다시 주목받고 있는데, 이번 GPTQ-2D는 그냥 &#x27;미쳤다&#x27;는 말밖에 안 나옵니다. 다들 $O(n^4)$ 앓이 할 때 이런 우아한 수학적 트릭으로 복잡도 줄이는 거 보면, 진짜 AI 연구는 창의력 싸움인 것 같아요. 오늘 바로 구현체 뜯어보고 제 실험 모델에 바로 적용해 보려고요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

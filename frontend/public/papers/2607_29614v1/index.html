@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>설명가능성-성능 계수에 대한 인간 중심적 검증 | ArXiv Translator AI</title><meta name="description" content="설명가능성-성능 계수에 대한 인간 중심적 검증"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2607_29614v1"><meta property="og:type" content="article"><meta property="og:title" content="설명가능성-성능 계수에 대한 인간 중심적 검증"><meta property="og:description" content="설명가능성-성능 계수에 대한 인간 중심적 검증"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2607_29614v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="설명가능성-성능 계수에 대한 인간 중심적 검증"><meta name="twitter:description" content="설명가능성-성능 계수에 대한 인간 중심적 검증"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2607_29614v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "설명가능성-성능 계수에 대한 인간 중심적 검증", "description": "설명가능성-성능 계수에 대한 인간 중심적 검증", "datePublished": "2026-07-31", "url": "https://arxiv-ai-blog.vercel.app/papers/2607_29614v1", "author": [{"@type": "Person", "name": "Christian Oliva"}, {"@type": "Person", "name": "Luis F. Lago-Fernández"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2607_29614v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2607_29614v1"});gtag('event', 'paper_view', {"paper_id": "2607_29614v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>설명가능성-성능 계수에 대한 인간 중심적 검증</h1><p>설명가능성-성능 계수에 대한 인간 중심적 검증</p><pre>설명가능성-성능 계수에 대한 인간 중심적 검증
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** A Human-Centered Validation of the Explainability-Performance Coefficient
+&gt; - **저자:** Christian Oliva, Luis F. Lago-Fernández
+&gt; - **발행일:** 2026-07-31
+&gt; - **PDF 링크:** [A Human-Centered Validation of the Explainability-Performance Coefficient](https://arxiv.org/pdf/2607.29614v1)
+
+
+✨ 3줄 핵심 요약
+- 설명가능성-성능 계수(EPC)를 단일 수치로 압축한 &#x27;EPC 점수&#x27;를 제안하여 다양한 모델과 데이터에서 설명 기법의 품질을 객관적으로 정량화함.
+- 실험 결과, 그래디언트 기반 기법(특히 IG)이 복잡한 데이터 환경에서 모델 독립적 기법보다 우수한 설명 성능과 효율성을 보임.
+- EPC 점수가 높은 설명일수록 인간의 감정 사전 및 시각적 주석과 강한 상관관계를 보여, 인간의 인지 체계와 잘 정렬됨을 입증함.
+
+📖 쉽게 풀어쓴 1분 핵심
+딥러닝 모델의 복잡성이 커지면서 &quot;왜 이런 결정을 내렸는가?&quot;를 설명하는 XAI 기술이 중요해졌습니다. 하지만 어떤 설명이 &#x27;좋은 설명&#x27;인지 판단할 객관적 기준이 부족했습니다. 본 연구는 모델이 최소한의 정보(특징)만으로도 예측 성능을 유지하는지를 측정하는 &#x27;EPC 점수&#x27;를 통해 설명의 품질을 평가합니다. 이 점수가 높을수록 모델이 중요한 특징을 정확히 짚어내고 있으며, 인간이 실제로 중요하다고 생각하는 부분(단어나 이미지 영역)과도 일치한다는 점을 확인했습니다.
+
+🎯 배경 및 문제점
+- **설명 성능의 모호성:** 현재의 XAI 평가 지표들은 모델의 충실성(fidelity)이나 안정성 등을 부분적으로만 반영하여 실제 실무적 유용성을 제대로 평가하기 어렵습니다.
+- **성능과 설명의 트레이드오프:** 모델의 예측 정확도를 유지하면서 얼마나 간결한(sparse) 설명을 제공할 것인가에 대한 명확한 정량적 기준이 부족합니다.
+- **인간 인지와의 괴리:** 기존 평가는 기술적 수치에 의존하는 경우가 많아, 인간의 직관적인 해석과 일치하는지 검증하는 과정이 필수적입니다.
+
+💡 핵심 기술 및 아키텍처
+- **EPC 점수(Explainability-Performance Coefficient Score):** 기존의 연속적인 곡선 기반 EPC를 하나의 스칼라 값으로 변환하여 서로 다른 모델(MLP, CNN, LSTM 등)과 데이터(표, 이미지, 텍스트) 간 비교를 가능하게 함.
+- **방법론:** 특징 선택의 희소성(sparsity)과 모델의 예측 성능 간의 균형을 최적화하는 방식으로 설명 기법을 평가.
+- **검증 환경:** 입력 데이터의 무효화(nullification) 전략(패딩 토큰 사용, 가우시안 블러 등)을 통해 설명 기법이 입력 노이즈에 어떻게 반응하는지 정밀하게 분석.
+
+📊 실험 결과 분석
+- **성능 비교:** 입력 데이터의 차원이 커질수록 LIME, SHAP 같은 모델 독립적 기법은 효율성이 떨어짐. 반면, 그래디언트 기반의 Integrated Gradients(IG) 기법이 모든 모달리티와 활성화 함수 환경에서 가장 높은 EPC 점수를 기록함.
+- **인간 중심적 정렬:** 텍스트 분석(IMDB)에서 높은 EPC 점수는 AFINN 사전의 감정 주석과 높은 상관관계(ρ= 0.65)를 보였으며, 이미지 분석에서도 인간이 지정한 관심 영역(ROI) 내에 설명이 집중되는 현상이 확인됨.
+- **데이터 분석:** 본 논문은 실험에 사용된 특정 수치 외의 일반화된 수치는 언급하지 않았으나, EPC 점수가 단순한 수학적 충실성을 넘어 인간의 시각적 주석과 상호보완적인 평가 지표임을 증명함.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+- **규제 대응:** GDPR 등 설명가능성을 요구하는 규제 환경에서 기업들이 자사 AI 모델의 의사결정 과정을 논리적이고 정량적으로 증명하는 도구로 활용 가능.
+- **신뢰성 확보:** AI 시스템을 고위험 분야에 도입할 때, 모델이 &#x27;우연히&#x27; 맞춘 것인지 &#x27;핵심 특징&#x27;을 보고 판단한 것인지 구분하여 시스템의 안전성을 높임.
+- **향후 과제:** 현재의 평가 방식을 대규모 언어 모델(LLM)이나 비전-언어 모델(Vision-Language Transformers)과 같은 복잡한 아키텍처로 확장하여 다중 헤드 어텐션 메커니즘을 분석하는 연구로 이어질 전망.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [What I Cannot Predict, I Do Not Understand: A Human-Centered Evaluation Framework for Explainability Methods - PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC10544769/)
+&gt; - [Frontiers | Human-centered evaluation of explainable AI applications: a systematic review](https://www.frontiersin.org/journals/artificial-intelligence/articles/10.3389/frai.2024.1456486/full)
+&gt; - [2112.04417 What I Cannot Predict, I Do Not Understand: A Human-Centered Evaluation Framework for Explainability Methods](https://arxiv.org/abs/2112.04417)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;EPC를 단일 스칼라 값으로 압축했다는 발상은 좋으나, 방법론적으로 데이터 무효화(nullification) 전략에 의존하는 방식은 신뢰성이 부족합니다. 패딩이나 가우시안 블러가 데이터 분포의 아웃라이어를 생성해 모델의 비정상적인 반응을 유도할 위험이 큰데, 이를 통제하지 않고 어떻게 &#x27;객관적&#x27;이라고 주장하는지 의문이군요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에선 &#x27;어떤 블러링을 쓰느냐&#x27;에 따라 XAI 결과값이 널뛰어서 골치 아픈 게 사실입니다. 그래도 현업에서 매번 SHAP 계산하느라 GPU 태우는 것보다, 논문에서 제안한 IG 기반의 정량화 방식이 훨씬 효율적이긴 하네요. 특히 GDPR 대응용 리포트 뽑을 때 &#x27;우리 모델의 설명성은 이만큼 정량적이다&#x27;라고 제시할 근거가 생긴 건 환영할 일입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;다들 방법론 비판하시지만, 어쨌든 &#x27;인간의 감정 사전과 0.65 상관관계&#x27;를 찍었다는 게 중요하죠! 요즘 LLM이나 VLM은 해석이 거의 블랙박스인데, 이 EPC 점수 도입해서 어텐션 헤드마다 가중치 정량화하면 바로 CVPR이나 NeurIPS 각 나오는 거 아닌가요? 저는 바로 코드 뜯어보고 다음 프로젝트에 적용해 보렵니다.&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
