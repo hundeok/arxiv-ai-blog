@@ -1,0 +1,67 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>FriendBench: 인간과 다중 모달 거대 언어 모델의 친밀도 추론 능력 벤치마킹 | ArXiv Translator AI</title><meta name="description" content="FriendBench: 인간과 다중 모달 거대 언어 모델의 친밀도 추론 능력 벤치마킹"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2607_29602v1"><meta property="og:type" content="article"><meta property="og:title" content="FriendBench: 인간과 다중 모달 거대 언어 모델의 친밀도 추론 능력 벤치마킹"><meta property="og:description" content="FriendBench: 인간과 다중 모달 거대 언어 모델의 친밀도 추론 능력 벤치마킹"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2607_29602v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="FriendBench: 인간과 다중 모달 거대 언어 모델의 친밀도 추론 능력 벤치마킹"><meta name="twitter:description" content="FriendBench: 인간과 다중 모달 거대 언어 모델의 친밀도 추론 능력 벤치마킹"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2607_29602v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "FriendBench: 인간과 다중 모달 거대 언어 모델의 친밀도 추론 능력 벤치마킹", "description": "FriendBench: 인간과 다중 모달 거대 언어 모델의 친밀도 추론 능력 벤치마킹", "datePublished": "2026-07-31", "url": "https://arxiv-ai-blog.vercel.app/papers/2607_29602v1", "author": [{"@type": "Person", "name": "Jeffrey M. Girard"}, {"@type": "Person", "name": "Jason Z. Zheng"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2607_29602v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2607_29602v1"});gtag('event', 'paper_view', {"paper_id": "2607_29602v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>FriendBench: 인간과 다중 모달 거대 언어 모델의 친밀도 추론 능력 벤치마킹</h1><p>FriendBench: 인간과 다중 모달 거대 언어 모델의 친밀도 추론 능력 벤치마킹</p><pre>FriendBench: 인간과 다중 모달 거대 언어 모델의 친밀도 추론 능력 벤치마킹
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** FriendBench: Benchmarking Dyadic Familiarity Inference in Humans and Multimodal Large Language Models
+&gt; - **저자:** Jeffrey M. Girard, Jason Z. Zheng, Jacqueline R. Vertino, Antony D&#x27;Avirro, Benjamin Peloquin
+&gt; - **발행일:** 2026-07-31
+&gt; - **PDF 링크:** [FriendBench: Benchmarking Dyadic Familiarity Inference in Humans and Multimodal Large Language Models](https://arxiv.org/pdf/2607.29602v1)
+
+
+✨ 3줄 핵심 요약
+* **벤치마크 도입:** 20초 분량의 대화 영상을 통해 두 사람의 친밀도(기존 지인 vs 초면)를 판단하는 &#x27;FriendBench&#x27;를 제안합니다.
+* **성능 평가:** 7개 기업의 26개 모델과 인간을 대상으로 테스트한 결과, 최고 성능의 모델은 인간과 통계적으로 유사한 정확도를 보였습니다.
+* **근본적 차이:** 인간은 두 범주를 균형 있게 판단하는 반면, 모델들은 특정 범주로 치우치는 강한 편향(Bias)을 나타냅니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+사람은 대화의 내용뿐만 아니라 상대방과 주고받는 눈빛, 태도, 반응 등 &#x27;비언어적 신호&#x27;를 통해 두 사람이 이미 아는 사이인지 처음 만난 사이인지 직관적으로 파악합니다. 이를 사회적 지능의 한 단면이라 합니다. 연구진은 AI가 과연 대화 내용 외에 이러한 미묘한 행동 단서를 통해 사람 사이의 친밀도를 정확히 추론할 수 있는지 확인하기 위해 &#x27;FriendBench&#x27;를 개발했습니다. 결과적으로 최신 AI 모델들은 인간 수준의 정확도에 도달했지만, 그 판단 과정에서 인간처럼 상황을 객관적으로 보기보다는 특정 답변으로 쏠리는 현상이 발견되었습니다.
+
+🎯 배경 및 문제점
+대부분의 AI 시스템은 대화의 의미적 내용(텍스트) 분석에는 능숙하지만, 인간 관계의 핵심인 행동적 단서(행동, 조율, 상호 반응)를 파악하는 능력은 상대적으로 부족합니다. 기존의 사회적 지능 연구는 의도나 감정 등 정답이 모호한 경우가 많았으나, 본 연구는 &#x27;이미 아는 사이인가, 처음 만난 사이인가&#x27;라는 명확한 진실(Ground Truth)이 존재하는 과제를 통해 AI의 사회적 지각 능력을 객관적으로 검증하고자 했습니다.
+
+💡 핵심 기술 및 아키텍처
+* **데이터 구성:** 20초 길이의 96개 다이애딕(두 명의 대화) 아이스브레이킹 영상을 사용했습니다.
+* **평가 방식:** 대화 주제가 동일하게 고정되어 있으므로, 오직 대화의 &#x27;방식&#x27;만이 판단의 근거가 되도록 설계되었습니다.
+* **모달리티:** 텍스트, 오디오, 비디오 세 가지 채널을 통해 AI 모델의 개별적 추론 능력을 측정했습니다.
+* **분석 도구:** 단순히 정답률(Accuracy)뿐만 아니라, 모델이 정보를 얼마나 잘 구분하는지(Discrimination)와 특정 답변으로 얼마나 치우치는지(Response Bias)를 구분하여 분석했습니다.
+
+📊 실험 결과 분석
+* **정확도:** 최고 성능의 모델과 인간 집단 간의 정확도는 통계적으로 구분하기 어려울 만큼 유사합니다. 
+* **모달리티 영향:** 모든 모델과 인간에게 오디오가 텍스트보다 유용한 정보를 제공했습니다. 다만, 비디오(행동 정보)를 통해 이득을 얻는 것은 오직 인간뿐이었습니다.
+* **편향성(Bias):** 인간은 &#x27;지인&#x27;과 &#x27;초면&#x27;을 골고루 판단하지만, 모델들은 특정 범주(주로 &#x27;초면&#x27;)로 강력하게 쏠리는 경향을 보입니다. 텍스트 모델의 경우 대부분 &#x27;초면&#x27;으로 판단하는 극단적인 편향을 보였으며, 이는 정답률과는 별개의 문제입니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **사회적 AI의 한계:** 현재의 AI 모델은 사회적 지능을 흉내 내는 것처럼 보이지만, 실제 인간과 같은 균형 잡힌 판단력보다는 데이터 혹은 프롬프트에 따른 편향에 크게 의존하고 있습니다.
+* **실무적 주의:** 본 연구진은 현재 모델들의 정확도가 아주 높지 않고 편향이 심각하므로, 이 기술을 실제 인물에 대한 중대한 판단이나 감시·프로파일링 용도로 사용하는 것에 대해 강력히 경고합니다.
+* **연구 가치:** 이 벤치마크는 향후 AI 시스템이 사회적 상황을 더 정교하게 이해하도록 돕는 감사 도구이자 연구 기반으로 활용될 것입니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [FriendBench: Benchmarking Dyadic Familiarity Inference in...](https://arxiv.org/html/2607.29602)
+&gt; - [2607.29602 FriendBench: Benchmarking Dyadic Familiarity...](https://arxiv.org/abs/2607.29602)
+&gt; - [FriendBench: Benchmarking Dyadic Familiarity Inference in...](https://arxiv.org/pdf/2607.29602)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;이 논문의 가장 큰 가치는 &#x27;정확도&#x27;라는 허상 뒤에 숨겨진 &#x27;응답 편향(Response Bias)&#x27;을 들춰냈다는 점입니다. 정답률이 인간과 비슷하다고 해서 모델이 인간의 사회적 지능을 모방하고 있다고 착각해선 안 됩니다. 비디오 모달리티에서 인간만 유의미한 이득을 얻었다는 결과는, 현행 멀티모달 모델들이 시각적 맥락을 통합하는 인지 구조가 아직은 매우 파편화되어 있음을 시사합니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에선 이 편향성이 진짜 골칫거리입니다. 모델이 텍스트만 보고 죄다 &#x27;초면&#x27;으로 뱉어버리면, 서비스 단에선 후처리 로직(Heuristics)을 덕지덕지 붙여야 하거든요. 비디오 인코더가 텍스트/오디오와의 결합 과정에서 녹아버리는 건지, 아니면 애초에 데이터셋의 라벨링 편향이 모델에 전이된 건지... 벤치마크는 좋지만 이걸 프로덕션 레벨에서 신뢰하기엔 아직 갈 길이 멉니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;아, 다들 너무 엄근진하신 거 아니에요? ㅋㅋㅋ 이제 모델이 사람 관계까지 스캔하는 시대가 왔다는 게 중요하죠! 비록 지금은 &#x27;초면&#x27;으로 과하게 쏠리는 편향이 있지만, 이 벤치마크 데이터셋이 공개되면 SOTA 모델들 바로 RLHF 튜닝 들어갈 텐데, 그럼 금방 인간 수준의 &#x27;눈치&#x27;를 배우지 않을까요? 사회적 지능 벤치마크라는 새로운 레이스 시작인 것 같아서 벌써 가슴이 웅장해지네요.&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
