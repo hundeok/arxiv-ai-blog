@@ -5892,7 +5892,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-04T05:42:27.250965+00:00",
+      "updated_at": "2026-08-04T08:27:51.744072+00:00",
       "paper": {
         "title": "EMBL AI Librarian: Life-Sciences Knowledge Layer for AI Agents",
         "summary": "The web is increasingly accessed by AI agents rather than humans. Every agent needs knowledge, especially in the life-sciences, where agentic pipelines are growing fast. Access to the literature is a crucial part of that need, and resources such as Europe PMC, with over 40M indexed records, are widely used to meet it. Yet these resources were not built for AI agents: they take keywords and complex syntax and return whole papers, so every agent must learn the syntax, issue several searches, and read full papers to find the evidence it needs. We introduce EMBL AI Librarian, a knowledge layer that upgrades the Europe PMC interface for AI agents: an agent asks in natural language and receives evidence that answers it. A single LLM orchestrates the whole knowledge retrieval process: it plans complementary subqueries executed by the live Europe PMC search engine, then reads the selected papers and locates the relevant evidence. We evaluate Librarian across four benchmarks: literature synthesis, claim verification, open-domain question answering, and downstream biology tasks such as protocol questions and sequence manipulation. On ScholarQABench, Librarian improves Citation F1 by more than $16$ points over strong recently published baselines. Used as the retrieval layer of an existing claim-verification pipeline, it increases agreement with expert consensus; and on the open-form LitQA2 benchmark, a GPT-5.4 agent scores about $8$ points higher when grounded in Librarian than with web search. Overall, our results show that equipping life-science agents with the Librarian knowledge layer improves performance across a range of tasks. We release our code publicly at https://github.com/petroni-lab/librarian",
@@ -7687,11 +7687,11 @@
     "2607_29491v1": {
       "id": "2607_29491v1",
       "filename": "post_2607_29491v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-08-03T02:12:05.165080+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-03T02:12:05.165081+00:00",
+      "updated_at": "2026-08-04T08:28:31.792478+00:00",
       "paper": {
         "title": "DreamQAS: Learning a Decision-Useful World Model for VQE-Efficient Quantum Architecture Search",
         "summary": "Reinforcement-learning-based quantum architecture search (RL-QAS) repeatedly optimizes a variational quantum eigensolver (VQE) after extending a circuit, although circuit construction and action legality are deterministic and known. We introduce DreamQAS, a model-based RL framework that preserves these exact circuit dynamics and learns only the expensive post-VQE feedback. A recurrent randomized-prior ensemble predicts an oracle-free score relative to an empirical energy frontier and supports multi-step imagined policy learning over explicit legal circuits. Ranking-based activation, uncertainty-aware pessimism and truncation, and selective real-VQE verification form a reliability-controlled learning loop. Under a common 15,000-episode budget and frozen evaluation for the RL methods, DreamQAS has the lowest mean frozen-policy energy error on four of five molecular tasks and the second-lowest on one. At fine-error targets reached by all seeds of both methods, it uses 1.6x to 2.0x fewer real VQE calls on four tasks and 10.6x fewer on BeH2-8q. Counterfactual action-ranking utility increases across all five tasks, with a mean increase of 0.346 and a 95 percent confidence interval of [0.185, 0.507], while direct greedy and beam use of the same model does not recover the gains of imagined policy learning. Ensemble disagreement also improves risk-coverage over random rejection on all three probed tasks. These results establish a world-model design for QAS whose value lies in decision-useful feedback rather than exact energy prediction.",
@@ -7707,7 +7707,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2607.29491v1"
       },
-      "priority_score": 29
+      "priority_score": 29,
+      "korean_title": "DreamQAS: VQE 효율적 양자 회로 설계를 위한 의사결정 유용 월드 모델 학습"
     },
     "2607_29468v1": {
       "id": "2607_29468v1",
@@ -8154,11 +8155,11 @@
     "2607_18082v2": {
       "id": "2607_18082v2",
       "filename": "post_2607_18082v2.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-08-03T06:15:13.402153+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-03T19:23:33.117298+00:00",
+      "updated_at": "2026-08-04T08:28:22.025681+00:00",
       "paper": {
         "title": "Enhancing Rubric-based RL via Self-Distillation",
         "summary": "Rubric-based RL has recently shown promise in improving LLMs on open-ended tasks. A widely recognized limitation of rubric-based RL is limited exploration: criteria that no rollout manages to satisfy (Unexplored Criteria, UC) receive no optimization signal. Recent methods address this by incorporating rubric information as external guidance during rollout, yet they introduce a train-inference mismatch: the policy is optimized on rollouts produced under external guidance while this guidance is absent at inference time, causing error accumulation through autoregressive decoding. Moreover, these exploration-focused approaches overlook a fundamentally different failure mode that we term Suppressed Criteria (SC) -- criteria that are satisfied by some rollouts yet whose learning signals are lost during optimization because scalar reward aggregation assigns them non-positive aggregate advantages. Our analysis reveals that SC are remarkably prevalent: over 57% of samples exhibit this failure mode throughout training, with an average of 1.8 SC per sample. To simultaneously address both UC and SC without introducing training-inference mismatch, we propose Criterion-Distilled Policy Optimization (CriPO), which enhances rubric-based RL via on-policy self-distillation. For UC, CriPO constructs a criterion-injection self-teacher and computes a localized forward-KL loss to inject missing behaviors into the policy. For SC, CriPO employs a counterfactual self-teacher to locate criterion-relevant tokens in negative-advantage rollouts and flips their token-level advantages to positive values, preserving useful patterns that would otherwise be suppressed. Experiments on medicine and science benchmarks demonstrate that CriPO consistently outperforms rubric-based RL, achieving stronger final performance with approximately $2\\times$ fewer optimization steps.",
@@ -8177,7 +8178,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2607.18082v2"
       },
-      "priority_score": 30
+      "priority_score": 30,
+      "korean_title": "루브릭 기반 강화학습을 위한 기준 증류 정책 최적화"
     },
     "2607_27888v1": {
       "id": "2607_27888v1",
@@ -8186,7 +8188,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-04T05:42:27.250939+00:00",
+      "updated_at": "2026-08-04T08:27:51.744049+00:00",
       "paper": {
         "title": "Not All Tokens Deserve Equal Credit: Counterfactual Sensitivity Credit Reallocation for Long-CoT Reasoning",
         "summary": "Reinforcement learning with verifiable rewards (RLVR) is central to improving long-CoT reasoning in large language models. Critic-free methods such as GRPO convert response-level rewards into advantages and uniformly broadcast them across tokens, overlooking their unequal contributions to the final outcome. On-policy self-distillation (OPSD) instead provides dense distributional supervision by minimizing the forward KL divergence between an unprivileged policy and a privileged self-teacher, implicitly assuming that the resulting likelihood shifts encode reliable answer-aligned information. We test this premise by fixing each sampled trajectory and re-scoring it under two opposing outcome conditions, one asserting correctness and the other incorrectness. Most affected tokens shift in the same direction under both conditions, with few sign reversals and substantial overlap in the induced optimization signals. Large shifts also concentrate on highly substitutable surface-form tokens, whereas tokens carrying problem-specific reasoning content are less sensitive. These findings show that privileged shifts fail to provide reliable answer-aligned directions, while their magnitudes primarily reflect counterfactual sensitivity rather than token-level learning value. Based on these observations, we propose Counterfactual Sensitivity Credit Reallocation (CSCR), a simple extension of GRPO that reduces credit for highly sensitive tokens and renormalizes token-level advantages to preserve both the original credit budget and verifier-determined direction. On long-CoT mathematical reasoning benchmarks, CSCR consistently outperforms GRPO baseline with the same number of policy updates. Targeted ablations further corroborate our diagnosis: privilege-induced directions are unreliable, moderate downweighting is most effective, and stronger modulation destabilizes optimization.",
@@ -8259,7 +8261,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-04T05:42:27.250978+00:00",
+      "updated_at": "2026-08-04T08:27:51.744077+00:00",
       "paper": {
         "title": "RL$^2$-VLA: Adaptive RL Latent Compositional Steering with Test-Time Scaling for Vision-Language-Action Models",
         "summary": "Despite the impressive visuomotor capabilities enabled by Vision-Language-Action (VLA) models, their performance often degrades on challenging and out-of-domain tasks. Recent test-time steering and scaling methods improve performance without extensive data collection and retraining, but action samples often remain concentrated around similar behaviors and therefore inherit correlated failure modes. Moreover, existing methods apply the same intervention strategy at every timestep, regardless of whether the base policy is already likely to succeed. To address these limitations, we introduce $RL^2$, an adaptive inference-time steering framework that leverages Reinforcement Learning on VLA Latents. First, we train a lightweight offline RL policy conditioned on expressive latents extracted from the VLA action expert and compose its flow velocity with that of the frozen VLA during inference. This compositional steering strategy combines the behavioral priors of large-scale imitation learning with the action diversity induced by offline RL beyond dominant demonstration modes. We further discover that inference-time steering follows fundamentally different scaling laws under success and failure states, revealing that action diversity is most beneficial when the base VLA is likely to fail, but can unnecessarily perturb already-accurate actions when success is likely. Building on this insight, $RL^2$ activates compositional steering only when failure is predicted. Across the SIMPLER and PolaRiS benchmarks, $RL^2$ improves success rates by up to +17.3% in out-of-domain settings, while ablations and scaling studies demonstrate the importance of latent representations and RL training. Finally, real-world experiments demonstrate that these gains transfer beyond simulation, establishing $RL^2$ as a practical and modular steering framework for VLA deployment.",
@@ -8285,7 +8287,7 @@
       "attempts": 0,
       "next_retry_at": "2026-08-03T17:06:24.164757+00:00",
       "last_error": null,
-      "updated_at": "2026-08-04T05:42:27.250957+00:00",
+      "updated_at": "2026-08-04T08:27:51.744067+00:00",
       "paper": {
         "title": "Beyond Feeling Better: Capability-Sustaining Emotional Dialogue as a Longitudinal Research Paradigm",
         "summary": "Emotional dialogue research includes two influential strategy traditions. Empathetic dialogue prioritizes understanding a speaker's emotional experience. Emotional support conversation selects and sequences support for the seeker's current needs. Sustained use introduces a further goal. Effective support should sustain users' capacities for emotion regulation, coping, self-endorsed decisions, and social connection across the interaction lifecycle. We propose capability-sustaining emotional dialogue (CSED) as a longitudinal research paradigm that aligns supportive strategy with this goal and organizes data, models, system design, evaluation, and governance around repeated use, non-use, transition, and termination. A targeted literature-and-corpus audit motivates this position. In a PRISMA-ScR-guided sample, 95% of 60 system-building papers pursue relief-oriented goals. None evaluates capability or longitudinal outcomes, and only 1 considers dependency, autonomy, or termination risk. In 300 ESConv supporter turns, capability-relevant functions appear in 43.0%, while generic suggestions account for 22.0%, compared with 4.0% reappraisal, 6.7% self-efficacy support, and 0.3% boundary behavior. We release a protocol for extending the audit to model behavior. An illustrative process model connects latent user capability to six design commitments, four evaluation timescales, and lifecycle constraints. The resulting agenda makes CSED testable across data, policy design, training, evaluation, and governance.",
@@ -8308,7 +8310,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-04T05:42:27.250998+00:00",
+      "updated_at": "2026-08-04T08:27:51.744087+00:00",
       "paper": {
         "title": "SGTP: Sampling-based Game-Theoretic Planning for Real-Time Multi-Vehicle Autonomous Racing",
         "summary": "Autonomous multi-vehicle racing requires real-time planning of diverse competitive behaviors in intense interactions. Existing planners often struggle to balance strategic diversity and computational efficiency. To address this challenge, we propose Sampling-based Game-Theoretic Planning (SGTP), a real-time framework that combines game-theoretic reasoning with GPU-accelerated sampling of control sequences and dynamics rollouts. Sampled trajectories are ranked using a game-aware cost to capture competitive interactions and generate diverse racing behaviors. Our planner then performs feasibility selection by explicitly enforcing track-boundary and dynamic collision-avoidance constraints, ensuring safe and reliable transitions between racing strategies. Extensive simulations on challenging tracks show that SGTP achieves a 95.24% win rate and a 99.35% task-completion ratio in highly interactive races, with a mean computational time of 0.095 s over multiple iterative solving steps. We also demonstrate the successful application of SGTP in large-scale scenarios with up to 10 agents. We release our code and provide an open-source benchmark of multi-agent autonomous racing algorithms to facilitate future research. Project page: https://sgtp-racing.github.io/.",
@@ -8362,7 +8364,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-04T05:42:47.513540+00:00",
+      "updated_at": "2026-08-04T08:27:51.744081+00:00",
       "paper": {
         "title": "WorldExam: Benchmarking World Models from Apparent Appearance to Inherent Reactivity",
         "summary": "Controllable video generation models are increasingly being developed as world models. Accordingly, evaluating them in this role extends beyond the apparent appearance of generated videos to the inherent reactivity of the worlds they depict: the ability to infer from the scene state how the world should react and to generate plausible consequences not explicitly described in the input. Yet existing benchmarks mainly assess visual quality or explicit instruction fulfillment by checking whether requested actions and interaction outcomes are realized, leaving inherent reactivity underexamined. We introduce WorldExam, a hierarchical diagnostic benchmark spanning four levels: Visual Quality, Control Adherence, Spatial Consistency, and World Reactivity. It comprises 1,474 cases across eight dedicated tasks and supports unified evaluation of camera-, action-, and language-driven model paradigms. The World Reactivity level evaluates scene-conditioned reactions and goal-directed behaviors beyond what is explicitly specified in the input. Evaluation of 20 representative models reveals a clear capability split. Camera-driven models excel at camera control, but their interfaces do not support dynamic interaction; action-driven models control subjects more precisely but often leave the world unresponsive; and language-driven models perform better on interaction but follow complex controls less faithfully. No model combines broad task coverage with consistently strong performance, showing that high visual quality and explicit instruction fulfillment do not guarantee inherent reactivity.",
@@ -8397,7 +8399,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-04T05:42:35.871186+00:00",
+      "updated_at": "2026-08-04T08:27:51.744084+00:00",
       "paper": {
         "title": "UEmbed: Unified Sparse and Dense Multimodal Embeddings",
         "summary": "Sparse retrieval underpins modern search systems, from web search to retrieval-augmented generation. Existing work has introduced Learned Sparse Retrieval (LSR) to push beyond exact lexical matching toward richer semantics. Yet LSR has so far remained tied to encoder-style bidirectional architectures, and its extension to multimodal settings still relies heavily on auxiliary cross-modal modules. To address these limitations, we introduce UEmbed (Unified Embedding), a decoder-only multimodal embedding model that produces both sparse lexical and dense representations in one causal forward pass. UEmbed appends N learnable special tokens to the input and partitions the vocabulary into N disjoint subsets. Each token's causal hidden state predicts sparse weights over its assigned subset, and the N subsets are concatenated into the full sparse vector. Trained on public data, we release UEmbed at 2B, 4B, and 9B scales. UEmbed-9B reaches 71.8 (dense) and 71.0 (sparse) on MMEB-v2, outperforming multimodal embedding models trained on publicly available data (e.g., RzenEmbed). On BEIR, UEmbed also remains competitive with strong dense and sparse baselines. Furthermore, we demonstrate the practical utility of UEmbed across three dimensions: effectiveness, efficiency, and agentic applications. Overall, UEmbed offers a new paradigm: it unifies dense and sparse embeddings in one model, while further extending sparse retrieval to unify text and multimodal inputs.",
@@ -8424,7 +8426,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-04T05:42:56.659125+00:00",
+      "updated_at": "2026-08-04T08:27:51.744098+00:00",
       "paper": {
         "title": "VAD: Attributing Visual Evidence for Target Reconstruction in Multimodal On-Policy Distillation",
         "summary": "Multimodal on-policy distillation (OPD) transfers fine-grained visual knowledge by supervising student-generated trajectories with a privileged-view teacher. Yet its next-token corrections are source-mixed, combining visual signals with linguistic priors and teacher-specific effects. The key challenge is to estimate which corrections are supported by visual evidence, not merely where or how strongly to distill. We introduce Visual Attribution Distillation (VAD), a counterfactual target-reconstruction algorithm that estimates the visually attributable part of a teacher correction. At each student-generated prefix, VAD evaluates the same fixed teacher with the relevant evidence present and removed. The corresponding change in centered log-probabilities defines ut, a signed proxy for the visual evidence direction that estimates how revealing the evidence supports or refutes candidate tokens. VAD projects the original correction onto this proxy to obtain an intervention-aligned component and a proxy-unexplained residual, then reconstructs a student-anchored target from the former. During training, this reconstructed target supplies the primary supervision signal, while the privileged teacher contributes a weak regularizer. Across six fine-grained visual benchmarks at 4B and 9B scales, VAD outperforms direct privileged-view distillation and visual-advantage weighting. Token- level and controlled-target analyses show that the proxy-aligned component is enriched in task-relevant visual corrections and yields stronger target shifts, especially when evidence refutes a mistaken answer. These results support counterfactual target reconstruction as an effective alternative to source-mixed supervision.",
@@ -8447,10 +8449,61 @@
       },
       "priority_score": 30,
       "korean_title": "시각적 속성 증류: 다중 모달 온-폴리시 증류에서의 대상 재구성을 위한 시각적 증거 속성화"
+    },
+    "2608_02499v1": {
+      "id": "2608_02499v1",
+      "filename": "post_2608_02499v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-08-04T08:28:03.522971+00:00",
+      "paper": {
+        "title": "SWE-Touch: Benchmarking Coding Agents When Users Touch the Code",
+        "summary": "Real-world software development requires coding agents to operate in shared workspaces where users may inspect and modify code during an ongoing task, yet existing repository-level benchmarks typically evaluate agents working alone or restrict user participation to messages. This leads us to ask: how do coding agents understand and respond to code changes in a shared workspace? We introduce SWE-Touch, a framework that stress-tests this setting through validated Counter-Edits: plausible edits to task-relevant code that conflict with task completion. SWE-Touch mines task-critical regions from multiple repair trajectories, uses a separate User Patch Generator to construct the edits, and injects them with contextual user messages when agents reach the relevant code. We evaluate nine coding models on SWE-bench Verified, with additional experiments on longer-horizon tasks from SWE-Bench Pro and DeepSWE. Counter-Edit lowers average resolve rate by 7.7 percentage points on SWE-bench Verified, with degradation also persisting on both longer-horizon benchmarks. Trajectory analysis links these failures to limited awareness of the evolving workspace: agents may retain conflicting code or replace it without sufficiently re-inspecting the repository and validating the revised code with targeted tests. These findings show that strong autonomous performance does not yet ensure the state awareness and adaptive behavior needed for shared-workspace collaboration, and point to detecting workspace changes, reconciling conflicting edits with the task, and verifying the affected behavior as key capabilities for future optimization.",
+        "published": "2026-08-03T17:03:19Z",
+        "authors": [
+          "Yuqiao Tan",
+          "Jinxiang Meng",
+          "Fangyu Lei",
+          "Minzheng Wang",
+          "Shizhu He",
+          "Jun Zhao",
+          "Kang Liu"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.02499v1"
+      },
+      "priority_score": 50,
+      "korean_title": "SWE-Touch: 사용자가 코드를 수정하는 환경에서 코딩 에이전트 벤치마킹하기"
+    },
+    "2607_29613v1": {
+      "id": "2607_29613v1",
+      "filename": "post_2607_29613v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-08-04T08:28:12.703331+00:00",
+      "paper": {
+        "title": "WCM: A World Critic Model for Vision-Language-Action Reinforcement Learning",
+        "summary": "Reinforcement learning (RL) post-training of Vision-Language-Action (VLA) models has shown strong promise for robotic manipulation. Among RL methods, critic-based approaches rely on a value estimator that predominantly operates on single-frame observations or single-frame VLM backbone latents, which is a fundamental mismatch with the partially observable nature of robot control. A naive approach to incorporate observation history into the critic incurs exponential complexity with high-dimensional visual space, and still fails because pure scalar-return regression provides insufficient supervision for learning cross-temporal dynamics. We identify the root cause as a state approximation problem: without an explicit world modeling objective, the critic's representation cannot capture the temporal structure needed for accurate value estimation. To address this, we propose the World Critic Model (WCM), built on a lightweight LeJEPA architecture; WCM jointly predicts future latent state and estimates values, such that the critic's representation is explicitly trained to capture temporal dynamics rather than merely regress scalar returns. WCM integrates seamlessly into both on-policy and off-policy training pipelines and is compatible with state-of-the-art VLA backbones including Pi0, Pi0.5, and OpenVLA-OFT. Extensive experiments on 149 tasks across four benchmarks demonstrate that WCM consistently achieves state-of-the-art performance in both in-distribution and out-of-distribution settings, with particularly strong generalization gains. We further validate WCM on seven real-world manipulation tasks using OpenVLA-OFT and Pi0.5 with off-policy RL, confirming stable deployment across diverse settings.",
+        "published": "2026-07-31T16:48:45Z",
+        "authors": [
+          "Senyu Fei",
+          "Xiaopeng Yu",
+          "Siyin Wang",
+          "Xianzhong Zhao",
+          "Jingjing Gong",
+          "Xipeng Qiu"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2607.29613v1"
+      },
+      "priority_score": 30,
+      "korean_title": "WCM: 시각-언어-행동 강화학습을 위한 월드 크리틱 모델"
     }
   },
   "last_run": {
-    "started_at": "2026-08-04T05:42:27.251983+00:00",
+    "started_at": "2026-08-04T08:27:51.744896+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -8461,25 +8514,25 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 19902,
-      "output_tokens": 5755,
+      "prompt_tokens": 19872,
+      "output_tokens": 5852,
       "thought_tokens": 0,
-      "total_tokens": 25657,
-      "estimated_usd": 0.013608
+      "total_tokens": 25724,
+      "estimated_usd": 0.013746
     },
-    "finished_at": "2026-08-04T05:43:08.110026+00:00"
+    "finished_at": "2026-08-04T08:28:31.905005+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 605,
-    "prompt_tokens": 1514502,
-    "output_tokens": 445631,
+    "requests": 613,
+    "prompt_tokens": 1534374,
+    "output_tokens": 451483,
     "thought_tokens": 0,
-    "total_tokens": 1960133,
-    "estimated_usd": 1.047072
+    "total_tokens": 1985857,
+    "estimated_usd": 1.060818
   },
   "last_publication_run": {
-    "started_at": "2026-08-04T05:42:27.251983+00:00",
+    "started_at": "2026-08-04T08:27:51.744896+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -8490,17 +8543,17 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 19902,
-      "output_tokens": 5755,
+      "prompt_tokens": 19872,
+      "output_tokens": 5852,
       "thought_tokens": 0,
-      "total_tokens": 25657,
-      "estimated_usd": 0.013608
+      "total_tokens": 25724,
+      "estimated_usd": 0.013746
     },
-    "finished_at": "2026-08-04T05:43:08.110026+00:00"
+    "finished_at": "2026-08-04T08:28:31.905005+00:00"
   },
   "daily_usage": {
     "date": "2026-08-04",
-    "estimated_usd": 0.02689975,
-    "publications": 8
+    "estimated_usd": 0.04064575,
+    "publications": 12
   }
 }
