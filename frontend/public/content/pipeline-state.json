@@ -5892,7 +5892,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-04T01:57:39.041465+00:00",
+      "updated_at": "2026-08-04T05:42:27.250965+00:00",
       "paper": {
         "title": "EMBL AI Librarian: Life-Sciences Knowledge Layer for AI Agents",
         "summary": "The web is increasingly accessed by AI agents rather than humans. Every agent needs knowledge, especially in the life-sciences, where agentic pipelines are growing fast. Access to the literature is a crucial part of that need, and resources such as Europe PMC, with over 40M indexed records, are widely used to meet it. Yet these resources were not built for AI agents: they take keywords and complex syntax and return whole papers, so every agent must learn the syntax, issue several searches, and read full papers to find the evidence it needs. We introduce EMBL AI Librarian, a knowledge layer that upgrades the Europe PMC interface for AI agents: an agent asks in natural language and receives evidence that answers it. A single LLM orchestrates the whole knowledge retrieval process: it plans complementary subqueries executed by the live Europe PMC search engine, then reads the selected papers and locates the relevant evidence. We evaluate Librarian across four benchmarks: literature synthesis, claim verification, open-domain question answering, and downstream biology tasks such as protocol questions and sequence manipulation. On ScholarQABench, Librarian improves Citation F1 by more than $16$ points over strong recently published baselines. Used as the retrieval layer of an existing claim-verification pipeline, it increases agreement with expert consensus; and on the open-form LitQA2 benchmark, a GPT-5.4 agent scores about $8$ points higher when grounded in Librarian than with web search. Overall, our results show that equipping life-science agents with the Librarian knowledge layer improves performance across a range of tasks. We release our code publicly at https://github.com/petroni-lab/librarian",
@@ -8083,11 +8083,11 @@
     "2607_23782v1": {
       "id": "2607_23782v1",
       "filename": "post_2607_23782v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-08-03T06:15:13.402108+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-04T01:57:39.041429+00:00",
+      "updated_at": "2026-08-04T05:43:07.960602+00:00",
       "paper": {
         "title": "$N_0$-VTLA: Scaling Vision-Tactile-Language-Action Model with Latent Tactile Tokens",
         "summary": "We present $N_0$-VTLA, a vision-tactile-language-action (VTLA) foundation model capable of (1) fine-grained contact-rich manipulation with tactile perception and tactile-feedback control, and (2) offline policy improvement from stored deployment data. Building on current vision-based backbones, we propose a training recipe for tactile integration consisting of visuo-tactile pre-training, staged tactile-pathway integration, and advantage-conditioned offline policy improvement. During pre-training, the policy learns broad contact priors from NeoData, our large-scale visuo-tactile robot dataset; to our knowledge, $N_0$-VTLA is the first VTLA model pretrained on tactile data at scale. During post-training, we augment the policy with a predictive tactile pathway that distills the contact patterns learned at scale into the fine motion adjustments required by downstream tactile-centric manipulation. For offline policy improvement, we introduce ALTER, an advantage-conditioned offline reinforcement learning method that converts relative progress and trajectory-event comparisons into binary advantage labels for policy training on a fixed deployment corpus, further improving task-specific learning on contact-rich skills such as deformable object manipulation. Across contact-rich benchmarks, $N_0$-VTLA outperforms strong baselines by wide margins: it wins all nine real-robot NeoReal tasks and reaches 63.8% mean success on a twenty-task simulation suite, against 44.0% for the strongest baseline. $N_0$-VTLA policies trained with ALTER reach 75-95% success on three long-horizon real-robot tasks. These results lay a foundation for versatile tactile-driven manipulation policies.",
@@ -8098,7 +8098,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2607.23782v1"
       },
-      "priority_score": 30
+      "priority_score": 30,
+      "korean_title": "$N_0$-VTLA: 잠재 촉각 토큰을 활용한 시각-촉각-언어-행동 모델의 확장"
     },
     "2607_27951v1": {
       "id": "2607_27951v1",
@@ -8185,7 +8186,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-04T01:57:39.041454+00:00",
+      "updated_at": "2026-08-04T05:42:27.250939+00:00",
       "paper": {
         "title": "Not All Tokens Deserve Equal Credit: Counterfactual Sensitivity Credit Reallocation for Long-CoT Reasoning",
         "summary": "Reinforcement learning with verifiable rewards (RLVR) is central to improving long-CoT reasoning in large language models. Critic-free methods such as GRPO convert response-level rewards into advantages and uniformly broadcast them across tokens, overlooking their unequal contributions to the final outcome. On-policy self-distillation (OPSD) instead provides dense distributional supervision by minimizing the forward KL divergence between an unprivileged policy and a privileged self-teacher, implicitly assuming that the resulting likelihood shifts encode reliable answer-aligned information. We test this premise by fixing each sampled trajectory and re-scoring it under two opposing outcome conditions, one asserting correctness and the other incorrectness. Most affected tokens shift in the same direction under both conditions, with few sign reversals and substantial overlap in the induced optimization signals. Large shifts also concentrate on highly substitutable surface-form tokens, whereas tokens carrying problem-specific reasoning content are less sensitive. These findings show that privileged shifts fail to provide reliable answer-aligned directions, while their magnitudes primarily reflect counterfactual sensitivity rather than token-level learning value. Based on these observations, we propose Counterfactual Sensitivity Credit Reallocation (CSCR), a simple extension of GRPO that reduces credit for highly sensitive tokens and renormalizes token-level advantages to preserve both the original credit budget and verifier-determined direction. On long-CoT mathematical reasoning benchmarks, CSCR consistently outperforms GRPO baseline with the same number of policy updates. Targeted ablations further corroborate our diagnosis: privilege-induced directions are unreliable, moderate downweighting is most effective, and stronger modulation destabilizes optimization.",
@@ -8207,7 +8208,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-04T01:57:39.041483+00:00",
+      "updated_at": "2026-08-04T05:42:27.250974+00:00",
       "paper": {
         "title": "Would You Walk to the Car Wash? Revealing the Salience Bias of Large Language Models in Commonsense Reasoning",
         "summary": "As large language models (LLMs) continue to advance in complex reasoning tasks, they have learned to heavily prioritize explicit conditions provided in the input. However, in everyday commonsense reasoning, this mechanism exposes a critical vulnerability which we term Salience Bias: models become easily hijacked by useless explicit distractors (e.g., numerical values), leading them to ignore the implicit physical or commonsense prerequisites of a task. A critical open question is whether this failure reflects a genuine gap in commonsense knowledge or merely its suppression under misleading task framing. To investigate this, we construct the SaliTrap Benchmark, a high-quality dataset across four trap dimensions. Evaluating 12 state-of-the-art LLMs, we find that all mainstream models suffer significantly from salience bias, with severity scaling with distractor density and detecting the trap often decoupled from actually avoiding it. Crucially, by re-eliciting the same models with the task framing stripped away, we show that this is overwhelmingly a failure of \\textbf{knowledge suppression rather than knowledge absence}: a context-free knowledge probe alone recovers over 90\\% of sycophantic-compliance failures, revealing that the requisite commonsense is intrinsically present but actively crowded out by salient distractors that lure the model into over-compliant, unnecessary computation. Building on this diagnosis, we further show that lightweight, inference-time prompting alone substantially closes the gap without any retraining. Our findings relocate the bottleneck of commonsense reasoning failures from model competence to elicitation, and we release SaliTrap as a testbed for this blind spot. The codes are available at https://github.com/Wuzheng02/SaliTrap.",
@@ -8232,7 +8233,7 @@
       "attempts": 0,
       "next_retry_at": "2026-08-03T12:16:55.918270+00:00",
       "last_error": null,
-      "updated_at": "2026-08-04T01:57:39.041479+00:00",
+      "updated_at": "2026-08-04T05:42:27.250970+00:00",
       "paper": {
         "title": "ODEWorld: A Continuous Predictive Architecture via Physical-Time Flow",
         "summary": "In the physical world we inhabit, space and time are fundamentally continuous. However, existing machine learning paradigms for world modeling are largely confined to discrete-time prediction, thereby exhibiting significant inefficiency in capturing the dynamics of physical world. We introduce Physical-Time Flow (\\textbf{PT-Flow}), a novel approach that learns a continuous latent velocity field operating in physical time. Crucially, the underlying dynamics of sequential data are parameterized by an ordinary differential equation (ODE) embedded in a well-structured representation space. Under this paradigm, the prediction of future can be recast as temporal integration via an ODE solver in the compressed latent space. Building upon PT-Flow, we construct \\textbf{ODEWorld}, a continuous-time latent world model that is both efficient and versatile. By extracting time-variant features and enforcing ODE properties on both the dynamical representation space and the latent velocity field, ODEWorld effectively addresses the long-standing representation collapse issue in latent world model literature. This also enables high-quality image reconstruction even after long-horizon prediction. Moreover, its continuous nature allows for arbitrary temporal resolution and even backward prediction, which is impossible for most discrete-time models. Lastly, ODEWorld can provide rich planning-oriented information to facilitate downstream policy learning. Comprehensive experiments demonstrate that ODEWorld successfully reconciles planning-conducive dynamics abstraction with visual realism, excelling in both video generation and robotic control. \\href{https://dstate.github.io/odeworld_website/}{Project Website}.",
@@ -8258,7 +8259,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-04T01:58:20.692318+00:00",
+      "updated_at": "2026-08-04T05:42:27.250978+00:00",
       "paper": {
         "title": "RL$^2$-VLA: Adaptive RL Latent Compositional Steering with Test-Time Scaling for Vision-Language-Action Models",
         "summary": "Despite the impressive visuomotor capabilities enabled by Vision-Language-Action (VLA) models, their performance often degrades on challenging and out-of-domain tasks. Recent test-time steering and scaling methods improve performance without extensive data collection and retraining, but action samples often remain concentrated around similar behaviors and therefore inherit correlated failure modes. Moreover, existing methods apply the same intervention strategy at every timestep, regardless of whether the base policy is already likely to succeed. To address these limitations, we introduce $RL^2$, an adaptive inference-time steering framework that leverages Reinforcement Learning on VLA Latents. First, we train a lightweight offline RL policy conditioned on expressive latents extracted from the VLA action expert and compose its flow velocity with that of the frozen VLA during inference. This compositional steering strategy combines the behavioral priors of large-scale imitation learning with the action diversity induced by offline RL beyond dominant demonstration modes. We further discover that inference-time steering follows fundamentally different scaling laws under success and failure states, revealing that action diversity is most beneficial when the base VLA is likely to fail, but can unnecessarily perturb already-accurate actions when success is likely. Building on this insight, $RL^2$ activates compositional steering only when failure is predicted. Across the SIMPLER and PolaRiS benchmarks, $RL^2$ improves success rates by up to +17.3% in out-of-domain settings, while ablations and scaling studies demonstrate the importance of latent representations and RL training. Finally, real-world experiments demonstrate that these gains transfer beyond simulation, establishing $RL^2$ as a practical and modular steering framework for VLA deployment.",
@@ -8284,7 +8285,7 @@
       "attempts": 0,
       "next_retry_at": "2026-08-03T17:06:24.164757+00:00",
       "last_error": null,
-      "updated_at": "2026-08-04T01:57:39.041459+00:00",
+      "updated_at": "2026-08-04T05:42:27.250957+00:00",
       "paper": {
         "title": "Beyond Feeling Better: Capability-Sustaining Emotional Dialogue as a Longitudinal Research Paradigm",
         "summary": "Emotional dialogue research includes two influential strategy traditions. Empathetic dialogue prioritizes understanding a speaker's emotional experience. Emotional support conversation selects and sequences support for the seeker's current needs. Sustained use introduces a further goal. Effective support should sustain users' capacities for emotion regulation, coping, self-endorsed decisions, and social connection across the interaction lifecycle. We propose capability-sustaining emotional dialogue (CSED) as a longitudinal research paradigm that aligns supportive strategy with this goal and organizes data, models, system design, evaluation, and governance around repeated use, non-use, transition, and termination. A targeted literature-and-corpus audit motivates this position. In a PRISMA-ScR-guided sample, 95% of 60 system-building papers pursue relief-oriented goals. None evaluates capability or longitudinal outcomes, and only 1 considers dependency, autonomy, or termination risk. In 300 ESConv supporter turns, capability-relevant functions appear in 43.0%, while generic suggestions account for 22.0%, compared with 4.0% reappraisal, 6.7% self-efficacy support, and 0.3% boundary behavior. We release a protocol for extending the audit to model behavior. An illustrative process model connects latent user capability to six design commitments, four evaluation timescales, and lifecycle constraints. The resulting agenda makes CSED testable across data, policy design, training, evaluation, and governance.",
@@ -8307,7 +8308,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-03T22:02:44.319579+00:00",
+      "updated_at": "2026-08-04T05:42:27.250998+00:00",
       "paper": {
         "title": "SGTP: Sampling-based Game-Theoretic Planning for Real-Time Multi-Vehicle Autonomous Racing",
         "summary": "Autonomous multi-vehicle racing requires real-time planning of diverse competitive behaviors in intense interactions. Existing planners often struggle to balance strategic diversity and computational efficiency. To address this challenge, we propose Sampling-based Game-Theoretic Planning (SGTP), a real-time framework that combines game-theoretic reasoning with GPU-accelerated sampling of control sequences and dynamics rollouts. Sampled trajectories are ranked using a game-aware cost to capture competitive interactions and generate diverse racing behaviors. Our planner then performs feasibility selection by explicitly enforcing track-boundary and dynamic collision-avoidance constraints, ensuring safe and reliable transitions between racing strategies. Extensive simulations on challenging tracks show that SGTP achieves a 95.24% win rate and a 99.35% task-completion ratio in highly interactive races, with a mean computational time of 0.095 s over multiple iterative solving steps. We also demonstrate the successful application of SGTP in large-scale scenarios with up to 10 agents. We release our code and provide an open-source benchmark of multi-agent autonomous racing algorithms to facilitate future research. Project page: https://sgtp-racing.github.io/.",
@@ -8353,10 +8354,103 @@
       },
       "priority_score": 50,
       "korean_title": "약한 모델에서 강한 모델로의 온-폴리시 증류 (Weak-to-Strong On-Policy Distillation)"
+    },
+    "2608_02603v1": {
+      "id": "2608_02603v1",
+      "filename": "post_2608_02603v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-08-04T05:42:47.513540+00:00",
+      "paper": {
+        "title": "WorldExam: Benchmarking World Models from Apparent Appearance to Inherent Reactivity",
+        "summary": "Controllable video generation models are increasingly being developed as world models. Accordingly, evaluating them in this role extends beyond the apparent appearance of generated videos to the inherent reactivity of the worlds they depict: the ability to infer from the scene state how the world should react and to generate plausible consequences not explicitly described in the input. Yet existing benchmarks mainly assess visual quality or explicit instruction fulfillment by checking whether requested actions and interaction outcomes are realized, leaving inherent reactivity underexamined. We introduce WorldExam, a hierarchical diagnostic benchmark spanning four levels: Visual Quality, Control Adherence, Spatial Consistency, and World Reactivity. It comprises 1,474 cases across eight dedicated tasks and supports unified evaluation of camera-, action-, and language-driven model paradigms. The World Reactivity level evaluates scene-conditioned reactions and goal-directed behaviors beyond what is explicitly specified in the input. Evaluation of 20 representative models reveals a clear capability split. Camera-driven models excel at camera control, but their interfaces do not support dynamic interaction; action-driven models control subjects more precisely but often leave the world unresponsive; and language-driven models perform better on interaction but follow complex controls less faithfully. No model combines broad task coverage with consistently strong performance, showing that high visual quality and explicit instruction fulfillment do not guarantee inherent reactivity.",
+        "published": "2026-08-03T17:59:54Z",
+        "authors": [
+          "Yuxue Yang",
+          "Shuyao Shang",
+          "Jiahe Wang",
+          "Zitong Zhou",
+          "Liang Tan",
+          "Junhan Zeng",
+          "Ruizhi Li",
+          "Junyan Li",
+          "Yu Liu",
+          "Xiao Yang",
+          "Yong Li",
+          "Jun Zhu",
+          "Hongsheng Li",
+          "Tieniu Tan",
+          "Lue Fan",
+          "Zhaoxiang Zhang"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.02603v1"
+      },
+      "priority_score": 39,
+      "korean_title": "월드 모델의 외관부터 내재적 반응성까지 벤치마킹하는 WorldExam"
+    },
+    "2608_02583v1": {
+      "id": "2608_02583v1",
+      "filename": "post_2608_02583v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-08-04T05:42:35.871186+00:00",
+      "paper": {
+        "title": "UEmbed: Unified Sparse and Dense Multimodal Embeddings",
+        "summary": "Sparse retrieval underpins modern search systems, from web search to retrieval-augmented generation. Existing work has introduced Learned Sparse Retrieval (LSR) to push beyond exact lexical matching toward richer semantics. Yet LSR has so far remained tied to encoder-style bidirectional architectures, and its extension to multimodal settings still relies heavily on auxiliary cross-modal modules. To address these limitations, we introduce UEmbed (Unified Embedding), a decoder-only multimodal embedding model that produces both sparse lexical and dense representations in one causal forward pass. UEmbed appends N learnable special tokens to the input and partitions the vocabulary into N disjoint subsets. Each token's causal hidden state predicts sparse weights over its assigned subset, and the N subsets are concatenated into the full sparse vector. Trained on public data, we release UEmbed at 2B, 4B, and 9B scales. UEmbed-9B reaches 71.8 (dense) and 71.0 (sparse) on MMEB-v2, outperforming multimodal embedding models trained on publicly available data (e.g., RzenEmbed). On BEIR, UEmbed also remains competitive with strong dense and sparse baselines. Furthermore, we demonstrate the practical utility of UEmbed across three dimensions: effectiveness, efficiency, and agentic applications. Overall, UEmbed offers a new paradigm: it unifies dense and sparse embeddings in one model, while further extending sparse retrieval to unify text and multimodal inputs.",
+        "published": "2026-08-03T17:54:11Z",
+        "authors": [
+          "Tingyu Song",
+          "Mingxin Li",
+          "Yanzhao Zhang",
+          "Dingkun Long",
+          "Pengjun Xie",
+          "Zhijie Nie",
+          "Yilun Zhao",
+          "Shu Wu"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.02583v1"
+      },
+      "priority_score": 48,
+      "korean_title": "UEmbed: 통합된 희소 및 밀집 멀티모달 임베딩"
+    },
+    "2607_28590v1": {
+      "id": "2607_28590v1",
+      "filename": "post_2607_28590v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-08-04T05:42:56.659125+00:00",
+      "paper": {
+        "title": "VAD: Attributing Visual Evidence for Target Reconstruction in Multimodal On-Policy Distillation",
+        "summary": "Multimodal on-policy distillation (OPD) transfers fine-grained visual knowledge by supervising student-generated trajectories with a privileged-view teacher. Yet its next-token corrections are source-mixed, combining visual signals with linguistic priors and teacher-specific effects. The key challenge is to estimate which corrections are supported by visual evidence, not merely where or how strongly to distill. We introduce Visual Attribution Distillation (VAD), a counterfactual target-reconstruction algorithm that estimates the visually attributable part of a teacher correction. At each student-generated prefix, VAD evaluates the same fixed teacher with the relevant evidence present and removed. The corresponding change in centered log-probabilities defines ut, a signed proxy for the visual evidence direction that estimates how revealing the evidence supports or refutes candidate tokens. VAD projects the original correction onto this proxy to obtain an intervention-aligned component and a proxy-unexplained residual, then reconstructs a student-anchored target from the former. During training, this reconstructed target supplies the primary supervision signal, while the privileged teacher contributes a weak regularizer. Across six fine-grained visual benchmarks at 4B and 9B scales, VAD outperforms direct privileged-view distillation and visual-advantage weighting. Token- level and controlled-target analyses show that the proxy-aligned component is enriched in task-relevant visual corrections and yields stronger target shifts, especially when evidence refutes a mistaken answer. These results support counterfactual target reconstruction as an effective alternative to source-mixed supervision.",
+        "published": "2026-07-30T17:43:46Z",
+        "authors": [
+          "Kangning Zhang",
+          "Yixing Li",
+          "Shuai Shao",
+          "Qingyao Li",
+          "Zhengxi Lu",
+          "Zhiyuan Yao",
+          "Jianghao Lin",
+          "Wenxiang Jiao",
+          "Yuan Lu",
+          "Weiwen Liu",
+          "Weinan Zhang",
+          "Yong Yu"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2607.28590v1"
+      },
+      "priority_score": 30,
+      "korean_title": "시각적 속성 증류: 다중 모달 온-폴리시 증류에서의 대상 재구성을 위한 시각적 증거 속성화"
     }
   },
   "last_run": {
-    "started_at": "2026-08-04T01:57:39.042494+00:00",
+    "started_at": "2026-08-04T05:42:27.251983+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -8367,25 +8461,25 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 19375,
-      "output_tokens": 5632,
+      "prompt_tokens": 19902,
+      "output_tokens": 5755,
       "thought_tokens": 0,
-      "total_tokens": 25007,
-      "estimated_usd": 0.01329175
+      "total_tokens": 25657,
+      "estimated_usd": 0.013608
     },
-    "finished_at": "2026-08-04T01:58:20.846514+00:00"
+    "finished_at": "2026-08-04T05:43:08.110026+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 597,
-    "prompt_tokens": 1494600,
-    "output_tokens": 439876,
+    "requests": 605,
+    "prompt_tokens": 1514502,
+    "output_tokens": 445631,
     "thought_tokens": 0,
-    "total_tokens": 1934476,
-    "estimated_usd": 1.033464
+    "total_tokens": 1960133,
+    "estimated_usd": 1.047072
   },
   "last_publication_run": {
-    "started_at": "2026-08-04T01:57:39.042494+00:00",
+    "started_at": "2026-08-04T05:42:27.251983+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -8396,17 +8490,17 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 19375,
-      "output_tokens": 5632,
+      "prompt_tokens": 19902,
+      "output_tokens": 5755,
       "thought_tokens": 0,
-      "total_tokens": 25007,
-      "estimated_usd": 0.01329175
+      "total_tokens": 25657,
+      "estimated_usd": 0.013608
     },
-    "finished_at": "2026-08-04T01:58:20.846514+00:00"
+    "finished_at": "2026-08-04T05:43:08.110026+00:00"
   },
   "daily_usage": {
     "date": "2026-08-04",
-    "estimated_usd": 0.01329175,
-    "publications": 4
+    "estimated_usd": 0.02689975,
+    "publications": 8
   }
 }
