@@ -1,0 +1,71 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Wnuan: 기업 전용 지식 질의응답을 위한 단계별 사후 학습 | ArXiv Translator AI</title><meta name="description" content="Wnuan: 기업 전용 지식 질의응답을 위한 단계별 사후 학습"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_01862v1"><meta property="og:type" content="article"><meta property="og:title" content="Wnuan: 기업 전용 지식 질의응답을 위한 단계별 사후 학습"><meta property="og:description" content="Wnuan: 기업 전용 지식 질의응답을 위한 단계별 사후 학습"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_01862v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Wnuan: 기업 전용 지식 질의응답을 위한 단계별 사후 학습"><meta name="twitter:description" content="Wnuan: 기업 전용 지식 질의응답을 위한 단계별 사후 학습"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_01862v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Wnuan: 기업 전용 지식 질의응답을 위한 단계별 사후 학습", "description": "Wnuan: 기업 전용 지식 질의응답을 위한 단계별 사후 학습", "datePublished": "2026-08-03", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_01862v1", "author": [{"@type": "Person", "name": "Xiaofeng Shi"}, {"@type": "Person", "name": "Xiaosong Qiu"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_01862v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_01862v1"});gtag('event', 'paper_view', {"paper_id": "2608_01862v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>Wnuan: 기업 전용 지식 질의응답을 위한 단계별 사후 학습</h1><p>Wnuan: 기업 전용 지식 질의응답을 위한 단계별 사후 학습</p><pre>Wnuan: 기업 전용 지식 질의응답을 위한 단계별 사후 학습
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Wnuan: Staged Post-Training for Question Answering over Proprietary Enterprise Knowledge
+&gt; - **저자:** Xiaofeng Shi, Xiaosong Qiu, Wenxin Ma, Qian Kou, Yiming Pan, Longbin Yu, Ying Liu, Haiping Wang, Hua Zhou
+&gt; - **발행일:** 2026-08-03
+&gt; - **PDF 링크:** [Wnuan: Staged Post-Training for Question Answering over Proprietary Enterprise Knowledge](https://arxiv.org/pdf/2608.01862v1)
+
+
+✨ 3줄 핵심 요약
+- 기업 내부 문서 기반의 질의응답 모델을 구축하기 위해 3단계 학습 파이프라인인 &#x27;Wnuan&#x27;을 제안합니다.
+- 데이터 생성, 일반 데이터 재학습, 잔차 오류 대상 강화학습(RL)을 통해 모델의 답변 정확도를 크게 개선했습니다.
+- 성능 향상과 동시에 모델의 기존 범용 능력 유지 사이의 균형을 맞추는 최적화 과정을 입증했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+많은 기업은 외부와 공유할 수 없는 내부 정책이나 기술 표준 문서를 보유하고 있습니다. 기존의 범용 언어 모델은 이러한 특수 지식을 알지 못합니다. &#x27;Wnuan&#x27;은 이 문제를 해결하기 위해 3단계 과정을 거칩니다. 첫째, 기업 문서를 질의응답 데이터로 바꿉니다. 둘째, 모델이 기존 능력을 잊지 않도록 범용 데이터와 함께 학습시킵니다. 셋째, 여전히 틀리는 문제만 골라 집중적으로 강화학습을 수행합니다. 이를 통해 모델은 기업 내부 지식에 정통하면서도 기본적인 대화 능력을 유지하게 됩니다.
+
+🎯 배경 및 문제점
+기업 환경에서 사용하는 모델은 내부 정책, 기술 표준, 운영 절차 등 비공개 정보를 정확히 숙지해야 합니다. 그러나 기존 방법론들은 다음과 같은 문제를 겪었습니다.
+- 일반적인 언어 모델은 특수 분야 지식에 취약함.
+- 특수 지식을 학습시키면 기존의 범용 능력(지시 이행 등)이 저하됨.
+- 사후 학습 과정에서 제한된 컴퓨팅 자원을 효율적으로 사용해야 함.
+- 이미 쉬운 문제는 해결했으나, 어려운 잔차 오류(residual errors)를 효율적으로 교정하는 기법이 부족함.
+
+💡 핵심 기술 및 아키텍처
+Wnuan은 크게 3단계 파이프라인으로 구성됩니다.
+1. **1단계 (데이터 생성):** 기업 내부 문서를 모델이 학습 가능한 질의응답 형태로 변환하고 타겟 모델에 최적화된 형식으로 재작성합니다.
+2. **2단계 (SFT 및 재학습):** 범용 데이터를 함께 학습(Replay)하는 방식의 전체 파라미터 미세 조정(SFT)을 수행합니다.
+3. **3단계 (잔차 오류 강화학습):** 2단계 이후에도 모델이 여전히 잘못 답하는 문제들을 선별합니다. 이후 해당 잔차 오류 데이터에 대해 의미론적 보상(Semantic-reward) 기반의 GRPO 강화학습을 적용합니다.
+
+📊 실험 결과 분석
+32B 모델 기준, 707개 질문으로 구성된 &#x27;Wnuan-Bench&#x27;에서 다음과 같은 성능 향상을 확인했습니다.
+- **답변 수용률(AAR):** 적응 전 52.76% → SFT 후 80.06% → 강화학습(RL) 후 91.51%로 상승.
+- **데이터 샘플링 효율:** 동일한 100회 업데이트 프로토콜 내에서, 잔차 오류 샘플링이 전체 풀(Full-pool)이나 무작위 샘플링보다 각각 3.11점, 2.97점 더 높은 성과를 기록함.
+- **범용 성능 비용:** 적응 과정에서 범용 벤치마크 점수가 평균 5.17점 하락했으며, 이는 주로 지시 이행 능력에서 기인함.
+- **신뢰도:** 자동 평가 앙상블은 인간 도메인 전문가와 90.5%의 일치도를 보임.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+Wnuan은 기업이 민감한 내부 데이터를 외부 API 서버로 전송하지 않고도, 폐쇄형 환경에서 자체적으로 고품질의 질의응답 모델을 구축할 수 있게 합니다. 이 연구는 기업이 독자적인 기술 문서와 운영 표준을 AI 모델에 효과적으로 내재화하는 실무적인 가이드라인을 제공합니다. 다만, 본 모델은 인간의 검증이 필요한 보조 도구로 설계되었으며, 인사·컴플라이언스 등 중대한 의사결정에 단독으로 사용해서는 안 됩니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2608.01862 Wnuan: Staged Post-Training for Question ...](https://arxiv.org/abs/2608.01862)
+&gt; - [Paper page - Wnuan: Staged Post-Training for Question ...](https://huggingface.co/papers/2608.01862)
+&gt; - [GitHub - mbzuai-oryx/Awesome-LLM-Post-training: Awesome ...](https://github.com/mbzuai-oryx/Awesome-LLM-Post-training)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;방법론 자체는 단계적이고 논리적이나, 범용 벤치마크 성능이 5점 이상 하락했다는 점은 학술적으로 &#x27;Catastrophic Forgetting&#x27;을 완전히 해결하지 못했음을 의미합니다. 기업 특화 지식과 범용성 사이의 Trade-off를 어떻게 정량적으로 제어할지에 대한 고민이 좀 더 필요해 보입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 맞지만, 실무에선 일단 돌아가는 게 중요합니다. 3단계 RL 파이프라인에서 잔차 오류만 타겟팅해서 보상 주는 방식은 리소스 효율성 측면에서 꽤 매력적이에요. 특히 기업 보안 때문에 폐쇄망 돌려야 하는 환경에선 이 정도 성능 향상이면 충분히 프로덕션 도입 고려해볼 만합니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;맞아요! GRPO를 활용해서 잔차 오류만 핀셋으로 집어내는 거, 요즘 트렌드인 &#x27;효율적인 사후 학습&#x27;의 정석이네요. 범용 성능 좀 깎이는 건 나중에 LoRA로 어댑터 따로 붙여서 보완하면 될 것 같고, 당장 사내 문서 봇 성능 90% 찍는 게 영업팀 설득하기엔 최고죠!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
