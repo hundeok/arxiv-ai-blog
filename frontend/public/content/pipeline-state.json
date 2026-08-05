@@ -8700,7 +8700,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-05T01:57:03.922229+00:00",
+      "updated_at": "2026-08-05T05:41:22.996753+00:00",
       "paper": {
         "title": "To Add Is Machine, To Delete Is Human: Measuring and Mitigating Deletion Avoidance in LLM Code Editing",
         "summary": "Large language models increasingly write and repair production code, yet evidence is mounting that their test-passing patches leave codebases harder to maintain. We identify one concrete source: deletion avoidance, the systematic tendency to retain code that an intended edit requires removing. Across the five leading models on the official SWE-bench Verified leaderboard, deletion recall against the developer patch reaches at most 71.7% even on tasks all five solve, and models reach the right file for over 92% of required deletions but cut the exact line in under 52% of cases. Instead, 29.0% of passing patches wrap the targeted code in a guard or fallback, a pattern we call Guard-and-Go. Such patches pass because the original tests rarely check removal: when we retrofit 34 Verified tasks with tests that fail if the targeted code remains, four frontier models spanning closed and open weights fall from 63.2% to 41.9%. Because real repairs mix removal with addition, we curate CanItDelete, a benchmark of 200 tasks mined from real commits whose entire required edit is deletion. Even with the addition work gone, the best model still fails one task in five, and smaller open models fall to 18.0%. We then ablate GPT-5.6 Sol under four cumulative prompts; success moves little until we supply the exact lines, which nearly eliminate incomplete deletion yet raise success only to 80.5% because the model then deletes beyond the spans or adds code instead. Finally, through a pilot study we show one potential fix: teaching deletion during post-training reduces deletion avoidance and improves broader code-editing performance, suggesting the behavior is undertrained rather than beyond reach.",
@@ -8752,7 +8752,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-05T01:57:03.922238+00:00",
+      "updated_at": "2026-08-05T05:41:22.996782+00:00",
       "paper": {
         "title": "Wnuan: Staged Post-Training for Question Answering over Proprietary Enterprise Knowledge",
         "summary": "Enterprise question answering requires models to acquire proprietary knowledge without discarding general capabilities. We present Wnuan, a three-stage pipeline that constructs task-oriented supervision from documents, performs supervised fine-tuning with general-data replay, and applies reinforcement learning to residual errors. On the 707-question WnuanBench, the primary 32B route raises acceptable-answer rate (AAR) from 52.76% before adaptation to 80.06% after SFT and 91.51% after RL. Under a matched 100-update protocol, residual-error sampling outperforms full-pool and size-matched random sampling by 3.11 and 2.97 points, respectively. Source-cluster bootstrap intervals remain above zero for both contrasts, and a same-domain validation set preserves the ordering. The general-benchmark average decreases by 5.17 points across the route, concentrated in instruction following. The automatic evaluation ensemble agrees with an authoritative domain expert on 90.5% of a stratified Wnuan-Inst response sample. These results characterize both the gains and the general-capability cost of staged enterprise adaptation.",
@@ -8780,7 +8780,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-05T01:57:26.721223+00:00",
+      "updated_at": "2026-08-05T05:41:22.996776+00:00",
       "paper": {
         "title": "InfiniSplat: Implicit Gaussian Decoding for Large-Baseline Monocular View Synthesis",
         "summary": "Single-image feed-forward 3D Gaussian Splatting (3DGS) aims to directly generate a renderable 3D scene representation from one input image, avoiding the cost of multi-view capture and per-scene optimization. However, existing methods are often constrained by a pixel-aligned representation, where Gaussians are predicted from fixed image-grid locations. Such pixel-aligned primitives can produce promising nearby-view renderings, but they remain weakly coupled to underlying scene surfaces and struggle to preserve coherent structures under large viewpoint shifts. We present InfiniSplat, a feed-forward single-image 3DGS framework that moves from a pixel-aligned representation toward a surface-aligned representation. InfiniSplat constructs this representation by first using geometry-guided sampling to place 2D supports according to depth-induced local surface structure, and then applying a query-conditioned implicit decoder to predict Gaussian attributes from the image features queried at these supports. By grounding support locations in geometry while decoupling Gaussian prediction from fixed pixel centers, InfiniSplat produces Gaussian layouts that better follow scene surfaces and reduce scattered primitives caused by grid discretization. Across multiple cross-dataset NVS evaluations, InfiniSplat achieves state-of-the-art performance compared with single-image feed-forward baselines, and demonstrates zero-shot generalization from Hypersim indoor synthetic training to complex open-world scenes. Project page: https://zju3dv.github.io/InfiniSplat.",
@@ -8809,7 +8809,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-05T01:57:41.652270+00:00",
+      "updated_at": "2026-08-05T05:41:22.996804+00:00",
       "paper": {
         "title": "MemSFT: Mitigating Alignment Tax with an External Parametric Memory",
         "summary": "Adapting Large Language Models (LLMs) to specialized domains often incurs an alignment tax, as fine-tuning on domain-specific tasks can cause catastrophic forgetting and substantially degrade performance on general tasks. We propose MemSFT, which mitigates the alignment tax by decoupling domain specialization from backbone parameter updates through a plug-and-play parametric memory. The memory is trained to imitate the behavior of a non-parametric retriever operating over domain data, thereby memorizing knowledge and patterns that would otherwise be accessed through retrieval. Once trained on a specific domain, the memory can be reused across LLMs of different sizes. During generation, a learned router dynamically fuses the output distributions of the memory and backbone at each decoding step, allowing domain expertise to be invoked selectively. Across biology, geoscience, and law, evaluations with models ranging from Qwen3-8B to Qwen3-235B-A22B show that MemSFT consistently improves domain performance with negligible degradation in general performance, whereas full SFT suffers severe forgetting on general tasks. Overall, our results demonstrate a practical path to decoupling general model capabilities from domain-specific knowledge at the parameter level, thereby equipping LLMs with new specialized capabilities without compromising their general capabilities.",
@@ -8831,60 +8831,243 @@
       },
       "priority_score": 37,
       "korean_title": "MemSFT: 외부 파라메트릭 메모리를 통한 정렬 세금 완화"
+    },
+    "2608_03509v1": {
+      "id": "2608_03509v1",
+      "filename": "post_2608_03509v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-08-05T05:41:31.395701+00:00",
+      "paper": {
+        "title": "SkillJack: Persistent Skill Backdoors in Self-Evolving Agents",
+        "summary": "Self-evolving agents increasingly convert interaction histories into reusable skills that persist beyond individual tasks. While prior work studies memory and retrieval poisoning, such attacks only affect agents when poisoned records are retrieved as context. We uncover a new and more fundamental risk: poisoned experiences can be transformed by the agent itself into durable behavioral artifacts. We present \\textbf{SkillJack}, the first attack that exploits the experience-to-skill pipeline of self-evolving agents. Instead of directly manipulating runtime context, SkillJack hijacks the agent's own learning process to implant malicious behaviors into its reusable skill repertoire. We identify three key properties of this transformation: \\emph{sanitization whitewashing}, where malicious intent is obscured during skill extraction; \\emph{cross-layer promotion}, where transient experiences become persistent capabilities; and \\emph{persistence isolation}, where the attack survives removal of its original source records. We evaluate SkillJack on two representative systems, SkillX and Anything2Skill, using a shared dataset of 150 trajectories across four policy-risk categories. Results show that skill extraction substantially reduces attack detectability: in SkillX, safety detection drops from 98.5\\% for poisoned trajectories to 11.4\\% for extracted skills, while Anything2Skill shows a similar effect. Meanwhile, the implanted skills remain effective, achieving attack success rates of 56.2\\% and 89.2\\% on the two systems, respectively. Furthermore, 80.0\\% of skill-mediated attacks persist after deleting the original poisoned records, and some skills unintentionally activate on benign queries. Our findings reveal skill evolution as a new attack surface and motivate provenance-aware skill lifecycle protection. Our code is available at https://github.com/Tencent/AI-Infra-Guard/research/skilljack.",
+        "published": "2026-08-04T11:51:23Z",
+        "authors": [
+          "Zonghao Ying",
+          "Xiangfan Wu",
+          "Huiyu Wu",
+          "Xing Zheng",
+          "Huangsheng Cheng",
+          "Xiaorong Shi",
+          "Jing Guo"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.03509v1"
+      },
+      "priority_score": 60,
+      "korean_title": "SkillJack: 자가 진화형 에이전트의 지속 가능한 스킬 백도어"
+    },
+    "2608_03812v1": {
+      "id": "2608_03812v1",
+      "filename": "post_2608_03812v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-08-05T05:41:22.996798+00:00",
+      "last_error": null,
+      "updated_at": "2026-08-05T05:41:22.996799+00:00",
+      "paper": {
+        "title": "OmniPack: Unified Token Compression for Efficient Omni-modal Large Language Models",
+        "summary": "Omni-modal large language models (Omni-LLMs) have achieved remarkable performance on audio-visual understanding tasks, but processing long and highly redundant visual and audio token sequences incurs substantial computational overhead, demanding aggressive token compression for efficient deployment. Existing methods often degrade at low token budgets: pre-LLM compression may discard structurally important and globally distributed evidence, whereas inner-LLM compression often underexploits query-conditioned audio-visual collaboration. To address these limitations, we propose OmniPack, a training-free framework that coordinates structural compression before the LLM with task-relevant semantic refinement within the LLM. Before the LLM, OmniPack removes structural redundancy through modality-specific importance, global coverage, and similarity-aware merging. After sufficient multimodal interaction, it further consolidates diverse, task-relevant representations through textual guidance and audio-visual collaboration. Extensive experiments on five benchmarks with three Omni-LLM backbones demonstrate that OmniPack consistently achieves the best performance-efficiency trade-off across diverse retention ratios, outperforming all existing methods. Notably, on Qwen2.5-Omni-7B, OmniPack preserves 98.0% of the original performance while reducing FLOPs to 16.7%, and still retains 92.9% of the original performance with only 6.8% of the original FLOPs.",
+        "published": "2026-08-04T15:23:42Z",
+        "authors": [
+          "Wanshun Su",
+          "Yang Shi",
+          "Feihu Liu",
+          "Ziwen Yu",
+          "Yan Min",
+          "Zhuoran Zhang",
+          "Qixun Wang",
+          "Haotian Wang",
+          "Shixuan Liu",
+          "Yuanxing Zhang",
+          "Peng Wu",
+          "Chengfu Huo",
+          "Liang Ding"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.03812v1"
+      },
+      "priority_score": 28
+    },
+    "2607_28993v1": {
+      "id": "2607_28993v1",
+      "filename": "post_2607_28993v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-08-05T05:41:52.455969+00:00",
+      "paper": {
+        "title": "ST-WAM: Semantic-Temporal World Action Model for Robust Manipulation under Visual Distribution Shifts",
+        "summary": "World Action Models (WAMs) have emerged as a promising paradigm by jointly modeling robot actions and future visual dynamics. However, their reliance on pixel-generative future supervision can entangle action-relevant state transitions with task-irrelevant visual content, limiting robustness under visual distribution shifts. We identify Training-Distribution Hallucination, a recurring phenomenon in which futures conditioned on visually shifted observations hallucinate training-domain content rather than remain faithful to the current scene. A controlled frame-triplet diagnosis further shows that DINOv3 features remain more stable across visual shifts while better preserving task-state distinctions than Wan-VAE latents. Rather than correcting the predicted futures, we propose Semantic-Temporal WAM (ST-WAM) to improve action robustness by using DINOv3 as a shared semantic representation for future prediction and history retrieval while retaining fine-grained VAE dynamics. Its Dual-Space Future Experts (DSFE) jointly predict future VAE latents and DINO features, while Current-Anchored Intent Retrieval (CAIR) retrieves task-relevant evidence from recent DINO history under the current visual-language context. ST-WAM is trained end-to-end without additional embodied pretraining or task-specific annotations, and requires no explicit future generation at inference. It achieves 98.7% on LIBERO and 92.8% on RoboTwin 2.0; more importantly, compared with Fast-WAM, it improves zero-shot LIBERO-Plus performance by 21.3 percentage points and more than doubles real-world success under visual shifts from 25.8% to 61.5%. These results demonstrate that semantic-temporal modeling effectively complements pixel-generative dynamics for robust manipulation.",
+        "published": "2026-07-31T03:44:56Z",
+        "authors": [
+          "Mingxin Wang",
+          "Bin Hu",
+          "Bin Qian",
+          "Kaitao Jiang",
+          "Haoning Wu",
+          "Feng Yan",
+          "Bowen Jing",
+          "Ruiyang Hao",
+          "Enyi Wang",
+          "Kangning Niu",
+          "Yandan Yang",
+          "Mu Xu",
+          "Yan Wang",
+          "Houde Liu",
+          "Tianlun Li"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2607.28993v1"
+      },
+      "priority_score": 30,
+      "korean_title": "시각적 분포 변화에 강인한 조작을 위한 의미론적-시간적 세계 행동 모델"
+    },
+    "2608_00730v1": {
+      "id": "2608_00730v1",
+      "filename": "post_2608_00730v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-08-05T05:41:22.996816+00:00",
+      "last_error": null,
+      "updated_at": "2026-08-05T05:41:22.996818+00:00",
+      "paper": {
+        "title": "Push-Wiper: Toward General-Purpose Robotic Cleaning across Varied Stains and Surfaces with Segmented Pushing Trajectories",
+        "summary": "Viscous stains, characterized by high viscosity and complex rheological properties, remain a major challenge for robotic surface cleaning. Conventional wiping often spreads the stain, while scrubbing provides stronger friction but risks damaging the surface. In this paper, we propose Push-Wiper, a framework that reformulates viscous stain cleaning as an aggregation problem. Push-Wiper employs a sponge to progressively gather stains through segmented pushing trajectories, followed by a post-processing phase that detaches the aggregated material and enables sponge self-cleaning. We adopt a stepwise strategy for stain gathering and leverage Diffusion Policy to generate adaptive pushing action sequences. These sequences are executed through our Arbitrary Surface Pose Interpolator (ASPI) and a hybrid force-position controller, allowing the method to generalize to stains with diverse spatial distributions. Push-Wiper achieves a cleaning score (CS), defined as the percentage of stain area removed, up to 130% higher than baseline methods. Without additional training, Push-Wiper also transfers in a zero-shot manner to solid residues, liquid spills, unseen viscous stains, and curved surfaces with varying geometries. Our experiments demonstrate the cleaning effectiveness of Push-Wiper and its strong generalization ability. The project website is available at https://push-wiper.github.io/.",
+        "published": "2026-08-01T15:58:02Z",
+        "authors": [
+          "Renhao Lu",
+          "Mingxin Wang",
+          "Chenyang Cao",
+          "Yang Yang",
+          "Guoping Pan",
+          "Kangkang Dong",
+          "Yi Cheng",
+          "Houde Liu"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.00730v1"
+      },
+      "priority_score": 17
+    },
+    "2608_02738v1": {
+      "id": "2608_02738v1",
+      "filename": "post_2608_02738v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-08-05T05:41:43.392433+00:00",
+      "paper": {
+        "title": "Knowledge-Geometry Decoupling: Refreshable Pretrained Transfer for Streaming Recommendation",
+        "summary": "Industrial recommenders increasingly adopt the pretrain-then-transfer paradigm, yet behavioral distribution drift raises two questions: what to learn from behavior sequences, and how to transfer the learned knowledge while the pretrained model is continually refreshed. To resolve them, we propose Knowledge-Geometry Decoupling (KGD). For what to learn, conventional next-token prediction treats adjacency as dependency and may encode spurious transitions across unrelated sessions. We introduce Behavioral Multi-Token Prediction (BMTP) to retain only collaboratively or semantically related future items as supervision, yielding cleaner and more transferable behavioral knowledge. For how to transfer, pretrained knowledge and task-specific geometry impose conflicting optimization demands on shared parameters. To handle it, KGD assigns them to separate parameter sets: a refreshable encoder owns behavioral knowledge, while a task learner reads contextualized encoder states through read-only cross-attention and writes task-specific geometry through Anchored Calibration Residual (ACR) orthogonal to the pretrained embedding. The decoupled ownership enables continual knowledge refresh without task-gradient interference or invalidating downstream adaptation. KGD improves over strong pretrain-transfer baselines by 4-12% on eight public benchmarks and sustains its advantage over a 90-day production stream where baselines show no gains. KGD has been fully deployed in Shopee. In a live A/B test on Shopee Homepage Search, it increases GMV per user by 1.75% and advertising revenue by 1.53%, demonstrating its high practical value. We provide the core implementation of KGD at https://github.com/FuCongResearchSquad/KGD4REC.",
+        "published": "2026-08-03T18:00:05Z",
+        "authors": [
+          "Zixuan Wang",
+          "Yuhong Chen",
+          "Yuxuan Zhu",
+          "Guidong Lei",
+          "Zhiluohan Guo",
+          "Yu Zhao",
+          "Kun Wang",
+          "Bangyang Hong",
+          "Kangle Wu",
+          "Yabo Ni",
+          "Anxiang Zeng",
+          "Cong Fu",
+          "Hui Li"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.02738v1"
+      },
+      "priority_score": 40,
+      "korean_title": "지식-기하학 분리: 스트리밍 추천을 위한 갱신 가능한 사전학습 전이"
+    },
+    "2608_02711v1": {
+      "id": "2608_02711v1",
+      "filename": "post_2608_02711v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-08-05T05:42:02.077620+00:00",
+      "paper": {
+        "title": "Hunyuan3D-Buffalo 1.0: A Unified Multimodal Model for Scalable 3D Generation, Understanding, and Editing",
+        "summary": "Recent advances in image generation have demonstrated the potential of unified multimodal models that integrate understanding, generation, and editing. However, unified 3D modeling remains constrained by scarce multimodal data, particularly the lack of large-scale and geometrically consistent editing data. To address this limitation, we propose Hunyuan3D-Buffalo 1.0, a unified framework supporting 3D understanding, text-to-3D generation, instruction-guided 3D editing, and text-grounded part generation within a single architecture. To enable scalable training, we construct an 87M-scale 3D multimodal corpus, comprising 25M understanding samples, 50M text-to-3D pairs, and 12M editing pairs generated using Nano3D-v2. Architecturally, the framework combines Hunyuan3D-VLM for semantic, structural, and spatial understanding with Hunyuan3D DiT for high-fidelity 3D synthesis. The VLM provides multimodal semantic conditions for generation, while editing and part generation additionally condition the diffusion process on the source object representation to preserve its overall structure and unedited regions. Extensive experiments show that Hunyuan3D-Buffalo 1.0 achieves state-of-the-art or leading performance on text-to-3D generation and 3D editing benchmarks, while exhibiting strong understanding and part-generation capabilities. Our analysis further shows that both generation and understanding improve editing, demonstrating the effectiveness of unified 3D multimodal training. Project Page: https://tencent-hunyuan.github.io/Hunyuan3D-Buffalo1.0/",
+        "published": "2026-08-03T17:57:11Z",
+        "authors": [
+          "Junliang Ye",
+          "Kenkun Liu",
+          "Guocun Wang",
+          "Yang Li",
+          "Yansong Qu",
+          "Chunshi Wang",
+          "Jingwei Xu",
+          "Yunhan Yang",
+          "Zibo Zhao",
+          "Jiachen Xu",
+          "Jiaao Yu",
+          "Lifu Wang",
+          "Zhihao Liang",
+          "Zhuo Chen",
+          "Chunchao Guo"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.02711v1"
+      },
+      "priority_score": 29,
+      "korean_title": "훈원3D-버팔로 1.0: 확장 가능한 3D 생성, 이해, 편집을 위한 통합 멀티모달 모델"
     }
   },
   "last_run": {
-    "started_at": "2026-08-05T01:57:03.923519+00:00",
+    "started_at": "2026-08-05T05:41:22.997756+00:00",
     "discovered": 10,
-    "selected": 2,
-    "generated": 2,
+    "selected": 4,
+    "generated": 4,
     "failed": 0,
     "skipped": 0,
     "health": "healthy",
     "failures": [],
     "usage": {
       "model": "gemini-3.1-flash-lite",
-      "requests": 4,
-      "prompt_tokens": 10303,
-      "output_tokens": 2885,
+      "requests": 8,
+      "prompt_tokens": 19867,
+      "output_tokens": 5808,
       "thought_tokens": 0,
-      "total_tokens": 13188,
-      "estimated_usd": 0.00690325
+      "total_tokens": 25675,
+      "estimated_usd": 0.01367875
     },
-    "finished_at": "2026-08-05T01:57:41.802337+00:00"
+    "finished_at": "2026-08-05T05:42:02.232501+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 655,
-    "prompt_tokens": 1641716,
-    "output_tokens": 482260,
+    "requests": 663,
+    "prompt_tokens": 1661583,
+    "output_tokens": 488068,
     "thought_tokens": 0,
-    "total_tokens": 2123976,
-    "estimated_usd": 1.133819
+    "total_tokens": 2149651,
+    "estimated_usd": 1.14749775
   },
   "last_publication_run": {
-    "started_at": "2026-08-05T01:57:03.923519+00:00",
+    "started_at": "2026-08-05T05:41:22.997756+00:00",
     "discovered": 10,
-    "selected": 2,
-    "generated": 2,
+    "selected": 4,
+    "generated": 4,
     "failed": 0,
     "skipped": 0,
     "health": "healthy",
     "failures": [],
     "usage": {
       "model": "gemini-3.1-flash-lite",
-      "requests": 4,
-      "prompt_tokens": 10303,
-      "output_tokens": 2885,
+      "requests": 8,
+      "prompt_tokens": 19867,
+      "output_tokens": 5808,
       "thought_tokens": 0,
-      "total_tokens": 13188,
-      "estimated_usd": 0.00690325
+      "total_tokens": 25675,
+      "estimated_usd": 0.01367875
     },
-    "finished_at": "2026-08-05T01:57:41.802337+00:00"
+    "finished_at": "2026-08-05T05:42:02.232501+00:00"
   },
   "daily_usage": {
     "date": "2026-08-05",
-    "estimated_usd": 0.00690325,
-    "publications": 2
+    "estimated_usd": 0.020582,
+    "publications": 6
   }
 }
