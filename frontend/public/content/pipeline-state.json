@@ -8518,7 +8518,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-04T22:07:34.644434+00:00",
+      "updated_at": "2026-08-05T01:57:03.922209+00:00",
       "paper": {
         "title": "GPTQ-2D: Cubic-Time Two-Sided Adaptive Rounding",
         "summary": "Adaptive rounding methods such as GPTQ, or equivalently Babai's nearest plane algorithm, round a real matrix to integers under a quadratic metric. They process the entries in a fixed order, one at a time, propagating each rounding error to the entries not yet processed through a triangular feedback matrix. We study the two-sided version of this task, in which fixed nonsingular basis matrices act on both the left and the right of the residual; the familiar one-sided case is the special case of an identity right basis. Vectorizing the matrix turns the two-sided objective into a quadratic metric whose Gram matrix is a Kronecker product, so the one-dimensional algorithm applies verbatim, but takes quartic time in the matrix dimension. We present GPTQ-2D, which produces the identical rounded matrix in cubic time. It rounds the entries anti-diagonal by anti-diagonal; entries on the same anti-diagonal are independent and are rounded in parallel.",
@@ -8540,7 +8540,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-04T22:07:04.433414+00:00",
+      "updated_at": "2026-08-05T01:57:03.922269+00:00",
       "paper": {
         "title": "LeapTalk: Breaking the Latency-Quality Trade-off in Talking Head Generation",
         "summary": "Long-form and real-time talking-head generation remains challenging due to a latency-quality trade-off: inefficient multi-step diffusion prohibits streaming generation, whereas real-time autoregressive approaches suffer from error accumulation and identity drift. To address this drawback, we propose LeapTalk, a novel framework that achieves stable and real-time talking-head generation with a single forward step, scaling to arbitrarily long videos. At the heart of our approach lies a single-step bridge distillation scheme. On the one hand, departing from the conventional noise-to-data paradigm, we introduce a data-to-data transport formulation based on a Brownian bridge. Anchored by a persistent reference, this strategy effectively mitigates identity drift and enhances long-term temporal stability. On the other hand, to enable smooth knowledge transfer from a pre-trained diffusion teacher to the student bridge model, we explore a heterogeneous distillation framework with an SNR-aligned time transformation $Φ(τ)$, which bridges the functional discrepancy between the two models. Moreover, we propose an audio-driven classifier-free guidance mechanism to maintain fine-grained lip synchronization under extreme step reduction. Extensive experiments demonstrate that our method achieves high-fidelity and temporally consistent video generation with only 1 step at up to 200 FPS, significantly outperforming existing approaches in both efficiency and stability. Project Page: https://zhangrongxiang.github.io/leaptalk-page/",
@@ -8592,7 +8592,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-04T22:07:04.433418+00:00",
+      "updated_at": "2026-08-05T01:57:03.922284+00:00",
       "paper": {
         "title": "DAPD: Dual-Anchored Policy Distillation",
         "summary": "On-policy (self) distillation (OPSD) is increasingly adopted for language-model post-training. It strengthens the teacher with privileged information but can induce a privilege illusion: the student learns privilege-dependent behavior it cannot reproduce from its inference-time context, yet behaves as if the training-time privileged information remained available, ultimately degrading performance. In this paper, we identify information asymmetry between the privileged teacher and the student at inference as the root cause of this failure in OPSD. To resolve this asymmetry, we propose Dual-Anchored Policy Distillation (DAPD), a unified framework with two levels of anchoring. Dual-Path Anchoring (DPA) introduces a self-conditioned bridge and aligns reference and rollout behavior along two matched-information paths, preventing privilege-dependent behavior from being transferred to the inference-time student. Dual-Source Anchoring (DSA) applies these paths in both reference-to-rollout and rollout-to-reference directions, reducing reliance on privileged reference guidance while preserving correctness supervision. Extensive experiments show that DAPD significantly alleviates privilege illusion, outperforming OPSD on Qwen3-4B by +2.00 points on average across tasks. Notably, its gains persist across scales, reaching +2.69 at 4B and +2.78 at 32B.",
@@ -8616,7 +8616,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-04T22:07:04.433428+00:00",
+      "updated_at": "2026-08-05T01:57:03.922278+00:00",
       "paper": {
         "title": "DiffusionGemma Technical Report",
         "summary": "We introduce DiffusionGemma, an experimental open-weight language model that uses discrete diffusion to generate text at exceptionally high speed. Rather than decoding one token at a time, DiffusionGemma iteratively refines blocks of 256 tokens in parallel, avoiding the sequential decoding bottleneck of conventional autoregressive (AR) large language models. Instead of training from scratch, we obtain DiffusionGemma by fine-tuning the mixture-of-experts Gemma 4 model with 3.8B activated and 25.2B total parameters. Our compute-efficient two-stage training pipeline uses fewer than 10% of the starting AR model's total training token budget. The first stage uses supervised fine-tuning to teach bidirectional denoising, while the second stage combines reinforcement learning with sampler distillation to jointly improve generation quality and inference efficiency. DiffusionGemma establishes a new Pareto frontier for the trade-off between generation speed and model capability. Averaged across our full evaluation suite, it generates around 20 tokens per forward pass and achieves roughly 1,500 output tokens per second on a single NVIDIA H100 GPU, which is substantially faster than AR models even with state-of-the-art speculative decoding. DiffusionGemma also retains the starting model's support for thinking mode, multimodal inputs, and long contexts. Despite diffusion fine-tuning, it remains capable of AR generation with only minor performance degradation, suggesting a path toward hybrid diffusion-AR decoding.",
@@ -8679,7 +8679,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-04T22:07:04.433432+00:00",
+      "updated_at": "2026-08-05T01:57:03.922291+00:00",
       "paper": {
         "title": "3DZip: Spatial-Aware Feature Diversity-Guided Token Compression for 3D Question Answering",
         "summary": "Recent 3D vision-language models (3D VLMs) construct geometry aware tokens by projecting 2D visual features into world coordinates, enabling spatial reasoning for tasks such as 3D question answering. However, this design generates thousands of tokens per scene, resulting in substantial computational and memory overhead. While token compression has been extensively studied in 2D VLMs, existing approaches rely on semantic relevance or attention-based selection that overlook the structured spatial nature of 3D tokens. Moreover, redundancy in 3D representations cannot be resolved by spatial proximity alone, as object-level token imbalance persists even after spatial aggregation. To address this, we propose 3DZip, a three-stage token compression framework that first applies coarse voxelization to remove point-level redundancy, then selects anchor tokens based on feature-space diversity via a Determinantal Point Process, and finally merges remaining tokens under spatial constraints to preserve geometric coherence. Experiments on three 3D question answering benchmarks demonstrate that 3DZip consistently outperforms existing compression methods, retaining 94.7% of the original performance with only 128 tokens, achieving a $1.92\\times$ faster inference speed.",
@@ -8700,7 +8700,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-04T22:07:04.433392+00:00",
+      "updated_at": "2026-08-05T01:57:03.922229+00:00",
       "paper": {
         "title": "To Add Is Machine, To Delete Is Human: Measuring and Mitigating Deletion Avoidance in LLM Code Editing",
         "summary": "Large language models increasingly write and repair production code, yet evidence is mounting that their test-passing patches leave codebases harder to maintain. We identify one concrete source: deletion avoidance, the systematic tendency to retain code that an intended edit requires removing. Across the five leading models on the official SWE-bench Verified leaderboard, deletion recall against the developer patch reaches at most 71.7% even on tasks all five solve, and models reach the right file for over 92% of required deletions but cut the exact line in under 52% of cases. Instead, 29.0% of passing patches wrap the targeted code in a guard or fallback, a pattern we call Guard-and-Go. Such patches pass because the original tests rarely check removal: when we retrofit 34 Verified tasks with tests that fail if the targeted code remains, four frontier models spanning closed and open weights fall from 63.2% to 41.9%. Because real repairs mix removal with addition, we curate CanItDelete, a benchmark of 200 tasks mined from real commits whose entire required edit is deletion. Even with the addition work gone, the best model still fails one task in five, and smaller open models fall to 18.0%. We then ablate GPT-5.6 Sol under four cumulative prompts; success moves little until we supply the exact lines, which nearly eliminate incomplete deletion yet raise success only to 80.5% because the model then deletes beyond the spans or adds code instead. Finally, through a pilot study we show one potential fix: teaching deletion during post-training reduces deletion avoidance and improves broader code-editing performance, suggesting the behavior is undertrained rather than beyond reach.",
@@ -8724,7 +8724,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-04T16:48:42.375584+00:00",
+      "updated_at": "2026-08-05T01:57:03.922297+00:00",
       "paper": {
         "title": "SG-WAM: Self-Guided World Modeling in Geometry-Aware Policy Space",
         "summary": "World Action Models (WAMs) couple action generation with prediction of future states. Their effectiveness depends on whether future dynamics are modeled in a space that is both aligned with action generation and sufficiently geometry-aware to capture where and how actions change the scene. Existing WAMs typically satisfy only part of this requirement, relying on either perceptually heavy observation-space targets or auxiliary latent spaces that are not jointly structured for action relevance and geometry. We propose SG-WAM, a self-guided framework that learns geometry-aware action-conditioned dynamics directly in the policy-derived representation space. SG-WAM introduces learnable dynamics tokens and a Self-Guided World Predictor that forecasts their future latent states conditioned on intervening robot actions. Prediction targets are generated by an exponential moving average copy of the same policy backbone, providing stable supervision within the representation family used by the action expert. Geometric supervision further structures the policy image-token representations, providing spatially grounded context for the dynamics tokens and yielding a future-alignment space that is both action-relevant and geometry-aware. Latent future prediction, geometric grounding, and flow-matching action generation are jointly optimized end-to-end in a unified framework. Built on a 0.9B model without large-scale embodied pretraining, SG-WAM achieves 98.5% average success on LIBERO and 73% on LIBERO-Plus, while outperforming strong baselines in both in-distribution and out-of-distribution real-world evaluations.",
@@ -8752,7 +8752,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-04T22:07:04.433399+00:00",
+      "updated_at": "2026-08-05T01:57:03.922238+00:00",
       "paper": {
         "title": "Wnuan: Staged Post-Training for Question Answering over Proprietary Enterprise Knowledge",
         "summary": "Enterprise question answering requires models to acquire proprietary knowledge without discarding general capabilities. We present Wnuan, a three-stage pipeline that constructs task-oriented supervision from documents, performs supervised fine-tuning with general-data replay, and applies reinforcement learning to residual errors. On the 707-question WnuanBench, the primary 32B route raises acceptable-answer rate (AAR) from 52.76% before adaptation to 80.06% after SFT and 91.51% after RL. Under a matched 100-update protocol, residual-error sampling outperforms full-pool and size-matched random sampling by 3.11 and 2.97 points, respectively. Source-cluster bootstrap intervals remain above zero for both contrasts, and a same-domain validation set preserves the ordering. The general-benchmark average decreases by 5.17 points across the route, concentrated in instruction following. The automatic evaluation ensemble agrees with an authoritative domain expert on 90.5% of a stratified Wnuan-Inst response sample. These results characterize both the gains and the general-capability cost of staged enterprise adaptation.",
@@ -8772,60 +8772,119 @@
       },
       "priority_score": 34,
       "korean_title": "Wnuan: 기업 전용 지식 질의응답을 위한 단계별 사후 학습"
+    },
+    "2608_02437v2": {
+      "id": "2608_02437v2",
+      "filename": "post_2608_02437v2.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-08-05T01:57:26.721223+00:00",
+      "paper": {
+        "title": "InfiniSplat: Implicit Gaussian Decoding for Large-Baseline Monocular View Synthesis",
+        "summary": "Single-image feed-forward 3D Gaussian Splatting (3DGS) aims to directly generate a renderable 3D scene representation from one input image, avoiding the cost of multi-view capture and per-scene optimization. However, existing methods are often constrained by a pixel-aligned representation, where Gaussians are predicted from fixed image-grid locations. Such pixel-aligned primitives can produce promising nearby-view renderings, but they remain weakly coupled to underlying scene surfaces and struggle to preserve coherent structures under large viewpoint shifts. We present InfiniSplat, a feed-forward single-image 3DGS framework that moves from a pixel-aligned representation toward a surface-aligned representation. InfiniSplat constructs this representation by first using geometry-guided sampling to place 2D supports according to depth-induced local surface structure, and then applying a query-conditioned implicit decoder to predict Gaussian attributes from the image features queried at these supports. By grounding support locations in geometry while decoupling Gaussian prediction from fixed pixel centers, InfiniSplat produces Gaussian layouts that better follow scene surfaces and reduce scattered primitives caused by grid discretization. Across multiple cross-dataset NVS evaluations, InfiniSplat achieves state-of-the-art performance compared with single-image feed-forward baselines, and demonstrates zero-shot generalization from Hypersim indoor synthetic training to complex open-world scenes. Project page: https://zju3dv.github.io/InfiniSplat.",
+        "published": "2026-08-03T16:17:39Z",
+        "authors": [
+          "Jiawei Wang",
+          "Hao Yu",
+          "Yongzhen Hu",
+          "Xinyi Yang",
+          "Tao Ni",
+          "Xin Zhan",
+          "Junbo Chen",
+          "Xiaowei Zhou",
+          "Ruizhen Hu",
+          "Sida Peng"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.02437v2"
+      },
+      "priority_score": 39,
+      "korean_title": "InfiniSplat: 대규모 베이스라인 단일 이미지 뷰 합성을 위한 암시적 가우시안 디코딩"
+    },
+    "2607_25614v1": {
+      "id": "2607_25614v1",
+      "filename": "post_2607_25614v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-08-05T01:57:41.652270+00:00",
+      "paper": {
+        "title": "MemSFT: Mitigating Alignment Tax with an External Parametric Memory",
+        "summary": "Adapting Large Language Models (LLMs) to specialized domains often incurs an alignment tax, as fine-tuning on domain-specific tasks can cause catastrophic forgetting and substantially degrade performance on general tasks. We propose MemSFT, which mitigates the alignment tax by decoupling domain specialization from backbone parameter updates through a plug-and-play parametric memory. The memory is trained to imitate the behavior of a non-parametric retriever operating over domain data, thereby memorizing knowledge and patterns that would otherwise be accessed through retrieval. Once trained on a specific domain, the memory can be reused across LLMs of different sizes. During generation, a learned router dynamically fuses the output distributions of the memory and backbone at each decoding step, allowing domain expertise to be invoked selectively. Across biology, geoscience, and law, evaluations with models ranging from Qwen3-8B to Qwen3-235B-A22B show that MemSFT consistently improves domain performance with negligible degradation in general performance, whereas full SFT suffers severe forgetting on general tasks. Overall, our results demonstrate a practical path to decoupling general model capabilities from domain-specific knowledge at the parameter level, thereby equipping LLMs with new specialized capabilities without compromising their general capabilities.",
+        "published": "2026-07-28T11:45:34Z",
+        "authors": [
+          "Jiarui Wang",
+          "Xiang Shi",
+          "Jiaqi Cao",
+          "Rubin Wei",
+          "Xiquan Wang",
+          "Hao Sun",
+          "Jingzhi Wang",
+          "Zhiqi Yang",
+          "Qipeng Guo",
+          "Bowen Zhou",
+          "Zhouhan Lin"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2607.25614v1"
+      },
+      "priority_score": 37,
+      "korean_title": "MemSFT: 외부 파라메트릭 메모리를 통한 정렬 세금 완화"
     }
   },
   "last_run": {
-    "started_at": "2026-08-04T22:07:04.434253+00:00",
+    "started_at": "2026-08-05T01:57:03.923519+00:00",
     "discovered": 10,
-    "selected": 3,
-    "generated": 3,
+    "selected": 2,
+    "generated": 2,
     "failed": 0,
     "skipped": 0,
     "health": "healthy",
     "failures": [],
     "usage": {
       "model": "gemini-3.1-flash-lite",
-      "requests": 6,
-      "prompt_tokens": 16155,
-      "output_tokens": 4458,
+      "requests": 4,
+      "prompt_tokens": 10303,
+      "output_tokens": 2885,
       "thought_tokens": 0,
-      "total_tokens": 20613,
-      "estimated_usd": 0.01072575
+      "total_tokens": 13188,
+      "estimated_usd": 0.00690325
     },
-    "finished_at": "2026-08-04T22:07:34.795631+00:00"
+    "finished_at": "2026-08-05T01:57:41.802337+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 651,
-    "prompt_tokens": 1631413,
-    "output_tokens": 479375,
+    "requests": 655,
+    "prompt_tokens": 1641716,
+    "output_tokens": 482260,
     "thought_tokens": 0,
-    "total_tokens": 2110788,
-    "estimated_usd": 1.12691575
+    "total_tokens": 2123976,
+    "estimated_usd": 1.133819
   },
   "last_publication_run": {
-    "started_at": "2026-08-04T22:07:04.434253+00:00",
+    "started_at": "2026-08-05T01:57:03.923519+00:00",
     "discovered": 10,
-    "selected": 3,
-    "generated": 3,
+    "selected": 2,
+    "generated": 2,
     "failed": 0,
     "skipped": 0,
     "health": "healthy",
     "failures": [],
     "usage": {
       "model": "gemini-3.1-flash-lite",
-      "requests": 6,
-      "prompt_tokens": 16155,
-      "output_tokens": 4458,
+      "requests": 4,
+      "prompt_tokens": 10303,
+      "output_tokens": 2885,
       "thought_tokens": 0,
-      "total_tokens": 20613,
-      "estimated_usd": 0.01072575
+      "total_tokens": 13188,
+      "estimated_usd": 0.00690325
     },
-    "finished_at": "2026-08-04T22:07:34.795631+00:00"
+    "finished_at": "2026-08-05T01:57:41.802337+00:00"
   },
   "daily_usage": {
-    "date": "2026-08-04",
-    "estimated_usd": 0.1067435,
-    "publications": 31
+    "date": "2026-08-05",
+    "estimated_usd": 0.00690325,
+    "publications": 2
   }
 }

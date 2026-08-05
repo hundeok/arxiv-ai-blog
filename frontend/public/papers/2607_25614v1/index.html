@@ -1,0 +1,66 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MemSFT: 외부 파라메트릭 메모리를 통한 정렬 세금 완화 | ArXiv Translator AI</title><meta name="description" content="MemSFT: 외부 파라메트릭 메모리를 통한 정렬 세금 완화"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2607_25614v1"><meta property="og:type" content="article"><meta property="og:title" content="MemSFT: 외부 파라메트릭 메모리를 통한 정렬 세금 완화"><meta property="og:description" content="MemSFT: 외부 파라메트릭 메모리를 통한 정렬 세금 완화"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2607_25614v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="MemSFT: 외부 파라메트릭 메모리를 통한 정렬 세금 완화"><meta name="twitter:description" content="MemSFT: 외부 파라메트릭 메모리를 통한 정렬 세금 완화"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2607_25614v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "MemSFT: 외부 파라메트릭 메모리를 통한 정렬 세금 완화", "description": "MemSFT: 외부 파라메트릭 메모리를 통한 정렬 세금 완화", "datePublished": "2026-07-28", "url": "https://arxiv-ai-blog.vercel.app/papers/2607_25614v1", "author": [{"@type": "Person", "name": "Jiarui Wang"}, {"@type": "Person", "name": "Xiang Shi"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2607_25614v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2607_25614v1"});gtag('event', 'paper_view', {"paper_id": "2607_25614v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>MemSFT: 외부 파라메트릭 메모리를 통한 정렬 세금 완화</h1><p>MemSFT: 외부 파라메트릭 메모리를 통한 정렬 세금 완화</p><pre>MemSFT: 외부 파라메트릭 메모리를 통한 정렬 세금 완화
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** MemSFT: Mitigating Alignment Tax with an External Parametric Memory
+&gt; - **저자:** Jiarui Wang, Xiang Shi, Jiaqi Cao, Rubin Wei, Xiquan Wang, Hao Sun, Jingzhi Wang, Zhiqi Yang, Qipeng Guo, Bowen Zhou, Zhouhan Lin
+&gt; - **발행일:** 2026-07-28
+&gt; - **PDF 링크:** [MemSFT: Mitigating Alignment Tax with an External Parametric Memory](https://arxiv.org/pdf/2607.25614v1)
+
+
+✨ 3줄 핵심 요약
+- 거대 언어 모델(LLM)의 도메인 특화 과정에서 발생하는 성능 저하(정렬 세금) 문제를 해결하기 위해 &#x27;MemSFT&#x27;를 제안합니다.
+- 모델의 본체 파라미터를 수정하는 대신, 외부 파라메트릭 메모리와 학습 가능한 라우터를 통해 도메인 지식을 분리하여 주입합니다.
+- 생물학, 지구과학, 법률 등 다양한 분야에서 기존 모델의 일반적인 성능을 유지하면서도 전문 도메인 성능을 효과적으로 향상시켰습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+특정 분야(예: 의학, 법률)의 전문 지식을 배우기 위해 LLM을 추가 학습(Fine-tuning)시키면, 아이러니하게도 모델이 기존에 잘하던 일반적인 대화나 추론 능력을 잃어버리는 &#x27;파괴적 망각&#x27;이 발생합니다. 이를 &#x27;정렬 세금(Alignment Tax)&#x27;이라고 부릅니다. **MemSFT**는 모델 본체를 직접 건드리지 않고, 별도의 &#x27;외부 메모리&#x27;에 전문 지식을 저장합니다. 모델이 답변할 때, 학습된 &#x27;라우터&#x27;가 필요에 따라 본체와 외부 메모리의 정보를 적절히 섞어서 결과를 도출합니다. 덕분에 모델은 일반적인 능력을 그대로 유지하면서도 특정 분야의 전문가처럼 행동할 수 있습니다.
+
+🎯 배경 및 문제점
+- **정렬 세금(Alignment Tax):** LLM을 특정 도메인에 맞게 미세 조정(SFT)하면, 도메인 지식은 습득되지만 일반적인 작업 능력이 현저히 떨어지는 문제가 발생합니다.
+- **파괴적 망각:** 새로운 데이터를 학습하는 과정에서 기존에 학습된 지식이 덮어씌워져 모델의 범용성이 훼손되는 현상이 지속적으로 지적되어 왔습니다.
+
+💡 핵심 기술 및 아키텍처
+- **플러그 앤 플레이(Plug-and-Play) 메모리:** 도메인 데이터를 학습하여 지식과 패턴을 저장하는 별도의 모듈입니다. 한번 학습하면 서로 다른 크기의 LLM에서도 재사용이 가능합니다.
+- **도메인 특화 분리:** 본체 모델의 파라미터 업데이트 없이, 도메인 전문성과 일반적인 능력을 분리하여 독립적으로 운영합니다.
+- **학습 가능한 라우터(Learned Router):** 생성 과정에서 매 단계마다 메모리와 본체의 출력 분포를 동적으로 융합합니다. 이를 통해 모델은 상황에 맞게 필요한 도메인 지식만을 선택적으로 호출합니다.
+
+📊 실험 결과 분석
+- **성능 유지:** Qwen3-8B부터 Qwen3-235B-A22B 모델까지 다양한 규모에서 실험한 결과, 일반적인 성능 저하를 거의 경험하지 않으면서도 도메인별 성능은 꾸준히 향상되었습니다.
+- **비교 분석:** 기존의 전체 미세 조정(Full SFT) 방식과 비교했을 때, 일반 작업에서 발생하는 심각한 성능 저하 없이 전문 지식을 성공적으로 습득함을 확인했습니다.
+- **연산 효율:** 메모리 및 라우터 학습에 필요한 연산 자원을 분석한 결과, 시스템 운영상 무시할 수 있는 수준의 오버헤드로 구현이 가능함을 입증했습니다. (데이터 스토어 구축 및 KNN 타겟 생성 등 부가적인 시스템 운영 비중은 전체 파이프라인에서 매우 낮음)
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+- **도메인 확장성:** 모델을 새로 학습시키지 않고도 외부 메모리 모듈만 갈아 끼우는 방식으로 생물학, 지구과학, 법률 등 다양한 전문 분야로 LLM을 즉각 확장할 수 있습니다.
+- **범용성과 전문성의 공존:** 기업이나 연구소에서 고비용의 대규모 모델을 재학습하는 부담 없이, 기존의 강력한 파운데이션 모델을 유지하면서 특정 산업 분야의 전문 LLM으로 커스터마이징할 수 있는 실용적인 경로를 제시합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [MemSFT: Mitigating Alignment Tax with an External Parametric ...](https://arxiv.org/html/2607.25614v1)
+&gt; - [Paper page - MemSFT: Mitigating Alignment Tax with an External...](https://huggingface.co/papers/2607.25614)
+&gt; - [GitHub - JruiWang/MemSFT: The official implementation of the paper...](https://github.com/JruiWang/MemSFT)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;이 방식, 겉보기엔 우아하지만 라우터의 &#x27;선택적 호출&#x27; 과정에서 발생하는 잠재적 편향 문제는 어떻게 해결할 건가? 도메인 지식과 일반 추론 능력 사이의 경계가 모호해질 때 라우터가 오작동할 가능성이 커 보이는데, 실험 결과에서 이 경계값(threshold)에 대한 민감도 분석이 좀 부족한 것 같아.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 일리는 있지만, 현업 입장에선 일단 &#x27;정렬 세금&#x27; 때문에 모델을 매번 풀 파인튜닝해서 리소스 태우는 것보다 이쪽이 훨씬 매력적입니다. 특히 메모리 모듈만 갈아끼우는 방식은 배포 파이프라인 관리 측면에서 킬러 피처죠. 다만, 라우터 서빙 시 추론 레이턴시가 얼마나 튈지가 관건이겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;선배님, 레이턴시 걱정은 접어두셔도 될 듯요! 이번에 깃허브 코드 뜯어보니 라우팅 오버헤드 최적화가 생각보다 잘 되어있더라고요. 교수님이 지적하신 편향 문제도 도메인별 메모리 모듈을 모듈러하게 관리해서 해결하려는 움직임인 것 같은데, 이거 조만간 RAG랑 결합해서 SOTA 찍을 것 같은 예감이 드네요. 당장 내일 랩 세미나 주제로 발제 갑니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
