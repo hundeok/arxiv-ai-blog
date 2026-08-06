@@ -1,0 +1,71 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TurnSight: 도구 통합 추론을 위한 턴 단위 사후 자기 증류 | ArXiv Translator AI</title><meta name="description" content="TurnSight: 도구 통합 추론을 위한 턴 단위 사후 자기 증류"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_04007v1"><meta property="og:type" content="article"><meta property="og:title" content="TurnSight: 도구 통합 추론을 위한 턴 단위 사후 자기 증류"><meta property="og:description" content="TurnSight: 도구 통합 추론을 위한 턴 단위 사후 자기 증류"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_04007v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="TurnSight: 도구 통합 추론을 위한 턴 단위 사후 자기 증류"><meta name="twitter:description" content="TurnSight: 도구 통합 추론을 위한 턴 단위 사후 자기 증류"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_04007v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "TurnSight: 도구 통합 추론을 위한 턴 단위 사후 자기 증류", "description": "TurnSight: 도구 통합 추론을 위한 턴 단위 사후 자기 증류", "datePublished": "2026-08-04", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_04007v1", "author": [{"@type": "Person", "name": "Changle Qu"}, {"@type": "Person", "name": "Sunhao Dai"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_04007v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_04007v1"});gtag('event', 'paper_view', {"paper_id": "2608_04007v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>TurnSight: 도구 통합 추론을 위한 턴 단위 사후 자기 증류</h1><p>TurnSight: 도구 통합 추론을 위한 턴 단위 사후 자기 증류</p><pre>TurnSight: 도구 통합 추론을 위한 턴 단위 사후 자기 증류
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** TurnSight: Turn-Level Hindsight Self-Distillation for Tool-Integrated Reasoning
+&gt; - **저자:** Changle Qu, Sunhao Dai, Hengyi Cai, Yuqi Zhou, Xinran Chen,  Simon, Jun Xu
+&gt; - **발행일:** 2026-08-04
+&gt; - **PDF 링크:** [TurnSight: Turn-Level Hindsight Self-Distillation for Tool-Integrated Reasoning](https://arxiv.org/pdf/2608.04007v1)
+
+
+✨ 3줄 핵심 요약
+* **한계 극복**: 기존 강화학습은 전체 결과에만 의존하여 복잡한 도구 사용 과정의 세부 단계를 평가하는 데 어려움이 있었습니다.
+* **신기술 도입**: &#x27;TurnSight&#x27;는 실행 결과에 기반한 턴 단위 사후 평가를 생성하고, 여러 예측 시점 간 합의를 통해 신뢰성 높은 지도 신호를 추출합니다.
+* **성능 최적화**: 추출된 신호를 턴 단위로 정규화하여 전체 강화학습의 최적화 방향을 유지하면서도 더 정밀한 학습이 가능하게 합니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+대규모 언어 모델(LLM)이 외부 도구를 사용할 때는 여러 단계의 상호작용이 일어납니다. 기존 방식은 &quot;결과가 성공했는가?&quot;라는 전체 점수만으로 전체 과정을 판단하려다 보니, 과정 중 어떤 단계가 잘했고 잘못했는지 정확히 알기 어려웠습니다. &#x27;TurnSight&#x27;는 마치 시험을 치른 뒤 선생님이 각 문제별로 풀이 과정을 검토해 주는 것처럼, 각 도구 사용 단계마다 &#x27;사후 평가&#x27;를 수행합니다. 이때 여러 관점의 평가를 종합해 신뢰할 수 있는 피드백만 골라내고, 이를 통해 모델이 무엇을 개선해야 할지 아주 세밀하게 학습하도록 돕습니다.
+
+🎯 배경 및 문제점
+* **신용 할당(Credit Assignment)의 어려움**: 복잡한 도구 통합 추론(TIR) 시나리오에서 긴 호흡의 작업은 최종 결과만으로는 중간 단계의 행동이 적절했는지 판단하기 어렵습니다.
+* **기존 방식의 한계**: 
+    * 궤적 단위(전체 과정)의 감독은 세부적인 평가를 제공하지 못함.
+    * 토큰 단위의 감독은 도구 사용의 턴별 구조를 반영하지 못함.
+    * 기존의 자기 증류법은 실제 에이전트가 방문하지 않은 상황(지식이나 정답 데이터)에 기반하여 평가할 위험이 있음.
+
+💡 핵심 기술 및 아키텍처
+* **실행 조건부 사후 증류**: 모델이 실제로 수행한 결과값을 바탕으로 사후 평가를 진행합니다.
+* **교차 예측 시점 합의(Cross-horizon Agreement)**: 여러 예측 시점(lookahead horizons)에서 도출된 사후 평가들 사이의 방향성을 검증하여, 다수결 원칙에 따라 가장 신뢰할 수 있는 지도 신호만 선별합니다.
+* **그룹 상대적 증류 정규화**: 턴별 평가 지표를 단순 사용하는 대신, 동일한 질문 내 여러 시도(rollouts)들 간의 상대적인 수치를 계산하여 문맥에 맞게 지표를 정규화합니다.
+* **강화학습 이점 변조**: 선별된 사후 평가를 사용하여 기존 강화학습의 이점(advantages)을 조정하되, 전체 최적화 방향은 유지하여 탐색 능력을 보존합니다.
+
+📊 실험 결과 분석
+* **하이퍼파라미터 영향**: 논문은 믹싱 계수($\lambda$)와 변조 범위($\epsilon_w$)에 따른 감도 분석 결과를 제시합니다.
+    * $\lambda = 0.5$와 $\epsilon_w = 0.5$일 때 가장 우수한 성능을 보였습니다.
+    * $\lambda$가 너무 크면 국소적인 평가에 치중하여 전체 과제에 대한 가이드라인이 약화되고, $\epsilon_w$가 너무 크면 노이즈가 증폭되는 경향이 있음을 확인했습니다.
+* **기타 성과**: 세 가지 벤치마크를 통해 검증하였으며, 구체적인 성능 점수는 발췌본에 명시되지 않았으나 모델의 효과성, 강건성, 일반화 능력을 입증했다고 기술되어 있습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **복잡한 문제 해결 능력 향상**: 수학, 프로그래밍, 데이터 분석 등 도구 사용이 필수적인 전문 분야에서 LLM의 추론 정확도를 크게 높일 수 있습니다.
+* **효율적인 모델 학습**: 인간의 수작업 라벨링 없이도 에이전트 스스로 실행 결과를 반추하여 학습하므로, 더 복잡한 도구 사용 시나리오에서도 모델을 스스로 개선하는 자가 학습 체계를 구축할 수 있습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2608.04007 TurnSight: Turn-Level Hindsight Self-Distillation for Tool-Integrated Reasoning](https://arxiv.org/abs/2608.04007)
+&gt; - [TurnSight: Turn-Level Hindsight Self-Distillation for Tool-Integrated Reasoning](https://arxiv.org/html/2608.04007)
+&gt; - [Computer Science](https://arxiv.org/list/cs/recent)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;Credit Assignment 문제는 강화학습의 고질적인 난제죠. TurnSight의 &#x27;교차 예측 시점 합의&#x27; 방식은 논리적으로 흥미롭지만, 결국 사후 평가 데이터가 모델의 편향(Bias)을 증폭시킬 위험은 없는지 따져봐야 합니다. 특히 도구 사용 환경이 비결정적(Non-deterministic)일 때, 턴 단위 정규화가 과연 일반화 성능을 보장할 수 있을까요?&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에선 런타임 환경의 노이즈가 제일 무섭죠. 그런데 TurnSight가 제안한 &#x27;그룹 상대적 증류&#x27;는 꽤 실용적이네요. 여러 Rollout 간의 상대적 우위를 비교하면 환경 노이즈를 어느 정도 상쇄할 수 있으니까요. 다만 서빙 인프라 관점에서 턴마다 실시간 평가 로직을 태우는 게 오버헤드가 좀 있을 텐데, 실제 추론 레이턴시는 얼마나 튀는지 궁금하네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;역시 턴 단위로 쪼개서 피드백을 먹이는 게 요즘 대세인가 봅니다! 기존 PPO 방식은 보상 희소성 때문에 학습이 고역이었는데, 이렇게 &#x27;사후 평가&#x27;로 가이드라인을 촘촘하게 짜주면 수렴 속도가 엄청 빨라질 것 같아요. 다들 성능 걱정하시지만, 전 당장 실험 코드 뜯어보고 내일 연구실 세미나 주제로 던질 생각입니다. 논문 제목만 보고도 뽕이 차오르네요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
