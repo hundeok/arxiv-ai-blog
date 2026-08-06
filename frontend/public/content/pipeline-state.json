@@ -9156,7 +9156,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-06T05:42:18.959749+00:00",
+      "updated_at": "2026-08-06T08:24:30.833600+00:00",
       "paper": {
         "title": "ReflectRL: Learning from Golden Negative Trajectories via Reflective-to-Direct Reasoning",
         "summary": "On-policy training has emerged as a powerful post-training paradigm for improving the reasoning capabilities of large language models, and is often enhanced by golden trajectories from stronger expert models. However, when the expert fails on harder problems, existing trajectory-guided methods lose their main source of supervision, and these failed trajectories are typically discarded as negative samples. We argue that such failures, which we call Golden Negative Trajectories, can still provide valuable reasoning signals when treated not as demonstrations to imitate, but as flawed trajectories to reflect upon. We identify a Reflection Advantage: for hard problems, reflecting on a flawed trajectory can be easier and more effective than solving the problem directly from scratch. Motivated by this, we propose ReflectRL, a lightweight plug-and-play framework that learns from Golden Negative Trajectories during on-policy training. ReflectRL first uses these trajectories to elicit Reflective Reasoning, then applies Reflective-to-Direct Policy Transition to transfer the acquired reasoning behavior back to Direct Reasoning. Experiments across 9 benchmarks, 4 LLM backbones, and 4 on-policy training methods show that ReflectRL consistently improves reasoning performance with minimal overhead.",
@@ -9865,11 +9865,11 @@
     "2608_03838v1": {
       "id": "2608_03838v1",
       "filename": "post_2608_03838v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-08-06T02:00:42.832486+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-06T02:00:42.832488+00:00",
+      "updated_at": "2026-08-06T08:25:04.710412+00:00",
       "paper": {
         "title": "LatentGuard: Efficient and Inspectable Latent Reasoning for LLM Safeguards",
         "summary": "Reasoning-based guard models improve LLM safeguards, but decoding explicit rationales for every interaction makes them costly to deploy. Although latent-reasoning methods reduce token generation by moving reasoning into continuous states, they remain underexplored for safety moderation and lack an inspection interface for deployment. In this paper, we propose LatentGuard, an efficient and inspectable safeguard framework that brings continuous latent reasoning to guard models. LatentGuard uses a staged curriculum to progressively compress task-aligned textual rationales into compact latent states, enabling safety verdicts to be predicted directly from continuous representations. To preserve inspectability, an isolated auxiliary decoder generates compact audit artifacts on demand, keeping rationale generation off the standard inference path. Experiments show that LatentGuard-8B improves mean weighted F1 from 83.95 to 84.91 over GuardReasoner-8B, while reducing critical-path reasoning cost from 268.56 generated rationale tokens to 1.60 latent reasoning tokens. Its audit decoder achieves an audit utility score of 85.75, demonstrating an efficient and inspectable path toward deployable LLM safeguards.",
@@ -9882,16 +9882,17 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2608.03838v1"
       },
-      "priority_score": 45
+      "priority_score": 45,
+      "korean_title": "LatentGuard: 거대언어모델 안전장치를 위한 효율적이고 검토 가능한 잠재 추론"
     },
     "2607_24821v1": {
       "id": "2607_24821v1",
       "filename": "post_2607_24821v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-08-06T05:42:18.959714+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-06T05:42:18.959727+00:00",
+      "updated_at": "2026-08-06T08:24:52.860544+00:00",
       "paper": {
         "title": "AVE-Compass: Towards Holistic Evaluation for Audio-Video Editing Abilities",
         "summary": "While instruction-based video editing has advanced rapidly, real-world videos contain tightly coupled audio and visual signals, and editing one modality often requires coordinated changes in the other. Existing benchmarks primarily evaluate visual transformations on silent clips or isolated audio editing, leaving complex audio-visual editing and cross-modal consistency underexplored. We introduce AVE-Compass, a comprehensive benchmark with 145 curated source videos, 196 audio-visually coupled editing instructions, and 2,688 fine-grained checklist items. It evaluates Instruction Following, Fidelity Preserving, Realism, and Editing Intent through checklist-based MLLM judging and a dedicated realism rubric, complemented by automated cross-modal, video, and audio metrics. Extensive evaluation shows that state-of-the-art models still struggle to execute cross-modal instructions while preserving non-target content. We further propose AVE-Agent, a modular agent framework that decomposes complex instructions into dependent subtasks and iteratively improves editing results through self-reflection and evaluator feedback. AVE-Agent improves instruction execution, Fidelity Preserving, and audio-visual alignment in joint editing while maintaining competitive perceptual quality.",
@@ -9909,7 +9910,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2607.24821v1"
       },
-      "priority_score": 46
+      "priority_score": 46,
+      "korean_title": "AVE-Compass: 오디오-비디오 편집 능력을 위한 종합적 평가 체계"
     },
     "2608_03632v1": {
       "id": "2608_03632v1",
@@ -9918,7 +9920,7 @@
       "attempts": 0,
       "next_retry_at": "2026-08-06T05:42:18.959735+00:00",
       "last_error": null,
-      "updated_at": "2026-08-06T05:42:18.959737+00:00",
+      "updated_at": "2026-08-06T08:24:30.833590+00:00",
       "paper": {
         "title": "When Teachers Mislead: Spurious-Signal-Aware On-Policy Distillation",
         "summary": "On-Policy distillation (OPD) transfers teacher capabilities by supervising student-sampled trajectories with dense token-level teacher signals. Recent selective OPD methods improve this process by prioritizing signals that are confident, informative, or learnable. However, the assumptions overlook a fundamental failure mode of language models: their token-level judgments can be driven by input-agnostic language priors, formatting conventions, or stereotyped reasoning templates rather than task-specific evidence. We refer to such optimization-relevant but weakly input-grounded supervision as spurious signals in OPD, which may produce large gradients while contributing little task-improving direction. To mitigate this issue, we propose SA-OPD, a Spurious-Signal-Aware On-Policy Distillation framework that identifies and filters misleading token-level supervision based on input-groundedness and optimization impact. SA-OPD introduces a lightweight input-groundedness proxy estimating whether a token-level distillation signal truly depends on the input. It then filters only tokens that simultaneously exhibit low input-groundedness and extreme distillation divergence, thereby removing high-impact spurious updates and achieving fine-grained OPD optimization. Extensive experiments on both large language model (LLM) and vision-language model (VLM) settings demonstrate that SA-OPD consistently outperforms Vanilla OPD and competitive selective methods. These results establish input-groundedness as a key dimension for OPD supervision selection and offer a simple, effective strategy for mitigating spurious updates.",
@@ -9943,7 +9945,7 @@
       "attempts": 0,
       "next_retry_at": "2026-08-06T05:42:18.959743+00:00",
       "last_error": null,
-      "updated_at": "2026-08-06T05:42:18.959744+00:00",
+      "updated_at": "2026-08-06T08:24:30.833595+00:00",
       "paper": {
         "title": "Ego2Robot: Scalable Robot Data Synthesis from Egocentric Human Data",
         "summary": "Learning generalizable robot manipulation policies requires large-scale and diverse demonstration data. Egocentric human manipulation videos offer rich scene and task diversity, and prior work has shown that retargeting and rendering such videos into robot-format data can yield effective per-task policies at small scale. However, whether this approach can provide pretraining benefits for vision-language-action models at scale remains unexplored. We present \\textbf{Ego2Robot}, a scalable pipeline that converts egocentric human manipulation videos into robot training data through action retargeting, robot-arm visual synthesis, and multi-level quality curation. Ego2Robot supports both curated datasets and in-the-wild videos, producing 18,561 hours of robot training data spanning 15 robot morphologies, making it the largest ego-to-robot dataset to date. To evaluate generalization, we extend RoboTwin2.0 with disentangled perturbation axes covering visual appearance, scene layout, embodiment morphology, and task semantics. Experiments show that joint pretraining on Ego2Robot-synthesized and robot data consistently improves out-of-distribution generalization across multiple perturbation types, with benefits validated on real-robot deployment. Project page: https://www-ye.github.io/ego2robot_blog/",
@@ -9976,7 +9978,7 @@
       "attempts": 0,
       "next_retry_at": "2026-08-06T05:42:18.959756+00:00",
       "last_error": null,
-      "updated_at": "2026-08-06T05:42:18.959758+00:00",
+      "updated_at": "2026-08-06T08:24:30.833605+00:00",
       "paper": {
         "title": "OneDayAgent: Towards a Long-Horizon Harness for Autonomous Agents",
         "summary": "LLM agents are increasingly applied to open-ended everyday requests that span work, study, and life. These tasks are long-horizon, cross-environment, and multimodal, forcing the agent to preserve goals and constraints across many steps while navigating heterogeneous tools and attachments. While prior work has addressed individual failure modes such as goals drift, states loss, and context overflow, whether a single harness can manage them jointly and remain effective across backends has received less study. We present OneDayAgent, a long-horizon harness for autonomous agents. OneDayAgent turns an open-ended request into a managed execution process that decomposes tasks into bounded subtasks, maintains execution memory under context pressure, and verifies and repairs the final deliverable. We evaluate OneDayAgent on AgentIF-OneDay across 104 tasks. With the GLM-5.2 backend, OneDayAgent sets a new state of the art with an overall score of 0.821. The same harness runs across five backend LLMs from three model families, indicating the harness generalizes across backends without tuning, even as different models induce distinct execution styles under the same workflow.",
@@ -10000,7 +10002,7 @@
       "attempts": 0,
       "next_retry_at": "2026-08-06T05:42:18.959763+00:00",
       "last_error": null,
-      "updated_at": "2026-08-06T05:42:18.959765+00:00",
+      "updated_at": "2026-08-06T08:24:30.833609+00:00",
       "paper": {
         "title": "Towards Physics of Multimodal Pretraining: Knowledge Flow, Modality Synergy, Early Unification, and Recipes",
         "summary": "Vision offers a critical axis for advancing foundation models, driving a shift towards natively unified multimodal pretraining. Despite this momentum, the design space and the fundamental mechanisms of how modalities interact during unified training remain underexplored. We provide empirical clarity through a systematic exploration of multimodal pretraining. Our controlled experiments on both synthetic and large-scale real-world datasets yield four key insights into the physics of multimodal pretraining: (i) Knowledge Flow: We disentangle how language, visual understanding, and visual generation transfer knowledge across modalities, revealing distinct patterns of influence and asymmetry; (ii) Synergy vs. Competition: We show that data \"complexity\" largely determines whether modalities are synergistic, identify architectural choices that promote synergy: such as shared attention and normalization with modality-specific feed-forward layers, and find that these behaviors generalize across different visual tokenizer designs; (iii) Early Unification: Unifying modalities from the very early stages and training them jointly is shown to be more effective than late alignment or sequential training. This process uncovers a vision laziness phenomenon, where delayed integration leads models to rely on language priors; (iv) Recipes: We derive efficient pretraining recipes that achieve strong generative performance using only 5% of the compute budget. These core findings are subsequently validated at scale by training multiple 13.5B MoE models on 2T tokens. We hope this study provides a principled foundation for understanding and scaling multimodal pretraining.",
@@ -10025,7 +10027,7 @@
       "attempts": 0,
       "next_retry_at": "2026-08-06T05:42:18.959769+00:00",
       "last_error": null,
-      "updated_at": "2026-08-06T05:42:18.959771+00:00",
+      "updated_at": "2026-08-06T08:24:30.833613+00:00",
       "paper": {
         "title": "WorldCycle: Self-Verifiable Reinforcement Learning for Long-Horizon Video World Models",
         "summary": "Interactive video world models are essential for long-horizon planning and exploration, yet they suffer from compounding errors. Post-training methods such as reinforcement learning (RL) can improve these models, but they hit a verification bottleneck: for arbitrary action sequences, no ground-truth future state exists to measure long-term drift. Our key insight is that reversible action cycles make this verification possible: a sequence composed with its inverse must analytically return to the initial state, yielding annotation-free supervision on long-horizon correctness. Building on this, we introduce WorldCycle, a self-verifiable RL framework that constructs closed action cycles and their repeated executions from ordinary action sequences, and optimizes two complementary rewards: a spatial closure reward enforcing symmetry between mirrored forward and reverse segments, and a temporal consistency reward aligning states across repeated cycle executions. These rewards force the model to learn actions as consistent state operators rather than memorized temporal patterns, and extend naturally to out-of-distribution composite action cycles that the base model handles poorly. We further release CycleBench, a diagnostic benchmark for state-returning ability under complex action structures. WorldCycle reduces state returning drift by up to 44% and lifts composite-action accuracy nearly 4x over the base model, providing a vital foundation for physically grounded world models.",
@@ -10055,7 +10057,7 @@
       "attempts": 0,
       "next_retry_at": "2026-08-06T05:42:18.959776+00:00",
       "last_error": null,
-      "updated_at": "2026-08-06T05:42:18.959778+00:00",
+      "updated_at": "2026-08-06T08:24:30.833624+00:00",
       "paper": {
         "title": "Agent Against Agent: An Agentic System for Automatic Prompt Injection Red Teaming",
         "summary": "Prompt injection poses significant security risks to LLM agents. Efficient and effective red-teaming is therefore critical, both for evaluating these risks and for collecting training data to improve defenses. Existing state-of-the-art prompt injection red-teaming methods primarily rely on reinforcement learning (RL), producing attacker models that often generalize poorly to new target LLMs. In this work, we develop PIMiner, an agentic system for prompt injection red-teaming. During training, PIMiner is trained on a sequence of (dataset, target model) pairs and builds a strategy library from scratch. At test time, the learned strategy library can be directly transferred to a previously unseen target LLM without additional training. PIMiner requires only a small number of queries to a target agent (e.g., 10) per test sample. Experimental results demonstrate that PIMiner achieves strong performance. On IPIArena, it attains a 76.2% ASR against Gemini-2.5-Pro, 61.9% ASR against GPT-5.1, and 42.9% ASR against Claude-Sonnet-4.5. On AgentDojo, it achieves an 86.7% ASR against Gemini-2.5-Pro, 53.3% ASR against GPT-5.1, and 40.0% ASR against Claude-Sonnet-4.5.",
@@ -10100,10 +10102,68 @@
         "pdf_link": "https://arxiv.org/pdf/2608.05042v1"
       },
       "priority_score": 30
+    },
+    "2608_03764v1": {
+      "id": "2608_03764v1",
+      "filename": "post_2608_03764v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-08-06T08:24:42.198213+00:00",
+      "paper": {
+        "title": "GDPevo: Evaluating Agent Self-Evolution on Real Business Tasks",
+        "summary": "Agent self-evolution updates an agent's persistent state from prior experience and reuses it to solve related tasks more effectively. Evaluating self-evolution is difficult: existing benchmarks provide limited coverage of economically valuable task domains, do not always design training and test tasks such that test-time gains can be attributed to training experience, and remain vulnerable to data contamination. We present GDPevo, an evolution-native benchmark grounded in GDP-related enterprise workflows, together with the fully automated data pipeline that generates it. Its core mechanism, rule hybridization, decomposes each enterprise workflow into atomic business rules, distributes subsets of these rules across training tasks, and recombines them in held-out test tasks so that test-time gains are attributable. GDPevo spans CRM, ERP, finance, healthcare, legal, and data-centric workflows. Its V1 release contains 120 tasks in 12 groups, with five training and five held-out test tasks per group. Full automation enables the pipeline to expand the suite to 240 tasks in 24 groups (V2) within two days, providing a practical response to contamination. Using GDPevo, we evaluate four agents, each comprising a harness and a model, under four supervision types. Self-evolution consistently improves held-out accuracy by up to 16.44 percentage points. But the best evolved agents remain far below the fully informed oracle ceiling of 91.6%, indicating that the self-evolution ability of current agents remains far from fully realized. We publicly release the pipeline, benchmark, and full evaluation results at https://github.com/Prism-Shadow/GDPevo.",
+        "published": "2026-08-04T14:51:56Z",
+        "authors": [
+          "Leijun Zhou",
+          "Zhihao Liu",
+          "Xiang Qu",
+          "Chenxu Liu",
+          "Yifei Liu",
+          "Yanke Yu",
+          "Jingzhe Xu",
+          "Xuejun Wu",
+          "Buyue Qian",
+          "Xi Chen",
+          "Yaowei Zheng",
+          "Junhao Hu"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.03764v1"
+      },
+      "priority_score": 50,
+      "korean_title": "GDPevo: 실제 비즈니스 환경에서의 에이전트 자기 진화 평가"
+    },
+    "2608_04530v1": {
+      "id": "2608_04530v1",
+      "filename": "post_2608_04530v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-08-06T08:25:13.285682+00:00",
+      "paper": {
+        "title": "FocusMem: Factorizing Content, Readout, and Trust in Latent GUI Memory",
+        "summary": "GUI agents must remember both useful experience from earlier tasks and unfinished progress in the current interaction. Latent memory offers a compact solution by compressing multimodal trajectories into a few continuous tokens. Existing methods, however, usually map each trajectory to one fixed memory block and train it mainly through next-action supervision. This creates three practical problems: important details may be lost during compression, the same memory block must serve different decision stages, and irrelevant retrieved trajectories may still mislead the agent. We introduce FocusMem, which separates these responsibilities within a compact latent-memory interface. A role-aware content basis encourages episodic memory to retain reusable experience and working memory to retain task progress. A state-conditioned readout generates a decision-specific view of the same stored evidence, while a lightweight trust gate can suppress memory blocks that appear irrelevant to the current step. All components are trained while the GUI policy remains frozen. Across five GUI-agent benchmarks, FocusMem consistently outperforms a fully matched action-only fixed-memory baseline and prior latent memory adaptations. Further analysis shows that semantic and functional supervision preserve complementary information, state-conditioned readout is more robust as surrounding trajectory context grows, and the trust gate reduces the harm caused by injected irrelevant episodic evidence. These results show that effective latent memory depends not only on compressing past interaction, but also on what is retained, what is exposed, and what is allowed.",
+        "published": "2026-08-05T07:02:30Z",
+        "authors": [
+          "Zhuoran Zhang",
+          "Bowen Li",
+          "Jingcheng Ju",
+          "Yang Shi",
+          "Qixun Wang",
+          "Haotian Wang",
+          "Wei Chen",
+          "Tengjiao Wang"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.04530v1"
+      },
+      "priority_score": 40,
+      "korean_title": "FocusMem: 잠재 GUI 메모리에서의 콘텐츠, 판독 및 신뢰성 분해"
     }
   },
   "last_run": {
-    "started_at": "2026-08-06T05:42:18.960983+00:00",
+    "started_at": "2026-08-06T08:24:30.834888+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -10114,25 +10174,25 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 21481,
+      "prompt_tokens": 19285,
       "output_tokens": 5799,
       "thought_tokens": 0,
-      "total_tokens": 27280,
-      "estimated_usd": 0.01406875
+      "total_tokens": 25084,
+      "estimated_usd": 0.01351975
     },
-    "finished_at": "2026-08-06T05:43:02.203280+00:00"
+    "finished_at": "2026-08-06T08:25:13.446329+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 695,
-    "prompt_tokens": 1745401,
-    "output_tokens": 511801,
+    "requests": 703,
+    "prompt_tokens": 1764686,
+    "output_tokens": 517600,
     "thought_tokens": 0,
-    "total_tokens": 2257202,
-    "estimated_usd": 1.20405175
+    "total_tokens": 2282286,
+    "estimated_usd": 1.2175715
   },
   "last_publication_run": {
-    "started_at": "2026-08-06T05:42:18.960983+00:00",
+    "started_at": "2026-08-06T08:24:30.834888+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -10143,17 +10203,17 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 21481,
+      "prompt_tokens": 19285,
       "output_tokens": 5799,
       "thought_tokens": 0,
-      "total_tokens": 27280,
-      "estimated_usd": 0.01406875
+      "total_tokens": 25084,
+      "estimated_usd": 0.01351975
     },
-    "finished_at": "2026-08-06T05:43:02.203280+00:00"
+    "finished_at": "2026-08-06T08:25:13.446329+00:00"
   },
   "daily_usage": {
     "date": "2026-08-06",
-    "estimated_usd": 0.02771375,
-    "publications": 8
+    "estimated_usd": 0.0412335,
+    "publications": 12
   }
 }
