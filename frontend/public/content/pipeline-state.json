@@ -9134,7 +9134,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-05T22:07:49.104450+00:00",
+      "updated_at": "2026-08-06T05:42:18.959788+00:00",
       "paper": {
         "title": "RestoreKV: Recovering Full-Cache Behavior Under Aggressive Query-Agnostic KV Cache Eviction",
         "summary": "Query-agnostic KV cache eviction compresses a context once and reuses the resulting cache for arbitrary future queries, but performance can collapse under tight budgets. Existing methods primarily improve which original KV pairs are retained. We introduce RestoreKV, which complements this selection-based formulation with learned restoration under the same total KV budget. Our key insight is that, although the information lost through eviction is context-specific, the mechanism for generating its compact complement can be shared across contexts. After context prefill, a few restore tokens attend to the full KV cache in a single LoRA-adapted pass, generating a compact, context-conditioned restore cache. The base importance scorer and eviction rule remain unchanged, and the adapters are disabled for all subsequent queries and decoding. RestoreKV is trained through parameter-efficient self-distillation from the frozen full-cache model, optimizing only $0.4\\%$ of the parameters and requiring no task-specific tuning. Across four backbones and four long-context benchmarks, RestoreKV substantially reduces compression-induced degradation. On Qwen3-4B, it improves 59 of 60 paired, budget-matched settings across five base eviction methods; at a $5\\%$ budget, it raises KVzip from $38.2$ to $73.2$ on RULER-4K. Applied to KVzip+, RestoreKV reaches $86.4$ RULER accuracy at $16\\times$ compression on the KVPress Benchmark, while adding less than $0.5\\%$ one-time cache-construction overhead in a 32K-context evaluation. Our project page is available at https://paper.pnu-cvsp.com/RestoreKV/",
@@ -9156,7 +9156,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-06T02:00:42.832353+00:00",
+      "updated_at": "2026-08-06T05:42:18.959749+00:00",
       "paper": {
         "title": "ReflectRL: Learning from Golden Negative Trajectories via Reflective-to-Direct Reasoning",
         "summary": "On-policy training has emerged as a powerful post-training paradigm for improving the reasoning capabilities of large language models, and is often enhanced by golden trajectories from stronger expert models. However, when the expert fails on harder problems, existing trajectory-guided methods lose their main source of supervision, and these failed trajectories are typically discarded as negative samples. We argue that such failures, which we call Golden Negative Trajectories, can still provide valuable reasoning signals when treated not as demonstrations to imitate, but as flawed trajectories to reflect upon. We identify a Reflection Advantage: for hard problems, reflecting on a flawed trajectory can be easier and more effective than solving the problem directly from scratch. Motivated by this, we propose ReflectRL, a lightweight plug-and-play framework that learns from Golden Negative Trajectories during on-policy training. ReflectRL first uses these trajectories to elicit Reflective Reasoning, then applies Reflective-to-Direct Policy Transition to transfer the acquired reasoning behavior back to Direct Reasoning. Experiments across 9 benchmarks, 4 LLM backbones, and 4 on-policy training methods show that ReflectRL consistently improves reasoning performance with minimal overhead.",
@@ -9210,11 +9210,11 @@
     "2608_04001v1": {
       "id": "2608_04001v1",
       "filename": "post_2608_04001v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-08-06T02:00:42.832336+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-06T02:00:42.832338+00:00",
+      "updated_at": "2026-08-06T05:42:53.702774+00:00",
       "paper": {
         "title": "Test-Time Scaling in Reasoning LLMs: Inference Regimes, Evaluation, and Reproducibility",
         "summary": "Large language models can solve substantially harder reasoning problems with more inference-time compute. The term \"test-time scaling,\" however, now covers diverse inference algorithms that extend deliberation along a single trajectory, sample completed candidates and aggregate them through voting or verification, or search over unfinished partial states. These algorithms differ in their statistical structure, compute accounting, and failure modes. Treating these procedures as interchangeable under a single scalar \"budget,\" or reporting accuracy without the inference protocol that produced it, makes results difficult to compare across studies. We develop a systematic account of test-time scaling along three axes. First, we formalize test-time scaling as budgeted inference over the implicit prefix tree of an autoregressive model and distinguish three structural regimes: single-trajectory sequential scaling, leaf-level scaling with terminal reduction, and prefix-level scaling. Second, we treat the evaluated object as the entire inference system and develop evaluation principles that separate end-to-end system performance from candidate-bank diagnostics. We introduce an evaluation profile whose coordinates and simple functionals recover or bound common repeated-sampling metrics, and prescribe protocol-matched reporting of compute and uncertainty. Third, we specify reproducibility requirements for inference protocols, distinguishing exact replay from distributional reproducibility and identifying the artifacts needed to support each. We also organize the open-weight reasoning ecosystem by model-side and interface mechanisms, apply these principles to broad-knowledge, symbolic-reasoning, and competition-mathematics benchmarks, and assemble over 2 billion full reasoning traces for release with progressively richer verifier and token-level signals.",
@@ -9237,7 +9237,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2608.04001v1"
       },
-      "priority_score": 50
+      "priority_score": 50,
+      "korean_title": "추론형 거대언어모델의 테스트 시점 스케일링: 추론 체계, 평가 및 재현성"
     },
     "2608_03983v1": {
       "id": "2608_03983v1",
@@ -9510,11 +9511,11 @@
     "2608_03918v1": {
       "id": "2608_03918v1",
       "filename": "post_2608_03918v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-08-06T02:00:42.832404+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-06T02:00:42.832405+00:00",
+      "updated_at": "2026-08-06T05:43:02.041486+00:00",
       "paper": {
         "title": "When and Where to Look: Adaptive Visual Evidence Scheduling for Efficient Long Video Understanding",
         "summary": "Efficient long-video understanding requires vision--language models (VLMs) to reason over a small number of frames selected as sparse visual evidence. Existing relevance-based methods rely on static one-shot selection with fixed frame budgets and candidate pools, while agent-based schedulers achieve adaptivity through costly multi-round reasoning and interactive search. We propose EcoFrame, a training-free framework for low-overhead query-adaptive visual evidence scheduling. EcoFrame leverages the VLM's inference feedback to determine when to increase the frame budget and where to search for additional candidate evidence. Specifically, entropy-gated budget scheduling uses output uncertainty to stop early when the current evidence is sufficient or progressively expand the frame budget otherwise. Meanwhile, attention-guided candidate proposal converts frame-level attention into a temporal prior, enabling dense local search in informative regions while preserving global coverage when attention is diffuse. Experiments on Video-MME, LongVideoBench, and MLVU demonstrate that EcoFrame achieves a better accuracy--efficiency trade-off across multiple VLM backbones. On Qwen2.5-VL, EcoFrame achieves an average accuracy of 64.4, surpassing BOLT at 63.5, while providing a $1.85\\times$ speedup over AKS and BOLT. Compared with the agent-based A.I.R., EcoFrame maintains comparable accuracy with up to a $13.5\\times$ inference speedup. Code will be available at https://github.com/AK-DREAM/EcoFrame.",
@@ -9531,7 +9532,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2608.03918v1"
       },
-      "priority_score": 48
+      "priority_score": 48,
+      "korean_title": "언제 어디를 볼 것인가: 효율적인 장시간 영상 이해를 위한 적응형 시각 증거 스케줄링"
     },
     "2608_03917v1": {
       "id": "2608_03917v1",
@@ -9653,11 +9655,11 @@
     "2608_03882v1": {
       "id": "2608_03882v1",
       "filename": "post_2608_03882v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-08-06T02:00:42.832432+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-06T02:00:42.832434+00:00",
+      "updated_at": "2026-08-06T05:42:36.434829+00:00",
       "paper": {
         "title": "MultiGlobeQA: A Multilingual and Globally Diverse Benchmark for Geospatial Reasoning",
         "summary": "Geospatial reasoning, i.e., computing distances, containment, and other spatial relations over real-world entities, is central to navigation and logistics, yet large language models (LLMs) struggle with the required geometric and topological computation despite storing considerable geographic knowledge. Existing benchmarks localize these failures only partially: they are synthetic or smallscale, largely monolingual, and offer limited control over geographic coverage. We introduce MultiGlobeQA, a multilingual benchmark of 46,060 question-answer pairs spanning 14 spatial-function families and 15 answer formats, with execution-based ground truth over three knowledge graphs. It covers 201 countries and territories via income- and density-stratified sampling, with parallel questions in English and 16 additional high- and low-resource languages. Across parametric, reasoning, and agentic settings, LLMs collapse on tasks requiring grid indexing and shape computation, while topological relations and directions fare best. Retrieval and tool use yield considerable gains, yet performance plateaus below two thirds even when gold facts are supplied, indicating that computation, not access to knowledge, is the bottleneck. Models also underperform on low-income regions, a gap that gold facts widen rather than close.",
@@ -9670,7 +9672,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2608.03882v1"
       },
-      "priority_score": 56
+      "priority_score": 56,
+      "korean_title": "MultiGlobeQA: 지리 공간 추론을 위한 다국어 및 글로벌 다양성 벤치마크"
     },
     "2608_03875v1": {
       "id": "2608_03875v1",
@@ -9768,11 +9771,11 @@
     "2608_03860v1": {
       "id": "2608_03860v1",
       "filename": "post_2608_03860v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-08-06T02:00:42.832467+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-06T02:00:42.832468+00:00",
+      "updated_at": "2026-08-06T05:42:44.518728+00:00",
       "paper": {
         "title": "SciRet: A Compute-Aware Empirical Study of Retrieval and Reranking for Scientific RAG",
         "summary": "We introduce SciRet, a compute-aware empirical study of retrieval-augmented generation for scientific question answering over CORD-19. Rather than proposing a new model, we evaluate a fixed scientific RAG pipeline across three corpus scales: 1,034 chunks (1K papers), 5,160 chunks (5K papers), and 15,480 chunks (15K papers). The pipeline combines sentence-window chunking, BM25, BGE-M3 dense retrieval, reciprocal rank fusion, optional cross-encoder reranking, and grounded answer generation. Across these settings, hybrid retrieval is more robust than either sparse-only or dense-only retrieval in our setting, reaching Recall@10 of 1.000 at 1K and 15K. In contrast, an MS MARCO-trained cross-encoder reranker reduces precision on the scientific corpus, suggesting that domain mismatch can outweigh the benefits of stronger query-passage interaction. Generation faithfulness measured with RAGAS increases with corpus scale in our setup. Retrieval evaluation uses pseudo-relevance labels derived from the hybrid system, so we treat the results as controlled comparative evidence rather than a benchmark claim. We release code, indexes, and evaluation outputs to support replication and follow-up studies.",
@@ -9785,7 +9788,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2608.03860v1"
       },
-      "priority_score": 55
+      "priority_score": 55,
+      "korean_title": "SciRet: 과학적 RAG를 위한 검색 및 재순위화에 관한 연산 비용 고려 실증 연구"
     },
     "2608_03859v1": {
       "id": "2608_03859v1",
@@ -9879,11 +9883,228 @@
         "pdf_link": "https://arxiv.org/pdf/2608.03838v1"
       },
       "priority_score": 45
+    },
+    "2607_24821v1": {
+      "id": "2607_24821v1",
+      "filename": "post_2607_24821v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-08-06T05:42:18.959714+00:00",
+      "last_error": null,
+      "updated_at": "2026-08-06T05:42:18.959727+00:00",
+      "paper": {
+        "title": "AVE-Compass: Towards Holistic Evaluation for Audio-Video Editing Abilities",
+        "summary": "While instruction-based video editing has advanced rapidly, real-world videos contain tightly coupled audio and visual signals, and editing one modality often requires coordinated changes in the other. Existing benchmarks primarily evaluate visual transformations on silent clips or isolated audio editing, leaving complex audio-visual editing and cross-modal consistency underexplored. We introduce AVE-Compass, a comprehensive benchmark with 145 curated source videos, 196 audio-visually coupled editing instructions, and 2,688 fine-grained checklist items. It evaluates Instruction Following, Fidelity Preserving, Realism, and Editing Intent through checklist-based MLLM judging and a dedicated realism rubric, complemented by automated cross-modal, video, and audio metrics. Extensive evaluation shows that state-of-the-art models still struggle to execute cross-modal instructions while preserving non-target content. We further propose AVE-Agent, a modular agent framework that decomposes complex instructions into dependent subtasks and iteratively improves editing results through self-reflection and evaluator feedback. AVE-Agent improves instruction execution, Fidelity Preserving, and audio-visual alignment in joint editing while maintaining competitive perceptual quality.",
+        "published": "2026-07-17T12:40:13Z",
+        "authors": [
+          "Yuqing Wen",
+          "Yukai Huang",
+          "Qianqian Xie",
+          "Jiangtao Wu",
+          "Yibin Lin",
+          "Yikai Gu",
+          "Jialu Chen",
+          "Yuanxing Zhang",
+          "Jiaheng Liu"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2607.24821v1"
+      },
+      "priority_score": 46
+    },
+    "2608_03632v1": {
+      "id": "2608_03632v1",
+      "filename": "post_2608_03632v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-08-06T05:42:18.959735+00:00",
+      "last_error": null,
+      "updated_at": "2026-08-06T05:42:18.959737+00:00",
+      "paper": {
+        "title": "When Teachers Mislead: Spurious-Signal-Aware On-Policy Distillation",
+        "summary": "On-Policy distillation (OPD) transfers teacher capabilities by supervising student-sampled trajectories with dense token-level teacher signals. Recent selective OPD methods improve this process by prioritizing signals that are confident, informative, or learnable. However, the assumptions overlook a fundamental failure mode of language models: their token-level judgments can be driven by input-agnostic language priors, formatting conventions, or stereotyped reasoning templates rather than task-specific evidence. We refer to such optimization-relevant but weakly input-grounded supervision as spurious signals in OPD, which may produce large gradients while contributing little task-improving direction. To mitigate this issue, we propose SA-OPD, a Spurious-Signal-Aware On-Policy Distillation framework that identifies and filters misleading token-level supervision based on input-groundedness and optimization impact. SA-OPD introduces a lightweight input-groundedness proxy estimating whether a token-level distillation signal truly depends on the input. It then filters only tokens that simultaneously exhibit low input-groundedness and extreme distillation divergence, thereby removing high-impact spurious updates and achieving fine-grained OPD optimization. Extensive experiments on both large language model (LLM) and vision-language model (VLM) settings demonstrate that SA-OPD consistently outperforms Vanilla OPD and competitive selective methods. These results establish input-groundedness as a key dimension for OPD supervision selection and offer a simple, effective strategy for mitigating spurious updates.",
+        "published": "2026-08-04T13:17:30Z",
+        "authors": [
+          "Yinuo Jiang",
+          "Yongjie Ye",
+          "Zhou Tao",
+          "Xiang Zhuang",
+          "Qiang Zhang",
+          "Huajun Chen",
+          "Tiankai Li"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.03632v1"
+      },
+      "priority_score": 30
+    },
+    "2608_02580v1": {
+      "id": "2608_02580v1",
+      "filename": "post_2608_02580v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-08-06T05:42:18.959743+00:00",
+      "last_error": null,
+      "updated_at": "2026-08-06T05:42:18.959744+00:00",
+      "paper": {
+        "title": "Ego2Robot: Scalable Robot Data Synthesis from Egocentric Human Data",
+        "summary": "Learning generalizable robot manipulation policies requires large-scale and diverse demonstration data. Egocentric human manipulation videos offer rich scene and task diversity, and prior work has shown that retargeting and rendering such videos into robot-format data can yield effective per-task policies at small scale. However, whether this approach can provide pretraining benefits for vision-language-action models at scale remains unexplored. We present \\textbf{Ego2Robot}, a scalable pipeline that converts egocentric human manipulation videos into robot training data through action retargeting, robot-arm visual synthesis, and multi-level quality curation. Ego2Robot supports both curated datasets and in-the-wild videos, producing 18,561 hours of robot training data spanning 15 robot morphologies, making it the largest ego-to-robot dataset to date. To evaluate generalization, we extend RoboTwin2.0 with disentangled perturbation axes covering visual appearance, scene layout, embodiment morphology, and task semantics. Experiments show that joint pretraining on Ego2Robot-synthesized and robot data consistently improves out-of-distribution generalization across multiple perturbation types, with benefits validated on real-robot deployment. Project page: https://www-ye.github.io/ego2robot_blog/",
+        "published": "2026-08-03T17:52:26Z",
+        "authors": [
+          "Ye Wang",
+          "Pei Lin",
+          "Xiong-Hui Chen",
+          "Haoqi Yuan",
+          "Zhixuan Liang",
+          "Yiyang Huang",
+          "Anzhe Chen",
+          "Zixing Lei",
+          "Jie Zhang",
+          "Tao Zhang",
+          "Haoyang Li",
+          "Tong Zhang",
+          "Chenxi Xiao",
+          "Ziyuan Jiao",
+          "Qin Jin"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.02580v1"
+      },
+      "priority_score": 16
+    },
+    "2608_05013v1": {
+      "id": "2608_05013v1",
+      "filename": "post_2608_05013v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-08-06T05:42:18.959756+00:00",
+      "last_error": null,
+      "updated_at": "2026-08-06T05:42:18.959758+00:00",
+      "paper": {
+        "title": "OneDayAgent: Towards a Long-Horizon Harness for Autonomous Agents",
+        "summary": "LLM agents are increasingly applied to open-ended everyday requests that span work, study, and life. These tasks are long-horizon, cross-environment, and multimodal, forcing the agent to preserve goals and constraints across many steps while navigating heterogeneous tools and attachments. While prior work has addressed individual failure modes such as goals drift, states loss, and context overflow, whether a single harness can manage them jointly and remain effective across backends has received less study. We present OneDayAgent, a long-horizon harness for autonomous agents. OneDayAgent turns an open-ended request into a managed execution process that decomposes tasks into bounded subtasks, maintains execution memory under context pressure, and verifies and repairs the final deliverable. We evaluate OneDayAgent on AgentIF-OneDay across 104 tasks. With the GLM-5.2 backend, OneDayAgent sets a new state of the art with an overall score of 0.821. The same harness runs across five backend LLMs from three model families, indicating the harness generalizes across backends without tuning, even as different models induce distinct execution styles under the same workflow.",
+        "published": "2026-08-04T17:55:41Z",
+        "authors": [
+          "Jingsheng Zheng",
+          "Xinyuan Fang",
+          "Jintian Zhang",
+          "Zhengke Gui",
+          "Huajun Chen",
+          "Ningyu Zhang"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.05013v1"
+      },
+      "priority_score": 24
+    },
+    "2608_05000v1": {
+      "id": "2608_05000v1",
+      "filename": "post_2608_05000v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-08-06T05:42:18.959763+00:00",
+      "last_error": null,
+      "updated_at": "2026-08-06T05:42:18.959765+00:00",
+      "paper": {
+        "title": "Towards Physics of Multimodal Pretraining: Knowledge Flow, Modality Synergy, Early Unification, and Recipes",
+        "summary": "Vision offers a critical axis for advancing foundation models, driving a shift towards natively unified multimodal pretraining. Despite this momentum, the design space and the fundamental mechanisms of how modalities interact during unified training remain underexplored. We provide empirical clarity through a systematic exploration of multimodal pretraining. Our controlled experiments on both synthetic and large-scale real-world datasets yield four key insights into the physics of multimodal pretraining: (i) Knowledge Flow: We disentangle how language, visual understanding, and visual generation transfer knowledge across modalities, revealing distinct patterns of influence and asymmetry; (ii) Synergy vs. Competition: We show that data \"complexity\" largely determines whether modalities are synergistic, identify architectural choices that promote synergy: such as shared attention and normalization with modality-specific feed-forward layers, and find that these behaviors generalize across different visual tokenizer designs; (iii) Early Unification: Unifying modalities from the very early stages and training them jointly is shown to be more effective than late alignment or sequential training. This process uncovers a vision laziness phenomenon, where delayed integration leads models to rely on language priors; (iv) Recipes: We derive efficient pretraining recipes that achieve strong generative performance using only 5% of the compute budget. These core findings are subsequently validated at scale by training multiple 13.5B MoE models on 2T tokens. We hope this study provides a principled foundation for understanding and scaling multimodal pretraining.",
+        "published": "2026-08-05T16:09:25Z",
+        "authors": [
+          "Junlin Han",
+          "Shengbang Tong",
+          "David Fan",
+          "Minghao Chen",
+          "Philip Torr",
+          "Filippos Kokkinos",
+          "Mike Lewis"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.05000v1"
+      },
+      "priority_score": 20
+    },
+    "2608_04964v1": {
+      "id": "2608_04964v1",
+      "filename": "post_2608_04964v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-08-06T05:42:18.959769+00:00",
+      "last_error": null,
+      "updated_at": "2026-08-06T05:42:18.959771+00:00",
+      "paper": {
+        "title": "WorldCycle: Self-Verifiable Reinforcement Learning for Long-Horizon Video World Models",
+        "summary": "Interactive video world models are essential for long-horizon planning and exploration, yet they suffer from compounding errors. Post-training methods such as reinforcement learning (RL) can improve these models, but they hit a verification bottleneck: for arbitrary action sequences, no ground-truth future state exists to measure long-term drift. Our key insight is that reversible action cycles make this verification possible: a sequence composed with its inverse must analytically return to the initial state, yielding annotation-free supervision on long-horizon correctness. Building on this, we introduce WorldCycle, a self-verifiable RL framework that constructs closed action cycles and their repeated executions from ordinary action sequences, and optimizes two complementary rewards: a spatial closure reward enforcing symmetry between mirrored forward and reverse segments, and a temporal consistency reward aligning states across repeated cycle executions. These rewards force the model to learn actions as consistent state operators rather than memorized temporal patterns, and extend naturally to out-of-distribution composite action cycles that the base model handles poorly. We further release CycleBench, a diagnostic benchmark for state-returning ability under complex action structures. WorldCycle reduces state returning drift by up to 44% and lifts composite-action accuracy nearly 4x over the base model, providing a vital foundation for physically grounded world models.",
+        "published": "2026-08-05T15:34:47Z",
+        "authors": [
+          "Bohai Gu",
+          "Yueyang Yuan",
+          "Taiyi Wu",
+          "Dazhao Du",
+          "Jian Liu",
+          "Xiaoyi Pang",
+          "Jie Zhang",
+          "Xiaocheng Lu",
+          "Haobin Zhong",
+          "Xiaotong Zhao",
+          "Alan Zhao",
+          "Song Guo"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.04964v1"
+      },
+      "priority_score": 28
+    },
+    "2608_05108v1": {
+      "id": "2608_05108v1",
+      "filename": "post_2608_05108v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-08-06T05:42:18.959776+00:00",
+      "last_error": null,
+      "updated_at": "2026-08-06T05:42:18.959778+00:00",
+      "paper": {
+        "title": "Agent Against Agent: An Agentic System for Automatic Prompt Injection Red Teaming",
+        "summary": "Prompt injection poses significant security risks to LLM agents. Efficient and effective red-teaming is therefore critical, both for evaluating these risks and for collecting training data to improve defenses. Existing state-of-the-art prompt injection red-teaming methods primarily rely on reinforcement learning (RL), producing attacker models that often generalize poorly to new target LLMs. In this work, we develop PIMiner, an agentic system for prompt injection red-teaming. During training, PIMiner is trained on a sequence of (dataset, target model) pairs and builds a strategy library from scratch. At test time, the learned strategy library can be directly transferred to a previously unseen target LLM without additional training. PIMiner requires only a small number of queries to a target agent (e.g., 10) per test sample. Experimental results demonstrate that PIMiner achieves strong performance. On IPIArena, it attains a 76.2% ASR against Gemini-2.5-Pro, 61.9% ASR against GPT-5.1, and 42.9% ASR against Claude-Sonnet-4.5. On AgentDojo, it achieves an 86.7% ASR against Gemini-2.5-Pro, 53.3% ASR against GPT-5.1, and 40.0% ASR against Claude-Sonnet-4.5.",
+        "published": "2026-08-05T17:44:09Z",
+        "authors": [
+          "Yanting Wang",
+          "Chenlong Yin",
+          "Runpeng Geng",
+          "Jinyuan Jia"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.05108v1"
+      },
+      "priority_score": 24
+    },
+    "2608_05042v1": {
+      "id": "2608_05042v1",
+      "filename": "post_2608_05042v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-08-06T05:42:18.959782+00:00",
+      "last_error": null,
+      "updated_at": "2026-08-06T05:42:18.959784+00:00",
+      "paper": {
+        "title": "BridgeVLA++: A Data-Efficient, Generalizable, and Memory-Augmented Vision-Language-Action Framework for 3D Manipulation",
+        "summary": "Leveraging pre-trained vision-language models (VLMs) to construct vision-language-action (VLA) models has emerged as a promising paradigm for 3D robot manipulation. However, existing 3D VLA methods remain data-hungry, exhibit limited generalization under distribution shifts, and lack explicit memory of past observations. These limitations hinder their application to data-scarce, open-world, and memory-dependent manipulation scenarios. Our previous work, BridgeVLA, improves data efficiency and generalization by preserving the input--output alignment of a pre-trained VLM during 3D action learning: raw point clouds are projected into multi-view images, and intermediate heatmaps are predicted before generating robot actions. In this work, we develop BridgeVLA++ by equipping BridgeVLA with a unified spatio-temporal memory architecture that models persistent spatial context and temporal interaction history. The resulting memory-augmented framework can reason over observation histories while preserving BridgeVLA's data efficiency and generalization capabilities. Extensive experiments show that our framework achieves strong performance on spatial manipulation tasks while exhibiting robust generalization. BridgeVLA++ further achieves state-of-the-art performance on two challenging memory-dependent manipulation benchmarks without sacrificing the data efficiency and generalization of the original BridgeVLA. In addition, BridgeVLA++ performs effectively in bimanual manipulation settings and is validated on an additional real-world robotic platform, demonstrating its scalability across tasks, environments, and robotic platforms. These results establish BridgeVLA++ as a unified 3D vision-language-action framework that simultaneously supports data-efficient learning, robust generalization, and effective memory-aware robot manipulation. Project website: https://bridgevla-plus.github.io/.",
+        "published": "2026-08-05T16:54:25Z",
+        "authors": [
+          "Peiyan Li",
+          "Yuze Zhu",
+          "Yixiang Chen",
+          "Qisen Ma",
+          "Yuan Xu",
+          "Jiabing Yang",
+          "He Guan",
+          "Yan Huang",
+          "Hongtao Wu",
+          "Xiao Ma",
+          "Tao Kong",
+          "Liang Wang",
+          "Tieniu Tan"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.05042v1"
+      },
+      "priority_score": 30
     }
   },
   "last_run": {
-    "started_at": "2026-08-06T02:00:42.833418+00:00",
-    "discovered": 30,
+    "started_at": "2026-08-06T05:42:18.960983+00:00",
+    "discovered": 10,
     "selected": 4,
     "generated": 4,
     "failed": 0,
@@ -9893,26 +10114,26 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 18262,
-      "output_tokens": 6053,
+      "prompt_tokens": 21481,
+      "output_tokens": 5799,
       "thought_tokens": 0,
-      "total_tokens": 24315,
-      "estimated_usd": 0.013645
+      "total_tokens": 27280,
+      "estimated_usd": 0.01406875
     },
-    "finished_at": "2026-08-06T02:01:44.712997+00:00"
+    "finished_at": "2026-08-06T05:43:02.203280+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 687,
-    "prompt_tokens": 1723920,
-    "output_tokens": 506002,
+    "requests": 695,
+    "prompt_tokens": 1745401,
+    "output_tokens": 511801,
     "thought_tokens": 0,
-    "total_tokens": 2229922,
-    "estimated_usd": 1.189983
+    "total_tokens": 2257202,
+    "estimated_usd": 1.20405175
   },
   "last_publication_run": {
-    "started_at": "2026-08-06T02:00:42.833418+00:00",
-    "discovered": 30,
+    "started_at": "2026-08-06T05:42:18.960983+00:00",
+    "discovered": 10,
     "selected": 4,
     "generated": 4,
     "failed": 0,
@@ -9922,17 +10143,17 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 18262,
-      "output_tokens": 6053,
+      "prompt_tokens": 21481,
+      "output_tokens": 5799,
       "thought_tokens": 0,
-      "total_tokens": 24315,
-      "estimated_usd": 0.013645
+      "total_tokens": 27280,
+      "estimated_usd": 0.01406875
     },
-    "finished_at": "2026-08-06T02:01:44.712997+00:00"
+    "finished_at": "2026-08-06T05:43:02.203280+00:00"
   },
   "daily_usage": {
     "date": "2026-08-06",
-    "estimated_usd": 0.013645,
-    "publications": 4
+    "estimated_usd": 0.02771375,
+    "publications": 8
   }
 }

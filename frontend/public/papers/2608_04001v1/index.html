@@ -1,0 +1,74 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>추론형 거대언어모델의 테스트 시점 스케일링: 추론 체계, 평가 및 재현성 | ArXiv Translator AI</title><meta name="description" content="추론형 거대언어모델의 테스트 시점 스케일링: 추론 체계, 평가 및 재현성"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_04001v1"><meta property="og:type" content="article"><meta property="og:title" content="추론형 거대언어모델의 테스트 시점 스케일링: 추론 체계, 평가 및 재현성"><meta property="og:description" content="추론형 거대언어모델의 테스트 시점 스케일링: 추론 체계, 평가 및 재현성"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_04001v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="추론형 거대언어모델의 테스트 시점 스케일링: 추론 체계, 평가 및 재현성"><meta name="twitter:description" content="추론형 거대언어모델의 테스트 시점 스케일링: 추론 체계, 평가 및 재현성"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_04001v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "추론형 거대언어모델의 테스트 시점 스케일링: 추론 체계, 평가 및 재현성", "description": "추론형 거대언어모델의 테스트 시점 스케일링: 추론 체계, 평가 및 재현성", "datePublished": "2026-08-04", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_04001v1", "author": [{"@type": "Person", "name": "Mohsen Hariri"}, {"@type": "Person", "name": "Weicong Chen"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_04001v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_04001v1"});gtag('event', 'paper_view', {"paper_id": "2608_04001v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>추론형 거대언어모델의 테스트 시점 스케일링: 추론 체계, 평가 및 재현성</h1><p>추론형 거대언어모델의 테스트 시점 스케일링: 추론 체계, 평가 및 재현성</p><pre>추론형 거대언어모델의 테스트 시점 스케일링: 추론 체계, 평가 및 재현성
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Test-Time Scaling in Reasoning LLMs: Inference Regimes, Evaluation, and Reproducibility
+&gt; - **저자:** Mohsen Hariri, Weicong Chen, Nahal Shahini, Vikash Singh, Kai Ye, Amirhossein Samandar, Debargha Ganguly, Sreehari Sankar, Yanyan Zhang, Shouren Wang, Jerry Peng, Biyao Zhang, Michael Hinczewski, Vipin Chaudhary
+&gt; - **발행일:** 2026-08-04
+&gt; - **PDF 링크:** [Test-Time Scaling in Reasoning LLMs: Inference Regimes, Evaluation, and Reproducibility](https://arxiv.org/pdf/2608.04001v1)
+
+
+✨ 3줄 핵심 요약
+- 테스트 시점 스케일링(Test-time scaling)을 &#x27;예산 기반 추론&#x27;의 관점에서 세 가지 구조적 체계로 공식화했습니다.
+- 시스템 전체의 성능과 후보군 진단을 분리하는 새로운 평가 원칙과 프로파일링 기법을 제안했습니다.
+- 연구 간 비교 가능성을 높이기 위해 20억 개 이상의 추론 흔적(trace)을 포함한 데이터셋과 재현성 기준을 공개했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+거대언어모델(LLM)은 답변을 생성할 때 더 많은 계산 자원을 투입할수록 복잡한 추론 문제에서 더 좋은 성능을 보입니다. 이를 &#x27;테스트 시점 스케일링&#x27;이라 부르는데, 현재는 다양한 알고리즘이 혼용되어 쓰이고 있어 연구 결과를 서로 비교하기 어렵다는 문제가 있습니다. 본 논문은 이 과정을 체계화하고, 모델이 답을 내는 방식(구조)에 따라 이를 분류했습니다. 또한, 실험 결과가 동일한 조건에서 보고될 수 있도록 평가 기준을 표준화하고, 다른 연구자들이 재현할 수 있는 방대한 양의 추론 데이터와 가이드를 제공합니다.
+
+🎯 배경 및 문제점
+- **용어 혼란:** &#x27;테스트 시점 스케일링&#x27;이라는 용어가 단일 궤적에서의 확장, 다수 후보군 생성 후 투표 등 서로 다른 방식들을 통칭하면서 혼란이 발생했습니다.
+- **비교 불가능성:** 추론 프로토콜에 대한 명시 없이 정확도 수치만 보고하는 관행으로 인해, 연구 간의 성과를 객관적으로 비교하기 어려운 상황입니다.
+- **평가 체계 미비:** 전체 시스템의 성능과 개별 후보군을 생성하는 엔진의 성능이 구분되지 않아 기술적 진단이 어렵습니다.
+
+💡 핵심 기술 및 아키텍처
+- **3대 추론 체계:** 자기회귀 모델의 암묵적 접두사 트리(prefix tree)를 기반으로 다음 세 가지 구조적 체계를 정의했습니다.
+  - 단일 궤적 순차적 스케일링 (Single-trajectory sequential scaling)
+  - 단말 감소를 동반한 리프 수준 스케일링 (Leaf-level scaling with terminal reduction)
+  - 접두사 수준 스케일링 (Prefix-level scaling)
+- **평가 프로파일링:** 후보군 진단과 시스템 성능을 분리하는 평가 원칙을 개발하여, 반복 샘플링 지표를 포괄하는 평가 프로파일을 도입했습니다.
+- **재현성 확보:** 추론 프로토콜의 재현을 위해 정확한 재실행(exact replay)과 분포적 재현성(distributional reproducibility)을 구분하고 이에 필요한 데이터 아티팩트를 정의했습니다.
+
+📊 실험 결과 분석
+- 광범위한 지식, 기호 추론, 수학 경시대회 등 다양한 벤치마크에 제안한 원칙을 적용했습니다.
+- 20억 개 이상의 전체 추론 흔적을 수집하여 공개했습니다.
+- 보고된 데이터에는 verifier(검증기) 신호 및 토큰 수준의 정보가 포함되어 있어, 데이터셋의 상세 수치(각 모델별 구체적 정확도 등)는 원문 발췌 내용에 언급되지 않았으나, 이러한 데이터를 기반으로 한 분석이 가능함을 명시했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+- **표준화된 가이드라인:** 연구자들이 논문에서 자신의 추론 방식을 정확히 보고하고, 다른 연구자와 결과를 비교할 수 있는 공통 언어를 제공합니다.
+- **오픈 데이터 생태계:** 20억 개 이상의 추론 흔적 데이터셋은 연구자들이 자체적인 추론 모델을 개발하거나 기존 모델의 추론 과정을 분석하는 데 핵심 자원으로 활용될 수 있습니다.
+- **시스템 최적화:** 모델 사용자가 자신의 하드웨어 환경과 예산에 맞춰 어떤 추론 알고리즘을 선택할지 결정하는 데 중요한 기준을 제시합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2608.04001 Test-Time Scaling in Reasoning LLMs: Inference ...](https://arxiv.org/abs/2608.04001)
+&gt; - [Test-Time Scaling in Reasoning LLMs: Inference Regimes ...](https://www.semanticscholar.org/paper/Test-Time-Scaling-in-Reasoning-LLMs:-Inference-and-Hariri-Chen/c133754645d6f487b3da6b8c139965713f6668dd)
+&gt; - [Test-Time Scaling in Reasoning LLMs: Inference Regimes ...](https://www.emergentmind.com/papers/2608.04001)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;이 논문은 그간 &#x27;테스트 시점 스케일링&#x27;이라는 용어 아래 난립하던 추론 방법론들을 정교하게 분류했다는 점에서 높게 평가합니다. 특히 자기회귀 기반의 구조적 체계를 명확히 분리한 것은 학술적 기여가 큽니다. 다만, 20억 개의 추론 흔적을 공개했다고는 하나, 정작 중요한 &#x27;Verifier&#x27;의 일반화 성능과 분포적 재현성 검증에 대한 엄밀함은 실증 데이터로 더 확인해봐야 할 것 같군요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 학술적 정의는 훌륭합니다. 그런데 실무자 입장에선 &#x27;20억 개 데이터셋&#x27;을 어떻게 서빙하고 효율적으로 활용할지가 더 걱정되네요. 추론 비용 최적화가 핵심인데, 리프 수준 스케일링을 실제 프로덕션 환경에서 돌리면 레이턴시가 폭발할 텐데 이에 대한 런타임 최적화 가이드가 부족해 보입니다. 이론과 현실 사이의 괴리가 여전하네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;두 분 다 너무 진지하신 거 아니에요? ㅋㅋ 일단 20억 개 데이터셋 덤프가 풀린 것만으로도 당장 다음 주 랩 미팅 때 쓸 거 엄청 많아졌는데요! 이 논문 기준으로 표준화된 평가 프레임워크가 잡히면, 이제 SOTA 갱신한다고 스코어만 부풀리는 짓은 좀 줄어들 것 같아요. 당장 데이터셋 다운로드부터 걸어두러 갑니다!&quot;
+  }
+]
+]
+]
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
