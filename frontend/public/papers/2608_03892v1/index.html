@@ -1,0 +1,67 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Qwen3 모델에서 대조 활성화 추가를 통한 시간 간 선호도 조절 | ArXiv Translator AI</title><meta name="description" content="Qwen3 모델에서 대조 활성화 추가를 통한 시간 간 선호도 조절"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_03892v1"><meta property="og:type" content="article"><meta property="og:title" content="Qwen3 모델에서 대조 활성화 추가를 통한 시간 간 선호도 조절"><meta property="og:description" content="Qwen3 모델에서 대조 활성화 추가를 통한 시간 간 선호도 조절"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_03892v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Qwen3 모델에서 대조 활성화 추가를 통한 시간 간 선호도 조절"><meta name="twitter:description" content="Qwen3 모델에서 대조 활성화 추가를 통한 시간 간 선호도 조절"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_03892v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Qwen3 모델에서 대조 활성화 추가를 통한 시간 간 선호도 조절", "description": "Qwen3 모델에서 대조 활성화 추가를 통한 시간 간 선호도 조절", "datePublished": "2026-08-04", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_03892v1", "author": [{"@type": "Person", "name": "Michal Mráz"}, {"@type": "Person", "name": "Justin Shenk"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_03892v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_03892v1"});gtag('event', 'paper_view', {"paper_id": "2608_03892v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>Qwen3 모델에서 대조 활성화 추가를 통한 시간 간 선호도 조절</h1><p>Qwen3 모델에서 대조 활성화 추가를 통한 시간 간 선호도 조절</p><pre>Qwen3 모델에서 대조 활성화 추가를 통한 시간 간 선호도 조절
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Intertemporal Preference Steering in Qwen3 via Contrastive Activation Addition
+&gt; - **저자:** Michal Mráz, Justin Shenk
+&gt; - **발행일:** 2026-08-04
+&gt; - **PDF 링크:** [Intertemporal Preference Steering in Qwen3 via Contrastive Activation Addition](https://arxiv.org/pdf/2608.03892v1)
+
+
+✨ 3줄 핵심 요약
+* Qwen3-32B 모델 내부에 존재하는 &#x27;시간적 지평(temporal horizon)&#x27;에 관한 선호도를 선형 탐색기(linear probe)로 식별함.
+* 대조 활성화 추가(Contrastive Activation Addition, CAA) 기법을 사용하여 모델의 시간적 선호도를 단기 또는 장기 방향으로 능동적으로 제어함.
+* 금전적 보상 선택 및 계획 수립 능력과 같은 다양한 작업에서 모델의 의사결정 경향을 효과적으로 변화시킴.
+
+📖 쉽게 풀어쓴 1분 핵심
+AI 모델이 결정을 내릴 때 당장의 이익을 선호하는지, 아니면 미래의 더 큰 가치를 중요하게 생각하는지는 중요한 문제입니다. 이 논문은 Qwen3-32B 모델 내부를 들여다보아 &#x27;미래 지향성&#x27;과 &#x27;현재 지향성&#x27;을 담당하는 신경망의 특정 방향을 찾아냈습니다. 연구진은 이 방향에 인위적인 신호(활성화 값)를 더하는 &#x27;대조 활성화 추가&#x27; 방식을 사용하여, 모델이 특정 상황에서 더 멀리 내다보거나 당장의 결과에 집중하도록 선호도를 실시간으로 조절하는 데 성공했습니다.
+
+🎯 배경 및 문제점
+대규모 언어 모델(LLM)이 인간에게 조언을 제공하거나 장기적인 계획을 세울 때, 시간적 가치를 어떻게 판단하는지는 모델의 안전성과 유용성에 직결됩니다. 하지만 모델이 내부적으로 시간적 지평을 어떻게 표상하고 이를 조절할 수 있는지에 대한 이해는 부족했습니다. 본 연구는 모델의 판단 기준을 외부에서 임의로 수정(steering)할 수 있는지, 그리고 이것이 실제 금전적 보상이나 계획 수립 등 다양한 작업으로 전이될 수 있는지를 탐구합니다.
+
+💡 핵심 기술 및 아키텍처
+* **대조 선형 탐색기(Contrastive Linear Probe):** 단기적 답변과 장기적 답변의 쌍을 사용하여 모델 잔차 스트림(residual stream) 내에서 시간적 선호도를 나타내는 벡터를 추출했습니다.
+* **대조 활성화 추가(CAA):** 식별된 &#x27;시간적 지평 방향&#x27; 벡터에 특정 가중치(강도)를 곱해 추론 과정에서 모델의 활성화 값에 더해줌으로써, 모델이 해당 방향으로 편향된 선택을 내리도록 강제했습니다.
+* **대상 모델:** &#x27;생각 추적(thinking trace)&#x27; 기능이 비활성화된 Qwen3-32B 모델을 사용했습니다.
+
+📊 실험 결과 분석
+* **이진 선택 작업:** 정의된 시간적 지평 방향을 이용해 모델의 선택을 양방향으로 크게 변화시키는 데 성공했습니다.
+* **금전적 시간 가치 작업:** 보상 규모와 지연 시간이 다른 금전적 선택지에서, 모델의 &#x27;무차별 임계값(indifference threshold)&#x27;을 원하는 방향으로 이동시켰습니다.
+* **계획 수립 능력:** 적절한 수준의 시간적 조절을 가했을 때, 계획 수립 관련 벤치마크(TravelPlanner)에서 성능 향상이 관찰되었습니다.
+* *수치 언급:* 실험 데이터셋은 500개의 명시적 질문과 300개의 암시적 질문으로 구성되었으며, 레이어 24, 28, 32, 36, 40, 44, 48 등에서 실험이 수행되었습니다. (단, 결과값의 정확한 통계적 수치는 본 발췌문에 포함되어 있지 않습니다.)
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **맞춤형 AI 조언:** 사용자의 상황에 맞게 AI가 장기적 이익을 강조하거나 단기적 편의를 우선하도록 조절할 수 있습니다.
+* **AI 안전성:** 장기적인 계획을 수립해야 하는 시스템에서 AI가 근시안적인 판단을 내리지 않도록 제어하는 안전 장치로 활용할 수 있습니다.
+* **주의사항:** 활성화 추가 기법이 과도할 경우 모델의 사실성이나 논리적 일관성이 훼손될 수 있으며, 이러한 조절이 시간 선호도 이외의 다른 능력에 미치는 부작용에 대해서는 추가적인 검증이 필요합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Temporal Preference Concepts and their Functions in a Large Language Model](https://arxiv.org/html/2606.05194v1)
+&gt; - [What I Learned (And Didn&#x27;t) Steering Qwen3 Models - Omar Ayyub](https://omar.bet/2026/01/17/What-I-Learned-Steering-Qwen3-Models/)
+&gt; - [Steering Llama 2 via Contrastive Activation Addition](https://www.researchgate.net/publication/384215189_Steering_Llama_2_via_Contrastive_Activation_Addition)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;CAA 기법 자체는 익숙하지만, 시간적 지평(temporal horizon)이라는 추상적인 개념을 residual stream에서 선형적으로 분리해냈다는 점은 흥미롭군요. 다만, 레이어 24부터 48까지 광범위하게 활성화를 주입했을 때 발생하는 분포 변화(distribution shift)가 모델의 논리적 일관성을 얼마나 저해하는지 정량적으로 더 보여줬어야 합니다. 단순히 &#x27;조절 가능하다&#x27;는 것만으로는 배포 환경에서 신뢰하기 어렵습니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에선 &#x27;환각(hallucination)&#x27;이 제일 걱정이죠. 특히 서빙 환경에서 추론마다 activation vector를 더해주는 건 latency 측면에선 큰 부담이 없지만, 특정 도메인에서 모델이 멍청해지면 대응이 안 됩니다. 그래도 사용자 성향에 따라 &#x27;장기 투자 조언&#x27; 모드와 &#x27;당장 필요한 팁&#x27; 모드를 스위칭할 수 있는 엔지니어링 포인트가 생긴 건 확실히 메리트 있네요. A/B 테스트 결과가 궁금해지네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;다들 너무 비판적이시네요! 저는 이 논문 보고 바로 Qwen3 32B 돌려보고 있습니다. CAA로 모델의 가치관을 &#x27;강제로&#x27; 바꿀 수 있다는 게 얼마나 짜릿한데요. 특히 &#x27;생각 추적(thinking trace)&#x27; 비활성화 모델에서 이 정도 성과라면, 나중에 CoT랑 결합했을 때 진짜 무서운 성능이 나올 것 같아요. 내일 세미나 때 이 주제로 발표하면 교수님한테 칭찬받겠죠?&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
