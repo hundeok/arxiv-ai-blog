@@ -1,0 +1,70 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>제네시스: 설명 가능한 인과 관계 발견을 향하여 | ArXiv Translator AI</title><meta name="description" content="제네시스: 설명 가능한 인과 관계 발견을 향하여"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_03868v1"><meta property="og:type" content="article"><meta property="og:title" content="제네시스: 설명 가능한 인과 관계 발견을 향하여"><meta property="og:description" content="제네시스: 설명 가능한 인과 관계 발견을 향하여"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_03868v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="제네시스: 설명 가능한 인과 관계 발견을 향하여"><meta name="twitter:description" content="제네시스: 설명 가능한 인과 관계 발견을 향하여"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_03868v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "제네시스: 설명 가능한 인과 관계 발견을 향하여", "description": "제네시스: 설명 가능한 인과 관계 발견을 향하여", "datePublished": "2026-08-04", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_03868v1", "author": [{"@type": "Person", "name": "Abhinav Thorat"}, {"@type": "Person", "name": "Ravi Kumar Kolla"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_03868v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_03868v1"});gtag('event', 'paper_view', {"paper_id": "2608_03868v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>제네시스: 설명 가능한 인과 관계 발견을 향하여</h1><p>제네시스: 설명 가능한 인과 관계 발견을 향하여</p><pre>제네시스: 설명 가능한 인과 관계 발견을 향하여
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** GENESIS: Towards Explainable Causal Discovery
+&gt; - **저자:** Abhinav Thorat, Ravi Kumar Kolla, Vishak K Bhat, Harsh Vardhan Singh Chauhan, Niranjan Pedanekar
+&gt; - **발행일:** 2026-08-04
+&gt; - **PDF 링크:** [GENESIS: Towards Explainable Causal Discovery](https://arxiv.org/pdf/2608.03868v1)
+
+
+✨ 3줄 핵심 요약
+* **설명 가능성 확보:** 인과 관계 발견(CD) 과정에서 각 간선(edge)이 생성된 근거를 감사 가능한 형태로 제공하는 &#x27;결정 추적성(decision traceability)&#x27; 개념을 도입했습니다.
+* **하이브리드 접근:** LLM의 도메인 지식과 관측 데이터의 통계적 증거를 결합하여 구조적 모티프를 분석하고, 불확실한 간선을 체계적으로 해결합니다.
+* **성능과 신뢰의 조화:** 실험 결과, 모든 실험 환경에서 100% 결정 추적성을 달성하면서도 기존 통계적 방법론보다 우수한 구조적 정확도(SHD 기준)를 보였습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+인과 관계를 파악하는 기존 AI 모델들은 결과물(그래프)은 내놓지만, 왜 특정 요소가 다른 요소의 원인이라고 판단했는지에 대한 설명이 부족했습니다. 이를 &#x27;블랙박스&#x27;처럼 다루는 것은 의료나 정책 결정 같은 고위험 분야에서 치명적입니다. &#x27;제네시스(GENESIS)&#x27;는 각 인과 관계가 통계적 데이터, 마르코프 블랭킷(Markov Blanket) 일관성, 혹은 LLM의 논리적 추론 중 어떤 근거에 의해 결정되었는지를 명확히 기록하여, 사용자가 그 결과를 믿고 검증할 수 있게 설계된 시스템입니다.
+
+🎯 배경 및 문제점
+* **통계적 한계:** 샘플 수가 적을 경우 통계적 방법만으로는 인과 구조를 신뢰성 있게 도출하기 어렵습니다.
+* **설명력 부족:** 기존 LLM 기반 하이브리드 모델들은 성능은 좋으나, 왜 특정 간선이 선택되었는지에 대한 내부 추론 과정이 불투명합니다.
+* **검증 불가능:** 실제 현장에서는 정답(ground-truth)이 없는 경우가 대부분이므로, 각 인과적 결정에 대한 개별적인 정당화 과정이 필수적입니다.
+
+💡 핵심 기술 및 아키텍처
+제네시스는 세 단계의 과정을 거쳐 인과 그래프를 구축합니다.
+1. **LLM 탐색기:** 3노드 모티프(체인, 포크, 충돌기 등)를 추출하고 시맨틱 기반의 신뢰 점수를 부여합니다.
+2. **데이터 탐색기:** 관측 데이터를 바탕으로 통계적 방법(CI, BIC 등)을 동원해 모티프와 간선에 대한 데이터 기반 신뢰도를 산출합니다.
+3. **간선 해결기:** 통계적 증거가 부족할 경우 마르코프 블랭킷 일관성을 검사하거나, LLM 판사(Judge LLM)를 통해 반사실적 질문을 던져 최종 간선을 결정합니다. 
+* *참고:* 각 단계별로 GPT-5, Qwen3.5, Gemini 3 Pro 등 서로 다른 모델을 사용하여 모델 간 편향과 오류 상관관계를 방지했습니다.
+
+📊 실험 결과 분석
+* **결정 추적성:** Earthquake, Cancer, Survey 등 다양한 벤치마크 데이터셋에서 100% 결정 추적성을 달성했습니다.
+* **구조적 정확도:** 구조적 해밍 거리(SHD) 기준으로 대부분의 데이터셋에서 기존 통계적 방법론들을 상회하는 성능을 보였습니다.
+* **LLM 방법론과의 비교:** 다른 LLM 기반 기법들이 데이터 양에 따라 성능 향상이 제한적인 반면, 제네시스는 관측 데이터와 모티프 Prior를 통합하여 데이터가 늘어날수록 일관되게 성능이 향상되었습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **신뢰 기반 인과 분석:** 의료 진단, 정책 영향 평가, 산업 현장의 원인 분석 등 전문가의 확인이 필수적인 영역에서 &#x27;데이터 기반 근거&#x27;를 제시할 수 있습니다.
+* **투명한 의사결정:** 인과 그래프의 각 간선에 대해 감사 가능한 증거 추적(auditable trail)을 제공함으로써, AI가 내린 판단의 근거를 사람이 이해하고 검증할 수 있게 합니다.
+* **책임성 강화:** 구조적인 정확성뿐만 아니라, 결과에 대한 설명 책임을 강조함으로써 AI 기반 과학적 발견의 신뢰도를 한 차원 높였습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2608.03868 GENESIS: Towards Explainable Causal Discovery](https://arxiv.org/abs/2608.03868)
+&gt; - [GENESIS: Towards Explainable Causal Discovery – TLDR Summary ...](https://arxivtldr.org/abs/2608.03868)
+&gt; - [GENESIS: Towards Explainable Causal Discovery](https://paperreading.club/page?id=431042)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문 제목만 보고 또 흔한 &#x27;LLM 숟가락 얹기&#x27; 논문인가 싶었는데, 결정 추적성(decision traceability)을 100% 보장한다는 점은 주목할 만하군요. 다만, LLM 판사가 내리는 반사실적 추론이 과연 통계적 유의성을 온전히 대체할 수 있을지에 대해선 방법론적으로 더 엄밀한 검증이 필요해 보입니다. 특히 도메인 특화 지식이 LLM의 환각(hallucination)과 결합했을 때 발생하는 편향을 어떻게 완벽히 제어했는지가 논문의 핵심인데, 이 부분에 대한 로버스트니스 테스트가 조금 아쉽네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에선 &#x27;왜?&#x27;를 설명할 수 있는 모델이 정말 절실합니다. 매번 블랙박스 모델 결과 보여주면서 기획자들한테 &#x27;그냥 통계적으로 그렇습니다&#x27;라고 변명하는 것도 지쳤거든요. 특히 Earthquake나 Cancer 같은 벤치마크 데이터셋에서 SHD 성능을 챙기면서 추적성까지 잡았다는 건, 당장 우리 운영 환경에 도입해서 &#x27;인과 관계 감사 리포트&#x27; 뽑아보기 딱 좋겠네요. 다만 모델 3개를 앙상블로 돌리는 비용과 추론 속도가 프로덕션 환경에서 어떻게 튈지가 관건이겠는데요?&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 다들 진지하시네요! 저는 오히려 이 하이브리드 아키텍처가 트렌드 그 자체라고 봅니다. GPT-5, Qwen3.5, Gemini 3 Pro를 섞어서 모델 간 상관관계 오류를 방지했다는 발상 자체가 너무 천재적이지 않나요? 기존 인과 발견(Causal Discovery) 논문들은 너무 딱딱해서 읽기 힘들었는데, 이건 LLM의 추론 능력을 인과 그래프라는 구조적 틀에 가둔 거잖아요. 당장 이번 주 세미나 발표 주제는 이걸로 정했습니다. 다들 이 논문 구현체 깃허브 올라오면 스타 찍을 준비 하시죠!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
