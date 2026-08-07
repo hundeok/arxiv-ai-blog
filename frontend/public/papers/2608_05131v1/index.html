@@ -1,0 +1,67 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>OPD-V: 모달리티 균형을 활용한 시각적 온-정책 자기 증류 | ArXiv Translator AI</title><meta name="description" content="OPD-V: 모달리티 균형을 활용한 시각적 온-정책 자기 증류"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_05131v1"><meta property="og:type" content="article"><meta property="og:title" content="OPD-V: 모달리티 균형을 활용한 시각적 온-정책 자기 증류"><meta property="og:description" content="OPD-V: 모달리티 균형을 활용한 시각적 온-정책 자기 증류"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_05131v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="OPD-V: 모달리티 균형을 활용한 시각적 온-정책 자기 증류"><meta name="twitter:description" content="OPD-V: 모달리티 균형을 활용한 시각적 온-정책 자기 증류"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_05131v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "OPD-V: 모달리티 균형을 활용한 시각적 온-정책 자기 증류", "description": "OPD-V: 모달리티 균형을 활용한 시각적 온-정책 자기 증류", "datePublished": "2026-08-05", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_05131v1", "author": [{"@type": "Person", "name": " Aniri"}, {"@type": "Person", "name": "Jinhe Bi"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_05131v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_05131v1"});gtag('event', 'paper_view', {"paper_id": "2608_05131v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>OPD-V: 모달리티 균형을 활용한 시각적 온-정책 자기 증류</h1><p>OPD-V: 모달리티 균형을 활용한 시각적 온-정책 자기 증류</p><pre>OPD-V: 모달리티 균형을 활용한 시각적 온-정책 자기 증류
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** OPD-V: Visual On-Policy Self-Distillation with Modality Balance
+&gt; - **저자:**  Aniri, Jinhe Bi, Peng Liao, Zengjie Jin, Volker Tresp, Fei Shen, Yunpu Ma, Tat-Seng Chua
+&gt; - **발행일:** 2026-08-05
+&gt; - **PDF 링크:** [OPD-V: Visual On-Policy Self-Distillation with Modality Balance](https://arxiv.org/pdf/2608.05131v1)
+
+
+✨ 3줄 핵심 요약
+* **모달리티 불균형 해결:** 멀티모달 모델이 시각 정보보다 텍스트 정보에 과도하게 의존하는 문제를 해결하기 위해 &#x27;모달리티 균형&#x27; 개념을 도입했습니다.
+* **학습 효율 및 성능 향상:** 줌인(Zoom-In) 이미지와 마스킹 이미지를 사용하는 두 교사 모델로 &#x27;모달리티 균형 신뢰 영역&#x27;을 설정하여 자기 증류를 최적화합니다.
+* **검증된 성과:** 6개 벤치마크 실험에서 기존 방식 대비 추론 성능을 일관되게 개선하고 학습 비용을 절감하는 효과를 확인했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+멀티모달 모델은 이미지를 보고 답을 찾아야 함에도, 이미 학습된 텍스트 지식에 지나치게 의존하는 &#x27;모달리티 불균형&#x27;을 겪습니다. 연구진은 모델이 이미지를 제대로 활용하게 하려면 &#x27;모달리티 균형&#x27; 자체가 중요한 지도 정보가 될 수 있음을 발견했습니다. 이를 바탕으로 개발된 OPD-V는 줌인 이미지(긍정적 자극)와 마스크 이미지(부정적 자극)를 통해 모델이 이미지 정보를 얼마나 잘 활용하는지 측정하고, 확실한 이미지 기반의 추론 토큰만을 골라 학습시킴으로써 모델의 성능과 학습 효율을 동시에 높였습니다.
+
+🎯 배경 및 문제점
+* **기존 방식의 한계:** 온-정책 자기 증류(OPSD)에서 사용되는 기존의 특권 정보(privileged information) 방식은 모델 내부의 시각-텍스트 모달리티 간 불균형을 고려하지 않습니다.
+* **모달리티 불균형:** 텍스트 우선순위가 높으면 멀티모달 입력의 통합 능력이 저하되며, 결과적으로 설계된 특권 정보가 충분히 활용되지 못해 학습 효율이 떨어지는 문제가 발생합니다.
+
+💡 핵심 기술 및 아키텍처
+* **긍정적/부정적 교사 모델:** 줌인 이미지를 사용하는 긍정적 교사와 마스크 이미지를 사용하는 부정적 교사를 설정합니다.
+* **모달리티 균형 신뢰 영역(RMB):** 두 교사 모델의 로짓 차이(Logits Margin)를 계산하여, 시각적 정보의 기여도가 높은 토큰들만을 추출합니다.
+* **OPD-V 목적 함수:** 신뢰 영역 내의 토큰들에 대해 젠슨-섀넌 발산(Jensen-Shannon divergence)을 적용하여 자기 증류를 수행합니다.
+* **효율성:** 새로운 파라미터 추가 없이, 이미 존재하는 모델 구조 내에서 교사 모델의 추론 단계만 활용하여 연산 부담을 최소화했습니다.
+
+📊 실험 결과 분석
+* **성능 지표:** Qwen3.5-4B 모델 기준, 6개 벤치마크(V* Bench, ZoomBench, HR-Bench 등)에서 이전 방식인 OPSD 대비 성능이 크게 향상되었습니다. (예: V* Bench에서 94.76% 기록)
+* **학습 비용:** 응답 길이가 짧아지고 교사 입력 처리가 최적화됨에 따라, 모델 4B 규모에서 단계별 지연 시간(Latency)이 31.8% 감소했습니다.
+* **조합 최적화:** 줌인 이미지와 마스크 이미지 조합이 블러(Blur) 처리나 이미지 제거(No Image) 등 다른 방식들보다 가장 높은 정확도를 기록했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **범용성:** Qwen3.5-4B와 9B를 포함한 다양한 모델 백본에서 일관된 성능 향상을 보여, 규모가 작은 멀티모달 모델의 실무 적용 가능성을 높였습니다.
+* **학습 최적화:** 고비용의 외부 교사 모델 없이도 효율적인 자기 학습이 가능해짐에 따라, 대규모 데이터셋 학습의 비용 절감과 데이터 효율적인 멀티모달 모델 최적화에 기여할 것으로 기대됩니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [OPD-V: Visual On-Policy Self-Distillation with Modality Balance](https://arxiv.org/html/2608.05131)
+&gt; - [OPD-V: Visual On-Policy Self-Distillation with Modality Balance](https://www.alphaxiv.org/abs/2608.05131)
+&gt; - [Paper page - OPD-V: Visual On-Policy Self-Distillation with...](https://huggingface.co/papers/2608.05131)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;멀티모달 모델의 고질적인 텍스트 편향(Text-bias) 문제를 &#x27;모달리티 균형 신뢰 영역&#x27;이라는 개념으로 정교하게 파고들었군요. 다만, 교사 모델의 추론 과정에서 발생하는 마스킹과 줌인 연산이 실제 대규모 파인튜닝 환경에서 오버헤드 없이 온전히 병렬화될 수 있을지 의문입니다. 이론적 정합성은 훌륭하나, 실제 수렴 과정에서의 Gradient instability는 어떻게 잡았는지 궁금하네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 오버헤드 걱정은 되지만, 4B 모델에서 지연 시간을 31.8%나 줄였다는 건 실무적으로 엄청난 메리트입니다. 특히 별도의 외부 교사 모델 없이 Self-distillation으로 이 정도 성능을 뽑아낸 건 파이프라인 단순화 측면에서 박수 칠 일이죠. 당장 우리 팀 VLM 서빙 파이프라인에 줌인/마스크 로직만 붙여서 프로토타입 돌려볼 만하겠는데요?&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 벤치마크 점수 나오는 거 보셨나요? V* Bench에서 94.76%라니... 다들 지금 RAG에만 목매고 있을 때 이런 식으로 모달리티 정렬 근본 문제를 건드리는 논문이 나오네요. 근데 선배님, 이거 4B 말고 70B 이상의 대형 모델에서도 이 &#x27;균형 신뢰 영역&#x27;이 똑같이 견고하게 작동할까요? 제 생각엔 스케일링 될수록 텍스트 편향이 더 괴물 같아질 것 같은데 말이죠.&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
