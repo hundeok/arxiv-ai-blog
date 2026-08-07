@@ -1,0 +1,66 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SciCode-Verified: 벤치마크 결함이 언어 모델의 과학적 코딩 능력을 과소평가한 방식 | ArXiv Translator AI</title><meta name="description" content="SciCode-Verified: 벤치마크 결함이 언어 모델의 과학적 코딩 능력을 과소평가한 방식"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_04975v1"><meta property="og:type" content="article"><meta property="og:title" content="SciCode-Verified: 벤치마크 결함이 언어 모델의 과학적 코딩 능력을 과소평가한 방식"><meta property="og:description" content="SciCode-Verified: 벤치마크 결함이 언어 모델의 과학적 코딩 능력을 과소평가한 방식"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_04975v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="SciCode-Verified: 벤치마크 결함이 언어 모델의 과학적 코딩 능력을 과소평가한 방식"><meta name="twitter:description" content="SciCode-Verified: 벤치마크 결함이 언어 모델의 과학적 코딩 능력을 과소평가한 방식"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_04975v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "SciCode-Verified: 벤치마크 결함이 언어 모델의 과학적 코딩 능력을 과소평가한 방식", "description": "SciCode-Verified: 벤치마크 결함이 언어 모델의 과학적 코딩 능력을 과소평가한 방식", "datePublished": "2026-08-05", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_04975v1", "author": [{"@type": "Person", "name": "Sihan Hu"}, {"@type": "Person", "name": "Lyuhan Huang"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_04975v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_04975v1"});gtag('event', 'paper_view', {"paper_id": "2608_04975v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>SciCode-Verified: 벤치마크 결함이 언어 모델의 과학적 코딩 능력을 과소평가한 방식</h1><p>SciCode-Verified: 벤치마크 결함이 언어 모델의 과학적 코딩 능력을 과소평가한 방식</p><pre>SciCode-Verified: 벤치마크 결함이 언어 모델의 과학적 코딩 능력을 과소평가한 방식
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** SciCode-Verified: How Benchmark Defects Underestimated the Scientific-Coding Ability of Language Models
+&gt; - **저자:** Sihan Hu, Lyuhan Huang, Youjin Deng, Kun Chen
+&gt; - **발행일:** 2026-08-05
+&gt; - **PDF 링크:** [SciCode-Verified: How Benchmark Defects Underestimated the Scientific-Coding Ability of Language Models](https://arxiv.org/pdf/2608.04975v1)
+
+
+✨ 3줄 핵심 요약
+- 과학적 코딩 성능 측정 표준인 &#x27;SCICODE&#x27;에서 263개의 결함이 발견되었으며, 이 중 91%가 올바른 답안을 오답으로 처리하고 있었습니다.
+- 결함의 78%는 전문적인 물리·수학 지식이 있어야만 파악 가능한 수준이었으며, 이는 언어 모델의 성능이 실제보다 훨씬 저평가되게 만들었습니다.
+- 결함을 수정한 &#x27;SCICODE-VERIFIED&#x27;로 재평가한 결과, 모델의 하위 문제 정확도는 최대 98%, 주요 문제 정확도는 최대 92%까지 크게 상승했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+AI 모델의 과학적 문제 해결 능력을 평가하는 &#x27;SCICODE&#x27; 벤치마크는 그동안 AI 모델의 실력을 제대로 측정하지 못하고 있었습니다. 연구진이 모든 문제를 정밀 조사한 결과, 문제 자체가 틀렸거나 답안 채점 기준이 지나치게 까다롭고 모순된 경우가 다수 발견되었습니다. 이러한 결함들 때문에 AI가 정답을 제출해도 오답 처리되는 일이 빈번했습니다. 연구진은 이 모든 오류를 수정하여 &#x27;SCICODE-VERIFIED&#x27;를 만들었고, 이를 통해 재평가한 결과 최신 AI 모델들은 과학적 코딩에서 매우 뛰어난 성능을 발휘하고 있음이 증명되었습니다.
+
+🎯 배경 및 문제점
+SCICODE는 AI 모델의 과학적 코딩 능력을 측정하는 핵심 지표로 사용되어 왔으나, 최근 모델들의 점수가 60% 내외에서 정체되는 현상을 보였습니다. 연구진은 이 현상이 모델의 역량 한계가 아니라 벤치마크 자체의 결함 때문이라고 판단했습니다. 65개의 테스트 문제에서 263개의 결함이 발견되었으며, 특히 91%의 주요 문제에서 올바른 해결책이 오답으로 처리되는 치명적인 문제점이 확인되었습니다.
+
+💡 핵심 기술 및 아키텍처
+연구진은 도메인 전문가들이 직접 모든 문제의 논리, 수식, 채점 기준을 재검토하는 전수 조사를 수행했습니다.
+- **결함 유형**: 재현 불가능한 정답, 과도하게 엄격한 허용 오차, 자기모순적인 사양 등이 포함되었습니다.
+- **검증 프로세스**: 확인된 모든 결함은 명확한 근거를 바탕으로 수정되었으며, 두 번째 전문가의 독립적인 재검토를 거쳐 &#x27;SCICODE-VERIFIED&#x27;라는 표준을 확립했습니다.
+- **수정 원칙**: 문제의 의도를 명확히 하고, 잘못된 채점 로직을 복구하며, 지나치게 느슨했던 테스트는 엄격하게 보완하는 방식으로 진행되었습니다.
+
+📊 실험 결과 분석
+12개의 최신 언어 모델 스냅샷을 대상으로 재평가를 수행한 결과입니다.
+- **하위 문제 정확도**: 기존 45~60%에서 84~98%로 크게 향상되었습니다.
+- **주요 문제 정확도**: 기존 9~27%에서 69~92%로 비약적인 성능 상승을 기록했습니다.
+- 이는 기존 벤치마크가 AI 모델의 실제 능력을 크게 저평가하고 있었음을 수치로 증명합니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+이번 연구는 AI 평가 도구의 품질이 AI 개발의 병목 현상을 초래할 수 있음을 시사합니다. 과학 분야처럼 정밀함이 요구되는 영역에서 잘못 설계된 벤치마크는 기술 발전을 가로막는 장애물이 될 수 있습니다. 연구진은 수정된 &#x27;SCICODE-VERIFIED&#x27;를 공개하여 향후 AI 모델의 과학적 코딩 역량을 더욱 정확하고 신뢰성 있게 측정할 수 있는 표준으로 활용되도록 했습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [SciCode-Verified: How Benchmark Defects Underestimated the...](https://arxiv.org/pdf/2608.04975)
+&gt; - [SciCode-Verified: How Benchmark Defects Underestimated the...](https://arxiv.org/html/2608.04975)
+&gt; - [2608.04975 SciCode-Verified: How Benchmark Defects...](https://arxiv.org/abs/2608.04975)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;벤치마크 데이터셋의 오염보다 더 무서운 게 바로 이런 &#x27;벤치마크의 오류&#x27;지. 수치만 보고 모델의 한계를 논하던 이들이 얼마나 경솔했는지 여실히 드러나는군. 도메인 지식 없이 자동화된 채점 로직에만 의존한 결과가 결국 이런 코미디를 만든 거야. 학계 표준을 다시 세우는 작업이 시급하다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀이 맞습니다. 사실 현업에서는 리더보드 점수 1~2% 올리려고 데이터 클리닝에 목숨 거는데, 정작 그 기준이 되는 벤치마크가 틀려있었다니 허탈하네요. 92%라니, 이제껏 우리 모델이 과학적 추론을 못 하는 게 아니라 우리가 제대로 평가할 줄 몰랐던 거군요. 당장 우리 팀 파이프라인부터 체크해야겠는데요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 263개 결함이라니 미쳤네요! 다들 이번에 나온 논문 봤어요? 하위 문제 정확도 98% 찍는 거 보고 소름 돋았습니다. 이제 LLM은 과학적 코딩 마스터한 거 아님? 당장 이번 주 세미나 주제는 이걸로 가야겠는데요? 교수님, 저 이거 리뷰 준비해도 될까요? 벤치마크 뜯어고치는 게 이렇게 파괴력이 크다니 역시 갓 논문입니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

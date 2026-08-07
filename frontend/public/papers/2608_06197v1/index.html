@@ -1,0 +1,71 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>EnvACE: 에이전트 강화학습을 위한 월드 리허설 기반 환경 역학 내재화 | ArXiv Translator AI</title><meta name="description" content="EnvACE: 에이전트 강화학습을 위한 월드 리허설 기반 환경 역학 내재화"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_06197v1"><meta property="og:type" content="article"><meta property="og:title" content="EnvACE: 에이전트 강화학습을 위한 월드 리허설 기반 환경 역학 내재화"><meta property="og:description" content="EnvACE: 에이전트 강화학습을 위한 월드 리허설 기반 환경 역학 내재화"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_06197v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="EnvACE: 에이전트 강화학습을 위한 월드 리허설 기반 환경 역학 내재화"><meta name="twitter:description" content="EnvACE: 에이전트 강화학습을 위한 월드 리허설 기반 환경 역학 내재화"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_06197v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "EnvACE: 에이전트 강화학습을 위한 월드 리허설 기반 환경 역학 내재화", "description": "EnvACE: 에이전트 강화학습을 위한 월드 리허설 기반 환경 역학 내재화", "datePublished": "2026-08-06", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_06197v1", "author": [{"@type": "Person", "name": "Zishan Xu"}, {"@type": "Person", "name": "Zhiyuan Yao"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_06197v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_06197v1"});gtag('event', 'paper_view', {"paper_id": "2608_06197v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>EnvACE: 에이전트 강화학습을 위한 월드 리허설 기반 환경 역학 내재화</h1><p>EnvACE: 에이전트 강화학습을 위한 월드 리허설 기반 환경 역학 내재화</p><pre>EnvACE: 에이전트 강화학습을 위한 월드 리허설 기반 환경 역학 내재화
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** EnvACE: Internalizing Environment Dynamics via World Rehearsal for Agentic Reinforcement Learning
+&gt; - **저자:** Zishan Xu, Zhiyuan Yao, Yuxin Chen, Yifu Guo, Zhengxi Lu, Yuquan Lu, Jinyang Huang, Yan Xu, Yasheng Wang, Weinan Zhang, Xingshan Zeng, Weiwen Liu
+&gt; - **발행일:** 2026-08-06
+&gt; - **PDF 링크:** [EnvACE: Internalizing Environment Dynamics via World Rehearsal for Agentic Reinforcement Learning](https://arxiv.org/pdf/2608.06197v1)
+
+
+✨ 3줄 핵심 요약
+- **월드 리허설 도입:** 에이전트가 외부 환경과 상호작용하는 대신, 스스로 환경의 반응을 생성하고 학습하는 &#x27;월드 리허설&#x27; 방식을 제안합니다.
+- **내재화된 세계 모델:** 단일 정책 모델이 &#x27;행동(Act)&#x27;과 &#x27;리허설(Rehearse)&#x27; 역할을 동시에 수행하며 환경의 작동 원리를 모델 파라미터 내부에 내재화합니다.
+- **추론 시간 확장:** 실제 환경과 통신하지 않고도, 학습된 세계 모델을 활용해 실행 전 자체적으로 예행연습을 수행함으로써 최종 성능을 향상합니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+기존의 AI 에이전트는 도구를 사용하거나 환경과 상호작용하기 위해 반드시 실제 외부 서버나 복잡한 시뮬레이터가 필요했습니다. 이는 구축 비용이 많이 들고 속도가 느리다는 단점이 있습니다. **EnvACE**는 에이전트가 &quot;내가 이 도구를 쓰면 환경은 어떻게 반응할까?&quot;를 스스로 시뮬레이션하도록 훈련합니다. 마치 사람이 시험 전에 혼자 예상 질문과 답변을 떠올리며 연습하는 것과 같습니다. 이 과정을 통해 에이전트는 환경에 의존하지 않고도 강력한 도구 사용 능력을 갖추게 되며, 실제 현장에 투입되기 전 스스로 &#x27;비공개 예행연습&#x27;을 거쳐 실수를 줄일 수 있습니다.
+
+🎯 배경 및 문제점
+- **환경 의존성:** 기존 에이전트 훈련은 실행 가능한 환경이나 외부 시뮬레이터에 의존하는데, 이를 구축하고 검증하는 데 비용이 큽니다.
+- **확장성의 한계:** 외부 환경과의 상호작용 속도가 훈련 효율을 제한하며, 환경을 모델링하는 능력이 에이전트 자체에 통합되어 있지 않습니다.
+- **grounding의 어려움:** 외부 시뮬레이터를 기반으로 훈련할 경우, 모델이 실제 환경의 복잡한 역학 관계를 제대로 학습하기 어렵습니다.
+
+💡 핵심 기술 및 아키텍처
+- **역할 공유 정책(Shared Policy):** 하나의 정책 모델이 &#x27;행동자(Acting)&#x27;와 &#x27;리허설 담당자(Rehearsal)&#x27;라는 두 가지 역할을 수행합니다.
+- **역할별 GRPO 최적화:** 두 역할에서 생성된 출력에 대해 독립적인 보상 기준(Baseline)을 설정하여, 결과적으로 정책 전체를 통합적으로 업데이트합니다.
+- **환경 역학 내재화:** 행동과 그에 따른 환경 반응의 관계를 모델의 파라미터에 흡수시켜, 별도의 시뮬레이터 없이도 내부적으로 환경 모델을 운용합니다.
+- **테스트 타임 스케일링(TTS):** 병렬(Parallel) 혹은 순차(Sequential) 모드를 통해, 실제 환경과 통신하기 전 모델 내부에서 비공개 예행연습을 수행하여 최적의 경로를 찾습니다.
+
+📊 실험 결과 분석
+- **성능 우수성:** BFCL-v4, τ2-Bench, VitaBench, FinMCP-Bench 등 다양한 벤치마크에서 기존의 환경 스케일링 방식보다 뛰어난 성능을 보였습니다.
+- **학습 효과:** 모델의 크기에 관계없이 월드 리허설이 정책 학습을 일관되게 개선함을 확인했습니다.
+- **리허설 예산의 영향:** N=1에서 N=2로 리허설 횟수를 늘릴 때 성능이 향상되었으나, N=3에서는 긴 입력 길이로 인해 성능이 다소 하락하는 경향이 관찰되었습니다. 이는 최적의 리허설 예산 설정이 중요함을 시사합니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+- **훈련 비용 절감:** 고가의 복잡한 외부 시뮬레이터 없이도 에이전트를 고도로 훈련할 수 있어, 실무 현장에서 에이전트 개발 비용과 진입 장벽을 대폭 낮출 수 있습니다.
+- **데이터 독립성:** 실제 외부 환경과의 연결이 차단된 폐쇄형 시스템이나 보안이 중요한 환경에서도 에이전트가 스스로 환경 역학을 학습하고 의사결정을 최적화할 수 있습니다.
+- **실시간 실행 최적화:** 실제 도구를 호출하기 전 내부 시뮬레이션을 통해 더 나은 결과를 생성할 수 있어, 도구 사용의 성공률과 안정성을 높일 수 있습니다.
+
+*참고: 본 연구는 8B(80억) 파라미터 모델 규모까지 평가되었으며, 더 큰 모델에 대한 효과는 향후 과제로 남겨두었습니다.*
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [EnvRL: Learn from Environment Dynamics in Agentic Reinforcement Learning](https://arxiv.org/html/2606.17680v1)
+&gt; - [2606.17680 EnvRL: Learn from Environment Dynamics in Agentic Reinforcement Learning](https://arxiv.org/abs/2606.17680)
+&gt; - [Internalizing World Models via Self-Play Finetuning for Agentic RL](https://arxiv.org/html/2510.15047v1)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문을 훑어봤는데, World Rehearsal이라는 개념 자체는 흥미로우나 &#x27;환경 역학을 파라미터 내부에 내재화한다&#x27;는 표현이 과하게 포장된 느낌입니다. 결국 모델의 환각(hallucination)을 활용한 일종의 자기 암시 아닌가요? 훈련 데이터의 분포를 벗어나는 Out-of-Distribution 환경에서 이 모델이 얼마나 견고할지 의문이 드는군요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 환각 리스크는 분명히 있죠. 하지만 실무자 입장에서는 &#x27;환경 구축 비용&#x27;을 획기적으로 줄일 수 있다는 점이 매력적입니다. 특히 보안상 외부 API 호출이 제한된 폐쇄망 환경에서 이 정도 퍼포먼스가 나온다면, 리허설 예산(N)만 잘 튜닝해도 충분히 상용화 가치가 있어 보입니다. 긴 입력 길이로 인한 성능 저하 이슈는 인프라 쪽에서 어떻게든 커버 가능할 것 같네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;두 분 다 너무 진지하시네요! 지금 핵심은 &#x27;테스트 타임 스케일링(TTS)&#x27;과 &#x27;GRPO의 결합&#x27;이에요. 별도의 월드 모델을 만들지 않고 정책 모델 하나로 해결한 게 진짜 천재적인 한 수 아닙니까? 8B에서 이 정도면 70B 모델로 스케일업했을 때 얼마나 뽕을 뽑을지 벌써 가슴이 웅장해지는데, 누가 재현 코드 먼저 돌려보실 분? 저랑 같이 이거 다음 학회 타겟으로 연구 더 파보실 분 구합니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
