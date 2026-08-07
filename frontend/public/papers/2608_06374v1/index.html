@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DyPES-VLA: 교차 실시 로봇 조작을 위한 공유 동역학 사전 학습 및 실시체별 제어 | ArXiv Translator AI</title><meta name="description" content="DyPES-VLA: 교차 실시 로봇 조작을 위한 공유 동역학 사전 학습 및 실시체별 제어"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_06374v1"><meta property="og:type" content="article"><meta property="og:title" content="DyPES-VLA: 교차 실시 로봇 조작을 위한 공유 동역학 사전 학습 및 실시체별 제어"><meta property="og:description" content="DyPES-VLA: 교차 실시 로봇 조작을 위한 공유 동역학 사전 학습 및 실시체별 제어"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_06374v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="DyPES-VLA: 교차 실시 로봇 조작을 위한 공유 동역학 사전 학습 및 실시체별 제어"><meta name="twitter:description" content="DyPES-VLA: 교차 실시 로봇 조작을 위한 공유 동역학 사전 학습 및 실시체별 제어"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_06374v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "DyPES-VLA: 교차 실시 로봇 조작을 위한 공유 동역학 사전 학습 및 실시체별 제어", "description": "DyPES-VLA: 교차 실시 로봇 조작을 위한 공유 동역학 사전 학습 및 실시체별 제어", "datePublished": "2026-08-06", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_06374v1", "author": [{"@type": "Person", "name": "Junfeng Li"}, {"@type": "Person", "name": "Junjie He"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_06374v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_06374v1"});gtag('event', 'paper_view', {"paper_id": "2608_06374v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>DyPES-VLA: 교차 실시 로봇 조작을 위한 공유 동역학 사전 학습 및 실시체별 제어</h1><p>DyPES-VLA: 교차 실시 로봇 조작을 위한 공유 동역학 사전 학습 및 실시체별 제어</p><pre>DyPES-VLA: 교차 실시 로봇 조작을 위한 공유 동역학 사전 학습 및 실시체별 제어
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** DyPES-VLA: Learning Shared Dynamics Priors and Embodiment-Specific Control for Cross-Embodiment Manipulation
+&gt; - **저자:** Junfeng Li, Junjie He, Zhide Zhong, Yangyang Zheng, Pingyue Sheng, Jiayu Dong, Ruixin Li, Haodong Yan, Jiaguan Zhu, Tianran Zhang, Runze Yu, Wen Chen, Liuqing Yang, Yuxiang Gao, Haoang Li
+&gt; - **발행일:** 2026-08-06
+&gt; - **PDF 링크:** [DyPES-VLA: Learning Shared Dynamics Priors and Embodiment-Specific Control for Cross-Embodiment Manipulation](https://arxiv.org/pdf/2608.06374v1)
+
+
+✨ 3줄 핵심 요약
+- **공유 동역학 학습**: 행동 라벨이 없는 영상 데이터까지 활용하여 물체의 움직임과 접촉 등 물리적 상호작용의 공통 원리를 사전 학습합니다.
+- **실시체별 MoE 제어**: 공유된 동역학 정보를 기반으로, 각 로봇의 고유한 운동학적 특성에 맞춘 &#x27;전문가 모델(MoE)&#x27;을 통해 최적화된 행동을 출력합니다.
+- **범용 성능 입증**: 단일 정책으로 LIBERO, RoboCasa, RoboTwin 등 다양한 로봇 환경에서 최고 수준의 성공률을 기록했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+로봇은 손 모양이나 관절 개수가 다르면 움직이는 방식도 완전히 다릅니다. 지금까지의 기술은 이런 로봇들을 하나의 행동 방식으로 억지로 맞추느라 학습이 어려웠습니다. **DyPES-VLA**는 로봇의 &#x27;몸(실시체)&#x27;과 &#x27;움직임의 원리(동역학)&#x27;를 분리합니다. 로봇이 어떻게 움직여야 하는지 그 원리는 모든 로봇이 공유하고, 구체적인 조종은 각 로봇의 특성에 맞는 &#x27;전문가&#x27;에게 맡기는 방식입니다. 이 덕분에 로봇의 종류에 상관없이 하나의 똑똑한 뇌로 여러 로봇을 동시에 제어할 수 있게 되었습니다.
+
+🎯 배경 및 문제점
+- **지식 공유의 한계**: 기존 연구는 행동 라벨이 있는 데이터에만 의존해, 더 방대한 비행동 영상(인간 조작 등) 속 물리적 상호작용 데이터를 충분히 활용하지 못했습니다.
+- **비효율적인 전처리**: 서로 다른 로봇의 행동을 하나의 공통 형식으로 강제로 변환하느라 복잡한 좌표 변환이나 역운동학(IK) 계산이 필요하며, 이는 로봇 구조가 복잡해질수록 확장성이 떨어집니다.
+- **개념의 혼재**: 물리적 상호작용의 일반적인 규칙(동역학)과 로봇 개별의 조종 방식(제어 의미론)이 섞여 있어, 범용적인 모델 학습을 방해하고 있습니다.
+
+💡 핵심 기술 및 아키텍처
+- **2단계 학습 전략**: 행동 라벨이 없는 대규모 영상 데이터로 &#x27;동역학 사전 학습&#x27;을 먼저 수행하고, 이후 로봇 실습 데이터로 &#x27;통합 학습&#x27;을 진행합니다.
+- **공유 쿼리 인터페이스**: 비전-언어 모델(VLM)이 미래의 장면을 예측하도록 학습함으로써, 물체의 움직임과 접촉 발생 등 핵심 동역학 정보를 추출합니다.
+- **MoE(Mixture-of-Experts) 행동 헤드**: 시간적 구조는 공유하되, 피드포워드 네트워크(FFN)는 로봇별 전문가 모델을 두어 각 로봇의 고유한 운동학적 제약을 독립적으로 처리합니다.
+
+📊 실험 결과 분석
+- **성공률**: 단일 정책 모델로 LIBERO 98.0%, RoboCasa-GR1 59.25%, RoboTwin 2.0 89.02%의 성공률을 달성했습니다.
+- **실제 환경**: 3종의 물리적 로봇을 대상으로 한 실세계 실험에서 평균 75.6%의 성공률을 기록했습니다.
+- **구성 요소 검증**: MoE 구조를 일반적인 통합 헤드로 교체할 경우 RoboTwin 2.0에서 1.2%, RoboCasa-GR1에서 2.1%의 성능 하락이 발생하여, 실시체별 제어의 유효성을 입증했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+- **확장성 확보**: 새로운 형태의 로봇이 등장하더라도 전체 모델을 다시 학습할 필요 없이, 해당 로봇에 맞는 전문가 헤드만 구성하여 기존 지식을 즉시 전이할 수 있는 기반을 마련했습니다.
+- **데이터 효율성**: 행동 데이터뿐만 아니라 일상적인 영상 데이터까지 지식 습득에 활용함으로써, 로봇 학습을 위한 고비용 데이터 구축 부담을 줄일 수 있습니다.
+- **범용 로봇 제어**: 단일 모델이 다양한 로봇 체형(단일 팔, 이중 팔, 휴머노이드 등)을 아우르는 &#x27;범용 조작 정책&#x27;으로 활용될 수 있음을 보여주었습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [DyPES-VLA: Learning Shared Dynamics Priors and Embodiment-Specific ...](https://huggingface.co/papers/2608.06374)
+&gt; - [DyPES-VLA_RELEASE/README.md at main - GitHub](https://github.com/Livfour/DyPES-VLA_RELEASE/blob/main/README.md)
+&gt; - [Fugu-MT 論文翻訳 (概要): DyPES-VLA: Learning Shared Dynamics Priors and ...](https://fugumt.com/fugumt/paper_check/2608.06374v1)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;공유 동역학 사전 학습(Dynamics Prior) 자체는 훌륭한 접근이지만, 과연 이게 얼마나 &#x27;물리적&#x27;으로 엄밀한지 의문이네요. 비행동 영상에서 동역학적 특징을 추출한다고 해서, 실제 로봇의 동역학적 특이점(Singularity)이나 관절 제약 조건까지 완벽히 일반화될까요? MoE로 땜질하는 방식은 확장성은 좋아 보이나, 근본적인 물리 법칙의 이해보다는 데이터 기반의 보간(Interpolation)에 그칠 위험이 큽니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 일리가 있지만, 실무자 입장에선 &#x27;일반화&#x27;보다 &#x27;배포 가능성&#x27;이 훨씬 중요합니다. 기존 IK 변환이나 개별 로봇마다 정책 새로 짜던 거 생각하면, MoE 구조로 새로운 로봇 추가할 때 헤드만 갈아 끼우는 게 얼마나 혁신적인지 아실 텐데요. 특히 LIBERO 98%는 수치상으로도 무시 못 할 수준입니다. 데이터 정제 비용 줄어드는 게 운영 효율성 측면에서 얼마나 큰 이득인지 모릅니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;두 분 논쟁하시는 동안 저는 벌써 GitHub 코드 뜯어보고 있는데, 이거 VLM 파이프라인이랑 결합해서 멀티모달 확장성까지 고려한 게 진짜 대박입니다. 그냥 단순한 MoE가 아니라 시점/조명 불변성까지 동역학 정보에 녹여낸 게 핵심 같아요. 솔직히 &#x27;동역학 사전 학습&#x27;이라는 키워드 하나로 올해 로봇 학회 논문들 다 정리될 것 같은데, 내일 랩미팅 때 이걸로 발표하고 교수님한테 까이면서도 꿋꿋하게 구현해 보겠습니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

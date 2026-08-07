@@ -1,0 +1,72 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>교사가 잘못 가르칠 때: 허위 신호 인식 기반 온-폴리시 증류 | ArXiv Translator AI</title><meta name="description" content="교사가 잘못 가르칠 때: 허위 신호 인식 기반 온-폴리시 증류"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_03632v1"><meta property="og:type" content="article"><meta property="og:title" content="교사가 잘못 가르칠 때: 허위 신호 인식 기반 온-폴리시 증류"><meta property="og:description" content="교사가 잘못 가르칠 때: 허위 신호 인식 기반 온-폴리시 증류"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_03632v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="교사가 잘못 가르칠 때: 허위 신호 인식 기반 온-폴리시 증류"><meta name="twitter:description" content="교사가 잘못 가르칠 때: 허위 신호 인식 기반 온-폴리시 증류"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_03632v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "교사가 잘못 가르칠 때: 허위 신호 인식 기반 온-폴리시 증류", "description": "교사가 잘못 가르칠 때: 허위 신호 인식 기반 온-폴리시 증류", "datePublished": "2026-08-04", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_03632v1", "author": [{"@type": "Person", "name": "Yinuo Jiang"}, {"@type": "Person", "name": "Yongjie Ye"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_03632v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_03632v1"});gtag('event', 'paper_view', {"paper_id": "2608_03632v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>교사가 잘못 가르칠 때: 허위 신호 인식 기반 온-폴리시 증류</h1><p>교사가 잘못 가르칠 때: 허위 신호 인식 기반 온-폴리시 증류</p><pre>교사가 잘못 가르칠 때: 허위 신호 인식 기반 온-폴리시 증류
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** When Teachers Mislead: Spurious-Signal-Aware On-Policy Distillation
+&gt; - **저자:** Yinuo Jiang, Yongjie Ye, Zhou Tao, Xiang Zhuang, Qiang Zhang, Huajun Chen, Tiankai Li
+&gt; - **발행일:** 2026-08-04
+&gt; - **PDF 링크:** [When Teachers Mislead: Spurious-Signal-Aware On-Policy Distillation](https://arxiv.org/pdf/2608.03632v1)
+
+
+✨ 3줄 핵심 요약
+*   온-폴리시 증류(OPD)에서 교사 모델이 제공하는 신호 중 일부는 특정 입력과 무관한 &#x27;허위 신호(Spurious signals)&#x27;일 수 있습니다.
+*   SA-OPD는 입력에 근거하지 않으면서도 모델 학습에 큰 영향을 미치는 유해한 신호를 자동으로 식별하여 필터링합니다.
+*   LLM 및 VLM 실험 결과, SA-OPD는 기존의 일반적인 증류 방식보다 일관되게 우수한 성능 향상을 보였습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+지식 증류는 똑똑한 교사 모델의 지식을 학생 모델에게 전달하는 방식입니다. 최근 사용되는 &#x27;온-폴리시 증류(OPD)&#x27;는 학습 과정에서 학생이 생성한 답변에 대해 교사가 토큰 단위로 실시간 피드백을 줍니다. 하지만 교사 모델 역시 사람이 만든 데이터로 학습되었기에, 특정 질문과 상관없는 고정된 답변 패턴이나 습관(허위 신호)을 강요할 수 있습니다. 
+
+본 논문에서는 이처럼 &quot;입력값과는 상관없지만 학습에는 큰 영향을 끼치는&quot; 나쁜 신호를 걸러내는 기술인 **SA-OPD**를 제안합니다. 마치 중요한 정보와 불필요한 잔소리를 구분하듯, 입력에 대한 의존도를 측정하여 학생 모델이 교사의 나쁜 습관을 그대로 배우지 않게 방지합니다.
+
+🎯 배경 및 문제점
+기존 OPD 방식은 교사의 모든 신호를 정답으로 간주하는 경향이 있습니다. 하지만 교사 모델은 다음과 같은 이유로 &#x27;허위 신호&#x27;를 생성할 수 있습니다.
+*   **언어적 편향:** 특정 질문과 무관하게 모델이 학습 과정에서 습득한 관습이나 문체.
+*   **고정된 템플릿:** 답변 형식을 맞추기 위해 강요되는 불필요한 패턴.
+*   **비효율적 최적화:** 허위 신호는 학습 과정에서 큰 기울기(gradient)를 만들어내지만, 실제 작업 성능 향상에는 도움이 되지 않는 노이즈로 작용합니다.
+
+💡 핵심 기술 및 아키텍처
+SA-OPD는 허위 신호를 걸러내기 위해 두 가지 기준을 결합한 필터링 프로세스를 도입합니다.
+1.  **입력 근거성(Input-groundedness) 측정:** 입력 프롬프트가 있을 때와 없을 때의 교사-학생 간 의견 차이를 비교합니다. 프롬프트 유무에 따라 반응이 변하지 않는다면, 이는 특정 입력이 아닌 교사의 고정 관념에 기반한 신호라고 판단합니다.
+2.  **최적화 영향력 평가:** 해당 신호가 학생 모델의 학습에 끼치는 영향(기울기 크기)을 계산합니다.
+3.  **결합 필터링:** &#x27;입력 근거성이 낮으면서&#x27; 동시에 &#x27;학습 영향력이 큰&#x27; 신호만을 최종적으로 제거하여 학습 효율을 높입니다.
+
+📊 실험 결과 분석
+*   **성능:** LLM 및 VLM(비전-언어 모델) 환경 모두에서 기존의 일반적인 OPD 및 최신 선택적 증류 방식 대비 일관된 성능 향상을 입증했습니다.
+*   **동적 임계값:** 시각적 이해 벤치마크 실험에서 동적 임계값($\beta=1.8$)을 적용했을 때, 카운팅 점수가 30.8에서 33.6으로 상승하며 최적의 균형을 찾았습니다.
+*   **필터링 분석:** 제거된 신호 중 약 69.9%가 실제 내용과 관련된 단어였으나, 이들은 문맥상 예측이 너무 쉬워 교사가 잘못된 강화를 하기 쉬운 요소들이었습니다. 이는 SA-OPD가 엔트로피 기반의 기존 방식이 놓치는 사각지대까지 효과적으로 보완함을 의미합니다. (※ 구체적인 모델명이나 데이터셋 명칭은 발췌문에 명시되어 있지 않음)
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+*   **신뢰성 있는 AI 학습:** 모델이 교사의 맹목적인 습관이나 편향을 모방하지 않도록 하여, 더욱 논리적이고 입력값에 충실한 답변을 생성하도록 유도합니다.
+*   **효율적인 모델 경량화:** 불필요한 노이즈 신호를 제거함으로써, 제한된 학습 자원을 보다 중요한 작업 지식 습득에 집중시킬 수 있습니다.
+*   **실무 적용:** 특정 형식의 답변을 강요하는 산업용 챗봇이나, 멀티모달 모델에서 입력 이미지의 맥락을 무시하고 일반적인 답변만 내놓는 문제를 해결하는 데 즉각적인 적용이 가능합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [When Teachers Mislead: Spurious-Signal-Aware On-Policy...](https://arxiv.org/html/2608.03632)
+&gt; - [Contribute to jjjyinuo/SA-OPD development by creating an account on...](https://github.com/jjjyinuo/SA-OPD)
+&gt; - [SA-OPD отсеивает ложные сигналы при дистилляции... | Дзен](https://dzen.ru/a/anQ_563UpQP2ATu6)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;이론적으로는 흥미롭지만, &#x27;입력 근거성&#x27;을 측정하기 위해 프롬프트를 제거하고 모델을 재실행하는 과정에서 발생하는 컴퓨팅 오버헤드는 어떻게 감당할 생각인가? 실시간 온-폴리시 증류에서 이런 부가적인 추론 단계가 포함되면 학습 속도가 기하급수적으로 느려질 텐데, 실제 대규모 모델 학습에서 이게 실용적이라 보나?&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 오버헤드가 좀 뼈아프긴 한데, 반대로 생각하면 학습 과정에서 불필요한 노이즈로 낭비되는 GPU 시간을 생각하면 이게 더 이득일 수도 있습니다. 특히 우리처럼 특정 도메인 튜닝할 때 교사 모델의 &#x27;말투 고착&#x27; 때문에 모델이 멍청해지는 경우를 많이 겪거든요. 69.9%의 허위 신호를 걸러낸다는 건 실무자 입장에서 솔깃한 수치긴 하네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;다들 왜 이렇게 부정적이에요? 이거 VLM 실험에서 카운팅 점수 30.8에서 33.6 찍은 거 안 보이세요? 요즘처럼 데이터 오염 심한 시대에 모델이 교사 모델의 &#x27;뇌피셜&#x27;까지 답습하지 않게 필터링 걸어주는 게 얼마나 중요한데! 당장 우리 랩 세미나 주제로 잡아야겠음. 근데 이거 동적 임계값 튜닝하는 게 논문만큼 쉬울지는 의문이네요ㅋㅋ&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
