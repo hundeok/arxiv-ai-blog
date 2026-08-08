@@ -1,0 +1,69 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>시계열 예측을 위한 검색 증강 생성: TS-RAG | ArXiv Translator AI</title><meta name="description" content="시계열 예측을 위한 검색 증강 생성: TS-RAG"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_06223v1"><meta property="og:type" content="article"><meta property="og:title" content="시계열 예측을 위한 검색 증강 생성: TS-RAG"><meta property="og:description" content="시계열 예측을 위한 검색 증강 생성: TS-RAG"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_06223v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="시계열 예측을 위한 검색 증강 생성: TS-RAG"><meta name="twitter:description" content="시계열 예측을 위한 검색 증강 생성: TS-RAG"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_06223v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "시계열 예측을 위한 검색 증강 생성: TS-RAG", "description": "시계열 예측을 위한 검색 증강 생성: TS-RAG", "datePublished": "2026-08-06", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_06223v1", "author": [{"@type": "Person", "name": "Yixiong Xiao"}, {"@type": "Person", "name": "Congxi Xiao"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_06223v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_06223v1"});gtag('event', 'paper_view', {"paper_id": "2608_06223v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>시계열 예측을 위한 검색 증강 생성: TS-RAG</h1><p>시계열 예측을 위한 검색 증강 생성: TS-RAG</p><pre>시계열 예측을 위한 검색 증강 생성: TS-RAG
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** TS-RAG: Retrieval Augmented Generation for Time Series Forecasting
+&gt; - **저자:** Yixiong Xiao, Congxi Xiao, Jingbo Zhou
+&gt; - **발행일:** 2026-08-06
+&gt; - **PDF 링크:** [TS-RAG: Retrieval Augmented Generation for Time Series Forecasting](https://arxiv.org/pdf/2608.06223v1)
+
+
+✨ 3줄 핵심 요약
+*   **시계열 RAG 도입:** 기존 언어 모델의 RAG 기법을 시계열 예측에 적용하여 과거의 유사한 데이터 패턴을 모델에 효과적으로 통합했습니다.
+*   **참조 토큰 기술:** ‘참조 토큰(reference tokens)’이라는 특수 설계된 토큰을 사용하여 입력 데이터와 검색된 과거 시퀀스 간의 정보를 최적으로 결합합니다.
+*   **성능 및 효율성:** 실무 벤치마크에서 최신 모델들을 능가하는 성능을 보였으며, 효율적인 검색 방식을 통해 실시간 예측에 적합한 속도를 확보했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+일반적인 인공지능이 책(학습 데이터)만 보고 답을 한다면, RAG(검색 증강 생성)는 시험을 볼 때 참고서(외부 데이터)를 찾아볼 수 있게 해주는 기술입니다. 이 논문은 이 기술을 &#x27;시계열 예측(주가, 날씨 등)&#x27;에 가져왔습니다. 과거에 이와 비슷한 그래프 모양이 있었는지 찾아보고, 그 정보를 참고해서 미래를 예측하는 방식입니다. 이때 정보를 단순히 붙이는 것이 아니라, &#x27;참조 토큰&#x27;이라는 특수한 장치를 통해 모델이 핵심 정보만 쏙쏙 뽑아 미래를 예측할 수 있게 만들었습니다.
+
+🎯 배경 및 문제점
+기존 시계열 예측 모델(주로 트랜스포머 기반)은 학습 데이터 내의 관계를 파악하는 데 집중하지만, 여전히 다음과 같은 한계가 있습니다.
+*   학습 데이터가 부족하거나 다양성이 떨어질 경우 일반화 능력이 저하됨.
+*   모델 내부 파라미터에 모든 지식을 담아야 하므로, 학습되지 않은 새로운 패턴에 대응하기 어려움.
+*   언어 모델처럼 단순히 참고 정보를 입력에 이어붙이는 방식으로는 시계열 데이터의 복잡한 역학 관계를 충분히 반영하기 어려움.
+
+💡 핵심 기술 및 아키텍처
+*   **참조 토큰(Reference Tokens):** 검색된 과거 데이터 시퀀스를 압축하여 모델에 입력할 때, 이를 학습 가능한 &#x27;참조 토큰&#x27; 형태로 변환합니다. 이는 모델이 현재 입력 시퀀스와 참조 시퀀스를 더 긴밀하게 융합하도록 돕습니다.
+*   **교차 어텐션(Cross-Attention):** 입력 시퀀스와 검색된 참조 시퀀스를 정렬하여 필요한 정보를 선택적으로 추출합니다.
+*   **검색 전략:** 동적 시간 워핑(DTW)처럼 연산량이 많은 방식 대신 TCN(Temporal Convolutional Network) 기반의 효율적인 검색 방식을 사용하여 추론 속도와 정확도를 모두 잡았습니다.
+
+📊 실험 결과 분석
+*   **벤치마크 성능:** 실무 데이터를 활용한 여러 벤치마크에서 기존의 최첨단(SOTA) 모델들을 일관되게 앞섰습니다.
+*   **검색 방식 비교:** TCN 기반 검색이 DTW(14.27초)보다 월등히 빠른 0.004초의 처리 시간을 기록하면서도 예측 오차(MSE/MAE)는 가장 낮아 실무적 효율성이 뛰어남이 확인되었습니다.
+*   **참조 시퀀스 개수:** 너무 많은 참조 시퀀스(2~4개 이상)를 사용하면 오히려 노이즈가 발생해 예측 성능이 떨어질 수 있음을 확인했습니다. (구체적인 MSE/MAE 수치는 발췌문에 제시된 표 데이터를 통해 확인 가능)
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+*   **분야별 적용:** 금융(주가 변동), 에너지(전력 소비 예측), 기상 예측 등 정기적인 패턴이 존재하는 모든 분야에서 예측 정확도를 높이는 데 기여할 수 있습니다.
+*   **데이터 부족 문제 해결:** 대규모 학습 데이터가 없는 상황에서도 과거의 유사한 기록을 참고함으로써 안정적인 예측치를 얻을 수 있어, 데이터 확보가 어려운 도메인에서 특히 유용합니다.
+*   **실시간성 확보:** 효율적인 검색 방식을 채택하여 실시간 의사결정이 필요한 현업 현장에 즉각적으로 적용할 수 있는 기반을 마련했습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2503.07649 TS-RAG: Retrieval-Augmented Generation based Time Series Foundation Models are Stronger Zero-Shot Forecaster](https://arxiv.org/abs/2503.07649)
+&gt; - [NeurIPS Poster TS-RAG: Retrieval-Augmented Generation based Time Series Foundation Models are Stronger Zero-Shot Forecaster](https://neurips.cc/virtual/2025/poster/118173)
+&gt; - [GitHub - UConn-DSIS/TS-RAG: NeurIPS 2025 Official website for code and models of Time Series RAG (TS-RAG) · GitHub](https://github.com/UConn-DSIS/TS-RAG)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;시계열에서의 RAG 접근 방식은 흥미롭지만, 논문에서 제안한 &#x27;참조 토큰&#x27;이 과연 데이터의 비정상성(Non-stationarity) 문제를 근본적으로 해결할 수 있을지 의문입니다. 단순한 TCN 기반 검색이 과연 복잡한 도메인에서도 일반화 성능을 담보할 수 있을까요? 실무적 효율성은 인정하지만, 이론적 엄밀함에 대한 검증이 더 필요해 보입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 일리가 있지만, 현업 입장에서는 일단 돌아가고 빨라야 합니다. DTW 쓰다가 매번 타임아웃 걸려서 고생하던 팀 입장에선 TCN 기반의 0.004초 추론 속도는 정말 매력적이네요. 다만, 노이즈 문제 때문에 참조 시퀀스 개수를 2~4개로 제한해야 한다는 건, 결국 실시간 서빙 시 인덱싱 전략을 얼마나 튜닝하느냐가 관건이겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;두 분 다 너무 진지하신 거 아니에요? ㅋㅋㅋ 이제 LLM RAG에 이어서 Time Series RAG까지 대세가 오네요. 어차피 파라미터 다 때려 박는 것보다 이렇게 외부 지식 활용하는 게 훨씬 가볍고 효율적인 거 국룰인 거 아시잖아요. 일단 깃허브 스타 찍고 바로 주가 예측에 돌려보러 갑니다. 저점 매수 기회인가요?&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

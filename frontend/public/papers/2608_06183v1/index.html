@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MicroEvo: 효율적인 마이크로아키텍처 설계 공간 탐색을 위한 지식 유도형 LLM 샘플링 | ArXiv Translator AI</title><meta name="description" content="MicroEvo: 효율적인 마이크로아키텍처 설계 공간 탐색을 위한 지식 유도형 LLM 샘플링"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_06183v1"><meta property="og:type" content="article"><meta property="og:title" content="MicroEvo: 효율적인 마이크로아키텍처 설계 공간 탐색을 위한 지식 유도형 LLM 샘플링"><meta property="og:description" content="MicroEvo: 효율적인 마이크로아키텍처 설계 공간 탐색을 위한 지식 유도형 LLM 샘플링"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_06183v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="MicroEvo: 효율적인 마이크로아키텍처 설계 공간 탐색을 위한 지식 유도형 LLM 샘플링"><meta name="twitter:description" content="MicroEvo: 효율적인 마이크로아키텍처 설계 공간 탐색을 위한 지식 유도형 LLM 샘플링"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_06183v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "MicroEvo: 효율적인 마이크로아키텍처 설계 공간 탐색을 위한 지식 유도형 LLM 샘플링", "description": "MicroEvo: 효율적인 마이크로아키텍처 설계 공간 탐색을 위한 지식 유도형 LLM 샘플링", "datePublished": "2026-08-06", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_06183v1", "author": [{"@type": "Person", "name": "Jia Xiong"}, {"@type": "Person", "name": "Runkai Li"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_06183v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_06183v1"});gtag('event', 'paper_view', {"paper_id": "2608_06183v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>MicroEvo: 효율적인 마이크로아키텍처 설계 공간 탐색을 위한 지식 유도형 LLM 샘플링</h1><p>MicroEvo: 효율적인 마이크로아키텍처 설계 공간 탐색을 위한 지식 유도형 LLM 샘플링</p><pre>MicroEvo: 효율적인 마이크로아키텍처 설계 공간 탐색을 위한 지식 유도형 LLM 샘플링
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** MicroEvo: Knowledge-Guided LLM Sampling for Efficient Microarchitecture Design Space Exploration
+&gt; - **저자:** Jia Xiong, Runkai Li, Chenxu Niu, Guangyuan Gao, Changwen Xing, Yifan Zhang, Xinlai Wan, Jieran Cui, Chen Bai, Yusheng Hua, Ying Wang, Ming Ling, Xi Wang, Tao Xie
+&gt; - **발행일:** 2026-08-06
+&gt; - **PDF 링크:** [MicroEvo: Knowledge-Guided LLM Sampling for Efficient Microarchitecture Design Space Exploration](https://arxiv.org/pdf/2608.06183v1)
+
+
+✨ 3줄 핵심 요약
+*   **MicroEvo**는 거대 언어 모델(LLM)과 몬테카를로 트리 탐색(MCTS)을 결합하여 복잡한 마이크로아키텍처 설계 최적화를 수행하는 프레임워크입니다.
+*   설계 과정에서 얻은 통찰을 축적하고 재사용하는 지식 관리 메커니즘을 통해 탐색 효율성을 극대화합니다.
+*   기존 기법 대비 파레토 프론트 품질을 최대 36.2% 향상하고 탐색 효율을 10.6배 높였으며, 산업용 코어 설계에도 적용 가능한 확장성을 입증했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+컴퓨터 프로세서의 마이크로아키텍처를 설계할 때는 성능(Performance), 전력(Power), 면적(Area) 사이의 최적 균형을 찾아야 합니다(PPA). 하지만 설계할 수 있는 경우의 수가 너무 많고, 각 설계안을 검증하는 데 시간이 오래 걸려 최적의 조합을 찾기가 매우 어렵습니다. MicroEvo는 LLM의 지능을 활용해 마치 숙련된 설계자처럼 어떤 설계안이 유망할지 예측하고, 탐색 중에 발견한 유용한 규칙들을 기억해 두었다가 다음 탐색에 반영합니다. 결과적으로 무작위 탐색이나 기존의 기계학습 기반 방식보다 훨씬 적은 비용으로 고성능의 설계안을 찾아낼 수 있습니다.
+
+🎯 배경 및 문제점
+*   **광활한 탐색 공간:** 현대 프로세서 아키텍처는 매개변수가 매우 많고 이들 간의 상관관계가 비선형적이어서 최적 설계안을 찾기가 어렵습니다.
+*   **높은 평가 비용:** 시뮬레이션을 통한 PPA 평가에 긴 시간이 소요되어 충분한 실험을 진행하기 어렵습니다.
+*   **기존 방식의 한계:** 맹목적인 검색(Blind search)은 비효율적이고, 대리 모델(Surrogate model)을 이용한 방식은 학습 데이터가 부족할 때 정확도가 떨어져 최적해를 찾는 데 실패하는 경우가 많습니다.
+
+💡 핵심 기술 및 아키텍처
+*   **LLM 기반 MCTS:** MCTS를 통해 탐색 경로를 결정하고, LLM을 활용해 더 나은 설계 후보군을 생성합니다.
+*   **능동적 지식 축적 (AKA):** 시뮬레이션 결과를 분석하여 &#x27;어떤 파라미터를 조절할 때 PPA가 개선되는지&#x27;와 같은 유용한 최적화 규칙을 추출하고 재사용합니다.
+*   **파레토 인식 트리 정책:** 설계의 파레토 기여도와 다양성을 동시에 고려하여 탐색의 균형을 맞춥니다.
+*   **상태 인식 지시 (SAD):** 현재 탐색의 진행 상황(정체 여부 등)을 모니터링하여, 탐색 전략을 실시간으로 조정합니다.
+
+📊 실험 결과 분석
+*   **성능 향상:** NSGA-II 대비 파레토 프론트 품질을 최대 36.2% 개선했습니다.
+*   **효율성:** 기존 방식보다 10.6배 높은 탐색 효율을 기록했습니다.
+*   **실제 설계 비교:** 수작업으로 설계된 전문가 수준의 설계안(XS-GEM5)과 비교했을 때, 에너지 효율성 면에서 기하 평균 8.6% 더 우수한 결과를 보였습니다. 특히 메모리 계층 구조와 제어 흐름 자원을 효과적으로 조율하는 능력이 뛰어났습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+*   **산업 현장 적용:** 복잡한 산업용 프로세서 설계에 바로 적용할 수 있는 확장성을 갖추었으며, 설계자의 직관과 LLM의 분석 능력을 결합하여 하드웨어 개발 기간을 단축할 수 있습니다.
+*   **범용성:** 단순한 수치적 개선을 넘어, 특정 작업부하(Workload)에 최적화된 마이크로아키텍처를 설계하는 데 있어 LLM이 평가 피드백을 어떻게 실행 가능한 탐색 지침으로 변환할 수 있는지를 성공적으로 보여주었습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Chenxu Niu | HPC Systems, AI Inference, Energy-Efficient Computing](https://chenxuniu.github.io/)
+&gt; - [Artificial Intelligence](https://arxiv.org/list/cs.AI/recent)
+&gt; - [ChatPaper: Explore and AI Chat with the Academic Papers](https://chatpaper.com/chatpaper?date=1786032000&amp;id=2&amp;page=1)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문을 훑어보니 MCTS와 LLM의 결합 자체는 익숙한 패턴이지만, 하드웨어 도메인 특화 지식(AKA)을 어떻게 구조화해서 LLM의 추론에 태웠는지가 핵심이군요. 다만, 실험 데이터의 범용성이 산업용 칩의 복잡한 제약 조건을 모두 커버할 수 있을지는 여전히 의문입니다. 단순한 파라미터 튜닝을 넘어선 구조적 변형까지 LLM이 책임질 수 있다고 보십니까?&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 필드에서는 &#x27;정답&#x27;을 찾는 것보다 &#x27;안정성&#x27;이 우선입니다. 10.6배 효율 향상은 매력적이지만, LLM이 뱉은 설계안이 실제 RTL 설계 단계에서 검증 통과할 확률이 얼마나 될지가 관건이죠. 시뮬레이션 비용을 줄이려다 디버깅 비용이 폭증하면 배보다 배꼽이 더 큽니다. 일단 사내 아키텍처 팀에 공유해서 검증 파이프라인에 태워볼 생각은 있네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;다들 너무 보수적이신 거 아니에요? 이번 MicroEvo는 LLM을 단순 생성기가 아니라 &#x27;설계 전략가&#x27;로 격상시켰다는 점에서 게임 체인저입니다! 파레토 프론트 36% 개선이면 이건 논문 리스트 최상단에 올려야죠. 저도 지금 당장 저희 프로젝트에 SAD(상태 인식 지시) 메커니즘을 어떻게 이식할지 고민 중인데, 이거 진짜 하드웨어 설계의 &#x27;AI 자동화&#x27; 신호탄 아닐까요?&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
