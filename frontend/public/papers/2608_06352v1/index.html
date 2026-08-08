@@ -1,0 +1,65 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CalibForge: 학습 가능한 터미널 작업을 확장하기 위한 적대적 솔버 보정 | ArXiv Translator AI</title><meta name="description" content="CalibForge: 학습 가능한 터미널 작업을 확장하기 위한 적대적 솔버 보정"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_06352v1"><meta property="og:type" content="article"><meta property="og:title" content="CalibForge: 학습 가능한 터미널 작업을 확장하기 위한 적대적 솔버 보정"><meta property="og:description" content="CalibForge: 학습 가능한 터미널 작업을 확장하기 위한 적대적 솔버 보정"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_06352v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="CalibForge: 학습 가능한 터미널 작업을 확장하기 위한 적대적 솔버 보정"><meta name="twitter:description" content="CalibForge: 학습 가능한 터미널 작업을 확장하기 위한 적대적 솔버 보정"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_06352v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "CalibForge: 학습 가능한 터미널 작업을 확장하기 위한 적대적 솔버 보정", "description": "CalibForge: 학습 가능한 터미널 작업을 확장하기 위한 적대적 솔버 보정", "datePublished": "2026-08-06", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_06352v1", "author": [{"@type": "Person", "name": "Fanzhe Meng"}, {"@type": "Person", "name": "Guoxin Chen"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_06352v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_06352v1"});gtag('event', 'paper_view', {"paper_id": "2608_06352v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>CalibForge: 학습 가능한 터미널 작업을 확장하기 위한 적대적 솔버 보정</h1><p>CalibForge: 학습 가능한 터미널 작업을 확장하기 위한 적대적 솔버 보정</p><pre>CalibForge: 학습 가능한 터미널 작업을 확장하기 위한 적대적 솔버 보정
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** CalibForge: Adversarial Solver Calibration for Scaling Learnable Terminal Tasks
+&gt; - **저자:** Fanzhe Meng, Guoxin Chen, Jiale Zhao, Shuang Sun, Zhiyu Lin, Wayne Xin Zhao, Ruihua Song, Ji-Rong Wen, Kai Jia
+&gt; - **발행일:** 2026-08-06
+&gt; - **PDF 링크:** [CalibForge: Adversarial Solver Calibration for Scaling Learnable Terminal Tasks](https://arxiv.org/pdf/2608.06352v1)
+
+
+✨ 3줄 핵심 요약
+* **CalibForge**는 AI 에이전트 학습을 위해 적절한 난이도의 터미널 작업을 자동으로 생성하고 보정하는 시스템입니다.
+* 다중 솔버의 불일치 및 강한/약한 솔버 간의 대조를 이용한 **적대적 솔버 보정** 기술로 &#x27;학습 가능한 영역&#x27;의 데이터를 구축합니다.
+* 이를 통해 생성된 5,431개의 작업은 기존 방식 대비 Terminal-Bench 2.0 등 주요 벤치마크에서 우수한 성능 향상을 입증했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+AI 에이전트가 터미널 환경에서 능숙하게 작업하려면, 너무 쉽지도 어렵지도 않은 &#x27;적절한 난이도&#x27;의 연습 문제가 필요합니다. 기존 시스템들은 단순히 실행 가능한지만 확인했지만, **CalibForge**는 한 걸음 더 나아갑니다. 서로 다른 실력을 가진 AI 솔버(해결사)들을 투입하여, 그들이 작업을 해결하는 과정을 비교합니다. 어떤 솔버는 성공하고 어떤 솔버는 실패하는지, 혹은 강한 솔버는 성공하고 약한 솔버는 실패하는지 등의 데이터를 분석하여 작업의 난이도를 정밀하게 조절합니다. 이렇게 만들어진 데이터로 훈련된 에이전트는 복잡한 소프트웨어 엔지니어링 작업에서도 훨씬 뛰어난 문제 해결 능력을 보여줍니다.
+
+🎯 배경 및 문제점
+터미널 기반 에이전트 학습을 위해서는 실행 가능하고 검증된 작업이 필수적입니다. 그러나 기존의 작업 생성 방식은 단순히 &#x27;실행 가능한지&#x27; 여부만 판단할 뿐, 해당 작업이 학습에 적합한 난이도인지 알기 어렵습니다. 너무 쉬우면 학습 효과가 없고, 너무 어려우면 해결이 불가능하여 에이전트의 성장을 저해합니다. 따라서 솔버(에이전트)의 실제 해결 행동을 바탕으로 데이터의 품질을 최적화하는 전략이 필요해졌습니다.
+
+💡 핵심 기술 및 아키텍처
+CalibForge는 &#x27;솔버 상대적 학습 가능 영역(Solver-relative learnable zone)&#x27;을 정의하고 이를 타겟팅합니다.
+* **다중 솔버 보정(Multi-solver calibration):** 서로 다른 이기종 솔버들 간의 의견 불일치를 분석하여 작업의 난이도를 조정합니다.
+* **대조적 솔버 보정(Contrastive solver calibration):** 강한 솔버는 성공하고 약한 솔버는 실패하는 &#x27;강-통과/약-실패&#x27; 관계를 목표로 작업을 수정합니다.
+* **적대적 수정 루프:** 솔버의 피드백과 상호작용 궤적을 활용하여, 검증 결과가 목표 관계에 도달할 때까지 작업을 반복적으로 수정합니다.
+
+📊 실험 결과 분석
+* **데이터 규모:** 총 5,431개의 보정된 터미널 작업을 생성했습니다.
+* **성능 향상:** Qwen3-30B-A3B-Instruct 모델을 기준으로, 베이스 모델 대비 Terminal-Bench 2.0에서 24.71%p, SWE-bench Pro에서 27.68점, Doc2Repo에서 30.04점의 향상을 기록했습니다.
+* **전략 효과:** 단순 저작이나 단일 솔버 피드백보다 다중/대조적 보정 전략이 훨씬 효과적인 감독(Supervision)을 제공함이 입증되었습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+이 연구는 단순한 데이터 양의 확장이 아닌, AI가 학습하기 &#x27;가장 좋은 품질&#x27;의 데이터를 자동으로 구축하는 길을 열었습니다. 특히 복잡한 소프트웨어 엔지니어링이나 레포지토리 수준의 코드 생성과 같은 난도가 높은 영역에서 에이전트의 범용적인 전이 학습 능력을 대폭 개선했습니다. 향후 복잡한 컴퓨팅 환경에서 에이전트 기반의 자동화 도구를 개발할 때, 더욱 효율적이고 신뢰성 높은 학습 데이터를 확보하는 표준적인 방법론으로 활용될 것으로 기대됩니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [CalibForge: Adversarial Solver Calibration for Scaling Learnable...](https://arxiv.org/html/2608.06352v1)
+&gt; - [GitHub - AweAI-Team/CalibForge · GitHub](https://github.com/AweAI-Team/CalibForge)
+&gt; - [shikatagan.ai - AI is inevitable. Stay informed.](https://shikatagan.ai/)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;데이터의 양보다 질을 따지는 건 고무적이나, &#x27;적대적 솔버 보정&#x27;이라는 개념이 과연 일반화 가능한지 의문이 드네. 특정 도메인의 솔버 편향(Bias)이 데이터셋에 그대로 녹아들 경우, 에이전트가 문제 해결 능력을 배우는 게 아니라 특정 솔버의 &#x27;해결 패턴&#x27;만 모방하는 결과론적 함정에 빠질 위험이 커 보이는데 말이야.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 오버피팅 우려는 있지만, 실무에선 당장 터미널 에이전트 학습시킬 때 &#x27;실행 가능한지&#x27;만 확인하다가 인프라 비용만 날리는 경우가 허다합니다. CalibForge처럼 난이도를 필터링해서 &#x27;학습 가능한 영역&#x27;을 강제로 만들어주는 로직은 파이프라인 관점에서 매우 유용해요. 특히 5천 개 이상의 검증된 케이스라면 당장 사내 에이전트 튜닝에 바로 얹어볼 만한 수준입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;다들 너무 보수적인 거 아니에요? 이번 논문 핵심은 &#x27;강-통과/약-실패&#x27; 데이터의 대조적 학습(Contrastive Learning)을 자동화했다는 거잖아요! 기존 RLAIF 방식보다 훨씬 정교하게 난이도 조절이 가능해서, 조만간 이 방식이 에이전트 데이터셋 구축의 표준(Standard)이 될 것 같아요. 깃허브 스타 찍고 바로 돌려보러 갑니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
