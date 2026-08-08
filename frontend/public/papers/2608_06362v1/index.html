@@ -1,0 +1,69 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AV-AIVAT: 불완전 정보 게임에서 인증된 상시 유효 중단을 통한 74배 저렴한 에이전트 평가 | ArXiv Translator AI</title><meta name="description" content="AV-AIVAT: 불완전 정보 게임에서 인증된 상시 유효 중단을 통한 74배 저렴한 에이전트 평가"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_06362v1"><meta property="og:type" content="article"><meta property="og:title" content="AV-AIVAT: 불완전 정보 게임에서 인증된 상시 유효 중단을 통한 74배 저렴한 에이전트 평가"><meta property="og:description" content="AV-AIVAT: 불완전 정보 게임에서 인증된 상시 유효 중단을 통한 74배 저렴한 에이전트 평가"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_06362v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="AV-AIVAT: 불완전 정보 게임에서 인증된 상시 유효 중단을 통한 74배 저렴한 에이전트 평가"><meta name="twitter:description" content="AV-AIVAT: 불완전 정보 게임에서 인증된 상시 유효 중단을 통한 74배 저렴한 에이전트 평가"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_06362v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "AV-AIVAT: 불완전 정보 게임에서 인증된 상시 유효 중단을 통한 74배 저렴한 에이전트 평가", "description": "AV-AIVAT: 불완전 정보 게임에서 인증된 상시 유효 중단을 통한 74배 저렴한 에이전트 평가", "datePublished": "2026-08-06", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_06362v1", "author": [{"@type": "Person", "name": "Boning Li"}, {"@type": "Person", "name": "Yu Chen"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_06362v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_06362v1"});gtag('event', 'paper_view', {"paper_id": "2608_06362v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>AV-AIVAT: 불완전 정보 게임에서 인증된 상시 유효 중단을 통한 74배 저렴한 에이전트 평가</h1><p>AV-AIVAT: 불완전 정보 게임에서 인증된 상시 유효 중단을 통한 74배 저렴한 에이전트 평가</p><pre>AV-AIVAT: 불완전 정보 게임에서 인증된 상시 유효 중단을 통한 74배 저렴한 에이전트 평가
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** AV-AIVAT: 74x Cheaper Agent Evaluation with Certified Anytime-Valid Stopping in Imperfect-Information Games
+&gt; - **저자:** Boning Li, Yu Chen, Longbo Huang
+&gt; - **발행일:** 2026-08-06
+&gt; - **PDF 링크:** [AV-AIVAT: 74x Cheaper Agent Evaluation with Certified Anytime-Valid Stopping in Imperfect-Information Games](https://arxiv.org/pdf/2608.06362v1)
+
+
+✨ 3줄 핵심 요약
+*   **AV-AIVAT**는 불완전 정보 게임(IIG)에서 에이전트 성능 평가 시, 통계적 보증을 유지하면서 조기 중단이 가능한 평가 프레임워크입니다.
+*   과거 데이터로만 학습하는 가치 모델을 통해 분산을 줄이고, 이를 기반으로 **74배 효율적인 평가**가 가능함을 확인했습니다.
+*   평가 결과와 중단 시점의 메타데이터를 공개하여 제3자가 평가의 타당성을 즉시 재검증할 수 있는 감사가 가능한 구조를 갖췄습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+두 에이전트 중 누가 더 뛰어난지 가리는 것은 많은 비용과 시간이 소요되는 작업입니다. 보통은 미리 정해진 횟수만큼 경기를 치르지만, 이는 결과가 조기에 결정되더라도 불필요한 비용을 계속 지출하게 하거나, 반대로 데이터가 부족해 결론을 내리지 못하게 합니다. AV-AIVAT은 게임 도중 성능 차이가 확실해지는 즉시 평가를 멈추면서도, 통계적으로 신뢰할 수 있는 수치(95% 신뢰 수준 등)를 보장합니다. 이를 통해 기존 대비 평균 74배 더 적은 경기만으로도 에이전트의 성능을 정확히 평가할 수 있습니다.
+
+🎯 배경 및 문제점
+*   **비용 및 효율성:** 대규모 언어 모델(LLM) 등을 활용한 게임 에이전트 평가는 경기당 많은 추론 비용이 발생합니다.
+*   **고정 예산의 한계:** 평가 횟수를 미리 정하면 불필요한 비용이 발생하거나, 결론을 내기 전에 평가가 종료될 위험이 있습니다.
+*   **통계적 오류:** 일반적인 신뢰 구간을 사용하여 결과를 자의적으로 판단하고 중단할 경우, 명시된 신뢰 수준이 무효화되어 잘못된 긍정(false positive)이 발생할 수 있습니다.
+
+💡 핵심 기술 및 아키텍처
+*   **AIVAT(Action-Informed Value Assessment Tool):** 게임의 가치 함수를 이용하여 결과의 분산을 조건부로 줄이는 도구입니다. 본 논문에서는 이 모델이 현재 진행 중인 게임의 결과에 영향을 주지 않도록 &#x27;과거 데이터&#x27;만을 학습에 사용하는 구조를 도입했습니다.
+*   **상시 유효 중단(Anytime-Valid Stopping):** 게임을 실시간 모니터링하여 충분한 통계적 증거가 확보되는 즉시 평가를 중단합니다.
+*   **이중 검증 체계:**
+    *   **AsympCS:** 실무적인 효율적 평가를 위한 도구.
+    *   **EB-CS(Empirical-Bernstein CS):** 엄격한 수학적 증명을 위해 독립적으로 검증된 경계를 기반으로 평가를 인증하는 도구.
+
+📊 실험 결과 분석
+*   **효율성:** 15개의 LLM 에이전트 구성과 71,439개의 텍사스 홀덤(HUNL) 핸드를 분석한 결과, raw outcomes 대비 AIVAT이 평균 54배의 분산 감소를 보였습니다.
+*   **중단 시간:** 목표 정밀도 ±1 Big Blind(BB)를 달성하기 위해 필요한 경기 횟수를 비교했을 때, AsympCS 환경에서 74배 더 적은 경기만으로도 평가가 가능했습니다.
+*   **인증 가능성:** Leduc 홀덤 게임에서는 구조적으로 증명 가능한 경계를 설정하여 인증된 중단이 가능함을 입증했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+*   **비용 절감:** 에이전트 평가에 필요한 인프라 비용과 시간을 획기적으로 줄여, 보다 빈번하고 효율적인 에이전트 성능 검증이 가능해집니다.
+*   **평가의 투명성:** 평가자가 중단 시점의 정보와 메타데이터를 공개함으로써, 제3자가 해당 평가가 통계적으로 타당했는지 다시 계산하여 확인할 수 있습니다. 이는 AI 에이전트의 성능 검증 과정에서 신뢰성을 크게 높일 수 있는 기술적 토대가 됩니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2608.06362 AV-AIVAT: 74x Cheaper Agent Evaluation with ...](https://arxiv.org/abs/2608.06362)
+&gt; - [AV-AIVAT: 74x Cheaper Agent Evaluation with Certified Anytime ...](https://agentic-design.ai/news-hub/av-aivat-74x-cheaper-agent-evaluation-certified-anytime-valid-stopping-92b35d)
+&gt; - [AV-AIVAT: 74x Cheaper Agent Evaluation with Certified Anytime ...](https://commonplace.workforcefutures.net/paper/arxiv:2608.06362)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;통계적 유의성을 보장하면서 조기 중단(Anytime-Valid Stopping)을 도입한 논리 자체는 훌륭하나, 가치 모델(AIVAT)의 편향이 결과의 신뢰 구간에 미치는 영향을 어떻게 완벽히 제어했는지 의문이 드네요. 특히 실무 환경에서 &#x27;과거 데이터&#x27;로만 학습한 모델이 OOD(Out-of-Distribution) 상황을 만났을 때의 안정성이 입증되지 않으면, 이 74배라는 수치는 단순히 과적합된 평가 데이터에 대한 착시일 가능성이 높습니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 지적도 일리가 있지만, 현업 입장에선 일단 비용 74배 절감이라는 데이터가 너무 매력적이네요. 매번 클라우드 비용 때문에 에이전트 평가를 최소화하던 팀 입장에선 가뭄의 단비입니다. 다만 이중 검증 체계 구현이 복잡할 텐데, 기존의 베이지안 A/B 테스트 파이프라인에 이 구조를 이식하는 데 공수가 얼마나 들지가 관건이겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;다들 너무 진지하신 거 아닌가요? ㅋㅋ 지금 중요한 건 &#x27;평가 비용 74배 절감&#x27;이라는 키워드 자체가 벤치마크 인플레이션이 심한 요즘 학계에 던지는 메시지입니다. AIVAT 메타데이터 공개로 &#x27;평가 조작&#x27; 이슈도 해결 가능하니까, 이제 벤치마크 스코어 올려치기 하던 곳들 긴장 좀 하겠는데요? 바로 구현체 뜯어보러 갑니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
