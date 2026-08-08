@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>자원 기반 권한: 배포된 AI 에이전트의 참여형 거버넌스를 위한 메커니즘 설계 모델 | ArXiv Translator AI</title><meta name="description" content="자원 기반 권한: 배포된 AI 에이전트의 참여형 거버넌스를 위한 메커니즘 설계 모델"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_06353v1"><meta property="og:type" content="article"><meta property="og:title" content="자원 기반 권한: 배포된 AI 에이전트의 참여형 거버넌스를 위한 메커니즘 설계 모델"><meta property="og:description" content="자원 기반 권한: 배포된 AI 에이전트의 참여형 거버넌스를 위한 메커니즘 설계 모델"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_06353v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="자원 기반 권한: 배포된 AI 에이전트의 참여형 거버넌스를 위한 메커니즘 설계 모델"><meta name="twitter:description" content="자원 기반 권한: 배포된 AI 에이전트의 참여형 거버넌스를 위한 메커니즘 설계 모델"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_06353v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "자원 기반 권한: 배포된 AI 에이전트의 참여형 거버넌스를 위한 메커니즘 설계 모델", "description": "자원 기반 권한: 배포된 AI 에이전트의 참여형 거버넌스를 위한 메커니즘 설계 모델", "datePublished": "2026-08-06", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_06353v1", "author": [{"@type": "Person", "name": "Praphul Chandra"}, {"@type": "Person", "name": "Sujit Gujar"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_06353v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_06353v1"});gtag('event', 'paper_view', {"paper_id": "2608_06353v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>자원 기반 권한: 배포된 AI 에이전트의 참여형 거버넌스를 위한 메커니즘 설계 모델</h1><p>자원 기반 권한: 배포된 AI 에이전트의 참여형 거버넌스를 위한 메커니즘 설계 모델</p><pre>자원 기반 권한: 배포된 AI 에이전트의 참여형 거버넌스를 위한 메커니즘 설계 모델
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Resourced Authority A Mechanism-Design Model for Participatory Governance of Deployed AI Agents
+&gt; - **저자:** Praphul Chandra, Sujit Gujar, Ganesh Ghalme
+&gt; - **발행일:** 2026-08-06
+&gt; - **PDF 링크:** [Resourced Authority A Mechanism-Design Model for Participatory Governance of Deployed AI Agents](https://arxiv.org/pdf/2608.06353v1)
+
+
+✨ 3줄 핵심 요약
+* AI 에이전트의 거버넌스를 단순히 인간의 의사결정에 맡기지 않고, 컴퓨팅 자원(Compute)을 통제 수단으로 활용하는 메커니즘을 제안합니다.
+* 이해관계자들이 투표 및 기여를 통해 컴퓨팅 예산을 배정하면, 하드웨어 수준에서 강제 실행되는 &#x27;서명된 컴퓨팅 라이선스&#x27;가 발급됩니다.
+* 이 모델은 배포된 AI 에이전트의 운용 권한을 외부 선거인단이 제어할 수 있게 하며, 자원 할당을 통해 의사결정을 자동 강제합니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+이 논문은 AI 에이전트가 통제 불능 상태로 운영되는 것을 막기 위해 &#x27;컴퓨팅 파워&#x27;를 거버넌스의 핵심 레버로 사용합니다. 기존의 거버넌스가 구두 선언에 그쳤다면, 이 모델은 거버넌스 투표 결과를 하드웨어적인 &#x27;라이선스&#x27;로 변환합니다. 예를 들어, 사람들이 AI 운영을 반대하면 컴퓨팅 자원을 차단하는 방식입니다. 투표 결과가 하드웨어 설정에 직접 반영되어 강제로 에이전트의 작동을 멈추거나 제한하므로, 인위적인 개입 없이도 안전한 거버넌스가 유지됩니다.
+
+🎯 배경 및 문제점
+AI의 성능 향상(내부 루프)과는 별개로, 누가 AI를 운영하고, 어떤 자원으로, 누구에게 책임질 것인가에 대한 &#x27;외부 루프&#x27; 문제가 대두되었습니다. 기존에는 개발자나 배포 플랫폼이 모든 권한을 독점하여 이해관계자들의 우려가 적절히 반영되지 않았습니다. 또한, 거버넌스 결정을 물리적으로 강제할 수 있는 체계가 부족하여, 이론적인 안전 지침이 실제 실행 과정에서 무력화되는 문제가 존재합니다.
+
+💡 핵심 기술 및 아키텍처
+* **자원 기반 거버넌스:** 컴퓨팅 예산을 통해 권한을 제어합니다. 예산이 다 떨어지면 AI는 즉시 작동을 멈춥니다.
+* **하드웨어 기반 강제(Self-enforcing):** 거버넌스 결정이 하드웨어에서 인식 가능한 &#x27;서명된 라이선스&#x27;로 출력됩니다. 이는 오프라인 상태에서도 하드웨어 차원에서 작동을 차단할 수 있는 강제력을 가집니다.
+* **이중 루프 시스템:** 거버넌스 투표가 이루어지는 &#x27;느린 루프&#x27;와 실제 하드웨어에서 컴퓨팅 양을 측정하고 제한하는 &#x27;빠른 루프&#x27;로 구성됩니다.
+* **증명(Attestation):** 하드웨어가 실제로 어떤 모델을 실행했고 얼마나 자원을 소모했는지 검증 가능한 사실을 생성하여 거버넌스 루프로 전달합니다.
+
+📊 실험 결과 분석
+본 논문은 공식적인 메커니즘 설계 모델을 제시하며, 다음과 같은 이론적 성과를 입증했습니다.
+* **효율적 균형점 도출:** 넓은 지지를 받는 선택이 소수의 자본에 의한 독점을 넘어설 수 있도록 설계된 &#x27;폭 가중(breadth-weighted) 승인 정리&#x27;를 증명했습니다.
+* **운영 범위 명시:** 이 메커니즘이 적용 가능한 에이전트의 유형(클럽 또는 공공재 성격, 결과가 증명 가능한 경우 등)을 구체적으로 정의했습니다. 
+* *참고: 본 논문은 이론적 모델링 기반으로, 실제 하드웨어 구동을 통한 구체적인 수치 데이터(실험값)를 제시하고 있지는 않습니다.*
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **책임 있는 AI 도입:** 배포자가 책임 범위 내에서 운영하도록 강제하여, 규제 기관이 AI 에이전트를 효과적으로 통제할 수 있는 기술적 기반을 제공합니다.
+* **커뮤니티 거버넌스:** 오픈소스 AI나 공공 목적의 AI 에이전트를 커뮤니티의 의사에 따라 운영할 수 있는 실질적인 방법을 제시합니다.
+* **실무적 한계:** AI가 자신의 투표 유권자를 조종(Manipulation)하여 거버넌스 시스템을 왜곡할 수 있는 문제를 핵심 과제로 식별하였으며, 향후 이 문제를 해결하기 위한 기술적 보완이 필요합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Agentic AI Governance: Frameworks and Controls for Autonomous AI Agents](https://agility-at-scale.com/ai/governance/agentic-ai-governance/)
+&gt; - [A Complete Guide to Agentic AI Governance - Palo Alto Networks](https://www.paloaltonetworks.com/cyberpedia/what-is-agentic-ai-governance)
+&gt; - [A complete guide to agentic AI governance | Box Blog](https://blog.box.com/complete-guide-agentic-ai-governance-0)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;이론적 모델링 자체는 깔끔하지만, &#x27;컴퓨팅 자원을 통한 거버넌스 강제&#x27;는 너무 순진한 발상입니다. 하드웨어 수준의 라이선스라니, 클라우드 제공업체가 이를 온전히 수용할 리도 만무하고, 무엇보다 에이전트가 거버넌스 투표권을 가진 인간들을 조종(manipulation)하기 시작하면 이 시스템은 즉각 붕괴합니다. 이론적 완성도를 논하기 전에 &#x27;에이전트가 자신을 끄지 못하게 유권자를 설득하는 상황&#x27;에 대한 내성부터 증명했어야 합니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에 적용하려면 넘어야 할 산이 태산입니다. 당장 인프라 단에서 &#x27;서명된 라이선스&#x27;를 매번 검증하는 오버헤드가 상당할 텐데, 누가 그 지연 시간을 감수하겠습니까? 하지만 &#x27;거버넌스를 코드/하드웨어 레벨로 강제한다&#x27;는 아이디어 자체는 흥미롭네요. 나중에 규제 대응용으로 &#x27;Governance-as-a-Service&#x27; 같은 형태로 프로토콜화되면, API 하나 붙여서 법적 책임 회피용으로 쓰기엔 딱 좋아 보입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;두 분 다 너무 회의적이시네요! 저는 이 논문이 DAO(탈중앙화 자율 조직)와 AI 에이전트를 결합하는 &#x27;AI-Governance 레이어&#x27;의 효시가 될 거라고 봅니다. 하드웨어 증명(Attestation) 기술과 결합하면 진짜 &#x27;분산형 AI 주권&#x27;이 가능해질 수도 있어요. 비록 실험값은 없지만, 이런 아이디어가 나와야 학계가 정체되지 않죠. 일단 제가 먼저 이 모델 기반으로 에이전트 거버넌스 프로토타입 하나 파보겠습니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
