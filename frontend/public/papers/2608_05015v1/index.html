@@ -1,0 +1,72 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>계시된 합리성: 표현 정리를 활용한 라벨 없는 AI 평가 및 정규화 | ArXiv Translator AI</title><meta name="description" content="계시된 합리성: 표현 정리를 활용한 라벨 없는 AI 평가 및 정규화"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_05015v1"><meta property="og:type" content="article"><meta property="og:title" content="계시된 합리성: 표현 정리를 활용한 라벨 없는 AI 평가 및 정규화"><meta property="og:description" content="계시된 합리성: 표현 정리를 활용한 라벨 없는 AI 평가 및 정규화"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_05015v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="계시된 합리성: 표현 정리를 활용한 라벨 없는 AI 평가 및 정규화"><meta name="twitter:description" content="계시된 합리성: 표현 정리를 활용한 라벨 없는 AI 평가 및 정규화"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_05015v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "계시된 합리성: 표현 정리를 활용한 라벨 없는 AI 평가 및 정규화", "description": "계시된 합리성: 표현 정리를 활용한 라벨 없는 AI 평가 및 정규화", "datePublished": "2026-08-05", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_05015v1", "author": [{"@type": "Person", "name": "Isaiah Andrews"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_05015v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_05015v1"});gtag('event', 'paper_view', {"paper_id": "2608_05015v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>계시된 합리성: 표현 정리를 활용한 라벨 없는 AI 평가 및 정규화</h1><p>계시된 합리성: 표현 정리를 활용한 라벨 없는 AI 평가 및 정규화</p><pre>계시된 합리성: 표현 정리를 활용한 라벨 없는 AI 평가 및 정규화
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Revealed Rationality: Label-Free Evaluation and Regularization from Representation Theorems
+&gt; - **저자:** Isaiah Andrews
+&gt; - **발행일:** 2026-08-05
+&gt; - **PDF 링크:** [Revealed Rationality: Label-Free Evaluation and Regularization from Representation Theorems](https://arxiv.org/pdf/2608.05015v1)
+
+
+✨ 3줄 핵심 요약
+*   결정 이론의 &#x27;표현 정리(Representation Theorems)&#x27;를 활용하여 외부 데이터나 인간의 피드백 없이도 AI의 합리성을 평가하고 정규화하는 체계를 제시합니다.
+*   확률적 일관성, 선호 합리성, 주관적 기대 효용 등 세 가지 기준을 통해 AI의 행동이 내재된 목적 함수와 일치하는지 수학적으로 검증합니다.
+*   AI가 위반 사항을 보일 경우 이를 계산 가능한 &#x27;벌점(penalty)&#x27;으로 변환하여, 별도의 라벨링 없이도 AI를 정교하게 훈련하고 평가할 수 있습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+대규모 언어 모델(LLM)이 답변할 때, 어떤 상황에서는 A를 선택하고 어떤 상황에서는 B를 선택하는 식의 모순된 행동을 보일 때가 있습니다. 이 논문은 경제학의 &#x27;결정 이론&#x27;을 빌려와 이를 해결합니다. 모델이 내놓은 수많은 선택 데이터를 수학적 공식(공리)에 대입해보면, 모델이 논리적으로 일관된 목표를 가지고 움직이는지 아니면 무작위로 선택하는지 판별할 수 있습니다. 핵심은 &#x27;외부에서 정답지(라벨)를 줄 필요가 없다&#x27;는 점입니다. 모델 스스로 뱉어낸 응답만으로도 모델이 얼마나 합리적인지 점수를 매기고, 이를 바탕으로 더 일관된 답변을 하도록 훈련할 수 있습니다.
+
+🎯 배경 및 문제점
+*   최근 LLM은 정보 제공, 대안 순위 매기기, 행동 추천 등 복잡한 의사결정 영역에 활발히 사용됩니다.
+*   선행 연구들에 따르면 LLM은 &#x27;von Neumann-Morgenstern 공리&#x27; 등 합리성 기준을 자주 위반하며, 이는 &#x27;네덜란드식 내기(Dutch books)&#x27;나 &#x27;머니 펌프(money pumps)&#x27;와 같이 시스템의 논리적 허점을 악용하는 결과를 초래할 수 있습니다.
+*   기존 연구들은 주로 이러한 현상을 진단하는 데 그쳤으며, 모델의 합리성을 실시간으로 개선하거나 강제하기 위한 체계적인 방법론이 부족했습니다.
+
+💡 핵심 기술 및 아키텍처
+*   **표현 정리 활용:** 모델의 행동이 특정 공리를 만족할 경우, 이를 합리적인 목적 함수로 설명할 수 있다는 정리를 이용합니다. 
+*   **라벨 없는 평가:** 외부 정답(Human label) 없이 모델의 응답 데이터만으로 합리성을 검사합니다.
+*   **주요 적용 지표:**
+    1.  **확률적 일관성:** de Finetti 정리를 활용한 평가.
+    2.  **선호 합리성:** Afriat 정리를 활용한 평가.
+    3.  **주관적 기대 효용(SARSEU):** Echenique와 Saito(2015)의 정리를 활용해 모델의 선택이 일관된 믿음과 유용성 함수에 기반하는지 검증.
+*   **벌점(Penalty) 계산:** 모델이 합리성을 위반할 때마다 0보다 큰 연속적인 벌점을 부여하여 학습 과정에서 이를 최소화하도록 유도합니다.
+
+📊 실험 결과 분석
+*   본 논문은 방법론적 제안을 중심으로 하며, 구체적인 실험 수치는 다음과 같이 언급됩니다.
+    *   Chen et al. (2023)의 연구를 인용하여, GPT-3.5 모델이 예산 배분 작업에서 0.997 이상의 CCEI(소비자 선택 지수) 점수를 기록했음을 보고합니다. 이는 인간 피실험자보다 높은 수준의 합리성을 보인 사례이나, 테스트 조건이 제한적이었음을 밝히고 있습니다.
+*   논문은 정량적 실험 수치를 직접 생성하는 대신, 제안된 선형 계획법(LP)을 통해 합리성 위반 여부를 판별하는 알고리즘의 수학적 타당성을 증명하는 데 집중합니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+*   **평가 체계의 전환:** 사람이 직접 작성한 피드백(RLHF)에 의존하던 모델 평가 방식에서 벗어나, 논리적 일관성이라는 수학적 기준을 통해 AI의 신뢰성을 검증할 수 있습니다.
+*   **실무 적용:** 모델의 파인튜닝 과정에서 합리성 벌점을 추가함으로써, 복잡한 경제적 선택이나 전략적 의사결정을 수행하는 AI의 성능을 높일 수 있습니다.
+*   **확장성:** 정답이 없는 복잡한 문제 상황에서도 AI가 일관된 페르소나와 목적 함수를 유지하도록 강제할 수 있어 금융, 정책 수립 등 고도의 논리가 필요한 분야에서 활용도가 높습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2608.05015 Revealed Rationality: Label-Free Evaluation and Regularization from Representation Theorems](https://arxiv.org/abs/2608.05015)
+&gt; - [Revealed Rationality: Label-Free Evaluation and Regularization...](https://ideas.repec.org/p/arx/papers/2608.05015.html)
+&gt; - [Computer Science](https://arxiv.org/list/cs/recent?skip=1136&amp;show=2000)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;경제학의 표현 정리(Representation Theorems)를 LLM의 정렬 문제에 도입한 점은 높이 평가하지만, 과연 모델이 고차원적인 공리를 위반할 때 발생하는 &#x27;벌점&#x27;이 실제 의미론적 일관성으로 치환될지는 의문입니다. 수학적으로 깔끔한 모델이 반드시 인간의 의도와 정렬되라는 법은 없거든요. &#x27;합리적&#x27;인 악당을 만드는 꼴이 될 수도 있다는 우려는 안 해봤나요?&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 맞는데, 현업 입장에선 RLHF 돌리느라 드는 비용과 시간 생각하면 이런 라벨 프리(Label-free) 방식이 얼마나 반가운지 모릅니다. 매번 휴먼 피드백 데이터셋 구축한다고 쌩고생하는 거 생각하면, 수학적 벌점만으로 정규화가 가능하다는 건 도입 가치가 충분해요. 물론 추론 시점에 오버헤드가 얼마나 걸릴지가 관건이겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 다들 반응이 너무 보수적이신 거 아니에요? 이거야말로 RLHF의 한계를 돌파할 &#x27;게임 체인저&#x27;입니다! 에이전트 모델들끼리 서로 머니 펌프 전략 짜는 거 막으려면 이런 수학적 가이드라인이 필수라고요. 벌써 깃허브에 구현체 올라왔던데 당장 오늘 밤샘해서 제 모델에 올려볼 생각입니다. 폼 미쳤다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
