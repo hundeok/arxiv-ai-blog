@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>대규모 언어 모델의 테스트 시간 확장을 위한 해석 가능한 적응형 샘플링 | ArXiv Translator AI</title><meta name="description" content="대규모 언어 모델의 테스트 시간 확장을 위한 해석 가능한 적응형 샘플링"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_03961v1"><meta property="og:type" content="article"><meta property="og:title" content="대규모 언어 모델의 테스트 시간 확장을 위한 해석 가능한 적응형 샘플링"><meta property="og:description" content="대규모 언어 모델의 테스트 시간 확장을 위한 해석 가능한 적응형 샘플링"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_03961v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="대규모 언어 모델의 테스트 시간 확장을 위한 해석 가능한 적응형 샘플링"><meta name="twitter:description" content="대규모 언어 모델의 테스트 시간 확장을 위한 해석 가능한 적응형 샘플링"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_03961v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "대규모 언어 모델의 테스트 시간 확장을 위한 해석 가능한 적응형 샘플링", "description": "대규모 언어 모델의 테스트 시간 확장을 위한 해석 가능한 적응형 샘플링", "datePublished": "2026-08-04", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_03961v1", "author": [{"@type": "Person", "name": "Mobina Kashaniyan"}, {"@type": "Person", "name": "Ali Jannesari"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_03961v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_03961v1"});gtag('event', 'paper_view', {"paper_id": "2608_03961v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>대규모 언어 모델의 테스트 시간 확장을 위한 해석 가능한 적응형 샘플링</h1><p>대규모 언어 모델의 테스트 시간 확장을 위한 해석 가능한 적응형 샘플링</p><pre>대규모 언어 모델의 테스트 시간 확장을 위한 해석 가능한 적응형 샘플링
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Interpretable Adaptive Sampling for LLM Test-Time Scaling
+&gt; - **저자:** Mobina Kashaniyan, Ali Jannesari
+&gt; - **발행일:** 2026-08-04
+&gt; - **PDF 링크:** [Interpretable Adaptive Sampling for LLM Test-Time Scaling](https://arxiv.org/pdf/2608.03961v1)
+
+
+✨ 3줄 핵심 요약
+* 기존 LLM의 테스트 시간 확장(Test-time scaling)은 모든 질문에 동일한 컴퓨팅 자원을 할당하는 고정 예산 방식을 사용하여 자원을 비효율적으로 사용합니다.
+* 본 논문은 질문의 복잡도와 모델의 자신감 등을 분석해 적절한 샘플링 횟수를 할당하는 &#x27;해석 가능한 퍼지 컨트롤러&#x27;를 제안합니다.
+* 해당 방식은 전체 예산을 사용하는 방식과 대등한 정확도를 유지하면서도, 평균 샘플링 횟수를 줄여 추론 효율성과 투명성을 동시에 확보합니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+대규모 언어 모델(LLM)은 정답을 찾기 위해 여러 개의 답변 후보를 생성하고 투표하는 과정을 거칩니다. 이때 보통은 모든 질문에 똑같은 개수의 후보를 만들도록 설정하는데, 쉬운 질문에는 과도한 자원을 쓰고 어려운 질문에는 부족한 자원을 쓰게 되는 문제가 발생합니다. 저자들은 인간이 이해할 수 있는 지표(질문의 난이도, 모델의 자신감 등)를 활용하여 질문마다 필요한 컴퓨팅 자원을 유연하게 결정하는 &#x27;퍼지 컨트롤러&#x27;를 도입했습니다. 이를 통해 모델은 어려운 문제에는 더 많은 사고력을 집중하고, 쉬운 문제에는 최소한의 자원만 사용하여 효율적이고 합리적인 추론이 가능해졌습니다.
+
+🎯 배경 및 문제점
+* **자원 낭비:** 질문의 난이도와 상관없이 고정된 샘플링 예산을 적용하면 쉬운 질문에는 연산 낭비가, 어려운 질문에는 성능 부족이 발생합니다.
+* **불투명성:** 고정 예산 방식은 특정 질문에 왜 그만큼의 자원이 할당되었는지 설명하지 못하며, 기존의 블랙박스 정책 모델들은 자원 할당의 근거를 감사하기 어렵습니다.
+* **해석 가능성 결여:** 실제 배포 환경에서는 컴퓨팅 자원의 효율적 사용뿐만 아니라, 모델이 왜 그런 결정을 내렸는지 이해할 수 있는 투명성이 필수적입니다.
+
+💡 핵심 기술 및 아키텍처
+* **퍼지 컨트롤러(Fuzzy Controller):** 질문의 복잡도, 모델의 자신감, 엔트로피, 예상 답변 길이 등 사람이 해석 가능한 신호를 입력받아 최적의 샘플링 개수를 결정합니다.
+* **적응형 예산 할당:** 컨트롤러가 연속적인 값을 산출하면 이를 정수 단위의 샘플링 횟수로 변환합니다.
+* **신호 기반 판단:** 복잡도가 높거나 모델의 자신감이 낮은 경우 더 많은 샘플을, 반대인 경우 적은 샘플을 할당하여 자원 배분의 효율을 극대화합니다.
+
+📊 실험 결과 분석
+* **성능 및 효율성:** 제안된 방식은 고정 예산 방식 대비 평균 샘플링 횟수를 줄이면서도, 전체 예산을 사용한 방식에 근접한 정확도를 달성했습니다.
+* **작업별 차이:** 모델은 작업의 특성에 따라 다르게 반응했습니다. 예를 들어, MATH 데이터셋에서는 평균보다 적은 샘플을 사용하도록 제어하는 경향을 보인 반면, GSM8K에서는 더 많은 샘플을 유지하며 보수적으로 자원을 할당했습니다.
+* **수치적 근거:** 실험 결과에서 사용된 구체적인 정확도 수치는 논문 발췌본 내에 명시되어 있지 않으나, 저자들은 이 방식이 표준 베이스라인보다 성능이 우수함을 확인했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **효율적인 모델 운영:** 클라우드 환경이나 엣지 디바이스에서 제한된 연산 자원을 가진 LLM을 운영할 때, 성능 저하 없이 추론 비용을 절감하는 전략으로 활용될 수 있습니다.
+* **신뢰할 수 있는 AI:** 모델이 특정 질문에 더 많은 연산을 투입한 이유를 인간이 이해할 수 있는 지표로 설명할 수 있어, 안전 검토 및 디버깅 과정에서 모델의 투명성을 크게 높일 수 있습니다.
+* **실무적 제언:** 단순히 샘플링 횟수를 늘리는 것보다, 적절한 샘플을 생성하고 이를 검증(선택)하는 전략을 분리하는 것이 중요함을 시사합니다. 향후 더 고도화된 검증기나 학습된 순위 결정 모델과 결합하여 발전시킬 수 있습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Small RL Controller, Large Language Model: RL-Guided Adaptive Sampling for Test-Time Scaling](https://arxiv.org/html/2606.03102)
+&gt; - [Scaling LLM Test-Time Compute Optimally can be More Effective than Scaling Model Parameters](https://arxiv.org/html/2408.03314v1)
+&gt; - [GitHub - Dereck0602/Awesome_Test_Time_LLMs · GitHub](https://github.com/dereck0602/awesome_test_time_llms)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;퍼지 컨트롤러를 도입해 해석 가능성을 확보했다는 점은 흥미롭지만, 실제 프로덕션 환경에서의 오버헤드는 고려했나? 컨트롤러 자체가 또 하나의 병목이 될 텐데, 연산 효율을 논하기 전에 추론 레이턴시에 미치는 영향부터 정량적으로 입증해야 할 논문이군.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 레이턴시가 문제긴 하죠. 근데 실무에선 클라우드 비용이 곧 생존이라, 추론 횟수 최적화는 매우 매력적입니다. 특히 엣지 디바이스 배포 시에 이 퍼지 로직을 경량화해서 태우면, 고정 예산보다 유연한 자원 배분이 가능해서 도입 가치가 충분해 보입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;다들 너무 보수적이신 거 아니에요? 요즘 Test-time scaling이 대세인데, &#x27;왜&#x27; 자원을 더 썼는지 인간이 이해 가능한 지표로 설명한다는 건 &#x27;Explainable AI&#x27; 측면에서 엄청난 강점이라고요! 저라면 이 컨트롤러를 강화학습(RL) 기반으로 고도화해서 더 정교하게 튜닝해보겠어요. 교수님, 이거 제 다음 학기 연구 주제로 어떨까요?&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
