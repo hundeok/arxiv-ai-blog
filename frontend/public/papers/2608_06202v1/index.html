@@ -1,0 +1,72 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>현재의 AI 벤치마크가 측정하지 못하는 것들: 양식, 검색, 인용 및 (안전성 평가를 위한) 함의 | ArXiv Translator AI</title><meta name="description" content="현재의 AI 벤치마크가 측정하지 못하는 것들: 양식, 검색, 인용 및 (안전성 평가를 위한) 함의"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_06202v1"><meta property="og:type" content="article"><meta property="og:title" content="현재의 AI 벤치마크가 측정하지 못하는 것들: 양식, 검색, 인용 및 (안전성 평가를 위한) 함의"><meta property="og:description" content="현재의 AI 벤치마크가 측정하지 못하는 것들: 양식, 검색, 인용 및 (안전성 평가를 위한) 함의"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_06202v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="현재의 AI 벤치마크가 측정하지 못하는 것들: 양식, 검색, 인용 및 (안전성 평가를 위한) 함의"><meta name="twitter:description" content="현재의 AI 벤치마크가 측정하지 못하는 것들: 양식, 검색, 인용 및 (안전성 평가를 위한) 함의"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_06202v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "현재의 AI 벤치마크가 측정하지 못하는 것들: 양식, 검색, 인용 및 (안전성 평가를 위한) 함의", "description": "현재의 AI 벤치마크가 측정하지 못하는 것들: 양식, 검색, 인용 및 (안전성 평가를 위한) 함의", "datePublished": "2026-08-06", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_06202v1", "author": [{"@type": "Person", "name": "Ro Encarnación"}, {"@type": "Person", "name": "Tina Behzad"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_06202v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_06202v1"});gtag('event', 'paper_view', {"paper_id": "2608_06202v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>현재의 AI 벤치마크가 측정하지 못하는 것들: 양식, 검색, 인용 및 (안전성 평가를 위한) 함의</h1><p>현재의 AI 벤치마크가 측정하지 못하는 것들: 양식, 검색, 인용 및 (안전성 평가를 위한) 함의</p><pre>현재의 AI 벤치마크가 측정하지 못하는 것들: 양식, 검색, 인용 및 (안전성 평가를 위한) 함의
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** What Current AI Benchmarks Leave Unmeasured: Modality, Search, Citations, and Implications (for Safety Evaluations)
+&gt; - **저자:** Ro Encarnación, Tina Behzad, Emma Lurie, Danaé Metaxa
+&gt; - **발행일:** 2026-08-06
+&gt; - **PDF 링크:** [What Current AI Benchmarks Leave Unmeasured: Modality, Search, Citations, and Implications (for Safety Evaluations)](https://arxiv.org/pdf/2608.06202v1)
+
+
+✨ 3줄 핵심 요약
+- 현재의 AI 안전성 평가는 주로 API를 통한 단일 방식에 의존하며, 모델이 실제 서비스 환경에서 보이는 행동의 다양성을 충분히 반영하지 못합니다.
+- 동일한 모델이라도 접근 방식(API vs 채팅 UI)과 웹 검색 활성화 여부에 따라 답변의 정확도, 일관성, 인용 방식이 크게 달라집니다.
+- 단순 정확도 지표만으로는 모델의 실제 안전성을 담보할 수 없으므로, 평가 체계에 검색 조건과 실행 환경에 따른 행동 변화를 체계적으로 반영해야 합니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+AI 모델의 성능을 평가할 때 보통 개발자용 API를 사용해 한 번만 질문하고 그 결과를 점수로 매깁니다. 하지만 실제 사용자가 쓰는 &#x27;채팅 서비스&#x27;는 이와 다릅니다. 검색 기능을 켰다 껐다 할 수도 있고, 같은 질문에도 매번 답변이 조금씩 바뀔 수 있죠. 연구진이 확인해 본 결과, API와 채팅 UI는 완전히 다른 행동을 보였습니다. 특히 웹 검색을 켰을 때 정확도가 오히려 최대 8% 포인트 떨어지거나, 일관성이 널뛰는 현상이 나타났습니다. 이는 지금의 시험 방식이 실제 사용 환경의 복잡성을 제대로 담아내지 못하고 있다는 신호입니다.
+
+🎯 배경 및 문제점
+대부분의 AI 안전성 평가는 다음 세 가지 가정을 전제로 합니다.
+1. API 결과가 실제 서비스(채팅 UI 등) 사용자의 경험을 대표한다.
+2. 질문당 한 번의 답변만으로도 모델의 행동을 충분히 알 수 있다.
+3. 평균 정확도가 비슷하면 모델의 전반적인 행동도 비슷할 것이다.
+연구진은 이러한 가정이 실제 모델의 배치 환경과 거리가 멀며, 모델이 답변을 생성하는 과정의 일관성이나 인용 출처 등의 중요한 안전성 지표를 간과하고 있다고 지적합니다.
+
+💡 핵심 기술 및 아키텍처
+연구진은 BBQ와 SafetyBench라는 두 가지 유명 벤치마크에서 401개의 질문을 추출해 총 4,812개의 답변을 수집했습니다.
+- **비교 대상:** ChatGPT의 API와 채팅 UI.
+- **변인:** 웹 검색 기능 활성화 여부.
+- **측정 항목:** 답변의 정확도, 반복 실행 시의 일관성(Consistency), 텍스트 유사도, 인용 근거(Citation Grounding), 거부 행동 등.
+
+📊 실험 결과 분석
+- **정확도 변화:** 웹 검색 기능을 활성화하면 정확도가 최대 8% 포인트까지 감소하는 사례가 확인되었습니다.
+- **일관성 문제:** 같은 질문을 반복해도 최대 21%의 확률로 다른 답변이 나왔습니다. API와 채팅 UI 간의 답변 불일치는 동일 인터페이스 내에서 발생하는 변동성보다 1.14~1.30배 더 컸습니다.
+- **검색의 영향:** 검색 활성화가 모델의 답변 일관성에 가장 큰 영향을 미치는 요인이었으며, 벤치마크 종류에 따라 검색이 정확도나 일관성을 개선하기도, 오히려 악화시키기도 했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+이번 연구는 AI 안전성 평가가 단순히 &#x27;정확도 점수&#x27;에만 매몰되어서는 안 된다는 점을 강력히 시사합니다.
+- **정책 및 표준:** AI 모델 배포 시 규제 당국과 기업은 단순 API 성능 시험을 넘어, 실제 사용자 인터페이스와 검색 기능이 연결된 상태에서의 &#x27;실제 행동&#x27;을 함께 평가해야 합니다.
+- **개발 실무:** 모델 개발자는 인터페이스 종류나 검색 도구에 따른 모델의 편차를 줄이기 위한 보정 작업을 수행해야 합니다.
+- **한계점:** 본 연구는 특정 시점의 데이터에 기반하며, 모델 업데이트나 벤치마크 외의 도메인으로 결과가 확장될 수 있으므로 향후 더 폭넓은 종단 연구가 필요합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [How should AI Safety Benchmarks Benchmark Safety?](https://arxiv.org/html/2601.23112v1)
+&gt; - [AISafetyBenchExplorer: A Metric-Aware Catalogue of AI Safety Benchmarks Reveals Fragmented Measurement and Weak Benchmark Governance](https://arxiv.org/html/2604.12875v1)
+&gt; - [AI Benchmarks 2026: Top Evaluations and Their Limits](https://kili-technology.com/blog/ai-benchmarks-guide-the-top-evaluations-in-2026-and-why-theyre-not-enough)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;학계에서 그동안 API 기반의 정적인 벤치마크에만 매몰되어 &#x27;생태적 타당성&#x27;을 간과해온 것은 뼈아픈 실책입니다. 특히 검색 활성화 시 정확도가 8% 하락한다는 결과는, 우리가 모델의 추론 능력만을 평가했지, 그 뒤에 숨겨진 도구 사용(Tool-use)의 불안정성을 전혀 통제하지 못하고 있음을 방증합니다. 방법론적 엄밀함이 결여된 안전성 평가가 과연 무슨 의미가 있는지 다시 고민해봐야겠군요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로입니다. 사실 실무에서는 API 서빙과 실제 채팅 UI 서비스 간의 시스템 프롬프트나 인프라 레이어 차이 때문에 발생하는 &#x27;환경적 편향&#x27;이 매번 골칫거리였거든요. 특히 검색 엔진 API를 태우는 순간 RAG 파이프라인에서 환각이 튀는 건데, 이걸 단순히 모델 탓으로 돌리느냐, 시스템 탓으로 돌리느냐로 사내에서 매일 싸움입니다. 벤치마크 점수 올리기에만 급급한 경영진들이 이 논문을 꼭 읽어봤으면 좋겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 1.14~1.3배의 인터페이스 간 불일치라니... 진짜 충격적이네요! 다들 최신 SOTA 모델 점수 올리려고 데이터셋 튜닝에만 목숨 거는데, 정작 사용자는 검색 켰다 껐다 하면서 롤러코스터를 타고 있었던 거잖아요? 이거 왠지 조만간 &#x27;인터페이스 인식형 벤치마크&#x27; 같은 게 CVPR이나 NeurIPS 핫한 워크숍 주제로 바로 올라올 것 같은데... 누가 먼저 선점하느냐 싸움이겠는데요?&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
