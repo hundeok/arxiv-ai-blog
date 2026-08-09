@@ -1,0 +1,73 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>에이전트 대 에이전트: 자동화된 프롬프트 주입 레드 티밍을 위한 에이전트 시스템 | ArXiv Translator AI</title><meta name="description" content="에이전트 대 에이전트: 자동화된 프롬프트 주입 레드 티밍을 위한 에이전트 시스템"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_05108v1"><meta property="og:type" content="article"><meta property="og:title" content="에이전트 대 에이전트: 자동화된 프롬프트 주입 레드 티밍을 위한 에이전트 시스템"><meta property="og:description" content="에이전트 대 에이전트: 자동화된 프롬프트 주입 레드 티밍을 위한 에이전트 시스템"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_05108v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="에이전트 대 에이전트: 자동화된 프롬프트 주입 레드 티밍을 위한 에이전트 시스템"><meta name="twitter:description" content="에이전트 대 에이전트: 자동화된 프롬프트 주입 레드 티밍을 위한 에이전트 시스템"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_05108v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "에이전트 대 에이전트: 자동화된 프롬프트 주입 레드 티밍을 위한 에이전트 시스템", "description": "에이전트 대 에이전트: 자동화된 프롬프트 주입 레드 티밍을 위한 에이전트 시스템", "datePublished": "2026-08-05", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_05108v1", "author": [{"@type": "Person", "name": "Yanting Wang"}, {"@type": "Person", "name": "Chenlong Yin"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_05108v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_05108v1"});gtag('event', 'paper_view', {"paper_id": "2608_05108v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>에이전트 대 에이전트: 자동화된 프롬프트 주입 레드 티밍을 위한 에이전트 시스템</h1><p>에이전트 대 에이전트: 자동화된 프롬프트 주입 레드 티밍을 위한 에이전트 시스템</p><pre>에이전트 대 에이전트: 자동화된 프롬프트 주입 레드 티밍을 위한 에이전트 시스템
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Agent Against Agent: An Agentic System for Automatic Prompt Injection Red Teaming
+&gt; - **저자:** Yanting Wang, Chenlong Yin, Runpeng Geng, Jinyuan Jia
+&gt; - **발행일:** 2026-08-05
+&gt; - **PDF 링크:** [Agent Against Agent: An Agentic System for Automatic Prompt Injection Red Teaming](https://arxiv.org/pdf/2608.05108v1)
+
+
+✨ 3줄 핵심 요약
+- **PIMiner**는 프롬프트 주입 공격을 자동으로 수행하여 LLM 에이전트의 보안 취약점을 평가하는 에이전트 시스템입니다.
+- 기존 강화학습 기반 모델과 달리, 공격 전략 라이브러리를 학습하여 새로운 대상 모델에도 별도 재학습 없이 즉시 적용 가능한 높은 범용성을 가집니다.
+- 대상 에이전트당 약 10번의 쿼리만으로 공격이 가능하며, 최신 LLM(Gemini-2.5-Pro 등)을 상대로 높은 공격 성공률(ASR)을 기록했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+최근 외부 도구를 자유롭게 다루는 AI 에이전트들이 많아지면서, 악성 명령을 숨겨 에이전트의 행동을 조종하는 &#x27;프롬프트 주입 공격&#x27;이 큰 위협이 되고 있습니다. 기존의 공격 방식은 특정 모델 하나를 뚫기 위해 수만 번의 반복 학습이 필요하거나, 학습한 모델을 다른 곳에 적용하기 어려웠습니다. **PIMiner**는 공격 경험을 &#x27;전략 라이브러리&#x27;라는 도서관 형태로 저장합니다. 공격을 수행할 때, 상황에 맞는 최적의 전략을 선택하여 적용하므로 새로운 대상 모델을 만나도 효율적으로 취약점을 찾아낼 수 있습니다.
+
+🎯 배경 및 문제점
+- **보안 위협:** AI 에이전트가 웹페이지나 도구 출력값 등 신뢰할 수 없는 데이터로부터 악성 명령을 받아 오작동할 위험이 큼.
+- **기존 방식의 한계:** 
+    - **강화학습(RL) 기반:** 학습에 수만 번의 쿼리가 필요하고, 새로운 대상 모델에 대한 전이 성능(범용성)이 낮음.
+    - **탐색 기반:** 별도 학습은 없으나 공격 효율성이 강화학습 방식에 비해 현저히 낮음.
+- **목표:** 적은 비용과 쿼리로 최첨단 LLM의 내재적 견고성을 효율적으로 평가하는 자동화된 레드 티밍 기술 개발.
+
+💡 핵심 기술 및 아키텍처
+- **전략 라이브러리:** 성공한 공격 경험을 구조화된 마크다운 문서로 저장하여 재사용 가능한 지식으로 구축.
+- **라우터 에이전트:** 대상 모델, 작업 유형, 공격 목표를 분석하여 라이브러리에서 가장 적합한 전략 3가지를 우선순위별로 선정.
+- **공격자 및 다이제스터 에이전트:** 선정된 전략을 바탕으로 실제 공격을 실행하고, 결과를 분석하여 라이브러리를 지속적으로 업데이트.
+- **전이 가능성:** 학습된 전략을 새로운 모델에 즉시 적용할 수 있어 추가 학습 비용 절감.
+
+📊 실험 결과 분석
+IPIArena와 AgentDojo 환경에서 검증한 결과, **Gemini-2.5-Pro, GPT-5.1, Claude-Sonnet-4.5** 등 다양한 고성능 모델을 상대로 높은 공격 성공률(ASR)을 보였습니다.
+
+- **IPIArena 기준:** Gemini-2.5-Pro(76.2%), GPT-5.1(61.9%), Claude-Sonnet-4.5(42.9%)
+- **AgentDojo 기준:** Gemini-2.5-Pro(86.7%), GPT-5.1(53.3%), Claude-Sonnet-4.5(40.0%)
+- **효율성:** 테스트당 대상 에이전트에게 10번의 쿼리만 사용하여 기존 수만 번의 쿼리가 필요하던 RL 방식 대비 압도적인 효율을 입증함.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+- **보안 평가 자동화:** 기업들은 자사 에이전트 모델을 배포하기 전, PIMiner를 통해 시스템의 취약점을 선제적으로 진단하고 견고성을 높일 수 있습니다.
+- **학습 데이터 확보:** 성공적인 공격 사례를 수집하여 이를 가드레일 모델을 미세 조정(Fine-tuning)하거나 백본 LLM을 정렬(Alignment)하는 데 활용함으로써 전체적인 AI 보안 수준을 향상할 수 있습니다.
+- **비용 절감:** 공격 모델을 매번 새로 학습시키는 비용(기존 대비 약 100달러 이상 절감 가능)을 획기적으로 줄여 실무적 적용 가능성을 높였습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Paper page - Agent Against Agent: An Agentic System for Automatic Prompt Injection Red Teaming](https://huggingface.co/papers/2608.05108)
+&gt; - [Agent Against Agent: An Agentic System for Automatic Prompt Injection ...](https://papers.fzhiy.net/papers/2608-05108.html)
+&gt; - [Agent Against Agent: An Agentic System for Automatic Prompt...](https://arxiv.org/pdf/2608.05108)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문에서 제안한 &#x27;전략 라이브러리&#x27;의 범용성은 흥미롭지만, 과연 이것이 진정한 의미의 &#x27;강건성 평가&#x27;인지 의문이 드는군요. 10번의 쿼리로 뚫린다는 건 해당 모델들이 이미 알려진 공격 패턴에 취약하다는 뜻이지, 새로운 취약점을 발견한 게 아닐 수도 있습니다. 방법론의 신규성에 비해 평가 데이터셋의 편향성 검증이 부족해 보입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 일리는 있지만, 실무에서는 &#x27;이론적 완벽함&#x27;보다 &#x27;비용 효율성&#x27;이 깡패입니다. 기존 RL 방식은 학습 비용 때문에 매번 돌리기 부담스러웠는데, 이건 그냥 파이프라인에 붙여서 CI/CD 단계에서 취약점 스캔하듯 돌릴 수 있겠네요. 당장 우리 팀 다음 스프린트 때 프로덕션 배포 전용 가드레일 테스트용으로 도입해봐야겠습니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 10번의 쿼리로 Gemini 2.5를 털어버린다고요? 역시 요즘은 &#x27;모델 학습&#x27;보다 &#x27;에이전트 워크플로우 설계&#x27;가 핵심이네요. 다들 PIMiner 파이프라인 뜯어서 나만의 &#x27;공격 에이전트&#x27; 커스텀 라이브러리 만들기 시작할 듯. 이거 오픈소스 풀리면 내일 바로 깃허브 트렌딩 1위 찍겠는데요? 교수님, 저 이거 랩 세미나 발제 주제로 잡아도 될까요?&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
