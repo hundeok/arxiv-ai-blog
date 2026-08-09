@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>칩렛 및 대규모 언어 모델 시대의 하드웨어 설계와 보안 | ArXiv Translator AI</title><meta name="description" content="칩렛 및 대규모 언어 모델 시대의 하드웨어 설계와 보안"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_05063v1"><meta property="og:type" content="article"><meta property="og:title" content="칩렛 및 대규모 언어 모델 시대의 하드웨어 설계와 보안"><meta property="og:description" content="칩렛 및 대규모 언어 모델 시대의 하드웨어 설계와 보안"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_05063v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="칩렛 및 대규모 언어 모델 시대의 하드웨어 설계와 보안"><meta name="twitter:description" content="칩렛 및 대규모 언어 모델 시대의 하드웨어 설계와 보안"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_05063v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "칩렛 및 대규모 언어 모델 시대의 하드웨어 설계와 보안", "description": "칩렛 및 대규모 언어 모델 시대의 하드웨어 설계와 보안", "datePublished": "2026-08-05", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_05063v1", "author": [{"@type": "Person", "name": "Johann Knechtel"}, {"@type": "Person", "name": "Ozgur Sinanoglu"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_05063v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_05063v1"});gtag('event', 'paper_view', {"paper_id": "2608_05063v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>칩렛 및 대규모 언어 모델 시대의 하드웨어 설계와 보안</h1><p>칩렛 및 대규모 언어 모델 시대의 하드웨어 설계와 보안</p><pre>칩렛 및 대규모 언어 모델 시대의 하드웨어 설계와 보안
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Hardware Design and Security in the Era of Chiplets and LLMs
+&gt; - **저자:** Johann Knechtel, Ozgur Sinanoglu, Paul V. Gratz, Ramesh Karri
+&gt; - **발행일:** 2026-08-05
+&gt; - **PDF 링크:** [Hardware Design and Security in the Era of Chiplets and LLMs](https://arxiv.org/pdf/2608.05063v1)
+
+
+✨ 3줄 핵심 요약
+*   반도체 산업의 칩렛(Chiplet) 구조와 LLM 기반 설계 자동화(EDA) 도입은 효율성을 높이지만, 동시에 하드웨어의 공격 표면을 크게 확장시킵니다.
+*   칩렛 시스템의 보안을 위해 능동형 인터포저 기반의 물리적 격리된 신뢰점(Root of Trust, RoT)과 런타임 모니터링 기술이 필수적입니다.
+*   LLM을 하드웨어 보안 강화에 활용할 수 있으나, 현재는 다중 공급망과 복잡한 칩렛 구조를 이해하는 도메인 특화 보안 에이전트 연구가 부족한 실정입니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+최근 반도체 업계는 여러 제조사의 칩을 하나로 묶는 &#x27;칩렛&#x27; 방식과 AI(LLM)를 이용한 설계 자동화 도구를 적극 도입하고 있습니다. 이 변화는 생산성을 비약적으로 높이지만, 보안 측면에서는 구멍이 생길 수 있습니다. 신뢰할 수 없는 제조사에서 만든 칩이 섞일 수 있고, AI가 설계한 회로에 악성 코드가 숨겨질 위험이 있기 때문입니다. 이 논문은 물리적으로 안전한 통로(인터포저)를 통해 칩렛 간의 보안을 강화하고, AI 기반의 설계 도구를 똑똑하게 방어 및 활용하는 종합적인 보안 로드맵을 제시합니다.
+
+🎯 배경 및 문제점
+*   **칩렛 공급망의 불확실성:** 여러 공급업체로부터 칩렛을 조달함에 따라, 신뢰할 수 없는 파운드리나 설계 단계에서 보안 위협이 발생할 가능성이 커졌습니다.
+*   **상호연결(Interconnect)의 취약성:** 공유 메모리와 통신망은 다양한 칩이 접근하는 지점으로, 시스템 전체를 위협할 수 있는 공격 표면이 됩니다.
+*   **LLM 기반 EDA의 위험:** LLM이 설계 과정에 도입되면서 설계 자산(IP) 유출, 백도어 삽입, 데이터 오염 등의 새로운 위험이 발생하고 있습니다.
+
+💡 핵심 기술 및 아키텍처
+*   **2.5D 물리적 신뢰점(RoT):** 신뢰할 수 있는 시설에서 제작된 &#x27;능동형 인터포저&#x27;를 사용하여 칩렛 간 통신을 제어하고, 물리적으로 안전한 격리 환경을 구축합니다.
+*   **TRANSMON (트랜잭션 모니터):** 칩렛과 통신망 사이에 위치하여 접근 제어, 데이터 마스킹, 메모리 무결성 검증을 수행하는 하드웨어 장치입니다.
+*   **CMC (일관성 메시지 체커):** 통신 프로토콜 수준의 악용을 막기 위해, 악의적인 메시지를 감지하거나 차단하여 민감한 정보의 유출을 방지합니다.
+
+📊 실험 결과 분석
+*   **TrojanLoC:** RTL 전용 트랜스포머 모델을 활용하여 트로이 목마 탐지 시 99%의 F1-score를 기록했습니다.
+*   **NetDeTox 및 TrojanGYM:** 공격-방어 에이전트 루프를 통해 레드팀(공격 시뮬레이션)을 수행한 결과, 기존의 GNN 기반 탐지 기법을 83~90% 확률로 회피할 수 있음을 보여 방어의 취약점을 입증했습니다.
+*   **VeriCWEty:** Verilog 튜닝 디코더를 사용하여 하드웨어 취약점 식별 시 89%의 정밀도와 96%의 위치 파악 정확도를 보였습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+*   **차세대 하드웨어 보안 모델:** 복잡한 이기종 시스템(칩렛)의 설계 단계부터 보안을 내재화(Secure-by-construction)하는 방향을 제시합니다.
+*   **LLM 기반 보안 협업:** AI가 단순 설계를 넘어 보안 정책 생성 및 취약점 분석 등 하드웨어 보안 강화의 핵심 도구로 자리매김할 가능성을 열었습니다.
+*   **실무적 과제:** 다중 공급망 환경에서 서로 다른 칩이 안전하게 통신할 수 있도록, AI 에이전트가 시스템 전체의 보안 제약 조건을 이해하고 물리적 보안 메커니즘을 자동 설정하는 통합 기술 구현이 요구됩니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Hardware Design and Security in the Era of Chiplets and LLMs](https://arxiv.org/html/2608.05063)
+&gt; - [Hardware Design and Security in the Era of Chiplets and LLMs](https://arxiv.org/pdf/2608.05063)
+&gt; - [Hardware Design and Security in the Era of Chiplets and LLMs](https://arxiv.org/abs/2608.05063)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;이 논문에서 제시한 능동형 인터포저 기반 RoT는 학술적으로는 훌륭하나, 실제 양산 단계에서의 신뢰성(Reliability)과 수율(Yield) 문제를 간과하고 있습니다. 특히 칩렛 간 상호연결부의 복잡한 물리적 제약 조건을 고려할 때, 제안된 런타임 모니터링이 오버헤드 없이 실시간 성능을 보장할 수 있을지 의문이 드는군요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에선 오버헤드가 쥐약이죠. 하지만 &#x27;TrojanLoC&#x27;의 F1-score 99%는 꽤 고무적입니다. 현재 우리 팀도 EDA 툴체인에 LLM을 붙여서 RTL 검증 자동화를 시도 중인데, 공급망 오염 문제는 정말 골치 아픈 이슈거든요. 다만, 논문에서 말하는 &#x27;보안 에이전트&#x27;가 실제 복잡한 IP 블록들의 상호작용까지 꿰뚫어 볼 수 있을지는 좀 더 검증이 필요해 보입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;선배님, 이미 학계에선 이 논문 나오자마자 &#x27;VeriCWEty&#x27; 튜닝하는 레포지토리들 쏟아져 나오고 있어요! 레드팀 에이전트가 기존 GNN 방어 기법을 90% 확률로 뚫어버린다는 결과가 충격적인데, 이제 하드웨어 보안도 LLM으로 뚫고 LLM으로 막는 &#x27;AI 포커 게임&#x27;이 되겠네요. 저도 바로 관련 프로젝트 하나 갈아엎고 이쪽 테마로 다시 잡아야겠는데요?&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
