@@ -1,0 +1,64 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>다중 모달 사전 학습의 물리학: 지식 흐름, 모달리티 시너지, 조기 통합 및 레시피 | ArXiv Translator AI</title><meta name="description" content="다중 모달 사전 학습의 물리학: 지식 흐름, 모달리티 시너지, 조기 통합 및 레시피"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_05000v1"><meta property="og:type" content="article"><meta property="og:title" content="다중 모달 사전 학습의 물리학: 지식 흐름, 모달리티 시너지, 조기 통합 및 레시피"><meta property="og:description" content="다중 모달 사전 학습의 물리학: 지식 흐름, 모달리티 시너지, 조기 통합 및 레시피"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_05000v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="다중 모달 사전 학습의 물리학: 지식 흐름, 모달리티 시너지, 조기 통합 및 레시피"><meta name="twitter:description" content="다중 모달 사전 학습의 물리학: 지식 흐름, 모달리티 시너지, 조기 통합 및 레시피"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_05000v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "다중 모달 사전 학습의 물리학: 지식 흐름, 모달리티 시너지, 조기 통합 및 레시피", "description": "다중 모달 사전 학습의 물리학: 지식 흐름, 모달리티 시너지, 조기 통합 및 레시피", "datePublished": "2026-08-05", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_05000v1", "author": [{"@type": "Person", "name": "Junlin Han"}, {"@type": "Person", "name": "Shengbang Tong"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_05000v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_05000v1"});gtag('event', 'paper_view', {"paper_id": "2608_05000v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>다중 모달 사전 학습의 물리학: 지식 흐름, 모달리티 시너지, 조기 통합 및 레시피</h1><p>다중 모달 사전 학습의 물리학: 지식 흐름, 모달리티 시너지, 조기 통합 및 레시피</p><pre>다중 모달 사전 학습의 물리학: 지식 흐름, 모달리티 시너지, 조기 통합 및 레시피
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Towards Physics of Multimodal Pretraining: Knowledge Flow, Modality Synergy, Early Unification, and Recipes
+&gt; - **저자:** Junlin Han, Shengbang Tong, David Fan, Minghao Chen, Philip Torr, Filippos Kokkinos, Mike Lewis
+&gt; - **발행일:** 2026-08-05
+&gt; - **PDF 링크:** [Towards Physics of Multimodal Pretraining: Knowledge Flow, Modality Synergy, Early Unification, and Recipes](https://arxiv.org/pdf/2608.05000v1)
+
+
+✨ 3줄 핵심 요약
+- 다중 모달 모델 학습 시 언어와 시각적 이해는 시각적 생성을 돕는 강력한 사전 지식(Prior)으로 작용하며, 이 지식 전달은 비대칭적으로 일어납니다.
+- 모달리티 간 시너지를 극대화하려면 초기부터 통합 학습을 수행해야 하며, 이를 지연할 경우 모델의 시각적 능력이 저하되는 &#x27;비전 게으름(vision laziness)&#x27; 현상이 발생합니다.
+- 공통 어텐션과 정규화 레이어를 공유하되 피드포워드 레이어(FFN)를 모달리티별로 분리하면 모델 성능과 학습 효율을 크게 높일 수 있습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+멀티모달 AI(언어, 이미지 이해, 이미지 생성)를 어떻게 학습시켜야 가장 똑똑한 모델이 나올까요? 본 논문은 모델 학습의 &#x27;물리학&#x27;을 탐구하여, 언어와 비전 능력을 따로 학습시키고 나중에 합치는 것보다 **처음부터 함께(Jointly) 학습시키는 것이 압도적으로 유리하다**는 점을 밝혔습니다. 특히 언어 지식을 먼저 주입하고 비전을 나중에 합치면, 모델이 비전 정보를 제대로 학습하지 못하고 언어적 편향에만 의존하는 &#x27;비전 게으름&#x27;에 빠진다는 사실을 확인했습니다. 저자들은 이러한 원리를 바탕으로 계산 자원을 5%만 사용하고도 강력한 성능을 내는 효율적인 학습 레시피를 제시했습니다.
+
+🎯 배경 및 문제점
+기존 연구들은 멀티모달 모델을 학습시킬 때 각 모달리티가 어떻게 상호작용하는지에 대한 근본적인 메커니즘을 충분히 탐구하지 못했습니다. 특히 시각적 이해와 생성을 언어 모델과 통합하는 과정에서 데이터의 복잡성이나 학습 순서가 모델 성능에 어떤 영향을 미치는지 명확히 규명되지 않아, 효율적인 사전 학습 전략이 부족한 상황이었습니다.
+
+💡 핵심 기술 및 아키텍처
+- **지식 흐름 분석**: 언어 및 시각적 이해 능력이 시각적 생성으로 지식을 전달하는 비대칭적 패턴을 확인했습니다.
+- **아키텍처 설계**: 모달리티 간 시너지를 높이기 위해 **공유 어텐션(Shared Attention)**과 **정규화(Normalization)**를 도입했습니다. 동시에 **모달리티별로 분리된 피드포워드 레이어(Modality-specific FFNs)**를 사용하여 각 모달리티 간의 경쟁을 완화했습니다.
+- **조기 통합(Early Unification)**: 학습 초기부터 모든 모달리티를 동시에 학습시키는 전략을 취하여 모달리티 간의 공진화(co-evolution)를 유도했습니다.
+
+📊 실험 결과 분석
+- **비전 게으름**: 순수 언어 학습 단계를 길게 가져갈수록 시각적 이해 및 생성 지표가 일관되게 하락함을 확인했습니다. 
+- **학습 효율**: 13.5B 파라미터 규모의 MoE(Mixture of Experts) 모델을 2T 토큰으로 학습하여 효율성을 입증했습니다. 특히, 제안된 레시피를 통해 전체 컴퓨팅 예산의 5%만으로도 강력한 생성 성능을 달성했습니다.
+- **순차 학습의 한계**: 인간의 언어 습득 과정(비전 선행)을 모방한 순차적 학습(Vision-first)조차 조기 통합 학습 방식보다 성능이 떨어짐을 증명했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+본 연구는 거대 멀티모달 모델을 개발할 때 자원을 낭비하지 않고 성능을 극대화할 수 있는 설계 원칙을 제공합니다. 개발자들은 모델 설계 시 &#x27;어떤 단계에서 데이터를 통합할 것인가&#x27;와 &#x27;어떤 구조로 모달리티 간 간섭을 제어할 것인가&#x27;에 대한 실질적인 가이드를 얻을 수 있습니다. 특히, 대규모 모델 학습 시 컴퓨팅 비용을 대폭 절감하면서도 모달리티 간 정렬을 정교하게 유지해야 하는 산업용 기초 모델(Foundation Model) 구축에 핵심적인 지침이 될 것으로 기대됩니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2608.05000 Towards Physics of Multimodal Pretraining: Knowledge Flow, Modality Synergy, Early Unification, and Recipes](https://arxiv.org/abs/2608.05000)
+&gt; - [Towards Physics of Multimodal Pretraining: Knowledge Flow, Modality Synergy, Early Unification, and Recipes](https://arxiv.org/html/2608.05000)
+&gt; - [Discover, Discuss, and Read arXiv papers](https://www.alphaxiv.org/?organizations=LAION+e.V.)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;이 논문은 &#x27;비전 게으름(vision laziness)&#x27;이라는 현상을 체계적으로 규명했다는 점에서 높게 평가할 만하네. 순차적 학습이 왜 비효율적인지, 그리고 조기 통합(Early Unification)이 정보의 엔트로피를 어떻게 최적화하는지 이론적으로 잘 짚었어. 다만, 모달리티별 FFN 분리가 진정한 정렬(alignment)을 저해할 가능성은 없는지 후속 연구가 필요해 보이네.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 맞지만, 실무자 입장에선 &#x27;5% 컴퓨팅 비용 절감&#x27;이라는 지표가 훨씬 매력적이네요. 매번 거대 모델 학습시키느라 GPU 예산 때문에 가슴 졸이는데, FFN 분리 전략은 당장 다음 프로젝트에 벤치마킹해볼 만합니다. 다만, 13.5B 규모를 넘어 100B 단위에서도 이 레시피가 견고하게 작동할지는 미지수라 인프라팀이랑 좀 더 테스트해봐야겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;선배님들, 역시 이론과 실무는 다르군요! 전 이 논문 보고 바로 구현체 뜯어보고 있는데, &#x27;공통 어텐션&#x27; 구조가 진짜 물건입니다. &#x27;비전 게으름&#x27; 해결하려고 비전 인코더 튜닝에 목매던 시절은 이제 끝난 거 아닌가요? 조기 통합 기법 적용해서 이번 세미나 때 SOTA 갱신 발표 준비해야겠네요! 다들 너무 진지하게 분석만 하지 마시고, 일단 돌려봅시다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
