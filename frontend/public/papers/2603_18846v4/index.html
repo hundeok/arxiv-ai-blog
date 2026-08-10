@@ -1,0 +1,69 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>망막 안저 영상을 위한 해석 가능한 파운데이션 모델을 향하여 | ArXiv Translator AI</title><meta name="description" content="망막 안저 영상을 위한 해석 가능한 파운데이션 모델을 향하여"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2603_18846v4"><meta property="og:type" content="article"><meta property="og:title" content="망막 안저 영상을 위한 해석 가능한 파운데이션 모델을 향하여"><meta property="og:description" content="망막 안저 영상을 위한 해석 가능한 파운데이션 모델을 향하여"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2603_18846v4"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="망막 안저 영상을 위한 해석 가능한 파운데이션 모델을 향하여"><meta name="twitter:description" content="망막 안저 영상을 위한 해석 가능한 파운데이션 모델을 향하여"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2603_18846v4");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "망막 안저 영상을 위한 해석 가능한 파운데이션 모델을 향하여", "description": "망막 안저 영상을 위한 해석 가능한 파운데이션 모델을 향하여", "datePublished": "2026-03-19", "url": "https://arxiv-ai-blog.vercel.app/papers/2603_18846v4", "author": [{"@type": "Person", "name": "Samuel Ofosu Mensah"}, {"@type": "Person", "name": "Camila Roa"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2603_18846v4", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2603_18846v4"});gtag('event', 'paper_view', {"paper_id": "2603_18846v4", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>망막 안저 영상을 위한 해석 가능한 파운데이션 모델을 향하여</h1><p>망막 안저 영상을 위한 해석 가능한 파운데이션 모델을 향하여</p><pre>망막 안저 영상을 위한 해석 가능한 파운데이션 모델을 향하여
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Towards Interpretable Foundation Models for Retinal Fundus Images
+&gt; - **저자:** Samuel Ofosu Mensah, Camila Roa, Kerol Djoumessi, Philipp Berens
+&gt; - **발행일:** 2026-03-19
+&gt; - **PDF 링크:** [Towards Interpretable Foundation Models for Retinal Fundus Images](https://arxiv.org/pdf/2603.18846v4)
+
+
+✨ 3줄 핵심 요약
+* **설계부터 해석 가능:** &#x27;BagNet&#x27; 아키텍처를 도입하여 복잡한 사후 해석 기법 없이도 모델의 판단 근거를 직접 시각화합니다.
+* **효율적인 성능:** 3억 개 이상의 파라미터를 가진 기존 모델(RETFound) 대비 약 1/16 수준인 1,830만 개의 파라미터만으로 대등한 성능을 달성했습니다.
+* **직관적인 공간 구조:** 2D 투영 레이어를 통해 임상적으로 유의미한 데이터 클러스터와 오류 상관관계를 학습 단계에서 직접 관찰할 수 있습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+의료 영상 분야의 인공지능은 높은 성능만큼이나 &quot;왜 그런 판단을 내렸는가?&quot;를 설명하는 해석 능력이 매우 중요합니다. 하지만 기존의 거대 파운데이션 모델들은 내부가 복잡한 블랙박스 형태라 사후에 별도의 설명 도구를 덧붙여야 했습니다. 본 논문에서 제안하는 &#x27;Dual-IFM&#x27;은 모델의 구조 자체가 판단 근거(클래스 증거 지도)를 생성하도록 설계되어, 추가적인 해석 도구 없이도 질병과 관련된 병변 부위를 즉각적으로 확인할 수 있습니다. 또한, 거대 모델보다 훨씬 적은 자원으로도 우수한 진단 성능을 보이며 임상 현장에 더 적합한 투명성을 제공합니다.
+
+🎯 배경 및 문제점
+* **해석의 불충실성:** 기존의 사후 해석 방법(Post-hoc attribution)은 모델의 실제 의사결정 과정과 일치하지 않는 경우가 많아 신뢰하기 어렵습니다.
+* **데이터 구조 이해 부족:** 고차원 데이터 공간에서 학습된 표현이 실제 임상적 의미를 담고 있는지, 아니면 데이터의 우연한 상관관계(spurious correlations)를 쫓는 것인지 확인하기 어렵습니다.
+* **비효율적 시각화:** t-SNE 같은 기존 시각화 도구는 새로운 데이터가 추가될 때마다 다시 계산해야 하는 비효율성이 존재합니다.
+
+💡 핵심 기술 및 아키텍처
+* **BagNet 백본:** 작은 수용 영역(receptive field)을 가진 아키텍처를 사용하여 모델이 이미지의 특정 국소 영역에 근거하여 판단을 내리도록 강제했습니다.
+* **내재적 해석(Inherent Interpretability):** 판단 근거가 되는 &#x27;증거 지도(Evidence maps)&#x27;를 모델 추론 과정의 일부로 통합하여 외부 해석 도구 없이도 병변 위치를 시각화합니다.
+* **2D 투영 레이어:** 학습 과정 중 데이터의 표현 공간을 2D로 투영하여, 데이터셋 수준에서 임상적 군집이나 학습 편향을 직접 확인합니다.
+
+📊 실험 결과 분석
+* **성능 대등성:** 약 80만 장의 안저 영상을 학습한 Dual-IFM은 16배 더 큰 모델인 RETFound와 안저 질환 진단 등에서 대등한 성능을 보였습니다.
+* **추론 속도:** RETFound 대비 추론 속도가 더 빠릅니다(배치당 81ms vs 140ms).
+* **해석 정확도:** 모델이 생성한 증거 지도가 실제 질병 관련 병변을 더 정확하게 강조하는 것으로 나타났습니다.
+* **자원 소모:** BagNet의 특성상 파라미터 수는 적지만 메모리 점유율은 상대적으로 높을 수 있다는 점이 지적되었습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **임상 도입:** 진단 결과와 함께 그 근거를 의료진에게 직접 제시할 수 있어, AI 기반 진단 시스템의 신뢰도를 크게 높일 수 있습니다.
+* **데이터 신뢰성 검증:** 모델이 학습한 데이터 구조를 시각화함으로써, 데이터 자체의 편향성이나 잘못된 학습 패턴을 발견하여 수정하는 데 기여할 수 있습니다.
+* **효율적 활용:** 거대 모델보다 적은 파라미터로 높은 성능을 내므로, 하드웨어 자원이 제한적인 환경에서도 고성능 안저 분석 모델을 운용할 수 있는 길을 열었습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Towards Interpretable Foundation Models for Retinal Fundus...](https://arxiv.org/html/2603.18846)
+&gt; - [berenslab/interpretable_FM: Dual-IFM: an interpretable foundation...](https://github.com/berenslab/interpretable_FM)
+&gt; - [Ssl](https://www.catalyzex.com/s/Ssl)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;BagNet을 Foundation Model에 접목하여 내재적 해석력을 확보했다는 점은 학술적으로 높게 평가할 만합니다. 사후 해석 기법의 불충실성 문제를 구조적 설계로 해결하려 한 점은 고무적이나, 과연 수용 영역(receptive field)을 강제로 제한했을 때 고차원적인 병변의 맥락적 정보까지 놓치지 않고 유지할 수 있을지 의문입니다. 단순 국소 지표가 전체적인 진단 정확도와 trade-off를 일으키진 않는지 추가 검증이 필요해 보입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 trade-off가 우려되긴 하지만, 현업 입장에선 1/16 수준의 파라미터로 RETFound 성능을 뽑아낸다는 게 진짜 매력적이네요. 서빙할 때 GPU 비용과 추론 latency가 핵심인데, 81ms 수준이면 온프레미스 의료기기 환경에서도 충분히 돌려볼 만합니다. 다만, BagNet 특성상 메모리 점유율이 튄다고 언급된 부분이 실제 배포 시 병목이 될지 체크해봐야겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;다들 성능이랑 효율만 보시는데, 저는 2D 투영 레이어로 학습 편향을 실시간 모니터링할 수 있다는 점이 제일 대박이라고 생각해요! 데이터셋 오염이나 편향성 잡아내는 게 보통 일이 아닌데, 시각화까지 내재화했다니... 이거 당장 다음 세미나 때 발표 자료로 쓰면 교수님께 칭찬받겠는데요? 바로 깃허브 스타 찍고 코드 뜯어보러 갑니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
