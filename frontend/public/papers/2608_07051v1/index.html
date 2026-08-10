@@ -1,0 +1,66 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>YOLO 계열을 위한 파라미터 효율적 미세 조정: YOLO-PEFT | ArXiv Translator AI</title><meta name="description" content="YOLO 계열을 위한 파라미터 효율적 미세 조정: YOLO-PEFT"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_07051v1"><meta property="og:type" content="article"><meta property="og:title" content="YOLO 계열을 위한 파라미터 효율적 미세 조정: YOLO-PEFT"><meta property="og:description" content="YOLO 계열을 위한 파라미터 효율적 미세 조정: YOLO-PEFT"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_07051v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="YOLO 계열을 위한 파라미터 효율적 미세 조정: YOLO-PEFT"><meta name="twitter:description" content="YOLO 계열을 위한 파라미터 효율적 미세 조정: YOLO-PEFT"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_07051v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "YOLO 계열을 위한 파라미터 효율적 미세 조정: YOLO-PEFT", "description": "YOLO 계열을 위한 파라미터 효율적 미세 조정: YOLO-PEFT", "datePublished": "2026-08-07", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_07051v1", "author": [{"@type": "Person", "name": "Xu Lin"}, {"@type": "Person", "name": "WenJie Nie"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_07051v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_07051v1"});gtag('event', 'paper_view', {"paper_id": "2608_07051v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>YOLO 계열을 위한 파라미터 효율적 미세 조정: YOLO-PEFT</h1><p>YOLO 계열을 위한 파라미터 효율적 미세 조정: YOLO-PEFT</p><pre>YOLO 계열을 위한 파라미터 효율적 미세 조정: YOLO-PEFT
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** YOLO-PEFT: Parameter-Efficient Fine-Tuning on YOLO Family
+&gt; - **저자:** Xu Lin, WenJie Nie, Jinlong Peng, Weifu Fu, YueXiao Ma, Xiawu Zheng, Yong Liu
+&gt; - **발행일:** 2026-08-07
+&gt; - **PDF 링크:** [YOLO-PEFT: Parameter-Efficient Fine-Tuning on YOLO Family](https://arxiv.org/pdf/2608.07051v1)
+
+
+✨ 3줄 핵심 요약
+* 실시간 객체 탐지기(YOLO 등)의 복잡하고 이질적인 구조에 최적화된 새로운 PEFT(파라미터 효율적 미세 조정) 프레임워크인 YOLO-PEFT를 제안합니다.
+* 탐지기 구조를 분석하여 최적의 어댑터 배치 계획을 수립하고, 학습 실패 위험이 높은 경우 사전에 거부(Refuse)하는 자동화된 검증 체계를 갖추었습니다.
+* 기존 전체 미세 조정(Full-SFT) 대비 메모리 효율성을 크게 개선하면서도 탐지 성능(mAP)을 성공적으로 유지하거나 향상했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+기존의 AI 모델 조정 방식(PEFT)은 주로 언어 모델과 같은 단순한 구조에 맞춰져 있어, 복잡한 연산이 섞인 YOLO 같은 객체 탐지기에는 적용 시 성능이 급락하거나 학습이 실패하는 경우가 많습니다. 본 논문에서 제안하는 &#x27;YOLO-PEFT&#x27;는 마치 건축 설계를 하듯 탐지기의 구조를 미리 파악하고, 어디에 어댑터를 넣어야 안전하고 효율적인지를 계획합니다. 만약 모델 구조상 학습 실패가 예상되면 아예 학습을 시작하지 않고 거부함으로써 불필요한 자원 낭비를 방지하며, 실무에서 더 안정적으로 AI 모델을 고도화할 수 있게 돕습니다.
+
+🎯 배경 및 문제점
+기존의 범용 PEFT 기법들은 탐지기가 사용하는 복잡한 합성곱(Convolution), 멀티모달 퓨전, 모듈별 손실 함수(DFL 등)의 특성을 고려하지 않습니다. 이로 인해 무분별한 어댑터 삽입 시 최적화 실패나 mAP(평균 정밀도) 저하가 발생합니다. 또한, 기존 방식은 실제 학습을 진행하기 전까지는 성공 여부를 알 수 없어 시행착오 비용이 크다는 점이 실무 현장의 주요 문제로 지적되었습니다.
+
+💡 핵심 기술 및 아키텍처
+YOLO-PEFT는 다음과 같은 구조적 대응 체계를 갖추고 있습니다.
+* **구조 인식 계획(Structure-aware Planning):** 탐지기 그래프를 해석하여 연산 유효성, 의미론적 적합성, 배포 제약 조건을 검토하는 계획 알고리즘을 사용합니다.
+* **학습 거부(Refuse) 메커니즘:** 사전에 정의된 위험 임계값을 초과하는 위험한 아키텍처-어댑터 조합에 대해서는 학습 전에 즉시 중단 결정을 내려 자원을 보호합니다.
+* **통합 계약(End-to-End Contract):** 학습부터 어댑터 전용 체크포인트 저장, 모델 병합(Merge), 그리고 최종 수출(ONNX/TensorRT)까지의 전체 경로를 안정적으로 보장합니다.
+
+📊 실험 결과 분석
+* **성능 지표:** 공식 VOC07+12 프로토콜 기준, YOLO11s에서 0.7138, YOLO12s에서 0.7307 mAP50-95를 기록하여, 전체 미세 조정(Full-SFT)의 0.6428 및 0.6662 대비 우수한 성능을 보였습니다.
+* **효율성:** YOLO11 모델 대상 실험 결과, LoRA 기법을 통해 전체 미세 조정 대비 최대 학습 메모리 점유율을 43.9% 절감했습니다.
+* **학습 시간:** 메모리 절감 효과가 있는 반면, 전체 미세 조정 대비 학습 시간은 1.72배 더 소요되었습니다.
+* **안정성:** RT-DETR-L 모델과 같은 고위험 환경에서는 모든 실험 구성이 실패 위험 임계값을 넘겼으며, 제안된 시스템이 이를 정확히 식별하여 &#x27;학습 거부&#x27; 결정을 내렸습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+YOLO-PEFT는 반복적인 모델 업데이트가 필요한 산업 현장에서 수동으로 수행되던 시행착오 과정을 자동화된 계획 수립으로 대체합니다. 이는 새로운 도메인, 센서 환경, 하드웨어 백엔드에 맞춘 모델 최적화 비용을 획기적으로 줄여줍니다. 다만, 학습되지 않은 새로운 탐지기 아키텍처에 대한 거부 정확도 검증은 여전히 해결해야 할 과제로 남아 있습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [YOLO-PEFT: Parameter-Efficient Fine-Tuning on YOLO Family](https://huggingface.co/papers/2608.07051)
+&gt; - [What is Parameter-Efficient Fine-Tuning (PEFT)? | Ultralytics](https://www.ultralytics.com/glossary/parameter-efficient-fine-tuning-peft)
+&gt; - [Fine-Tune YOLO26 on a Custom Dataset | Ultralytics Docs](https://docs.ultralytics.com/guides/finetuning-guide)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문의 &#x27;학습 거부(Refuse)&#x27; 메커니즘은 흥미롭지만, 이론적 근거가 다소 경험적인 휴리스틱에 의존하는 느낌이군요. 아키텍처별 위험 임계값을 정량적으로 어떻게 산출했는지에 대한 수학적 정의가 부족합니다. 구조 인식 계획 단계에서 모델 그래프의 토폴로지를 분석한다는데, 이것이 과연 일반화된 아키텍처에서도 견고하게 작동할지 의문입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님, 이론적 완결성도 중요하지만 현업에선 &#x27;학습 돌려놓고 다음 날 아침에 mAP 박살 나서 출근하는 상황&#x27;을 막아준다는 것만으로도 감지덕지입니다. 다만, 학습 시간이 1.7배 늘어난다는 건 좀 치명적이네요. 실험 결과에서 mAP 이득을 얻었으니 망정이지, 훈련 파이프라인이 길어지면 배치 스케줄링할 때 비용 계산이 복잡해질 것 같습니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;다들 너무 진지하신 거 아닌가요? YOLO 계열에 PEFT를 깔끔하게 적용하는 프레임워크가 나왔다는 것 자체가 핫한데! 1.7배 시간? 어차피 GPU 클러스터 굴리면 되는 거 아닌가요? ㅋㅋ 전 무엇보다 RT-DETR 같은 모델에서 무리하게 학습하지 말고 딱 &#x27;거부&#x27; 때리는 그 단호함이 너무 맘에 듭니다. 이번 주 세미나 발표 주제로 바로 가져가야겠네요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
