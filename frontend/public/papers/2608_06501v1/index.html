@@ -1,0 +1,72 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MLLM은 창의적 도약을 해독할 수 있는가? 개념 간 이해를 위한 C4 프레임워크 소개 | ArXiv Translator AI</title><meta name="description" content="MLLM은 창의적 도약을 해독할 수 있는가? 개념 간 이해를 위한 C4 프레임워크 소개"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_06501v1"><meta property="og:type" content="article"><meta property="og:title" content="MLLM은 창의적 도약을 해독할 수 있는가? 개념 간 이해를 위한 C4 프레임워크 소개"><meta property="og:description" content="MLLM은 창의적 도약을 해독할 수 있는가? 개념 간 이해를 위한 C4 프레임워크 소개"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_06501v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="MLLM은 창의적 도약을 해독할 수 있는가? 개념 간 이해를 위한 C4 프레임워크 소개"><meta name="twitter:description" content="MLLM은 창의적 도약을 해독할 수 있는가? 개념 간 이해를 위한 C4 프레임워크 소개"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_06501v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "MLLM은 창의적 도약을 해독할 수 있는가? 개념 간 이해를 위한 C4 프레임워크 소개", "description": "MLLM은 창의적 도약을 해독할 수 있는가? 개념 간 이해를 위한 C4 프레임워크 소개", "datePublished": "2026-08-06", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_06501v1", "author": [{"@type": "Person", "name": "Ming Wang"}, {"@type": "Person", "name": "Yuqing Zhang"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_06501v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_06501v1"});gtag('event', 'paper_view', {"paper_id": "2608_06501v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>MLLM은 창의적 도약을 해독할 수 있는가? 개념 간 이해를 위한 C4 프레임워크 소개</h1><p>MLLM은 창의적 도약을 해독할 수 있는가? 개념 간 이해를 위한 C4 프레임워크 소개</p><pre>MLLM은 창의적 도약을 해독할 수 있는가? 개념 간 이해를 위한 C4 프레임워크 소개
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Can MLLMs Decode the Creative Leap? Introducing C4 for Cross-Concept Understanding
+&gt; - **저자:** Ming Wang, Yuqing Zhang, Tingna Xie, Xiangju Li, Xiaocui Yang, Daling Wang, Shi Feng, Yifei Zhang
+&gt; - **발행일:** 2026-08-06
+&gt; - **PDF 링크:** [Can MLLMs Decode the Creative Leap? Introducing C4 for Cross-Concept Understanding](https://arxiv.org/pdf/2608.06501v1)
+
+
+✨ 3줄 핵심 요약
+* 창의적 이해력을 평가하기 위해 &#x27;개념 간 인코딩 및 디코딩&#x27; 원리를 기반으로 한 C4 평가 프레임워크를 도입함.
+* 중국 성어(Chengyu)를 활용한 184개의 합성 데이터와 37개의 인간 제작 데이터로 구성된 C4-Eval 벤치마크를 구축함.
+* 평가 결과, 최상위 MLLM 모델조차 약 50% 수준의 정답률을 보였으며, 모델들은 추상적 관계를 해독하기보다 시각적 요소를 문자 그대로 해석하는 경향을 보임.
+
+📖 쉽게 풀어쓴 1분 핵심
+창의성은 서로 관련 없어 보이는 개념들을 연결하는 능력입니다. 이 논문은 인공지능(MLLM)이 이러한 창의적 연결을 이해하는지 평가합니다. 연구진은 성어를 시각적 단서로 변환(인코딩)하고, 모델이 이를 다시 원래 성어로 복원(디코딩)하게 하는 &#x27;C4&#x27; 프레임워크를 설계했습니다. 실험 결과, 모델들은 단서를 보고 추론하기보다는 눈에 보이는 대로만 해석하는 오류를 범하고 있으며, 인간 수준의 복잡한 개념적 연결을 이해하는 데에는 여전히 상당한 한계가 있음이 드러났습니다.
+
+🎯 배경 및 문제점
+* **평가 난제:** 기존 벤치마크는 정답이 명확한 작업 위주라, 창의성처럼 참신함과 적절성이 중요한 영역을 체계적으로 평가하기 어려움.
+* **창의적 인지의 핵심:** 인지심리학에서는 멀리 떨어진 개념을 연결하고 그 관계를 탐색하는 &#x27;개념 간 이해(Cross-concept understanding)&#x27;를 창의적 인지의 핵심으로 봄.
+* **연구 목표:** MLLM이 창의적 암시를 해독하는 능력을 정량화하고, 그 한계를 분석하고자 함.
+
+💡 핵심 기술 및 아키텍처
+* **C4 프레임워크:** 개념 간 네트워크를 기반으로, 성어의 일부 슬롯을 시각화 가능한 대체 개념으로 치환함.
+* **난이도 계층화:** &#x27;브리지(연결) 깊이&#x27;와 &#x27;타겟 슬롯 개수&#x27;를 기준으로 L1~L4까지 난이도를 체계적으로 분류.
+* **C4-Eval 구성:** 
+    * 합성 아이템: 제어된 구조와 난이도로 생성.
+    * 웹 수집 아이템: 인간이 제작한 창의적 성어 표현을 동일한 구조로 주석 달아 통합.
+* **작업 방식:** 모델에게 이미지를 주고 숨겨진 성어를 맞히게 하거나, 브리지 힌트 및 설명을 요청하는 등 5가지 설정으로 테스트함.
+
+📊 실험 결과 분석
+* **성능 한계:** 총 10개의 MLLM을 평가한 결과, 가장 우수한 폐쇄형 모델의 정답률은 50.7%와 48.0%에 그침. 오픈소스 모델은 이보다 훨씬 낮은 성능을 보임.
+* **병목 현상:** 가장 큰 병목은 &#x27;열린 답변 공간에서의 검색&#x27; 능력 부족임.
+* **주요 오류:** 모델들이 추상적인 개념 연결을 거슬러 올라가기보다는, 이미지에 나타난 단서를 문자 그대로 해석하여 엉뚱한 결론을 도출하는 &#x27;해독 실패&#x27; 현상이 빈번함.
+* **데이터:** 884개의 기본 답변 복구 사례를 분석함(원문에 구체적인 통계적 유의성 수치는 기재되지 않음).
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **AI 평가 방법론의 진화:** 단순 지식 검색을 넘어, AI의 추론 및 창의적 연결 능력을 정밀하게 측정할 수 있는 표준화된 틀을 제공함.
+* **실무적 시사점:** 현재의 고성능 MLLM도 복잡한 은유나 비유가 섞인 창의적 커뮤니케이션을 완벽히 이해하지 못함을 시사함. 이는 교육, 디자인, 인간-AI 협업 도구 개발 시 AI의 해석 능력을 신뢰할 때 주의가 필요함을 의미함.
+* **확장성:** 성어 기반의 이 프레임워크는 다양한 문화적 맥락과 창의적 연결 구조를 분석하는 기초 도구로 활용 가능함.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2608.06501 Can MLLMs Decode the Creative Leap? Introducing...](https://arxiv.org/abs/2608.06501)
+&gt; - [Can MLLMs Decode the Creative Leap? Introducing C4 for...](https://arxiv.org/html/2608.06501)
+&gt; - [Can MLLMs Decode the Creative Leap? Introducing C4 for...](https://arxiv.org/pdf/2608.06501)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;결국 MLLM은 아직 &#x27;기호적 추론&#x27;과 &#x27;시각적 지각&#x27; 사이의 심연을 건너지 못하고 있군요. C4 프레임워크가 지적한 &#x27;문자 그대로의 해석&#x27; 오류는 모델이 데이터의 통계적 상관관계에만 매몰되어 있다는 반증입니다. 창의적 도약은 고사하고, 인과관계의 다층적 구조조차 파악하지 못하는 모델들을 &#x27;지능&#x27;이라 부를 수 있을지 의문이 듭니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 맞지만, 실무 입장에선 50%라는 수치도 나름 고무적이라고 봅니다. 성어(Chengyu)라는 게 원어민들도 맥락 없이는 해석하기 힘든 고차원 추상 영역인데, 모델이 시각적 단서만으로 절반을 맞췄다는 건 latent space에 어느 정도 개념적 표상이 형성되어 있다는 뜻이니까요. 다만 프로덕트 레벨에서 이걸 활용하려면 hallucination 잡는 게 숙제겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 이 논문 진짜 핫하네요! 다들 모델 스케일업만 외칠 때 이런 벤치마크 들이미는 거 너무 짜릿합니다. 특히 C4 난이도 계층화는 나중에 다른 벤치마크 만들 때도 레퍼런스로 엄청 쓰일 듯? 50% 정답률이라는 게 모델들이 얼마나 &#x27;겉핥기식&#x27;으로 이해하고 있는지 뼈 때리는 결과라, 다음 주 랩 세미나 발제는 이걸로 정했습니다. 교수님, 저 잘했죠?&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
