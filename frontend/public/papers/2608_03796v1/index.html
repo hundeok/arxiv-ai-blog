@@ -1,0 +1,69 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>거대언어모델을 위한 효율적인 지식 증류: 오프라인 Top-K 로짓 및 융합된 청크 KL 손실 함수 | ArXiv Translator AI</title><meta name="description" content="거대언어모델을 위한 효율적인 지식 증류: 오프라인 Top-K 로짓 및 융합된 청크 KL 손실 함수"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_03796v1"><meta property="og:type" content="article"><meta property="og:title" content="거대언어모델을 위한 효율적인 지식 증류: 오프라인 Top-K 로짓 및 융합된 청크 KL 손실 함수"><meta property="og:description" content="거대언어모델을 위한 효율적인 지식 증류: 오프라인 Top-K 로짓 및 융합된 청크 KL 손실 함수"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_03796v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="거대언어모델을 위한 효율적인 지식 증류: 오프라인 Top-K 로짓 및 융합된 청크 KL 손실 함수"><meta name="twitter:description" content="거대언어모델을 위한 효율적인 지식 증류: 오프라인 Top-K 로짓 및 융합된 청크 KL 손실 함수"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_03796v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "거대언어모델을 위한 효율적인 지식 증류: 오프라인 Top-K 로짓 및 융합된 청크 KL 손실 함수", "description": "거대언어모델을 위한 효율적인 지식 증류: 오프라인 Top-K 로짓 및 융합된 청크 KL 손실 함수", "datePublished": "2026-08-04", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_03796v1", "author": [{"@type": "Person", "name": "Bakbergen Ryskulov"}, {"@type": "Person", "name": "Iker García-Ferrero"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_03796v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_03796v1"});gtag('event', 'paper_view', {"paper_id": "2608_03796v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>거대언어모델을 위한 효율적인 지식 증류: 오프라인 Top-K 로짓 및 융합된 청크 KL 손실 함수</h1><p>거대언어모델을 위한 효율적인 지식 증류: 오프라인 Top-K 로짓 및 융합된 청크 KL 손실 함수</p><pre>거대언어모델을 위한 효율적인 지식 증류: 오프라인 Top-K 로짓 및 융합된 청크 KL 손실 함수
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Efficient Knowledge Distillation for LLMs: Offline Top-K Logits and a Fused Chunked KL Loss
+&gt; - **저자:** Bakbergen Ryskulov, Iker García-Ferrero, David Montero, David Jansen, Ali Hashemi, Jezabel R. Garcia, Antonio Tiene, Román Orús
+&gt; - **발행일:** 2026-08-04
+&gt; - **PDF 링크:** [Efficient Knowledge Distillation for LLMs: Offline Top-K Logits and a Fused Chunked KL Loss](https://arxiv.org/pdf/2608.03796v1)
+
+
+✨ 3줄 핵심 요약
+*   교사 모델의 상위 K개 로짓을 미리 캐싱하여 학습하는 &#x27;오프라인 증류&#x27;로 학습 속도와 처리량을 향상했습니다.
+*   전체 어휘 사전 크기의 로짓 텐서를 생성하지 않고 청크 단위로 처리하는 &#x27;융합형 청크 KL 손실 함수&#x27;를 도입했습니다.
+*   이를 통해 단일 GPU에서 메모리 급증 없이 4배 더 긴 문맥(32,768 토큰)으로 모델 학습이 가능해졌습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+거대언어모델(LLM)을 작게 압축하는 &#x27;지식 증류&#x27; 과정은 막대한 연산 비용과 메모리 소모가 문제입니다. 본 연구는 두 가지 핵심 기술을 제시합니다. 첫째, 교사 모델의 응답을 실시간으로 계산하는 대신 미리 저장(캐싱)해두어 학습 과정을 단순화했습니다. 둘째, 학습 시 메모리를 폭발시키는 핵심 원인인 거대한 출력 로짓 텐서를 한 번에 생성하지 않고, 데이터를 작게 쪼개어(청크) 처리하는 방식을 도입했습니다. 이 방법들은 학습 효율을 극대화하면서도 결과 모델의 품질을 유지합니다.
+
+🎯 배경 및 문제점
+*   **비용 문제:** 소형 모델을 학습시킬 때 교사 모델의 행동을 따라 하게 하는 지식 증류 과정은 비용이 많이 듭니다.
+*   **메모리 병목:** 특히 긴 문맥(Long-context)을 학습할 때, 어휘 사전 크기만큼의 로짓 텐서가 생성되면서 메모리 사용량이 급증하여 단일 GPU의 용량을 초과하는 문제가 발생합니다.
+*   **효율성 부족:** 온라인 증류 방식은 매 반복마다 교사 모델을 새로 계산해야 하므로 연산 자원을 낭비합니다.
+
+💡 핵심 기술 및 아키텍처
+*   **오프라인 Top-K 증류:** 교사 모델의 로짓 중 가장 중요한 상위 K개만 캐싱하여 학습에 사용합니다. 교사 모델을 메모리에서 제거할 수 있어 자원 효율이 높습니다.
+*   **융합형 청크 KL 손실 함수(Fused, Chunked KL Loss):** 출력층 계산과 손실 함수 계산을 하나로 융합하여 전체 로짓 텐서 생성을 방지합니다. 메모리 점유율을 시퀀스 길이에 비례하게(Linear) 유지하여 긴 문맥 처리를 가능하게 합니다.
+*   **숨겨진 상태(Hidden-state) 특징 손실:** 로짓 기반 증류와 함께 숨겨진 상태의 특징 손실을 결합하여 학습 품질을 추가로 개선합니다.
+
+📊 실험 결과 분석
+*   **성능 향상:** 단일 H200 GPU 환경에서 기존 온라인 증류 대비 반복당 속도는 약 29% 빠르며, 처리량은 최대 41% 높습니다.
+*   **메모리 효율:** 32K 문맥 길이 학습 시, 기존 방식은 메모리 사용량이 약 250GB로 급증하여 H200 용량(141GB)을 넘어서지만, 제안 기법은 128GB로 관리됩니다.
+*   **확장성:** 토큰 수 4K에서 256K까지 메모리와 반복 속도가 일정하게 스케일링됨을 확인했습니다(토이 벤치마크 기준).
+*   **품질 유지:** 시퀀스 패킹(문장 이어 붙이기) 시 단순 마스킹을 사용해도 품질 저하가 약 1% 수준으로 미미하여 실용적입니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+*   **고비용 학습 절감:** 대규모 컴퓨팅 자원 없이도 효과적인 지식 증류가 가능해져 소형 모델 개발의 문턱이 낮아졌습니다.
+*   **온프레미스 배포 최적화:** 지연 시간과 비용 제약이 엄격한 현장 환경에서 고품질 소형 모델을 배포하려는 기업에 유용합니다.
+*   **오픈소스 기여:** 연구진은 효율적인 학습을 위한 &#x27;Full Chunked KL Loss&#x27; 코드를 공개하여 실무자들이 즉시 적용할 수 있도록 했습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2608.03796 Efficient Knowledge Distillation for LLMs ...](https://arxiv.org/abs/2608.03796)
+&gt; - [Efficient Knowledge Distillation for LLMs: Offline Top-K ...](https://arxiv.org/pdf/2608.03796)
+&gt; - [Paper page - Efficient Knowledge Distillation for LLMs ...](https://huggingface.co/papers/2608.03796)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;Top-K 로짓 캐싱은 흥미롭지만, 정보 손실에 대한 이론적 검증이 부족해 보입니다. 전체 분포의 꼬리 부분(tail)이 제거되었을 때 미세한 언어적 뉘앙스나 논리적 추론 능력이 얼마나 희석되는지 정량적으로 평가했나요? 단순히 속도만 빨라진다면, 그건 증류가 아니라 지식의 파편화일 뿐입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님, 현업에서는 &#x27;완벽한 증류&#x27;보다 &#x27;돌아가는 모델&#x27;이 먼저입니다. H200 메모리 141GB 제한 때문에 긴 문맥 학습하다가 OOM(Out of Memory) 터져서 밤새는 엔지니어 입장에선 이 논문의 융합형 청크 KL 손실은 그야말로 구원입니다. 로짓 전체를 안 올리고 청크로 쪼개는 것만으로도 파이프라인 안정성이 확보되니 당장 프로덕션에 도입해볼 가치가 충분해요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;두 분 다 진정하세요! 일단 이 논문 구현체 공개된 거 봤는데, 32K 문맥에서 메모리 128GB 컷이면 사실상 랩실 단위에서도 고성능 SLM(Small Language Model) 찍어낼 수 있다는 뜻이거든요. 데이터셋 큐레이션 잘해서 Top-K로 쳐내도 벤치마크 성능 방어만 된다면, 이제 거대 모델 API 비용 안 쓰고 우리만의 특화 모델 만드는 거 시간문제 아닐까요? 당장 코드 뜯어보러 갑니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
