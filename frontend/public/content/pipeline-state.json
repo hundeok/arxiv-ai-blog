@@ -12131,7 +12131,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-10T15:54:52.013248+00:00",
+      "updated_at": "2026-08-10T18:48:08.957358+00:00",
       "paper": {
         "title": "Round-Trip Consistency: Bidirectional Diffusion Models Can Predict Their Own Rollout Errors",
         "summary": "Autoregressive models accumulate error over long rollouts, yet at deployment there is no ground truth to measure it against. We train a single conditional latent diffusion model that steps a dynamical system forward or backward in time via a direction flag, and show that this bidirectionality supplies a measurement-free test-time error signal: rolling forward $i$ steps and then backward $i$ steps must return the model to its start, so the round-trip discrepancy $\\mathcal{C}_i$ is a self-supervised proxy for the unobservable rollout error: no ensembles, no held-out data, no governing equations, for one extra rollout. We validate on compressible magnetohydrodynamics (MHD), an astrophysical turbulent radiative mixing layer, and natural face videos (CelebV-HQ). On held-out MHD trajectories, $\\mathcal{C}_i$ ranks rollout error (Spearman $0.91$-$0.98$ at fixed depth; $0.69 \\pm 0.16$ within trajectories), and a simple calibrator fit on training rollouts predicts its magnitude to within $1.14\\times$ ($68\\%$) and $1.29\\times$ ($95\\%$) with near-nominal coverage - one nat beyond a depth-only predictor, transferring to all six decoded physical fields. The same signal flags the out-of-distribution Orszag-Tang vortex (AUROC $0.98$; $1.0$ by depth $10$) exactly where sampling-dispersion baselines invert, and it cuts incurred error by $15\\%$ at $80\\%$ coverage - three times the depth-only baseline. Bidirectional training comes at negative cost, beating direction specialists in both directions, and the backward direction doubles as a fast inverse solver. On LE-PDE-UQ's turbulent Navier-Stokes benchmark, a single bidirectional model reaches accuracy within $1.3\\times$ of their ten-model ensemble at a tenth of the training cost, with the best training-free pixel-level calibration. Round-trip consistency turns reversibility into a practical trust signal for generative models.",
@@ -12151,7 +12151,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-10T15:54:52.013255+00:00",
+      "updated_at": "2026-08-10T18:48:08.957362+00:00",
       "paper": {
         "title": "The Optimizer Is the Agent: Reasoning-Driven Search across Prompts, Programs, and ML Workflows",
         "summary": "Recent systems for optimizing prompts, programs, and ML workflows typically rely on explicit outer-loop controllers such as evolutionary search, bandits, or textual-gradient methods. We ask a fundamentally different question: how much of this search policy can be internalized by a single tool-using agent? We present ReASearch, a unified framework for reasoning-driven optimization in which the agent autonomously decides what to evaluate, how to diagnose failures, which edits to make, and when to verify or restart. Rather than serving only as a proposal generator guided by hand-designed heuristics, the agent actively analyzes outcomes, allocates budget, and refines its strategy over long horizons through persistent memory. With a shared agent loop and domain-specific tools, ReASearch instantiates the exact same scaffold to optimize prompts, programs, and ML workflows. Across 14 diverse tasks, it is competitive with and mostly better than specialized optimization systems, achieving gains of 2% to 40% over strong domain-specific baselines, and in some cases discovering solutions that improve on prior human best-known results. Crucially, we observe that complex search behaviors, which are typically implemented by explicit controllers, emerge naturally from the agent's reasoning process.",
@@ -12178,7 +12178,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-10T15:54:52.013266+00:00",
+      "updated_at": "2026-08-10T18:48:08.957377+00:00",
       "paper": {
         "title": "YOLO-PEFT: Parameter-Efficient Fine-Tuning on YOLO Family",
         "summary": "Generic parameter-efficient fine-tuning (PEFT) methods transferred from language models can fail silently on real-time detectors, whose heterogeneous operators and detection-specific components impose placement constraints absent from regular Transformer stacks. We propose YOLO-PEFT, a structure-aware framework that formulates adapter placement as an auditable constraint-planning problem. Given a detector graph, a PEFT request, and a resource budget, YOLO-PEFT assigns operator and semantic roles, evaluates explicit operator-validity, detector-semantic, graph-interface, and deployment predicates, records a reason code for each excluded module, and either emits a budgeted target-module plan or returns Refuse before training. Under the official VOC07+12 trainval-to-VOC07 test protocol, planner-selected RS-LoRA reaches 0.7138 and 0.7307 mAP50-95 on YOLO11s and YOLO12s, respectively, compared with 0.6428 and 0.6662 for Full-SFT. On RT-DETR-L, all seven evaluated LoRA-family configurations cross the predefined catastrophic threshold, supporting a calibrated Refuse-to-Full-SFT decision within the evaluated coverage. A controlled YOLO11 audit further shows that LoRA reduces peak training memory by 43.9 percent, although training takes 1.72 times longer. Within the evaluated detector families, placement policies, and calibration coverage, YOLO-PEFT replaces manual target-module trial and error with explicit, inspectable planning while preserving verified train-save-merge-export paths; refusal on unseen detector architectures remains an open validation problem. Project Page: github.com/Tencent/YOLO-Master",
@@ -12204,7 +12204,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-10T12:54:47.218024+00:00",
+      "updated_at": "2026-08-10T18:48:08.957381+00:00",
       "paper": {
         "title": "Uncertainty-Aware World Model for Aerial Image-Goal Navigation",
         "summary": "Aerial image-goal navigation requires an unmanned aerial vehicle (UAV) to reach a target location specified by a goal image. Existing world-model-based methods rank candidate trajectories using predicted futures, but typically rely on only one or a few point predictions, which is inadequate for large-scale outdoor environments with substantial future-state uncertainty. To address this limitation, we propose the Uncertainty-Aware Navigation World Model (UA-NWM), an efficient latent world model for aerial image-goal navigation, which formulates trajectory scoring as conditional out-of-distribution detection. UA-NWM represents plausible futures with an uncertainty subspace and decomposes the prediction--goal discrepancy into uncertainty-explainable and unexplainable components. Only the unexplainable residual is used for scoring, enabling robust selection without multiple future samples. Extensive experiments demonstrate that UA-NWM consistently outperforms existing navigation world models while maintaining low inference latency. Real-world UAV experiments further validate its practical applicability. Project page: https://duryi.github.io/UA-NWM-Project-Page",
@@ -12254,7 +12254,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-10T15:54:52.013260+00:00",
+      "updated_at": "2026-08-10T18:48:08.957366+00:00",
       "paper": {
         "title": "Can MLLMs Decode the Creative Leap? Introducing C4 for Cross-Concept Understanding",
         "summary": "Creative capabilities of MLLMs matter in design, communication, education, and human--AI collaboration, yet remain difficult to evaluate because explicit targets and reward signals are scarce compared with accuracy-oriented tasks. Cross-concept understanding is a core cognitive capacity underlying receptive creativity. It enables a perceiver to recover intended meaning from non-obvious but meaningful conceptual relations. We operationalize item construction as cross-concept encoding and model inference as cross-concept decoding. We introduce C4, a cognition-inspired evaluation framework for Chengyu (Chinese idiom)-based Cross-Concept Creativity. Its encoding component maps target slots to imageable substitute concepts along bridge paths in a manually annotated and third-party-reviewed cross-concept network, enabling batch generation with explicit structure, difficulty indexed by bridge count and depth, and exact answers. Using this framework, we instantiate the C4 Evaluation Set (C4-Eval), comprising 184 synthetic items and 37 human-created cross-concept chengyu figures collected from online sources. We manually construct and review cross-concept relations, bridge paths, and reasoning processes for the collected figures. Each C4-Eval item is instantiated in five task settings, yielding 884 primary answer-recovery cases. Across ten evaluated MLLMs, the strongest closed models reach 50.7% and 48.0% primary accuracy, while open-source models remain substantially lower. Candidate constraints improve accuracy sharply, but bridge hints and explanation requests provide only modest gains. These results expose a substantial gap in how current MLLMs decode creatively encoded meaning through cross-concept relations. The code is in the supplementary material.",
@@ -12281,7 +12281,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-10T15:54:52.013241+00:00",
+      "updated_at": "2026-08-10T18:48:08.957353+00:00",
       "paper": {
         "title": "OneEmo: A Unified Multimodal Reasoning Model for Emotion Perception, Understanding, and Interaction",
         "summary": "Multimodal Large Language Models (MLLMs) have demonstrated remarkable capabilities in emotional intelligence. However, prevailing research predominantly focuses on task-specific specialization, often neglecting inter-task synergy and leaving latent reasoning potential underexplored. To bridge this gap, we introduce OneEmo, a unified affective generalist capable of mastering emotion perception, comprehension, and interaction. For this purpose, we first construct EmoWorld-130K, a comprehensive dataset that distills specialized affective knowledge into explicit reasoning trajectories via a human-in-the-loop workflow. Supervised fine-tuning on this corpus reveals significant mutual benefits derived from multi-task learning. Second, to fully unlock the latent reasoning potential, we propose Emo-Chord, a novel reinforcement learning strategy that stabilizes optimization through unified multi-task reward allocation. Extensive experiments demonstrate that OneEmo achieves state-of-the-art performance against similarly sized baselines across most benchmarks. Notably, despite having significantly fewer parameters than commercial models, OneEmo delivers highly competitive results. This paper paves the way for more reliable and interpretable affective computing. The code is available at https://github.com/waHAHJIAHAO/OneEmo.",
@@ -12306,7 +12306,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-10T15:54:52.013216+00:00",
+      "updated_at": "2026-08-10T18:48:08.957316+00:00",
       "paper": {
         "title": "Relevant but Incomplete: Referential Dangling as a Paradigm-Level Failure Mode in Hard Prompt Compression",
         "summary": "Hard prompt compression reduces long-context inference cost by independently scoring tokens, sentences, or chunks and retaining the highest-scoring units under a budget. We identify a structural failure in this procedure: independent selection can split dependent evidence pairs, retaining one member while deleting the other. When retained text contains an answer but deleted text defines the entity needed to interpret it, we call the result referential dangling. At a compression ratio of 0.30, Beaver, which ranks coherent chunks using Qwen3-0.6B embeddings, leaves the answer path incomplete in 34-54% of bridge examples across three multi-hop question answering datasets. On a shared HotpotQA bridge set, all six hard compressors we test exhibit dangling at rates up to 60%, and every document in LongBench-v2 Single-Document QA contains at least one dangling reference. On dangling examples evaluated with Qwen3-8B, reinserting the missing supporting paragraph while removing nonsupporting paragraphs to maintain the token budget improves accuracy by 29-34 percentage points (p < 0.0001), recovering at least 88% of the gap to contexts retaining both supporting paragraphs. Stronger answer models do not absorb the loss: on MuSiQue, GPT-5.5 is 8.8 points less accurate on compressed contexts than on contexts retaining both supporting paragraphs. Finally, we train a compact classifier to rank omitted sentences by whether they are needed to interpret retained text and reinsert the top-ranked candidates without support annotations at inference. On HotpotQA with Qwen3-8B, this automatic restoration improves accuracy by 4.7 points while changing the compression ratio only from 0.30 to 0.31. Hard compressors should optimize both relevance and referential completeness.",
@@ -12333,7 +12333,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-10T12:55:25.012094+00:00",
+      "updated_at": "2026-08-10T18:48:08.957385+00:00",
       "paper": {
         "title": "Beyond Simply Environment Scaling: Designing Effective Environment Distributions for Multimodal Agent Learning",
         "summary": "Recent works train agents by constructing large-scale multimodal environment pools. However, we find that simply increasing the number of multimodal environments does not always benefit. We further analyze the limitations in current multimodal environment distributions through a series of experiments. Based on these findings, we study how to build more effective training environment distributions from two dimensions: **diversity** and **difficulty structure**. For diversity, we propose **Ability-aware Environment Selection (AES)** to obtain diverse environment sets. For difficulty structure, we propose **Hierarchical Difficulty Curriculum (HDC)**, which organizes curriculum learning through two difficulty levels: harness weakening and state-scale progression. Experiments show that AES and HDC effectively improve multimodal agent training.",
@@ -12427,10 +12427,60 @@
       },
       "priority_score": 28,
       "korean_title": "거대언어모델을 위한 효율적인 지식 증류: 오프라인 Top-K 로짓 및 융합된 청크 KL 손실 함수"
+    },
+    "2608_06113v1": {
+      "id": "2608_06113v1",
+      "filename": "post_2608_06113v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-08-10T18:48:28.109794+00:00",
+      "paper": {
+        "title": "DCAS: Decoupling CLI Agent Scaffolding to Internalize Planning across Scaffolds",
+        "summary": "CLI-based software-engineering agents have matured rapidly, yet the open ecosystem has converged on a single training environment: trajectory datasets used to fine-tune open models are collected almost exclusively under OpenHands. Models fine-tuned on this data score well under OpenHands but degrade substantially when deployed under any non-training scaffold. Untrained base models do not show this divergence, indicating the gap is fine-tuning-induced and tied to the conventions of the training scaffold. We argue that a load-bearing scaffold-specific behavior is planning structure, in two senses this paper distinguishes: explicit planning, a pre-execution plan produced as a first-class artifact, and implicit planning, the structural conventions that shape execution throughout the agent loop. Under this hypothesis, closing the gap requires moving planning from a fixed scaffold artifact to a learned model capability. We introduce Decoupling CLI Agent Scaffolding (DCAS), a backend-substitution interception layer that routes API traffic between any CLI scaffold and any backend model without modifying the scaffold, enabling cross-scaffold evaluation and planning-aware trajectory collection. Using DCAS, a controlled plan-source intervention confirms planning quality is a high-leverage component, with gains exceeding the cross-scaffold drops we observe. A model fine-tuned on a small set of DCAS-collected planning-aware trajectories under a single scaffold gains consistently across non-training scaffolds, and the two senses of planning are empirically separable in training data.",
+        "published": "2026-08-06T14:47:34Z",
+        "authors": [
+          "Kishanthan Thangarajah",
+          "Boyuan Chen",
+          "Ahmed E. Hassan"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.06113v1"
+      },
+      "priority_score": 39,
+      "korean_title": "DCAS: CLI 에이전트 스캐폴딩의 분리를 통한 계획 능력 내재화"
+    },
+    "2608_06865v1": {
+      "id": "2608_06865v1",
+      "filename": "post_2608_06865v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-08-10T18:48:20.090969+00:00",
+      "paper": {
+        "title": "Multi-Agent Forensic Reasoning for Generalizable Deepfake Video Detection",
+        "summary": "The malicious use of generative artificial intelligence to create highly realistic deepfake videos raises serious ethical concerns and poses substantial challenges to AI safety. However, existing deepfake video benchmarks provide limited coverage of recent synthesis methods and generally lack reliable fine-grained textual annotations. Meanwhile, conventional detectors and multimodal large language models (MLLMs), whether operating as a single model or relying on a single analytical perspective, often fail to capture subtle forgery artifacts, limiting their generalization to emerging AI-generated methods. To address these limitations, we introduce FaceVid-Forensics-100K, a large-scale deepfake video dataset comprising 100,000 videos and spanning 33 synthesis methods across face swapping, face reenactment, and entire-face synthesis, including recent generators such as Seedance 2.0. The dataset provides fine-grained textual annotations of visual observations and verdict-consistent forensic explanations, automatically synthesized through a multi-model aggregation and conflict-resolution pipeline powered by advanced MLLMs. Building on this benchmark, we propose a multi-agent forensic reasoning framework that employs four specialized domain-expert agents to independently analyze forgery cues from four perspectives: texture, lighting, motion, and physics. A judge agent then reconciles their reports to produce a final prediction together with an explanation. Extensive evaluations on out-of-domain test sets show that, despite being composed entirely of small open-source MLLMs, our framework outperforms all methods including closed-source GPT and Gemini models and ranks first across all reported metrics on this benchmark. The project page is available at https://xavierjiezou.github.io/ARGUS/.",
+        "published": "2026-08-07T06:44:14Z",
+        "authors": [
+          "Xuechao Zou",
+          "Shun Zhang",
+          "Kai Li",
+          "Yi Zhou",
+          "Xinyu Sun",
+          "Yuhui Chen",
+          "Zhe Wu",
+          "Congyan Lang",
+          "Junliang Xing"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.06865v1"
+      },
+      "priority_score": 70,
+      "korean_title": "일반화 가능한 딥페이크 비디오 탐지를 위한 다중 에이전트 포렌식 추론"
     }
   },
   "last_run": {
-    "started_at": "2026-08-10T15:54:52.014247+00:00",
+    "started_at": "2026-08-10T18:48:08.958211+00:00",
     "discovered": 10,
     "selected": 2,
     "generated": 2,
@@ -12441,25 +12491,25 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 4,
-      "prompt_tokens": 10670,
-      "output_tokens": 2988,
+      "prompt_tokens": 10919,
+      "output_tokens": 2913,
       "thought_tokens": 0,
-      "total_tokens": 13658,
-      "estimated_usd": 0.0071495
+      "total_tokens": 13832,
+      "estimated_usd": 0.00709925
     },
-    "finished_at": "2026-08-10T15:55:11.267235+00:00"
+    "finished_at": "2026-08-10T18:48:28.326649+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 930,
-    "prompt_tokens": 2338899,
-    "output_tokens": 684496,
+    "requests": 934,
+    "prompt_tokens": 2349818,
+    "output_tokens": 687409,
     "thought_tokens": 0,
-    "total_tokens": 3023395,
-    "estimated_usd": 1.61146875
+    "total_tokens": 3037227,
+    "estimated_usd": 1.618568
   },
   "last_publication_run": {
-    "started_at": "2026-08-10T15:54:52.014247+00:00",
+    "started_at": "2026-08-10T18:48:08.958211+00:00",
     "discovered": 10,
     "selected": 2,
     "generated": 2,
@@ -12470,17 +12520,17 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 4,
-      "prompt_tokens": 10670,
-      "output_tokens": 2988,
+      "prompt_tokens": 10919,
+      "output_tokens": 2913,
       "thought_tokens": 0,
-      "total_tokens": 13658,
-      "estimated_usd": 0.0071495
+      "total_tokens": 13832,
+      "estimated_usd": 0.00709925
     },
-    "finished_at": "2026-08-10T15:55:11.267235+00:00"
+    "finished_at": "2026-08-10T18:48:28.326649+00:00"
   },
   "daily_usage": {
     "date": "2026-08-10",
-    "estimated_usd": 0.04170225,
-    "publications": 12
+    "estimated_usd": 0.0488015,
+    "publications": 14
   }
 }
