@@ -12306,7 +12306,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-11T04:15:11.289542+00:00",
+      "updated_at": "2026-08-11T06:56:39.200856+00:00",
       "paper": {
         "title": "Relevant but Incomplete: Referential Dangling as a Paradigm-Level Failure Mode in Hard Prompt Compression",
         "summary": "Hard prompt compression reduces long-context inference cost by independently scoring tokens, sentences, or chunks and retaining the highest-scoring units under a budget. We identify a structural failure in this procedure: independent selection can split dependent evidence pairs, retaining one member while deleting the other. When retained text contains an answer but deleted text defines the entity needed to interpret it, we call the result referential dangling. At a compression ratio of 0.30, Beaver, which ranks coherent chunks using Qwen3-0.6B embeddings, leaves the answer path incomplete in 34-54% of bridge examples across three multi-hop question answering datasets. On a shared HotpotQA bridge set, all six hard compressors we test exhibit dangling at rates up to 60%, and every document in LongBench-v2 Single-Document QA contains at least one dangling reference. On dangling examples evaluated with Qwen3-8B, reinserting the missing supporting paragraph while removing nonsupporting paragraphs to maintain the token budget improves accuracy by 29-34 percentage points (p < 0.0001), recovering at least 88% of the gap to contexts retaining both supporting paragraphs. Stronger answer models do not absorb the loss: on MuSiQue, GPT-5.5 is 8.8 points less accurate on compressed contexts than on contexts retaining both supporting paragraphs. Finally, we train a compact classifier to rank omitted sentences by whether they are needed to interpret retained text and reinsert the top-ranked candidates without support annotations at inference. On HotpotQA with Qwen3-8B, this automatic restoration improves accuracy by 4.7 points while changing the compression ratio only from 0.30 to 0.31. Hard compressors should optimize both relevance and referential completeness.",
@@ -12382,7 +12382,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-10T15:55:02.440103+00:00",
+      "updated_at": "2026-08-11T06:56:39.200880+00:00",
       "paper": {
         "title": "FATE: Frame-Level Audio-Visual Temporal Embedding",
         "summary": "When a dog opens its mouth and barks, humans naturally recognize what the sound is and when it occurs. Building audio-visual models with this same ability requires representations that capture both semantic and temporal alignment. Current approaches fall short on one side or the other: embedding models match semantic but lose temporal information; synchronization models capture temporal offsets but lack semantic understanding. To bridge this gap, we propose FATE, Frame-level Audio-visual Temporal Embedding. Unlike prior embedding models that pool each modality into a single embedding and discard temporal information, FATE retains frame-level sequences, aligns them on the physical timeline, and computes similarity over strictly aligned frame pairs. Unlike synchronization models that output only an offset prediction, FATE encodes synchronization in a reusable embedding space, trained with a joint objective combining cross-video semantic and within-video temporal contrastive learning to capture both what sounds and when it occurs. Across three tasks, FATE surpasses the strongest baseline on temporal and semantic retrieval by a large margin, matches fully supervised methods on event localization in a zero-shot setting, and achieves the best correlation with human judgments as a generation evaluation metric. The source code can be found at \\texttt{https://github.com/guankaisi/FATE}.",
@@ -12408,7 +12408,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-11T04:15:11.289583+00:00",
+      "updated_at": "2026-08-11T06:56:39.200872+00:00",
       "paper": {
         "title": "Efficient Knowledge Distillation for LLMs: Offline Top-K Logits and a Fused Chunked KL Loss",
         "summary": "Small language models are often the only option for deployment under tight latency, cost, and on-premises constraints, but they are rarely trained from scratch: a compressed model is usually recovered through knowledge distillation (KD). This recovery step largely decides the final quality, yet it is expensive. We present a practitioner's study of how to make distillation training efficient, organised around two systems contributions. First, we show that offline KD (caching the teacher's top-$K$ logits once and training the student against the cache) matches online distillation at near-identical training loss while removing the teacher from memory, running about 29\\% faster per iteration, and reaching up to 41\\% higher throughput on a single H200 GPU. Second, we introduce a \\emph{fused, chunked KL loss} that never materialises the full vocabulary-sized logit tensor, making peak memory linear in the sequence length. This removes the memory spike that otherwise caps context length and lets us train at four times the context (32{,}768 tokens) on a single GPU. A separate output-head-only toy benchmark isolates the loss kernel and confirms its memory and iteration-rate scaling from 4K to 256K tokens. Together these make large-scale healing and hundreds of ablations affordable. We also report supporting ablations on loss design and sequence packing. We release our chunked-loss implementation: https://github.com/CompactifAI/Full-Chunked-KL-Loss.",
@@ -12435,7 +12435,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-11T04:15:11.289549+00:00",
+      "updated_at": "2026-08-11T06:56:39.200860+00:00",
       "paper": {
         "title": "DCAS: Decoupling CLI Agent Scaffolding to Internalize Planning across Scaffolds",
         "summary": "CLI-based software-engineering agents have matured rapidly, yet the open ecosystem has converged on a single training environment: trajectory datasets used to fine-tune open models are collected almost exclusively under OpenHands. Models fine-tuned on this data score well under OpenHands but degrade substantially when deployed under any non-training scaffold. Untrained base models do not show this divergence, indicating the gap is fine-tuning-induced and tied to the conventions of the training scaffold. We argue that a load-bearing scaffold-specific behavior is planning structure, in two senses this paper distinguishes: explicit planning, a pre-execution plan produced as a first-class artifact, and implicit planning, the structural conventions that shape execution throughout the agent loop. Under this hypothesis, closing the gap requires moving planning from a fixed scaffold artifact to a learned model capability. We introduce Decoupling CLI Agent Scaffolding (DCAS), a backend-substitution interception layer that routes API traffic between any CLI scaffold and any backend model without modifying the scaffold, enabling cross-scaffold evaluation and planning-aware trajectory collection. Using DCAS, a controlled plan-source intervention confirms planning quality is a high-leverage component, with gains exceeding the cross-scaffold drops we observe. A model fine-tuned on a small set of DCAS-collected planning-aware trajectories under a single scaffold gains consistently across non-training scaffolds, and the two senses of planning are empirically separable in training data.",
@@ -12457,7 +12457,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-11T04:15:11.289572+00:00",
+      "updated_at": "2026-08-11T06:56:39.200868+00:00",
       "paper": {
         "title": "Multi-Agent Forensic Reasoning for Generalizable Deepfake Video Detection",
         "summary": "The malicious use of generative artificial intelligence to create highly realistic deepfake videos raises serious ethical concerns and poses substantial challenges to AI safety. However, existing deepfake video benchmarks provide limited coverage of recent synthesis methods and generally lack reliable fine-grained textual annotations. Meanwhile, conventional detectors and multimodal large language models (MLLMs), whether operating as a single model or relying on a single analytical perspective, often fail to capture subtle forgery artifacts, limiting their generalization to emerging AI-generated methods. To address these limitations, we introduce FaceVid-Forensics-100K, a large-scale deepfake video dataset comprising 100,000 videos and spanning 33 synthesis methods across face swapping, face reenactment, and entire-face synthesis, including recent generators such as Seedance 2.0. The dataset provides fine-grained textual annotations of visual observations and verdict-consistent forensic explanations, automatically synthesized through a multi-model aggregation and conflict-resolution pipeline powered by advanced MLLMs. Building on this benchmark, we propose a multi-agent forensic reasoning framework that employs four specialized domain-expert agents to independently analyze forgery cues from four perspectives: texture, lighting, motion, and physics. A judge agent then reconciles their reports to produce a final prediction together with an explanation. Extensive evaluations on out-of-domain test sets show that, despite being composed entirely of small open-source MLLMs, our framework outperforms all methods including closed-source GPT and Gemini models and ranks first across all reported metrics on this benchmark. The project page is available at https://xavierjiezou.github.io/ARGUS/.",
@@ -12485,7 +12485,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-11T04:15:11.289523+00:00",
+      "updated_at": "2026-08-11T06:56:39.200851+00:00",
       "paper": {
         "title": "MatrAIx: Simulating the World with 8.3 Billion Persona Agents",
         "summary": "Human evaluation of AI systems and digital products is costly, slow, and difficult to scale. Offline evaluations are more scalable but often abstract away human diversity and interactive behavior. We therefore introduce MatrAIx, a population-scale simulated-user evaluation infrastructure for testing AI systems and digital products with heterogeneous users. MatrAIx has three core components: First, Persona 8B contains 8.3 billion persona records represented by 1,290 categorical dimensions. Records are either sampled from a dependency graph that preserves correlated attributes or derived from human-authored profiles. We release a quality-filtered coreset of approximately 1 million personas, comprising 599,847 human-grounded and 400,000 synthetic records. Second, the MatrAIx Playground provides four environments in which diverse users evaluate and interact with digital products: Survey, AI Chatbot, Web, and App. Third, MatrAIx provides 1,010 application tasks spanning more than 25 domains, including Commerce, Software, Finance, and Healthcare. We conducted 18,189 evaluation trials across eight representative tasks. Persona agents were powered by three LLMs: Claude Opus 4.8, GPT 5.5, and Claude Haiku 4.5. The resulting feedback captures how decisions and preferences vary across persona backgrounds, including hesitation after a price increase, willingness to continue after an AI assistant fails, and latency tolerance. We conducted two main validation studies: First, a 400-trial controlled study evaluated persona adherence across ten behavioral attributes and all four environments. The declared behavior was expressed or correctly suppressed in 366 trials (91.5%). Second, human and LLM judges evaluated the extraction quality of human-grounded personas. Overall, MatrAIx provides an end-to-end infrastructure for evaluating AI systems and digital products with diverse simulated human users.",
@@ -12880,11 +12880,11 @@
     "2608_07429v1": {
       "id": "2608_07429v1",
       "filename": "post_2608_07429v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-08-11T01:13:49.636509+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-11T01:13:49.636511+00:00",
+      "updated_at": "2026-08-11T06:56:59.845782+00:00",
       "paper": {
         "title": "TEPA: Revoking Stale Memories for Conflict-Robust Language Agents",
         "summary": "Long-term memory enables language agents to reuse past facts, preferences, and task experience. Persistence also creates a central falsifiability problem: when the world changes, stale memories can remain retrievable and pollute the prompt. We characterize this failure mode as memory pollution: degradation caused by active memories that newer conflicting evidence has superseded. We introduce TEPA, a revocable evidence-memory mechanism that makes validity an explicit state of memory. TEPA represents observations as keyed precedents and revokes active precedents when fresh evidence contradicts them under the same key, allowing retrieval to draw from current evidence while preserving revoked history for audit. Across controlled hidden-regime drift, real file-backed executable drift, and preference-update streams, revocation prevents stale active memory from remaining in the retrieval set after reversal. In controlled drift over 50 seeds, append-only and last-write-wins memory fell below no memory during full reversal (append-only and last-write-wins both 0.210, no memory 0.309, TEPA 0.950), and the same pattern reproduced under real file execution (append-only 0.203, no memory 0.298, TEPA 0.950). On clean MemoryAgentBench SH-6k, TEPA matches a strong last-write-wins cache, confirming that current-key replacement is the decisive operation for single-hop fact consolidation. Boundary tests on multi-hop and very long-context MemoryAgentBench settings expose retrieval-chain and context-selection bottlenecks beyond fact-level validity tracking. Together, these results establish lifecycle revocation as a core memory operation for agents that must falsify, audit, and later re-promote evolving knowledge.",
@@ -12897,7 +12897,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2608.07429v1"
       },
-      "priority_score": 40
+      "priority_score": 40,
+      "korean_title": "TEPA: 갈등에 강한 언어 에이전트를 위한 오래된 기억의 폐기 메커니즘"
     },
     "2608_07427v1": {
       "id": "2608_07427v1",
@@ -13214,11 +13215,11 @@
     "2608_07364v1": {
       "id": "2608_07364v1",
       "filename": "post_2608_07364v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-08-11T01:13:49.636591+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-11T01:13:49.636592+00:00",
+      "updated_at": "2026-08-11T06:57:09.544641+00:00",
       "paper": {
         "title": "Curriculum as Code: An AI-Assisted Architecture for Instructional Design in STEM Education",
         "summary": "Contribution: This paper presents a six-phase AI-assisted instructional design architecture based on the Curriculum as Code paradigm, integrating Generative AI with LaTeX and Python to automate the creation of reproducible, visually consistent, and technically precise materials for STEM education. Background: Creating customized instructional materials for active learning imposes a heavy workload on faculty. Standard presentation tools lack robust support for technical content, while current AI applications often hallucinate and fail to formalize the instructional authoring process, limiting their utility for rigorous academic design. Intended Outcomes: The framework aims to reduce preparation time while ensuring mathematical accuracy, adherence to institutional visual identity, and preservation of the instructor's tacit pedagogical knowledge through explicit rules. Application Design: The solution comprises a six-phase pipeline that replaces ad-hoc prompt engineering with a systematic workflow, utilizing text-based interfaces and code-driven generation (LaTeX/Beamer for slides, Python for figures), governed by pedagogical constraints, contextual calibrations, and automated review cycles. Findings: Validated over one year across 8 modules and 28 project contexts in a Project-Based Learning environment, the architecture significantly reduced instructor workload. Generated assets underwent independent peer review and were deployed by six different faculty members, confirming scalability beyond a single author. Based on over 600 voluntary student evaluations, materials achieved high quality ratings from 8.5 to 9.9/10. Results indicate high reproducibility, minimized hallucinations, and sustained pedagogical and visual fidelity, suggesting viability for broad STEM educational applications.",
@@ -13228,16 +13229,17 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2608.07364v1"
       },
-      "priority_score": 40
+      "priority_score": 40,
+      "korean_title": "코드로 구현하는 커리큘럼: STEM 교육을 위한 AI 보조 교수 설계 아키텍처"
     },
     "2608_07363v1": {
       "id": "2608_07363v1",
       "filename": "post_2608_07363v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-08-11T01:13:49.636597+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-11T01:13:49.636599+00:00",
+      "updated_at": "2026-08-11T06:57:18.587235+00:00",
       "paper": {
         "title": "QFCQT: A Chaotically Gated Quantformer Framework for Volatile Time-Series Forecasting",
         "summary": "Forecasting non-stationary time series remains difficult due to long-range dependencies, local volatility bursts, structural shifts, and nonlinear oscillatory behaviors. Although Transformer-based forecasters are effective for modeling long-term temporal dependencies, their feed-forward blocks typically rely on smooth static activations that are insufficiently sensitive to abrupt regime changes. Motivated by quantitative Transformer designs and oscillator-based nonlinear activations, we propose QFCQT, short for Quantum-Fractal-inspired Chaotically Gated Quantformer, for robust forecasting under complex volatile dynamics. Here, \"quantum-fractal-inspired\" denotes a computational analogy based on soft oscillator superposition and multi-scale nonlinear responses, rather than a formal quantum-mechanical or fractal-theoretic derivation. QFCQT consists of three main components: (1) a Quantformer-style numerical encoder that directly processes multivariate inputs via linear embedding; (2) a learnable Lee-oscillator activation module that maps scalar pre-activations to dynamic oscillatory responses and summarizes them through Max-over-Time pooling; and (3) a smooth-chaotic gated fusion mechanism that adaptively balances conventional smooth activations and chaos-sensitive responses. Furthermore, instead of using a single fixed oscillator, QFCQT employs a soft superposition of eight parameterized Lee oscillator families to adaptively capture different nonlinear response patterns across regimes. Experiments on ETTh1, ETTh2, and A-share Stock Index benchmarks show that QFCQT consistently outperforms strong baselines, including Informer, LogTrans, LSTMa, HAT, and COTN.",
@@ -13249,7 +13251,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2608.07363v1"
       },
-      "priority_score": 40
+      "priority_score": 40,
+      "korean_title": "QFCQT: 변동성이 큰 시계열 예측을 위한 혼돈 게이트 기반 퀀트포머 프레임워크"
     },
     "2608_07359v1": {
       "id": "2608_07359v1",
@@ -13328,7 +13331,7 @@
       "attempts": 0,
       "next_retry_at": "2026-08-11T04:15:11.289556+00:00",
       "last_error": null,
-      "updated_at": "2026-08-11T04:15:11.289558+00:00",
+      "updated_at": "2026-08-11T06:56:39.200864+00:00",
       "paper": {
         "title": "Enfold: Folding World Model Imagination into Predictive Representations for Ultra-Efficient Embodied Control",
         "summary": "World generative models are typically used through what they produce: a rendered future, a video-conditioned action, or latent context computed by a costly generative branch. We argue that their more reusable asset is the computation that constructs a future. As a generator transforms a corrupted future into a coherent trajectory, its intermediate states organize appearance, spatial layout, and interaction across levels of abstraction. Can this future-generative computation be internalized in a representation inferred from the present alone? We present Enfold, which transfers this computation into a representation predicted from the current visual context and language instruction. During training, multi-level states exposed as the generator processes the observed future supervise a current-only encoder. The learned representation is fed back to condition future generation and is read by task heads without allowing task gradients to reshape the encoder. At deployment, action prediction no longer executes the generator. Across LIBERO, RoboTwin2.0, and real-robot tasks, Enfold supports strong control while reducing action latency by $3.7\\times$ relative to Fast--WAM, Enfold-Flash reaches $10.1\\times$. Representation analyses show that it suppresses nuisance variation and preferentially captures changes that emerge over longer horizons. When the current scene is altered by human intervention, both the generated continuation and the executed actions adapt, which is inconsistent with fixed trajectory replay. These results recast a world generator as a source of predictive control representations: its future need not be materialized at every step if its internal structure can be enfolded into the present.",
@@ -13359,7 +13362,7 @@
       "attempts": 0,
       "next_retry_at": "2026-08-11T04:15:11.289577+00:00",
       "last_error": null,
-      "updated_at": "2026-08-11T04:15:11.289578+00:00",
+      "updated_at": "2026-08-11T06:56:39.200843+00:00",
       "paper": {
         "title": "Small Foundation Models of Human Cognition and Behaviour",
         "summary": "Large language models fine-tuned on human behavioural data have emerged as general-purpose cognitive proxies, but the scale this requires, and whether these models process task structure or exploit statistical shortcuts, remain open questions. We train fourteen models from 135M to 14B parameters across four architecture families on Psych-101, a dataset of 10.7 million trial-level choices from 160 experiments. For in-distribution simulations, scale barely matters. The models fall within a narrow band, as though against a ceiling, and 0.6B to 1B parameters suffice to match a 70B baseline on held-out participants. Out-of-distribution, that band opens into a markedly steeper scaling gradient, with larger models clearly advantaged in generalisation to novel task structure. To determine what information these models use, we run two diagnostics. We progressively strip four prompt channels -- task instructions, experimental stimuli, outcome feedback, and choice history -- across 27 experiments, and permute trial order. Masking the content of stimuli and feedback destroys 75.7% of learned information and pushes models below chance, demonstrating that choice history alone does not account for performance. Permutation reveals invariance on tasks with independent trials but sensitivity where trial order is determined by prior responses. Small cognitively fine-tuned models therefore show promise as noise ceiling estimators for psychological experiments, though their scope remains bounded by the paradigms seen in training.",
@@ -13379,7 +13382,7 @@
       "attempts": 0,
       "next_retry_at": "2026-08-11T04:15:11.289588+00:00",
       "last_error": null,
-      "updated_at": "2026-08-11T04:15:11.289589+00:00",
+      "updated_at": "2026-08-11T06:56:39.200876+00:00",
       "paper": {
         "title": "SPOT: Sparse Probing and Outcome Calibration for On-Policy Distillation",
         "summary": "On-policy distillation (OPD) provides dense teacher supervision on student-generated trajectories, but standard reverse-KL training can assign insufficient probability to other plausible continuations. Teacher entropy alone does not reveal whether uncertainty is concentrated among a few plausible next tokens or dispersed over a long probability tail, nor whether the student already represents those candidates well. Moreover, local teacher probabilities may not predict downstream success. We introduce Sparse Probing and Outcome-calibrated Targets OPD (SPOT), which addresses two coupled decisions, where to probe and what to distill, through an acquisition--exploration--exploitation procedure. During acquisition, a position-level score combines normalized teacher entropy, the probability mass captured by a small top-$k$ candidate set, and student--teacher mismatch to allocate a limited probing budget. During exploration, SPOT evaluates teacher-proposed candidates through verifier-scored student continuations. During exploitation, these outcomes produce a closed-form, KL-regularized target that favors candidates with better downstream outcomes while remaining anchored to the teacher distribution. Extensive experiments across multiple student models and reasoning benchmarks demonstrate the effectiveness of SPOT in improving reasoning performance while balancing solution quality and coverage.",
@@ -13396,10 +13399,36 @@
         "pdf_link": "https://arxiv.org/pdf/2608.04419v1"
       },
       "priority_score": 37
+    },
+    "2608_07346v2": {
+      "id": "2608_07346v2",
+      "filename": "post_2608_07346v2.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-08-11T06:56:50.377420+00:00",
+      "paper": {
+        "title": "$A^2E$ : An End-to-End Agent Auditing Engine",
+        "summary": "With the rapid advancement of large language models (LLMs), harnesses have become essential infrastructure for deploying agents across a wide range of domains. The fast-evolving harness ecosystem has also made rigorous capability evaluation increasingly important. However, efficiently building an end-to-end, systematic, and comprehensive evaluation pipeline remains a significant challenge. To address this challenge, we introduce $A^2E$ (Agent Auditing Engine), an end-to-end evaluation engine designed for agent harnesses. $A^2E$ leverages our newly proposed Agent Task Protocol (ATP) to enable the rapid integration of evaluation tasks with different harnesses. Through an automatically instrumented Monitor, it captures and generates standardized execution traces during experiments. In the Evaluation stage, $A^2E$ systematically assesses harness capabilities using a suite of multidimensional metrics. Compared with correctness alone, these metrics provide a more fine-grained characterization of differences among harnesses in execution efficiency, tool use, task planning, and error recovery. Experiments conducted with $A^2E$ further reveal that model-harness combinations exhibit substantial performance variation across different types of tasks, and that no single combination consistently outperforms all others across every task. These findings not only demonstrate the necessity of systematic evaluation but also provide useful guidance for the co-evolving of models and harnesses. Our code is available at https://github.com/datamllab/A2E.",
+        "published": "2026-08-07T15:44:12Z",
+        "authors": [
+          "Haoning Wang",
+          "Mingxun Zhang",
+          "Chenyue Yu",
+          "Yingjun Shang",
+          "Xia Hu",
+          "Guanchu Wang",
+          "Na Zou"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.07346v2"
+      },
+      "priority_score": 49,
+      "korean_title": "A2E: 엔드투엔드 에이전트 감사 엔진"
     }
   },
   "last_run": {
-    "started_at": "2026-08-11T04:15:11.290740+00:00",
+    "started_at": "2026-08-11T06:56:39.201988+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -13410,25 +13439,25 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 19443,
-      "output_tokens": 6046,
+      "prompt_tokens": 18818,
+      "output_tokens": 5873,
       "thought_tokens": 0,
-      "total_tokens": 25489,
-      "estimated_usd": 0.01392975
+      "total_tokens": 24691,
+      "estimated_usd": 0.013514
     },
-    "finished_at": "2026-08-11T04:15:56.019874+00:00"
+    "finished_at": "2026-08-11T06:57:18.886328+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 952,
-    "prompt_tokens": 2393988,
-    "output_tokens": 700731,
+    "requests": 960,
+    "prompt_tokens": 2412806,
+    "output_tokens": 706604,
     "thought_tokens": 0,
-    "total_tokens": 3094719,
-    "estimated_usd": 1.6495935
+    "total_tokens": 3119410,
+    "estimated_usd": 1.6631075
   },
   "last_publication_run": {
-    "started_at": "2026-08-11T04:15:11.290740+00:00",
+    "started_at": "2026-08-11T06:56:39.201988+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -13439,17 +13468,17 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 19443,
-      "output_tokens": 6046,
+      "prompt_tokens": 18818,
+      "output_tokens": 5873,
       "thought_tokens": 0,
-      "total_tokens": 25489,
-      "estimated_usd": 0.01392975
+      "total_tokens": 24691,
+      "estimated_usd": 0.013514
     },
-    "finished_at": "2026-08-11T04:15:56.019874+00:00"
+    "finished_at": "2026-08-11T06:57:18.886328+00:00"
   },
   "daily_usage": {
     "date": "2026-08-11",
-    "estimated_usd": 0.02756,
-    "publications": 8
+    "estimated_usd": 0.041074,
+    "publications": 12
   }
 }
