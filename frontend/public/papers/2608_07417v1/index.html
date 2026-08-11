@@ -1,0 +1,65 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>나는 영상 속에서 당신을 찾는다: 사람 중심 영상 추론을 위한 정체성 조건부 쿼리 | ArXiv Translator AI</title><meta name="description" content="나는 영상 속에서 당신을 찾는다: 사람 중심 영상 추론을 위한 정체성 조건부 쿼리"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_07417v1"><meta property="og:type" content="article"><meta property="og:title" content="나는 영상 속에서 당신을 찾는다: 사람 중심 영상 추론을 위한 정체성 조건부 쿼리"><meta property="og:description" content="나는 영상 속에서 당신을 찾는다: 사람 중심 영상 추론을 위한 정체성 조건부 쿼리"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_07417v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="나는 영상 속에서 당신을 찾는다: 사람 중심 영상 추론을 위한 정체성 조건부 쿼리"><meta name="twitter:description" content="나는 영상 속에서 당신을 찾는다: 사람 중심 영상 추론을 위한 정체성 조건부 쿼리"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_07417v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "나는 영상 속에서 당신을 찾는다: 사람 중심 영상 추론을 위한 정체성 조건부 쿼리", "description": "나는 영상 속에서 당신을 찾는다: 사람 중심 영상 추론을 위한 정체성 조건부 쿼리", "datePublished": "2026-08-07", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_07417v1", "author": [{"@type": "Person", "name": "Shibo Gao"}, {"@type": "Person", "name": "Chongxiao Wang"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_07417v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_07417v1"});gtag('event', 'paper_view', {"paper_id": "2608_07417v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>나는 영상 속에서 당신을 찾는다: 사람 중심 영상 추론을 위한 정체성 조건부 쿼리</h1><p>나는 영상 속에서 당신을 찾는다: 사람 중심 영상 추론을 위한 정체성 조건부 쿼리</p><pre>나는 영상 속에서 당신을 찾는다: 사람 중심 영상 추론을 위한 정체성 조건부 쿼리
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** I Seek You in Videos: Identity-Conditioned Queries for Person-Centric Video Reasoning
+&gt; - **저자:** Shibo Gao, Chongxiao Wang, Chenglong Huang, Jie Ma, Haolin Shi, Fei Ding, Jing Li, Qiang Lyu, Yangyang Liu, Yang Liu, Jun Liu, Linlin Huang, Peipei Yang
+&gt; - **발행일:** 2026-08-07
+&gt; - **PDF 링크:** [I Seek You in Videos: Identity-Conditioned Queries for Person-Centric Video Reasoning](https://arxiv.org/pdf/2608.07417v1)
+
+
+✨ 3줄 핵심 요약
+* 기존의 단순 영상-텍스트 중심 추론을 넘어, 특정 인물을 참조 이미지로 제공하여 영상 내 인물을 식별하고 행동을 추론하는 &#x27;ICQ(Identity-conditioned Queries)&#x27; 과업을 정의했습니다.
+* 1,377개의 고품질 샘플로 구성된 평가 벤치마크(ISYV-Bench)와 75K 규모의 학습 데이터셋, 그리고 영상 내 핵심 정보를 효율적으로 추출하는 모델 아키텍처(ISYV-Framework)를 제안했습니다.
+* 실험 결과, 기존의 최신 멀티모달 대형언어모델(MLLM)들은 사람 식별과 긴 호흡의 추적 작업에서 한계를 보였으나, 제안된 모델은 이를 효과적으로 극복하며 뛰어난 성능을 입증했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+우리가 영상을 볼 때 &quot;저 사람은 누구지?&quot;, &quot;저 사람은 방금 뭘 했지?&quot;라고 묻는 것처럼, 인공지능도 특정 인물을 가리키는 사진 한 장을 바탕으로 영상 속 그 사람의 행적을 추적하고 행동을 이해하는 능력이 필요합니다. 이 논문은 기존의 일반적인 영상 분석 방식을 개선하여, 참조 이미지(Identity)를 바탕으로 영상 전체를 분석하는 &#x27;ICQ&#x27;라는 새로운 과업을 제시합니다. 연구진은 이를 위해 인물 식별부터 인과관계 추론까지 6단계 난이도로 구성된 평가 체계와 전용 모델을 개발하여, 사람이 영상을 보고 인물을 찾는 과정과 유사한 추론 능력을 AI에 구현하고자 했습니다.
+
+🎯 배경 및 문제점
+기존의 비디오 추론 연구들은 대부분 &#x27;영상-텍스트&#x27; 쌍을 처리하는 방식에 머물러 있어, 특정 개인을 식별하거나 긴 영상 속에서 인물의 행동을 추적하는 데 한계가 있었습니다. 특히 기존 모델들은 참조 이미지를 영상의 마지막 프레임으로 오해하거나, 이미지 인코더에서 생성된 토큰 시퀀스가 너무 길어 불필요한 배경 정보가 노이즈로 작용하는 문제를 겪고 있었습니다. 이러한 이유로 복잡한 영상 전환이나 인물의 복장 변화가 있는 상황에서의 추론 능력이 현저히 낮았습니다.
+
+💡 핵심 기술 및 아키텍처
+연구진은 **ICQ 모듈**을 도입하여 이를 해결했습니다.
+* **학습 가능한 토큰 활용:** 참조 이미지를 긴 토큰으로 나열하는 대신, 짧은 시퀀스의 학습 가능한 토큰으로 압축하여 연산 효율을 높이고 노이즈를 제거했습니다.
+* **어텐션 메커니즘:** 영상 콘텐츠와 참조 이미지 사이의 연관성을 추출하여, 인물과 직접적으로 관련된 영상 정보에만 집중하게 했습니다.
+* **단계별 훈련:** SFT(감독 미세 조정)와 RFT(보상 기반 미세 조정) 단계를 거쳐 영상 내 핵심 장면을 효과적으로 식별하고 답변하도록 설계했습니다. 실험 결과, 32개의 토큰 길이가 참조 인물을 나타내기에 가장 최적임을 확인했습니다.
+
+📊 실험 결과 분석
+* **모델 성능:** Qwen2.5-VL, InternVL3 등 최신 모델들과 비교했을 때, ISYV 모델은 인물 식별 및 추적 작업에서 훨씬 정확한 응답을 보였습니다. 
+* **데이터셋 분석:** ISYV-Bench는 6단계의 인지 계층 구조를 갖추고 있으며, 다른 벤치마크 대비 복잡한 장면 변화 및 교차 샷 추적에 특화되어 있습니다. 
+* **아키텍처 효과:** 실험 결과 토큰 길이가 32개일 때 평균 성능이 가장 높았고(57.01%), 학습 시 32프레임을 사용하는 것이 최적의 성능을 냄을 입증했습니다. 그 이상의 프레임 수 증가는 성능 향상에 큰 영향을 주지 못했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+이 연구는 단순한 영상 요약을 넘어, 보안 감시 시스템, 실종자 추적, 개인 맞춤형 영상 분석 서비스 등 실제 환경에서 인물 중심의 정밀한 영상 추론이 필요한 분야에 즉각적으로 활용될 수 있습니다. 또한 인공지능이 인간의 인지 발달 과정과 유사한 수준의 복합적 추론 능력을 갖추도록 유도함으로써, 향후 멀티모달 AI가 복잡한 실세계 시나리오를 이해하는 데 핵심적인 가이드라인을 제공할 것으로 기대됩니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2608.07417 I Seek You in Videos: Identity-Conditioned Queries...](https://arxiv.org/abs/2608.07417)
+&gt; - [I Seek You in Videos: Identity-Conditioned Queries for...](https://arxiv.org/html/2608.07417)
+&gt; - [Simple method to eliminate blur based on Lane and Bates... | ArcXiv](https://arcxiv.org/abs/cs/0609165)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;ICQ라는 과업 정의 자체는 실용적이나, 32개의 고정 토큰으로 인물의 외형적 변화나 조명 환경을 얼마나 견고하게 임베딩할 수 있을지 의문이 드네. 특히 &#x27;학습 가능한 토큰&#x27;이 과적합(overfitting) 없이 범용적인 인물 식별을 보장하는지, 데이터셋의 도메인 편향(bias) 문제는 없는지 검증이 더 필요해 보여.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에선 &#x27;복장 변화&#x27;가 제일 골치죠. 75K 규모 학습 데이터로 이 정도 성능이면 고무적이긴 한데, 결국 보안 감시나 실종자 추적에 쓰려면 추론 속도가 핵심입니다. 32프레임 입력 제한이 아쉽지만, 일단 온프레미스 환경에서 서빙 가능한 수준으로 경량화했다는 점은 프로덕트 관점에서 아주 매력적인 포인트네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;다들 너무 회의적인 거 아니에요? ㅋㅋ Qwen2.5-VL이랑 InternVL3를 압살했다는 것만으로도 일단 &#x27;체크포인트&#x27; 찍어야죠! 6단계 인지 계층 구조 벤치마크 만든 것도 훌륭하고요. 저 이거 당장 내일 랩 세미나 발표 자료에 넣어서 SOTA 갱신했다고 호들갑 좀 떨어야겠어요. 벌써부터 실험 결과 그래프 그릴 생각에 설레네요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
