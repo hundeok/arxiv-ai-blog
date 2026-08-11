@@ -1,0 +1,72 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SHE: 거대언어모델 에이전트를 위한 궤적 기반 안전 하니스 진화 | ArXiv Translator AI</title><meta name="description" content="SHE: 거대언어모델 에이전트를 위한 궤적 기반 안전 하니스 진화"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_09885v1"><meta property="og:type" content="article"><meta property="og:title" content="SHE: 거대언어모델 에이전트를 위한 궤적 기반 안전 하니스 진화"><meta property="og:description" content="SHE: 거대언어모델 에이전트를 위한 궤적 기반 안전 하니스 진화"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_09885v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="SHE: 거대언어모델 에이전트를 위한 궤적 기반 안전 하니스 진화"><meta name="twitter:description" content="SHE: 거대언어모델 에이전트를 위한 궤적 기반 안전 하니스 진화"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_09885v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "SHE: 거대언어모델 에이전트를 위한 궤적 기반 안전 하니스 진화", "description": "SHE: 거대언어모델 에이전트를 위한 궤적 기반 안전 하니스 진화", "datePublished": "2026-08-10", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_09885v1", "author": [{"@type": "Person", "name": "Wanying Qu"}, {"@type": "Person", "name": "Qinghua Mao"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_09885v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_09885v1"});gtag('event', 'paper_view', {"paper_id": "2608_09885v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>SHE: 거대언어모델 에이전트를 위한 궤적 기반 안전 하니스 진화</h1><p>SHE: 거대언어모델 에이전트를 위한 궤적 기반 안전 하니스 진화</p><pre>SHE: 거대언어모델 에이전트를 위한 궤적 기반 안전 하니스 진화
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** SHE: Trajectory-driven Safety Harness Evolution for LLM Agents
+&gt; - **저자:** Wanying Qu, Qinghua Mao, Yu Li, Jiyao Liu, Xin Zhang, Dadi Guo, Yanxu Zhu, Qingyu Liu, Leitao Yuan, Xi Lin, Shanfeng Zhu, Yanwei Fu, Jing Shao, Xia Hu, Dongrui Liu
+&gt; - **발행일:** 2026-08-10
+&gt; - **PDF 링크:** [SHE: Trajectory-driven Safety Harness Evolution for LLM Agents](https://arxiv.org/pdf/2608.09885v1)
+
+
+✨ 3줄 핵심 요약
+*   **하니스 구조 개선:** 거대언어모델(LLM) 에이전트의 안전 관리 장치인 &#x27;하니스(Harness)&#x27;를 4개의 독립적 기능 요소로 분리하여 국소적이고 효과적인 안전 업데이트를 가능하게 함.
+*   **데이터 기반 진화:** 실행 궤적(Trajectory)에서 발생한 실패 사례를 분석하여 특정 아티팩트를 자동으로 수정하고, 안전성과 유용성을 검증하는 진화 루프를 도입함.
+*   **우수한 성능:** 기존 정적 하니스 대비 공격 성공률(ASR)을 3.1배 감소시키면서도 에이전트의 유용성을 유지했으며, 새로운 위험 요소와 다른 모델로의 일반화 성능을 확인함.
+
+📖 쉽게 풀어쓴 1분 핵심
+LLM 에이전트가 복잡한 작업을 수행할 때, 보안은 모델 자체뿐만 아니라 이를 제어하는 &#x27;하니스(Harness, 문맥·메모리·도구 등을 관리하는 틀)&#x27;에 달려 있습니다. 기존의 방식은 이 하니스를 고정된 형태로 배포하여 새로운 공격에 유연하게 대응하지 못했습니다. SHE(Safety Harness Evolution)는 에이전트가 작업 도중 실패한 경험(궤적)을 분석해 하니스를 스스로 발전시키는 시스템입니다. 마치 사람이 실수를 통해 배우듯, 에이전트도 실패 사례를 구체적으로 진단하고 하니스의 특정 부분(규칙, 도구 정책 등)만 골라 수정함으로써 전체적인 안전성을 지속적으로 강화합니다.
+
+🎯 배경 및 문제점
+*   **고정된 하니스:** 기존 안전 메커니즘은 배포 후 수정이 어려운 정적 아티팩트여서, 진화하는 보안 위협에 즉각 대응하지 못함.
+*   **기능 결합의 문제:** 하니스의 각 요소(메모리, 권한 관리 등)가 밀접하게 얽혀 있어, 특정 부분만 수정하려 해도 다른 기능에 의도치 않은 영향을 미치는 등 안전 책임 소재가 불분명함.
+*   **피드백 부재:** 실행 과정에서 발생하는 풍부한 궤적 데이터가 하니스 개선에 직접적으로 반영되지 않는 단절 문제가 존재함.
+
+💡 핵심 기술 및 아키텍처
+SHE는 하니스를 4가지 기능적 아티팩트로 명확히 분리하여 설계했습니다.
+1.  **시스템 프롬프트(System Prompt)**
+2.  **규칙 뱅크(Rule Bank)**
+3.  **안전 메모리(Safety Memory):** 해결되지 않은 실패 사례 경험 저장
+4.  **도구 정책(Tool Policy)**
+*   **귀속 기반 진화 루프:** 실패 궤적을 구조화하여 진단하고, 문제와 직접 관련된 아티팩트만 수정(Localized Edit)한 뒤, 안전성과 유용성을 동시에 만족하는 경우에만 하니스를 업데이트함.
+
+📊 실험 결과 분석
+*   **안전성 향상:** Agent-SafetyBench 환경에서 기존 Static SafeHarness 대비 공격 성공률(ASR)을 3.1배 낮춤.
+*   **유용성 유지:** 안전 강화와 동시에 에이전트의 본래 업무 수행 능력(유용성)을 향상함.
+*   **일반화 성능:** 학습하지 않은 새로운 위험 요소를 다루는 AgentHarm 벤치마크에서도 효과를 보였으며, 별도의 재학습 없이도 타 에이전트 모델로 기술 이전이 가능함.
+*   **구성 요소 증명:** 진화된 아티팩트를 초기 버전으로 교체했을 때 성능이 하락함을 통해, SHE의 개선 사항이 단순히 모델 성능 향상이 아닌 하니스 구조 자체의 학습에서 기인했음을 입증함.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+*   **지속 가능한 보안:** 보안 설정을 한 번 정해두는 것이 아니라, 운영 과정에서 쌓이는 데이터를 바탕으로 에이전트의 안전 수준을 스스로 진화시키는 새로운 패러다임을 제시함.
+*   **범용성:** 특정 에이전트 모델에 종속되지 않고 다양한 진화 모델(DeepSeek-V3, GPT-5.5 등)과 결합하여 안전성을 개선할 수 있어 실무 적용 범위가 넓음.
+*   **실무적 안전 구현:** 광범위하고 불필요한 차단 방식에서 벗어나, 학습된 안전 경계(Safety Boundary)를 기반으로 특정 위험 행동만 정교하게 제어함으로써 생산성과 보안의 균형을 맞춤.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [SHE: Trajectory-driven Safety Harness Evolution for LLM Agents](https://arxiv.org/abs/2608.09885)
+&gt; - [SHE: Trajectory-driven Safety Harness Evolution for LLM Agents](https://github.com/RainbowQTT/SHE)
+&gt; - [SHE: Trajectory-driven Safety Harness Evolution for LLM Agents](https://www.weekinpapers.com/paper/2608.09885v1)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문의 핵심인 &#x27;하니스 아티팩트의 분리&#x27;는 학술적으로 매우 고무적입니다. 기존의 monolithic한 안전 가드레일이 가진 결합도 문제를 궤적 기반의 귀속(Attribution) 분석으로 해결하려는 시도가 돋보이네요. 다만, 매 루프마다 발생하는 진화 비용(Evolutionary cost)이 실시간 에이전트 서빙 환경에서 얼마나 오버헤드로 작용할지, 그 지연 시간(latency)에 대한 분석이 다소 부족해 보입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실시간 서빙이 핵심이죠. 사실 프로덕션 환경에서 모델 weight를 건드리는 것보다 이런 식으로 &#x27;하니스&#x27;만 튜닝하는 방식은 기술 부채 관리 측면에서 아주 매력적입니다. 특히 도구 정책(Tool Policy)을 동적으로 업데이트할 수 있다는 건, 매번 긴 시스템 프롬프트를 다시 짜지 않아도 된다는 뜻이라 운영 효율이 엄청나겠네요. 다만, 공격자가 이 진화 루프의 피드백 데이터를 오염시키는 &#x27;데이터 포이즈닝&#x27; 공격에 얼마나 견고한지는 추가 검증이 필요해 보입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 다들 진지하시네요! 저는 일단 &#x27;셀프 진화하는 에이전트&#x27;라는 컨셉 자체가 너무 뽕 차오릅니다. 요즘 벤치마크 점수 올리기에만 급급한 논문들 사이에서, 이렇게 아키텍처 레벨의 &#x27;안전한 자동화&#x27;를 들고 나온 건 확실히 트렌드 세터네요. 깃허브 코드 뜯어보고 있는데, 이거 잘만 다듬으면 모델 국적 안 가리고 범용 안전 모듈로 팔아먹기 딱 좋겠는데요? 당장 내일 세미나 주제로 이거 가져갑니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
