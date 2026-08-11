@@ -1,0 +1,71 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>에이전트 메모리 증류: 계층적 교사 메모리를 통한 소형 LLM 에이전트 역량 강화 | ArXiv Translator AI</title><meta name="description" content="에이전트 메모리 증류: 계층적 교사 메모리를 통한 소형 LLM 에이전트 역량 강화"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_07169v1"><meta property="og:type" content="article"><meta property="og:title" content="에이전트 메모리 증류: 계층적 교사 메모리를 통한 소형 LLM 에이전트 역량 강화"><meta property="og:description" content="에이전트 메모리 증류: 계층적 교사 메모리를 통한 소형 LLM 에이전트 역량 강화"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_07169v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="에이전트 메모리 증류: 계층적 교사 메모리를 통한 소형 LLM 에이전트 역량 강화"><meta name="twitter:description" content="에이전트 메모리 증류: 계층적 교사 메모리를 통한 소형 LLM 에이전트 역량 강화"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_07169v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "에이전트 메모리 증류: 계층적 교사 메모리를 통한 소형 LLM 에이전트 역량 강화", "description": "에이전트 메모리 증류: 계층적 교사 메모리를 통한 소형 LLM 에이전트 역량 강화", "datePublished": "2026-08-07", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_07169v1", "author": [{"@type": "Person", "name": "Taeil Kim"}, {"@type": "Person", "name": "Kangsan Kim"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_07169v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_07169v1"});gtag('event', 'paper_view', {"paper_id": "2608_07169v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>에이전트 메모리 증류: 계층적 교사 메모리를 통한 소형 LLM 에이전트 역량 강화</h1><p>에이전트 메모리 증류: 계층적 교사 메모리를 통한 소형 LLM 에이전트 역량 강화</p><pre>에이전트 메모리 증류: 계층적 교사 메모리를 통한 소형 LLM 에이전트 역량 강화
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Agent Memory Distillation: Empowering Small LLM Agents with Hierarchical Teacher Memory
+&gt; - **저자:** Taeil Kim, Kangsan Kim, Sung Ju Hwang
+&gt; - **발행일:** 2026-08-07
+&gt; - **PDF 링크:** [Agent Memory Distillation: Empowering Small LLM Agents with Hierarchical Teacher Memory](https://arxiv.org/pdf/2608.07169v1)
+
+
+✨ 3줄 핵심 요약
+- 소형 언어 모델(SLM)의 부족한 성공 경험을 보완하기 위해 거대 모델(교사)의 지식을 계층적 메모리 형태로 전달하는 &#x27;에이전트 메모리 증류(AMD)&#x27; 프레임워크를 제안합니다.
+- 워크플로우, 하위 작업, 함수 호출이라는 세 가지 유형의 메모리를 활용하여 학습 과정 없이도 소형 에이전트의 도구 사용 능력을 개선합니다.
+- 세 가지 도구 사용 벤치마크에서 기존 메모리 기반 방식보다 뛰어난 성능 향상을 기록했으며, 특히 4B 파라미터 크기의 모델에서 가장 큰 효과를 보였습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+소형 언어 모델은 스스로 복잡한 작업을 수행할 때 성공 경험이 부족해 학습 데이터로 삼을만한 &#x27;성공적인 기록&#x27;을 충분히 만들지 못합니다. 이 논문은 똑똑한 거대 모델(교사)이 수행한 성공적인 작업 과정에서 지식을 추출해 소형 모델(학생)에게 주입하는 방식을 제안합니다. 마치 똑똑한 선배의 업무 매뉴얼(워크플로우, 세부 단계, 도구 사용법)을 후배에게 건네주어, 시행착오를 줄이고 바로 실무에 투입하는 것과 같은 원리입니다.
+
+🎯 배경 및 문제점
+- **메모리의 중요성:** 현대 에이전트가 도구(API 등)를 활용해 복잡한 작업을 수행할 때, 과거의 성공 사례를 재사용하는 메모리 시스템은 필수적입니다.
+- **소형 모델의 한계:** 소형 모델은 작업 성공률 자체가 낮아, 메모리에 기록되는 데이터가 대부분 실패 사례이거나 유의미한 성공 경험이 부족하여 스스로 진화하는 데 한계가 있습니다.
+- **지식 전달의 필요성:** 단순히 교사의 데이터를 모방하는 것을 넘어, 소형 모델이 이해하고 활용할 수 있는 구조화된 지식 전달 방법이 요구됩니다.
+
+💡 핵심 기술 및 아키텍처
+AMD는 세 가지 보완적인 메모리 구조를 통해 교사의 지식을 전달합니다.
+1. **워크플로우 메모리(Workflow Memory):** 작업 단위의 전략을 인코딩하여 전체적인 방향성을 제시합니다.
+2. **하위 작업 메모리(Subtask Memory):** 작업을 중간 단계로 세분화하여 구체적인 행동 사례를 제공합니다.
+3. **함수 메모리(Function Memory):** 도구 호출 규칙과 자주 발생하는 실수(피트폴)를 캡처합니다.
+- **작동 방식:** 워크플로우와 하위 작업 메모리는 작업 시작 시 선제적으로 주입되고, 함수 메모리는 도구 호출 오류 발생 시 반응적으로 검색되어 사용됩니다.
+
+📊 실험 결과 분석
+- **성능 향상:** GPT-5-mini를 교사 모델로 활용하여 4B~8B 크기의 학생 모델을 테스트한 결과, AppWorld에서 27.2%p, BFCL V3에서 11.2%p, ToolSandbox에서 3.4%p의 평균 정확도 향상을 달성했습니다.
+- **주요 기여도:** 분석 결과, &#x27;하위 작업 메모리&#x27;가 성능 향상에 가장 큰 기여를 하는 것으로 나타났습니다.
+- **학생 모델 특성:** 모델 크기가 작을수록(4B 모델) AMD를 통한 성능 향상 폭이 더 컸습니다.
+- **상호 작용:** 교사의 효과는 교사의 능력뿐만 아니라 학생 모델과의 호환성에도 의존함이 확인되었습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+- **소형 모델의 실용성 증대:** 고가의 거대 모델 없이도 소형 모델이 복잡한 도구 호출 작업을 수행할 수 있게 함으로써 AI 에이전트 운용 비용을 획기적으로 낮출 수 있습니다.
+- **지식 공유 효율화:** 특정 도메인의 전문가 모델(교사)이 가진 노하우를 범용 소형 모델(학생)에게 빠르게 이식할 수 있어, 기업 내 맞춤형 에이전트 구축에 유용합니다.
+- **확장성:** 학습 과정이 필요 없는(Training-free) 프레임워크이므로, 새로운 도구나 환경에 맞춰 즉각적인 메모리 업데이트가 가능하여 지속적인 에이전트 최적화가 가능합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Agent Memory Distillation: Empowering Small LLM Agents with...](https://arxiv.org/pdf/2608.07169)
+&gt; - [Paper page - Agent Memory Distillation: Empowering Small LLM...](https://huggingface.co/papers/2608.07169)
+&gt; - [Agent Memory Distillation: Empowering Small LLM Agents with...](https://paperswithcode.co/paper/2608.07169)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문 자체는 흥미롭지만, &#x27;Training-free&#x27;를 강조하기 위해 메모리 검색 및 주입 단계에서 발생하는 오버헤드를 너무 가볍게 다룬 것 같네요. 특히 계층적 메모리가 컨텍스트 윈도우를 얼마나 차지하는지, 그에 따른 추론 속도 저하를 고려하면 실제 프로덕션 환경에서의 효율성은 다시 따져봐야 할 문제입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 latency 이슈는 크리티컬하죠. 하지만 4B 모델에서 27%p 성능 향상이면 인프라 비용 절감 측면에서 비즈니스 임팩트가 엄청납니다. RAG 파이프라인에 이 메모리 구조만 잘 태우면, 비싼 모델 호출 횟수 줄여서 바로 사내 에이전트 도입 각 잡을 수 있겠는데요? 일단 오늘 밤에 바로 프로토타이핑 돌려봅니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;선배님들, 역시 실무 관점은 다르시네요! 저는 이 논문이 &#x27;학습 데이터 없는 소형 모델&#x27;의 한계를 교사의 &#x27;성공 경험&#x27;으로 치환했다는 점이 너무 힙하다고 봅니다. 하위 작업 메모리가 성능 견인했다는 건 결국 에이전트에게 &#x27;생각의 단계&#x27;를 주입하는 게 핵심이란 건데, 이거 다음 버전에서는 메모리 distillation이 아니라 아예 파라미터 업데이트로 넘어가면 대박 터질 것 같아요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
