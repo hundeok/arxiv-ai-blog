@@ -12306,7 +12306,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-11T06:56:39.200856+00:00",
+      "updated_at": "2026-08-11T09:55:09.854558+00:00",
       "paper": {
         "title": "Relevant but Incomplete: Referential Dangling as a Paradigm-Level Failure Mode in Hard Prompt Compression",
         "summary": "Hard prompt compression reduces long-context inference cost by independently scoring tokens, sentences, or chunks and retaining the highest-scoring units under a budget. We identify a structural failure in this procedure: independent selection can split dependent evidence pairs, retaining one member while deleting the other. When retained text contains an answer but deleted text defines the entity needed to interpret it, we call the result referential dangling. At a compression ratio of 0.30, Beaver, which ranks coherent chunks using Qwen3-0.6B embeddings, leaves the answer path incomplete in 34-54% of bridge examples across three multi-hop question answering datasets. On a shared HotpotQA bridge set, all six hard compressors we test exhibit dangling at rates up to 60%, and every document in LongBench-v2 Single-Document QA contains at least one dangling reference. On dangling examples evaluated with Qwen3-8B, reinserting the missing supporting paragraph while removing nonsupporting paragraphs to maintain the token budget improves accuracy by 29-34 percentage points (p < 0.0001), recovering at least 88% of the gap to contexts retaining both supporting paragraphs. Stronger answer models do not absorb the loss: on MuSiQue, GPT-5.5 is 8.8 points less accurate on compressed contexts than on contexts retaining both supporting paragraphs. Finally, we train a compact classifier to rank omitted sentences by whether they are needed to interpret retained text and reinsert the top-ranked candidates without support annotations at inference. On HotpotQA with Qwen3-8B, this automatic restoration improves accuracy by 4.7 points while changing the compression ratio only from 0.30 to 0.31. Hard compressors should optimize both relevance and referential completeness.",
@@ -12435,7 +12435,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-11T06:56:39.200860+00:00",
+      "updated_at": "2026-08-11T09:55:09.854562+00:00",
       "paper": {
         "title": "DCAS: Decoupling CLI Agent Scaffolding to Internalize Planning across Scaffolds",
         "summary": "CLI-based software-engineering agents have matured rapidly, yet the open ecosystem has converged on a single training environment: trajectory datasets used to fine-tune open models are collected almost exclusively under OpenHands. Models fine-tuned on this data score well under OpenHands but degrade substantially when deployed under any non-training scaffold. Untrained base models do not show this divergence, indicating the gap is fine-tuning-induced and tied to the conventions of the training scaffold. We argue that a load-bearing scaffold-specific behavior is planning structure, in two senses this paper distinguishes: explicit planning, a pre-execution plan produced as a first-class artifact, and implicit planning, the structural conventions that shape execution throughout the agent loop. Under this hypothesis, closing the gap requires moving planning from a fixed scaffold artifact to a learned model capability. We introduce Decoupling CLI Agent Scaffolding (DCAS), a backend-substitution interception layer that routes API traffic between any CLI scaffold and any backend model without modifying the scaffold, enabling cross-scaffold evaluation and planning-aware trajectory collection. Using DCAS, a controlled plan-source intervention confirms planning quality is a high-leverage component, with gains exceeding the cross-scaffold drops we observe. A model fine-tuned on a small set of DCAS-collected planning-aware trajectories under a single scaffold gains consistently across non-training scaffolds, and the two senses of planning are empirically separable in training data.",
@@ -12457,7 +12457,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-11T06:56:39.200868+00:00",
+      "updated_at": "2026-08-11T09:55:09.854570+00:00",
       "paper": {
         "title": "Multi-Agent Forensic Reasoning for Generalizable Deepfake Video Detection",
         "summary": "The malicious use of generative artificial intelligence to create highly realistic deepfake videos raises serious ethical concerns and poses substantial challenges to AI safety. However, existing deepfake video benchmarks provide limited coverage of recent synthesis methods and generally lack reliable fine-grained textual annotations. Meanwhile, conventional detectors and multimodal large language models (MLLMs), whether operating as a single model or relying on a single analytical perspective, often fail to capture subtle forgery artifacts, limiting their generalization to emerging AI-generated methods. To address these limitations, we introduce FaceVid-Forensics-100K, a large-scale deepfake video dataset comprising 100,000 videos and spanning 33 synthesis methods across face swapping, face reenactment, and entire-face synthesis, including recent generators such as Seedance 2.0. The dataset provides fine-grained textual annotations of visual observations and verdict-consistent forensic explanations, automatically synthesized through a multi-model aggregation and conflict-resolution pipeline powered by advanced MLLMs. Building on this benchmark, we propose a multi-agent forensic reasoning framework that employs four specialized domain-expert agents to independently analyze forgery cues from four perspectives: texture, lighting, motion, and physics. A judge agent then reconciles their reports to produce a final prediction together with an explanation. Extensive evaluations on out-of-domain test sets show that, despite being composed entirely of small open-source MLLMs, our framework outperforms all methods including closed-source GPT and Gemini models and ranks first across all reported metrics on this benchmark. The project page is available at https://xavierjiezou.github.io/ARGUS/.",
@@ -12485,7 +12485,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-11T06:56:39.200851+00:00",
+      "updated_at": "2026-08-11T09:55:09.854552+00:00",
       "paper": {
         "title": "MatrAIx: Simulating the World with 8.3 Billion Persona Agents",
         "summary": "Human evaluation of AI systems and digital products is costly, slow, and difficult to scale. Offline evaluations are more scalable but often abstract away human diversity and interactive behavior. We therefore introduce MatrAIx, a population-scale simulated-user evaluation infrastructure for testing AI systems and digital products with heterogeneous users. MatrAIx has three core components: First, Persona 8B contains 8.3 billion persona records represented by 1,290 categorical dimensions. Records are either sampled from a dependency graph that preserves correlated attributes or derived from human-authored profiles. We release a quality-filtered coreset of approximately 1 million personas, comprising 599,847 human-grounded and 400,000 synthetic records. Second, the MatrAIx Playground provides four environments in which diverse users evaluate and interact with digital products: Survey, AI Chatbot, Web, and App. Third, MatrAIx provides 1,010 application tasks spanning more than 25 domains, including Commerce, Software, Finance, and Healthcare. We conducted 18,189 evaluation trials across eight representative tasks. Persona agents were powered by three LLMs: Claude Opus 4.8, GPT 5.5, and Claude Haiku 4.5. The resulting feedback captures how decisions and preferences vary across persona backgrounds, including hesitation after a price increase, willingness to continue after an AI assistant fails, and latency tolerance. We conducted two main validation studies: First, a 400-trial controlled study evaluated persona adherence across ten behavioral attributes and all four environments. The declared behavior was expressed or correctly suppressed in 366 trials (91.5%). Second, human and LLM judges evaluated the extraction quality of human-grounded personas. Overall, MatrAIx provides an end-to-end infrastructure for evaluating AI systems and digital products with diverse simulated human users.",
@@ -12693,11 +12693,11 @@
     "2608_07449v1": {
       "id": "2608_07449v1",
       "filename": "post_2608_07449v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-08-11T01:13:49.636426+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-11T01:13:49.636428+00:00",
+      "updated_at": "2026-08-11T09:55:57.868086+00:00",
       "paper": {
         "title": "SkillProx: Self-Evolving Agent Skills via Proximal Textual Gradient Descent",
         "summary": "LLM agents increasingly adapt to recurring tasks by accumulating procedural knowledge in skills. These skills are lightweight, reusable textual artifacts that are loaded into the agent's context without weight updates. Recent methods refine skills through iterative task execution, failure diagnosis, and trajectory-guided text-space updates. However, existing frameworks lack explicit diagnosis--outcome feedback and treat deletion as a generic edit operation rather than a dedicated mechanism for consolidating accumulated knowledge. We introduce SkillProx, a proximal-gradient-inspired forward--backward framework that couples closed-loop diagnostic evolution with utility-aware proximal refinement. Motivated by a composite objective balancing task loss and skill complexity, the forward stage re-executes diagnosis-driven edits on the same task batch, rolls back regressions, and feeds measured outcomes into subsequent diagnoses. The backward stage decomposes the resulting skill into auditable knowledge units, estimates their contributions using a frozen leave-one-out utility audit, and applies validation-gated consolidation, demotion, or removal. Experiments on in-distribution and out-of-distribution benchmarks across multiple backbone LLMs show that SkillProx improves average accuracy by 3.0 percentage points over the strongest gradient-based baseline. Component ablations demonstrate the complementary effects of closed-loop diagnosis and proximal refinement.",
@@ -12715,7 +12715,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2608.07449v1"
       },
-      "priority_score": 38
+      "priority_score": 38,
+      "korean_title": "SkillProx: 근접 텍스트 경사 하강법을 통한 에이전트 기술의 자가 진화"
     },
     "2608_07446v1": {
       "id": "2608_07446v1",
@@ -12924,11 +12925,11 @@
     "2608_07424v1": {
       "id": "2608_07424v1",
       "filename": "post_2608_07424v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-08-11T01:13:49.636521+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-11T01:13:49.636523+00:00",
+      "updated_at": "2026-08-11T09:56:07.374001+00:00",
       "paper": {
         "title": "CoBa: Cost-Effective Test-Time Scaling via Compute-Balanced Routing",
         "summary": "Test-time scaling is often implemented by spending more compute along one axis: sampling more solutions, extending a chain of thought, or applying a stronger evaluator. Under a fixed inference budget, these choices compete. This paper formulates test-time reasoning as a compute-allocation problem in which a system must decide whether the next unit of compute should be spent on generation, verification, or stopping. We introduce CoBa, a compute-balanced routing policy that first obtains a small set of candidates, applies cheap verification broadly, and routes uncertain or high-value candidates to stronger verification. On 3,129 example-generator evaluations spanning MATH-500, AIME 2024/2025, AMC 2023, and procedural symbolic reasoning, CoBa-Routed-Strong reaches 85.13% macro accuracy, statistically matching a self-evaluation weighted-voting proxy at 85.20% while using 49.1% fewer parameter-weighted tokens. It also matches best-of-16 majority voting within 0.01 macro-accuracy points while using 58.9% fewer parameter-weighted tokens; paired tests retain a small best-of-16 edge at substantially higher cost. Paired bootstrap tests show significant gains over single-sample decoding, while the remaining gap to the pool oracle exposes headroom for sharper routing. For local reasoning systems, test-time scaling becomes a question of where the next computation is most valuable.",
@@ -12941,7 +12942,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2608.07424v1"
       },
-      "priority_score": 37
+      "priority_score": 37,
+      "korean_title": "CoBa: 컴퓨팅 균형 라우팅을 통한 비용 효율적인 테스트 타임 스케일링"
     },
     "2608_07418v1": {
       "id": "2608_07418v1",
@@ -13331,7 +13333,7 @@
       "attempts": 0,
       "next_retry_at": "2026-08-11T04:15:11.289556+00:00",
       "last_error": null,
-      "updated_at": "2026-08-11T06:56:39.200864+00:00",
+      "updated_at": "2026-08-11T09:55:09.854567+00:00",
       "paper": {
         "title": "Enfold: Folding World Model Imagination into Predictive Representations for Ultra-Efficient Embodied Control",
         "summary": "World generative models are typically used through what they produce: a rendered future, a video-conditioned action, or latent context computed by a costly generative branch. We argue that their more reusable asset is the computation that constructs a future. As a generator transforms a corrupted future into a coherent trajectory, its intermediate states organize appearance, spatial layout, and interaction across levels of abstraction. Can this future-generative computation be internalized in a representation inferred from the present alone? We present Enfold, which transfers this computation into a representation predicted from the current visual context and language instruction. During training, multi-level states exposed as the generator processes the observed future supervise a current-only encoder. The learned representation is fed back to condition future generation and is read by task heads without allowing task gradients to reshape the encoder. At deployment, action prediction no longer executes the generator. Across LIBERO, RoboTwin2.0, and real-robot tasks, Enfold supports strong control while reducing action latency by $3.7\\times$ relative to Fast--WAM, Enfold-Flash reaches $10.1\\times$. Representation analyses show that it suppresses nuisance variation and preferentially captures changes that emerge over longer horizons. When the current scene is altered by human intervention, both the generated continuation and the executed actions adapt, which is inconsistent with fixed trajectory replay. These results recast a world generator as a source of predictive control representations: its future need not be materialized at every step if its internal structure can be enfolded into the present.",
@@ -13382,7 +13384,7 @@
       "attempts": 0,
       "next_retry_at": "2026-08-11T04:15:11.289588+00:00",
       "last_error": null,
-      "updated_at": "2026-08-11T06:56:39.200876+00:00",
+      "updated_at": "2026-08-11T09:55:09.854588+00:00",
       "paper": {
         "title": "SPOT: Sparse Probing and Outcome Calibration for On-Policy Distillation",
         "summary": "On-policy distillation (OPD) provides dense teacher supervision on student-generated trajectories, but standard reverse-KL training can assign insufficient probability to other plausible continuations. Teacher entropy alone does not reveal whether uncertainty is concentrated among a few plausible next tokens or dispersed over a long probability tail, nor whether the student already represents those candidates well. Moreover, local teacher probabilities may not predict downstream success. We introduce Sparse Probing and Outcome-calibrated Targets OPD (SPOT), which addresses two coupled decisions, where to probe and what to distill, through an acquisition--exploration--exploitation procedure. During acquisition, a position-level score combines normalized teacher entropy, the probability mass captured by a small top-$k$ candidate set, and student--teacher mismatch to allocate a limited probing budget. During exploration, SPOT evaluates teacher-proposed candidates through verifier-scored student continuations. During exploitation, these outcomes produce a closed-form, KL-regularized target that favors candidates with better downstream outcomes while remaining anchored to the teacher distribution. Extensive experiments across multiple student models and reasoning benchmarks demonstrate the effectiveness of SPOT in improving reasoning performance while balancing solution quality and coverage.",
@@ -13407,7 +13409,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-11T06:56:50.377420+00:00",
+      "updated_at": "2026-08-11T09:55:09.854520+00:00",
       "paper": {
         "title": "$A^2E$ : An End-to-End Agent Auditing Engine",
         "summary": "With the rapid advancement of large language models (LLMs), harnesses have become essential infrastructure for deploying agents across a wide range of domains. The fast-evolving harness ecosystem has also made rigorous capability evaluation increasingly important. However, efficiently building an end-to-end, systematic, and comprehensive evaluation pipeline remains a significant challenge. To address this challenge, we introduce $A^2E$ (Agent Auditing Engine), an end-to-end evaluation engine designed for agent harnesses. $A^2E$ leverages our newly proposed Agent Task Protocol (ATP) to enable the rapid integration of evaluation tasks with different harnesses. Through an automatically instrumented Monitor, it captures and generates standardized execution traces during experiments. In the Evaluation stage, $A^2E$ systematically assesses harness capabilities using a suite of multidimensional metrics. Compared with correctness alone, these metrics provide a more fine-grained characterization of differences among harnesses in execution efficiency, tool use, task planning, and error recovery. Experiments conducted with $A^2E$ further reveal that model-harness combinations exhibit substantial performance variation across different types of tasks, and that no single combination consistently outperforms all others across every task. These findings not only demonstrate the necessity of systematic evaluation but also provide useful guidance for the co-evolving of models and harnesses. Our code is available at https://github.com/datamllab/A2E.",
@@ -13425,10 +13427,84 @@
       },
       "priority_score": 49,
       "korean_title": "A2E: 엔드투엔드 에이전트 감사 엔진"
+    },
+    "2608_03499v1": {
+      "id": "2608_03499v1",
+      "filename": "post_2608_03499v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-08-11T09:55:47.991813+00:00",
+      "paper": {
+        "title": "WeClawArena: An Auditable Sandbox and Benchmark for Cross-User Agents Collaboration and Security in Human-Centered Agent Networks",
+        "summary": "Recent advances in persistent personal-agent frameworks are making human-centered agent networks realistic deployment targets: each user can be served by an AI agent that acts on the user's behalf, maintains state, and communicates with other agents through social and task relations. In these networks, everyday tool use becomes multi-party owned-agent collaboration over personal workspaces, where files, records, tools, and policies are not directly visible across owners. Existing agent benchmarks study tool use and collaboration, but they do not provide an end-to-end sandbox for verifiable cross-user agent collaboration with realistic user digital workspaces or test how harmful actions can travel through the human-centered agent network. We introduce WeClawArena, an auditable benchmark and runtime sandbox for multi-party owned-agent collaboration over personal workspaces. WeClawArena targets collaborative tool-use tasks in which personal workspaces serve as both operational tools and personal constraints. The benchmark contains 124 base tasks across six cross-user task domains and expands them into 620 scenario variants, with one benign control and four attack-vector variants per base task. The sandbox records peer messages, tool calls, resource operations, governed decisions, and final workspace states. WeClawArena reports utility and attack success rate separately and audits attack success from bounded runtime evidence, supporting diagnosis of task breakdown, privacy leakage, poisoned evidence, and invalid authority paths.",
+        "published": "2026-08-04T11:42:26Z",
+        "authors": [
+          "Prince Zizhuang Wang",
+          "Aojie Yuan",
+          "Haiyue Zhang",
+          "Xiyang Hu",
+          "Yue Zhao",
+          "Shuli Jiang"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.03499v1"
+      },
+      "priority_score": 39,
+      "korean_title": "위클로아레나: 인간 중심 에이전트 네트워크 내 사용자 간 협업 및 보안을 위한 감사 가능한 샌드박스 및 벤치마크"
+    },
+    "2608_07886v1": {
+      "id": "2608_07886v1",
+      "filename": "post_2608_07886v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-08-11T09:55:09.854576+00:00",
+      "last_error": null,
+      "updated_at": "2026-08-11T09:55:09.854577+00:00",
+      "paper": {
+        "title": "Vision-Language Grounding as Bidirectional Concept Correspondence",
+        "summary": "Vision-language grounding connects language to visual content, yet most existing formulations reduce grounding to a unidirectional localization problem: given a prespecified text phrase or category name, identify the corresponding image region. This setup assumes that the relevant linguistic unit is already known, overlooking a more basic challenge in grounded communication: determining which parts of the text are visually referential and how they correspond to entities in the image. We formulate grounding as $\\textit{bidirectional concept correspondence}$ over an image-text pair. Given an image and its paired text, the goal is to recover all correspondences between visually referential text spans and instance-level image segments, without assuming that the relevant text spans are provided. This formulation unifies common grounding tasks, including phrase grounding, referring expression grounding, and open-vocabulary detection, by treating text segmentation, image segmentation, and cross-modal alignment as a single correspondence prediction problem. To address this task, we introduce $\\textbf{ConCor-1}$, a grounding model built on top of a pretrained vision-language model. It uses learnable $\\textit{bridge tokens}$ to represent candidate image-text correspondences and predicts, for each token, a text mask, an image mask, and a correspondence presence score. To train and evaluate this task, we convert diverse grounding and segmentation datasets into a unified correspondence format. Experiments show that $\\textbf{ConCor-1}$ consistently outperforms baselines, improving correspondence F1 by 48% on the long-caption dataset and by 29% on zero-shot LVIS, where the large category list serves as the text input.",
+        "published": "2026-08-08T03:26:38Z",
+        "authors": [
+          "Jieyu Zhang",
+          "Ziqi Gao",
+          "Luke Zettlemoyer",
+          "Ranjay Krishna"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.07886v1"
+      },
+      "priority_score": 20
+    },
+    "2608_09867v1": {
+      "id": "2608_09867v1",
+      "filename": "post_2608_09867v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-08-11T09:55:29.681366+00:00",
+      "paper": {
+        "title": "Stealing Reasoning Traces from Proprietary LLM APIs",
+        "summary": "Leading large language model providers now conceal their models' step-by-step reasoning, or chain-of-thought, to protect intellectual property and limit information leakage. Rather than storing these traces server-side, providers return them to the client as blocks of encrypted text, which the client passes back with each subsequent request. Building on prior research, we identify an architectural vulnerability: these encrypted blocks are fully compatible and interchangeable across different sessions, users, and models within a provider's ecosystem. We exploit this compatibility to develop a scalable decryption jailbreak. By injecting an encrypted reasoning trace from a given model into a weaker, and less safeguarded model from the same provider, we force it to decode and output the trace verbatim in plaintext, without ever jailbreaking the more capable model directly. This vulnerability enables four distinct attack vectors. First, it circumvents anti-distillation mechanisms, allowing adversaries to extract a proprietary model's reasoning, as we demonstrate across Anthropic, OpenAI, and Google. Second, it allows for large-scale private data extraction. Developers frequently share session logs publicly, unaware of contents of the encrypted blocks. By decoding 315,320 reasoning blocks scraped from public repositories, we recovered 367 Personally Identifiable Information (PII) artifacts and 182 credentials. Third, it inadvertently reveals hazardous information hidden within the reasoning process, even in cases where the model's final, visible output safely rejects a malicious request. Fourth, attackers can leverage this flaw to execute invisible prompt injections, embedding malicious payloads entirely within encrypted blocks to poison public agentic rollouts. Following responsible disclosure, we propose concrete cryptographic and system-level mitigations to secure client-side reasoning.",
+        "published": "2026-08-10T17:24:50Z",
+        "authors": [
+          "Alexander Panfilov",
+          "David Schmotz",
+          "Ilia Shumailov",
+          "Luca Beurer-Kellner",
+          "Joachim Schaeffer",
+          "Ameya Prabhu",
+          "Jonas Geiping",
+          "Maksym Andriushchenko"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.09867v1"
+      },
+      "priority_score": 50,
+      "korean_title": "독점적 거대언어모델 API로부터 추론 흔적을 탈취하는 방법"
     }
   },
   "last_run": {
-    "started_at": "2026-08-11T06:56:39.201988+00:00",
+    "started_at": "2026-08-11T09:55:09.855701+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -13439,25 +13515,25 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 18818,
-      "output_tokens": 5873,
+      "prompt_tokens": 22567,
+      "output_tokens": 5827,
       "thought_tokens": 0,
-      "total_tokens": 24691,
-      "estimated_usd": 0.013514
+      "total_tokens": 28394,
+      "estimated_usd": 0.01438225
     },
-    "finished_at": "2026-08-11T06:57:18.886328+00:00"
+    "finished_at": "2026-08-11T09:56:07.617641+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 960,
-    "prompt_tokens": 2412806,
-    "output_tokens": 706604,
+    "requests": 968,
+    "prompt_tokens": 2435373,
+    "output_tokens": 712431,
     "thought_tokens": 0,
-    "total_tokens": 3119410,
-    "estimated_usd": 1.6631075
+    "total_tokens": 3147804,
+    "estimated_usd": 1.67748975
   },
   "last_publication_run": {
-    "started_at": "2026-08-11T06:56:39.201988+00:00",
+    "started_at": "2026-08-11T09:55:09.855701+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -13468,17 +13544,17 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 18818,
-      "output_tokens": 5873,
+      "prompt_tokens": 22567,
+      "output_tokens": 5827,
       "thought_tokens": 0,
-      "total_tokens": 24691,
-      "estimated_usd": 0.013514
+      "total_tokens": 28394,
+      "estimated_usd": 0.01438225
     },
-    "finished_at": "2026-08-11T06:57:18.886328+00:00"
+    "finished_at": "2026-08-11T09:56:07.617641+00:00"
   },
   "daily_usage": {
     "date": "2026-08-11",
-    "estimated_usd": 0.041074,
-    "publications": 12
+    "estimated_usd": 0.05545625,
+    "publications": 16
   }
 }
