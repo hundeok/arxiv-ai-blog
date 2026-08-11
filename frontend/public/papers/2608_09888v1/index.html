@@ -1,0 +1,67 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>BDH-CQ: 재귀적 잠재 추론을 통한 문맥 내 학습 | ArXiv Translator AI</title><meta name="description" content="BDH-CQ: 재귀적 잠재 추론을 통한 문맥 내 학습"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_09888v1"><meta property="og:type" content="article"><meta property="og:title" content="BDH-CQ: 재귀적 잠재 추론을 통한 문맥 내 학습"><meta property="og:description" content="BDH-CQ: 재귀적 잠재 추론을 통한 문맥 내 학습"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_09888v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="BDH-CQ: 재귀적 잠재 추론을 통한 문맥 내 학습"><meta name="twitter:description" content="BDH-CQ: 재귀적 잠재 추론을 통한 문맥 내 학습"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_09888v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "BDH-CQ: 재귀적 잠재 추론을 통한 문맥 내 학습", "description": "BDH-CQ: 재귀적 잠재 추론을 통한 문맥 내 학습", "datePublished": "2026-08-10", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_09888v1", "author": [{"@type": "Person", "name": "Björn Engdahl"}, {"@type": "Person", "name": "Adrian Kosowski"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_09888v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_09888v1"});gtag('event', 'paper_view', {"paper_id": "2608_09888v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>BDH-CQ: 재귀적 잠재 추론을 통한 문맥 내 학습</h1><p>BDH-CQ: 재귀적 잠재 추론을 통한 문맥 내 학습</p><pre>BDH-CQ: 재귀적 잠재 추론을 통한 문맥 내 학습
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** BDH-CQ: In-Context Learning with Recurrent Latent Reasoning
+&gt; - **저자:** Björn Engdahl, Adrian Kosowski, Jan Chorowski, Zuzanna Stamirowska, Przemysław Uznański, Junlin Jiang, Rohan Phadke, Remigiusz Kinas, Richard Zhong
+&gt; - **발행일:** 2026-08-10
+&gt; - **PDF 링크:** [BDH-CQ: In-Context Learning with Recurrent Latent Reasoning](https://arxiv.org/pdf/2608.09888v1)
+
+
+✨ 3줄 핵심 요약
+* **BDH-CQ**는 추론 과정을 언어로 나열하는 대신, 고차원 잠재 공간에서 반복적인 연산을 수행하여 문제를 해결하는 모델입니다.
+* 추론 중간 단계를 텍스트로 생성하지 않아 연산 효율성이 극대화되었으며, ARC-AGI-1 벤치마크에서 29.5%의 pass@2 성능을 기록했습니다.
+* 작업당 추론 비용은 $0.0007로, 기존의 비용-정확도 파레토 프론티어를 돌파하며 새로운 효율성 기준을 제시했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+기존의 AI 모델들이 복잡한 문제를 풀 때 &#x27;생각의 사슬(Chain-of-Thought)&#x27;이라 불리는 텍스트를 단계별로 생성하는 것과 달리, **BDH-CQ**는 이 과정을 모델 내부의 &#x27;잠재 상태(Latent state)&#x27; 변화만으로 처리합니다. 마치 사람이 언어로 말하지 않고도 머릿속으로 직관적인 계산을 수행하는 것과 유사합니다. 사용자가 제공한 예시(문맥)를 모델의 재귀적 메모리에 실시간으로 업데이트하며, 이를 바탕으로 답만을 효율적으로 도출합니다. 이는 추론 과정에서 발생하는 불필요한 토큰 생성 비용을 획기적으로 줄여줍니다.
+
+🎯 배경 및 문제점
+기존의 언어 모델 기반 추론 방식은 중간 추론 과정을 토큰으로 하나씩 출력해야 하므로 연산량, 지연 시간, 토큰 소비량이 크다는 한계가 있었습니다. 또한, 잠재 공간에서의 추론과 문맥 내 학습(In-context learning)이 분리되어 발전해 왔으며, 최신 모델들은 작업별로 특정 ID를 부여하거나 미세 조정이 필요한 경우가 많았습니다. BDH-CQ는 이러한 분리된 기능을 하나로 통합하고, 언어 생성 없이도 고도의 추론이 가능한 시스템을 구현하고자 개발되었습니다.
+
+💡 핵심 기술 및 아키텍처
+* **재귀적 잠재 추론(Recurrent Latent Reasoning):** 중간 사고 과정을 언어로 변환하지 않고 고차원 잠재 공간에서 반복적인 연산을 통해 답을 찾습니다.
+* **통합 연산 구조:** 문맥 내 학습, 메모리 업데이트, 추론이 동일한 계산 구조 내에서 이루어집니다.
+* **비언어적 사고:** 내부 계산을 자연어 토큰으로 직렬화하지 않음으로써, 다수의 해결 경로를 병렬적으로 탐색할 수 있는 잠재력을 확보했습니다.
+* **추론 비용 절감:** 150M 파라미터 구성으로 구현되어 별도의 매개변수 업데이트 없이도 새로운 작업을 수행합니다.
+
+📊 실험 결과 분석
+* **ARC-AGI-1 성능:** 150M 파라미터 모델이 29.5%의 pass@2 성능을 달성했습니다.
+* **경제성:** 작업당 추론 비용 $0.0007로, 이전의 ARC-AGI-1 벤치마크 최고 수준을 상회하는 효율성을 보였습니다.
+* **일반화 능력:** 추론 단계에서 제공된 시연 예시의 범위(propagation, copying, ordering, nesting 등)를 넘어서는 새로운 입력에 대해서도 모델이 어떻게 반응하는지 검증했습니다. 특히, 너무 복잡한 문제에서는 &#x27;추론의 한계&#x27;가 드러났지만, 관련 예시를 추가로 제공할 경우 성능이 비약적으로 향상되는 &#x27;실패 극복&#x27; 양상을 확인했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **효율적인 AI 추론:** 언어 생성이 필수적이지 않은 도메인에서 추론 비용을 획기적으로 낮출 수 있는 새로운 패러다임을 제시합니다.
+* **확장성:** 1T 파라미터 규모까지 텐서 샤딩 등을 통해 자연스럽게 확장이 가능하도록 설계되었습니다.
+* **향후 활용:** 언어 모델링 능력과 잠재 추론 능력을 결합하여, 평소에는 효율적인 잠재 계산을 수행하다가 설명이나 검증이 필요할 때만 언어를 출력하는 하이브리드 지능 시스템으로 발전할 가능성이 있습니다. 또한, 수학적 추론이나 Sudoku와 같은 제약 만족 문제 해결에도 적용 가능할 것으로 기대됩니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [BDH-CQ: In-Context Learning with Recurrent Latent Reasoning](https://arxiv.org/html/2608.09888)
+&gt; - [2608.09888 BDH-CQ: In-Context Learning with Recurrent Latent Reasoning](https://arxiv.org/abs/2608.09888)
+&gt; - [BDH-CQ: In-Context Learning with Recurrent Latent Reasoning](https://arxiv.org/pdf/2608.09888)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;이 논문은 &#x27;생각의 사슬(CoT)&#x27;이 가진 근본적인 토큰 낭비 문제를 잠재 공간으로 우회했다는 점에서 학술적 가치가 높군요. 다만, 언어라는 가시적인 추론 경로 없이 &#x27;잠재 상태&#x27;만으로 복잡한 제약 만족 문제의 정합성을 어떻게 보장할지에 대한 수학적 해석 가능성(Interpretability)이 여전히 의문입니다. 블랙박스 안의 재귀적 연산이 왜 특정 답을 도출했는지 설명할 수 없다면, 실무에서 신뢰를 얻긴 어렵겠지요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 맞지만, 서비스 단에선 일단 비용입니다. 토큰당 과금 구조에서 추론 비용 $0.0007은 그냥 사기 수준인데요? 150M 파라미터면 온디바이스 배포도 가능해 보이고, 특히 ARC-AGI에서 이 정도 성능이면 데이터 전처리 파이프라인에서 복잡한 논리 판단을 할 때 CoT 대신 이걸로 싹 다 갈아엎을 것 같습니다. 해석 가능성보단 일단 서빙 효율부터 챙겨야 할 때니까요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;다들 너무 진지하신 거 아닌가요? ㅋㅋ 지금 이 논문의 핵심은 &#x27;LLM이 굳이 말을 많이 해야 똑똑한가?&#x27;라는 질문을 던진 거잖아요. 텍스트 생성 없이 잠재 공간만으로 ARC-AGI 돌리는 거 보고 진짜 소름 돋았습니다. 이제 논문 쓸 때 &#x27;CoT를 활용한 성능 향상&#x27;이라는 문구는 구시대 유물이 되겠네요. 내일부터 당장 이거 깃허브 코드 뜯어보고 실험 돌려볼 사람 구합니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
