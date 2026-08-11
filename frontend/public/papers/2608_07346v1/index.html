@@ -1,0 +1,69 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>엔드투엔드 에이전트 감사 엔진 | ArXiv Translator AI</title><meta name="description" content="엔드투엔드 에이전트 감사 엔진"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_07346v1"><meta property="og:type" content="article"><meta property="og:title" content="엔드투엔드 에이전트 감사 엔진"><meta property="og:description" content="엔드투엔드 에이전트 감사 엔진"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_07346v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="엔드투엔드 에이전트 감사 엔진"><meta name="twitter:description" content="엔드투엔드 에이전트 감사 엔진"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_07346v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "엔드투엔드 에이전트 감사 엔진", "description": "엔드투엔드 에이전트 감사 엔진", "datePublished": "2026-08-07", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_07346v1", "author": [{"@type": "Person", "name": "Haoning Wang"}, {"@type": "Person", "name": "Mingxun Zhang"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_07346v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_07346v1"});gtag('event', 'paper_view', {"paper_id": "2608_07346v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>엔드투엔드 에이전트 감사 엔진</h1><p>엔드투엔드 에이전트 감사 엔진</p><pre>엔드투엔드 에이전트 감사 엔진
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** An End-to-End Agent Auditing Engine
+&gt; - **저자:** Haoning Wang, Mingxun Zhang, Chenyue Yu, Yingjun Shang, Xia Hu, Guanchu Wang, Na Zou
+&gt; - **발행일:** 2026-08-07
+&gt; - **PDF 링크:** [An End-to-End Agent Auditing Engine](https://arxiv.org/pdf/2608.07346v1)
+
+
+✨ 3줄 핵심 요약
+* **A2E(Agent Auditing Engine)**는 다양한 에이전트 프레임워크(Harness)와 벤치마크를 통합 평가하기 위한 엔드투엔드 평가 엔진입니다.
+* 새로운 **ATP(Agent Task Protocol)**를 도입하여 복잡한 통합 코드 작성 없이도 다양한 환경에서 표준화된 실행 기록(Trace)을 생성하고 분석합니다.
+* 단순 정답 여부를 넘어 도구 사용, 작업 계획, 오류 복구, 효율성 등 다차원적인 지표로 에이전트의 성능을 정밀하게 진단합니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+AI 에이전트의 성능을 평가할 때 보통 &#x27;정답을 맞혔는가&#x27;만 따지는 경우가 많습니다. 하지만 실제 에이전트는 정답에 도달하기까지 수많은 계획을 세우고, 도구를 사용하며, 실수를 수정하는 복잡한 과정을 거칩니다. A2E는 이 과정을 투명하게 들여다보는 &#x27;블랙박스 기록장치&#x27;와 같습니다. 표준화된 프로토콜(ATP)을 통해 어떤 에이전트 도구를 쓰더라도 동일한 기준으로 성능을 측정하며, 왜 실패했는지 혹은 얼마나 효율적인지 구체적으로 분석해 줍니다. 이를 통해 개발자는 모델 자체가 문제인지, 아니면 에이전트의 구동 방식이 문제인지를 명확히 구분할 수 있습니다.
+
+🎯 배경 및 문제점
+현재 에이전트 생태계는 빠르게 발전하고 있으나, 이를 평가하는 시스템을 구축하는 것은 여전히 어렵습니다. 기존의 결과 중심(Success-rate 등) 평가 방식에는 다음과 같은 한계가 있습니다.
+* **진단적 정보 부족:** 실패 원인이 추론 단계인지, 도구 사용 문제인지 파악하기 어렵습니다.
+* **통합의 어려움:** 에이전트 프레임워크마다 방식이 달라 새로운 벤치마크를 적용할 때마다 별도의 연동 코드가 필요합니다.
+* **단편적 평가:** 실행 효율성이나 자원 소모와 같은 세부적인 성능 차이를 무시하게 됩니다.
+
+💡 핵심 기술 및 아키텍처
+* **ATP(Agent Task Protocol):** 에이전트 프레임워크와 벤치마크 사이의 인터페이스를 표준화하여, 새로운 조합을 추가할 때 복잡한 수정 없이 통합 가능하게 합니다.
+* **자동화된 모니터(Monitor):** 에이전트 실행 중 발생하는 모든 과정을 &#x27;스팬 트리(Span Tree)&#x27; 형태로 기록하여 표준화된 실행 트레이스(Trace)를 생성합니다.
+* **다차원 평가 계층:** 단순히 정확도(Correctness)만 보지 않고, 계획 수립(Planning), 도구 사용(Tool use), 실행 품질(Runtime quality) 등을 포함한 포괄적 지표를 사용하여 평가합니다.
+
+📊 실험 결과 분석
+* **모델과 프레임워크의 상호작용:** 같은 API 모델을 사용하더라도 에이전트 프레임워크에 따라 성능 차이가 매우 큽니다. (예: 특정 작업에서 성공률 격차가 0.66까지 발생)
+* **프레임워크의 영향력:** 프레임워크는 단순한 래퍼(Wrapper)가 아니라 프롬프트 구성, 도구 상호작용, 상태 관리에 직접적인 영향을 미치며 성능을 결정짓는 핵심 요소입니다.
+* **진단 사례:** 동일한 모델을 사용한 경우에도 LangGraph는 효율적으로 문제를 해결한 반면, CrewAI는 더 많은 토큰을 소모하고도 실패하는 사례가 발견되었습니다. A2E는 이 차이가 &#x27;불필요한 도구 사용&#x27;과 &#x27;잘못된 목표 설정&#x27; 때문임을 밝혀냈습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **에이전트 개발 가이드:** 모델과 프레임워크의 조합이 모든 작업에서 최상인 경우는 없으므로, A2E를 통해 특정 도메인에 최적화된 조합을 선택할 수 있는 지표를 제공합니다.
+* **품질 관리 표준화:** 기업들이 자체적인 에이전트 시스템을 구축할 때, 성능 저하의 근본 원인을 파악하여 빠르게 수정할 수 있는 진단 도구로 활용 가능합니다.
+* **생태계 발전:** 모델 성능 향상과 더불어 에이전트 프레임워크의 효율적인 개선을 유도하여, 더 안전하고 신뢰할 수 있는 자율 에이전트 개발을 지원합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2608.07346 An End-to-End Agent Auditing Engine](https://arxiv.org/abs/2608.07346)
+&gt; - [Contribute to datamllab/A2E development by creating an account on...](https://github.com/datamllab/A2E)
+&gt; - [User profile of Mingxuan Zhang on Hugging Face](https://huggingface.co/xuan269)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문은 흥미로우나, ATP 프로토콜이 과연 복잡한 비정형 에이전트 환경에서도 일반성을 유지할 수 있을지가 의문입니다. 특히 에이전트의 &#x27;계획 수립&#x27; 과정을 스팬 트리로 구조화할 때 발생하는 데이터 손실을 어떻게 보정할 것인지, 그 수학적 엄밀함이 부족해 보이네요. 평가 지표의 표준화는 환영하지만, 결국은 또 다른 &#x27;평가 편향&#x27;을 만드는 것은 아닌지 신중해야 합니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 의견도 맞지만, 실무자 입장에선 LangGraph와 CrewAI의 토큰 효율성을 정량적으로 찍어준 것만으로도 일단 절합니다. 매번 벤치마크 짤 때마다 파이프라인 새로 파는 게 일이었는데, 이걸로 표준화되면 인프라 단에서 에이전트 성능 모니터링하기 훨씬 수월하겠네요. 다만, 실제 프로덕션 환경에서 오버헤드 없이 실시간 트레이싱이 가능할지가 관건이겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 깃허브 스타 찍으러 갑니다! 지금까지 &#x27;에이전트가 왜 멍청한 짓을 하는지&#x27; 추적하려고 커스텀 로깅 만드느라 밤샜는데, A2E가 이걸 해결해주네요. 특히 모델 성능이 아니라 프레임워크가 문제였다는 지점은 진짜 &#x27;대박&#x27;입니다. 이거 잘 활용하면 다음 논문 실험 설정할 때 최적의 조합 바로 찾을 수 있겠는데요? 당장 다음 세미나 주제로 가져가야겠어요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
