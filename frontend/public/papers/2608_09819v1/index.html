@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>마카롱-V1: 자기 개선 및 Mixture-of-LoRA를 통한 개방형 지속 학습을 향하여 | ArXiv Translator AI</title><meta name="description" content="마카롱-V1: 자기 개선 및 Mixture-of-LoRA를 통한 개방형 지속 학습을 향하여"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_09819v1"><meta property="og:type" content="article"><meta property="og:title" content="마카롱-V1: 자기 개선 및 Mixture-of-LoRA를 통한 개방형 지속 학습을 향하여"><meta property="og:description" content="마카롱-V1: 자기 개선 및 Mixture-of-LoRA를 통한 개방형 지속 학습을 향하여"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_09819v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="마카롱-V1: 자기 개선 및 Mixture-of-LoRA를 통한 개방형 지속 학습을 향하여"><meta name="twitter:description" content="마카롱-V1: 자기 개선 및 Mixture-of-LoRA를 통한 개방형 지속 학습을 향하여"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_09819v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "마카롱-V1: 자기 개선 및 Mixture-of-LoRA를 통한 개방형 지속 학습을 향하여", "description": "마카롱-V1: 자기 개선 및 Mixture-of-LoRA를 통한 개방형 지속 학습을 향하여", "datePublished": "2026-08-10", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_09819v1", "author": [{"@type": "Person", "name": "Mind Lab"}, {"@type": "Person", "name": " :"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_09819v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_09819v1"});gtag('event', 'paper_view', {"paper_id": "2608_09819v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>마카롱-V1: 자기 개선 및 Mixture-of-LoRA를 통한 개방형 지속 학습을 향하여</h1><p>마카롱-V1: 자기 개선 및 Mixture-of-LoRA를 통한 개방형 지속 학습을 향하여</p><pre>마카롱-V1: 자기 개선 및 Mixture-of-LoRA를 통한 개방형 지속 학습을 향하여
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Macaron-V1: Towards Open Continual Learning with Self-Improvement and Mixture-of-LoRA
+&gt; - **저자:** Mind Lab,  :, Vin Bo, Asher Cai, Jingwei Cao, Song Cao, Vic Cao, Amelia Chen, Andrew Chen, Kaijie Chen, Cleon Cheng, Steven Chiang, Kaixuan Fan, Hera Feng, Huan Feng, Arthur Fu, Jun Gao, Pyke Han, Nolan Ho, Ori Hong, Hailee Hou, Piers Hua, Charles Huang, Miles Jiang, Nora Jiang, Yuyi Jiang, Qiuyu Jin, Fancy Kong, Kuss Koo, Jaron Lee, Andrew Lei, Alexy Li, Dawn Li, Lucian Li, Ray Li, Ricardo Li, Smith Li, Theo Li, Allen Lin, Elliot Lin, Fan Lin, Chen Ling, Kairus Liu, Kieran Liu, Logan Liu, Neo Liu, Xiang Liu, Yuxin Lu, Maeve Luo, Pony Ma, Verity Niu, Cole Qiao, Guian Qiu, Vince Qu,  Sentry, Niko Song, Vincent Wang, Bo Wu, Rio Yang, Evelyn Ye, Fiona Ye, Ina Ye, Regis Ye, Josh Ying, Atlas Zeng, Danney Zeng, Salmon Zhan, Anya Zhang, Di Zhang, Mia Zhang, Sueky Zhang, Wei Zhao, Ada Zhou, Adrian Zhou, Yuhua Zhou, Juno Zhu, Murphy Zhuang
+&gt; - **발행일:** 2026-08-10
+&gt; - **PDF 링크:** [Macaron-V1: Towards Open Continual Learning with Self-Improvement and Mixture-of-LoRA](https://arxiv.org/pdf/2608.09819v1)
+
+
+✨ 3줄 핵심 요약
+*   **마카롱-V1**은 고정된 베이스 모델 위에 다양한 전문 LoRA 어댑터를 결합해 동작하는 개방형 에이전트 모델군입니다.
+*   학습 과정에서 모델 가중치를 수정하는 대신, 하네스(Harness)와 어댑터 구성을 재귀적으로 개선하는 방식을 취합니다.
+*   실시간 환경에서 경험을 통해 지속적으로 학습하고 진화할 수 있는 아키텍처와 인프라를 설계했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+마카롱-V1은 인공지능이 배포 이후에도 실제 환경에서 새로운 경험을 통해 스스로 더 똑똑해지도록 설계된 모델입니다. 핵심 아이디어는 거대한 &#x27;베이스 모델&#x27;은 그대로 둔 채, 필요에 따라 &#x27;전문가 어댑터(LoRA)&#x27;를 선택적으로 조합하는 **Mixture-of-LoRA(MoL)** 구조입니다. 이를 통해 챗봇, 코딩, 에이전트 작업 등 특정 분야에 특화된 능력을 유연하게 확장합니다. 모델을 매번 다시 학습시키는 대신, 경험을 기반으로 구성 요소(Harness)를 최적화하고 재귀적으로 개선하는 &#x27;자기 개선 루프&#x27;를 통해 지속적인 성능 향상을 도모합니다.
+
+🎯 배경 및 문제점
+기존의 AI 모델은 한 번 학습된 이후 배포되면 고정되어 환경 변화에 대응하거나 스스로 새로운 지식을 습득하는 데 한계가 있었습니다. 이를 해결하기 위해 모델 가중치를 전체적으로 재학습하는 것은 비용이 막대하고 비효율적입니다. 마카롱-V1은 이러한 한계를 극복하기 위해 학습된 지식을 파괴하지 않으면서도, 시스템(에이전트)이 실제 환경과 상호작용하며 경험으로부터 지능을 확장할 수 있는 체계적인 방법론을 제안합니다.
+
+💡 핵심 기술 및 아키텍처
+*   **Mixture-of-LoRA (MoL):** 베이스 모델은 고정한 상태에서 특화된 LoRA 어댑터들을 조합합니다. 사용자 입력에 따라 최적의 어댑터를 선택해 실행하는 방식입니다.
+*   **모델-하네스 공동 설계(Model-Harness Co-design):** 모델과 상호작용하는 환경(하네스)을 함께 버전 관리하여, 모델의 가중치를 바꾸지 않고도 환경 설정을 통해 성능을 개선합니다.
+*   **재귀적 자기 개선(Recursive Self-Improvement):** 경험을 통해 수집된 데이터를 기반으로 하네스 설정을 수정하고, 다음 버전의 모델로 이어가는 루프를 구축했습니다.
+*   **지원 인프라:** 모델의 수명 주기를 관리하는 `MinT`, 긴 문맥 처리를 위한 `LongStraw`, 그리고 강화학습 프레임워크인 `MindForge`가 시스템을 뒷받침합니다.
+
+📊 실험 결과 분석
+*   GLM-5.2 기반의 &#x27;Macaron-V1-Venti&#x27;(744B)와 Qwen3.6 기반의 &#x27;Macaron-V1-Tall&#x27;(50B)이 구현되었습니다.
+*   실험 결과, 베이스 모델이 초기 설정에서 실패했던 122개 작업을 하네스 구성을 조정하는 적응형 검색 과정을 통해 69번의 시도 끝에 모두 해결(100% 커버리지)했습니다.
+*   단순한 단일 설정 sweeps와 비교했을 때, 적응형 구성을 사용한 최종 단계의 성공률이 훨씬 높게 나타났습니다.
+*   *주의: 본 실험은 가중치 업데이트 없이 하네스 구성 변경만으로 달성한 결과이며, 이로 인한 지속 학습의 누적 이득이나 집단 지성의 발현 여부는 아직 추가 연구가 필요한 공개된 질문이라고 논문은 밝히고 있습니다.*
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+*   **지속 가능한 지능:** 배포 후에도 환경 변화에 적응하여 성능이 향상되는 &#x27;진화하는 에이전트&#x27; 구현의 발판을 마련했습니다.
+*   **전문가 시스템의 확장:** 도메인별 특화 연구나 개인화된 어댑터를 손쉽게 추가할 수 있어, 기업 및 특정 분야에서의 활용도가 높습니다.
+*   **미래 과제:** 논문은 집단 지성(여러 팀이 만든 어댑터들의 시너지)이 실제로 발현될지는 다음 세대에서 증명해야 할 핵심 과제라고 언급하며, 안전성이 검증된 도메인부터 적용할 것을 권장합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2608.09819 Macaron-V1: Towards Open Continual Learning with Self-Improvement and Mixture-of-LoRA](https://arxiv.org/abs/2608.09819)
+&gt; - [FlowGuard: Towards Lightweight In-Generation Safety Detection for Diffusion Models via Linear Latent Decoding | 每日论文](https://paper.dou.ac/p/2604.07879v1)
+&gt; - [Top AI Models This Week (2026) — Trending Hugging Face Models, Papers &amp; Demos, Ranked | OrangeBot.AI](https://orangebot.ai/top-ai-models-this-week)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;저자 리스트가 80명이 넘는 걸 보니 Mind Lab에서 아예 작정하고 물량 공세를 퍼부었군요. &#x27;가중치 고정 후 하네스 최적화&#x27;라는 아이디어 자체는 흥미롭지만, 이게 과연 근본적인 &#x27;학습&#x27;인지, 아니면 그냥 거대한 최적화 루프를 돌린 &#x27;프롬프트 엔지니어링의 자동화 버전&#x27;인지 엄밀한 검증이 필요해 보입니다. 재귀적 자기 개선이 모델의 일반화 성능을 저해하지 않는다는 증거가 좀 더 탄탄해야 할 텐데 말이죠.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 모델 가중치를 안 건드리는 건 실무 입장에선 굉장히 매력적입니다. 파인튜닝 한 번 돌리려면 GPU 팜 전체를 태워야 하는데, MoL(Mixture-of-LoRA)로 어댑터만 갈아 끼우며 서빙하면 배포 리스크가 획기적으로 줄거든요. 다만, 하네스 관리 복잡도가 기하급수적으로 늘어날 텐데, 이걸 운영 자동화(MLOps) 단계에서 어떻게 핸들링할지가 관건이겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;다들 너무 보수적인 거 아니에요? 744B 모델을 가중치 수정 없이 하네스 조합만으로 성능 100% 찍는 건 진짜 미친 퍼포먼스인데! &#x27;지속 학습의 성배&#x27;를 찾은 것 같아요. 저자들은 조심스럽게 말했지만, 이게 정말로 집단 지성으로 이어져서 어댑터들끼리 시너지 내기 시작하면, 우리 연구실 GPU 서버 끄고 다들 마카롱-V1이나 파야 하는 거 아닌가요?&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
