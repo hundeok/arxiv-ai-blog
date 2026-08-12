@@ -1,0 +1,72 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>가변 학습을 통한 RLVR을 위한 파라미터 탐색 | ArXiv Translator AI</title><meta name="description" content="가변 학습을 통한 RLVR을 위한 파라미터 탐색"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_09805v1"><meta property="og:type" content="article"><meta property="og:title" content="가변 학습을 통한 RLVR을 위한 파라미터 탐색"><meta property="og:description" content="가변 학습을 통한 RLVR을 위한 파라미터 탐색"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_09805v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="가변 학습을 통한 RLVR을 위한 파라미터 탐색"><meta name="twitter:description" content="가변 학습을 통한 RLVR을 위한 파라미터 탐색"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_09805v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "가변 학습을 통한 RLVR을 위한 파라미터 탐색", "description": "가변 학습을 통한 RLVR을 위한 파라미터 탐색", "datePublished": "2026-08-10", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_09805v1", "author": [{"@type": "Person", "name": "Vatsal Venkatkrishna"}, {"@type": "Person", "name": "Nico Daheim"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_09805v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_09805v1"});gtag('event', 'paper_view', {"paper_id": "2608_09805v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>가변 학습을 통한 RLVR을 위한 파라미터 탐색</h1><p>가변 학습을 통한 RLVR을 위한 파라미터 탐색</p><pre>가변 학습을 통한 RLVR을 위한 파라미터 탐색
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Parameter Exploration for RLVR via Variational Learning
+&gt; - **저자:** Vatsal Venkatkrishna, Nico Daheim, Iryna Gurevych
+&gt; - **발행일:** 2026-08-10
+&gt; - **PDF 링크:** [Parameter Exploration for RLVR via Variational Learning](https://arxiv.org/pdf/2608.09805v1)
+
+
+✨ 3줄 핵심 요약
+* 기존의 언어 모델 강화학습(RLVR)은 행동 공간(액션 스페이스) 탐색에 의존하여 토큰 순서 변경이 불가능하고 훈련 정체 현상이 잦음.
+* 제안하는 &#x27;교란 파라미터 정책 최적화(3PO)&#x27;는 모델 가중치에 노이즈를 주어 모델의 정책 자체를 샘플링하는 파라미터 공간 탐색 방식을 도입함.
+* OLMo 및 Qwen2.5-Math 모델 실험 결과, 표준 GRPO 대비 뛰어난 성능을 보이며 오류가 있는 결과물 생성 비율을 낮춤.
+
+📖 쉽게 풀어쓴 1분 핵심
+강화학습을 통해 언어 모델을 학습시킬 때, 모델이 &#x27;다양한 시도&#x27;를 하도록 만드는 것은 매우 중요합니다. 기존 방식은 출력되는 단어의 확률 분포만 조절하는 &#x27;행동 공간 탐색(온도 조절 등)&#x27;을 주로 사용했습니다. 하지만 이 방식은 이미 정해진 단어 순서 내에서만 변화를 줄 수 있어 학습이 정체되는 한계가 있었습니다. 
+
+본 논문은 모델의 **&#x27;두뇌(파라미터)&#x27; 자체에 미세한 노이즈를 섞어, 모델이 아예 다른 정책으로 문제를 해결하도록 유도하는 파라미터 공간 탐색 기법(3PO)**을 제안합니다. 마치 똑같은 문제라도 다른 성격의 전문가에게 풀게 하는 것과 같으며, 이를 통해 더 창의적이고 정확한 답변을 찾아내고 훈련 과정에서의 실패(zero-advantage groups)를 획기적으로 줄였습니다.
+
+🎯 배경 및 문제점
+* **기존 RLVR의 한계:** 스스로 생성한 결과물(Rollout)에서 학습하는데, 보상이 낮은 결과만 반복될 경우 모델이 개선되지 않고 훈련이 멈추는 정체 현상이 발생함.
+* **행동 공간 탐색의 제약:** 온도(Temperature)를 높이는 방식은 토큰의 분포만 바꿀 뿐, 문장 구조를 결정하는 상대적 토큰 순서를 바꾸지 못함. 
+* **훈련 비효율:** GRPO와 같은 기존 알고리즘은 그룹 내 모든 결과의 보상이 같을 경우 학습 신호를 얻지 못해 자원 낭비가 심함.
+
+💡 핵심 기술 및 아키텍처
+* **3PO (Perturbed Parameter Policy Optimization):** 모델의 파라미터에 가우시안 노이즈 등을 추가하여 샘플링하는 기법군.
+* **학습 방식:**
+    * **M3PO:** 여러 파라미터 샘플을 생성하여 정책을 다양화함.
+    * **C3PO (Chunked noising):** 파라미터별로 롤아웃 그룹을 나누어 관리하며 더 효율적인 탐색을 유도함.
+* **유연성:** 별도의 추가 학습 없이 기존에 존재하는 모델 체크포인트에 즉시 적용 가능한 &#x27;드롭인(Drop-in)&#x27; 대체제로 설계됨.
+
+📊 실험 결과 분석
+* **성능 향상:** OLMo-3-1025-7B와 Qwen2.5-Math-7B 모델에서 모든 3PO 변형 모델이 표준 GRPO 및 기존 액션 공간 탐색 베이스라인(EntReg, Polaris, KLCov)보다 수학/코딩 작업에서 더 높은 평균 점수를 기록함.
+* **오류 감소:** 3PO 방식은 훈련 중 보상값이 0인 그룹(학습 불가능 구간)을 더 적게 발생시키고, 잘못되거나 비정상적인 결과물 생성을 유의미하게 줄임.
+* **비용 효율:** 거의 동일한 연산 비용(FLOPs)으로 더 나은 성능을 달성함. 단, 실제 벽걸이 시간(Wall-clock time)은 구현상의 이유로 GRPO 대비 약 1.5배 증가하는 경향이 있음.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **범용성:** 특정 모델 구조에 얽매이지 않고, 이미 학습된 모델의 성능을 사후 학습(Post-training) 단계에서 추가로 극대화할 수 있음.
+* **효율적인 강화학습:** 복잡한 추론이나 코딩 능력이 중요한 LLM 개발 시, 훈련 정체 문제를 해결함으로써 연구/개발 시간을 단축하고 비용을 절감하는 솔루션으로 활용 가능.
+* **미래 전망:** 모델 규모가 커질수록 파라미터 공간 탐색의 이점이 더 커질 것으로 예상하며, 향후 더 정교한 노이즈 샘플링 전략을 통해 성능 한계를 지속적으로 높일 수 있을 것으로 기대됨.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Parameter Exploration for RLVR via Variational Learning](https://arxiv.org/html/2608.09805)
+&gt; - [2608.09805 Parameter Exploration for RLVR via Variational Learning](https://arxiv.org/abs/2608.09805)
+&gt; - [Parameter Exploration for RLVR via Variational Learning](https://arxiv.org/html/2608.09805v1)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;이론적으론 흥미로우나, 가중치에 직접 노이즈를 섞는 파라미터 공간 탐색은 수렴의 안정성을 심각하게 저해할 위험이 큽니다. 특히 가우시안 노이즈의 분산을 어떻게 스케줄링하느냐에 따라 훈련이 발산할 가능성이 높은데, 논문에서는 이에 대한 엄밀한 수학적 안정성 분석이 부족해 보이네요. 실무에 적용하기엔 너무 &#x27;운&#x27;에 맡기는 설계가 아닌지 의구심이 듭니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 훈련이 튀는 건 잡아야 할 숙제지만, 현업 입장에선 GRPO 쓰다가 보상 0 구간에서 멍 때리는 꼴을 보는 것보다 낫습니다. 월 클락 타임 1.5배 늘어나는 건 분산 학습 환경에서 체크포인트 로드/저장 로직만 잘 짜면 상쇄 가능해요. 당장 사내 LLM 파인튜닝 파이프라인에 얹어서 SFT 데이터 부족한 도메인에서 돌려볼 만한 가치가 있어 보입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;선배님, 일단 코드부터 깃헙에 올라오면 찍먹해볼 생각입니다! GRPO가 사실상 RLVR의 표준이 된 상황에서 &#x27;파라미터 노이즈&#x27;를 섞어 정책을 강제로 다양화한다는 아이디어는 진짜 신박하거든요. 이게 사실상 베이지안 뉴럴 네트워크의 앙상블 효과를 실시간으로 내는 거잖아요? 내일 랩 미팅 때 이거 가져가서 세미나 하면 교수님께 혼나려나요? ㅋㅋㅋ&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
