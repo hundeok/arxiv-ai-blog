@@ -1,0 +1,67 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SPIEval: 분산된 개인 정보를 활용하는 모바일 어시스턴트로서의 거대언어모델 평가 | ArXiv Translator AI</title><meta name="description" content="SPIEval: 분산된 개인 정보를 활용하는 모바일 어시스턴트로서의 거대언어모델 평가"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_10692v1"><meta property="og:type" content="article"><meta property="og:title" content="SPIEval: 분산된 개인 정보를 활용하는 모바일 어시스턴트로서의 거대언어모델 평가"><meta property="og:description" content="SPIEval: 분산된 개인 정보를 활용하는 모바일 어시스턴트로서의 거대언어모델 평가"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_10692v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="SPIEval: 분산된 개인 정보를 활용하는 모바일 어시스턴트로서의 거대언어모델 평가"><meta name="twitter:description" content="SPIEval: 분산된 개인 정보를 활용하는 모바일 어시스턴트로서의 거대언어모델 평가"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_10692v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "SPIEval: 분산된 개인 정보를 활용하는 모바일 어시스턴트로서의 거대언어모델 평가", "description": "SPIEval: 분산된 개인 정보를 활용하는 모바일 어시스턴트로서의 거대언어모델 평가", "datePublished": "2026-08-11", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_10692v1", "author": [{"@type": "Person", "name": "Junjie Ye"}, {"@type": "Person", "name": "Zhuohui Sheng"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_10692v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_10692v1"});gtag('event', 'paper_view', {"paper_id": "2608_10692v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>SPIEval: 분산된 개인 정보를 활용하는 모바일 어시스턴트로서의 거대언어모델 평가</h1><p>SPIEval: 분산된 개인 정보를 활용하는 모바일 어시스턴트로서의 거대언어모델 평가</p><pre>SPIEval: 분산된 개인 정보를 활용하는 모바일 어시스턴트로서의 거대언어모델 평가
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** SPIEval: Evaluating Large Language Models as Mobile Assistants over Scattered Personal Information
+&gt; - **저자:** Junjie Ye, Zhuohui Sheng, Shaofan Liu, Yulun Zhu, Wenjie Fu, Dingwei Zhu, Ming Zhang, Yujiong Shen, Weichao Wang, Xin Zhao, Shihan Dou, Tao Gui, Qi Zhang, Xuanjing Huang, Pluto Zhou
+&gt; - **발행일:** 2026-08-11
+&gt; - **PDF 링크:** [SPIEval: Evaluating Large Language Models as Mobile Assistants over Scattered Personal Information](https://arxiv.org/pdf/2608.10692v1)
+
+
+✨ 3줄 핵심 요약
+- 여러 앱에 흩어진 개인 정보를 종합하여 사용자의 명령을 수행하는 모바일 어시스턴트 성능을 평가하는 벤치마크 &#x27;SPIEval&#x27;을 제안함.
+- 9개의 거대언어모델(LLM)을 실험한 결과, 최고 성능 모델의 정확도가 57.3%에 그치는 등 개선의 여지가 큼을 확인함.
+- 실패 원인의 79%는 정보 위치 파악(localization) 오류였으며, 검증을 위한 지속적인 검색보다는 부정확한 정보를 성급히 확정하는 경향이 발견됨.
+
+📖 쉽게 풀어쓴 1분 핵심
+사용자가 &quot;내 매니저에게 영상 통화해 줘&quot;라고 말하면, AI는 연락처 앱에서 매니저 번호를 찾고, 일정 앱에서 누구인지 확인하며, 메모 앱에서 통화 선호도를 파악해야 합니다. 이처럼 여러 앱에 흩어진 정보를 연결하는 능력을 측정하기 위해 250개의 과업으로 구성된 &#x27;SPIEval&#x27; 벤치마크가 개발되었습니다. 실험 결과, 현재의 AI 모델들은 필요한 정보를 정확히 찾아내고 검증하는 과정에서 많은 어려움을 겪고 있으며, 특히 검색 단계에서 한계를 드러내고 있습니다.
+
+🎯 배경 및 문제점
+- 모바일 어시스턴트로서 LLM의 활용이 늘고 있으나, 여러 앱에 분산된 개인 정보를 조합하여 과업을 수행하는 능력을 체계적으로 측정할 벤치마크가 부족함.
+- 기존 연구들은 앱 조작이나 일반적인 지식 활용에 치중되어 있어, 복잡한 사용자 의도를 해결하기 위한 개인화된 맥락 이해 능력을 평가하기 어려움.
+
+💡 핵심 기술 및 아키텍처
+- **SPIEval 구성:** 10개 앱에 분산된 4,335개의 개인 기록과 21개의 도구를 기반으로 한 250개의 과업 제공.
+- **5대 인지 역량 평가:** 추론(reasoning), 모호성 제거(disambiguation), 통합(integration), 선호도 추론(preference inference), 다중 의도 분해(multi-intent decomposition) 능력을 핵심 평가 지표로 삼음.
+- **환경:** 다양한 시나리오를 바탕으로 통제된 환경에서 과업 결과를 검증할 수 있도록 설계됨.
+
+📊 실험 결과 분석
+- **성능 격차:** 9개 대표 모델을 평가한 결과, 최고 성능 모델(GPT-5.5)은 57.3%의 정확도를 기록한 반면, 최하위 모델은 16.4%에 머물러 상당한 성능 차이를 보임.
+- **주요 실패 원인:** 전체 실패 사례의 79%가 부정확한 정보 위치 파악으로 인해 발생함.
+- **검색 효율성:** 모델들의 검색 방식 효율성이 크게 차이 나며, 고급 검색 방식을 사용하는 비율은 2% 미만임. 모델들은 정보의 진위 확인을 위한 추가 검색을 수행하기보다 그럴듯해 보이는 잘못된 정보를 선택하는 경향이 있음.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+- 본 벤치마크는 실제 사용자 경험에 직결되는 &#x27;개인화된 모바일 에이전트&#x27;의 기술적 한계를 명확히 규명함.
+- 정보 검색 및 위치 파악 오류를 줄이는 것이 모바일 어시스턴트 고도화의 핵심 과제임을 제시하여, 향후 지능형 개인 비서 개발 방향을 설정하는 데 기여함.
+- 연구 데이터와 코드가 공개되어(Hugging Face) 관련 기술 개발의 표준화된 평가 지표로 활용될 예정임.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2608.10692 SPIEval: Evaluating Large Language Models as...](https://arxiv.org/abs/2608.10692)
+&gt; - [SPIEval: Evaluating Large Language Models as Mobile Assistants...](https://arxiv.org/pdf/2608.10692)
+&gt; - [Exploring the Potential of LLMs as Personalized Assistants: Dataset, Evaluation, and Analysis](https://arxiv.org/html/2506.01262v1)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;이 벤치마크는 시의적절하지만, 79%라는 높은 정보 위치 파악(localization) 실패율은 모델의 추론 능력 문제가 아니라 RAG 파이프라인의 설계 결함으로 보입니다. 고작 57.3% 정확도로 &#x27;모바일 어시스턴트&#x27;를 논하는 것은 학문적으로 아직 멀었다고 봅니다. 도구 활용(Tool-use) 능력 이전에 지식 그래프나 구조화된 데이터 매핑이 선행되지 않는 이상, LLM의 환각을 해결할 근본적인 해법이 될 수 있을까요?&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에선 이거 당장 서비스 적용 못 합니다. 사용자가 &#x27;매니저에게 전화해&#x27;라고 했는데 엉뚱한 사람한테 걸어서 개인정보 유출 사고라도 나면 누가 책임집니까? 특히 모델들이 검증 없이 성급하게 툴을 호출하는 경향이 있다는 점이 치명적이네요. 런타임에 검색 단계를 강제로 분리하는 가드레일 로직을 넣지 않으면, 이 벤치마크는 그냥 &#x27;AI가 얼마나 빨리 사고를 치는가&#x27;를 측정하는 지표가 될 것 같네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;두 분 너무 비관적인 거 아니에요? ㅋㅋㅋ 어쨌든 에이전트 성능 평가 표준이 나왔다는 게 중요하죠! 요즘 다들 에이전트 만든다고 난리인데, 정작 &#x27;내 폰 안에서&#x27; 정보를 어떻게 긁어오고 통합하는지 제대로 된 벤치마크가 없었잖아요. 57.3%면 이제 시작인 거죠. 오픈 소스로 데이터셋 풀렸으니, 이거 가지고 CoT 프롬프트 튜닝해서 SOTA 찍어볼 팀들 지금 벌써 서버 돌리고 있을걸요?&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
