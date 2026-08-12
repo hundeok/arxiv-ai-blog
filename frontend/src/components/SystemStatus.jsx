@@ -13,43 +13,6 @@ const ago = (iso) => {
   return `${Math.floor(minutes / 1440)}일 전`;
 };
 
-const VisitorCounter = () => {
-  const [realtime, setRealtime] = React.useState(27);
-  const [cumulative, setCumulative] = React.useState(124058);
-
-  React.useEffect(() => {
-    setRealtime(Math.floor(Math.random() * 15) + 20);
-    const interval = setInterval(() => {
-      setRealtime(prev => Math.max(15, prev + Math.floor(Math.random() * 5) - 2));
-    }, 5000);
-    
-    const base = 180000;
-    const now = new Date();
-    const start = new Date('2026-07-01');
-    const days = Math.floor((now - start) / (1000 * 60 * 60 * 24));
-    setCumulative(base + days * 450 + Math.floor(now.getHours() * 18));
-    
-    return () => clearInterval(interval);
-  }, []);
-
-  return (
-    <div style={{ 
-      display: 'flex', 
-      alignItems: 'center', 
-      gap: '0.5rem', 
-      background: 'rgba(255,255,255,0.05)', 
-      padding: '6px 14px', 
-      borderRadius: '24px', 
-      border: '1px solid rgba(255,255,255,0.08)' 
-    }}>
-      <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#4ade80', boxShadow: '0 0 8px #4ade80', animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite' }}></div>
-      <span style={{ fontWeight: 600, color: 'var(--text-primary)', fontSize: '0.75rem' }}>{realtime}명 <span style={{ opacity: 0.7, fontWeight: 400 }}>보는 중</span></span>
-      <span style={{ color: 'rgba(255,255,255,0.2)', margin: '0 2px' }}>·</span>
-      <span style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}><span style={{ opacity: 0.6 }}>누적</span> <span style={{ fontWeight: 600, color: 'var(--text-primary)' }}>{cumulative.toLocaleString()}</span>명</span>
-    </div>
-  );
-};
-
 const SystemStatus = ({ totalPapers, status }) => {
   const lastRun = status?.last_publication_run || status?.last_run;
   const healthy = lastRun?.health !== 'degraded';
@@ -93,7 +56,7 @@ const SystemStatus = ({ totalPapers, status }) => {
       <div style={{ width: '1px', height: '16px', background: 'rgba(255,255,255,0.1)' }}></div>
 
       {/* Stats */}
-      <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '1.5rem', flex: 1 }}>
+      <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '1.5rem' }}>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           <span style={{ fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.05em', opacity: 0.7 }}>Decoded</span>
           <span style={{ color: 'var(--text-primary)', fontWeight: 600 }}>{totalPapers} <span style={{ opacity: 0.5 }}>papers</span></span>
@@ -126,9 +89,6 @@ const SystemStatus = ({ totalPapers, status }) => {
           <span style={{ color: 'var(--text-primary)', fontWeight: 600 }}>${usage?.estimated_usd?.toFixed(4) ?? '0.0000'} <span style={{ opacity: 0.5, fontSize: '0.75rem' }}>{usage?.total_tokens?.toLocaleString?.() ?? 0} tokens</span></span>
         </div>
       </div>
-      
-      {/* Visitor Counter at the far right */}
-      <VisitorCounter />
     </div>
   );
 };
