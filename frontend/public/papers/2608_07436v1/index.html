@@ -1,0 +1,64 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Muon 학습 트랜스포머의 표현-판독 인터페이스에서 발생하는 그로킹 이후 붕괴 | ArXiv Translator AI</title><meta name="description" content="Muon 학습 트랜스포머의 표현-판독 인터페이스에서 발생하는 그로킹 이후 붕괴"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_07436v1"><meta property="og:type" content="article"><meta property="og:title" content="Muon 학습 트랜스포머의 표현-판독 인터페이스에서 발생하는 그로킹 이후 붕괴"><meta property="og:description" content="Muon 학습 트랜스포머의 표현-판독 인터페이스에서 발생하는 그로킹 이후 붕괴"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_07436v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Muon 학습 트랜스포머의 표현-판독 인터페이스에서 발생하는 그로킹 이후 붕괴"><meta name="twitter:description" content="Muon 학습 트랜스포머의 표현-판독 인터페이스에서 발생하는 그로킹 이후 붕괴"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_07436v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Muon 학습 트랜스포머의 표현-판독 인터페이스에서 발생하는 그로킹 이후 붕괴", "description": "Muon 학습 트랜스포머의 표현-판독 인터페이스에서 발생하는 그로킹 이후 붕괴", "datePublished": "2026-08-07", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_07436v1", "author": [{"@type": "Person", "name": "Ali Janati"}, {"@type": "Person", "name": "Kaoutar El Maghraoui"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_07436v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_07436v1"});gtag('event', 'paper_view', {"paper_id": "2608_07436v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>Muon 학습 트랜스포머의 표현-판독 인터페이스에서 발생하는 그로킹 이후 붕괴</h1><p>Muon 학습 트랜스포머의 표현-판독 인터페이스에서 발생하는 그로킹 이후 붕괴</p><pre>Muon 학습 트랜스포머의 표현-판독 인터페이스에서 발생하는 그로킹 이후 붕괴
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Post-Grokking Collapse at the Representation-Readout Interface in Muon-Trained Transformers
+&gt; - **저자:** Ali Janati, Kaoutar El Maghraoui, Andrei Kanavalau, Anass Belfatmi
+&gt; - **발행일:** 2026-08-07
+&gt; - **PDF 링크:** [Post-Grokking Collapse at the Representation-Readout Interface in Muon-Trained Transformers](https://arxiv.org/pdf/2608.07436v1)
+
+
+✨ 3줄 핵심 요약
+* Muon 옵티마이저를 사용한 트랜스포머는 모듈러 연산에서 &#x27;그로킹(grokking)&#x27;에 빠르게 도달하지만, 이후 학습된 해가 불안정해지며 일반화 성능이 급격히 떨어지는 현상이 발생합니다.
+* 이 붕괴는 모델의 &#x27;표현(representation)&#x27;과 &#x27;판독(readout)&#x27; 계층이 결합된 형태로만 정의되는데, 두 계층이 서로 다른 옵티마이저(Muon vs AdamW)에 의해 별도로 최적화되면서 발생하는 불일치 때문입니다.
+* 임베딩과 판독 계층의 가중치를 고정하는 것만으로도 모델의 성능 붕괴를 완전히 방지하고 안정적인 학습 결과를 얻을 수 있습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+AI 모델이 학습 데이터에 완전히 익숙해진 후 갑자기 일반화 능력을 획득하는 &#x27;그로킹&#x27;은 신기한 현상입니다. 하지만 이 논문은 Muon이라는 효율적인 옵티마이저를 사용했을 때, 그로킹 이후 모델이 다시 바보가 되는 &#x27;사후 붕괴(Post-Grokking Collapse)&#x27; 현상을 발견했습니다. 연구진은 이 문제가 모델의 내부 표현과 최종 출력부(판독 계층)가 서로 어긋나면서 발생함을 밝혔습니다. 마치 번역기와 사전을 따로따로 계속 수정하다 보니, 결국 둘의 호흡이 맞지 않아 의사소통이 불가능해지는 것과 같습니다. 연구진은 이 두 부분을 고정(Freeze)하는 간단한 조치만으로 모델이 무너지지 않고 안정적으로 지식을 유지할 수 있음을 증명했습니다.
+
+🎯 배경 및 문제점
+그로킹은 모델이 학습 데이터에 과적합된 이후, 시간이 지나면서 일반화 능력을 얻게 되는 현상입니다. 모듈러 덧셈 문제는 이러한 그로킹 현상을 관찰하는 대표적인 사례입니다. 그러나 연구 결과, Muon 옵티마이저를 사용하면 학습 초기에는 성능이 빠르게 향상되지만, 이후 모델이 학습한 &#x27;회로(circuit)&#x27;가 무너지며 테스트 정확도가 급격히 하락하는 불안정성이 나타났습니다.
+
+💡 핵심 기술 및 아키텍처
+* **원인 분석:** 모델의 내부 표현을 생성하는 부분(Muon 관리)과 이를 최종 출력으로 연결하는 판독 계층(AdamW 관리)이 서로 독립적으로 움직입니다. 학습 데이터가 해결된 뒤, 두 옵티마이저의 업데이트 방식과 속도 차이가 커지면서 표현과 판독 사이의 인터페이스가 무너집니다.
+* **Fourier 분해:** 연구진은 모델의 내부 상태를 2차원 Fourier 모드로 분해하여, 특정 작업(모듈러 덧셈)을 수행하는 &#x27;가족(family)&#x27; 단위의 회로를 식별했습니다. 붕괴 시점에도 회로 자체는 존재하지만, 판독 계층이 이를 올바르게 해석하지 못해 성능이 저하됨을 확인했습니다.
+* **해결책:** 학습 과정에서 임베딩과 판독 계층을 고정(Freezing)하면, 두 계층 간의 불일치가 발생하지 않아 그로킹 이후의 성능 붕괴를 원천 차단할 수 있습니다.
+
+📊 실험 결과 분석
+* **성능 붕괴:** AdamW를 사용한 기준 모델은 5개 시드 중 4개에서 정확도가 27.59%까지 떨어지는 붕괴를 보였습니다. 
+* **안정성:** 임베딩과 판독 계층을 고정했을 때, 5개의 모든 시드에서 451,400 단계 동안 단 한 번의 붕괴도 발생하지 않았습니다.
+* **회로 복구:** 성능이 붕괴된 상태에서도 내부 Fourier 회로의 파라미터는 건재하며, 단순히 판독 계층만 재조정(Rescaling)해도 정확도가 99.9%로 회복됩니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+본 연구는 고성능 옵티마이저(Muon 등)를 트랜스포머에 적용할 때 발생할 수 있는 잠재적인 불안정성을 경고합니다. 특히, 모델의 특정 계층을 고정함으로써 학습 후반부의 성능 유지를 도모하는 &#x27;동결 전략&#x27;은 안정적인 AI 모델 배포를 위한 실용적인 가이드라인이 될 수 있습니다. 또한, 그로킹 이후의 붕괴 현상을 이해함으로써 모델이 &#x27;지식&#x27;을 잃어버리는 메커니즘을 규명하고 이를 제어하는 기법을 마련하는 데 기여합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Post-Grokking Collapse at the Representation–Readout Interface...](https://arxiv.org/html/2608.07436)
+&gt; - [Post-Grokking Collapse at the Representation-Readou... | AI Research](https://franklineh.com/learn/research/Kn819KhLsL7Ve21dhvtp)
+&gt; - [Post-Grokking Collapse at the Representation-Readout Interface in Muon ...](https://www.catalyzex.com/paper/post-grokking-collapse-at-the-representation)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;Muon 옵티마이저를 맹신하던 이들에게 경종을 울리는군요. 그로킹 이후의 붕괴가 단순히 알고리즘의 문제가 아니라 표현 계층과 판독 계층 간의 상호작용 불일치에서 기인했다는 분석은 매우 통찰력 있습니다. 결국 모델이 지식을 학습하는 것과 그 지식을 해석하는 체계가 동기화되지 않으면 언제든 무너질 수 있다는 건데, 정성적 분석을 넘어 Fourier 분해로 회로의 건재함을 증명한 점이 훌륭합니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 훌륭한 분석이지만, 현업에서는 당장 &#x27;임베딩/판독 계층 고정&#x27;이라는 우아한 솔루션에 눈이 가네요. Muon으로 속도 챙기면서 학습 후반부 불안정성까지 잡을 수 있다면, 이건 당장 다음 실험 파이프라인에 태워볼 만합니다. 다만, 붕괴된 모델의 판독 계층만 재조정해서 99.9% 복구된다는 건, 아예 처음부터 Freeze 하는 것보다 더 효율적인 체크포인트 복구 전략도 가능하겠는데요?&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;헐, 다들 너무 진지하신 거 아니에요? ㅋㅋ 전 이 논문 보고 바로 Muon 돌리던 프로젝트 멈췄습니다. 그로킹 현상 자체가 블랙박스 같았는데 &#x27;표현-판독 인터페이스&#x27;라는 관점으로 쪼개버린 거 진짜 폼 미쳤네요. &#x27;그로킹 이후 붕괴&#x27;라니, 마치 벼락치기로 공부해서 시험은 잘 봤는데 며칠 뒤 다 까먹는 우리 모습 같아서 너무 공감되는데요? 당분간 랩실 세미나 주제는 무조건 이거입니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

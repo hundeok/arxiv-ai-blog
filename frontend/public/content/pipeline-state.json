@@ -12817,11 +12817,11 @@
     "2608_07436v1": {
       "id": "2608_07436v1",
       "filename": "post_2608_07436v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-08-11T01:13:49.636476+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-11T01:13:49.636480+00:00",
+      "updated_at": "2026-08-12T15:55:58.528039+00:00",
       "paper": {
         "title": "Post-Grokking Collapse at the Representation-Readout Interface in Muon-Trained Transformers",
         "summary": "Under the standard split, Muon gets hidden matrices and AdamW embeddings/output head. Muon groks modular addition faster, but its solutions do not hold. All nine configurations on $(a+b) \\bmod 113$ grok and later lose generalization. Across five seeds the selected AdamW reference falls below threshold on four, reaching 27.59%. Instability persists across two moduli, two widths, two training fractions, subtraction, and depth.   The failure arises at the representation-readout interface, identified only jointly up to an invertible map unselected by the loss. After solving the training set, the gradient falls to order $10^{-6}$ and the optimizers respond differently: step-size elasticity is -0.03 for Muon versus +1.5 for AdamW, and the Muon group moves 8.0 times faster per parameter. From bit-identical states, freezing either group prevents failure. Freezing embeddings/readout removes it in five runs over 451,400 post-grokking steps and five paired seeds: unfrozen arms record 137-321 sub-threshold evaluations, frozen arms none. Removing Muon's normalization and orthogonalization is no substitute: it collapses representation from 326 effective conjugate pairs to 4, shows no recurrent collapse, and fails terminally.   Fourier filtering separates circuit failure from masking. Across 43 checkpoints over five seeds and three regimes, the task-aligned family reaches exactly 100% alone. In circuit failure it no longer solves the task; in masking it remains perfect while the full model reaches 45.85%, giving a positive margin on every example, including errors, but being outvoted by a near-equal adversarial remainder. Rescaling it restores 99.9%; grokking is the same condition resolving upward. The task selects the family, swapping $(k,k)$ for $(k,-k)$ under subtraction. Across an abrupt collapse, standard Fourier support is unchanged and the power-distribution cosine remains 0.9899.",
@@ -12834,7 +12834,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2608.07436v1"
       },
-      "priority_score": 30
+      "priority_score": 30,
+      "korean_title": "Muon 학습 트랜스포머의 표현-판독 인터페이스에서 발생하는 그로킹 이후 붕괴"
     },
     "2608_07435v1": {
       "id": "2608_07435v1",
@@ -13737,11 +13738,11 @@
     "2608_09876v1": {
       "id": "2608_09876v1",
       "filename": "post_2608_09876v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-08-11T12:51:19.195645+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-12T01:21:58.936998+00:00",
+      "updated_at": "2026-08-12T15:55:01.978819+00:00",
       "paper": {
         "title": "Energy-Structured Latent World Models with Neural Time Fields for Physically Constistent Open-World Motion Planning",
         "summary": "Physically consistent motion planning remains a fundamental challenge in embodied AI, as generated trajectories must strictly conform to real-world execution dynamics. While latent world models offer a promising approach by predicting these dynamics, existing methods learn unconstrained future representations where absorbed physics remains implicit. Therefore, they fail to form reusable physical knowledge, which compromises reliability in unpredictable open-world navigation. To address this, we propose a novel Energy-Structured Latent World Model (ELWM). Our key idea is to structure the ELWM latent state to explicitly carry energy and momentum, ensuring strictly causal transitions via dissipation and control ports. Trained on multimodal RGB-D and inertial interaction histories, our model guarantees physically consistent predictions. We further implement this for motion planning by constructing Physics-Conditioned Neural Time Fields (PC-NTF), a key technical cornerstone that integrates ELWM into an arrival time field via the Eikonal equation to yield a physically-informed navigation policy. Across held-out scenes, our evaluation reveals significant improvements. Compared to generic latent models, PC-NTF reduces 0.8-s motion-prediction NRMSE from 0.36 to 0.29. Against Active Neural Time Fields, it improves navigation success from 81.3% to 89.7% and SPL from 0.64 to 0.73, while cutting the physical collision rate from 12.1% to 5.8% and the Eikonal residual from 0.083 to 0.031. Beyond these targeted gains, our results demonstrate that embedding explicit physical structures into latent spaces intrinsically bridges the gap between predictive world models and safe, dynamically feasible motion planning.",
@@ -13755,16 +13756,17 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2608.09876v1"
       },
-      "priority_score": 30
+      "priority_score": 30,
+      "korean_title": "에너지 구조화 잠재 월드 모델과 신경 시간 필드를 이용한 물리적 일관성 있는 오픈 월드 모션 계획"
     },
     "2608_09874v1": {
       "id": "2608_09874v1",
       "filename": "post_2608_09874v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-08-11T12:51:19.195651+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-12T01:21:58.937002+00:00",
+      "updated_at": "2026-08-12T15:55:16.932337+00:00",
       "paper": {
         "title": "ArchAgent v2: A Case Study with the Data Prefetching Championship",
         "summary": "Agentic artificial intelligence has shown great promise in automating algorithm design, but scaling similar techniques to computer microarchitecture discovery remains challenging due to vast search spaces, strict hardware budgets, and long simulation times. In this work, we present ArchAgent v2, a framework which scales automated microarchitecture search to multi-level data prefetching. While the original ArchAgent successfully discovered single-level cache replacement policies in competition settings, it does not scale to multi-level prefetching where the design space and degrees of freedom are larger. To overcome this, we introduce two new additions to ArchAgent: a cascaded evolutionary search that subdivides the design space by sequentially evolving and freezing prefetchers at individual cache levels, and a hardware-realizability feedback loop that embeds real-time size-estimation directly into the evolution process.   Evaluated under identical rules of the 4th Data Prefetching Championship (DPC4), ArchAgent v2 automatically designs a three-level prefetcher that outperforms the winning hand-designed solution, further demonstrating automated agentic discovery as a useful tool for computer architects. Our discovered policy achieves a 3.8\\% geometric mean IPC speedup over the baseline overall and a 0.3\\% improvement over the prior champion, BertiGO. On low-bandwidth single-core configurations, our policy yields a 4.6\\% performance speedup compared to only 2.6\\% for BertiGO. However, multi-core evolution still remains a significant challenge due to simulation latency impeding evolution speed. Finally, our profiling of an ArchAgent evolution of over 12,000 candidate designs provides key insights into how automated evolutionary agents explore and synthesize complex microarchitectural logic.",
@@ -13788,7 +13790,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2608.09874v1"
       },
-      "priority_score": 30
+      "priority_score": 30,
+      "korean_title": "ArchAgent v2: 데이터 프리페칭 챔피언십을 통한 사례 연구"
     },
     "2608_09873v1": {
       "id": "2608_09873v1",
@@ -14167,7 +14170,7 @@
       "attempts": 0,
       "next_retry_at": "2026-08-11T12:51:19.195754+00:00",
       "last_error": null,
-      "updated_at": "2026-08-12T12:55:01.447459+00:00",
+      "updated_at": "2026-08-12T15:54:53.149105+00:00",
       "paper": {
         "title": "Cultivar: A Contrastive and Locale-Oriented Translation Benchmark for Investigating Contamination and Localisation Robustness",
         "summary": "Multilingual translation benchmarks are typically sourced in English and translated into other languages, treating language pairs as the unit of evaluation---a design that is prone to contamination over time and overlooks locale and cultural considerations. We therefore advocate for source-contrastive evaluation and instantiate it with Cultivar, a localised subset of FLORES, which enables locale-specific translation evaluation. When paired with unlocalised counterparts, performance discrepancy allows the probing of data contamination and localisation robustness. We benchmark 32 open-weight models and find that MT-specialised models are less robust, a few models potentially overfit FLORES, and models tend to translate US content better than that of other locales, regardless of language.",
@@ -14204,11 +14207,11 @@
     "2608_09764v1": {
       "id": "2608_09764v1",
       "filename": "post_2608_09764v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-08-11T12:51:19.195760+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-12T01:21:58.937068+00:00",
+      "updated_at": "2026-08-12T15:55:42.707976+00:00",
       "paper": {
         "title": "MoNo: Multiscale Optimal Transport Neural Operator for Solving PDEs on General Geometries",
         "summary": "Transformer-based neural operators have achieved substantial progress in solving Partial Differential Equations (PDEs) by projecting spatial observations into compact latent tokens and learning physical interactions in latent spaces. However, we reveal that existing learnable projection mechanisms cannot ensure stable and balanced assignments from observation points to latent tokens, causing some latent tokens to be over-assigned while others remain underutilized. This limitation further restricts the design of hierarchical architectures, as assignment imbalance is continuously inherited and amplified across latent spaces, eventually causing severe token collapse in deeper spaces. To address these issues, we propose MoNo (Multiscale Optimal Transport Neural Operator), a progressive multiscale neural operator that efficiently solves PDEs on general geometries through stable latent-space construction. At its core is CoTAP (Cross-scale Optimal Transport Assignment and Projection), a novel latent-space construction method that formulates cross-space assignment between adjacent spaces as an entropy-regularized optimal transport problem, thereby constructing balanced bidirectional projections and stable latent spaces. CoTAP also ensures stable information transfer across multiple latent spaces, further enabling multiscale architectures on general geometries, which in turn support more efficient learning of long-range physical interactions. Extensive experiments demonstrate that MoNo outperforms existing state-of-the-art neural operators in both prediction performance and computational efficiency. Code is available at https://github.com/ZijiangY1116/MoNo.",
@@ -14220,7 +14223,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2608.09764v1"
       },
-      "priority_score": 30
+      "priority_score": 30,
+      "korean_title": "MoNo: 일반 기하학적 구조에서의 편미분 방정식 해결을 위한 다중 스케일 최적 운송 신경 연산자"
     },
     "2608_09763v1": {
       "id": "2608_09763v1",
@@ -14504,7 +14508,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-12T12:55:01.447488+00:00",
+      "updated_at": "2026-08-12T15:54:53.149135+00:00",
       "paper": {
         "title": "Business Arena: Benchmarking LLM Agents in a Realistic Marketplace",
         "summary": "Running a business is a challenging form of intelligent work. Operators must infer opportunities from partial signals, commit capital under uncertainty, adapt to delayed outcomes in a changing market, and satisfy regulatory obligations before trading legally. Frontier LLM agents can increasingly complete complex workflows, yet business-related capabilities are rarely evaluated in existing agent benchmarks. We introduce \\textbf{Business Arena}, a controlled environment where an AI agent runs a cross-border shop, buying from suppliers and selling to buyers over a long horizon. We ground the arena in real Alibaba.com sourcing data and market conditions calibrated from authoritative sources. Delayed and coupled consequences make individual business decisions difficult to judge, but their combined outcome is measurable through profit. Because profit alone cannot explain why an agent succeeds or fails, we compare agents with human-designed strategies to estimate available opportunity, use skill-level metrics to reveal underlying strengths and weaknesses, and trace realized gains and losses to the actions that produced them. We use mechanism ablations to establish that strong results reflect genuine business intelligence rather than neglect or simulator-specific shortcuts. We evaluate 15 frontier models and find a ninefold difference in mean final net worth. Even the best model falls behind human-designed strategies, indicating that business operation remains challenging for LLM agents. Skill-level analysis reveals operating styles, from margin-focused premium sellers to high-turnover wholesalers and customer-service specialists, while action-level attribution identifies the sourcing, pricing, and recovery decisions that create or destroy value. Together, Business Arena takes a first step toward a realistic and trustworthy testbed for evaluating end-to-end business agents.",
@@ -14531,7 +14535,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-12T12:55:01.447464+00:00",
+      "updated_at": "2026-08-12T15:54:53.149078+00:00",
       "paper": {
         "title": "Beyond Sequence Order: Syntax-Informed Positional Embeddings for Transformers",
         "summary": "Positional embeddings (PE) in Transformers encode token distance and order but are largely agnostic to \\textit{syntactic structure}. We introduce \\textbf{S}yntax-\\textbf{i}nformed \\textbf{P}ositional \\textbf{E}mbeddings (\\textbf{SiPE}), which learns a lightweight syntactic prior from dependency parses during pretraining and injects it across all three dominant PE families (absolute, relative, rotary), for both encoders and decoders, leaving self-attention and the rest of the architecture untouched. We isolate \\emph{where} and \\emph{how} the prior should enter the model, and find it depends on the architecture: for autoregressive decoders that use relative PE, the prior is strongest when coupled multiplicatively with the relative-position term of the attention score, outperforming injection into the input embeddings, into self-attention, or into the positional and attention terms jointly---while for encoders it is best added directly to the input embeddings, composing with each encoder's native positional mechanism. We find that models pre-trained with SiPE improve on the SyntaxGym benchmark by up to $10.3\\%$ while simultaneously reducing perplexity by $9.0\\%$ over a base model with no syntactic supervision---a metric nearly every existing syntax-injection method instead degrades. Crucially, these gains extend beyond syntactic generalization: SiPE also improves real-world language understanding, raising scores on the GLUE benchmark by up to $8.2\\%$ over a model trained without it. Unlike existing syntactic language models that marginalize over many parses at inference or discard syntax at runtime, SiPE conditions on a single parse, establishing a new Pareto frontier between syntactic supervision and inference cost.",
@@ -14553,7 +14557,7 @@
       "attempts": 0,
       "next_retry_at": "2026-08-12T04:43:13.468517+00:00",
       "last_error": null,
-      "updated_at": "2026-08-12T12:55:01.447429+00:00",
+      "updated_at": "2026-08-12T15:54:53.149098+00:00",
       "paper": {
         "title": "iFAN: Inference-Aware Learning for Plain Mask Transformers",
         "summary": "Query-based mask transformers assemble segmentation outputs through pixel-wise competition among query predictions of the final layer, yet this inference process is not explicitly optimized during training. We identify two key mismatches: the query with the highest probability-mask score does not necessarily produce the most accurate mask, and final-layer decoding may discard superior predictions from intermediate layers. To address these issues, we propose Inference-Aware Learning (iFAN), a general training framework for plain mask transformers. iFAN introduces Adjusted Probability-Mask Ranking (APMR), which aligns query competition with predicted mask quality and suppresses high-confidence but inaccurate competitors. We further employ Cross-Layer Self-Distillation (CLSD) to transfer stronger intermediate predictions to the final layer. The ranking and distillation objectives are training-only, while inference retains efficient final-layer decoding. Experiments on COCO, ADE20K, and Cityscapes demonstrate consistent improvements across panoptic, instance, and semantic segmentation, as well as across different architectures, backbone scales, and input resolutions. Overall, iFAN improves performance by an average of 1.20 PQ, 1.30 AP, and 0.63 mIoU, with negligible additional parameters, FLOPs and inference latency.",
@@ -14581,7 +14585,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-12T12:55:01.447453+00:00",
+      "updated_at": "2026-08-12T15:54:53.149110+00:00",
       "paper": {
         "title": "Beyond Starry Night: Shortcut-Aware Control-State Planning for Artist-Grounded Text to Image Generation",
         "summary": "Artist-grounded image generation requires more than appending an artist name to a prompt. Image models often respond to artist names through canonical shortcuts, such as recurring motifs, generic palettes, or overrepresented period signatures, rather than preserving the user's intended scene. We introduce Atelier, a shortcut-aware control-state planning framework for artist-grounded image generation. Atelier translates underspecified artistic intent into an explicit control state that separates scene anchors, preserve/transform decisions, style-regime hypotheses, role-bound artist evidence, and shortcut-avoidance constraints. It grounds this state using artist-level knowledge and local patch references, compiles backend-aware generation plans, and iteratively refines candidates through global and local authenticity feedback. We further introduce ArtIntentBench, a benchmark covering Van Gogh and Qi Baishi across artwork re-rendering, period/style-controlled generation, historically unseen subjects, shortcut auditing, and human preference evaluation. Across open-weight and closed-source generators, Atelier improves artist-level style fidelity, preserves source structure more faithfully, and substantially reduces shortcut substitution compared with prompt-engineered, retrieval-augmented, and general-purpose agent baselines. These results suggest that artist-grounded generation is bottlenecked not only by image synthesis, but by the upstream inference of explicit, evidence-grounded artistic controls.",
@@ -14607,7 +14611,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-12T12:55:01.447468+00:00",
+      "updated_at": "2026-08-12T15:54:53.149115+00:00",
       "paper": {
         "title": "SPIEval: Evaluating Large Language Models as Mobile Assistants over Scattered Personal Information",
         "summary": "Large language models (LLMs) are increasingly deployed as mobile assistants, where a key challenge is leveraging personal information scattered across multiple applications (apps) to complete user instructions. However, due to the lack of dedicated benchmarks, their capabilities remain poorly understood. To address this gap, we introduce SPIEval, a human-curated benchmark grounded in five cognitive capabilities (i.e., reasoning, disambiguation, integration, preference inference, and multi-intent decomposition). SPIEval comprises 250 tasks spanning 4,335 personal records distributed across 10 apps and supports multi-turn interaction through 21 tools. Analysis shows that the benchmark exhibits diverse scenarios, challenging tasks, scattered information, controllable environments, and verifiable outcomes. We evaluate nine representative LLMs and find substantial room for improvement. The best-performing model, GPT-5.5 (xhigh), achieves only 57.3% accuracy, while the weakest achieves just 16.4%. Further analysis reveals that 79% of failures stem from inaccurate information localization, as LLMs often commit to plausible but incorrect information instead of continuing retrieval for verification. We also find that fewer than 2% of retrieval actions employ advanced search methods and observe substantial variation in search efficiency across models. These findings expose fundamental limitations of current LLM-based mobile assistants and motivate future research in this direction. Data and code are available at https://huggingface.co/datasets/Junjie-Ye/SPIEval.",
@@ -14641,7 +14645,7 @@
       "attempts": 0,
       "next_retry_at": "2026-08-12T04:43:13.468553+00:00",
       "last_error": null,
-      "updated_at": "2026-08-12T12:55:01.447478+00:00",
+      "updated_at": "2026-08-12T15:54:53.149124+00:00",
       "paper": {
         "title": "Ex-Omni-2D: Expressive Omni-Modal Dialogue Models with Native Visual Presence",
         "summary": "Omni-modal dialogue models can understand multimodal inputs and synthesize spoken replies, yet their responses remain visually disembodied. We introduce \\textbf{Ex-Omni-2D}, an omni-modal dialogue framework that generates a coordinated response comprising text, personalized speech, and reference-conditioned video. Given a multimodal query, reference image, and reference audio, the model predicts a structured \\textit{Visual Thought Plan} (VTP) describing scene, emotion, and motion, followed by response text and native multi-codebook speech units. These units form a shared acoustic-temporal interface: they are decoded into speech and aligned online with video frames. This interface enables the response and avatar pathways to be learned from heterogeneous speech, dialogue, and avatar-video data, avoiding the need for large-scale query--text--speech--video supervision. A full-sequence Video Generator serves as the primary Teacher. For efficient incremental generation, we further distill it into a few-step block-causal \\emph{Streaming Student} whose Prefix Streaming mechanism carries a clean latent across consecutive chunks to reduce cumulative late-chunk degradation. With four-step inference, the complete four-GPU pipeline achieves an end-to-end RTF of 1.293 at $400\\times720$/$720\\times400$, providing a practical quality--efficiency operating point.",
@@ -14664,7 +14668,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-12T12:55:23.623035+00:00",
+      "updated_at": "2026-08-12T15:54:53.149127+00:00",
       "paper": {
         "title": "JigShape: Evaluating Visual-Geometric Reasoning in VLMs through Jigsaw Puzzles",
         "summary": "Jigsaw puzzle solving requires jointly reasoning about visual content and geometric constraints, yet existing benchmarks use rectangular cuts that create ambiguous ground truth in texture-repeated regions. We introduce \\textit{\\ours{}}, a benchmark with tab-and-blank interlocking pieces where geometric constraints provide strong local compatibility requirements that, combined with visual content, yield unambiguous ground truth. Across 95K instances at four grid densities (4$\\times$4 to 16$\\times$16), we find that \\textbf{zero-shot VLMs largely lack geometric reasoning}: only one of five frontier models (GPT-5.5) exceeds random baseline on 4$\\times$4 puzzles, while all others perform at chance level. While supervised fine-tuning achieves $>$97\\% on 4$\\times$4, \\textbf{all models collapse on larger grids}: GPT-5.5 drops from 70\\% to near-random on 8$\\times$8, and even fine-tuned models fall below 5\\% on 12$\\times$12. This ``scaling cliff'' suggests current architectures cannot maintain consistent constraint satisfaction as the number of pieces increases. \\ours{} establishes scalable geometric reasoning as an open challenge for vision-language models.",
@@ -14697,7 +14701,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-12T12:55:01.447485+00:00",
+      "updated_at": "2026-08-12T15:54:53.149131+00:00",
       "paper": {
         "title": "Mendel Gödel Machine: Recursive Self-Improving Coding Agents via Comparative Evolution",
         "summary": "Self-improving coding agents that iteratively rewrite their own source code have demonstrated impressive performance on coding tasks. However, existing solutions generally derive self-modification from a single failure trajectory at a time, overlooking rich comparative signals available in the agent's expanding archive of past attempts. According to Mendelian principles of controlled inheritance, we introduce Mendel Gödel Machine (MGM). In addition to the general single-trajectory clonal mutation, MGM includes two new types of self-modification that better utilizes evidences accumulated: the reaction-norm mutation edits an agent based on its trajectories on multiple tasks simultaneously, and the cross-lineage hybridization edits an agent using the trajectory of a reference agent from another lineage on the same task. Under an additive fitness landscape model, we prove theoretically and demonstrate via controlled surrogate simulation that the new strategies facilitate a faster and better convergence over single-trajectory baselines. Experiments on SWE-bench and Polyglot confirm MGM's consistent improvement in performance, efficiency, and generalizability.",
@@ -14721,7 +14725,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-12T12:55:10.981867+00:00",
+      "updated_at": "2026-08-12T15:54:53.149119+00:00",
       "paper": {
         "title": "InSight-doc: Agentic Visual Perception for Long-Document Understanding",
         "summary": "Long-document understanding often requires reasoning over many visually rich pages, making inference costly and prone to context rot. In this work, we propose InSight-doc, an agentic visual perception framework that treats visual resolution as an adaptive reasoning-time resource. InSight-doc starts from low resolution and selectively zooms into high-resolution regions for finer evidence, without relying on any external retriever. To train such an agent, we construct an active-perception corpus of 17.9K high-quality SFT examples with region-level zoom-in trajectories, accompanied by 19.2K hard RL examples. Through SFT+RL, InSight-doc-8B improves the baseline by 4.3--16.4 accuracy points over document VQA benchmarks. On long documents, it reduces hallucination by more than 40% and inference latency by 41%--68% while maintaining an accuracy lead. Our code, datasets, and model are released at https://github.com/m-Just/InSight-doc .",
@@ -14742,7 +14746,7 @@
     }
   },
   "last_run": {
-    "started_at": "2026-08-12T12:55:01.448417+00:00",
+    "started_at": "2026-08-12T15:54:53.150339+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -14753,25 +14757,25 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 21521,
-      "output_tokens": 5967,
+      "prompt_tokens": 18755,
+      "output_tokens": 5761,
       "thought_tokens": 0,
-      "total_tokens": 27488,
-      "estimated_usd": 0.01433075
+      "total_tokens": 24516,
+      "estimated_usd": 0.01333025
     },
-    "finished_at": "2026-08-12T12:55:53.320928+00:00"
+    "finished_at": "2026-08-12T15:55:58.777359+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 1040,
-    "prompt_tokens": 2614844,
-    "output_tokens": 765211,
+    "requests": 1048,
+    "prompt_tokens": 2633599,
+    "output_tokens": 770972,
     "thought_tokens": 0,
-    "total_tokens": 3380055,
-    "estimated_usd": 1.8015275
+    "total_tokens": 3404571,
+    "estimated_usd": 1.81485775
   },
   "last_publication_run": {
-    "started_at": "2026-08-12T12:55:01.448417+00:00",
+    "started_at": "2026-08-12T15:54:53.150339+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -14782,17 +14786,17 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 21521,
-      "output_tokens": 5967,
+      "prompt_tokens": 18755,
+      "output_tokens": 5761,
       "thought_tokens": 0,
-      "total_tokens": 27488,
-      "estimated_usd": 0.01433075
+      "total_tokens": 24516,
+      "estimated_usd": 0.01333025
     },
-    "finished_at": "2026-08-12T12:55:53.320928+00:00"
+    "finished_at": "2026-08-12T15:55:58.777359+00:00"
   },
   "daily_usage": {
     "date": "2026-08-12",
-    "estimated_usd": 0.0696355,
-    "publications": 20
+    "estimated_usd": 0.08296575,
+    "publications": 24
   }
 }

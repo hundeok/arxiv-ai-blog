@@ -1,0 +1,64 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MoNo: 일반 기하학적 구조에서의 편미분 방정식 해결을 위한 다중 스케일 최적 운송 신경 연산자 | ArXiv Translator AI</title><meta name="description" content="MoNo: 일반 기하학적 구조에서의 편미분 방정식 해결을 위한 다중 스케일 최적 운송 신경 연산자"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_09764v1"><meta property="og:type" content="article"><meta property="og:title" content="MoNo: 일반 기하학적 구조에서의 편미분 방정식 해결을 위한 다중 스케일 최적 운송 신경 연산자"><meta property="og:description" content="MoNo: 일반 기하학적 구조에서의 편미분 방정식 해결을 위한 다중 스케일 최적 운송 신경 연산자"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_09764v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="MoNo: 일반 기하학적 구조에서의 편미분 방정식 해결을 위한 다중 스케일 최적 운송 신경 연산자"><meta name="twitter:description" content="MoNo: 일반 기하학적 구조에서의 편미분 방정식 해결을 위한 다중 스케일 최적 운송 신경 연산자"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_09764v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "MoNo: 일반 기하학적 구조에서의 편미분 방정식 해결을 위한 다중 스케일 최적 운송 신경 연산자", "description": "MoNo: 일반 기하학적 구조에서의 편미분 방정식 해결을 위한 다중 스케일 최적 운송 신경 연산자", "datePublished": "2026-08-10", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_09764v1", "author": [{"@type": "Person", "name": "Zijiang Yang"}, {"@type": "Person", "name": "Xiaomeng Wu"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_09764v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_09764v1"});gtag('event', 'paper_view', {"paper_id": "2608_09764v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>MoNo: 일반 기하학적 구조에서의 편미분 방정식 해결을 위한 다중 스케일 최적 운송 신경 연산자</h1><p>MoNo: 일반 기하학적 구조에서의 편미분 방정식 해결을 위한 다중 스케일 최적 운송 신경 연산자</p><pre>MoNo: 일반 기하학적 구조에서의 편미분 방정식 해결을 위한 다중 스케일 최적 운송 신경 연산자
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** MoNo: Multiscale Optimal Transport Neural Operator for Solving PDEs on General Geometries
+&gt; - **저자:** Zijiang Yang, Xiaomeng Wu, Dongmei Fu
+&gt; - **발행일:** 2026-08-10
+&gt; - **PDF 링크:** [MoNo: Multiscale Optimal Transport Neural Operator for Solving PDEs on General Geometries](https://arxiv.org/pdf/2608.09764v1)
+
+
+✨ 3줄 핵심 요약
+* 기존 신경 연산자의 잠재 공간 투영 방식은 토큰 할당 불균형으로 인해 깊은 층에서 정보 붕괴 현상이 발생합니다.
+* 이를 해결하기 위해 엔트로피 정규화된 최적 운송 문제를 활용하는 &#x27;CoTAP&#x27; 기법을 도입하여 안정적인 다중 스케일 잠재 공간을 구축합니다.
+* 일반적인 기하학적 구조에서 편미분 방정식을 더 효율적이고 정확하게 해결하며, 토큰 붕괴 문제를 방지하여 물리적 상호작용 학습 성능을 높였습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+복잡한 물리 현상을 계산하는 편미분 방정식(PDE)을 풀 때, 최근 인공지능 모델들은 데이터를 &#x27;토큰&#x27;이라는 작은 단위로 변환해 학습합니다. 하지만 기존 방식은 특정 토큰에만 정보가 몰리고 다른 토큰은 버려지는 &#x27;할당 불균형&#x27; 문제가 있었습니다. 연구진은 이를 해결하고자 &#x27;최적 운송(Optimal Transport)&#x27; 이론을 적용했습니다. 이는 데이터가 가장 효율적으로 이동하고 분배되도록 제어하는 수학적 기법입니다. 이를 통해 모델은 여러 층의 잠재 공간에서도 정보 손실 없이 안정적으로 데이터를 처리하고, 복잡한 기하학적 구조에서도 물리적 법칙을 훨씬 더 잘 학습하게 되었습니다.
+
+🎯 배경 및 문제점
+기존 트랜스포머 기반 신경 연산자들은 물리적 관측값을 잠재 공간의 토큰으로 투영하여 학습합니다. 그러나 이 과정에서 학습 가능한 투영 메커니즘이 안정적이고 균형 잡힌 할당을 보장하지 못합니다. 결과적으로 일부 토큰은 과도하게 할당되는 반면, 다른 토큰은 제대로 활용되지 못합니다. 이러한 현상은 계층적 구조가 깊어질수록 계속해서 누적·증폭되어, 최종적으로 심층부에서 &#x27;토큰 붕괴(token collapse)&#x27;를 유발하여 모델의 성능을 저해합니다.
+
+💡 핵심 기술 및 아키텍처
+* **CoTAP (Cross-scale Optimal Transport Assignment and Projection):** 인접한 잠재 공간 간의 토큰 할당을 엔트로피 정규화된 최적 운송 문제로 공식화했습니다. 이를 통해 양방향 투영을 균형 있게 구성하고 잠재 공간의 안정성을 확보합니다.
+* **다중 스케일 아키텍처:** CoTAP을 통해 여러 잠재 공간 간의 안정적인 정보 전달을 보장하여, 계층적 구조를 구축합니다. 이는 복잡한 기하학적 구조에서도 물리적 상호작용을 장거리까지 효율적으로 학습할 수 있게 합니다.
+
+📊 실험 결과 분석
+* 원문 발췌 내용에 따르면, MoNo는 기존의 최첨단 신경 연산자 대비 예측 성능과 계산 효율성 면에서 우수한 성능을 보였습니다.
+* **추가 분석 데이터:** 논문에서는 최적의 토큰 감소율(reduction factor)로 2배(×2)를 제시하였으며, 이는 안정적인 투영과 정보 집계 능력 사이의 균형을 유지하는 최적의 설정임을 실험적으로 확인했습니다. (실험 수치에 대한 구체적인 비교표는 발췌문에 표 14, 15로 제공됨)
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **범용성:** 특정 형태에 국한되지 않고 일반적인 기하학적 구조(general geometries) 위에서 작동하므로, 다양한 산업 현장의 물리 시스템 시뮬레이션에 즉각적인 적용이 가능합니다.
+* **효율성:** 토큰 붕괴를 방지하고 안정적인 학습을 지원함으로써, 더 적은 계산 자원으로 복잡한 PDE를 해결할 수 있게 합니다.
+* **실무 활용:** 기류 시뮬레이션(Airfoil), 탄성체 분석(Elasticity), 파이프 유체 역학(Pipe) 등 다양한 물리적 문제를 해결하는 예측 모델로 활용될 수 있습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Geometric Operator Learning with Optimal Transport Xinyi Li xinyili@caltech.edu](https://arxiv.org/pdf/2507.20065)
+&gt; - [MNO: Multiscale Neural Operator for 3D Computational Fluid Dynamics](https://arxiv.org/html/2510.16071v2)
+&gt; - [Geometric Operator Learning with Optimal Transport Xinyi Li](https://ml4physicalsciences.github.io/2025/files/NeurIPS_ML4PS_2025_19.pdf)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;최적 운송(OT)을 신경 연산자에 도입한 것은 수학적으로 우아한 접근이지만, 엔트로피 정규화 파라미터 ε(epsilon)의 설정에 따라 성능이 요동칠 텐데 이 부분에 대한 견고성 분석이 부족해 보이네요. 단순히 토큰 붕괴를 막았다고 해서 물리적 보존 법칙까지 완벽히 준수한다고 볼 수 있을지 의문입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 ε 설정은 골치 아픈 문제지만, 현업 입장에서는 &#x27;계산 효율성&#x27;이 확보된다는 것만으로도 가치가 큽니다. 매번 PDE 풀 때마다 그리드 쪼개느라 서버 터지는 거 생각하면, MoNo의 다중 스케일 아키텍처는 프로덕션 환경에 바로 얹어보고 싶은 수준이네요. 특히 일반적인 기하학적 구조에서 돌아간다는 게 가장 큰 메리트입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;선배님, 일단 실무 적용 걱정하기 전에 지금 당장 제 랩실 데이터셋으로 돌려봤는데 수렴 속도가 미쳤습니다! 기존 FNO(Fourier Neural Operator) 쓰다가 토큰 붕괴로 스트레스받았는데, CoTAP 방식 도입하니까 확실히 깊은 층에서도 정보 손실이 적어요. 이거 다음 학기 학회 메인 토픽으로 잡고 바로 파생 연구 들어갑니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
