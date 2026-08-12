@@ -12840,11 +12840,11 @@
     "2608_07435v1": {
       "id": "2608_07435v1",
       "filename": "post_2608_07435v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-08-11T01:13:49.636489+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-11T01:13:49.636492+00:00",
+      "updated_at": "2026-08-12T21:39:24.858028+00:00",
       "paper": {
         "title": "SABRE: Scalable and Automated Benchmarking of VLMs under Stress",
         "summary": "Vision-language models (VLMs) are improving rapidly, but benchmark development lags behind, making weaknesses hard to identify. Building stress tests is costly: samples must satisfy controlled conditions, remain answerable, and challenge current models. We present SABRE, a scalable, automated pipeline that converts a Test Primer (a Markdown Task Design with Data Schema) into structured specifications, generated or edited images, and question-answer pairs. Automated filtering removes candidates solved by a Filtering VLM, while human review verifies candidate validity and supports annotation correction and localized image repair. We instantiate SABRE-Prior to test whether VLMs follow visual evidence instead of relying on world priors -- learned expectations about familiar objects and scenes. Its 600 images and 1,000 questions span Context (unexpected entities in familiar scenes), Texture (counterfactual materials), Attribute (noncanonical component counts), and Language Elicitation (answers suggested by language but unsupported by the image). Across six VLMs, macro-average accuracy ranges from 17.8% to 31.3% (22.6% mean). A real-image Attribute control is comparably difficult for the Filtering VLM. SABRE-Counting and SABRE-Spatial pilots show that the workflow supports other stress-test settings. These results establish SABRE as a reusable framework for constructing and refreshing VLM stress tests rather than a single fixed benchmark.",
@@ -12857,7 +12857,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2608.07435v1"
       },
-      "priority_score": 28
+      "priority_score": 28,
+      "korean_title": "SABRE: 스트레스 상황에서의 시각-언어 모델(VLM)을 위한 확장 가능하고 자동화된 벤치마킹"
     },
     "2608_07430v1": {
       "id": "2608_07430v1",
@@ -12908,11 +12909,11 @@
     "2608_07427v1": {
       "id": "2608_07427v1",
       "filename": "post_2608_07427v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-08-11T01:13:49.636515+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-11T01:13:49.636517+00:00",
+      "updated_at": "2026-08-12T21:39:33.639265+00:00",
       "paper": {
         "title": "A Picture is Worth a Thousand Tokens: How Vision Language Models Cut AI Energy Costs While Improving Accuracy",
         "summary": "LLM inference accounts for over 90% of AI operational energy, scaling directly with input token count---a critical inefficiency for telecom network analytics and numerical time-series data analysis (NTSDA), where raw multivariate KPI windows from 4G/5G cell sites expand into thousands of floating-point tokens. Vision-Language Models (VLMs) eliminate this mismatch by encoding time-series as 2D plots, achieving 3.6-10.4x input token reduction across Llama-3.2-90B, Qwen2.5-VL-72B, and Pixtral-12B architectures. This translates to 1.8-2.5x measured inference energy reduction, saving approximately 7.2 MJ/day at telecom edge deployments and CloudRAN that monitor 200 cells per 15-minute interval. Critically, efficiency gains do not sacrifice accuracy: a fine-tuned Llama-3.2-90B-Vision VLM achieves 220.7% higher precision than its text-only counterpart and outperforms LSTM and ARIMA baselines by over 144% on telecom anomaly detection. On public benchmarks, Pixtral-12B achieves a 20.6x improvement in J/F1 score at mean F1 = 0.82. At 24 KPIs, text representations exceed the 128K context window of most production LLMs, rendering text-only processing infeasible without truncation, while visual representations remain within standard limits. These results establish VLMs as an energy-efficient and accuracy-superior modality for numerical time-series workloads, providing empirical grounding for AI inference systems that treat energy consumption as a first-class engineering constraint.",
@@ -12924,7 +12925,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2608.07427v1"
       },
-      "priority_score": 28
+      "priority_score": 28,
+      "korean_title": "사진 한 장이 천 개의 토큰의 가치를 한다: 비전 언어 모델이 어떻게 AI 에너지 비용을 절감하고 정확도를 향상시키는가"
     },
     "2608_07424v1": {
       "id": "2608_07424v1",
@@ -13903,11 +13905,11 @@
     "2608_09855v1": {
       "id": "2608_09855v1",
       "filename": "post_2608_09855v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-08-11T12:51:19.195683+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-12T01:21:58.937023+00:00",
+      "updated_at": "2026-08-12T21:39:03.802937+00:00",
       "paper": {
         "title": "Agentic Auto-Research is Fuzz Testing",
         "summary": "Autonomous research agents can generate experiments faster than researchers can validate them. Researchers have responded by scaling the proposer and ranking more samples with a learned judge or human reviewers. We argue that this *generate-and-rank* paradigm misses the problem of sparse feedback. Within a declared research problem, an agent follows the control loop of a greybox fuzzer: it proposes a candidate, executes it, observes feedback, and chooses what to try next. A fuzzer rarely finds a bug, but coverage makes partial progress observable on every execution. Fuzzers then use that signal to mutate inputs and allocate effort, rather than only to rank completed runs. Auto-research needs the same two capabilities. First, each experiment should expose a cheap, dense signal of epistemic progress before final scientific validation is available. Second, that signal should determine the next intervention so that the agent searches rather than repeatedly samples. Because the optimized progress signal is guidance rather than a verdict, final validation must still decide what counts as a discovery using evidence protected from adaptive reuse. We propose controlled tests of whether candidate signals predict validated progress, whether feedback-directed search yields more validated discoveries per unit cost than repeated sampling, and whether protected validation reduces false discoveries. Feedback architecture, not only generation, is a central bottleneck in auto-research.",
@@ -13921,7 +13923,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2608.09855v1"
       },
-      "priority_score": 28
+      "priority_score": 28,
+      "korean_title": "에이전트 기반 자동 연구는 퍼즈 테스팅과 같다"
     },
     "2608_09848v1": {
       "id": "2608_09848v1",
@@ -13993,11 +13996,11 @@
     "2608_09826v1": {
       "id": "2608_09826v1",
       "filename": "post_2608_09826v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-08-11T12:51:19.195709+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-12T01:21:58.937037+00:00",
+      "updated_at": "2026-08-12T21:39:13.170106+00:00",
       "paper": {
         "title": "Distill Skills into Weights, Not Prompts: Abstract Skills as Privileged Signals for On-Policy Self-Distillation",
         "summary": "Reinforcement learning with verifiable rewards yields no group-relative signal when rollout groups are uniformly correct or uniformly wrong, which account for 63.0-68.0% of groups in our experiments. We propose SKALD (Skill-Anchored Latent Distillation), an on-policy self-distillation framework that uses two context views of the same Qwen3-Base model: a question-only student and a teacher conditioned on an abstract, explicit-answer-filtered skill card. The student is trained on its own prefixes, transferring the skill-induced advantage into shared parameters without privileged input at test time. To stabilize context-induced distribution mismatch, SKALD employs an annealed exponentially tilted objective that downweights teacher-preferred tokens with very low student likelihood; as the tilt vanishes, it converges to teacher cross-entropy and recovers the forward-KL student gradient. An empirical gate activates distillation only when verified rollouts estimate a positive teacher advantage. Across five held-out mathematics benchmarks, SKALD improves overall avg@8 over GRPO by +2.46, +4.85, and +12.01 at 0.6B, 1.7B, and 4B, respectively. At 1.7B, zero-variance-only distillation recovers 84.7% of the full gain, while SKALD remains +4.06 above FLOP-matched GRPO and exceeds contextual skill exposure by +3.77. These results show that abstract skills provide dense supervision where group-relative rewards become uninformative.",
@@ -14010,7 +14013,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2608.09826v1"
       },
-      "priority_score": 28
+      "priority_score": 28,
+      "korean_title": "기술을 프롬프트가 아닌 가중치로 증류하기: 온-폴리시 자기 증류를 위한 특권 신호로서의 추상적 기술"
     },
     "2608_09818v1": {
       "id": "2608_09818v1",
@@ -14172,7 +14176,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-12T18:55:13.513933+00:00",
+      "updated_at": "2026-08-12T21:38:52.768670+00:00",
       "paper": {
         "title": "Cultivar: A Contrastive and Locale-Oriented Translation Benchmark for Investigating Contamination and Localisation Robustness",
         "summary": "Multilingual translation benchmarks are typically sourced in English and translated into other languages, treating language pairs as the unit of evaluation---a design that is prone to contamination over time and overlooks locale and cultural considerations. We therefore advocate for source-contrastive evaluation and instantiate it with Cultivar, a localised subset of FLORES, which enables locale-specific translation evaluation. When paired with unlocalised counterparts, performance discrepancy allows the probing of data contamination and localisation robustness. We benchmark 32 open-weight models and find that MT-specialised models are less robust, a few models potentially overfit FLORES, and models tend to translate US content better than that of other locales, regardless of language.",
@@ -14512,7 +14516,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-12T18:54:24.106208+00:00",
+      "updated_at": "2026-08-12T21:38:52.768696+00:00",
       "paper": {
         "title": "Business Arena: Benchmarking LLM Agents in a Realistic Marketplace",
         "summary": "Running a business is a challenging form of intelligent work. Operators must infer opportunities from partial signals, commit capital under uncertainty, adapt to delayed outcomes in a changing market, and satisfy regulatory obligations before trading legally. Frontier LLM agents can increasingly complete complex workflows, yet business-related capabilities are rarely evaluated in existing agent benchmarks. We introduce \\textbf{Business Arena}, a controlled environment where an AI agent runs a cross-border shop, buying from suppliers and selling to buyers over a long horizon. We ground the arena in real Alibaba.com sourcing data and market conditions calibrated from authoritative sources. Delayed and coupled consequences make individual business decisions difficult to judge, but their combined outcome is measurable through profit. Because profit alone cannot explain why an agent succeeds or fails, we compare agents with human-designed strategies to estimate available opportunity, use skill-level metrics to reveal underlying strengths and weaknesses, and trace realized gains and losses to the actions that produced them. We use mechanism ablations to establish that strong results reflect genuine business intelligence rather than neglect or simulator-specific shortcuts. We evaluate 15 frontier models and find a ninefold difference in mean final net worth. Even the best model falls behind human-designed strategies, indicating that business operation remains challenging for LLM agents. Skill-level analysis reveals operating styles, from margin-focused premium sellers to high-turnover wholesalers and customer-service specialists, while action-level attribution identifies the sourcing, pricing, and recovery decisions that create or destroy value. Together, Business Arena takes a first step toward a realistic and trustworthy testbed for evaluating end-to-end business agents.",
@@ -14539,7 +14543,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-12T18:54:24.106159+00:00",
+      "updated_at": "2026-08-12T21:38:52.768674+00:00",
       "paper": {
         "title": "Beyond Sequence Order: Syntax-Informed Positional Embeddings for Transformers",
         "summary": "Positional embeddings (PE) in Transformers encode token distance and order but are largely agnostic to \\textit{syntactic structure}. We introduce \\textbf{S}yntax-\\textbf{i}nformed \\textbf{P}ositional \\textbf{E}mbeddings (\\textbf{SiPE}), which learns a lightweight syntactic prior from dependency parses during pretraining and injects it across all three dominant PE families (absolute, relative, rotary), for both encoders and decoders, leaving self-attention and the rest of the architecture untouched. We isolate \\emph{where} and \\emph{how} the prior should enter the model, and find it depends on the architecture: for autoregressive decoders that use relative PE, the prior is strongest when coupled multiplicatively with the relative-position term of the attention score, outperforming injection into the input embeddings, into self-attention, or into the positional and attention terms jointly---while for encoders it is best added directly to the input embeddings, composing with each encoder's native positional mechanism. We find that models pre-trained with SiPE improve on the SyntaxGym benchmark by up to $10.3\\%$ while simultaneously reducing perplexity by $9.0\\%$ over a base model with no syntactic supervision---a metric nearly every existing syntax-injection method instead degrades. Crucially, these gains extend beyond syntactic generalization: SiPE also improves real-world language understanding, raising scores on the GLUE benchmark by up to $8.2\\%$ over a model trained without it. Unlike existing syntactic language models that marginalize over many parses at inference or discard syntax at runtime, SiPE conditions on a single parse, establishing a new Pareto frontier between syntactic supervision and inference cost.",
@@ -14561,7 +14565,7 @@
       "attempts": 0,
       "next_retry_at": "2026-08-12T04:43:13.468517+00:00",
       "last_error": null,
-      "updated_at": "2026-08-12T18:54:24.106180+00:00",
+      "updated_at": "2026-08-12T21:38:52.768647+00:00",
       "paper": {
         "title": "iFAN: Inference-Aware Learning for Plain Mask Transformers",
         "summary": "Query-based mask transformers assemble segmentation outputs through pixel-wise competition among query predictions of the final layer, yet this inference process is not explicitly optimized during training. We identify two key mismatches: the query with the highest probability-mask score does not necessarily produce the most accurate mask, and final-layer decoding may discard superior predictions from intermediate layers. To address these issues, we propose Inference-Aware Learning (iFAN), a general training framework for plain mask transformers. iFAN introduces Adjusted Probability-Mask Ranking (APMR), which aligns query competition with predicted mask quality and suppresses high-confidence but inaccurate competitors. We further employ Cross-Layer Self-Distillation (CLSD) to transfer stronger intermediate predictions to the final layer. The ranking and distillation objectives are training-only, while inference retains efficient final-layer decoding. Experiments on COCO, ADE20K, and Cityscapes demonstrate consistent improvements across panoptic, instance, and semantic segmentation, as well as across different architectures, backbone scales, and input resolutions. Overall, iFAN improves performance by an average of 1.20 PQ, 1.30 AP, and 0.63 mIoU, with negligible additional parameters, FLOPs and inference latency.",
@@ -14589,7 +14593,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-12T18:54:24.106189+00:00",
+      "updated_at": "2026-08-12T21:38:52.768665+00:00",
       "paper": {
         "title": "Beyond Starry Night: Shortcut-Aware Control-State Planning for Artist-Grounded Text to Image Generation",
         "summary": "Artist-grounded image generation requires more than appending an artist name to a prompt. Image models often respond to artist names through canonical shortcuts, such as recurring motifs, generic palettes, or overrepresented period signatures, rather than preserving the user's intended scene. We introduce Atelier, a shortcut-aware control-state planning framework for artist-grounded image generation. Atelier translates underspecified artistic intent into an explicit control state that separates scene anchors, preserve/transform decisions, style-regime hypotheses, role-bound artist evidence, and shortcut-avoidance constraints. It grounds this state using artist-level knowledge and local patch references, compiles backend-aware generation plans, and iteratively refines candidates through global and local authenticity feedback. We further introduce ArtIntentBench, a benchmark covering Van Gogh and Qi Baishi across artwork re-rendering, period/style-controlled generation, historically unseen subjects, shortcut auditing, and human preference evaluation. Across open-weight and closed-source generators, Atelier improves artist-level style fidelity, preserves source structure more faithfully, and substantially reduces shortcut substitution compared with prompt-engineered, retrieval-augmented, and general-purpose agent baselines. These results suggest that artist-grounded generation is bottlenecked not only by image synthesis, but by the upstream inference of explicit, evidence-grounded artistic controls.",
@@ -14615,7 +14619,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-12T18:54:24.106192+00:00",
+      "updated_at": "2026-08-12T21:38:52.768678+00:00",
       "paper": {
         "title": "SPIEval: Evaluating Large Language Models as Mobile Assistants over Scattered Personal Information",
         "summary": "Large language models (LLMs) are increasingly deployed as mobile assistants, where a key challenge is leveraging personal information scattered across multiple applications (apps) to complete user instructions. However, due to the lack of dedicated benchmarks, their capabilities remain poorly understood. To address this gap, we introduce SPIEval, a human-curated benchmark grounded in five cognitive capabilities (i.e., reasoning, disambiguation, integration, preference inference, and multi-intent decomposition). SPIEval comprises 250 tasks spanning 4,335 personal records distributed across 10 apps and supports multi-turn interaction through 21 tools. Analysis shows that the benchmark exhibits diverse scenarios, challenging tasks, scattered information, controllable environments, and verifiable outcomes. We evaluate nine representative LLMs and find substantial room for improvement. The best-performing model, GPT-5.5 (xhigh), achieves only 57.3% accuracy, while the weakest achieves just 16.4%. Further analysis reveals that 79% of failures stem from inaccurate information localization, as LLMs often commit to plausible but incorrect information instead of continuing retrieval for verification. We also find that fewer than 2% of retrieval actions employ advanced search methods and observe substantial variation in search efficiency across models. These findings expose fundamental limitations of current LLM-based mobile assistants and motivate future research in this direction. Data and code are available at https://huggingface.co/datasets/Junjie-Ye/SPIEval.",
@@ -14649,7 +14653,7 @@
       "attempts": 0,
       "next_retry_at": "2026-08-12T04:43:13.468553+00:00",
       "last_error": null,
-      "updated_at": "2026-08-12T18:54:24.106199+00:00",
+      "updated_at": "2026-08-12T21:38:52.768685+00:00",
       "paper": {
         "title": "Ex-Omni-2D: Expressive Omni-Modal Dialogue Models with Native Visual Presence",
         "summary": "Omni-modal dialogue models can understand multimodal inputs and synthesize spoken replies, yet their responses remain visually disembodied. We introduce \\textbf{Ex-Omni-2D}, an omni-modal dialogue framework that generates a coordinated response comprising text, personalized speech, and reference-conditioned video. Given a multimodal query, reference image, and reference audio, the model predicts a structured \\textit{Visual Thought Plan} (VTP) describing scene, emotion, and motion, followed by response text and native multi-codebook speech units. These units form a shared acoustic-temporal interface: they are decoded into speech and aligned online with video frames. This interface enables the response and avatar pathways to be learned from heterogeneous speech, dialogue, and avatar-video data, avoiding the need for large-scale query--text--speech--video supervision. A full-sequence Video Generator serves as the primary Teacher. For efficient incremental generation, we further distill it into a few-step block-causal \\emph{Streaming Student} whose Prefix Streaming mechanism carries a clean latent across consecutive chunks to reduce cumulative late-chunk degradation. With four-step inference, the complete four-GPU pipeline achieves an end-to-end RTF of 1.293 at $400\\times720$/$720\\times400$, providing a practical quality--efficiency operating point.",
@@ -14672,7 +14676,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-12T18:54:24.106202+00:00",
+      "updated_at": "2026-08-12T21:38:52.768689+00:00",
       "paper": {
         "title": "JigShape: Evaluating Visual-Geometric Reasoning in VLMs through Jigsaw Puzzles",
         "summary": "Jigsaw puzzle solving requires jointly reasoning about visual content and geometric constraints, yet existing benchmarks use rectangular cuts that create ambiguous ground truth in texture-repeated regions. We introduce \\textit{\\ours{}}, a benchmark with tab-and-blank interlocking pieces where geometric constraints provide strong local compatibility requirements that, combined with visual content, yield unambiguous ground truth. Across 95K instances at four grid densities (4$\\times$4 to 16$\\times$16), we find that \\textbf{zero-shot VLMs largely lack geometric reasoning}: only one of five frontier models (GPT-5.5) exceeds random baseline on 4$\\times$4 puzzles, while all others perform at chance level. While supervised fine-tuning achieves $>$97\\% on 4$\\times$4, \\textbf{all models collapse on larger grids}: GPT-5.5 drops from 70\\% to near-random on 8$\\times$8, and even fine-tuned models fall below 5\\% on 12$\\times$12. This ``scaling cliff'' suggests current architectures cannot maintain consistent constraint satisfaction as the number of pieces increases. \\ours{} establishes scalable geometric reasoning as an open challenge for vision-language models.",
@@ -14705,7 +14709,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-12T18:54:24.106205+00:00",
+      "updated_at": "2026-08-12T21:38:52.768692+00:00",
       "paper": {
         "title": "Mendel Gödel Machine: Recursive Self-Improving Coding Agents via Comparative Evolution",
         "summary": "Self-improving coding agents that iteratively rewrite their own source code have demonstrated impressive performance on coding tasks. However, existing solutions generally derive self-modification from a single failure trajectory at a time, overlooking rich comparative signals available in the agent's expanding archive of past attempts. According to Mendelian principles of controlled inheritance, we introduce Mendel Gödel Machine (MGM). In addition to the general single-trajectory clonal mutation, MGM includes two new types of self-modification that better utilizes evidences accumulated: the reaction-norm mutation edits an agent based on its trajectories on multiple tasks simultaneously, and the cross-lineage hybridization edits an agent using the trajectory of a reference agent from another lineage on the same task. Under an additive fitness landscape model, we prove theoretically and demonstrate via controlled surrogate simulation that the new strategies facilitate a faster and better convergence over single-trajectory baselines. Experiments on SWE-bench and Polyglot confirm MGM's consistent improvement in performance, efficiency, and generalizability.",
@@ -14729,7 +14733,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-12T18:54:24.106196+00:00",
+      "updated_at": "2026-08-12T21:38:52.768681+00:00",
       "paper": {
         "title": "InSight-doc: Agentic Visual Perception for Long-Document Understanding",
         "summary": "Long-document understanding often requires reasoning over many visually rich pages, making inference costly and prone to context rot. In this work, we propose InSight-doc, an agentic visual perception framework that treats visual resolution as an adaptive reasoning-time resource. InSight-doc starts from low resolution and selectively zooms into high-resolution regions for finer evidence, without relying on any external retriever. To train such an agent, we construct an active-perception corpus of 17.9K high-quality SFT examples with region-level zoom-in trajectories, accompanied by 19.2K hard RL examples. Through SFT+RL, InSight-doc-8B improves the baseline by 4.3--16.4 accuracy points over document VQA benchmarks. On long documents, it reduces hallucination by more than 40% and inference latency by 41%--68% while maintaining an accuracy lead. Our code, datasets, and model are released at https://github.com/m-Just/InSight-doc .",
@@ -14750,7 +14754,7 @@
     }
   },
   "last_run": {
-    "started_at": "2026-08-12T18:54:24.107072+00:00",
+    "started_at": "2026-08-12T21:38:52.769611+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -14761,25 +14765,25 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 20570,
-      "output_tokens": 5841,
+      "prompt_tokens": 20216,
+      "output_tokens": 6342,
       "thought_tokens": 0,
-      "total_tokens": 26411,
-      "estimated_usd": 0.013904
+      "total_tokens": 26558,
+      "estimated_usd": 0.014567
     },
-    "finished_at": "2026-08-12T18:55:13.897744+00:00"
+    "finished_at": "2026-08-12T21:39:33.847654+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 1056,
-    "prompt_tokens": 2654169,
-    "output_tokens": 776813,
+    "requests": 1064,
+    "prompt_tokens": 2674385,
+    "output_tokens": 783155,
     "thought_tokens": 0,
-    "total_tokens": 3430982,
-    "estimated_usd": 1.82876175
+    "total_tokens": 3457540,
+    "estimated_usd": 1.84332875
   },
   "last_publication_run": {
-    "started_at": "2026-08-12T18:54:24.107072+00:00",
+    "started_at": "2026-08-12T21:38:52.769611+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -14790,17 +14794,17 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 20570,
-      "output_tokens": 5841,
+      "prompt_tokens": 20216,
+      "output_tokens": 6342,
       "thought_tokens": 0,
-      "total_tokens": 26411,
-      "estimated_usd": 0.013904
+      "total_tokens": 26558,
+      "estimated_usd": 0.014567
     },
-    "finished_at": "2026-08-12T18:55:13.897744+00:00"
+    "finished_at": "2026-08-12T21:39:33.847654+00:00"
   },
   "daily_usage": {
     "date": "2026-08-12",
-    "estimated_usd": 0.09686975,
-    "publications": 28
+    "estimated_usd": 0.11143675,
+    "publications": 32
   }
 }
