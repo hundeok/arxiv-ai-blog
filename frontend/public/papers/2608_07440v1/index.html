@@ -1,0 +1,66 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>블래스트 래디어스(Blast Radius): 에이전트 코딩의 지속 가능한 문맥 관리 | ArXiv Translator AI</title><meta name="description" content="블래스트 래디어스(Blast Radius): 에이전트 코딩의 지속 가능한 문맥 관리"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_07440v1"><meta property="og:type" content="article"><meta property="og:title" content="블래스트 래디어스(Blast Radius): 에이전트 코딩의 지속 가능한 문맥 관리"><meta property="og:description" content="블래스트 래디어스(Blast Radius): 에이전트 코딩의 지속 가능한 문맥 관리"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_07440v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="블래스트 래디어스(Blast Radius): 에이전트 코딩의 지속 가능한 문맥 관리"><meta name="twitter:description" content="블래스트 래디어스(Blast Radius): 에이전트 코딩의 지속 가능한 문맥 관리"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_07440v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "블래스트 래디어스(Blast Radius): 에이전트 코딩의 지속 가능한 문맥 관리", "description": "블래스트 래디어스(Blast Radius): 에이전트 코딩의 지속 가능한 문맥 관리", "datePublished": "2026-08-07", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_07440v1", "author": [{"@type": "Person", "name": "MY Pitsane"}, {"@type": "Person", "name": "Hope Mogale"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_07440v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_07440v1"});gtag('event', 'paper_view', {"paper_id": "2608_07440v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>블래스트 래디어스(Blast Radius): 에이전트 코딩의 지속 가능한 문맥 관리</h1><p>블래스트 래디어스(Blast Radius): 에이전트 코딩의 지속 가능한 문맥 관리</p><pre>블래스트 래디어스(Blast Radius): 에이전트 코딩의 지속 가능한 문맥 관리
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Blast Radius
+&gt; - **저자:** MY Pitsane, Hope Mogale
+&gt; - **발행일:** 2026-08-07
+&gt; - **PDF 링크:** [Blast Radius](https://arxiv.org/pdf/2608.07440v1)
+
+
+✨ 3줄 핵심 요약
+- 에이전트 코딩 시 불필요하게 누적되는 &#x27;죽은 문맥(dead context)&#x27;을 효율적으로 식별하고 관리하는 예측형 메모리 관리 레이어입니다.
+- 삭제된 데이터를 완전하게 복구 가능한 형태로 보관(NECROPHORESIS)하여 정보 손실 위험을 방지합니다.
+- 7종의 OpenAI 모델 테스트 결과, 토큰 소비량을 17~26% 절감하고 오버플로우 발생률을 최소화했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+AI 에이전트가 코딩을 수행할 때, 이전 작업에 사용된 파일이나 로그 등 더 이상 필요 없는 정보들이 문맥에 계속 남아 토큰 비용을 낭비합니다. &#x27;Blast Radius&#x27;는 어떤 정보가 미래의 작업에 영향을 미칠지 예측하여, 불필요한 데이터를 &#x27;죽은 문맥&#x27;으로 간주해 일시적으로 제거합니다. 만약 나중에 해당 정보가 다시 필요해지면 즉시 복구(exhumation)할 수 있도록 구조화했기 때문에, 무작정 데이터를 지우는 방식보다 훨씬 안전하고 경제적입니다.
+
+🎯 배경 및 문제점
+에이전트 코딩 방식은 매 작업 단계마다 시스템 프롬프트, 도구 스키마, 기존 파일 읽기, Diff 등을 반복적으로 제출합니다. 이로 인해 작업이 진행될수록 이전의 모든 정보가 쌓여 토큰 비용이 선형적으로 증가합니다. 특히 이미 해결된 문제와 관련된 파일조차 메모리를 차지하여 모델의 주의력(Attention) 자원을 낭비하고, 에피스테믹 엔트로피(epistemic entropy)를 불필요하게 높이는 문제를 야기합니다.
+
+💡 핵심 기술 및 아키텍처
+- **Blast Radius**: 프롬프트의 영향 범위를 예측하여 적절한 삭제 예산(eviction budget)을 할당합니다.
+- **NECROPHORESIS**: 삭제된 데이터를 삭제하지 않고 압축된 골격 형태로 아카이빙하여, 필요시 언제든 완벽하게 복구(byte-exact reversible)합니다.
+- **RDM(Recurring Dead Matter)**: 코딩 루프에서 반복적으로 삽입되는 중복 데이터를 &#x27;라플라스 계승 법칙&#x27;을 통해 식별하고 우선적으로 제거합니다.
+- **이중 채널 구조**: 문맥 채널(보존 가능성 기반)과 코드 채널(코드 변경량 및 의존성 기반)을 결합하여 삭제 대상을 정밀하게 결정합니다.
+
+📊 실험 결과 분석
+- **토큰 절감**: 7종의 OpenAI 모델에서 토큰 소비량을 17~26% 줄였습니다.
+- **복구 안정성**: 총 450개의 데이터 항목을 매립(삭제)했으나, 이 중 복구(exhumation)된 건수는 0건으로 기록되어 삭제 판단의 정확성을 입증했습니다.
+- **오버플로우**: 테스트된 정책 중 가장 낮은 오버플로우 발생률을 기록했습니다.
+- **중복 처리**: 450개의 매립 항목 중 378개가 반복적인 죽은 데이터(RDM)였으며, 이는 시스템이 중복 문맥을 효과적으로 처리하고 있음을 보여줍니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+Blast Radius는 대규모 언어 모델(LLM) 기반의 에이전트 코딩을 더욱 지속 가능하고 재사용 가능한 형태로 발전시키는 &#x27;알고소피(Algosophy)&#x27;의 일환입니다. 이 기술을 실무에 적용하면 기업은 고가의 토큰 비용을 절감하면서도, 데이터 손실에 대한 불안감 없이 에이전트의 문맥 창을 최적화할 수 있습니다. 특히 복잡한 코드베이스를 다루는 대규모 프로젝트에서 토큰 오버플로우를 예방하고 비용 효율적인 자동화를 구현하는 데 크게 기여할 것으로 기대됩니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Blast Radius](https://en.wikipedia.org/wiki/Blast_Radius)
+&gt; - [Blast radius - Wikipedia](https://en.wikipedia.org/wiki/Blast_radius)
+&gt; - [Blast radius](https://grokipedia.com/page/Blast_radius)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;NECROPHORESIS라는 용어 선택이 다소 자극적이긴 하지만, &#x27;라플라스 계승 법칙&#x27;을 문맥 식별에 도입한 아이디어는 꽤 흥미롭군. 다만, 삭제 판단의 정확성이 100%라고 주장하는 것은 실험 환경이 지나치게 통제된 것 아닌가? 복잡한 엔터프라이즈 코드베이스에서의 에피스테믹 엔트로피는 이론보다 훨씬 더 비선형적으로 작용할 텐데 말이야.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에선 &#x27;복구(Exhumation)&#x27;가 0건이라는 점이 오히려 불안 요소입니다. 실제 프로덕션 환경에선 에이전트가 엉뚱한 맥락을 불러와야 할 때가 있거든요. 그래도 토큰 26% 절감은 경영진 보고용으로 아주 매력적인 수치네요. 당장 우리 파이프라인에 RDM 모듈만이라도 떼서 붙여볼 가치는 있어 보입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 님들 이거 벌써 깃헙 스타 찍히는 속도 보셨나요? &#x27;알고소피&#x27; 키워드 붙인 거 보니까 저자들도 마케팅을 아는 듯. 복구 0건이라는 게 좀 의심스럽긴 하지만, 일단 문맥 창 관리 자동화가 된다는 것만으로도 에이전트 춘추전국시대에 꿀템 하나 나온 거죠. 내일 세미나 발표 주제는 이걸로 정했다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
