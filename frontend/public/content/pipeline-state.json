@@ -11801,7 +11801,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-13T07:17:40.813536+00:00",
+      "updated_at": "2026-08-13T09:57:39.269912+00:00",
       "paper": {
         "title": "The Illusion of Visual Tool-Use: A Causal Audit of Thinking with Images",
         "summary": "The \"thinking-with-images\" paradigm equips multimodal LLMs with active visual operations such as crop-and-zoom. However, models using these operations often achieve only marginal or negative gains over direct inference at substantially higher token cost. They may also repeatedly crop irrelevant regions and fail on questions that direct inference answers correctly. We ask whether the returned visual evidence causally affects the answer. To answer this question, we formulate visual tool-use as a causal graph that separates observation-mediated paths from action-induced shortcuts. We then audit it through interventions at the three levels: policy (comparing tool-use with direct inference), trajectory (corrupting all observations during rollout), and step (counterfactually replacing one individual observation under a fixed prefix). Our step-level estimand, Visual Evidence Gain, isolates the contribution of each returned observation. Across six representative models and five fine-grained perception benchmarks, we uncover policy miscalibration with two failure modes. In Calling Without Looking, returned observations have no causal effect on the answer. In Looking Without Planning, observations are informative but the call schedule is incoherent. A trajectory-level diagnostic decomposes the policy-level accuracy gain and shows that the gain is concentrated in a Calibrated minority. We term this discrepancy the illusion of visual tool-use: despite aggregate accuracy gains, visual tool-use is not causally effective across a broad range of rollouts. The code is available at https://github.com/OpenCausaLab/CauAudit.",
@@ -12618,7 +12618,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-13T07:17:40.813553+00:00",
+      "updated_at": "2026-08-13T09:57:39.269930+00:00",
       "paper": {
         "title": "CoinRAG: Contextualized Information Nugget KV Cache Reuse for Long-Context RAG",
         "summary": "Recent optimization studies on Retrieval-Augmented Generation (RAG) have exploited chunk-level KV cache reuse to avoid processing long retrieved contexts for higher efficiency, while significant information redundancy and noise still remain in the coarse-grained chunks. This paper optimizes the Pareto frontier under low prefill latency constraints while maximizing accuracy by proposing CoinRAG (Contextualized Information Nugget KV Cache Reuse for Long-Context RAG). The name metaphorically reflects our core mechanism: much like assembling small tokens (or \"coins\") to accumulate a larger value, CoinRAG compositionally reuses offline-computed, fine-grained nugget caches to form a learned contextual representation efficiently in a more semantically relevant but compact manner. Specifically, instead of full-chunk encoding, CoinRAG identifies query-relevant semantic units within retrieved chunks through two-stage retrieval and seamlessly assembles their sliced KV representations with a chunk-level context. Extensive evaluations on LongBench multi-hop question answering tasks demonstrate that CoinRAG significantly reduces operational costs and outperforms the other baselines with a new Pareto frontier and an average 5.3% relative improvement in answer quality (F1) under a standard fast prefill latency budget.",
@@ -14733,7 +14733,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-13T07:17:40.813546+00:00",
+      "updated_at": "2026-08-13T09:57:39.269922+00:00",
       "paper": {
         "title": "InSight-doc: Agentic Visual Perception for Long-Document Understanding",
         "summary": "Long-document understanding often requires reasoning over many visually rich pages, making inference costly and prone to context rot. In this work, we propose InSight-doc, an agentic visual perception framework that treats visual resolution as an adaptive reasoning-time resource. InSight-doc starts from low resolution and selectively zooms into high-resolution regions for finer evidence, without relying on any external retriever. To train such an agent, we construct an active-perception corpus of 17.9K high-quality SFT examples with region-level zoom-in trajectories, accompanied by 19.2K hard RL examples. Through SFT+RL, InSight-doc-8B improves the baseline by 4.3--16.4 accuracy points over document VQA benchmarks. On long documents, it reduces hallucination by more than 40% and inference latency by 41%--68% while maintaining an accuracy lead. Our code, datasets, and model are released at https://github.com/m-Just/InSight-doc .",
@@ -14755,11 +14755,11 @@
     "2608_11204v1": {
       "id": "2608_11204v1",
       "filename": "post_2608_11204v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-08-13T01:23:30.480619+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-13T01:23:30.480630+00:00",
+      "updated_at": "2026-08-13T09:58:04.411812+00:00",
       "paper": {
         "title": "Surgical WAM: A World-Action Model for Data-Efficient Surgical Robot Learning",
         "summary": "Learning reliable surgical manipulation policies is bottlenecked by the scarcity of action-labeled demonstrations: teleoperated surgical robot (e.g., dVRK) trajectories with synchronized kinematics are costly to collect, while surgical tasks demand precise contact handling, long-horizon reasoning, and bimanual coordination. Endoscopic video is comparatively inexpensive and abundant relative to synchronized video--kinematics trajectories, and a natural way to exploit it is to learn world models of surgical scenes. However, existing surgical world models use video primarily for simulation or policy evaluation, and rarely translate the learned dynamics into closed-loop control. This gap raises our central question: under a fixed budget of action-labeled demonstrations, does action-free video pretraining improve closed-loop surgical manipulation? To answer it, we introduce the Surgical World-Action Model (Surgical WAM), a unified generative model built on Cosmos Policy that jointly predicts future endoscopic observations and executable surgical robot action chunks. Surgical WAM first learns surgical visual dynamics from action-free video and is then fine-tuned on the fixed action-labeled budget; at deployment, it acts as a closed-loop, receding-horizon controller that executes a short prefix of each predicted action chunk and replans from the resulting observation. On a suite of four simulated surgical manipulation tasks, video pretraining improves the average success rate from 63.5% to 77.8%, including an absolute gain of 20 percentage points on PegTransfer, with the largest improvements on contact-rich and bimanual tasks. These results demonstrate that action-free video provides transferable visual dynamics priors for learning surgical robot control with limited action supervision, positioning data-efficient video pretraining as a practical path toward scaling up surgical robot learning.",
@@ -14774,16 +14774,17 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2608.11204v1"
       },
-      "priority_score": 40
+      "priority_score": 40,
+      "korean_title": "수술용 로봇 학습을 위한 데이터 효율적인 세계-행동 모델: Surgical WAM"
     },
     "2608_11200v1": {
       "id": "2608_11200v1",
       "filename": "post_2608_11200v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-08-13T01:23:30.480640+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-13T01:23:30.480642+00:00",
+      "updated_at": "2026-08-13T09:59:17.343650+00:00",
       "paper": {
         "title": "ConVAWG: A Retrieval-Grounded Framework for Controlled Synthetic Dialogue Generation in Violence Against Women and Girls",
         "summary": "Synthetic dialogue generation offers a way to study conversational dynamics in sensitive domains where real data are difficult to access, release, or annotate. The underlying abuse may occur online or offline: threats and coercion can appear directly in messages, while behaviours such as surveillance, isolation, stalking, and physical violence may be planned, disclosed, or referred to conversationally. Privacy and legal constraints make it difficult the release of large-scale real conversation datasets; existing work has mostly focused on sentence-level toxicity of online abuses, leaving a gap in modelling abuse as a relational and temporally unfolding phenomenon. In this work, we focus on modelling Violence Against Women and Girls (VAWG) scenarios as multi-turn dialogues. We introduce ConVAWG, a retrieval-grounded framework for generating CPS-aligned synthetic VAWG chat dialogues. ConVAWG builds scenarios from persona seeds, demographic patterns reported by the UK Office for National Statistics, official crime definitions, and retrieved Domestic Homicide Review cases; converts them into hierarchical event timelines; generates multi-scene role-play dialogues; and applies targeted activation-steered toxicity control to appropriate utterances. We release over 6,000 multi-turn dialogue events across 200 scenarios with rich scenario-, event-, and turn-level metadata. Extensive human evaluation, LLM-as-Judge assessment, ablations, and downstream tasks show strong dialogue quality and domain fidelity.",
@@ -14799,7 +14800,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2608.11200v1"
       },
-      "priority_score": 39
+      "priority_score": 39,
+      "korean_title": "여성과 소녀에 대한 폭력(VAWG) 분야의 통제된 합성 대화 생성을 위한 검색 기반 프레임워크: ConVAWG"
     },
     "2608_11195v1": {
       "id": "2608_11195v1",
@@ -15011,11 +15013,11 @@
     "2608_11079v1": {
       "id": "2608_11079v1",
       "filename": "post_2608_11079v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-08-13T01:23:30.480705+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-13T01:23:30.480706+00:00",
+      "updated_at": "2026-08-13T09:58:26.196764+00:00",
       "paper": {
         "title": "SkillZip: Evaluation-Free Skill Compression for Self-Evolving Agents by Discovering Reusable Structure",
         "summary": "Self-evolving agents accumulate reusable skills by appending successful procedures and failure fixes. Over time, the same requirement is often restated in several branches, examples, and warnings, while common action sequences are copied rather than reused. The resulting skill becomes expensive to inject and difficult to maintain. Generic prompt compression is ill-suited to this setting because a skill is not a flat passage: its name and description define when it applies, its workflow controls execution, its tool and output contracts constrain validity, and rare exceptions may remain essential even when no sampled task activates them. Evaluation-guided compression can test these behaviors, but it introduces rollouts, cost, and dependence on the compression-time evaluation set. We present SkillZip, an evaluation-free method that compresses a skill by finding its shortest faithful structural explanation. The intuition is explain once, reference many: state a repeated rule once at the scope where it applies, factor a repeated action sequence into a shared procedure, and keep only the differences as explicit exceptions. We formalize this intuition as a typed minimum description-length objective over a skill contract and a residual, subject to a hard coverage constraint for every extracted trigger, workflow edge, tool requirement, obligation, and output field. The formulation provides simple sharing thresholds, preserves unique rare rules by construction, and supports efficient local updates. SkillZip has a one-shot mode with one structured extraction call and deterministic optimization, and a continual Zip-on-Write mode that integrates each self-evolution patch without replaying tasks or reparsing the full history. Through comprehensive experimental evaluations, we demonstrate the effectiveness and superiority of SkillZip in compression performance, generalizability, and cost overhead.",
@@ -15031,7 +15033,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2608.11079v1"
       },
-      "priority_score": 40
+      "priority_score": 40,
+      "korean_title": "SkillZip: 재사용 가능한 구조 발견을 통한 자기 진화 에이전트용 평가 불필요 기술 압축"
     },
     "2608_11066v1": {
       "id": "2608_11066v1",
@@ -15433,11 +15436,11 @@
     "2608_10932v1": {
       "id": "2608_10932v1",
       "filename": "post_2608_10932v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-08-13T01:23:30.480816+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-13T01:23:30.480818+00:00",
+      "updated_at": "2026-08-13T09:58:42.903568+00:00",
       "paper": {
         "title": "Temporally Grounded Compositional Camera Motion Understanding via Geometric Knowledge Distillation",
         "summary": "Understanding camera motion is fundamental to video perception, with applications in spatial intelligence and controllable video generation. Multimodal large language models (MLLMs) provide a natural interface for this task, but existing work typically assigns one or more labels to an entire clip. Such clip-level recognition overlooks two defining properties of real camera motion: it can change within a shot, and multiple movements can occur simultaneously. We therefore formulate camera-motion understanding as temporally grounded, compositional recognition, which requires a model to localize motion-consistent intervals and identify every movement active within each interval. We introduce CamChoreo, a benchmark of 4,229 real single-shot clips with expert-annotated temporal segments. Its annotations use a compact vocabulary of 20 direction-aware labels, and nearly half of the segments contain compound camera motion, with multiple movement primitives active simultaneously. Recognizing such fine-grained, compositional motion is hard for current MLLMs, whose visual encoders emphasize semantic content rather than the geometric evidence on which camera motion depends. Directly injecting features from a frozen 3D foundation model addresses this gap, but requires running the expensive geometry model on every input; we refer to this baseline as CamInject. We instead propose CamDistill, which distills the same geometric knowledge into lightweight camera tokens during training and removes the 3D model at inference. CamDistill matches the accuracy of direct feature injection without running the 3D teacher at inference. Together, CamChoreo and CamDistill advance camera-motion understanding from clip-level labeling to temporally grounded, compositional recognition. Project page: https://ddz16.github.io/cammotion.github.io/.",
@@ -15457,7 +15460,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2608.10932v1"
       },
-      "priority_score": 40
+      "priority_score": 40,
+      "korean_title": "기하학적 지식 증류를 통한 시간적 기반의 복합적 카메라 모션 이해"
     },
     "2608_00677v1": {
       "id": "2608_00677v1",
@@ -15466,7 +15470,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-13T07:17:40.813514+00:00",
+      "updated_at": "2026-08-13T09:57:39.269894+00:00",
       "paper": {
         "title": "OpenART: Scaling Agent Red Teaming via Open-Ended Environment Evolution",
         "summary": "AI agents operate in persistent environments where early state changes can influence decisions far into the future. Unlike conventional language-model interactions, agent behavior is mediated through a shared state that is repeatedly modified and reused across long-horizon workflows. Current safety benchmarks often fail to capture these cumulative risks because they focus on short, static tasks. To address these limitations, we introduce OpenART, an open-ended arena for scalable agent red teaming through environment evolution. OpenART provides over 10,000 validated stateful scenarios across 50 domains, drawing from a pool of more than 500,000 tools and skills. These tasks require a median of 97 tool calls and enable unified evaluation across 75 different agent-model configurations. To systematically explore these evolving attack surfaces, we propose the Evolutionary Markov Hypergraph Attack (EMHA). EMHA is a black-box policy that performs feedback-driven environment evolution by coordinating authorized state transitions without requiring parameter updates. Throughout the evaluation, task objectives remain fixed while only the environment state changes. Across all configurations, EMHA achieves a pooled Attack Success Rate (ASR) of 85.0%. Its advantage over instruction-only evolution increases from approximately 2% on simple environments to over 17% on the most complex ones, demonstrating that environment evolution increasingly exposes safety failures as task complexity grows. Furthermore, our analysis shows that the specific runtime implementation of an agent explains a significant portion of safety variation beyond the underlying model's capabilities. These results establish OpenART as a scalable foundation for studying agent safety in complex, evolving environments.",
@@ -15494,7 +15498,7 @@
       "attempts": 0,
       "next_retry_at": "2026-08-13T04:46:48.863629+00:00",
       "last_error": null,
-      "updated_at": "2026-08-13T07:17:40.813542+00:00",
+      "updated_at": "2026-08-13T09:57:39.269918+00:00",
       "paper": {
         "title": "Self-Geometry: GT-Free and Plug-and-Play Test-Time Adaptation for Geometrically Consistent 3D Vision Foundation Models",
         "summary": "Recent Vision Foundation Models (VFMs) predict depth, camera pose, and pointmap in a single forward pass without per-scene optimization, achieving strong generalization. However, enforcing explicit multi-view geometric consistency, e.g., through bundle adjustment, is computationally costly and is thus not imposed during VFM pretraining, so such inconsistency can arise. To address this, implicit self-consistency derived from model outputs (e.g., pointmaps, features), though enforced at test-time in prior work, delivers inherently limited performance gain, especially on scenes where the pretrained VFM is highly inaccurate. In contrast to this implicit signal, we propose Self-Geometry, a plug-and-play test-time adaptation pipeline that directly imposes explicit multi-view geometric constraints using 2D pixel correspondences as pseudo ground-truth. Our proposed Self-Geometry consists of Geometric Disentanglement Optimization, which combines Multi-View Consistency and Epipolar Consistency losses with Gradient Disentanglement to prevent gradient conflict; Frame Angular-Neighbor, a view sampler based on SO(3) geodesic distances for lightly imposing these constraints; and Lightweight TTA, which adapts VFMs via LoRA. Our method achieves consistent improvements in both pose and geometry estimation across six VFMs (VGGT, $π^3$, DA3-Giant/Large/Base/Small) and four benchmarks (7Scenes, ETH3D, ScanNet++, HiRoom).",
@@ -15516,7 +15520,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-13T07:19:03.090909+00:00",
+      "updated_at": "2026-08-13T09:57:39.269926+00:00",
       "paper": {
         "title": "From Synthesis to Removal: Physics-Grounded Reflection Simulation and Diffusion-Based Video Dereflection",
         "summary": "Videos captured through glass often contain reflections that degrade visual quality and interfere with downstream vision tasks. Although single-image reflection removal has been extensively studied, video reflection removal remains largely underexplored due to the lack of paired video data, temporally coherent removal models, and dedicated evaluation benchmarks. We present a closed-loop framework that unifies physics-grounded reflection simulation, diffusion-based video dereflection, and benchmark evaluation. Our S2R-Synthesis pipeline generates paired reflected and reflection-free videos by performing physics-grounded augmentation in the structure space and rendering realistic reflected videos with a trained video diffusion renderer; the augmentation models key glass-related effects including roughness-induced blur, thickness-induced ghosting, and reflectance variation. Based on the synthesized data, we introduce S2R-Removal, the first diffusion-based video reflection removal model, which adapts a pretrained video diffusion prior through reflection-aware latent adaptation and one-step pixel-geometric refinement, recovering the clean transmission in a single denoising step. We further build S2R-Bench, the first benchmark for video reflection removal, supporting both full-reference evaluation and real-world human perceptual assessment. Experiments on S2R-Bench and multiple public image benchmarks demonstrate state-of-the-art performance and faster inference than even non-diffusion baselines, and validate the effectiveness of S2R-Synthesis. Project page: https://codingwzp.github.io/VideoDereflection_S2R.",
@@ -15541,7 +15545,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-13T07:17:40.813556+00:00",
+      "updated_at": "2026-08-13T09:57:39.269933+00:00",
       "paper": {
         "title": "Agent Safety Should Be a Runtime Contract",
         "summary": "The dominant paradigm treats AI safety as a property to be instilled during model training via RLHF, DPO, or Constitutional AI. We argue this is structurally insufficient for autonomous agents that execute code, mutate files, send messages, and modify databases. Agent safety should be a runtime contract enforced by the harness, and the contract has two complementary faces. The preventive face blocks dangerous actions before they happen via sandboxes, permission gates, output filters, and trajectory monitors. The evidential face requires verifiable proof that good actions actually happened, gating task submission on hard evidence such as test runs, log captures, file diffs, and citation grounding. We ground the position in four lines of public evidence, with row-level protocols and data released in the supplementary JSON files: a survey of 52 documented AI-agent and LLM safety incidents, a false-completion audit with 31 non-contested core cases plus one disputed illustrative case, a trajectory-schema audit of 12 public agent systems and harnesses, and a title-level audit of all 28,560 papers accepted at NeurIPS, ICML, and ICLR 2023-2025 showing a pooled 8-12x imbalance between training-time and deployment-time publication. Two prior communities that needed to enforce safety, computer security and the experimental sciences, converged on runtime contracts with both preventive and evidential elements; agentic AI is now under the same pressure. We formalize an Agent Trajectory Schema and Evidence Chain, state a compositional gating proposition based on standard monitor composition, and outline a research agenda. The right unit of safety in agentic AI is the trajectory-with-checkable-evidence, not the model.",
@@ -15605,7 +15609,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-13T07:18:27.463830+00:00",
+      "updated_at": "2026-08-13T09:57:39.269937+00:00",
       "paper": {
         "title": "Decoding-Level Taboo: A Diagnostic Stress Test for LLM Robustness",
         "summary": "Large language model evaluations typically focus on performance under nominal conditions, creating an illusion of capability where models comfortably walk a narrow, highly optimized generation corridor. In real-world deployments, however, complex system prompts, safety guardrails, and structural constraints continuously force models off this nominal path, driving a divergence between benchmark scores and deployment performance. To address this issue, we introduce Decoding-Level Taboo, a zero-prompt diagnostic stress test that intervenes directly in logit space at runtime, forcing models out of their nominal paths. By dynamically masking primary candidate tokens at word boundaries, Taboo forces machine circumlocution.   Evaluating Taboo across several open-weight model families reveals that off-path robustness is heavily influenced by both parameter scale and post-training instruction alignment, with robustness generally improving with model size and alignment. Beyond the results presented in this paper, Taboo provides a novel primitive for generating diverse synthetic datasets, stress-testing runtime safety guardrails, and auditing model reliability prior to real-world deployment.",
@@ -15629,7 +15633,7 @@
       "attempts": 0,
       "next_retry_at": "2026-08-13T07:17:40.813569+00:00",
       "last_error": null,
-      "updated_at": "2026-08-13T07:17:40.813570+00:00",
+      "updated_at": "2026-08-13T09:57:39.269940+00:00",
       "paper": {
         "title": "Can LLM Agents Stick to the Script? A Benchmark for Long-Horizon Consistency in Interactive Narratives",
         "summary": "The rapid advancement of Large Language Models (LLMs) is revolutionizing AI for Games by enabling open-ended and fluid interactive storytelling. However, existing research has largely overlooked the critical challenge of maintaining long-horizon logical consistency and narrative integrity against unconstrained user interventions. To address this, we formulate this challenge as Narrative Commitment Preservation (NCP), and take interactive narrative as our testbed. We introduce NCP-Bench, a benchmark of 100 narrative environments derived from movie synopses. Each environment includes a structured narrative specification (trajectory, commitments, and initial facts) that we can automatically check throughout the interaction between the player agent and the narrator agent. Experiments across state-of-the-art LLMs reveal a substantial long-horizon consistency gap: high linguistic quality does not guarantee commitment preservation; even strong models frequently generate logically conflicting content under adversarial interventions, with the best-performing model (GPT-5.2) achieving only 42% survival rate after 20 turns and fact conflict rates ranging from 40% to 68% across models, and only isolated runs satisfying all achievement commitments within the 100-turn limit.",
@@ -15648,10 +15652,33 @@
         "pdf_link": "https://arxiv.org/pdf/2608.08160v1"
       },
       "priority_score": 36
+    },
+    "2607_27749v1": {
+      "id": "2607_27749v1",
+      "filename": "post_2607_27749v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-08-13T09:57:39.269946+00:00",
+      "last_error": null,
+      "updated_at": "2026-08-13T09:57:39.269947+00:00",
+      "paper": {
+        "title": "Articulated Object Reconstruction from Rest-State Observation",
+        "summary": "Building interactive digital twins requires recovering both 3D geometry and the kinematic structures that govern how objects articulate. Yet existing methods for articulated object reconstruction require explicitly observable motion from multiple articulation states. We introduce a rest-state formulation that reconstructs articulated objects from a single closed configuration, an inherently ill-posed setting where geometry, semantics, and motion priors compensate for the absence of motion cues. Our framework adopts an explicit mesh as an intermediate representation for cross-model verification and fusion, reconciling noisy outputs from vision-language and segmentation models into spatially consistent part structures. To estimate joint parameters without observed motion, we use a video diffusion model to synthesize articulation hypotheses and validate them through geometric consistency. Our approach achieves accurate part decomposition and physically plausible articulation, performing competitively with motion-observing reconstruction-based, generation-based, and modular pretrained-model baselines.",
+        "published": "2026-07-30T06:42:03Z",
+        "authors": [
+          "Daeun Lee",
+          "Jaeah Lee",
+          "Woosung Kim",
+          "Haebeom Jung",
+          "Jaesik Park"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2607.27749v1"
+      },
+      "priority_score": 13
     }
   },
   "last_run": {
-    "started_at": "2026-08-13T07:17:40.814707+00:00",
+    "started_at": "2026-08-13T09:57:39.271228+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -15661,26 +15688,26 @@
     "failures": [],
     "usage": {
       "model": "gemini-3.1-flash-lite",
-      "requests": 8,
-      "prompt_tokens": 20479,
-      "output_tokens": 5892,
+      "requests": 7,
+      "prompt_tokens": 18628,
+      "output_tokens": 5299,
       "thought_tokens": 0,
-      "total_tokens": 26371,
-      "estimated_usd": 0.01395775
+      "total_tokens": 23927,
+      "estimated_usd": 0.0126055
     },
-    "finished_at": "2026-08-13T07:19:03.321226+00:00"
+    "finished_at": "2026-08-13T09:59:17.538480+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 1088,
-    "prompt_tokens": 2735715,
-    "output_tokens": 801099,
+    "requests": 1095,
+    "prompt_tokens": 2754343,
+    "output_tokens": 806398,
     "thought_tokens": 0,
-    "total_tokens": 3536814,
-    "estimated_usd": 1.88557725
+    "total_tokens": 3560741,
+    "estimated_usd": 1.89818275
   },
   "last_publication_run": {
-    "started_at": "2026-08-13T07:17:40.814707+00:00",
+    "started_at": "2026-08-13T09:57:39.271228+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -15690,18 +15717,18 @@
     "failures": [],
     "usage": {
       "model": "gemini-3.1-flash-lite",
-      "requests": 8,
-      "prompt_tokens": 20479,
-      "output_tokens": 5892,
+      "requests": 7,
+      "prompt_tokens": 18628,
+      "output_tokens": 5299,
       "thought_tokens": 0,
-      "total_tokens": 26371,
-      "estimated_usd": 0.01395775
+      "total_tokens": 23927,
+      "estimated_usd": 0.0126055
     },
-    "finished_at": "2026-08-13T07:19:03.321226+00:00"
+    "finished_at": "2026-08-13T09:59:17.538480+00:00"
   },
   "daily_usage": {
     "date": "2026-08-13",
-    "estimated_usd": 0.0422485,
-    "publications": 12
+    "estimated_usd": 0.054854,
+    "publications": 16
   }
 }
