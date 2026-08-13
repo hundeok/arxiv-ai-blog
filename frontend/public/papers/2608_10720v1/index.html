@@ -1,0 +1,63 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ex-Omni-2D: 시각적 실재감을 갖춘 표현형 옴니모달 대화 모델 | ArXiv Translator AI</title><meta name="description" content="Ex-Omni-2D: 시각적 실재감을 갖춘 표현형 옴니모달 대화 모델"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_10720v1"><meta property="og:type" content="article"><meta property="og:title" content="Ex-Omni-2D: 시각적 실재감을 갖춘 표현형 옴니모달 대화 모델"><meta property="og:description" content="Ex-Omni-2D: 시각적 실재감을 갖춘 표현형 옴니모달 대화 모델"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_10720v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Ex-Omni-2D: 시각적 실재감을 갖춘 표현형 옴니모달 대화 모델"><meta name="twitter:description" content="Ex-Omni-2D: 시각적 실재감을 갖춘 표현형 옴니모달 대화 모델"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_10720v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Ex-Omni-2D: 시각적 실재감을 갖춘 표현형 옴니모달 대화 모델", "description": "Ex-Omni-2D: 시각적 실재감을 갖춘 표현형 옴니모달 대화 모델", "datePublished": "2026-08-11", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_10720v1", "author": [{"@type": "Person", "name": "Haoyu Zhang"}, {"@type": "Person", "name": "Zhipeng Li"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_10720v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_10720v1"});gtag('event', 'paper_view', {"paper_id": "2608_10720v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>Ex-Omni-2D: 시각적 실재감을 갖춘 표현형 옴니모달 대화 모델</h1><p>Ex-Omni-2D: 시각적 실재감을 갖춘 표현형 옴니모달 대화 모델</p><pre>Ex-Omni-2D: 시각적 실재감을 갖춘 표현형 옴니모달 대화 모델
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Ex-Omni-2D: Expressive Omni-Modal Dialogue Models with Native Visual Presence
+&gt; - **저자:** Haoyu Zhang, Zhipeng Li, Xiaoying Tang, Tianshu Yu, Yiwen Guo
+&gt; - **발행일:** 2026-08-11
+&gt; - **PDF 링크:** [Ex-Omni-2D: Expressive Omni-Modal Dialogue Models with Native Visual Presence](https://arxiv.org/pdf/2608.10720v1)
+
+
+✨ 3줄 핵심 요약
+- 텍스트, 음성, 그리고 참조 이미지 기반의 비디오를 동시에 생성하여 시각적 실재감을 제공하는 대화형 모델입니다.
+- &#x27;시각적 사고 계획(VTP)&#x27;을 통해 장면, 감정, 동작을 구조화하고 이를 음성과 비디오로 동기화하여 출력합니다.
+- 복잡한 대규모 데이터셋 학습 대신 이기종 데이터를 활용하며, 4단계 추론으로 효율적인 실시간 영상 생성 파이프라인을 구축했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+기존의 인공지능 대화 모델들은 목소리는 낼 수 있지만, 화면 속에서 실제로 말하는 듯한 &#x27;사람 같은 모습&#x27;이 부족했습니다. Ex-Omni-2D는 사용자의 질문에 대해 단순히 말만 하는 것이 아니라, 참조 이미지와 음성을 활용해 그에 딱 맞는 표정과 동작을 담은 비디오를 실시간으로 함께 생성합니다. 모델은 대화 시작 전 &#x27;시각적 사고 계획&#x27;을 세워 어떤 장면과 감정으로 반응할지 결정하고, 이를 바탕으로 음성과 영상이 완벽하게 조화를 이루는 자연스러운 대화 경험을 제공합니다.
+
+🎯 배경 및 문제점
+기존의 옴니모달 대화 모델은 다중 모달 입력을 이해하고 음성으로 답변할 수 있는 수준에 도달했으나, 응답의 시각적 형태가 결여된 &#x27;비시각적(visually disembodied)&#x27; 상태에 머물러 있었습니다. 또한, 영상 생성과 대화 시스템을 통합하는 과정에서 고품질의 쿼리-텍스트-음성-비디오 결합 데이터를 대규모로 구축해야 하는 어려움이 존재했습니다.
+
+💡 핵심 기술 및 아키텍처
+- **시각적 사고 계획 (VTP):** 모델이 장면, 감정, 동작을 묘사하는 구조화된 계획을 미리 수립하여 응답의 일관성을 확보합니다.
+- **공유 음향-시간적 인터페이스:** 음성과 비디오 데이터를 통합 학습할 수 있게 하여, 대규모 데이터 의존도를 낮추고 데이터 활용 효율을 극대화했습니다.
+- **스트리밍 아키텍처:** 완전한 비디오 생성 모델(Teacher)을 지식 증류하여, &#x27;블록 인과(block-causal) 스트리밍 학생 모델&#x27;을 구축했습니다. 이는 누적된 데이터 오차를 줄이고 실시간성을 높입니다.
+
+📊 실험 결과 분석
+- **성능 수치:** 4개의 GPU 파이프라인을 사용한 4단계 추론 시, 400×720 또는 720×400 해상도에서 1.293의 RTF(Real-Time Factor)를 달성했습니다.
+- **품질 지표:** VTP에 정의된 장면, 감정, 움직임 스타일, 동작 묘사 등이 생성된 비디오와 얼마나 부합하는지를 이진 점수(0 또는 1)로 평가하는 방식을 사용했습니다. (기타 상세 성능 수치는 발췌된 정보 내에 포함되어 있지 않음)
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+이 기술은 단순 챗봇을 넘어 인간과 시각적으로 교감하는 &#x27;디지털 아바타&#x27;나 &#x27;가상 비서&#x27; 개발에 직접적으로 활용될 수 있습니다. 특히 사용자 개인의 이미지와 음성을 참조하여 자연스러운 반응을 생성함으로써, 고객 서비스, 교육, 엔터테인먼트 분야에서 사용자 경험의 질을 한 차원 높일 것으로 기대됩니다. 또한 실시간 스트리밍 생성 능력을 통해 대화형 인터페이스의 지연 시간을 최소화하여 실용적인 상용화 가능성을 제시합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2608.10720v1 Ex-Omni-2D: Expressive Omni-Modal Dialogue Models with Native Visual Presence](https://arxiv.org/abs/2608.10720v1)
+&gt; - [ChatPaper: Explore and AI Chat with the Academic Papers](https://chatpaper.com/)
+&gt; - [2608.10720 Ex-Omni-2D: Expressive Omni-Modal Dialogue ...](https://arxiv.org/abs/2608.10720)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;VTP(시각적 사고 계획)라는 개념 자체는 흥미롭지만, 논문에서 제시한 이진 점수 평가 방식은 너무 관대하지 않나? 생성된 비디오의 시각적 일관성과 물리 법칙 준수 여부를 정성적 지표로만 퉁치기엔, 실질적인 시각적 실재감(Visual Presence)을 검증하기엔 데이터셋 규모가 부족해 보이네.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 맞지만, 실무자 입장에선 RTF 1.29를 찍었다는 게 더 놀랍습니다. 400x720 해상도에서 4단계 추론 파이프라인으로 이 정도 레이턴시라면 당장 서비스에 붙여볼 만한 수준이거든요. 다만, 블록 인과 모델이라 컨텍스트가 길어질 때 립싱크나 표정 어색함이 누적되지 않을지 그게 걱정입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;다들 왜 이렇게 부정적이야! 이기종 데이터 활용해서 대규모 데이터셋 의존도 낮춘 게 핵심이잖아요. 이거 바로 우리 랩실 프로덕트에 적용해서 가상 비서 데모 만들면 대박 날 것 같은데? 논문 읽어보니 이제 단순 텍스트/음성 챗봇은 진짜 &#x27;퇴물&#x27; 될 일만 남았네요. 빨리 구현해봐야지!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

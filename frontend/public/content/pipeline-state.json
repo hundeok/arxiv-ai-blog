@@ -11801,7 +11801,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-13T18:55:17.607516+00:00",
+      "updated_at": "2026-08-13T21:38:23.203776+00:00",
       "paper": {
         "title": "The Illusion of Visual Tool-Use: A Causal Audit of Thinking with Images",
         "summary": "The \"thinking-with-images\" paradigm equips multimodal LLMs with active visual operations such as crop-and-zoom. However, models using these operations often achieve only marginal or negative gains over direct inference at substantially higher token cost. They may also repeatedly crop irrelevant regions and fail on questions that direct inference answers correctly. We ask whether the returned visual evidence causally affects the answer. To answer this question, we formulate visual tool-use as a causal graph that separates observation-mediated paths from action-induced shortcuts. We then audit it through interventions at the three levels: policy (comparing tool-use with direct inference), trajectory (corrupting all observations during rollout), and step (counterfactually replacing one individual observation under a fixed prefix). Our step-level estimand, Visual Evidence Gain, isolates the contribution of each returned observation. Across six representative models and five fine-grained perception benchmarks, we uncover policy miscalibration with two failure modes. In Calling Without Looking, returned observations have no causal effect on the answer. In Looking Without Planning, observations are informative but the call schedule is incoherent. A trajectory-level diagnostic decomposes the policy-level accuracy gain and shows that the gain is concentrated in a Calibrated minority. We term this discrepancy the illusion of visual tool-use: despite aggregate accuracy gains, visual tool-use is not causally effective across a broad range of rollouts. The code is available at https://github.com/OpenCausaLab/CauAudit.",
@@ -12593,11 +12593,11 @@
     "2608_07460v1": {
       "id": "2608_07460v1",
       "filename": "post_2608_07460v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-08-11T01:13:49.636387+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-11T01:13:49.636397+00:00",
+      "updated_at": "2026-08-13T21:41:46.716484+00:00",
       "paper": {
         "title": "CreativeInstruct: Scalably Teaching LLMs to Balance Quality, Creativity, and Diversity",
         "summary": "While post-training improves the capabilities of large language models (LLMs), it generally lowers their output diversity and creativity, negatively impacting tasks that explicitly require creativity (e.g., story generation) as well as those that require it implicitly, e.g., reinforcement learning (RL). We instead propose CreativeInstruct, a scalable instruction-tuning method that teaches LLMs to balance creative, base-model-like generations with the quality of post-trained models, by learning to inject special [StartCreativity] spans that bias generation toward creativity. Furthermore, we introduce a structural diversity metric based on graph edit distance, which captures narrative level variation missed by purely lexical and semantic metrics. On narrative generation, CreativeInstruct matches or exceeds the diversity of both multi-model baselines and distilled variants of their outputs, without sacrificing quality or requiring multiple models at inference time. These results are mirrored in our human evaluation, where we find that annotators rate CreativeInstruct generations as more creative than the post-trained LLMs' generations in 70.3% of cases. We also show the benefits of creative models as a substrate for RL: GRPO applied to a CreativeInstruct checkpoint improves by ~4% on AMC and ~5% points on MATH over the same training applied to the post-trained checkpoint.",
@@ -12609,7 +12609,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2608.07460v1"
       },
-      "priority_score": 27
+      "priority_score": 27,
+      "korean_title": "CreativeInstruct: 확장 가능한 방식으로 거대 언어 모델에게 품질, 창의성, 다양성의 균형을 가르치기"
     },
     "2608_07458v1": {
       "id": "2608_07458v1",
@@ -12618,7 +12619,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-13T18:55:17.607543+00:00",
+      "updated_at": "2026-08-13T21:38:23.203811+00:00",
       "paper": {
         "title": "CoinRAG: Contextualized Information Nugget KV Cache Reuse for Long-Context RAG",
         "summary": "Recent optimization studies on Retrieval-Augmented Generation (RAG) have exploited chunk-level KV cache reuse to avoid processing long retrieved contexts for higher efficiency, while significant information redundancy and noise still remain in the coarse-grained chunks. This paper optimizes the Pareto frontier under low prefill latency constraints while maximizing accuracy by proposing CoinRAG (Contextualized Information Nugget KV Cache Reuse for Long-Context RAG). The name metaphorically reflects our core mechanism: much like assembling small tokens (or \"coins\") to accumulate a larger value, CoinRAG compositionally reuses offline-computed, fine-grained nugget caches to form a learned contextual representation efficiently in a more semantically relevant but compact manner. Specifically, instead of full-chunk encoding, CoinRAG identifies query-relevant semantic units within retrieved chunks through two-stage retrieval and seamlessly assembles their sliced KV representations with a chunk-level context. Extensive evaluations on LongBench multi-hop question answering tasks demonstrate that CoinRAG significantly reduces operational costs and outperforms the other baselines with a new Pareto frontier and an average 5.3% relative improvement in answer quality (F1) under a standard fast prefill latency budget.",
@@ -14052,7 +14053,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-13T18:55:17.607522+00:00",
+      "updated_at": "2026-08-13T21:38:23.203795+00:00",
       "paper": {
         "title": "Parameter Exploration for RLVR via Variational Learning",
         "summary": "Exploration has been a focus of reinforcement learning research for a long time. Recently, there has been growing evidence that it is also an important ingredient in LLM reinforcement learning recipes that can significantly impact downstream performance. Many existing methods control exploration in the action-space, for example, using temperature scaling. However, these methods cannot reorder tokens but only influence the variance in the output distribution. This limits exploration and can lead to divergence or stalled training. Here, we investigate parameter-space exploration, where rollouts are generated by sampling different policies from a posterior that may each explore different rollouts. Sampling less or more diverse policies is then a complementary control lever over exploration. We introduce a family of methods called Perturbed Parameter Policy Optimization (3PO) which use different sampling strategies and different rollout grouping for reward estimation. Experiments on OLMo-3-1025-7B and Qwen2.5-Math-7B across mathematical reasoning and code generation tasks show that these approaches consistently improve average downstream performance over standard GRPO at a near-identical FLOPs cost. Moreover, using multiple parameter samples consistently produces fewer zero-advantage groups and malformed or incorrect rollouts during training than GRPO and action-space baselines. Overall, our work presents evidence that parameter-space exploration can improve reinforcement learning for LLMs.",
@@ -14651,11 +14652,11 @@
     "2608_10720v1": {
       "id": "2608_10720v1",
       "filename": "post_2608_10720v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-08-12T04:43:13.468553+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-12T21:38:52.768685+00:00",
+      "updated_at": "2026-08-13T21:39:39.241123+00:00",
       "paper": {
         "title": "Ex-Omni-2D: Expressive Omni-Modal Dialogue Models with Native Visual Presence",
         "summary": "Omni-modal dialogue models can understand multimodal inputs and synthesize spoken replies, yet their responses remain visually disembodied. We introduce \\textbf{Ex-Omni-2D}, an omni-modal dialogue framework that generates a coordinated response comprising text, personalized speech, and reference-conditioned video. Given a multimodal query, reference image, and reference audio, the model predicts a structured \\textit{Visual Thought Plan} (VTP) describing scene, emotion, and motion, followed by response text and native multi-codebook speech units. These units form a shared acoustic-temporal interface: they are decoded into speech and aligned online with video frames. This interface enables the response and avatar pathways to be learned from heterogeneous speech, dialogue, and avatar-video data, avoiding the need for large-scale query--text--speech--video supervision. A full-sequence Video Generator serves as the primary Teacher. For efficient incremental generation, we further distill it into a few-step block-causal \\emph{Streaming Student} whose Prefix Streaming mechanism carries a clean latent across consecutive chunks to reduce cumulative late-chunk degradation. With four-step inference, the complete four-GPU pipeline achieves an end-to-end RTF of 1.293 at $400\\times720$/$720\\times400$, providing a practical quality--efficiency operating point.",
@@ -14669,7 +14670,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2608.10720v1"
       },
-      "priority_score": 27
+      "priority_score": 27,
+      "korean_title": "Ex-Omni-2D: 시각적 실재감을 갖춘 표현형 옴니모달 대화 모델"
     },
     "2607_27670v2": {
       "id": "2607_27670v2",
@@ -14735,7 +14737,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-13T18:55:17.607533+00:00",
+      "updated_at": "2026-08-13T21:38:23.203808+00:00",
       "paper": {
         "title": "InSight-doc: Agentic Visual Perception for Long-Document Understanding",
         "summary": "Long-document understanding often requires reasoning over many visually rich pages, making inference costly and prone to context rot. In this work, we propose InSight-doc, an agentic visual perception framework that treats visual resolution as an adaptive reasoning-time resource. InSight-doc starts from low resolution and selectively zooms into high-resolution regions for finer evidence, without relying on any external retriever. To train such an agent, we construct an active-perception corpus of 17.9K high-quality SFT examples with region-level zoom-in trajectories, accompanied by 19.2K hard RL examples. Through SFT+RL, InSight-doc-8B improves the baseline by 4.3--16.4 accuracy points over document VQA benchmarks. On long documents, it reduces hallucination by more than 40% and inference latency by 41%--68% while maintaining an accuracy lead. Our code, datasets, and model are released at https://github.com/m-Just/InSight-doc .",
@@ -15301,11 +15303,11 @@
     "2608_10983v1": {
       "id": "2608_10983v1",
       "filename": "post_2608_10983v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-08-13T01:23:30.480778+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-13T01:23:30.480780+00:00",
+      "updated_at": "2026-08-13T21:38:40.835567+00:00",
       "paper": {
         "title": "TimeRoute: Time-Aware Modality Routing and Diffusion for Multi-Modal Recommendation",
         "summary": "Multi-modal recommenders fuse collaborative signals with item modalities such as text, images, and audio, but the usefulness of each drifts over time and at different rates. For example, chocolate purchases typically guided by textual ingredient cues can shift toward visual packaging and ambient audio around Valentine's Day. This modality time-scale mismatch gives rise to two coupled challenges: (1) users require different modality proportions across temporal contexts, and (2) less relevant modalities are more likely to introduce outdated or misleading signals into the recommender. We address both challenges within a unified diffusion-based recommender, TimeRoute. A temporal-aware modal router maps each user's aggregated behavioral features to a personalized modality distribution, replacing the globally shared fusion weights used in prior work. The diffusion-based graph reconstructor is then conditioned on the same temporal profile through Feature-wise Linear Modulation (FiLM) with dual-stream long- and short-term denoising heads, suppressing outdated modality edges before they enter the propagation graph. Experiments on TikTok, Amazon-Baby, and Amazon-Sports demonstrate consistent improvements of up to 9.8\\% in Recall@K, Precision@K, and NDCG@K over strong baselines across 10-seed paired tests. Code is available at https://anonymous.4open.science/r/TimeRoute.",
@@ -15319,7 +15321,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2608.10983v1"
       },
-      "priority_score": 27
+      "priority_score": 27,
+      "korean_title": "TimeRoute: 다중 모달 추천을 위한 시간 인식 모달 라우팅 및 확산 모델"
     },
     "2608_10976v1": {
       "id": "2608_10976v1",
@@ -15480,7 +15483,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-13T18:55:17.607496+00:00",
+      "updated_at": "2026-08-13T21:38:23.203800+00:00",
       "paper": {
         "title": "OpenART: Scaling Agent Red Teaming via Open-Ended Environment Evolution",
         "summary": "AI agents operate in persistent environments where early state changes can influence decisions far into the future. Unlike conventional language-model interactions, agent behavior is mediated through a shared state that is repeatedly modified and reused across long-horizon workflows. Current safety benchmarks often fail to capture these cumulative risks because they focus on short, static tasks. To address these limitations, we introduce OpenART, an open-ended arena for scalable agent red teaming through environment evolution. OpenART provides over 10,000 validated stateful scenarios across 50 domains, drawing from a pool of more than 500,000 tools and skills. These tasks require a median of 97 tool calls and enable unified evaluation across 75 different agent-model configurations. To systematically explore these evolving attack surfaces, we propose the Evolutionary Markov Hypergraph Attack (EMHA). EMHA is a black-box policy that performs feedback-driven environment evolution by coordinating authorized state transitions without requiring parameter updates. Throughout the evaluation, task objectives remain fixed while only the environment state changes. Across all configurations, EMHA achieves a pooled Attack Success Rate (ASR) of 85.0%. Its advantage over instruction-only evolution increases from approximately 2% on simple environments to over 17% on the most complex ones, demonstrating that environment evolution increasingly exposes safety failures as task complexity grows. Furthermore, our analysis shows that the specific runtime implementation of an agent explains a significant portion of safety variation beyond the underlying model's capabilities. These results establish OpenART as a scalable foundation for studying agent safety in complex, evolving environments.",
@@ -15504,11 +15507,11 @@
     "2608_10708v1": {
       "id": "2608_10708v1",
       "filename": "post_2608_10708v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-08-13T04:46:48.863629+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-13T18:55:17.607528+00:00",
+      "updated_at": "2026-08-13T21:40:05.803181+00:00",
       "paper": {
         "title": "Self-Geometry: GT-Free and Plug-and-Play Test-Time Adaptation for Geometrically Consistent 3D Vision Foundation Models",
         "summary": "Recent Vision Foundation Models (VFMs) predict depth, camera pose, and pointmap in a single forward pass without per-scene optimization, achieving strong generalization. However, enforcing explicit multi-view geometric consistency, e.g., through bundle adjustment, is computationally costly and is thus not imposed during VFM pretraining, so such inconsistency can arise. To address this, implicit self-consistency derived from model outputs (e.g., pointmaps, features), though enforced at test-time in prior work, delivers inherently limited performance gain, especially on scenes where the pretrained VFM is highly inaccurate. In contrast to this implicit signal, we propose Self-Geometry, a plug-and-play test-time adaptation pipeline that directly imposes explicit multi-view geometric constraints using 2D pixel correspondences as pseudo ground-truth. Our proposed Self-Geometry consists of Geometric Disentanglement Optimization, which combines Multi-View Consistency and Epipolar Consistency losses with Gradient Disentanglement to prevent gradient conflict; Frame Angular-Neighbor, a view sampler based on SO(3) geodesic distances for lightly imposing these constraints; and Lightweight TTA, which adapts VFMs via LoRA. Our method achieves consistent improvements in both pose and geometry estimation across six VFMs (VGGT, $π^3$, DA3-Giant/Large/Base/Small) and four benchmarks (7Scenes, ETH3D, ScanNet++, HiRoom).",
@@ -15521,7 +15524,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2608.10708v1"
       },
-      "priority_score": 27
+      "priority_score": 27,
+      "korean_title": "자기 기하학: 기하학적으로 일관된 3D 비전 파운데이션 모델을 위한 정답 데이터가 필요 없는 플러그 앤 플레이 테스트 타임 적응 기술"
     },
     "2608_11562v1": {
       "id": "2608_11562v1",
@@ -15530,7 +15534,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-13T18:55:17.607538+00:00",
+      "updated_at": "2026-08-13T21:38:23.203802+00:00",
       "paper": {
         "title": "From Synthesis to Removal: Physics-Grounded Reflection Simulation and Diffusion-Based Video Dereflection",
         "summary": "Videos captured through glass often contain reflections that degrade visual quality and interfere with downstream vision tasks. Although single-image reflection removal has been extensively studied, video reflection removal remains largely underexplored due to the lack of paired video data, temporally coherent removal models, and dedicated evaluation benchmarks. We present a closed-loop framework that unifies physics-grounded reflection simulation, diffusion-based video dereflection, and benchmark evaluation. Our S2R-Synthesis pipeline generates paired reflected and reflection-free videos by performing physics-grounded augmentation in the structure space and rendering realistic reflected videos with a trained video diffusion renderer; the augmentation models key glass-related effects including roughness-induced blur, thickness-induced ghosting, and reflectance variation. Based on the synthesized data, we introduce S2R-Removal, the first diffusion-based video reflection removal model, which adapts a pretrained video diffusion prior through reflection-aware latent adaptation and one-step pixel-geometric refinement, recovering the clean transmission in a single denoising step. We further build S2R-Bench, the first benchmark for video reflection removal, supporting both full-reference evaluation and real-world human perceptual assessment. Experiments on S2R-Bench and multiple public image benchmarks demonstrate state-of-the-art performance and faster inference than even non-diffusion baselines, and validate the effectiveness of S2R-Synthesis. Project page: https://codingwzp.github.io/VideoDereflection_S2R.",
@@ -15555,7 +15559,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-13T18:55:17.607551+00:00",
+      "updated_at": "2026-08-13T21:38:23.203816+00:00",
       "paper": {
         "title": "Agent Safety Should Be a Runtime Contract",
         "summary": "The dominant paradigm treats AI safety as a property to be instilled during model training via RLHF, DPO, or Constitutional AI. We argue this is structurally insufficient for autonomous agents that execute code, mutate files, send messages, and modify databases. Agent safety should be a runtime contract enforced by the harness, and the contract has two complementary faces. The preventive face blocks dangerous actions before they happen via sandboxes, permission gates, output filters, and trajectory monitors. The evidential face requires verifiable proof that good actions actually happened, gating task submission on hard evidence such as test runs, log captures, file diffs, and citation grounding. We ground the position in four lines of public evidence, with row-level protocols and data released in the supplementary JSON files: a survey of 52 documented AI-agent and LLM safety incidents, a false-completion audit with 31 non-contested core cases plus one disputed illustrative case, a trajectory-schema audit of 12 public agent systems and harnesses, and a title-level audit of all 28,560 papers accepted at NeurIPS, ICML, and ICLR 2023-2025 showing a pooled 8-12x imbalance between training-time and deployment-time publication. Two prior communities that needed to enforce safety, computer security and the experimental sciences, converged on runtime contracts with both preventive and evidential elements; agentic AI is now under the same pressure. We formalize an Agent Trajectory Schema and Evidence Chain, state a compositional gating proposition based on standard monitor composition, and outline a research agenda. The right unit of safety in agentic AI is the trajectory-with-checkable-evidence, not the model.",
@@ -15619,7 +15623,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-13T18:55:17.607556+00:00",
+      "updated_at": "2026-08-13T21:38:23.203819+00:00",
       "paper": {
         "title": "Decoding-Level Taboo: A Diagnostic Stress Test for LLM Robustness",
         "summary": "Large language model evaluations typically focus on performance under nominal conditions, creating an illusion of capability where models comfortably walk a narrow, highly optimized generation corridor. In real-world deployments, however, complex system prompts, safety guardrails, and structural constraints continuously force models off this nominal path, driving a divergence between benchmark scores and deployment performance. To address this issue, we introduce Decoding-Level Taboo, a zero-prompt diagnostic stress test that intervenes directly in logit space at runtime, forcing models out of their nominal paths. By dynamically masking primary candidate tokens at word boundaries, Taboo forces machine circumlocution.   Evaluating Taboo across several open-weight model families reveals that off-path robustness is heavily influenced by both parameter scale and post-training instruction alignment, with robustness generally improving with model size and alignment. Beyond the results presented in this paper, Taboo provides a novel primitive for generating diverse synthetic datasets, stress-testing runtime safety guardrails, and auditing model reliability prior to real-world deployment.",
@@ -15694,7 +15698,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-13T18:55:17.607547+00:00",
+      "updated_at": "2026-08-13T21:38:23.203814+00:00",
       "paper": {
         "title": "SkillZip: Contract-Preserving Graph Compression for Scalable Agent Skill Libraries",
         "summary": "Large Language Models (LLMs) increasingly act as agents whose procedural knowledge is stored in reusable skill packages and loaded at inference time. As skill libraries grow, a central challenge is to expose the smallest sufficient executable context under a limited context budget. Existing systems struggle to reuse routines below the whole-skill level, preserve procedural contracts during compression, keep compressed routines executable and expandable, and update the compressed library as skills evolve. These challenges reveal a unit mismatch: skills are retrieved as packages, compressed as text, and converted into execution graphs only after retrieval, whereas reliable reuse requires a contract-bearing procedural unit. We propose SkillZip, an execution-aware procedural abstraction framework that performs contract-preserving compression over section-level graphs. SkillZip rewrites recurring contract-valid motifs into reversible ported macros while preserving boundary signatures, dependency closure, verifier reachability, and source-level expansion. At inference time, it hydrates a compact, dependency-closed context and expands macros only when required. ReZip further integrates new skills and revises risky macros using execution evidence. Comprehensive experiments1 on technical and embodied agent benchmarks show SkillZip consistently outperforms the strongest baseline by up to 12.2 points, while achieving a 3.46x compression ratio with 99.2% dependency preservation and 98.7% verifier reachability. Scaling analyses further confirm robust retrieval across skill libraries ranging from 200 to 100K skills.",
@@ -15715,7 +15719,7 @@
     }
   },
   "last_run": {
-    "started_at": "2026-08-13T18:55:17.608806+00:00",
+    "started_at": "2026-08-13T21:38:23.204583+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -15725,26 +15729,26 @@
     "failures": [],
     "usage": {
       "model": "gemini-3.1-flash-lite",
-      "requests": 8,
-      "prompt_tokens": 19967,
-      "output_tokens": 5759,
+      "requests": 7,
+      "prompt_tokens": 16113,
+      "output_tokens": 5231,
       "thought_tokens": 0,
-      "total_tokens": 25726,
-      "estimated_usd": 0.01363025
+      "total_tokens": 21344,
+      "estimated_usd": 0.01187475
     },
-    "finished_at": "2026-08-13T18:56:20.097054+00:00"
+    "finished_at": "2026-08-13T21:41:46.861072+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 1119,
-    "prompt_tokens": 2813832,
-    "output_tokens": 823650,
+    "requests": 1126,
+    "prompt_tokens": 2829945,
+    "output_tokens": 828881,
     "thought_tokens": 0,
-    "total_tokens": 3637482,
-    "estimated_usd": 1.938933
+    "total_tokens": 3658826,
+    "estimated_usd": 1.95080775
   },
   "last_publication_run": {
-    "started_at": "2026-08-13T18:55:17.608806+00:00",
+    "started_at": "2026-08-13T21:38:23.204583+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -15754,18 +15758,18 @@
     "failures": [],
     "usage": {
       "model": "gemini-3.1-flash-lite",
-      "requests": 8,
-      "prompt_tokens": 19967,
-      "output_tokens": 5759,
+      "requests": 7,
+      "prompt_tokens": 16113,
+      "output_tokens": 5231,
       "thought_tokens": 0,
-      "total_tokens": 25726,
-      "estimated_usd": 0.01363025
+      "total_tokens": 21344,
+      "estimated_usd": 0.01187475
     },
-    "finished_at": "2026-08-13T18:56:20.097054+00:00"
+    "finished_at": "2026-08-13T21:41:46.861072+00:00"
   },
   "daily_usage": {
     "date": "2026-08-13",
-    "estimated_usd": 0.09560425,
-    "publications": 28
+    "estimated_usd": 0.107479,
+    "publications": 32
   }
 }

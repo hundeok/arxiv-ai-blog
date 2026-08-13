@@ -1,0 +1,44 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CreativeInstruct: 확장 가능한 방식으로 거대 언어 모델에게 품질, 창의성, 다양성의 균형을 가르치기 | ArXiv Translator AI</title><meta name="description" content="CreativeInstruct: 확장 가능한 방식으로 거대 언어 모델에게 품질, 창의성, 다양성의 균형을 가르치기"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_07460v1"><meta property="og:type" content="article"><meta property="og:title" content="CreativeInstruct: 확장 가능한 방식으로 거대 언어 모델에게 품질, 창의성, 다양성의 균형을 가르치기"><meta property="og:description" content="CreativeInstruct: 확장 가능한 방식으로 거대 언어 모델에게 품질, 창의성, 다양성의 균형을 가르치기"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_07460v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="CreativeInstruct: 확장 가능한 방식으로 거대 언어 모델에게 품질, 창의성, 다양성의 균형을 가르치기"><meta name="twitter:description" content="CreativeInstruct: 확장 가능한 방식으로 거대 언어 모델에게 품질, 창의성, 다양성의 균형을 가르치기"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_07460v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "CreativeInstruct: 확장 가능한 방식으로 거대 언어 모델에게 품질, 창의성, 다양성의 균형을 가르치기", "description": "CreativeInstruct: 확장 가능한 방식으로 거대 언어 모델에게 품질, 창의성, 다양성의 균형을 가르치기", "datePublished": "2026-08-07", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_07460v1", "author": [{"@type": "Person", "name": "Ananya Sahu"}, {"@type": "Person", "name": "Mohit Bansal"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_07460v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_07460v1"});gtag('event', 'paper_view', {"paper_id": "2608_07460v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>CreativeInstruct: 확장 가능한 방식으로 거대 언어 모델에게 품질, 창의성, 다양성의 균형을 가르치기</h1><p>CreativeInstruct: 확장 가능한 방식으로 거대 언어 모델에게 품질, 창의성, 다양성의 균형을 가르치기</p><pre>CreativeInstruct: 확장 가능한 방식으로 거대 언어 모델에게 품질, 창의성, 다양성의 균형을 가르치기
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** CreativeInstruct: Scalably Teaching LLMs to Balance Quality, Creativity, and Diversity
+&gt; - **저자:** Ananya Sahu, Mohit Bansal, Elias Stengel-Eskin
+&gt; - **발행일:** 2026-08-07
+&gt; - **PDF 링크:** [CreativeInstruct: Scalably Teaching LLMs to Balance Quality, Creativity, and Diversity](https://arxiv.org/pdf/2608.07460v1)
+
+
+✨ 3줄 핵심 요약
+* **창의성 주입:** 특정 태그(`[StartCreativity]`)를 통해 거대 언어 모델(LLM)이 품질을 유지하면서도 창의적이고 다양한 답변을 생성하도록 학습시키는 기법입니다.
+* **구조적 다양성 측정:** 기존의 어휘·의미론적 지표가 놓치던 서사 수준의 변화를 포착하기 위해 &#x27;그래프 편집 거리(Graph Edit Distance)&#x27; 기반의 새로운 지표를 도입했습니다.
+* **강화학습 성능 향상:** 본 기법으로 학습된 모델은 강화학습의 기반 모델로서 뛰어난 성능을 보이며, 수학적 추론 과제 등에서 기존 모델보다 우수한 일반화 능력을 입증했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+거대 언어 모델은 학습 과정을 거치며 성능은 좋아지지만, 역설적으로 답변이 획일화되고 창의성이 떨어지는 경향이 있습니다. 연구진은 모델이 필요할 때만 창의성을 발휘하도록 &#x27;시작 창의성&#x27; 태그를 학습시키는 **CreativeInstruct**를 개발했습니다. 이는 여러 모델을 조합하는 복잡한 방식 없이도 단일 모델만으로 높은 품질과 다양한 답변을 동시에 보장합니다. 특히 이렇게 창의성을 갖춘 모델은 강화학습에서 더 나은 학습 기반이 되어, 복잡한 수학 문제 풀이 등에서 훨씬 뛰어난 성과를 보여주었습니다.
+
+🎯 배경 및 문제점
+* **창의성 저하:** 모델의 능력을 높이는 사후 학습(Post-training) 과정에서 생성 결과의 다양성과 창의성이 감소하여, 스토리 생성이나 강화학습처럼 창의적 사고가 필요한 분야에 부정적인 영향을 미침.
+* **측정의 한계:** 기존의 어휘나 의미론적 지표만으로는 전체적인 이야기 구성의 다양성(서사 수준의 변화)을 제대로 평가하기 어려움.
+* **추론 비용 문제:** 창의성을 높이기 위해 여러 모델을 동시에 사용하는 방식은 컴퓨팅 비용이 매우 높음.
+
+💡 핵심 기술 및 아키텍처
+* **CreativeInstruct:** 베이스 모델과 정렬(Alignment)된 모델 사이를 라우팅하여 생성된 &#x27;창의적 스팬(spans)&#x27;을 학습함. 모델은 `[StartCreativity]` 태그를 통해 자신의 창의적 생성 능력을 조절함.
+* **LLM-GED 지표:** LLM을 활용한 그래프 편집 거리(Graph Edit Distance)를 통해 서사 구조의 다양성을 측정하며, 이는 인간의 구조적 다양성 판단과 기존 지표보다 더 높은 상관관계를 보임.
+* **단일 모델 최적화:** 별도의 추가 모델 없이 단일 모델만으로 창의적 출력을 가능하게 하여 추론 시 비용 효율성을 높임.
+
+📊 실험 결과 분석
+* **인간 평가:** 평가자의 70.3%가 CreativeInstruct로 생성된 결과물이 기존 사후 학습된 LLM보다 더 창의적이라고 응답함.
+* **다양성 지표:** 다양한 모델군(LLaMA-3.1, QWEN2.5, QWEN3 등)에서 기존 지표(Vendi, LLM-GED 등)를 통해 비교했을 때, 대체로 더 높은 다양성 점수를 기록함.
+* **강화학습 성능:** CreativeInstruct 체크포인트에 GRPO(강화학습 알고리즘)를 적용했을 때, 일반적인 Instruct 모델 대비 AMC 데이터셋에서 약 4%, MATH 데이터셋에서 약 5%p 향상된 성능을 보임.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **콘텐츠 제작:** 이야기 생성, 창의적 글쓰기 도구에서 모델의 일관된 답변을 벗어나 더욱 풍부하고 다양한 서사를 제공할 수 있음.
+* **AI 학습 효율화:** 강화학습을 수행할 때 모델의 다양성을 확보함으로써, 학습 모델이 문제 해결 과정에서 새로운 접근 방식을 탐색하게 하여 일반화 성능(OOD generalization)을 높임.
+* **비용 절감:** 여러 모델을 결합하는 방식 대신 단일 모델 내에서 창의성을 제어함으로써 실무 현장의 AI 서빙 비용을 획기적으로 줄일 수 있는 기술적 토대를 마련함.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2608.07460 CreativeInstruct: Scalably Teaching LLMs to Balance Quality, Creativity, and Diversity](https://arxiv.org/abs/2608.07460)
+&gt; - [CreativeInstruct: Scalably Teaching LLMs to Balance Quality, Creativity, and Diversity](https://arxiv.org/html/2608.07460)
+&gt; - [Week Ending 8.9.2026 — Eye On AI](https://www.eye-on.ai/ai-articles/yx7a7c4fhj25kbd-htf9x-r35fb-42rlh-99nw9-z7tw8-kwg2d-ay935-fn9zt-w2ls7-fyptc-hd5js-2bh8y-l9l6n-hyb5z-set77-a5esw-2fgja-mdkab-4fzr8-fmnnp)
+
+</pre></article></main></body></html>
