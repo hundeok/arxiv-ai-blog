@@ -1,0 +1,64 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>에이전트 코딩에서 CLAUDE.md는 왜 계속 커지는가: 재앙적 기억 현상 | ArXiv Translator AI</title><meta name="description" content="에이전트 코딩에서 CLAUDE.md는 왜 계속 커지는가: 재앙적 기억 현상"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_11095v1"><meta property="og:type" content="article"><meta property="og:title" content="에이전트 코딩에서 CLAUDE.md는 왜 계속 커지는가: 재앙적 기억 현상"><meta property="og:description" content="에이전트 코딩에서 CLAUDE.md는 왜 계속 커지는가: 재앙적 기억 현상"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_11095v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="에이전트 코딩에서 CLAUDE.md는 왜 계속 커지는가: 재앙적 기억 현상"><meta name="twitter:description" content="에이전트 코딩에서 CLAUDE.md는 왜 계속 커지는가: 재앙적 기억 현상"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_11095v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "에이전트 코딩에서 CLAUDE.md는 왜 계속 커지는가: 재앙적 기억 현상", "description": "에이전트 코딩에서 CLAUDE.md는 왜 계속 커지는가: 재앙적 기억 현상", "datePublished": "2026-08-11", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_11095v1", "author": [{"@type": "Person", "name": "Kushal Chakrabarti"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_11095v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_11095v1"});gtag('event', 'paper_view', {"paper_id": "2608_11095v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>에이전트 코딩에서 CLAUDE.md는 왜 계속 커지는가: 재앙적 기억 현상</h1><p>에이전트 코딩에서 CLAUDE.md는 왜 계속 커지는가: 재앙적 기억 현상</p><pre>에이전트 코딩에서 CLAUDE.md는 왜 계속 커지는가: 재앙적 기억 현상
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Why Does CLAUDE.md Keep Growing? Catastrophic Remembering in Agentic Coding
+&gt; - **저자:** Kushal Chakrabarti
+&gt; - **발행일:** 2026-08-11
+&gt; - **PDF 링크:** [Why Does CLAUDE.md Keep Growing? Catastrophic Remembering in Agentic Coding](https://arxiv.org/pdf/2608.11095v1)
+
+
+✨ 3줄 핵심 요약
+* 에이전트 개발 과정에서 `CLAUDE.md`와 같은 지침 파일이 삭제되지 않고 무한히 팽창하는 &#x27;재앙적 기억(Catastrophic Remembering)&#x27; 현상을 규명했습니다.
+* 지침을 추가하는 것은 쉽지만, 그 지침을 만든 이유(근거)를 알 수 없으면 삭제 시 발생할 오류를 우려해 지침을 지우지 못하고 누적하게 됩니다.
+* 지침과 함께 그 이유를 &#x27;주석(Comment)&#x27;으로 기록하면 지침의 팽창을 99.3% 방지하고, 에이전트의 수행 능력을 최대 23.1% 향상할 수 있습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+에이전트에게 지시사항을 적어주는 README 파일(예: `CLAUDE.md`)은 시간이 지날수록 점점 길어지기만 합니다. 이는 지시사항을 추가하는 비용은 낮지만, 이미 추가된 지시사항이 왜 필요한지 잊어버리면 이를 삭제할 때 발생할 수 있는 위험(오류)이 크기 때문입니다. 마치 필요 없는 물건을 나중에 다시 필요할지 몰라 버리지 못하고 창고에 쌓아두는 것과 같습니다. 본 논문은 코드에 주석을 달듯 지시사항에도 &#x27;왜 이 규칙을 만들었는지&#x27;에 대한 근거를 함께 기록하면, 불필요한 지침을 안전하게 삭제하여 시스템을 최적 상태로 유지할 수 있음을 입증합니다.
+
+🎯 배경 및 문제점
+에이전트 기반 코딩에서 지침 파일은 저장소가 폐기되거나 파일 전체를 완전히 다시 쓰기 전까지 무한히 성장합니다. 1,867개의 저장소와 247,694개의 지침 수명을 분석한 결과, 지침 파일은 수명 주기 동안 평균 226% 이상 증가하며, 커밋당 평균 4.9개의 지침이 추가됩니다. 지침이 오래될수록 삭제될 확률은 점점 낮아지는데, 이는 사용자가 특정 지침의 작성 근거를 기억하지 못해 삭제 시 발생할지 모를 부작용을 두려워하기 때문입니다.
+
+💡 핵심 기술 및 아키텍처
+* **재앙적 기억(Catastrophic Remembering):** 지속적 학습(Continual Learning)에서의 &#x27;재앙적 망각&#x27;과는 반대로, 과거의 모든 지침을 버리지 않고 보존하려는 경향성을 의미합니다.
+* **주석 기반 관리:** 지침을 작성할 때 해당 지침의 &#x27;잠재적 추론(Latent Reasoning)&#x27;을 주석으로 함께 인코딩합니다.
+* **성능 검증:** IFEval 및 WildIFEval 데이터셋을 통해 검증 가능한 환경을 구축했습니다. 지침과 함께 주석을 제공함으로써 에이전트가 지침을 처리하는 과정에서 불필요한 지침을 걸러내고, 최적화된 프롬프트를 유지하게 합니다.
+
+📊 실험 결과 분석
+* **성장 억제:** 정보성 주석을 추가했을 때, 무한히 증가하던 지침 파일의 과도한 크기가 99.3% 제거되었습니다(증가율 +211.3%에서 +1.4%로 감소).
+* **수행 능력 향상:** WildIFEval 테스트 결과, 주석을 도입하면 실제 에이전트의 지시 이행 능력이 최대 23.1% 향상되었습니다.
+* **데이터 검증:** 본 연구의 결과는 1,867개 저장소의 247,694개 지침 수명 데이터를 바탕으로 하며, 모든 사전 등록된 기준(성장률, 삭제 패턴 등)을 통과했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+&#x27;영어(자연어)가 새로운 코딩 언어&#x27;가 된 시대에, 코드에 주석을 다는 관행처럼 에이전트 지침 파일에도 &#x27;주석&#x27;이라는 표준화된 기록 방식이 필요함을 시사합니다. 실무자들은 `CLAUDE.md`나 `AGENTS.md`를 관리할 때, 단순히 규칙만을 나열하지 않고 해당 규칙이 만들어진 배경과 실패 사례를 함께 기록함으로써, 지침 파일의 비대화를 막고 에이전트의 작업 효율을 장기적으로 높일 수 있습니다. 이는 복잡한 대규모 프로젝트에서 에이전트의 오작동을 줄이고 유지보수 비용을 절감하는 핵심 전략이 될 것입니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Why Does CLAUDE.md Keep Growing? Catastrophic...](https://arxiv.org/pdf/2608.11095)
+&gt; - [Why Does CLAUDE.md Keep Growing? Catastrophic... | alphaXiv](https://www.alphaxiv.org/abs/2608.11095)
+&gt; - [Claude Code Memory System Explained: 4 Layers, 5 Limits, and a Fix - Milvus Blog](https://milvus.io/blog/claude-code-memory-memsearch.md)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;재앙적 망각(Catastrophic Forgetting)을 방지하려다 결국 &#x27;재앙적 기억(Catastrophic Remembering)&#x27;이라는 부채를 쌓는 꼴이군요. 학계에서 흔히 말하는 &#x27;지식 기반의 비대화&#x27; 문제를 에이전트 컨텍스트 관리 차원에서 아주 명쾌하게 규명했습니다. 다만, 주석의 형식을 강제화했을 때 에이전트가 이를 오독하거나 주석 자체가 오염될 가능성은 고려했는지 의문이 드네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님, 현업에서는 이미 겪고 있는 문제입니다. 깃허브 레포지토리마다 &#x27;이거 왜 적어놨지?&#x27; 싶은 CLAUDE.md를 볼 때마다 삭제하고 싶어도, 나중에 에이전트가 엉뚱한 짓 할까 봐 주석 없이 방치해두거든요. 이 논문대로라면 주석을 통한 메타데이터 관리로 프롬프트 토큰 비용도 아끼고 컨텍스트 윈도우 효율도 챙길 수 있겠네요. 당장 우리 팀 가이드라인에 반영해야겠습니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 이거 진짜 대박인데요? 다들 프롬프트 엔지니어링만 파고 있을 때, &#x27;지침의 수명 주기&#x27;를 데이터로 분석해서 99.3% 억제했다는 수치가 미쳤습니다. 이제 LLM한테 &#x27;지침 삭제해&#x27;라고 시키기 전에, 이 논문에서 제안한 &#x27;주석 기반 추론 인코딩&#x27; 모듈부터 붙여서 실험해봐야겠어요. 오늘 밤은 깃허브 긁어서 데이터셋 다시 짜야 할 듯!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
