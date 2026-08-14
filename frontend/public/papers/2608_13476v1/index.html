@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>임상 AI 추론 및 조정을 위한 오픈소스 다중 에이전트 프레임워크 MARC v1 | ArXiv Translator AI</title><meta name="description" content="임상 AI 추론 및 조정을 위한 오픈소스 다중 에이전트 프레임워크 MARC v1"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_13476v1"><meta property="og:type" content="article"><meta property="og:title" content="임상 AI 추론 및 조정을 위한 오픈소스 다중 에이전트 프레임워크 MARC v1"><meta property="og:description" content="임상 AI 추론 및 조정을 위한 오픈소스 다중 에이전트 프레임워크 MARC v1"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_13476v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="임상 AI 추론 및 조정을 위한 오픈소스 다중 에이전트 프레임워크 MARC v1"><meta name="twitter:description" content="임상 AI 추론 및 조정을 위한 오픈소스 다중 에이전트 프레임워크 MARC v1"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_13476v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "임상 AI 추론 및 조정을 위한 오픈소스 다중 에이전트 프레임워크 MARC v1", "description": "임상 AI 추론 및 조정을 위한 오픈소스 다중 에이전트 프레임워크 MARC v1", "datePublished": "2026-08-13", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_13476v1", "author": [{"@type": "Person", "name": "Saisha Shetty"}, {"@type": "Person", "name": "Satvik Tripathi"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_13476v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_13476v1"});gtag('event', 'paper_view', {"paper_id": "2608_13476v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>임상 AI 추론 및 조정을 위한 오픈소스 다중 에이전트 프레임워크 MARC v1</h1><p>임상 AI 추론 및 조정을 위한 오픈소스 다중 에이전트 프레임워크 MARC v1</p><pre>임상 AI 추론 및 조정을 위한 오픈소스 다중 에이전트 프레임워크 MARC v1
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** MARC v1: An Open-Source Multi-Agent Framework for Clinical AI Reasoning and Coordination
+&gt; - **저자:** Saisha Shetty, Satvik Tripathi, Austin Lin, Colin Zhao, Theodore Kim, Don Enwerem, Jacinta Arnold, Shahriar Faghani, Tessa S Cook
+&gt; - **발행일:** 2026-08-13
+&gt; - **PDF 링크:** [MARC v1: An Open-Source Multi-Agent Framework for Clinical AI Reasoning and Coordination](https://arxiv.org/pdf/2608.13476v1)
+
+
+✨ 3줄 핵심 요약
+* **단일 프롬프트 한계 극복:** 복잡한 임상 AI 작업을 하나의 LLM 호출로 처리하던 기존 방식 대신, 역할을 세분화한 다중 에이전트를 배치하여 결정론적 오케스트레이션을 수행합니다.
+* **추적 가능한 판단 과정:** 단계별 중간 출력을 기록하여 AI가 어디에서 오류를 범했는지 파악(failure attribution)할 수 있어 해석 가능성과 신뢰성을 높였습니다.
+* **코드 수정 없는 설정:** ‘Decomposer’ 모듈을 통해 자연어 설명만으로 에이전트 파이프라인을 자동 생성하며, API 및 로컬 환경에서 모두 유연하게 배포 가능합니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+기존의 AI 의료 진단은 거대한 AI 모델 하나에게 처음부터 끝까지 모든 것을 맡기는 방식이었습니다. 하지만 이럴 경우 AI가 틀린 답을 내놓아도 왜 틀렸는지 알기 어렵다는 문제가 있었습니다. MARC v1은 이를 &#x27;전문가 팀&#x27;처럼 나눴습니다. 정보를 추출하는 에이전트, 추론하는 에이전트, 최종 답변을 내는 에이전트가 각자의 역할을 수행하고 서로의 중간 결과를 확인합니다. 마치 환자를 진료할 때 여러 전문의가 소통하는 것과 비슷합니다. 덕분에 오류가 발생해도 어느 단계에서 문제가 생겼는지 명확히 확인하여 의료 현장에서의 안정성을 확보했습니다.
+
+🎯 배경 및 문제점
+* **기존 방식의 한계:** 대부분의 의료용 LLM은 정보 추출, 추론, 검증, 답변 생성을 하나의 프롬프트로 처리하여 모델의 잠재력을 충분히 활용하지 못하고 해석 가능성이 제한됩니다.
+* **의료 환경의 요구:** 임상 결정은 다양한 정보 원천을 바탕으로 여러 단계의 복잡한 추론을 거쳐야 합니다. 이를 위해선 신뢰성, 투명성, 환자 안전을 보장하는 정교한 시스템이 필수적입니다.
+* **오류 원인 파악의 어려움:** 기존 시스템은 결과물만 제시할 뿐, &#x27;왜 틀렸는지&#x27;에 대한 정보가 부족하여 실제 임상 적용을 위한 검증에 어려움이 있습니다.
+
+💡 핵심 기술 및 아키텍처
+* **다중 에이전트 오케스트레이션:** 정보 추출, 추론, 답변 생성 등 각 단계별로 특화된 에이전트가 협업하며, 이전 단계의 출력을 명시적으로 다음 단계로 전달합니다.
+* **Decomposer 모듈:** 사용자가 자연어로 임무를 기술하면 자동으로 에이전트 파이프라인을 구성하여 복잡한 수동 프롬프트 엔지니어링 과정을 제거합니다.
+* **배포 유연성:** Google Gemini와 같은 API 기반 모델뿐만 아니라, 외부 의존성 없이 로컬 CPU에서 실행 가능한 Ollama 환경도 지원합니다.
+* **설정 방식:** 모든 동작은 YAML 파일과 프롬프트 템플릿을 통해 정의되며, 코드 수정 없이 유연하게 환경을 변경할 수 있습니다.
+
+📊 실험 결과 분석
+* 해당 논문 발췌에는 구체적인 성능 지표(정확도, F1 점수 등) 수치가 명시되어 있지 않습니다.
+* 다만, MARC 프레임워크가 PubMedQA 및 MedQA(USMLE)와 같은 벤치마크 데이터셋에 적용 가능하며, 방사선과 보고서 생성 및 병리 분류 등 다양한 임상 태스크에서 효과적인 파이프라인 구성을 입증했음을 언급하고 있습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **임상 현장 활용:** 방사선 전문의의 의사결정을 보조하거나, 구조화된 보고서 생성 및 팔로우업 이미지 권장사항 추출 등 자동화된 임상 워크플로우를 구현하는 데 활용될 수 있습니다.
+* **의료 AI의 민주화:** 프로그래밍 전문 지식이 없는 임상 전문가도 자연어 설정을 통해 자신의 업무에 맞는 AI 파이프라인을 구축할 수 있습니다.
+* **신뢰성 있는 의료 AI:** 단계별 결과 추적이 가능해짐에 따라 의료 현장에서 AI의 판단을 검토하고 보정할 수 있는 환경이 조성되어, 보다 안전한 실무 적용이 가능해질 것으로 기대됩니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [ChatPaper: Explore and AI Chat with the Academic Papers](https://chatpaper.com/chatpaper?date=1786636800&amp;id=2&amp;page=1)
+&gt; - [2608.13476 MARC v1: An Open-Source Multi-Agent Framework...](https://arxiv.org/abs/2608.13476)
+&gt; - [MARC v1: An Open-Source Multi-Agent Framework for Clinical AI...](https://chatpaper.com/paper/333405)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;의료 AI에서 &#x27;해석 가능성&#x27;과 &#x27;오류 추적&#x27;을 위해 다중 에이전트 구조를 도입한 것은 시의적절하나, 실질적인 임상 검증 없이 아키텍처 제안만으로 논문이 통과되는 세태가 우려됩니다. 특히 에이전트 간의 통신 비용과 오케스트레이션 과정에서 발생하는 잠재적 환각(Hallucination) 전파 문제는 어떻게 통제할 것인지에 대한 통계적 증거가 부족하군요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 의견에 동의합니다. 실무 입장에서 YAML 기반 설정이나 코드 수정 없는 파이프라인 구성은 매력적이지만, 실제 병원 현장의 레거시 시스템과 연동할 때의 레이턴시를 고려하면 단일 모델보다 리스크가 큽니다. 다만, &#x27;Decomposer&#x27; 모듈이 실제 프롬프트 엔지니어링의 노가다를 얼마나 줄여줄지는 내일 당장 테스트해볼 가치가 있겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;두 분 다 너무 보수적이신 거 아니에요? 요즘 다들 &#x27;Agentic Workflow&#x27;로 넘어가는 추세인데, 로컬 Ollama까지 지원하는 오픈소스라니 당장 깃허브 스타 찍고 랩 세미나 주제로 가져가야겠는데요? 수치 증명이 좀 부족해도 커뮤니티가 붙어서 고도화하면 금방 SOTA 찍을 것 같은데 말이죠!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

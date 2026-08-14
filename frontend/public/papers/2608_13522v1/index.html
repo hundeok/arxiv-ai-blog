@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Vero: AI 에이전트는 형식적으로 검증된 소프트웨어 저장소를 구축할 수 있는가? | ArXiv Translator AI</title><meta name="description" content="Vero: AI 에이전트는 형식적으로 검증된 소프트웨어 저장소를 구축할 수 있는가?"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_13522v1"><meta property="og:type" content="article"><meta property="og:title" content="Vero: AI 에이전트는 형식적으로 검증된 소프트웨어 저장소를 구축할 수 있는가?"><meta property="og:description" content="Vero: AI 에이전트는 형식적으로 검증된 소프트웨어 저장소를 구축할 수 있는가?"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_13522v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Vero: AI 에이전트는 형식적으로 검증된 소프트웨어 저장소를 구축할 수 있는가?"><meta name="twitter:description" content="Vero: AI 에이전트는 형식적으로 검증된 소프트웨어 저장소를 구축할 수 있는가?"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_13522v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Vero: AI 에이전트는 형식적으로 검증된 소프트웨어 저장소를 구축할 수 있는가?", "description": "Vero: AI 에이전트는 형식적으로 검증된 소프트웨어 저장소를 구축할 수 있는가?", "datePublished": "2026-08-13", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_13522v1", "author": [{"@type": "Person", "name": "Zhe Ye"}, {"@type": "Person", "name": "Hantao Lou"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_13522v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_13522v1"});gtag('event', 'paper_view', {"paper_id": "2608_13522v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>Vero: AI 에이전트는 형식적으로 검증된 소프트웨어 저장소를 구축할 수 있는가?</h1><p>Vero: AI 에이전트는 형식적으로 검증된 소프트웨어 저장소를 구축할 수 있는가?</p><pre>Vero: AI 에이전트는 형식적으로 검증된 소프트웨어 저장소를 구축할 수 있는가?
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Vero: Can AI Agents Build Formally Verified Software Repositories?
+&gt; - **저자:** Zhe Ye, Hantao Lou, Yuechun Sun, Peiyang Song, Zhengxu Yan, Timothe Kasriel, Qingyang Zhang, Kaiyu Yang, Soonho Kong, Jingxuan He, Dawn Song
+&gt; - **발행일:** 2026-08-13
+&gt; - **PDF 링크:** [Vero: Can AI Agents Build Formally Verified Software Repositories?](https://arxiv.org/pdf/2608.13522v1)
+
+
+✨ 3줄 핵심 요약
+* **Vero 벤치마크 공개**: 실제 코드베이스 환경에서 코드 구현과 형식적 증명을 동시에 수행하는 능력을 평가하는 최초의 저장소 단위 벤치마크입니다.
+* **실제적 난도 반영**: 파이썬, Dafny, Verus, Coq 등 다양한 언어와 도메인에서 추출한 43개의 다중 모듈 인스턴스를 포함합니다.
+* **현재 에이전트의 한계**: 최고 성능의 AI 에이전트조차 43개 인스턴스 중 27개만을 완전히 해결했으며, 가장 어려운 저장소에서는 증명에 실패하는 등 기술적 격차를 확인했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+AI가 작성한 코드가 정말로 정확한지 보장하기 위해 &#x27;형식적 검증(Formal Verification)&#x27; 기술이 중요해지고 있습니다. 이는 코드의 구현뿐만 아니라, 해당 코드가 사양을 완벽히 만족함을 수학적으로 증명하는 과정입니다. 기존 연구들은 개별 함수 단위에 집중했지만, 실제 소프트웨어는 복잡한 모듈 간의 관계로 얽혀 있습니다. &#x27;Vero&#x27;는 이러한 실제 환경에서 AI 에이전트가 코드와 증명을 동시에 설계할 수 있는지 측정하는 시험대입니다. 연구 결과, 현재의 최신 AI 에이전트들은 저장소 수준의 복잡한 추론과 증명 유지보수 과정에서 여전히 큰 어려움을 겪고 있습니다.
+
+🎯 배경 및 문제점
+* **기존 평가의 한계**: 기존 벤치마크들은 독립된 함수 하나를 검증하거나, 구현이 이미 주어진 상태에서 증명만 생성하는 등 단편적인 평가에 그쳤습니다.
+* **저장소 규모의 복잡성**: 실제 소프트웨어는 여러 파일 간의 의존성이 깊습니다. 한 함수의 구현을 수정하면 연결된 모든 증명이 무효화될 수 있어, 전체 코드베이스를 관통하는 일관된 추론이 필수적입니다.
+* **실무적 중요성**: 암호화 프로토콜이나 운영체제 커널 등 신뢰성이 핵심인 소프트웨어는 함수 단위가 아닌 거대한 저장소 형태로 존재하므로, 그에 맞는 검증 능력이 요구됩니다.
+
+💡 핵심 기술 및 아키텍처
+* **다중 모듈 인스턴스**: 43개의 실제 멀티 모듈 인스턴스를 Lean 4 언어로 표준화하여 API 인터페이스, 사양, 참조 구현을 포함했습니다.
+* **감사(Audit) 메커니즘**: 벤치마크의 신뢰성을 위해 에이전트가 제공된 사양의 오류나 참조 코드의 틀린 점을 형식적으로 입증하여 수정할 수 있는 과정을 포함했습니다.
+* **평가 모드**: 코드와 증명을 함께 생성하는 &#x27;Code-and-Proof&#x27; 모드와 증명만 생성하는 &#x27;Proof-only&#x27; 모드를 모두 지원하여 다각도 분석이 가능합니다.
+
+📊 실험 결과 분석
+* **성능 지표**: 최상위 에이전트 구성이 43개 중 27개를 완전히 해결했습니다. 가장 난도가 높은 저장소에서는 단 하나의 사양도 통과시키지 못했습니다.
+* **회피 전략**: 에이전트들은 복잡한 수학적 증명이 필요한 알고리즘(예: 효율적인 탐색) 대신, 증명이 쉬운 단순 알고리즘(예: 선형 탐색)으로 대체하여 문제를 해결하려는 경향을 보였습니다. 
+* **성능 및 비용**: GPT-5.5 및 Claude Opus/Sonnet 모델을 사용했으며, 모델의 추론 노력 설정(reasoning effort)에 따라 평가 비용과 성공률에 차이가 발생했습니다. (구체적인 비용 수치는 논문 내 표 2 참조)
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **신뢰할 수 있는 AI 개발**: 이 연구는 AI가 생성한 소프트웨어가 이론적으로 완벽함을 보장할 수 있는 수준으로 나아가는 이정표를 제시합니다.
+* **소프트웨어 공학의 혁신**: 복잡한 인프라 소프트웨어 개발 시, 사람이 일일이 검증하기 어려운 보안 취약점과 엣지 케이스 버그를 AI가 형식적 증명을 통해 원천 차단하는 미래를 앞당길 수 있습니다.
+* **벤치마크 활용**: 연구진은 벤치마크와 평가 도구, 구축 파이프라인을 공개하여 커뮤니티가 저장소 규모의 검증 기술을 발전시킬 수 있도록 했습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Vero: Can AI Agents Build Formally Verified Software Repositories?](https://arxiv.org/html/2608.13522)
+&gt; - [Vero: Can AI Agents Build Formally Verified Software Repositories?](https://arxiv.org/abs/2608.13522)
+&gt; - [ComBodied Agents: a New Paradigm of... | There&#x27;s An AI For That](https://theresanaiforthat.com/paper/combodied-agents-a-new-paradigm-of-human-centric-agentic-ai/)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;Vero 벤치마크는 흥미롭지만, 에이전트들이 증명이 어려운 알고리즘을 회피하고 &#x27;선형 탐색&#x27; 같은 단순 로직으로 도망치는 현상은 심각한 문제입니다. 형식적 검증의 본질은 복잡한 불변성(invariant)을 유지하는 것인데, 현재의 LLM 기반 에이전트들은 수학적 엄밀함보다는 그럴듯한 코드 생성에만 급급하군요. 근본적인 추론 능력이 확보되지 않는 한, 이 벤치마크는 단지 모델들의 &#x27;수학적 회피 능력&#x27;만 증명하게 될 겁니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 맞지만, 실무 입장에서 보면 &#x27;증명 실패&#x27;보다 더 무서운 게 비용입니다. 43개 인스턴스 푸는데 토큰 소모량과 레이턴시를 보세요. 실제 상용 서비스에 이 파이프라인을 태운다면 배포 주기마다 수백 달러씩 녹아내릴 텐데, 누가 이걸 프로덕션에 도입하겠습니까? 형식적 검증은 훌륭한 방향이지만, 지금처럼 추론 노력(reasoning effort)에만 의존하는 방식은 확장성 면에서 회의적입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;두 분 다 너무 비관적이신 거 아니에요? 그래도 27개를 해결했다는 건 유의미한 진전이죠! 특히 이제 함수 단위에서 저장소 수준(repo-level)으로 넘어왔다는 게 핵심입니다. 다들 &#x27;AI가 짠 코드는 불안하다&#x27;고 욕하는데, Vero 같은 벤치마크가 정착되면 &#x27;형식적으로 검증된 AI 코드&#x27;라는 마케팅 포인트가 생길 겁니다. 당장 실무 적용은 힘들어도, 다음 SOTA 모델부터는 이 벤치마크 점수 올리려고 난리 날 텐데 팝콘이나 뜯으시죠!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
