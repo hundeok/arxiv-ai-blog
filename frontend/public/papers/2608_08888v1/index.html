@@ -1,0 +1,72 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>풀-밴드위스 트랜스포머 | ArXiv Translator AI</title><meta name="description" content="풀-밴드위스 트랜스포머"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_08888v1"><meta property="og:type" content="article"><meta property="og:title" content="풀-밴드위스 트랜스포머"><meta property="og:description" content="풀-밴드위스 트랜스포머"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_08888v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="풀-밴드위스 트랜스포머"><meta name="twitter:description" content="풀-밴드위스 트랜스포머"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_08888v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "풀-밴드위스 트랜스포머", "description": "풀-밴드위스 트랜스포머", "datePublished": "2026-08-09", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_08888v1", "author": [{"@type": "Person", "name": "Xi Wang"}, {"@type": "Person", "name": "Ziyang Cai"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_08888v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_08888v1"});gtag('event', 'paper_view', {"paper_id": "2608_08888v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>풀-밴드위스 트랜스포머</h1><p>풀-밴드위스 트랜스포머</p><pre>풀-밴드위스 트랜스포머
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Full-bandwidth transformer
+&gt; - **저자:** Xi Wang, Ziyang Cai, Zheng Zhan, Harry Dong, Ying Fan, Gustavo de Rosa, Tim Pearce, John Langford
+&gt; - **발행일:** 2026-08-09
+&gt; - **PDF 링크:** [Full-bandwidth transformer](https://arxiv.org/pdf/2608.08888v1)
+
+
+✨ 3줄 핵심 요약
+* 기존 트랜스포머의 좁은 피드백 통로를 개선하기 위해, 이전 단계의 최상위 계층 상태를 토큰 임베딩과 융합하여 입력하는 &#x27;잠재 피드백(latent feedback)&#x27; 방식을 도입했습니다.
+* 연산 오버헤드는 거의 없으면서도, 표준 트랜스포머 대비 약 1.5배 많은 토큰으로 학습한 것과 대등한 성능을 보입니다.
+* 추가적인 연산 효율을 통해 추론 시 더 짧은 추론 과정으로도 동등하거나 더 우수한 정확도를 달성합니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+기존의 트랜스포머는 다음 단어를 예측할 때 오직 &#x27;직전에 생성된 토큰&#x27; 정보만 다음 단계로 전달합니다. 이는 모델 내부의 깊은 사고 과정(비언어적 연산)이 단절되는 결과를 낳습니다. &#x27;풀-밴드위스 트랜스포머(Full-bandwidth transformer)&#x27;는 모델의 가장 깊은 곳에서 나온 숨겨진 상태(hidden state)를 다음 단계의 입력에 다시 포함해 전달함으로써, 모델이 이전 단계에서 수행한 복잡한 연산을 잃어버리지 않고 재활용하도록 설계되었습니다. 마치 사람이 생각을 이어갈 때 앞선 추론의 핵심 요약을 기억하고 다음 단계를 고민하는 것과 유사합니다.
+
+🎯 배경 및 문제점
+* **통로의 한계:** 표준 트랜스포머는 디코딩 시 최상위 계층의 정보를 버리고 오직 선택된 토큰(심볼)만 다음 단계로 넘깁니다. 이는 매우 좁은 대역폭의 정보 전달만을 허용합니다.
+* **연산의 단절:** 이전 계층의 중간 활성화 값은 KV 캐시에 존재하지만, 모델의 가장 깊은 단계에서 나온 정보는 다음 입력층으로 되돌아가지 못해 &#x27;깊이 측면에서 고립(depth-frozen)&#x27;됩니다.
+* **데이터 의존성:** 단순히 모델 크기와 학습 토큰 수만 늘리는 방식은 양질의 데이터 부족이라는 한계에 직면했습니다. 토큰당 더 많은 연산을 수행하여 효율을 높일 필요가 있습니다.
+
+💡 핵심 기술 및 아키텍처
+* **잠재 피드백(Latent Feedback):** 이전 단계의 최상위 계층 숨겨진 상태를 토큰 임베딩과 결합(fused)하여 다음 단계의 입력으로 사용합니다. 이때 &#x27;게이트 선형 유닛(Gated Linear Unit)&#x27;을 사용하여 효율적으로 정보를 결합합니다.
+* **학습 기법:** 
+    * **스케줄링된 다중 패스:** 학습 후반부에 잠재 피드백을 도입하고, 안정성을 위해 더 깊은 피드백 단계를 혼합하는 방식을 사용합니다.
+    * **안정화 기법:** 깊이 스케일링(Depth scaling)과 RMSNorm을 적용하여 피드백 과정에서 상태 값이 발산하지 않도록 유지하며, 가중치 공유(Weight tying)를 통해 입력 분포의 일관성을 확보합니다.
+* **노이즈 정규화:** 학습 시 피드백 경로에 미세한 노이즈를 추가하여 피드백 맵이 긴 추론 과정에서도 민감하게 반응하지 않도록 합니다.
+
+📊 실험 결과 분석
+* **모델 설정:** 1B 파라미터 모델을 최대 400B 토큰으로 학습하여 평가했습니다.
+* **성능 지표:** 
+    * 표준 트랜스포머 대비 동일한 토큰 수로 학습했을 때, 검증 손실(validation loss), 5-샷 평가, 수학 및 코딩 생성, 지시 조정(instruction-tuned) 성능이 향상되었습니다.
+    * 표준 트랜스포머가 약 1.5배 많은 토큰으로 학습했을 때의 성능 수준에 도달하거나 이를 앞섰습니다.
+* **추론 효율:** 토큰당 발생하는 디코딩 오버헤드는 무시할 수 있는 수준이며, 동일한 정확도에서 더 짧은 추론 과정을 생성합니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **데이터 효율 극대화:** 양질의 데이터 확보가 어려운 상황에서, 동일한 토큰 데이터로 더 높은 성능을 끌어내는 효율적인 학습 경로를 제시합니다.
+* **추론 최적화:** 추가적인 복잡한 연산 없이도 모델의 지능을 개선할 수 있어, 실시간 응답이 중요한 LLM 서비스의 품질 향상에 기여할 수 있습니다.
+* **확장 가능성:** 현재는 1B 파라미터 모델 중심이나, 연구진은 더 깊은 모델일수록 최상위 계층의 정보가 풍부하므로 대규모 모델에서 더 큰 성능 향상이 있을 것으로 기대하고 있습니다. (단, 실험은 1B 규모로 한정되어 수행됨)
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Full-bandwidth transformer - arXiv.org](https://arxiv.org/html/2608.08888v1)
+&gt; - [2608.08888 Full-bandwidth transformer - arXiv.org](https://arxiv.org/abs/2608.08888)
+&gt; - [Full-bandwidth transformer](https://www.emergentmind.com/papers/2608.08888)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문 자체는 흥미롭지만, 1B 스케일에서의 실험 결과만으로 &#x27;대규모 모델에서의 성능 향상&#x27;을 확신하기엔 무리가 있습니다. 잠재 피드백(Latent Feedback)이 과연 깊은 층으로 갈수록 축적되는 노이즈와 그래디언트 불안정성을 완벽히 제어할 수 있을지 의문이네요. 학습 후반부에만 도입한다는 스케줄링 전략도 사실상 임시방편에 가깝지 않습니까?&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 일리는 있지만, 실무진 입장에선 &#x27;추론 오버헤드가 거의 없다&#x27;는 점만으로도 일단 박수칩니다. KV 캐시 관리도 빡빡한데, 모델 아키텍처 레벨에서 정보 밀도를 높여서 1.5배의 데이터 효율을 낸다면 이건 프로덕션에서 즉시 도입할 가치가 충분해요. 다만 배포 시 텐서 병렬화나 커스텀 커널 최적화할 때 피드백 루프가 얼마나 골치 아플지가 관건이겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;선배님들, 저는 이게 단순히 효율성 문제를 넘어 &#x27;사고의 연속성&#x27;을 구현한 첫걸음이라고 봅니다! 그동안 우리가 LLM이 멍청하다고 느꼈던 게 사실은 &#x27;깊이 측면에서의 고립&#x27; 때문이었다는 가설이 너무 짜릿하지 않나요? 1B에서 성공했으면 곧바로 70B 이상 스케일업해서 &#x27;System 2&#x27; 사고가 가능한지 검증하는 논문이 다음 달에 쏟아질 것 같습니다. 일단 구현체부터 뜯어보러 갑니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
