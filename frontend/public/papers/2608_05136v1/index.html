@@ -1,0 +1,69 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>손실 함수는 기저를 보지 못하지만, 아담(Adam)은 본다 | ArXiv Translator AI</title><meta name="description" content="손실 함수는 기저를 보지 못하지만, 아담(Adam)은 본다"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_05136v1"><meta property="og:type" content="article"><meta property="og:title" content="손실 함수는 기저를 보지 못하지만, 아담(Adam)은 본다"><meta property="og:description" content="손실 함수는 기저를 보지 못하지만, 아담(Adam)은 본다"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_05136v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="손실 함수는 기저를 보지 못하지만, 아담(Adam)은 본다"><meta name="twitter:description" content="손실 함수는 기저를 보지 못하지만, 아담(Adam)은 본다"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_05136v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "손실 함수는 기저를 보지 못하지만, 아담(Adam)은 본다", "description": "손실 함수는 기저를 보지 못하지만, 아담(Adam)은 본다", "datePublished": "2026-08-05", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_05136v1", "author": [{"@type": "Person", "name": "Devender Singh"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_05136v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_05136v1"});gtag('event', 'paper_view', {"paper_id": "2608_05136v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>손실 함수는 기저를 보지 못하지만, 아담(Adam)은 본다</h1><p>손실 함수는 기저를 보지 못하지만, 아담(Adam)은 본다</p><pre>손실 함수는 기저를 보지 못하지만, 아담(Adam)은 본다
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** The Loss Does Not See the Basis, but Adam Does
+&gt; - **저자:** Devender Singh
+&gt; - **발행일:** 2026-08-05
+&gt; - **PDF 링크:** [The Loss Does Not See the Basis, but Adam Does](https://arxiv.org/pdf/2608.05136v1)
+
+
+✨ 3줄 핵심 요약
+- 경사하강법(GD)과 달리 아담(Adam) 계열 최적화 기법은 학습 과정에서 모델의 기저(Basis) 선택에 영향을 받으며, 이로 인해 저차원(low-rank) 구조를 찾는 귀납적 편향이 손상될 수 있습니다.
+- 이는 손실 함수의 &#x27;게이지 대칭성(gauge symmetry)&#x27;을 보존하는지 여부에 따른 결과이며, 아담은 이 대칭성을 깨뜨리는 좌표별(coordinate-wise) 적응형 업데이트를 사용하기 때문입니다.
+- 트랜스포머 어텐션 헤드 등 대칭성이 존재하는 구조에서 이러한 기저 의존성은 모델 학습 결과의 결정적인 차이를 만들어냅니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+많은 인공지능 모델은 사실상 같은 함수를 구현함에도 불구하고, 내부적인 매개변수 표현 방식(기저)에 따라 최적화 과정이 달라질 수 있습니다. 경사하강법은 이러한 표현 방식과 무관하게 모델의 구조적 특징(낮은 랭크)을 잘 찾아내지만, 아담(Adam)과 같은 최적화 도구는 매개변수 하나하나를 개별적으로 조정하는 과정에서 모델의 기저에 민감하게 반응하여 더 좋지 않은 최적점(interpolant)을 선택할 가능성이 있습니다. 본 논문은 최적화 도구가 기저 선택이라는 기술적 세부사항에 그치지 않고, 모델이 최종적으로 어떤 해답을 선택하게 될지를 결정짓는 핵심 요소임을 밝히고 있습니다.
+
+🎯 배경 및 문제점
+- 경사하강법(GD)은 과매개변수화된 모델에서 단순히 학습 손실을 줄이는 것을 넘어, 구조적으로 낮은 랭크(low-rank)의 해를 찾는 암묵적 정규화 효과가 있음이 잘 알려져 있습니다.
+- 반면, 아담 계열의 최적화 도구들은 학습 손실은 비슷하게 달성할지라도 테스트 성능에서 차이를 보이는 경우가 많습니다.
+- 이러한 현상의 원인으로 지목된 &#x27;기저 의존성(basis dependence)&#x27;이 실제 모델의 선택(interpolant selection)에 어떤 영향을 미치는지 체계적인 분석이 부족했습니다.
+
+💡 핵심 기술 및 아키텍처
+- **게이지 불변성 및 동변성(Gauge Equivariance):** 손실 함수가 $(U, V) \mapsto (UQ, VQ)$와 같은 변환에 대해 불변일 때, 최적화 도구 역시 동일한 대칭성을 유지(동변성)해야 경사하강법과 유사한 저차원 편향을 유지할 수 있습니다.
+- **분류 체계:** 경사하강법, 모멘텀, 공유 스칼라(shared-scalar) 아담 등은 이 조건을 만족하나, 아담과 RMSProp 같은 좌표별 적응형 기법들은 이를 만족하지 않습니다.
+- **트윈 프로토콜(Twin Protocol):** 같은 함수를 계산하지만 기저가 다른 두 모델을 비교하여 최적화 도구가 대칭성을 보존하는지 측정하는 검증 방식을 도입했습니다.
+
+📊 실험 결과 분석
+- **복구 오차(Recovery Error):** 매트릭스 감지 실험에서 아담은 0.573, 경사하강법은 0.131의 오차를 보여 경사하강법이 훨씬 뛰어난 복구 성능을 보였습니다. (수치가 언급된 결과값 기준)
+- **트랜스포머 결과:** 아담은 어텐션 헤드의 게이지 대칭성을 학습 첫 단계부터 파괴하며, 최종적으로 두 모델(트윈) 간의 상대적 거리 차이가 56%까지 벌어지는 결과를 낳았습니다.
+- **예외적 사례:** 무온(Muon) 최적화기는 특정 조건(스펙트럼 꼬리가 길어질 때)에서 성능 저하를 보이나, 학습 초기 단계에서는 경사하강법과 유사한 특성을 공유합니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+- **모델 설계의 통찰:** 최적화 도구 선택이 단순히 수렴 속도의 문제가 아니라, 모델이 데이터 내 어떤 패턴을 우선적으로 학습할지 결정하는 정규화 도구임을 시사합니다.
+- **실무 적용:** 모델의 기저 선택이나 어텐션 구조를 다룰 때 최적화 도구의 기저 의존성을 반드시 고려해야 합니다. 특히 정밀한 학습이 요구되는 얼라인먼트(alignment) 기반 모델 병합이나 대규모 트랜스포머 학습 시 최적화 도구의 선택이 모델의 성능과 직결될 수 있습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [The Loss Does Not See the Basis, but Adam Does | alphaXiv](https://www.alphaxiv.org/abs/2608.05136)
+&gt; - [2608.05136 The Loss Does Not See the Basis, but Adam Does](https://arxiv.org/abs/2608.05136)
+&gt; - [Paper page - The Loss Does Not See the Basis, but Adam Does](https://huggingface.co/papers/2608.05136)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;이 논문은 그동안 우리가 아담(Adam)의 &#x27;편의성&#x27; 뒤에 숨겨져 있던 근본적인 이론적 결함을 아주 날카롭게 찔렀군요. 게이지 대칭성을 깨뜨리는 좌표별 업데이트가 단순히 속도의 문제가 아니라, 귀납적 편향의 왜곡을 초래한다는 점은 학계가 진지하게 논의해야 할 지점입니다. 특히 트랜스포머의 어텐션 헤드 구조에서 왜 아담이 경사하강법보다 일반화 성능이 뒤처질 때가 있는지 명쾌하게 설명하고 있네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 맞지만, 실무 현장에서는 &#x27;아담이 없으면 학습이 안 된다&#x27;는 게 문제죠. 당장 훈련 안정성 때문에 아담이나 아담W를 쓰는데, 이 논문대로라면 모델 아키텍처를 짤 때 기저 선택까지 고려해서 최적화기를 바꿔야 한다는 건데... 트레이닝 비용이 수십억 단위인 프로젝트에서 검증되지 않은 새로운 Optimizer를 도입하기엔 리스크가 너무 큽니다. 당장은 Muon 같은 대안을 좀 더 깊게 파봐야겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;아니, 다들 너무 보수적인 거 아니에요? 이번 논문에서 언급된 &#x27;트윈 프로토콜&#x27; 실험 결과를 보세요. 복구 오차 0.573 vs 0.131이면 이건 게임 끝난 거 아닌가요? 지금 LLM 파인튜닝 레시피들 다 갈아엎어야 할 수도 있다는 건데, 내일부터 당장 아담 대신 대칭성 보존되는 최적화기 써서 벤치마크 돌려볼 생각에 벌써 가슴이 뜁니다! 이거 진짜 &#x27;학회 씹어먹을&#x27; 논문이네요.&quot;
+  }
+]
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
