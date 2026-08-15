@@ -15741,7 +15741,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-14T18:49:12.294008+00:00",
+      "updated_at": "2026-08-15T00:54:02.693333+00:00",
       "paper": {
         "title": "Alaya-EVOKE: From Linear-Scaling Supervision to Endless World",
         "summary": "Interactive world models must support persistent memory, responsive interaction, and long-horizon generation, yet these requirements place conflicting demands on the model. Maintaining history in the denoiser context or key-value cache incurs growing cost, forcing a trade-off between session length and retained memory, while low-latency interaction relies on few-step generation whose capabilities are bounded by its teacher. Evoke addresses both limitations by externalizing persistent world state and redesigning the teacher for long-horizon interactive generation. Scene geometry is maintained in an external, camera-indexed world state bank, from which only view-relevant information is retrieved, keeping the denoiser context bounded as the session grows. Rather than treating the teacher as a fixed generator, we design it for long-horizon supervision: its sparse attention combines chunk-wise grouping, retrieval of selected distant frames, and a linear-attention global state, yielding linear growth in memory and compute while enabling supervision over long horizons. Such supervision exposes content drift that stays locally plausible within short windows, while per-chunk conditioning enables prompt changes and event control throughout the sequence. A 30-second distribution-matching objective, applied under self-forced rollouts, transfers both capabilities to a three-step student that uses no classifier-free guidance, improving resistance to long-term drift while preserving responsive conditioning. With bounded context and recurrent external memory, Evoke supports open-ended, continuously evolving generation; on a single H200 at $384\\times 640$, each $1.5\\,\\mathrm{s}$ chunk is generated in $2.11\\,\\mathrm{s}$. As a three-step world model, Evoke achieves state-of-the-art performance on WBench while remaining competitive on VBench-Long and VBench-2.0.",
@@ -15766,7 +15766,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-14T18:49:12.294013+00:00",
+      "updated_at": "2026-08-15T00:54:02.693342+00:00",
       "paper": {
         "title": "DarwinX: Evolving Agent Harnesses Through Natural Selection",
         "summary": "An LLM agent's capability depends not only on model weights but on its harness: prompts, tools, skills, and control flow. Self-improvement loops already edit harnesses, yet single-lineage search is path-dependent and local wins often regress other tasks. We introduce DarwinX, which treats self-evolution as selection over a population of harnesses with the model frozen: a preserve-and-extend contract admits only variants that extend coverage without regressing, an archive keeps alternative lineages for recombination, and failure-, teacher-, and self-derived evidence share one edit interface. Fitness comes from each benchmark's own verifier: no gold solutions, no hand-picked winners. Across four benchmarks that progressively separate the evolution signal from the test, one loop adds about 17 points on average: Terminal-Bench 2.1 rises +7.7 to 83.2% on a matched base and to the verified frontier at 84.7% on a stronger one; TerminalWorld's held-out split reaches 68.3%, ahead of every off-the-shelf agent; WebArena-Infinity real-task pass@1 rises from 43.5% to 93.0% audit-clean; and a Terminal-Bench 2.1 harness transfers unchanged to SWE-bench Verified. What evolves is general agent competence, not benchmark-specific patches, so it survives changes of task, verifier, and base model. A frozen model need not be a fixed agent: harness selection turns evaluation compute into durable capability.",
@@ -15797,7 +15797,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-14T18:49:12.294018+00:00",
+      "updated_at": "2026-08-15T00:54:02.693338+00:00",
       "paper": {
         "title": "LLMRouter: Unified Infrastructure for Developing, Evaluating, and Deploying LLM Routers",
         "summary": "No single large language model (LLM) is optimal across all queries and budget constraints, making model routing essential for cost-effective deployment. Existing routers adopt diverse formulations and implementations, making fair comparison and extension difficult. We present a unified formulation of LLM routing as a sequential decision process characterized by five components: context encoders, model encoders, scoring functions, decision rules, and learning signals, covering single-turn, multi-turn, and personalized routing. Based on this formulation, we develop an automated pipeline for constructing routing supervision and evaluating routers jointly on response quality and inference cost. The resulting benchmark, xRouteBench, spans generic LLM, memory-augmented, vision, time-series, and personalized routing tasks. We further introduce LLMRouter, an open-source modular infrastructure with more than 16 representative routers. Our empirical study shows that learned routers outperform the strongest fixed-model baseline by 14.6% relatively, lightweight routers become more competitive under tight cost constraints, and user-conditioned routing consistently improves personalization.",
@@ -15828,7 +15828,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-14T18:49:12.294026+00:00",
+      "updated_at": "2026-08-15T00:54:02.693350+00:00",
       "paper": {
         "title": "Spatial Memory Agent: Experience-Grounded Procedure Memory for Spatial Intelligence",
         "summary": "Spatial intelligence is becoming a foundation for embodied agents, robotic planning, and multimodal assistants. To improve the spatial reasoning ability of VLM agents, existing work has mainly followed two lines. One line uses post-training methods, such as supervised fine-tuning and reinforcement learning. Another line adopts an agentic paradigm in which the model calls external spatial tools, such as depth estimation and 3D reconstruction tools, to gather intermediate spatial evidence. We study a complementary and underexplored route: Can a frozen VLM agent improve its spatial reasoning through \\textbf{parameter-update-free self-evolution}, without depending on external expert spatial tools at inference time? We present \\textbf{Spatial Memory Agent (SMA)}, an \\textbf{experience-grounded runtime framework} that converts verified spatial experience into reusable transferable lessons. In a verifiable spatial environment, SMA queries the frozen VLM, obtains a predicted answer and reward, and uses \\textbf{verifier-guided reflection} to distill compact transferable lessons from spatial experience. SMA further assigns each lesson a \\textbf{Transfer Reliability Score (TRS)}, which is initialized uniformly and calibrated from later retrieval outcomes as visit evidence of future transfer reliability. During \\textbf{read-only deployment}, SMA retrieves lessons by semantic filter and similarity-TRS combined ranking, allowing the retrieved memory to guide frozen model inference. Across five representative spatial benchmarks and four base VLMs, SMA achieves the highest macro average in every base-model block and the best accuracy among the evaluated methods in most of the 20 evaluations, establishing a practical parameter-update-free path for spatial self-evolution across the evaluated frozen model scales and environments.",
@@ -15855,7 +15855,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-14T18:49:12.294030+00:00",
+      "updated_at": "2026-08-15T00:54:02.693354+00:00",
       "paper": {
         "title": "DreamX-Phi 1.0: Action-Conditioned Video World Model for Robotic Manipulation",
         "summary": "We present \\textbf{DreamX-Phi 1.0}, an action-conditioned video world model for robotic manipulation that, given an observed frame, a language instruction, and a prescribed action sequence comprising end-effector poses and gripper states, predicts the resulting future observations. Yet realism alone does not guarantee faithfulness: a convincing rollout can still move the wrong arm or lose the manipulated object. To ensure the prediction respects each arm's commanded path, we inject per-arm $\\mathrm{SE}(3)$ transformations into attention via \\textbf{PRoPE-style geometric encoding}, preserving arm identity and rigid-motion structure. Action control alone does not fully constrain scene geometry or the evolution of small manipulated objects. We therefore add a lightweight \\textbf{depth branch} for scene-level geometry and use \\textbf{SAM3 masks} with a frozen \\textbf{V-JEPA teacher} to maintain object consistency throughout grasping. We further distill the multi-step generator into a few-step student via distribution-matching distillation for efficient deployment. At the time of writing, \\model{} achieves first place on Track~1 and second place on Track~2 of the WorldArena~2.0 Challenge. Our model and code will be publicly available.",
@@ -15938,7 +15938,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-14T18:49:12.293997+00:00",
+      "updated_at": "2026-08-15T00:54:02.693311+00:00",
       "paper": {
         "title": "An AI4AI Framework for Visual Token Pruning",
         "summary": "Visual-token pruning can substantially reduce the inference cost of multimodal large language models (MLLMs), yet existing methods largely rely on fixed, handcrafted heuristics and costly expert trial and error. As pruning objectives, budgets, and model architectures diversify, manually navigating the expanding design space becomes increasingly difficult. This paper aims to build an AI4AI framework for visual-token pruning by addressing a natural question: Can large language models automatically design effective visual-token reduction algorithms? Although LLMs possess broad algorithmic knowledge and strong reasoning capabilities, translating such general knowledge into effective solutions for a specialized task remains nontrivial. We argue that the key lies in designing an appropriate search-state representation that connects the internal knowledge of LLMs with the structural requirements and constraints of visual-token pruning. Based on this insight, we propose AutoPrune, a training-free framework for LLM-driven visual-token pruning policy design. At its core, AutoPrune introduces a Token Pruning Domain-Specific Language (TPDSL) comprising 131 reusable atoms for budget control, token scoring, selection constraints, and token reassembly. A key property of TPDSL is that it represents each search state as a residual modification of a strong base policy. This residual formulation narrows the search space and directs the LLM's attention toward the policy components that are most consequential for performance. Experiments on 14 multimodal benchmarks and three MLLM backbones demonstrate the effectiveness, efficiency, and transferability of AutoPrune. Even when removing 94.4% of visual tokens, AutoPrune preserves more than 99% of full-token performance while reducing FLOPs by 9.9x and prefill latency by 6.4x.",
@@ -15963,7 +15963,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-14T18:49:26.087445+00:00",
+      "updated_at": "2026-08-15T00:54:02.693329+00:00",
       "paper": {
         "title": "UniSwap: Streaming Audio-Visual Identity Swapping for Talking Videos",
         "summary": "Talking-video character replacement requires coordinated transfer of appearance and voice while preserving the source motion, scene, linguistic content, and audio-video timing. Existing methods use separately optimized models for the two modalities, making audio-visual consistency difficult to enforce. We present UniSwap, the first framework for streaming joint audio-visual identity replacement in talking videos. Given a source video, a reference image, and a reference voice clip, UniSwap transfers the reference appearance and vocal timbre within a single audio-visual diffusion transformer while preserving the source content and dynamics. To address the scarcity of aligned cross-identity training pairs, we introduce a swap-and-reconstruct pipeline that removes visual and vocal identity from real clips and uses the original clips as reconstruction targets. Starting from a bidirectional backbone, we progressively adapt the model through In-context Pretraining for joint replacement, Conditional Streaming Adaptation for block-causal KV-cached generation, and Efficient Self-forcing DMD for mitigating exposure bias and reducing sampling from 30 to 3 denoising steps per block. Efficient Multi-LoRA Switching enables the three DMD roles to share a single frozen backbone. Feature-RoPE Decomposition keeps cached positions within the training range, supporting stable long-form inference. Experiments demonstrate strong audio-visual synchronization, competitive identity preservation, efficient streaming, and stable long-form generation.",
@@ -15990,7 +15990,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-14T18:49:12.294022+00:00",
+      "updated_at": "2026-08-15T00:54:02.693346+00:00",
       "paper": {
         "title": "LiveAnimate: Stable Long-Form Streaming Human Animation in Real-Time",
         "summary": "Pose-driven human animation synthesizes a video of a target person from a single reference image and a driving pose stream. Real-time generation is essential for interactive applications such as live streaming, telepresence, and virtual avatars, yet diffusion-based systems require minutes to hours per clip, precluding responsive interaction. We present LiveAnimate, to our knowledge the first animation system to combine real-time streaming with stable long-form generation at billion scale, built on a 14B-parameter video Diffusion Transformer (DiT). A two-stage training pipeline first adapts a pretrained bidirectional DiT into a block-causal autoregressive generator through Reference-Anchored Teacher-Forcing Adaptation, and then reduces the sampling budget to three steps through Block-wise Self-Forcing Distillation. To preserve appearance over extended streams, we introduce Pose-Retrieval Sink Attention (PR-Sink), a bounded KV-cache mechanism combining a Static Sink that permanently anchors the first generated block, a Dynamic Sink that holds a pose-retrieved historical block, and a three-slot Rolling Window. When a pose recurs, PR-Sink restores the relevant appearance context without retaining the entire sequence, so memory and per-block latency remain constant regardless of stream duration. Together with Ulysses sequence parallelism and operator fusion, these designs enable 19.63\\,FPS streaming inference on two NVIDIA H100 GPUs. On a three-minute benchmark, LiveAnimate maintains nearly constant perceptual quality and identity from the first 30 seconds to the final minute, while prior systems degrade substantially or require hours of offline computation for the same rollout. These results establish a new operating point in quality, latency, and duration for interactive full-body animation.",
@@ -16018,7 +16018,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-14T18:49:12.293975+00:00",
+      "updated_at": "2026-08-15T00:54:02.693288+00:00",
       "paper": {
         "title": "Mitigating Gender Bias in English to Romanian Machine Translation",
         "summary": "Machine translation (MT) systems often fail to correctly translate gender, especially when converting from a gender-neutral language like English to a gendered target language such as Romanian. This bias results in translations that default to masculine forms or reinforce gender stereotypes. We propose a hybrid pipeline to mitigate this issue by combining large language model (LLM)-based gender classification with neural machine translation (NMT). Our system uses a fine-tuned LLM to detect the intended gender of target words in English sentences and insert inline gender hint tags. These tagged sentences are then passed to a Transformer model fine-tuned to generate morphologically correct Romanian translations. To support this, we introduce three novel datasets for gender disambiguation and translation. Our approach improves gender accuracy on the WinoMT and WinoGender benchmarks by over 40 percentage points compared to a baseline MT system. This is the first method to explicitly address and evaluate gender bias in English-Romanian MT using both LLM inference and tag-aware translation.",
@@ -16220,11 +16220,11 @@
     "2608_13517v1": {
       "id": "2608_13517v1",
       "filename": "post_2608_13517v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-08-14T21:19:32.331261+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-14T21:19:32.331262+00:00",
+      "updated_at": "2026-08-15T00:55:15.665033+00:00",
       "paper": {
         "title": "DFM Mimir v1: An Open HRM Delivering Frontier Performance at 1B Parameters Using Only Permissible Post-Training Data",
         "summary": "Current large language model development relies on massive, often non-permissible datasets, creating a high barrier for researchers committed to open-source and ethically sourced data. We introduce Mimir v1, a 1-billion-parameter language model based on the Hierarchical Reasoning Model (HRM) architecture, that is trained from scratch and delivers highly competitive performance for English and sets a new state of the art for Danish using only permissible post-training data. Trained on a mixture of 161 datasets, Mimir v1 outperforms the original HRM-Text 1B and competes with larger frontier models like Qwen 3.5 4B and Gemma 4 E2B, tested across 20 benchmarks for English, Math & Code and Danish. The model is available on the Hugging Face Hub: https://huggingface.co/danish-foundation-models/DFM-Mimir",
@@ -16238,7 +16238,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2608.13517v1"
       },
-      "priority_score": 40
+      "priority_score": 40,
+      "korean_title": "DFM Mimir v1: 허용된 학습 데이터만을 사용하여 10억 개의 매개변수로 최첨단 성능을 구현한 오픈 계층적 추론 모델"
     },
     "2608_13492v1": {
       "id": "2608_13492v1",
@@ -16405,11 +16406,11 @@
     "2608_13463v1": {
       "id": "2608_13463v1",
       "filename": "post_2608_13463v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-08-14T21:19:32.331305+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-14T21:19:32.331307+00:00",
+      "updated_at": "2026-08-15T00:55:03.250346+00:00",
       "paper": {
         "title": "MLLM-Routed Heterogeneous Ensembles for Robust Cross-Dataset Image Classification",
         "summary": "Modern image classification models excel when trained on single task-specific datasets but often struggle to generalize across domains and difficulty levels. We propose ARMDIL, an Adaptive Router for Multi-Domain Image classification with LLMs. ARMDIL is an ensemble that uses a multimodal large language model (MLLM) agent to dynamically route each image to the most suitable vision backbone. Our diverse ensemble employs convolutional neural networks (ResNets), self-supervised representation learners (SSL), and vision-language models (VLMs), each trained on a unified label space constructed from multiple image datasets with differing distributions and characteristics. Empirical evaluations illuminate the distinct capabilities and vulnerabilities of each architecture across disparate visual domains. Crucially, we show that ARMDIL effectively navigates these trade-offs, performing competitively with specialized training-based routers. Furthermore, it drastically improves adaptability by allowing new information to be integrated via simple prompt modifications, while enhancing interpretability through natural language reasoning traces. These advances in cross-dataset image classification pave the way for more reliable general-purpose vision systems such as AI assistants and autonomous robots.",
@@ -16423,7 +16424,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2608.13463v1"
       },
-      "priority_score": 46
+      "priority_score": 46,
+      "korean_title": "MLLM을 활용한 다중 도메인 이미지 분류를 위한 경로 최적화 이질적 앙상블"
     },
     "2608_13459v1": {
       "id": "2608_13459v1",
@@ -16634,11 +16636,11 @@
     "2608_13420v1": {
       "id": "2608_13420v1",
       "filename": "post_2608_13420v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-08-14T21:19:32.331369+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-14T21:19:32.331371+00:00",
+      "updated_at": "2026-08-15T00:54:44.787820+00:00",
       "paper": {
         "title": "Enhancing Virtual Agents through SLMs and Edge-Computing: An Exploratory Evaluation of Think and Memory Processes",
         "summary": "Embodied intelligent virtual agents are expected to operate as persistent, adaptive, and context-aware entities within complex virtual and Metaverse worlds. However, implementing cognitively capable agents in such environments is conceptually and technologically challenging. Among a range of blueprints and development approaches, the Cognitive Embodied Agent Architecture (CEAA) has been developed as an implementation-oriented framework for architecting components of perception, memory, reasoning, planning, and embodied action. Considering the recent advances in edge computing and generative AI language models, this paper explores the use of Small Language Models (SLMs) to support edge-based operation of selected CEAA components, focusing on \"Think\" and \"Memory\" as processes central to cognitive orchestration and persistence of virtual agents in interactive virtual worlds. An edge-based virtual agent gateway system was developed and evaluated on an NVIDIA Jetson Orin NX using Qwen2.5 models of different sizes, exploring the system's capability to process service requests and handle memory-driven conversations. A series of simulation experiments evaluated routing accuracy, memory-read performance, and latency, demonstrating an SLM-driven prototype agent system that partially implements selected CEAA processes to support the development of embodied agents whose cognitive \"brain\" can operate efficiently and contextually for interactive experiences in immersive virtual worlds.",
@@ -16649,7 +16651,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2608.13420v1"
       },
-      "priority_score": 48
+      "priority_score": 48,
+      "korean_title": "소형 언어 모델과 엣지 컴퓨팅을 통한 가상 에이전트 강화: 사고 및 기억 과정에 대한 탐색적 평가"
     },
     "2608_13417v1": {
       "id": "2608_13417v1",
@@ -16768,11 +16771,35 @@
         "pdf_link": "https://arxiv.org/pdf/2608.13394v1"
       },
       "priority_score": 40
+    },
+    "2608_08020v2": {
+      "id": "2608_08020v2",
+      "filename": "post_2608_08020v2.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-08-15T00:54:14.452819+00:00",
+      "paper": {
+        "title": "Thought-Level Beam Search for Reasoning",
+        "summary": "Test-time compute scaling is a primary driver of performance in large reasoning models (LRMs), but extreme inefficiency bounds current approaches, shifting the critical question from \\emph{how much} compute to spend, to \\emph{where} to allocate it. We formalize test-time reasoning as a constrained compute allocation problem over partial trajectories. Under a fixed hardware budget, existing paradigms fail to actively allocate the compute to the most promising partial progress: traditional parallel sampling treats traces independently and induces severe memory bottlenecks, while subtractive pruning starves hardware and fails to actively and sufficiently shift the output distribution. To overcome this dichotomy, we introduce Gambit, an inference algorithm that executes \\emph{thought-level beam search}. By periodically pruning unpromising trajectories and immediately branching from high-quality prefixes, Gambit dynamically concentrates compute onto the most promising reasoning traces via a light-weight scorer probing hidden states while maintaining continuous high hardware utilization. Extensive evaluations across multiple models and benchmarks demonstrate that Gambit strictly dominates existing baselines. Under identical hardware constraints, our method yields up to a +6.7\\% absolute accuracy gain on HMMT-24 and +3.3\\% on AIME-25 over pruning baselines, delivers $>2\\times$ higher throughput on trace completion, and reduces total token consumption by up to 68.5\\% relative to standard parallel sampling.",
+        "published": "2026-08-08T09:00:01Z",
+        "authors": [
+          "Lijie Yang",
+          "Hongyin Luo",
+          "Jiawei Zhao",
+          "Tri Dao",
+          "Ravi Netravali"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.08020v2"
+      },
+      "priority_score": 49,
+      "korean_title": "추론을 위한 사고 수준 빔 탐색"
     }
   },
   "last_run": {
-    "started_at": "2026-08-14T21:19:32.332683+00:00",
-    "discovered": 30,
+    "started_at": "2026-08-15T00:54:02.694700+00:00",
+    "discovered": 10,
     "selected": 4,
     "generated": 4,
     "failed": 0,
@@ -16781,27 +16808,27 @@
     "failures": [],
     "usage": {
       "model": "gemini-3.1-flash-lite",
-      "requests": 8,
-      "prompt_tokens": 22170,
-      "output_tokens": 5991,
+      "requests": 7,
+      "prompt_tokens": 17830,
+      "output_tokens": 5305,
       "thought_tokens": 0,
-      "total_tokens": 28161,
-      "estimated_usd": 0.014529
+      "total_tokens": 23135,
+      "estimated_usd": 0.012415
     },
-    "finished_at": "2026-08-14T21:21:04.544085+00:00"
+    "finished_at": "2026-08-15T00:55:15.938757+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 1190,
-    "prompt_tokens": 2995996,
-    "output_tokens": 875045,
+    "requests": 1197,
+    "prompt_tokens": 3013826,
+    "output_tokens": 880350,
     "thought_tokens": 0,
-    "total_tokens": 3871041,
-    "estimated_usd": 2.0615665
+    "total_tokens": 3894176,
+    "estimated_usd": 2.0739815
   },
   "last_publication_run": {
-    "started_at": "2026-08-14T21:19:32.332683+00:00",
-    "discovered": 30,
+    "started_at": "2026-08-15T00:54:02.694700+00:00",
+    "discovered": 10,
     "selected": 4,
     "generated": 4,
     "failed": 0,
@@ -16810,18 +16837,18 @@
     "failures": [],
     "usage": {
       "model": "gemini-3.1-flash-lite",
-      "requests": 8,
-      "prompt_tokens": 22170,
-      "output_tokens": 5991,
+      "requests": 7,
+      "prompt_tokens": 17830,
+      "output_tokens": 5305,
       "thought_tokens": 0,
-      "total_tokens": 28161,
-      "estimated_usd": 0.014529
+      "total_tokens": 23135,
+      "estimated_usd": 0.012415
     },
-    "finished_at": "2026-08-14T21:21:04.544085+00:00"
+    "finished_at": "2026-08-15T00:55:15.938757+00:00"
   },
   "daily_usage": {
-    "date": "2026-08-14",
-    "estimated_usd": 0.11075875,
-    "publications": 32
+    "date": "2026-08-15",
+    "estimated_usd": 0.012415,
+    "publications": 4
   }
 }
