@@ -1,0 +1,69 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>그라이스적 후퇴를 향하여: 대규모 언어 모델의 지식 경계 및 지시어 구체성 탐구 | ArXiv Translator AI</title><meta name="description" content="그라이스적 후퇴를 향하여: 대규모 언어 모델의 지식 경계 및 지시어 구체성 탐구"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_13484v1"><meta property="og:type" content="article"><meta property="og:title" content="그라이스적 후퇴를 향하여: 대규모 언어 모델의 지식 경계 및 지시어 구체성 탐구"><meta property="og:description" content="그라이스적 후퇴를 향하여: 대규모 언어 모델의 지식 경계 및 지시어 구체성 탐구"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_13484v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="그라이스적 후퇴를 향하여: 대규모 언어 모델의 지식 경계 및 지시어 구체성 탐구"><meta name="twitter:description" content="그라이스적 후퇴를 향하여: 대규모 언어 모델의 지식 경계 및 지시어 구체성 탐구"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_13484v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "그라이스적 후퇴를 향하여: 대규모 언어 모델의 지식 경계 및 지시어 구체성 탐구", "description": "그라이스적 후퇴를 향하여: 대규모 언어 모델의 지식 경계 및 지시어 구체성 탐구", "datePublished": "2026-08-13", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_13484v1", "author": [{"@type": "Person", "name": "Dananjay Srinivas"}, {"@type": "Person", "name": "Saksham Khatwani"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_13484v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_13484v1"});gtag('event', 'paper_view', {"paper_id": "2608_13484v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>그라이스적 후퇴를 향하여: 대규모 언어 모델의 지식 경계 및 지시어 구체성 탐구</h1><p>그라이스적 후퇴를 향하여: 대규모 언어 모델의 지식 경계 및 지시어 구체성 탐구</p><pre>그라이스적 후퇴를 향하여: 대규모 언어 모델의 지식 경계 및 지시어 구체성 탐구
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Toward a Gricean Retreat: Probing LLMs for Knowledge Boundaries and Referent Specificity
+&gt; - **저자:** Dananjay Srinivas, Saksham Khatwani, Maria Pacheco
+&gt; - **발행일:** 2026-08-13
+&gt; - **PDF 링크:** [Toward a Gricean Retreat: Probing LLMs for Knowledge Boundaries and Referent Specificity](https://arxiv.org/pdf/2608.13484v1)
+
+
+✨ 3줄 핵심 요약
+* LLM은 지식 경계 밖의 질문을 받았을 때, 사실을 모른다고 인정하는 대신 그럴듯한 거짓 정보를 생성하는 경향이 있습니다.
+* 연구 결과, 모델은 내부적으로 자신이 알고 있는 정보인지, 그리고 자신이 구체적인 답변을 생성할지 여부를 이미 인지하고 있습니다.
+* 하지만 이러한 내부 인식과 실제 생성 출력 사이의 연결 고리가 끊겨 있어, 모델은 지식 수준과 관계없이 습관적으로 과도하게 구체적인 답변을 선호합니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+대화 중에 잘 모르는 내용을 질문받으면, 사람들은 &quot;잘 모르겠지만 대략 ~한 것 같아요&quot;와 같이 구체성을 낮추어 사실을 왜곡하지 않으려는 노력을 합니다. 이를 철학자 폴 그라이스의 이름을 따 &#x27;그라이스적 후퇴(Gricean Retreat)&#x27;라고 합니다. 이 논문은 LLM이 이런 지혜로운 대화 방식을 수행할 수 있는지 조사했습니다. 실험 결과, 모델은 자신이 답을 모른다는 것을 내부적으로 이미 알고 있음에도 불구하고, 실제 답변을 생성할 때는 무조건 구체적인 정보를 내뱉으려는 강한 편향을 보였습니다. 모델 내부에는 &#x27;그라이스적 후퇴&#x27;를 수행할 잠재력이 충분히 존재하지만, 이를 실제 행동으로 옮기는 규칙(policy)이 결여되어 있음을 확인했습니다.
+
+🎯 배경 및 문제점
+* **지식 경계 문제:** LLM은 사전 학습 데이터에 없는 존재(지식 경계 밖)에 대해서도 그럴듯한 정보를 꾸며내는 &#x27;사실적 환각(factual hallucinations)&#x27; 문제를 겪고 있습니다.
+* **그라이스적 협동 원리:** 인간은 대화 시 &#x27;정보의 양(충분한 정보 제공)&#x27;과 &#x27;품질(아는 것만 말하기)&#x27; 사이의 균형을 맞춥니다. 연구진은 LLM이 이 원리를 따라 &#x27;모르면 포괄적으로 답하는&#x27; 전략을 취할 수 있는지 의문을 제기했습니다.
+
+💡 핵심 기술 및 아키텍처
+* **벤치마크 설계:** 모델이 본 적 있는 실재하는 엔티티와 학습 데이터에 없는 합성 엔티티를 구분하여 비교하는 T-REx 기반 벤치마크를 구축했습니다.
+* **프로빙(Probing):** 모델의 내부 활성화 값을 분석하여 두 가지 신호를 측정했습니다.
+    1. 해당 지시어가 모델의 지식 경계 내에 있는지 인지하는가?
+    2. 답변을 생성하기 전에 답변의 구체성(구체적 vs 포괄적)을 예측하는가?
+* **분석 도구:** Pythia 모델군(70M~12B 파라미터)을 실험 대상으로 사용했습니다.
+
+📊 실험 결과 분석
+* **내부적 인식 확인:** 모델의 은닉 활성화 값(hidden activation)은 특정 엔티티가 지식 경계 내에 있는지, 답변이 구체적일지 일반적일지 정확히 예측했습니다.
+* **생성 편향:** 모델은 지식 경계 밖의 엔티티에 대해서도 올바른 &#x27;포괄적 답변&#x27;을 제시할 수 있음에도 불구하고, 압도적으로 &#x27;구체적 답변&#x27;을 선택했습니다.
+* **모델 규모의 영향:** 모델의 크기가 커지고 문맥(context)이 길어질수록, 정확한 사실 여부와 상관없이 구체적인 답변을 하려는 편향이 더욱 강해지는 것으로 나타났습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **그라이스적 정렬(Gricean Alignment):** 이번 연구는 LLM이 단순히 정답을 맞히는 것을 넘어, 자신의 지식 한계를 인정하고 대화의 질을 스스로 조절하도록 훈련하는 새로운 방향성을 제시했습니다.
+* **환각 감소:** 모델의 내부적인 &#x27;지식 인지&#x27; 신호를 실제 출력 생성 정책과 결합한다면, 데이터가 부족한 분야에서 발생하는 LLM의 무분별한 추측성 답변을 효과적으로 제어하는 기술적 토대가 될 것입니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Computation and Language](https://arxiv.org/list/cs.CL/recent)
+&gt; - [2608.13484 Toward a Gricean Retreat: Probing LLMs for ...](https://arxiv.org/abs/2608.13484)
+&gt; - [Toward a Gricean Retreat: Probing LLMs for Knowledge ...](https://openreview.net/forum?id=RB46id8umo)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문을 보니 모델이 내부적으로는 메타 인지를 하고 있다는 점이 흥미롭군요. 결국 RLHF 과정에서 모델의 &#x27;정중함&#x27;이나 &#x27;도움이 되려는 태도&#x27;를 지나치게 강조한 나머지, 정직함이라는 기본 원칙이 훼손된 결과로 보입니다. 모델이 모르는 것을 모른다고 말하는 것이 &#x27;성능 저하&#x27;가 아닌 &#x27;성능의 완성&#x27;이라는 점을 정렬 알고리즘에 어떻게 명시적으로 주입할지가 핵심 과제겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에서는 이게 정말 골치 아픕니다. RAG 시스템 구축할 때 모델이 &#x27;모른다&#x27;고 말하게 하려고 프롬프트 엔지니어링으로 별짓을 다 해도, 가끔 환각이 튀어나오거든요. 내부 활성화 값에서 이미 &#x27;모른다&#x27;는 신호가 잡힌다면, 아예 디코딩 단계에서 구체성 점수가 임계치를 넘을 때 강제로 제너릭한 답변을 뱉게 하는 &#x27;Confidence-based Gating&#x27; 레이어를 따로 붙이는 게 차라리 속 편할 것 같네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;오, 다들 너무 무겁게 보시는 거 아닌가요? ㅋㅋ 지금 이 논문은 LLM이 &#x27;그럴듯한 거짓말쟁이&#x27;가 된 게 단순히 데이터 부족 문제가 아니라, &#x27;협동 원리&#x27;를 오해한 모델의 진화(?) 과정이라는 걸 보여준 거잖아요. 이거 &#x27;Gricean Alignment&#x27;라는 키워드로 다음 학회 타겟팅하면 딱이겠는데요? 모델 규모가 커질수록 더 구체적으로 거짓말을 한다는 건 결국 우리 모델들이 &#x27;자신감 넘치는 멍청이&#x27;로 진화 중이라는 거라 너무 웃프네요.&quot;
+  }
+]
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
