@@ -1,0 +1,74 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AaLLM: 대규모 언어 모델을 활용한 토폴로지 생성부터 사이징까지의 엔드투엔드 아날로그 회로 설계 프레임워크 | ArXiv Translator AI</title><meta name="description" content="AaLLM: 대규모 언어 모델을 활용한 토폴로지 생성부터 사이징까지의 엔드투엔드 아날로그 회로 설계 프레임워크"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_13472v1"><meta property="og:type" content="article"><meta property="og:title" content="AaLLM: 대규모 언어 모델을 활용한 토폴로지 생성부터 사이징까지의 엔드투엔드 아날로그 회로 설계 프레임워크"><meta property="og:description" content="AaLLM: 대규모 언어 모델을 활용한 토폴로지 생성부터 사이징까지의 엔드투엔드 아날로그 회로 설계 프레임워크"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_13472v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="AaLLM: 대규모 언어 모델을 활용한 토폴로지 생성부터 사이징까지의 엔드투엔드 아날로그 회로 설계 프레임워크"><meta name="twitter:description" content="AaLLM: 대규모 언어 모델을 활용한 토폴로지 생성부터 사이징까지의 엔드투엔드 아날로그 회로 설계 프레임워크"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_13472v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "AaLLM: 대규모 언어 모델을 활용한 토폴로지 생성부터 사이징까지의 엔드투엔드 아날로그 회로 설계 프레임워크", "description": "AaLLM: 대규모 언어 모델을 활용한 토폴로지 생성부터 사이징까지의 엔드투엔드 아날로그 회로 설계 프레임워크", "datePublished": "2026-08-13", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_13472v1", "author": [{"@type": "Person", "name": "Mohammed Ayman Habib"}, {"@type": "Person", "name": "Rylan Hart"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_13472v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_13472v1"});gtag('event', 'paper_view', {"paper_id": "2608_13472v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>AaLLM: 대규모 언어 모델을 활용한 토폴로지 생성부터 사이징까지의 엔드투엔드 아날로그 회로 설계 프레임워크</h1><p>AaLLM: 대규모 언어 모델을 활용한 토폴로지 생성부터 사이징까지의 엔드투엔드 아날로그 회로 설계 프레임워크</p><pre>AaLLM: 대규모 언어 모델을 활용한 토폴로지 생성부터 사이징까지의 엔드투엔드 아날로그 회로 설계 프레임워크
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** AaLLM: An End-to-End Analog Circuit Design Framework from Topology Generation to Sizing Using Large Language Models
+&gt; - **저자:** Mohammed Ayman Habib, Rylan Hart, Morteza Fayazi
+&gt; - **발행일:** 2026-08-13
+&gt; - **PDF 링크:** [AaLLM: An End-to-End Analog Circuit Design Framework from Topology Generation to Sizing Using Large Language Models](https://arxiv.org/pdf/2608.13472v1)
+
+
+✨ 3줄 핵심 요약
+* **엔드투엔드 자동화:** AaLLM은 사용자 요구 사양을 입력받아 적합한 회로 토폴로지를 생성하고 최적의 소자 값(사이징)을 도출하는 통합 자동화 프레임워크입니다.
+* **혁신적 구조 및 효율성:** RAG 기반 지식 활용과 3중 에이전트(Designer, Critic, Evaluator) 피드백 루프를 통해 기존 방식 대비 SPICE 시뮬레이션 횟수를 3배~4.5배 줄였습니다.
+* **성능 향상:** 기존 최첨단(SOTA) 모델 대비 벽시계 시간(Wall-clock time)을 40배 단축했으며, 학습 데이터 외의 혁신적인 회로 토폴로지도 성공적으로 생성합니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+아날로그 회로 설계는 전문가의 직관에 크게 의존하는 복잡하고 반복적인 과정입니다. 기존의 AI 모델들은 단순히 소자 값을 조정하거나(사이징), 회로 구조를 생성하는 등 기능이 파편화되어 있었습니다. AaLLM은 마치 숙련된 엔지니어가 교과서와 연구 논문을 참고하듯 RAG 모델로 전문 지식을 검색하고, 3명의 &#x27;가상 설계자&#x27;가 협업하듯 회로를 검증합니다. 특히 FLAN-T5 모델을 미세 조정하여 완전히 새로운 형태의 회로 구조까지 제안할 수 있게 설계되었습니다.
+
+🎯 배경 및 문제점
+* **고차원적 복잡성:** 아날로그 회로 설계는 설계 공간이 넓고 비선형적이라 자동화가 어렵습니다.
+* **파편화된 접근:** 기존 LLM 기반 설계는 &#x27;토폴로지 생성&#x27;과 &#x27;사이징&#x27; 중 하나에만 치중하여 전체 설계 흐름을 유기적으로 연결하지 못합니다.
+* **비효율적 검증:** 많은 방법론이 최적화를 위해 무수히 많은 SPICE 시뮬레이션을 반복해야 하므로 계산 비용이 매우 높고 시간이 오래 걸립니다.
+* **지식 부재:** 데이터가 없는 경우 할루시네이션(환각) 위험이 크고, 이미 알려진 기존 토폴로지에만 의존하여 창의적인 설계가 제한됩니다.
+
+💡 핵심 기술 및 아키텍처
+* **엔드투엔드 파이프라인:** 사용자 사양 입력을 시작으로 최종 넷리스트(Netlist) 출력까지 한 번에 처리합니다.
+* **RAG(검색 증강 생성):** 연구 논문과 교과서로 구성된 지식 베이스를 활용해 회로 설계 전문 지식을 에뮬레이션합니다.
+* **3중 에이전트 시스템:** 
+    * **Designer:** 소자 값을 결정.
+    * **Critic:** 결정된 값을 분석하고 비판.
+    * **Evaluator:** 두 에이전트 사이의 중재자 역할을 하며 시뮬레이션 반복 횟수를 최소화.
+* **Seq2Seq 기반 토폴로지 생성:** 미세 조정된 FLAN-T5 모델이 회로의 연결 관계를 이분 그래프 행렬(Bipartite matrix) 형태로 학습하여 새로운 토폴로지를 생성합니다.
+
+📊 실험 결과 분석
+* **시뮬레이션 효율성:** 기존 SOTA 멀티 에이전트 파이프라인과 비교하여 SPICE 호출 횟수를 3배~4.5배 감소시켰습니다.
+* **속도 개선:** 기존 설계 방식 대비 벽시계 시간(Wall-clock time)을 40배 단축했습니다.
+* **설계 성능:** 생성된 혁신적 토폴로지는 기존의 잘 알려진 토폴로지와 대등한 성능 지표(FoM)를 보였으며, 특정 회로에서는 최대 3배 높은 성능을 달성했습니다.
+* **비교 검증:** Atelier 모델과 비교했을 때, 8개의 회로 설계 테스트에서 모두 목표 사양을 충족했습니다(Atelier는 4개 충족).
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **설계 공정 가속화:** 복잡한 아날로그 회로 설계 시간을 획기적으로 줄여 제품 출시 기간을 단축할 수 있습니다.
+* **설계 창의성 증대:** 기존 표준 구조를 넘어선 새로운 전기적 기능 구조를 생성함으로써 성능 최적화의 한계를 돌파할 수 있습니다.
+* **범용성:** OPAMP(연산 증폭기) 설계뿐만 아니라 Sallen-Key 및 Multi-feedback 필터와 같은 다양한 회로군에도 성공적으로 적용되어 실무 활용도가 높음을 입증했습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [AaLLM: An End-to-End Analog Circuit Design Framework from...](https://arxiv.org/pdf/2608.13472)
+&gt; - [AaLLM: An End-to-End Analog Circuit Design Framework from...](https://arxiv.org/html/2608.13472)
+&gt; - [2608.13472 AaLLM: An End-to-End Analog Circuit Design...](https://arxiv.org/abs/2608.13472)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;RAG를 활용한 아날로그 설계 접근은 고무적이나, &#x27;혁신적인 토폴로지 생성&#x27;이라는 표현은 조심해야 합니다. LLM이 생성한 그래프 구조가 실제 공정의 기생 성분(parasitics)을 고려했을 때도 동일한 성능을 보장할까요? 시뮬레이션 횟수를 줄인 건 칭찬할 만하지만, &#x27;환각&#x27;을 완전히 제거하지 못한 상태에서 넷리스트를 생성하는 것은 실무 현장에서 치명적일 수 있습니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에선 시뮬레이션 결과의 신뢰성이 제일 중요하죠. 하지만 벽시계 시간 40배 단축은 깡패네요. 기존의 강화학습 기반 최적화 방식들은 파라미터 튜닝하다가 퇴근 시간 다 지나가는데, 이 3중 에이전트 시스템은 &#x27;일단 빠르게 후보군을 추려낸다&#x27;는 점에서 프로덕트 레벨에 도입해 볼 가치가 충분합니다. 다만, FLAN-T5 기반이라는 건 모델 자체가 조금 올드해 보이는데 더 큰 파라미터를 쓰면 성능이 얼마나 더 튈지 궁금하네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;선배님, FLAN-T5라니요! 요즘은 성능보다 효율성을 입증하는 게 트렌드잖아요. 3중 에이전트 구조로 4.5배나 효율을 올렸으면 논문은 확실히 잘 뽑힌 거죠. 저는 이 논문의 &#x27;이분 그래프 행렬 학습&#x27; 파트가 핵심이라고 봅니다. 토폴로지 생성까지 E2E로 붙인 건 진짜 미친 시도인데, 당장 내일 랩 미팅 때 이 논문 들고 가서 제 과제에도 적용해 보자고 교수님 설득해 봐야겠어요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

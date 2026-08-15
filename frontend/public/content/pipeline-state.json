@@ -15741,7 +15741,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-15T00:54:02.693333+00:00",
+      "updated_at": "2026-08-15T03:33:14.931464+00:00",
       "paper": {
         "title": "Alaya-EVOKE: From Linear-Scaling Supervision to Endless World",
         "summary": "Interactive world models must support persistent memory, responsive interaction, and long-horizon generation, yet these requirements place conflicting demands on the model. Maintaining history in the denoiser context or key-value cache incurs growing cost, forcing a trade-off between session length and retained memory, while low-latency interaction relies on few-step generation whose capabilities are bounded by its teacher. Evoke addresses both limitations by externalizing persistent world state and redesigning the teacher for long-horizon interactive generation. Scene geometry is maintained in an external, camera-indexed world state bank, from which only view-relevant information is retrieved, keeping the denoiser context bounded as the session grows. Rather than treating the teacher as a fixed generator, we design it for long-horizon supervision: its sparse attention combines chunk-wise grouping, retrieval of selected distant frames, and a linear-attention global state, yielding linear growth in memory and compute while enabling supervision over long horizons. Such supervision exposes content drift that stays locally plausible within short windows, while per-chunk conditioning enables prompt changes and event control throughout the sequence. A 30-second distribution-matching objective, applied under self-forced rollouts, transfers both capabilities to a three-step student that uses no classifier-free guidance, improving resistance to long-term drift while preserving responsive conditioning. With bounded context and recurrent external memory, Evoke supports open-ended, continuously evolving generation; on a single H200 at $384\\times 640$, each $1.5\\,\\mathrm{s}$ chunk is generated in $2.11\\,\\mathrm{s}$. As a three-step world model, Evoke achieves state-of-the-art performance on WBench while remaining competitive on VBench-Long and VBench-2.0.",
@@ -15766,7 +15766,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-15T00:54:02.693342+00:00",
+      "updated_at": "2026-08-15T03:33:14.931472+00:00",
       "paper": {
         "title": "DarwinX: Evolving Agent Harnesses Through Natural Selection",
         "summary": "An LLM agent's capability depends not only on model weights but on its harness: prompts, tools, skills, and control flow. Self-improvement loops already edit harnesses, yet single-lineage search is path-dependent and local wins often regress other tasks. We introduce DarwinX, which treats self-evolution as selection over a population of harnesses with the model frozen: a preserve-and-extend contract admits only variants that extend coverage without regressing, an archive keeps alternative lineages for recombination, and failure-, teacher-, and self-derived evidence share one edit interface. Fitness comes from each benchmark's own verifier: no gold solutions, no hand-picked winners. Across four benchmarks that progressively separate the evolution signal from the test, one loop adds about 17 points on average: Terminal-Bench 2.1 rises +7.7 to 83.2% on a matched base and to the verified frontier at 84.7% on a stronger one; TerminalWorld's held-out split reaches 68.3%, ahead of every off-the-shelf agent; WebArena-Infinity real-task pass@1 rises from 43.5% to 93.0% audit-clean; and a Terminal-Bench 2.1 harness transfers unchanged to SWE-bench Verified. What evolves is general agent competence, not benchmark-specific patches, so it survives changes of task, verifier, and base model. A frozen model need not be a fixed agent: harness selection turns evaluation compute into durable capability.",
@@ -15797,7 +15797,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-15T00:54:02.693338+00:00",
+      "updated_at": "2026-08-15T03:33:14.931476+00:00",
       "paper": {
         "title": "LLMRouter: Unified Infrastructure for Developing, Evaluating, and Deploying LLM Routers",
         "summary": "No single large language model (LLM) is optimal across all queries and budget constraints, making model routing essential for cost-effective deployment. Existing routers adopt diverse formulations and implementations, making fair comparison and extension difficult. We present a unified formulation of LLM routing as a sequential decision process characterized by five components: context encoders, model encoders, scoring functions, decision rules, and learning signals, covering single-turn, multi-turn, and personalized routing. Based on this formulation, we develop an automated pipeline for constructing routing supervision and evaluating routers jointly on response quality and inference cost. The resulting benchmark, xRouteBench, spans generic LLM, memory-augmented, vision, time-series, and personalized routing tasks. We further introduce LLMRouter, an open-source modular infrastructure with more than 16 representative routers. Our empirical study shows that learned routers outperform the strongest fixed-model baseline by 14.6% relatively, lightweight routers become more competitive under tight cost constraints, and user-conditioned routing consistently improves personalization.",
@@ -15828,7 +15828,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-15T00:54:02.693350+00:00",
+      "updated_at": "2026-08-15T03:33:14.931484+00:00",
       "paper": {
         "title": "Spatial Memory Agent: Experience-Grounded Procedure Memory for Spatial Intelligence",
         "summary": "Spatial intelligence is becoming a foundation for embodied agents, robotic planning, and multimodal assistants. To improve the spatial reasoning ability of VLM agents, existing work has mainly followed two lines. One line uses post-training methods, such as supervised fine-tuning and reinforcement learning. Another line adopts an agentic paradigm in which the model calls external spatial tools, such as depth estimation and 3D reconstruction tools, to gather intermediate spatial evidence. We study a complementary and underexplored route: Can a frozen VLM agent improve its spatial reasoning through \\textbf{parameter-update-free self-evolution}, without depending on external expert spatial tools at inference time? We present \\textbf{Spatial Memory Agent (SMA)}, an \\textbf{experience-grounded runtime framework} that converts verified spatial experience into reusable transferable lessons. In a verifiable spatial environment, SMA queries the frozen VLM, obtains a predicted answer and reward, and uses \\textbf{verifier-guided reflection} to distill compact transferable lessons from spatial experience. SMA further assigns each lesson a \\textbf{Transfer Reliability Score (TRS)}, which is initialized uniformly and calibrated from later retrieval outcomes as visit evidence of future transfer reliability. During \\textbf{read-only deployment}, SMA retrieves lessons by semantic filter and similarity-TRS combined ranking, allowing the retrieved memory to guide frozen model inference. Across five representative spatial benchmarks and four base VLMs, SMA achieves the highest macro average in every base-model block and the best accuracy among the evaluated methods in most of the 20 evaluations, establishing a practical parameter-update-free path for spatial self-evolution across the evaluated frozen model scales and environments.",
@@ -15855,7 +15855,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-15T00:54:02.693354+00:00",
+      "updated_at": "2026-08-15T03:33:14.931488+00:00",
       "paper": {
         "title": "DreamX-Phi 1.0: Action-Conditioned Video World Model for Robotic Manipulation",
         "summary": "We present \\textbf{DreamX-Phi 1.0}, an action-conditioned video world model for robotic manipulation that, given an observed frame, a language instruction, and a prescribed action sequence comprising end-effector poses and gripper states, predicts the resulting future observations. Yet realism alone does not guarantee faithfulness: a convincing rollout can still move the wrong arm or lose the manipulated object. To ensure the prediction respects each arm's commanded path, we inject per-arm $\\mathrm{SE}(3)$ transformations into attention via \\textbf{PRoPE-style geometric encoding}, preserving arm identity and rigid-motion structure. Action control alone does not fully constrain scene geometry or the evolution of small manipulated objects. We therefore add a lightweight \\textbf{depth branch} for scene-level geometry and use \\textbf{SAM3 masks} with a frozen \\textbf{V-JEPA teacher} to maintain object consistency throughout grasping. We further distill the multi-step generator into a few-step student via distribution-matching distillation for efficient deployment. At the time of writing, \\model{} achieves first place on Track~1 and second place on Track~2 of the WorldArena~2.0 Challenge. Our model and code will be publicly available.",
@@ -15938,7 +15938,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-15T00:54:02.693311+00:00",
+      "updated_at": "2026-08-15T03:33:14.931452+00:00",
       "paper": {
         "title": "An AI4AI Framework for Visual Token Pruning",
         "summary": "Visual-token pruning can substantially reduce the inference cost of multimodal large language models (MLLMs), yet existing methods largely rely on fixed, handcrafted heuristics and costly expert trial and error. As pruning objectives, budgets, and model architectures diversify, manually navigating the expanding design space becomes increasingly difficult. This paper aims to build an AI4AI framework for visual-token pruning by addressing a natural question: Can large language models automatically design effective visual-token reduction algorithms? Although LLMs possess broad algorithmic knowledge and strong reasoning capabilities, translating such general knowledge into effective solutions for a specialized task remains nontrivial. We argue that the key lies in designing an appropriate search-state representation that connects the internal knowledge of LLMs with the structural requirements and constraints of visual-token pruning. Based on this insight, we propose AutoPrune, a training-free framework for LLM-driven visual-token pruning policy design. At its core, AutoPrune introduces a Token Pruning Domain-Specific Language (TPDSL) comprising 131 reusable atoms for budget control, token scoring, selection constraints, and token reassembly. A key property of TPDSL is that it represents each search state as a residual modification of a strong base policy. This residual formulation narrows the search space and directs the LLM's attention toward the policy components that are most consequential for performance. Experiments on 14 multimodal benchmarks and three MLLM backbones demonstrate the effectiveness, efficiency, and transferability of AutoPrune. Even when removing 94.4% of visual tokens, AutoPrune preserves more than 99% of full-token performance while reducing FLOPs by 9.9x and prefill latency by 6.4x.",
@@ -15963,7 +15963,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-15T00:54:02.693329+00:00",
+      "updated_at": "2026-08-15T03:33:14.931468+00:00",
       "paper": {
         "title": "UniSwap: Streaming Audio-Visual Identity Swapping for Talking Videos",
         "summary": "Talking-video character replacement requires coordinated transfer of appearance and voice while preserving the source motion, scene, linguistic content, and audio-video timing. Existing methods use separately optimized models for the two modalities, making audio-visual consistency difficult to enforce. We present UniSwap, the first framework for streaming joint audio-visual identity replacement in talking videos. Given a source video, a reference image, and a reference voice clip, UniSwap transfers the reference appearance and vocal timbre within a single audio-visual diffusion transformer while preserving the source content and dynamics. To address the scarcity of aligned cross-identity training pairs, we introduce a swap-and-reconstruct pipeline that removes visual and vocal identity from real clips and uses the original clips as reconstruction targets. Starting from a bidirectional backbone, we progressively adapt the model through In-context Pretraining for joint replacement, Conditional Streaming Adaptation for block-causal KV-cached generation, and Efficient Self-forcing DMD for mitigating exposure bias and reducing sampling from 30 to 3 denoising steps per block. Efficient Multi-LoRA Switching enables the three DMD roles to share a single frozen backbone. Feature-RoPE Decomposition keeps cached positions within the training range, supporting stable long-form inference. Experiments demonstrate strong audio-visual synchronization, competitive identity preservation, efficient streaming, and stable long-form generation.",
@@ -15990,7 +15990,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-15T00:54:02.693346+00:00",
+      "updated_at": "2026-08-15T03:33:14.931480+00:00",
       "paper": {
         "title": "LiveAnimate: Stable Long-Form Streaming Human Animation in Real-Time",
         "summary": "Pose-driven human animation synthesizes a video of a target person from a single reference image and a driving pose stream. Real-time generation is essential for interactive applications such as live streaming, telepresence, and virtual avatars, yet diffusion-based systems require minutes to hours per clip, precluding responsive interaction. We present LiveAnimate, to our knowledge the first animation system to combine real-time streaming with stable long-form generation at billion scale, built on a 14B-parameter video Diffusion Transformer (DiT). A two-stage training pipeline first adapts a pretrained bidirectional DiT into a block-causal autoregressive generator through Reference-Anchored Teacher-Forcing Adaptation, and then reduces the sampling budget to three steps through Block-wise Self-Forcing Distillation. To preserve appearance over extended streams, we introduce Pose-Retrieval Sink Attention (PR-Sink), a bounded KV-cache mechanism combining a Static Sink that permanently anchors the first generated block, a Dynamic Sink that holds a pose-retrieved historical block, and a three-slot Rolling Window. When a pose recurs, PR-Sink restores the relevant appearance context without retaining the entire sequence, so memory and per-block latency remain constant regardless of stream duration. Together with Ulysses sequence parallelism and operator fusion, these designs enable 19.63\\,FPS streaming inference on two NVIDIA H100 GPUs. On a three-minute benchmark, LiveAnimate maintains nearly constant perceptual quality and identity from the first 30 seconds to the final minute, while prior systems degrade substantially or require hours of offline computation for the same rollout. These results establish a new operating point in quality, latency, and duration for interactive full-body animation.",
@@ -16018,7 +16018,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-15T00:54:02.693288+00:00",
+      "updated_at": "2026-08-15T03:33:14.931433+00:00",
       "paper": {
         "title": "Mitigating Gender Bias in English to Romanian Machine Translation",
         "summary": "Machine translation (MT) systems often fail to correctly translate gender, especially when converting from a gender-neutral language like English to a gendered target language such as Romanian. This bias results in translations that default to masculine forms or reinforce gender stereotypes. We propose a hybrid pipeline to mitigate this issue by combining large language model (LLM)-based gender classification with neural machine translation (NMT). Our system uses a fine-tuned LLM to detect the intended gender of target words in English sentences and insert inline gender hint tags. These tagged sentences are then passed to a Transformer model fine-tuned to generate morphologically correct Romanian translations. To support this, we introduce three novel datasets for gender disambiguation and translation. Our approach improves gender accuracy on the WinoMT and WinoGender benchmarks by over 40 percentage points compared to a baseline MT system. This is the first method to explicitly address and evaluate gender bias in English-Romanian MT using both LLM inference and tag-aware translation.",
@@ -16124,11 +16124,11 @@
     "2608_13547v1": {
       "id": "2608_13547v1",
       "filename": "post_2608_13547v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-08-14T21:19:32.331232+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-14T21:19:32.331234+00:00",
+      "updated_at": "2026-08-15T03:33:54.438720+00:00",
       "paper": {
         "title": "QuoteBench: How Matched Scores Can Hide Command-Path Failures",
         "summary": "LLM coding agents issue Bash commands through interfaces that may serialize, wrap, and reparse model output. Matched execution scores alone cannot distinguish command-generation errors from failures introduced after generation. QuoteBench measures this boundary with exact final-state validation on 56 one-shot tasks from 14 incident-derived families, crossing the generation contract with the execution transport around one deliberately unescaped added parser. Escaping at the interpolation point reproduces each replayed reply's raw-path outcome, so any recovery under a disclosed boundary must come from the model changing its generation. Across eight same-window configurations, replaying the same reply through the added parser lowers success by 55.4 to 73.2 percentage points; disclosure recovers 30.4 to 60.7 points for six configurations, and zero or slightly negative for the other two. Raw generation is nearly saturated at the frontier; boundary adaptation is what still separates models. GPT-5.6-sol's matched gap of -3.6 points hides -64.3 points of damage and +60.7 points of compensation. The deployment configuration reorders models: one reversal among 26 comparable pairs is unambiguous and four more sit on single-task margins. Evaluations of command-issuing agents should report the model configuration, generation contract, execution path, operating point, and final-state validator rather than treat a matched score as an intrinsic model property.",
@@ -16141,7 +16141,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2608.13547v1"
       },
-      "priority_score": 38
+      "priority_score": 38,
+      "korean_title": "쿼트벤치: 매칭된 점수가 어떻게 명령 실행 경로의 실패를 감출 수 있는가"
     },
     "2608_13545v1": {
       "id": "2608_13545v1",
@@ -16362,11 +16363,11 @@
     "2608_13472v1": {
       "id": "2608_13472v1",
       "filename": "post_2608_13472v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-08-14T21:19:32.331293+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-14T21:19:32.331294+00:00",
+      "updated_at": "2026-08-15T03:33:25.557554+00:00",
       "paper": {
         "title": "AaLLM: An End-to-End Analog Circuit Design Framework from Topology Generation to Sizing Using Large Language Models",
         "summary": "Analog circuit design is a time-consuming, iterative process in a nonlinear and high-dimensional design space that relies heavily on expert intuition. Among recent developments, LLMs have introduced a promising approach by bringing natural language reasoning to circuit design tasks. The majority of conventional LLM-based approaches provide fragmented solutions that focus either only on sizing or topology generation. These methods require adding specific technical knowledge manually, which is inefficient and prone to hallucinations during circuit sizing. Moreover, the inherent trade-off in meeting different specs makes current approaches iterative and tedious. Another shortcoming is the inability to create innovative topologies, which may lead to sub-optimal designs due to reliance on conventional topologies. In this paper, we present AaLLM, an open-source end-to-end multi-agent LLM workflow that takes user specs as input and outputs the appropriate netlist, encompassing both topology generation and circuit sizing. AaLLM automates the creation of a relevant knowledge base from research papers and textbooks to combat tedious manual data collection. A RAG model is implemented to emulate circuit design expertise using this knowledge base. Moreover, AaLLM uses a novel tri-agent feedback system comprising a Designer that determines circuit component values, a Critic that scrutinizes these values, and an Evaluator that minimizes circuit sizing iterations by arbitrating between the other two agents. AaLLM-generated novel topologies achieve a figure of merit (FoM) comparable to that of known topologies, and up to 3x higher for certain circuits. Testing on several circuit topologies, our results show a 3x - 4.5x decrease in the number of SPICE calls at inference when compared to SOTA multi-agent LLM pipelines. The results also show a 40x decrease in wall-clock time compared to existing approaches.",
@@ -16378,7 +16379,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2608.13472v1"
       },
-      "priority_score": 40
+      "priority_score": 40,
+      "korean_title": "AaLLM: 대규모 언어 모델을 활용한 토폴로지 생성부터 사이징까지의 엔드투엔드 아날로그 회로 설계 프레임워크"
     },
     "2608_13465v1": {
       "id": "2608_13465v1",
@@ -16472,11 +16474,11 @@
     "2608_13453v1": {
       "id": "2608_13453v1",
       "filename": "post_2608_13453v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-08-14T21:19:32.331324+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-14T21:19:32.331326+00:00",
+      "updated_at": "2026-08-15T03:33:42.714440+00:00",
       "paper": {
         "title": "UniTexture: Cross-Task Universal Adversarial Textures for Vision-Language-Action Models",
         "summary": "Vision-Language-Action (VLA) models have emerged as generalist robotic policies capable of following diverse language instructions and performing a wide range of manipulation tasks. However, their direct control over embodied agents also exposes them to adversarial interference that may cause unsafe physical behaviors. Existing attacks on robotic policies are typically optimized for a single task or instruction, leaving the cross-task vulnerabilities of multitask VLAs largely unexplored. We introduce UniTexture, a cross-task universal adversarial texture attack that uses a single textured 3D object to induce targeted deviations in VLA action predictions across multiple tasks. UniTexture backpropagates gradients from the policy's action outputs to surface texture parameters through a differentiable renderer. It jointly optimizes the shared texture over a distribution of tasks, instructions, states, and viewpoints using a targeted action-space objective, steering predicted actions toward attacker-defined targets without optimizing a separate texture for each task. We evaluate UniTexture on OpenVLA and $π_{0.5}$ across diverse manipulation tasks and multiple evaluation settings. UniTexture reduces the mean task success rate from 90.0% under benign conditions to 48.4% under attack, induces target-aligned action shifts, and further exhibits cross-suite and cross-model transfer without re-optimization. Together, these findings reveal shared cross-task vulnerabilities in multitask VLAs that can be systematically exploited through a single adversarial surface texture.",
@@ -16491,7 +16493,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2608.13453v1"
       },
-      "priority_score": 39
+      "priority_score": 39,
+      "korean_title": "유니텍스처: 비전-언어-행동 모델을 위한 교차 작업 범용 적대적 텍스처"
     },
     "2608_13447v1": {
       "id": "2608_13447v1",
@@ -16751,11 +16754,11 @@
     "2608_13394v1": {
       "id": "2608_13394v1",
       "filename": "post_2608_13394v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-08-14T21:19:32.331401+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-14T21:19:32.331402+00:00",
+      "updated_at": "2026-08-15T03:33:33.511949+00:00",
       "paper": {
         "title": "Heterogeneity-Aware Belief Synchronization for Semantic Communication in AI-Native 6G Networks",
         "summary": "6G networks will not be serving as communication infrastructures only; rather, they are expected to evolve into intelligent systems, where thousands of autonomous artificial intelligence (AI) agents are interconnected. The agents are deployed across a wide range of platforms including low Earth orbit (LEO) satellites, high-altitude platforms (HAPs), unmanned aerial vehicles (UAVs), edge servers, and terrestrial devices. These agents continuously observe their environment and exchange information. Semantic communication provides an efficient mechanism for exchanging meaningful information instead of raw data. However, its effectiveness depends on the communicating agents having sufficiently aligned beliefs to correctly interpret and decode the transmitted messages. This assumption becomes difficult to satisfy in the 6G network where heterogeneous AI models operate under diverse computational constraints and continuously acquire different knowledge from their local environments. This article presents a heterogeneity-aware belief synchronization framework for 6G AI-native networks. It uses latent translation models deployed on multi-access edge computing (MEC) servers. These models translate belief updates from one agent to agent-specific knowledge without requiring joint training and a homogeneous architecture of models. By exchanging compact belief updates through a latent translation model only when necessary, the framework preserves privacy, reduces synchronization cost, and minimizes local knowledge drift. We validate the framework through a case study on a multi-layered terrestrial/non-terrestrial network. Results demonstrate that it maintains low synchronization cost, measured by the number of parameters transmitted, and low belief alignment error across the heterogeneous agents in the case study.",
@@ -16770,7 +16773,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2608.13394v1"
       },
-      "priority_score": 40
+      "priority_score": 40,
+      "korean_title": "AI 네이티브 6G 네트워크의 의미론적 통신을 위한 이질성 인지 신념 동기화"
     },
     "2608_08020v2": {
       "id": "2608_08020v2",
@@ -16779,7 +16783,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-15T00:54:14.452819+00:00",
+      "updated_at": "2026-08-15T03:33:14.931458+00:00",
       "paper": {
         "title": "Thought-Level Beam Search for Reasoning",
         "summary": "Test-time compute scaling is a primary driver of performance in large reasoning models (LRMs), but extreme inefficiency bounds current approaches, shifting the critical question from \\emph{how much} compute to spend, to \\emph{where} to allocate it. We formalize test-time reasoning as a constrained compute allocation problem over partial trajectories. Under a fixed hardware budget, existing paradigms fail to actively allocate the compute to the most promising partial progress: traditional parallel sampling treats traces independently and induces severe memory bottlenecks, while subtractive pruning starves hardware and fails to actively and sufficiently shift the output distribution. To overcome this dichotomy, we introduce Gambit, an inference algorithm that executes \\emph{thought-level beam search}. By periodically pruning unpromising trajectories and immediately branching from high-quality prefixes, Gambit dynamically concentrates compute onto the most promising reasoning traces via a light-weight scorer probing hidden states while maintaining continuous high hardware utilization. Extensive evaluations across multiple models and benchmarks demonstrate that Gambit strictly dominates existing baselines. Under identical hardware constraints, our method yields up to a +6.7\\% absolute accuracy gain on HMMT-24 and +3.3\\% on AIME-25 over pruning baselines, delivers $>2\\times$ higher throughput on trace completion, and reduces total token consumption by up to 68.5\\% relative to standard parallel sampling.",
@@ -16798,7 +16802,7 @@
     }
   },
   "last_run": {
-    "started_at": "2026-08-15T00:54:02.694700+00:00",
+    "started_at": "2026-08-15T03:33:14.932704+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -16808,26 +16812,26 @@
     "failures": [],
     "usage": {
       "model": "gemini-3.1-flash-lite",
-      "requests": 7,
-      "prompt_tokens": 17830,
-      "output_tokens": 5305,
+      "requests": 8,
+      "prompt_tokens": 20131,
+      "output_tokens": 5907,
       "thought_tokens": 0,
-      "total_tokens": 23135,
-      "estimated_usd": 0.012415
+      "total_tokens": 26038,
+      "estimated_usd": 0.01389325
     },
-    "finished_at": "2026-08-15T00:55:15.938757+00:00"
+    "finished_at": "2026-08-15T03:33:54.731723+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 1197,
-    "prompt_tokens": 3013826,
-    "output_tokens": 880350,
+    "requests": 1205,
+    "prompt_tokens": 3033957,
+    "output_tokens": 886257,
     "thought_tokens": 0,
-    "total_tokens": 3894176,
-    "estimated_usd": 2.0739815
+    "total_tokens": 3920214,
+    "estimated_usd": 2.08787475
   },
   "last_publication_run": {
-    "started_at": "2026-08-15T00:54:02.694700+00:00",
+    "started_at": "2026-08-15T03:33:14.932704+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -16837,18 +16841,18 @@
     "failures": [],
     "usage": {
       "model": "gemini-3.1-flash-lite",
-      "requests": 7,
-      "prompt_tokens": 17830,
-      "output_tokens": 5305,
+      "requests": 8,
+      "prompt_tokens": 20131,
+      "output_tokens": 5907,
       "thought_tokens": 0,
-      "total_tokens": 23135,
-      "estimated_usd": 0.012415
+      "total_tokens": 26038,
+      "estimated_usd": 0.01389325
     },
-    "finished_at": "2026-08-15T00:55:15.938757+00:00"
+    "finished_at": "2026-08-15T03:33:54.731723+00:00"
   },
   "daily_usage": {
     "date": "2026-08-15",
-    "estimated_usd": 0.012415,
-    "publications": 4
+    "estimated_usd": 0.02630825,
+    "publications": 8
   }
 }
