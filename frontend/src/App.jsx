@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo, lazy, Suspense } from 'react';
 import { Analytics as VercelAnalytics } from '@vercel/analytics/react';
-import { ArrowDown, ArrowUpRight, BookOpen, Menu, Search, Sparkles } from 'lucide-react';
+import { ArrowDown, ArrowUpRight, BookOpen, Menu, Moon, Search, Sparkles, Sun } from 'lucide-react';
 import PaperCard from './components/PaperCard';
 import SystemStatus from './components/SystemStatus';
 import Analytics, { track } from './components/Analytics';
@@ -16,6 +16,7 @@ function App() {
   const [pipelineStatus, setPipelineStatus] = useState(null);
   const [activeTopic, setActiveTopic] = useState('전체');
   const [query, setQuery] = useState('');
+  const [theme, setTheme] = useState(() => window.localStorage.getItem('arxiv-research-theme') || 'light');
   const params = new URLSearchParams(window.location.search);
   const legacyPaper = params.get('p');
   const initialId = legacyPaper || window.location.pathname.match(/^\/papers\/([^/]+)$/)?.[1] || null;
@@ -26,6 +27,11 @@ function App() {
     fetch('/content/metadata.json').then((res) => res.json()).then(setPapers).catch(() => setPapers([]));
     fetch('/content/pipeline-status.json').then((res) => res.ok ? res.json() : null).then(setPipelineStatus).catch(() => setPipelineStatus(null));
   }, []);
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    window.localStorage.setItem('arxiv-research-theme', theme);
+  }, [theme]);
 
   useEffect(() => {
     const onPopState = () => setSelectedId(window.location.pathname.match(/^\/papers\/([^/]+)$/)?.[1] || null);
@@ -63,7 +69,12 @@ function App() {
           <button onClick={() => { goHome(); scrollTo('archive'); }}>논문 아카이브</button>
           <a href="/about/">운영 원칙</a>
         </nav>
-        <button className="menu-button" onClick={() => scrollTo('topics')} aria-label="연구 주제 탐색"><Menu size={20} /></button>
+        <div className="header-actions">
+          <button className="theme-toggle" onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')} aria-label={theme === 'light' ? '다크 아카이브 모드로 전환' : '라이트 리서치 데스크 모드로 전환'}>
+            {theme === 'light' ? <Moon size={16} /> : <Sun size={16} />}<span>{theme === 'light' ? 'Archive' : 'Desk'}</span>
+          </button>
+          <button className="menu-button" onClick={() => scrollTo('topics')} aria-label="연구 주제 탐색"><Menu size={20} /></button>
+        </div>
       </header>
 
       {selectedId ? (
