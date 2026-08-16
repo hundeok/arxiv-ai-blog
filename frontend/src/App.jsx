@@ -4,6 +4,7 @@ import { ArrowDown, ArrowUpRight, BookOpen, Menu, Moon, Search, Sparkles, Sun } 
 import PaperCard from './components/PaperCard';
 import SystemStatus from './components/SystemStatus';
 import ArchiveMode from './components/ArchiveMode';
+import TrendingTicker from './components/TrendingTicker';
 import Analytics, { track } from './components/Analytics';
 
 const MarkdownViewer = lazy(() => import('./components/MarkdownViewer'));
@@ -116,6 +117,7 @@ function App() {
           </section>
 
           <SystemStatus totalPapers={papers.length} status={pipelineStatus} />
+          <TrendingTicker />
 
           <section id="topics" className="topic-section section-block" aria-labelledby="topic-heading">
             <div className="section-heading"><div><p className="eyebrow">EXPLORE THE MAP</p><h2 id="topic-heading">연구 주제 지도</h2></div><p>언어·국가 정보가 아닌, 논문이 실제로 푸는 문제와 사용한 접근법을 기준으로 분류합니다.</p></div>

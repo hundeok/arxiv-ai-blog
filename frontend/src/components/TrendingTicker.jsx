@@ -23,28 +23,20 @@ export default function TrendingTicker() {
 
   return (
     <div style={{
-      width: '100%',
-      backgroundColor: 'rgba(255, 255, 255, 0.02)',
-      borderTop: '1px solid rgba(255, 255, 255, 0.05)',
-      borderBottom: '1px solid rgba(255, 255, 255, 0.05)',
-      marginBottom: '2rem',
-      borderRadius: '8px',
-      display: 'flex',
-      alignItems: 'stretch',
-      overflow: 'hidden'
+      width: '100%', display: 'flex', alignItems: 'stretch', overflow: 'hidden',
+      border: 'var(--line)', background: 'var(--cream)'
     }}>
       {/* Flame Icon Area - Fixed Width */}
       <div style={{
-        backgroundColor: 'var(--bg-secondary)',
+        backgroundColor: 'var(--yellow)', color: 'var(--on-accent)',
         padding: '0.75rem 1rem',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        borderRight: '1px solid rgba(255, 255, 255, 0.1)', // Vertical separator line
-        boxShadow: '5px 0 15px 5px rgba(0,0,0,0.2)',
+        borderRight: 'var(--line)',
         zIndex: 10
       }}>
-        <div className="flame-icon">
+        <div className="flame-icon" title="글로벌 오늘의 논문">
           <Flame size={20} fill="#ff6b00" color="#ff6b00" />
         </div>
       </div>
@@ -112,17 +104,16 @@ export default function TrendingTicker() {
           display: flex;
         }
         .ticker-link {
-          color: var(--text-secondary);
+          color: var(--muted);
           font-size: 0.95rem;
           text-decoration: none;
           transition: color 0.2s ease;
         }
         .ticker-link:hover {
-          color: var(--text-primary);
+          color: var(--ink);
           text-decoration: underline;
         }
       `}</style>
     </div>
   );
 }
-
