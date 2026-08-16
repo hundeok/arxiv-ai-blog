@@ -22,7 +22,7 @@ export default function TrendingTicker() {
   if (trending.length === 0) return null;
 
   return (
-    <div style={{
+    <div className="trending-ticker" style={{
       width: '100%', display: 'flex', alignItems: 'stretch', overflow: 'hidden',
       border: 'var(--line)', background: 'var(--cream)'
     }}>

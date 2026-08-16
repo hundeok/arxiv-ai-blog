@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { ArrowUpRight, Moon, Search, Sparkles } from 'lucide-react';
+import TrendingTicker from './TrendingTicker';
 
 function ArchiveCard({ paper, onSelect }) {
   return <article className="archive-card">
@@ -25,6 +26,9 @@ export default function ArchiveMode({ papers, status, onSelect, onExit }) {
     return (topic === '전체' || paper.tags?.includes(topic)) && (!query.trim() || text.includes(query.trim().toLowerCase()));
   });
   const lastRun = status?.last_publication_run || status?.last_run;
+  const usage = lastRun?.usage || status?.last_run?.usage;
+  const cost = Number(usage?.estimated_usd || 0);
+  const tokens = Number(usage?.total_tokens || 0);
 
   return <main className="archive-mode" aria-label="아카이브 모드">
     <section className="archive-hero">
@@ -34,7 +38,8 @@ export default function ArchiveMode({ papers, status, onSelect, onExit }) {
       <p>쌓인 AI 연구 해설을 방해 없이 읽고, 주제별로 천천히 탐색하는 다크 아카이브입니다.</p>
       <button onClick={onExit}>리서치 데스크로 돌아가기 <ArrowUpRight size={17} /></button>
     </section>
-    <section className="archive-status"><span className="archive-pulse" /><strong>{lastRun?.health === 'degraded' ? '발행 확인 필요' : 'Archive online'}</strong><span>누적 {papers.length}편</span><span>최근 실행 {lastRun?.generated ?? 0}편 발행</span></section>
+    <section className="archive-status"><span className="archive-pulse" /><strong>{lastRun?.health === 'degraded' ? '발행 확인 필요' : 'Archive online'}</strong><span>누적 {papers.length}편</span><span>최근 실행 {lastRun?.generated ?? 0}편 발행</span><span className="archive-cost">최근 API 추정 <b>${cost.toFixed(4)}</b> · {tokens.toLocaleString()} tokens</span></section>
+    <TrendingTicker />
     <section className="archive-toolbar">
       <label><Search size={18} /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="아카이브 검색" /></label>
       <div>{[ ['전체', papers.length], ...topics ].map(([label, count]) => <button key={label} className={topic === label ? 'active' : ''} onClick={() => { setTopic(label); setQuery(''); }}>{label} <span>{count}</span></button>)}</div>
