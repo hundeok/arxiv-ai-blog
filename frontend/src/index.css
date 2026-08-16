@@ -45,6 +45,46 @@ h1, h2, h3 {
   -webkit-text-fill-color: transparent;
 }
 
+.nav-button {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font: inherit;
+  text-decoration: none;
+  padding: .35rem .55rem;
+}
+.nav-button:hover { color: var(--text-primary); }
+.eyebrow { color: #818cf8; font-size: .7rem; font-weight: 800; letter-spacing: .12em; }
+.topic-explorer, .related-papers {
+  padding: 1.35rem;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: rgba(99, 102, 241, .05);
+}
+.topic-list { display: flex; flex-wrap: wrap; gap: .55rem; margin-top: 1rem; }
+.topic-chip {
+  border: 1px solid rgba(129, 140, 248, .25);
+  background: rgba(15, 15, 25, .65);
+  border-radius: 999px;
+  color: #c7d2fe;
+  cursor: pointer;
+  font: inherit;
+  font-size: .85rem;
+  padding: .4rem .72rem;
+}
+.topic-chip span { color: var(--text-secondary); margin-left: .25rem; }
+.topic-chip:hover, .topic-chip.active { background: #4f46e5; border-color: #6366f1; color: white; }
+.topic-chip.active span { color: #e0e7ff; }
+.related-papers { margin-top: 3rem; }
+.related-papers h3 { font-size: 1.35rem; margin: .3rem 0 1rem; }
+.related-paper-list { display: grid; gap: .65rem; }
+.related-paper-list button { text-align: left; padding: .9rem 1rem; border: 1px solid var(--border); border-radius: 10px; color: var(--text-primary); background: rgba(255,255,255,.02); cursor: pointer; }
+.related-paper-list button:hover { background: rgba(99, 102, 241, .12); border-color: rgba(129, 140, 248, .5); }
+.related-paper-list span { display: block; color: #a5b4fc; font-size: .75rem; margin-bottom: .25rem; }
+.related-paper-list strong { line-height: 1.45; }
+
 /* Markdown Styles */
 .markdown-body {
   color: var(--text-primary);
@@ -115,6 +155,14 @@ h1, h2, h3 {
 .markdown-body a:hover {
   color: #818cf8;
   text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+  body { line-height: 1.55; }
+  .topic-explorer, .related-papers { padding: 1rem; }
+  .markdown-body h1 { font-size: 1.9rem; }
+  .markdown-body h2 { font-size: 1.45rem; }
+  .markdown-body p { font-size: 1rem; }
 }
 
 /* Scrollbar */

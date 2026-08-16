@@ -25,8 +25,8 @@ export default function PaperCard({ paper, onClick }) {
         e.currentTarget.style.boxShadow = 'none';
       }}
     >
-      <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1rem' }}>
-        {paper.tags.map(tag => (
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.45rem', marginBottom: '1rem', alignItems: 'center' }}>
+        {(paper.tags || []).map(tag => (
           <span 
             key={tag}
             style={{
@@ -42,7 +42,7 @@ export default function PaperCard({ paper, onClick }) {
             {tag}
           </span>
         ))}
-        <span style={{ marginLeft: 'auto', fontSize: '0.875rem', color: 'var(--text-secondary)' }}>
+        <span style={{ marginLeft: 'auto', fontSize: '0.8rem', color: 'var(--text-secondary)', whiteSpace: 'nowrap' }}>
           {paper.published}
         </span>
       </div>
@@ -67,9 +67,10 @@ export default function PaperCard({ paper, onClick }) {
           width: '24px', height: '24px', borderRadius: '50%',
           background: 'linear-gradient(45deg, #4f46e5, #ec4899)'
         }}></div>
-        <span style={{ fontSize: '0.875rem', color: '#cbd5e1' }}>
-          {paper.authors.join(', ')}
+        <span style={{ fontSize: '0.875rem', color: '#cbd5e1', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+          {paper.authors?.join(', ') || 'arXiv 연구팀'}
         </span>
+        {paper.reading_minutes && <span style={{ marginLeft: 'auto', fontSize: '0.75rem', color: 'var(--text-secondary)', whiteSpace: 'nowrap' }}>약 {paper.reading_minutes}분 읽기</span>}
       </div>
     </div>
   );

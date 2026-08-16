@@ -5,9 +5,8 @@ import rehypeKatex from 'rehype-katex';
 import 'katex/dist/katex.min.css';
 import { ArrowLeft } from 'lucide-react';
 import Giscus from '@giscus/react';
-import AdBanner from './AdBanner';
 
-export default function MarkdownViewer({ filename, paper, onBack }) {
+export default function MarkdownViewer({ filename, paper, papers = [], onSelect, onBack }) {
   const [content, setContent] = useState('');
   const [aiComments, setAiComments] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -56,6 +55,11 @@ export default function MarkdownViewer({ filename, paper, onBack }) {
     );
   }
 
+  const relatedPapers = papers
+    .filter((candidate) => candidate.id !== paper?.id && candidate.tags?.some((tag) => paper?.tags?.includes(tag)))
+    .sort((a, b) => b.tags.filter((tag) => paper.tags.includes(tag)).length - a.tags.filter((tag) => paper.tags.includes(tag)).length)
+    .slice(0, 3);
+
   return (
     <div style={{ maxWidth: '800px', margin: '0 auto', paddingBottom: '4rem' }}>
       <button 
@@ -81,7 +85,6 @@ export default function MarkdownViewer({ filename, paper, onBack }) {
         Back to Papers
       </button>
 
-      <AdBanner position="in-article" />
       <div className="markdown-body">
         <ReactMarkdown 
           remarkPlugins={[remarkMath]} 
@@ -94,7 +97,18 @@ export default function MarkdownViewer({ filename, paper, onBack }) {
         </ReactMarkdown>
       </div>
 
-      <AdBanner position="in-article" />
+      {relatedPapers.length > 0 && (
+        <section className="related-papers" aria-label="관련 논문">
+          <p className="eyebrow">KEEP EXPLORING</p>
+          <h3>함께 읽을 연구</h3>
+          <div className="related-paper-list">
+            {relatedPapers.map((related) => <button key={related.id} onClick={() => onSelect?.(related)}>
+              <span>{related.tags.slice(0, 2).join(' · ')}</span>
+              <strong>{related.korean_title}</strong>
+            </button>)}
+          </div>
+        </section>
+      )}
 
       {/* AI Comments Section */}
       {aiComments.length > 0 && (

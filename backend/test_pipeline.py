@@ -12,7 +12,8 @@ class PipelineUnitTests(unittest.TestCase):
         compact = pipeline.compact_text(text, 200)
         self.assertTrue(compact.startswith("A"))
         self.assertTrue(compact.endswith("Z"))
-        self.assertIn("중간 원문 생략", compact)
+        self.assertIn("Introduction 끝", compact)
+        self.assertIn("Methodology 끝", compact)
 
     def test_markdown_validation_requires_structure(self):
         valid = "# 검증 가능한 한국어 제목\n\n" + "\n".join(f"## {section}\n" + "내용 " * 100 for section in pipeline.REQUIRED_SECTIONS)
@@ -29,7 +30,8 @@ class PipelineUnitTests(unittest.TestCase):
     def test_title_validation_rejects_english_fallback(self):
         self.assertTrue(pipeline.is_korean_title("긴 문맥 추론을 개선하는 AI 기법"))
         self.assertFalse(pipeline.is_korean_title("A Long English Research Paper Title"))
-        self.assertFalse(pipeline.is_korean_title("Appearance Pointers: 확산 모델 영역 제어"))
+        # Proper nouns may remain when the Korean title itself is meaningful.
+        self.assertTrue(pipeline.is_korean_title("Appearance Pointers: 확산 모델 영역 제어"))
 
     def test_usage_estimation_accumulates(self):
         total = pipeline.empty_usage()
@@ -53,6 +55,13 @@ class PipelineUnitTests(unittest.TestCase):
         self.assertIn("'page_view'", tag)
         self.assertIn("'paper_view'", tag)
         self.assertIn('"paper_id": "2607_20379v1"', tag)
+
+    def test_paper_classifier_prefers_reader_useful_topics(self):
+        tags = pipeline.classify_paper(
+            {"title": "Efficient multi-agent retrieval for LLM reasoning"},
+            {"korean_title": "언어 모델 에이전트의 검색 기반 추론"},
+        )
+        self.assertEqual(tags, ["AI 에이전트", "대규모 언어 모델", "검색 증강"])
 
 
 if __name__ == "__main__":

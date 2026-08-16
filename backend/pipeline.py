@@ -55,6 +55,38 @@ REQUIRED_SECTIONS = (
     "세상에 미치는 영향",
 )
 
+# Reader-facing taxonomy.  These labels are deliberately derived from the
+# paper itself rather than from the source language or the publishing system:
+# "AI · arXiv · US→KR" says almost nothing about whether a reader should open
+# a paper.  Keep patterns conservative and stable so the archive remains
+# browsable as it grows.
+TAG_TAXONOMY: tuple[tuple[str, tuple[str, ...]], ...] = (
+    ("AI 에이전트", ("agent", "에이전트", "tool use", "tool-use", "computer use", "multi-agent", "멀티 에이전트")),
+    ("대규모 언어 모델", ("large language model", "language model", "llm", "언어 모델", "언어모델")),
+    ("검색 증강", ("retrieval", "rag", "검색 증강", "검색증강", "knowledge graph", "지식 그래프")),
+    ("추론", ("reasoning", "reasoner", "chain of thought", "추론", "사고 과정")),
+    ("멀티모달", ("multimodal", "vision-language", "vision language", "멀티모달", "시각 언어")),
+    ("컴퓨터 비전", ("computer vision", "image generation", "diffusion", "segmentation", "object detection", "이미지 생성", "확산 모델", "객체 탐지")),
+    ("로보틱스", ("robotics", "robot", "embodied", "manipulation", "로봇", "체화형", "조작")),
+    ("강화학습", ("reinforcement learning", "reinforcement", "rl", "강화학습")),
+    ("코드 AI", ("code generation", "coding agent", "software engineering", "program synthesis", "코드 생성", "코딩 에이전트", "소프트웨어 공학")),
+    ("안전성", ("safety", "alignment", "jailbreak", "hallucination", "robustness", "안전성", "정렬", "환각", "견고성")),
+    ("효율화", ("efficient", "efficiency", "compression", "quantization", "distillation", "cache", "효율", "압축", "양자화", "증류", "캐시")),
+    ("의료·과학", ("medical", "medicine", "clinical", "biology", "protein", "healthcare", "의료", "임상", "생물", "단백질")),
+)
+
+
+def classify_paper(paper: dict[str, Any], record: dict[str, Any], source: str = "") -> list[str]:
+    """Return up to three useful, deterministic discovery tags for a paper."""
+    text = " ".join((
+        str(paper.get("title", "")),
+        str(record.get("korean_title", "")),
+        str(record.get("korean_subtitle", "")),
+        source[:12_000],
+    )).casefold()
+    matches = [label for label, keywords in TAG_TAXONOMY if any(keyword.casefold() in text for keyword in keywords)]
+    return matches[:3] or ["AI 연구"]
+
 
 def now_iso() -> str:
     return datetime.now(timezone.utc).isoformat()
@@ -678,6 +710,8 @@ def rebuild_metadata(state: dict[str, Any]) -> None:
     items = []
     for record in records:
         paper = record["paper"]
+        source = (CONTENT_DIR / record["filename"]).read_text(encoding="utf-8")
+        tags = classify_paper(paper, record, source)
         items.append({
             "id": record["id"],
             "filename": record["filename"],
@@ -686,7 +720,9 @@ def rebuild_metadata(state: dict[str, Any]) -> None:
             "korean_subtitle": record.get("korean_subtitle", record.get("korean_title", paper["title"])),
             "published": paper.get("published", "")[:10],
             "authors": paper.get("authors", [])[:2],
-            "tags": ["AI", "arXiv", "🇺🇸 ➔ 🇰🇷"],
+            "tags": tags,
+            "topic": tags[0],
+            "reading_minutes": max(3, min(20, round(len(source) / 1_600))),
         })
     atomic_json_write(METADATA_PATH, items)
     urls = []
