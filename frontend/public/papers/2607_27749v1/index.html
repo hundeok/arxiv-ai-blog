@@ -1,0 +1,69 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>휴지 상태 관찰을 통한 관절 물체 재구성 | ArXiv Translator AI</title><meta name="description" content="휴지 상태 관찰을 통한 관절 물체 재구성"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2607_27749v1"><meta property="og:type" content="article"><meta property="og:title" content="휴지 상태 관찰을 통한 관절 물체 재구성"><meta property="og:description" content="휴지 상태 관찰을 통한 관절 물체 재구성"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2607_27749v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="휴지 상태 관찰을 통한 관절 물체 재구성"><meta name="twitter:description" content="휴지 상태 관찰을 통한 관절 물체 재구성"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2607_27749v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "휴지 상태 관찰을 통한 관절 물체 재구성", "description": "휴지 상태 관찰을 통한 관절 물체 재구성", "datePublished": "2026-07-30", "url": "https://arxiv-ai-blog.vercel.app/papers/2607_27749v1", "author": [{"@type": "Person", "name": "Daeun Lee"}, {"@type": "Person", "name": "Jaeah Lee"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2607_27749v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2607_27749v1"});gtag('event', 'paper_view', {"paper_id": "2607_27749v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>휴지 상태 관찰을 통한 관절 물체 재구성</h1><p>휴지 상태 관찰을 통한 관절 물체 재구성</p><pre>휴지 상태 관찰을 통한 관절 물체 재구성
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Articulated Object Reconstruction from Rest-State Observation
+&gt; - **저자:** Daeun Lee, Jaeah Lee, Woosung Kim, Haebeom Jung, Jaesik Park
+&gt; - **발행일:** 2026-07-30
+&gt; - **PDF 링크:** [Articulated Object Reconstruction from Rest-State Observation](https://arxiv.org/pdf/2607.27749v1)
+
+
+✨ 3줄 핵심 요약
+* **휴지 상태 재구성:** 관절이 움직이는 영상 없이, 닫혀 있는 단일 상태(Rest-state)의 물체 이미지로부터 3D 형상과 관절 구조를 복원하는 기술입니다.
+* **통합적 검증:** 시각-언어 모델과 분할 모델의 출력을 명시적 메쉬(Mesh) 형태로 통합하고, 비디오 확산 모델을 통해 움직임 가설을 생성하여 기하학적 일관성을 검증합니다.
+* **실용적 활용:** 복원된 모델은 물리 시뮬레이션 및 로봇 공학에서 바로 사용할 수 있는 URDF(Unified Robot Description Format) 자산으로 출력됩니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+사람은 닫힌 서랍을 보기만 해도 그것이 어떻게 열릴지 직관적으로 이해합니다. 기존의 3D 복원 기술은 물체가 실제로 움직이는 모습을 관찰해야만 관절 구조를 파악할 수 있었지만, 본 연구의 &#x27;Rest2Art&#x27;는 닫혀 있는 물체의 단일 이미지나 메쉬 데이터만으로도 그 내부의 작동 원리와 관절 매개변수를 추론합니다. 인공지능이 생성한 &#x27;움직임 가설&#x27;을 기하학적으로 검증하는 과정을 거치기 때문에, 관찰되지 않은 상태에서도 물리적으로 타당한 움직임을 예측할 수 있습니다.
+
+🎯 배경 및 문제점
+* **기존 방법의 한계:** 대다수의 기존 기하학적 재구성 방식은 물체가 움직이는 상태(Articulated-state)가 포함된 영상이나 데이터를 요구하며, 사전에 관절 개수에 대한 정보가 필요한 경우가 많았습니다.
+* **데이터 부족:** 실생활에서 물체는 대부분 닫혀 있는 휴지 상태로 존재합니다. 움직임 정보를 얻기 어려운 환경에서 관절 구조를 정확히 파악하는 것은 매우 어려운(ill-posed) 문제입니다.
+* **일관성 부족:** 다양한 비전-언어 모델이나 분할 모델에서 나오는 데이터는 서로 충돌하거나 일관성이 떨어질 수 있어, 이를 정교하게 통합하는 과정이 필요합니다.
+
+💡 핵심 기술 및 아키텍처
+* **휴지 상태 포뮬레이션(Rest-state Formulation):** 움직임 단서 없이 형상, 의미론적 정보, 그리고 사전 학습된 움직임 정보를 결합하여 3D 구조를 재구성합니다.
+* **명시적 메쉬 표현:** 다양한 모델에서 생성된 노이즈 섞인 출력을 하나의 메쉬로 통합하여 기하학적 일관성을 확보합니다.
+* **비디오 확산 모델 기반 가설 생성:** 관절이 어떻게 움직일지에 대한 시나리오를 비디오 생성 모델로 만든 뒤, 이를 기하학적 검증 모듈을 통해 필터링하여 최적의 관절 매개변수를 찾습니다.
+* **메타 프롬프트(Meta-prompting):** 가구뿐만 아니라 가위, 노트북 등 다양한 사물에 적용할 수 있도록 비전-언어 모델을 통해 카테고리별 파트 구조를 유연하게 정의합니다.
+
+📊 실험 결과 분석
+* **성능:** 기존의 움직임 관찰 기반 재구성 모델, 생성 기반 모델 등과 대등한 수준의 성능을 달성했습니다.
+* **일반화:** PartNet-Mobility, Objaverse 등 다양한 데이터셋을 통해 실험하였으며, 안경, 가위, 로봇 팔 등 가구 이외의 복잡한 카테고리로 확장이 가능함을 확인했습니다.
+* **참고:** 논문 발췌 내 구체적인 정확도 수치(예: IoU 등)는 제시되지 않았습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **디지털 트윈 구축:** 현실 세계의 가구나 사물을 디지털 공간으로 옮겨올 때, 수동적인 정적 모델이 아닌 &#x27;상호작용이 가능한(Interactable)&#x27; 입체 모델로 변환할 수 있습니다.
+* **로봇 공학 및 시뮬레이션:** 복원된 자산은 Isaac Sim과 같은 물리 시뮬레이션 환경에 바로 투입되어 로봇 학습이나 가상 공간 내 환경 구축에 기여할 수 있습니다.
+* **공간 계획 및 증강 현실:** 실제 환경의 사물을 정밀하게 복제하여 가상 환경 내에 배치하거나, 사용자에게 물리적으로 의미 있는 상호작용 경험을 제공하는 데 활용됩니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Rest2Art: Articulated Object Reconstruction from Rest-State...](https://da-eun07.github.io/rest2art/)
+&gt; - [Articulated Object Reconstruction from Rest-State Observation](https://arxiv.org/abs/2607.27749)
+&gt; - [Paper page - Articulated Object Reconstruction from Rest-State...](https://huggingface.co/papers/2607.27749)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;Rest2Art의 접근 방식은 흥미롭지만, &#x27;움직임 가설&#x27;을 생성하는 비디오 확산 모델의 의존도가 지나치게 높군요. 관측되지 않은 상태에 대해 모델의 환각(Hallucination)이 개입될 여지가 큰데, 이 기하학적 일관성 검증 모듈이 얼마나 견고할지 의문입니다. 가설 기반의 추론이 과연 &#x27;정답&#x27;을 보장할 수 있을까요?&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 환각 문제는 분명히 리스크입니다. 하지만 실무자 입장에서는 URDF로 바로 뽑아준다는 점이 깡패네요. 파이프라인에서 시뮬레이션 환경 구축 시간이 획기적으로 줄어들거든요. 물론 엣지 케이스는 수동 보정이 필요하겠지만, 초기 에셋 생성 속도 면에서는 SOTA급이라고 봅니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;두 분 다 너무 진지하신 거 아니에요? ㅋㅋ 일단 VLM이랑 비디오 확산 모델 섞어서 정적 이미지에서 동적 물리 속성을 추출한다는 아이디어 자체가 너무 힙하잖아요. IoU 수치 좀 낮으면 어때요, 일단 데모 영상 보면 &#x27;와&#x27; 소리 나오는데! 저 이거 바로 구현해서 깃허브 오픈소스 털어볼 생각입니다.&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
