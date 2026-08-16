@@ -61,7 +61,7 @@ export default function MarkdownViewer({ filename, paper, papers = [], onSelect,
     .slice(0, 3);
 
   return (
-    <div style={{ maxWidth: '800px', margin: '0 auto', paddingBottom: '4rem' }}>
+    <div className="reader-shell">
       <button 
         onClick={onBack}
         style={{
@@ -70,7 +70,7 @@ export default function MarkdownViewer({ filename, paper, papers = [], onSelect,
           gap: '0.5rem',
           background: 'transparent',
           border: 'none',
-          color: 'var(--text-secondary)',
+          color: 'var(--muted)',
           cursor: 'pointer',
           padding: '1rem 0',
           marginBottom: '2rem',
@@ -82,8 +82,14 @@ export default function MarkdownViewer({ filename, paper, papers = [], onSelect,
         onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-secondary)'}
       >
         <ArrowLeft size={20} />
-        Back to Papers
+        전체 논문으로 돌아가기
       </button>
+
+      <section className="reader-meta">
+        <div><span>연구 주제</span><strong>{paper?.tags?.join(' · ') || 'AI 연구'}</strong></div>
+        <div><span>원문 발행</span><strong>{paper?.published || '정보 없음'}</strong></div>
+        <div><span>예상 읽기</span><strong>약 {paper?.reading_minutes || 3}분</strong></div>
+      </section>
 
       <div className="markdown-body">
         <ReactMarkdown 
@@ -114,7 +120,7 @@ export default function MarkdownViewer({ filename, paper, papers = [], onSelect,
       {aiComments.length > 0 && (
         <div style={{ marginTop: '4rem', padding: '2rem', background: 'rgba(255,255,255,0.02)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.1)' }}>
           <h3 style={{ fontSize: '1.25rem', marginBottom: '2rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            🔥 <span>AI 전문가 패널 토론</span>
+            <span>AI 전문가 패널 토론</span>
           </h3>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
             {aiComments.map((comment, i) => (
@@ -137,8 +143,8 @@ export default function MarkdownViewer({ filename, paper, papers = [], onSelect,
 
       {/* Human Comments (Giscus) */}
       <div style={{ marginTop: '4rem' }}>
-        <h3 style={{ fontSize: '1.25rem', marginBottom: '1.5rem', paddingBottom: '0.5rem', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
-          💬 독자 의견 남기기
+        <h3 style={{ fontSize: '1.25rem', marginBottom: '1.5rem', paddingBottom: '0.5rem', borderBottom: '2px solid var(--ink)' }}>
+          독자 의견 남기기
         </h3>
         <Giscus
           id="comments"

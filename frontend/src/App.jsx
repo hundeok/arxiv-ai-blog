@@ -1,126 +1,130 @@
 import React, { useState, useEffect, useMemo, lazy, Suspense } from 'react';
 import { Analytics as VercelAnalytics } from '@vercel/analytics/react';
+import { ArrowDown, ArrowUpRight, BookOpen, Menu, Search, Sparkles } from 'lucide-react';
 import PaperCard from './components/PaperCard';
-const MarkdownViewer = lazy(() => import('./components/MarkdownViewer'));
 import SystemStatus from './components/SystemStatus';
-import TrendingTicker from './components/TrendingTicker';
-import Analytics from './components/Analytics';
-import { track } from './components/Analytics';
+import Analytics, { track } from './components/Analytics';
+
+const MarkdownViewer = lazy(() => import('./components/MarkdownViewer'));
+
+function scrollTo(id) {
+  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
 
 function App() {
   const [papers, setPapers] = useState([]);
   const [pipelineStatus, setPipelineStatus] = useState(null);
   const [activeTopic, setActiveTopic] = useState('전체');
+  const [query, setQuery] = useState('');
   const params = new URLSearchParams(window.location.search);
-  const p = params.get('p');
-  const initialId = p || window.location.pathname.match(/^\/papers\/([^/]+)$/)?.[1] || null;
+  const legacyPaper = params.get('p');
+  const initialId = legacyPaper || window.location.pathname.match(/^\/papers\/([^/]+)$/)?.[1] || null;
   const [selectedId, setSelectedId] = useState(initialId);
 
   useEffect(() => {
-    if (p) {
-      window.history.replaceState({}, '', `/papers/${p}`);
-    }
-    // Load metadata.json from public directory
-    fetch('/content/metadata.json')
-      .then(res => res.json())
-      .then(data => setPapers(data))
-      .catch(err => console.error("Failed to load metadata", err));
-
-    fetch('/content/pipeline-status.json')
-      .then(res => res.ok ? res.json() : null)
-      .then(data => setPipelineStatus(data))
-      .catch(() => setPipelineStatus(null));
+    if (legacyPaper) window.history.replaceState({}, '', `/papers/${legacyPaper}`);
+    fetch('/content/metadata.json').then((res) => res.json()).then(setPapers).catch(() => setPapers([]));
+    fetch('/content/pipeline-status.json').then((res) => res.ok ? res.json() : null).then(setPipelineStatus).catch(() => setPipelineStatus(null));
   }, []);
+
   useEffect(() => {
     const onPopState = () => setSelectedId(window.location.pathname.match(/^\/papers\/([^/]+)$/)?.[1] || null);
     window.addEventListener('popstate', onPopState);
     return () => window.removeEventListener('popstate', onPopState);
   }, []);
-  const selectPaper = (paper) => { track('paper_open', { paper_id: paper.id }); window.history.pushState({}, '', `/papers/${paper.id}`); setSelectedId(paper.id); };
-  const selectedPaper = papers.find(paper => paper.id === selectedId);
-  const topics = useMemo(() => {
+
+  const topicCounts = useMemo(() => {
     const counts = new Map();
     papers.forEach((paper) => (paper.tags || []).forEach((tag) => counts.set(tag, (counts.get(tag) || 0) + 1)));
-    return [...counts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], 'ko')).slice(0, 10);
+    return [...counts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], 'ko'));
   }, [papers]);
-  const visiblePapers = activeTopic === '전체' ? papers : papers.filter((paper) => paper.tags?.includes(activeTopic));
-  const goHome = () => { window.history.pushState({}, '', '/'); setSelectedId(null); };
+  const topTopics = topicCounts.slice(0, 8);
+  const selectedPaper = papers.find((paper) => paper.id === selectedId);
+  const visiblePapers = papers.filter((paper) => {
+    const text = `${paper.korean_title} ${paper.korean_subtitle} ${paper.original_title} ${(paper.authors || []).join(' ')} ${(paper.tags || []).join(' ')}`.toLowerCase();
+    return (activeTopic === '전체' || paper.tags?.includes(activeTopic)) && (!query.trim() || text.includes(query.trim().toLowerCase()));
+  });
+  const featured = papers.slice(0, 3);
+  const selectPaper = (paper) => { track('paper_open', { paper_id: paper.id, topic: paper.topic || 'unknown' }); window.history.pushState({}, '', `/papers/${paper.id}`); setSelectedId(paper.id); window.scrollTo({ top: 0, behavior: 'instant' }); };
+  const goHome = () => { window.history.pushState({}, '', '/'); setSelectedId(null); window.scrollTo({ top: 0, behavior: 'instant' }); };
+  const chooseTopic = (topic) => { setActiveTopic(topic); setQuery(''); scrollTo('archive'); };
 
   return (
-    <div style={{ padding: '2rem', maxWidth: '1200px', margin: '0 auto' }}>
+    <div className="site-shell">
       <Analytics page={selectedId ? `/papers/${selectedId}` : '/'} paperId={selectedId} />
       <VercelAnalytics />
-      <header style={{ marginBottom: '3rem', textAlign: 'center', paddingTop: '2rem' }}>
-        <h1 style={{ fontSize: '3.5rem', marginBottom: '1rem' }}>
-          ArXiv <span className="gradient-text">Translator AI</span>
-        </h1>
-        <p style={{ color: 'var(--text-secondary)', fontSize: '1.25rem', maxWidth: '600px', margin: '0 auto' }}>
-          최신 AI 연구를 선별하고, 맥락까지 읽기 쉽게 풀어내는 한국어 리서치 아카이브
-        </p>
-        <nav aria-label="주요 탐색" style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginTop: '1.5rem', fontSize: '0.9rem' }}>
-          <button className="nav-button" onClick={() => { goHome(); setActiveTopic('전체'); }}>최신 연구</button>
-          <button className="nav-button" onClick={() => { goHome(); document.getElementById('topic-explorer')?.scrollIntoView({ behavior: 'smooth' }); }}>주제 탐색</button>
-          <a className="nav-button" href="/about/">운영 원칙</a>
+      <header className="site-header">
+        <button className="wordmark" onClick={goHome} aria-label="ArXiv Research Desk 홈">
+          <span className="wordmark-mark">A</span><span>ArXiv<br />Research Desk</span>
+        </button>
+        <nav className="desktop-nav" aria-label="주요 메뉴">
+          <button onClick={goHome}>최신 해설</button>
+          <button onClick={() => { goHome(); scrollTo('topics'); }}>주제 지도</button>
+          <button onClick={() => { goHome(); scrollTo('archive'); }}>논문 아카이브</button>
+          <a href="/about/">운영 원칙</a>
         </nav>
+        <button className="menu-button" onClick={() => scrollTo('topics')} aria-label="연구 주제 탐색"><Menu size={20} /></button>
       </header>
 
-
       {selectedId ? (
-        <Suspense fallback={<div style={{ padding: '4rem', textAlign: 'center' }}>논문을 불러오는 중입니다.</div>}><MarkdownViewer 
-          filename={selectedPaper?.filename} paper={selectedPaper} papers={papers}
-          onSelect={selectPaper} onBack={goHome}
-        /></Suspense>
+        <Suspense fallback={<div className="loading-state">논문 해설을 펼치는 중입니다…</div>}>
+          <MarkdownViewer filename={selectedPaper?.filename} paper={selectedPaper} papers={papers} onSelect={selectPaper} onBack={goHome} />
+        </Suspense>
       ) : (
         <main>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', marginBottom: '3rem' }}>
-            <SystemStatus totalPapers={papers.length} status={pipelineStatus} />
-            <TrendingTicker />
-            <section id="topic-explorer" className="topic-explorer" aria-label="연구 주제 탐색">
-              <div>
-                <p className="eyebrow">RESEARCH EXPLORER</p>
-                <h2 style={{ fontSize: '1.5rem', fontWeight: 700, margin: '0.25rem 0' }}>관심 주제로 연구 탐색</h2>
-                <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>언어·출신 국가가 아닌 실제 연구 주제와 접근법으로 분류합니다.</p>
+          <section className="hero-grid" aria-labelledby="hero-title">
+            <aside className="research-rail">
+              <p className="rail-label"><Sparkles size={14} /> RESEARCH INDEX</p>
+              <p>관심 있는 연구 축을 고르면, 쌓여 있는 해설을 바로 탐색할 수 있습니다.</p>
+              <div className="rail-links">
+                {topTopics.slice(0, 5).map(([topic], index) => <button key={topic} onClick={() => chooseTopic(topic)}><span>{String(index + 1).padStart(2, '0')}</span>{topic}<ArrowUpRight size={15} /></button>)}
               </div>
-              <div className="topic-list">
-                <button className={`topic-chip ${activeTopic === '전체' ? 'active' : ''}`} onClick={() => setActiveTopic('전체')}>전체 <span>{papers.length}</span></button>
-                {topics.map(([topic, count]) => <button key={topic} className={`topic-chip ${activeTopic === topic ? 'active' : ''}`} onClick={() => setActiveTopic(topic)}>{topic} <span>{count}</span></button>)}
+            </aside>
+            <div className="hero-content">
+              <p className="eyebrow">KOREAN AI RESEARCH ARCHIVE · UPDATED EVERY 3 HOURS</p>
+              <h1 id="hero-title">오늘의 AI 연구를<br /><em>맥락까지</em><span className="h1-tail"> 읽습니다.</span></h1>
+              <p className="hero-copy">쏟아지는 arXiv 논문에서 실제로 흐름을 만드는 연구를 찾아, 핵심·한계·실무적 의미까지 한국어로 정리합니다.</p>
+              <div className="hero-actions">
+                <button className="primary-button" onClick={() => scrollTo('archive')}>최신 해설 읽기 <ArrowDown size={18} /></button>
+                <button className="text-button" onClick={() => scrollTo('topics')}>연구 주제부터 보기</button>
               </div>
-            </section>
-            <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: '1rem' }}>
-              <h2 style={{ fontSize: '1.75rem', fontWeight: 700, margin: 0 }}>{activeTopic === '전체' ? '최신 해설 논문' : `${activeTopic} 연구`}</h2>
-              <span style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>{visiblePapers.length}편</span>
+              <div className="hero-stats">
+                <div><strong>{papers.length}</strong><span>누적 해설</span></div>
+                <div><strong>{topicCounts.length}</strong><span>연구 축</span></div>
+                <div><strong>3h</strong><span>갱신 주기</span></div>
+              </div>
             </div>
-          </div>
-          
-          {papers.length === 0 ? (
-            <div style={{ textAlign: 'center', padding: '4rem', color: 'var(--text-secondary)' }}>
-              No papers loaded. Please run the backend script.
+          </section>
+
+          <SystemStatus totalPapers={papers.length} status={pipelineStatus} />
+
+          <section id="topics" className="topic-section section-block" aria-labelledby="topic-heading">
+            <div className="section-heading"><div><p className="eyebrow">EXPLORE THE MAP</p><h2 id="topic-heading">연구 주제 지도</h2></div><p>언어·국가 정보가 아닌, 논문이 실제로 푸는 문제와 사용한 접근법을 기준으로 분류합니다.</p></div>
+            <div className="topic-board">
+              {topTopics.map(([topic, count], index) => <button key={topic} className={`topic-tile topic-tile-${index % 4}`} onClick={() => chooseTopic(topic)}><span>0{index + 1}</span><strong>{topic}</strong><small>{count}편의 해설 <ArrowUpRight size={14} /></small></button>)}
             </div>
-          ) : (
-            <>
-              <div style={{ 
-                display: 'grid', 
-                gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))', 
-                gap: '2rem' 
-              }}>
-                {visiblePapers.map((paper) => (
-                  <PaperCard key={paper.id}
-                    paper={paper}
-                    onClick={() => selectPaper(paper)}
-                  />
-                ))}
-              </div>
-            </>
-          )}
+          </section>
+
+          <section className="brief-section section-block" aria-labelledby="brief-heading">
+            <div className="brief-label"><BookOpen size={18} /><span>NEWLY DECODED</span></div>
+            <div className="section-heading"><div><p className="eyebrow">START HERE</p><h2 id="brief-heading">최근 도착한 연구</h2></div><p>가장 최근 발행된 해설부터 훑어보고, 관심 주제로 더 깊게 들어가세요.</p></div>
+            <div className="feature-strip">
+              {featured.map((paper, index) => <button className="feature-paper" key={paper.id} onClick={() => selectPaper(paper)}><span>0{index + 1}</span><div><p>{(paper.tags || []).slice(0, 2).join(' · ')}</p><strong>{paper.korean_title}</strong></div><ArrowUpRight size={20} /></button>)}
+            </div>
+          </section>
+
+          <section id="archive" className="archive-section section-block" aria-labelledby="archive-heading">
+            <div className="section-heading archive-title"><div><p className="eyebrow">THE ARCHIVE</p><h2 id="archive-heading">모든 연구 해설</h2></div><p>발행한 글은 유지하고, 새 글이 위로 쌓이는 살아 있는 연구 데이터베이스입니다.</p></div>
+            <div className="archive-controls">
+              <label className="search-box"><Search size={19} /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="제목, 저자, 주제로 검색" aria-label="논문 검색" /></label>
+              <div className="filter-list" aria-label="주제 필터"><button className={activeTopic === '전체' ? 'active' : ''} onClick={() => chooseTopic('전체')}>전체 <span>{papers.length}</span></button>{topTopics.map(([topic, count]) => <button key={topic} className={activeTopic === topic ? 'active' : ''} onClick={() => chooseTopic(topic)}>{topic} <span>{count}</span></button>)}</div>
+            </div>
+            <div className="archive-meta"><span>{activeTopic === '전체' ? '전체 아카이브' : activeTopic}</span><strong>{visiblePapers.length}편</strong></div>
+            {visiblePapers.length ? <div className="paper-grid">{visiblePapers.map((paper) => <PaperCard key={paper.id} paper={paper} onClick={() => selectPaper(paper)} />)}</div> : <div className="empty-state">검색 조건에 맞는 논문이 없습니다. 다른 주제나 검색어를 시도해 보세요.</div>}
+          </section>
         </main>
       )}
-      
-      <footer style={{ margin: '6rem 0 2rem', textAlign: 'center', fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
-        <a href="/about/" style={{ color: 'inherit', textDecoration: 'none' }}>소개</a> ·{' '}
-        <a href="/contact/" style={{ color: 'inherit', textDecoration: 'none' }}>문의</a> ·{' '}
-        <a href="/privacy/" style={{ color: 'inherit', textDecoration: 'none' }}>개인정보처리방침</a> ·{' '}
-        <a href="/ai-policy/" style={{ color: 'inherit', textDecoration: 'none' }}>AI·저작권 고지</a>
-      </footer>
+      <footer className="site-footer"><div><strong>ArXiv Research Desk</strong><p>AI 연구를 더 멀리, 더 정확하게 읽기 위한 한국어 아카이브.</p></div><div><a href="/about/">소개</a><a href="/contact/">문의</a><a href="/privacy/">개인정보</a><a href="/ai-policy/">AI·저작권 고지</a></div></footer>
     </div>
   );
 }

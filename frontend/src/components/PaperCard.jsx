@@ -1,77 +1,16 @@
 import React from 'react';
+import { ArrowUpRight } from 'lucide-react';
 
 export default function PaperCard({ paper, onClick }) {
   return (
-    <div 
-      className="glass"
-      style={{
-        padding: '1.5rem',
-        cursor: 'pointer',
-        transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-        position: 'relative',
-        overflow: 'hidden'
-      }}
-      onClick={() => onClick(paper.filename)}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.transform = 'translateY(-4px)';
-        e.currentTarget.style.background = 'var(--bg-card-hover)';
-        e.currentTarget.style.borderColor = 'var(--accent)';
-        e.currentTarget.style.boxShadow = '0 10px 30px -10px var(--accent-glow)';
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.transform = 'translateY(0)';
-        e.currentTarget.style.background = 'var(--bg-card)';
-        e.currentTarget.style.borderColor = 'var(--border)';
-        e.currentTarget.style.boxShadow = 'none';
-      }}
-    >
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.45rem', marginBottom: '1rem', alignItems: 'center' }}>
-        {(paper.tags || []).map(tag => (
-          <span 
-            key={tag}
-            style={{
-              fontSize: '0.75rem',
-              fontWeight: 600,
-              padding: '0.25rem 0.75rem',
-              borderRadius: '99px',
-              background: 'rgba(99, 102, 241, 0.1)',
-              color: '#818cf8',
-              border: '1px solid rgba(99, 102, 241, 0.2)'
-            }}
-          >
-            {tag}
-          </span>
-        ))}
-        <span style={{ marginLeft: 'auto', fontSize: '0.8rem', color: 'var(--text-secondary)', whiteSpace: 'nowrap' }}>
-          {paper.published}
-        </span>
-      </div>
-      
-      <h3 style={{ fontSize: '1.25rem', marginBottom: '0.75rem', lineHeight: 1.4 }}>
-        {paper.korean_title}
-      </h3>
-      
-      <p style={{ 
-        fontSize: '0.875rem', 
-        color: 'var(--text-secondary)',
-        display: '-webkit-box',
-        WebkitLineClamp: 2,
-        WebkitBoxOrient: 'vertical',
-        overflow: 'hidden'
-      }}>
-        {paper.korean_subtitle || paper.original_title}
-      </p>
-      
-      <div style={{ marginTop: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-        <div style={{
-          width: '24px', height: '24px', borderRadius: '50%',
-          background: 'linear-gradient(45deg, #4f46e5, #ec4899)'
-        }}></div>
-        <span style={{ fontSize: '0.875rem', color: '#cbd5e1', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-          {paper.authors?.join(', ') || 'arXiv 연구팀'}
-        </span>
-        {paper.reading_minutes && <span style={{ marginLeft: 'auto', fontSize: '0.75rem', color: 'var(--text-secondary)', whiteSpace: 'nowrap' }}>약 {paper.reading_minutes}분 읽기</span>}
-      </div>
-    </div>
+    <article className="paper-card">
+      <button className="paper-card-button" onClick={() => onClick(paper)}>
+        <div className="paper-card-top"><span className="paper-number">#{paper.id.replace(/\D/g, '').slice(-4)}</span><time>{paper.published}</time></div>
+        <div className="paper-tags">{(paper.tags || []).slice(0, 3).map((tag) => <span key={tag}>{tag}</span>)}</div>
+        <h3>{paper.korean_title}</h3>
+        <p>{paper.korean_subtitle || paper.original_title}</p>
+        <div className="paper-card-bottom"><span>{paper.authors?.join(', ') || 'arXiv 연구팀'}</span><span>약 {paper.reading_minutes || 3}분 <ArrowUpRight size={16} /></span></div>
+      </button>
+    </article>
   );
 }
