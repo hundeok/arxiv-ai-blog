@@ -3,6 +3,7 @@ import { Analytics as VercelAnalytics } from '@vercel/analytics/react';
 import { ArrowDown, ArrowUpRight, BookOpen, Menu, Moon, Search, Sparkles, Sun } from 'lucide-react';
 import PaperCard from './components/PaperCard';
 import SystemStatus from './components/SystemStatus';
+import ArchiveMode from './components/ArchiveMode';
 import Analytics, { track } from './components/Analytics';
 
 const MarkdownViewer = lazy(() => import('./components/MarkdownViewer'));
@@ -17,6 +18,7 @@ function App() {
   const [activeTopic, setActiveTopic] = useState('전체');
   const [query, setQuery] = useState('');
   const [theme, setTheme] = useState(() => window.localStorage.getItem('arxiv-research-theme') || 'light');
+  const [viewMode, setViewMode] = useState(() => window.localStorage.getItem('arxiv-view-mode') || 'desk');
   const params = new URLSearchParams(window.location.search);
   const legacyPaper = params.get('p');
   const initialId = legacyPaper || window.location.pathname.match(/^\/papers\/([^/]+)$/)?.[1] || null;
@@ -29,9 +31,10 @@ function App() {
   }, []);
 
   useEffect(() => {
-    document.documentElement.dataset.theme = theme;
+    document.documentElement.dataset.theme = viewMode === 'archive' ? 'dark' : theme;
     window.localStorage.setItem('arxiv-research-theme', theme);
-  }, [theme]);
+    window.localStorage.setItem('arxiv-view-mode', viewMode);
+  }, [theme, viewMode]);
 
   useEffect(() => {
     const onPopState = () => setSelectedId(window.location.pathname.match(/^\/papers\/([^/]+)$/)?.[1] || null);
@@ -56,7 +59,7 @@ function App() {
   const chooseTopic = (topic) => { setActiveTopic(topic); setQuery(''); scrollTo('archive'); };
 
   return (
-    <div className="site-shell">
+    <div className={`site-shell ${viewMode === 'archive' ? 'archive-shell' : ''}`}>
       <Analytics page={selectedId ? `/papers/${selectedId}` : '/'} paperId={selectedId} />
       <VercelAnalytics />
       <header className="site-header">
@@ -70,8 +73,11 @@ function App() {
           <a href="/about/">운영 원칙</a>
         </nav>
         <div className="header-actions">
-          <button className="theme-toggle" onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')} aria-label={theme === 'light' ? '다크 아카이브 모드로 전환' : '라이트 리서치 데스크 모드로 전환'}>
-            {theme === 'light' ? <Moon size={16} /> : <Sun size={16} />}<span>{theme === 'light' ? 'Archive' : 'Desk'}</span>
+          {viewMode === 'desk' && <button className="theme-toggle" onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')} aria-label={theme === 'light' ? '다크 테마로 전환' : '라이트 테마로 전환'}>
+            {theme === 'light' ? <Moon size={16} /> : <Sun size={16} />}<span>{theme === 'light' ? 'Dark' : 'Light'}</span>
+          </button>}
+          <button className="mode-toggle" onClick={() => setViewMode(viewMode === 'desk' ? 'archive' : 'desk')}>
+            {viewMode === 'desk' ? 'Archive Mode' : 'Desk Mode'}
           </button>
           <button className="menu-button" onClick={() => scrollTo('topics')} aria-label="연구 주제 탐색"><Menu size={20} /></button>
         </div>
@@ -81,6 +87,8 @@ function App() {
         <Suspense fallback={<div className="loading-state">논문 해설을 펼치는 중입니다…</div>}>
           <MarkdownViewer filename={selectedPaper?.filename} paper={selectedPaper} papers={papers} onSelect={selectPaper} onBack={goHome} />
         </Suspense>
+      ) : viewMode === 'archive' ? (
+        <ArchiveMode papers={papers} status={pipelineStatus} onSelect={selectPaper} onExit={() => setViewMode('desk')} />
       ) : (
         <main>
           <section className="hero-grid" aria-labelledby="hero-title">
