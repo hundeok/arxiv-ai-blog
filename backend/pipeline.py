@@ -31,6 +31,8 @@ CONTENT_DIR = ROOT / "frontend" / "public" / "content"
 STATE_PATH = CONTENT_DIR / "pipeline-state.json"
 STATUS_PATH = CONTENT_DIR / "pipeline-status.json"
 METADATA_PATH = CONTENT_DIR / "metadata.json"
+QUALITY_REPORT_PATH = CONTENT_DIR / "quality-report.json"
+EDITORIAL_CANDIDATES_PATH = CONTENT_DIR / "editorial-candidates.json"
 SITE_URL = "https://arxiv-ai-blog.vercel.app"
 GA_MEASUREMENT_ID = os.environ.get("GA_MEASUREMENT_ID", "G-V4G2FBSDMG").strip()
 
@@ -698,6 +700,73 @@ def status_payload(state: dict[str, Any], report: dict[str, Any]) -> dict[str, A
     }
 
 
+def assess_content_quality(record: dict[str, Any], source: str) -> dict[str, Any]:
+    """Audit published content without making a model or network request.
+
+    This is deliberately a prioritisation signal, not an academic truth score.
+    Existing posts stay public; a low result simply makes a post easier to find
+    in the editorial review queue.
+    """
+    title = str(record.get("korean_title", "")).strip()
+    subtitle = str(record.get("korean_subtitle", "")).strip()
+    section_checks = {section: section in source for section in REQUIRED_SECTIONS}
+    checks = {
+        "korean_title": is_korean_title(title),
+        "korean_subtitle": is_korean_card_subtitle(subtitle),
+        "source_attribution": "원본 논문 정보" in source,
+        "minimum_body_length": len(source.strip()) >= 800,
+        "substantive_body_length": len(source.strip()) >= 1_400,
+        "required_sections": all(section_checks.values()),
+        "sections": section_checks,
+    }
+    score = 0
+    score += 15 if checks["korean_title"] else 0
+    score += 10 if checks["korean_subtitle"] else 0
+    score += 10 if checks["source_attribution"] else 0
+    score += 30 if checks["required_sections"] else 5 * sum(section_checks.values())
+    # Reward useful depth gradually, instead of treating a 1,399-character
+    # explanation as categorically worse than a 1,400-character one.
+    score += min(25, round(len(source.strip()) / 1_400 * 25))
+    core_ready = checks["korean_title"] and checks["required_sections"] and checks["minimum_body_length"]
+    return {
+        "algorithm_version": "quality-v1",
+        "score": min(100, score),
+        "status": "ready" if core_ready and score >= 70 else "needs_review",
+        "checks": checks,
+    }
+
+
+def select_editorial_candidates(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Return a diverse, deterministic manual-review shortlist.
+
+    The shortlist never controls publication. It gives an editor a compact set
+    of strong and recent papers to turn into genuinely original deep dives.
+    """
+    selected: list[dict[str, Any]] = []
+    per_topic: dict[str, int] = {}
+    for rank, item in enumerate(items):
+        quality = item.get("quality", {})
+        topic = str(item.get("topic", "AI 연구"))
+        if quality.get("status") != "ready" or per_topic.get(topic, 0) >= 3:
+            continue
+        # Metadata is newest-first. A bounded rank bonus makes freshness useful
+        # without letting it completely erase long-form quality.
+        priority = min(100, int(quality.get("score", 0)) + max(0, 18 - rank // 12))
+        selected.append({
+            "id": item["id"],
+            "topic": topic,
+            "title": item["korean_title"],
+            "published": item["published"],
+            "quality_score": quality["score"],
+            "priority_score": priority,
+            "reasons": ["필수 구조 통과", "본문 충실도", "주제 균형", "최근성"],
+        })
+        per_topic[topic] = per_topic.get(topic, 0) + 1
+        if len(selected) == 24:
+            break
+    return selected
+
+
 def rebuild_metadata(state: dict[str, Any]) -> None:
     records = [
         record for record in state["papers"].values()
@@ -708,11 +777,13 @@ def rebuild_metadata(state: dict[str, Any]) -> None:
     # Newest first in the UI; old publications remain in the archive forever.
     records.sort(key=lambda record: (record.get("paper", {}).get("published", ""), record.get("id", "")), reverse=True)
     items = []
+    quality_items = []
     for record in records:
         paper = record["paper"]
         source = (CONTENT_DIR / record["filename"]).read_text(encoding="utf-8")
         tags = classify_paper(paper, record, source)
-        items.append({
+        quality = assess_content_quality(record, source)
+        item = {
             "id": record["id"],
             "filename": record["filename"],
             "original_title": paper["title"],
@@ -723,8 +794,37 @@ def rebuild_metadata(state: dict[str, Any]) -> None:
             "tags": tags,
             "topic": tags[0],
             "reading_minutes": max(3, min(20, round(len(source) / 1_600))),
+            # The detailed checks live in quality-report.json. Keep the UI
+            # index compact because it is downloaded by every archive visitor.
+            "quality": {"score": quality["score"], "status": quality["status"]},
+        }
+        items.append(item)
+        quality_items.append({
+            "id": item["id"],
+            "filename": item["filename"],
+            "published": item["published"],
+            "topic": item["topic"],
+            **quality,
         })
     atomic_json_write(METADATA_PATH, items)
+    quality_summary = {
+        "total": len(quality_items),
+        "ready": sum(item["status"] == "ready" for item in quality_items),
+        "needs_review": sum(item["status"] == "needs_review" for item in quality_items),
+        "average_score": round(sum(item["score"] for item in quality_items) / len(quality_items), 1) if quality_items else 0,
+    }
+    atomic_json_write(QUALITY_REPORT_PATH, {
+        "algorithm_version": "quality-v1",
+        "generated_at": now_iso(),
+        "summary": quality_summary,
+        "items": quality_items,
+    })
+    atomic_json_write(EDITORIAL_CANDIDATES_PATH, {
+        "algorithm_version": "editorial-candidates-v1",
+        "generated_at": now_iso(),
+        "method": "No model calls. Quality, recency, and topic-balance shortlist for manual deep dives.",
+        "candidates": select_editorial_candidates(items),
+    })
     urls = []
     for item in items:
         slug = item["id"]

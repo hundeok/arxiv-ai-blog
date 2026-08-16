@@ -2,6 +2,12 @@
 
 Daily Korean-language explainers for recent arXiv AI papers. The frontend is a Vite + React static site; the backend fetches papers, extracts PDF text, and writes generated Markdown into the frontend's public content directory.
 
+## 운영 문서
+
+- [마스터플랜](docs/MASTER_PLAN.md): 제품 원칙, 단계별 목표, 인수인계 기준
+- [아키텍처·데이터 계약](docs/ARCHITECTURE.md): 상태/정적 산출물/비밀값 경계
+- [운영 런북](docs/OPERATIONS_RUNBOOK.md): 점검, 장애 대응, AdSense 재신청 기준
+
 ## Local development
 
 ```bash

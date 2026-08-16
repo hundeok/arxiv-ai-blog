@@ -63,6 +63,27 @@ class PipelineUnitTests(unittest.TestCase):
         )
         self.assertEqual(tags, ["AI 에이전트", "대규모 언어 모델", "검색 증강"])
 
+    def test_quality_audit_is_deterministic_and_does_not_need_a_model(self):
+        source = "# 제목\n\n> **원본 논문 정보**\n\n" + "\n".join(
+            f"## {section}\n" + "내용 " * 100 for section in pipeline.REQUIRED_SECTIONS
+        )
+        quality = pipeline.assess_content_quality(
+            {"korean_title": "검증 가능한 한국어 제목", "korean_subtitle": "연구의 문제와 해결 방법을 쉽게 설명하는 짧은 한국어 문장입니다."},
+            source,
+        )
+        self.assertEqual(quality["status"], "ready")
+        self.assertEqual(quality["algorithm_version"], "quality-v1")
+        self.assertTrue(quality["checks"]["required_sections"])
+
+    def test_editorial_candidates_preserve_topic_diversity(self):
+        items = [
+            {"id": str(index), "topic": "AI 에이전트" if index < 4 else "추론", "korean_title": "한국어 제목", "published": "2026-08-16", "quality": {"status": "ready", "score": 90}}
+            for index in range(8)
+        ]
+        candidates = pipeline.select_editorial_candidates(items)
+        self.assertEqual(len([item for item in candidates if item["topic"] == "AI 에이전트"]), 3)
+        self.assertEqual(len([item for item in candidates if item["topic"] == "추론"]), 3)
+
 
 if __name__ == "__main__":
     unittest.main()
