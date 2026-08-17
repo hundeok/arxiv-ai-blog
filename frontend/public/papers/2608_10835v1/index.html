@@ -1,0 +1,75 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>UniProbe: 다중 구조 내부 표현을 활용한 거대 시각-언어 모델용 학습 가능한 토큰 단위 환각 탐지기 | ArXiv Translator AI</title><meta name="description" content="UniProbe: 다중 구조 내부 표현을 활용한 거대 시각-언어 모델용 학습 가능한 토큰 단위 환각 탐지기"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_10835v1"><meta property="og:type" content="article"><meta property="og:title" content="UniProbe: 다중 구조 내부 표현을 활용한 거대 시각-언어 모델용 학습 가능한 토큰 단위 환각 탐지기"><meta property="og:description" content="UniProbe: 다중 구조 내부 표현을 활용한 거대 시각-언어 모델용 학습 가능한 토큰 단위 환각 탐지기"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_10835v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="UniProbe: 다중 구조 내부 표현을 활용한 거대 시각-언어 모델용 학습 가능한 토큰 단위 환각 탐지기"><meta name="twitter:description" content="UniProbe: 다중 구조 내부 표현을 활용한 거대 시각-언어 모델용 학습 가능한 토큰 단위 환각 탐지기"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_10835v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "UniProbe: 다중 구조 내부 표현을 활용한 거대 시각-언어 모델용 학습 가능한 토큰 단위 환각 탐지기", "description": "UniProbe: 다중 구조 내부 표현을 활용한 거대 시각-언어 모델용 학습 가능한 토큰 단위 환각 탐지기", "datePublished": "2026-08-11", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_10835v1", "author": [{"@type": "Person", "name": "Dvir Samuel"}, {"@type": "Person", "name": "Guy Bar-Shalom"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_10835v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_10835v1"});gtag('event', 'paper_view', {"paper_id": "2608_10835v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>UniProbe: 다중 구조 내부 표현을 활용한 거대 시각-언어 모델용 학습 가능한 토큰 단위 환각 탐지기</h1><p>UniProbe: 다중 구조 내부 표현을 활용한 거대 시각-언어 모델용 학습 가능한 토큰 단위 환각 탐지기</p><pre>UniProbe: 다중 구조 내부 표현을 활용한 거대 시각-언어 모델용 학습 가능한 토큰 단위 환각 탐지기
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** UniProbe: A Learnable Token-Level Hallucination Detector for Large VLMs using Multi-Structural Internal Representations
+&gt; - **저자:** Dvir Samuel, Guy Bar-Shalom, Fabrizio Frasca, Ethan Fetaya, Yftah Ziser, Gal Chechik, Haggai Maron
+&gt; - **발행일:** 2026-08-11
+&gt; - **PDF 링크:** [UniProbe: A Learnable Token-Level Hallucination Detector for Large VLMs using Multi-Structural Internal Representations](https://arxiv.org/pdf/2608.10835v1)
+
+
+✨ 3줄 핵심 요약
+* **UniProbe**는 거대 시각-언어 모델(LVLM)의 내부 연산 흔적을 그래프로 구조화하여 토큰 단위로 환각을 탐지하는 경량화된 학습형 탐지기입니다.
+* GNN, ViT, GRU를 결합해 시각적 관계, 공간적 배치, 생성 순서 정보를 동시에 학습함으로써 기존 방식보다 정교한 탐지 성능을 제공합니다.
+* 실시간 스트리밍 모드를 통해 생성 과정에서 환각을 즉시 탐지하고 재생성함으로써, 모델의 기본 성능은 유지하면서도 객체 환각을 최대 55%까지 감소시킵니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+AI 모델이 이미지에는 없는 내용을 있는 것처럼 말하는 &#x27;환각(Hallucination)&#x27; 현상은 신뢰성 측면에서 큰 문제입니다. 기존의 해결책들은 모델 전체를 다시 훈련해야 하거나, 모델이 생성하는 과정을 깊이 이해하지 못한다는 한계가 있었습니다. 
+
+UniProbe는 모델이 내부적으로 처리하는 &#x27;연산의 흔적(이미지 조각, 질문, 생성된 단어 간의 관계)&#x27;을 그래프 형태로 분석합니다. 이를 통해 단순히 결과값만 보는 것이 아니라, 모델이 어떤 근거로 그 단어를 선택했는지 추적합니다. 마치 AI의 사고 과정을 들여다보는 것과 같아, 환각이 발생할 때 이를 실시간으로 포착해 수정할 수 있습니다. 
+
+🎯 배경 및 문제점
+거대 시각-언어 모델(LVLM)은 뛰어난 추론 능력을 갖췄음에도 불구하고, 시각적 정보와 무관하거나 상충하는 텍스트를 생성하는 환각 문제가 빈번합니다. 효과적인 대응을 위해서는 응답 전체를 버리는 대신 환각이 발생한 특정 토큰만 정밀하게 찾아내야 합니다. 
+
+기존 연구들은 다음과 같은 문제점이 있었습니다.
+* 모델 전체를 다시 훈련(Fine-tuning)하는 방식은 비용이 너무 많이 듭니다.
+* 외부 검증 도구는 모델 내부의 생성 과정을 간과합니다.
+* 기존 내부 신호 분석 방식은 공간적, 순차적 정보를 단순화하여 모델의 복잡한 추론 구조를 제대로 반영하지 못합니다.
+
+💡 핵심 기술 및 아키텍처
+UniProbe는 고정된(frozen) LVLM의 내부 상태를 읽어오는 구조로, 세 가지 핵심 모듈이 상호작용합니다.
+1. **관계 추적 그래프 (GNN):** 이미지 조각, 질문 토큰, 생성된 토큰 사이의 주의(Attention) 관계를 구조화합니다.
+2. **공간 및 순차 모듈:** 이미지의 기하학적 배치를 분석하는 **ViT**와 생성 순서의 맥락을 파악하는 **GRU**를 교차 배치하여 구조적 특징을 극대화합니다.
+3. **자기 적응 전략:** 실제 모델의 생성 분포에 맞춰 환각을 자동으로 레이블링하고 추가 학습함으로써, 훈련 데이터와 실제 서비스 환경 사이의 분포 차이(Distribution Shift)를 최소화합니다.
+
+📊 실험 결과 분석
+* **환각 감소:** 객체 환각을 최대 55%까지 성공적으로 줄였습니다.
+* **효율성:** 표준 생성 대비 1.06배의 지연 시간(Latency)만 추가되어 실시간 활용이 가능합니다.
+* **구조적 성능:** 단순히 평면적인 프로브(Flat Probe)를 사용했을 때보다 F1 점수가 30.0 이상 높게 나타나, 복합적 구조 학습의 중요성을 입증했습니다.
+* **최적 구간:** 모델 내부의 중간 계층(mid-network layers)에서 환각 탐지 성능이 가장 높게 나타났습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **신뢰성 제고:** 사용자의 질문에 대해 실시간으로 환각 여부를 확인하여, 훨씬 더 신뢰할 수 있는 AI 비서나 멀티모달 인터페이스를 구축할 수 있습니다.
+* **실무 적용:** 모델 전체를 재학습할 필요 없이 기존에 구축된 오픈소스 LVLM 위에 가벼운 탐지기만 얹는 방식이므로 도입 비용이 낮습니다.
+* **한계점:** 논문에 따르면 내부 히든 스테이트와 주의 지도(Attention Map)에 접근할 수 있어야 하므로, 폐쇄형 모델보다는 오픈소스 모델에 직접 적용하기 적합합니다. 또한 모델별로 내부 표현이 다르므로 각 모델에 맞는 별도의 탐지기 훈련이 필요합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2608.10835 UniProbe: A Learnable Token-Level Hallucination ...](https://arxiv.org/abs/2608.10835)
+&gt; - [UniProbe: A Learnable Token-Level Hallucination Detector for ...](https://arxiv.org/html/2608.10835v1)
+&gt; - [UniProbe: A Learnable Token-Level Hallucination Detector for ...](https://research.nvidia.com/labs/par/uniprobe/)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문을 훑어보니 내부 히든 스테이트의 구조적 정보를 GNN으로 엮어낸 아이디어 자체는 흥미롭군. 하지만 &#x27;중간 계층&#x27;에서 탐지 성능이 가장 높다는 결과는, 결국 모델의 최종 아웃풋이 정제되는 과정에서의 불확실성을 완전히 해소하지 못했다는 반증 아닌가? 범용적인 해석 가능성(interpretability) 관점에서 이 &#x27;학습 가능한 탐지기&#x27;가 모델의 블랙박스를 얼마나 투명하게 만드는지 더 엄밀한 검증이 필요해 보이네.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 일리가 있지만, 실무자 입장에선 &#x27;1.06배의 지연 시간&#x27;이라는 수치가 더 눈에 들어옵니다. 모델 전체 파인튜닝 없이 고정된 모델 위에 경량 모듈 하나 얹어서 환각을 55% 잡는다? 이건 프로덕션 레벨에서 바로 테스트해 볼 가치가 충분해요. 다만 모델마다 히든 스테이트 구조가 다르니, 모델 업데이트 때마다 UniProbe도 매번 다시 학습시켜야 할 텐데, 그 운영 비용(Ops)은 어떻게 감당할지가 관건이겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 다들 너무 진지하신 거 아니에요? ㅋㅋㅋ 일단 이번 주 세미나 발표 주제로 바로 찜했습니다. GNN이랑 GRU 섞어서 LVLM 내부 구조 털어먹는 거 보니까 논문 인용수 폭발할 것 같은데요? 비록 폐쇄형 모델엔 적용이 어렵다는 큰 벽이 있지만, Llama-3-V 같은 오픈소스 모델 생태계에선 이거 당장 &#x27;국룰&#x27; 라이브러리 될 듯합니다. 깃허브 코드 올라오자마자 바로 런 해봐야지!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
