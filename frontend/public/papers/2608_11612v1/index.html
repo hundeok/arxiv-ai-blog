@@ -1,0 +1,67 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>디온3: 풀스택 직교 업데이트 | ArXiv Translator AI</title><meta name="description" content="디온3: 풀스택 직교 업데이트"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_11612v1"><meta property="og:type" content="article"><meta property="og:title" content="디온3: 풀스택 직교 업데이트"><meta property="og:description" content="디온3: 풀스택 직교 업데이트"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_11612v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="디온3: 풀스택 직교 업데이트"><meta name="twitter:description" content="디온3: 풀스택 직교 업데이트"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_11612v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "디온3: 풀스택 직교 업데이트", "description": "디온3: 풀스택 직교 업데이트", "datePublished": "2026-08-12", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_11612v1", "author": [{"@type": "Person", "name": "Noah Amsel"}, {"@type": "Person", "name": "Jack Zhang"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_11612v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_11612v1"});gtag('event', 'paper_view', {"paper_id": "2608_11612v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>디온3: 풀스택 직교 업데이트</h1><p>디온3: 풀스택 직교 업데이트</p><pre>디온3: 풀스택 직교 업데이트
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Dion3: Full-Stack Orthogonal Updates
+&gt; - **저자:** Noah Amsel, Jack Zhang, Kwangjun Ahn, Ali Naeimi, Austin Feng, Berlin Chen, Tri Dao, John Langford
+&gt; - **발행일:** 2026-08-12
+&gt; - **PDF 링크:** [Dion3: Full-Stack Orthogonal Updates](https://arxiv.org/pdf/2608.11612v1)
+
+
+✨ 3줄 핵심 요약
+- **비용 절감:** Muon 최적화 기법의 핵심인 &#x27;뉴턴-슐츠(Newton-Schulz)&#x27; 연산의 연산량을 획기적으로 줄여, 최적화 단계 시간을 최대 6배 단축했습니다.
+- **기술적 혁신:** Gram 뉴턴-슐츠 알고리즘, 대칭성 기반 전용 커널(CuteDSL), 그리고 가중치 업데이트 시 일부만 계산하는 &#x27;부분 업데이트(Fractional update)&#x27; 방식을 도입했습니다.
+- **성능 유지:** Muon과 대등하거나 더 나은 학습 손실(loss) 값을 달성하면서도, 분산 환경에서의 통신 및 계산 오버헤드를 효과적으로 해결했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+최근 대형 언어 모델 학습에 쓰이는 &#x27;Muon&#x27; 최적화 도구는 성능은 좋지만, 행렬을 직교화하는 과정에서 매우 높은 계산 비용이 발생합니다. 연구진이 개발한 **Dion3**는 이 과정을 더 효율적으로 재설계했습니다. 마치 요리할 때 전체 재료를 다 손질하는 대신 핵심 재료만 골라 조리 시간을 줄이듯, 연산 알고리즘을 최적화하고 하드웨어 친화적인 전용 커널을 사용했습니다. 결과적으로 모델 학습 품질을 유지하면서도 훨씬 더 빠르고 효율적인 학습이 가능해졌습니다.
+
+🎯 배경 및 문제점
+- **연산 복잡도:** 기존 Muon의 뉴턴-슐츠 직교화 단계는 3차 시간 복잡도를 가지며, 가중치 샤딩(sharding) 시 통신 오버헤드가 가중됩니다.
+- **효율성 저하:** 이러한 오버헤드로 인해 많은 설정에서 Muon의 장점이 상쇄되는 문제가 있었습니다. 기존 방식은 범용적이지 않고 특정 모델 구조나 병렬화 전략에만 의존해야 하는 취약함이 있었습니다.
+
+💡 핵심 기술 및 아키텍처
+1. **Gram 뉴턴-슐츠 알고리즘:** 행렬 연산의 플롭스(FLOPs)를 줄여 표준 알고리즘 대비 계산 비용을 절감합니다. 이때 발생하는 부동 소수점 오차 문제를 방지하기 위해 &#x27;재시작(restarting) 전략&#x27;을 사용해 수치적 안정성을 확보했습니다.
+2. **CuteDSL 대칭 커널:** 행렬의 대칭성을 활용하는 전용 GPU 커널을 설계하여, 중복 연산을 제거함으로써 계산 속도를 높였습니다.
+3. **메가배칭(Megabatching):** 분산 환경에서의 통신 오버헤드를 줄이기 위한 전략을 적용했습니다.
+4. **부분 업데이트:** 모멘텀 행렬의 행 일부만 선택하여 직교화하는 방식을 통해 비용을 추가로 절감했습니다.
+
+📊 실험 결과 분석
+- **속도 향상:** 7B 파라미터 모델 기준, 기존 Muon 대비 최적화 단계 시간을 최대 6배 단축했습니다. (AdamW와 비교 시 26배였던 오버헤드가 4배 수준으로 감소)
+- **품질 보존:** 대규모 모델(14B 등) 학습에서 기존 &#x27;NorMuon&#x27; 대비 동등하거나 더 우수한 검증 손실(Validation loss)을 기록했습니다.
+- **범용성:** 다양한 아키텍처(Gemma, MoE 등)에서도 안정적인 속도 향상을 입증했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+- **접근성 확대:** Muon의 높은 오버헤드를 해결함으로써, 대규모 모델 학습 시 엔지니어링 부담을 줄이고 더 많은 연구자와 개발자가 고성능 최적화 도구를 실용적으로 사용할 수 있게 되었습니다.
+- **실무 적용:** `dion` 패키지를 통해 기존 Muon 사용자가 코드를 거의 수정하지 않고도(drop-in replacement) 즉시 적용할 수 있도록 지원합니다. 이는 분산 학습 환경에서 리소스 효율성을 극대화하려는 기업 및 연구소에 실질적인 도움을 줄 것으로 기대됩니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2608.11612 Dion3: Full-Stack Orthogonal Updates](https://arxiv.org/abs/2608.11612)
+&gt; - [Dion3: Full-stack orthogonal updates](https://arxiv.org/html/2608.11612)
+&gt; - [Emergent Mind: Frontier Research Explorer](https://www.emergentmind.com/)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;Muon의 뉴턴-슐츠 연산은 이론적으로는 매력적이나 수치적 안정성이 항상 발목을 잡았지. Dion3의 &#x27;재시작(restarting) 전략&#x27;은 흥미롭지만, 과연 정밀도 손실 없이 학습 후반부 수렴까지 안정성을 보장할 수 있을지 의문이군. 특히 부분 업데이트가 가중치 업데이트의 정교함을 저해하지 않는지에 대한 더 깊은 이론적 근거가 필요해 보여.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 일리가 있지만, 현업 입장에선 일단 &#x27;6배 속도 향상&#x27;이라는 숫자가 너무 달콤합니다. Muon 쓰다가 분산 환경에서 통신 병목 때문에 밤새던 동료들 얼굴이 스쳐 지나가네요. CuteDSL 커널까지 잘 짜놨다면, 당장 다음 스프린트 때 프로덕션 코드에 drop-in 해볼 가치가 충분합니다. 수렴 문제는 체크포인트 늘려서 해결하면 그만이죠.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, Tri Dao 형님이 또 일 냈네요! AdamW에서 드디어 탈출하나 싶었는데 Muon도 무거워서 고민이었거든요. 부분 업데이트라니, 하이퍼파라미터 튜닝할 때 또 머리 아프겠지만 일단 오늘 밤에 바로 돌려봐야겠어요. 14B MoE 모델 학습할 때 얼마나 이득 볼지 벌써 가슴이 웅장해집니다. 이거 레포 스타 찍으러 갑니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

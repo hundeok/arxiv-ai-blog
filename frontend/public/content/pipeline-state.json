@@ -15945,7 +15945,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-17T00:54:16.392570+00:00",
+      "updated_at": "2026-08-17T03:43:48.133597+00:00",
       "paper": {
         "title": "An AI4AI Framework for Visual Token Pruning",
         "summary": "Visual-token pruning can substantially reduce the inference cost of multimodal large language models (MLLMs), yet existing methods largely rely on fixed, handcrafted heuristics and costly expert trial and error. As pruning objectives, budgets, and model architectures diversify, manually navigating the expanding design space becomes increasingly difficult. This paper aims to build an AI4AI framework for visual-token pruning by addressing a natural question: Can large language models automatically design effective visual-token reduction algorithms? Although LLMs possess broad algorithmic knowledge and strong reasoning capabilities, translating such general knowledge into effective solutions for a specialized task remains nontrivial. We argue that the key lies in designing an appropriate search-state representation that connects the internal knowledge of LLMs with the structural requirements and constraints of visual-token pruning. Based on this insight, we propose AutoPrune, a training-free framework for LLM-driven visual-token pruning policy design. At its core, AutoPrune introduces a Token Pruning Domain-Specific Language (TPDSL) comprising 131 reusable atoms for budget control, token scoring, selection constraints, and token reassembly. A key property of TPDSL is that it represents each search state as a residual modification of a strong base policy. This residual formulation narrows the search space and directs the LLM's attention toward the policy components that are most consequential for performance. Experiments on 14 multimodal benchmarks and three MLLM backbones demonstrate the effectiveness, efficiency, and transferability of AutoPrune. Even when removing 94.4% of visual tokens, AutoPrune preserves more than 99% of full-token performance while reducing FLOPs by 9.9x and prefill latency by 6.4x.",
@@ -15970,7 +15970,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-17T00:54:16.392589+00:00",
+      "updated_at": "2026-08-17T03:43:48.133630+00:00",
       "paper": {
         "title": "UniSwap: Streaming Audio-Visual Identity Swapping for Talking Videos",
         "summary": "Talking-video character replacement requires coordinated transfer of appearance and voice while preserving the source motion, scene, linguistic content, and audio-video timing. Existing methods use separately optimized models for the two modalities, making audio-visual consistency difficult to enforce. We present UniSwap, the first framework for streaming joint audio-visual identity replacement in talking videos. Given a source video, a reference image, and a reference voice clip, UniSwap transfers the reference appearance and vocal timbre within a single audio-visual diffusion transformer while preserving the source content and dynamics. To address the scarcity of aligned cross-identity training pairs, we introduce a swap-and-reconstruct pipeline that removes visual and vocal identity from real clips and uses the original clips as reconstruction targets. Starting from a bidirectional backbone, we progressively adapt the model through In-context Pretraining for joint replacement, Conditional Streaming Adaptation for block-causal KV-cached generation, and Efficient Self-forcing DMD for mitigating exposure bias and reducing sampling from 30 to 3 denoising steps per block. Efficient Multi-LoRA Switching enables the three DMD roles to share a single frozen backbone. Feature-RoPE Decomposition keeps cached positions within the training range, supporting stable long-form inference. Experiments demonstrate strong audio-visual synchronization, competitive identity preservation, efficient streaming, and stable long-form generation.",
@@ -15997,7 +15997,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-17T00:54:16.392604+00:00",
+      "updated_at": "2026-08-17T03:43:48.133652+00:00",
       "paper": {
         "title": "LiveAnimate: Stable Long-Form Streaming Human Animation in Real-Time",
         "summary": "Pose-driven human animation synthesizes a video of a target person from a single reference image and a driving pose stream. Real-time generation is essential for interactive applications such as live streaming, telepresence, and virtual avatars, yet diffusion-based systems require minutes to hours per clip, precluding responsive interaction. We present LiveAnimate, to our knowledge the first animation system to combine real-time streaming with stable long-form generation at billion scale, built on a 14B-parameter video Diffusion Transformer (DiT). A two-stage training pipeline first adapts a pretrained bidirectional DiT into a block-causal autoregressive generator through Reference-Anchored Teacher-Forcing Adaptation, and then reduces the sampling budget to three steps through Block-wise Self-Forcing Distillation. To preserve appearance over extended streams, we introduce Pose-Retrieval Sink Attention (PR-Sink), a bounded KV-cache mechanism combining a Static Sink that permanently anchors the first generated block, a Dynamic Sink that holds a pose-retrieved historical block, and a three-slot Rolling Window. When a pose recurs, PR-Sink restores the relevant appearance context without retaining the entire sequence, so memory and per-block latency remain constant regardless of stream duration. Together with Ulysses sequence parallelism and operator fusion, these designs enable 19.63\\,FPS streaming inference on two NVIDIA H100 GPUs. On a three-minute benchmark, LiveAnimate maintains nearly constant perceptual quality and identity from the first 30 seconds to the final minute, while prior systems degrade substantially or require hours of offline computation for the same rollout. These results establish a new operating point in quality, latency, and duration for interactive full-body animation.",
@@ -16025,7 +16025,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-17T00:54:16.392547+00:00",
+      "updated_at": "2026-08-17T03:43:48.133618+00:00",
       "paper": {
         "title": "Mitigating Gender Bias in English to Romanian Machine Translation",
         "summary": "Machine translation (MT) systems often fail to correctly translate gender, especially when converting from a gender-neutral language like English to a gendered target language such as Romanian. This bias results in translations that default to masculine forms or reinforce gender stereotypes. We propose a hybrid pipeline to mitigate this issue by combining large language model (LLM)-based gender classification with neural machine translation (NMT). Our system uses a fine-tuned LLM to detect the intended gender of target words in English sentences and insert inline gender hint tags. These tagged sentences are then passed to a Transformer model fine-tuned to generate morphologically correct Romanian translations. To support this, we introduce three novel datasets for gender disambiguation and translation. Our approach improves gender accuracy on the WinoMT and WinoGender benchmarks by over 40 percentage points compared to a baseline MT system. This is the first method to explicitly address and evaluate gender bias in English-Romanian MT using both LLM inference and tag-aware translation.",
@@ -16103,7 +16103,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-16T15:15:01.654256+00:00",
+      "updated_at": "2026-08-17T03:43:48.133656+00:00",
       "paper": {
         "title": "HumanTracker: Towards Comprehensive and Human-Aligned Motion Tracking Benchmark",
         "summary": "Humanoid motion tracking is central to teleoperation and whole-body imitation, yet evaluation often disagrees with what people perceive in videos. Kinematic errors average per-frame pose differences but miss the physical artifacts that matter most, particularly unstable support and incorrect contacts such as foot skating and mistimed touch-downs. Meanwhile, widely used test suites are small and lack the diversity needed to stress contact-rich, long-horizon behaviors. We introduce HumanTracker to make humanoid tracking evaluation both perceptually aligned and scalable. The HumanTracker benchmark contains approximately 153 hours of optical motion trajectories from multiple professional performers, organized into four motion families with text labels for fine-grained diagnosis. We further propose HumanScore, a preference-aligned metric trained on 12K motion pairs containing 24K motions. Across representative state-of-the-art trackers, HumanScore better predicts human preferences and reveals contact and stability failures that kinematic metrics often miss.",
@@ -16809,7 +16809,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-17T00:54:16.392577+00:00",
+      "updated_at": "2026-08-17T03:43:48.133625+00:00",
       "paper": {
         "title": "Thought-Level Beam Search for Reasoning",
         "summary": "Test-time compute scaling is a primary driver of performance in large reasoning models (LRMs), but extreme inefficiency bounds current approaches, shifting the critical question from \\emph{how much} compute to spend, to \\emph{where} to allocate it. We formalize test-time reasoning as a constrained compute allocation problem over partial trajectories. Under a fixed hardware budget, existing paradigms fail to actively allocate the compute to the most promising partial progress: traditional parallel sampling treats traces independently and induces severe memory bottlenecks, while subtractive pruning starves hardware and fails to actively and sufficiently shift the output distribution. To overcome this dichotomy, we introduce Gambit, an inference algorithm that executes \\emph{thought-level beam search}. By periodically pruning unpromising trajectories and immediately branching from high-quality prefixes, Gambit dynamically concentrates compute onto the most promising reasoning traces via a light-weight scorer probing hidden states while maintaining continuous high hardware utilization. Extensive evaluations across multiple models and benchmarks demonstrate that Gambit strictly dominates existing baselines. Under identical hardware constraints, our method yields up to a +6.7\\% absolute accuracy gain on HMMT-24 and +3.3\\% on AIME-25 over pruning baselines, delivers $>2\\times$ higher throughput on trace completion, and reduces total token consumption by up to 68.5\\% relative to standard parallel sampling.",
@@ -16825,60 +16825,203 @@
       },
       "priority_score": 49,
       "korean_title": "추론을 위한 사고 수준 빔 탐색"
+    },
+    "2608_14391v1": {
+      "id": "2608_14391v1",
+      "filename": "post_2608_14391v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-08-17T03:44:20.957525+00:00",
+      "paper": {
+        "title": "Can We Defend Against AI-Generated Video Attacks on Real-World Crisis Events? A Systematic Evaluation of Detectors, Generators and Social Dissemination",
+        "summary": "Recent video generators can fabricate realistic depictions of wars, disasters, public emergencies, and other real-world crises, creating substantial risks of misinformation. Existing benchmarks, however, provide limited evidence on detector and generator behavior in such settings, including how detectability varies with generation conditions, how people perceive generated videos, and whether detectors remain reliable during social dissemination. To address this gap, we introduce RA-Bench, a benchmark for AI-generated video detection that uses Real videos as Anchors. RA-Bench contains 17,886 videos, comprising 1,830 real-video anchors across 10 social-risk categories and 16,056 generated clips from four open-source and five closed-source generators. Based on RA-Bench, we organize our evaluation along three dimensions. We first assess detector generalization across seven traditional detectors, ten zero-shot multimodal models under three review settings, and two MLLMs specifically fine-tuned on AI-generated video detection. Across these methods, none of the three detector families generalizes consistently across RA-Bench instances. We then examine how detectability varies with generation quality, conditioning information, and sampling seeds. These analyses show that generation properties affect detector families differently, while source-level detection patterns remain stable across seeds. Finally, we study human authenticity judgments and detector reliability during social dissemination. We find that videos that mislead people are also difficult for current detectors, and that social dissemination makes detection harder. Together, these findings show that current methods struggle to detect realistic AI-generated videos, highlighting the need for detectors robust to evolving video generators.",
+        "published": "2026-08-14T15:32:56Z",
+        "authors": [
+          "Shuo Liang",
+          "Yixing Ma",
+          "Pengfei Zhou",
+          "Xingyan Chen",
+          "Zihan Mei",
+          "Manting Li",
+          "Feihan Chen",
+          "Zhiwen Wang",
+          "Bin Xu",
+          "Haotian Zhang",
+          "Jiajun Song",
+          "Shiya Su",
+          "Run Liu",
+          "Zhenghang Ni",
+          "Yifa Yu",
+          "Jintao Hong",
+          "Bolong Feng",
+          "Yifei Liu",
+          "Zirui Zhang",
+          "Jingxuan Zhang",
+          "Songlin Zhao",
+          "Yifan Bai",
+          "Kang Tan",
+          "Yizhe Liu",
+          "Junhao Du",
+          "Yongtao Ge",
+          "Zhaopan Xv",
+          "Xinyuan Zhang",
+          "Mengru Ma",
+          "Chunhua Shen",
+          "Wei Wang",
+          "Yang You",
+          "Zheng Zhu",
+          "Kaipeng Zhang",
+          "Wangbo Zhao"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.14391v1"
+      },
+      "priority_score": 40,
+      "korean_title": "현실 세계 위기 상황에 대한 AI 생성 비디오 공격을 방어할 수 있는가? 탐지기, 생성기 및 사회적 확산에 대한 체계적 평가"
+    },
+    "2608_00220v1": {
+      "id": "2608_00220v1",
+      "filename": "post_2608_00220v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-08-17T03:44:06.048863+00:00",
+      "paper": {
+        "title": "Verifier-Induced Support Reshaping in On-Policy Optimization",
+        "summary": "We show that on-policy reinforcement learning with verifiable rewards (RLVR) can improve the current objective while making successful behaviors for later objectives too rare to sample and reinforce. We call this verifier-induced support reshaping and define effective rewardable support as successful trajectories reachable within a fixed rollout budget. Across two model families, we study this effect through repeated verifier-scored sampling and bidirectional training on mathematical reasoning and constrained instruction following, including sequential training with the opposite verifier. Math-RLVR raises average instruction-following success but reduces the number of prompts with any successful response under repeated sampling. On IFEval with Qwen3-8B-Base, pass@1 rises by 6.5 percentage points while best@32 falls by 9.8 percentage points, and the same divergence appears across both models and IF benchmarks. Conversely, IF-RLVR shifts math responses from step-by-step openings toward direct answers, lowers best@k across sampling budgets, and reduces reward variation for later Math-RLVR. Token-distribution analyses and controlled opening interventions show that these changes concentrate in the first few response tokens. RLVR mainly reranks openings already available in the base policy, and the selected opening causally affects math searchability. The tested reference-policy constraints, routing priors, and on-policy distillation preserve cross-task support only partially; MathIF and ReasonIF show that marginal gains translate only partly into responses that are both correct and constraint-following. Therefore, endpoint improvements do not guarantee future trainability or joint capability under on-policy optimization. Code is available at https://github.com/sylvain-wei/verifier-induced-support-reshaping",
+        "published": "2026-07-31T19:05:43Z",
+        "authors": [
+          "Shaohang Wei",
+          "Zikun Su",
+          "Feifan Song",
+          "Wen Luo",
+          "Wei Li",
+          "Guangyue Peng",
+          "Houfeng Wang"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.00220v1"
+      },
+      "priority_score": 50,
+      "korean_title": "검증기 기반 온-폴리시 최적화에서의 지원 재구성(Support Reshaping)"
+    },
+    "2608_14071v1": {
+      "id": "2608_14071v1",
+      "filename": "post_2608_14071v1.md",
+      "status": "retry",
+      "attempts": 1,
+      "next_retry_at": "2026-08-17T04:14:30.268253+00:00",
+      "last_error": "503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}} | generated Markdown is missing a usable H1 title",
+      "updated_at": "2026-08-17T03:44:30.268269+00:00",
+      "paper": {
+        "title": "Scaling Domain Data Repetition in LLM Pretraining",
+        "summary": "As large language models scale, their training-token budgets must also increase to maintain an appropriate tokens-per-parameter ratio (\\(\\mathrm{TPP}\\)). However, high-quality domain data is much harder to scale than general web data. As model size and the training-token budget increase, its fraction in the training mixture tends to decrease. Repeating the available high-quality data provides an effective way to counteract this dilution, but excessive repetition may lead to overfitting. We study this trade-off under practical LLM scaling, where the training-token budget grows proportionally with model size. For a fixed domain, we first find that, surprisingly at a fixed \\(\\mathrm{TPP}\\), the optimal repetition count mildly increases with model size. Across different domains, we find that the optimal repetition count is strongly negatively correlated with the final validation loss of a domain: domains with lower loss can generally benefit from more repetitions. In contrast, the amount of unique domain data is only weakly related to the optimal repetition count. These findings suggest that repetition counts tuned on smaller proxy models with the same \\(\\mathrm{TPP}\\) can provide a practical estimate for larger models.",
+        "published": "2026-08-14T08:27:15Z",
+        "authors": [
+          "Jingwei Li",
+          "Xinran Gu",
+          "Rui Dai",
+          "Xintong Hao",
+          "Chengyin Xu",
+          "Yan Wu",
+          "Shuran Zheng",
+          "Jingzhao Zhang"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.14071v1"
+      },
+      "priority_score": 15
+    },
+    "2608_11612v1": {
+      "id": "2608_11612v1",
+      "filename": "post_2608_11612v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-08-17T03:44:42.068548+00:00",
+      "paper": {
+        "title": "Dion3: Full-Stack Orthogonal Updates",
+        "summary": "The Muon optimizer incurs a significant overhead cost due to its cubic-time Newton-Schulz orthogonalization step. When weights are sharded, communication overhead compounds this computational cost, eroding the benefits of Muon in many settings. We present Dion3, a revision of Muon that targets this overhead at every level of the stack. Our Gram Newton-Schulz algorithm reduces the FLOP cost of orthogonalization, our CuteDSL kernels accelerate it by exploiting symmetry, and our megabatching strategy reduces communication overhead. Moreover, we propose a simple change to the update rule that cuts costs even further: selecting only a fraction of the momentum matrix's rows to orthogonalize at each step. This update rule improves on Dion (another \"compressed\" version of Muon), in both speed and performance. Overall, Dion3 matches or improves on the loss achieved by Muon but reduces optimizer step time by up to 6x. Dion3 is available via the dion package (https://github.com/microsoft/dion) as a drop-in replacement for Muon.",
+        "published": "2026-08-12T03:42:40Z",
+        "authors": [
+          "Noah Amsel",
+          "Jack Zhang",
+          "Kwangjun Ahn",
+          "Ali Naeimi",
+          "Austin Feng",
+          "Berlin Chen",
+          "Tri Dao",
+          "John Langford"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.11612v1"
+      },
+      "priority_score": 12,
+      "korean_title": "디온3: 풀스택 직교 업데이트"
     }
   },
   "last_run": {
-    "started_at": "2026-08-17T00:54:16.392804+00:00",
+    "started_at": "2026-08-17T03:43:48.134613+00:00",
     "discovered": 10,
-    "selected": 0,
-    "generated": 0,
-    "failed": 0,
+    "selected": 4,
+    "generated": 3,
+    "failed": 1,
     "skipped": 0,
     "health": "healthy",
-    "failures": [],
+    "failures": [
+      {
+        "id": "2608_14071v1",
+        "error": "503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}} | generated Markdown is missing a usable H1 title"
+      }
+    ],
     "usage": {
       "model": "gemini-3.1-flash-lite",
-      "requests": 0,
-      "prompt_tokens": 0,
-      "output_tokens": 0,
+      "requests": 6,
+      "prompt_tokens": 17107,
+      "output_tokens": 4310,
       "thought_tokens": 0,
-      "total_tokens": 0,
-      "estimated_usd": 0.0
+      "total_tokens": 21417,
+      "estimated_usd": 0.01074175
     },
-    "finished_at": "2026-08-17T00:54:16.873771+00:00"
+    "finished_at": "2026-08-17T03:44:42.553458+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 1257,
-    "prompt_tokens": 3163081,
-    "output_tokens": 924131,
+    "requests": 1263,
+    "prompt_tokens": 3180188,
+    "output_tokens": 928441,
     "thought_tokens": 0,
-    "total_tokens": 4087212,
-    "estimated_usd": 2.17696675
+    "total_tokens": 4108629,
+    "estimated_usd": 2.1877085
   },
   "last_publication_run": {
-    "started_at": "2026-08-17T00:54:16.392804+00:00",
+    "started_at": "2026-08-17T03:43:48.134613+00:00",
     "discovered": 10,
-    "selected": 0,
-    "generated": 0,
-    "failed": 0,
+    "selected": 4,
+    "generated": 3,
+    "failed": 1,
     "skipped": 0,
     "health": "healthy",
-    "failures": [],
+    "failures": [
+      {
+        "id": "2608_14071v1",
+        "error": "503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}} | generated Markdown is missing a usable H1 title"
+      }
+    ],
     "usage": {
       "model": "gemini-3.1-flash-lite",
-      "requests": 0,
-      "prompt_tokens": 0,
-      "output_tokens": 0,
+      "requests": 6,
+      "prompt_tokens": 17107,
+      "output_tokens": 4310,
       "thought_tokens": 0,
-      "total_tokens": 0,
-      "estimated_usd": 0.0
+      "total_tokens": 21417,
+      "estimated_usd": 0.01074175
     },
-    "finished_at": "2026-08-17T00:54:16.873771+00:00"
+    "finished_at": "2026-08-17T03:44:42.553458+00:00"
   },
   "daily_usage": {
     "date": "2026-08-17",
-    "estimated_usd": 0.0,
-    "publications": 0
+    "estimated_usd": 0.01074175,
+    "publications": 3
   }
 }
