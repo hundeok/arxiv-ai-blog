@@ -1,0 +1,44 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PACE-Bench: 코드 진화를 통한 동적 환경에서의 물리 적응 벤치마킹 | ArXiv Translator AI</title><meta name="description" content="PACE-Bench: 코드 진화를 통한 동적 환경에서의 물리 적응 벤치마킹"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_14441v1"><meta property="og:type" content="article"><meta property="og:title" content="PACE-Bench: 코드 진화를 통한 동적 환경에서의 물리 적응 벤치마킹"><meta property="og:description" content="PACE-Bench: 코드 진화를 통한 동적 환경에서의 물리 적응 벤치마킹"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_14441v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="PACE-Bench: 코드 진화를 통한 동적 환경에서의 물리 적응 벤치마킹"><meta name="twitter:description" content="PACE-Bench: 코드 진화를 통한 동적 환경에서의 물리 적응 벤치마킹"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_14441v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "PACE-Bench: 코드 진화를 통한 동적 환경에서의 물리 적응 벤치마킹", "description": "PACE-Bench: 코드 진화를 통한 동적 환경에서의 물리 적응 벤치마킹", "datePublished": "2026-08-14", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_14441v1", "author": [{"@type": "Person", "name": "Yuhao Zhan"}, {"@type": "Person", "name": "Bingxiang He"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_14441v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_14441v1"});gtag('event', 'paper_view', {"paper_id": "2608_14441v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>PACE-Bench: 코드 진화를 통한 동적 환경에서의 물리 적응 벤치마킹</h1><p>PACE-Bench: 코드 진화를 통한 동적 환경에서의 물리 적응 벤치마킹</p><pre>PACE-Bench: 코드 진화를 통한 동적 환경에서의 물리 적응 벤치마킹
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** PACE-Bench: Benchmarking Physics Adaptation via Code Evolution in Dynamic Environments
+&gt; - **저자:** Yuhao Zhan, Bingxiang He, Zecong Tang, Chaojun Xiao
+&gt; - **발행일:** 2026-08-14
+&gt; - **PDF 링크:** [PACE-Bench: Benchmarking Physics Adaptation via Code Evolution in Dynamic Environments](https://arxiv.org/pdf/2608.14441v1)
+
+
+✨ 3줄 핵심 요약
+* **새로운 적응성 평가 지표:** 환경 변화 시 기존 코드가 실패하는 상황을 가정하고, 에이전트가 이를 수정하여 새로운 환경에 적응하는 능력을 측정하는 144개의 테스트 셋을 제안함.
+* **낮은 성공률과 한계:** 최신 모델조차 벤치마크 전체 해결률이 낮고(Reflexion + Qwen3-14B 기준 35.9%), 물리적 변화를 알려주어도 성능 개선에 한계가 있음.
+* **핵심 병목 발견:** 에이전트의 문제는 단순히 매개변수를 추론하는 것이 아니라, 구조적 메커니즘을 근본적으로 재설계하는 능력의 부족에 있음.
+
+📖 쉽게 풀어쓴 1분 핵심
+AI 에이전트는 경험을 통해 스스로 발전하는 능력이 중요하지만, 기존 평가 방식은 환경이 변해도 잘 작동하는지를 시험하지 못했습니다. &#x27;PACE-Bench&#x27;는 환경의 물리적 법칙(중력, 마찰 등)을 바꿔버렸을 때, AI가 작성한 기존 코드가 먹히지 않는 상황을 만듭니다. 에이전트는 주어진 예산(20번의 시도) 내에서 피드백을 받아 코드를 다시 설계해야 합니다. 실험 결과, 현재의 AI 모델들은 환경 변화에 대응하여 구조적 설계를 새로 구성하는 데 큰 어려움을 겪고 있음을 확인했습니다.
+
+🎯 배경 및 문제점
+* 기존의 자가 진화형 에이전트 평가는 고정된 환경에서만 수행되어, 실제 변화하는 환경에서의 생존력(회복력)을 측정하지 못함.
+* 환경이 변했을 때 에이전트가 이전에 학습한 지식에 고착되거나, 무작위 탐색에 의존하다 실패하는 문제가 발생함.
+
+💡 핵심 기술 및 아키텍처
+* **시뮬레이터 기반 평가:** 6개 물리 도메인 내 144개의 소스-타겟 적응 쌍으로 구성.
+* **코드 기반 진화:** Box2D 시뮬레이션 환경에서 에이전트가 작성한 Python 프로그램을 실행하고, 진단 피드백을 받아 코드를 수정하는 방식.
+* **메커니즘 재설계:** 매개변수 조정이 아닌, 작업의 성공을 위해 코드의 논리적 구조 자체를 수정하도록 유도.
+
+📊 실험 결과 분석
+* **낮은 달성도:** Reflexion + Qwen3-14B 모델은 전체 벤치마크 쌍의 35.9%만 성공함. Statics 데이터셋에서 GPT-5.5는 66.7% 해결.
+* **실패 패턴:**
+    * **기억 고착(Memory Anchors):** 에이전트가 과거의 초기 설계에 갇힘.
+    * **비효율적 탐색(Broad Tree Search):** 무분별한 탐색은 수렴에 실패함.
+    * **검증 방식의 차이:** 검증되지 않은 자기 수정(Self-revision)보다는 시뮬레이터 기반의 검증된 피드백(Reflexion)이 더 신뢰할 수 있음.
+* **성능 한계:** 정확한 물리적 변화 정보를 제공해도 성능 천장이 올라가지 않아, 메커니즘 재설계 자체가 병목임이 증명됨.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **라이프롱 에이전트:** 환경 변화가 잦은 현실 세계에서 지속적으로 성능을 유지하는 자율 시스템 구축의 길잡이 역할을 함.
+* **실무 적용:** 물리 시뮬레이션 기반의 로봇 제어, 건축 구조 설계, 동적 환경에서의 자동 코드 생성 등 변화하는 설계 조건에 즉각 반응해야 하는 산업 분야에 활용 가능.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Artificial Intelligence](https://arxiv.org/list/cs.AI/recent)
+&gt; - [ChatPaper: Explore and AI Chat with the Academic Papers](https://chatpaper.com/)
+
+</pre></article></main></body></html>
