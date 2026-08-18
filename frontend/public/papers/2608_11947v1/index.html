@@ -1,0 +1,65 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>라벨이 없는 전략 하에서 정확도와 순서 민감도의 발산 | ArXiv Translator AI</title><meta name="description" content="라벨이 없는 전략 하에서 정확도와 순서 민감도의 발산"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_11947v1"><meta property="og:type" content="article"><meta property="og:title" content="라벨이 없는 전략 하에서 정확도와 순서 민감도의 발산"><meta property="og:description" content="라벨이 없는 전략 하에서 정확도와 순서 민감도의 발산"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_11947v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="라벨이 없는 전략 하에서 정확도와 순서 민감도의 발산"><meta name="twitter:description" content="라벨이 없는 전략 하에서 정확도와 순서 민감도의 발산"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_11947v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "라벨이 없는 전략 하에서 정확도와 순서 민감도의 발산", "description": "라벨이 없는 전략 하에서 정확도와 순서 민감도의 발산", "datePublished": "2026-08-12", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_11947v1", "author": [{"@type": "Person", "name": "Karl Hanna"}, {"@type": "Person", "name": "Chen Feng"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_11947v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_11947v1"});gtag('event', 'paper_view', {"paper_id": "2608_11947v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>라벨이 없는 전략 하에서 정확도와 순서 민감도의 발산</h1><p>라벨이 없는 전략 하에서 정확도와 순서 민감도의 발산</p><pre>라벨이 없는 전략 하에서 정확도와 순서 민감도의 발산
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Accuracy and Order Sensitivity Diverge Under Label-Free Strategies
+&gt; - **저자:** Karl Hanna, Chen Feng
+&gt; - **발행일:** 2026-08-12
+&gt; - **PDF 링크:** [Accuracy and Order Sensitivity Diverge Under Label-Free Strategies](https://arxiv.org/pdf/2608.11947v1)
+
+
+✨ 3줄 핵심 요약
+* 객관식 평가(MCQ)에서 모델의 점수는 실제 지식과 선택지 순서에 대한 민감도가 혼재되어 있어 신뢰하기 어렵습니다.
+* 선택지 라벨을 숨기거나 독립적으로 평가하는 등 순서 편향을 줄이려는 시도들이 전반적인 정확도 향상으로 이어지지는 않았습니다.
+* 위치 기반 편향을 완전히 제거하더라도 모델의 성능이 보장되지는 않으며, 오히려 특정 방식에서는 성능이 저하되는 현상이 관찰되었습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+대규모 언어 모델(LLM)을 평가할 때 가장 흔히 쓰는 방법은 객관식 문제(MCQ)입니다. 하지만 모델은 문제의 내용보다 선택지가 몇 번째에 위치하느냐에 따라 답을 바꾸는 &#x27;순서 민감도&#x27;를 보입니다. 연구진은 선택지 라벨을 아예 보여주지 않거나, 각 선택지를 따로따로 질문하여 순서의 영향을 원천 차단하는 전략들을 실험했습니다. 그러나 놀랍게도 이러한 시도들은 정확도를 높여주지 못했습니다. 오히려 모델이 답을 매칭하는 과정에서 더 큰 오류가 발생하거나, 성능이 떨어지는 등 편향 제거가 반드시 성능 향상으로 직결되지 않음을 확인했습니다.
+
+🎯 배경 및 문제점
+현재 LLM 벤치마크로 널리 쓰이는 MCQ는 비용이 저렴하고 자동 평가가 가능하다는 장점이 있으나, 모델의 &#x27;순수한 지식&#x27;과 &#x27;순서에 따른 편향&#x27;을 구분할 수 없다는 치명적인 약점이 있습니다. 기존의 순서 편향 제거 방법(순환 순열 등)은 계산 비용이 높거나 모델 내부 점수(logit) 접근 권한이 필요하여 제약이 큽니다. 따라서 프롬프트 설계만으로 이러한 문제를 해결하려는 시도가 이어져 왔습니다.
+
+💡 핵심 기술 및 아키텍처
+연구진은 순서 편향을 제거하기 위해 두 가지 주요 전략을 테스트했습니다.
+1. **2단계 프롬프팅(Two-stage prompting):** 모델이 먼저 문제를 읽고 자유 형식의 답을 작성한 뒤, 그 답과 가장 유사한 선택지를 찾는 방식입니다.
+2. **독립 가설 채점(Independent hypothesis scoring):** 각 선택지를 독립적으로 하나씩 질문하여 모델이 개별 점수를 매기게 하고, 가장 높은 점수를 받은 선택지를 최종 답으로 선택하는 방식입니다. 이는 구조적으로 위치 정보가 존재하지 않아 순서 편향이 원천 봉쇄됩니다.
+
+📊 실험 결과 분석
+* **전반적인 정확도 하락:** 두 전략 모두 대부분의 모델과 벤치마크에서 정확도 향상을 이끌어내지 못했습니다.
+* **병목 현상:** 2단계 프롬프팅의 경우, 1단계에서 선택지를 숨기면 모델이 정답을 매칭하는 데 실패하여 성능이 급격히 저하되었습니다. 
+* **예외 사례:** &#x27;독립 가설 채점&#x27; 방식에서 Llama-local 모델의 ARC-Challenge 결과 등 일부 사례에서 정확도 향상이 있었으나, 일반적인 결과는 아닙니다.
+* **기술적 제약:** 논문은 특정 모델(Gemini)의 경우 API 서버 측 오류로 인해 평가 자체가 어려웠던 사례를 보고하며, 평가 환경에 따른 변수가 성능에 미치는 영향이 있음을 명시했습니다. (정확한 수치 비교는 제공된 발췌문의 표 14, 15를 참고할 수 있으나, 본 해설은 요약된 분석 결과만을 바탕으로 합니다.)
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+이번 연구는 LLM의 신뢰성 있는 평가를 위해 순서 편향을 제거하려는 노력이 의도치 않은 성능 저하를 일으킬 수 있음을 시사합니다. 실무자들은 편향 제거 기술을 적용할 때, 단순히 편향을 줄이는 것만이 능사가 아니라 모델의 추론 방식 자체에 미치는 부작용을 면밀히 살펴야 합니다. 또한, 단순히 MCQ 점수에만 의존하지 않는 더 정교한 평가 방법론이 필요함을 시사합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2608.11947 Accuracy and Order Sensitivity Diverge Under Label-Free Strategies](https://arxiv.org/abs/2608.11947)
+&gt; - [Accuracy and Order Sensitivity Diverge Under Label-Free Strategies](https://arxiv.org/html/2608.11947)
+&gt; - [Accuracy and Order Sensitivity Diverge Under Label-Free Strategies](https://arxiv.org/pdf/2608.11947)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문 결과를 보니 학계의 고질적인 문제인 벤치마크 오염과 평가 방식의 한계가 다시금 드러나는군요. &#x27;순서 민감도&#x27;를 줄이려는 노력이 오히려 추론의 일관성을 해친다는 것은, 모델이 MCQ 구조 자체를 일종의 &#x27;힌트&#x27;나 &#x27;맥락&#x27;으로 활용하고 있었음을 방증합니다. 단순히 편향을 제거한다고 해결될 문제가 아니라, 모델의 인지 메커니즘 자체가 구조적 제약에 의존하고 있다는 점을 인정해야 합니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로입니다. 현업에서 LLM 평가 파이프라인 짤 때 순서 섞기(shuffling)는 필수였는데, 이 논문 보니 다 부질없었네요. 특히 독립 가설 채점 방식은 API 비용만 두세 배로 뛰고 정확도는 떨어지니 프로덕션 환경에선 도입할 이유가 없죠. 결국 모델의 &#x27;순수한 지식&#x27;을 측정하려면 MCQ 기반 평가를 아예 버리고, 차라리 생성 기반의 평가로 완전히 넘어가야 할 시점인 것 같습니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;다들 너무 비관적이신 거 아닌가요? 저는 오히려 이 논문이 &#x27;라벨 없는 전략&#x27;의 한계를 명확히 짚어준 게 흥미롭네요! 사실 Llama 같은 모델에서 일부 성능 향상이 있었다는 건, 데이터셋 특성에 따라 통할 구석이 있다는 거잖아요? SOTA 찍으려고 벤치마크 점수 올리는 데 급급했던 기존 관행에 제동을 걸어준 것만으로도 학술적 가치는 충분하다고 봅니다. 당장 다음 학회 논문부터 평가 방식 섹션에 이 논문 인용해서 &#x27;왜 우리 모델은 편향 제거를 안 했는지&#x27; 정당화할 생각에 벌써 신나네요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

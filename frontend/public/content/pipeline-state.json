@@ -17636,7 +17636,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-18T18:28:43.385232+00:00",
+      "updated_at": "2026-08-18T21:17:42.403018+00:00",
       "paper": {
         "title": "PACE-Bench: Benchmarking Physics Adaptation via Code Evolution in Dynamic Environments",
         "summary": "Self-evolving agents improve future behavior from interaction experience, yet existing evaluations typically optimize under fixed execution conditions and do not test recovery after those conditions change. To address this gap, we introduce PACE-Bench (Physics Adaptation via Code Evolution), a simulator-grounded benchmark of 144 source-to-target adaptation pairs across six physics domains. Each pair links a source environment to a mutated target environment with the same goal and interface. A code-driven design that succeeds in the source fails in the target, where agents must iteratively adapt it into a working target design using diagnostic sandbox feedback within a limited attempt budget. We compare ten self-evolving methods from four paradigms. The benchmark remains far from saturated: Reflexion + Qwen3-14B succeeds on only 35.9\\% of full-benchmark pairs, while GPT-5.5 solves 66.7\\% of the Statics subset under the full budget. Together, these results show that simulator-grounded reflection is more reliable than unverified self-revision, while memory anchors agents to early designs and broad tree search explores without converging. Even revealing exact physical changes does not raise the performance ceiling, pointing to mechanism redesign rather than parameter inference as the central bottleneck. Data and code are available at https://github.com/thunlp/PACE-Bench.",
@@ -17846,11 +17846,11 @@
     "2608_14385v1": {
       "id": "2608_14385v1",
       "filename": "post_2608_14385v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-08-18T00:53:24.908916+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-18T00:53:24.908918+00:00",
+      "updated_at": "2026-08-18T21:18:27.934415+00:00",
       "paper": {
         "title": "DeaMoE: Efficient MoE Structure for Fast Small-Batch Decoding",
         "summary": "Mixture-of-Experts (MoE) models have been widely adopted in real-time interactive applications such as coding assistants, real-time audio-video interaction systems. To meet the extremely low response latency requirements of these scenarios, practitioners commonly employ small-batch decoding, under which MoE inference becomes memory-bound and is severely bottlenecked by expert weight loading. However, this bottleneck has received limited attention, and existing solutions such as post-training weight compression or fine-grained expert design during pre-training either degrade model accuracy or introduce additional computation and communication overhead. To tackle this issue, we propose DeaMoE, a decoding-efficient MoE architecture, in which the experts are grouped into several departments, and the experts belonging to the same department share most parameters since they come from the same professional field, and additionally each expert contains a few private parameters to reflect its uniqueness. Moreover, we design customized two-stage routing strategy for DeaMoE to avoid redundant loading, under which DeaMoE greatly improves the efficiency during LLM decoding. Compared with vanilla MoE, DeaMoE reduces per-step loaded weights by up to 50.9% and achieves up to 1.33 end-to-end TPOT speedup for the pre-trained 7B model on A40, and up to 2.00x and 1.97x peak speedup for DeepSeek-V3 on A40 and H100 in microbenchmarks.",
@@ -17870,7 +17870,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2608.14385v1"
       },
-      "priority_score": 27
+      "priority_score": 27,
+      "korean_title": "DeaMoE: 빠른 소규모 배치 디코딩을 위한 효율적인 MoE 구조"
     },
     "2608_14380v1": {
       "id": "2608_14380v1",
@@ -17924,7 +17925,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-18T18:28:43.385252+00:00",
+      "updated_at": "2026-08-18T21:17:42.403030+00:00",
       "paper": {
         "title": "UI-Mate: Advancing Open-Weight Foundation GUI Agents with In-Context Demonstrations",
         "summary": "Foundation GUI agents can automate complex digital tasks, but deployment is hindered by scarce and biased training data, ambiguous prompts, and unreliable execution. Routine workflows rely on user-specific tools and tacit conventions, so unstated instructions can produce arbitrary variations across runs. We present UI-Mate, a foundation GUI agent that integrates an environment-grounded training stack with in-context demonstration learning. UI-Mate makes three contributions: A Scalable Environment-Grounded Training Stack: A closed-loop data engine automates task generation, environment construction, rollout, filtering, capability balancing, SFT, and online RL across massively parallel environments via unified task-verifier bundles. In-Context Demonstration Learning: A mechanism that transforms multimodal demonstrations into flexible subtask-level workflows, follows relevant demonstrated steps, and re-plans from the live interface. OSWorkerBench Benchmark and Insights: A benchmark of 100 long-horizon office tasks across 41 applications that supports instruction-only and demonstration-guided evaluation. Its demonstration resources separate a 33-task self-demo setting, built from successful strong-agent rollouts of the same targets, from a 45-task variant-demo setting, built from human recordings of related but non-identical tasks. Experiments show that UI-Mate-27B sets a new open-weight state of the art on general computer-use benchmarks, scoring 77.0% on OSWorld-Verified and 66.2% on WindowsAgentArena. On OSWorkerBench, it reaches 41.0% strict success and 76.9% progress, outperforming its Qwen3.6-27B base by 17.7 and 24.5 points. On the 33-task self-demo subset, one demonstration raises strict success from 17.2% to 35.4% and progress from 67.9% to 81.1%, substantially improving long-horizon reliability. Project page: https://ui-mate.github.io.",
@@ -18075,7 +18076,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-18T18:28:43.385267+00:00",
+      "updated_at": "2026-08-18T21:17:42.403034+00:00",
       "paper": {
         "title": "HarnessEval-W: Agentifying the Evaluation of Visual Worlds",
         "summary": "A benchmark should deliver more than a scalar score: what makes an evaluation trustworthy is the reasoning that justifies the score. This is especially critical for world models, where judging a rollout requires understanding whether physics, causality, and world state evolve correctly. Humans spot such violations naturally, yet no existing benchmark automates this capability: metrics are computed brute-force, leaving no reasoning chain that can be examined or verified. We introduce HarnessEval-W, an agentified evaluation pipeline that brings the harness paradigm from the LLM ecosystem to world model benchmarking. Rather than applying a fixed rubric, HarnessEval-W interprets the context of each evaluation case, decomposes the evaluation question into measurable subproblems, and spawns specialized sub-agents, each equipped with tailored context and diagnostic tools to reason over its own subproblem. The parent agent then validates the gathered evidence and summarizes it into the final verdict. This hierarchical workflow turns every evaluation into a transparent evidence tree whose complete reasoning chain justifies the result. We apply HarnessEval-W to 18 representative world models over 330 evaluation cases. Its judgments closely align with human preferences while providing verifiable, fine-grained diagnoses of every generated rollout. We open-source the full pipeline as a live benchmark and invite the broad community to contribute to grow new skills and evaluation cases as world models evolve.",
@@ -18137,7 +18138,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-18T18:28:43.385258+00:00",
+      "updated_at": "2026-08-18T21:17:42.403013+00:00",
       "paper": {
         "title": "How Do Agents Fail on AutoResearch: End-to-End Diagnostic Evaluation on 100 Real-World Frontier Research Tasks",
         "summary": "AI has long assisted scientific research, but the rapid advance of LLMs and agentic scaffolds is reshaping the landscape; a single system can now carry whole-stage research from an initial hypothesis all the way to final published paper, which is a paradigm now referred to as AutoResearch. Existing evaluations reveal little about how these agents operate or where they break down. Tasks are narrowly-scoped, evaluation measures performance but not process, and failure diagnoses lack systematic coverage or artifact-level visibility. To address this gap, we introduce AutoResearchEval, featuring 100 tasks grounded in published frontier science across 7 scientific domains and the full research lifecycle, including ideation, retrieval, execution, analysis, writing, and review. Evaluating 8 harness-model combinations yields 800 autoresearch agent trajectories, with process-level annotation. We organize these insights into AutoResearch Failure Taxonomy or ARFT, a framework of 45 empirically-grounded failure patterns. To enable scalable fine-grained attribution, we leverage a human-calibrated agent-as-a-judge pipeline to inspect complete trajectories and intermediate artifacts. Failure patterns converge on a single overarching limitation, namely that current agents lack a metacognitive loop, which entails the ability to check what they produced against what they found, revise when it does not hold up, and question whether the path they took was sound. The same patterns recur across all 8 harness-model combinations, including the strongest models tested, locating the deficit at the model level rather than in any particular scaffold; whether orchestration-level interventions can close it is an open question this work does not test. We publicly release AutoResearchEval and ARFT to facilitate continued research and development in autonomous scientific discovery.",
@@ -18165,7 +18166,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-18T18:28:43.385271+00:00",
+      "updated_at": "2026-08-18T21:17:42.403038+00:00",
       "paper": {
         "title": "VideoGAIA: A Benchmark for General AI Assistants on Agentic Video Understanding",
         "summary": "Video understanding is a fundamental task for evaluating the capabilities of multimodal large language models (MLLMs). However, existing leading models have already achieved approximately 90% accuracy on the Video-MME leaderboard, suggesting that conventional single-turn video understanding tasks are becoming increasingly saturated and insufficient for assessing the intelligence of advanced MLLMs. Towards this end, we introduce VideoGAIA, an agentic video understanding benchmark for general artificial intelligence (AI) assistants. Moving beyond one-shot video question answering, VideoGAIA formulates video understanding as a multi-turn, tool-augmented interaction process, where models must iteratively perceive videos, invoke external tools, gather complementary information, and integrate multimodal evidence across turns. VideoGAIA contains 271 model-human co-designed tasks covering diverse and complex real-world scenarios. Each video-question-answer instance is independently verified by three human experts to ensure both correctness and appropriate difficulty. All evaluated MLLMs, including frontier models such as GPT-5.5 and Kimi-K3, achieve less than 60% accuracy on VideoGAIA, highlighting its value as a high-quality and timely benchmark for evaluating next-generation MLLMs. We hope that VideoGAIA will facilitate the transition from conventional video understanding toward agentic video understanding.",
@@ -18193,7 +18194,7 @@
       "attempts": 0,
       "next_retry_at": "2026-08-18T09:26:01.926439+00:00",
       "last_error": null,
-      "updated_at": "2026-08-18T18:28:43.385279+00:00",
+      "updated_at": "2026-08-18T21:17:42.403046+00:00",
       "paper": {
         "title": "WorldRover: A Scalable Synthetic Video Data Engine for World Exploration with Rich Annotations",
         "summary": "Learning to generate or reconstruct explorable worlds requires video paired with more than RGB: camera motion, scene geometry, temporal correspondence and, for interactive models, control signals. Real capture can provide some of these signals, but dense geometry and long-range correspondence usually rely on estimation or specialised instrumentation. Rendering provides these quantities directly, yet existing synthetic resources rarely combine them on the same frames while also supporting controlled changes of viewpoint and appearance. We introduce WorldRover, a data engine for generating richly annotated, long-range explorations of artist-built environments. At its core, WorldRover-Engine is an Unreal Engine pipeline that executes and offline-renders minute-scale routes while preserving their full trajectories and scene geometry. The same exploration can be replayed from first-person, third-person, and 360 panoramic cameras under different environmental states. Using WorldRover-Engine, we construct WorldRover-10M, whose sequences pair RGB with metric depth, camera trajectories, and trajectory-derived action signals throughout each exploration. Third-person subsets additionally provide dense optical flow, long-range 2D/3D point tracks with visibility, and a character trajectory distinct from the camera trajectory. The engine can render a traversal from first-person, third-person and 360 panoramic viewpoints, under different environmental states or with a neutral white material, while preserving the route and scene geometry. WorldRover therefore turns long-horizon world exploration into a scalable data-generation problem, providing supervision for models that must build, maintain, and revisit coherent representations of an explorable world.",
@@ -18217,7 +18218,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-18T18:28:43.385283+00:00",
+      "updated_at": "2026-08-18T21:17:42.403049+00:00",
       "paper": {
         "title": "MOSS-VL Technical Report",
         "summary": "We present MOSS-VL, an open vision-language model family that treats real-time interaction -- perceiving while it speaks -- as a first-class capability. It is co-designed across the stack: the language decoder attends to vision only through gated cross-attention, so the model can naturally see incoming frames while generating; a synthesized interaction corpus supervises when to speak, when to stay silent, and when to revise; and a staged curriculum concentrates all real-time-specific training in one light final stage over a strong offline foundation. Offline, MOSS-VL-Instruct is competitive at comparable scale and leads temporal-reasoning video sets. Across four streaming benchmarks, MOSS-VL-Realtime posts the best average on three (second on the fourth) among open-source streaming models, sweeping the three subsets that squarely test proactive behavior -- 66.0 vs. 37.5 for the best baseline on OmniMMI Proactive Alerting. With 11.3B parameters but visual tokens outside the decoded sequence, MOSS-VL widens its time-to-first-token advantage over same-backbone Qwen3-VL-8B from 2.8x to 5.1x as visual context grows. We release all five checkpoints, the training curriculum, and the real-time inference code at https://github.com/OpenMOSS/MOSS-VL.",
@@ -18264,11 +18265,11 @@
     "2608_16887v1": {
       "id": "2608_16887v1",
       "filename": "post_2608_16887v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-08-18T12:33:10.649405+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-18T18:28:43.385287+00:00",
+      "updated_at": "2026-08-18T21:18:41.981861+00:00",
       "paper": {
         "title": "An Empirical Study of Training Pixel-Space Text-to-Image Diffusion Models",
         "summary": "This paper investigates an increasingly important topic in generative modeling: pixel-space diffusion models. Although numerous studies have explored this topic, most focus on small-scale or class-conditional settings. Consequently, a practical recipe for training pixel-space models that rival or exceed well-established latent-space counterparts remains elusive. Through a comprehensive empirical study, we first observe that direct large-scale pre-training in pixel space converges substantially more slowly than in latent space. This observation motivates a latent-to-pixel strategy that acquires generative priors efficiently in latent space and transitions to pixel space during post-training. We then systematically investigate the key design choices governing this transition, including weight initialization, data composition, prediction target, decoder architecture, and noise schedule, and identify a practical recipe that makes the resulting pixel-space models match or outperform their latent-space counterparts while delivering 3.18 to 4.75 times end-to-end inference speedups. We hope that our findings provide useful empirical insights and practical guidelines for future research on pixel-space generation.",
@@ -18290,7 +18291,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2608.16887v1"
       },
-      "priority_score": 25
+      "priority_score": 25,
+      "korean_title": "픽셀 공간 텍스트-이미지 확산 모델 학습에 관한 실증적 연구"
     },
     "2608_14606v1": {
       "id": "2608_14606v1",
@@ -18299,7 +18301,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-18T18:28:43.385275+00:00",
+      "updated_at": "2026-08-18T21:17:42.403042+00:00",
       "paper": {
         "title": "Plausible but Not Valid: A Psychometric Audit of LLMs as Synthetic Survey Respondents",
         "summary": "Large language models (LLMs) are increasingly used as synthetic survey respondents, but existing evaluations ask whether answers look plausible at the individual level. We argue the right question is psychometric: do LLMs preserve the joint distribution, latent structure, reliability, mediation pathways, and demographic effects of real human survey data? We introduce a Lithuanian organisational-psychology dataset (n=263 employees; Dunham Attitudes Toward Change, UWES-17, Koopmans IWPQ; 68 items, 12 subscales) and condition a 37-model lineup spanning OpenAI, Anthropic, Google, and twelve open-weight families on real respondent profiles under a five-level persona-disclosure ladder, presentation and reasoning-effort ablations, counterfactual demographic swaps (gender, role, education), a cross-language check, and a verbatim-recall memorization probe. The resulting Psychometric Similarity Score (PSS) is anchored against five non-LLM statistical baselines and a held-out human-vs-human ceiling, with respondent-bootstrap confidence intervals and an item-permutation null for Tucker's phi. LLMs reproduce the qualitative direction of human psychometric relationships, but a Gaussian-copula baseline beats every LLM on the sample-driven PSS components; the LLM \"crowd\" is more similar to itself (mean inter-LLM PSS 0.73) than to humans; and memorization does not drive the leaderboard (recall-PSS rank correlation 0.00). Counterfactual swaps reveal education-driven effects (mean |d|=0.56) that dwarf gender (0.12) and role (0.18); Tucker's phi on UWES falls inside the permutation null for 8 of 37 models. Downstream, every LLM shows a strong acquiescence shift (+0.84 SD), synthetic-trained regressors lose predictive validity on held-out humans (mean R^2 -0.18 vs 0.28), and models fabricate indirect effects on 3 of 10 placebo mediation paths. LLM samples are not a drop-in replacement for human survey data.",
@@ -18312,10 +18314,57 @@
       },
       "priority_score": 40,
       "korean_title": "타당하지 않은 그럴듯함: 합성 설문 응답자로서의 거대언어모델에 대한 심리측정적 감사"
+    },
+    "2608_11947v1": {
+      "id": "2608_11947v1",
+      "filename": "post_2608_11947v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-08-18T21:18:57.548505+00:00",
+      "paper": {
+        "title": "Accuracy and Order Sensitivity Diverge Under Label-Free Strategies",
+        "summary": "Multiple-choice benchmarks are widely used to evaluate large language models, but MCQ scores conflate knowledge with sensitivity to option order, which makes them unreliable measures of model knowledge. In this paper, we test whether preventing a model from seeing option labels while committing to an answer removes positional influence and, in turn, improves performance. We evaluate two different strategies for mitigating bias. The first uses a generation-then-matching approach, and the second scores options in isolation, which is positionally unbiased by construction. Neither reliably improves accuracy. A complete decomposition shows that the bottleneck is withholding options, not the matching step. The only configuration that consistently matches the baseline is the one that shows the model all options paired with an LLM matcher. However, eliminating positional influence entirely still does not reliably yield accuracy gains, while cyclic permutation often improves them. For two-stage prompting, an aggregate measure of recall imbalance and a direct per-question measure of order sensitivity both fail to show reliable debiasing.",
+        "published": "2026-08-12T11:34:45Z",
+        "authors": [
+          "Karl Hanna",
+          "Chen Feng"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.11947v1"
+      },
+      "priority_score": 24,
+      "korean_title": "라벨이 없는 전략 하에서 정확도와 순서 민감도의 발산"
+    },
+    "2608_15869v1": {
+      "id": "2608_15869v1",
+      "filename": "post_2608_15869v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-08-18T21:18:06.791265+00:00",
+      "paper": {
+        "title": "Beyond Visual CoT: Internalized Visual Thinking for Proactive Video Reasoning",
+        "summary": "Multimodal large language models increasingly use visual chain-of-thought (Visual CoT) to reason about spatial, temporal, and embodied environments. By generating intermediate reasoning images, Visual CoT provides an intuitive mechanism for visual foresight but introduces substantial inference overhead, which is particularly problematic for proactive video reasoning. We ask whether models can learn to think visually during training while reasoning directly at inference. We introduce Internalized Visual Thinking (IVT), a post-training framework that jointly optimizes textual prediction and next-embedding prediction over unlabeled videos. Given a partially observed video, IVT predicts latent representations of future frames together with the target textual answer, encouraging the model to capture motion, object transitions, interactions, and latent intent. At inference, IVT generates the answer directly without synthesizing or re-encoding future frames. We conduct controlled studies across target representations, decoder designs, prediction horizons, data mixtures, training curricula, and predictive objectives. IVT improves over direct-answer fine-tuning on all six evaluation settings while retaining the same inference pathway. Compared with explicit Visual CoT, IVT achieves comparable or better performance and reduces average end-to-end latency by more than 5x. Together, our findings suggest that explicit pixel-space generation at inference time, as used in visual chain-of-thought, may not be necessary for effective proactive video reasoning. Predictive world modeling can be internalized during training to produce multimodal reasoners that are both more accurate and substantially more efficient.",
+        "published": "2026-08-16T17:35:38Z",
+        "authors": [
+          "Xiaoyu Zhu",
+          "Xinke Deng",
+          "Suresh Taddewadikar",
+          "Arnab Kumar Mondal",
+          "Zhongyu Jiang",
+          "Ian Fasel",
+          "Joerg Liebelt"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.15869v1"
+      },
+      "priority_score": 50,
+      "korean_title": "시각적 사고를 넘어: 선제적 비디오 추론을 위한 내재화된 시각적 사고"
     }
   },
   "last_run": {
-    "started_at": "2026-08-18T18:28:43.386403+00:00",
+    "started_at": "2026-08-18T21:17:42.404103+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -18326,25 +18375,25 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 18987,
-      "output_tokens": 5861,
+      "prompt_tokens": 21143,
+      "output_tokens": 5900,
       "thought_tokens": 0,
-      "total_tokens": 24848,
-      "estimated_usd": 0.01353825
+      "total_tokens": 27043,
+      "estimated_usd": 0.01413575
     },
-    "finished_at": "2026-08-18T18:30:07.305546+00:00"
+    "finished_at": "2026-08-18T21:18:58.044964+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 1336,
-    "prompt_tokens": 3360263,
-    "output_tokens": 982577,
+    "requests": 1344,
+    "prompt_tokens": 3381406,
+    "output_tokens": 988477,
     "thought_tokens": 0,
-    "total_tokens": 4342840,
-    "estimated_usd": 2.31393125
+    "total_tokens": 4369883,
+    "estimated_usd": 2.328067
   },
   "last_publication_run": {
-    "started_at": "2026-08-18T18:28:43.386403+00:00",
+    "started_at": "2026-08-18T21:17:42.404103+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -18355,17 +18404,17 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 18987,
-      "output_tokens": 5861,
+      "prompt_tokens": 21143,
+      "output_tokens": 5900,
       "thought_tokens": 0,
-      "total_tokens": 24848,
-      "estimated_usd": 0.01353825
+      "total_tokens": 27043,
+      "estimated_usd": 0.01413575
     },
-    "finished_at": "2026-08-18T18:30:07.305546+00:00"
+    "finished_at": "2026-08-18T21:18:58.044964+00:00"
   },
   "daily_usage": {
     "date": "2026-08-18",
-    "estimated_usd": 0.09075575,
-    "publications": 27
+    "estimated_usd": 0.1048915,
+    "publications": 31
   }
 }
