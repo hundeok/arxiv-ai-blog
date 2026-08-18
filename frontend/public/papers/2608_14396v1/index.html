@@ -1,0 +1,69 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>세 블록 ADMM의 수렴성에 대한 반례 발견 및 구성과 항등 행렬 제약 조건 연구 | ArXiv Translator AI</title><meta name="description" content="세 블록 ADMM의 수렴성에 대한 반례 발견 및 구성과 항등 행렬 제약 조건 연구"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_14396v1"><meta property="og:type" content="article"><meta property="og:title" content="세 블록 ADMM의 수렴성에 대한 반례 발견 및 구성과 항등 행렬 제약 조건 연구"><meta property="og:description" content="세 블록 ADMM의 수렴성에 대한 반례 발견 및 구성과 항등 행렬 제약 조건 연구"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_14396v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="세 블록 ADMM의 수렴성에 대한 반례 발견 및 구성과 항등 행렬 제약 조건 연구"><meta name="twitter:description" content="세 블록 ADMM의 수렴성에 대한 반례 발견 및 구성과 항등 행렬 제약 조건 연구"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_14396v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "세 블록 ADMM의 수렴성에 대한 반례 발견 및 구성과 항등 행렬 제약 조건 연구", "description": "세 블록 ADMM의 수렴성에 대한 반례 발견 및 구성과 항등 행렬 제약 조건 연구", "datePublished": "2026-08-14", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_14396v1", "author": [{"@type": "Person", "name": "Kenan Xu"}, {"@type": "Person", "name": "Xiangfeng Wang"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_14396v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_14396v1"});gtag('event', 'paper_view', {"paper_id": "2608_14396v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>세 블록 ADMM의 수렴성에 대한 반례 발견 및 구성과 항등 행렬 제약 조건 연구</h1><p>세 블록 ADMM의 수렴성에 대한 반례 발견 및 구성과 항등 행렬 제약 조건 연구</p><pre>세 블록 ADMM의 수렴성에 대한 반례 발견 및 구성과 항등 행렬 제약 조건 연구
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** AI-Assisted Discovery and Construction of a Counterexample to the Convergence of Three-Block ADMM with the Identity Matrix as its Third Constraint Block
+&gt; - **저자:** Kenan Xu, Xiangfeng Wang
+&gt; - **발행일:** 2026-08-14
+&gt; - **PDF 링크:** [AI-Assisted Discovery and Construction of a Counterexample to the Convergence of Three-Block ADMM with the Identity Matrix as its Third Constraint Block](https://arxiv.org/pdf/2608.14396v1)
+
+
+✨ 3줄 핵심 요약
+- 3블록 ADMM 알고리즘에서 세 번째 제약 블록이 항등 행렬(Identity Matrix)일 때 수렴하지 않을 수 있음을 보여주는 반례를 AI를 통해 발견했습니다.
+- GPT-5.6 Sol(Codex)과 Kimi K3 모델을 사용하여 각각 주기 66과 주기 23의 비수렴 궤적을 명확히 증명했습니다.
+- 문제에 따라 적절한 이중 단계 크기(Dual step size)를 설정하면 수렴성을 회복할 수 있음을 규명했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+최적화 알고리즘의 대명사인 ADMM은 2블록 문제에서는 이론적으로 수렴이 보장되지만, 3블록으로 확장하면 수렴하지 않는 경우가 발생합니다. 그간 &#x27;세 번째 제약 조건이 항등 행렬인 경우&#x27;는 수렴 여부가 밝혀지지 않은 난제였습니다. 본 연구는 최신 AI 모델들을 활용하여 이 조건에서도 알고리즘이 특정 주기를 가진 비수렴 궤도에 빠질 수 있음을 수학적으로 입증했습니다. 이는 AI가 단순 계산을 넘어 복잡한 수학적 반례를 탐색하고 증명하는 강력한 도구가 될 수 있음을 보여줍니다.
+
+🎯 배경 및 문제점
+- **기존 연구:** 2블록 ADMM은 수렴성이 잘 정립되어 있으나, 일반적인 3블록 ADMM은 수렴하지 않을 수 있다는 반례가 이미 존재합니다.
+- **해결되지 않은 의문:** 세 번째 제약 블록이 항등 행렬($I_m$)인 경우, 수렴하는지에 대한 일반적인 증명이나 반례가 알려지지 않았습니다.
+- **연구 목적:** 첫 두 블록이 강볼록 이차식(Strongly convex quadratics)인 경우에도 직접적인 3블록 ADMM이 실패할 수 있는지 검증하고자 했습니다.
+
+💡 핵심 기술 및 아키텍처
+- **AI 활용:** Codex(GPT-5.6 Sol)와 Kimi K3 모델을 독립적인 연구 경로로 활용하여 반례를 탐색했습니다.
+- **검증 방식:** 발견된 반례 후보에 대해 유리수 산술(Rational arithmetic)을 기반으로 한 정확한 경로 검증을 수행했습니다.
+- **증명 도구:** 조각별 아핀 경로(Piecewise-affine reduction path), 리아푸노프 안정성 분석, 슈어-스텀(Schur-Sturm) 테스트 등을 통해 비수렴 주기 궤적을 엄밀하게 인증했습니다.
+
+📊 실험 결과 분석
+- **Codex(GPT-5.6 Sol) 결과:** 66의 주기를 가진 유계 비수렴 궤적을 생성했습니다.
+- **Kimi K3 결과:** 23의 주기를 가진 국소적 인력(locally attracting) 주기를 찾아냈습니다.
+- **수렴 회복:** 고정된 문제 인스턴스에서 적절한 &#x27;이중 단계 크기(dual step size)&#x27;를 적용하면 수렴성을 회복할 수 있으나, 모든 문제군에 공통으로 적용되는 양수 단계 크기는 존재하지 않음을 확인했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+- **이론적 진전:** 3블록 ADMM의 수렴성 난제를 해결하여 알고리즘 설계 시 주의가 필요한 특정 조건을 명확히 했습니다.
+- **연구 방법론:** AI가 복잡한 수학적 증명 과정에서 연구자의 의도에 따라 다른 수학적 개체를 발견할 수 있음을 입증했습니다.
+- **실무 시사점:** 향후 최적화 알고리즘을 현장에 적용할 때, 3블록 이상의 ADMM 사용 시 문제의 구조(항등 행렬 제약 등)에 따른 수렴 불안정 가능성을 사전에 인지하고, 이중 단계 설정 최적화가 필요함을 제시했습니다.
+- **한계:** 본 연구는 특정 사례에 대한 증명이며, 향후 Lean이나 Isabelle과 같은 정식 정형 검증 시스템을 통한 공식화가 추가로 필요합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [A Three-Operator Splitting Perspective of a Three-Block ADMM for Convex Quadratic Semidefinite Programming and Beyond | Request PDF](https://www.researchgate.net/publication/326223057_A_Three-Operator_Splitting_Perspective_of_a_Three-Block_ADMM_for_Convex_Quadratic_Semidefinite_Programming_and_Beyond)
+&gt; - [Convergence of Three-Block ADMM for Weakly Convex Optimization Problems | SIAM Journal on Imaging Sciences](https://epubs.siam.org/doi/abs/10.1137/24M1684669)
+&gt; - [Global Convergence of Unmodified 3-Block ADMM for a Class of Convex Minimization Problems | Journal of Scientific Computing | Springer Nature Link](https://link.springer.com/article/10.1007/s10915-017-0612-7)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;이 논문의 핵심은 결과물 자체가 아니라 &#x27;AI가 수학적 반례를 찾아내는 과정&#x27;에 있네. 솔직히 3블록 ADMM의 수렴성 문제는 십수 년간 우리를 괴롭혀온 난제였는데, 이걸 Codex와 Kimi가 독립적으로 찾아냈다는 건 경이롭군. 다만, 정형 검증(Formal Verification) 없이 &#x27;발견&#x27; 단계에서 멈춘 건 여전히 학술적으로는 찝찝해. Lean 같은 툴로 증명 전체를 포멀하게 검증했어야 완성도가 살았을 텐데 말이야.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님, 실무자 입장에선 정형 검증보다 더 무서운 게 &#x27;항등 행렬 제약 조건에서 수렴이 깨질 수 있다&#x27;는 사실 자체가 주는 공포입니다. 우리 팀에서도 분산 학습이나 최적화 루틴 짤 때 관습적으로 3블록 ADMM 쓰곤 했는데, 이게 특정 문제에서만 터지는 게 아니라 수렴성 자체가 아예 보장 안 된다는 거잖아요? 당장 우리 코드의 Dual step size 하드코딩된 부분들 다 뜯어고쳐야겠네요. AI가 코드 짜주는 시대라지만, 이런 근본적인 알고리즘 이슈는 AI가 찾아내도 결국 수습은 사람 몫이네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;선배님, 너무 걱정만 하지 마세요! ㅋㅋㅋ 오히려 이 논문 덕분에 &#x27;AI가 수학적 난제를 해결하는 메타&#x27;가 완전히 열린 거잖아요. 66주기, 23주기 궤적을 찾았다는 거 자체가 AI가 우리보다 훨씬 더 &#x27;끈질기게&#x27; 탐색한다는 증거죠. 저도 지금 논문 쓰다가 막히는 부분 있는데, 당장 GPT-5.6에 제 문제 인스턴스 넣고 무한 루프 돌려봐야겠네요. 수렴성 입증은 일단 AI한테 맡기고, 우리는 이제 &#x27;AI가 찾은 반례를 어떻게 논문으로 잘 포장할지&#x27;만 고민하면 되는 시대가 온 듯?&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
