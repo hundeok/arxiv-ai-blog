@@ -1,0 +1,67 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Wyvern: 근거 기반의 다중 모달 기술 보고서 생성을 위한 에이전트 프레임워크 | ArXiv Translator AI</title><meta name="description" content="Wyvern: 근거 기반의 다중 모달 기술 보고서 생성을 위한 에이전트 프레임워크"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_14446v1"><meta property="og:type" content="article"><meta property="og:title" content="Wyvern: 근거 기반의 다중 모달 기술 보고서 생성을 위한 에이전트 프레임워크"><meta property="og:description" content="Wyvern: 근거 기반의 다중 모달 기술 보고서 생성을 위한 에이전트 프레임워크"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_14446v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Wyvern: 근거 기반의 다중 모달 기술 보고서 생성을 위한 에이전트 프레임워크"><meta name="twitter:description" content="Wyvern: 근거 기반의 다중 모달 기술 보고서 생성을 위한 에이전트 프레임워크"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_14446v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Wyvern: 근거 기반의 다중 모달 기술 보고서 생성을 위한 에이전트 프레임워크", "description": "Wyvern: 근거 기반의 다중 모달 기술 보고서 생성을 위한 에이전트 프레임워크", "datePublished": "2026-08-14", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_14446v1", "author": [{"@type": "Person", "name": "Beatrice Alessandra Motetti"}, {"@type": "Person", "name": "Emilien Guandalino"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_14446v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_14446v1"});gtag('event', 'paper_view', {"paper_id": "2608_14446v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>Wyvern: 근거 기반의 다중 모달 기술 보고서 생성을 위한 에이전트 프레임워크</h1><p>Wyvern: 근거 기반의 다중 모달 기술 보고서 생성을 위한 에이전트 프레임워크</p><pre>Wyvern: 근거 기반의 다중 모달 기술 보고서 생성을 위한 에이전트 프레임워크
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Wyvern: An Agentic Framework for Generating Grounded Multimodal Reports
+&gt; - **저자:** Beatrice Alessandra Motetti, Emilien Guandalino, Daniele Jahier Pagliari, Alessio Burrello, Lorenz K. Müller, Konstantin Berestizshevsky, Lukas Cavigelli
+&gt; - **발행일:** 2026-08-14
+&gt; - **PDF 링크:** [Wyvern: An Agentic Framework for Generating Grounded Multimodal Reports](https://arxiv.org/pdf/2608.14446v1)
+
+
+✨ 3줄 핵심 요약
+* **Wyvern**은 전문화된 LLM 기반 에이전트들이 협업하여 웹 검색부터 보고서 작성, 이미지 및 표 삽입까지 자동 수행하는 다중 모달 프레임워크입니다.
+* 생성된 문장의 근거를 확인하고 수정하는 &#x27;자동 검증 단계&#x27;를 도입하여 정보의 신뢰성과 추적 가능성을 극대화했습니다.
+* 기존 방식 대비 인용 정확도와 재현율을 크게 향상시켰으며, 사용자 평가에서 더 높은 유용성을 인정받았습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+현대 연구 환경에서는 방대한 정보를 빠르게 요약하고 정리하는 것이 필수적입니다. Wyvern은 사용자가 주제를 입력하면, 여러 전문 에이전트가 웹에서 정보를 수집해 텍스트, 이미지, 표가 포함된 전문적인 기술 보고서를 자동으로 작성해 줍니다. 단순한 요약을 넘어, 보고서 속 모든 문장이 실제 출처에 근거하고 있는지 검증하는 단계가 포함되어 있어 사용자가 내용을 신뢰할 수 있게 설계되었습니다.
+
+🎯 배경 및 문제점
+인공지능을 비롯한 다양한 분야에서 지식 생산 속도가 매우 빨라짐에 따라, 관련 정보를 효과적으로 수집하고 정리하는 도구의 필요성이 커졌습니다. 기존의 자동화 도구들은 정보를 요약하는 기능은 갖추었으나, 생성된 내용이 실제 증거에 기반하고 있는지 확인하는 &#x27;근거성(grounding)&#x27;과 &#x27;추적 가능성&#x27;이 부족하여 신뢰도가 낮다는 문제가 있었습니다.
+
+💡 핵심 기술 및 아키텍처
+Wyvern은 다수의 LLM 기반 에이전트가 계층적이고 구조화된 워크플로우를 따라 협업하는 구조입니다.
+* **보고서 생성:** 검색된 정보를 바탕으로 섹션을 구성하고 텍스트를 작성합니다.
+* **다중 모달 통합:** 관련 이미지와 비교 표를 최적의 위치에 삽입하고, 텍스트 흐름에 맞게 캡션을 생성 및 수정합니다.
+* **자동 검증(Grounding):** 생성된 텍스트를 원자 단위의 주장으로 분해한 뒤, 인용된 참고 문헌과 대조하여 근거가 부족한 경우 내용을 수정하거나 삭제합니다.
+* **최종 검토:** 보고서 전체의 일관성을 유지하고, 필요한 경우 정보를 보완하며 중립적인 어조를 유지하도록 정제합니다.
+
+📊 실험 결과 분석
+실험 결과, Wyvern은 기존 방식(STORM, WebThinker, WikiAutoGen 등) 대비 뛰어난 성능을 보였습니다.
+* **인용 성능:** 인용 재현율(citation recall)은 최대 2.3배, 인용 정확도(citation precision)는 최대 1.6배 향상되었습니다.
+* **인간 평가:** 보고서의 유용성 측면에서 비교 대상 방식들보다 63%에서 100%까지 더 높은 점수를 받았습니다.
+* **정보성:** 보고서 내 삽입된 그림의 정보성에 대해 87%의 사례에서 기존 기준보다 우수하다는 평가를 받았습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+Wyvern은 연구자나 기술 전문가들이 빠르게 변하는 기술 트렌드를 파악하고, 검증 가능한 형태의 요약 보고서를 즉시 확보할 수 있게 함으로써 업무 효율을 획기적으로 높여줄 것으로 기대됩니다. 다만, 웹 검색 API 의존도에 따른 결과의 가변성, 영어 중심의 처리 방식, 외부 소스에 포함된 편향성이나 오류가 여과 없이 전달될 수 있다는 점은 실무 도입 시 고려해야 할 한계점으로 언급되었습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2608.14446 Wyvern: An Agentic Framework for Generating ...](https://arxiv.org/abs/2608.14446)
+&gt; - [Wyvern: An Agentic Framework for Generating Grounded ...](https://agentic-design.ai/news-hub/wyvern-agentic-framework-generating-grounded-multimodal-reports-73558b)
+&gt; - [Wyvern: An Agentic Framework for Generating Grounded ...](https://arxiv.deeppaper.ai/papers/2608.14446v1)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;근거 기반(grounding)과 검증 단계의 도입은 고무적이나, &#x27;원자 단위의 주장으로 분해&#x27;하는 과정에서 발생하는 지연 시간(latency)과 비용 효율성을 간과한 듯하군요. 에이전트들의 협업 과정에서 발생하는 hallucination 전파를 어떻게 원천 차단했는지에 대한 수렴성 증명이 아쉽습니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 비용이 문제죠. 프로덕션 환경에 올리려면 에이전트 여러 개를 루프 돌리는 게 아니라, 서빙 단에서 추론 최적화가 필수일 텐데... 특히 웹 검색 API 호출 비용이랑 검증 단계 토큰 소모량 생각하면 회사에서 ROI 맞추기 쉽지 않겠는데요? 엣지 케이스 처리도 결국 룰 베이스가 섞일 것 같은데 말이죠.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;아니 그래도 인용 정확도 1.6배면 현업에서 쓰기엔 일단 혁명 아닌가요? STORM이랑 비교해서 유용성 압살한 거 보면 일단 파이프라인 구조가 되게 잘 짜인 것 같은데... 당장 내일 랩 미팅 때 이거 가져가서 우리 데이터로 돌려봐야겠어요. 비용은 나중에 생각하고 일단 &#x27;근거 있는 환상&#x27;을 잡았다는 게 포인트잖아요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
