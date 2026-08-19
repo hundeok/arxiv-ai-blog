@@ -1,0 +1,67 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>대상 측 독자 적응을 통한 모델 간 메모리 전이 | ArXiv Translator AI</title><meta name="description" content="대상 측 독자 적응을 통한 모델 간 메모리 전이"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_17050v1"><meta property="og:type" content="article"><meta property="og:title" content="대상 측 독자 적응을 통한 모델 간 메모리 전이"><meta property="og:description" content="대상 측 독자 적응을 통한 모델 간 메모리 전이"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_17050v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="대상 측 독자 적응을 통한 모델 간 메모리 전이"><meta name="twitter:description" content="대상 측 독자 적응을 통한 모델 간 메모리 전이"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_17050v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "대상 측 독자 적응을 통한 모델 간 메모리 전이", "description": "대상 측 독자 적응을 통한 모델 간 메모리 전이", "datePublished": "2026-08-17", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_17050v1", "author": [{"@type": "Person", "name": "Mingyuan Li"}, {"@type": "Person", "name": "Guangsheng Yu"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_17050v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_17050v1"});gtag('event', 'paper_view', {"paper_id": "2608_17050v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>대상 측 독자 적응을 통한 모델 간 메모리 전이</h1><p>대상 측 독자 적응을 통한 모델 간 메모리 전이</p><pre>대상 측 독자 적응을 통한 모델 간 메모리 전이
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Cross-Model Memory Transfer via Target-Side Reader Adaptation
+&gt; - **저자:** Mingyuan Li, Guangsheng Yu, Xu Wang, Shaoxiong Ji
+&gt; - **발행일:** 2026-08-17
+&gt; - **PDF 링크:** [Cross-Model Memory Transfer via Target-Side Reader Adaptation](https://arxiv.org/pdf/2608.17050v1)
+
+
+✨ 3줄 핵심 요약
+* 외부 메모리(Engram)를 특정 모델에 종속되지 않고, 다른 모델에서도 재사용할 수 있는 범용 지식 자원으로 활용하는 방법을 제시합니다.
+* 학습된 메모리 테이블을 새로운 모델에 이식할 때, 해당 모델에 최적화된 &#x27;경량화된 독자(Reader)&#x27;를 추가로 학습시키는 것만으로도 높은 성능을 얻을 수 있습니다.
+* 실험 결과, 적절하게 정렬된 독자를 사용할 경우 메모리 재사용 성능이 동일 모델 내 사용 시와 유사한 수준까지 회복됨을 확인했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+대규모 언어 모델은 지식을 모델 내부에 저장하거나 외부에서 검색하는 방식을 사용합니다. 최근 등장한 &#x27;Engram&#x27; 방식은 지식을 별도의 테이블에 저장하고 신경망 인터페이스를 통해 읽어오는데, 이 연구는 이 메모리 테이블이 특정 모델에만 묶여 있는지, 아니면 다른 모델로 옮겨도 쓸 수 있는지를 탐구했습니다. 결론적으로 메모리 자체는 재사용 가능하며, 타겟 모델에 맞는 &#x27;독자(Reader)&#x27;만 잘 설계해 붙여주면 모델을 처음부터 다시 학습시키지 않고도 외부 지식을 성공적으로 활용할 수 있습니다.
+
+🎯 배경 및 문제점
+* **기존 방식의 한계:** 외부 검색(RAG) 방식은 속도 지연과 문맥 오버헤드가 발생하며, 모델 내부에 지식을 통합하는 방식(파라미터 적응)은 지식이 모델 가중치와 뒤섞여 업데이트나 이전이 어렵습니다.
+* **핵심 질문:** Engram 방식의 외부 메모리를 다른 모델(백본)으로 옮겼을 때, 메모리 자체의 내용이 중요한지 아니면 이를 읽어들이는 독자 인터페이스가 중요한지 불분명했습니다. 즉, 메모리가 정말로 &#x27;이동 가능한 지식 기질&#x27;인지 확인이 필요했습니다.
+
+💡 핵심 기술 및 아키텍처
+* **교차 모델 동결 메모리 추출(Cross-model frozen-memory extraction):** 소스 모델에서 학습된 메모리 테이블을 동결(고정)하고, 타겟 모델에 부착한 뒤 오직 &#x27;경량 독자&#x27;만을 새로 학습시킵니다.
+* **독자 적응(Reader Adaptation):** 메모리와 타겟 모델 간의 간극을 줄이기 위해 독자를 설계합니다. 실험에서는 선형 독자부터 2층 구조의 4-브랜치 독자 등을 사용하여 최적의 정렬을 시도했습니다.
+* **모델 독립적 주소 지정:** 텍스트 토큰화 방식에 따른 차이를 극복하기 위해 단어 단위나 문자 단위의 정규화된 주소 체계를 활용하여 언어적 보편성을 확보했습니다.
+
+📊 실험 결과 분석
+* **성능 회복:** 질문 답변(QA) 작업에서 이중층 4-브랜치 독자를 사용했을 때, 동일 모델 내 메모리 사용과 타겟 모델로의 메모리 이전 간의 성능 격차를 거의 메웠습니다.
+* **수치:** 통제된 평가 프로토콜 하에서 평균 38.8점의 점수를 기록했습니다.
+* **적응의 중요성:** 독자가 타겟 모델 인터페이스와 즉시 호환되는 경우 별도의 추가 학습 없이도 유용성이 확보되지만, 추가적인 독자 적응 과정을 거칠 경우 성능이 더욱 향상되었습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **지식 자산의 재활용:** 특정 모델을 위해 구축한 방대한 지식 메모리를 차세대 모델이나 다른 도메인의 모델로 손쉽게 이식할 수 있어, 모델 구축 비용을 크게 절감할 수 있습니다.
+* **모듈형 AI 시스템:** 지식(메모리)과 지능(모델 백본)을 분리함으로써, 지식의 업데이트나 감사가 용이한 유연한 AI 아키텍처 구현이 가능해집니다.
+* **실무적 고려사항:** 다만, 언어별 토큰화 방식이나 타겟 모델의 특성에 따라 최적의 독자 설정이 달라질 수 있으므로, 적용 환경에 맞는 적절한 독자 설계가 선행되어야 합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Rosetta Memory: Adaptive Memory for Cross-LLM Agents](https://arxiv.org/html/2606.07711v1)
+&gt; - [Memory Transfer Learning: How Memories are Transferred Across Domains in Coding Agents](https://arxiv.org/html/2604.14004v1)
+&gt; - [Memory Transfer Learning:](https://arxiv.org/pdf/2604.14004)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;이 논문에서 주장하는 &#x27;범용 지식 자원&#x27;으로서의 Engram은 흥미롭지만, 과연 모델 간의 아키텍처적 차이에서 오는 임베딩 공간의 정렬 문제를 &#x27;경량 독자&#x27; 몇 개로 완벽히 해소할 수 있을지 의문입니다. 특히 분포 외 데이터(OOD) 환경에서의 안정성에 대한 검증이 부족해 보이는데, 단순히 성능 수치만으로 &#x27;지식의 이동 가능성&#x27;을 입증했다고 보기는 어렵지 않을까요?&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 일리가 있지만, 실무 입장에서는 이게 &#x27;모델을 처음부터 다시 학습시키지 않아도 된다&#x27;는 것만으로도 엄청난 비용 절감입니다. 사실 RAG의 고질적인 문맥 오버헤드 때문에 고생 중인데, 이 방식처럼 지식과 추론 엔진을 분리하면 운영 관점에서 훨씬 유연하거든요. 다만, 토큰화 방식이 다른 모델끼리 붙일 때 발생하는 인코딩 미스매치를 어떻게 정규화할지가 운영단의 핵심 과제가 되겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;두 분 다 너무 진지하신 거 아니에요? ㅋㅋ 일단 &#x27;모델을 갈아끼워도 지식은 영원하다&#x27;는 컨셉 자체가 엄청 힙하잖아요! 이거 당장 제 다음 프로젝트에 접목해서 벤치마크 돌려볼 생각입니다. 38.8점이면 초기 실험치고는 꽤 고무적인데, 독자(Reader) 구조를 더 경량화하거나 아예 LoRA랑 섞어서 더 가볍게 만들면 NeurIPS 챌린지 노려볼 만하지 않을까요? 바로 구현 들어갑니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
