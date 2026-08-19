@@ -1,0 +1,70 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>GS-Voxel: 대규모 3DGS 생성을 위한 피팅 없는 구조적 잠재 표현 | ArXiv Translator AI</title><meta name="description" content="GS-Voxel: 대규모 3DGS 생성을 위한 피팅 없는 구조적 잠재 표현"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_17988v1"><meta property="og:type" content="article"><meta property="og:title" content="GS-Voxel: 대규모 3DGS 생성을 위한 피팅 없는 구조적 잠재 표현"><meta property="og:description" content="GS-Voxel: 대규모 3DGS 생성을 위한 피팅 없는 구조적 잠재 표현"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_17988v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="GS-Voxel: 대규모 3DGS 생성을 위한 피팅 없는 구조적 잠재 표현"><meta name="twitter:description" content="GS-Voxel: 대규모 3DGS 생성을 위한 피팅 없는 구조적 잠재 표현"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_17988v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "GS-Voxel: 대규모 3DGS 생성을 위한 피팅 없는 구조적 잠재 표현", "description": "GS-Voxel: 대규모 3DGS 생성을 위한 피팅 없는 구조적 잠재 표현", "datePublished": "2026-08-18", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_17988v1", "author": [{"@type": "Person", "name": "Ming Qian"}, {"@type": "Person", "name": "Zijian Wang"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_17988v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_17988v1"});gtag('event', 'paper_view', {"paper_id": "2608_17988v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>GS-Voxel: 대규모 3DGS 생성을 위한 피팅 없는 구조적 잠재 표현</h1><p>GS-Voxel: 대규모 3DGS 생성을 위한 피팅 없는 구조적 잠재 표현</p><pre>GS-Voxel: 대규모 3DGS 생성을 위한 피팅 없는 구조적 잠재 표현
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** GS-Voxel: Fitting-Free Structured Latents for Large-Scale 3DGS Generation
+&gt; - **저자:** Ming Qian, Zijian Wang, Minchao Sun, Jincheng Xiong, Hang Zhang, Mu Xu, Chi Wang, Baoquan Chen
+&gt; - **발행일:** 2026-08-18
+&gt; - **PDF 링크:** [GS-Voxel: Fitting-Free Structured Latents for Large-Scale 3DGS Generation](https://arxiv.org/pdf/2608.17988v1)
+
+
+✨ 3줄 핵심 요약
+* **피팅 없는 변환**: 사전 최적화된 3D Gaussian Splatting(3DGS)을 별도의 최적화 과정 없이 희소 활성 복셀(Sparse active voxels)로 즉각 변환합니다.
+* **구조적 잠재 공간**: 복셀 기반의 분해된 VAE(Geometry 및 Local Attribute VAE)를 사용하여 대규모 3D 장면을 희소 잠재 표현으로 인코딩합니다.
+* **확장 가능한 생성**: 위성 이미지 기반의 흐름 모델을 통해 대규모 영역을 생성하며, 중첩 인식 타일 추론 방식으로 학습 범위를 넘어선 대단위 장면 합성이 가능합니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+기존의 3D 생성 모델은 3DGS의 복잡하고 불규칙한 데이터 구조를 처리하는 데 어려움이 있었습니다. &#x27;GS-Voxel&#x27;은 3DGS 데이터를 &#x27;복셀&#x27;이라는 규격화된 바구니에 담아 구조적인 잠재 데이터로 변환합니다. 이를 통해 수백만 개의 점(Gaussian)으로 이루어진 복잡한 지형 데이터를 효율적으로 학습하고, AI가 새로운 대규모 지형을 생성할 수 있게 했습니다. 특히 기존 학습 영역보다 훨씬 넓은 범위를 자연스럽게 이어 붙이는 타일링 기법을 적용해 실제 지형과 유사한 대규모 3D 모델 생성이 가능합니다.
+
+🎯 배경 및 문제점
+* **데이터 불규칙성**: 사전 최적화된 3DGS 데이터는 순서가 없고 공간적으로 불규칙하며, 장면마다 점(primitive)의 개수가 달라 기존 생성 모델의 정형화된 입력 방식에 맞지 않습니다.
+* **규모의 제약**: 기존의 객체 중심 생성 방식은 고정된 수의 점만 처리할 수 있어, 수백만 개의 점이 포함되는 대규모 항공 3D 장면을 처리하는 데 한계가 있었습니다.
+* **글로벌 최적화 비용**: 기존 방법들은 고정된 개수의 가우시안을 다시 맞추거나(refitting) 전체를 재배치해야 하는 번거로움이 있었습니다.
+
+💡 핵심 기술 및 아키텍처
+* **Fitting-Free 변환**: 추가적인 최적화 없이 3DGS를 희소 활성 복셀 격자로 직접 매핑하여 데이터 구조를 정형화합니다.
+* **분해된 VAE 아키텍처**:
+    * **Geometry VAE**: 지형의 구조(점유 상태)를 계층적으로 학습합니다.
+    * **Local Attribute VAE**: 복셀 내부의 세부 속성(색상, 불투명도 등)을 개별적으로 인코딩하여 효율성을 극대화합니다.
+* **중첩 인식 타일 추론(Overlap-aware tiled inference)**: 개별적인 타일 조각들을 연결하여 단일 학습 데이터 범위를 초과하는 대규모 공간을 생성할 수 있습니다.
+
+📊 실험 결과 분석
+* **생성 성능**: 항공 데이터셋 기준 FID 28.0, KID 0.020의 수치를 기록했습니다.
+* **데이터 범위**: 학습에 사용된 200m×200m 범위를 넘어, 최대 1,400m×800m 크기의 광범위한 항공 장면을 생성하는 데 성공했습니다.
+* **수치적 제약**: 원문에서는 메모리 효율성이나 압축 효율성에 대한 비트레이트/속도-왜곡 곡선(rate-distortion curves) 수치는 현재 보고되지 않았음을 명시하고 있습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **대규모 지형 시뮬레이션**: 실제 도시나 지형의 3D 데이터를 기반으로 가상 환경을 대규모로 생성하여 재난 대응 분석, 도시 계획 등에 활용 가능합니다.
+* **범용성 확장**: 항공 장면뿐만 아니라 향후 실내, 거리 수준의 3D 장면 생성으로 확장될 가능성이 있습니다.
+* **학술적 가치**: 기존의 3DGS 데이터를 재활용하여 생성 모델의 학습 데이터로 전환하는 새로운 파이프라인을 제시함으로써, 고품질 3D 콘텐츠 제작의 효율성을 높였습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Structured 3D Latents for Scalable and Versatile 3D Generation](https://openaccess.thecvf.com/content/CVPR2025/papers/Xiang_Structured_3D_Latents_for_Scalable_and_Versatile_3D_Generation_CVPR_2025_paper.pdf)
+&gt; - [Structured 3D Latents for Scalable and Versatile 3D Generation](https://www.researchgate.net/publication/394612036_Structured_3D_Latents_for_Scalable_and_Versatile_3D_Generation)
+&gt; - [2512.14692 Native and Compact Structured Latents for 3D Generation](https://arxiv.org/abs/2512.14692)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;Fitting-free라는 점은 매력적이지만, 복셀화 과정에서 정보 손실(Loss of fidelity)이 발생할 텐데 이에 대한 정량적인 왜곡 분석이 빠져있군요. 단순히 대규모 생성이 가능하다는 것만으로는 학술적 엄밀함이 부족합니다. 특히 VAE로 분해했을 때 Geometry와 Attribute 간의 의존성을 어떻게 완벽히 제어했는지 의문이 드네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님, 실무에서는 일단 &#x27;돌아가는&#x27; 게 중요합니다. 매번 3DGS를 다시 피팅하느라 GPU 태우는 비용이 장난 아니거든요. 타일링 추론으로 학습 범위 넘어서는 확장성 보여준 것만으로도 일단 프로덕션 단계에서 검토해볼 가치는 충분합니다. 다만 Rate-Distortion 곡선이 없다는 건 실제 서비스 배포 시 저장 공간 이슈를 어떻게 해결할지 좀 걱정되긴 하네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;선배님, 일단 벤치마크 FID 28.0 찍은 거면 3DGS 기반 생성 모델치고는 꽤 고무적인 거 아닌가요? 요즘 3D 생성 쪽 논문들 보면 다들 복잡한 최적화 때문에 고생인데, 이 논문은 구조적 잠재 표현으로 그 병목을 뚫은 것 같아요. 저도 이거 바로 구현 들어가서 다음 학회 타겟으로 데이터셋 좀 더 빡세게 돌려봐야겠습니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
