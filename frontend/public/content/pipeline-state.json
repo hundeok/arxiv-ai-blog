@@ -18665,7 +18665,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-20T06:35:33.252191+00:00",
+      "updated_at": "2026-08-20T09:27:19.032593+00:00",
       "paper": {
         "title": "EDITBRIDGE: Towards Faithful and Efficient Ultra-High-Resolution Image Editing",
         "summary": "High-resolution image editing is increasingly demanded in professional workflows, yet existing diffusion-based models remain constrained to resolutions below 1K due to quadratic attention complexity and prohibitive memory requirements. A prevalent workaround employs a two-stage pipeline: editing at low resolution followed by independent super-resolution. However, this approach suffers from two critical issues: information divergence, where hallucinated details contradict the original high-resolution (HR) source, and texture degradation, manifesting as over-smoothed or over-sharpened artifacts. We propose EditBridge, a diffusion bridge framework for efficient ultra high-resolution editing. Unlike conventional diffusion that regenerates from noise, we formulate refinement as structured data-to-data translation from the low-resolution (LR) edited result to its HR counterpart, explicitly conditioned on the original HR source to preserve authentic details. To efficiently incorporate HR source guidance, we introduce a prior-guided block-wise sparse attention mechanism that exploits semantic correspondence from first-stage editing to constrain cross-image interactions to spatially aligned regions, significantly reducing computational overhead. Extensive experiments demonstrate that EditBridge achieves high-fidelity editing with superior perceptual quality at resolutions up to 4K, delivering 3.6--8.4$\\times$ speedup at 2K and enabling practical 4K editing in 61 seconds.",
@@ -18692,7 +18692,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-20T03:41:25.114668+00:00",
+      "updated_at": "2026-08-20T09:27:19.032628+00:00",
       "paper": {
         "title": "Cross-Model Memory Transfer via Target-Side Reader Adaptation",
         "summary": "Methods for improving knowledge use in large language models typically fall into two regimes. Non-parametric retrieval offers flexible access to external knowledge, but adds retrieval latency, context overhead, and only shallow integration with the backbone. Parametric adaptation is efficient at inference time, but entangles knowledge with model weights and can be hard to update, audit, or transfer. Engram-style hashed memory occupies a middle regime: it stores learned information in an external, addressable table, yet consumes that table through a small learned reader. This raises a basic question: when such a memory is moved across backbones, what matters more, the frozen memory itself or the target-side reader? We study this question through cross-model frozen-memory extraction, in which a memory trained on a source model is frozen and attached to a different target model, with only a lightweight reader trained. Ablations show that learned memory content and correct addressing both matter, but the transferred table becomes useful only through a reader aligned to the target model. In downstream question answering tasks, a dual-layer, four-branch reader nearly closes the gap between same-model and cross-model reuse, achieving an average score of 38.8 under our controlled evaluation protocol. Moreover, when the provider reader is directly compatible with the target interface, the frozen artifact can provide substantial utility without target-side training, while optional reader adaptation yields further improvement. These results suggest that Engram can serve as a reusable external knowledge artifact, provided that the target has access to a compatible reader interface; target-side adaptation can further improve alignment when direct reader reuse is insufficient.",
@@ -18715,7 +18715,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-20T06:35:33.252213+00:00",
+      "updated_at": "2026-08-20T09:27:19.032619+00:00",
       "paper": {
         "title": "Demystifying Agent Skills: Why They Work-Until They Don't",
         "summary": "Skills have emerged as a practical and effective approach for enhancing LLM agents at inference time through structured packages of knowledge. However, existing evaluations largely measure whether skills improve aggregated task success, leaving a more fundamental question underexplored: \\emph{\\textbf{When do skills help, why do they work, and where do they fail?}} Through controlled experiments across various benchmarks, agent harnesses and LLMs, we isolate the effects of representation, outcome annotation, retrieval difficulty, and cross-framework robustness of skills. To further answer this question, we design a contrastive study that combines controlled quantitative experiments with paired trajectory analysis. We normalize 8,135 trial records from controlled experiments and retain 238 valid unique labels from 240 open-coded records. We consolidate these observations into a taxonomy of three high-level categories and twelve skill-use modes: skills work when noisy trajectories become procedural anchors that stabilize execution. Skills improve over Workflow Memory by 6.06 points in matched comparisons. Procedural anchoring accounts for 65.7\\% of skill cases, versus 4.5\\% for explicit knowledge injection, showing that skills stabilize action rather than inject missing facts. Retrieval is a separate bottleneck: as pools grow from 5 to 100, actual-use precision falls from 29.6\\% to 3.3\\%. Confusable distractors impair offline identification, yet downstream success remains stable; exact ground-truth invocation is neither sufficient nor necessary. Skills fail under brittle assumptions, incompatible contexts, or insufficient adaptation. These findings move evaluation beyond aggregate success rates and guide reliable self-evolving agents.",
@@ -18770,7 +18770,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-20T06:35:33.252209+00:00",
+      "updated_at": "2026-08-20T09:27:19.032587+00:00",
       "paper": {
         "title": "PTXBench: Benchmark and Adapt LLMs for GPU Kernel Optimization with Architecture-specific PTX",
         "summary": "We introduce PTXBench, a benchmark for evaluating and adapting large language models (LLMs) to use architecture-specific PTX for GPU kernel optimization. PTXBench measures functional correctness, whether selected target instructions execute at runtime, and speedup over frontier libraries across GEMM and attention workloads on H100 and B200 GPUs. Our evaluation shows that architecture-specific PTX capability remains uneven: success rates fall substantially on complex attention backward workloads, and executing the target instructions does not necessarily translate into competitive performance. No evaluated model consistently matches frontier libraries across the suite. We further adapt Qwen3.6-27B using supervised fine-tuning. Repair-conditioned training improves several tasks, but generalization remains uneven; data coverage, balance, and the quality of the reasoning teacher matter in addition to dataset size. PTXBench provides an auditable testbed for measuring and improving LLMs' ability to exploit evolving GPU architectures.",
@@ -18796,7 +18796,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-20T06:35:33.252206+00:00",
+      "updated_at": "2026-08-20T09:27:19.032579+00:00",
       "paper": {
         "title": "SemComp-Bench: Benchmarking Semantic Task Completion in Video Generation",
         "summary": "We introduce Semantic Task Completion Video Generation, an outcome-oriented video generation task. Under this formulation, success requires both achievement of the intended outcome and semantic grounding. Semantic grounding characterizes the correspondence between the reference image and the generated outcome in terms of high-level semantics relevant to the task. Evaluation focuses on the generated outcome and requires neither the presentation of a complete sequence of intermediate task steps nor conventional appearance consistency with the reference image. To support systematic evaluation, we construct SemComp-Data, an evaluation dataset covering six domains. Each instance comprises a reference image, a detailed instruction, a brief instruction, and an outcome-centric video clip. A scalable four-stage curation pipeline converts raw videos into standardized SemComp-Data instances. We further introduce SemComp-Bench, an evaluation protocol that uses a vision-language model (VLM) to answer structured binary questions. SemComp-Bench reports the OA Score and the GR Score for Outcome Achievement and Generation Reliability, respectively. Experiments on representative video generation models show that achieving intended outcomes while maintaining task-relevant semantic grounding in reference images remains challenging.",
@@ -18822,7 +18822,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-20T06:35:33.252197+00:00",
+      "updated_at": "2026-08-20T09:27:19.032615+00:00",
       "paper": {
         "title": "SoftVTBench: A Deformation-Aware Visuo-Tactile Dataset and Benchmark for Deformable-Object Manipulation",
         "summary": "Physical interaction quality is central to deformable-object manipulation, yet most benchmarks evaluate task success alone. A policy may complete the task while allowing slip or causing excessive compression. A primary bottleneck is the absence of visuo-tactile datasets that pair policy-visible contact observations with independent physical ground truth over complete tasks. We introduce SoftVTBench, a visuo-tactile dataset for physical-interaction-aware deformable-object manipulation. It contains 4,000 expert demonstrations and more than 50 assets, including volumetric deformable objects and visually matched rigid twins. At 20 Hz, each episode synchronizes multi-view RGB, dual-finger tactile RGB and marker motion, proprioception, language, and binary and continuous gripper actions, alongside evaluator-only finite-element (FEM) states. Building upon this dataset, we establish a closed-loop benchmark that uses fixed object-specific calibration to define the Deformation-aware Success Rate (DSR), which counts a rollout as successful only when it completes the task and keeps peak normalized deformation within tolerance. Across Diffusion Policy, $π_{0.5}$, and FastWAM, all 12 in-distribution configurations contain successful rollouts that violate the deformation tolerance, accounting for 0.7--24% of each configuration's successes. Under distribution shift, visuo-tactile variants achieve higher task success in all six policy--suite comparisons and higher DSR in five, whereas their in-distribution benefits are mixed. These results show that making touch available does not by itself ensure effective multimodal fusion. SoftVTBench therefore provides a common visuo-tactile resource for studying not only whether a policy succeeds, but how it physically interacts with deformable objects and when touch improves that interaction.",
@@ -18859,7 +18859,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-20T06:35:33.252226+00:00",
+      "updated_at": "2026-08-20T09:27:19.032623+00:00",
       "paper": {
         "title": "Training Chemical Plausibility-Aware Large Language Models for Single-Step Retrosynthesis",
         "summary": "Single-step retrosynthesis is a central component of computer-aided synthesis planning, yet its intrinsically one-to-many nature is poorly captured by single-answer evaluation and benchmarking protocols. To address this, we introduce Top-K prompting as a robust training and inference paradigm to better capture diverse, plausible reaction predictions. We compile CREED-CCV-2+USPTO-XL, an ultra-large-scale dataset of ~45.6 million verified reactions to train the C3LM (Chemistry Constraint-Consistent Language Model). By integrating fine-tuning with ChemCensor-based and novelty-oriented rewards, our model achieves state-of-the-art performance on the OOD URSA-expert-2026 benchmark. Further analysis of reaction uniqueness shows that LLMs and conventional models explore complementary reaction spaces, motivating ensemble-based retrosynthesis systems. Overall, our results establish Top-K, plausibility-aware training as a practical new direction for robust future LLM-based synthesis planning.",
@@ -18914,7 +18914,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-20T06:36:05.625853+00:00",
+      "updated_at": "2026-08-20T09:27:19.032558+00:00",
       "paper": {
         "title": "Scaling Creative Writing Beyond Story-Centric Data with Attribute-Guided Genre Expansion",
         "summary": "High-quality creative writing data for large language models (LLMs) remains dominated by story-centric data, limiting models' ability to follow the structural and functional conventions of diverse creative formats. We propose an attribute-guided genre expansion framework for scaling creative writing data beyond story generation. By separating thematic breadth from genre-form control, our framework leverages human-authored story prompts as diverse creative seeds, while utilizing manually curated genre attributes to enforce distinct structural, stylistic, and formatting conventions. We combine these to prompt strong LLMs for genre-faithful query-response pairs, which are then quality-filtered. Applying this framework, we construct the Multi-Genre Collection, a 50K-example corpus spanning 13 creative genres, including story, rap, lyrics, scripts, game design, character design, and other creative formats. Experiments across out-of-distribution writing benchmarks and held-out genre diagnostics demonstrate that models fine-tuned on our data consistently surpass not only base models and writing-specialized baselines, but also models trained on existing writing corpora. Genre-count ablations further indicate that controlled genre expansion, rather than story-centric scaling alone, is a key driver of robust creative writing capability.",
@@ -18965,10 +18965,58 @@
       },
       "priority_score": 36,
       "korean_title": "제타: 스스로 진화하는 신체 지능을 위한 효율적인 폐루프 임바디드 하네스"
+    },
+    "2608_18115v1": {
+      "id": "2608_18115v1",
+      "filename": "post_2608_18115v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-08-20T09:27:59.239864+00:00",
+      "paper": {
+        "title": "Temporal Multi-Signal Fusion for Token-Level Hallucination Detection",
+        "summary": "Token-level hallucination detectors score each token independently from a single signal, and fail exactly when the generating model is confidently wrong. This paper instead treats hallucination as a temporally extended span and detects it by sequence labeling: each token is scored from a 33-dimensional feature stream that fuses text statistics, Natural Language Inference (NLI) entailment, and language model surprisal, with no access to model internals. A Bidirectional Gated Recurrent Unit (BiGRU) over these features reaches an AUC of 0.840 on RAGTruth (10 seeds), an 11-point gain over an independent logistic-regression baseline (p = 0.002, Wilcoxon signed-rank). A controlled decomposition attributes most of the gain to temporal order rather than model capacity: evidence propagates from confident positions to ambiguous neighbors within a span. The same 0.845 ceiling recurs across recurrent, state-space (Mamba), and attention architectures, locating the bottleneck in the feature set rather than the model. Because it reads only the generated text and external signals, the detector works on closed-source models, and it keeps working on text produced by language models it never saw during training, losing under 4% AUC.",
+        "published": "2026-06-30T19:22:39Z",
+        "authors": [
+          "Igor Itkin"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.18115v1"
+      },
+      "priority_score": 15,
+      "korean_title": "토큰 단위 환각 탐지를 위한 시계열 다중 신호 융합"
+    },
+    "2608_18852v1": {
+      "id": "2608_18852v1",
+      "filename": "post_2608_18852v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-08-20T09:27:36.768463+00:00",
+      "paper": {
+        "title": "SkillGate: Training In-Policy Skill Selection in Long-Horizon Agents",
+        "summary": "Agent frameworks increasingly package procedural knowledge as skills: instruction files an agent reads on demand, while public libraries now hold thousands of them. Which skill to read has thus become a decision the policy itself makes in the middle of an episode, yet no existing signal trains it. We show that the default remedy, outcome-rewarded RL over the candidate slate, cannot teach it, for a structural reason we identify and name selector credit starvation: under a broadcast, sequence-level advantage, the few tokens that name the chosen skill carry a vanishing share of the loss, and the credit they inherit is increasingly wrong-signed as trajectories lengthen. A correct choice is punished whenever the execution after it fails, even though the choice itself is among the most valuable decisions in the trajectory. Auditing a completed run's own training artifacts confirms all three properties, each worsening monotonically with horizon. SkillGate removes the failure by construction: it partitions the token support into two disjoint credit channels, outcome credit reaching only execution tokens, and a separate action-local advantage reaching exactly the skill-naming tokens, positive only when a trajectory's single read is the correct one. On five agentic benchmarks under a 16-candidate slate, SkillGate lifts a 9B policy from 40.8% to 53.2% trial success, well ahead of the identical budget spent on outcome reward alone, while cutting exposure to misleading candidates by two thirds and reading fewer skills.",
+        "published": "2026-08-19T12:24:03Z",
+        "authors": [
+          "Qingyao Li",
+          "Wenxiang Jiao",
+          "Shuai Shao",
+          "Kangning Zhang",
+          "Yuan Lu",
+          "Yi Guo",
+          "Weiwen Liu",
+          "Weinan Zhang",
+          "Yong Yu"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.18852v1"
+      },
+      "priority_score": 39,
+      "korean_title": "SkillGate: 장기 호라이즌 에이전트를 위한 정책 내 기술 선택 학습"
     }
   },
   "last_run": {
-    "started_at": "2026-08-20T06:35:33.252960+00:00",
+    "started_at": "2026-08-20T09:27:19.033524+00:00",
     "discovered": 10,
     "selected": 2,
     "generated": 2,
@@ -18979,25 +19027,25 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 4,
-      "prompt_tokens": 9767,
-      "output_tokens": 2854,
+      "prompt_tokens": 10104,
+      "output_tokens": 2951,
       "thought_tokens": 0,
-      "total_tokens": 12621,
-      "estimated_usd": 0.00672275
+      "total_tokens": 13055,
+      "estimated_usd": 0.0069525
     },
-    "finished_at": "2026-08-20T06:36:06.083272+00:00"
+    "finished_at": "2026-08-20T09:27:59.762572+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 1406,
-    "prompt_tokens": 3536431,
-    "output_tokens": 1034291,
+    "requests": 1410,
+    "prompt_tokens": 3546535,
+    "output_tokens": 1037242,
     "thought_tokens": 0,
-    "total_tokens": 4570722,
-    "estimated_usd": 2.43554425
+    "total_tokens": 4583777,
+    "estimated_usd": 2.44249675
   },
   "last_publication_run": {
-    "started_at": "2026-08-20T06:35:33.252960+00:00",
+    "started_at": "2026-08-20T09:27:19.033524+00:00",
     "discovered": 10,
     "selected": 2,
     "generated": 2,
@@ -19008,17 +19056,17 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 4,
-      "prompt_tokens": 9767,
-      "output_tokens": 2854,
+      "prompt_tokens": 10104,
+      "output_tokens": 2951,
       "thought_tokens": 0,
-      "total_tokens": 12621,
-      "estimated_usd": 0.00672275
+      "total_tokens": 13055,
+      "estimated_usd": 0.0069525
     },
-    "finished_at": "2026-08-20T06:36:06.083272+00:00"
+    "finished_at": "2026-08-20T09:27:59.762572+00:00"
   },
   "daily_usage": {
     "date": "2026-08-20",
-    "estimated_usd": 0.02107775,
-    "publications": 6
+    "estimated_usd": 0.02803025,
+    "publications": 8
   }
 }

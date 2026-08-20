@@ -1,0 +1,71 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SkillGate: 장기 호라이즌 에이전트를 위한 정책 내 기술 선택 학습 | ArXiv Translator AI</title><meta name="description" content="SkillGate: 장기 호라이즌 에이전트를 위한 정책 내 기술 선택 학습"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_18852v1"><meta property="og:type" content="article"><meta property="og:title" content="SkillGate: 장기 호라이즌 에이전트를 위한 정책 내 기술 선택 학습"><meta property="og:description" content="SkillGate: 장기 호라이즌 에이전트를 위한 정책 내 기술 선택 학습"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_18852v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="SkillGate: 장기 호라이즌 에이전트를 위한 정책 내 기술 선택 학습"><meta name="twitter:description" content="SkillGate: 장기 호라이즌 에이전트를 위한 정책 내 기술 선택 학습"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_18852v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "SkillGate: 장기 호라이즌 에이전트를 위한 정책 내 기술 선택 학습", "description": "SkillGate: 장기 호라이즌 에이전트를 위한 정책 내 기술 선택 학습", "datePublished": "2026-08-19", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_18852v1", "author": [{"@type": "Person", "name": "Qingyao Li"}, {"@type": "Person", "name": "Wenxiang Jiao"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_18852v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_18852v1"});gtag('event', 'paper_view', {"paper_id": "2608_18852v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>SkillGate: 장기 호라이즌 에이전트를 위한 정책 내 기술 선택 학습</h1><p>SkillGate: 장기 호라이즌 에이전트를 위한 정책 내 기술 선택 학습</p><pre>SkillGate: 장기 호라이즌 에이전트를 위한 정책 내 기술 선택 학습
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** SkillGate: Training In-Policy Skill Selection in Long-Horizon Agents
+&gt; - **저자:** Qingyao Li, Wenxiang Jiao, Shuai Shao, Kangning Zhang, Yuan Lu, Yi Guo, Weiwen Liu, Weinan Zhang, Yong Yu
+&gt; - **발행일:** 2026-08-19
+&gt; - **PDF 링크:** [SkillGate: Training In-Policy Skill Selection in Long-Horizon Agents](https://arxiv.org/pdf/2608.18852v1)
+
+
+✨ 3줄 핵심 요약
+* 에이전트가 에피소드 중간에 적절한 기술(skill)을 선택하도록 훈련하는 &#x27;SkillGate&#x27; 방법론을 제안합니다.
+* 기존의 결과 기반 강화학습(RL)이 겪는 &#x27;선택자 신용 기아(selector credit starvation)&#x27; 문제를 해결합니다.
+* 5개 벤치마크 테스트에서 9B 모델 기준 성공률을 40.8%에서 53.2%로 대폭 향상하고 오답 노출을 2/3 수준으로 줄였습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+에이전트가 복잡한 업무를 수행할 때 수많은 외부 기술 파일 중 하나를 골라 읽어야 합니다. 기존에는 이를 학습시키기 위해 업무 결과(성공/실패)에 따른 보상을 주었지만, 이 방식은 기술 선택 자체에 대한 정확한 피드백을 주기 어렵습니다. 에피소드가 길어질수록 선택의 중요성은 커지지만, 정작 학습 과정에서 선택에 할당되는 신용(credit)이 너무 적거나 잘못된 방향으로 흐르기 때문입니다. &#x27;SkillGate&#x27;는 학습 신호를 두 갈래로 나누어, 업무 결과는 &#x27;실행&#x27; 과정에, 기술 선택은 &#x27;선택 토큰&#x27; 자체에 직접 반영함으로써 에이전트가 올바른 기술을 효과적으로 고르도록 돕습니다.
+
+🎯 배경 및 문제점
+* **기술 선택의 중요성:** 수천 개의 기술 라이브러리 중 상황에 맞는 하나를 선택하는 것은 에이전트 성능의 핵심이나, 기존 모델들은 이를 제대로 수행하지 못하는 경향이 있습니다.
+* **선택자 신용 기아(Selector Credit Starvation):** 업무 전체의 성공 여부로 보상을 주면, 정작 기술을 선택하는 토큰은 보상을 거의 받지 못하거나(vanishing share), 오히려 결과가 실패했을 때 올바른 선택을 했음에도 잘못된 처벌을 받는 등 신용이 꼬이는 문제가 발생합니다.
+* **성능 한계:** 기존의 결과 기반 강화학습(RL)은 이러한 구조적 결함으로 인해 학습 효율이 떨어지고, 에이전트가 잘못된 기술 후보에 자주 노출되는 문제를 해결하지 못했습니다.
+
+💡 핵심 기술 및 아키텍처
+* **신용 채널 분리(Credit Partitioning):** 토큰을 두 개의 분리된 신용 채널로 나눕니다.
+    1. **결과 신용(Outcome Credit):** 에이전트가 선택한 기술을 실행하는 토큰들에 할당.
+    2. **행동 국소적 이점(Action-local Advantage):** 기술 이름을 선택하는 토큰에 직접 할당.
+* **독립적 학습:** 기술 선택에 대한 보상은 업무의 전체 성공 여부와 독립적으로 작용합니다. 즉, 올바른 기술을 선택했는지 여부만을 기준으로 판단하며, 이는 에피소드 길이에 따른 신용 왜곡을 방지합니다.
+
+📊 실험 결과 분석
+* **성능 향상:** 9B 파라미터 모델을 기준으로 5개 벤치마크 평균 성공률이 40.8%에서 53.2%로 상승했습니다.
+* **효율성:** 기존 결과 기반 보상 방식 대비 더 적은 수의 기술을 읽으면서도 목표 달성도는 높았으며, 오답(misleading candidate)에 대한 노출을 2/3가량 감소시켰습니다.
+* **비교 우위:** 동일한 예산(컴퓨팅 및 데이터) 조건에서 단순히 결과 보상만 사용하는 방식보다 압도적인 성능을 보였으며, 훨씬 큰 규모의 참조 모델들과 견주어도 높은 성능을 기록했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **에이전트의 실무 능력 강화:** 개발자가 수많은 도구(Tool)나 API를 활용해야 하는 복잡한 에이전트 시스템을 구축할 때, 에이전트 스스로 최적의 도구를 선택하는 능력을 높여 자동화 효율을 극대화할 수 있습니다.
+* **학습 효율성:** 기존 RL 환경에서 고질적인 문제였던 &#x27;희소한 보상(sparse reward)&#x27;과 &#x27;신용 할당&#x27; 문제를 효과적으로 분리함으로써, 대규모 언어 모델 기반 에이전트의 훈련 비용을 절감하는 새로운 경로를 제시합니다.
+* **활용 제약:** 정답 기술이 정의된 훈련 데이터가 필요하다는 점과, &#x27;선택하지 않음(abstention)&#x27;에 대한 신용을 처리하는 데에는 한계가 있음을 논문은 밝히고 있습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [SkillGate: Training In-Policy Skill Selection in Long-Horizon ...](https://arxiv.org/html/2608.18852v1)
+&gt; - [Paper page - SkillGate: Training In-Policy Skill Selection in ...](https://huggingface.co/papers/2608.18852)
+&gt; - [SkillGate: Training In-Policy Skill Selection in Long-Horizon ...](https://paperreading.club/page?id=435985)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;Credit Assignment 문제는 강화학습의 고질적인 난제였지. &#x27;선택 토큰&#x27;에 직접 Advantage를 부여하는 방식은 직관적이지만, 과연 이 &#x27;Action-local Advantage&#x27;를 정교하게 추정할 Oracle이 모델 내부에 충분히 내재화될 수 있을지가 관건이네. 단순히 Reward를 쪼개는 것만으로 긴 호라이즌의 의존성을 완벽히 끊어낼 수 있을지 조금 더 엄밀한 증명이 필요해 보여.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 맞는데, 현업 입장에선 일단 성능이 40%에서 53%로 뛴 것 자체가 깡패입니다. 특히 오답 노출 2/3 감소는 프로덕션에서 API 비용이랑 헛짓거리 쿼리 줄이는 데 직격탄이거든요. 다만, 저자들이 언급한 &#x27;정답 기술이 정의된 훈련 데이터&#x27;가 필수라는 지점이 좀 뼈아프네요. 현실의 도구들은 문서화가 엉망인 경우가 태반이라 범용성 확보가 가능할지 모르겠습니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 다들 반응 왜 이렇게 차가우세요? SkillGate 이거 완전 에이전트 시장의 게임 체인저인데요! 그동안 RLRL(Reinforcement Learning from Reasoning Log)이니 뭐니 해도 결국 Tool-use에서 뇌절하는 게 제일 문제였는데, 신용 채널 분리 하나로 이렇게 깔끔하게 성능이 나온다니... 당장 이번 주 세미나 논문으로 발제해서 교수님한테 어필해야겠어요. 근데 진짜 이거 모델 크기 키우면 80%도 찍히는 거 아님?&quot;
+  }
+]
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
