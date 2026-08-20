@@ -1,0 +1,67 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>FM-벤치: 경쟁 에이전트와 함께하는 장기 관리 벤치마크 | ArXiv Translator AI</title><meta name="description" content="FM-벤치: 경쟁 에이전트와 함께하는 장기 관리 벤치마크"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_18423v1"><meta property="og:type" content="article"><meta property="og:title" content="FM-벤치: 경쟁 에이전트와 함께하는 장기 관리 벤치마크"><meta property="og:description" content="FM-벤치: 경쟁 에이전트와 함께하는 장기 관리 벤치마크"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_18423v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="FM-벤치: 경쟁 에이전트와 함께하는 장기 관리 벤치마크"><meta name="twitter:description" content="FM-벤치: 경쟁 에이전트와 함께하는 장기 관리 벤치마크"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_18423v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "FM-벤치: 경쟁 에이전트와 함께하는 장기 관리 벤치마크", "description": "FM-벤치: 경쟁 에이전트와 함께하는 장기 관리 벤치마크", "datePublished": "2026-08-19", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_18423v1", "author": [{"@type": "Person", "name": "Tianyou Wang"}, {"@type": "Person", "name": "Chongyang Gao"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_18423v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_18423v1"});gtag('event', 'paper_view', {"paper_id": "2608_18423v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>FM-벤치: 경쟁 에이전트와 함께하는 장기 관리 벤치마크</h1><p>FM-벤치: 경쟁 에이전트와 함께하는 장기 관리 벤치마크</p><pre>FM-벤치: 경쟁 에이전트와 함께하는 장기 관리 벤치마크
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** FM-Bench: A Benchmark for Long-Horizon Management with Competing Agents
+&gt; - **저자:** Tianyou Wang, Chongyang Gao, Kezhen Chen, Chen Dong, Yinghao He, Donghan Li, Wangcheng Xu, Hongjiu Zhang, Chi Li
+&gt; - **발행일:** 2026-08-19
+&gt; - **PDF 링크:** [FM-Bench: A Benchmark for Long-Horizon Management with Competing Agents](https://arxiv.org/pdf/2608.18423v1)
+
+
+✨ 3줄 핵심 요약
+* **장기 관리 능력 측정:** 20년간 축구 구단을 운영하며 누적된 의사결정의 결과를 평가하는 최초의 벤치마크입니다.
+* **경쟁 시스템 도입:** 여러 모델이 동일한 환경에서 서로 경쟁하는 &#x27;아레나(Arena)&#x27; 모드를 통해 에이전트 간 머리싸움을 평가합니다.
+* **관리 행동의 차이:** 모델의 성능은 컴퓨팅 자원이나 가격이 아닌, 자금 관리 및 계약 갱신과 같은 전략적 &#x27;관리 행동&#x27;의 차이에서 결정됩니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+AI 에이전트는 짧은 과제 수행에는 능숙해졌지만, 수년간 지속되는 복잡한 상황을 관리하는 능력은 검증되지 않았습니다. &#x27;FM-벤치&#x27;는 AI에게 20년 동안 축구 감독 겸 단장이 되어 선수 영입, 계약, 투자, 전술 설정 등을 수행하게 합니다. 이 과제는 한 번의 실수가 미래에 큰 영향을 미치는 장기적 관점을 요구합니다. 연구진은 15개의 최신 모델을 실험한 결과, 모델의 우열은 연산량이나 비용이 아닌, 얼마나 현명하게 자원을 배분하고 미래를 대비하는가 하는 &#x27;경영 역량&#x27;에 달려 있음을 확인했습니다.
+
+🎯 배경 및 문제점
+기존의 AI 벤치마크들은 특정 질문에 답하거나 짧은 워크플로우를 완료하는 데 집중되어 있어, 실제 세계의 &#x27;관리&#x27; 업무인 &#x27;경쟁자가 존재하는 상태에서의 장기적 조직 운영&#x27;을 다루지 못했습니다. 현실의 경영은 불완전한 정보를 바탕으로 누적되는 결과를 책임져야 하는데, 기존 평가는 이러한 복합적 요구사항을 충분히 충족하지 못했다는 문제점이 있었습니다.
+
+💡 핵심 기술 및 아키텍처
+* **환경:** 26개의 도구와 약 340~400회의 의사결정 지점을 통해 20년의 구단 운영을 시뮬레이션합니다.
+* **평가 방식:** 
+    * **솔로 트랙:** 고정된 환경에서 개별 모델의 성능 측정.
+    * **아레나(Arena):** 동일한 20년 시뮬레이션 환경 내에서 여러 모델을 경쟁시키는 방식.
+* **메모리 계층:** 엔진 데이터(자동 기록), 아카이브(역사 조회), 노트북(에이전트의 계획 및 추론 기록), 감사 로그(재생용)의 4단계로 구성됩니다.
+
+📊 실험 결과 분석
+* **모델별 성능:** 15개 모델 모두 20년 운영 과제를 완수했으나, 스크립트 기반의 기본 모델들은 대부분 중간에 탈락했습니다.
+* **승자:** &#x27;claude-fable-5&#x27; 모델이 솔로와 아레나 모드 모두에서 평균 점수가 가장 높았습니다.
+* **결정적 요인:** 토큰 사용량, 모델 가격, 규모는 순위를 예측하지 못했습니다. 대신 성적이 좋은 모델들은 시즌 후반으로 갈수록 느린 수익률의 투자를 줄이고, 현금을 유휴 상태로 두지 않으며, 계약 만료 전에 갱신을 준비하는 전략적 행동을 보였습니다. 
+* **한계:** 어떤 모델도 수백 번의 거절된 입찰을 통해 시장의 숨겨진 가격을 학습하지 못했으며, 자기 관리 메모리 기능(기록만 계속 늘리거나 매 시즌 계획을 완전히 새로 쓰는 방식)은 실패하는 경향을 보였습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+이 벤치마크는 AI가 단순한 작업 수행을 넘어, 수년에 걸쳐 환경 변화에 대응하고 경쟁자와 상호작용하는 &#x27;복잡한 관리 에이전트&#x27;로 진화할 수 있음을 보여줍니다. 기업의 리소스 할당, 장기적인 전략 수립, 불확실한 시장 상황에서의 경영 의사결정 등 AI를 실제 비즈니스 환경에 배치하기 위한 핵심 지표로 활용될 수 있습니다. 특히 모델의 성능이 컴퓨팅 파워보다 전략적 추론 방식에 좌우된다는 점은 향후 AI 에이전트 설계의 방향성을 제시합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [CoffeeBench: Benchmarking Long-Horizon LLM Agents in ...](https://arxiv.org/pdf/2606.16613)
+&gt; - [2607.08964 Long-Horizon-Terminal-Bench: Testing the Limits of Agents on Long-Horizon Terminal Tasks with Dense Reward-Based Grading](https://arxiv.org/abs/2607.08964)
+&gt; - [CoffeeBench: Benchmarking Long-Horizon LLM Agents in Heterogeneous Multi-Agent Economies](https://arxiv.org/html/2606.16613)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;FM-Bench의 접근 방식 자체는 흥미롭지만, &#x27;장기적 전략&#x27;을 측정한다는 명목하에 데이터가 오염될 가능성이 다분해 보이네요. 특히 메모리 계층 구조가 모델의 &#x27;추론 능력&#x27;을 평가하는 것인지, 아니면 단순히 &#x27;로그를 얼마나 잘 요약하는지&#x27;를 평가하는 것인지 모호합니다. 20년치 시뮬레이션에서 발생하는 누적 오차를 어떻게 통제했는지에 대한 분석이 부족한 점이 아쉽군요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 일리가 있지만, 실무자 입장에선 &#x27;모델 규모나 비용이 성능과 비례하지 않는다&#x27;는 결과가 꽤 시사하는 바가 큽니다. 결국 아키텍처나 파라미터 수보다 &#x27;어떤 도구를 적재적소에 호출하고 히스토리를 어떻게 관리하느냐&#x27;가 핵심이라는 건데, 벤치마크 점수 높이려고 프롬프트 엔지니어링에만 매몰되지 말라는 경고장 같네요. 당장 우리 팀 파이프라인에도 메모리 구조 최적화 인사이트를 좀 적용해봐야겠습니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 다들 진지하시네요! 전 claude-fable-5가 압살했다는 거 보고 바로 랩 미팅 때 이 논문 가져가서 &#x27;에이전트 메모리 효율성&#x27; 테마로 세미나 잡았습니다. 특히 &#x27;자기 관리 메모리&#x27; 실패했다는 대목이 대박이에요. 이거 다음 논문은 아마 &#x27;RAG 기반의 최적화된 경영 히스토리 압축 기법&#x27;으로 쏟아져 나올 텐데, 다들 논문 쓰러 가시죠? 지금이 기회입니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

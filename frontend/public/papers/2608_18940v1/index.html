@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>단일 단계 역합성 계획을 위한 화학적 타당성 인지 대규모 언어 모델 학습 | ArXiv Translator AI</title><meta name="description" content="단일 단계 역합성 계획을 위한 화학적 타당성 인지 대규모 언어 모델 학습"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_18940v1"><meta property="og:type" content="article"><meta property="og:title" content="단일 단계 역합성 계획을 위한 화학적 타당성 인지 대규모 언어 모델 학습"><meta property="og:description" content="단일 단계 역합성 계획을 위한 화학적 타당성 인지 대규모 언어 모델 학습"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_18940v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="단일 단계 역합성 계획을 위한 화학적 타당성 인지 대규모 언어 모델 학습"><meta name="twitter:description" content="단일 단계 역합성 계획을 위한 화학적 타당성 인지 대규모 언어 모델 학습"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_18940v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "단일 단계 역합성 계획을 위한 화학적 타당성 인지 대규모 언어 모델 학습", "description": "단일 단계 역합성 계획을 위한 화학적 타당성 인지 대규모 언어 모델 학습", "datePublished": "2026-08-19", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_18940v1", "author": [{"@type": "Person", "name": "Bogdan Zagribelnyy"}, {"@type": "Person", "name": "Ivan Ilin"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_18940v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_18940v1"});gtag('event', 'paper_view', {"paper_id": "2608_18940v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>단일 단계 역합성 계획을 위한 화학적 타당성 인지 대규모 언어 모델 학습</h1><p>단일 단계 역합성 계획을 위한 화학적 타당성 인지 대규모 언어 모델 학습</p><pre>단일 단계 역합성 계획을 위한 화학적 타당성 인지 대규모 언어 모델 학습
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Training Chemical Plausibility-Aware Large Language Models for Single-Step Retrosynthesis
+&gt; - **저자:** Bogdan Zagribelnyy, Ivan Ilin, Nikita Bondarev, Maksim Kuznetsov, Mathieu Reymond, Vladimir Aladinskiy, Alex Aliper, Alex Zhavoronkov
+&gt; - **발행일:** 2026-08-19
+&gt; - **PDF 링크:** [Training Chemical Plausibility-Aware Large Language Models for Single-Step Retrosynthesis](https://arxiv.org/pdf/2608.18940v1)
+
+
+✨ 3줄 핵심 요약
+*   역합성 분석의 &#x27;일대다(one-to-many)&#x27; 특성을 반영하기 위해 새로운 학습 및 추론 패러다임인 &#x27;Top-K 프롬프팅&#x27;을 도입함.
+*   약 4,560만 개의 검증된 반응 데이터셋인 &#x27;CREED-CCV-2+USPTO-XL&#x27;을 구축하여 C3LM(Chemistry Constraint-Consistent Language Model)을 학습함.
+*   강화 학습 미세 조정과 화학적 타당성 보상을 결합하여 &#x27;URSA-expert-2026&#x27; 벤치마크에서 최첨단(SOTA) 성능을 달성함.
+
+📖 쉽게 풀어쓴 1분 핵심
+역합성은 표적 분자를 만들기 위해 어떤 원료가 필요한지 거꾸로 추적하는 과정입니다. 기존 모델들은 정답이 하나뿐이라고 가정하는 평가 방식 때문에 다양한 합성 경로를 탐색하는 데 한계가 있었습니다. 본 연구는 인공지능이 화학적으로 &#x27;타당한&#x27; 여러 개의 후보 경로를 제안하도록 유도하는 &#x27;Top-K 프롬프팅&#x27;을 적용했습니다. 이를 위해 방대한 화학 반응 데이터를 학습한 C3LM 모델은 기존의 전문 모델들을 뛰어넘는 예측 성능을 보여주며, 향후 신약 개발을 위한 합성 계획 자동화의 실질적인 돌파구를 마련했습니다.
+
+🎯 배경 및 문제점
+*   **일대다 문제:** 하나의 표적 분자는 여러 경로를 통해 합성될 수 있으나, 기존 모델들은 이를 단일 정답으로 평가하려는 경향이 있어 정보 손실이 컸습니다.
+*   **평가 방식의 한계:** 정확한 일치(exact-match) 기반의 단일 레퍼런스 평가는 실제 합성 가능성을 충분히 반영하지 못합니다.
+*   **기존 모델의 부진:** 최근 연구에서 대규모 언어 모델(LLM)이 역합성 분야에 도입되었으나, 화학적 타당성을 고려한 기존 전문 모델들에 비해 성능이 다소 부족한 것으로 나타났습니다.
+
+💡 핵심 기술 및 아키텍처
+*   **Top-K 프롬프팅:** 단일 결과가 아닌, 여러 개의 화학적으로 타당한 예측값을 출력하도록 학습하고 추론하는 패러다임입니다.
+*   **CREED-CCV-2+USPTO-XL 데이터셋:** 약 4,560만 개의 반응 후보를 포함하는 초거대 데이터셋으로, 기존보다 제품 수는 약 5.3배, 반응 수는 약 7.2배 확대되었습니다.
+*   **C3LM(Chemistry Constraint-Consistent Language Model):** 화학적 타당성을 측정하는 &#x27;ChemCensor&#x27; 지표와 참신성(novelty) 중심의 보상을 결합하여 강화 학습 미세 조정을 거친 모델입니다.
+
+📊 실험 결과 분석
+*   **성능 우위:** 강화 학습 미세 조정이 적용된 C3LM 모델(C3LM-LFM2-RFT-CC-NR)은 URSA-expert-2026 벤치마크에서 기존의 전통적인 SSRS(단일 단계 역합성) 모델들을 상회하는 성능을 보였습니다.
+*   **상호보완적 탐색:** LLM 기반 모델과 전통적인 모델이 서로 다른 화학 반응 공간을 탐색한다는 점이 확인되었으며, 이는 향후 두 방식을 결합한 앙상블 시스템의 필요성을 시사합니다.
+*   **지표:** ChemCensor 점수를 통해 화학적 타당성을 평가하였으며, 상세한 수치는 논문의 표 7을 통해 제공됩니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+*   **합성 계획의 효율화:** 컴퓨터 지원 합성 계획(CASP) 시스템의 핵심 구성 요소로서, 신약 개발 과정에서 새로운 화합물의 합성 가능성을 더 정확하게 예측할 수 있게 합니다.
+*   **앙상블 시스템의 기반:** 모델들이 각기 다른 합성 경로를 제안할 수 있음을 입증함으로써, 더 강력한 다단계 역합성(MSRS) 엔진을 구축하는 기술적 토대를 제공합니다.
+*   **미래 방향성:** 이번 연구는 LLM을 활용한 역합성 계획에 있어 &#x27;화학적 타당성&#x27;을 중심에 둔 학습이 실무적으로 얼마나 효과적인지를 증명했습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [When Single Answer Is Not Enough: Rethinking Single-Step Retrosynthesis Benchmarks for LLMs](https://arxiv.org/html/2602.03554v2)
+&gt; - [Reasoning-Driven Retrosynthesis Prediction with Large Language Models via Reinforcement Learning](https://arxiv.org/html/2507.17448v1)
+&gt; - [2602.03554 When Single Answer Is Not Enough: Rethinking Single-Step Retrosynthesis Benchmarks for LLMs](https://ar5iv.labs.arxiv.org/html/2602.03554)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문의 방향성은 동의합니다만, 4,560만 개의 데이터셋을 구축했다고 해서 무조건적인 성능 향상을 보장하는 것은 아닙니다. 특히 강화 학습을 통한 보상 함수 설계 시, ChemCensor가 실제 화학적 난이도와 예외 사례를 얼마나 정교하게 필터링할 수 있는지가 관건인데, 논문에서 이 부분의 Generalization 성능에 대한 정성적 평가가 다소 부족해 보이네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 데이터 규모도 중요하지만, 현업 입장에서는 &#x27;Top-K 프롬프팅&#x27;을 적용했을 때의 추론 레이턴시가 더 걱정입니다. 앙상블 시스템으로 가려면 리소스 소모가 엄청날 텐데, 이 C3LM 모델을 실시간 CASP 시스템에 올리려면 경량화나 지식 증류가 필수적이겠네요. 성능은 확실히 SOTA급인 것 같은데, 프로덕션 배포까지는 갈 길이 멉니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;에이, 형님들! 그래도 이게 어디입니까? 드디어 &#x27;단일 정답&#x27;이라는 낡은 패러다임에서 벗어나 화학적 다양성을 모델링하기 시작했다는 게 핵심이죠. LLM으로 역합성 푼다는 논문들 쏟아져 나오는데, 이제 C3LM 중심으로 벤치마크 판도 싹 바뀔 것 같습니다. 일단 오늘 밤새서 URSA-expert 데이터셋 뜯어보고 바로 실험 돌려봐야겠어요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
