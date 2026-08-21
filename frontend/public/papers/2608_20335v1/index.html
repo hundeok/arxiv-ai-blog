@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>4DAnyone: 일상적인 단안 영상으로부터 4D 인물 생성 | ArXiv Translator AI</title><meta name="description" content="4DAnyone: 일상적인 단안 영상으로부터 4D 인물 생성"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_20335v1"><meta property="og:type" content="article"><meta property="og:title" content="4DAnyone: 일상적인 단안 영상으로부터 4D 인물 생성"><meta property="og:description" content="4DAnyone: 일상적인 단안 영상으로부터 4D 인물 생성"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_20335v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="4DAnyone: 일상적인 단안 영상으로부터 4D 인물 생성"><meta name="twitter:description" content="4DAnyone: 일상적인 단안 영상으로부터 4D 인물 생성"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_20335v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "4DAnyone: 일상적인 단안 영상으로부터 4D 인물 생성", "description": "4DAnyone: 일상적인 단안 영상으로부터 4D 인물 생성", "datePublished": "2026-08-20", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_20335v1", "author": [{"@type": "Person", "name": "Yudong Jin"}, {"@type": "Person", "name": "Tao Xie"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_20335v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_20335v1"});gtag('event', 'paper_view', {"paper_id": "2608_20335v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>4DAnyone: 일상적인 단안 영상으로부터 4D 인물 생성</h1><p>4DAnyone: 일상적인 단안 영상으로부터 4D 인물 생성</p><pre>4DAnyone: 일상적인 단안 영상으로부터 4D 인물 생성
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** 4DAnyone: Create Anyone in 4D from a Casual Monocular Video
+&gt; - **저자:** Yudong Jin, Tao Xie, Qihang Zhang, Zehong Shen, Zhen Xu, Yujun Shen, Hujun Bao, Xiaowei Zhou, Yinghao Xu
+&gt; - **발행일:** 2026-08-20
+&gt; - **PDF 링크:** [4DAnyone: Create Anyone in 4D from a Casual Monocular Video](https://arxiv.org/pdf/2608.20335v1)
+
+
+✨ 3줄 핵심 요약
+* **4D 재구성:** 일상에서 촬영된 단안 영상 하나만으로 4D 가우시안 스플래팅(4DGS)을 위한 다각도 일관성 영상 데이터를 생성합니다.
+* **확장성 해결:** &#x27;참조 컨텍스트 패킹(RCP)&#x27;으로 참조 영상 정보를 효율적으로 압축하고, &#x27;타겟 컨텍스트 라우팅(TCR)&#x27;으로 그룹 간 구조적 일관성을 유지합니다.
+* **성능 우위:** 3D 골격 정보를 활용한 정교한 제어를 통해 이전 방식들보다 높은 영상 품질과 재구성 성능을 달성했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+보통 4D 인물 영상을 만들려면 여러 대의 카메라로 촬영한 전문 장비가 필요합니다. 하지만 &#x27;4DAnyone&#x27;은 우리가 흔히 스마트폰으로 찍는 단안(카메라 1대) 영상만으로 이를 가능하게 합니다. 핵심은 AI가 부족한 시점의 영상을 상상해낼 때 발생하는 &#x27;부자연스러움&#x27;과 &#x27;그룹 간 어긋남&#x27;을 해결하는 것입니다. 이 기술은 수많은 시점의 영상을 효율적으로 관리하고, 인체의 3D 골격 데이터를 입혀 일관성 있는 4D 결과물을 만들어냅니다.
+
+🎯 배경 및 문제점
+4D 가우시안 스플래팅(4DGS)을 위해서는 수십 개의 시점에서 바라본 영상이 필요합니다. 기존 비디오 확산 모델은 소수의 시점에서는 잘 작동하지만, 4DGS에 필요한 다수의 시점을 한꺼번에 생성하려고 하면 두 가지 문제에 봉착합니다.
+* **참조 컨텍스트 부족:** 생성해야 할 시점이 늘어날수록 이전 정보가 방대해져 효율적인 가이드라인을 제공하기 어렵습니다.
+* **구조적 표류(Drift):** 시점을 그룹으로 나누어 생성하면 그룹 간에 정보 교류가 없어, 영상 전체의 구조가 일관되지 않고 틀어지는 문제가 발생합니다.
+
+💡 핵심 기술 및 아키텍처
+* **참조 컨텍스트 패킹 (RCP):** 늘어나는 참조 시점 정보들을 고정된 크기의 혼합 해상도 토큰으로 압축하여 계산 복잡도를 $O(1)$로 유지합니다.
+* **타겟 컨텍스트 라우팅 (TCR):** 영상을 생성하는 과정에서 시점 그룹을 회전(Sliding) 방식으로 섞어주어, 노이즈가 많은 단계에서 정보를 공유하고 디테일을 안정화합니다.
+* **3D 골격 조건화:** 2D 골격의 모호함(앞뒤 구분이 안 됨)을 해결하기 위해 Z-버퍼를 활용한 3D 골격 렌더링을 적용하여 신체 부위의 가림 현상을 명확히 처리합니다.
+
+📊 실험 결과 분석
+* **성능 지표:** DNA-Rendering 데이터셋을 사용한 실험에서 &#x27;Sliding&#x27; 방식을 적용한 모델이 PSNR 22.63, SSIM 0.796, LPIPS 0.191로 가장 우수한 결과를 보였습니다.
+* **구성 요소 효과:** RCP와 TCR을 모두 제거했을 때(PSNR 21.09)보다, 이를 결합하여 사용했을 때 생성 영상의 품질과 4DGS 재구성 정확도가 일관되게 향상되었습니다.
+* **일반화:** 통제된 데이터셋 외에도 실제 야외에서 촬영된 다양한 인물 영상에서도 강건한(Robust) 성능을 보여주었습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **몰입형 콘텐츠:** 실감 나는 3D 아바타 생성이나 VR/AR 콘텐츠 제작 시 비용 효율적인 솔루션을 제공합니다.
+* **AI 연구 발전:** Embodied AI(신체형 AI)를 위한 데이터 확보를 용이하게 하여 가상 환경에서의 인간 행동 이해를 돕습니다.
+* **윤리적 고려:** 본 기술은 사실적인 인물 생성이 가능하므로 딥페이크 악용, 개인정보 침해, 저작권 이슈 등 잠재적 위험이 있습니다. 저자들은 생성된 결과물이 합성물임을 명확히 밝히고 당사자의 동의를 구할 것을 권고합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [CAT4D: Create Anything in 4D with Multi-View Video Diffusion Models](https://cat-4d.github.io/)
+&gt; - [Shape of Motion: 4D Reconstruction from a Single Video](https://shape-of-motion.github.io/)
+&gt; - [CAT4D: Create Anything in 4D with Multi-View Video Diffusion Models](https://arxiv.org/html/2411.18613v2)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;RCP와 TCR을 통한 컨텍스트 제어는 흥미로우나, 3D 골격 조건화 과정에서 Z-버퍼 렌더링에 의존하는 방식이 과연 극심한 가림(Occlusion)이나 복잡한 의상 변형 상황에서도 강건할지 의문입니다. 실험 결과의 PSNR 수치가 22.63 수준이라면, 아직 학술적으로는 &#x27;재구성의 일관성&#x27;을 논하기엔 시각적 아티팩트가 상당할 것으로 보입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 수치는 평범해 보이지만, 실무 관점에선 &#x27;단안 영상&#x27;이라는 입력 조건이 핵심입니다. 기존에 수천만 원 들여 다각도 촬영하던 것을 스마트폰 영상 하나로 퉁칠 수 있다면, 가성비 측면에서 대박인 거죠. 다만, inference latency가 $O(1)$로 유지된다고 해도 실제 서비스 환경에서 4DGS까지 돌리는 파이프라인 최적화가 관건이겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 선배님들 벌써 분석 끝나셨나요? 저는 벌써 제 랩실 데이터셋으로 돌려보고 있는데, 확실히 TCR로 Sliding 돌리니까 그룹 간 튀는 문제는 많이 잡혔습니다! 딥페이크 윤리 이슈는 무섭지만, 이거 메타버스 아바타 생성 자동화 툴로 바로 붙이면 대박 날 것 같아요. 교수님, 저 이거 다음 분기 프로젝트로 해도 될까요?&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
