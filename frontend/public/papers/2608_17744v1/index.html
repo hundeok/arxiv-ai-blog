@@ -1,0 +1,69 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>저자원 언어로 사고하기: SFT가 구축하는 것, RL이 수정하는 것, 그리고 정확도가 보지 못하는 것 | ArXiv Translator AI</title><meta name="description" content="저자원 언어로 사고하기: SFT가 구축하는 것, RL이 수정하는 것, 그리고 정확도가 보지 못하는 것"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_17744v1"><meta property="og:type" content="article"><meta property="og:title" content="저자원 언어로 사고하기: SFT가 구축하는 것, RL이 수정하는 것, 그리고 정확도가 보지 못하는 것"><meta property="og:description" content="저자원 언어로 사고하기: SFT가 구축하는 것, RL이 수정하는 것, 그리고 정확도가 보지 못하는 것"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_17744v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="저자원 언어로 사고하기: SFT가 구축하는 것, RL이 수정하는 것, 그리고 정확도가 보지 못하는 것"><meta name="twitter:description" content="저자원 언어로 사고하기: SFT가 구축하는 것, RL이 수정하는 것, 그리고 정확도가 보지 못하는 것"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_17744v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "저자원 언어로 사고하기: SFT가 구축하는 것, RL이 수정하는 것, 그리고 정확도가 보지 못하는 것", "description": "저자원 언어로 사고하기: SFT가 구축하는 것, RL이 수정하는 것, 그리고 정확도가 보지 못하는 것", "datePublished": "2026-08-18", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_17744v1", "author": [{"@type": "Person", "name": "Ayoub Kirouane"}, {"@type": "Person", "name": "Christos Petrocheilos"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_17744v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_17744v1"});gtag('event', 'paper_view', {"paper_id": "2608_17744v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>저자원 언어로 사고하기: SFT가 구축하는 것, RL이 수정하는 것, 그리고 정확도가 보지 못하는 것</h1><p>저자원 언어로 사고하기: SFT가 구축하는 것, RL이 수정하는 것, 그리고 정확도가 보지 못하는 것</p><pre>저자원 언어로 사고하기: SFT가 구축하는 것, RL이 수정하는 것, 그리고 정확도가 보지 못하는 것
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Thinking in a Low-Resource Language: What SFT Builds, What RL Fixes, What Accuracy Cannot See
+&gt; - **저자:** Ayoub Kirouane, Christos Petrocheilos
+&gt; - **발행일:** 2026-08-18
+&gt; - **PDF 링크:** [Thinking in a Low-Resource Language: What SFT Builds, What RL Fixes, What Accuracy Cannot See](https://arxiv.org/pdf/2608.17744v1)
+
+
+✨ 3줄 핵심 요약
+*   거대언어모델(LLM)을 저자원 언어로 파인튜닝할 때, 기존 정확도 지표는 모델의 실제 추론 방식과 사고 과정을 전혀 반영하지 못합니다.
+*   SFT(지도 미세 조정)는 모델이 해당 언어로 사고하게 만들지만, 형식 준수 실패나 영어 사고 혼용 같은 구조적 결함을 스스로 해결하지 못합니다.
+*   검증 가능한 보상을 활용한 강화학습(RL)이 SFT의 한계를 보완하며, 저자원 언어 환경에서 모델의 신뢰성과 투명성을 높일 수 있습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+대부분의 LLM 성능 평가는 &#x27;정답률(Accuracy)&#x27;이라는 단 하나의 숫자만을 봅니다. 하지만 저자원 언어(예: 그리스어)에서 모델은 정답을 맞춰도, 내부적으로는 영어로 생각한 뒤 번역하는 경우가 많습니다. 이는 사용자가 모델의 사고 과정을 읽거나 감사할 수 없게 만듭니다. 본 연구는 SFT가 모델의 사고 언어를 바꾸는 데는 효과적이지만, 형식 오류나 명령어 무시 등의 결함이 발생함을 밝힙니다. 이를 해결하기 위해 강화학습을 적용한 결과, 모델이 사용자의 언어로 충실히 사고하고 오류도 크게 줄어듦을 확인했습니다.
+
+🎯 배경 및 문제점
+*   **정확도의 함정:** 저자원 언어 환경에서 정확도 지표는 매우 불안정하며, 무작위 시드 변경만으로도 모델의 실질적인 변화보다 큰 점수 변동(7.7점)이 발생합니다.
+*   **사고 과정의 불투명성:** 기본 모델(Base model)은 그리스어 질문을 받아도 내부적으로는 영어로 추론할 가능성이 큽니다. 사용자는 모델이 어떤 논리로 정답에 도달했는지 확인하거나 수정할 수 없습니다.
+*   **측정 지표의 오류:** 기존 평가 도구들은 모델의 사고 과정보다는 출력 길이나 답변 형식에 치중하여, 모델이 제대로 사고하고 있는지 판단하지 못합니다.
+
+💡 핵심 기술 및 아키텍처
+*   **다양한 모델 실험:** Alibaba, OpenAI, NVIDIA의 Mixture-of-Experts(MoE) 모델을 사용하여 모델 아키텍처와 관계없이 동일한 현상이 발생하는지 검증했습니다.
+*   **행동 차원 제안:** 단순히 정답률만 보지 않고, 모델이 사고하는 언어, 소모되는 토큰 수, 난이도 구분 능력, 망각 여부 등 6가지 행동 차원을 통해 모델을 평가합니다.
+*   **강화학습(RLVR):** SFT 과정에서 드러난 답변 형식 이탈(24% → 2.5%)과 사고 채널 내 답변 누출(3.5% → 0.0%) 문제를 검증 가능한 보상 기반의 강화학습으로 해결했습니다.
+
+📊 실험 결과 분석
+*   **SFT의 성과:** SFT 이후 모델은 질문 언어와 동일한 언어로 사고하는 비율이 약 98%에 도달했습니다. 
+*   **SFT의 한계:** SFT만으로는 특정 지시사항(예: &quot;영어/그리스어로 생각하라&quot;)을 따르게 하는 데 한계가 있으며, 사고 과정에 답변이 섞여 나오는 등의 결함이 남습니다.
+*   **강화학습의 효용성:** 강화학습을 적용했을 때 그리스어로 사고하는 습관(98.2% 충실도)은 유지하면서도, 답변 형식 준수 등 모델의 고질적인 결함을 획기적으로 개선했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+*   **투명한 AI 개발:** 저자원 언어권 사용자들도 모델의 사고 과정을 직접 검토하고 교정할 수 있게 되어, AI의 신뢰성을 확보할 수 있습니다.
+*   **평가 체계의 전환:** 단순 정확도 중심의 평가에서 벗어나 &#x27;사고의 언어&#x27;와 &#x27;지시 이행의 일관성&#x27;을 측정하는 새로운 평가 방법론을 제시했습니다.
+*   **경제적 효용:** MoE 아키텍처 기반의 추론 모델을 활용함으로써, 거대 모델 구축이 어려운 언어 공동체도 비용 효율적으로 고성능 모델을 운영할 수 있는 길을 열었습니다.
+*   **실무적 제언:** 저자원 언어 모델을 학습시킬 때는 정답률 외에도 &#x27;제어 가능한 통제군(Control)&#x27;을 반드시 설정하여 모델이 의도대로 동작하는지 검증해야 합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Computation and Language](https://arxiv.org/list/cs.CL/recent?show=50&amp;skip=99)
+&gt; - [2608.17744 Thinking in a Low-Resource Language: What SFT Builds, What ...](https://arxiv.org/abs/2608.17744)
+&gt; - [Paper page - Thinking in a Low-Resource Language: What SFT Builds, What ...](https://huggingface.co/papers/2608.17744)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;정확도(Accuracy)라는 단일 지표에 매몰된 현재의 평가 방식은 학계의 수치스러운 관행입니다. 이 논문은 SFT가 단순히 표면적인 언어 변환에만 그치고, 내부 추론의 질적 결함은 방치한다는 점을 통계적으로 잘 짚어냈군요. 특히 저자원 언어에서 &#x27;사고의 투명성&#x27;을 제어 변수로 설정한 접근은 고무적입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 지표는 예쁘게 찍히는데 실무에서 써보면 엉뚱한 언어로 사고하다가 튀는 현상, 진짜 골치 아프죠. 결국 RLVR(검증 가능한 보상 기반 RL)로 24%에서 2.5%까지 에러를 잡았다는 건 실무적인 임팩트가 큽니다. 다만, RL 도입 시 발생하는 alignment tax나 학습 비용을 감당할 수 있는 규모인지가 현업에선 관건이겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;선배님, RL 비용 고민할 때가 아닙니다! 지금 이 논문 핵심은 &#x27;정확도 지표의 신뢰성 붕괴&#x27;예요. 7.7점씩 왔다 갔다 하는 메트릭을 믿고 논문 쓰던 시절은 끝난 거죠. 이제 &#x27;사고의 언어&#x27;를 트래킹하는 거, 제 다음 실험 바로 적용해볼게요. 이거 다음 주 학회들에서 엄청 인용될 각입니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
