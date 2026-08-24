@@ -1,0 +1,72 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ContractScrub: 법률 계약서 최종 검토를 위한 벤치마크 | ArXiv Translator AI</title><meta name="description" content="ContractScrub: 법률 계약서 최종 검토를 위한 벤치마크"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_20204v1"><meta property="og:type" content="article"><meta property="og:title" content="ContractScrub: 법률 계약서 최종 검토를 위한 벤치마크"><meta property="og:description" content="ContractScrub: 법률 계약서 최종 검토를 위한 벤치마크"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_20204v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="ContractScrub: 법률 계약서 최종 검토를 위한 벤치마크"><meta name="twitter:description" content="ContractScrub: 법률 계약서 최종 검토를 위한 벤치마크"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_20204v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "ContractScrub: 법률 계약서 최종 검토를 위한 벤치마크", "description": "ContractScrub: 법률 계약서 최종 검토를 위한 벤치마크", "datePublished": "2026-08-20", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_20204v1", "author": [{"@type": "Person", "name": "Yejin Bang"}, {"@type": "Person", "name": "Kirsty Fielding"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_20204v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_20204v1"});gtag('event', 'paper_view', {"paper_id": "2608_20204v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>ContractScrub: 법률 계약서 최종 검토를 위한 벤치마크</h1><p>ContractScrub: 법률 계약서 최종 검토를 위한 벤치마크</p><pre>ContractScrub: 법률 계약서 최종 검토를 위한 벤치마크
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** ContractScrub: A benchmark for final review of legal contracts
+&gt; - **저자:** Yejin Bang, Kirsty Fielding, Brandan Oliver, Brian Birke, Nabeel Seedat, Andrew M. Bean
+&gt; - **발행일:** 2026-08-20
+&gt; - **PDF 링크:** [ContractScrub: A benchmark for final review of legal contracts](https://arxiv.org/pdf/2608.20204v1)
+
+
+✨ 3줄 핵심 요약
+* **ContractScrub**는 계약서 내 정의된 용어 오류, 참조 불일치 등 실무적 오류를 탐지하는 능력을 평가하는 최초의 법률 계약 검토 벤치마크입니다.
+* 기존 법률 AI 벤치마크와 달리, 전문가가 직접 작성한 계약서를 바탕으로 실제 업무 환경에서 발생하는 정밀한 오류 탐지 능력을 측정합니다.
+* 최신 거대언어모델(LLM)들은 일반적인 법률 시험에서는 우수한 성적을 거두면서도, 실제 계약서 검토 작업에서는 낮은 성능(최고점 0.75 매크로 평균 재현율)을 보였습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+법률 업무에서 계약서 &#x27;스크러빙(Scrubbing)&#x27;이란 최종 서명 전, 문서 내 용어 정의가 일관적인지, 참조된 조항이 정확한지 등을 꼼꼼히 확인하는 필수 과정입니다. 이는 고도의 집중력과 긴 문맥 파악 능력을 요구합니다. 연구진은 실제 변호사들이 오류를 의도적으로 삽입하여 만든 계약서 데이터셋인 &#x27;ContractScrub&#x27;을 통해 AI의 실무 역량을 검증했습니다. 결과적으로, 기존의 일반적인 법률 평가에서는 똑똑해 보이던 AI들이 실제 계약서의 미묘한 불일치를 찾아내는 데에는 여전히 상당한 어려움을 겪고 있음이 드러났습니다.
+
+🎯 배경 및 문제점
+* **기존 평가의 한계:** 기존의 법률 벤치마크(LEXam, Stanford Legal Bench 등)는 논리 추론 등 특정 능력 측정에는 유용하나, 실제 경제적 가치가 높은 실무 작업과의 연계성이 부족합니다.
+* **실무적 중요성:** 계약서의 작은 오타나 용어 불일치는 법적 해석의 왜곡, 계약 당사자 간의 불신, 거래 지연 등 실질적인 상업적 비용을 초래합니다.
+* **평가 부재:** 법률 스크러빙은 LLM이 가장 활발히 도입되는 분야 중 하나임에도 불구하고, 이를 객관적으로 평가할 표준화된 도구가 없었습니다.
+
+💡 핵심 기술 및 아키텍처
+* **데이터셋 구축 파이프라인:** 
+    1. 공개된 CUAD 데이터셋에서 10~15쪽 분량의 계약서를 선정.
+    2. 법률 전문가(SME)가 기존 문서의 구조적 결함을 제거하고 다듬음.
+    3. 전문가가 정의된 용어의 오용, 참조 오류 등 9가지 유형의 실무적 오류를 의도적으로 삽입하여 &#x27;골드 답변(정답)&#x27;을 생성.
+* **평가 체계:** 단순히 일반 지식을 묻는 것이 아니라, 문서 내부의 맥락을 파악하고 일관성을 검증하는 능력을 측정합니다.
+
+📊 실험 결과 분석
+* **모델 성능:** 최신 LLM 중 최고 모델이 매크로 평균 재현율(macro average recall) 0.75를 기록했습니다.
+* **성능 격차:** 어휘 기반의 단순한 오류 탐지에는 어느 정도 대응했으나, 문서 전체의 맥락과 결합된 복잡한 법적 추론이 필요한 영역에서는 성능이 크게 저하되었습니다.
+* **상호작용 문제:** 특히 서로 떨어진 조항 간의 참조 관계를 확인하는 작업에서 모델들이 큰 어려움을 겪었습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **실무 적용:** 이 벤치마크는 기업 법무팀이나 로펌에서 AI 도구를 도입할 때, 해당 시스템이 실제 &#x27;계약서 최종 검토&#x27;를 믿고 맡길 수 있는 수준인지 판단하는 기준으로 활용될 수 있습니다.
+* **연구 방향성:** LLM이 사법시험과 같은 일반적 시험을 통과하더라도 실무의 세밀한 요구사항은 충족하지 못할 수 있음을 시사합니다. 향후 AI 개발은 일반적인 역량 증진뿐만 아니라, 특정 도메인의 실무 지침과 맥락을 깊이 이해하는 방향으로 나아가야 합니다.
+* **제한 사항:** 본 연구의 데이터는 영어 계약서로 한정되어 있으며, 약 44개의 계약서로 구성되어 있어 향후 더 방대하고 다양한 언어 및 문서 유형으로 확장이 필요합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [ContractScrub: A benchmark for final review of legal contracts](https://arxiv.org/abs/2608.20204)
+&gt; - [ContractScrub: A benchmark for final review of legal contracts](https://arxiv.org/html/2608.20204)
+&gt; - [ContractScrub: A benchmark for final review of legal contracts](https://arxiv.org/html/2608.20204v1)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;결국 RAG 기반의 모델들이 긴 문맥의 일관성을 유지하는 데 여전히 치명적인 한계를 보인다는 것이 이 벤치마크로 다시금 증명되었군요. 특히 0.75 재현율은 실무 도입을 논하기엔 턱없이 부족한 수치입니다. 단순히 파라미터 수를 늘리는 것만으로는 조항 간의 복잡한 의존성 문제를 해결할 수 없다는 걸 인정해야 합니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로입니다. 현업에서는 0.75는커녕 0.95가 나와도 &#x27;할루시네이션&#x27; 때문에 변호사분들 검토 거치면 결국 사람이 다 다시 보거든요. 사실 이 벤치마크가 진짜 의미 있는 건 모델을 탓하기보다, &#x27;우리 사내 법무 AI가 이 정도도 못 잡네?&#x27;라는 기준점을 제시해준 거죠. 이제야 제대로 된 성능 평가 지표가 나왔으니 사내 모델 파인튜닝에 바로 써먹어 보겠습니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 44개 계약서 데이터셋이라니... 당장 내일 아침까지 이 데이터셋으로 SOTA 모델 파인튜닝해서 논문 각 재봐야겠네요! 다들 모델 아키텍처 타령할 때, 이렇게 실제 도메인 전문가(SME)가 짠 &#x27;골드 스탠다드&#x27; 데이터셋이 결국 AI의 성능을 결정짓는 핵심인 것 같습니다. 0.75 벽을 먼저 뚫는 사람이 이번 학회 주인공 되겠는데요?&quot;
+  }
+]
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
