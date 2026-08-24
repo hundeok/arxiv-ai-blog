@@ -1,0 +1,73 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>OmniAssistBench: 옴니-LLM을 위한 어시스턴트 스타일 상호작용 벤치마크 | ArXiv Translator AI</title><meta name="description" content="OmniAssistBench: 옴니-LLM을 위한 어시스턴트 스타일 상호작용 벤치마크"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_21360v1"><meta property="og:type" content="article"><meta property="og:title" content="OmniAssistBench: 옴니-LLM을 위한 어시스턴트 스타일 상호작용 벤치마크"><meta property="og:description" content="OmniAssistBench: 옴니-LLM을 위한 어시스턴트 스타일 상호작용 벤치마크"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_21360v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="OmniAssistBench: 옴니-LLM을 위한 어시스턴트 스타일 상호작용 벤치마크"><meta name="twitter:description" content="OmniAssistBench: 옴니-LLM을 위한 어시스턴트 스타일 상호작용 벤치마크"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_21360v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "OmniAssistBench: 옴니-LLM을 위한 어시스턴트 스타일 상호작용 벤치마크", "description": "OmniAssistBench: 옴니-LLM을 위한 어시스턴트 스타일 상호작용 벤치마크", "datePublished": "2026-08-21", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_21360v1", "author": [{"@type": "Person", "name": "Xianyun Sun"}, {"@type": "Person", "name": "Chaoyou Fu"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_21360v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_21360v1"});gtag('event', 'paper_view', {"paper_id": "2608_21360v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>OmniAssistBench: 옴니-LLM을 위한 어시스턴트 스타일 상호작용 벤치마크</h1><p>OmniAssistBench: 옴니-LLM을 위한 어시스턴트 스타일 상호작용 벤치마크</p><pre>OmniAssistBench: 옴니-LLM을 위한 어시스턴트 스타일 상호작용 벤치마크
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** OmniAssistBench: Assistant-style Interaction Benchmark for Omni-LLMs
+&gt; - **저자:** Xianyun Sun, Chaoyou Fu, Zhengye Zhang, Feiyang Duan, Qingyuan Cao, Yonghui Niu, Sihang Yuan, Ge Zhang, Caifeng Shan
+&gt; - **발행일:** 2026-08-21
+&gt; - **PDF 링크:** [OmniAssistBench: Assistant-style Interaction Benchmark for Omni-LLMs](https://arxiv.org/pdf/2608.21360v1)
+
+
+✨ 3줄 핵심 요약
+* **상호작용 벤치마크의 부재 해결:** 대화형 AI가 사용자의 행동에 영향을 미치는 동적 환경을 평가하기 위해, 비디오를 역공학 방식으로 편집하여 고정된 상호작용 경로를 시뮬레이션했습니다.
+* **전문가 중심 데이터셋 구축:** 1,000시간 이상의 전문가 투입을 통해 비디오 기반의 다회차 상호작용 데이터셋을 구축하여 모델의 실질적인 어시스턴트 능력을 측정합니다.
+* **현 모델의 한계점 확인:** 최신 모델(Gemini-3-Pro, Qwen3-Omni-Instruct 등)들이 제스처 인식, 맥락 유지, 적절한 반응 시점 판단 등에서 여전히 어려움을 겪고 있음을 입증했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+기존의 AI 영상 이해 평가는 이미 촬영된 영상을 보고 답하는 &#x27;수동적&#x27; 방식이었습니다. 하지만 실시간 영상 어시스턴트는 사용자와 대화를 나누며 다음 행동을 안내해야 하므로 평가가 훨씬 어렵습니다. 왜냐하면 AI의 대답에 따라 사용자의 다음 행동이 달라지기 때문입니다. 이 논문은 인터넷 영상을 전문가들이 역으로 분석하고 편집하여 &#x27;정해진 대화 경로&#x27;를 만들었습니다. 이를 통해 AI가 사람처럼 상황을 인지하고, 제스처를 이해하며, 적절한 타이밍에 도움을 주는지 공정하게 테스트했습니다.
+
+🎯 배경 및 문제점
+* **기존 평가 방식의 한계:** 정적인 오프라인 데이터셋은 모델의 응답에 따라 변하는 사용자의 동적 행동 경로를 반영하지 못합니다.
+* **상호작용의 복잡성:** 동일한 목표를 달성하는 방법이 여러 가지여서, 평가 시 모델의 다양한 답변을 고정된 정답으로 비교하기 어렵습니다.
+* **기존 벤치마크의 단점:** 기존 연구들은 상호작용 능력을 개별적으로 보거나 단순한 텍스트 답변 위주로 평가하여 실생활 적용력을 파악하기 어렵습니다.
+
+💡 핵심 기술 및 아키텍처
+* **역공학적 데이터셋 구축:** 기존 인터넷 영상을 분석하여 논리적인 사용자 목표를 도출하고, 이를 바탕으로 다회차 상호작용 클립으로 재구성했습니다.
+* **사전 지식(Prior Knowledge) 강제:** 비디오에서 도출된 사전 지식을 모델에 제공하여, 다양한 경로가 아닌 특정 경로를 따라 사용자를 안내하도록 유도함으로써 평가의 일관성을 확보했습니다.
+* **3단계 평가 체계:** 
+    1. **기초 상호작용 이해:** 시각/청각/언어적 단서에 기반한 인지.
+    2. **고급 상호작용 이해:** 맥락 인식, 능동적 반응, 작업 추적 등 어시스턴트 필수 역량.
+    3. **실제 사례(Real World Cases):** 회의 시뮬레이션, 시각장애인 보조, 수작업 보조 등 복합적 시나리오.
+
+📊 실험 결과 분석
+* **모델별 성능:** Gemini-3-Pro(100점 만점에 66.4점), Qwen3-Omni-Instruct(51.2점)로 나타났습니다.
+* **공통적 문제점:**
+    * **제스처 인식:** 손동작과 같은 비언어적 시각 명령 수행 능력이 부족합니다.
+    * **맥락 유지:** 여러 차례 대화가 오가는 동안 과거의 맥락을 기억하거나 정보를 이어가지 못합니다.
+    * **반응 시점:** 사용자가 요청한 목표 이벤트가 발생할 때까지 대기를 유지하는 &#x27;적절한 시점&#x27; 판단에 어려움을 겪습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **실용적 AI 개발:** AI가 단순히 영상을 분석하는 수준을 넘어, 사람의 일상을 돕는 &#x27;실시간 어시스턴트&#x27;로 진화하는 데 필요한 지표를 제공합니다.
+* **실무 적용:** 시각장애인을 위한 길 안내, 원격 회의 자동 기록, 공예 등 복잡한 다단계 작업을 수행하는 서비스 개발의 품질 검증 도구로 활용될 수 있습니다.
+* **발전 방향:** 현재 모델들은 범용적인 이해력은 갖췄으나 실제 보조 도구로 쓰이기에는 신뢰성이 부족하며, 제스처 대응과 장기 기억력 향상이 시급한 과제임을 시사합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2608.21360 OmniAssistBench: Assistant-style Interaction Benchmark for Omni-LLMs](https://arxiv.org/abs/2608.21360)
+&gt; - [OmniAssistBench: Assistant-style Interaction Benchmark for Omni-LLMs](https://arxiv.org/html/2608.21360)
+&gt; - [GitHub - XianyunSun/OmniAssistBench: A novel benchmerk specially designed to evaluate Omni-LLMs under assistant-style, real-time video chat scenarios. · GitHub](https://github.com/XianyunSun/OmniAssistBench)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;역공학적 비디오 편집으로 동적 상호작용을 시뮬레이션했다는 아이디어는 흥미롭지만, &#x27;사전 지식 강제&#x27;를 통한 평가 방식은 모델의 일반화 능력을 지나치게 제약할 우려가 있습니다. 인위적으로 경로를 고정하는 것이 과연 실제 인간과 주고받는 예측 불가능한 상호작용의 복잡성을 충분히 대변할 수 있을지 의문이 드는군요. 방법론의 정교함에 비해 평가의 &#x27;생태적 타당성&#x27;은 좀 더 엄밀한 검증이 필요해 보입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 맞지만, 실무자 입장에선 정적인 벤치마크만 넘쳐나는 상황에서 이런 데이터셋이 나온 것만으로도 일단 환영입니다. 특히 &#x27;반응 시점&#x27; 판단 실패는 서비스 단에서 레이턴시 문제와 직결되는 핵심 병목인데, 이를 수치화할 지표가 생겼다는 건 큰 진전이죠. 다만, 1,000시간의 전문가 투입 비용을 생각하면 이걸 어떻게 지속적으로 업데이트하고 확장할지가 현업에서는 가장 큰 걸림돌이 되겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;선배님들, 너무 진지하신 거 아닌가요? ㅋㅋㅋ 이번 논문 핵심은 Gemini-3-Pro도 66점밖에 안 나온다는 거잖아요. 멀티모달 모델들이 겉보기엔 똑똑해 보여도 실제 어시스턴트로 쓰기엔 제스처 하나 제대로 못 알아먹는다는 게 까발려진 셈이죠. 이거 얼른 깃허브 클론해서 우리 연구실 베이스라인 모델 돌려봐야겠어요. SOTA 찍기 딱 좋은 벤치마크네요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
