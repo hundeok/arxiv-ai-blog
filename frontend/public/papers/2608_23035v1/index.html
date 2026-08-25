@@ -1,0 +1,69 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MobilePA-Bench: 복잡한 실제 모바일 환경에서의 모바일 플래너 에이전트 벤치마킹 | ArXiv Translator AI</title><meta name="description" content="MobilePA-Bench: 복잡한 실제 모바일 환경에서의 모바일 플래너 에이전트 벤치마킹"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_23035v1"><meta property="og:type" content="article"><meta property="og:title" content="MobilePA-Bench: 복잡한 실제 모바일 환경에서의 모바일 플래너 에이전트 벤치마킹"><meta property="og:description" content="MobilePA-Bench: 복잡한 실제 모바일 환경에서의 모바일 플래너 에이전트 벤치마킹"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_23035v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="MobilePA-Bench: 복잡한 실제 모바일 환경에서의 모바일 플래너 에이전트 벤치마킹"><meta name="twitter:description" content="MobilePA-Bench: 복잡한 실제 모바일 환경에서의 모바일 플래너 에이전트 벤치마킹"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_23035v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "MobilePA-Bench: 복잡한 실제 모바일 환경에서의 모바일 플래너 에이전트 벤치마킹", "description": "MobilePA-Bench: 복잡한 실제 모바일 환경에서의 모바일 플래너 에이전트 벤치마킹", "datePublished": "2026-08-24", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_23035v1", "author": [{"@type": "Person", "name": "Yi Zhu"}, {"@type": "Person", "name": "Xiongwei Wu"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_23035v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_23035v1"});gtag('event', 'paper_view', {"paper_id": "2608_23035v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>MobilePA-Bench: 복잡한 실제 모바일 환경에서의 모바일 플래너 에이전트 벤치마킹</h1><p>MobilePA-Bench: 복잡한 실제 모바일 환경에서의 모바일 플래너 에이전트 벤치마킹</p><pre>MobilePA-Bench: 복잡한 실제 모바일 환경에서의 모바일 플래너 에이전트 벤치마킹
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** MobilePA-Bench: Benchmarking Mobile Planner Agents on Complex Real-World Tasks
+&gt; - **저자:** Yi Zhu, Xiongwei Wu, Qiyi Wang, Tingyu Qu, Jiajun Liu, Sihan Cao, Long Chen, Weigao Sun, Feida Zhu, Yiran Zhong, Steven Hoi
+&gt; - **발행일:** 2026-08-24
+&gt; - **PDF 링크:** [MobilePA-Bench: Benchmarking Mobile Planner Agents on Complex Real-World Tasks](https://arxiv.org/pdf/2608.23035v1)
+
+
+✨ 3줄 핵심 요약
+- 기존 벤치마크의 한계를 넘어, 실제 모바일 운영체제의 상태 변화를 반영한 대화형·상태 기반의 평가 프레임워크를 제안합니다.
+- 하위 에이전트 협업, 개인화된 메모리 활용, 복합 기술 실행이라는 3가지 핵심 차원에서 에이전트의 계획 능력을 평가합니다.
+- 최신 거대언어모델(LLM)들도 실제 모바일 환경의 복잡한 제약 조건과 런타임 오류 앞에서 여전히 신뢰성이 부족함을 입증했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+스마트폰 속 AI 비서는 단순히 대화하는 것을 넘어, 일정 관리, 앱 실행, 정보 검색 등 복잡한 작업을 스스로 해결해야 합니다. 하지만 기존 평가 방식은 실제 스마트폰의 작동 환경(예: 데이터 저장, 권한 제한 등)을 제대로 반영하지 못하는 한계가 있었습니다. **MobilePA-Bench**는 실제 모바일 운영체제처럼 데이터베이스를 유지하고 실시간 피드백을 주는 &#x27;샌드박스&#x27; 환경을 제공합니다. 이를 통해 AI가 단순히 도구를 호출하는 수준을 넘어, 사용자의 과거 기록을 기억하고 여러 에이전트와 협력하여 복잡한 문제를 끝까지 해결할 수 있는지 정밀하게 진단합니다.
+
+🎯 배경 및 문제점
+- **기존 방식의 한계:** GUI 중심의 평가 방식은 화면 조작에 치중해 배후의 도구 사용이나 긴 호흡의 계획 능력을 놓치고, 정적인 기능 호출 벤치마크는 실제 런타임 제약 조건을 반영하지 못합니다.
+- **모바일 환경의 특수성:** 실제 모바일 환경은 상태(state)가 계속 변하고, 권한 제약이나 런타임 오류 등 예상치 못한 변수가 많아 기존의 단편적인 모델 평가로는 실제 성능을 가늠하기 어렵습니다.
+
+💡 핵심 기술 및 아키텍처
+- **상태 유지 샌드박스(Stateful Sandbox):** 13개 기능 도메인과 212개의 도구를 포함하며, 실제 앱 데이터베이스와 연결되어 작업 수행 후 결과를 즉각 반영합니다.
+- **다차원 평가 체계:** 
+    1. **하위 에이전트 협업:** 복잡한 작업을 분해하여 전문화된 하위 에이전트에 위임하는 능력.
+    2. **메모리 활용:** 사용자 프로필 및 과거 선호도를 기억하여 암묵적인 요청을 해결하는 능력.
+    3. **기술 활용:** 매번 단계를 계획하지 않고 사전에 정의된 복합 기술을 호출하는 효율성.
+
+📊 실험 결과 분석
+- 최신 프론티어 LLM들의 종합 평가 점수는 최고 75.52%에 그쳤습니다.
+- 모델마다 강점이 분산되어 있습니다(예: 기본 도구는 Claude-Opus, 메모리는 Qwen-Max, 협업은 Gemini-Pro가 우수).
+- 모델들은 권한 거부(PermissionDenied)나 모호한 제약 조건 발생 시 질문을 하거나 전략을 수정하기보다, 오류가 있는 도구 호출을 강행하는 등 적응형 복구 능력이 부족함을 확인했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+- **진단 도구:** 모바일 AI 개발자들에게 단순히 리더보드 순위뿐만 아니라, 특정 모델이 왜 실패했는지 원인을 파악하는 진단 프레임워크로 활용됩니다.
+- **학습 데이터 확보:** 에이전트 강화학습을 위한 기반 환경으로서, 실제 환경의 피드백을 반영하여 더 신뢰성 있는 모바일 에이전트를 개발하는 토대가 됩니다.
+- **실무 적용:** 이 벤치마크를 통해 검증된 에이전트는 개인의 기억을 기반으로 한 스마트한 일정 관리나 고도의 자동화된 시스템 제어 앱 등에 적용되어 사용자 경험을 획기적으로 개선할 수 있습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [MVISU-Bench: Benchmarking Mobile Agents for Real-World Tasks by Multi-App, Vague, Interactive, Single-App and Unethical Instructions](https://arxiv.org/html/2508.09057v2)
+&gt; - [2407.00993 Mobile-Bench: An Evaluation Benchmark for LLM-based Mobile Agents](https://arxiv.org/abs/2407.00993)
+&gt; - [2512.19432 MobileWorld: Benchmarking Autonomous Mobile Agents in Agent-User Interactive and MCP-Augmented Environments](https://arxiv.org/abs/2512.19432)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문을 읽어보니 벤치마크 설계의 엄밀함은 인정하나, 결국 LLM의 &#x27;환각&#x27;을 제어하지 못하는 근본적인 구조적 한계는 여전하군요. 특히 런타임 오류 시 복구 전략 없이 무지성으로 도구 호출을 반복하는 것은 에이전트가 아닌 그저 확률적인 앵무새에 불과함을 방증합니다. 75%의 점수는 실무적 관점에서 보면 4번 중 1번은 시스템을 꼬아버린다는 의미인데, 이걸 그대로 프로덕션에 올릴 생각입니까?&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에서는 그 25%의 실패가 치명적이죠. 저도 이 벤치마크의 &#x27;상태 유지 샌드박스&#x27; 환경은 정말 높게 평가합니다. GUI만 훑는 기존 방식은 실제 앱 권한이나 DB 상태 변경을 반영 못 해서 현업에서는 거의 쓸모가 없었거든요. 다만, 특정 모델별로 강점이 분산된 걸 보니, 결국 우리 같은 엔지니어들은 각 도메인별로 최적화된 에이전트들을 앙상블로 엮는 오케스트레이션 설계에 더 사활을 걸어야 할 것 같습니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;오, 역시 현업 선배님들 시각은 다르네요! 저는 개인적으로 이 논문에서 &#x27;메모리 활용&#x27; 파트가 제일 흥미로웠어요. 단순히 최신 모델 순위 매기는 게 아니라, 유저의 암묵적 의도를 기억하고 협업하는 에이전트라니... 이거 완전 &#x27;Her&#x27; 같은 개인 비서 실현 가능성을 보여주는 거잖아요? 물론 교수님 지적처럼 복구 능력은 처참하지만, 이제 곧 모바일 OS 단에서 에이전트 전용 API가 풀리면 이 데이터셋이 표준이 될 것 같은 예감이 드는데요?&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

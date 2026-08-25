@@ -1,0 +1,64 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>시각적 프롬프팅이 전부인가? 점진적 시각적 스캐폴딩을 통한 VLM 공간 추론 연구 | ArXiv Translator AI</title><meta name="description" content="시각적 프롬프팅이 전부인가? 점진적 시각적 스캐폴딩을 통한 VLM 공간 추론 연구"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_21170v1"><meta property="og:type" content="article"><meta property="og:title" content="시각적 프롬프팅이 전부인가? 점진적 시각적 스캐폴딩을 통한 VLM 공간 추론 연구"><meta property="og:description" content="시각적 프롬프팅이 전부인가? 점진적 시각적 스캐폴딩을 통한 VLM 공간 추론 연구"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_21170v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="시각적 프롬프팅이 전부인가? 점진적 시각적 스캐폴딩을 통한 VLM 공간 추론 연구"><meta name="twitter:description" content="시각적 프롬프팅이 전부인가? 점진적 시각적 스캐폴딩을 통한 VLM 공간 추론 연구"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_21170v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "시각적 프롬프팅이 전부인가? 점진적 시각적 스캐폴딩을 통한 VLM 공간 추론 연구", "description": "시각적 프롬프팅이 전부인가? 점진적 시각적 스캐폴딩을 통한 VLM 공간 추론 연구", "datePublished": "2026-08-21", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_21170v1", "author": [{"@type": "Person", "name": "Lars Benedikt Kaesberg"}, {"@type": "Person", "name": "Tianyu Yang"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_21170v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_21170v1"});gtag('event', 'paper_view', {"paper_id": "2608_21170v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>시각적 프롬프팅이 전부인가? 점진적 시각적 스캐폴딩을 통한 VLM 공간 추론 연구</h1><p>시각적 프롬프팅이 전부인가? 점진적 시각적 스캐폴딩을 통한 VLM 공간 추론 연구</p><pre>시각적 프롬프팅이 전부인가? 점진적 시각적 스캐폴딩을 통한 VLM 공간 추론 연구
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Is Visual Prompting All You Need? Studying VLM Spatial Reasoning under Progressive Visual Scaffolds
+&gt; - **저자:** Lars Benedikt Kaesberg, Tianyu Yang, Florian Valentin Wunderlich, Terry Ruas, Jan Philip Wahle, Daniel Kurzawe, Bela Gipp
+&gt; - **발행일:** 2026-08-21
+&gt; - **PDF 링크:** [Is Visual Prompting All You Need? Studying VLM Spatial Reasoning under Progressive Visual Scaffolds](https://arxiv.org/pdf/2608.21170v1)
+
+
+✨ 3줄 핵심 요약
+- VLM의 공간 추론 실패는 추론 능력 자체보다 시각 정보의 인지(grounding) 과정에서 발생하는 경우가 많음.
+- 공간 정보를 명확히 보조하는 &#x27;시각적 스캐폴드(visual scaffolds)&#x27;를 도입하자 VLM의 작업 정확도가 최대 34.0%p 향상됨.
+- 동일한 계획 수립 문제라도 시각적 표현 방식에 따라 모델의 성능과 실패 원인이 근본적으로 달라짐을 증명함.
+
+📖 쉽게 풀어쓴 1분 핵심
+거대 시각-언어 모델(VLM)이 복잡한 퍼즐이나 공간 계획 문제를 풀지 못할 때, 흔히들 모델의 지능이 부족해서라고 생각합니다. 하지만 이 연구는 &quot;모델이 문제를 못 푸는 것이 아니라, 애초에 그림을 제대로 못 보는 것일 수 있다&quot;는 점에 주목했습니다. 연구진은 SPaRC 벤치마크를 활용하여 모델이 정보를 더 쉽게 파악할 수 있도록 돕는 &#x27;시각적 도우미(스캐폴드)&#x27;를 입력 데이터에 추가했습니다. 결과적으로 모델의 논리력은 그대로인데 그림만 조금 더 알아보기 쉽게 바꾸었더니, 정답률이 획기적으로 상승했습니다. 이는 VLM의 성능을 높이기 위해 무조건 큰 모델을 쓰는 것보다, 정보를 얼마나 잘 보여주느냐가 중요하다는 것을 보여줍니다.
+
+🎯 배경 및 문제점
+- **인지와 추론의 혼재:** VLM의 멀티모달 추론 실패가 시각적 인지 단계에서 발생하는지, 아니면 이후의 논리적 추론 단계에서 발생하는지 명확히 구분되지 않았음.
+- **표현의 영향력 간과:** 기존 연구들은 주로 모델 자체를 수정하거나 텍스트 기반의 프롬프팅에 집중했으며, 동일한 문제를 시각적 정보 표현 방식만 바꾸었을 때 어떤 변화가 생기는지 깊이 연구하지 않음.
+
+💡 핵심 기술 및 아키텍처
+- **SPaRC 벤치마크:** 격자 기반의 시각적 퍼즐 문제들로 구성되어, 시각적 정보와 공간 계획 문제를 체계적으로 테스트함.
+- **시각적 스캐폴드(Visual Scaffolding):** 시각적 양식(modality)은 유지하되, 격자의 구조를 모델이 더 쉽게 읽을 수 있도록 만드는 진단적 개입(diagnostic interventions) 기법.
+- **구조적 접근:** 시각 정보의 가독성을 높여 모델이 &#x27;시각적 접지(grounding)&#x27;를 더 잘 수행하도록 유도함.
+
+📊 실험 결과 분석
+- **성능 향상:** Qwen 3.5 397B 모델 기준으로, 시각적 스캐폴드 적용 시 원본 대비 정확도가 14.4%에서 47.8%로 33.4%p 상승함.
+- **추론 보완:** GRPO 기반 학습과 결합했을 때, 기존 방식에서는 거의 효과가 없던 반면, 스캐폴드 도입 후 최대 4.6%p의 추가적인 정확도 상승을 확인함.
+- **오류 분석:** 시각적 개체 탐지(object detection) 관련 오류는 크게 줄었으나, 규칙에 기반한 추론(rule reasoning)은 여전히 도전적인 과제로 남음. 즉, 시각적 지원이 인지적 오류는 해결해주지만 복잡한 논리 문제를 대신 해결해주지는 않음.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+- **평가 기준 정립:** VLM 벤치마크가 &#x27;시각적 인지 능력&#x27;을 측정하는지 &#x27;추론 능력&#x27;을 측정하는지, 아니면 둘 다의 혼합인지를 결정하는 핵심 요인이 시각적 인터페이스임을 입증함.
+- **실무적 제언:** 복잡한 시각 정보를 처리해야 하는 산업용 AI 시스템 설계 시, 무리한 모델 크기 확장보다는 정보를 직관적으로 가시화하는 입력단 설계를 우선하는 것이 효율적일 수 있음을 시사함.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Computer Vision and Pattern Recognition](https://arxiv.org/list/cs.CV/recent)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문의 핵심인 &#x27;시각적 스캐폴딩&#x27;이 성능 향상을 이끈 건 고무적이나, 결국 &#x27;인식의 병목&#x27;을 해소한 것일 뿐 본질적인 &#x27;추론(Reasoning)&#x27; 단계의 결함은 여전하다는 점을 간과해선 안 됩니다. 34%p 향상이 인상적이지만, 이것이 모델의 지능이 높아진 것인지 아니면 그저 입력 데이터의 전처리 최적화에 불과한지 학술적으로 엄밀히 구분해야 합니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 맞지만, 현업 입장에서는 이게 훨씬 실용적입니다. 파라미터 397B 모델 굴리느라 추론 비용 터지는 것보다, 입력단에서 시각적 스캐폴드 적용하는 전처리 파이프라인 하나 잘 짜는 게 ROI가 훨씬 높거든요. 결국 &#x27;모델 튜닝&#x27;보다 &#x27;데이터 가시화&#x27;가 정답인 케이스가 꽤 많다는 걸 다시 한번 증명했네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 397B 모델이 14%에서 47%로 뛰는 거 보니까 진짜 소름 돋네요. 다들 모델 크기 키우기에만 혈안인데, 이런 식으로 &#x27;인터페이스 설계&#x27;만으로 SOTA 갱신하는 논문들이 요즘 너무 재밌습니다. 다음 주 세미나 때 이거 바로 발표 자료에 넣어야겠어요. 교수님, 모델 지능이 낮아도 &#x27;눈&#x27;만 밝혀주면 1인분 한다는 게 증명된 거니 사실상 AI계의 안경 같은 연구 아닐까요?&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

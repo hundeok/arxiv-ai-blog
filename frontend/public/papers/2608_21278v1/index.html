@@ -1,0 +1,63 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CLEAR: 유틸리티 보존을 위한 연속적 잠재 어댑터 라우팅을 통한 LLM 안전 정렬 | ArXiv Translator AI</title><meta name="description" content="CLEAR: 유틸리티 보존을 위한 연속적 잠재 어댑터 라우팅을 통한 LLM 안전 정렬"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_21278v1"><meta property="og:type" content="article"><meta property="og:title" content="CLEAR: 유틸리티 보존을 위한 연속적 잠재 어댑터 라우팅을 통한 LLM 안전 정렬"><meta property="og:description" content="CLEAR: 유틸리티 보존을 위한 연속적 잠재 어댑터 라우팅을 통한 LLM 안전 정렬"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_21278v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="CLEAR: 유틸리티 보존을 위한 연속적 잠재 어댑터 라우팅을 통한 LLM 안전 정렬"><meta name="twitter:description" content="CLEAR: 유틸리티 보존을 위한 연속적 잠재 어댑터 라우팅을 통한 LLM 안전 정렬"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_21278v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "CLEAR: 유틸리티 보존을 위한 연속적 잠재 어댑터 라우팅을 통한 LLM 안전 정렬", "description": "CLEAR: 유틸리티 보존을 위한 연속적 잠재 어댑터 라우팅을 통한 LLM 안전 정렬", "datePublished": "2026-08-21", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_21278v1", "author": [{"@type": "Person", "name": "Chengxiao Wang"}, {"@type": "Person", "name": "Enyi Jiang"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_21278v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_21278v1"});gtag('event', 'paper_view', {"paper_id": "2608_21278v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>CLEAR: 유틸리티 보존을 위한 연속적 잠재 어댑터 라우팅을 통한 LLM 안전 정렬</h1><p>CLEAR: 유틸리티 보존을 위한 연속적 잠재 어댑터 라우팅을 통한 LLM 안전 정렬</p><pre>CLEAR: 유틸리티 보존을 위한 연속적 잠재 어댑터 라우팅을 통한 LLM 안전 정렬
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** CLEAR: Continuous Latent Adapter Routing for Utility-Preserving LLM Safety Alignment
+&gt; - **저자:** Chengxiao Wang, Enyi Jiang, Xiaojing Liao, Sanmi Koyejo
+&gt; - **발행일:** 2026-08-21
+&gt; - **PDF 링크:** [CLEAR: Continuous Latent Adapter Routing for Utility-Preserving LLM Safety Alignment](https://arxiv.org/pdf/2608.21278v1)
+
+
+✨ 3줄 핵심 요약
+*   **문제 해결:** LLM의 전체 파라미터를 수정하는 기존 안전 정렬 방식은 일반적인 답변의 성능을 저하시키는 &#x27;정렬 세금(alignment tax)&#x27; 문제를 야기함.
+*   **기술 핵심:** CLEAR는 입력 프롬프트의 위험도를 판단하는 &#x27;잠재 게이트(latent gate)&#x27;를 사용하여, 필요한 경우에만 안전용 LoRA 어댑터를 활성화하는 조건부 라우팅 방식을 채택함.
+*   **성과:** Llama-3-8B-Instruct 모델에서 HarmBench 공격 성공률(ASR)을 32.3%에서 0.5%로 대폭 낮추면서도, 기존 방식 대비 GSM8K 정확도를 최대 7.1%p 높게 유지함.
+
+📖 쉽게 풀어쓴 1분 핵심
+거대언어모델(LLM)을 안전하게 만들려고 전체를 다 수정하면, 정작 평범하고 유익한 질문에까지 모델이 제대로 답변하지 못하는 부작용이 생깁니다. 이 논문은 마치 &#x27;똑똑한 검문소&#x27;처럼 작동하는 **CLEAR**라는 기술을 제안합니다. CLEAR는 프롬프트가 들어오면 먼저 그 위험도를 파악합니다. 안전한 질문이라면 모델 본연의 능력을 그대로 쓰고, 위험한 질문이라고 판단될 때만 안전 장치(LoRA)를 가동합니다. 이를 통해 모델의 기본 지능은 최대한 보존하면서 안전성만 정밀하게 강화할 수 있습니다.
+
+🎯 배경 및 문제점
+현재의 정렬 방식(SFT, 표준 LoRA 등)은 모델 전체에 걸쳐 안전성을 강제합니다. 이로 인해 다음과 같은 한계가 발생합니다.
+*   **정렬 세금(Alignment Tax):** 안전하지 않은 질문을 거부하도록 훈련하는 과정에서, 일반적인 질문이나 안전한 질문까지 불필요하게 거부하거나 논리적 추론 능력이 저하됨.
+*   **범용성 저하:** 모든 입력에 일괄적인 변화를 적용하므로 특정 상황에 최적화된 성능 유지가 어려움.
+
+💡 핵심 기술 및 아키텍처
+*   **잠재 게이트(Latent Gate):** 외부 모듈이 아닌 모델 내부의 히든 스테이트를 기반으로 0에서 1 사이의 연속적인 &#x27;위험 점수&#x27;를 산출함.
+*   **조건부 LoRA 라우팅:** 산출된 점수에 따라 안전용 LoRA 어댑터의 적용 강도를 결정함. (일반 질문은 가중치를 낮추고, 위험 질문은 높임)
+*   **특수 학습 전략:** 
+    *   **하위 유형 인식(Subtype-aware):** 적대적 공격과 일반적인 질문을 혼동하지 않도록 학습 가중치를 조절함.
+    *   **쌍별 마진 손실(Pairwise Margin Loss):** 안전한 질문과 위험한 질문 사이의 게이트 점수 간격을 최대화하여 오작동 가능성을 줄임.
+
+📊 실험 결과 분석
+*   **안전성 및 유틸리티:** Llama-3-8B-Instruct 모델에서 CLEAR는 HarmBench ASR을 0.5%까지 낮췄으며, GSM8K 정확도에서 기존 SFT/LoRA 대비 최대 7.1%p 높은 성능을 기록함.
+*   **적대적 공격 대응:** 임베딩 및 중간 레이어에 가해지는 잠재적 공격(latent perturbation) 상황에서 기존 LoRA나 전체 미세조정(Full SFT) 방식보다 훨씬 낮은 공격 성공률을 보이며 뛰어난 견고성을 입증함.
+*   **확장성:** Qwen2.5-Instruct 모델 시리즈(0.5B ~ 7B) 실험을 통해 모델 규모가 커져도 유틸리티 보존 능력이 우수함을 확인함(관련 수치는 논문 표 4 참조).
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+*   **효율적 배포:** 모델의 범용 능력을 훼손하지 않고도 특정 도메인이나 기업 환경에 맞는 안전한 LLM을 구축할 수 있게 함.
+*   **안전과 지능의 공존:** 사용자의 일반적인 업무 생산성을 저해하지 않으면서도, jailbreak(탈옥) 공격 등으로부터 모델을 보호해야 하는 상용 서비스에 즉각적인 적용이 가능함.
+*   **한계점:** 안전한 프롬프트에 잘못된 개입을 하거나, 위험한 프롬프트를 낮은 점수로 판정해 우회할 위험이 남아있어 향후 게이트의 교정 및 보정 기술이 추가적으로 필요함.
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;Alignment Tax 문제는 LLM 연구의 고질병이었지. CLEAR의 잠재 게이트 방식은 이론적으로는 매우 우아해 보이나, 연속적인 게이트 값이 추론 시 지연 시간(latency)에 미치는 오버헤드는 고려했나? 특히 게이트가 레이어마다 작동한다면 실제 배포 환경에서의 처리량 감소가 상당할 텐데, 이에 대한 심층적인 분석 없이 성능 수치만 내세우는 건 다소 성급해 보이네.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에선 바로 적용하기가 좀 겁나네요. 특히 라우팅 로직이 꼬이면 디버깅은 거의 지옥일 텐데... 그래도 &#x27;정렬 세금&#x27; 때문에 모델 지능 깎아 먹는 거보단, 이런 조건부 LoRA 도입이 훨씬 매력적인 건 사실입니다. 일단 프로덕션에서 서빙할 때 게이트 모듈만 따로 경량화하거나 캐싱 전략 잘 짜면, GSM8K 정확도 7%p 방어는 PM 설득하기 딱 좋은 수치네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;아니 다들 너무 보수적이신 거 아니에요? ㅋㅋㅋ 게이트 점수 하나로 안전성이랑 범용성을 동시에 잡았다는 게 핵심인데! 하위 유형 인식(Subtype-aware) 전략 덕분에 jailbreak 공격 대응력도 확 올랐잖아요. 교수님이 지적하신 레이어별 오버헤드 이슈는 어차피 조만간 하드웨어 가속기에서 병렬 처리 최적화 논문이 쏟아질 겁니다. 저는 이거 당장 코드 뜯어서 제 베이스라인에 붙여보려고요, 이번 랩 세미나 발표는 이걸로 갑니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
