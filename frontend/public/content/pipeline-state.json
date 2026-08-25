@@ -19863,7 +19863,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-25T09:29:15.242864+00:00",
+      "updated_at": "2026-08-25T12:35:51.085258+00:00",
       "paper": {
         "title": "Task-CoEvolve: Efficient Harness Optimization via Adaptive Validation Task Selection",
         "summary": "We present a novel approach to efficient LLM harness optimization through adaptive validation task selection. Harness optimization iteratively rewrites the harness code based on validation performance, enabling substantial performance gains without updating the underlying model weights. Existing approaches, however, evaluate a fixed validation set in full at every iteration, incurring substantial evaluation costs even on tasks that become less discriminative as the harness evolves. We propose $\\textbf{Task-CoEvolve}$, which co-evolves the validation tasks with the harness by addressing two challenges: selecting informative tasks and estimating full-set performance from partial evaluations. Task-CoEvolve builds on the observation that tasks on which candidate harnesses disagree are more informative for distinguishing among them than tasks that are consistently solved or failed. It uses variance-weighted sampling based on past outcomes to focus evaluation on tasks near the capability frontier, with the sampling distribution adapting as the harness evolves. It then estimates full-set scores from the sampled tasks by accounting for their sampling probabilities, enabling consistent comparisons across iterations despite evaluating different subsets. Experiments on online text classification and Terminal-Bench 2.1 show that Task-CoEvolve consistently outperforms subset-based baselines and matches the final performance of full-set search while reducing the number of evaluations during optimization by 80%. Code will be released at https://github.com/Agent4Science-UTokyo/Task-CoEvolve.",
@@ -20617,11 +20617,11 @@
     "2608_21207v1": {
       "id": "2608_21207v1",
       "filename": "post_2608_21207v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-08-25T00:55:57.847831+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-25T00:55:57.847832+00:00",
+      "updated_at": "2026-08-25T12:36:09.965714+00:00",
       "paper": {
         "title": "Curriculum-Aware Interpolate-then-Refine: Learned Physiological Time-Series Imputation under Realistic Missingness",
         "summary": "Imputing physiological time series (arterial blood pressure, blood glucose, etc.) is essential for addressing the missingness that pervades clinical data. Yet modern imputation methods perform poorly in this domain: a recent benchmark found that simple linear interpolation outperformed every learned imputer on real-world clinical signals with realistic gaps. We show that this reflects two properties of physiological missingness that generic imputers ignore: gaps may occur when the signal is clinically extreme rather than typical, and gap lengths can easily span orders of magnitude. To this end, we introduce Curriculum-Aware Interpolate-then-Refine (CAIR), a two-stage framework for physiological time-series imputation. Our key motivation is to learn a coarse base curve and then repeatedly correct it toward physiological realism, rather than predict a gap in a single pass. Consequently, CAIR couples a bidirectional-GRU interpolator with a Transformer refiner that corrects its own estimate over three successive passes, trained jointly under a broad, signal-agnostic random-gap curriculum. We evaluate imputers stratified by gap length and missingness mechanism (MCAR, MAR, NMAR) rather than by a single average, and CAIR is the most accurate under every mechanism on continuous glucose monitoring (AI-READI) and arterial pressure in intensive care (MIMIC-III). Its margin over the strongest baseline grows with difficulty, from 9% under MCAR to 19% under value-dependent dropout, where generic learned imputers are weakest. We further show low reconstruction error alone does not recover the burden metrics clinicians act on: interpolants matching CAIR's error fail to preserve those metrics, imputers that recover them are far less accurate, and CAIR alone ranks among the best on both axes.",
@@ -20634,7 +20634,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2608.21207v1"
       },
-      "priority_score": 30
+      "priority_score": 30,
+      "korean_title": "커리큘럼 기반 보간 후 정제: 현실적인 결측 상황에서의 학습된 생체 시계열 데이터 복원"
     },
     "2608_21206v1": {
       "id": "2608_21206v1",
@@ -20684,11 +20685,11 @@
     "2608_21189v1": {
       "id": "2608_21189v1",
       "filename": "post_2608_21189v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-08-25T00:55:57.847849+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-25T00:55:57.847851+00:00",
+      "updated_at": "2026-08-25T12:36:27.642269+00:00",
       "paper": {
         "title": "Towards Investigating Residual Hearing Loss: Quantification of Fibrosis in a Novel Cochlear OCT Dataset",
         "summary": "Objective: Cochlear implants (CIs) are bionic prostheses that restores hearing via electrical stimulation of the auditory nerve. Hybrid CIs, which use electroacoustic stimulation (EAS), combine residual low-frequency acoustic hearing with CI electrical stimulation. Intracochlear fibrosis, which forms in response to the presence of the implant, may impede residual hearing function and gradually reduce the efficacy of EAS. It is therefore a translational objective to study the formation of cochlear fibrosis in rodents, with the goal of reducing fibrotic burden and improving outcomes for CI patients. Methods: We generate and annotate a novel dataset of optical coherence tomography (OCT) images from chronically implanted guinea pigs as part of an ongoing study focused on implant induced fibrosis. Objectively assessing fibrotic burden in this model, with high resolution and repeatability, presents an obvious use case for computer vision methods. Results: We present the results of several state-of-the-art semantic segmentation models and compare their efficacy for identifying cochlear fibrosis and other relevant annotations, using a new library of manually segmented OCT images. Conclusions: We find that the best performance is achieved by using a modified version of the well-known UNET architecture (which we term 2D-OCT-UNET) that operates on the upscaled OCT input resolution. Significance: For the first time, we have successfully applied computer vision techniques to an OCT dataset of implanted cochleae with fibrosis. Using this deep learning model, the cochlear fibrotic burden calculation can be reliably carried out as we verify in our experimental section. The dataset and the project code are available at: https://github.com/juliadietlmeier/CF-OCT-segmentation",
@@ -20710,7 +20711,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2608.21189v1"
       },
-      "priority_score": 30
+      "priority_score": 30,
+      "korean_title": "잔존 청력 손실 조사: 새로운 달팽이관 OCT 데이터셋을 이용한 섬유증 정량화"
     },
     "2608_21187v1": {
       "id": "2608_21187v1",
@@ -20783,11 +20785,11 @@
     "2608_21174v1": {
       "id": "2608_21174v1",
       "filename": "post_2608_21174v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-08-25T00:55:57.847876+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-25T00:55:57.847877+00:00",
+      "updated_at": "2026-08-25T12:36:39.274590+00:00",
       "paper": {
         "title": "From Attention Masks to Inert Zero-Vector Tokens: OAttention and O-Closure for Token Dynamics",
         "summary": "Attention masks are relation-level controls: they specify which query--source pairs may interact. They do not provide a representation-carried token state that is non-participating at the attention boundary. We assign each token hidden carrier \\(h_i\\) an active-presence coefficient \\(p_i=\\lVert h_i\\rVert^2/(τ+\\lVert h_i\\rVert^2)\\). The same coefficient has two roles: it gates information emitted by token \\(i\\), and it determines the mass with which token \\(i\\) enters computations shared with other tokens.   OAttention is the support-coupled attention realization of this rule. It gates the receiver output by \\(p_i\\) and weights source \\(j\\) by \\(p_j\\) in both the attention numerator and partition, while retaining the standard score, visibility relation, exponential competition, and value aggregation. This makes the zero-vector token a zero element and yields exact null-receiver, null-source insertion, self-attention insertion, and empty-support properties. The same token-level presence gives local O-components (OFFN, ONorm, and OInject), presence-weighted OStandardize, the O-Closure law \\(M(H\\oplus0)=M(H)\\oplus0\\), and an OTransformer by residual and compositional closure.   The canonical operator is checked by contract tests and a GPU evaluation. In a zero-fine-tuning retrofit of a cloned pretrained TabPFN v3 regressor, calibrated hidden-carrier OAttention and Full-O variants change mean RMSE by $+0.088\\%$ and $+0.177\\%$, respectively, over 18 matched dataset--seed cases. A two-block ablation shows that OAttention alone does not preserve a NULL state through ordinary host components, whereas the OTransformer path does. These are scoped tests of exactness, active-path compatibility, and compositional necessity; they do not establish universal no-loss, arbitrary-host closure, learned attraction to the origin, or a general semantics for missing values.",
@@ -20797,7 +20799,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2608.21174v1"
       },
-      "priority_score": 30
+      "priority_score": 30,
+      "korean_title": "어텐션 마스크에서 관성 영벡터 토큰으로: 토큰 동역학을 위한 OAttention과 O-Closure"
     },
     "2608_21170v1": {
       "id": "2608_21170v1",
@@ -20930,7 +20933,7 @@
       "attempts": 0,
       "next_retry_at": "2026-08-25T03:42:44.378259+00:00",
       "last_error": null,
-      "updated_at": "2026-08-25T09:29:15.242832+00:00",
+      "updated_at": "2026-08-25T12:35:51.085226+00:00",
       "paper": {
         "title": "TileMix: Tile-Centric Mixed-Precision Attention for LLM Inference Acceleration",
         "summary": "Long-context prefill in large language models (LLMs) incurs substantial computation and memory traffic because dense self-attention computes quadratic query-key scores. Existing methods either use a uniform low-precision path or select token interactions, leaving spatial precision routing over hardware-aligned score tiles outside fused dense attention. We introduce TileMix, a tile-centric precision-routing kernel that makes numerical precision an executable spatial decision over score-tile groups within fused dense attention. TileMix partitions the attention matrix into hardware-aligned score tiles, packs routing decisions into compact bitmasks, and dispatches each tile group through FP16 or INT8 score computation while both paths update a shared online-softmax state. Scalable precision grouping lets each routing bit govern multiple adjacent key tiles, preserving hardware-aligned compute tiles and compact metadata at long contexts. By routing all legal tile groups, TileMix preserves dense token connectivity, requires no training, and supports grouped-query attention, variable-length batches, and INT8 key/value caches. Across LongEval, LV-Eval, and A100 prefill benchmarks on LLaMA, Qwen, and Vicuna, TileMix recovers long-context quality lost under uniform INT8 and improves prefill throughput over FP16, yielding a controllable accuracy-efficiency frontier across model families. The implementation is available at https://github.com/HanzhiZhang-Ulrica/TileMix.",
@@ -20955,7 +20958,7 @@
       "attempts": 0,
       "next_retry_at": "2026-08-25T03:42:44.378282+00:00",
       "last_error": null,
-      "updated_at": "2026-08-25T09:29:15.242869+00:00",
+      "updated_at": "2026-08-25T12:35:51.085263+00:00",
       "paper": {
         "title": "Beyond Imitation: Filtering On-Policy Distillation by Reasoning Progress",
         "summary": "On-policy distillation (OPD) has emerged as an effective framework for post-training language models by pairing student-generated trajectories with dense token-level supervision from a teacher. However, OPD implicitly assumes that teacher-derived rewards are an appropriate proxy for reasoning progress, and therefore treats all teacher feedback equally during policy optimization. While in practice, this assumption does not always hold. We observe that teacher-derived rewards often conflict with genuine reasoning progress, as reasoning steps with clear reasoning advancement may still receive lower distillation rewards, simply due to deviation from teacher's outputs. To address this mismatch, we propose Reasoning-Progress-Aware Reward Filtering for On-Policy Distillation (R2-OPD), which constructs two within-trajectory rankings of reasoning spans, one from teacher-derived rewards and the other from independently estimated progress reward. Distillation rewards are selectively suppressed whenever the two rankings disagree, reducing supervision that conflicts with reasoning progress while preserving effective teacher guidance. Our approach shows consistent improvement over standard OPD especially regarding reasoning performances.",
@@ -21008,7 +21011,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-25T09:29:15.242854+00:00",
+      "updated_at": "2026-08-25T12:35:51.085248+00:00",
       "paper": {
         "title": "One Polluted Page Is Enough: Evaluating Web Content Pollution in LLM Recommenders",
         "summary": "Search-augmented LLMs increasingly mediate everyday consumer recommendations by retrieving live web content. This creates a new risk: LLM recommenders may consume web content that Generative Engine Optimization (GEO) operators have polluted to mislead them. We ask: to what extent do they become unwitting promoters of fake products? We introduce FORGE (Fake Online Recommendations in Generative Environments), which locally rewrites real products in a frozen set of retrieved web pages into fake ones and measures how often the LLM recommends the fake product, across 225 real products in 15 categories and 5 consumer scenarios. Across 12 commercial and open-weights LLMs, all models are vulnerable: a single polluted page yields fooled rates of up to 27%, while the full top-3 replacement raises this to 73.8%. Vulnerability varies across categories, increasing when models lack stable prior knowledge of the products. Reasoning does not mitigate this vulnerability; instead, it often generates spurious social proof to justify false recommendations. None of the four defenses is adequate: the skepticism prompt can exacerbate vulnerability much like reasoning, the two consensus filters risk suppressing legitimate products, and credibility re-ranking helps every model but removes only a sixth of the fakes. We release the FORGE benchmark and the evaluation code at https://github.com/leoluolol/forge-benchmark.",
@@ -21029,7 +21032,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-25T09:29:15.242859+00:00",
+      "updated_at": "2026-08-25T12:35:51.085254+00:00",
       "paper": {
         "title": "MobilePA-Bench: Benchmarking Mobile Planner Agents on Complex Real-World Tasks",
         "summary": "As on-device LLM agents evolve into personal copilots, the mobile operating system has become a key testbed for this paradigm, making rigorous capability evaluation essential. Yet existing benchmarks fall into two camps, each with a critical blind spot: GUI-centric benchmarks test surface-level screen manipulation while overlooking background tool use and long-horizon planning, whereas static function-calling benchmarks rely on offline API matching that is detached from real runtime constraints. To close this gap, we present \\textbf{MobilePA-Bench}, an interactive, stateful, and tool-centric benchmark for evaluating the tool-calling and planning abilities of mobile planning agents. MobilePA-Bench runs on an executable sandbox that maintains live application databases and returns structured feedback, spanning $13$ functional domains and $212$ realistic mobile tools. Beyond basic tool use, it evaluates a central planning agent along three advanced dimensions: \\emph{(1)~Sub-agent Collaboration}---decomposing a complex task and delegating specialized work to capable sub-agents; \\emph{(2)~Memory Usage}---recalling stored memories, user profiles, and past preferences to resolve implicit requests; and \\emph{(3)~Skill Usage}---invoking pre-packaged composite skills instead of planning every step from scratch. Extensive experiments show that current frontier LLMs remain unreliable in mobile settings: performance drops sharply under strict tool ordering, permission limits, and unexpected runtime errors. By pairing an interactive function-calling sandbox with evidence-based verification, MobilePA-Bench serves as both a practical diagnostic benchmark and an interactive foundation for agentic reinforcement learning---accelerating the development of dependable mobile agents.",
@@ -21059,7 +21062,7 @@
       "attempts": 0,
       "next_retry_at": "2026-08-25T06:36:14.186911+00:00",
       "last_error": null,
-      "updated_at": "2026-08-25T09:29:15.242882+00:00",
+      "updated_at": "2026-08-25T12:35:51.085267+00:00",
       "paper": {
         "title": "Unlocking the Potential of Image Editing via Concept Scaling and Dense Supervision",
         "summary": "Existing image editing frameworks predominantly follow the training paradigm of text-to-image diffusion models. However, extending this paradigm to image editing highlights two inherent discrepancies, specifically, the insufficient attention to edit concept granularity and the training inefficiency caused by sparse supervision signals. To address these issues, we establish a comprehensive hierarchical taxonomy featuring over 1,000 fine-grained edit concepts and build ConceptEdit-12M, a massive dataset of 12 million high-quality editing pairs via an improved synthesis framework. This library-driven approach effectively rectifies the distribution collapse of generated data while ensuring high data fidelity. Furthermore, we propose a dense supervision training strategy that synthesizes multiple non-interfering concepts into single image pairs. By providing richer learning signals, this strategy significantly enhances both training efficiency and overall model performance. Training results validate our strategy, significantly outperforming prior works. Finally, we present ConceptEdit-Bench, a granular evaluation suite designed to diagnose model capabilities across a vast array of real-world scenarios.",
@@ -21084,7 +21087,7 @@
       "attempts": 0,
       "next_retry_at": "2026-08-25T09:29:15.242875+00:00",
       "last_error": null,
-      "updated_at": "2026-08-25T09:29:15.242877+00:00",
+      "updated_at": "2026-08-25T12:35:51.085271+00:00",
       "paper": {
         "title": "Hybrid Quantum-inspired Kolmogorov-Arnold Networks for Privacy-Aware Federated Biosignal Learning",
         "summary": "Electrocardiogram (ECG) recordings are sensitive biomedical data, limiting the ability of hospitals and wearable devices to share raw signals for centralized model training. Federated learning addresses this practical privacy constraint by enabling collaborative model training while keeping raw biosignal data at their respective sources. However, federated ECG classification remains challenging due to limited client-side samples, imbalanced arrhythmia labels, and non-independent and identically distributed (non-IID) data across clients. These constraints require classifiers that are both communication-efficient and robust to cross-client distribution shifts. In this work, we evaluate a hybrid quantum-inspired Kolmogorov-Arnold network (HQKAN) against a multilayer perceptron (MLP) for five-class arrhythmia classification on the MIT-BIH dataset and three-class classification on the INCART dataset under federated averaging (FedAvg). Across multiple client configurations, HQKAN improves most aggregate and minority-class metrics while using 37.35% fewer trainable parameters and reducing communication cost by 24.89% on MIT-BIH; on INCART, it achieves corresponding reductions of 44.81% and 36.41%. These results indicate that HQKAN offers a compact, communication-efficient and robust alternative to the MLP baseline for privacy-aware federated learning on biosignal data.",
@@ -21112,7 +21115,7 @@
       "attempts": 0,
       "next_retry_at": "2026-08-25T09:29:15.242887+00:00",
       "last_error": null,
-      "updated_at": "2026-08-25T09:29:15.242889+00:00",
+      "updated_at": "2026-08-25T12:35:51.085275+00:00",
       "paper": {
         "title": "ReWorld: An Interactive World Model with Long-Horizon Memory",
         "summary": "An interactive world model must follow the user's actions, remember the places it has shown, and stream in real time. The tension is structural: control wants a short horizon, memory wants an unbounded one. ReWorld separates the two during training and bounds them at inference. Mixed per-head attention windows confine most heads to the recent past while a small set of global heads attends over the entire history, and random head routing keeps either capability from binding to particular heads; random chunk dropping makes sparse histories in-distribution. At inference the whole past lives under a fixed budget: a bounded KV cache backed by a pose-indexed landmark bank, from which the model retrieves the landmarks nearest the current pose. A metric-scale-aligned data engine places eight sources -- Unreal-rendered fly-throughs, game roaming, and real-world footage -- on one physical action scale, so the same key press moves the camera the same distance in every source, and palindrome trajectories supply the revisit evidence that memory training needs. Distribution-matching distillation confined to a LoRA adapter then compresses sampling to four steps: one backbone serves both a high-fidelity multi-step mode and a real-time interactive one, streaming 704x1280 video across photorealistic, game-style, and stylized worlds. Under a three-axis protocol covering action following, long-horizon recall, and video quality, against six recent interactive world models it attains the best control fidelity ($11.95^\\circ$ rotation error and the best camera-motion consistency) and the best generation quality; and on minute-long out-and-back rollouts ($64$\\,s, $384$ latents), its fixed 12-chunk cache still regenerates the starting view -- at rollout lengths where a sliding window has long evicted the evidence and full-KV attention runs out of memory.",
@@ -21141,7 +21144,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-25T09:29:26.866135+00:00",
+      "updated_at": "2026-08-25T12:35:51.085288+00:00",
       "paper": {
         "title": "Same Agent, Different Answers: A Repeat-Aware Audit of Corpus-Induced Answer Churn in Retrieval-Augmented QA",
         "summary": "A retrieval-augmented QA system can return different answers after an index expansion even when its requested model identifier, prompt, retrieval policy, evidence depth, rendering, and exposed generation controls are held fixed. Aggregate accuracy may hide these changes when gains and losses cancel, while ordinary generation variability makes one-shot comparisons overstate update effects. We call the hidden phenomenon accuracy-blind answer churn and introduce the \\emph{Snapshot Compatibility Audit}, which estimates excess answer churn by subtracting same-snapshot repeat disagreement from cross-snapshot disagreement. We instantiate it by expanding one frozen FineWeb prefix from one to seven shards. In a preregistered 400-question Natural Questions study, normalized-exact and blinded-semantic excess churn are 6.44 and 10.25 percentage points while exact-match accuracy changes by only $-1.50$ points. A post-hoc analysis finds repeat-stable semantic flips on 40/400 questions. A separately preregistered 200-question TriviaQA study yields smaller, directionally consistent excess churn while exact-match accuracy moves in the opposite direction. An outcome-blind post-hoc 100-question subset replication with a second DeepSeek generator and serving configuration finds 8.75 pp of semantic excess churn even as exact match rises by 3.00 percentage points. Answer-level compatibility can therefore fail without a conspicuous or consistently directed utility shift. Retrieval-augmented releases should audit compatibility alongside utility.",
@@ -21154,10 +21157,36 @@
       },
       "priority_score": 39,
       "korean_title": "동일한 에이전트, 다른 답변: 검색 증강 질의응답(RAG)에서 말뭉치 변화에 따른 답변 변동에 대한 반복성 인지 감사"
+    },
+    "2608_23200v1": {
+      "id": "2608_23200v1",
+      "filename": "post_2608_23200v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-08-25T12:35:59.815718+00:00",
+      "paper": {
+        "title": "LongWoF-Bench: Evaluating EvoMap Genes for Verifiable Long-Workflow Tasks",
+        "summary": "Large language models are increasingly expected to execute complex workflows whose success depends on maintaining interdependent constraints and producing artifacts that satisfy strict end-to-end verification. Yet successful execution experience is typically lost after a single run, forcing subsequent models to rediscover strategies and failure modes from scratch. We study whether such experience can instead be externalized and reused through EvoMap, where verifier-confirmed execution trajectories are consolidated into structured Gene. To evaluate this setting, we introduce the Long-Workflow Benchmark (LongWoF-Bench), comprising 778 machine-verifiable tasks across code generation, agent-environment synthesis, mathematical reasoning, and rule following. On the 252 tasks with verifier-confirmed Opus trajectories, evolved EvoMap Gene outperform Skill across all seven evaluated models by 8.7-15.5 percentage points, with the gains extending to consumer models from different model families. In contrast, reference-distilled Gene do not exhibit the same advantage, indicating that compact representation alone is insufficient and that Gene utility is closely associated with verified experience provenance. For Claude Opus, Gene reuse also completes 39 more tasks than Skill while reducing solve-time token consumption by 9.9%. Together, these results show that verified execution experience can be retained and shared as a reusable external resource, enabling models to improve long-workflow completion without repeatedly paying the full cost of experience discovery.",
+        "published": "2026-08-24T12:50:16Z",
+        "authors": [
+          "Xiao Zhang",
+          "Qumeng Sun",
+          "Jihao Li",
+          "Yiming Ren",
+          "Xiang Liu",
+          "Haoyang Zhang",
+          "Junjie Wang"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.23200v1"
+      },
+      "priority_score": 59,
+      "korean_title": "LongWoF-Bench: 검증 가능한 긴 워크플로우 작업을 위한 EvoMap 유전자 평가"
     }
   },
   "last_run": {
-    "started_at": "2026-08-25T09:29:15.244191+00:00",
+    "started_at": "2026-08-25T12:35:51.086614+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -21168,25 +21197,25 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 20651,
-      "output_tokens": 5942,
+      "prompt_tokens": 19724,
+      "output_tokens": 6086,
       "thought_tokens": 0,
-      "total_tokens": 26593,
-      "estimated_usd": 0.01407575
+      "total_tokens": 25810,
+      "estimated_usd": 0.01406
     },
-    "finished_at": "2026-08-25T09:30:04.418241+00:00"
+    "finished_at": "2026-08-25T12:36:39.841332+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 1527,
-    "prompt_tokens": 3841574,
-    "output_tokens": 1124254,
+    "requests": 1535,
+    "prompt_tokens": 3861298,
+    "output_tokens": 1130340,
     "thought_tokens": 0,
-    "total_tokens": 4965828,
-    "estimated_usd": 2.6467745
+    "total_tokens": 4991638,
+    "estimated_usd": 2.6608345
   },
   "last_publication_run": {
-    "started_at": "2026-08-25T09:29:15.244191+00:00",
+    "started_at": "2026-08-25T12:35:51.086614+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -21197,17 +21226,17 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 20651,
-      "output_tokens": 5942,
+      "prompt_tokens": 19724,
+      "output_tokens": 6086,
       "thought_tokens": 0,
-      "total_tokens": 26593,
-      "estimated_usd": 0.01407575
+      "total_tokens": 25810,
+      "estimated_usd": 0.01406
     },
-    "finished_at": "2026-08-25T09:30:04.418241+00:00"
+    "finished_at": "2026-08-25T12:36:39.841332+00:00"
   },
   "daily_usage": {
     "date": "2026-08-25",
-    "estimated_usd": 0.056153,
-    "publications": 16
+    "estimated_usd": 0.070213,
+    "publications": 20
   }
 }
