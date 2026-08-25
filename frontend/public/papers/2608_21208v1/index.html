@@ -1,0 +1,64 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>LLM 개발 에이전트 간의 명세서 이식성: 명세 기반 소프트웨어 마이그레이션에서의 에이전트 간 호환성 | ArXiv Translator AI</title><meta name="description" content="LLM 개발 에이전트 간의 명세서 이식성: 명세 기반 소프트웨어 마이그레이션에서의 에이전트 간 호환성"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_21208v1"><meta property="og:type" content="article"><meta property="og:title" content="LLM 개발 에이전트 간의 명세서 이식성: 명세 기반 소프트웨어 마이그레이션에서의 에이전트 간 호환성"><meta property="og:description" content="LLM 개발 에이전트 간의 명세서 이식성: 명세 기반 소프트웨어 마이그레이션에서의 에이전트 간 호환성"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_21208v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="LLM 개발 에이전트 간의 명세서 이식성: 명세 기반 소프트웨어 마이그레이션에서의 에이전트 간 호환성"><meta name="twitter:description" content="LLM 개발 에이전트 간의 명세서 이식성: 명세 기반 소프트웨어 마이그레이션에서의 에이전트 간 호환성"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_21208v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "LLM 개발 에이전트 간의 명세서 이식성: 명세 기반 소프트웨어 마이그레이션에서의 에이전트 간 호환성", "description": "LLM 개발 에이전트 간의 명세서 이식성: 명세 기반 소프트웨어 마이그레이션에서의 에이전트 간 호환성", "datePublished": "2026-08-21", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_21208v1", "author": [{"@type": "Person", "name": "Oleg Grynets"}, {"@type": "Person", "name": "Oleksii Ilchuk"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_21208v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_21208v1"});gtag('event', 'paper_view', {"paper_id": "2608_21208v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>LLM 개발 에이전트 간의 명세서 이식성: 명세 기반 소프트웨어 마이그레이션에서의 에이전트 간 호환성</h1><p>LLM 개발 에이전트 간의 명세서 이식성: 명세 기반 소프트웨어 마이그레이션에서의 에이전트 간 호환성</p><pre>LLM 개발 에이전트 간의 명세서 이식성: 명세 기반 소프트웨어 마이그레이션에서의 에이전트 간 호환성
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Specification Portability Across LLM Development Agents: Cross-Agent Compatibility in Specification-Driven Software Migration
+&gt; - **저자:** Oleg Grynets, Oleksii Ilchuk, Dariia Zatulna, Vasyl Lyashkevych
+&gt; - **발행일:** 2026-08-21
+&gt; - **PDF 링크:** [Specification Portability Across LLM Development Agents: Cross-Agent Compatibility in Specification-Driven Software Migration](https://arxiv.org/pdf/2608.21208v1)
+
+
+✨ 3줄 핵심 요약
+* LLM 에이전트가 작성한 소프트웨어 명세서는 다른 에이전트가 재사용할 때 성능 저하가 발생할 수 있는 &#x27;비이식적&#x27;인 결과물입니다.
+* 명세서의 길이는 구현 품질을 예측하는 지표가 되지 않으며, 에이전트마다 적합한 명세 해석 방식이 다릅니다.
+* 검색 증강 생성(RAG) 기반의 명세 주입 방식이 서로 다른 에이전트 간의 호환성을 보완하는 가장 효과적인 전략으로 확인되었습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+최근 AI가 소프트웨어 개발의 중추 역할을 하면서, AI가 만든 설계도(명세서)를 다른 AI에게 전달해 작업을 이어가는 경우가 많아졌습니다. 본 논문은 과연 A라는 AI가 쓴 설계도를 B라는 AI가 그대로 이해하고 잘 실행할 수 있는지 검증했습니다. 실험 결과, 설계도를 건네받은 AI의 성능이 크게 떨어지는 경우가 빈번했습니다. 즉, 설계도는 AI마다 &#x27;언어&#x27;가 다르기 때문에 범용적으로 쓸 수 없으며, 이를 해결하기 위해 단순 요약보다는 검색 기반의 정보 주입(RAG) 전략을 활용해야 한다는 점을 밝혀냈습니다.
+
+🎯 배경 및 문제점
+LLM 기반의 개발 방식은 명세서가 곧 구현으로 이어지는 &#x27;명세 기반 개발(SDD)&#x27;로 진화하고 있습니다. 하지만 기존 방식은 특정 에이전트 내에서만 명세와 구현이 완결되는 것을 전제로 합니다. 저자들은 이 명세서가 과연 다른 환경의 에이전트로 이동했을 때에도 품질 유지(이식성)가 가능한지 의문을 제기했습니다. 특히, 에이전트 간의 호환성이 대칭적이지 않고 방향성을 가진다는 점이 핵심적인 기술적 과제로 떠올랐습니다.
+
+💡 핵심 기술 및 아키텍처
+연구진은 Oracle DB에서 PostgreSQL 16으로 데이터를 마이그레이션하는 과제를 통해 명세서 이식성을 측정했습니다.
+* **평가 지표:** Token F1, SQL 구문 유효성, AST(추상 구문 트리) 유사도, 실행 가능성 등 다차원 지표를 정의했습니다.
+* **적응 전략:** 명세서의 품질 저하를 막기 위해 &#x27;재작성(Rewrite)&#x27;, &#x27;압축(Compression)&#x27;, &#x27;검색 증강 주입(Retrieval-augmented ingestion)&#x27; 세 가지 방식을 도입하여 에이전트 간 호환성을 테스트했습니다.
+
+📊 실험 결과 분석
+* **이식성 부족:** Gemini가 Kiro 에이전트가 생성한 명세서를 그대로 소비했을 때, Token F1 0.035, SQL 구문 유효성 2.33%, AST 유사도 0.015라는 매우 낮은 품질을 기록했습니다.
+* **전략의 효율성:** &#x27;압축&#x27;은 범용적인 이익을 주지 못했고, &#x27;재작성&#x27;은 특정 환경에서 개선 효과가 있었으나, &#x27;검색 증강 주입&#x27; 방식만이 여러 에이전트(Gemini, Copilot 등)에서 일관된 성능 향상을 보인 유일한 전략이었습니다.
+* **데이터:** 1,006개의 PL/SQL 파일을 이용한 1단계 테스트와 1,802개의 스크립트 기반 2단계 실험을 수행했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+다중 에이전트 시스템을 구축하는 기업들은 이제 명세서를 &#x27;범용적인 문서&#x27;로 취급해서는 안 됩니다. 명세서를 작성한 에이전트와 구현하는 에이전트가 다를 경우 반드시 중간 단계에서 재작성이나 RAG 기반의 해석 보정 과정을 거쳐야 합니다. 이 연구는 향후 복잡한 소프트웨어 공학 파이프라인에서 AI 에이전트 간의 원활한 협업을 위한 표준화된 &#x27;명세서 이식성 프로토콜&#x27;의 필요성을 강조합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Open Agent Specification (Agent Spec) Technical Report](https://arxiv.org/html/2510.04173v1)
+&gt; - [Spec-Driven Development with AI Agents: A Practical Guide | Xcapit](https://www.xcapit.com/en/blog/spec-driven-development-ai-agents)
+&gt; - [Spec-Driven Development:From Code to Contract in the Age of AI Coding Assistants](https://arxiv.org/html/2602.00180v1)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;이 논문은 AI 에이전트 간의 상호운용성(Interoperability) 문제를 매우 적절하게 짚었습니다. 결국 &#x27;명세서의 의미론적 불일치&#x27;가 발생한다는 건데, 모델 아키텍처가 달라지면 latent space 내의 정보 해석 방식도 다르다는 방증이죠. 단순히 RAG로 해결하려 하기보다는, 도메인 특화된 명세 언어(DSL)의 표준화 논의로 넘어가야 하지 않겠습니까?&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 맞지만, 실무에서는 당장 내일 마이그레이션 파이프라인을 돌려야 합니다. &#x27;표준화&#x27; 기다리다간 프로젝트 다 망해요. 논문에서 RAG 기반 주입이 그나마 먹힌다는 결과는 사실상 &#x27;에이전트가 이해 못 하면 텍스트를 파편화해서 컨텍스트에 억지로 구겨 넣으라&#x27;는 뜻인데, 이거 결국 토큰 비용 폭탄 아닌가요? 프로덕션 환경에선 가성비 따져야 합니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;선배님, 토큰 비용 걱정할 때가 아닙니다! 지금 이 논문 핵심은 &#x27;에이전트가 작성한 명세는 에이전트 전용 언어&#x27;라는 거잖아요. 앞으로는 모델 튜닝할 때 아예 &#x27;다른 에이전트의 명세서도 잘 읽도록&#x27; 멀티 에이전트 친화적 파인튜닝(Multi-Agent Alignment)이 메타가 될 겁니다. 지금 당장 이 방법론으로 SOTA 찍는 에이전트 아키텍처 하나 뽑으면 내년 ICLR은 따놓은 당상인데, 이거 같이 파볼 분 구합니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
