@@ -1,0 +1,70 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>동일한 에이전트, 다른 답변: 검색 증강 질의응답(RAG)에서 말뭉치 변화에 따른 답변 변동에 대한 반복성 인지 감사 | ArXiv Translator AI</title><meta name="description" content="동일한 에이전트, 다른 답변: 검색 증강 질의응답(RAG)에서 말뭉치 변화에 따른 답변 변동에 대한 반복성 인지 감사"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_22856v1"><meta property="og:type" content="article"><meta property="og:title" content="동일한 에이전트, 다른 답변: 검색 증강 질의응답(RAG)에서 말뭉치 변화에 따른 답변 변동에 대한 반복성 인지 감사"><meta property="og:description" content="동일한 에이전트, 다른 답변: 검색 증강 질의응답(RAG)에서 말뭉치 변화에 따른 답변 변동에 대한 반복성 인지 감사"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_22856v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="동일한 에이전트, 다른 답변: 검색 증강 질의응답(RAG)에서 말뭉치 변화에 따른 답변 변동에 대한 반복성 인지 감사"><meta name="twitter:description" content="동일한 에이전트, 다른 답변: 검색 증강 질의응답(RAG)에서 말뭉치 변화에 따른 답변 변동에 대한 반복성 인지 감사"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_22856v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "동일한 에이전트, 다른 답변: 검색 증강 질의응답(RAG)에서 말뭉치 변화에 따른 답변 변동에 대한 반복성 인지 감사", "description": "동일한 에이전트, 다른 답변: 검색 증강 질의응답(RAG)에서 말뭉치 변화에 따른 답변 변동에 대한 반복성 인지 감사", "datePublished": "2026-08-24", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_22856v1", "author": [{"@type": "Person", "name": "Jingjie Ning"}, {"@type": "Person", "name": "Xueqi Li"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_22856v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_22856v1"});gtag('event', 'paper_view', {"paper_id": "2608_22856v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>동일한 에이전트, 다른 답변: 검색 증강 질의응답(RAG)에서 말뭉치 변화에 따른 답변 변동에 대한 반복성 인지 감사</h1><p>동일한 에이전트, 다른 답변: 검색 증강 질의응답(RAG)에서 말뭉치 변화에 따른 답변 변동에 대한 반복성 인지 감사</p><pre>동일한 에이전트, 다른 답변: 검색 증강 질의응답(RAG)에서 말뭉치 변화에 따른 답변 변동에 대한 반복성 인지 감사
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Same Agent, Different Answers: A Repeat-Aware Audit of Corpus-Induced Answer Churn in Retrieval-Augmented QA
+&gt; - **저자:** Jingjie Ning, Xueqi Li
+&gt; - **발행일:** 2026-08-24
+&gt; - **PDF 링크:** [Same Agent, Different Answers: A Repeat-Aware Audit of Corpus-Induced Answer Churn in Retrieval-Augmented QA](https://arxiv.org/pdf/2608.22856v1)
+
+
+✨ 3줄 핵심 요약
+- 검색 증강 질의응답(RAG) 시스템은 모델, 프롬프트, 검색 설정이 고정되어도 검색 대상 말뭉치(Corpus)가 확장되면 답변이 달라지는 &#x27;답변 변동(Answer Churn)&#x27; 현상이 발생합니다.
+- 전체 정확도 지표는 답변의 개선과 악화가 상쇄되어 이러한 미세한 변화를 감추기 때문에, 이를 정량화할 새로운 감사 기법이 필요합니다.
+- 제안된 &#x27;스냅샷 호환성 감사(Snapshot Compatibility Audit)&#x27;는 시스템의 평균 정확도가 개선되거나 유지될 때조차 실제로는 답변의 일관성이 깨질 수 있음을 입증했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+RAG 시스템은 외부 문서를 검색해 답변을 생성합니다. 연구진은 모델이나 프롬프트 같은 핵심 환경을 그대로 둔 채 검색할 문서의 양(말뭉치)만 늘려보았습니다. 그 결과, 시스템은 이전과 동일한 질문에 대해 완전히 다른 답변을 내놓는 경향을 보였습니다. 
+
+흥미로운 점은 전체적인 정확도(Accuracy)는 거의 변하지 않거나 오히려 좋아지기도 하지만, 실제 답변의 내용은 바뀌어 있다는 것입니다. 이는 정확도라는 하나의 숫자가 시스템의 &#x27;안정성&#x27;이나 &#x27;일관성&#x27;을 제대로 대변하지 못함을 의미합니다. 따라서 기업들은 RAG 서비스를 배포할 때 정확도뿐만 아니라, 시스템이 얼마나 일관된 답변을 유지하는지(답변 변동성)를 반드시 함께 점검해야 합니다.
+
+🎯 배경 및 문제점
+- **평가의 함정**: RAG 시스템 업데이트 시 보통 &#x27;전체 정확도&#x27;만을 측정하는데, 이는 정답이 맞는 답변과 틀리는 답변이 서로 상쇄되면서 실제 답변의 변화를 숨기는 결과를 낳습니다.
+- **측정의 난제**: 생성형 AI 자체가 가진 기본적 변동성(비결정성)과 검색 데이터 변화에 따른 변동성을 구분하기 어려워, 시스템 업데이트의 실제 영향이 과장되거나 왜곡될 수 있습니다.
+- **호환성 결여**: 시스템의 기반이 되는 데이터셋이 변경될 경우, 기존 답변에 의존하던 캐시, 회귀 테스트, 자동화 워크플로우에 예기치 않은 오류가 발생할 위험이 있습니다.
+
+💡 핵심 기술 및 아키텍처
+- **스냅샷 호환성 감사(Snapshot Compatibility Audit)**: 동일한 시스템 환경에서 얻은 답변의 불일치(반복 불일치)를 측정하여, 말뭉치 변화로 인한 &#x27;초과 답변 변동(Excess Answer Churn)&#x27;을 추출하는 기법입니다.
+- **반복 검증 설계**: 각 조건에서 동일한 질문을 여러 번 수행하여 생성 모델 고유의 변동성을 통제하고, 결과적으로 데이터셋 확장이 초래한 변화만을 순수하게 분리해냅니다.
+- **다층적 평가**: 정확도(EM) 중심의 지표 외에도, 의미론적 판단(Semantic Judgment)을 통해 답변의 내용적 일관성을 별도로 평가하였습니다.
+
+📊 실험 결과 분석
+- **변동의 실체**: 400개의 NQ 질문을 대상으로 실험한 결과, 정확도는 1.50% 포인트 하락했으나, 정규화된 정확도 기준 초과 변동은 6.44% 포인트, 의미론적 초과 변동은 10.25% 포인트로 나타났습니다.
+- **정확도와의 괴리**: 다른 실험(TriviaQA 및 V4-Pro)에서는 정확도가 3.00% 포인트 상승했음에도 불구하고, 여전히 8.75% 포인트의 의미론적 초과 변동이 발견되었습니다.
+- **안정성의 부재**: 정확도 지표의 움직임(상승/하락)과 관계없이 답변의 일관성은 지속적으로 훼손되었으며, 이는 답변 수준의 호환성이 전체적인 성능 지표와 무관하게 깨질 수 있음을 시사합니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+- **배포 전략의 변화**: RAG 시스템 운영자는 이제 &#x27;정확도 개선&#x27;만 목표로 할 것이 아니라, 데이터 업데이트 시 &#x27;답변 일관성(Compatibility)&#x27;을 정량적으로 감사해야 합니다.
+- **회귀 테스트 강화**: 제품 릴리스 과정에서 이전 버전과의 답변 비교 테스트를 포함하여, 비즈니스 워크플로우의 안정성을 보장해야 합니다.
+- **한계점**: 본 연구는 특정 모델(DeepSeek)과 데이터셋을 기반으로 하므로 일반적인 확장 법칙으로 일반화하기에는 추가적인 교차 검증(다양한 모델, 분야, 언어)이 필요합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Retrieval Improvements Do Not Guarantee Better Answers: A Study of...](https://arxiv.org/abs/2603.24580)
+&gt; - [A Systematic Review of Key Retrieval-Augmented Generation (RAG) Systems:Progress, Gaps, and Future Directions](https://arxiv.org/html/2507.18910v1)
+&gt; - [Retrieval-Augmented Generation: A Comprehensive Survey of Architectures, Enhancements, and Robustness Frontiers](https://arxiv.org/html/2506.00054v1)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;정확도(Accuracy) 지표에만 매몰된 학계와 산업계의 관행에 일침을 가하는군요. &#x27;평균의 함정&#x27;을 정확히 짚어냈습니다. 시스템 업데이트 시 전체 평균 점수는 그대로여도, 내부적으로는 답변이 널뛰고 있다면 그건 견고한 시스템이라 할 수 없죠. &#x27;스냅샷 호환성 감사&#x27;는 이제 RAG 배포의 필수 체크리스트가 되어야 합니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로입니다. 사실 실무에서는 &#x27;정확도 올랐으니 배포합시다&#x27;라고 보고하고 나면, 다음 날 CS팀에서 &#x27;지난번이랑 답변이 왜 달라요?&#x27;라고 항의받는 게 일상이죠. 특히 캐싱이나 외부 워크플로우에 연동된 RAG라면 이런 변동성은 치명적입니다. 당장 우리 파이프라인에도 &#x27;의미론적 초과 변동&#x27; 측정 모듈을 추가해야겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 이 논문 진짜 대박이네요! 6.44%에서 10.25%까지 치솟는 변동성이라니... 단순히 검색 결과가 늘어난 것만으로도 모델의 추론 경로가 이렇게 휘둘린다는 게 소름 돋습니다. 다들 LLM 성능 올리려고 RAG 확장할 때, 정작 &#x27;일관성&#x27;이라는 시한폭탄을 키우고 있었던 거잖아요? 논문에서 제안한 반복 검증 설계, 이번 실험 때 바로 적용해봐야겠습니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

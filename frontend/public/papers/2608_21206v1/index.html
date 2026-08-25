@@ -1,0 +1,72 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PUN은 의도된 것이 아니다: 사람 중심 LLM 평가를 위한 그럴듯한 미확인 이름 | ArXiv Translator AI</title><meta name="description" content="PUN은 의도된 것이 아니다: 사람 중심 LLM 평가를 위한 그럴듯한 미확인 이름"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_21206v1"><meta property="og:type" content="article"><meta property="og:title" content="PUN은 의도된 것이 아니다: 사람 중심 LLM 평가를 위한 그럴듯한 미확인 이름"><meta property="og:description" content="PUN은 의도된 것이 아니다: 사람 중심 LLM 평가를 위한 그럴듯한 미확인 이름"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_21206v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="PUN은 의도된 것이 아니다: 사람 중심 LLM 평가를 위한 그럴듯한 미확인 이름"><meta name="twitter:description" content="PUN은 의도된 것이 아니다: 사람 중심 LLM 평가를 위한 그럴듯한 미확인 이름"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_21206v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "PUN은 의도된 것이 아니다: 사람 중심 LLM 평가를 위한 그럴듯한 미확인 이름", "description": "PUN은 의도된 것이 아니다: 사람 중심 LLM 평가를 위한 그럴듯한 미확인 이름", "datePublished": "2026-08-21", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_21206v1", "author": [{"@type": "Person", "name": "Dimitri Staufer"}, {"@type": "Person", "name": "David Hartmann"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_21206v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_21206v1"});gtag('event', 'paper_view', {"paper_id": "2608_21206v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>PUN은 의도된 것이 아니다: 사람 중심 LLM 평가를 위한 그럴듯한 미확인 이름</h1><p>PUN은 의도된 것이 아니다: 사람 중심 LLM 평가를 위한 그럴듯한 미확인 이름</p><pre>PUN은 의도된 것이 아니다: 사람 중심 LLM 평가를 위한 그럴듯한 미확인 이름
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** No PUN Intended: Plausible Unknown Names for Person-Centred LLM Evaluation
+&gt; - **저자:** Dimitri Staufer, David Hartmann, Ibrahim Baroud
+&gt; - **발행일:** 2026-08-21
+&gt; - **PDF 링크:** [No PUN Intended: Plausible Unknown Names for Person-Centred LLM Evaluation](https://arxiv.org/pdf/2608.21206v1)
+
+
+✨ 3줄 핵심 요약
+- LLM 평가 시 이름은 중요한 변수이나, 기존에는 이름에 내재된 정보(유명세, 문화적 편향 등)가 통제되지 않아 평가 결과에 왜곡을 초래했습니다.
+- 본 논문은 &#x27;그럴듯하지만 실존 증거가 없는 이름(PUN)&#x27;을 정의하고, 이를 생성 및 검증하는 체계적인 프로토콜을 제안합니다.
+- 제안된 300개의 이름은 일반인에게는 실제 이름처럼 보이지만, 실제 검색 결과에서는 정보가 거의 나타나지 않아 LLM의 순수한 능력을 평가하는 데 적합합니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+LLM이 특정 인물에 대해 답변하도록 유도할 때, 이름은 단순히 이름일 뿐만 아니라 그 사람의 사회적 지위, 문화적 배경, 성별 등 많은 데이터를 함께 불러옵니다. 만약 평가자가 &quot;홍길동&quot;이라는 이름을 넣었을 때 모델이 이미 학습된 유명인 정보를 출력한다면, 모델이 실제로 &#x27;모르는 것&#x27;을 답변하는지 아니면 &#x27;알고 있는 것을 가져오는 것&#x27;인지 구분하기 어렵습니다. 이 연구는 누구인지 알려진 바 없는 &#x27;가짜지만 진짜 같은 이름&#x27;을 만들어 LLM이 근거 없는 정보에 어떻게 반응하는지, 즉 모델의 진정한 환각(Hallucination) 방지 및 추론 능력을 공정하게 측정할 수 있는 도구를 제공합니다.
+
+🎯 배경 및 문제점
+LLM 평가에서 사람의 이름은 전기 작성, 개인정보 유출 확인, 채용 평가 등 다양한 용도로 활용됩니다. 하지만 문제는 이름이 &#x27;중립적이지 않다&#x27;는 점입니다.
+- **정보의 오염:** 이름은 특정 문화, 성별, 종교를 암시하거나 유명인과 유사하여 모델의 답변에 편향을 줍니다.
+- **평가 모호성:** 이름에 대한 정보가 통제되지 않으면 모델이 기억을 되살리는 것인지, 추론하는 것인지, 단순히 그럴듯한 이름을 지어내는 것인지 구분할 수 없습니다.
+
+💡 핵심 기술 및 아키텍처
+연구진은 &#x27;작동 가능한 미확인 이름(Operationalisation of Unknown Name)&#x27;을 다음과 같이 정의하고 **PUN 프로토콜**을 도입했습니다.
+1. **조건:** 이름이 그럴듯한 &#x27;이름-성&#x27; 형태일 것, 인터넷상에 일치하는 정보가 없을 것, 이름에 대한 모호성(동명이인 등)이 없을 것.
+2. **생성 과정:** 
+   - Wikidata에서 이름 풀을 확보하여 후보를 생성합니다.
+   - LLM을 활용해 1차 필터링을 거칩니다.
+   - 웹 검색 및 재검증 단계를 거쳐 &#x27;실제 정보가 없음&#x27;을 타임스탬프로 기록합니다.
+
+📊 실험 결과 분석
+- **인간 평가:** 204명의 참가자를 대상으로 한 연구에서, PUN으로 선정된 이름들은 일반적인 제어군보다 훨씬 더 &#x27;이름답게&#x27; 인식되었습니다.
+- **증거 회수율:** 참가자들이 검색을 통해 이름의 실존 증거를 찾아낸 경우는 단 3%에 불과하여, 해당 이름들이 정보가 없는 상태임을 입증했습니다.
+- **비교 분석:** 제안된 300개의 이름은 유명인부터 무작위 문자열까지 다양한 스펙트럼 내에서 자연스러우면서도 중립적인 위치를 차지함을 확인했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+- **정교한 LLM 벤치마킹:** 개인정보 보호, 모델의 환각 탐지, 공정성 평가 등 다양한 LLM 벤치마크 데이터셋의 신뢰성을 크게 높일 수 있습니다.
+- **편향 제거:** 특정 문화권이나 유명인의 이름에 의존하지 않는 평가가 가능해져, 모델의 실질적인 지식 범위와 추론 능력을 더 명확히 파악할 수 있습니다.
+- **실무 적용:** 개발자들은 개인정보 보호 감사나 모델의 답변 거부 성능을 테스트할 때, 본 연구에서 공개한 300개의 이름을 활용하여 더 객관적인 평가 환경을 구축할 수 있습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Computation and Language](https://arxiv.org/list/cs.CL/recent)
+&gt; - [arxiv-cs.CL 汇总-2026.08.24-自然语言处理论文 - 知乎](https://zhuanlan.zhihu.com/p/2075230843421857355)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;연구 방법론 자체는 깔끔하군요. 기존 LLM 벤치마크들이 고질적으로 겪던 &#x27;데이터 오염&#x27;과 &#x27;기억 기반 답변&#x27; 문제를 통제된 PUN(Plausible Unknown Names)으로 해결하려는 시도는 학술적으로 충분히 가치가 있습니다. 다만, 300개의 샘플이 과연 언어별, 문화권별로 얼마나 일반화될 수 있을지 의문입니다. 특정 언어권에 편향되지 않았음을 어떻게 보장했는지 추가 검증이 필요해 보입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 일반화가 관건이긴 한데, 실무 입장에서는 당장 써먹을 툴이 하나 생겼다는 게 중요합니다. 매번 모델 평가할 때마다 &#x27;유명인 이름 넣으면 환각 터지고, 무작위 이름 넣으면 모델이 엉뚱한 반응을 보이는&#x27; 딜레마가 있었거든요. 당장 다음 모델 배포 전, 개인정보 보호 및 환각 테스트셋에 이 PUN 리스트 바로 적용해봐야겠습니다. 300개면 테스트 자동화 파이프라인 돌리기에 딱 적당하네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 이거 진짜 대박인데요? 다들 이름 고르느라 고민할 때 이 논문 리스트 긁어오면 되겠네요! 근데 실무자님, 300개면 금방 고갈될 텐데, 아예 PUN 생성 모델을 따로 만들어서 매번 새로운 가상 인물을 실시간으로 찍어내면 벤치마킹 데이터 오염 걱정은 아예 사라지지 않을까요? 논문 저자들이 공개한 프로토콜이 있으니 파이프라인 자동화 가능할 것 같아요. 내일 세미나 때 이걸로 발표해야겠네요!&quot;
+  }
+]
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

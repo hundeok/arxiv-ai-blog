@@ -19863,7 +19863,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-25T06:36:14.186896+00:00",
+      "updated_at": "2026-08-25T09:29:15.242864+00:00",
       "paper": {
         "title": "Task-CoEvolve: Efficient Harness Optimization via Adaptive Validation Task Selection",
         "summary": "We present a novel approach to efficient LLM harness optimization through adaptive validation task selection. Harness optimization iteratively rewrites the harness code based on validation performance, enabling substantial performance gains without updating the underlying model weights. Existing approaches, however, evaluate a fixed validation set in full at every iteration, incurring substantial evaluation costs even on tasks that become less discriminative as the harness evolves. We propose $\\textbf{Task-CoEvolve}$, which co-evolves the validation tasks with the harness by addressing two challenges: selecting informative tasks and estimating full-set performance from partial evaluations. Task-CoEvolve builds on the observation that tasks on which candidate harnesses disagree are more informative for distinguishing among them than tasks that are consistently solved or failed. It uses variance-weighted sampling based on past outcomes to focus evaluation on tasks near the capability frontier, with the sampling distribution adapting as the harness evolves. It then estimates full-set scores from the sampled tasks by accounting for their sampling probabilities, enabling consistent comparisons across iterations despite evaluating different subsets. Experiments on online text classification and Terminal-Bench 2.1 show that Task-CoEvolve consistently outperforms subset-based baselines and matches the final performance of full-set search while reducing the number of evaluations during optimization by 80%. Code will be released at https://github.com/Agent4Science-UTokyo/Task-CoEvolve.",
@@ -20193,7 +20193,7 @@
       "attempts": 0,
       "next_retry_at": "2026-08-24T15:33:18.041004+00:00",
       "last_error": null,
-      "updated_at": "2026-08-25T06:36:14.186862+00:00",
+      "updated_at": "2026-08-25T09:29:15.242848+00:00",
       "paper": {
         "title": "Partition the Support, Reconstruct the Residual: Training-Free Sparse Attention for Video Generation and World Models",
         "summary": "Training-free block-sparse attention can accelerate video transformers, but row-wise attention concentration does not by itself specify an executable sparse operator. Queries sharing a block route may have poorly overlapping supports, while retained attention mass alone does not determine the post-softmax error from skipped interactions. We show that partition geometry affects both pooled support and the predictability of the remaining residual from the sparse output. We introduce SparsePR, which combines Response-Coupled Partitioning with Probe-Fitted Residual Reconstruction. Sampled-query key responses form paired K/V groups, whose centroids induce query-response coordinates for shared routing. A small set of exact query rows then calibrates a call-specific affine correction from the sparse output within the output subspace observed in the probe residuals. Across four heterogeneous video generation and world models, SparsePR consistently reduces attention-reconstruction error. Ablations show that probe fitting accounts for most of this reduction, while response-coupled partitioning lowers hard-drop error and improves reconstruction under a finite probe budget. SparsePR preserves generation quality at 22.0-26.0% realized executed-pair density while achieving 1.48x-2.61x end-to-end speedups. Project page: https://pardistaghavi.github.io/SparsePR-website/",
@@ -20229,11 +20229,11 @@
     "2608_21357v1": {
       "id": "2608_21357v1",
       "filename": "post_2608_21357v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-08-25T00:55:57.847721+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-25T00:55:57.847723+00:00",
+      "updated_at": "2026-08-25T09:29:37.568228+00:00",
       "paper": {
         "title": "VIALS: A Benchmark for Visual Interpretation of Artifacts in the Life Sciences",
         "summary": "In professional life sciences workflows, scientists routinely interpret visual artifacts (gel blots, microscopy images, plasmid maps, flow cytometry plots, molecular structures, ...) to inform research decisions. We introduce VIALS, a visual question-answering benchmark with 161 such interpretation tasks, spanning the types of artifacts examined throughout experimental workflows in the biotech industry (rather than polished figures from publications and textbooks). While frontier vision-language models can now fluently describe natural images, we find that they are unable to accurately interpret these scientific images, reflecting limitations in domain knowledge and domain-specific visual reasoning capabilities. In contrast, scientists with relevant domain expertise find these visual interpretation tasks straightforward. AI that cannot similarly interpret such images will have limited utility in professional life sciences workflows, where such artifacts are central to how scientists reason, communicate, and make decisions.",
@@ -20248,7 +20248,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2608.21357v1"
       },
-      "priority_score": 32
+      "priority_score": 32,
+      "korean_title": "생명과학 분야 시각적 산출물 해석을 위한 벤치마크: VIALS"
     },
     "2608_21356v1": {
       "id": "2608_21356v1",
@@ -20387,11 +20388,11 @@
     "2608_21292v1": {
       "id": "2608_21292v1",
       "filename": "post_2608_21292v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-08-25T00:55:57.847767+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-25T00:55:57.847769+00:00",
+      "updated_at": "2026-08-25T09:30:03.841903+00:00",
       "paper": {
         "title": "AUSO: Action-Level Unified Skill Optimization from Internalization to Utilization",
         "summary": "Skills play different roles as an agent's policy evolves: they should first provide learnable knowledge, then support capability formation, and finally be invoked only when they improve individual decisions. Existing methods rarely model this lifecycle. They either keep skills outside the model, fully internalize them, or select among internalization and utilization objectives through noisy task-level success rates. Such designs fragment training and assign uniform importance to actions within the same trajectory, even though skill guidance may help some decisions while distracting others. To solve these problems, we introduce AUSO (Action-level Unified Skill Optimization), which unifies skill learning and skill use through a progressive, action-aware optimization process. At the beginning of training, AUSO jointly learns from teacher guidance and environmental outcomes, enabling the policy to acquire foundational skills without losing task-oriented feedback. It subsequently emphasizes outcome-based policy optimization to consolidate autonomous problem-solving ability. As the policy matures, AUSO evaluates each sampled action under both skill-conditioned and skill-free contexts. The resulting action-level information signal is coupled with the trajectory outcome advantage, allowing beneficial skill-sensitive actions to receive stronger updates and harmful ones to be suppressed. Therefore, skills gradually transition from an external source of supervision into decision knowledge whose utilization is adapted to its action-level benefit, while reinforcement learning remains the shared backbone across all stages. Experiments on ALFWorld, WebShop, and SearchQA show that AUSO consistently improves agent performance and out-of-distribution generalization over competitive baselines.",
@@ -20408,7 +20409,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2608.21292v1"
       },
-      "priority_score": 30
+      "priority_score": 30,
+      "korean_title": "AUSO: 내재화에서 활용까지 아우르는 행동 수준의 통합된 기술 최적화"
     },
     "2608_21278v1": {
       "id": "2608_21278v1",
@@ -20637,11 +20639,11 @@
     "2608_21206v1": {
       "id": "2608_21206v1",
       "filename": "post_2608_21206v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-08-25T00:55:57.847837+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-25T00:55:57.847838+00:00",
+      "updated_at": "2026-08-25T09:29:51.578464+00:00",
       "paper": {
         "title": "No PUN Intended: Plausible Unknown Names for Person-Centred LLM Evaluation",
         "summary": "Person names are widely used as prompt variables in LLM evaluations of factuality, privacy leakage, bias and abstention, but when a name's evidential status is uncontrolled, measurements may conflate memorisation, retrieval, name priors and wrong-person attribution. We operationalise an unknown name as one with plausible First-Last form, no indexed full-name evidence, and no ambiguity signals under a documented validation run, and introduce PUN (Plausible Unknown Names), a protocol for constructing and validating such names, combining Wikidata-derived components, web-enabled LLM screening, and controlled search revalidation. We report acceptance rate, reproducibility, ablations, and a 204-participant human study, finding accepted names are more name-like than controls while participants recover person evidence in only 3% of cases. We release 300 names with comparison controls.",
@@ -20653,7 +20655,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2608.21206v1"
       },
-      "priority_score": 31
+      "priority_score": 31,
+      "korean_title": "PUN은 의도된 것이 아니다: 사람 중심 LLM 평가를 위한 그럴듯한 미확인 이름"
     },
     "2608_21203v1": {
       "id": "2608_21203v1",
@@ -20927,7 +20930,7 @@
       "attempts": 0,
       "next_retry_at": "2026-08-25T03:42:44.378259+00:00",
       "last_error": null,
-      "updated_at": "2026-08-25T06:36:14.186882+00:00",
+      "updated_at": "2026-08-25T09:29:15.242832+00:00",
       "paper": {
         "title": "TileMix: Tile-Centric Mixed-Precision Attention for LLM Inference Acceleration",
         "summary": "Long-context prefill in large language models (LLMs) incurs substantial computation and memory traffic because dense self-attention computes quadratic query-key scores. Existing methods either use a uniform low-precision path or select token interactions, leaving spatial precision routing over hardware-aligned score tiles outside fused dense attention. We introduce TileMix, a tile-centric precision-routing kernel that makes numerical precision an executable spatial decision over score-tile groups within fused dense attention. TileMix partitions the attention matrix into hardware-aligned score tiles, packs routing decisions into compact bitmasks, and dispatches each tile group through FP16 or INT8 score computation while both paths update a shared online-softmax state. Scalable precision grouping lets each routing bit govern multiple adjacent key tiles, preserving hardware-aligned compute tiles and compact metadata at long contexts. By routing all legal tile groups, TileMix preserves dense token connectivity, requires no training, and supports grouped-query attention, variable-length batches, and INT8 key/value caches. Across LongEval, LV-Eval, and A100 prefill benchmarks on LLaMA, Qwen, and Vicuna, TileMix recovers long-context quality lost under uniform INT8 and improves prefill throughput over FP16, yielding a controllable accuracy-efficiency frontier across model families. The implementation is available at https://github.com/HanzhiZhang-Ulrica/TileMix.",
@@ -20952,7 +20955,7 @@
       "attempts": 0,
       "next_retry_at": "2026-08-25T03:42:44.378282+00:00",
       "last_error": null,
-      "updated_at": "2026-08-25T06:36:14.186885+00:00",
+      "updated_at": "2026-08-25T09:29:15.242869+00:00",
       "paper": {
         "title": "Beyond Imitation: Filtering On-Policy Distillation by Reasoning Progress",
         "summary": "On-policy distillation (OPD) has emerged as an effective framework for post-training language models by pairing student-generated trajectories with dense token-level supervision from a teacher. However, OPD implicitly assumes that teacher-derived rewards are an appropriate proxy for reasoning progress, and therefore treats all teacher feedback equally during policy optimization. While in practice, this assumption does not always hold. We observe that teacher-derived rewards often conflict with genuine reasoning progress, as reasoning steps with clear reasoning advancement may still receive lower distillation rewards, simply due to deviation from teacher's outputs. To address this mismatch, we propose Reasoning-Progress-Aware Reward Filtering for On-Policy Distillation (R2-OPD), which constructs two within-trajectory rankings of reasoning spans, one from teacher-derived rewards and the other from independently estimated progress reward. Distillation rewards are selectively suppressed whenever the two rankings disagree, reducing supervision that conflicts with reasoning progress while preserving effective teacher guidance. Our approach shows consistent improvement over standard OPD especially regarding reasoning performances.",
@@ -21005,7 +21008,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-25T06:36:33.252289+00:00",
+      "updated_at": "2026-08-25T09:29:15.242854+00:00",
       "paper": {
         "title": "One Polluted Page Is Enough: Evaluating Web Content Pollution in LLM Recommenders",
         "summary": "Search-augmented LLMs increasingly mediate everyday consumer recommendations by retrieving live web content. This creates a new risk: LLM recommenders may consume web content that Generative Engine Optimization (GEO) operators have polluted to mislead them. We ask: to what extent do they become unwitting promoters of fake products? We introduce FORGE (Fake Online Recommendations in Generative Environments), which locally rewrites real products in a frozen set of retrieved web pages into fake ones and measures how often the LLM recommends the fake product, across 225 real products in 15 categories and 5 consumer scenarios. Across 12 commercial and open-weights LLMs, all models are vulnerable: a single polluted page yields fooled rates of up to 27%, while the full top-3 replacement raises this to 73.8%. Vulnerability varies across categories, increasing when models lack stable prior knowledge of the products. Reasoning does not mitigate this vulnerability; instead, it often generates spurious social proof to justify false recommendations. None of the four defenses is adequate: the skepticism prompt can exacerbate vulnerability much like reasoning, the two consensus filters risk suppressing legitimate products, and credibility re-ranking helps every model but removes only a sixth of the fakes. We release the FORGE benchmark and the evaluation code at https://github.com/leoluolol/forge-benchmark.",
@@ -21026,7 +21029,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-25T06:36:44.703494+00:00",
+      "updated_at": "2026-08-25T09:29:15.242859+00:00",
       "paper": {
         "title": "MobilePA-Bench: Benchmarking Mobile Planner Agents on Complex Real-World Tasks",
         "summary": "As on-device LLM agents evolve into personal copilots, the mobile operating system has become a key testbed for this paradigm, making rigorous capability evaluation essential. Yet existing benchmarks fall into two camps, each with a critical blind spot: GUI-centric benchmarks test surface-level screen manipulation while overlooking background tool use and long-horizon planning, whereas static function-calling benchmarks rely on offline API matching that is detached from real runtime constraints. To close this gap, we present \\textbf{MobilePA-Bench}, an interactive, stateful, and tool-centric benchmark for evaluating the tool-calling and planning abilities of mobile planning agents. MobilePA-Bench runs on an executable sandbox that maintains live application databases and returns structured feedback, spanning $13$ functional domains and $212$ realistic mobile tools. Beyond basic tool use, it evaluates a central planning agent along three advanced dimensions: \\emph{(1)~Sub-agent Collaboration}---decomposing a complex task and delegating specialized work to capable sub-agents; \\emph{(2)~Memory Usage}---recalling stored memories, user profiles, and past preferences to resolve implicit requests; and \\emph{(3)~Skill Usage}---invoking pre-packaged composite skills instead of planning every step from scratch. Extensive experiments show that current frontier LLMs remain unreliable in mobile settings: performance drops sharply under strict tool ordering, permission limits, and unexpected runtime errors. By pairing an interactive function-calling sandbox with evidence-based verification, MobilePA-Bench serves as both a practical diagnostic benchmark and an interactive foundation for agentic reinforcement learning---accelerating the development of dependable mobile agents.",
@@ -21056,7 +21059,7 @@
       "attempts": 0,
       "next_retry_at": "2026-08-25T06:36:14.186911+00:00",
       "last_error": null,
-      "updated_at": "2026-08-25T06:36:14.186912+00:00",
+      "updated_at": "2026-08-25T09:29:15.242882+00:00",
       "paper": {
         "title": "Unlocking the Potential of Image Editing via Concept Scaling and Dense Supervision",
         "summary": "Existing image editing frameworks predominantly follow the training paradigm of text-to-image diffusion models. However, extending this paradigm to image editing highlights two inherent discrepancies, specifically, the insufficient attention to edit concept granularity and the training inefficiency caused by sparse supervision signals. To address these issues, we establish a comprehensive hierarchical taxonomy featuring over 1,000 fine-grained edit concepts and build ConceptEdit-12M, a massive dataset of 12 million high-quality editing pairs via an improved synthesis framework. This library-driven approach effectively rectifies the distribution collapse of generated data while ensuring high data fidelity. Furthermore, we propose a dense supervision training strategy that synthesizes multiple non-interfering concepts into single image pairs. By providing richer learning signals, this strategy significantly enhances both training efficiency and overall model performance. Training results validate our strategy, significantly outperforming prior works. Finally, we present ConceptEdit-Bench, a granular evaluation suite designed to diagnose model capabilities across a vast array of real-world scenarios.",
@@ -21073,10 +21076,88 @@
         "pdf_link": "https://arxiv.org/pdf/2608.16812v1"
       },
       "priority_score": 25
+    },
+    "2608_13914v1": {
+      "id": "2608_13914v1",
+      "filename": "post_2608_13914v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-08-25T09:29:15.242875+00:00",
+      "last_error": null,
+      "updated_at": "2026-08-25T09:29:15.242877+00:00",
+      "paper": {
+        "title": "Hybrid Quantum-inspired Kolmogorov-Arnold Networks for Privacy-Aware Federated Biosignal Learning",
+        "summary": "Electrocardiogram (ECG) recordings are sensitive biomedical data, limiting the ability of hospitals and wearable devices to share raw signals for centralized model training. Federated learning addresses this practical privacy constraint by enabling collaborative model training while keeping raw biosignal data at their respective sources. However, federated ECG classification remains challenging due to limited client-side samples, imbalanced arrhythmia labels, and non-independent and identically distributed (non-IID) data across clients. These constraints require classifiers that are both communication-efficient and robust to cross-client distribution shifts. In this work, we evaluate a hybrid quantum-inspired Kolmogorov-Arnold network (HQKAN) against a multilayer perceptron (MLP) for five-class arrhythmia classification on the MIT-BIH dataset and three-class classification on the INCART dataset under federated averaging (FedAvg). Across multiple client configurations, HQKAN improves most aggregate and minority-class metrics while using 37.35% fewer trainable parameters and reducing communication cost by 24.89% on MIT-BIH; on INCART, it achieves corresponding reductions of 44.81% and 36.41%. These results indicate that HQKAN offers a compact, communication-efficient and robust alternative to the MLP baseline for privacy-aware federated learning on biosignal data.",
+        "published": "2026-08-14T03:35:08Z",
+        "authors": [
+          "Chun-Hua Lin",
+          "Samuel Yen-Chi Chen",
+          "Yu-Chao Hsu",
+          "Kuo-Chung Peng",
+          "Jiun-Cheng Jiang",
+          "Chi-Sheng Chen",
+          "Tai-Yue Li",
+          "Nan-Yow Chen",
+          "En-Jui Kuo",
+          "Hsi-Sheng Goan"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.13914v1"
+      },
+      "priority_score": 17
+    },
+    "2608_23565v1": {
+      "id": "2608_23565v1",
+      "filename": "post_2608_23565v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-08-25T09:29:15.242887+00:00",
+      "last_error": null,
+      "updated_at": "2026-08-25T09:29:15.242889+00:00",
+      "paper": {
+        "title": "ReWorld: An Interactive World Model with Long-Horizon Memory",
+        "summary": "An interactive world model must follow the user's actions, remember the places it has shown, and stream in real time. The tension is structural: control wants a short horizon, memory wants an unbounded one. ReWorld separates the two during training and bounds them at inference. Mixed per-head attention windows confine most heads to the recent past while a small set of global heads attends over the entire history, and random head routing keeps either capability from binding to particular heads; random chunk dropping makes sparse histories in-distribution. At inference the whole past lives under a fixed budget: a bounded KV cache backed by a pose-indexed landmark bank, from which the model retrieves the landmarks nearest the current pose. A metric-scale-aligned data engine places eight sources -- Unreal-rendered fly-throughs, game roaming, and real-world footage -- on one physical action scale, so the same key press moves the camera the same distance in every source, and palindrome trajectories supply the revisit evidence that memory training needs. Distribution-matching distillation confined to a LoRA adapter then compresses sampling to four steps: one backbone serves both a high-fidelity multi-step mode and a real-time interactive one, streaming 704x1280 video across photorealistic, game-style, and stylized worlds. Under a three-axis protocol covering action following, long-horizon recall, and video quality, against six recent interactive world models it attains the best control fidelity ($11.95^\\circ$ rotation error and the best camera-motion consistency) and the best generation quality; and on minute-long out-and-back rollouts ($64$\\,s, $384$ latents), its fixed 12-chunk cache still regenerates the starting view -- at rollout lengths where a sliding window has long evicted the evidence and full-KV attention runs out of memory.",
+        "published": "2026-08-24T17:59:05Z",
+        "authors": [
+          "Zhifei Chen",
+          "Luozhou Wang",
+          "Guibao Shen",
+          "Dongyu Yan",
+          "Shuai Yang",
+          "Tianshuo Xu",
+          "Yihua Du",
+          "Wei Wang",
+          "Tianyi Gui",
+          "Lianghua Huang",
+          "Yingcong Chen"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.23565v1"
+      },
+      "priority_score": 20
+    },
+    "2608_22856v1": {
+      "id": "2608_22856v1",
+      "filename": "post_2608_22856v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-08-25T09:29:26.866135+00:00",
+      "paper": {
+        "title": "Same Agent, Different Answers: A Repeat-Aware Audit of Corpus-Induced Answer Churn in Retrieval-Augmented QA",
+        "summary": "A retrieval-augmented QA system can return different answers after an index expansion even when its requested model identifier, prompt, retrieval policy, evidence depth, rendering, and exposed generation controls are held fixed. Aggregate accuracy may hide these changes when gains and losses cancel, while ordinary generation variability makes one-shot comparisons overstate update effects. We call the hidden phenomenon accuracy-blind answer churn and introduce the \\emph{Snapshot Compatibility Audit}, which estimates excess answer churn by subtracting same-snapshot repeat disagreement from cross-snapshot disagreement. We instantiate it by expanding one frozen FineWeb prefix from one to seven shards. In a preregistered 400-question Natural Questions study, normalized-exact and blinded-semantic excess churn are 6.44 and 10.25 percentage points while exact-match accuracy changes by only $-1.50$ points. A post-hoc analysis finds repeat-stable semantic flips on 40/400 questions. A separately preregistered 200-question TriviaQA study yields smaller, directionally consistent excess churn while exact-match accuracy moves in the opposite direction. An outcome-blind post-hoc 100-question subset replication with a second DeepSeek generator and serving configuration finds 8.75 pp of semantic excess churn even as exact match rises by 3.00 percentage points. Answer-level compatibility can therefore fail without a conspicuous or consistently directed utility shift. Retrieval-augmented releases should audit compatibility alongside utility.",
+        "published": "2026-08-24T06:40:09Z",
+        "authors": [
+          "Jingjie Ning",
+          "Xueqi Li"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.22856v1"
+      },
+      "priority_score": 39,
+      "korean_title": "동일한 에이전트, 다른 답변: 검색 증강 질의응답(RAG)에서 말뭉치 변화에 따른 답변 변동에 대한 반복성 인지 감사"
     }
   },
   "last_run": {
-    "started_at": "2026-08-25T06:36:14.187756+00:00",
+    "started_at": "2026-08-25T09:29:15.244191+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -21087,25 +21168,25 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 20691,
-      "output_tokens": 5899,
+      "prompt_tokens": 20651,
+      "output_tokens": 5942,
       "thought_tokens": 0,
-      "total_tokens": 26590,
-      "estimated_usd": 0.01402125
+      "total_tokens": 26593,
+      "estimated_usd": 0.01407575
     },
-    "finished_at": "2026-08-25T06:37:05.489833+00:00"
+    "finished_at": "2026-08-25T09:30:04.418241+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 1519,
-    "prompt_tokens": 3820923,
-    "output_tokens": 1118312,
+    "requests": 1527,
+    "prompt_tokens": 3841574,
+    "output_tokens": 1124254,
     "thought_tokens": 0,
-    "total_tokens": 4939235,
-    "estimated_usd": 2.63269875
+    "total_tokens": 4965828,
+    "estimated_usd": 2.6467745
   },
   "last_publication_run": {
-    "started_at": "2026-08-25T06:36:14.187756+00:00",
+    "started_at": "2026-08-25T09:29:15.244191+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -21116,17 +21197,17 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 20691,
-      "output_tokens": 5899,
+      "prompt_tokens": 20651,
+      "output_tokens": 5942,
       "thought_tokens": 0,
-      "total_tokens": 26590,
-      "estimated_usd": 0.01402125
+      "total_tokens": 26593,
+      "estimated_usd": 0.01407575
     },
-    "finished_at": "2026-08-25T06:37:05.489833+00:00"
+    "finished_at": "2026-08-25T09:30:04.418241+00:00"
   },
   "daily_usage": {
     "date": "2026-08-25",
-    "estimated_usd": 0.04207725,
-    "publications": 12
+    "estimated_usd": 0.056153,
+    "publications": 16
   }
 }
