@@ -1,0 +1,69 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>타일 중심의 혼합 정밀도 어텐션을 통한 LLM 추론 가속: TileMix | ArXiv Translator AI</title><meta name="description" content="타일 중심의 혼합 정밀도 어텐션을 통한 LLM 추론 가속: TileMix"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_17336v1"><meta property="og:type" content="article"><meta property="og:title" content="타일 중심의 혼합 정밀도 어텐션을 통한 LLM 추론 가속: TileMix"><meta property="og:description" content="타일 중심의 혼합 정밀도 어텐션을 통한 LLM 추론 가속: TileMix"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_17336v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="타일 중심의 혼합 정밀도 어텐션을 통한 LLM 추론 가속: TileMix"><meta name="twitter:description" content="타일 중심의 혼합 정밀도 어텐션을 통한 LLM 추론 가속: TileMix"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_17336v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "타일 중심의 혼합 정밀도 어텐션을 통한 LLM 추론 가속: TileMix", "description": "타일 중심의 혼합 정밀도 어텐션을 통한 LLM 추론 가속: TileMix", "datePublished": "2026-08-18", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_17336v1", "author": [{"@type": "Person", "name": "Hanzhi Zhang"}, {"@type": "Person", "name": "Qiao Zhang"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_17336v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_17336v1"});gtag('event', 'paper_view', {"paper_id": "2608_17336v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>타일 중심의 혼합 정밀도 어텐션을 통한 LLM 추론 가속: TileMix</h1><p>타일 중심의 혼합 정밀도 어텐션을 통한 LLM 추론 가속: TileMix</p><pre>타일 중심의 혼합 정밀도 어텐션을 통한 LLM 추론 가속: TileMix
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** TileMix: Tile-Centric Mixed-Precision Attention for LLM Inference Acceleration
+&gt; - **저자:** Hanzhi Zhang, Qiao Zhang, Qinglei Cao, Heng Fan, Yan Huang, Kewei Sha, Yunhe Feng
+&gt; - **발행일:** 2026-08-18
+&gt; - **PDF 링크:** [TileMix: Tile-Centric Mixed-Precision Attention for LLM Inference Acceleration](https://arxiv.org/pdf/2608.17336v1)
+
+
+✨ 3줄 핵심 요약
+*   **TileMix**는 LLM의 긴 문맥 처리 시 발생하는 연산 병목을 해결하기 위해, 어텐션 행렬을 하드웨어 친화적인 &#x27;타일&#x27; 단위로 나누어 정밀도(FP16/INT8)를 동적으로 배정하는 커널 기술입니다.
+*   학습 과정 없이도 기존의 공간적 구조(로컬, 전역, 희소 패턴 등)를 활용하여 정밀도 라우팅을 수행하며, 정보 손실을 최소화하면서도 추론 처리량을 개선합니다.
+*   LLaMA, Qwen, Vicuna 모델을 대상으로 한 벤치마크에서 FP16 대비 처리량 향상과 INT8 단일 정밀도 사용 시 발생하는 품질 저하를 복구하는 성능을 입증했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+거대한 언어 모델(LLM)이 긴 글을 읽을 때 가장 큰 문제는 모든 단어 사이의 관계를 계산하는 &#x27;어텐션(Attention)&#x27; 연산이 너무 느리다는 점입니다. 보통 이를 해결하려 수치 정밀도를 무작정 낮추면(예: INT8) 모델의 똑똑함이 떨어집니다. **TileMix**는 어텐션 행렬을 작은 타일 단위로 쪼갠 뒤, 어떤 부분은 더 정밀하게(FP16), 어떤 부분은 빠르게(INT8) 처리하도록 지능적으로 배분합니다. 핵심은 모델의 성능을 유지하면서도 하드웨어의 연산 효율을 극대화하는 것입니다.
+
+🎯 배경 및 문제점
+*   **긴 문맥의 과부하:** LLM의 어텐션 연산은 입력 시퀀스 길이($L$)의 제곱에 비례하는 연산 복잡도($O(L^2)$)를 가져, 긴 문맥 처리 시 병목 현상이 발생합니다.
+*   **기존 방식의 한계:** 
+    *   **균일 정밀도:** 전체를 INT8로 처리하면 계산은 빠르지만 정확도가 떨어집니다.
+    *   **토큰 선택/희소성:** 특정 토큰만 선택하는 방식은 정보 손실이 발생합니다.
+    *   **IO 최적화:** 기존 fused-attention 커널은 하드웨어 타일링을 활용하지만, 타일별로 정밀도를 다르게 적용하는 기능이 부재합니다.
+
+💡 핵심 기술 및 아키텍처
+*   **타일 기반 정밀도 라우팅:** 어텐션 행렬을 하드웨어 친화적 타일로 분할하고, 각 타일 그룹을 FP16 또는 INT8 연산 경로로 분기하여 처리합니다.
+*   **공유 온라인 소프트맥스:** 서로 다른 정밀도(FP16/INT8)로 계산된 경로가 단일 공유 온라인 소프트맥스 상태를 업데이트하도록 하여 일관성을 유지합니다.
+*   **비트마스크 라우팅:** 정밀도 결정 사항을 압축된 비트마스크에 담아 효율적으로 연산을 제어합니다.
+*   **학습 없는 구조 활용:** 별도의 학습 없이도 BigBird, SpTrans 등 이미 알려진 공간적 중요도 구조를 정밀도 배정 전략으로 변환하여 적용합니다.
+
+📊 실험 결과 분석
+*   **성능:** FP16 연산 대비 전반적인 추론 처리량이 향상되었습니다. (구체적인 수치 증감률은 발췌문에 명시되지 않음)
+*   **품질 복구:** 균일한 INT8 사용 시 발생하는 긴 문맥의 정확도 손실을 상당 부분 복구했습니다.
+*   **중요도 보호:** SpTrans 등 구조적 라우팅 방식을 사용할 경우, 모델이 중요하게 생각하는 정보를 INT8 경로로 유실하는 비율이 매우 낮게 유지됨을 확인했습니다 (예: SpTrans25 설정 시 중요도 높은 정보의 INT8 할당률은 약 8.5%에 불과).
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+*   **효율적 LLM 서비스:** 긴 문서를 다루는 요약, 다중 페이지 문서 기반 질의응답(QA), RAG(검색 증강 생성) 서비스에서 추론 속도를 높여 사용자 경험을 개선합니다.
+*   **범용성:** LLaMA, Qwen, Vicuna 등 다양한 모델 계열에 즉시 적용 가능하며, Grouped-Query Attention 및 가변 길이 배치 처리를 지원하여 실무 적용성이 높습니다.
+*   **공개된 구현체:** 개발자들은 GitHub(https://github.com/HanzhiZhang-Ulrica/TileMix)를 통해 실제 커널 구현을 활용할 수 있습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2608.17336 TileMix: Tile-Centric Mixed-Precision Attention for LLM Inference Acceleration](https://arxiv.org/abs/2608.17336)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;TileMix의 &#x27;공유 온라인 소프트맥스&#x27; 접근 방식은 흥미롭지만, 정밀도 라우팅 과정에서 발생하는 오버헤드와 비트마스크 동기화가 실제 하드웨어 워프(warp) 실행 효율을 얼마나 갉아먹을지 의문입니다. 특히 런타임에 타일별로 분기하는 로직이 분기 예측 실패(branch misprediction)를 유발하지 않도록 커널을 어떻게 최적화했는지에 대한 더 깊은 레이턴시 분석이 필요해 보이네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 분기 오버헤드는 우려되지만, 실무자 입장에서는 &#x27;학습 없이&#x27; 즉시 적용 가능하다는 게 깡패 같은 장점입니다. 기존에 이미 돌고 있는 RAG 서비스에 이 커널만 끼워 넣어도 긴 문맥 처리량(throughput)을 20~30%는 무난히 올릴 수 있을 것 같거든요. 다만, 비트마스크 라우팅이 커스텀 CUDA 커널 개발 난이도를 얼마나 올릴지가 관건이겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;두 분 다 너무 보수적이신 거 아니에요? ㅋㅋ 일단 GitHub 스타 찍고 바로 돌려봤는데, LLaMA-3 기반으로 테스트해보니 확실히 품질 복구율이 놀랍습니다. 기존에 INT8 퀀타이징하고 성능 떨어져서 울며 겨자 먹기로 FP16 유지하던 케이스들, 이제 이거 쓰면 VRAM 아끼면서 속도까지 챙길 수 있겠는데요? 당장 다음 논문 세미나 주제는 이걸로 가시죠!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
