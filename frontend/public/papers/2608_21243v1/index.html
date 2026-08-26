@@ -1,0 +1,70 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>지식 그래프를 활용한 순차 추천 시스템에서의 행동 노이즈 제거 | ArXiv Translator AI</title><meta name="description" content="지식 그래프를 활용한 순차 추천 시스템에서의 행동 노이즈 제거"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_21243v1"><meta property="og:type" content="article"><meta property="og:title" content="지식 그래프를 활용한 순차 추천 시스템에서의 행동 노이즈 제거"><meta property="og:description" content="지식 그래프를 활용한 순차 추천 시스템에서의 행동 노이즈 제거"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_21243v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="지식 그래프를 활용한 순차 추천 시스템에서의 행동 노이즈 제거"><meta name="twitter:description" content="지식 그래프를 활용한 순차 추천 시스템에서의 행동 노이즈 제거"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_21243v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "지식 그래프를 활용한 순차 추천 시스템에서의 행동 노이즈 제거", "description": "지식 그래프를 활용한 순차 추천 시스템에서의 행동 노이즈 제거", "datePublished": "2026-08-21", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_21243v1", "author": [{"@type": "Person", "name": "Zichun Jin"}, {"@type": "Person", "name": "Zihan Zhou"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_21243v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_21243v1"});gtag('event', 'paper_view', {"paper_id": "2608_21243v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>지식 그래프를 활용한 순차 추천 시스템에서의 행동 노이즈 제거</h1><p>지식 그래프를 활용한 순차 추천 시스템에서의 행동 노이즈 제거</p><pre>지식 그래프를 활용한 순차 추천 시스템에서의 행동 노이즈 제거
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Adapting Knowledge Graphs for Behavior Denoising in Sequential Recommendation
+&gt; - **저자:** Zichun Jin, Zihan Zhou, Yinan Liu, Bin Wang, Xiaochun Yang
+&gt; - **발행일:** 2026-08-21
+&gt; - **PDF 링크:** [Adapting Knowledge Graphs for Behavior Denoising in Sequential Recommendation](https://arxiv.org/pdf/2608.21243v1)
+
+
+✨ 3줄 핵심 요약
+* 사용자 이력 중 비효율적인 상호작용을 제거하기 위해, 기존 로그 기반 방식 대신 지식 그래프(KG)의 구조적 관계를 활용하는 &#x27;AdaptedKG&#x27;를 제안함.
+* 구조적으로 유사한 대안 항목들과 비교하여 유의미한 관계 경로를 추출하고, 이를 통해 각 상호작용의 신뢰도를 점수화하여 학습에 반영함.
+* 추천 모델 본체 수정이나 추론 과정의 KG 접근 없이 오프라인에서 사전 계산만으로 기존 모델들의 성능을 향상함.
+
+📖 쉽게 풀어쓴 1분 핵심
+순차 추천 시스템은 사용자의 과거 기록을 바탕으로 다음 아이템을 예측합니다. 하지만 기록 속에는 일시적인 변덕이나 우연한 행동 등 실제 취향과 거리가 먼 정보가 섞여 있어 예측을 방해합니다. 기존에는 로그의 순서나 통계만 보고 이를 판단했으나, 본 논문은 &#x27;지식 그래프&#x27;를 도입해 아이템 간의 실제 관계를 근거로 삼습니다. 특히 단순히 그래프의 연결성만 보는 것이 아니라, 비슷한 특성을 가진 다른 아이템들과 비교하는 &#x27;구조적 매칭&#x27; 과정을 거쳐 특정 행동이 정말로 중요한지 정밀하게 걸러냅니다. 이 방식은 추천 모델 자체를 바꾸지 않고도 학습 단계에서 유효한 정보만 골라내 성능을 높여줍니다.
+
+🎯 배경 및 문제점
+* **데이터의 잡음:** 실제 사용자 로그에는 장기적 취향 외에도 일시적 필요나 우연한 행동이 섞여 있어, 이를 그대로 학습하면 추천 품질이 떨어짐.
+* **기존 방식의 한계:** 기존 노이즈 제거 방법은 아이템 간의 명시적인 지식 관계(Knowledge Graphs)를 고려하지 않고, 주로 공동 발생 빈도나 모델의 예측치에만 의존함.
+* **KG 활용의 어려움:** 단순히 지식 그래프를 이용하면 인기가 많거나 연결이 풍부한 아이템에 편향된 결과를 낳기 쉬워, 신뢰도를 객관적으로 평가하기 어려움.
+
+💡 핵심 기술 및 아키텍처
+* **구조적 매칭 기반의 2단계 프로세스:**
+    1. **로컬 KG 적응(Local KG Adaptation):** 현재 상황과 구조적으로 유사한 대안 상황들을 생성하여, 우연히 발생한 관계가 아닌 통계적으로 유의미한 &#x27;관계 경로&#x27;만 골라내 로컬 그래프 뷰를 만듦.
+    2. **참조 기반 보정(Reference Calibration):** 선택된 관계 안에서 특정 상호작용이 얼마나 지지를 받는지, 비슷한 속성을 가진 참조 아이템들과 비교하여 최종 신뢰도 계수를 산출함.
+* **학습 효율성:** 산출된 신뢰도 계수는 과거 기록의 임베딩을 조정하고 타겟 손실 함수를 재가중(reweight)하는 데 사용됨. 모든 계산은 오프라인에서 이루어지므로, 실시간 추론 시에는 KG를 조회할 필요가 없음.
+
+📊 실험 결과 분석
+* **성능 향상:** SASRec, STEAM, BirDRec, SSDRec 등 기존의 다양한 추천 모델들에 적용한 결과, 모든 지표(HR, NDCG 등)에서 성능 향상이 확인됨.
+* **구성 요소 검증:** 
+    * 로컬 적응 단계가 모델 성능에 가장 큰 영향을 미치며, 구조적 매칭을 통한 Null/Reference 보정 과정이 없는 경우 성능이 저하됨을 입증함.
+* **편향 감소:** 매칭 참조 샘플링을 통해, 특정 아이템의 KG 연결성이나 인기도에 따라 신뢰도 계수가 왜곡되는 의존성을 성공적으로 낮춤.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **적용 범용성:** 기존 추천 엔진을 크게 수정하지 않고도 &#x27;데이터 정제(Denoising)&#x27; 단계로 추가할 수 있어, 산업계의 기존 대규모 추천 시스템에 쉽게 결합 가능함.
+* **데이터 신뢰성 확보:** 광고 타겟팅이나 상품 추천 시스템에서 사용자의 우발적 클릭이나 일회성 검색 데이터를 효과적으로 분리해냄으로써, 비즈니스 지표 개선과 사용자 경험 향상에 기여할 수 있음.
+* **기술의 이점:** 추론(Inference) 단계에 복잡한 지식 그래프 접근이 필요 없으므로, 사용자에게 실시간 서비스를 제공해야 하는 현장의 속도 문제를 해결함.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Fugu-MT 論文翻訳 (概要): Adapting Knowledge Graphs for Behavior Denoising in ...](https://fugumt.com/fugumt/paper_check/2608.21243v1)
+&gt; - [2608.21243v1 Adapting Knowledge Graphs for Behavior Denoising in Sequential Recommendation](https://arxiv.org/abs/2608.21243v1)
+&gt; - [Adapting Knowledge Graphs for Behavior Denoising in Sequential Recommendation](https://arxiv.org/html/2608.21243v1)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;데이터 노이즈를 KG 구조적 유사도로 해결하려는 시도 자체는 흥미롭지만, &#x27;로컬 KG 적응&#x27; 과정에서 발생하는 계산 비용이 과연 대규모 산업 데이터셋에서도 효율적일지 의문이군요. 또한, 참조 기반 보정 시 유사도 계산 기준이 되는 아이템 그래프의 품질이 낮다면 오히려 편향된 노이즈를 강화하는 역효과가 나지 않을까요?&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 KG 퀄리티가 핵심이긴 한데, 이 논문의 가장 큰 장점은 &#x27;오프라인 사전 계산&#x27;이라는 점입니다. 실시간 추론 레이턴시에 영향을 안 준다는 것만으로도 팀장님 설득하기에 충분하거든요. 사실 우리 시스템에서도 롱테일 아이템 노이즈 때문에 골치였는데, 기존 아키텍처 건드리지 않고 파이프라인에 가중치만 끼워 넣으면 되니 당장 PoC 돌려볼 가치는 있어 보입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;선배님, 이미 ArXiv 뜨자마자 코드 뜯어보고 있는데, Re-weighting 방식이 생각보다 깔끔합니다! 단순히 로그 빈도만 따지던 구시대적 방법론에서 벗어나서 KG의 구조적 맥락을 활용한 게 핵심이네요. 다만 다음 주 학회 발표 준비할 때 &#x27;데이터 편향성 제거&#x27; 부분에서 공격받기 딱 좋으니, Ablation study 좀 더 깊게 파봐야 할 것 같아요. 근데 이거 정말 SASRec 같은 고전 모델에도 잘 붙나요?&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
