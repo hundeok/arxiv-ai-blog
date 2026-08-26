@@ -1,0 +1,69 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>온톨로지 기반 AI 모델 및 데이터셋 관리 | ArXiv Translator AI</title><meta name="description" content="온톨로지 기반 AI 모델 및 데이터셋 관리"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_21224v1"><meta property="og:type" content="article"><meta property="og:title" content="온톨로지 기반 AI 모델 및 데이터셋 관리"><meta property="og:description" content="온톨로지 기반 AI 모델 및 데이터셋 관리"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_21224v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="온톨로지 기반 AI 모델 및 데이터셋 관리"><meta name="twitter:description" content="온톨로지 기반 AI 모델 및 데이터셋 관리"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_21224v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "온톨로지 기반 AI 모델 및 데이터셋 관리", "description": "온톨로지 기반 AI 모델 및 데이터셋 관리", "datePublished": "2026-08-21", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_21224v1", "author": [{"@type": "Person", "name": "Jan Novacek"}, {"@type": "Person", "name": "Ali Ahari"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_21224v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_21224v1"});gtag('event', 'paper_view', {"paper_id": "2608_21224v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>온톨로지 기반 AI 모델 및 데이터셋 관리</h1><p>온톨로지 기반 AI 모델 및 데이터셋 관리</p><pre>온톨로지 기반 AI 모델 및 데이터셋 관리
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Ontology-supported AI Model and Dataset Management
+&gt; - **저자:** Jan Novacek, Ali Ahari, Tobias Müller, Sebastian Reiter, Alexander Viehl, Oliver Bringmann
+&gt; - **발행일:** 2026-08-21
+&gt; - **PDF 링크:** [Ontology-supported AI Model and Dataset Management](https://arxiv.org/pdf/2608.21224v1)
+
+
+✨ 3줄 핵심 요약
+* AI 모델과 데이터셋의 체계적인 관리와 협업을 위해 온톨로지 기반의 &#x27;AIMDEO&#x27; 프레임워크와 이를 적용한 플랫폼(AIMDEP)을 제안합니다.
+* 기존 플랫폼들의 메타데이터 표준화 부족 문제를 해결하여 산업 현장에서 AI 자산의 검색, 교환 및 운용 효율성을 높입니다.
+* 모델과 데이터의 의미적 격차(semantic gap)를 줄여, 복잡한 공급망 환경에서도 신뢰할 수 있는 협업 환경을 구축합니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+오늘날 많은 기업이 AI 모델을 개발하고 활용하지만, 모델과 데이터에 대한 설명이 제각각이라 이를 공유하거나 재사용하기 매우 어렵습니다. 이 논문은 마치 도서관의 분류 체계처럼, AI 모델과 데이터의 핵심 속성을 정의하는 &#x27;온톨로지(AIMDEO)&#x27;를 만들었습니다. 이를 기반으로 만든 플랫폼(AIMDEP)은 사용자가 등록한 모델과 데이터를 표준화된 방식으로 저장하고 검색하며, 심지어 모델을 바로 실행해 볼 수 있는 환경까지 제공합니다. 이를 통해 산업 현장에서 파편화된 AI 자산을 체계적으로 통합 관리할 수 있습니다.
+
+🎯 배경 및 문제점
+* **의미적 격차(Semantic Gap):** 현재 Hugging Face 등에서 제공하는 설명은 주로 비정형 자연어 텍스트에 의존하여 모델의 기능적 범위나 데이터 속성을 명확히 파악하기 어렵습니다.
+* **상호운용성 부족:** MLflow, H2O, Ray와 같은 기존 플랫폼들은 메타데이터를 지원하지만, 서로 다른 환경 간의 메타데이터 교환을 위한 공통 표준이 부재합니다.
+* **산업적 요구:** 특히 자동차 산업과 같이 공급망을 따라 모델과 데이터가 이동해야 하는 환경에서는, 명확한 의미 체계가 담긴 구조화된 메타데이터가 필수적입니다.
+
+💡 핵심 기술 및 아키텍처
+* **AIMDEO (AI Model and Dataset Exchange Ontology):** 웹 온톨로지 언어(OWL)로 설계된 개념 모델입니다. 총 47개의 클래스와 29개의 객체 속성 등으로 구성되어 AI 자산의 메타데이터를 정형화합니다.
+* **AIMDEP (AI Model and Dataset Exchange Platform):** 
+    * **자산 등록:** Scikit-Learn, TensorFlow, PyTorch 등 주요 프레임워크를 지원하며, 온톨로지 기반의 파라미터 및 메타데이터를 반자동으로 추출/정의합니다.
+    * **운용 기능:** Plotly 엔진 기반의 데이터 시각화, Gradio 기반의 모델 인터페이스 제공, OpenSearch를 활용한 자산 검색 및 마이크로 온톨로지 형식의 메타데이터 내보내기 기능을 갖추었습니다.
+
+📊 실험 결과 분석
+* 온톨로지 설계의 복잡도와 구조를 나타내는 측정 지표가 제시되었습니다. (주요 지표: 공리 수 414개, 논리 공리 수 178개, DL 표현력 SHOIQ(D) 등)
+* 본 논문은 제안된 플랫폼이 실제 협업 시나리오에서 모델의 입력/출력값, 파라미터, 성능 지표(예: 정확도 0.9794) 등을 마이크로 온톨로지 형태로 성공적으로 추출하고 관리할 수 있음을 입증했습니다.
+* 구체적인 성능 개선 수치나 비교 실험 데이터는 본 발췌본에 포함되어 있지 않습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **공급망 최적화:** 제품 개발 환경과 Tier-n으로 이어지는 복잡한 공급망 내에서 AI 자산의 투명한 관리와 원활한 이전이 가능해집니다.
+* **협업 효율성:** 기업 내부나 외부 파트너와의 협업 시, 동일한 의미 체계를 사용함으로써 모델 탐색 비용을 줄이고 자산의 재사용성을 극대화합니다.
+* **실무 적용:** 실시간 중요 시스템(real-time critical systems) 환경에서의 모델 사용 사례를 통해, 신뢰성 있는 AI 모델 개발 및 배포 환경을 지원합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2608.21224v1 Ontology-supported AI Model and Dataset Management](https://arxiv.org/abs/2608.21224v1)
+&gt; - [Ontology-Supported AI Model and Dataset Management | Request PDF](https://www.researchgate.net/publication/386994685_Ontology-Supported_AI_Model_and_Dataset_Management)
+&gt; - [Ontology-Supported AI Model and Dataset Management | IEEE Conference Publication | IEEE Xplore](https://ieeexplore.ieee.org/document/10774524/)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;온톨로지 기반의 메타데이터 표준화라... 시도는 좋으나, 47개의 클래스와 29개의 속성만으로 현대의 거대 모델이나 복잡한 데이터 파이프라인을 온전히 담아낼 수 있을지 의문입니다. OWL 언어의 표현력(SHOIQ)은 인정하지만, 실무에서 이 정적인 스키마를 유지보수하는 비용이 모델 개발 비용보다 커지는 &#x27;오버엔지니어링&#x27;의 함정에 빠질 가능성이 다분해 보이네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에선 &#x27;유지보수 지옥&#x27;이 눈에 선합니다. 하지만 제조나 공급망 쪽 파트너사들과 데이터셋 주고받을 때, 매번 커스텀 API 짜고 규격 맞추느라 날리는 리소스가 엄청난 건 사실이에요. AIMDEP이 제안하는 자동 추출 기능이 실제 환경에서 얼마나 &#x27;노이즈 없이&#x27; 메타데이터를 뱉어내느냐가 핵심이겠네요. 일단 오픈소스화되면 사내 MLOps 파이프라인에 PoC로 붙여볼 가치는 있어 보입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;선배님들, 너무 보수적인 거 아니에요? 요즘 LLM으로 온톨로지 자동 생성하는 연구도 쏟아지는데, AIMDEO를 LLM 에이전트랑 결합하면 얘기가 다르죠. 데이터셋의 정형화된 시맨틱 태깅만 확실히 되어도, 에이전트들이 알아서 모델을 검색하고 체이닝하는 &#x27;AI 자산 자율 마켓플레이스&#x27;가 가능해집니다. 이거 잘하면 시맨틱 웹의 부활을 AI 시대에 맞게 재해석하는 킬러 논문이 될 수도 있을 것 같아요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
