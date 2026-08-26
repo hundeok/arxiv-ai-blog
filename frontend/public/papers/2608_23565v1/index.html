@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ReWorld: 장기 기억 능력을 갖춘 상호작용형 세계 모델 | ArXiv Translator AI</title><meta name="description" content="ReWorld: 장기 기억 능력을 갖춘 상호작용형 세계 모델"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_23565v1"><meta property="og:type" content="article"><meta property="og:title" content="ReWorld: 장기 기억 능력을 갖춘 상호작용형 세계 모델"><meta property="og:description" content="ReWorld: 장기 기억 능력을 갖춘 상호작용형 세계 모델"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_23565v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="ReWorld: 장기 기억 능력을 갖춘 상호작용형 세계 모델"><meta name="twitter:description" content="ReWorld: 장기 기억 능력을 갖춘 상호작용형 세계 모델"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_23565v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "ReWorld: 장기 기억 능력을 갖춘 상호작용형 세계 모델", "description": "ReWorld: 장기 기억 능력을 갖춘 상호작용형 세계 모델", "datePublished": "2026-08-24", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_23565v1", "author": [{"@type": "Person", "name": "Zhifei Chen"}, {"@type": "Person", "name": "Luozhou Wang"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_23565v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_23565v1"});gtag('event', 'paper_view', {"paper_id": "2608_23565v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>ReWorld: 장기 기억 능력을 갖춘 상호작용형 세계 모델</h1><p>ReWorld: 장기 기억 능력을 갖춘 상호작용형 세계 모델</p><pre>ReWorld: 장기 기억 능력을 갖춘 상호작용형 세계 모델
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** ReWorld: An Interactive World Model with Long-Horizon Memory
+&gt; - **저자:** Zhifei Chen, Luozhou Wang, Guibao Shen, Dongyu Yan, Shuai Yang, Tianshuo Xu, Yihua Du, Wei Wang, Tianyi Gui, Lianghua Huang, Yingcong Chen
+&gt; - **발행일:** 2026-08-24
+&gt; - **PDF 링크:** [ReWorld: An Interactive World Model with Long-Horizon Memory](https://arxiv.org/pdf/2608.23565v1)
+
+
+✨ 3줄 핵심 요약
+- **기억과 제어의 분리 학습:** 모델 학습 시 &#x27;제어(단기)&#x27;와 &#x27;기억(장기)&#x27;을 위한 어텐션 윈도우를 분리하고 헤드 라우팅을 최적화하여 상충 문제를 해결했습니다.
+- **고정 예산 메모리:** 추론 단계에서 &#x27;랜드마크 뱅크&#x27;를 활용해 고정된 KV 캐시 용량 내에서도 과거 장면을 정확히 재현합니다.
+- **실시간 스트리밍:** LoRA 증류 기술을 통해 단 4단계의 샘플링만으로 고해상도 영상을 실시간 스트리밍할 수 있습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+사용자의 조작에 반응하는 &#x27;세계 모델&#x27;은 현재의 움직임을 제어하는 능력과, 과거에 방문했던 장소를 기억하는 능력을 동시에 갖춰야 합니다. 하지만 기존 모델들은 이 두 가지를 동시에 학습할 때 서로 간섭을 일으켜 성능이 저하되는 문제가 있었습니다. **ReWorld**는 학습 시 어텐션 기능을 정교하게 나누어 단기 반응성과 장기 기억력을 모두 확보했습니다. 특히, 추론 과정에서는 랜드마크 뱅크라는 기억 저장소를 사용해 제한된 메모리 안에서도 방대한 과거 정보를 효율적으로 불러와, 사용자가 다시 방문한 장소를 일관성 있게 그려냅니다.
+
+🎯 배경 및 문제점
+- **제어와 기억의 상충:** 모델이 현재 액션에 즉각 반응(제어)하게 만들면 장기 기억 능력이 떨어지고, 반대로 장기 기억에 집중하면 제어 정확도가 낮아지는 구조적 모순이 발생합니다.
+- **기억의 한계:** 기존의 &#x27;슬라이딩 윈도우&#x27; 방식은 오래된 정보를 쉽게 잊어버리고, &#x27;전체 KV 캐시&#x27; 방식은 롤아웃이 길어질수록 메모리가 부족해지는 문제가 있습니다.
+- **실시간성 부족:** 복잡한 연산으로 인해 상호작용 가능한 수준의 속도로 영상을 스트리밍하는 데 어려움이 있었습니다.
+
+💡 핵심 기술 및 아키텍처
+- **혼합 어텐션 윈도우:** 대부분의 어텐션 헤드는 최근 정보를 처리하게 하고, 일부 헤드는 전체 과거 정보를 다루도록 설계했습니다. 랜덤 헤드 라우팅으로 각 헤드가 특정 기능에 고착되는 것을 방지합니다.
+- **랜드마크 뱅크:** 추론 시 과거 정보가 캐시 용량을 초과하면, 가장 가까운 위치의 &#x27;랜드마크&#x27; 데이터를 우선적으로 검색해 캐시에 다시 로드합니다.
+- **메트릭 정렬 데이터 엔진:** 게임 엔진(Unreal Engine), 실사 영상 등 8개의 서로 다른 데이터 소스를 동일한 물리적 거리 단위로 통일하여 모델이 일관된 카메라 이동을 학습하게 했습니다.
+- **LoRA 기반 증류:** LoRA 어댑터를 사용해 고성능 다단계 모델을 실시간 구동 가능한 4단계 모델로 효율적으로 압축했습니다.
+
+📊 실험 결과 분석
+- **제어 성능:** 최근 6개 상호작용 모델과의 비교에서 회전 오류 11.95도로 가장 뛰어난 제어 정밀도를 보였으며, 카메라 이동의 일관성 면에서도 최고 성능을 기록했습니다.
+- **장기 기억력:** 64초 길이의 롤아웃 테스트에서, 고정된 12개 덩어리의 캐시만 사용하고도 시작 지점의 장면을 정확히 재현했습니다. 이는 기존의 슬라이딩 윈도우 방식이 정보를 모두 잃어버리는 시점에서도 ReWorld는 기억을 유지함을 의미합니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+- **몰입형 환경 생성:** 게임이나 메타버스 서비스에서 사용자의 자유로운 이동에 따라 끊김 없이 변화하는 방대한 3D 환경을 실시간으로 스트리밍하는 데 활용될 수 있습니다.
+- **지능형 가상 에이전트:** 사용자가 이전에 방문했던 장소를 기억하는 능력이 필요한 시뮬레이션 환경이나 가상 비서 시스템의 핵심 기술로 적용될 가능성이 큽니다.
+- **연구적 시사점:** 데이터 소스가 달라도 메트릭 기반으로 데이터를 정렬하여 학습 효율을 높이는 방식은 향후 복합 데이터셋을 다루는 다양한 AI 연구의 표준이 될 수 있습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [GitHub - zhifeichen097/ReWorld: ReWorld: An Interactive World Model with Long-Horizon Memory · GitHub](https://github.com/zhifeichen097/ReWorld)
+&gt; - [ReWorld: An Interactive World Model with Long-Horizon Memory](https://arxiv.org/abs/2608.23565)
+&gt; - [ReWorld: An Interactive World Model with Long-Horizon Memory](https://huggingface.co/papers/2608.23565)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;제어와 기억의 상충(Trade-off) 문제를 헤드 라우팅 최적화로 풀어낸 접근은 흥미롭습니다만, 과연 이 &#x27;랜드마크 뱅크&#x27;가 정적인 환경을 넘어 동적인 객체가 많은 복잡한 시나리오에서도 일관성을 유지할 수 있을지 의문입니다. 메모리 효율을 위해 랜드마크를 선별하는 과정에서 정보 손실이 발생할 텐데, 이에 대한 엔트로피 분석이 논문에 부족해 보이네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님, 현업에서는 일단 돌아가는 게 중요합니다. 4단계 샘플링으로 실시간 스트리밍이 가능하다는 건 게임이나 메타버스 쪽에서 바로 프로덕션 붙여볼 만한 수준이라는 뜻이거든요. 다만 LoRA 증류가 고정된 랜드마크 뱅크 위에서 얼마나 범용적인 성능을 보여줄지가 관건이겠네요. 서버 사이드에서 KV 캐시 관리하는 것보다 훨씬 비용 효율적이라 기대가 큽니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;선배님들, 핵심은 &#x27;메트릭 정렬 데이터 엔진&#x27; 아닐까요? 8개 데이터 소스를 물리적 거리 단위로 통일했다는 게 진짜 신의 한 수인 것 같아요. 다들 성능 타령할 때 데이터 파이프라인 표준화부터 박살 낸 게 힙합니다. 저 이거 구현해 보려고 오늘 밤새서 환경 세팅 들어갑니다. 벌써 SOTA 찍을 생각에 가슴이 웅장해지네요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
