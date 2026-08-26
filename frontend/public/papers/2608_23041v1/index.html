@@ -1,0 +1,69 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AutoSaddler: 실행 흔적을 활용한 지속적 업데이트 기반의 자동화된 하니스 최적화 | ArXiv Translator AI</title><meta name="description" content="AutoSaddler: 실행 흔적을 활용한 지속적 업데이트 기반의 자동화된 하니스 최적화"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_23041v1"><meta property="og:type" content="article"><meta property="og:title" content="AutoSaddler: 실행 흔적을 활용한 지속적 업데이트 기반의 자동화된 하니스 최적화"><meta property="og:description" content="AutoSaddler: 실행 흔적을 활용한 지속적 업데이트 기반의 자동화된 하니스 최적화"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_23041v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="AutoSaddler: 실행 흔적을 활용한 지속적 업데이트 기반의 자동화된 하니스 최적화"><meta name="twitter:description" content="AutoSaddler: 실행 흔적을 활용한 지속적 업데이트 기반의 자동화된 하니스 최적화"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_23041v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "AutoSaddler: 실행 흔적을 활용한 지속적 업데이트 기반의 자동화된 하니스 최적화", "description": "AutoSaddler: 실행 흔적을 활용한 지속적 업데이트 기반의 자동화된 하니스 최적화", "datePublished": "2026-08-24", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_23041v1", "author": [{"@type": "Person", "name": "Sungho Park"}, {"@type": "Person", "name": "Wonjoong Kim"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_23041v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_23041v1"});gtag('event', 'paper_view', {"paper_id": "2608_23041v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>AutoSaddler: 실행 흔적을 활용한 지속적 업데이트 기반의 자동화된 하니스 최적화</h1><p>AutoSaddler: 실행 흔적을 활용한 지속적 업데이트 기반의 자동화된 하니스 최적화</p><pre>AutoSaddler: 실행 흔적을 활용한 지속적 업데이트 기반의 자동화된 하니스 최적화
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** AutoSaddler: Automatic Harness Optimization with Durable Updates from Agent Execution Traces
+&gt; - **저자:** Sungho Park, Wonjoong Kim, Rongyuan Tan, Jue Zhang, Wook-Shin Han, Pengfei Gao, Chanyoung Park, Yongqiang Yao, Rao Fu, Elsie Nallipogu, Qingwei Lin, Saravan Rajmohan, Dongmei Zhang
+&gt; - **발행일:** 2026-08-24
+&gt; - **PDF 링크:** [AutoSaddler: Automatic Harness Optimization with Durable Updates from Agent Execution Traces](https://arxiv.org/pdf/2608.23041v1)
+
+
+✨ 3줄 핵심 요약
+* **AutoSaddler**는 LLM 에이전트의 안정성을 높이기 위한 외부 하니스(Harness)를 자동으로 최적화하는 프레임워크입니다.
+* 실패한 에이전트의 실행 흔적을 학습 데이터로 활용하여, 하니스를 마치 코드처럼 반복적으로 수정·업데이트합니다.
+* GAIA2, SWE-Bench Pro, Terminal-Bench 2.0 등에서 기존 방식 대비 큰 폭의 성능 향상을 입증했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+LLM 에이전트는 복잡하고 긴 작업을 수행할 때 사소한 실수가 누적되어 결국 실패하는 경우가 많습니다. 이를 방지하기 위해 에이전트를 감싸는 &#x27;하니스(Harness, 제어 로직 및 설정)&#x27;를 수동으로 설계하지만, 이는 매우 어렵고 비용이 많이 듭니다. **AutoSaddler**는 이 하니스 개선 과정을 인공지능이 스스로 학습하게 만든 시스템입니다. 에이전트가 왜 실패했는지 그 실행 흔적을 분석하고, 하니스를 최적의 코드 상태로 자동 수정하여 에이전트가 더 신뢰할 수 있게 만듭니다.
+
+🎯 배경 및 문제점
+* **신뢰성 문제**: LLM 에이전트는 긴 호흡의 작업에서 작은 오류가 복합적으로 작용해 최종 실패로 이어지는 &#x27;들쭉날쭉한 지능(jagged intelligence)&#x27; 문제를 보입니다.
+* **수동 튜닝의 한계**: 하니스 설계는 프롬프트, 도구 설정, 제어 로직 등 방대한 탐색 공간이 존재하며, 평가에 많은 실행 단계가 필요해 수동으로 최적화하기에는 시간과 비용이 너무 많이 듭니다.
+
+💡 핵심 기술 및 아키텍처
+AutoSaddler는 하니스 개선을 오프라인 학습 문제로 정의하고 다음과 같은 핵심 단계를 거칩니다.
+1. **실패 흔적 진단**: 에이전트 실행 실패의 원인을 심층적으로 분석합니다.
+2. **구조적 패치 생성**: 하니스를 단순한 설정값이 아닌 &#x27;코드&#x27;로 간주하고, 이를 수정하기 위한 구조화된 패치를 생성합니다.
+3. **검증 기반 업데이트 선택**: 다양한 패치 후보 중 범용성을 고려하여 성능 향상에 기여하는 최적의 업데이트를 선택합니다.
+* *참고: 논문은 이 과정이 &#x27;깊은 디버깅&#x27;, &#x27;표적 수정&#x27;, &#x27;범용성 고려&#x27;라는 세 가지 요소에 의해 최적화된다고 밝힙니다.*
+
+📊 실험 결과 분석
+* **성능 향상**: GAIA2, SWE-Bench Pro, Terminal-Bench 2.0 벤치마크에서 각각 9.0%, 9.6%, 10.0% 포인트의 성능 향상을 기록했습니다.
+* **효율성**: GAIA2 테스트에서 기존 방식인 Meta-Harness나 GEPA보다 훨씬 적은 수의 작업 실행으로 높은 정확도에 도달했습니다.
+* **범용성**: 강력한 모델(Claude Opus)로 최적화한 하니스를 약한 모델(Claude Haiku)에 적용해도 성능 향상(+5.6% 포인트)이 확인되어, 모델 간 전이 가능성을 입증했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **에이전트 시스템의 신뢰성 확보**: 복잡한 비즈니스 로직이나 자동화된 에이전트 배포 시, 하니스 설계에 소요되는 인적 자원을 대폭 절감할 수 있습니다.
+* **실무 적용 고려사항**: 논문은 자동화된 코드 수정이 시스템의 핵심 기능을 변경할 수 있으므로, 실무 배포 전에는 반드시 인간의 검토나 추가적인 보안 검증 과정을 거칠 것을 강조합니다.
+* **한계 및 향후 과제**: 현재는 정답이 있는 학습 환경을 가정하고 있으나, 향후 실제 환경에서 정답 라벨 없이 실패 신호를 파악하는 비지도 학습 방식이나 상태 유지형 환경으로의 확장이 연구될 전망입니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2608.23041 AutoSaddler: Automatic Harness Optimization with ...](https://arxiv.org/abs/2608.23041)
+&gt; - [Paper page - AutoSaddler: Automatic Harness Optimization with ...](https://huggingface.co/papers/2608.23041)
+&gt; - [GitHub - microsoft/AutoSaddler](https://github.com/microsoft/AutoSaddler)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문을 읽어보니 하니스를 &#x27;코드 패치&#x27; 관점에서 접근한 점은 흥미롭군요. 하지만 &#x27;구조적 패치 생성&#x27; 과정에서 발생할 수 있는 가드레일 붕괴 문제는 어떻게 통제할 건가요? 자동화된 코드 수정이 에이전트의 논리적 결함을 메우는 게 아니라, 오히려 예상치 못한 부작용(Side-effect)을 야기할 위험이 다분해 보입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에선 바로 적용하기 겁나죠. 하지만 벤치마크 9~10% 향상은 무시 못 할 수치입니다. 특히 Haiku 같은 경량 모델에서도 전이 성능이 나온다는 게 핵심이네요. 배포 파이프라인에 &#x27;인간 검토&#x27; 단계만 잘 엮으면, 매번 수동으로 프롬프트 튜닝하던 노가다는 확실히 줄어들 것 같습니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;선배님, 이건 그냥 튜닝 수준이 아니라 &#x27;에이전트의 자가 치유(Self-healing)&#x27; 첫걸음 아닌가요? ㅎㅎ 실행 흔적(Execution Traces)을 데이터셋으로 삼아 하니스를 최적화한다니, 이제 에이전트 개발도 사람이 아니라 에이전트가 에이전트를 짜는 시대가 온 것 같아요! 당장 내일 랩 세미나에서 이걸로 발표하겠습니다.&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
