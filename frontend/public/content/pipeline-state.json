@@ -21586,60 +21586,360 @@
       },
       "priority_score": 40,
       "korean_title": "\"해야 한다\"가 \"어쩌면\"으로 바뀔 때: LLM 에이전트 워크플로우에서의 제약 조건 약화"
+    },
+    "2608_22071v1": {
+      "id": "2608_22071v1",
+      "filename": "post_2608_22071v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-08-27T13:36:12.064184+00:00",
+      "last_error": null,
+      "updated_at": "2026-08-27T13:36:12.064199+00:00",
+      "paper": {
+        "title": "Real-TurnTurk: A Multimodal Turkish Corpus for Turn-Taking Prediction",
+        "summary": "Turn-taking is a basic organizational feature of human conversation and remains difficult to model in natural, synchronous dialog systems. While existing research has explored multimodal approaches and large language models for turn-ending prediction, there is a lack of naturalistic conversational corpora specifically addressing turn-taking dynamics in Turkish. This study introduces a multimodal Turkish conversational dataset of unscripted dyadic interactions, comprising synchronized front-facing video, per-speaker audio channels that allow overlapping speech to be attributed to individual speakers, and time-aligned transcriptions. Turn-taking prediction is formulated as a binary classification problem, and a Genetic Algorithm (GA) is employed to optimize interpretable decision rules derived from visual, acoustic, and linguistic features. A hybrid AND-OR rule representation is adopted in the proposed framework to represent the alternative cue combinations that precede a turn transition.",
+        "published": "2026-08-22T18:29:52Z",
+        "authors": [
+          "Ahmet Tuğrul Bayrak",
+          "Fatma Nur Korkmaz",
+          "Bekir Berker Türker",
+          "Mustafa Sertaç Türkel",
+          "Alper Kaplan"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.22071v1"
+      },
+      "priority_score": 12
+    },
+    "2608_25204v1": {
+      "id": "2608_25204v1",
+      "filename": "post_2608_25204v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-08-27T13:37:09.744787+00:00",
+      "paper": {
+        "title": "LibriBrain100: One Hundred Hours of Broad and Deep MEG Data for Neural Speech Decoding at Scale",
+        "summary": "We introduce LibriBrain100, a large-scale MEG dataset for speech decoding designed from the ground up for reproducible, standardised evaluation. LibriBrain100 more than doubles the size of the original LibriBrain release, resulting in over 100 hours of high-quality MEG acquired while subjects listened to naturalistic continuous speech. With $\\sim$80 hours from a single subject, LibriBrain100 sets a new record for deep, within-subject neural data (8$\\times$ more than the next comparable dataset and roughly 80$\\times$ more than other datasets). To demonstrate the payoff of this depth-first design, we evaluate on a word-classification benchmark---an increasingly well-established stepping stone towards the open challenge of noninvasive brain-to-text decoding. Using an existing decoding model, we achieve state-of-the-art performance---validating both the quality of the recordings and the value of within-subject data at scale. Because collecting 80 hours of data per user is impractical for real-world applications, we also collected $\\sim$40 minutes of additional data from each of 32 subjects. Using the same word-classification benchmark, we demonstrate the value of broad multi-subject data: supervised finetuning of a pre-trained model can substantially compensate for limited per-subject data. We provide standard train, validation, and test splits, all reproducible through an open-sourced Python library that supports easy downloading, optional preprocessing, and data loading for common deep learning frameworks. In addition, the dataset and evaluation infrastructure are being released alongside an open machine-learning competition with a public leaderboard for standardised benchmarking. Ultimately, our hope is that LibriBrain100 will accelerate progress towards practical non-invasive brain-computer interfaces, capable of restoring communication to people living with severe paralysis.",
+        "published": "2026-08-25T22:45:04Z",
+        "authors": [
+          "Francesco Mantegna",
+          "Dulhan Jayalath",
+          "Gereon Elvers",
+          "Tasha Kim",
+          "Benjamin Ballyk",
+          "Alex Fung",
+          "SungJun Cho",
+          "Teyun Kwon",
+          "Luisa Kurth",
+          "Miran Özdogan",
+          "Gilad Landau",
+          "Pratik Somaiya",
+          "Natalie Voets",
+          "Mark Woolrich",
+          "Oiwi Parker Jones"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.25204v1"
+      },
+      "priority_score": 40,
+      "korean_title": "LibriBrain100: 신경 언어 해독을 위한 대규모 100시간 뇌 자기뇌자공명(MEG) 데이터셋"
+    },
+    "2608_24987v1": {
+      "id": "2608_24987v1",
+      "filename": "post_2608_24987v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-08-27T13:36:12.064216+00:00",
+      "last_error": null,
+      "updated_at": "2026-08-27T13:36:12.064217+00:00",
+      "paper": {
+        "title": "D$^3$-MOPD: Adaptive Dynamic Domain ScheDuling for Efficient Multi-Teacher Distillation",
+        "summary": "Multi-teacher on-policy distillation (MOPD) distills several domain-expert teachers into a single student by minimizing per-domain reverse-KL divergence on the student's own rollouts. Existing approaches typically fix the per-domain data mixture before training, overlooking the fact that different domains converge at substantially different rates: some plateau early while others continue to improve throughout the training budget. A fixed mixture therefore wastes compute on fast-converging domains and undertrains slower-converging ones. To address this, we propose D$^3$-MOPD (Dynamic Domain ScheDuling for MOPD), a zero-overhead scheduler that repurposes the per-domain reverse-KL signal already produced during training to adapt the domain mixture online. Running asynchronously outside the training process, an off-process watcher periodically tracks each domain's KL trajectory, estimates remaining headroom and current improvement rate, and accordingly adjusts the domain sampling ratios without altering the core training loop. Our D$^3$-MOPD scales naturally to arbitrary numbers of domains, and the expected benefit grows as more domains introduce more diverse convergence patterns for the scheduler to exploit. On a Qwen3.6-35B-A3B student distilled from four domain-expert teachers, D$^3$-MOPD closes 97% of the average student-to-teacher performance gap, compared with 63% for vanilla MOPD, reaches the same peak performance with an approximately 3$\\times$ reduction in rollout steps, and surpasses the specialist teachers on three of seven benchmarks.",
+        "published": "2026-08-25T17:57:11Z",
+        "authors": [
+          "Zechen Sun",
+          "Zhiwei Zhang",
+          "Fei Zhao",
+          "Juntao Li",
+          "Mu Chuan",
+          "Huayu Deng",
+          "Guojian Zhan",
+          "Wenliang Chen",
+          "Yao Hu",
+          "Min Zhang"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.24987v1"
+      },
+      "priority_score": 29
+    },
+    "2608_25529v1": {
+      "id": "2608_25529v1",
+      "filename": "post_2608_25529v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-08-27T13:36:12.064223+00:00",
+      "last_error": null,
+      "updated_at": "2026-08-27T13:36:12.064225+00:00",
+      "paper": {
+        "title": "Video-IFBench: Evaluating Instruction Following of Multimodal LLMs in Video Understanding Scenarios",
+        "summary": "Multimodal Large Language Models (MLLMs) have shown strong performance in video understanding. However, their ability to follow instructions in this domain remains under-explored. Real-world video understanding requires models not only to interpret video content correctly, but also to satisfy diverse user-specified constraints. Existing benchmarks focus primarily on task accuracy rather than instruction adherence, leaving this capability insufficiently evaluated. To address this gap, we introduce Video-IFBench, a comprehensive benchmark for evaluating instruction following in video understanding, where models must satisfy diverse user-specified constraints, including those grounded in visual and audio content. We develop an instruction taxonomy with four templates, including single-task, multi-task, selection, and nested instructions, covering 32 task types and 39 manually designed constraint categories spanning both semantic and format requirements. To reduce annotation cost, we build a semi-automatic data construction pipeline that combines MLLMs, programmatic processing, and human verification, resulting in 1.5K samples. We conduct a large-scale evaluation of more than 20 recent MLLMs and show that video instruction following remains challenging for current models, especially for instructions with many constraints, semantic constraints, or complex conditional structures that require selecting the correct branch or path based on video content. We hope our work will facilitate future research on instruction following in video understanding scenarios.",
+        "published": "2026-08-26T08:35:42Z",
+        "authors": [
+          "Hongbo Liu",
+          "Peixian Chen",
+          "Sihan Liu",
+          "Peiyuan Zhang",
+          "Kai Zou",
+          "Dian Zheng",
+          "Xiaoxing Hu",
+          "Yuhao Dong",
+          "Mengdan Zhang",
+          "Yunhang Shen",
+          "Haoyu Cao",
+          "Wei Liu",
+          "Weibo Gu",
+          "Xing Sun",
+          "Shengjie Zhao"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.25529v1"
+      },
+      "priority_score": 39
+    },
+    "2608_19556v1": {
+      "id": "2608_19556v1",
+      "filename": "post_2608_19556v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-08-27T13:36:12.064230+00:00",
+      "last_error": null,
+      "updated_at": "2026-08-27T13:36:12.064232+00:00",
+      "paper": {
+        "title": "Stream4D: 4D-Consistency for Streaming Autoregressive Diffusion Video Models",
+        "summary": "Streaming autoregressive diffusion models enable real-time, long-horizon video generation, but their training objectives optimize local frame prediction rather than the geometry and dynamics of a coherent world: long rollouts accumulate geometric drift and degrade into static or unnatural motion. Recent bidirectional approaches address this problem using rewards signals built upon 3D Gaussian-Splatting reconstruction. However, a single rigid 3d reconstruction cannot model a dynamic scene, so this critic penalizes genuine object motion as reconstruction error and is maximized by freezing the video. This shortcut is especially detrimental in the AR setting, where each chunk can propagate an already-static configuration. In this work, we propose Stream4D, which replaces the static critic with a feed-forward 4D reconstruction reward that explicitly models scene dynamics, allowing coherent motion to receive high consistency rewards. To further guide motion magnitude and quality, we add a motion prior that rewards natural scene-flow magnitude while penalizing jitter and non-rigid artifacts. Our final recipe combines these two terms with a lightweight perceptual anchor. Across various autoregressive video backbones and various generation horizons, Stream4D improves 4D reconstruction quality, preserves motion more effectively, and achieves higher human-aligned preference. Project page: https://banyuanhao.github.io/Stream4D/",
+        "published": "2026-08-20T01:54:26Z",
+        "authors": [
+          "Yuanhao Ban",
+          "Jiaqi Feng",
+          "Hengguang Zhou",
+          "Xiaohuan Pei",
+          "Justin Cui",
+          "Cho-Jui Hsieh"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.19556v1"
+      },
+      "priority_score": 17
+    },
+    "2608_24138v1": {
+      "id": "2608_24138v1",
+      "filename": "post_2608_24138v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-08-27T13:36:40.496586+00:00",
+      "paper": {
+        "title": "Rubrics as Visual-Repair Context for Self-Evolving UI-to-Code Generation",
+        "summary": "Large vision-language models have shown strong progress in UI-to-code generation, yet their test-time self-evolution remains unstable. We first identify a fundamental obstacle, termed visual repair coupling: a local code edit may propagate through layout, style, and component dependencies, correcting one visual mismatch while degrading regions that were previously faithful. To address this issue, we present RubSE, a Rubric-guided Self-Evolution framework that uses rubrics to represent visual feedback as a structured visual-repair context. At each refinement round, RubSE generates typed candidate rubrics, selects one prioritized repair target, and stores previously selected rubrics as history, thereby steering each revision toward a well-scoped visual repair while discouraging repeated or over-broad changes. Evaluations across six VLMs and three UI-to-code benchmarks demonstrate that RubSE substantially outperforms naïve self-evolution in final-round and best-round settings, achieving more stable refinement trajectories and a higher trajectory-level performance ceiling. Further analysis shows that RubSE mitigates trajectory collapse by improving recovery from severe visual regressions, and that stronger rubric generators can transfer effective visual-repair guidance to weaker code improvers.",
+        "published": "2026-08-25T07:03:46Z",
+        "authors": [
+          "Tianyi Xiong",
+          "Zhengyuan Yang",
+          "Xiaofei Wang",
+          "Chung-Ching Lin",
+          "Ruichun Ma",
+          "Kevin Lin",
+          "Zhendong Wang",
+          "Linjie Li",
+          "Chenxi Liu",
+          "Ruibo Chen",
+          "Ramani Duraiswami",
+          "Heng Huang",
+          "Lijuan Wang"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.24138v1"
+      },
+      "priority_score": 46,
+      "korean_title": "스스로 진화하는 UI-to-Code 생성을 위한 시각적 수정 문맥으로서의 루브릭(Rubric)"
+    },
+    "2608_21839v1": {
+      "id": "2608_21839v1",
+      "filename": "post_2608_21839v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-08-27T13:36:12.064244+00:00",
+      "last_error": null,
+      "updated_at": "2026-08-27T13:36:12.064246+00:00",
+      "paper": {
+        "title": "FIRM-Video: Check Before You Score for Reliable Text-to-Video Reward Modeling",
+        "summary": "Reliable reward models are essential for text-to-video evaluation and alignment. However, the trade-off between evaluation accuracy and inference efficiency places high demands on the quality of training supervision. Existing approaches often rely on holistic judges with fixed rubrics or open-ended reasoning, leading to incomplete inspection, unfaithful justification, and entangled attribution. We introduce FIRM-Video, a unified checklist-driven data construction framework based on a check-before-score principle: construct dimension-specific checklists, verify each criterion against temporal visual evidence, and aggregate only verified decisions. For Instruction Following, FIRM-Video decomposes prompts into weighted atomic requirements; for World Coherence, it constructs prompt-calibrated, target-specific checks grounded in visible entities and actions; and for Perceptual Quality, it applies a generic taxonomy of visual defects. The verified criteria and scores are further transformed into natural-language analyses for end-to-end reward modeling. Subsequently, we construct FIRM-Video-90K with 88,044 dimension-specific instances from 29,348 videos, and introduce FIRM-Video-Bench with 750 point-wise human annotations across 250 videos. The Qwen3-VL-based FIRM-Video-8B achieves the best overall MAE on FIRM-Video-Bench while consistently delivering the highest VBench Total, Quality, and Semantic Scores in Best-of-8 sampling across three video generators.",
+        "published": "2026-08-22T08:21:40Z",
+        "authors": [
+          "Peiyuan Zhang",
+          "Xiangyu Zhao",
+          "Hongbo Liu",
+          "Xiaoxing Hu",
+          "Mingxin Liu",
+          "Shuran Ma",
+          "Yunhang Shen",
+          "Jian Hu",
+          "Haihan Gao",
+          "Haoyu Cao",
+          "Xue Yang"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.21839v1"
+      },
+      "priority_score": 38
+    },
+    "2608_23383v2": {
+      "id": "2608_23383v2",
+      "filename": "post_2608_23383v2.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-08-27T13:36:12.064250+00:00",
+      "last_error": null,
+      "updated_at": "2026-08-27T13:36:12.064252+00:00",
+      "paper": {
+        "title": "Long-Horizon Audio-Visual Generation for Persistent Stories and Interactive Worlds",
+        "summary": "Video generation is progressing beyond isolated clips toward long-form narratives and interactive worlds, requiring models to preserve identities, follow user controls, and remain stable over extended rollouts. We present JoyAI-Echo-1.5, a unified audio-visual generation system with two purpose-built variants. The long-video variant introduces composable cross-shot memory that aggregates visual evidence across multiple prior shots and speaker cues derived from speech-filtered full-shot audio, enabling persistent character appearance and voice identity across flexible combinations of text, image, and memory conditioning. The world-model variant converts heterogeneous navigation inputs into calibrated metric 6-DoF camera trajectories and injects them through a geometry-aware conditioning pathway, enabling controller-agnostic interaction across flexible viewpoints. To support efficient long-horizon generation, we transform a bidirectional audio-visual backbone into a causal few-step generator using progressive teacher forcing and short- and long-horizon Self-Gradient Forcing on self-generated rollouts. Experiments demonstrate strong performance in both settings. JoyAI-Echo-1.5 achieves improvements over existing long-video baselines in cross-shot consistency, visual quality, text alignment, and speech fidelity. Its world-model variant ranks first on WBench, with an average score of 81.7, and achieves leading visual quality and long-horizon persistence on SANA-WM-Bench. Together, these results indicate that memory, geometric control, and rollout-aware training provide a practical foundation for generating coherent stories and continuously evolving interactive worlds. Project page: https://echo-team-joy-future-academy-jd.github.io/Echo-1.5-Page/.",
+        "published": "2026-08-24T15:31:12Z",
+        "authors": [
+          "Nan Duan",
+          "Haoyang Huang",
+          "Weiyang Jin",
+          "Haoran Li",
+          "Yaowei Li",
+          "Yuming Li",
+          "Yijun Liu",
+          "Xin Lu",
+          "Xiaoxiao Ma",
+          "Yanwen Ma",
+          "Yaofeng Su",
+          "Yilang Sun",
+          "Haoyu Wang",
+          "Zeyue Xue",
+          "Songchun Zhang",
+          "Junhao Zhuang"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.23383v2"
+      },
+      "priority_score": 20
+    },
+    "2608_25593v1": {
+      "id": "2608_25593v1",
+      "filename": "post_2608_25593v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-08-27T13:36:22.662065+00:00",
+      "paper": {
+        "title": "JIT-Agent: Scaling Harness Intelligence via Just-in-Time Harness Evolution",
+        "summary": "Agent capability is not determined by the model alone. The agent harness, encompassing memory management, planning strategy, action protocol, and tool/skill orchestration, can dominate the contribution of the underlying foundation model. Yet harness design remains manual, task-specific, and fundamentally unscalable. We present JIT-Agent, a harness intelligence model trained to synthesize task-adaptive agent harnesses on the fly for arbitrary off-the-shelf agentic LLMs. We formalize the agent harness as a composable, machine-generatable artifact governed by a fixed four-module protocol, and train JIT-Agent to customize harnesses for a given task at hand, repair harnesses for stable and reliable execution, and self-evolve by distilling performance signals from an expanding archive of prior harness configurations. Equipped with JIT-Agent as a harness helper, DeepSeek-V4-Flash surpasses GPT-5.6 on DeepSearchQA (+9.1) and OdysseyBench (+4.3), while the already strong GLM-5.2 gains up to +20.2 points. Across controlled evaluations, JIT-Agent-generated harnesses are performance-competitive with mature agent runtimes such as OpenCode and Claude Code and consistently improve multi-scale model families of DeepSeek V4, Mimo-V2.5, and Qwen3.6. To our knowledge, JIT-Agent is the first model purpose-built for just-in-time harness generation, establishing harness intelligence as a trainable, transferable, and compounding dimension of agent capability orthogonal to model scaling.",
+        "published": "2026-08-26T10:05:33Z",
+        "authors": [
+          "Guibin Zhang",
+          "Leo Lu",
+          "Fangzhou Xie",
+          "Kang Zhu",
+          "Junhao Wang",
+          "Zhifei Xie",
+          "Zhaochen Yu",
+          "Zihang Liu",
+          "Zhongxiang Sun",
+          "Qiankun Li",
+          "Yue Liao",
+          "Heng Chang",
+          "Xiaobin Hu",
+          "Qibing Ren",
+          "Wangchunshu Zhou",
+          "Shuicheng Yan"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.25593v1"
+      },
+      "priority_score": 48,
+      "korean_title": "JIT-Agent: 적시(Just-in-Time) 하니스 진화를 통한 하니스 지능의 확장"
+    },
+    "2608_25580v1": {
+      "id": "2608_25580v1",
+      "filename": "post_2608_25580v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-08-27T13:36:53.984084+00:00",
+      "paper": {
+        "title": "V-Rubrics: Visual Faithfulness via Rubric-Based Reinforcement Learning",
+        "summary": "Vision-language models can produce fluent answers that are insufficiently grounded in the visual evidence: a single unsupported object, chart value, or intermediate inference can undermine an otherwise plausible response. We argue that this is a credit-assignment failure in multimodal post-training. Scalar outcome rewards indicate whether an answer is acceptable, but do not identify which visual facts are grounded, which reasoning steps are valid, or which instruction constraints are missed. We introduce Visual Rubrics-Based Reinforcement Learning, which decomposes reference responses into atomic propositions and scores generated answers along Visual Faithfulness (VF), Reasoning Consistency (RC), and Instruction Following (IF). The resulting rubric items provide structured partial credit and localize rubric credit when supporting evidence spans are available. We first obtain an SFT checkpoint by fine-tuning Qwen3-VL-8B-Instruct on the public OpenMMReasoner-SFT-874K corpus, adapting OpenMMReasoner's cold-start data recipe. We construct V-Rubrics 50K, a 50,248-example training set from 17 visually grounded sources, by applying rule-based filters before deriving example difficulty from rejection-sampling scores and then annotating every example with Gemini-3-Pro under the same structured prompt and protocol. We train our model based on the same SFT checkpoint using component-wise, prefix-localized rubric credit. Experiments show that our rubricbased GRPO improves over both the shared SFT baseline and answer-only GRPO, with the largest gains on knowledge-oriented and visually grounded reasoning benchmarks. The results show rubrics as a useful reward abstraction for visual post-training.",
+        "published": "2026-08-26T09:40:46Z",
+        "authors": [
+          "Shulin Tian",
+          "Minglun Li",
+          "Yuhao Dong",
+          "Hao Ding",
+          "Jiarui Yao",
+          "Haiwen Diao",
+          "Jingkang Yang",
+          "Hongyuan Zhu",
+          "Ziwei Liu"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.25580v1"
+      },
+      "priority_score": 40,
+      "korean_title": "시각적 충실도를 위한 루브릭 기반 강화학습: V-Rubrics"
     }
   },
   "last_run": {
-    "started_at": "2026-08-27T00:23:01.402482+00:00",
+    "started_at": "2026-08-27T13:36:12.065290+00:00",
     "discovered": 10,
-    "selected": 0,
-    "generated": 0,
+    "selected": 4,
+    "generated": 4,
     "failed": 0,
     "skipped": 0,
     "health": "healthy",
     "failures": [],
     "usage": {
       "model": "gemini-3.1-flash-lite",
-      "requests": 0,
-      "prompt_tokens": 0,
-      "output_tokens": 0,
+      "requests": 8,
+      "prompt_tokens": 21029,
+      "output_tokens": 5971,
       "thought_tokens": 0,
-      "total_tokens": 0,
-      "estimated_usd": 0.0
+      "total_tokens": 27000,
+      "estimated_usd": 0.01421375
     },
-    "finished_at": "2026-08-27T00:23:01.899772+00:00"
+    "finished_at": "2026-08-27T13:37:10.344586+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 1609,
-    "prompt_tokens": 4047577,
-    "output_tokens": 1185233,
+    "requests": 1617,
+    "prompt_tokens": 4068606,
+    "output_tokens": 1191204,
     "thought_tokens": 0,
-    "total_tokens": 5232810,
-    "estimated_usd": 2.78974375
+    "total_tokens": 5259810,
+    "estimated_usd": 2.8039575
   },
   "last_publication_run": {
-    "started_at": "2026-08-27T00:23:01.402482+00:00",
+    "started_at": "2026-08-27T13:36:12.065290+00:00",
     "discovered": 10,
-    "selected": 0,
-    "generated": 0,
+    "selected": 4,
+    "generated": 4,
     "failed": 0,
     "skipped": 0,
     "health": "healthy",
     "failures": [],
     "usage": {
       "model": "gemini-3.1-flash-lite",
-      "requests": 0,
-      "prompt_tokens": 0,
-      "output_tokens": 0,
+      "requests": 8,
+      "prompt_tokens": 21029,
+      "output_tokens": 5971,
       "thought_tokens": 0,
-      "total_tokens": 0,
-      "estimated_usd": 0.0
+      "total_tokens": 27000,
+      "estimated_usd": 0.01421375
     },
-    "finished_at": "2026-08-27T00:23:01.899772+00:00"
+    "finished_at": "2026-08-27T13:37:10.344586+00:00"
   },
   "daily_usage": {
     "date": "2026-08-27",
-    "estimated_usd": 0.0,
-    "publications": 0
+    "estimated_usd": 0.01421375,
+    "publications": 4
   }
 }
