@@ -1,0 +1,76 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>F1 그 너머: AI 모델 보안 스캐너의 탐지 범위와 장애 복구 능력 평가 | ArXiv Translator AI</title><meta name="description" content="F1 그 너머: AI 모델 보안 스캐너의 탐지 범위와 장애 복구 능력 평가"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_27424v1"><meta property="og:type" content="article"><meta property="og:title" content="F1 그 너머: AI 모델 보안 스캐너의 탐지 범위와 장애 복구 능력 평가"><meta property="og:description" content="F1 그 너머: AI 모델 보안 스캐너의 탐지 범위와 장애 복구 능력 평가"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_27424v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="F1 그 너머: AI 모델 보안 스캐너의 탐지 범위와 장애 복구 능력 평가"><meta name="twitter:description" content="F1 그 너머: AI 모델 보안 스캐너의 탐지 범위와 장애 복구 능력 평가"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_27424v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "F1 그 너머: AI 모델 보안 스캐너의 탐지 범위와 장애 복구 능력 평가", "description": "F1 그 너머: AI 모델 보안 스캐너의 탐지 범위와 장애 복구 능력 평가", "datePublished": "2026-08-27", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_27424v1", "author": [{"@type": "Person", "name": "Qianlong Lan"}, {"@type": "Person", "name": "Vinothini Pandurangan"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_27424v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_27424v1"});gtag('event', 'paper_view', {"paper_id": "2608_27424v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>F1 그 너머: AI 모델 보안 스캐너의 탐지 범위와 장애 복구 능력 평가</h1><p>F1 그 너머: AI 모델 보안 스캐너의 탐지 범위와 장애 복구 능력 평가</p><pre>F1 그 너머: AI 모델 보안 스캐너의 탐지 범위와 장애 복구 능력 평가
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Beyond F1: Evaluating Coverage and Failure Recovery in AI Model Security Scanners
+&gt; - **저자:** Qianlong Lan, Vinothini Pandurangan, Anuj Kaul, Indranil Sanyal
+&gt; - **발행일:** 2026-08-27
+&gt; - **PDF 링크:** [Beyond F1: Evaluating Coverage and Failure Recovery in AI Model Security Scanners](https://arxiv.org/pdf/2608.27424v1)
+
+
+✨ 3줄 핵심 요약
+- 기존 보안 스캐너 평가는 결과가 나온 사례만 다루지만, 본 논문은 스캐너가 결과를 내놓을 수 있는지(가용성)까지 포함한 새로운 평가 프레임워크를 제안합니다.
+- ModelScan은 판단 가능한 경우 정확도는 높지만 대상의 절반 이하에서만 결과를 도출했고, ModelAudit은 탐지율은 높으나 양성 샘플에 대한 오탐(False Positive)이 많았습니다.
+- 개별 도구의 탐지율뿐만 아니라, 특정 스캐너가 분석에 실패했을 때 다른 도구가 이를 보완하는 &#x27;장애 복구(Failure Recovery)&#x27; 능력의 중요성을 확인했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+AI 모델의 보안을 점검하는 정적 스캐너들은 지금까지 &#x27;얼마나 정확한가(F1 점수)&#x27;에만 집중해 왔습니다. 하지만 실제 현장에서는 스캐너가 아예 분석을 완료하지 못하거나 판단을 내리지 못하는 경우도 빈번합니다. 이 연구는 170개의 모델 아티팩트를 분석하여, 스캐너가 결과를 도출하는 &#x27;능력&#x27;과 도출된 결과의 &#x27;정확성&#x27;을 분리해서 평가해야 함을 강조합니다. 특히 특정 스캐너가 분석을 포기했을 때, 다른 스캐너가 이를 보완해 주는 &#x27;상호보완적 역할&#x27;이 보안 현장에서는 매우 중요하다는 점을 실증했습니다.
+
+🎯 배경 및 문제점
+- **기존 평가의 한계**: 기존 연구들은 스캐너가 판단을 내린 성공 사례만을 기준으로 성능을 측정하여, 분석 자체를 완료하지 못하는 &#x27;불완전한 상태&#x27;에 대한 정보를 간과해 왔습니다.
+- **모델 공급망 보안**: Pickle이나 PyTorch와 같은 모델 직렬화 형식은 악성 코드 실행 위험이 큽니다. 그러나 이를 스캔하는 도구들이 실제로 모든 파일에 대해 결론을 낼 수 있는지는 명확히 평가되지 않았습니다.
+
+💡 핵심 기술 및 아키텍처
+- **평가 대상**: ModelScan, ModelAudit, Fickling 세 가지 보안 스캐너를 비교 분석했습니다.
+- **평가 벤치마크**: 145개의 specimen family(135개는 보안 정답지 보유, 10개는 비정형 악성 코드)로 구성된 합성 데이터를 활용했습니다.
+- **새로운 평가 지표**: 판단 가용성(judgment availability), 분석 완료 여부, 오탐의 성격(benign-specimen warning) 등을 세분화하여 단순히 F1 점수만 보는 것이 아닌 다각도 평가를 수행했습니다.
+
+📊 실험 결과 분석
+- **판단 가용성(제공된 데이터 기준)**: 
+    - ModelAudit: 135개 전체(100%)에 대해 보안 판단 제공.
+    - Fickling: 110개(81.5%)에 대해 판단 제공.
+    - ModelScan: 67개(49.6%)에 대해 판단 제공.
+- **정확도(판단이 가능할 경우)**: ModelScan은 판단을 내린 67개 사례에 대해 100% 정밀도, 재현율, F1 점수를 기록했습니다.
+- **오탐(False Positive) 분석**: 
+    - ModelAudit은 65개의 양성(Benign) family 중 60개(92.3%)를 오탐했습니다.
+    - Fickling은 판단 가능한 50개 양성 family 모두를 오탐했습니다.
+    - ModelScan은 판단을 내린 45개의 양성 family 중 오탐이 없었습니다.
+- **상호보완성**: ModelScan이 분석에 실패한 48개의 악성 family를 ModelAudit과 Fickling이 성공적으로 감지하며 보완했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+- **보안 전략 수립**: 기업은 특정 스캐너의 높은 정확도에만 의존해서는 안 되며, 스캐너가 분석에 실패할 경우를 대비해 여러 도구를 결합한 다중 레이어 보안 아키텍처를 구축해야 합니다.
+- **평가 기준의 진화**: AI 보안 도구 도입 시 &#x27;높은 정확도&#x27;뿐만 아니라 &#x27;분석 완료 가능성(안정성)&#x27;과 &#x27;오탐 발생 시 성격&#x27;을 평가 지표에 반드시 포함해야 합니다.
+- **연구
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Beyond F1: Evaluating Coverage and Failure Recovery in AI ...](https://deeplearn.org/arxiv/814114/beyond-f1:-evaluating-coverage-and-failure-recovery-in-ai-model-security-scanners)
+&gt; - [Evaluating Coverage and Failure Recovery in AI Model ...](https://www.themoonlight.io/en/review/beyond-f1-evaluating-coverage-and-failure-recovery-in-ai-model-security-scanners)
+&gt; - [Cryptography and Security - arXiv](https://arxiv.org/list/cs.CR/new)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문 제목부터 마음에 드네요. 그간 우리 학계가 F1-score라는 지표 하나에 매몰되어 정작 &#x27;도구의 가용성&#x27;이라는 근본적인 문제를 간과해온 게 사실입니다. ModelScan이 정밀도는 완벽해도 절반의 사례에서 침묵한다는 건, 연구용으로는 훌륭하지만 실무에선 시한폭탄이나 다름없죠.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀이 맞습니다. 현업에서 ModelScan 하나만 믿고 배포 파이프라인 태웠다간, 스캐너가 분석 포기한 파일들이 그대로 서빙 환경에 올라갈 텐데 생각만 해도 아찔하네요. 결국 ModelAudit 같은 &#x27;오탐은 많아도 일단 다 뱉어내는&#x27; 도구랑 앙상블로 엮는 게 답인데, 이 논문이 그 &#x27;장애 복구&#x27;의 당위성을 데이터로 증명해줬네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;맞아요! 다들 성능 지표 숫자 올리기에만 급급한데 이런 실무형 평가 프레임워크가 진짜 &#x27;근본&#x27; 논문이죠. 이제 보안 스캐너 벤치마크할 때 &#x27;판단 가용성&#x27; 지표 없으면 취급도 안 해줄 것 같은데, 저도 이번 학기 과제나 프로젝트에 당장 이 &#x27;상호보완적 아키텍처&#x27; 개념 녹여서 제안서 써봐야겠습니다. 역시 AI 보안은 앙상블이 진리인가 봐요!&quot;
+  }
+]
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

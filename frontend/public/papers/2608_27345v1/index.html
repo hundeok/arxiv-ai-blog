@@ -1,0 +1,63 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PAWBench: 확률적으로 정렬된 세계 모델링에 우리는 얼마나 근접해 있는가? | ArXiv Translator AI</title><meta name="description" content="PAWBench: 확률적으로 정렬된 세계 모델링에 우리는 얼마나 근접해 있는가?"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_27345v1"><meta property="og:type" content="article"><meta property="og:title" content="PAWBench: 확률적으로 정렬된 세계 모델링에 우리는 얼마나 근접해 있는가?"><meta property="og:description" content="PAWBench: 확률적으로 정렬된 세계 모델링에 우리는 얼마나 근접해 있는가?"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_27345v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="PAWBench: 확률적으로 정렬된 세계 모델링에 우리는 얼마나 근접해 있는가?"><meta name="twitter:description" content="PAWBench: 확률적으로 정렬된 세계 모델링에 우리는 얼마나 근접해 있는가?"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_27345v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "PAWBench: 확률적으로 정렬된 세계 모델링에 우리는 얼마나 근접해 있는가?", "description": "PAWBench: 확률적으로 정렬된 세계 모델링에 우리는 얼마나 근접해 있는가?", "datePublished": "2026-08-27", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_27345v1", "author": [{"@type": "Person", "name": "Yuandong Pu"}, {"@type": "Person", "name": "Le Zhuo"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_27345v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_27345v1"});gtag('event', 'paper_view', {"paper_id": "2608_27345v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>PAWBench: 확률적으로 정렬된 세계 모델링에 우리는 얼마나 근접해 있는가?</h1><p>PAWBench: 확률적으로 정렬된 세계 모델링에 우리는 얼마나 근접해 있는가?</p><pre>PAWBench: 확률적으로 정렬된 세계 모델링에 우리는 얼마나 근접해 있는가?
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** PAWBench: How Far Are We from Probabilistically Aligned World Modeling?
+&gt; - **저자:** Yuandong Pu, Le Zhuo, Sayak Paul, Gabriel Jorge Menezes, Avram Đorđević, Shiyang Li, Yifan Zhou, Bin Fu, Wenlong Zhang, Junjun He, Yu Qiao, Yihao Liu, Jingbo Xing, Xi Chen
+&gt; - **발행일:** 2026-08-27
+&gt; - **PDF 링크:** [PAWBench: How Far Are We from Probabilistically Aligned World Modeling?](https://arxiv.org/pdf/2608.27345v1)
+
+
+✨ 3줄 핵심 요약
+* 비디오 생성 모델은 단순히 그럴듯한 영상을 만드는 것을 넘어, 동일한 상황에서 발생 가능한 모든 물리적 결과의 분포를 정확히 재현하는 &#x27;확률적 정렬(Probabilistic Alignment)&#x27; 능력이 필요합니다.
+* 연구진은 이를 평가하기 위한 벤치마크 &#x27;PAWBench&#x27;와 결과값 기반의 평가 프로토콜 &#x27;PAWEval&#x27;을 새롭게 도입했습니다.
+* 11개의 최신 비디오 생성 모델을 테스트한 결과, 어떤 모델도 물리적 행동의 다양한 분포를 정확히 복원하지 못하는 성능 격차가 확인되었습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+현대의 비디오 생성 모델들은 시각적으로 매우 뛰어난 영상을 만들어냅니다. 하지만 &#x27;세계 모델(World Model)&#x27;로서의 진정한 가치는 단순히 하나의 그럴듯한 영상을 만드는 데 있지 않습니다. 예를 들어 동전 던지기처럼 같은 조건에서도 여러 결과가 가능한 상황에서, 모델은 앞면이 나올 확률과 뒷면이 나올 확률을 현실과 똑같이 반영해야 합니다. 본 논문은 현재의 비디오 모델들이 개별 영상은 잘 만들지만, 이러한 &#x27;확률적 분포&#x27;를 제대로 학습하지 못하고 있다는 점을 지적합니다. 연구진은 50가지 시나리오를 통해 이를 체계적으로 측정했고, 아직 우리가 가야 할 길이 멀다는 것을 입증했습니다.
+
+🎯 배경 및 문제점
+기존의 비디오 생성 모델 평가 방식은 개별 영상이 얼마나 그럴듯한지(plausibility)를 확인하는 데 치중되어 있습니다. 그러나 실제 물리 세계는 확률적(stochastic)입니다. 동일한 초기 조건에서도 여러 물리적 결과가 가능할 때, 모델은 단순히 하나의 예시만 보여주는 것이 아니라 발생 가능한 모든 미래의 분포를 반영해야 합니다. 이를 &#x27;확률적 정렬&#x27;이라고 하며, 계획이나 상호작용이 필요한 시스템에서는 각 결과의 가능성(확률)을 정확히 아는 것이 필수적임에도 불구하고, 기존 방식은 이러한 분포적 특성을 테스트하지 못했습니다.
+
+💡 핵심 기술 및 아키텍처
+* **PAWBench**: 확률적 정렬을 평가하기 위해 설계된 새로운 벤치마크입니다. 물리적 역학을 가진 50개의 다양한 시나리오로 구성되어 있습니다.
+* **PAWEval**: 모델이 생성한 여러 개의 비디오 결과물(rollouts)을 수집하여, 이를 물리적 행동의 &#x27;경험적 분포&#x27;로 변환하는 평가 프로토콜입니다. 개별 영상의 시각적 품질보다는 최종 결과가 물리적으로 타당한 분포를 이루는지에 집중합니다.
+
+📊 실험 결과 분석
+* 총 11개의 현재 시장을 선도하는 비디오 생성 시스템을 대상으로 테스트를 진행했습니다.
+* 실험 결과, 그 어떤 모델도 물리적으로 타당한 행동의 범위를 모두 복원하면서 동시에 참조(실제) 확률과 일치하는 분포를 보여주지 못했습니다.
+* 논문에 따르면, 많은 모델이 특정 결과에 편향되거나 물리적으로 불가능한 경로를 생성하는 등 &#x27;확률적 불일치&#x27; 현상을 보였습니다. 
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+본 연구는 비디오 생성 모델이 단순한 콘텐츠 제작 도구를 넘어 실제 물리 세계를 이해하는 &#x27;세계 모델&#x27;로 진화하는 데 중요한 이정표를 제시합니다. 특히 자율주행이나 로봇 공학처럼 미래의 확률적 결과를 예측해야 하는 실무 영역에서, 현재의 생성 모델들이 가진 확률적 한계를 명확히 밝혀냈습니다. 연구진은 언어 프롬프트 조정이나 초기 노이즈 샘플링, 모델 학습 방식 개선 등을 통해 이 격차를 줄이는 미래 연구의 토대를 마련하고자 합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [How Far Are We from Probabilistically Aligned World Modeling?](https://arxiv.org/html/2608.27345)
+&gt; - [PAWBench: How Far Are We from Probabilistically Aligned ...](https://www.alphaxiv.org/abs/2608.27345)
+&gt; - [PAWBench: How Far Are We from Probabilistically Aligned ...](https://pawbench.github.io/)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;시각적 품질(Visual Quality)에만 매몰되어 &#x27;세계 모델&#x27;이라는 단어를 너무 남발하는 현 업계 분위기에 경종을 울리는 논문이군요. 물리적 일관성도 중요하지만, 확률적 분포의 정확한 재현이야말로 에이전트가 현실 세계와 상호작용하기 위한 최소한의 조건입니다. 11개 모델 전부 낙제점이라는 결과가 전혀 놀랍지 않네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에서 비디오 모델 돌려보면 특정 샘플은 기가 막히게 뽑히는데, 정작 100번 돌려보면 분포가 엉망인 경우가 태반입니다. 당장 자율주행 시뮬레이션에 쓰기엔 리스크가 너무 크죠. PAWEval 프로토콜이 제시한 방식이 실제 프로덕션 파이프라인의 QA 단계에 도입될 수 있을지가 관건인데, 연산 비용이 만만치 않아 보여서 고민이 좀 되네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;선배님, 비용 걱정할 때가 아닙니다! 이제 &#x27;그럴듯한 영상&#x27; 뽑는 모델은 널렸고, 진짜 논문 가치는 여기서부터 시작인 거 아시잖아요. 이번 PAWBench 데이터셋 뜯어보고 있는데, 이거 조만간 SOTA 갱신 경쟁의 새로운 전장이 될 것 같아요. 모델들이 왜 확률 분포를 못 맞추는지, 혹시 아키텍처 자체의 편향 때문인지 파고들면 바로 CVPR/ICLR 논문감 아닌가요? 지금 바로 코드 돌려봅니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
