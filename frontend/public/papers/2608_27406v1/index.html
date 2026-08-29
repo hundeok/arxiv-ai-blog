@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CLAP: 교차 구현 비디오 세계 모델을 통한 제로샷 물리 시뮬레이션 | ArXiv Translator AI</title><meta name="description" content="CLAP: 교차 구현 비디오 세계 모델을 통한 제로샷 물리 시뮬레이션"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_27406v1"><meta property="og:type" content="article"><meta property="og:title" content="CLAP: 교차 구현 비디오 세계 모델을 통한 제로샷 물리 시뮬레이션"><meta property="og:description" content="CLAP: 교차 구현 비디오 세계 모델을 통한 제로샷 물리 시뮬레이션"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_27406v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="CLAP: 교차 구현 비디오 세계 모델을 통한 제로샷 물리 시뮬레이션"><meta name="twitter:description" content="CLAP: 교차 구현 비디오 세계 모델을 통한 제로샷 물리 시뮬레이션"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_27406v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "CLAP: 교차 구현 비디오 세계 모델을 통한 제로샷 물리 시뮬레이션", "description": "CLAP: 교차 구현 비디오 세계 모델을 통한 제로샷 물리 시뮬레이션", "datePublished": "2026-08-27", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_27406v1", "author": [{"@type": "Person", "name": "Kechen Liu"}, {"@type": "Person", "name": "Ola Shorinwa"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_27406v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_27406v1"});gtag('event', 'paper_view', {"paper_id": "2608_27406v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>CLAP: 교차 구현 비디오 세계 모델을 통한 제로샷 물리 시뮬레이션</h1><p>CLAP: 교차 구현 비디오 세계 모델을 통한 제로샷 물리 시뮬레이션</p><pre>CLAP: 교차 구현 비디오 세계 모델을 통한 제로샷 물리 시뮬레이션
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** CLAP: Cross-Embodiment Video World Models are Zero-Shot Physical Simulators
+&gt; - **저자:** Kechen Liu, Ola Shorinwa
+&gt; - **발행일:** 2026-08-27
+&gt; - **PDF 링크:** [CLAP: Cross-Embodiment Video World Models are Zero-Shot Physical Simulators](https://arxiv.org/pdf/2608.27406v1)
+
+
+✨ 3줄 핵심 요약
+* **범용 물리 학습:** 로봇 종류와 관계없이 적용 가능한 물리 법칙을 학습하기 위해 인간과 다양한 로봇 데이터를 통합한 &#x27;CLAP&#x27; 프레임워크를 개발했습니다.
+* **행동 공간 조화:** 서로 다른 로봇의 행동 체계를 엔드 이펙터 포즈, 자연어, 잠재 표현으로 정렬하여 이기종 데이터 학습의 난제를 해결했습니다.
+* **성능 및 확장성:** 기존 단일 로봇용 모델 수준을 능가하는 성능을 보이며, 새로운 로봇 플랫폼으로의 효율적인 소량 데이터 적응(Few-shot adaptation)을 가능케 합니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+기존의 로봇용 비디오 생성 모델은 특정 로봇 한 종류만 학습할 수 있어 데이터 활용에 한계가 있었습니다. 연구진이 개발한 **CLAP**은 인간의 영상과 다양한 로봇의 데이터를 함께 학습하여, 로봇의 형태와 관계없이 보편적인 &#x27;물리 법칙&#x27;을 이해하는 인공지능입니다. 로봇마다 다른 팔의 움직임이나 조작 방식을 공통 언어(좌표, 언어 등)로 번역함으로써, 처음 보는 로봇 환경에서도 별도의 추가 학습 없이 물리적인 움직임을 예측(제로샷)하고 실제 로봇 정책을 개선하는 데 활용될 수 있습니다.
+
+🎯 배경 및 문제점
+* **단일 플랫폼의 한계:** 기존 모델은 특정 로봇 형태에 고착되어 있어, 인터넷상에 방대한 인간 및 타 기종 로봇 데이터를 학습에 활용하지 못했습니다.
+* **물리적 일관성 부족:** 행동 조건부 비디오 모델들은 여전히 물리적 환경의 일관성을 유지하는 데 어려움을 겪고 있습니다.
+* **행동 체계의 불일치:** 로봇마다 제어 방식(Action space)이 완전히 다르고, 인간 영상에는 로봇용 제어 데이터가 존재하지 않아 교차 학습이 어렵다는 근본적인 문제가 있었습니다.
+
+💡 핵심 기술 및 아키텍처
+* **행동 공간 통합:** 엔드 이펙터(로봇의 끝단) 포즈, 자연어 명령어, 학습된 잠재 행동 표현을 통해 서로 다른 로봇과 인간의 행동 체계를 하나로 묶었습니다.
+* **커리큘럼 학습:** 라벨이 없는 영상에서 잠재 행동 기반의 물리 사전 지식을 먼저 습득한 뒤, 이를 구체적인 제어 공간으로 구체화하는 단계적 학습 방식을 채택했습니다.
+* **추론 및 강화 학습 연계:** 비디오 세계 모델 내에서 정책 계획(Policy planning)과 강화 학습 기반의 미세 조정을 수행하여, 실제 로봇 정책(π0.5, MolmoAct-2 등)의 성능을 향상시켰습니다.
+
+📊 실험 결과 분석
+* **벤치마크:** DROID, Bridge 등의 환경에서 기존 최첨단(SOTA) 모델들과 성능을 비교했습니다.
+* **성능 우위:** CLAP은 DROID와 같은 환경에서 기존 단일 모델 성능과 비슷하거나 그 이상의 결과를 보였으며, 여러 기종을 섞은(OXE-Mix) 데이터셋에서 높은 예측 정확도를 달성했습니다.
+* **정량적 측정:** SSIM, PSNR, LPIPS, FVD, FID 등 표준 지표를 활용하여 성능을 검증했으며, 실험 데이터는 논문 부록에 상세히 기술되어 있습니다. (구체적인 수치값은 논문 본문에 명시되지 않았으나, 전반적인 성능 우위가 보고됨)
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **로봇 학습의 새로운 패러다임:** 언어 모델이 거대한 텍스트 데이터로 범용 지능을 얻은 것처럼, 로봇 분야에서도 교차 기종 학습을 통해 보편적 물리 지능을 확보하는 길을 열었습니다.
+* **데이터 효율성:** 새로운 로봇 플랫폼을 도입할 때 적은 데이터로도 빠르게 모델을 적응시킬 수 있어 로봇 개발 비용과 시간을 획기적으로 줄일 수 있습니다.
+* **안전 및 한계:** 연구진은 모델이 가끔 현실과 다른 장면을 만들어내는 &#x27;환각(Hallucination)&#x27; 현상이 발생할 수 있음을 인정했으며, 향후 이를 제어하는 기술과 양팔 로봇, 휴머노이드 등으로의 데이터 확장 연구가 필요함을 제시했습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [CLAP: Cross-Embodiment Video World Models are Zero-Shot ...](https://www.alphaxiv.org/abs/2608.27406)
+&gt; - [CLAP: Cross-Embodiment Video World Models are Zero-Shot ...](https://arxiv.org/html/2608.27406)
+&gt; - [CLAP: Cross-Embodiment Video World Models are Zero-Shot ...](https://deeplearn.org/arxiv/814121/clap:-cross-embodiment-video-world-models-are-zero-shot-physical-simulators)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;이 논문에서 제안한 &#x27;행동 공간 조화&#x27;는 흥미롭지만, 결국 비디오 모델의 환각 문제를 물리 시뮬레이션의 관점에서 어떻게 정량적으로 통제할 것인지에 대한 엄밀한 검증이 부족해 보입니다. 특히 제로샷 성능을 논할 때 물리적 일관성이 깨지는 경계 조건들에 대한 분석이 결여된 점은 학술적으로 아쉬운 대목이군요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 맞지만, 실무자 입장에서 &#x27;데이터 부족&#x27;은 항상 생존의 문제거든요. 로봇마다 제어 스택이 다른데 이걸 엔드 이펙터 포즈로 정렬해서 통합 학습시켰다는 건 파이프라인 관점에서 엄청난 혁신입니다. 당장 우리 팀 로봇 데이터에 파인튜닝 없이 태워보고 싶네요. 물론 추론 속도가 리얼타임 제어에 적합할지는 벤치마크해봐야겠지만요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 다들 반응 너무 진지하신 거 아닌가요? ㅋㅋㅋ DROID 벤치마크 찍히는 거 보셨어요? 이거 진짜 &#x27;로봇계의 LLM 모먼트&#x27; 온 것 같은데요. 휴머노이드 데이터까지 섞으면 내년쯤엔 진짜 집안일 다 하는 범용 로봇 나오는 거 아님? 교수님, 저 이거 다음 세미나 때 발표해도 되죠? 지금 당장 코드 뜯어보러 갑니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

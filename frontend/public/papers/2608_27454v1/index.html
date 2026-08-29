@@ -1,0 +1,67 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>위키스킬: 에이전트 경험을 기술 진화를 위한 지속적인 지식으로 컴파일하기 | ArXiv Translator AI</title><meta name="description" content="위키스킬: 에이전트 경험을 기술 진화를 위한 지속적인 지식으로 컴파일하기"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_27454v1"><meta property="og:type" content="article"><meta property="og:title" content="위키스킬: 에이전트 경험을 기술 진화를 위한 지속적인 지식으로 컴파일하기"><meta property="og:description" content="위키스킬: 에이전트 경험을 기술 진화를 위한 지속적인 지식으로 컴파일하기"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_27454v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="위키스킬: 에이전트 경험을 기술 진화를 위한 지속적인 지식으로 컴파일하기"><meta name="twitter:description" content="위키스킬: 에이전트 경험을 기술 진화를 위한 지속적인 지식으로 컴파일하기"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_27454v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "위키스킬: 에이전트 경험을 기술 진화를 위한 지속적인 지식으로 컴파일하기", "description": "위키스킬: 에이전트 경험을 기술 진화를 위한 지속적인 지식으로 컴파일하기", "datePublished": "2026-08-27", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_27454v1", "author": [{"@type": "Person", "name": "Liyan Tang"}, {"@type": "Person", "name": "Cyrus Rashtchian"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_27454v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_27454v1"});gtag('event', 'paper_view', {"paper_id": "2608_27454v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>위키스킬: 에이전트 경험을 기술 진화를 위한 지속적인 지식으로 컴파일하기</h1><p>위키스킬: 에이전트 경험을 기술 진화를 위한 지속적인 지식으로 컴파일하기</p><pre>위키스킬: 에이전트 경험을 기술 진화를 위한 지속적인 지식으로 컴파일하기
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** WikiSkill: Compiling Agent Experience into Persistent Knowledge for Skill Evolution
+&gt; - **저자:** Liyan Tang, Cyrus Rashtchian, Chun-Sung Ferng, Andrew Tomkins, Da-Cheng Juan, Tu Vu
+&gt; - **발행일:** 2026-08-27
+&gt; - **PDF 링크:** [WikiSkill: Compiling Agent Experience into Persistent Knowledge for Skill Evolution](https://arxiv.org/pdf/2608.27454v1)
+
+
+✨ 3줄 핵심 요약
+*   WikiSkill은 에이전트의 실행 경험을 지속적인 지식 베이스(위키)에 축적하여, 이를 바탕으로 재사용 가능한 &#x27;기술(Skills)&#x27;을 점진적으로 발전시키는 프레임워크입니다.
+*   기존의 단편적인 경험 분석 방식과 달리, 지식을 체계적으로 관리함으로써 모든 모델 및 벤치마크 환경에서 일관되게 기존 기술 진화 방법론보다 높은 성능을 기록했습니다.
+*   기술의 효과는 모델의 규모가 클수록 증대되며, 잘 정립된 기술은 모델 간 효과적으로 전이되어 더 작은 모델의 성능을 큰 모델 수준으로 끌어올릴 수 있습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+AI 에이전트가 복잡한 업무를 수행할 때 매번 시행착오를 겪는 대신, 과거의 성공과 실패 경험을 &#x27;위키&#x27;라는 체계적인 지식 저장소에 기록해 둔다면 어떨까요? WikiSkill은 에이전트가 수행한 작업들을 단순히 기록하는 데 그치지 않고, 이를 구조화된 지식으로 바꾸어 다음 작업에 활용할 수 있는 &#x27;기술&#x27;로 다듬습니다. 마치 사수에게 노하우를 배우듯, 에이전트는 이 축적된 지식을 통해 더 정교한 업무 처리 방식을 스스로 학습하고 발전시킵니다. 실험 결과, 이 방식은 모델의 크기와 상관없이 학습 효율을 높였으며, 다른 모델이 학습한 기술을 가져와 사용하여도 성능 향상을 기대할 수 있음을 확인했습니다.
+
+🎯 배경 및 문제점
+*   **지식의 파편화:** 에이전트가 업무를 수행하며 얻은 통찰력들이 최적화 과정 중에 흩어져 버려, 반복적인 학습 과정에서 체계적인 재사용이 어렵습니다.
+*   **수동적 기술 개발의 한계:** 기존에는 사람이 미리 업무 흐름을 예측하여 기술을 작성해야 했으며, 자동화된 기술 진화 연구들도 경험을 단순히 축적할 뿐 지속적인 지식 베이스로 활용하는 데 미흡했습니다.
+
+💡 핵심 기술 및 아키텍처
+*   **3계층 구조:** 에이전트의 &#x27;원시 실행 경험&#x27;, &#x27;누적된 지식(위키)&#x27;, &#x27;실행 가능한 기술&#x27;을 명확히 분리하여 운영합니다.
+*   **지식 통합 루프:** 실행 경험을 위키로 지속적으로 통합하고, 누적된 지식을 바탕으로 기술을 제안하며, 검증 성능을 기준으로 기술의 개선을 승인하는 순환 구조를 갖습니다.
+*   **지속적 지식 베이스:** 기술 업데이트의 토대가 되는 영구적인 위키를 통해 지식의 유실을 방지하고 점진적인 진화를 가능하게 합니다.
+
+📊 실험 결과 분석
+*   **성능 우위:** 5개의 벤치마크와 5개의 모델(Qwen 3.5/3.6, Gemma 4, Gemini 3.5 Flash 등)에서 진행된 실험 결과, WikiSkill은 기존 방법론(EvoSkill, SkillOpt 등) 대비 모든 모델에서 더 높은 평균 성능을 보였습니다. 
+*   **모델 규모와 기술의 관계:** 모델의 규모가 클수록 기술 진화를 통한 성능 향상 폭이 컸으며, 작은 모델도 고도화된 기술을 갖출 경우 기술이 없는 훨씬 큰 모델을 능가하는 성능을 보였습니다.
+*   **기술 전이성:** 한 모델에서 학습된 기술이 다른 모델이나 모델 계열로 성공적으로 전이됨을 확인했으며, 때로는 직접 학습한 기술보다 타 모델이 학습한 기술이 더 뛰어난 경우도 있었습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+*   **지능형 에이전트 고도화:** 복잡한 도메인 지식이 필요한 실무 환경에서 에이전트가 경험을 통해 스스로 전문성을 쌓아가는 효율적인 시스템 구축이 가능해집니다.
+*   **지식의 재사용:** 모델 매개변수를 직접 수정하지 않고도 &#x27;기술 모듈&#x27; 형태로 전문성을 추가·전달할 수 있어, 모델 업데이트 비용을 절감하고 기업 내 지식 자산을 표준화된 형식으로 관리할 수 있습니다.
+*   **한계점:** 현재는 기술 검색(retrieval) 단계가 배제되어 있고, 위키의 자동 정리 기능이 부족하며, 매우 긴 장기 계획이 필요한 작업에는 추가적인 연구가 필요합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2608.27454 WikiSkill: Compiling Agent Experience into Persistent Knowledge for Skill Evolution](https://arxiv.org/abs/2608.27454)
+&gt; - [WikiSkill: Compiling Agent Experience into Persistent Knowledge for Skill Evolution](https://arxiv.org/html/2608.27454)
+&gt; - [Paper page - WikiSkill: Compiling Agent Experience into Persistent Knowledge for Skill Evolution](https://huggingface.co/papers/2608.27454)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문 제목만 보고 방법론적 참신함을 기대했는데, 결국 RAG와 증분 학습의 변주곡이군요. &#x27;위키&#x27;라는 용어를 썼지만, 구조화된 지식 베이스의 검색 및 업데이트 메커니즘에 대한 엄밀한 평가가 부족합니다. 특히 &#x27;기술 검색(retrieval)&#x27; 단계가 배제되었다는 점은 치명적입니다. 대규모 지식 베이스에서 유의미한 기술을 어떻게 정렬하고 선택할지에 대한 수식적 근거가 부실해요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 맞지만, 실무 입장에선 &#x27;모델 매개변수 수정 없이 기술 모듈만 갈아 끼운다&#x27;는 점이 아주 매력적입니다. 매번 fine-tuning 돌리느라 GPU 태우는 것도 한계가 있거든요. 다만, 위키가 비대해질 때의 레이턴시 이슈와 지식 간의 충돌(Knowledge Conflict)을 어떻게 해결할지가 관건이겠네요. 프로덕션 레벨에서 이 위키를 어떻게 캐싱하고 관리할지 고민이 좀 됩니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;다들 너무 회의적인 거 아니에요? ㅋㅋㅋ 작은 모델이 큰 모델 성능을 추월한다는 결과는 진짜 고무적인데요! 특히 기술 전이성 확인된 거 보면, 앞으로 &#x27;SOTA 기술 모듈&#x27;만 따로 사고파는 마켓플레이스 생길 것 같아요. 교수님 지적대로 검색 단계가 약하다면, 거기에 벡터 데이터베이스랑 LLM-based Re-ranking 붙이는 논문 하나 더 쓰면 바로 톱 티어 학회 뚫을 수 있을 듯?&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
