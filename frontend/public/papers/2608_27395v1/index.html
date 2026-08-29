@@ -1,0 +1,66 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>LeVJEPA: 휴리스틱 없는 효율적이고 확장 가능한 비디오 사전 학습 | ArXiv Translator AI</title><meta name="description" content="LeVJEPA: 휴리스틱 없는 효율적이고 확장 가능한 비디오 사전 학습"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_27395v1"><meta property="og:type" content="article"><meta property="og:title" content="LeVJEPA: 휴리스틱 없는 효율적이고 확장 가능한 비디오 사전 학습"><meta property="og:description" content="LeVJEPA: 휴리스틱 없는 효율적이고 확장 가능한 비디오 사전 학습"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_27395v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="LeVJEPA: 휴리스틱 없는 효율적이고 확장 가능한 비디오 사전 학습"><meta name="twitter:description" content="LeVJEPA: 휴리스틱 없는 효율적이고 확장 가능한 비디오 사전 학습"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_27395v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "LeVJEPA: 휴리스틱 없는 효율적이고 확장 가능한 비디오 사전 학습", "description": "LeVJEPA: 휴리스틱 없는 효율적이고 확장 가능한 비디오 사전 학습", "datePublished": "2026-08-27", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_27395v1", "author": [{"@type": "Person", "name": "Lukas Kuhn"}, {"@type": "Person", "name": "Lucas Maes"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_27395v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_27395v1"});gtag('event', 'paper_view', {"paper_id": "2608_27395v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>LeVJEPA: 휴리스틱 없는 효율적이고 확장 가능한 비디오 사전 학습</h1><p>LeVJEPA: 휴리스틱 없는 효율적이고 확장 가능한 비디오 사전 학습</p><pre>LeVJEPA: 휴리스틱 없는 효율적이고 확장 가능한 비디오 사전 학습
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** LeVJEPA: Efficient &amp; Scalable Video Pretraining without the Heuristics
+&gt; - **저자:** Lukas Kuhn, Lucas Maes, Giuseppe Serra, Quentin Le Lidec, Yann LeCun, Randall Balestriero, Florian Buettner
+&gt; - **발행일:** 2026-08-27
+&gt; - **PDF 링크:** [LeVJEPA: Efficient &amp; Scalable Video Pretraining without the Heuristics](https://arxiv.org/pdf/2608.27395v1)
+
+
+✨ 3줄 핵심 요약
+* **단순한 구조:** 목표 인코더, 예측기, 정지 기울기(stop-gradient) 없이 단일 인코더와 프로젝터만으로 비디오 표현을 학습합니다.
+* **효율성 극대화:** 95%의 토큰을 무작위로 제거하는 방식으로 계산 비용을 획기적으로 낮추면서도 오히려 성능은 향상되었습니다.
+* **인과적 모델링:** 블록 인과적 어텐션(block-causal attention)을 도입하여, 인코더 자체가 시간적 순서를 이해하는 인과적 구조를 갖추었습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+기존 비디오 학습 모델들은 표현이 붕괴되는 것을 막기 위해 복잡한 기술적 장치(목표 인코더, 예측기 등)를 사용해야 했습니다. LeVJEPA는 &#x27;SIGReg&#x27;라는 정규화 기법을 사용하여 이러한 복잡한 장치 없이도 모델이 붕괴하지 않음을 수학적으로 보장합니다. 결과적으로 훨씬 적은 연산량으로 더 뛰어난 성능을 내며, 영상의 시간적 흐름을 스스로 학습하므로 실시간 스트리밍 비디오 분석이나 인과적 추론에 매우 유리합니다.
+
+🎯 배경 및 문제점
+비디오는 물리 세계의 시간적 구조를 담고 있어 학습에 매우 유용하지만, 정적인 이미지보다 학습 비용이 매우 높습니다. 기존의 자기 지도 학습 방식은 &#x27;표현 붕괴(representation collapse)&#x27;를 막기 위해 복잡한 아키텍처적 비대칭성이나 픽셀 공간에서의 복원 디코더를 사용해야만 했고, 이로 인해 연산 자원이 과도하게 소모되는 문제가 있었습니다.
+
+💡 핵심 기술 및 아키텍처
+* **SIGReg 정규화:** 임베딩 분포가 등방성 가우시안 분포를 따르도록 강제하여 학습 중 발생하는 표현 붕괴를 수학적으로 방지합니다.
+* **랜덤 토큰 드롭핑(Token Dropping):** 95%의 패치 토큰을 제거하여 연산량을 줄이되, 이를 통해 모델이 누락된 정보를 추론하게 함으로써 성능을 향상합니다.
+* **단일 구조:** 별도의 예측기 없이 단일 인코더와 프로젝터만 사용하며, 학습 시 블록 인과적 어텐션을 적용하여 미래 정보 참조 없이 과거 정보만으로 상태를 표현합니다.
+
+📊 실험 결과 분석
+* **효율성:** 동일한 데이터와 에포크에서 기존 V-JEPA 대비 최대 20.8배 적은 연산 비용으로 유사하거나 더 높은 성능을 기록했습니다.
+* **정확도:** 동일 연산량 기준으로 가장 강력한 기존 비디오 베이스라인보다 ImageNet-1K 분류에서 7.6점 높은 정확도를 달성했습니다.
+* **범용성:** 이미지 사전 학습 모델(DINOv2)과 비교했을 때, 외형 중심 평가에서는 경쟁력을 유지하면서도 동작 중심(motion-centric) 평가에서는 정확도를 거의 두 배 가까이 향상했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **대중적인 학습 가능:** 고가의 장비 없이도 효율적인 비디오 모델 학습이 가능해져 비디오 기반 범용 AI 개발의 진입 장벽이 낮아집니다.
+* **실시간 인과적 추론:** 인코더 자체가 과거 데이터를 바탕으로 학습되므로, 미래를 예측해야 하는 로봇 제어, 실시간 스트리밍 비디오 분석, 자율주행 등 인과관계가 중요한 실무 분야에 즉각적으로 적용할 수 있습니다.
+* **확장성:** 데이터와 모델 규모가 커질수록 성능이 개선되는 경향을 보여, 더 큰 규모의 비디오 데이터를 활용한 파운데이션 모델로의 발전 가능성이 큽니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [LeVJEPA](https://x.com/iScienceLuvr/status/2093256919502766276)
+&gt; - [Efficient &amp; Scalable Video Pretraining without the Heuristics](https://deeplearn.org/arxiv/814124/levjepa:-efficient-)
+&gt; - [LeVJEPA: Video Pretraining with Efficient and Scalable ...](https://www.emergentmind.com/papers/2608.27395)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;SIGReg 정규화를 통해 표현 붕괴를 수학적으로 해결했다는 점은 높이 평가하나, 95%의 토큰을 드롭핑하는 과정에서 발생하는 정보 손실이 과연 장기 의존성(Long-term dependency) 학습에 치명적이지 않을지 의문이 드는군요. 아키텍처의 단순화는 환영하지만, 비디오의 미세한 시간적 문맥까지 보존할 수 있을지는 추가적인 검증이 필요해 보입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님, 현업에서는 연산 효율이 곧 돈입니다. 20.8배 적은 비용으로 V-JEPA급 성능이 나온다면, 저는 당장 도입 검토 들어갑니다. 특히 실시간 스트리밍 분석에서 인과적 어텐션 구조는 서빙 시 레이턴시를 획기적으로 줄여줄 수 있겠네요. 다만, 프로덕션 환경에서 학습 안정성이 논문만큼 나올지가 관건이겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;선배님, 이건 그냥 미친 논문입니다! 얀 르쿤 옹이 &#x27;휴리스틱 다 갖다 버려&#x27;라고 선언한 꼴인데, DINOv2랑 비교해도 동작 인식에서 2배 성능이라니... 이제 비디오 파운데이션 모델 학습하려고 랩실 서버 다 태울 필요 없겠는데요? 저 오늘부터 바로 레포 파서 구현 들어갑니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

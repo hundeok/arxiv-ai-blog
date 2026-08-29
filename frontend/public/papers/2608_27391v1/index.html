@@ -1,0 +1,67 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CorporateBench: 시간적 지식 베이스를 활용한 대규모 질의응답 벤치마크 | ArXiv Translator AI</title><meta name="description" content="CorporateBench: 시간적 지식 베이스를 활용한 대규모 질의응답 벤치마크"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_27391v1"><meta property="og:type" content="article"><meta property="og:title" content="CorporateBench: 시간적 지식 베이스를 활용한 대규모 질의응답 벤치마크"><meta property="og:description" content="CorporateBench: 시간적 지식 베이스를 활용한 대규모 질의응답 벤치마크"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_27391v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="CorporateBench: 시간적 지식 베이스를 활용한 대규모 질의응답 벤치마크"><meta name="twitter:description" content="CorporateBench: 시간적 지식 베이스를 활용한 대규모 질의응답 벤치마크"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_27391v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "CorporateBench: 시간적 지식 베이스를 활용한 대규모 질의응답 벤치마크", "description": "CorporateBench: 시간적 지식 베이스를 활용한 대규모 질의응답 벤치마크", "datePublished": "2026-08-27", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_27391v1", "author": [{"@type": "Person", "name": "Sil Hamilton"}, {"@type": "Person", "name": "Albert Yu Sun"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_27391v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_27391v1"});gtag('event', 'paper_view', {"paper_id": "2608_27391v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>CorporateBench: 시간적 지식 베이스를 활용한 대규모 질의응답 벤치마크</h1><p>CorporateBench: 시간적 지식 베이스를 활용한 대규모 질의응답 벤치마크</p><pre>CorporateBench: 시간적 지식 베이스를 활용한 대규모 질의응답 벤치마크
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** CorporateBench: Large-Scale Q&amp;A Benchmarking with Temporal Knowledge Bases
+&gt; - **저자:** Sil Hamilton, Albert Yu Sun, Oscar J. Romero, Carl-Leander Henneking, David Mimno, Bishan Yang, Igor Labutov
+&gt; - **발행일:** 2026-08-27
+&gt; - **PDF 링크:** [CorporateBench: Large-Scale Q&amp;A Benchmarking with Temporal Knowledge Bases](https://arxiv.org/pdf/2608.27391v1)
+
+
+✨ 3줄 핵심 요약
+- **기업 환경 재현**: 실제 기업의 복잡한 조직 구조와 문서망을 모사하여 23만 개 이상의 문서로 구성된 대규모 질의응답 벤치마크를 구축했습니다.
+- **논리적 일관성 확보**: 절차적으로 생성된 지식 베이스를 기반으로, 방대한 문서들 사이에서도 정보의 시간적 흐름과 논리적 일관성을 보장합니다.
+- **성능 한계 포착**: 입력 데이터의 규모가 실제 기업 수준으로 커질수록 기존 LLM의 추론 성능이 급격히 저하됨을 입증했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+대규모 언어 모델(LLM)이 기업 내부의 복잡한 문서를 이해하고 답하는 능력을 평가하기는 매우 어렵습니다. 실제 기업 데이터는 보안 문제로 공개가 어렵고, 기존의 모의 데이터는 너무 단순하기 때문입니다. &#x27;CorporateBench(CB)&#x27;는 직원 수 12명에서 1만 명 규모까지의 가상 기업을 설계하고, 그 안에서 발생하는 수십만 건의 문서를 생성하여 실제와 유사한 평가 환경을 만들었습니다. 이 벤치마크는 LLM이 기업 내 복잡한 정보들을 종합적으로 분석하고 추론하는 능력을 정밀하게 측정합니다.
+
+🎯 배경 및 문제점
+- **평가의 부재**: 기업 내부의 기밀 유지 문제로 실질적인 기업 데이터셋 확보가 불가능합니다.
+- **데이터 부족**: 기존의 합성 벤치마크는 기업 내의 복잡한 상호작용과 연결성을 재현하기에 너무 단순합니다.
+- **한계 상황**: 현재의 LLM은 긴 컨텍스트 윈도우를 갖췄음에도 불구하고, 실제 기업 환경처럼 수많은 문서 간의 연결성을 파악해야 하는 복잡한 추론 작업에서는 여전히 취약합니다.
+
+💡 핵심 기술 및 아키텍처
+- **지식 베이스(KB) 기반 설계**: 직원, 팀, 프로젝트 간의 관계를 시간 흐름에 따라 체계적으로 설계하여, 문서들 사이의 논리적 일관성을 유지합니다.
+- **다차원 평가**: 정보 추출(Information Extraction)과 지식 베이스 질의(Knowledge Base Querying)라는 두 가지 축을 중심으로 평가합니다.
+- **현실적인 데이터 생성**: 시간적 변화(입사, 프로젝트 진행, 퇴사 등)를 반영하여 문서의 성격과 내용을 상황에 맞게 생성하며, 회의 자료나 이메일 등 실제 비즈니스 맥락을 그대로 모사합니다.
+
+📊 실험 결과 분석
+- **압도적인 규모**: 5개의 LLM을 대상으로 평가를 진행했으며, 문항당 평균 87.6개의 문서를 참조해야 하는 높은 복잡도를 구현했습니다. 이는 기존 벤치마크인 EKRAG의 1.5개와 비교했을 때 매우 높은 수치입니다.
+- **성능 저하 확인**: 실험 결과, 입력되는 데이터의 규모가 실제 기업의 환경 수준으로 커질수록 LLM의 답변 정확도가 눈에 띄게 낮아지는 경향을 보였습니다. 
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+- **엔터프라이즈 도입 가속화**: 기업 현장에서 LLM을 도입하려는 개발자들에게 실질적인 성능 지표를 제공하여, AI 기술이 실제 업무 환경에 최적화되도록 돕습니다.
+- **평가 생태계의 보완**: 그동안 기업용 AI 평가에 존재했던 &#x27;실제 데이터 부족&#x27;이라는 공백을 메우며, 보다 신뢰성 있는 AI 모델 개발의 기준이 될 것으로 기대됩니다.
+- **실무 적용**: 금융, 제약 등 다양한 산업군의 기업 환경을 시뮬레이션함으로써, 특정 기업 맞춤형 AI 모델의 성능을 사전에 검증하는 도구로 활용될 수 있습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2608.27391 CorporateBench: Large-Scale Q&amp;A Benchmarking with Temporal Knowledge Bases](https://arxiv.org/abs/2608.27391)
+&gt; - [ChatPaper: Explore and AI Chat with the Academic Papers](https://chatpaper.com/)
+&gt; - [Computer Science](https://arxiv.org/list/cs/pastweek?show=500&amp;skip=18)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;데이터의 규모가 커질수록 모델의 추론 성능이 급격히 저하된다는 점은 이미 예견된 결과입니다. 단순한 RAG 성능 측정을 넘어, 시간적 흐름에 따른 지식 베이스의 일관성을 평가하려 한 시도는 훌륭하나, 절차적으로 생성된 데이터가 과연 실제 기업의 복잡한 비정형 데이터의 노이즈를 얼마나 대변할 수 있을지 학술적으로 회의적이군요. 방법론의 정교함이 실제 현장의 카오스를 따라올 수 있을까요?&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무 데이터는 훨씬 더 지저분하죠. 하지만 저 벤치마크가 의미 있는 이유는 &#x27;문항당 87.6개의 문서 참조&#x27;라는 수치입니다. 지금 현업에서 가장 큰 병목이 긴 컨텍스트에서의 정보 누락이거든요. 100만 토큰 넘겨도 정작 필요한 팩트 하나를 못 찾는 게 현실인데, 이 정도 규모의 벤치마크가 나와줘야 모델 경량화나 인덱싱 전략을 제대로 짤 수 있습니다. 당장 우리 팀 파이프라인에 적용해서 성능 측정부터 해봐야겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;두 분 다 너무 진지하신 거 아니에요? ㅋㅋㅋ 이거 나오자마자 커뮤니티 난리 났어요. 이제 &#x27;CorporateBench 점수 몇 점인가요?&#x27;가 기업용 LLM 벤더들한테 던지는 새로운 킬러 질문이 될 듯. 87개 문서 참조해서 추론하는 건 진짜 인간도 헷갈릴 수준인데, 여기서 점수 잘 나오는 모델이 진짜 &#x27;엔터프라이즈급&#x27; 소리 듣겠네요. 당장 이 데이터셋으로 파인튜닝 데이터 만들어서 다음 학회에 낼 논문 챌린지 해볼 생각입니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
