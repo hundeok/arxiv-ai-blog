@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>RCMN: 영향력 있는 공적 담론에서의 오도성 이해 | ArXiv Translator AI</title><meta name="description" content="RCMN: 영향력 있는 공적 담론에서의 오도성 이해"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_27358v1"><meta property="og:type" content="article"><meta property="og:title" content="RCMN: 영향력 있는 공적 담론에서의 오도성 이해"><meta property="og:description" content="RCMN: 영향력 있는 공적 담론에서의 오도성 이해"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_27358v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="RCMN: 영향력 있는 공적 담론에서의 오도성 이해"><meta name="twitter:description" content="RCMN: 영향력 있는 공적 담론에서의 오도성 이해"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_27358v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "RCMN: 영향력 있는 공적 담론에서의 오도성 이해", "description": "RCMN: 영향력 있는 공적 담론에서의 오도성 이해", "datePublished": "2026-08-27", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_27358v1", "author": [{"@type": "Person", "name": "Peiling Yi"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_27358v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_27358v1"});gtag('event', 'paper_view', {"paper_id": "2608_27358v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>RCMN: 영향력 있는 공적 담론에서의 오도성 이해</h1><p>RCMN: 영향력 있는 공적 담론에서의 오도성 이해</p><pre>RCMN: 영향력 있는 공적 담론에서의 오도성 이해
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** RCMN: Understanding Misleadingness in Influential Public Discourse
+&gt; - **저자:** Peiling Yi
+&gt; - **발행일:** 2026-08-27
+&gt; - **PDF 링크:** [RCMN: Understanding Misleadingness in Influential Public Discourse](https://arxiv.org/pdf/2608.27358v1)
+
+
+✨ 3줄 핵심 요약
+- 영향력 있는 공적 담론이 독자를 오도하는 방식을 분석하기 위해 &#x27;독자 중심 오도성 이해(RCMN)&#x27; 프레임워크와 데이터셋을 구축함.
+- 오도성은 단순한 허위 정보를 넘어 생략, 과장, 근거 없는 추론 등 다양한 방식으로 나타나며 감정적 자극 및 왜곡된 의도와 깊게 연관됨.
+- 생성형 AI 모델 평가 결과, 독자의 해석을 추측하는 것은 경량화된 표현만으로도 가능하나, 오도성이 생성되는 구체적 메커니즘을 파악하는 것은 훨씬 난도가 높음.
+
+📖 쉽게 풀어쓴 1분 핵심
+많은 정보가 겉으로는 사실(팩트)에 기반하고 있더라도, 특정 정보를 생략하거나 맥락을 교묘하게 조정하여 독자를 잘못된 방향으로 이끄는 경우가 많습니다. 본 연구는 이러한 &#x27;오도성(Misleadingness)&#x27;을 정의하기 위해 5가지 차원(오도 메커니즘, 독자 해석, 증거 기반 해석, 감정적 자극, 의사소통 의도)을 제안합니다. 이를 바탕으로 구축된 데이터셋을 통해 분석한 결과, 오도성은 사실 여부를 떠나 독자의 감정을 흔들고 왜곡된 결론을 유도하는 데 사용됩니다. AI 모델은 독자가 어떻게 받아들일지는 어느 정도 예측하지만, 그 정보가 왜곡되는 원리까지 파악하는 데는 여전히 한계가 있습니다.
+
+🎯 배경 및 문제점
+- 공적 담론은 사회적 믿음과 여론 형성에 핵심적인 역할을 하지만, 정보가 편집·생략·맥락 왜곡을 거치면 독자에게 오해를 불러일으킬 위험이 큼.
+- 기존 연구들은 주로 사실 관계의 &#x27;참/거짓&#x27; 판단에 집중했으나, 사실적인 데이터라도 교묘한 프레임 설정을 통해 오해를 유발하는 현상을 충분히 다루지 못함.
+- 이를 해결하기 위해 실증적 근거에 기반하여 메시지가 독자의 해석을 어떻게 왜곡하는지 체계적으로 분석하는 도구가 필요함.
+
+💡 핵심 기술 및 아키텍처
+- **RCMN 프레임워크:** 오도성을 5개 차원(메커니즘, 독자 해석, 증거 기반 해석, 감정 자극, 의사소통 의도)으로 정량화하여 분석함.
+- **데이터셋 구축:** &#x27;Fact-Check Insights&#x27; 데이터를 활용하여 검증된 정보를 기반으로 원본 메시지의 맥락을 복구하고, 증거 기반의 주석(Annotation)을 작성함.
+- **분석 도구:** 메시지의 claim(주장)과 context(맥락)를 요약한 경량 표현을 활용하여 모델이 오도성을 파악할 수 있는지 테스트함.
+
+📊 실험 결과 분석
+- **모델 성능:** 5개 생성형 AI 모델을 평가한 결과, &#x27;독자의 해석&#x27;을 복원하는 능력은 전반적으로 우수했으나(표 6 참조), 오도성이 발생하는 구체적인 메커니즘(과장, 생략 등)을 식별하는 성능은 상대적으로 낮음(표 5 참조).
+- **오도성 방식:** 데이터 분석 결과, fabrication(허위) 외에도 unsupported inference(근거 없는 추론), exaggeration(과장), omission(생략)이 빈번한 오도 메커니즘으로 확인됨.
+- **감정 및 의도:** 높은 감정적 자극과 왜곡된 의도가 담긴 담론일수록 오도성이 높게 나타나는 경향을 보임.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+- **스케일 가능한 분석:** 본 연구는 경량화된 데이터 표현만으로도 독자의 해석을 예측할 수 있음을 입증하여, 방대한 온라인 담론을 효율적으로 모니터링할 가능성을 제시함.
+- **심층 검증:** 더 정확한 오도성 분석을 위해서는 AI가 상황에 따라 더 깊은 맥락과 증거를 찾아내는 &#x27;적응형 모델&#x27;의 개발이 필요함을 시사함.
+- **실무 적용:** 뉴스 플랫폼이나 소셜 미디어에서 의도적인 정보 왜곡을 사전에 탐지하고, 독자들에게 비판적 문해력을 높일 수 있는 보조 정보를 제공하는 서비스 개발에 기여할 수 있음.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Understanding Misleadingness in Influential Public Discourse](https://academ.us/article/2608.27358/)
+&gt; - [Literature Review RCMN: Understanding Misleadingness in ...](https://www.themoonlight.io/en/review/rcmn-understanding-misleadingness-in-influential-public-discourse)
+&gt; - [RCMN: Understanding Misleadingness in Influential Public Discourse](https://chatpaper.com/pt/chatpaper/paper/338311)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문에서 제안한 5차원 프레임워크 자체는 흥미로우나, &#x27;오도성&#x27;이라는 개념 자체가 지나치게 주관적이지 않나? 해석의 영역이 개입되는 순간 Ground Truth를 어떻게 확립할지가 의문이군. 특히 모델이 메커니즘을 파악하지 못하고 독자 반응만 흉내 내는 것은, 결국 근본적인 인과관계 추론이 아닌 통계적 패턴 매칭에 머물러 있다는 방증이지.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 모델이 &#x27;왜곡의 원리&#x27;까지 파악하게 하는 건 실무적으로 정말 어렵죠. 당장 트래픽 터지는 서비스에 이걸 적용하려면, 5차원 다 따지다가 Latency 다 잡아먹을 텐데... 차라리 경량 표현으로 독자 반응이라도 예측 가능한 걸 다행으로 여겨야 할 판입니다. 비즈니스 단에서는 &#x27;이게 왜 오도인지&#x27; 설명하는 리포트보다, &#x27;이게 오도될 확률이 높다&#x27;는 점수 한 줄 뽑아주는 게 훨씬 가치 있거든요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;아니, 두 분 너무 냉소적이신 거 아니에요? ㅋㅋ 이번 RCMN 데이터셋은 적어도 &#x27;사실 여부&#x27;에만 매몰됐던 기존 팩트체크 모델들에서 한 단계 진화했다는 데 의미가 크잖아요. 특히 감정적 자극이랑 오도성 상관관계 분석한 건 요즘 숏폼 알고리즘 폐해 잡는 데 완전 핫한 주제인데! 일단 코드 공개되면 바로 파인튜닝 돌려봐야겠네요. 메커니즘 파악은 제가 좀 더 고도화해서 다음 학회에 논문 내면 되겠죠 뭐!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
