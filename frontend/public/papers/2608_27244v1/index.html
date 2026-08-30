@@ -1,0 +1,69 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>의미론적 데이터 처리 시스템을 위한 구성적 온라인 학습 | ArXiv Translator AI</title><meta name="description" content="의미론적 데이터 처리 시스템을 위한 구성적 온라인 학습"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_27244v1"><meta property="og:type" content="article"><meta property="og:title" content="의미론적 데이터 처리 시스템을 위한 구성적 온라인 학습"><meta property="og:description" content="의미론적 데이터 처리 시스템을 위한 구성적 온라인 학습"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_27244v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="의미론적 데이터 처리 시스템을 위한 구성적 온라인 학습"><meta name="twitter:description" content="의미론적 데이터 처리 시스템을 위한 구성적 온라인 학습"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_27244v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "의미론적 데이터 처리 시스템을 위한 구성적 온라인 학습", "description": "의미론적 데이터 처리 시스템을 위한 구성적 온라인 학습", "datePublished": "2026-08-27", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_27244v1", "author": [{"@type": "Person", "name": "Paweł Liskowski"}, {"@type": "Person", "name": "Fuheng Zhao"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_27244v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_27244v1"});gtag('event', 'paper_view', {"paper_id": "2608_27244v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>의미론적 데이터 처리 시스템을 위한 구성적 온라인 학습</h1><p>의미론적 데이터 처리 시스템을 위한 구성적 온라인 학습</p><pre>의미론적 데이터 처리 시스템을 위한 구성적 온라인 학습
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Compositional Online Learning for Semantic Data Processing Systems
+&gt; - **저자:** Paweł Liskowski, Fuheng Zhao, Benjamin Han, Anupam Datta, Dimitris Tsirogiannis
+&gt; - **발행일:** 2026-08-27
+&gt; - **PDF 링크:** [Compositional Online Learning for Semantic Data Processing Systems](https://arxiv.org/pdf/2608.27244v1)
+
+
+✨ 3줄 핵심 요약
+* LLM 호출 시 발생하는 긴 지연 시간을 활용해, CPU 기반 학습 모델의 업데이트 과정을 처리 시간에 숨기는 &#x27;온라인 학습 프레임워크&#x27;를 개발했습니다.
+* 메모이제이션, 필터 순서 최적화, 캐스케이드 라우팅이라는 3가지 구성 요소를 결합하여 비용 최적화를 수행합니다.
+* 실제 환경(Cortex AISQL)에서 분석 결과, 이론적 상한선인 11.4배의 비용 절감 효과와 실제적인 8배 수준의 성능 개선을 확인했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+대규모 언어 모델(LLM)을 데이터 처리에 활용하면 한 줄을 처리하는 데 걸리는 시간(지연 시간)이 매우 깁니다. 기존의 데이터 처리 시스템에서는 학습 모델을 가볍게 유지해야 했지만, 이 논문은 오히려 LLM의 긴 대기 시간을 이용합니다. LLM이 답변을 생성하는 동안 CPU가 다음 최적화 과정을 처리해 버리는 것입니다. 이를 통해 여러 개의 학습 구성 요소를 쌓아 올리는 &#x27;구성적 온라인 학습&#x27;이 가능해졌고, 결과적으로 시스템은 스스로 성능을 개선하며 비용을 획기적으로 줄일 수 있게 되었습니다.
+
+🎯 배경 및 문제점
+* **높은 비용:** 데이터 처리 시스템에서 LLM 호출 비용은 전체 쿼리 비용의 80~90%를 차지하며, 관계형 연산보다 10만 배에서 1천만 배가량 비쌉니다.
+* **지연 시간의 역설:** 전통적인 적응형 쿼리 처리에서는 학습자가 최적화 대상보다 가벼워야 했으나, LLM 환경에서는 처리 시간이 매우 길어 오히려 CPU 기반 학습자를 위한 충분한 &#x27;시간 창(latency window)&#x27;이 확보됩니다.
+* **구성 문제:** 다수의 학습 구성 요소를 어떻게 체계적으로 결합할 것인가에 대한 연구가 부족한 상태였습니다.
+
+💡 핵심 기술 및 아키텍처
+* **학습 패턴의 공유:** 각 구성 요소는 실행 중에 실시간으로 데이터를 학습하며, 학습 단계는 항상 다음 LLM 호출의 라운드 트립(응답 대기 시간) 안에 숨겨집니다.
+* **3단계 구성 요소:**
+    1. **메모이제이션:** 정확한 결과 캐싱.
+    2. **필터 순서 학습:** 행(row) 단위로 LLM 호출을 최소화하는 순서 결정.
+    3. **캐스케이드 라우팅:** 배치 단위로 보조 모델과 LLM 사이에서 처리를 분배.
+* **비용 분해:** 전체 LLM 비용을 각각의 학습 구성 요소가 분담하여 제어하도록 설계했습니다.
+
+📊 실험 결과 분석
+* **이론적 성과:** 두 학습 구성 요소가 상호 독립적으로 작용할 때, 비용 최적화의 이론적 상한선은 11.4배 절감으로 나타났습니다.
+* **현실적 성과:** 캐스케이드 경계에서의 자기 선택(self-selection), 표본 예산 감소, 선택도 추정 오차(drift) 등을 고려했을 때, 실제 비용 절감 수치는 약 8배 수준으로 도출되었습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **차세대 데이터 시스템:** 향후 LLM 기반 데이터 시스템의 경쟁력은 개별 연산자의 성능보다, 지연 시간 예산을 활용하는 다층적 최적화 아키텍처에서 결정될 것입니다.
+* **실무 적용:** 이 프레임워크는 Cortex AISQL 사례를 통해 실제 대규모 데이터 처리 시스템에서 작동함을 입증했습니다. 또한 쿼리 간 학습(Cross-query learning)을 적용하여 반복되는 쿼리 패턴에 대한 성능 향상 가능성도 열어두었습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Compositional Online Learning for Semantic Data Processing ...](https://arxiv.org/html/2608.27244v1)
+&gt; - [PDF Compositional Online Learning for Semantic Data Processing ...](https://www.semanticscholar.org/paper/Compositional-Online-Learning-for-Semantic-Data-Liskowski-Zhao/cf2aa66e67e24bc9c507e6b49d8df339d0fb0667)
+&gt; - [Literature Review Compositional Online Learning for ...](https://www.themoonlight.io/review/compositional-online-learning-for-semantic-data-processing-systems)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문 제목 보고 &#x27;또 뻔한 캐싱 최적화인가&#x27; 했는데, 지연 시간(latency window)을 학습의 가용 자원으로 치환한 발상은 꽤나 우아하군요. 다만, 학습 모델의 드리프트(drift)가 발생할 때 캐스케이드 라우팅이 복구되는 타임라인이 LLM 응답 시간보다 길어질 경우 시스템 전체의 안정성이 급격히 무너질 텐데, 이 부분에 대한 수렴성 증명이 논문에 좀 더 명확히 기술되어야 할 것 같습니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에선 그 &#x27;복구 비용&#x27;이 골치죠. 특히 8배 성능 향상이라는 게 이상적인 벤치마크 환경에서의 수치라, 실제 프로덕션에서 데이터 분포가 갑자기 튀는(outlier) 상황에서도 이 프레임워크가 유효할지 의문입니다. 그래도 CPU 유휴 시간을 활용해 필터 순서를 튜닝한다는 접근은 비용 절감이 절실한 우리 팀 입장에서는 당장 다음 스프린트에 테스트해볼 가치가 있네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 다들 비판적이시네! 저는 이 논문이 &#x27;LLM은 무조건 느리다&#x27;는 단점을 &#x27;최적화의 놀이터&#x27;로 바꿨다는 점에서 엄청난 돌파구라고 봐요. 특히 Cortex AISQL 사례처럼 실제 시스템에 녹여낸 게 대박인 듯? 이제 LLM API 호출하는 동안 멍하니 기다리지 말고, 그 틈에 모델 여러 개를 앙상블로 돌리거나 가벼운 모델로 필터링하는 방식이 표준(standard)이 되겠는데요? 당장 내일 세미나 발표 주제는 이거로 정했습니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
