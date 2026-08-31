@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>도구 사용 학습: 도구 통합 수학적 추론을 위한 강화 학습 | ArXiv Translator AI</title><meta name="description" content="도구 사용 학습: 도구 통합 수학적 추론을 위한 강화 학습"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_28447v1"><meta property="og:type" content="article"><meta property="og:title" content="도구 사용 학습: 도구 통합 수학적 추론을 위한 강화 학습"><meta property="og:description" content="도구 사용 학습: 도구 통합 수학적 추론을 위한 강화 학습"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_28447v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="도구 사용 학습: 도구 통합 수학적 추론을 위한 강화 학습"><meta name="twitter:description" content="도구 사용 학습: 도구 통합 수학적 추론을 위한 강화 학습"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_28447v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "도구 사용 학습: 도구 통합 수학적 추론을 위한 강화 학습", "description": "도구 사용 학습: 도구 통합 수학적 추론을 위한 강화 학습", "datePublished": "2026-08-28", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_28447v1", "author": [{"@type": "Person", "name": "Minghui Xu"}, {"@type": "Person", "name": "Zi Wang"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_28447v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_28447v1"});gtag('event', 'paper_view', {"paper_id": "2608_28447v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>도구 사용 학습: 도구 통합 수학적 추론을 위한 강화 학습</h1><p>도구 사용 학습: 도구 통합 수학적 추론을 위한 강화 학습</p><pre>도구 사용 학습: 도구 통합 수학적 추론을 위한 강화 학습
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Learning to Use Tools: Reinforcement Learning for Tool-Integrated Mathematical Reasoning
+&gt; - **저자:** Minghui Xu, Zi Wang
+&gt; - **발행일:** 2026-08-28
+&gt; - **PDF 링크:** [Learning to Use Tools: Reinforcement Learning for Tool-Integrated Mathematical Reasoning](https://arxiv.org/pdf/2608.28447v1)
+
+
+✨ 3줄 핵심 요약
+*   거대언어모델(LLM)의 수학적 계산 오류를 해결하기 위해 외부 계산기 도구를 통합하고 이를 강화 학습으로 최적화하는 파이프라인을 구축했습니다.
+*   다양한 강화 학습 기법(RLOO, GRPO, DAPO 등)을 적용한 결과, 도구 통합과 강화 학습의 결합이 수학적 추론 성능을 크게 향상시켰습니다.
+*   특히 Tool-DAPO 방식은 pass@1 성능을 기존 SFT 대비 35.8%에서 66.0%로 대폭 개선하며 가장 뛰어난 성과를 보였습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+AI 모델은 문장을 생성하는 능력은 뛰어나지만, 숫자를 정확히 계산하는 데에는 한계가 있습니다. 연구진은 AI가 수학 문제를 풀 때 필요 시 &#x27;계산기&#x27; 도구를 호출하도록 가르쳤습니다. 단순히 계산기를 연결하는 것을 넘어, 강화 학습을 통해 AI가 계산기를 언제 더 효과적으로 사용하는지 스스로 학습하게 했습니다. 1,024개의 새로운 문제로 테스트한 결과, 이 모델은 복잡한 수학 문제에서 실수를 크게 줄이고 정답률을 비약적으로 높였습니다.
+
+🎯 배경 및 문제점
+*   **계산 한계:** LLM은 토큰 단위의 예측 방식을 따르므로, 다단계 연산이 필요한 수학 문제에서 산술적·논리적 오류를 범하기 쉽습니다.
+*   **검증 부족:** 모델 자체에는 중간 계산 결과를 검증할 명시적인 메커니즘이 부족하여, 잘못된 계산이 최종 결과까지 이어지는 경우가 많습니다.
+*   **평가 신뢰도:** 기존 50개 문제로 구성된 공개 데이터셋은 평가 결과의 통계적 노이즈가 커, 연구진은 이를 보완하기 위해 1,024개의 새로운 테스트 벤치마크를 구축했습니다.
+
+💡 핵심 기술 및 아키텍처
+*   **도구 통합 파이프라인:** 모델이 `&lt;tool&gt;...&lt;/tool&gt;` 태그를 사용해 계산기를 호출하면, 외부 환경에서 이를 실행하고 `&lt;obs&gt;`를 통해 결과를 피드백받는 구조를 도입했습니다.
+*   **강화 학습 기법:** RLOO, RLOO++, GRPO, DAPO 등 다양한 온-폴리시(on-policy) 강화 학습을 적용하여 최종 정답에 대한 보상을 최대화하도록 모델을 훈련했습니다.
+*   **Tool-DAPO:** 동적 샘플링을 통해 정보량이 적은 학습 그룹을 걸러내고, 비대칭적 업데이트 규칙을 사용하여 학습 효율을 극대화했습니다.
+
+📊 실험 결과 분석
+*   **성능 향상:** 도구 통합은 SFT(지도 미세 조정)와 RL 베이스라인 모두에서 pass@k 기준 약 10% 포인트의 일관된 성능 향상을 가져왔습니다.
+*   **최고 성과:** Tool-DAPO 방식이 pass@1 성능을 35.8%(Tool-SFT)에서 66.0%까지 향상시키며 가장 강력한 성능을 기록했습니다.
+*   **도구 사용 촉진:** 강화 학습은 단순히 SFT로 습득한 도구 사용법을 유지하는 데 그치지 않고, 문제가 해결될 때 더 빈번하고 효과적으로 도구를 사용하도록 유도했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+*   **신뢰성 강화:** 수학적 추론이 필수적인 금융, 공학, 과학 분야의 AI 솔루션에서 계산 오류를 획기적으로 줄일 수 있는 길을 열었습니다.
+*   **강화 학습의 효용:** 도구 사용법을 일일이 가르치지 않아도 정답 보상만으로 모델이 도구 사용의 최적 전략을 찾아낼 수 있음을 입증했습니다.
+*   **한계 및 과제:** 여전히 모델이 정답을 하나도 샘플링하지 못하는 어려운 문제에서는 강화 학습의 효과가 제한적임을 확인했으며, 향후 강력한 계획(planning) 또는 탐색 기법과의 결합이 필요할 것으로 보입니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [ReTool: Reinforcement Learning for Strategic Tool Use in LLMs](https://arxiv.org/pdf/2504.11536)
+&gt; - [ReTool: Reinforcement Learning for Strategic Tool Use in LLMs | OpenReview](https://openreview.net/forum?id=tRk1nofSmz)
+&gt; - [Reinforcement Learning for Tool-Integrated Interleaved ...](https://arxiv.org/pdf/2510.11184)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문 결과를 보니 Tool-DAPO가 35.8%에서 66.0%로 뛴 것은 고무적이나, 결국 강화 학습의 고질적인 문제인 &#x27;탐색의 한계&#x27;가 여기서도 드러나는군요. 마지막 섹션에서 언급했듯, 모델이 정답을 한 번도 샘플링하지 못하는 경우엔 사실상 학습이 정체되는데, 이를 단순히 보상 설계로 해결하려는 건 미봉책 아닐까요? 더 근본적인 Planning 아키텍처 결합이 시급해 보입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 맞지만, 실무자 입장에서는 1,024개 벤치마크셋 구축했다는 점에 점수를 주고 싶네요. 맨날 뻔한 데이터셋으로 overfitting된 논문들만 보다가, 이렇게 도구 호출 환경(Tool-integrated environment)까지 고려해서 RL 파이프라인 돌려본 건 프로덕션 적용 가능성을 확실히 높여줍니다. 다만, 실제 서비스에 태울 때 도구 호출 지연 시간(latency)이랑 에러 핸들링은 누가 책임질 건지 고민이네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;교수님, 엔지니어님, 너무 진지하신 거 아닌가요? 지금 포인트는 &#x27;도구 사용법을 일일이 가르칠 필요 없이 정답 보상만으로 최적 전략을 찾았다&#x27;는 거예요! SFT 없이 강화 학습만으로 이 정도 성능 펌핑이면, 이제 복잡한 프롬프트 엔지니어링 다 갖다 버리고 그냥 RL 태우는 게 대세가 될 것 같은데... 당장 내일 랩 세미나 때 Tool-DAPO 구현 코드 뜯어봐야겠네요. 누가 저랑 같이 밤새실 분?&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

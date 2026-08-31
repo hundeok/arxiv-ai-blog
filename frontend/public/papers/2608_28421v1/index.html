@@ -1,0 +1,69 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>검증 가능한 보상을 통한 프로그램 학습: 사후 학습 LLM을 위한 기호 역전파 | ArXiv Translator AI</title><meta name="description" content="검증 가능한 보상을 통한 프로그램 학습: 사후 학습 LLM을 위한 기호 역전파"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_28421v1"><meta property="og:type" content="article"><meta property="og:title" content="검증 가능한 보상을 통한 프로그램 학습: 사후 학습 LLM을 위한 기호 역전파"><meta property="og:description" content="검증 가능한 보상을 통한 프로그램 학습: 사후 학습 LLM을 위한 기호 역전파"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_28421v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="검증 가능한 보상을 통한 프로그램 학습: 사후 학습 LLM을 위한 기호 역전파"><meta name="twitter:description" content="검증 가능한 보상을 통한 프로그램 학습: 사후 학습 LLM을 위한 기호 역전파"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_28421v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "검증 가능한 보상을 통한 프로그램 학습: 사후 학습 LLM을 위한 기호 역전파", "description": "검증 가능한 보상을 통한 프로그램 학습: 사후 학습 LLM을 위한 기호 역전파", "datePublished": "2026-08-28", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_28421v1", "author": [{"@type": "Person", "name": "Vishvesh Bhat"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_28421v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_28421v1"});gtag('event', 'paper_view', {"paper_id": "2608_28421v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>검증 가능한 보상을 통한 프로그램 학습: 사후 학습 LLM을 위한 기호 역전파</h1><p>검증 가능한 보상을 통한 프로그램 학습: 사후 학습 LLM을 위한 기호 역전파</p><pre>검증 가능한 보상을 통한 프로그램 학습: 사후 학습 LLM을 위한 기호 역전파
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Program Learning with Verifiable Rewards: Symbolic Backpropagation for Post-Training LLMs
+&gt; - **저자:** Vishvesh Bhat
+&gt; - **발행일:** 2026-08-28
+&gt; - **PDF 링크:** [Program Learning with Verifiable Rewards: Symbolic Backpropagation for Post-Training LLMs](https://arxiv.org/pdf/2608.28421v1)
+
+
+✨ 3줄 핵심 요약
+* LLM의 가중치를 수정하는 대신, 검증 가능한 중간 단계를 갖춘 &#x27;명시적 프로그램&#x27;을 생성하여 추론 능력을 모델 외부로 분리했습니다.
+* &#x27;기호 역전파(Symbolic Backpropagation)&#x27; 기법을 도입하여, 각 단계의 타입 제약과 계약 위반을 기반으로 오류를 구체적으로 추적하고 학습합니다.
+* 기존 강화학습(RL) 방식 대비 동일 예산 하에서 30B 파라미터 모델 기준 평균 27.8점 높은 성능을 기록했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+기존의 LLM 학습 방식은 모델 내부의 가중치를 조정하므로, 모델이 왜 그런 답을 냈는지 알기 어렵고 오류 수정도 쉽지 않습니다. 본 논문은 이를 해결하기 위해 모델을 직접 고치는 대신, 복잡한 추론 과정을 잘게 쪼개어 검증 가능한 &#x27;프로그램&#x27;을 만드는 방식을 제안합니다. 마치 프로그래밍처럼 각 단계마다 정해진 규칙(계약)을 지키는지 확인하고, 실패 시 어느 단계가 잘못되었는지 즉시 파악합니다. 이를 통해 모델은 추론 능력을 자신의 복잡한 가중치 속에 숨기지 않고, 명확하고 수정 가능한 외부 프로그램의 형태로 구현하게 됩니다.
+
+🎯 배경 및 문제점
+* **불투명성:** 기존의 지도 미세 조정(SFT)이나 강화학습(RL)은 추론 능력을 모델 가중치에 통합하여, 모델이 중간 단계를 어떻게 거쳤는지 검증하거나 추론 과정을 수정하기 어렵습니다.
+* **비효율성:** 한 모델에서 학습한 능력이 다른 모델로 이전되지 않으며, 최종 결과만으로 보상을 판단하기 때문에 학습이 비효율적입니다.
+* **추론의 내재화:** 도구 사용이나 단계별 추론이 가능한 작업조차 모델 내부의 블랙박스에 의존함으로써, 신뢰성과 디버깅에 한계가 존재합니다.
+
+💡 핵심 기술 및 아키텍처
+* **프로그램 학습(PLVR):** 확정적 요소와 미세 조정된 소형 신경망(프리미티브)을 조합하여 명시적인 프로그램을 구성합니다.
+* **기호 역전파(Symbolic Backpropagation):** 연쇄 법칙의 아날로그 방식으로, 출력부에서 발생한 손실을 타입 추론을 통해 각 프로그램 계층으로 역방향으로 전파하여 어떤 부분이 문제인지 정확히 짚어냅니다.
+* **계약 기반 검증(Contract-based Verification):** 최종 결과만 확인하는 기존 RL 방식과 달리, 각 단계마다 입출력 계약(Contract)을 확인하여 오류를 지역화(Localize)합니다.
+* **순환적 개선:** 프로그램 탐색과 프리미티브(신경망 요소)의 미세 조정을 교대로 수행하여 학습 효율을 극대화합니다.
+
+📊 실험 결과 분석
+* **성능 우위:** LiveCodeBench v6 및 τ 2-Bench 벤치마크에서, PLVR은 30B 모델 기준 RL 대비 27.8점, 더 거대한 모델 대비 13.6점 높은 성능을 보였습니다.
+* **탐색 효율:** 균등 샘플링 방식(중앙값 17.5%) 대비 기호 역전파를 통한 유도된 탐색은 중앙값 65.6%를 기록하며 압도적인 성능 차이를 입증했습니다.
+* **신뢰성:** 프로그램 최적화는 약 70개의 예시 내에서 신뢰성 있게 수행되며, 새로운 작업 적용 시 미세 조정 데이터 없이도 약 100개의 프로그램 검색 예시만으로 대응이 가능합니다. (실험 수치 외 정확한 비교 데이터는 본문 참고)
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **설명 가능한 AI:** 추론 과정이 가중치가 아닌 외부 프로그램으로 드러나므로, 복잡한 비즈니스 로직이나 에이전트 시스템에서 오류를 즉각적으로 진단할 수 있습니다.
+* **재사용성:** 모델을 새로 학습시키지 않고도, 검증된 프리미티브 라이브러리를 통해 새로운 작업에 빠르게 적응할 수 있는 모듈형 AI 설계를 가능하게 합니다.
+* **검증 가능한 워크플로우:** 도구 호출, 정책 준수 대화 등 중간 검증이 필수적인 엔터프라이즈 환경에서 매우 높은 실무적 가치를 지닙니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [GitHub - opendilab/awesome-RLVR: A curated list of reinforcement learning with verifiable rewards (continually updated) · GitHub](https://github.com/opendilab/awesome-RLVR)
+&gt; - [2607.10474 Reinforcement Learning with Verifiable Physics: Post-training LLMs with Continuous Rewards](https://arxiv.org/abs/2607.10474)
+&gt; - [Reinforcement Learning with Verifiable Physics: Post-training LLMs with Continuous Rewards](https://arxiv.org/html/2607.10474v1)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문 제목 보고 또 단순 RL 변주곡이겠거니 했는데, 기호 역전파(Symbolic Backpropagation)를 도입한 건 꽤 흥미롭군요. 가중치 수정 없이 프로그램 구조를 명시적으로 분리해 오류를 지역화(Localize)한다는 개념은 전통적인 소프트웨어 공학의 검증 철학을 LLM 추론에 잘 이식한 사례입니다. 다만, 이 &#x27;프리미티브&#x27;들의 조합이 얼마나 복잡한 문제까지 일반화될지는 아직 의문이네요. 도메인 특화 계약(Contract)을 작성하는 오버헤드를 무시할 수 없을 겁니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에선 &#x27;계약 작성&#x27;이 제일 큰 장벽일 텐데, 반대로 생각하면 이 방식이 엔터프라이즈 환경에선 구원투수가 될 수도 있습니다. 기존 블랙박스 모델은 디버깅하다 암 걸릴 지경이었는데, 어느 단계에서 타입 위반이 났는지 로그로 찍힌다면 운영 팀에서 환호하겠네요. 30B 모델에서 27.8점 향상이라는 수치는 단순히 연구용 기록을 넘어, 프로덕션 환경에서 추론 비용을 획기적으로 줄여줄 강력한 인센티브가 될 것 같습니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 다들 반응이 너무 정적이시네요! 이거 거의 &#x27;추론의 모듈화&#x27; 혁명 아닙니까? 그동안 RL로 모델 쥐어짜느라 GPU 태우던 시대는 이제 끝나는 건가요? 100개 예시만으로 적응 가능하다는 건 퓨샷 학습의 패러다임 자체가 바뀔 수도 있다는 소리인데... 당장 내일 랩 세미나 주제 이걸로 가야겠습니다. 교수님, 저 이거 구현해봐도 될까요? 물론 논문 속 수치만큼 나올지는 모르겠지만, 일단 하이프는 제대로 탄 것 같습니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
