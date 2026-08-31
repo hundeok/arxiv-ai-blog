@@ -21953,7 +21953,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-30T23:03:43.690233+00:00",
+      "updated_at": "2026-08-31T09:24:22.164507+00:00",
       "paper": {
         "title": "What Does an Evaluation License? A Commit-Bound Census of Claim-Relative Inference in Inspect Evals",
         "summary": "Evaluation artifacts specify a forward computation: a task, scorer, and reported metric. They do not necessarily license the claim attached to that metric because the historical evidence and alternative semantics needed to replay it may be unbound. We formalize this missing claim-replay layer through a frozen substrate D, a grounded family F, a claim query q, and the resulting identified set. We then census all 124 mechanically eligible Inspect Evals units at a pinned commit. Every unit receives a terminal disposition; 110 stop before deterministic inference because required historical evidence or semantic grounding is unavailable. Where execution closes, exact values, winners, complete orders, and pairwise relations separate by claim resolution and by primary versus review family. The audit therefore returns typed stops, instability witnesses, and stable substructure rather than forcing one evaluator meaning or one robust/not-robust label.",
@@ -22117,7 +22117,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-30T23:03:43.690252+00:00",
+      "updated_at": "2026-08-31T09:24:22.164512+00:00",
       "paper": {
         "title": "CritICL: Inference-Time Weak-to-Strong Generalization from Small Language Model Failure Modes",
         "summary": "Recent advances in inference-time scaling have significantly improved the reasoning performance of large language models (LLMs). However, these methods typically rely on repeated generation or external verification. To address this limitation, we introduce CritICL, a novel inference-time framework that improves reasoning while maintaining high efficiency. Our key insight is that LLM failure modes exhibit structured patterns across model scales within the same family. Instead of treating failures as undesirable outputs, CritICL leverages them as a source of guidance. Specifically, we utilize failure modes derived from weaker models and incorporate them into inference through critique-based in-context examples. We propose two variants: CritICL-dynamic, which adaptively predicts input-specific failure modes and retrieves critiques, and CritICL-static, which uses a global failure mode profile to provide stable guidance. Experimental results show that CritICL consistently outperforms standard in-context learning and achieves performance competitive with or superior to test-time scaling methods, while requiring significantly fewer generations and lower token cost. Code available at: https://github.com/umwyf/CRITICL",
@@ -23053,11 +23053,11 @@
     "2608_28411v1": {
       "id": "2608_28411v1",
       "filename": "post_2608_28411v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-08-31T02:58:19.242462+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-31T02:58:19.242464+00:00",
+      "updated_at": "2026-08-31T09:25:19.217514+00:00",
       "paper": {
         "title": "LongPIBench: A Long-Context Benchmark for Prompt Injection",
         "summary": "Prompt injection attacks pose a serious security risk to large language models in real-world applications. However, existing prompt injection benchmarks primarily focus on short-context inputs, leaving the attacks and defenses in long-context settings largely unexplored. This gap leads to a substantial overestimation of the effectiveness of current defenses. In this paper, we bridge the gap by introducing LongPIBench, a long-context benchmark for prompt injection covering 4 realistic application scenarios: paper peer review, resume screening, code review, and email summary. For each scenario, we construct a synthetic dataset and a real-world dataset, with context lengths ranging from thousands to tens of thousands of tokens. The evaluation results on LongPIBench reveal significant vulnerabilities of prompt injection defenses under long-context settings: even simple heuristic prompt injection attacks achieve high success rates and frequently bypass state-of-the-art defenses. We hope LongPIBench can serve as a practical benchmark for systematically evaluating prompt injection defenses in realistic long-context scenarios.",
@@ -23070,7 +23070,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2608.28411v1"
       },
-      "priority_score": 44
+      "priority_score": 44,
+      "korean_title": "LongPIBench: 프롬프트 주입 공격을 위한 장문 컨텍스트 벤치마크"
     },
     "2608_28402v1": {
       "id": "2608_28402v1",
@@ -23529,11 +23530,218 @@
         "pdf_link": "https://arxiv.org/pdf/2608.28305v1"
       },
       "priority_score": 38
+    },
+    "2608_18524v1": {
+      "id": "2608_18524v1",
+      "filename": "post_2608_18524v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-08-31T09:24:36.565563+00:00",
+      "paper": {
+        "title": "DART-SD: Diamond-topology Aware Retrieval and Tuning for Self-Distillation of Multi-Turn Tool-Calling Agents",
+        "summary": "Equipping Large Language Models (LLMs) with multi-turn tool-calling capabilities is essential for building autonomous agents. However, progress is fundamentally limited by the reliance on full-length trajectory imitation. For tasks involving multiple order-independent sub-goals, the optimal solution space forms a vast combinatorial diamond lattice. Forcing this rich topology into monolithic trajectories causes a severe topological collapse, indiscriminately penalizing valid alternative explorations and severely degrading policy diversity. To address this, we propose DART-SD (Diamond-topology Aware Retrieval and Tuning for Self-Distillation), a novel framework that shifts the paradigm from global forcing to topology-guided localized correction. DART-SD first models the execution process as a converging Interaction-State Transition Graph (ISTG), faithfully capturing the inherent diamond topology of successful and failed exploratory paths. During autonomous rollouts, the framework identifies the Critical Topological Breakpoint (CTB) and retrieves success-supported recovery references. Finally, we introduce a progressive self-distillation paradigm through CTB-guided localized supervision, ensuring that the training loss is calculated exclusively on the generated recovery steps while strictly protecting the valid reasoning prefix from destructive gradient updates. Experiments on complex multi-turn tool-calling benchmarks demonstrate that DART-SD significantly outperforms traditional full-trajectory baselines.",
+        "published": "2026-08-19T04:19:21Z",
+        "authors": [
+          "Hangrui Xu",
+          "Jiarui Wang",
+          "Yang Yang",
+          "Chuanbo Zhu",
+          "Fangda Chen",
+          "Ziqi Wu",
+          "Jingming Cai",
+          "Yan Song"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.18524v1"
+      },
+      "priority_score": 59,
+      "korean_title": "다이아몬드 위상 구조를 인식하는 다중 턴 도구 호출 에이전트의 자기 증류를 위한 검색 및 튜닝"
+    },
+    "2608_26582v1": {
+      "id": "2608_26582v1",
+      "filename": "post_2608_26582v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-08-31T09:24:22.164500+00:00",
+      "last_error": null,
+      "updated_at": "2026-08-31T09:24:22.164502+00:00",
+      "paper": {
+        "title": "J-Zero: Unified Challenger--Solver--Judge Co-Evolution from Zero Data",
+        "summary": "Self-evolving language models have recently emerged as a promising path toward superintelligence, with the advantage of reducing the cost of human supervision. While considerable progress has been made in verifiable domains, self-evolution in unverifiable domains remains substantially less explored. We propose Judge co-adaptation from Zero data (J-Zero), a unified Challenger--Solver--Judge co-evolution framework that supports self-improvement across both domains. The Challenger and Solver co-evolve through an adversarial interaction: the Challenger generates increasingly difficult tasks, while the Solver learns to produce higher-quality responses to them. In parallel, the Judge co-adapts using preference pairs whose ordering is known in advance from how each response was produced, i.e., the Solver's answer over the Challenger's, and its decomposed-and-recombined answer over its one-shot answer, rather than from the Judge's own scores. J-Zero outperforms the baselines by an average of 4.2 points on verifiable and 8.0 points on unverifiable domains, and continues to improve through at least ten iterations, whereas the baselines degrade after two.",
+        "published": "2026-08-27T03:48:25Z",
+        "authors": [
+          "Gyouk Chu",
+          "Myeongho Jeon",
+          "Eunho Yang"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.26582v1"
+      },
+      "priority_score": 14
+    },
+    "2608_28192v1": {
+      "id": "2608_28192v1",
+      "filename": "post_2608_28192v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-08-31T09:24:22.164518+00:00",
+      "last_error": null,
+      "updated_at": "2026-08-31T09:24:22.164519+00:00",
+      "paper": {
+        "title": "Locate Anything in Videos: Rethinking Efficient Generative Spatio-Temporal Video Grounding",
+        "summary": "Spatio-temporal video grounding (STVG) requires models to identify when a referred event occurs and localize the target entity throughout that interval. Existing multimodal large language models typically serialize dense localization trajectories autoregressively, causing decoding latency to grow with tube length and allowing localization errors to propagate across time. We introduce Parallel Tube Decoding (PTD), a generative formulation that decomposes grounding into a temporal block followed by time-conditioned spatial blocks decoded simultaneously. This removes both token-level and trajectory-level dependencies, reducing the sequential decoding depth to a fixed $1 + 1$ rounds, independent of tube length. To enable parallel spatial generation, we introduce Decoupled Block Attention, which preserves access to shared video-query context while eliminating cross-box dependencies, together with localization-aware policy optimization for temporal boundaries and spatial geometry. On VidSTG, PTD reduces Tube Completion Latency by 79x and increases spatial decoding throughput by 92x over standard autoregressive decoding, while also improving grounding accuracy. With a compact 4B backbone, our model performs favorably well on VidSTG and HC-STVG, and generalizes zero-shot to temporal grounding, grounded VideoQA, and referring video object tracking. Our results show parallel tube generation is an efficient and effective alternative to autoregressive localization in videos.",
+        "published": "2026-08-28T11:05:30Z",
+        "authors": [
+          "Hanoona Rasheed",
+          "Haania Siddiqui",
+          "Ming-Hsuan Yang",
+          "Fahad Shahbaz Khan",
+          "Salman Khan"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.28192v1"
+      },
+      "priority_score": 28
+    },
+    "2608_24804v1": {
+      "id": "2608_24804v1",
+      "filename": "post_2608_24804v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-08-31T09:24:22.164525+00:00",
+      "last_error": null,
+      "updated_at": "2026-08-31T09:24:22.164527+00:00",
+      "paper": {
+        "title": "StarHarness: Evolving Harnesses with Stratified Search for Enterprise Environments",
+        "summary": "We present StarHarness, a framework for evolving environment-specific agent harnesses while keeping model weights fixed. The evolved harness can include prompt and task framing, tool interfaces, skills, MCP-backed providers, subagent structure, and agent-loop configuration. StarHarness constructs a compact evolution pool by stratifying tasks according to baseline failure behavior, separates proposer-visible search tasks from proposer-hidden selection tasks, and reserves held-out tasks for evaluating generalization. Across ITBench SRE, EnterpriseOps-Gym ITSM, and AutomationBench Finance, harness evolution improves full-benchmark performance by 20-35 percentage points over the default harness after 4-12 accepted changes per environment. These gains persist on tasks excluded from evolution and transfer without re-evolution across GPT and Qwen model families. Trace analysis links the improvements to interface repairs, environment conventions, and operational knowledge that compresses search, with fewer false-positive diagnoses and shorter trajectories in several settings. StarHarness therefore offers a practical way to reduce persistent model-environment mismatch in tool-rich enterprise tasks.",
+        "published": "2026-08-25T16:48:05Z",
+        "authors": [
+          "Esakkivel Esakkiraja",
+          "Denis Akhiyarov",
+          "Vikas Yadav",
+          "Sai Rajeswar",
+          "Patrice Bechard",
+          "Sridhar Nemala",
+          "Sagar Davasam"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.24804v1"
+      },
+      "priority_score": 35
+    },
+    "2608_26238v1": {
+      "id": "2608_26238v1",
+      "filename": "post_2608_26238v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-08-31T09:25:06.844437+00:00",
+      "paper": {
+        "title": "Procedura: Agentic 3D Modeling with Procedural Control",
+        "summary": "Native 3D generators now recover impressive mesh geometry from a single image. However, a dense mesh stays soft where a machined object should be sharp, it carries no part decomposition, and it exposes no parameter a user could edit. To address this, we explore the paradigm of 3D shape as code, leveraging and scaling the coding ability of an LLM for 3D modeling. We introduce Procedura, a novel 3D modeling agent framework that writes an object as a procedural assembly, a parametric program whose named parts are joined by typed, machine-checkable mates. From a text prompt, the agent plans the object as an assembly graph and writes the program part by part, solving each placement from the mated frames rather than guessing it, and admitting a part only once compile, mate, and connectivity checks pass. A decoupled vision critic then refines the assembly one diagnosed fix at a time. Moreover, the same graph carries per-part materials and a simulator-validated articulation. We evaluate on P3D-Bench under its assembly judge, and with the same judge on MechBench-36, our hard-surface benchmark. On both, Procedura outperforms state-of-the-art native 3D generators and every prior 3D-code agent on judged quality, produces the sharpest edges of any method we evaluate, and is the only one whose output is an editable, part-structured program.",
+        "published": "2026-08-26T17:54:39Z",
+        "authors": [
+          "Youtian Lin",
+          "Yikang Yang",
+          "Zhanpeng Hu",
+          "Mengqi Zhou",
+          "Feihu Zhang",
+          "Xun Cao",
+          "Jiaheng Liu",
+          "Yao Yao"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.26238v1"
+      },
+      "priority_score": 46,
+      "korean_title": "프로세듀라: 절차적 제어를 통한 에이전트 기반 3D 모델링"
+    },
+    "2608_27549v1": {
+      "id": "2608_27549v1",
+      "filename": "post_2608_27549v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-08-31T09:24:55.199376+00:00",
+      "paper": {
+        "title": "Code as Worlds: Agentic Discovery of Executable World Representations for Physical Reasoning",
+        "summary": "Physical understanding and reasoning depend on forming compact and generalizable representations of the world. While modern vision-language models can recognize and explain diverse physical events, they often lack explicit representations of the underlying mechanisms-such as object states, physical parameters, and governing dynamics-needed for reliably reasoning how the world evolves and responds to interventions. In this work, we introduce Code-as-World, a paradigm that represents physical worlds through executable world representations. By expressing physical composition, dynamic evolution, and visual appearance as executable code, Code-as-World provides a compact, quantitatively grounded, and controllable abstraction of the physical world. To construct such representations from multimodal observations, such as natural-language descriptions or real-world videos, we develop an agentic discovery loop inspired by abductive reasoning, where an agent proposes, executes, renders, verifies, and iteratively refines executable world hypotheses. As a concrete application, we use verified executable worlds to provide scalable physical supervision for training vision-language models on quantitative physical reasoning. Experiments show that Code-as-World-VL achieves state-of-the-art performance on QuantiPhy and surpasses leading proprietary models, highlighting the potential of executable world representations as a scalable foundation for physical intelligence.",
+        "published": "2026-08-27T17:57:25Z",
+        "authors": [
+          "Hanyang Wang",
+          "Yimo Cai",
+          "Weiliang Chen",
+          "Jiawei Chi",
+          "Haowen Sun",
+          "Qiyu Dai",
+          "Yi-Hsin Hung",
+          "Xingzhuo Guo",
+          "Jinshan Ren",
+          "Runmao Yao",
+          "Ziwei Liu",
+          "Mingsheng Long",
+          "Yueqi Duan",
+          "Jun Gao",
+          "Jiangran Lyu",
+          "Fangfu Liu",
+          "Jialong Wu"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.27549v1"
+      },
+      "priority_score": 48,
+      "korean_title": "코드를 통한 세계: 물리적 추론을 위한 실행 가능한 세계 표현의 에이전트적 발견"
+    },
+    "2608_23149v2": {
+      "id": "2608_23149v2",
+      "filename": "post_2608_23149v2.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-08-31T09:24:22.164546+00:00",
+      "last_error": null,
+      "updated_at": "2026-08-31T09:24:22.164547+00:00",
+      "paper": {
+        "title": "Language Chain in Alignment: Cross-lingual Ranking Preference Optimization",
+        "summary": "The alignment of Large Language Models heavily relies on English-centric high-quality preference data, which often leads to suboptimal performance in other languages. In this paper, we propose Cross-lingual Ranking Preference Optimization~(CRPO), a novel framework that leverages robust preference knowledge from English to facilitate preference alignment in the target language. We design a hierarchical structure within parallel preference pairs across the target language and English to jointly optimize intra- and inter-lingual preferences, thereby enhancing language adaptation and output quality. Building on the LambdaLoss framework, CRPO goes beyond the binary comparison based optimization by providing a relative ranking signal across multiple candidate responses. Our experiments across five languages with varying resource scales demonstrate that CRPO consistently outperforms standard approaches in both instruction-following and knowledge utilization capability. Notably, the robust performance gains observed across various weighting schemes further validate the empirical effectiveness of our hierarchical design in a multilingual setup. Furthermore, our findings highlight that CRPO significantly improves both reward margins and the log-probability of desirable responses, contributing to a more stable preference manifold for cross-lingual alignment. Our code is available at https://github.com/dltmddbs100/CRPO.",
+        "published": "2026-08-24T11:54:36Z",
+        "authors": [
+          "Seungyoon Lee",
+          "Minhyuk Kim",
+          "Jungseob Lee",
+          "Heuiseok Lim"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.23149v2"
+      },
+      "priority_score": 27
+    },
+    "2608_27906v1": {
+      "id": "2608_27906v1",
+      "filename": "post_2608_27906v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-08-31T09:24:22.164552+00:00",
+      "last_error": null,
+      "updated_at": "2026-08-31T09:24:22.164554+00:00",
+      "paper": {
+        "title": "Rubric-to-Code Credit Assignment for Reinforcement Learning",
+        "summary": "Interactive web application generation requires models to produce usable HTML, CSS, and JavaScript applications from natural language requests. Unlike conventional code generation, application quality depends on multiple user-facing functional requirements, each often tied to localized code regions such as event handlers, state updates, DOM fragments, or CSS selectors. Standard GRPO collapses these structured outcomes into a single sequence-level reward and applies the resulting advantage uniformly to all tokens, weakening credit assignment. We propose \\textbf{Rubric-to-Code Credit Assignment} (RCCA), a reinforcement learning framework that converts rubric-level functional feedback into localized optimization signals over generated code. RCCA builds training tasks around explicit functional rubrics, uses a hierarchical reward to separate format, source-code, runtime, and functional failures, and aligns evaluator-generated textual attributions with responsible code spans and generated tokens. The resulting model, \\textbf{Ling-RCCA-Flash}, scores 41.25 on MiniAppBench, improving Ling-3.0-Flash by 32.20 points and slightly surpassing Claude Opus 4.5. It also reaches 76.19 on ArtifactsBench, improving the SFT model by 4.48 points and establishing a new top score under the official ArtifactsBench leaderboard setting by surpassing the GPT-5 score by 3.64 points, suggesting transferable implementation-level gains.",
+        "published": "2026-08-28T04:17:05Z",
+        "authors": [
+          "Rui Jin",
+          "Jikai Chen",
+          "Yihan Chen",
+          "Hao Zhou",
+          "Demin Zhu",
+          "Kaichen Yang",
+          "Dong Wang",
+          "Chenyi Zhuang"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.27906v1"
+      },
+      "priority_score": 27
     }
   },
   "last_run": {
-    "started_at": "2026-08-31T02:58:19.243878+00:00",
-    "discovered": 30,
+    "started_at": "2026-08-31T09:24:22.165808+00:00",
+    "discovered": 10,
     "selected": 4,
     "generated": 4,
     "failed": 0,
@@ -23543,26 +23751,26 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 18513,
-      "output_tokens": 6039,
+      "prompt_tokens": 19317,
+      "output_tokens": 5760,
       "thought_tokens": 0,
-      "total_tokens": 24552,
-      "estimated_usd": 0.01368675
+      "total_tokens": 25077,
+      "estimated_usd": 0.01346925
     },
-    "finished_at": "2026-08-31T02:58:55.497485+00:00"
+    "finished_at": "2026-08-31T09:25:19.880638+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 1711,
-    "prompt_tokens": 4303868,
-    "output_tokens": 1260716,
+    "requests": 1719,
+    "prompt_tokens": 4323185,
+    "output_tokens": 1266476,
     "thought_tokens": 0,
-    "total_tokens": 5564584,
-    "estimated_usd": 2.967041
+    "total_tokens": 5589661,
+    "estimated_usd": 2.98051025
   },
   "last_publication_run": {
-    "started_at": "2026-08-31T02:58:19.243878+00:00",
-    "discovered": 30,
+    "started_at": "2026-08-31T09:24:22.165808+00:00",
+    "discovered": 10,
     "selected": 4,
     "generated": 4,
     "failed": 0,
@@ -23572,17 +23780,17 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 18513,
-      "output_tokens": 6039,
+      "prompt_tokens": 19317,
+      "output_tokens": 5760,
       "thought_tokens": 0,
-      "total_tokens": 24552,
-      "estimated_usd": 0.01368675
+      "total_tokens": 25077,
+      "estimated_usd": 0.01346925
     },
-    "finished_at": "2026-08-31T02:58:55.497485+00:00"
+    "finished_at": "2026-08-31T09:25:19.880638+00:00"
   },
   "daily_usage": {
     "date": "2026-08-31",
-    "estimated_usd": 0.01368675,
-    "publications": 4
+    "estimated_usd": 0.027156,
+    "publications": 8
   }
 }
