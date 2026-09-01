@@ -22963,11 +22963,11 @@
     "2608_28439v1": {
       "id": "2608_28439v1",
       "filename": "post_2608_28439v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-08-31T02:58:19.242436+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-31T18:36:40.106593+00:00",
+      "updated_at": "2026-09-01T08:12:51.869956+00:00",
       "paper": {
         "title": "Fidelity Is Not Enough: Dispatch-Level Instrumentation for Agentic Datasheet Extraction",
         "summary": "One model passed our fidelity check without ever opening the datasheet. We found it while qualifying models for an internal extraction service: a structured-output constraint had silently disabled tool use, and the model answered anyway, with fabricated source text. Only the per-tool trace exposed it. Fidelity -- whether an extracted value matches the source -- is the standard measure for agentic document extraction, and it scores that run a success. We therefore log every tool call in an agentic benchmark of 25 hand-curated claims over three components, with 12 more on a fourth, 37 in all. From that dispatch record we build two instruments: a rule-based failure-attribution classifier, and a silent-failure detector whose two rules check only which tools were called, never the extracted value. The detector raises no flag on 207 clean fidelity-passing extractions across three model families, and recovers all 50 planted faults that withhold exactly the tools its rules check. The two results are not symmetric: the first bounds the false-positive rate, the second is recall by construction, and detection power against runs that call their tools and still answer wrongly is unmeasured. A second, independent oracle, a causal chamber that tests whether the datasheet's claims hold under physical measurement, is intentionally partial: it confirms only what the apparatus can exercise, a verifiable envelope of 2 of those 37 claims, and we give a taxonomy of why the rest are not physically gradable. Under a controlled perturbation, fidelity passes throughout while the chamber verdict flips exactly at the measurement uncertainty. Across three deployed model stacks (one destabilised by its serving stack, not by any capability gap) the tool layer buys portability and observability rather than accuracy, and earns its premium only once a document outgrows the context window.",
@@ -22978,7 +22978,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2608.28439v1"
       },
-      "priority_score": 40
+      "priority_score": 40,
+      "korean_title": "충실성만으로는 충분하지 않다: 에이전트 기반 데이터시트 추출을 위한 디스패치 수준의 계측"
     },
     "2608_28433v1": {
       "id": "2608_28433v1",
@@ -23006,11 +23007,11 @@
     "2608_28432v1": {
       "id": "2608_28432v1",
       "filename": "post_2608_28432v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-08-31T02:58:19.242449+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-31T18:36:40.106602+00:00",
+      "updated_at": "2026-09-01T08:13:02.049643+00:00",
       "paper": {
         "title": "Are These Modules Worth Their Cost? A Paradigm-Level Accuracy-Cost Analysis of In-context Learning Text-to-SQL",
         "summary": "Recent advances in in-context learning (ICL) text-to-SQL have substantially improved execution accuracy on public benchmarks by assembling increasingly elaborate pipelines around the base generator, yet existing studies typically report aggregate end-to-end accuracy, without quantifying the marginal accuracy-cost contribution of individual design choices. Consequently, providing a unified, paradigm-level cost-accuracy quantification remains a critical challenge for understanding and configuring modern text-to-SQL. To address this, we instantiate 17 paradigm-level configurations across five recurring modules of the ICL text-to-SQL pipeline under a single controlled implementation, and attribute each paradigm's marginal contribution and incurred cost across all four backbones spanning diverse capability levels and reasoning styles. Our analysis reveals that execution-feedback refinement is the only paradigm whose benefit holds universally at consistently low cost, while most other modules help only under backbone-dependent conditions. Token accounting shows that input demand is more closely tied to pipeline structure, whereas output demand is more sensitive to backbone generation behavior. Cross-module analysis further shows that stacking improves accuracy on most backbones, although how the gains compose varies with backbone capability. We also find that a fixed budget is often better spent engineering a more elaborate pipeline over a mid-tier backbone than upgrading to a frontier model with a lean pipeline. These findings distill into an actionable, cost-aware tiered guideline that transfers to five additional backbones without per-paradigm search.",
@@ -23028,7 +23029,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2608.28432v1"
       },
-      "priority_score": 40
+      "priority_score": 40,
+      "korean_title": "이 모듈들은 비용을 지불할 가치가 있는가? 상황 내 학습(ICL) 텍스트-투-SQL의 패러다임 수준 정확도-비용 분석"
     },
     "2608_28421v1": {
       "id": "2608_28421v1",
@@ -24150,7 +24152,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-01T00:19:53.467348+00:00",
+      "updated_at": "2026-09-01T08:12:18.300923+00:00",
       "paper": {
         "title": "Acquire, Repair, Preserve: A Diagnosis-Guided Post-Training Recipe for Small-Model Dialogue Game Agents",
         "summary": "Interactive dialogue games test a capability that static benchmarks largely leave implicit: a model must carry state across turns, interpret feedback, and choose valid actions under changing constraints. We study this setting in the LM Playschool Challenge with a 2B open-weight model, and find that many failures are not only broad knowledge failures but also local decision failures: repeated guesses, malformed actions, and violations of feedback that the model has just seen. These diagnostics motivate a training recipe organized around three steps: acquire broad game participation through supervised fine-tuning, repair mechanically verifiable failures within one targeted dialogue-game family using turn-local preference pairs, and preserve general capabilities beyond these dialogue games. In the official final evaluation, our submission improves public clemscore from 10.67 to 38.92 and closed in-domain score from 13.41 to 41.17, while approximately preserving aggregate static performance (44.14 vs. 44.24 for the baseline). Out-of-domain clemscore remains low at 7.88, with the largest gains concentrated in unseen variants of the targeted family. Our results suggest that broad SFT brings most of the model's capability improvement; turn-local supervision can be effective when failure detection is precise, with observed transfer concentrated primarily within-family.",
@@ -24162,10 +24164,253 @@
       },
       "priority_score": 47,
       "korean_title": "획득, 복구, 보존: 소형 모델 대화 게임 에이전트를 위한 진단 기반 사후 학습 기법"
+    },
+    "2608_29335v1": {
+      "id": "2608_29335v1",
+      "filename": "post_2608_29335v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-01T08:12:18.300853+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-01T08:12:18.300867+00:00",
+      "paper": {
+        "title": "GenFirst: Generation Before Reconstruction for Stable End-to-End Latent Generative Modeling",
+        "summary": "Latent generative models typically follow a two-stage pipeline, training a variational autoencoder for reconstruction and then a generative model on the frozen latent space. Since reconstruction-optimized latents are not necessarily generation-friendly, jointly training both models is an appealing alternative. However, direct end-to-end training remains challenging, as it is prone to latent collapse and faces a generation-reconstruction conflict. We revisit this problem by analyzing how different objectives shape the latent space and identify two key insights. First, the entropy term in the Kullback-Leibler divergence objective is essential for preventing collapse: reconstruction and prior fitting tend to shrink the posterior, while entropy preserves non-degenerate latent uncertainty. Second, reconstruction and generation exhibit asymmetric learning dynamics: reconstruction is fast and strongly supervised, whereas generation is slower and harder to optimize. Based on these insights, we achieve the first direct end-to-end training without latent collapse and propose GenFirst, a simple generation-before-reconstruction strategy. The generative objective first shapes the latent space under weak reconstruction pressure, after which reconstruction is progressively strengthened to recover visual details. We validate GenFirst with continuous autoregressive priors with exact likelihoods and SiT priors with implicit likelihoods. With our end-to-end objective and GenFirst, SiT achieves a gFID of 0.97 with CFG and 1.45 without CFG on ImageNet-256, while MMDiT reaches a GenEval score of 0.90 on text-to-image generation. Beyond image generation, we extend the framework to shared visual latents for generation and representation learning, and to continuous unified text-image generation. These results demonstrate the generality of stable end-to-end latent learning across generative priors and modalities.",
+        "published": "2026-08-29T15:39:14Z",
+        "authors": [
+          "Guangting Zheng",
+          "Yiyuan Zhang",
+          "Tao Yang",
+          "Yunpeng Chen",
+          "Rui Zhu",
+          "Jiajun Deng",
+          "Yanyong Zhang"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.29335v1"
+      },
+      "priority_score": 30
+    },
+    "2608_30530v1": {
+      "id": "2608_30530v1",
+      "filename": "post_2608_30530v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-01T08:12:18.300876+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-01T08:12:18.300878+00:00",
+      "paper": {
+        "title": "WebWorld: The Browser as a World Model for Self-Improving Web Code",
+        "summary": "VLM-driven self-improvement of web code has a structural flaw: the model that proposes the repair is the model that judges it, and visual plausibility under that judge is a poor proxy for whether the page actually works. What the loop is missing is a counterparty the VLM cannot fool, and the browser already is that counterparty: a deterministic, executable simulator of how an HTML artifact behaves under user actions, and in everything but name a world model for web code. We present WebWorld, the interface that lets a VLM prior interact with this browser-as-world-model autonomously and decides which interactions become supervision. Each round, the VLM emits a critique that the planner compiles into a typed interaction contract; the browser re-executes the candidate and issues an acceptance certificate only when both target progress and preservation of every previously verified capability hold; certified transitions accumulate as a quality ratchet that is the only thing the SFT export ever sees. Under matched training, WebWorld-27B improves Raw-27B by 5.3 points on HTMLBench-400 and 14.9 points on MiniAppBench-Val, and reaches the level of strong frontier systems such as Kimi-K2.6 and GPT-5.4 on interactive HTML generation. Equal-size ablations show that browser-backed admission carries the gain: without the certificate, the matched 9B lift nearly disappears.",
+        "published": "2026-08-31T10:00:12Z",
+        "authors": [
+          "Jiajun Wu",
+          "Jian Yang",
+          "Yaxin Du",
+          "Wei Zhang",
+          "Haowen Wang",
+          "Junhang Cheng",
+          "Yuxuan Zhang",
+          "Tuney Zheng",
+          "Xianglong Liu",
+          "Ming Zhou"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.30530v1"
+      },
+      "priority_score": 27
+    },
+    "2608_30135v1": {
+      "id": "2608_30135v1",
+      "filename": "post_2608_30135v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-01T08:12:18.300883+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-01T08:12:18.300885+00:00",
+      "paper": {
+        "title": "Verification-Aware Training for Speculative Decoding",
+        "summary": "Speculative decoding accelerates large language model inference by using a draft model to generate candidate tokens, which are verified by the target model in a single forward pass. Verification proceeds sequentially and discards every position from the first rejection onward, yet existing draft training relies on token-level imitation of the target with a fixed per-position weighting that reflects neither property. We introduce Verification-Aware Training (VAT), a plug-in framework that simulates verification at every training step and turns the resulting accept and reject patterns into supervision. VAT consists of two components: (i) a verification head, a lightweight jointly trained binary classifier that supervises the draft model on whether each position survives sequential verification; (ii) verification-adaptive weighting, which replaces the fixed weighting schedule by keeping full weight up to each sample's first rejection point and re-anchoring the decay to start there. VAT modifies only the training objective, so it can be layered on top of existing methods without changing the draft architecture, the target model, or the inference procedure. Applied to EAGLE-3 and DFlash on Qwen3-4B, Qwen3-8B, and LLaMA-3.1-8B, VAT improves average acceptance length by up to 11.4% and wall-clock speedup by up to 8.7%, with consistent gains across math, code, and chat benchmarks. Code will be available at https://github.com/naver-ai/vat",
+        "published": "2026-08-31T01:42:10Z",
+        "authors": [
+          "Geonmo Gu",
+          "Byeongho Heo",
+          "HeeJae Jun",
+          "Yoohoon Kang",
+          "Sangmin Lee",
+          "Sangdoo Yun",
+          "Dongyoon Han"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.30135v1"
+      },
+      "priority_score": 38
+    },
+    "2608_30396v1": {
+      "id": "2608_30396v1",
+      "filename": "post_2608_30396v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-09-01T08:12:41.810525+00:00",
+      "paper": {
+        "title": "Scaffolding Foundation Models into Physical-World Agents Pushes the Frontier of Long-Horizon Navigation",
+        "summary": "Long-horizon physical-world agents must reason over distant goals while grounding decisions in reliable closed-loop behavior. Today's foundation models split these capabilities: vision-language models (VLMs) infer missing information and adapt high-level plans but remain brittle and inefficient at repeated navigation grounding, while navigation foundation models (NFMs) robustly execute semantic goals but operate as bounded episodes without persistent task-level reasoning. We introduce NavMCP, an agentic scaffolding framework that couples a VLM reasoning agent with an NFM executor for long-horizon exploration. The VLM decides what evidence to seek, where to search, and when to stop, while the NFM grounds each semantic sub-goal into closed-loop navigation. Three channels structure their collaboration: intent translates evidence needs into navigation calls, observation converts rollouts into source-grounded trajectory evidence, and memory accumulates findings, negative evidence, and unresolved goals across calls. This design turns isolated navigation rollouts into persistent embodied interaction without retraining either model. On Embodied Question Answering, NavMCP achieves state-of-the-art results on HM-EQA, MT-HM3D, and EXPRESS-Bench. Under matched agent and executor backbones, it outperforms an episodic interface by 14.9 percentage points on HM-EQA. On a Unitree Go2, NavMCP reaches 78.3% success, with its margin over the strongest baseline growing from 10 to 45 points as the task horizon increases. These results demonstrate the potential of scaffolding complementary foundation models into long-horizon physical-world agents.",
+        "published": "2026-08-31T07:50:16Z",
+        "authors": [
+          "Zixing Lei",
+          "Gengze Zhou",
+          "Xiong-Hui Chen",
+          "Jiazhao Zhang",
+          "Yiyang Huang",
+          "Hang Yin",
+          "Haoqi Yuan",
+          "Qi Wu",
+          "Weixin Li",
+          "Siheng Chen"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.30396v1"
+      },
+      "priority_score": 40,
+      "korean_title": "파운데이션 모델을 물리 세계 에이전트로 결합하여 장기 내비게이션의 한계를 돌파하다"
+    },
+    "2608_30209v1": {
+      "id": "2608_30209v1",
+      "filename": "post_2608_30209v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-01T08:12:18.300896+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-01T08:12:18.300898+00:00",
+      "paper": {
+        "title": "DICS: Exploring Data Intrinsic Consistency for Visual Instruction Selection",
+        "summary": "Visual instruction tuning is crucial for advancing the vision-language alignment and instruction-following capabilities of Vision-Language Models (VLMs). However, identifying optimal subsets under a fixed ratio constraint from rapidly expanding datasets remains a significant bottleneck. While existing methods largely depend on distribution diversity or heuristic filtering, they often overlook the internal coherence within individual samples. To bridge this gap, we propose Data Intrinsic Consistency (DIC), a self-scoring metric designed to quantify the sample-level inter-component consistency. DIC consists of two modules: Visual Information Consistency (VIC), evaluating the alignment between visual content and instructions, and Response Information Consistency (RIC), assessing response coherence relative to the instruction. Building upon DIC, we introduce Data Intrinsic Consistency Selection (DICS), an adaptive data selection method that optimizes the trade-off between high intra-sample consistency and global distributional diversity under varying data budgets. Extensive experiments demonstrate that DICS consistently outperforms state-of-the-art methods across diverse dataset scales and model architectures, surpassing full-dataset fine-tuning while using only 25% of the LLaVA-1.5-665K data. We further curate DICS-6M, a 6M-sample multi-modal instruction corpus that enables the largest-scale visual instruction selection study to date; remarkably, DICS reaches 94.52\\% of the official InternVL3-8B-Instruct performance using less than 25\\% of its reported training data. Code can be seen at https://github.com/cqu-student/DICS",
+        "published": "2026-08-31T03:44:54Z",
+        "authors": [
+          "Yuyang Hong",
+          "Jinhui Guo",
+          "Jiaqi Gu",
+          "Lubin Fan",
+          "Ruixiang Wang",
+          "Kun Ding",
+          "Yue Wu",
+          "Shiming Xiang",
+          "Jieping Ye"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.30209v1"
+      },
+      "priority_score": 30
+    },
+    "2608_31113v1": {
+      "id": "2608_31113v1",
+      "filename": "post_2608_31113v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-01T08:12:18.300903+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-01T08:12:18.300905+00:00",
+      "paper": {
+        "title": "BLARM: Animating 3D Objects from Video via Blending Latent Rigid Motion Primitives",
+        "summary": "We introduce BLARM, a feed-forward method for video-driven 3D mesh animation. Given a monocular video and a static object mesh, BLARM predicts a temporally coherent animated mesh whose motion follows the video. Rather than relying on explicit rigs or directly regressing high-dimensional vertex motion, we represent animation using a compact set of learned, time-varying rigid motion components and time-invariant vertex-to-component skinning weights. This yields a low-dimensional deformation space without requiring skeletons, cages, skinning weights, or rig annotations. Our architecture conditions geometry-derived deformation latents on video features through factorized spatial-temporal attention, then decodes rigid transformations blended by predicted skinning weights. Trained with trajectory reconstruction, entropy regularization, and motion-aware contrastive learning, BLARM produces accurate and temporally stable animations while recovering compact, interpretable motion structure from monocular video.",
+        "published": "2026-08-31T17:21:54Z",
+        "authors": [
+          "Pradyumn Goyal",
+          "Yizhak Ben-Shabat",
+          "Hsueh-Ti Derek Liu",
+          "Haomiao Jiang",
+          "Snehasish Mukherjee",
+          "Kyle Spence",
+          "Mark Stauber",
+          "Evangelos Kalogerakis",
+          "Yunze Zeng"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.31113v1"
+      },
+      "priority_score": 22
+    },
+    "2608_31022v1": {
+      "id": "2608_31022v1",
+      "filename": "post_2608_31022v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-01T08:12:18.300910+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-01T08:12:18.300911+00:00",
+      "paper": {
+        "title": "MNIST-PRO: MNIST is Back as a Partially Observable World for AI Agents",
+        "summary": "AI agents in partially observable environments need to coordinate active sensing with working memory to maintain an evolving perceptual state. However, existing benchmarks struggle to isolate this perceptual-state construction and interpretation capability because they introduce physical and control complexities. We address this with MNIST-PRO, a benchmark that isolates agentic perception by converting MNIST digit recognition into a sequential, glimpse-based search task with lookback constraints. We evaluate ten multimodal models across four memory representations, including raw visual history, textual states, structured metric grid maps, and a consolidated visual canvas. While models excel under full observability, partial observability exposes a clear performance gap. We identify three distinct bottlenecks. First, perceptual-state construction and interpretation present a challenge, as agents struggle to integrate fragmented glimpses. Second, agents often stop exploring before they see the full sequence. Third, models often fail to revise early, incorrect beliefs even when faced with subsequent contradictory evidence. These results show that simply acquiring visual evidence is not enough. Agents must also be able to build and update a reliable perceptual state.",
+        "published": "2026-08-31T16:05:39Z",
+        "authors": [
+          "Vernon Toh",
+          "Navonil Majumder",
+          "Zhengyuan Liu",
+          "Nancy F. Chen",
+          "Soujanya Poria"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.31022v1"
+      },
+      "priority_score": 36
+    },
+    "2608_30935v1": {
+      "id": "2608_30935v1",
+      "filename": "post_2608_30935v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-09-01T08:12:31.219691+00:00",
+      "paper": {
+        "title": "LightNav-0: Eliciting VLM Spatial Intelligence for Generalist Embodied Navigation",
+        "summary": "Embodied navigation requires agents to translate heterogeneous goals and visual observations into actions across tasks, environments, and robot embodiments. Modern vision-language models (VLMs) already encode spatial priors for visual grounding, spatial reasoning, and pointing, but these capabilities are rarely elicited directly for robot control. Existing navigation systems instead rely on task- or embodiment-specific components, fragmenting perception, reasoning, and action while offering limited generalization. Here we present LightNav-0, a compact generalist embodied navigation model that elicits the spatial intelligence of a pretrained VLM and aligns it with navigation, without task-specific prediction heads. LightNav-0 represents diverse navigation tasks through a unified token interface: dual-channel pointing expresses task-, scene-, and embodiment-agnostic spatial intent, while a residual vector-quantized action tokenizer maps this intent to precise, embodiment-specific trajectories. Together with temporally aware visual history compression, ER mid-training, supervised fine-tuning, and reinforcement learning, this formulation supports instruction following, open-vocabulary object navigation, and visual tracking within a single model. The navigation training corpus spans 2K+ scenes and 4K+ hours of embodied navigation data. LightNav-ER, the embodied-reasoning checkpoint used to initialize LightNav-0, attains the highest complete-set average across 8 embodied-reasoning benchmarks, while LightNav-0 achieves state-of-the-art monocular success rates across all 10 public navigation simulation settings. Real-world evaluations further demonstrate zero-shot generalization across robot embodiments, diverse scenes, and static and dynamic targets. These results establish compact VLMs as a unified and transferable backbone for generalist embodied navigation.",
+        "published": "2026-08-31T15:08:53Z",
+        "authors": [
+          "Shaoan Wang",
+          "Aocheng Luo",
+          "Fei Huang",
+          "Jingyi Xu",
+          "Xiaoyang Wang",
+          "Yueyu Wang",
+          "Qianli Ma",
+          "Fan Yang",
+          "Ran Mei",
+          "Jia Wei",
+          "Jiangpeng Hu",
+          "Xuhao Liu",
+          "Hongming Chen",
+          "Yuanbin Shao",
+          "Yiyang Lin",
+          "Ziliang Li",
+          "Liang Pan",
+          "Xinhang Liu",
+          "Yuntao Ma",
+          "Tingxiang Fan"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.30935v1"
+      },
+      "priority_score": 70,
+      "korean_title": "LightNav-0: 일반화된 로봇 항법을 위한 시각-언어 모델의 공간 지능 활용"
+    },
+    "2608_31046v1": {
+      "id": "2608_31046v1",
+      "filename": "post_2608_31046v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-01T08:12:18.300928+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-01T08:12:18.300930+00:00",
+      "paper": {
+        "title": "Does On-Policy Distillation Really Distill? From Noisy Teacher to Self-Improvement",
+        "summary": "On-policy distillation (OPD) offers dense token-level supervision as an alternative to the sparse outcome-level advantages of reinforcement learning with verifiable rewards (RLVR). However, the teacher scores student-generated trajectories that are inherently off-policy for it, so the reliability of its supervision, and hence the source of the student's improvement, remains unclear. We quantitatively analyze teacher supervision during OPD training and find substantial noise whose prevalence increases with teacher scale. Surprisingly, the student policy is insensitive to such noise, converging to comparable performance regardless of whether noisy supervision is retained or removed. Does OPD distill at all? By analyzing what drives its gains, we find that learning concentrates on low log-probability tokens, and using a single fixed negative advantage matches the performance of teacher-provided ones. This suggests that OPD works largely by suppressing low log-probability tokens, which requires no teacher. These findings motivate On-Policy Self-Adaptation (OPSA), a supervision-free method using entropy-adaptive negative advantages. It assigns stronger learning signals to high-entropy positions, suppressing tail tokens, and evenly redistributing probability mass among head tokens. Compared with the base \\texttt{Qwen3-1.7B}, OPSA improves Avg@32 by 35.41 points on AIME24, corresponding to a 263\\% relative gain, and more than doubles Pass@32 across all three benchmarks. It also outperforms OPD by 16.77 points in Avg@32 on AIME24. Extensive experiments and analyses across model families and tasks further demonstrate its effectiveness and generalizability.",
+        "published": "2026-08-31T16:22:10Z",
+        "authors": [
+          "Yi Ding",
+          "Ruqi Zhang"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.31046v1"
+      },
+      "priority_score": 30
     }
   },
   "last_run": {
-    "started_at": "2026-09-01T00:18:56.797598+00:00",
+    "started_at": "2026-09-01T08:12:18.302439+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -24175,26 +24420,26 @@
     "failures": [],
     "usage": {
       "model": "gemini-3.1-flash-lite",
-      "requests": 7,
-      "prompt_tokens": 17093,
-      "output_tokens": 5363,
+      "requests": 8,
+      "prompt_tokens": 20057,
+      "output_tokens": 5702,
       "thought_tokens": 0,
-      "total_tokens": 22456,
-      "estimated_usd": 0.01231775
+      "total_tokens": 25759,
+      "estimated_usd": 0.01356725
     },
-    "finished_at": "2026-09-01T00:20:10.689076+00:00"
+    "finished_at": "2026-09-01T08:13:02.694102+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 1734,
-    "prompt_tokens": 4359560,
-    "output_tokens": 1277827,
+    "requests": 1742,
+    "prompt_tokens": 4379617,
+    "output_tokens": 1283529,
     "thought_tokens": 0,
-    "total_tokens": 5637387,
-    "estimated_usd": 3.0066305
+    "total_tokens": 5663146,
+    "estimated_usd": 3.02019775
   },
   "last_publication_run": {
-    "started_at": "2026-09-01T00:18:56.797598+00:00",
+    "started_at": "2026-09-01T08:12:18.302439+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -24204,18 +24449,18 @@
     "failures": [],
     "usage": {
       "model": "gemini-3.1-flash-lite",
-      "requests": 7,
-      "prompt_tokens": 17093,
-      "output_tokens": 5363,
+      "requests": 8,
+      "prompt_tokens": 20057,
+      "output_tokens": 5702,
       "thought_tokens": 0,
-      "total_tokens": 22456,
-      "estimated_usd": 0.01231775
+      "total_tokens": 25759,
+      "estimated_usd": 0.01356725
     },
-    "finished_at": "2026-09-01T00:20:10.689076+00:00"
+    "finished_at": "2026-09-01T08:13:02.694102+00:00"
   },
   "daily_usage": {
     "date": "2026-09-01",
-    "estimated_usd": 0.01231775,
-    "publications": 4
+    "estimated_usd": 0.025885,
+    "publications": 8
   }
 }

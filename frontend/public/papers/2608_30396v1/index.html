@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>파운데이션 모델을 물리 세계 에이전트로 결합하여 장기 내비게이션의 한계를 돌파하다 | ArXiv Translator AI</title><meta name="description" content="파운데이션 모델을 물리 세계 에이전트로 결합하여 장기 내비게이션의 한계를 돌파하다"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_30396v1"><meta property="og:type" content="article"><meta property="og:title" content="파운데이션 모델을 물리 세계 에이전트로 결합하여 장기 내비게이션의 한계를 돌파하다"><meta property="og:description" content="파운데이션 모델을 물리 세계 에이전트로 결합하여 장기 내비게이션의 한계를 돌파하다"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_30396v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="파운데이션 모델을 물리 세계 에이전트로 결합하여 장기 내비게이션의 한계를 돌파하다"><meta name="twitter:description" content="파운데이션 모델을 물리 세계 에이전트로 결합하여 장기 내비게이션의 한계를 돌파하다"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_30396v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "파운데이션 모델을 물리 세계 에이전트로 결합하여 장기 내비게이션의 한계를 돌파하다", "description": "파운데이션 모델을 물리 세계 에이전트로 결합하여 장기 내비게이션의 한계를 돌파하다", "datePublished": "2026-08-31", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_30396v1", "author": [{"@type": "Person", "name": "Zixing Lei"}, {"@type": "Person", "name": "Gengze Zhou"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_30396v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_30396v1"});gtag('event', 'paper_view', {"paper_id": "2608_30396v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>파운데이션 모델을 물리 세계 에이전트로 결합하여 장기 내비게이션의 한계를 돌파하다</h1><p>파운데이션 모델을 물리 세계 에이전트로 결합하여 장기 내비게이션의 한계를 돌파하다</p><pre>파운데이션 모델을 물리 세계 에이전트로 결합하여 장기 내비게이션의 한계를 돌파하다
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Scaffolding Foundation Models into Physical-World Agents Pushes the Frontier of Long-Horizon Navigation
+&gt; - **저자:** Zixing Lei, Gengze Zhou, Xiong-Hui Chen, Jiazhao Zhang, Yiyang Huang, Hang Yin, Haoqi Yuan, Qi Wu, Weixin Li, Siheng Chen
+&gt; - **발행일:** 2026-08-31
+&gt; - **PDF 링크:** [Scaffolding Foundation Models into Physical-World Agents Pushes the Frontier of Long-Horizon Navigation](https://arxiv.org/pdf/2608.30396v1)
+
+
+✨ 3줄 핵심 요약
+*   비전-언어 모델(VLM)의 고차원 추론 능력과 내비게이션 파운데이션 모델(NFM)의 견고한 실행 능력을 결합한 &#x27;NavMCP&#x27; 프레임워크를 제안합니다.
+*   의도(Intent), 관측(Observation), 기억(Memory) 채널을 통해 두 모델을 협업시켜 복잡하고 긴 호흡의 물리적 탐색 문제를 해결합니다.
+*   재학습 없이도 HM-EQA, MT-HM3D 등 주요 벤치마크에서 최신 기술(SOTA) 성능을 달성했으며, 특히 작업 범위가 길어질수록 기존 방식 대비 압도적인 효율을 보입니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+로봇이 복잡한 환경에서 정보를 찾고 질문에 답하는 &#x27;체화된 질의응답(EQA)&#x27;은 매우 어렵습니다. 기존에는 고수준의 생각을 담당하는 모델(VLM)과 실제 이동을 담당하는 모델(NFM)이 따로 놀았습니다. VLM은 계획은 잘 세우지만 정밀한 조종이 서툴고, NFM은 이동은 잘하지만 무엇을 해야 할지 목표를 정하는 데 한계가 있었습니다. NavMCP는 VLM을 &#x27;두뇌(의사결정)&#x27;로, NFM을 &#x27;다리(실행)&#x27;로 연결하여, 로봇이 스스로 무엇을 찾고, 어디를 탐색하며, 언제 멈출지 결정하고 완벽하게 수행하도록 돕습니다.
+
+🎯 배경 및 문제점
+*   **VLM의 한계:** 추론과 계획 능력은 뛰어나지만, 매번 정확한 물리적 이동을 지시하는 과정이 불안정하고 비효율적입니다.
+*   **NFM의 한계:** 특정 목적지까지 가는 능력은 탁월하지만, 전체적인 작업을 관장하는 고차원적인 계획이나 기억 유지 능력이 부족합니다.
+*   **결핍:** 이 두 가지 기능을 통합하여 장기간 지속되는 복잡한 환경 내 탐색을 처리할 수 있는 에이전트 시스템이 부족했습니다.
+
+💡 핵심 기술 및 아키텍처
+NavMCP는 모델을 재학습하지 않고 두 파운데이션 모델을 다음 세 가지 채널로 연결합니다.
+1.  **의도(Intent):** VLM의 추론 결과를 NFM이 이해할 수 있는 구체적인 내비게이션 명령으로 변환합니다.
+2.  **관측(Observation):** 로봇의 이동 결과를 VLM이 이해할 수 있는 형태의 증거 자료로 요약하여 전달합니다.
+3.  **기억(Memory):** 탐색한 장소, 부정적 증거, 미해결 목표 등을 기록하여 작업 전반에 걸쳐 지속적인 판단이 가능하게 합니다.
+
+📊 실험 결과 분석
+*   **성능 우위:** HM-EQA, MT-HM3D, EXPRESS-Bench에서 최신 성능을 기록했습니다.
+*   **효율성:** 동일한 백본(backbone) 모델을 사용했을 때, HM-EQA에서 기존 에피소드 방식보다 14.9% 포인트 더 높은 성능을 보였습니다.
+*   **확장성:** Unitree Go2 로봇에서 테스트 결과 78.3%의 성공률을 달성했으며, 작업 범위(Horizon)가 길어질수록 기준 모델과의 성능 격차가 10에서 45 포인트까지 벌어지며 압도적인 차이를 보였습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+*   **물리적 에이전트의 진화:** 복잡하고 낯선 환경에서도 스스로 정보를 수집하고 판단하는 지능형 로봇 개발의 새로운 이정표를 제시합니다.
+*   **실무적 가치:** 재학습 없이 기존 모델들을 결합하는 방식이므로, 향후 창고 물류 관리, 서비스 로봇, 실내 수색 및 구조 작업 등 긴 호흡의 탐색이 필요한 다양한 분야에 유연하게 적용될 수 있습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2608.30396 Scaffolding Foundation Models into Physical-World Agents ...](https://arxiv.org/abs/2608.30396)
+&gt; - [Paper page - Scaffolding Foundation Models into Physical-World Agents ...](https://huggingface.co/papers/2608.30396)
+&gt; - [NavMCP Advances Long-Horizon Robot Navigation - CCTest](https://cctest.ai/en/articles/navmcp-turns-foundation-model-collaboration-into-long-horizon-robot-navigation)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문 제목 보고 &#x27;또 뻔한 파이프라인 결합인가&#x27; 싶었는데, Intent/Observation/Memory 채널을 통해 재학습 없이(Zero-shot/Few-shot style) 결합한 아키텍처는 꽤 흥미롭군요. 다만, VLM의 추론 지연(Latency)이 실제 물리 로봇의 실시간 제어 루프에서 병목 현상을 일으킬 텐데, 이 부분에 대한 정량적 분석이 부족해 보입니다. 실험 결과만 좋다고 끝이 아닙니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실시간성은 이슈가 맞습니다. 하지만 필드 엔지니어 입장에선 &#x27;재학습 없이(Plug-and-play)&#x27; SOTA를 찍었다는 게 핵심입니다. 모델 튜닝에 GPU 수천 장 태우는 것보다, 이렇게 VLM과 NFM을 잘 엮어서 시스템 레벨에서 최적화하는 게 훨씬 가성비 좋죠. 당장 Unitree Go2에 올려서 레이턴시 튜닝만 좀 잡으면 프로덕션 적용 가능할 것 같은데요?&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 선배님들 벌써 프로덕션 고민하시는 거 보면 제가 다 떨리네요! 사실 이 논문의 진짜 묘미는 &#x27;Memory&#x27; 채널인 것 같아요. 단순히 VLM이 멍청하게 명령만 내리는 게 아니라, 탐색한 장소를 기억해서 루프를 방지한다는 게... 이거 완전 에이전트 아키텍처의 정석 아닙니까? 저 오늘 밤새서 이 프레임워크 깃허브 클론 뜨고 제 로봇 팔에 붙여봅니다. 1등은 제 거예요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
