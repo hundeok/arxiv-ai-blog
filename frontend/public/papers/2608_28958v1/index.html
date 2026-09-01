@@ -1,0 +1,71 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CoVA-SFT: 시각적 추상화 체인을 위한 대규모 데이터셋 | ArXiv Translator AI</title><meta name="description" content="CoVA-SFT: 시각적 추상화 체인을 위한 대규모 데이터셋"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_28958v1"><meta property="og:type" content="article"><meta property="og:title" content="CoVA-SFT: 시각적 추상화 체인을 위한 대규모 데이터셋"><meta property="og:description" content="CoVA-SFT: 시각적 추상화 체인을 위한 대규모 데이터셋"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_28958v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="CoVA-SFT: 시각적 추상화 체인을 위한 대규모 데이터셋"><meta name="twitter:description" content="CoVA-SFT: 시각적 추상화 체인을 위한 대규모 데이터셋"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_28958v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "CoVA-SFT: 시각적 추상화 체인을 위한 대규모 데이터셋", "description": "CoVA-SFT: 시각적 추상화 체인을 위한 대규모 데이터셋", "datePublished": "2026-08-29", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_28958v1", "author": [{"@type": "Person", "name": "Tsung-Han Wu"}, {"@type": "Person", "name": "Heekyung Lee"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_28958v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_28958v1"});gtag('event', 'paper_view', {"paper_id": "2608_28958v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>CoVA-SFT: 시각적 추상화 체인을 위한 대규모 데이터셋</h1><p>CoVA-SFT: 시각적 추상화 체인을 위한 대규모 데이터셋</p><pre>CoVA-SFT: 시각적 추상화 체인을 위한 대규모 데이터셋
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** CoVA-SFT: A Large-Scale Dataset for Chain of Visual Abstractions
+&gt; - **저자:** Tsung-Han Wu, Heekyung Lee, Anya Ji, Haoming Chen, Trevor Darrell, Joseph E. Gonzalez, David M. Chan
+&gt; - **발행일:** 2026-08-29
+&gt; - **PDF 링크:** [CoVA-SFT: A Large-Scale Dataset for Chain of Visual Abstractions](https://arxiv.org/pdf/2608.28958v1)
+
+
+✨ 3줄 핵심 요약
+- 텍스트 기반 추론 문제 해결 시 모델이 내부에 &#x27;시각적 작업 공간&#x27;을 구축하도록 돕는 대규모 데이터셋인 CoVA-SFT를 제안합니다.
+- 51.9K개의 샘플과 222K개 이상의 멀티모달 추론 단계를 포함하며, 시각적 추상화와 텍스트를 결합한 추론을 학습시킵니다.
+- 기존 텍스트 전용 추론 방식의 한계를 극복하고자 시각적 근거를 모델이 직접 생성하여 문제를 단계별로 해결하도록 설계되었습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+인간은 체스나 퍼즐 같은 문제를 풀 때 머릿속으로 상황을 시각화합니다. 하지만 기존의 언어 모델(LLM)은 이를 오직 텍스트로만 설명하려 하여 비효율적이고 부자연스러운 추론을 하곤 했습니다. CoVA-SFT는 모델이 문제를 풀 과정에서 스스로 시각적인 작업 공간을 만들고, 그 안에서 정보를 처리하도록 가르치는 학습 데이터셋입니다. 마치 사람이 그림을 그리며 문제를 풀듯, 모델이 텍스트와 시각적 추상화를 함께 사용하게 함으로써 복잡한 논리적 추론 능력을 향상시킵니다.
+
+🎯 배경 및 문제점
+- **텍스트 의존성:** 기존의 텍스트 기반 CoT(Chain-of-Thought) 방식은 시각적 정보가 중요한 문제조차 억지로 긴 글(prose)로 변환해야 하므로 추론 효율이 떨어집니다.
+- **구조적 데이터 부족:** 멀티모달 모델이 내부적으로 시각적 작업 공간을 구축하고 유지하는 법을 가르칠 대규모 데이터셋과 검증용 벤치마크가 부족했습니다.
+- **효율성 문제:** 단순히 시각 정보를 입력받는 것을 넘어, 문제 해결 과정에서 스스로 시각적 도구를 활용하는 에이전트적 능력이 요구됩니다.
+
+💡 핵심 기술 및 아키텍처
+- **CoVA-SFT 데이터셋:** 5개 레이아웃 계열과 17개 복합 태스크에 걸쳐 51.9K개의 샘플을 포함합니다.
+- **다단계 추론:** 명시적인 논리 공식, 에이전트적 렌더링, 검증 루프를 통해 모델이 텍스트와 시각적 추상화를 교차(interleave)하며 사용하게 합니다.
+- **CoVA-Bench:** 1,700개의 독립된 테스트 샘플을 통해 모델의 추론 성능을 객관적이고 재현 가능하게 평가합니다.
+- **학습 환경:** Qwen3-VL-8B-Thinking 모델을 베이스라인으로 하며, NVIDIA H200 GPU 8대를 사용하여 2 에폭(epoch) 동안 학습을 수행했습니다.
+
+📊 실험 결과 분석
+- **성능:** CoVA-SFT로 미세 조정(fine-tuning)된 모델은 기존의 시각-언어 결합형 CoT 방식보다 CoVA-Bench에서 평균 2배 이상의 높은 성능을 보였습니다.
+- **한계점:** 그럼에도 불구하고 강력한 텍스트 전용 CoT 모델들보다는 여전히 성능이 낮으며, 이는 향후 개선해야 할 도전 과제로 남아 있습니다.
+- **데이터 구성:** 학습 샘플에는 추론 과정에서 생성된 시각적 렌더링과 그에 대한 검증 루프가 명시적으로 포함되어 모델의 논리적 오류를 줄이는 데 기여합니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+- **추론 방식의 변화:** 텍스트 중심의 추론에서 벗어나 시각적 직관과 논리가 결합된 멀티모달 추론 시스템 구축의 표준을 제시합니다.
+- **활용 분야:** 복잡한 그래프 분석, 스케줄링 퍼즐, 수학적 다이어그램 해석 등 시각적 구조와 논리가 동시에 요구되는 실무 영역에서 정확한 해결책을 제시하는 AI 개발에 활용될 수 있습니다.
+- **오픈 리서치:** 본 데이터셋은 누구나 활용할 수 있도록 공개되어, 향후 모델들이 스스로 시각적 작업 공간을 운용하며 문제를 해결하는 능력을 고도화하는 데 기여할 것입니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [CoVA-SFT: A Large-Scale Dataset for Chain of Visual Abstractions](https://huggingface.co/papers/2608.28958)
+&gt; - [Fugu-MT 論文翻訳 (概要): CoVA-SFT: A Large-Scale Dataset for Chain of Visual ...](https://fugumt.com/fugumt/paper_check/2608.28958v1)
+&gt; - [Computer Vision and Pattern Recognition - arXiv.org](https://arxiv.org/list/cs.CV/recent?skip=279)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;시각적 작업 공간(Visual Workspace)을 모델 내부의 학습 루프로 내재화하려는 시도는 고무적이나, 51.9K 샘플의 다양성이 과연 일반화 성능을 담보할 수 있을지 의문입니다. 특히 텍스트 전용 CoT 모델보다 성능이 낮다는 점은 데이터셋의 구조적 편향이 존재함을 시사합니다. 단순 추상화 수준을 넘어 논리적 도약(logical leap)이 필요한 복잡한 태스크에서도 이 방법론이 유효할지 엄밀한 증명이 필요해 보이네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에선 &#x27;어디까지 추상화할 것인가&#x27;가 핵심인데, 사실 렌더링 루프 돌리면서 추론까지 시키면 Inference Latency는 감당 가능합니까? H200 8대로 2 에폭 돌린 건 가볍지만, 프로덕션 레벨에서 이 정도 오버헤드를 감수하고 얻는 이득이 텍스트 기반 CoT 최적화보다 클지 회의적이네요. 그래도 데이터셋 공개는 땡큐입니다. 일단 우리 모델에 파인튜닝 데이터로 섞어봐야겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;아니 다들 너무 보수적인 거 아니에요? 텍스트로만 낑낑대던 모델이 &#x27;시각적 추상화&#x27;를 스스로 수행한다는 것 자체가 엄청난 패러다임 변화라구요! 이번 CoVA-SFT 데이터셋은 에이전트가 단순히 답변만 내뱉는 게 아니라, 중간 과정을 렌더링하면서 &#x27;생각하는 방식&#x27;을 학습했다는 게 킬포인데... 이거 바로 SOTA 갱신 각 아닌가요? 내일 당장 실험 돌려보고 결과 공유하겠습니다!&quot;
+  }
+]
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
