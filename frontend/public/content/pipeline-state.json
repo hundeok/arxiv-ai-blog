@@ -23539,7 +23539,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-31T09:24:36.565563+00:00",
+      "updated_at": "2026-09-01T00:18:56.796568+00:00",
       "paper": {
         "title": "DART-SD: Diamond-topology Aware Retrieval and Tuning for Self-Distillation of Multi-Turn Tool-Calling Agents",
         "summary": "Equipping Large Language Models (LLMs) with multi-turn tool-calling capabilities is essential for building autonomous agents. However, progress is fundamentally limited by the reliance on full-length trajectory imitation. For tasks involving multiple order-independent sub-goals, the optimal solution space forms a vast combinatorial diamond lattice. Forcing this rich topology into monolithic trajectories causes a severe topological collapse, indiscriminately penalizing valid alternative explorations and severely degrading policy diversity. To address this, we propose DART-SD (Diamond-topology Aware Retrieval and Tuning for Self-Distillation), a novel framework that shifts the paradigm from global forcing to topology-guided localized correction. DART-SD first models the execution process as a converging Interaction-State Transition Graph (ISTG), faithfully capturing the inherent diamond topology of successful and failed exploratory paths. During autonomous rollouts, the framework identifies the Critical Topological Breakpoint (CTB) and retrieves success-supported recovery references. Finally, we introduce a progressive self-distillation paradigm through CTB-guided localized supervision, ensuring that the training loss is calculated exclusively on the generated recovery steps while strictly protecting the valid reasoning prefix from destructive gradient updates. Experiments on complex multi-turn tool-calling benchmarks demonstrate that DART-SD significantly outperforms traditional full-trajectory baselines.",
@@ -23566,7 +23566,7 @@
       "attempts": 0,
       "next_retry_at": "2026-08-31T09:24:22.164500+00:00",
       "last_error": null,
-      "updated_at": "2026-08-31T09:24:22.164502+00:00",
+      "updated_at": "2026-09-01T00:18:56.796590+00:00",
       "paper": {
         "title": "J-Zero: Unified Challenger--Solver--Judge Co-Evolution from Zero Data",
         "summary": "Self-evolving language models have recently emerged as a promising path toward superintelligence, with the advantage of reducing the cost of human supervision. While considerable progress has been made in verifiable domains, self-evolution in unverifiable domains remains substantially less explored. We propose Judge co-adaptation from Zero data (J-Zero), a unified Challenger--Solver--Judge co-evolution framework that supports self-improvement across both domains. The Challenger and Solver co-evolve through an adversarial interaction: the Challenger generates increasingly difficult tasks, while the Solver learns to produce higher-quality responses to them. In parallel, the Judge co-adapts using preference pairs whose ordering is known in advance from how each response was produced, i.e., the Solver's answer over the Challenger's, and its decomposed-and-recombined answer over its one-shot answer, rather than from the Judge's own scores. J-Zero outperforms the baselines by an average of 4.2 points on verifiable and 8.0 points on unverifiable domains, and continues to improve through at least ten iterations, whereas the baselines degrade after two.",
@@ -23587,7 +23587,7 @@
       "attempts": 0,
       "next_retry_at": "2026-08-31T09:24:22.164518+00:00",
       "last_error": null,
-      "updated_at": "2026-08-31T09:24:22.164519+00:00",
+      "updated_at": "2026-09-01T00:18:56.796602+00:00",
       "paper": {
         "title": "Locate Anything in Videos: Rethinking Efficient Generative Spatio-Temporal Video Grounding",
         "summary": "Spatio-temporal video grounding (STVG) requires models to identify when a referred event occurs and localize the target entity throughout that interval. Existing multimodal large language models typically serialize dense localization trajectories autoregressively, causing decoding latency to grow with tube length and allowing localization errors to propagate across time. We introduce Parallel Tube Decoding (PTD), a generative formulation that decomposes grounding into a temporal block followed by time-conditioned spatial blocks decoded simultaneously. This removes both token-level and trajectory-level dependencies, reducing the sequential decoding depth to a fixed $1 + 1$ rounds, independent of tube length. To enable parallel spatial generation, we introduce Decoupled Block Attention, which preserves access to shared video-query context while eliminating cross-box dependencies, together with localization-aware policy optimization for temporal boundaries and spatial geometry. On VidSTG, PTD reduces Tube Completion Latency by 79x and increases spatial decoding throughput by 92x over standard autoregressive decoding, while also improving grounding accuracy. With a compact 4B backbone, our model performs favorably well on VidSTG and HC-STVG, and generalizes zero-shot to temporal grounding, grounded VideoQA, and referring video object tracking. Our results show parallel tube generation is an efficient and effective alternative to autoregressive localization in videos.",
@@ -23610,7 +23610,7 @@
       "attempts": 0,
       "next_retry_at": "2026-08-31T09:24:22.164525+00:00",
       "last_error": null,
-      "updated_at": "2026-08-31T09:24:22.164527+00:00",
+      "updated_at": "2026-09-01T00:18:56.796605+00:00",
       "paper": {
         "title": "StarHarness: Evolving Harnesses with Stratified Search for Enterprise Environments",
         "summary": "We present StarHarness, a framework for evolving environment-specific agent harnesses while keeping model weights fixed. The evolved harness can include prompt and task framing, tool interfaces, skills, MCP-backed providers, subagent structure, and agent-loop configuration. StarHarness constructs a compact evolution pool by stratifying tasks according to baseline failure behavior, separates proposer-visible search tasks from proposer-hidden selection tasks, and reserves held-out tasks for evaluating generalization. Across ITBench SRE, EnterpriseOps-Gym ITSM, and AutomationBench Finance, harness evolution improves full-benchmark performance by 20-35 percentage points over the default harness after 4-12 accepted changes per environment. These gains persist on tasks excluded from evolution and transfer without re-evolution across GPT and Qwen model families. Trace analysis links the improvements to interface repairs, environment conventions, and operational knowledge that compresses search, with fewer false-positive diagnoses and shorter trajectories in several settings. StarHarness therefore offers a practical way to reduce persistent model-environment mismatch in tool-rich enterprise tasks.",
@@ -23662,7 +23662,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-31T09:24:55.199376+00:00",
+      "updated_at": "2026-09-01T00:18:56.796608+00:00",
       "paper": {
         "title": "Code as Worlds: Agentic Discovery of Executable World Representations for Physical Reasoning",
         "summary": "Physical understanding and reasoning depend on forming compact and generalizable representations of the world. While modern vision-language models can recognize and explain diverse physical events, they often lack explicit representations of the underlying mechanisms-such as object states, physical parameters, and governing dynamics-needed for reliably reasoning how the world evolves and responds to interventions. In this work, we introduce Code-as-World, a paradigm that represents physical worlds through executable world representations. By expressing physical composition, dynamic evolution, and visual appearance as executable code, Code-as-World provides a compact, quantitatively grounded, and controllable abstraction of the physical world. To construct such representations from multimodal observations, such as natural-language descriptions or real-world videos, we develop an agentic discovery loop inspired by abductive reasoning, where an agent proposes, executes, renders, verifies, and iteratively refines executable world hypotheses. As a concrete application, we use verified executable worlds to provide scalable physical supervision for training vision-language models on quantitative physical reasoning. Experiments show that Code-as-World-VL achieves state-of-the-art performance on QuantiPhy and surpasses leading proprietary models, highlighting the potential of executable world representations as a scalable foundation for physical intelligence.",
@@ -23698,7 +23698,7 @@
       "attempts": 0,
       "next_retry_at": "2026-08-31T09:24:22.164546+00:00",
       "last_error": null,
-      "updated_at": "2026-08-31T09:24:22.164547+00:00",
+      "updated_at": "2026-09-01T00:18:56.796611+00:00",
       "paper": {
         "title": "Language Chain in Alignment: Cross-lingual Ranking Preference Optimization",
         "summary": "The alignment of Large Language Models heavily relies on English-centric high-quality preference data, which often leads to suboptimal performance in other languages. In this paper, we propose Cross-lingual Ranking Preference Optimization~(CRPO), a novel framework that leverages robust preference knowledge from English to facilitate preference alignment in the target language. We design a hierarchical structure within parallel preference pairs across the target language and English to jointly optimize intra- and inter-lingual preferences, thereby enhancing language adaptation and output quality. Building on the LambdaLoss framework, CRPO goes beyond the binary comparison based optimization by providing a relative ranking signal across multiple candidate responses. Our experiments across five languages with varying resource scales demonstrate that CRPO consistently outperforms standard approaches in both instruction-following and knowledge utilization capability. Notably, the robust performance gains observed across various weighting schemes further validate the empirical effectiveness of our hierarchical design in a multilingual setup. Furthermore, our findings highlight that CRPO significantly improves both reward margins and the log-probability of desirable responses, contributing to a more stable preference manifold for cross-lingual alignment. Our code is available at https://github.com/dltmddbs100/CRPO.",
@@ -23720,7 +23720,7 @@
       "attempts": 0,
       "next_retry_at": "2026-08-31T09:24:22.164552+00:00",
       "last_error": null,
-      "updated_at": "2026-08-31T09:24:22.164554+00:00",
+      "updated_at": "2026-09-01T00:18:56.796613+00:00",
       "paper": {
         "title": "Rubric-to-Code Credit Assignment for Reinforcement Learning",
         "summary": "Interactive web application generation requires models to produce usable HTML, CSS, and JavaScript applications from natural language requests. Unlike conventional code generation, application quality depends on multiple user-facing functional requirements, each often tied to localized code regions such as event handlers, state updates, DOM fragments, or CSS selectors. Standard GRPO collapses these structured outcomes into a single sequence-level reward and applies the resulting advantage uniformly to all tokens, weakening credit assignment. We propose \\textbf{Rubric-to-Code Credit Assignment} (RCCA), a reinforcement learning framework that converts rubric-level functional feedback into localized optimization signals over generated code. RCCA builds training tasks around explicit functional rubrics, uses a hierarchical reward to separate format, source-code, runtime, and functional failures, and aligns evaluator-generated textual attributions with responsible code spans and generated tokens. The resulting model, \\textbf{Ling-RCCA-Flash}, scores 41.25 on MiniAppBench, improving Ling-3.0-Flash by 32.20 points and slightly surpassing Claude Opus 4.5. It also reaches 76.19 on ArtifactsBench, improving the SFT model by 4.48 points and establishing a new top score under the official ArtifactsBench leaderboard setting by surpassing the GPT-5 score by 3.64 points, suggesting transferable implementation-level gains.",
@@ -23922,11 +23922,11 @@
     "2608_28518v1": {
       "id": "2608_28518v1",
       "filename": "post_2608_28518v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-08-31T18:36:40.106524+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-31T18:36:40.106525+00:00",
+      "updated_at": "2026-09-01T00:20:01.846808+00:00",
       "paper": {
         "title": "When Robots Mishear Us: Mapping the Safety Risks of Voice-Controlled Embodied AI",
         "summary": "We investigate whether automatic speech recognition (ASR) errors in user input can lead to unsafe outputs from Embodied AI (EAI) models. We find that ASR errors can lead to harmful instructions being accepted and executed by EAI models, thereby reducing safety. We simulate ASR errors and combine them with existing safety benchmarks (SafeAgentBench and POEX) to evaluate how different errors affect embodied AI safety. We find that some of them preserve semantic structure but increase harmful ambiguity, while others weaken the model refusal behaviour and allow unsafe plans to be generated and executed. We show that in some cases automatic correction of ASR errors can reduce the risk, but this is not always effective. Overall, we show that ASR errors lead to significant safety risks for embodied AI.",
@@ -23937,7 +23937,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2608.28518v1"
       },
-      "priority_score": 40
+      "priority_score": 40,
+      "korean_title": "로봇이 우리의 말을 잘못 알아들을 때: 음성 제어형 체화 AI의 안전성 위험 매핑"
     },
     "2608_28515v1": {
       "id": "2608_28515v1",
@@ -24073,11 +24074,11 @@
     "2608_28481v1": {
       "id": "2608_28481v1",
       "filename": "post_2608_28481v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-08-31T18:36:40.106568+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-08-31T18:36:40.106570+00:00",
+      "updated_at": "2026-09-01T00:20:10.070397+00:00",
       "paper": {
         "title": "NL2AGBench: Benchmarking LLM Auto-Formalization for AlphaGeometry",
         "summary": "Recent advances in large language models (LLMs) have demonstrated strong capabilities in natural language understanding and mathematical reasoning. However, their ability to translate informal mathematical problems into formal representations remains underexplored. This limitation is particularly important for neuro-symbolic geometry systems such as AlphaGeometry, whose theorem-proving engine requires inputs in a specialized domain-specific language (DSL). Although AlphaGeometry achieves near-IMO gold-medalist performance, manually converting natural-language problems into its formal syntax remains a significant usability bottleneck. To address this challenge, we introduce the Natural Language to AlphaGeometry Benchmark (NL2AGBench), which evaluates LLMs in translating English geometry problems into AlphaGeometry-compatible formal representations. NL2AGBench uses execution-based verification within AlphaGeometry to assess translation quality rather than relying solely on textual similarity. We evaluate ten state-of-the-art open- and closed-source LLMs across multiple parameter scales and analyze executable translation accuracy, syntactic correctness, and error characteristics. Our experiments reveal a substantial performance gap between closed- and open-source models: leading closed-source models achieve executable translation rates above 80%, while even the largest open-source models struggle to consistently preserve geometric constraints and produce valid formalizations. We introduce an error taxonomy distinguishing syntax and logic errors and investigate mitigation strategies, including few-shot prompting, fine-tuning, and human-guided hinting, which yield measurable improvements across multiple model families.",
@@ -24090,12 +24091,82 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2608.28481v1"
       },
-      "priority_score": 40
+      "priority_score": 40,
+      "korean_title": "NL2AGBench: AlphaGeometry를 위한 거대언어모델 자동 형식화 벤치마크"
+    },
+    "2608_26175v1": {
+      "id": "2608_26175v1",
+      "filename": "post_2608_26175v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-09-01T00:19:43.356697+00:00",
+      "paper": {
+        "title": "Lost in Compression: A Controlled Cross-Lingual Audit of Extractive Prompt Compressors",
+        "summary": "Extractive prompt compression promises to cut LLM inference costs by removing low-information tokens, and learned compressors such as LLMLingua-2 report strong results on English benchmarks. Most other languages already pay a token premium: the same content costs 1.3-1.8x more tokens than in English. We ask whether compression closes or widens this gap. Using fully parallel data in ten languages spanning five scripts, with controls budget-matched in the target model's tokenizer, we audit four learned compressors against four deterministic baselines, on eleven target models from ten vendors (over 250,000 evaluation calls). Three of the compressors are trained with English supervision (LLMLingua-2 XLM-R/mBERT; Kompress-v2 from the production Headroom stack); the fourth, XProvence, is trained multilingually. First, the transfer gap is real, replicates across target models and compressor backbones, and is strongly rate-dependent: at a 0.33 keep-rate English retains 57-62% of normalized context utilization while Lithuanian retains 10-24% and Chinese essentially none, despite Chinese having the smallest token premium. Second, the gap tracks compression supervision data, not architecture. All three English-trained compressors show it, deterministic methods show no comparable gap, and the multilingually trained XProvence v1 shows none. Its v2 release, retrained on translated data, empties 92% of Chinese contexts at its aggressive threshold without any warning. Third, in a harder long-context setting, aggressive learned compression drives compressed contexts to or below no-context utility in three of five non-English languages. A translate-then-compress pipeline matches or beats native compression at roughly half the token cost in three of five tested languages. We release all code, compressions, and model outputs. Safe compression budgets are much smaller outside English.",
+        "published": "2026-07-27T08:54:11Z",
+        "authors": [
+          "Mantas Lukauskas"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.26175v1"
+      },
+      "priority_score": 50,
+      "korean_title": "압축 속에서 길을 잃다: 추출적 프롬프트 압축기에 대한 교차 언어적 감사"
+    },
+    "2608_27763v1": {
+      "id": "2608_27763v1",
+      "filename": "post_2608_27763v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-01T00:18:56.796617+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-01T00:18:56.796618+00:00",
+      "paper": {
+        "title": "Fast Weight Attention for Continual Learning",
+        "summary": "Recurrent fast-weight memories and selective state-space models compress an expanding context into a fixed-size recurrent state, making the state transition an online learning rule. We study this rule under read-after-write autoregressive semantics. For the prefix-prediction objective considered here, the local fast-memory example revealed at step $t$ is the prefix-aligned pair $(\\mathbf{x}_t,\\mathbf{y}_t)=(φ(\\mathbf{k}_{t-1}),\\mathbf{v}_t)$. The common same-step association $(φ(\\mathbf{k}_t),\\mathbf{v}_t)$ remains causal, but optimizes a different internal objective. We derive normalized first-order updates for squared-error regression and negative inner-product objectives. The regression family comprises Falcon-1 (a scalar NLMS update), Falcon-2 (its per-column extension), and Falcon-3 (a sliding-window mini-batch update); Falcon-1A/Falcon-2A/Falcon-3A are the corresponding inner-product variants. We provide recurrent, masked-parallel, and chunk-parallel forms, together with numerically stable positive-decay renormalization. Representative variants remain competitive in language modeling and improve length extrapolation on variable-digit addition. This framework separates temporal alignment, plasticity, forgetting, and bounded rehearsal in recurrent sequence models.",
+        "published": "2026-08-27T22:55:11Z",
+        "authors": [
+          "Yifan Zhang",
+          "Steve Ta",
+          "Jasper Zhang",
+          "Jichen Feng",
+          "Shuzhen Li",
+          "Yongxin Zhang",
+          "Yifeng Liu",
+          "Huizhuo Yuan",
+          "Mengdi Wang",
+          "Quanquan Gu",
+          "Andrew Chi-Chih Yao"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.27763v1"
+      },
+      "priority_score": 16
+    },
+    "2608_28458v1": {
+      "id": "2608_28458v1",
+      "filename": "post_2608_28458v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-09-01T00:19:53.467348+00:00",
+      "paper": {
+        "title": "Acquire, Repair, Preserve: A Diagnosis-Guided Post-Training Recipe for Small-Model Dialogue Game Agents",
+        "summary": "Interactive dialogue games test a capability that static benchmarks largely leave implicit: a model must carry state across turns, interpret feedback, and choose valid actions under changing constraints. We study this setting in the LM Playschool Challenge with a 2B open-weight model, and find that many failures are not only broad knowledge failures but also local decision failures: repeated guesses, malformed actions, and violations of feedback that the model has just seen. These diagnostics motivate a training recipe organized around three steps: acquire broad game participation through supervised fine-tuning, repair mechanically verifiable failures within one targeted dialogue-game family using turn-local preference pairs, and preserve general capabilities beyond these dialogue games. In the official final evaluation, our submission improves public clemscore from 10.67 to 38.92 and closed in-domain score from 13.41 to 41.17, while approximately preserving aggregate static performance (44.14 vs. 44.24 for the baseline). Out-of-domain clemscore remains low at 7.88, with the largest gains concentrated in unseen variants of the targeted family. Our results suggest that broad SFT brings most of the model's capability improvement; turn-local supervision can be effective when failure detection is precise, with observed transfer concentrated primarily within-family.",
+        "published": "2026-08-28T15:47:47Z",
+        "authors": [
+          "Nan Li"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.28458v1"
+      },
+      "priority_score": 47,
+      "korean_title": "획득, 복구, 보존: 소형 모델 대화 게임 에이전트를 위한 진단 기반 사후 학습 기법"
     }
   },
   "last_run": {
-    "started_at": "2026-08-31T18:36:40.108055+00:00",
-    "discovered": 30,
+    "started_at": "2026-09-01T00:18:56.797598+00:00",
+    "discovered": 10,
     "selected": 4,
     "generated": 4,
     "failed": 0,
@@ -24104,27 +24175,27 @@
     "failures": [],
     "usage": {
       "model": "gemini-3.1-flash-lite",
-      "requests": 8,
-      "prompt_tokens": 19282,
-      "output_tokens": 5988,
+      "requests": 7,
+      "prompt_tokens": 17093,
+      "output_tokens": 5363,
       "thought_tokens": 0,
-      "total_tokens": 25270,
-      "estimated_usd": 0.0138025
+      "total_tokens": 22456,
+      "estimated_usd": 0.01231775
     },
-    "finished_at": "2026-08-31T18:37:33.679578+00:00"
+    "finished_at": "2026-09-01T00:20:10.689076+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 1727,
-    "prompt_tokens": 4342467,
-    "output_tokens": 1272464,
+    "requests": 1734,
+    "prompt_tokens": 4359560,
+    "output_tokens": 1277827,
     "thought_tokens": 0,
-    "total_tokens": 5614931,
-    "estimated_usd": 2.99431275
+    "total_tokens": 5637387,
+    "estimated_usd": 3.0066305
   },
   "last_publication_run": {
-    "started_at": "2026-08-31T18:36:40.108055+00:00",
-    "discovered": 30,
+    "started_at": "2026-09-01T00:18:56.797598+00:00",
+    "discovered": 10,
     "selected": 4,
     "generated": 4,
     "failed": 0,
@@ -24133,18 +24204,18 @@
     "failures": [],
     "usage": {
       "model": "gemini-3.1-flash-lite",
-      "requests": 8,
-      "prompt_tokens": 19282,
-      "output_tokens": 5988,
+      "requests": 7,
+      "prompt_tokens": 17093,
+      "output_tokens": 5363,
       "thought_tokens": 0,
-      "total_tokens": 25270,
-      "estimated_usd": 0.0138025
+      "total_tokens": 22456,
+      "estimated_usd": 0.01231775
     },
-    "finished_at": "2026-08-31T18:37:33.679578+00:00"
+    "finished_at": "2026-09-01T00:20:10.689076+00:00"
   },
   "daily_usage": {
-    "date": "2026-08-31",
-    "estimated_usd": 0.0409585,
-    "publications": 12
+    "date": "2026-09-01",
+    "estimated_usd": 0.01231775,
+    "publications": 4
   }
 }
