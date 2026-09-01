@@ -24172,7 +24172,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-01T08:12:18.300853+00:00",
       "last_error": null,
-      "updated_at": "2026-09-01T18:06:07.687685+00:00",
+      "updated_at": "2026-09-01T22:55:46.726317+00:00",
       "paper": {
         "title": "GenFirst: Generation Before Reconstruction for Stable End-to-End Latent Generative Modeling",
         "summary": "Latent generative models typically follow a two-stage pipeline, training a variational autoencoder for reconstruction and then a generative model on the frozen latent space. Since reconstruction-optimized latents are not necessarily generation-friendly, jointly training both models is an appealing alternative. However, direct end-to-end training remains challenging, as it is prone to latent collapse and faces a generation-reconstruction conflict. We revisit this problem by analyzing how different objectives shape the latent space and identify two key insights. First, the entropy term in the Kullback-Leibler divergence objective is essential for preventing collapse: reconstruction and prior fitting tend to shrink the posterior, while entropy preserves non-degenerate latent uncertainty. Second, reconstruction and generation exhibit asymmetric learning dynamics: reconstruction is fast and strongly supervised, whereas generation is slower and harder to optimize. Based on these insights, we achieve the first direct end-to-end training without latent collapse and propose GenFirst, a simple generation-before-reconstruction strategy. The generative objective first shapes the latent space under weak reconstruction pressure, after which reconstruction is progressively strengthened to recover visual details. We validate GenFirst with continuous autoregressive priors with exact likelihoods and SiT priors with implicit likelihoods. With our end-to-end objective and GenFirst, SiT achieves a gFID of 0.97 with CFG and 1.45 without CFG on ImageNet-256, while MMDiT reaches a GenEval score of 0.90 on text-to-image generation. Beyond image generation, we extend the framework to shared visual latents for generation and representation learning, and to continuous unified text-image generation. These results demonstrate the generality of stable end-to-end latent learning across generative priors and modalities.",
@@ -24197,7 +24197,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-01T08:12:18.300876+00:00",
       "last_error": null,
-      "updated_at": "2026-09-01T18:06:07.687690+00:00",
+      "updated_at": "2026-09-01T22:55:46.726321+00:00",
       "paper": {
         "title": "WebWorld: The Browser as a World Model for Self-Improving Web Code",
         "summary": "VLM-driven self-improvement of web code has a structural flaw: the model that proposes the repair is the model that judges it, and visual plausibility under that judge is a poor proxy for whether the page actually works. What the loop is missing is a counterparty the VLM cannot fool, and the browser already is that counterparty: a deterministic, executable simulator of how an HTML artifact behaves under user actions, and in everything but name a world model for web code. We present WebWorld, the interface that lets a VLM prior interact with this browser-as-world-model autonomously and decides which interactions become supervision. Each round, the VLM emits a critique that the planner compiles into a typed interaction contract; the browser re-executes the candidate and issues an acceptance certificate only when both target progress and preservation of every previously verified capability hold; certified transitions accumulate as a quality ratchet that is the only thing the SFT export ever sees. Under matched training, WebWorld-27B improves Raw-27B by 5.3 points on HTMLBench-400 and 14.9 points on MiniAppBench-Val, and reaches the level of strong frontier systems such as Kimi-K2.6 and GPT-5.4 on interactive HTML generation. Equal-size ablations show that browser-backed admission carries the gain: without the certificate, the matched 9B lift nearly disappears.",
@@ -24225,7 +24225,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-01T08:12:18.300883+00:00",
       "last_error": null,
-      "updated_at": "2026-09-01T18:06:07.687637+00:00",
+      "updated_at": "2026-09-01T22:55:46.726294+00:00",
       "paper": {
         "title": "Verification-Aware Training for Speculative Decoding",
         "summary": "Speculative decoding accelerates large language model inference by using a draft model to generate candidate tokens, which are verified by the target model in a single forward pass. Verification proceeds sequentially and discards every position from the first rejection onward, yet existing draft training relies on token-level imitation of the target with a fixed per-position weighting that reflects neither property. We introduce Verification-Aware Training (VAT), a plug-in framework that simulates verification at every training step and turns the resulting accept and reject patterns into supervision. VAT consists of two components: (i) a verification head, a lightweight jointly trained binary classifier that supervises the draft model on whether each position survives sequential verification; (ii) verification-adaptive weighting, which replaces the fixed weighting schedule by keeping full weight up to each sample's first rejection point and re-anchoring the decay to start there. VAT modifies only the training objective, so it can be layered on top of existing methods without changing the draft architecture, the target model, or the inference procedure. Applied to EAGLE-3 and DFlash on Qwen3-4B, Qwen3-8B, and LLaMA-3.1-8B, VAT improves average acceptance length by up to 11.4% and wall-clock speedup by up to 8.7%, with consistent gains across math, code, and chat benchmarks. Code will be available at https://github.com/naver-ai/vat",
@@ -24250,7 +24250,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-01T18:06:07.687656+00:00",
+      "updated_at": "2026-09-01T22:55:46.726299+00:00",
       "paper": {
         "title": "Scaffolding Foundation Models into Physical-World Agents Pushes the Frontier of Long-Horizon Navigation",
         "summary": "Long-horizon physical-world agents must reason over distant goals while grounding decisions in reliable closed-loop behavior. Today's foundation models split these capabilities: vision-language models (VLMs) infer missing information and adapt high-level plans but remain brittle and inefficient at repeated navigation grounding, while navigation foundation models (NFMs) robustly execute semantic goals but operate as bounded episodes without persistent task-level reasoning. We introduce NavMCP, an agentic scaffolding framework that couples a VLM reasoning agent with an NFM executor for long-horizon exploration. The VLM decides what evidence to seek, where to search, and when to stop, while the NFM grounds each semantic sub-goal into closed-loop navigation. Three channels structure their collaboration: intent translates evidence needs into navigation calls, observation converts rollouts into source-grounded trajectory evidence, and memory accumulates findings, negative evidence, and unresolved goals across calls. This design turns isolated navigation rollouts into persistent embodied interaction without retraining either model. On Embodied Question Answering, NavMCP achieves state-of-the-art results on HM-EQA, MT-HM3D, and EXPRESS-Bench. Under matched agent and executor backbones, it outperforms an episodic interface by 14.9 percentage points on HM-EQA. On a Unitree Go2, NavMCP reaches 78.3% success, with its margin over the strongest baseline growing from 10 to 45 points as the task horizon increases. These results demonstrate the potential of scaffolding complementary foundation models into long-horizon physical-world agents.",
@@ -24279,7 +24279,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-01T08:12:18.300896+00:00",
       "last_error": null,
-      "updated_at": "2026-09-01T18:06:07.687662+00:00",
+      "updated_at": "2026-09-01T22:55:46.726304+00:00",
       "paper": {
         "title": "DICS: Exploring Data Intrinsic Consistency for Visual Instruction Selection",
         "summary": "Visual instruction tuning is crucial for advancing the vision-language alignment and instruction-following capabilities of Vision-Language Models (VLMs). However, identifying optimal subsets under a fixed ratio constraint from rapidly expanding datasets remains a significant bottleneck. While existing methods largely depend on distribution diversity or heuristic filtering, they often overlook the internal coherence within individual samples. To bridge this gap, we propose Data Intrinsic Consistency (DIC), a self-scoring metric designed to quantify the sample-level inter-component consistency. DIC consists of two modules: Visual Information Consistency (VIC), evaluating the alignment between visual content and instructions, and Response Information Consistency (RIC), assessing response coherence relative to the instruction. Building upon DIC, we introduce Data Intrinsic Consistency Selection (DICS), an adaptive data selection method that optimizes the trade-off between high intra-sample consistency and global distributional diversity under varying data budgets. Extensive experiments demonstrate that DICS consistently outperforms state-of-the-art methods across diverse dataset scales and model architectures, surpassing full-dataset fine-tuning while using only 25% of the LLaVA-1.5-665K data. We further curate DICS-6M, a 6M-sample multi-modal instruction corpus that enables the largest-scale visual instruction selection study to date; remarkably, DICS reaches 94.52\\% of the official InternVL3-8B-Instruct performance using less than 25\\% of its reported training data. Code can be seen at https://github.com/cqu-student/DICS",
@@ -24356,7 +24356,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-01T18:06:07.687702+00:00",
+      "updated_at": "2026-09-01T22:55:46.726329+00:00",
       "paper": {
         "title": "LightNav-0: Eliciting VLM Spatial Intelligence for Generalist Embodied Navigation",
         "summary": "Embodied navigation requires agents to translate heterogeneous goals and visual observations into actions across tasks, environments, and robot embodiments. Modern vision-language models (VLMs) already encode spatial priors for visual grounding, spatial reasoning, and pointing, but these capabilities are rarely elicited directly for robot control. Existing navigation systems instead rely on task- or embodiment-specific components, fragmenting perception, reasoning, and action while offering limited generalization. Here we present LightNav-0, a compact generalist embodied navigation model that elicits the spatial intelligence of a pretrained VLM and aligns it with navigation, without task-specific prediction heads. LightNav-0 represents diverse navigation tasks through a unified token interface: dual-channel pointing expresses task-, scene-, and embodiment-agnostic spatial intent, while a residual vector-quantized action tokenizer maps this intent to precise, embodiment-specific trajectories. Together with temporally aware visual history compression, ER mid-training, supervised fine-tuning, and reinforcement learning, this formulation supports instruction following, open-vocabulary object navigation, and visual tracking within a single model. The navigation training corpus spans 2K+ scenes and 4K+ hours of embodied navigation data. LightNav-ER, the embodied-reasoning checkpoint used to initialize LightNav-0, attains the highest complete-set average across 8 embodied-reasoning benchmarks, while LightNav-0 achieves state-of-the-art monocular success rates across all 10 public navigation simulation settings. Real-world evaluations further demonstrate zero-shot generalization across robot embodiments, diverse scenes, and static and dynamic targets. These results establish compact VLMs as a unified and transferable backbone for generalist embodied navigation.",
@@ -24458,11 +24458,11 @@
     "2608_31137v1": {
       "id": "2608_31137v1",
       "filename": "post_2608_31137v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-09-01T13:52:16.243958+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-01T13:52:16.243960+00:00",
+      "updated_at": "2026-09-01T22:56:06.427756+00:00",
       "paper": {
         "title": "OntoAligner-Ensemble: Voting-Based Fusion across Heterogeneous Ontology Alignment Techniques",
         "summary": "Ontology alignment (OA) has evolved through several methodological paradigms, ranging from lexical and structural aligners to knowledge graph embedding (KGE) models and, more recently, Large Language Model (LLM)-based approaches. Although modern OA frameworks provide unified ecosystems for deploying these heterogeneous aligners, mechanisms for systematically reconciling their complementary and sometimes conflicting predictions remain relatively underexplored. We present OntoAligner-Ensemble, a modular and aligner-agnostic framework that combines candidate correspondences through a configurable two-stage process comprising voting-based fusion strategies followed by post-fusion selection policies. The framework supports any aligner implemented within OntoAligner that produces candidate correspondences, enabling diverse alignment paradigms to be integrated through a unified decision process. To demonstrate its effectiveness, we instantiate the framework using representative lightweight string-aligner, KGE-based, and Retrieval-Augmented Generation aligners powered by both open-weight and API-based LLMs. We evaluate individual aligners and ensemble configurations across eight benchmark tasks from five OAEI tracks spanning biomedical to beyond-equivalence. The results show that ensemble fusion consistently improves the balance between precision and recall and frequently outperforms standalone aligners across diverse domains. Furthermore, our analysis reveals that ensemble composition directly affects the precision-recall trade-off: heterogeneous cross-paradigm ensembles generally improve precision, whereas homogeneous LLM ensembles more often achieve higher overall F1-scores. These findings demonstrate that systematic ensemble learning offers a robust and reproducible strategy for OA while providing practical guidance for selecting ensemble compositions under different alignment scenarios.",
@@ -24476,7 +24476,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2608.31137v1"
       },
-      "priority_score": 40
+      "priority_score": 40,
+      "korean_title": "OntoAligner-Ensemble: 이종 온톨로지 정렬 기술 간 투표 기반 융합"
     },
     "2608_31118v1": {
       "id": "2608_31118v1",
@@ -24591,11 +24592,11 @@
     "2608_31077v1": {
       "id": "2608_31077v1",
       "filename": "post_2608_31077v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-09-01T13:52:16.243999+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-01T13:52:16.244001+00:00",
+      "updated_at": "2026-09-01T22:56:16.312456+00:00",
       "paper": {
         "title": "Reconciling Process Supervision with Outcome-Based Credit in Agentic Policy Optimization",
         "summary": "Outcome-based reinforcement learning provides verified feedback for language-model agents, but assigns trajectory-level advantage uniformly to all decisions, yielding coarse credit over long-horizon interactions. On-policy self-distillation offers finer supervision by re-evaluating sampled behavior with privileged information (PI) available only during training. However, fine-grained supervision is not necessarily fine-grained credit: PI-induced likelihood changes describe how additional information alters policy preference, but do not directly determine how an executable action should inherit the verified task outcome. This creates a supervision-credit gap. Privileged signals may be irrelevant to the current interaction state, operate at a token granularity misaligned with executable decisions, and lack the outcome semantics required for reinforcement. We introduce TASPO, which converts privileged supervision into outcome-grounded action credit. TASPO constructs decision-applicable PI from verified successful experience, aggregates PI-induced likelihood shifts at the executable-action level, and converts relative action support into positive, bounded, mean-preserving weights on the original trajectory advantage. Thus, the verified outcome determines the update direction and average scale, while PI only redistributes credit across actions. Across three agentic benchmarks, TASPO improves over GRPO by 10.6\\% and generalizes better to unseen tasks. Further analysis indicates that TASPO reduces supervision mismatch and that action-level assignment stabilizes the policy optimization process. These findings offer the community another interesting perspective.",
@@ -24610,7 +24611,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2608.31077v1"
       },
-      "priority_score": 40
+      "priority_score": 40,
+      "korean_title": "에이전트 정책 최적화를 위한 과정 기반 지도와 결과 기반 신용 할당의 조정"
     },
     "2608_31076v1": {
       "id": "2608_31076v1",
@@ -24949,11 +24951,11 @@
     "2608_30959v1": {
       "id": "2608_30959v1",
       "filename": "post_2608_30959v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-09-01T13:52:16.244100+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-01T13:52:16.244101+00:00",
+      "updated_at": "2026-09-01T22:55:57.043827+00:00",
       "paper": {
         "title": "LOCI: A Locator-Critic with Refinement Loop",
         "summary": "Vision-Language Models (VLMs) still struggle on tasks requiring complex visual understanding. We argue that the core issue is not high-level reasoning, but instead failing to locate critical details in the image. Due to this shortcoming, VLMs generate often plausible but incorrect reasoning based on flawed perceptual grounding. To address this, we propose Locator-Critic (LOCI), a training-free framework that decouples visual search from evidence verification. LOCI employs a Locator agent to propose candidate visual evidence and a separate Critic agent to evaluate its relevance and sufficiency. These agents engage in an iterative refinement loop, progressively improving the evidence until it is adequate to answer the given question. This decoupled, self-correcting process yields substantial performance gains, achieving state-of-the-art results on multiple complex visual benchmarks. LOCI improves accuracy for both open-weight models like Qwen3-VL (+12.1 on V*, +5.8 on HR-Bench and +11.2 on VisualProbe-Hard) and proprietary models like Gemini 2.5 Pro (+8.9 on V*, +4.3 on HR-Bench, +4.8 on VisualProbe-Hard).",
@@ -24966,7 +24968,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2608.30959v1"
       },
-      "priority_score": 44
+      "priority_score": 44,
+      "korean_title": "LOCI: 개선 루프를 갖춘 위치 추적 비평가"
     },
     "2608_30956v1": {
       "id": "2608_30956v1",
@@ -25056,11 +25059,11 @@
     "2608_30923v1": {
       "id": "2608_30923v1",
       "filename": "post_2608_30923v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-09-01T13:52:16.244136+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-01T13:52:16.244138+00:00",
+      "updated_at": "2026-09-01T22:56:25.978832+00:00",
       "paper": {
         "title": "Towards Stream Learning on Embedded Systems: Benchmarking the Memory Consumption of Stream Learning Methods",
         "summary": "Stream learning is commonly evaluated through predictive performance and adaptation to concept drift. However, sustained operation of a stream learner also requires predictable and bounded resource usage even on long streams. This requirement becomes even more critical when learning moves from servers to near-sensor embedded systems where memory and processing are scarce resources. In state-of-the-art stream learning, however, we perceive a strong focus on concept drift adaptation, whereas resource usage is often an evaluation byproduct. To close this gap, we benchmark seven representative stream classifiers on 13 real and synthetic streams under model-size budgets from 128\\,KiB to approximately 8\\,MiB. Our benchmark comprises a total of 6,463 experiments. We measure failure-aware accuracy, peak model size, time to budget exhaustion, and prediction-plus-update latency. The results reveal two distinct resource failure modes. Adaptive ensembles can exceed small budgets almost immediately because of their initial footprint, even when their size remains stable thereafter. Incremental trees can fit initially but grow throughout a long stream, with HoeffdingTrees (HT) and Extremely Fast Decision Trees (EFDT) increasing by median factors of 7.37 and 5.87. Explicitly compact methods remain the only viable option under the smallest budgets, but are usually overtaken as larger budgets make adaptive ensembles competitive. Hence, many state-of-the-art methods are only partially applicable in embedded systems or for long-running systems. We therefore call on the stream-learning community to make bounded resource usage a first-class design objective alongside drift adaptation, and propose concrete steps toward this goal, including an API through which stream learners can explicitly expose and respect resource budgets.",
@@ -25072,7 +25075,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2608.30923v1"
       },
-      "priority_score": 40
+      "priority_score": 40,
+      "korean_title": "임베디드 시스템에서의 스트림 학습을 향하여: 스트림 학습 기법의 메모리 소비 벤치마킹"
     },
     "2608_29137v1": {
       "id": "2608_29137v1",
@@ -25081,7 +25085,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-01T18:06:07.687669+00:00",
       "last_error": null,
-      "updated_at": "2026-09-01T18:06:07.687671+00:00",
+      "updated_at": "2026-09-01T22:55:46.726309+00:00",
       "paper": {
         "title": "Chat-Edit-3D++: Interactive 3D and 4D Scene Editing via Large Language Models",
         "summary": "Recent work on image content manipulation based on vision-language pre-training models has been effectively extended to text-driven 3D scene editing. However, existing schemes for 3D scene editing still have certain shortcomings, hindering their further development as interactive design tools. Such schemes typically adhere to fixed input patterns, limiting flexibility in text input. Furthermore, their editing capabilities are constrained by a single or a few 2D visual models and require intricate pipeline design to integrate these models into 3D reconstruction processes. To address the aforementioned issues, we propose the Hash-Atlas network, which reformulates 3D scene editing as operations on 2D atlas images, thereby achieving a workflow decoupling of the 2D editing and 3D reconstruction processes. Building on this foundation, we introduce a dialogue-based 3D scene editing approach, termed CE3D++, which is centered on a large language model (LLM) that allows arbitrary textual input from users and interprets their intentions, subsequently facilitating the autonomous invocation of the corresponding visual models. Additionally, we extend CE3D++ to monocular 4D scenes by imposing motion constraints on moving objects and further fine-tuning the LLM by creating a trajectory dataset related to editing tasks, which enables the smaller LLM to schedule up to 30 different visual tools accurately. Experimental results demonstrate that CE3D++ effectively integrates multiple visual models to achieve diverse visual editing effects, possessing strong scene comprehension and multi-round dialog capabilities. The source codes and trained models are available at https://github.com/Fangkang515/CE3D.",
@@ -25106,7 +25110,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-01T18:06:21.705700+00:00",
+      "updated_at": "2026-09-01T22:55:46.726313+00:00",
       "paper": {
         "title": "CoVA-SFT: A Large-Scale Dataset for Chain of Visual Abstractions",
         "summary": "Chain-of-thought (CoT) reasoning has dramatically improved large language models (LLMs) by allowing them to decompose problems into intermediate steps. While CoT is widely effective for linguistic tasks, text-only CoT forces models to serialize visual problems into awkward prose. Although architectural solutions exist to process visual inputs, the community lacks a massive, multi-step, self-corrected dataset to teach models how to build and maintain internal visual workspaces when solving purely textual reasoning problems. To address this limitation, we introduce CoVA-SFT, a highly structured corpus of 51.9K samples containing over 222K multimodal reasoning steps across 5 distinct layout families and 17 complex tasks, and CoVA-Bench, a companion benchmark of 1,700 held-out test samples spanning the same tasks for reproducible evaluation. By providing explicit rationale formulations, agentic renderings, and verification loops, CoVA-SFT teaches multimodal language models to interleave text and visual abstractions. We validate the dataset by demonstrating that models fine-tuned on CoVA-SFT outperform all interleaved CoT baselines by more than 2x on average on CoVA-Bench, though they still fall short of strong text-only CoT baselines, highlighting open challenges for future work.",
@@ -25132,7 +25136,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-01T18:06:07.687695+00:00",
       "last_error": null,
-      "updated_at": "2026-09-01T18:06:07.687697+00:00",
+      "updated_at": "2026-09-01T22:55:46.726324+00:00",
       "paper": {
         "title": "Evaluating the Hidden Costs of Personalization in Large Language Models",
         "summary": "While Large language models (LLMs) incorporate user personalization signals to improve usability and helpfulness, they increasingly shift from providing balanced, informative responses toward optimizing for user satisfaction when conditioned on personal context such as conversation history, inferred preferences, and user profiles. Specifically, we identify three emerging risks: (1) irrelevant personalization, where models reference personal information in unnecessary contexts; (2) preference narrowing, where models reinforce informational echo chambers; and (3) sycophantic bias, where models agree excessively with user opinions. As a result, models may reference personal information in contexts where it is unnecessary, inadvertently collapse response diversity, or agree excessively with user opinions. Despite the growing use of personalization in AI assistants, there has been limited systematic evaluation of its potential side effects. To bridge this gap, we propose PRISK, a dynamic evaluation framework with automated data generation and tailored metrics that uncovers systematic limitations in current LLM personalization and how personalized information shapes its responses. Our empirical analysis across 13 LLMs demonstrates the presence of user profiles and retrieved memories consistently exacerbates biases, resulting in an average drop of 45.9% in irrelevant personalization, 41.7% in preference narrowing and 61.7% in sycophantic bias.",
@@ -25175,10 +25179,31 @@
       },
       "priority_score": 50,
       "korean_title": "추론 모델의 사고 과정 충실도는 선호 신호가 전달되는 위치와 방식에 따라 달라진다"
+    },
+    "2608_26671v1": {
+      "id": "2608_26671v1",
+      "filename": "post_2608_26671v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-01T22:55:46.726276+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-01T22:55:46.726286+00:00",
+      "paper": {
+        "title": "RECAP-Forcing: Retaining Content Appearances for Long Video Generation",
+        "summary": "Long autoregressive video generation faces a fundamental memory challenge: with a finite attention window, a model must decide which information from an ever-expanding history to retain. Existing methods organize memory temporally, preserving recent frames while compressing or discarding older ones. We instead propose RECAP-Forcing, organizing memory by appearance novelty. A long video is not merely a sequence of frames, but an evolving cast of subjects, objects, and scenes whose identities must remain consistent over time. We organize memory by retaining the KV cache associated with newly appearing content--such as entering subjects, disoccluded regions, and newly introduced scenes--at the moment it first becomes visible, prioritizing novelty over recency. Memory should scale with the amount of newly introduced content, rather than with video length. This appearance-indexed memory makes long-range consistency an explicit property of the memory structure. Our framework unifies two mechanisms under this single principle. At the beginning of a video, when all visible content is novel, an attention sink preserves the initial scene. As the video evolves, an optical-flow-based novelty bank extends the same principle by selectively retaining newly revealed content. As a training-free inference method with no additional learnable parameters, RECAP-Forcing consistently improves visual quality and semantic fidelity across multiple strong baselines and outperforms existing memory methods.",
+        "published": "2026-08-27T06:24:59Z",
+        "authors": [
+          "Haiyang Xu",
+          "Zheng Ding",
+          "Zhuowen Tu"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.26671v1"
+      },
+      "priority_score": 18
     }
   },
   "last_run": {
-    "started_at": "2026-09-01T18:06:07.689469+00:00",
+    "started_at": "2026-09-01T22:55:46.728060+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -25189,25 +25214,25 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 20394,
-      "output_tokens": 5914,
+      "prompt_tokens": 19210,
+      "output_tokens": 5833,
       "thought_tokens": 0,
-      "total_tokens": 26308,
-      "estimated_usd": 0.0139695
+      "total_tokens": 25043,
+      "estimated_usd": 0.013552
     },
-    "finished_at": "2026-09-01T18:06:58.024233+00:00"
+    "finished_at": "2026-09-01T22:56:26.663291+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 1758,
-    "prompt_tokens": 4420727,
-    "output_tokens": 1295159,
+    "requests": 1766,
+    "prompt_tokens": 4439937,
+    "output_tokens": 1300992,
     "thought_tokens": 0,
-    "total_tokens": 5715886,
-    "estimated_usd": 3.04792025
+    "total_tokens": 5740929,
+    "estimated_usd": 3.06147225
   },
   "last_publication_run": {
-    "started_at": "2026-09-01T18:06:07.689469+00:00",
+    "started_at": "2026-09-01T22:55:46.728060+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -25218,17 +25243,17 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 20394,
-      "output_tokens": 5914,
+      "prompt_tokens": 19210,
+      "output_tokens": 5833,
       "thought_tokens": 0,
-      "total_tokens": 26308,
-      "estimated_usd": 0.0139695
+      "total_tokens": 25043,
+      "estimated_usd": 0.013552
     },
-    "finished_at": "2026-09-01T18:06:58.024233+00:00"
+    "finished_at": "2026-09-01T22:56:26.663291+00:00"
   },
   "daily_usage": {
     "date": "2026-09-01",
-    "estimated_usd": 0.0536075,
-    "publications": 16
+    "estimated_usd": 0.0671595,
+    "publications": 20
   }
 }
