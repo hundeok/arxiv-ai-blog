@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>잘못된 예측, 올바른 답변: 붕괴된 거대언어모델 시퀀스 점수에서 증거 복구하기 | ArXiv Translator AI</title><meta name="description" content="잘못된 예측, 올바른 답변: 붕괴된 거대언어모델 시퀀스 점수에서 증거 복구하기"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_31068v1"><meta property="og:type" content="article"><meta property="og:title" content="잘못된 예측, 올바른 답변: 붕괴된 거대언어모델 시퀀스 점수에서 증거 복구하기"><meta property="og:description" content="잘못된 예측, 올바른 답변: 붕괴된 거대언어모델 시퀀스 점수에서 증거 복구하기"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_31068v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="잘못된 예측, 올바른 답변: 붕괴된 거대언어모델 시퀀스 점수에서 증거 복구하기"><meta name="twitter:description" content="잘못된 예측, 올바른 답변: 붕괴된 거대언어모델 시퀀스 점수에서 증거 복구하기"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_31068v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "잘못된 예측, 올바른 답변: 붕괴된 거대언어모델 시퀀스 점수에서 증거 복구하기", "description": "잘못된 예측, 올바른 답변: 붕괴된 거대언어모델 시퀀스 점수에서 증거 복구하기", "datePublished": "2026-08-31", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_31068v1", "author": [{"@type": "Person", "name": "Qiyao Yan"}, {"@type": "Person", "name": "Chenpeng Wang"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_31068v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_31068v1"});gtag('event', 'paper_view', {"paper_id": "2608_31068v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>잘못된 예측, 올바른 답변: 붕괴된 거대언어모델 시퀀스 점수에서 증거 복구하기</h1><p>잘못된 예측, 올바른 답변: 붕괴된 거대언어모델 시퀀스 점수에서 증거 복구하기</p><pre>잘못된 예측, 올바른 답변: 붕괴된 거대언어모델 시퀀스 점수에서 증거 복구하기
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Wrong Prediction, Right Answer: Recovering Evidence from Collapsed LLM Sequence Scores
+&gt; - **저자:** Qiyao Yan, Chenpeng Wang, Liangming Pan
+&gt; - **발행일:** 2026-08-31
+&gt; - **PDF 링크:** [Wrong Prediction, Right Answer: Recovering Evidence from Collapsed LLM Sequence Scores](https://arxiv.org/pdf/2608.31068v1)
+
+
+✨ 3줄 핵심 요약
+* 거대언어모델(LLM)이 추론 문제에서 틀리는 이유는 실제 추론 능력이 없어서가 아니라, 내부 논리가 최종 출력 단계에서 편향에 의해 붕괴되기 때문입니다.
+* 연구진은 아주 적은 수(최소 25개)의 레이블 없는 데이터로 모델의 내부 편향을 보정하여 숨겨진 정답을 복구하는 진단 프로토콜을 제안했습니다.
+* 실험 결과, Qwen3.5 등 여러 모델에서 9~34%p의 정확도 향상을 확인했으며, 이는 모델의 논리가 실제로는 온전하게 작동하고 있음을 입증합니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+우리는 흔히 LLM이 오답을 내놓으면 &quot;이 모델은 이 문제를 풀 능력이 없다&quot;라고 생각합니다. 하지만 이 논문은 사실 LLM이 문제 풀이 과정은 정확히 수행하고 있음에도, 최종적으로 단어를 출력하는 단계에서 특정 단어를 선호하거나 질문 형태에 휘둘리는 &#x27;구조적 편향&#x27; 때문에 정답을 가리고 있다고 지적합니다. 연구진은 모델의 내부 상태를 관찰하고, 아주 적은 데이터를 활용한 보정 기술을 통해 겉으로는 틀린 것처럼 보였던 문제들 속에서 실제로는 모델이 계산해낸 정답을 성공적으로 찾아냈습니다.
+
+🎯 배경 및 문제점
+기존의 LLM 평가 방식은 &#x27;최종 출력값&#x27;만을 기준으로 모델의 성능을 판단합니다. 연구진은 이러한 방식이 두 가지 근본적인 한계를 가진다고 지적합니다.
+* **내부 논리와 출력의 분리:** 모델은 추론 과정 중에 정답을 도출하지만, 최종 토큰을 생성할 때 구조적 편향(특정 레이블 선호 등)으로 인해 정답이 왜곡됩니다.
+* **기존 방법의 한계:** 내부 상태를 조사하는 &#x27;프로빙(Probing)&#x27;은 모델이 정보를 보유했음을 보여줄 뿐 실제 생성 과정에 활용하는지 증명하지 못하며, 기존 출력 보정 방법들은 결과의 신뢰성을 완전히 보장하기 어렵습니다.
+
+💡 핵심 기술 및 아키텍처
+연구진은 모델의 고유한 추론 능력을 검증하기 위해 &#x27;대상 레이블이 필요 없는 가산 보정(additive correction)&#x27; 진단 프로토콜을 도입했습니다.
+* **최소 파라미터 보정:** 단 2개의 파라미터만을 조정하는 방식으로, 단 25개의 레이블 없는 예시만으로도 모델의 편향을 교정할 수 있습니다.
+* **데이터 효율성:** 매우 적은 양의 샘플만으로도 모델 내부의 논리를 복구할 수 있으며, 복잡한 언어적 중첩 문제를 해결한 뒤에도 정답이 유지됨을 확인했습니다.
+
+📊 실험 결과 분석
+다양한 모델과 벤치마크를 통해 얻은 주요 성과는 다음과 같습니다.
+* **정확도 복구:** Qwen3.5 모델군에서 9~34%p의 정확도 향상을 보였습니다.
+* **모델 확장성:** 이러한 보정 효과는 OLMo-2-1B 및 Llama-3.1-8B 모델로 성공적으로 전이되었습니다.
+* **통계적 유의성:** 단순히 레이블 비율을 맞추는 기준선(Baseline)보다 훨씬 높은 성능을 보였으며, 이는 모델 내부의 온전한 논리가 성공적으로 복구되었음을 시사합니다. (참고: 표 40 등에서 Permutation baseline 대비 유의미한 차이를 보임)
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **벤치마크 재해석:** 현재의 LLM 벤치마크 평가가 모델의 실제 능력을 과소평가하고 있을 가능성을 제시하며, 평가 방식의 변화가 필요함을 촉구합니다.
+* **실무적 활용:** 모델을 재학습시키지 않고도 적은 데이터로 특정 도메인이나 작업에서의 성능 저하(편향으로 인한 오답)를 즉각적으로 보정할 수 있는 강력한 도구를 제공합니다. 이는 고비용 학습 없이도 특정 작업에서 모델의 내재된 잠재력을 최대로 끌어낼 수 있음을 의미합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Wrong Prediction, Right Answer: Recovering Evidence from ...](https://arxiv.org/html/2608.31068)
+&gt; - [Wrong Prediction, Right Answer: Recovering Evidence from ...](https://paperreading.club/page?id=439048)
+&gt; - [Wrong Prediction, Right Answer: Recovering Evidence from ...](https://www.ivoox.com/en/wrong-prediction-right-answer-recovering-evidence-from-collapsed-audios-mp3_rf_179797691_1.html)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문의 핵심인 &#x27;내부 논리 유지와 출력 편향의 괴리&#x27;는 흥미롭지만, 25개의 샘플로 편향을 교정한다는 주장은 통계적 엄밀함이 결여되어 보입니다. 모델이 내부적으로 정답을 &#x27;알고&#x27; 있는 것인지, 아니면 단순히 확률 분포의 특정 모드에 오버피팅된 것인지에 대한 더 깊은 메커니즘 분석이 선행되어야 할 것 같군요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님, 메커니즘도 중요하지만 실무 입장에선 당장 Qwen3.5에서 30%p 성능 향상이 나온다는 게 깡패입니다. 파인튜닝 없이 가산 보정(additive correction)으로 이 정도 효율이면, 런타임에 레이어 수정 없이 디코딩 시점 bias만 살짝 만져서 상용 서비스 성능 바로 뽑아낼 수 있겠는데요? 당장 다음 주 스프린트에 도입 가능한지 확인해봐야겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;다들 너무 진지하신 거 아닌가요? 이게 진짜면 그동안 우리가 벤치마크 점수 올리려고 쌩고생한 게 다 의미 없었다는 거잖아요! 모델이 똑똑한데 &#x27;말을 못 한 것&#x27;뿐이라니, 이제 &#x27;모델 능력이 부족하다&#x27;는 핑계는 안 통하겠네요. 내일 랩 세미나 주제는 이걸로 확정입니다. 다들 팝콘 준비하세요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

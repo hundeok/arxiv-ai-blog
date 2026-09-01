@@ -1,0 +1,67 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>인간의 감독을 넘어선 대규모 추론 모델의 확장: 초지능을 향한 경로 | ArXiv Translator AI</title><meta name="description" content="인간의 감독을 넘어선 대규모 추론 모델의 확장: 초지능을 향한 경로"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_31075v1"><meta property="og:type" content="article"><meta property="og:title" content="인간의 감독을 넘어선 대규모 추론 모델의 확장: 초지능을 향한 경로"><meta property="og:description" content="인간의 감독을 넘어선 대규모 추론 모델의 확장: 초지능을 향한 경로"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_31075v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="인간의 감독을 넘어선 대규모 추론 모델의 확장: 초지능을 향한 경로"><meta name="twitter:description" content="인간의 감독을 넘어선 대규모 추론 모델의 확장: 초지능을 향한 경로"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_31075v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "인간의 감독을 넘어선 대규모 추론 모델의 확장: 초지능을 향한 경로", "description": "인간의 감독을 넘어선 대규모 추론 모델의 확장: 초지능을 향한 경로", "datePublished": "2026-08-31", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_31075v1", "author": [{"@type": "Person", "name": "Zhiqin Yang"}, {"@type": "Person", "name": "Jingwen Fu"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_31075v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_31075v1"});gtag('event', 'paper_view', {"paper_id": "2608_31075v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>인간의 감독을 넘어선 대규모 추론 모델의 확장: 초지능을 향한 경로</h1><p>인간의 감독을 넘어선 대규모 추론 모델의 확장: 초지능을 향한 경로</p><pre>인간의 감독을 넘어선 대규모 추론 모델의 확장: 초지능을 향한 경로
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Scaling Large Reasoning Models beyond Human Supervision: A Path toward Superintelligence
+&gt; - **저자:** Zhiqin Yang, Jingwen Fu, Yuhan Liu, Hengyu Liu, Yonggang Zhang, Kainan Cao, Zizhuo Zhang, Chenxin Li, Ruibin Yuan, Jiahao Pan, Jiankai Sun, Zhenyuan Zhang, Yibo Li, Yunlong Lin, Jing Xiong, Sida Lin, Bo Han, Wei Xue, Yike Guo
+&gt; - **발행일:** 2026-08-31
+&gt; - **PDF 링크:** [Scaling Large Reasoning Models beyond Human Supervision: A Path toward Superintelligence](https://arxiv.org/pdf/2608.31075v1)
+
+
+✨ 3줄 핵심 요약
+- 대규모 추론 모델(LRM)이 인간의 직접적인 감독 없이도 학습을 지속할 수 있도록 ‘보상’과 ‘경험’이라는 두 축을 중심으로 체계화한 분석 프레임워크를 제시합니다.
+- 학습 과정에서 인간의 통제가 점진적으로 배제됨에 따라 발생할 수 있는 보상 해킹, 피드백 변질, 커리큘럼 붕괴 등의 위험을 식별합니다.
+- 모델의 성능을 넘어, 피드백의 신뢰성과 경험의 질을 평가하는 새로운 다각적 평가 체계를 제안하며 초지능으로 나아가는 길을 모색합니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+현재의 AI 모델은 수학이나 코딩처럼 정답이 명확한 분야에서 스스로 정답을 검증하며 학습하는 방식(RLVR)으로 크게 발전했습니다. 하지만 정답이 없는 복잡하고 창의적인 작업에서는 인간이 일일이 피드백을 줄 수 없다는 한계가 있습니다. 이 논문은 AI가 인간의 도움 없이 스스로 학습의 보상을 정하고, 학습할 과제를 만들어 나가는 과정이 어떻게 가능한지를 다룹니다. 핵심은 단순히 성능을 높이는 것이 아니라, 스스로 만든 학습 환경 속에서도 AI가 올바른 방향으로 발전할 수 있도록 &#x27;피드백의 신뢰성&#x27;과 &#x27;경험의 질&#x27;을 어떻게 유지할 것인가에 있습니다.
+
+🎯 배경 및 문제점
+- **확장의 한계:** 인간이 모든 AI 학습 과정을 감독하기에는 생성되는 경험의 규모와 복잡성이 너무 커졌습니다.
+- **검증의 어려움:** 수학/코딩과 달리, 개방형 작업이나 에이전트 태스크는 명확한 정답(Ground truth)이 없어 자동화된 보상 체계를 구축하기 어렵습니다.
+- **학습 루프의 위험:** 인간의 감독이 사라진 상태에서 모델이 스스로 학습할 때 &#x27;보상 해킹(reward hacking)&#x27;, &#x27;피드백 변질(feedback drift)&#x27;, &#x27;커리큘럼 붕괴(curriculum collapse)&#x27;와 같은 위험이 발생할 수 있습니다.
+
+💡 핵심 기술 및 아키텍처
+- **이중 축 분석:** 보상(Reward) 축(인간의 판단에서 재사용 가능한 검증기로의 이동)과 경험(Experience) 축(인간이 준 과제에서 AI 스스로 만드는 과제/환경으로의 이동)으로 문제를 구조화했습니다.
+- **5단계 사다리 모델(L0-L4):** 학습 과정에서 어느 정도까지 인간이 통제하는지를 나타내는 5단계 프레임워크를 통해 현재 AI 학습 시스템의 위치를 파악합니다.
+- **평가 체계:** 단순히 결과물(Policy)만 보는 것이 아니라, 피드백의 충실도(Feedback fidelity)와 경험의 품질(Experience quality)을 결합하여 종합적으로 평가합니다.
+
+📊 실험 결과 분석
+- 본 논문은 이론적 연구 및 프레임워크 분석에 집중하고 있으며, 별도의 구체적인 모델 성능 수치(정확도 등)는 본 발췌문에 포함되어 있지 않습니다.
+- 대신, 기존의 다양한 학습 방법론(TTRL, MM-UPT, EM-RL 등)이 &#x27;고정된 경험&#x27; 내에서 보상 출처만 변경하여 어떤 성과와 한계를 보이는지를 비교 분석했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+- **초지능을 향한 가이드:** 인간의 개입을 최소화하면서도 모델이 스스로 정교한 사고를 발전시킬 수 있는 방향을 제시하여, 범용 인공지능(AGI) 개발의 전략적 이정표가 됩니다.
+- **안전한 학습 시스템 구축:** 실무에서 AI를 스스로 학습시킬 때 발생할 수 있는 오류를 사전에 식별하고, 보상 시스템이 왜곡되지 않도록 설계하는 지침을 제공합니다.
+- **지속적 연구 지원:** 최신 기술 동향을 추적하는 GitHub 저장소를 운영하여 관련 분야 연구자들이 변화하는 학습 환경에 대응할 수 있도록 합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Awesome-Scaling-LRM-Beyond-Human-Supervision - GitHub](https://github.com/visitworld123/Awesome-Scaling-LRM-Beyond-Human-Supervision)
+&gt; - [Fugu-MT 論文翻訳 (概要): Scaling Large Reasoning Models beyond Human ...](https://fugumt.com/fugumt/paper_check/2608.31075v1)
+&gt; - [Daily Papers - Hugging Face](https://huggingface.co/papers/date/2026-09-01)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문이 제시한 5단계 사다리 모델은 흥미롭지만, L3에서 L4로 넘어가는 단계에서 발생하는 &#x27;보상 해킹&#x27;의 수학적 정형화가 너무 빈약하군요. 인간의 감독 없이 &#x27;피드백의 신뢰성&#x27;을 평가하겠다는 발상 자체가 자기 참조적 역설에 빠질 위험이 큽니다. 모델이 자신의 판단을 검증하는 구조에서 정렬(Alignment) 실패를 어떻게 방지할지에 대한 근본적인 안전 장치가 보이지 않네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 맞지만, 실무자 입장에서는 &#x27;인간 피드백의 병목&#x27;을 해소할 수 있는 프레임워크가 나온 것만으로도 일단 박수 칠 일입니다. 당장 사내 LLM 파이프라인에서 RLVR 적용할 때마다 데이터 레이블링 비용 때문에 등골이 휘거든요. 다만, 논문에서 언급한 &#x27;피드백 충실도&#x27;를 실시간 추론 환경에서 어떻게 모니터링할지가 관건이겠네요. 연산 비용이 기하급수적으로 늘어날 텐데, 인프라 최적화에 대한 고려가 아쉽습니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;두 분 다 너무 진지하신 거 아닌가요? ㅋㅋ 지금 핵심은 &#x27;인간의 개입이 필요 없는 학습 루프&#x27;가 이론적으로 정립되었다는 거잖아요. GitHub 저장소 보니까 벌써 커뮤니티에서 이 프레임워크 기반으로 자가 학습 에이전트 실험하는 코드 올라오고 있어요. 내일 당장 랩 세미나 주제는 이걸로 가야겠네요! 교수님, 이거 재현해서 보상 해킹 패턴 분석해 보면 재밌을 것 같지 않나요?&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
