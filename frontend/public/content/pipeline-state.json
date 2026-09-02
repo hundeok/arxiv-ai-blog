@@ -25110,7 +25110,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-01T22:55:46.726313+00:00",
+      "updated_at": "2026-09-02T07:31:12.278821+00:00",
       "paper": {
         "title": "CoVA-SFT: A Large-Scale Dataset for Chain of Visual Abstractions",
         "summary": "Chain-of-thought (CoT) reasoning has dramatically improved large language models (LLMs) by allowing them to decompose problems into intermediate steps. While CoT is widely effective for linguistic tasks, text-only CoT forces models to serialize visual problems into awkward prose. Although architectural solutions exist to process visual inputs, the community lacks a massive, multi-step, self-corrected dataset to teach models how to build and maintain internal visual workspaces when solving purely textual reasoning problems. To address this limitation, we introduce CoVA-SFT, a highly structured corpus of 51.9K samples containing over 222K multimodal reasoning steps across 5 distinct layout families and 17 complex tasks, and CoVA-Bench, a companion benchmark of 1,700 held-out test samples spanning the same tasks for reproducible evaluation. By providing explicit rationale formulations, agentic renderings, and verification loops, CoVA-SFT teaches multimodal language models to interleave text and visual abstractions. We validate the dataset by demonstrating that models fine-tuned on CoVA-SFT outperform all interleaved CoT baselines by more than 2x on average on CoVA-Bench, though they still fall short of strong text-only CoT baselines, highlighting open challenges for future work.",
@@ -25163,7 +25163,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-01T18:06:40.361512+00:00",
+      "updated_at": "2026-09-02T07:31:12.278846+00:00",
       "paper": {
         "title": "Chain-of-Thought Faithfulness of Reasoning Models Varies with Where and How Preference Cues Are Delivered",
         "summary": "Chain-of-thought (CoT) monitoring assumes that reasoning traces faithfully record the information that shapes a model's answer. Existing faithfulness tests often place explicit bias cues in the user message, while agents may encounter preferences through tool returns or raw artifacts. We introduce FACE-Eval (Faithful Attribution of Cue Effects Evaluation), a 5,100-sample evaluation that varies cue location (user message or tool return) and explicitness (direct summary or raw artifact). We measure verbalized commitment among cue-following answers and unverbalized adoption among all cued samples. We evaluate 15 open-weight models from eight families, with total parameters ranging from 4B to 1.60T. Every model has lower verbalized commitment for tool-return than user-message cues and for implicit than explicit cues. Unverbalized adoption is higher for tool-return cues on all 15 models and for implicit cues in 28 of 30 model-channel comparisons. A source-attribution prompt narrows the channel gap on seven models, sometimes by increasing user-channel unverbalized adoption, while telling models that their reasoning will be monitored does not reliably close the gap. We also use two transcript monitors (GPT-5.6-Luna and GPT-4o-mini) to detect preference adoption in the largest model of each family. Across 32 model-channel-explicitness cells, higher unverbalized adoption is associated with lower detection ability for both monitors (Pearson r=-0.54 and r=-0.78, respectively). These results suggest that CoT monitoring may be less reliable when preference information arrives through tools or must be inferred from raw artifacts, within the single-call, prefilled-tool setting tested here.",
@@ -25175,7 +25175,7 @@
           "Wai-Chung Kwan",
           "Pasquale Minervini"
         ],
-        "pdf_link": "https://arxiv.org/pdf/2608.29464v1"
+        "pdf_link": "https://arxiv.org/pdf/2608.29464v2"
       },
       "priority_score": 50,
       "korean_title": "추론 모델의 사고 과정 충실도는 선호 신호가 전달되는 위치와 방식에 따라 달라진다"
@@ -25187,7 +25187,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-01T22:55:46.726276+00:00",
       "last_error": null,
-      "updated_at": "2026-09-01T22:55:46.726286+00:00",
+      "updated_at": "2026-09-02T07:31:12.278802+00:00",
       "paper": {
         "title": "RECAP-Forcing: Retaining Content Appearances for Long Video Generation",
         "summary": "Long autoregressive video generation faces a fundamental memory challenge: with a finite attention window, a model must decide which information from an ever-expanding history to retain. Existing methods organize memory temporally, preserving recent frames while compressing or discarding older ones. We instead propose RECAP-Forcing, organizing memory by appearance novelty. A long video is not merely a sequence of frames, but an evolving cast of subjects, objects, and scenes whose identities must remain consistent over time. We organize memory by retaining the KV cache associated with newly appearing content--such as entering subjects, disoccluded regions, and newly introduced scenes--at the moment it first becomes visible, prioritizing novelty over recency. Memory should scale with the amount of newly introduced content, rather than with video length. This appearance-indexed memory makes long-range consistency an explicit property of the memory structure. Our framework unifies two mechanisms under this single principle. At the beginning of a video, when all visible content is novel, an attention sink preserves the initial scene. As the video evolves, an optical-flow-based novelty bank extends the same principle by selectively retaining newly revealed content. As a training-free inference method with no additional learnable parameters, RECAP-Forcing consistently improves visual quality and semantic fidelity across multiple strong baselines and outperforms existing memory methods.",
@@ -25327,11 +25327,11 @@
     "2609_01106v1": {
       "id": "2609_01106v1",
       "filename": "post_2609_01106v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-09-02T02:25:42.493621+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-02T02:25:42.493623+00:00",
+      "updated_at": "2026-09-02T07:31:42.196011+00:00",
       "paper": {
         "title": "Hints Help But Do They Teach? Evaluating Skills Transfer in Code Generation",
         "summary": "When a hint turns a failing generated program into a passing one, does it provide missing information or merely steer the model toward a solution it could already produce? We test these hypotheses on HumanEval+ and MBPP+ using executable evaluation. For Qwen2.5-3B-Instruct, adaptive relevant hints rescue 36 of 79 selected failures; an unrelated hint rescues 19, while eight unhinted samples solve 46 and recover 31 of the 36 relevant-hint rescues. Phi-3.5-mini shows the same pattern: relevant hints rescue 42 of 101 failures, an unrelated hint rescues 17, and unhinted sampling solves 57, including 36 of the 42 relevant-hint rescues. Because the hint conditions use different attempt budgets, these comparisons do not isolate a purely semantic effect. Mechanistic tests on Qwen identify a stable activation direction shared by relevant and unrelated hints. Persistently adding this direction yields 14 rescues and 18 regressions, with no detectable net accuracy gain; learned low-rank interventions have a positive but imprecise estimated effect. Full textual specifications solve 22 of 24 context-defined problems, versus 5-11 for tested virtual-KV prefixes. Post-generation hidden-state probes transfer across benchmarks, with pooled AUROC 0.806 and 0.780, but their top-one selection advantage over token confidence is statistically unresolved. Overall, relevant hints can rescue failures, but most rescued solutions are already reachable through ordinary sampling, and the internal interventions tested here do not establish task-general capability transfer.",
@@ -25341,7 +25341,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2609.01106v1"
       },
-      "priority_score": 49
+      "priority_score": 49,
+      "korean_title": "힌트는 도움이 되는가, 가르침을 주는가? 코드 생성에서의 기술 이전 평가"
     },
     "2609_01081v1": {
       "id": "2609_01081v1",
@@ -25474,11 +25475,11 @@
     "2609_01056v1": {
       "id": "2609_01056v1",
       "filename": "post_2609_01056v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-09-02T02:25:42.493661+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-02T02:25:42.493662+00:00",
+      "updated_at": "2026-09-02T07:31:50.552687+00:00",
       "paper": {
         "title": "WorldBench: Culturally Grounded Benchmark for Multilingual Agents",
         "summary": "Despite the growing use of LLM-powered agents to solve multi-step tasks in complex environments, existing benchmarks rarely test state preservation, performance across languages, and application to realistic, grounded scenarios. To address these concerns, we present WorldBench: a comprehensive, multilingual benchmark of genuine, persona-grounded everyday workflows, where agents can act in a sandbox via structured actions. WorldBench comprises 1,600 tasks across seven languages and eight cultures, filtered and refined through feedback from human annotators with language- and culture-specific expertise. For evaluation, we extend metrics from previous works and introduce Constrained Task Success (CTS), which combines natural language instructions and testbeds to score task completion, minimal modification, and other complementary metrics through deterministic and LLM-as-a-Judge evaluations. Our experiments show that frontier models reach only 49.2% CTS, with all models demonstrating large gaps between correctness and environment preservation. We thereby show that current agents remain brittle in multilingual, agentic scenarios, especially for long-horizon tasks and under state-preservation constraints",
@@ -25491,7 +25492,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2609.01056v1"
       },
-      "priority_score": 45
+      "priority_score": 45,
+      "korean_title": "WorldBench: 다국어 에이전트를 위한 문화적 기반 벤치마크"
     },
     "2609_01048v1": {
       "id": "2609_01048v1",
@@ -25884,11 +25886,11 @@
     "2609_00982v1": {
       "id": "2609_00982v1",
       "filename": "post_2609_00982v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-09-02T02:25:42.493779+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-02T02:25:42.493781+00:00",
+      "updated_at": "2026-09-02T07:31:21.327777+00:00",
       "paper": {
         "title": "Disclosure-Gated User Simulation for Companion-Agent Evaluation",
         "summary": "Using a large language model to play the user is now standard in scalable evaluation. It has a repeatedly diagnosed failure: the simulated user is excessively cooperative, so a system under test can score by the sheer number of questions it asks rather than by making the user willing to speak. We answer with a disclosure gate conditioning information release on the companion agent's behaviour: its state is a ladder of five ordered gates, merged onto three observable depth layers. We specify, ablate, and audit it, and train a user simulator against that specification. Gating behaviour is learned from the training corpus's synthetic branch, while the real branch supplies how people speak and react; after training, the simulator need not be told at runtime which gate each item sits behind. The gate is a load-bearing component of the environment: on the English corpus of a published companion-agent benchmark (CompanionBench), once training no longer states per example which gate each item sits behind, the largest rank displacement across 12 systems under test exceeds the noise band set by re-running that environment under a new seed, while per-system scores show no detectable change. We state two acceptance criteria: a ranking must be order-preserving, and absolute scores must be scale-stable. Of the candidates we examine, only one passes both -- the simulator we release -- and its leaderboard correlates at 0.993 with the benchmark's original simulator. By contrast, prompting a frontier model as the simulator barely moves the ranking while shifting every score upward -- a shift invisible to anyone checking the ranking alone. The environment we specify is the one that benchmark already used. That publication describes the mechanism in about four hundred words, and we supply what it lacked: specification, ablations, human studies, negative controls, and downstream sensitivity analysis.",
@@ -25899,12 +25901,185 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2609.00982v1"
       },
-      "priority_score": 50
+      "priority_score": 50,
+      "korean_title": "공개 관문 기반의 동반자 에이전트 평가용 사용자 시뮬레이션"
+    },
+    "2609_00968v1": {
+      "id": "2609_00968v1",
+      "filename": "post_2609_00968v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-02T07:31:12.278829+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-02T07:31:12.278830+00:00",
+      "paper": {
+        "title": "ReFlowSET: Representation-Aligned Latent Flow Matching for SAR-to-EO Image Translation",
+        "summary": "SAR-to-EO image translation aims to generate electro-optical (EO) imagery from synthetic aperture radar (SAR) observations. Existing latent diffusion approaches typically inherit a predetermined autoencoder, although reconstruction fidelity can vary substantially across codecs and modalities. Because the latent codec affects the round-trip preservation of both SAR conditions and EO targets, codec selection constitutes a fundamental design choice; nevertheless, existing methods largely rely on codecs pretrained on natural images. To remedy this, we introduce ReFlowSET, a conditional latent flow-matching framework that selects its codec through a joint SAR--EO reconstruction audit. Rather than inheriting a heavyweight pretrained generator, ReFlowSET trains a substantially smaller conditional DiT from scratch in the selected latent space, using dual-stream SAR conditioning followed by joint feature refinement. To provide semantic guidance for this from-scratch training, intermediate noisy-EO features are aligned with clean target-EO representations extracted by a frozen vision foundation model. This alignment is used only during training and introduces no additional inference cost. Experiments on QXS-SAROPT and SAR2Opt demonstrate state-of-the-art performance across diverse perceptual fidelity and distributional metrics. Code and pretrained weights are publicly available at https://github.com/KAIST-VICLab/ReFlowSET.",
+        "published": "2026-09-01T09:25:43Z",
+        "authors": [
+          "Jeonghyeok Do",
+          "Seungchul Lee",
+          "Munchurl Kim"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.00968v1"
+      },
+      "priority_score": 27
+    },
+    "2608_30478v1": {
+      "id": "2608_30478v1",
+      "filename": "post_2608_30478v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-02T07:31:12.278836+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-02T07:31:12.278837+00:00",
+      "paper": {
+        "title": "Agents in the Large: Perception-Centered Architecture for Persistent Agents",
+        "summary": "Cognitive language agents have achieved substantial progress by equipping language models with memory, tools, and decision-making procedures, enabling agents to reason and act in interactive environments. Existing frameworks largely cast these agents as systems for solving user-specified, bounded tasks. An increasingly important goal is for language agents to provide persistent assistance in long-lived settings where user needs, context, and service procedures persist and change, and to remain useful across the broad range of tasks that arise over time. Yet we still lack a framework to characterize persistent AI agents, organize existing work, and guide future development. To this end, we propose a Perception-Centered Architecture for Persistent Agents (Pera). Pera describes a persistent agent organized around perception and control components that continually perceive service-relevant signals from episodic task executions, internal context, and changes in the surrounding environment, and use these signals to construct lifecycle tasks. These tasks drive the ongoing operation and adaptation of the agent's service procedures. We use Pera to retrospectively organize recent work, examine a detailed case study, and offer forward-looking insights for building more capable persistent agents. Just as software engineering moved from programming in the small to programming in the large, Pera frames the evolution of language agents as an analogous architectural transition toward long-lived, adaptive intelligence systems.",
+        "published": "2026-08-31T09:04:52Z",
+        "authors": [
+          "Shihan Dou",
+          "Haoxiang Jia",
+          "Shichun Liu",
+          "Feng Chen",
+          "Chenhao Huang",
+          "Yujiong Shen",
+          "Shaofan Liu",
+          "Jiayi Chen",
+          "Jiahang Lin",
+          "Honglin Guo",
+          "Qianyu He",
+          "Minghao Guo",
+          "Ziyi Ye",
+          "Pluto Zhou",
+          "Tao Gui",
+          "Qi Zhang",
+          "Xuanjing Huang"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.30478v1"
+      },
+      "priority_score": 29
+    },
+    "2608_27509v2": {
+      "id": "2608_27509v2",
+      "filename": "post_2608_27509v2.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-02T07:31:12.278841+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-02T07:31:12.278843+00:00",
+      "paper": {
+        "title": "The Mechanics of Democratic Dominance: A System Dynamics Paradigm for Dynamic Consent Engineering",
+        "summary": "Traditional frameworks of political communication operate under linear, event-driven assumptions that treat voter persuasion as a static, transactional function. This paper introduces Dynamic Consent Engineering (DCE), a novel interdisciplinary paradigm that synthesizes Edward Bernays' foundational principles of public relations with the S-E-E-D (Snowball, Equilibrium, Elasticity, Dominance) framework of system dynamics. By expanding Bernaysian operational constraints into a four-dimensional resource matrix (incorporating algorithmic media infrastructure alongside manpower, mindpower, and capital), we mathematically formalize how democratic institutions construct, optimize, and sustain political dominance. We map Bernays' classic eight-step engineering workflow directly onto non-linear feedback loops, information time lags, and demographic carrying capacities. Through rigorous modeling of systemic feedback structures, we isolate the dynamic root causes of political elasticity, policy resistance plateaus, and threshold-triggered trust collapses. Finally, we establish a four-step diagnostic pipeline and validate the framework via historical reference mode verification, demonstrating that long-term political stability depends not on ephemeral rhetoric, but on the structural synchronization of policy execution and dynamic feedback calibration.",
+        "published": "2026-08-27T07:22:19Z",
+        "authors": [
+          "Muhammad Sukri Bin Ramli"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.27509v2"
+      },
+      "priority_score": 17
+    },
+    "2609_01560v1": {
+      "id": "2609_01560v1",
+      "filename": "post_2609_01560v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-02T07:31:12.278851+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-02T07:31:12.278852+00:00",
+      "paper": {
+        "title": "H3-World: Turning Language Understanding into World Control",
+        "summary": "We present H3-World, an efficient framework that turns the 33B MiniMax-H3 video generator into an interactive world model. Our key finding is that, as large video generators become more capable, language is emerging as a natural interface for control. MiniMax-H3, for example, already supports zero-shot control of character behavior and camera motion through natural-language instructions. Building on this, H3-World turns this coarse language interface into precise, temporally grounded world control, without introducing dedicated action modules. Specifically, we represent each action as a structured combination of character and camera instructions, and align them with the corresponding temporal video latents. To make the control temporally precise, we further introduce temporal attention routing, which restricts each instruction to its intended time interval and reduces control leakage across actions. Importantly, H3-World directly reuses the semantic representations learned during large-scale video pretraining and requires only lightweight adaptation. With only 8,000 gameplay samples, 10,000 LoRA optimization steps, and 0.199% trainable parameters, H3-World achieves effective character and camera control while preserving strong generation quality. It also generalizes to unseen scenarios. These results show that the control capabilities emerging in large video generators can be efficiently transformed into interactive world control.",
+        "published": "2026-09-01T17:21:40Z",
+        "authors": [
+          "Danze Chen",
+          "Zeqing Wang",
+          "Ziyue Lin",
+          "Xingyi Yang",
+          "Yeying Jin"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.01560v1"
+      },
+      "priority_score": 18
+    },
+    "2608_29974v1": {
+      "id": "2608_29974v1",
+      "filename": "post_2608_29974v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-02T07:31:12.278856+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-02T07:31:12.278858+00:00",
+      "paper": {
+        "title": "SpanCalib-VLM: Calibrated Hallucination Span Detection in Vision-Language Models",
+        "summary": "Detecting hallucinations in Large Vision-Language Models (LVLMs) requires both accurate span localization and well-calibrated confidence scores. Fine-tuned generative VLMs excel at identifying hallucinated text spans but suffer from overconfidence and high inference latency. Discriminative sequence taggers offer deterministic speed and superior calibration but exhibit conservative span recall. We present SpanCalib-VLM, a hybrid dual-system for the SHROOM-Visions Shared Task that combines a multimodal sequence tagger, consisting of XLM-RoBERTa-Large fused with a SigLIP vision encoder via cross-attention, with our fine-tuned generative VLM (Qwen3.5-4B-SHROOM-SFT). Through a Union-Calibrated Fusion strategy, candidate spans from the generative model are re-scored with calibrated probabilities from the sequence tagger. On the SHROOM-Visions English evaluation split, our ensemble achieves a Pearson calibration correlation of 0.41 and an overall IoU of 0.39, with a clean-response IoU of 0.91} and overall detection accuracy of 70.7%. We make our model weights and code publicly available.",
+        "published": "2026-08-30T19:00:31Z",
+        "authors": [
+          "Amanuel Gizachew Abebe",
+          "Yasmin Moslem"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.29974v1"
+      },
+      "priority_score": 33
+    },
+    "2608_29387v1": {
+      "id": "2608_29387v1",
+      "filename": "post_2608_29387v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-02T07:31:12.278861+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-02T07:31:12.278863+00:00",
+      "paper": {
+        "title": "EvoGenUI-Bench: Evaluating LLMs as Multi-Turn Generative UI Assistants",
+        "summary": "Large language models can generate interactive web interfaces, but reliable generative UI requires maintaining an executable artifact as user requests evolve. We introduce EvoGenUI-Bench, a benchmark for multi-turn interface maintenance comprising 150 five-turn tasks and 750 turns across three scenarios: information presentation, executable interaction, and tool-grounded external state. We execute generated artifacts in a browser and evaluate them using screenshots, source and DOM evidence, actor traces, and runtime logs. Beyond turn-level and episode-level success, we measure cross-turn retention with Adjacent Pass Retention. Across eight models, even the strongest achieves 74.9% Turn Pass while completing only 37.3% of five-turn episodes; APR further falls to 52.4% on tool-grounded tasks. Diagnostic analysis shows that presentation failures center on information architecture, interaction failures on derived-state propagation and affordance binding, and tool-grounded failures additionally involve external-state grounding and requirement decomposition. These results reframe generative UI evaluation from judging isolated outputs to testing whether interface behavior, derived state, external state, and assistant claims remain synchronized as the artifact evolves.",
+        "published": "2026-08-29T17:54:02Z",
+        "authors": [
+          "Yue Peng",
+          "Lanke Xia",
+          "Zihan Wang",
+          "Jiahao Ye",
+          "Ke Ning",
+          "Hongyi Wen"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.29387v1"
+      },
+      "priority_score": 36
+    },
+    "2608_30730v1": {
+      "id": "2608_30730v1",
+      "filename": "post_2608_30730v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-09-02T07:31:32.750610+00:00",
+      "paper": {
+        "title": "E-Commerce Bench: Evaluating LLM Agents on Long-Horizon Autonomous Business Operation",
+        "summary": "Long-horizon agentic tasks go beyond chaining short tasks over more interaction turns. Their evolving dynamic environments and long-range dependencies require Large Language Models (LLMs) to continually explore, learn from experience, and adapt their policies over thousands of steps. We introduce E-Commerce Bench, the first open-source benchmark that integrates multi-round counterpart negotiation and dynamic events into a year-long business operation. Over a 365-day year, an LLM agent concurrently runs multiple online stores, researching the market, negotiating with suppliers to source inventory, optimizing sales strategies, fulfilling orders, handling returns, and managing cash flow to maximize its end-of-year total assets. To construct a realistic merchant-side operating environment, the product and supplier data are derived from a real e-commerce platform, while a year-long calendar of promotions, natural disasters, and supply-chain shocks continually reshapes demand. For reproducibility, both sides of the market are deterministic: customer purchases and returns follow a fixed demand model, while a negotiation kernel determines supplier pricing, concessions, and decisions, with an LLM used only to verbalize them. We evaluate 18 frontier models across seven dimensions, including year-end assets, and find that no single model dominates. GPT-5.6 Sol earns the most, growing the 100,000 opening stake into 1,431,425, yet it ranks 16th of 18 on fraud avoidance and trails Fable5 in operational efficiency. Among open-weight models, Qwen3.8-Max-Preview leads with 416,252, 38% above GLM 5.2 (high), and achieves the strongest learning over the horizon, progressively bargaining down prices across repeated orders. Our code is available at https://github.com/QwenLM/E-CommerceBench.",
+        "published": "2026-08-31T13:03:57Z",
+        "authors": [
+          "Wei Fan",
+          "Xinjie Shen",
+          "Xudong Guo",
+          "Jianhong Tu",
+          "Yang Su",
+          "Yinger Zhang",
+          "Lianghao Deng",
+          "Fengyu Wang",
+          "Baohua Dong",
+          "Yangqiu Song",
+          "Dayiheng Liu"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.30730v1"
+      },
+      "priority_score": 50,
+      "korean_title": "전자상거래 벤치마크: 장기 자율 비즈니스 운영에서의 LLM 에이전트 평가"
     }
   },
   "last_run": {
-    "started_at": "2026-09-02T02:25:42.495918+00:00",
-    "discovered": 30,
+    "started_at": "2026-09-02T07:31:12.280584+00:00",
+    "discovered": 10,
     "selected": 4,
     "generated": 4,
     "failed": 0,
@@ -25914,26 +26089,26 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 19475,
-      "output_tokens": 6026,
+      "prompt_tokens": 20431,
+      "output_tokens": 6104,
       "thought_tokens": 0,
-      "total_tokens": 25501,
-      "estimated_usd": 0.01390775
+      "total_tokens": 26535,
+      "estimated_usd": 0.01426375
     },
-    "finished_at": "2026-09-02T02:26:18.323034+00:00"
+    "finished_at": "2026-09-02T07:31:51.065924+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 1774,
-    "prompt_tokens": 4459412,
-    "output_tokens": 1307018,
+    "requests": 1782,
+    "prompt_tokens": 4479843,
+    "output_tokens": 1313122,
     "thought_tokens": 0,
-    "total_tokens": 5766430,
-    "estimated_usd": 3.07538
+    "total_tokens": 5792965,
+    "estimated_usd": 3.08964375
   },
   "last_publication_run": {
-    "started_at": "2026-09-02T02:25:42.495918+00:00",
-    "discovered": 30,
+    "started_at": "2026-09-02T07:31:12.280584+00:00",
+    "discovered": 10,
     "selected": 4,
     "generated": 4,
     "failed": 0,
@@ -25943,17 +26118,17 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 19475,
-      "output_tokens": 6026,
+      "prompt_tokens": 20431,
+      "output_tokens": 6104,
       "thought_tokens": 0,
-      "total_tokens": 25501,
-      "estimated_usd": 0.01390775
+      "total_tokens": 26535,
+      "estimated_usd": 0.01426375
     },
-    "finished_at": "2026-09-02T02:26:18.323034+00:00"
+    "finished_at": "2026-09-02T07:31:51.065924+00:00"
   },
   "daily_usage": {
     "date": "2026-09-02",
-    "estimated_usd": 0.01390775,
-    "publications": 4
+    "estimated_usd": 0.0281715,
+    "publications": 8
   }
 }
