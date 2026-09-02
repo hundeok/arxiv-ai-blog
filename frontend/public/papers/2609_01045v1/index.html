@@ -1,0 +1,70 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>에이전트 팩토리: 자동화된 에이전트 시스템 설계 및 최적화를 향하여 | ArXiv Translator AI</title><meta name="description" content="에이전트 팩토리: 자동화된 에이전트 시스템 설계 및 최적화를 향하여"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_01045v1"><meta property="og:type" content="article"><meta property="og:title" content="에이전트 팩토리: 자동화된 에이전트 시스템 설계 및 최적화를 향하여"><meta property="og:description" content="에이전트 팩토리: 자동화된 에이전트 시스템 설계 및 최적화를 향하여"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_01045v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="에이전트 팩토리: 자동화된 에이전트 시스템 설계 및 최적화를 향하여"><meta name="twitter:description" content="에이전트 팩토리: 자동화된 에이전트 시스템 설계 및 최적화를 향하여"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_01045v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "에이전트 팩토리: 자동화된 에이전트 시스템 설계 및 최적화를 향하여", "description": "에이전트 팩토리: 자동화된 에이전트 시스템 설계 및 최적화를 향하여", "datePublished": "2026-09-01", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_01045v1", "author": [{"@type": "Person", "name": "Enci Zhang"}, {"@type": "Person", "name": "Haofeng Wang"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_01045v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_01045v1"});gtag('event', 'paper_view', {"paper_id": "2609_01045v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>에이전트 팩토리: 자동화된 에이전트 시스템 설계 및 최적화를 향하여</h1><p>에이전트 팩토리: 자동화된 에이전트 시스템 설계 및 최적화를 향하여</p><pre>에이전트 팩토리: 자동화된 에이전트 시스템 설계 및 최적화를 향하여
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** AgentFactory: Towards Automated Agentic System Design and Optimization
+&gt; - **저자:** Enci Zhang, Haofeng Wang, Yuesheng Zhu, Xiaole Cui, Guibo Luo
+&gt; - **발행일:** 2026-09-01
+&gt; - **PDF 링크:** [AgentFactory: Towards Automated Agentic System Design and Optimization](https://arxiv.org/pdf/2609.01045v1)
+
+
+✨ 3줄 핵심 요약
+- **AgentFactory**는 거대언어모델(LLM)을 활용하여 에이전트 시스템의 기반 모델과 워크플로우를 동시에 자동 최적화하는 프레임워크입니다.
+- 성능, 비용, 효율성이라는 다중 목표를 고려하며, 3단계(계획-튜닝-워크플로우 설계) 파이프라인을 통해 반복적으로 최적의 설계를 도출합니다.
+- 8개 벤치마크 테스트에서 기존 방식 대비 평균 9.1%의 성능 향상을 기록했으며, 특히 의학 및 금융 분야에서 탁월한 성과를 보였습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+기존의 AI 에이전트 시스템은 사람이 직접 모델을 선택하고 역할을 정의하며 워크플로우를 설계해야 했습니다. 이는 매우 번거롭고 전문가의 경험에 의존적입니다. &#x27;AgentFactory&#x27;는 AI(LLM) 자체가 스스로 최적의 에이전트 구조를 설계하게 만듭니다. 모델의 파라미터(미세 조정)와 일하는 방식(워크플로우)을 동시에 조정하며, 성능은 높이고 비용은 낮추는 방향으로 스스로 진화합니다. 마치 스스로를 개량하는 지능형 에이전트 설계 공장과 같습니다.
+
+🎯 배경 및 문제점
+- **수동 설계의 한계:** ChatDev나 MetaGPT와 같은 기존 프레임워크는 사람이 일일이 역할을 정의하고 설계해야 하므로 노동 집약적이며 최적의 조합을 찾기 어렵습니다.
+- **최적화 범위의 제한:** 기존 자동화 시도들은 주로 프롬프트 최적화에만 치중하거나 워크플로우 설계에만 국한되어, 모델의 성능과 실제 배포 환경에서의 비용·효율성을 종합적으로 고려하지 못했습니다.
+
+💡 핵심 기술 및 아키텍처
+- **통합 검색 공간:** 모델 파라미터(Fine-tuning)와 워크플로우 구조를 동시에 최적화 대상으로 삼습니다.
+- **3단계 최적화 파이프라인:**
+    1. **계획(Planning):** LLM 최적화 도구가 이전의 최적화 경로와 성능 데이터를 기반으로 전략적 통찰을 도출합니다.
+    2. **튜닝(Tuning):** 데이터셋 선정, 미세 조정 방식 및 하이퍼파라미터 설정을 자동 생성합니다.
+    3. **워크플로우 설계(Workflow Design):** 체계적인 협업 및 실행 방식을 수립합니다.
+- **다중 목표 최적화:** 성능뿐만 아니라 운영 비용과 효율성 타겟을 충족할 때까지 반복적(iterative)으로 설계를 개선합니다.
+
+📊 실험 결과 분석
+- **전반적 성능:** 5개 도메인(추론, 코딩, 수학, 의학, 금융) 8개 벤치마크에서 기존 방식 대비 평균 9.1% 향상되었습니다.
+- **분야별 성과:** 특히 전문 지식이 필요한 MedQA에서 19.6%, FinEval에서 18.7%라는 유의미한 성능 향상을 보였습니다.
+- **아블레이션 연구:** 모델 미세 조정만 수행하거나 워크플로우 설계만 하는 것보다, AgentFactory의 전체 파이프라인을 활용할 때 성능이 가장 뛰어남을 확인했습니다(Fine-tuning 대비 12.7%, 워크플로우 설계 대비 8.2% 평균 성능 우위).
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+- **자동화된 개발:** 복잡한 에이전트 시스템을 구축할 때 필요한 시행착오 과정을 대폭 줄여, 개발 생산성을 획기적으로 높일 수 있습니다.
+- **실무 적용:** 비용 최적화 사례(사례 연구 중 비용을 1.14달러에서 0.60달러로 절감)에서 볼 수 있듯, 고성능이 요구되는 금융이나 의료와 같은 도메인에서 비용 효율적인 AI 서비스 배포를 가능하게 합니다.
+- **범용성:** 특정 작업에 국한되지 않고 다양한 도메인에 적용 가능한 설계 방식을 제시함으로써, 보다 능동적이고 효율적인 에이전트 기반 AI 서비스의 표준이 될 가능성을 보여줍니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [AgentFactory: Towards Automated Agentic System Design and Optimization | Springer Nature Link](https://link.springer.com/chapter/10.1007/978-981-95-7078-2_10)
+&gt; - [AgentFactory: Towards Automated Agentic System Design and Optimization](https://dl.acm.org/doi/10.1007/978-981-95-7078-2_10)
+&gt; - [PRICAI 2025: Trends in Artificial Intelligence](https://link.springer.com/book/10.1007/978-981-95-7078-2)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문은 흥미로우나, 9.1%의 성능 향상이 과연 &#x27;일반화 가능한 최적화&#x27;인지 의문이 드네. 에이전트 설계 공간을 탐색하는 과정에서 오버피팅(Overfitting) 위험은 어떻게 제어했나? 특히 의료나 금융 같은 도메인에서 모델 파라미터와 워크플로우를 동시에 튜닝하는 것은 계산 비용이 기하급수적으로 늘어날 텐데, 이에 대한 엄밀한 분석이 부족해 보여.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 비용 문제가 현실적으로 크죠. 1.14달러를 0.60달러로 줄인 건 매력적이지만, 그 최적화 과정을 돌리기 위해 소모된 컴퓨팅 자원을 생각하면 배보다 배꼽이 더 클 수도 있습니다. 다만, 운영 환경에서 프롬프트 엔지니어링이나 워크플로우를 매번 수작업으로 수정하던 &#x27;노가다&#x27;를 자동화했다는 점은 실무에서 확실히 환영받을 포인트네요. 당장 내일 사내 프로젝트에 파이프라인 도입해보고 싶네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;이미 커뮤니티에서는 이거로 나만의 &#x27;에이전트 군단&#x27; 자동 생성해서 벤치마크 돌려보는 챌린지 시작됐습니다! 교수님 지적처럼 오버피팅 이슈가 있긴 하지만, &#x27;에이전트가 스스로 설계하는 에이전트&#x27;라는 컨셉 자체가 이미 학계의 메타 트렌드 아닌가요? 9% 향상이면 웬만한 최신 LLM 아키텍처 하나 바꾸는 것보다 효율적일 것 같은데, 일단 깃허브 오픈소스 뜨면 바로 뜯어볼 예정입니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

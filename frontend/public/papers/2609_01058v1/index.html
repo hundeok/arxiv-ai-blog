@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ARISE-RL: 에이전트 루브릭 기반의 강화학습을 통한 반복적 자기 진화 | ArXiv Translator AI</title><meta name="description" content="ARISE-RL: 에이전트 루브릭 기반의 강화학습을 통한 반복적 자기 진화"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_01058v1"><meta property="og:type" content="article"><meta property="og:title" content="ARISE-RL: 에이전트 루브릭 기반의 강화학습을 통한 반복적 자기 진화"><meta property="og:description" content="ARISE-RL: 에이전트 루브릭 기반의 강화학습을 통한 반복적 자기 진화"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_01058v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="ARISE-RL: 에이전트 루브릭 기반의 강화학습을 통한 반복적 자기 진화"><meta name="twitter:description" content="ARISE-RL: 에이전트 루브릭 기반의 강화학습을 통한 반복적 자기 진화"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_01058v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "ARISE-RL: 에이전트 루브릭 기반의 강화학습을 통한 반복적 자기 진화", "description": "ARISE-RL: 에이전트 루브릭 기반의 강화학습을 통한 반복적 자기 진화", "datePublished": "2026-09-01", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_01058v1", "author": [{"@type": "Person", "name": "Fanrui Zhang"}, {"@type": "Person", "name": "Ruixue Ding"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_01058v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_01058v1"});gtag('event', 'paper_view', {"paper_id": "2609_01058v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>ARISE-RL: 에이전트 루브릭 기반의 강화학습을 통한 반복적 자기 진화</h1><p>ARISE-RL: 에이전트 루브릭 기반의 강화학습을 통한 반복적 자기 진화</p><pre>ARISE-RL: 에이전트 루브릭 기반의 강화학습을 통한 반복적 자기 진화
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** ARISE-RL: Agentic Rubric-Grounded Iterative Self-Evolution with Reinforcement Learning
+&gt; - **저자:** Fanrui Zhang, Ruixue Ding, Qiang Zhang, Xi Chen, Boli Chen, Shihang Wang, Qiuchen Wang, Hongmin Zhan, Jinxin Bian, Li xingchao, Peijin Zheng, Hao cheng, Pengjun Xie, Kaipeng Zhang, Jiawei Liu, Zheng-Jun Zha
+&gt; - **발행일:** 2026-09-01
+&gt; - **PDF 링크:** [ARISE-RL: Agentic Rubric-Grounded Iterative Self-Evolution with Reinforcement Learning](https://arxiv.org/pdf/2609.01058v1)
+
+
+✨ 3줄 핵심 요약
+* **ARISE-RL**은 정답이 없는 개방형 에이전트 과제를 해결하기 위해 루브릭(평가 기준)을 기반으로 과제를 생성하고 해결책을 반복적으로 최적화하는 프레임워크입니다.
+* **RG-SED(보상 게이트 자기 진화 증류)** 기법을 통해 보상 향상이 확인될 때만 모델 스스로를 학습시켜 노이즈를 방지하고 정책 정렬 오류를 줄입니다.
+* 새로운 벤치마크인 **ECR-Bench**를 통해 검증한 결과, 도구 사용과 복합적 추론이 필요한 환경에서 최신 수준(SOTA)의 성능을 달성했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+기존의 AI 에이전트 학습은 정답이 명확한 수학이나 코딩 문제에서는 잘 작동했지만, 여행 계획이나 심층 조사처럼 &#x27;정답&#x27;이 없는 복잡한 과제에서는 한계가 있었습니다. 이를 해결하기 위해 연구진은 &#x27;문제 출제자(Generator)&#x27;와 &#x27;해결사(Solver)&#x27;를 도입했습니다. 출제자는 평가 기준(루브릭)을 세워 적절한 난이도의 문제를 만들고, 해결사는 이 기준에 따라 도구를 활용해 문제를 풉니다. 특히 &#x27;보상 게이트&#x27;를 적용해 AI가 보상을 얻을 수 있는 확실한 학습 데이터만 골라 학습함으로써, 잘못된 정보를 무분별하게 배우는 위험을 방지하고 스스로 진화하게 만들었습니다.
+
+🎯 배경 및 문제점
+* **데이터-평가 병목 현상:** 개방형 과제는 고품질의 훈련 데이터와 전문가 수준의 평가 기준(루브릭)을 확보하는 비용이 매우 큽니다.
+* **불안정한 학습 신호:** 긴 시간 동안 도구를 사용해야 하는 복잡한 작업에서 강화학습의 보상이 노이즈가 많아 최적화 신호를 포착하기 어렵습니다.
+* **기존 벤치마크의 한계:** 기존 벤치마크는 주로 결정론적 환경에 머물러 있어, 연속적이고 세밀한 최적화를 위한 학습 데이터가 부족합니다.
+
+💡 핵심 기술 및 아키텍처
+* **루브릭 매개 공진화:** 과제 생성기와 문제 해결사가 서로의 실력에 맞춰 과제와 평가 기준을 조정하며 함께 발전합니다.
+* **RG-SED (Reward-Gated Self-Evolution Distillation):** 메모리를 증강한 모델이 보상을 실제로 개선하는 경우에만 스스로에게 지식을 증류합니다. 이를 통해 분포 불일치(distribution mismatch)를 줄이고 잘못된 가이드라인을 따르는 것을 방지합니다.
+* **ECR-Bench:** 도구 사용 및 연구/여행 계획을 포함하는 전문가 수준의 루브릭 벤치마크로, 모델의 실질적인 에이전트 능력을 평가합니다.
+
+📊 실험 결과 분석
+* **성능:** ARISE-RL은 평가된 모든 벤치마크에서 일관되고 안정적인 최신 수준(SOTA)의 성능을 보였습니다.
+* **정렬 품질:** 인간 평가자와 LLM 평가자 간의 일치도는 ECR-DeepResearch에서 82.3%, ECR-Travel에서 77.9%로 높게 나타났습니다.
+* **학습 안정성:** 보상 게이트는 학습 초기 5%에서 점진적으로 활성화되어, 훈련 과정 전반에 걸쳐 노이즈가 적은 유효한 학습 신호를 선택적으로 증폭시켰습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **범용 에이전트 개발 가속화:** 정답이 없는 실세계의 복잡한 업무(여행 일정 설계, 심층 리서치 등)를 자율적으로 수행하는 AI 개발의 돌파구를 마련했습니다.
+* **비용 효율적 학습:** 전문가의 수동 개입을 최소화하고 루브릭 기반의 자기 진화 구조를 채택함으로써, AI 에이전트의 확장 가능한 학습 체계를 구축했습니다.
+* **실무 적용:** 도구 호출과 실시간 정보 확인이 필요한 비즈니스 프로세스 자동화, 정교한 계획 수립이 필요한 물류 및 고객 서비스 분야에 실질적인 적용이 가능합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [From Holistic Evaluation to Structured Criteria: Rubrics Across ...](https://arxiv.org/html/2606.08625v1)
+&gt; - [Awesome-Rubrics/README.md at main - GitHub](https://github.com/FreedomIntelligence/Awesome-Rubrics/blob/main/README.md)
+&gt; - [Rubric-Based Rewards for RL - Deep (Learning) Focus](https://cameronrwolfe.substack.com/p/rubric-rl)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;이 논문의 핵심인 RG-SED 기법은 흥미롭지만, &#x27;보상 게이트&#x27;의 임계값을 결정하는 메커니즘이 지나치게 휴리스틱에 의존하는 경향이 있네. 특히 루브릭 자체가 편향되어 있다면, 그 편향된 루브릭을 바탕으로 자기 진화하는 모델이 얼마나 객관성을 유지할 수 있을지 의문이야. 논문에서 말하는 &#x27;안정성&#x27;이 특정 도메인에 국한된 것은 아닌지 검증이 더 필요해 보여.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에선 그 &#x27;임계값 튜닝&#x27;이 지옥이죠. 하지만 이 논문의 가치는 데이터셋 수집 비용을 루브릭 자동 생성으로 퉁칠 수 있는 가능성을 보여줬다는 데 있다고 봅니다. 당장 우리 팀 파이프라인에 가져와서 루브릭 기반으로 Reward 모델링 자동화해보면, 비즈니스 로직 복잡한 에이전트 개발 속도가 꽤나 올라갈 것 같네요. 다만 프로덕션 환경에서 추론 오버헤드는 어떻게 감당할지가 관건이겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;두 분 다 너무 보수적이신 거 아니에요? 루브릭 기반으로 에이전트가 스스로 최적화하며 진화하는 구조라니, 이건 사실상 LLM이 스스로의 &#x27;학습 교재&#x27;를 만드는 거잖아요! ECR-Bench 성적 보면 SOTA 찍은 건 팩트고, 이제 수동으로 데이터 레이블링 하던 시대는 끝난 것 같습니다. 저는 당장 내일 논문 코드 깃허브 클론 떠서 제 실험 환경에 바로 돌려볼 생각이에요. 이거 지금 안 하면 진짜 뒤처집니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
