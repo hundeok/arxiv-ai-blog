@@ -1,0 +1,65 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>더 커지는 것이 항상 도움이 될까? 온톨로지 학습을 위한 거대언어모델 규모에 관한 통제된 연구 | ArXiv Translator AI</title><meta name="description" content="더 커지는 것이 항상 도움이 될까? 온톨로지 학습을 위한 거대언어모델 규모에 관한 통제된 연구"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_31118v1"><meta property="og:type" content="article"><meta property="og:title" content="더 커지는 것이 항상 도움이 될까? 온톨로지 학습을 위한 거대언어모델 규모에 관한 통제된 연구"><meta property="og:description" content="더 커지는 것이 항상 도움이 될까? 온톨로지 학습을 위한 거대언어모델 규모에 관한 통제된 연구"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_31118v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="더 커지는 것이 항상 도움이 될까? 온톨로지 학습을 위한 거대언어모델 규모에 관한 통제된 연구"><meta name="twitter:description" content="더 커지는 것이 항상 도움이 될까? 온톨로지 학습을 위한 거대언어모델 규모에 관한 통제된 연구"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_31118v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "더 커지는 것이 항상 도움이 될까? 온톨로지 학습을 위한 거대언어모델 규모에 관한 통제된 연구", "description": "더 커지는 것이 항상 도움이 될까? 온톨로지 학습을 위한 거대언어모델 규모에 관한 통제된 연구", "datePublished": "2026-08-31", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_31118v1", "author": [{"@type": "Person", "name": "Hamed Babaei Giglou"}, {"@type": "Person", "name": "Sören Auer"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_31118v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_31118v1"});gtag('event', 'paper_view', {"paper_id": "2608_31118v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>더 커지는 것이 항상 도움이 될까? 온톨로지 학습을 위한 거대언어모델 규모에 관한 통제된 연구</h1><p>더 커지는 것이 항상 도움이 될까? 온톨로지 학습을 위한 거대언어모델 규모에 관한 통제된 연구</p><pre>더 커지는 것이 항상 도움이 될까? 온톨로지 학습을 위한 거대언어모델 규모에 관한 통제된 연구
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** When Does Bigger Help? A Controlled Study of LLM Scale for Ontology Learning
+&gt; - **저자:** Hamed Babaei Giglou, Sören Auer, Jennifer D&#x27;Souza
+&gt; - **발행일:** 2026-08-31
+&gt; - **PDF 링크:** [When Does Bigger Help? A Controlled Study of LLM Scale for Ontology Learning](https://arxiv.org/pdf/2608.31118v1)
+
+
+✨ 3줄 핵심 요약
+- 온톨로지 학습(OL)에서 모델 규모를 키우는 것이 항상 성능 향상으로 이어지지는 않으며, 작업의 성격과 도메인 특성에 따라 결과가 다르게 나타납니다.
+- 모델의 매개변수 수보다 아키텍처(밀집형 vs MoE)와 모델 계보(lineage)가 성능에 더 결정적인 영향을 미칠 수 있습니다.
+- 재료 과학과 같은 고도로 추상적인 도메인에서의 비분류적 관계 추출은 모델 크기만으로는 해결하기 어려운 난제로 남아 있습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+지식 기반 시스템의 핵심인 &#x27;온톨로지(Ontology)&#x27;를 자동으로 구축하기 위해 거대언어모델(LLM)을 사용할 때, 단순히 모델의 크기(매개변수 수)를 키우는 것이 정답일까요? 연구진은 Qwen 계열과 GPT 모델들을 활용하여 동일한 조건에서 온톨로지 학습 성능을 비교했습니다. 실험 결과, 무조건 큰 모델이 좋은 것이 아니라, 용도에 맞는 적절한 아키텍처와 모델 선택이 중요함이 확인되었습니다. 특히 전문적이고 추상적인 분야일수록 단순히 모델을 키우는 것으로는 한계가 있다는 점을 명확히 했습니다.
+
+🎯 배경 및 문제점
+데이터가 폭증하는 생물의학 및 재료 과학 분야에서 지식을 구조화하는 온톨로지 구축은 필수적이나, 수작업에 의존해야 하는 탓에 비효율적입니다. 최근 이를 자동화하기 위해 LLM을 도입하고 있지만, 기존 연구들은 도메인, 프롬프트 방식, 모델 규모를 통제하지 않은 채 결과를 도출하여 &#x27;모델 규모와 성능의 상관관계&#x27;에 대한 과학적 근거가 부족했습니다. 본 연구는 모델 크기가 성능 향상에 실질적인 가치를 제공하는지, 그 비용이 합리적인지를 규명하고자 했습니다.
+
+💡 핵심 기술 및 아키텍처
+연구진은 &#x27;OntoLearner&#x27; 프레임워크를 기반으로 검색 증강 생성(RAG) 방식을 채택했습니다.
+- **통일된 환경:** 모든 모델은 동일한 임베딩 모델(Qwen3-Embedding-4B)과 검색 설정을 사용했습니다.
+- **비교 대상:** Qwen3.5 및 3.6 계열(밀집형 및 MoE)과 최신 GPT 모델 등 총 13개 모델을 실험했습니다.
+- **핵심 모듈:** 의미론적 벡터 인덱싱, 유사도 기반 검색, 작업별 LLM 프롬프팅 및 생성이라는 3단계 파이프라인을 구축하여 모델 본연의 생성 능력을 객관적으로 비교했습니다.
+
+📊 실험 결과 분석
+- **밀집형 모델:** Qwen3.5 계열에서 매개변수를 늘릴수록 재현율보다는 정밀도 향상이 뚜렷하게 나타났으며, 특히 9B에서 27B 사이에서 큰 폭의 성능 개선을 보였습니다.
+- **아키텍처의 영향:** 용어 유형 지정(Term typing)에서는 27B 밀집형 모델이 더 큰 MoE 모델을 상회했습니다. 반면, 분류학적 발견(Taxonomy discovery)에서는 MoE 구조가 더 뛰어난 성능을 보였습니다.
+- **한계점:** 비분류적 관계 추출(Non-taxonomic relation extraction)은 모델 규모와 무관하게 전반적으로 낮은 성과를 보였습니다. 특히 재료 데이터 과학(MDS) 도메인은 0.8B에서 122B까지 규모를 키워도 성능 향상이 거의 미미했습니다(1.22% vs 1.27% F1).
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+이번 연구는 기업이나 연구기관이 온톨로지 엔지니어링을 위해 모델을 도입할 때 &#x27;무조건 큰 모델&#x27;을 선택하는 관행에 제동을 겁니다. 비용 효율적인 자동화를 위해서는 해당 과업의 난이도와 도메인의 추상화 수준을 먼저 분석해야 합니다. 연구진이 공개한 OntoLearner 인프라와 벤치마킹 데이터는 향후 전문 분야의 지식 그래프 구축 및 데이터 상호운용성 확보를 위한 가이드라인으로 활용되어, 고비용의 수작업을 줄이고 자동화된 지식 관리를 가속화할 것으로 기대됩니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [When Does Bigger Help? A Controlled Study of LLM Scale for ...](https://arxiv.org/html/2608.31118)
+&gt; - [When Does Bigger Help? A Controlled Study of LLM Scale for ...](https://www.semanticscholar.org/paper/When-Does-Bigger-Help-A-Controlled-Study-of-LLM-for/3e751fd22bc8608d1fab1d7f0ce299328c1f7cf2)
+&gt; - [2608.31118 When Does Bigger Help? A Controlled Study of LLM ...](https://academ.us/article/2608.31118/)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;데이터 과학 분야에서 &#x27;크면 무조건 좋다&#x27;는 식의 맹신이 팽배했는데, 이번 연구는 그 미신을 통계적으로 잘 깼군요. 특히 재료 과학처럼 도메인 지식이 고도로 추상화된 영역에서 모델 크기가 무용지물이라는 결과는 시사하는 바가 큽니다. 결국 모델의 파라미터 숫자놀음보다 데이터의 질적 구조와 온톨로지 설계 방법론이 본질이라는 방증이죠.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로입니다. 현업에서는 온톨로지 구축한다고 무작정 100B 넘는 모델 서빙하다가 비용 폭탄 맞는 경우가 허다하거든요. 특히 분류학적 과업은 MoE가 유리하고, 용어 지정은 밀집형이 낫다는 식의 세밀한 가이드는 당장 사내 파이프라인 최적화에 바로 적용할 수 있겠네요. 122B 모델 써도 성능 개선이 1% 남짓이면 그냥 작은 모델 여러 개 띄우는 게 가성비 갑이죠.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;다들 비용 효율만 보시는데, 저는 비분류적 관계 추출에서 모델 규모가 멱살을 잡고 안 올라가는 그 &#x27;벽&#x27;이 너무 흥미롭네요! LLM이 단순히 텍스트를 뱉는 걸 넘어 고차원적인 논리적 추론을 하려면 단순히 스케일업이 아니라 아키텍처 자체가 바뀌어야 한다는 뜻 아닐까요? 당장 다음 논문 세미나 주제는 &#x27;온톨로지 학습을 위한 차세대 추론 구조&#x27;로 잡아야겠어요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
