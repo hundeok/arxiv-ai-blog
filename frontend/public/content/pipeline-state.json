@@ -24583,7 +24583,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-01T13:53:23.635448+00:00",
+      "updated_at": "2026-09-03T07:37:58.054217+00:00",
       "paper": {
         "title": "Token-Efficient Data Reasoning Agents via Adaptive Structuring of Unstructured Data",
         "summary": "Valuable data remains embedded in unstructured sources: web pages, reports, contracts, filings, earnings calls, and PDFs. The big bet in enterprise AI is deploying LLM agents that reason over this data to answer complex questions for every knowledge worker. Agents can do this today, but at prohibitive cost. Each question repeatedly opens large documents to recover scattered evidence, consuming up to a million tokens. However, if the data were already structured, the same question would reduce to a cheap database lookup. For example, on FanOutQA benchmark, reasoning over an ideal pre-structured store is 28X cheaper, and the gap grows to orders of magnitude as questions fan out over more documents. Yet structuring everything in advance is not viable: documents hold vastly more possible structure than any workload will use, and the useful structure and documents are unknown until queries arrive. We propose agentic data cracking, a method that structures unstructured data adaptively and speculatively as a byproduct of reasoning itself. Structuring is adaptive because observed queries decide when it happens and what matters, and speculative because it goes beyond the current question. Whenever the agent opens a document to answer, a cracking sub-agent forks from the already-loaded context at marginal cost and extracts grounded structure likely to serve related future queries. Over time, an increasing share of queries is fully covered by structured data and answered without opening a document, keeping agentic accuracy at close to RAG cost. On FanOutQA, extended with merely one related question per test question, cracking cuts cost by 53% while preserving accuracy. Agentic data cracking is a first step toward next-generation data infrastructure for agentic reasoning over unstructured data: a shared substrate beneath the model where knowledge that reasoning already paid to uncover accumulates.",
@@ -26113,7 +26113,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-02T22:56:27.221844+00:00",
+      "updated_at": "2026-09-03T07:37:58.054184+00:00",
       "paper": {
         "title": "DramaChain Bench: An End-to-End Benchmark for Short-Drama Generation",
         "summary": "Commercial short-drama production follows a multi-stage chain: script, storyboard, keyframe imagery, shot-level video, and the finished short drama. Most existing benchmarks evaluate solely the video-generation stage using pre-authored inputs instead of real upstream pipeline outputs. This leaves two critical questions unanswerable: whether each stage adheres to the original script intent (rather than only its immediate input prompt), and whether disparate shots remain coherent after assembly into multi-episode releases. We present DramaChain Bench, the first short-drama benchmark that evaluates every stage of the complete production chain. It is built upon three in-house systems sharing one dimension system, DramaChain Dimensions: five evaluation axes instantiated at every stage, resolving into 63 leaf dimensions. DramaChain Agent is calibrated against commercial short-drama platforms in both workflow and finished short-drama quality, enabling stage-wise fair comparison across models. DramaChain Labeling System has each of the 5,785 items scored independently by three professional annotators, with all defects spatio-temporally localised and selected from a predefined defect list. This process produces 17,488 valid scores and 255,925 traceable attribution records. The human annotations confirm that upstream defects cascade across the pipeline, demonstrating that final episode quality is not governed by video generation alone. DramaChain Agentic Judge then scores every leaf dimension automatically, gathering evidence over multiple agentic rounds before judging against a per-item checklist; it reproduces the model ranking at a mean PLCC of 0.918, enough to admit new models at no annotation cost.",
@@ -26853,11 +26853,225 @@
       },
       "priority_score": 43,
       "korean_title": "SALA: 문맥 내 학습에서의 복합 추론을 위한 의미 인식 논리 정렬"
+    },
+    "2609_00638v1": {
+      "id": "2609_00638v1",
+      "filename": "post_2609_00638v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-03T07:37:58.054150+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-03T07:37:58.054161+00:00",
+      "paper": {
+        "title": "It Takes Two to Match: Co-Evolving Generative Retriever with Reinforcement Learning",
+        "summary": "Retrieval is the first stage of modern search and advertising systems, selecting a candidate set from a large item universe for downstream ranking and auction. Recent work increasingly leverages LLMs to improve retrieval through query expansion, data synthesis, and retrieval-feedback training. However, the generative component is typically used for query-side augmentation, while final matching is still delegated to a downstream retriever. We introduce CoGR, a retrieval framework that instead trains LLMs to directly construct retrieval representations on both query and item sides. Each generator produces a compact set of keywords, which are matched directly through an inverted index, preserving compatibility with existing keyword-based retrieval infrastructure. CoGR uses a two-stage training pipeline. Supervised fine-tuning first establishes an aligned keyword space, after which co-evolving reinforcement learning alternately optimizes the query- and item-side generators with GRPO against the opposite side's frozen index. Both sides optimize the same query-to-item retrieval $F_1$ objective: the query side receives retrieval $F_1$ directly, while the item side receives a counterfactual marginal reward measuring the change in query-side $F_1$ caused by its generated keywords. Across 10 representative sparse, dense, and generative baselines, CoGR achieves the best performance on both an internal APP Marketplace dataset and the public WANDS benchmark, improving $F_1$ over the strongest baseline by $10.9\\%$ and $36.1\\%$, respectively. Further analysis shows stable co-evolution and increasingly aligned query--item keyword spaces over training.",
+        "published": "2026-09-01T03:17:02Z",
+        "authors": [
+          "Runpeng Dai",
+          "Kaili Huang",
+          "Changsung Kang",
+          "Ciya Liao"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.00638v1"
+      },
+      "priority_score": 40
+    },
+    "2608_31100v1": {
+      "id": "2608_31100v1",
+      "filename": "post_2608_31100v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-09-03T07:38:24.063188+00:00",
+      "paper": {
+        "title": "S3Gym: Can LLMs Turn Self-Testing and Self-Judging into Self-Improvement?",
+        "summary": "Large language models (LLMs) increasingly interact with external environments and accumulate substantial behavioral experience, yet existing agent benchmarks largely evaluate them as fixed policies. It therefore remains unclear whether an agent can actively test its behavior, judge the resulting experience, and use that experience to improve future decisions. We introduce \\textbf{S\\textsuperscript{3}Gym}, an interactive benchmark for evaluating LLM self-improvement through three coupled capabilities: \\textbf{Self-Testing}, \\textbf{Self-Judging}, and \\textbf{Self-Improvement}. S$^3$Gym separates permissive exploration from strict held-out evaluation and instantiates this protocol in seven text-based games with executable environment verifiers. We evaluate three pathways for incorporating interaction experience: direct History ICL, score-conditioned Summary Memory, and parameter Training.   Our experiments reveal that self-improvement is neither automatic nor uniform. Context-level experience improves performance for several model--game pairs, but the most effective pathway depends strongly on the task structure: summaries are beneficial when experience can be compressed into reusable strategic rules, yet often underperform raw history when success depends on precise, state-contingent information. Parameter training produces substantial gains on some tasks, but also exhibits unstable improvement and severe negative transfer on others. These findings show that recognizing successful actions is insufficient; agents must also transform feedback into executable and transferable policies. S$^3$Gym provides a unified framework for diagnosing this process and identifying the bottlenecks that prevent agents from translating interaction experience into reliable self-improvement.",
+        "published": "2026-08-31T17:05:41Z",
+        "authors": [
+          "Jiajun Shi",
+          "Siyuan Tao",
+          "Yuhao Wu",
+          "Zexuan Wang",
+          "Jingyuan Zhang",
+          "Jiaheng Liu",
+          "Xinping Lei",
+          "Xinrong Zhang",
+          "Siyuan Fang",
+          "Zhewen Tan",
+          "Tianle Cai",
+          "Junhao Fang",
+          "Jiameng Huang",
+          "Yueyang Wang",
+          "Jinkai Liu",
+          "Yuxuan Zhang",
+          "Jian Yang",
+          "Zhoujun Li",
+          "Shen Yan",
+          "Wenhao Huang",
+          "Ge Zhang"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.31100v1"
+      },
+      "priority_score": 50,
+      "korean_title": "S3Gym: 대규모 언어 모델은 자기 시험과 자기 판단을 통해 자기 개선을 이룰 수 있는가?"
+    },
+    "2608_30949v1": {
+      "id": "2608_30949v1",
+      "filename": "post_2608_30949v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-03T07:37:58.054177+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-03T07:37:58.054179+00:00",
+      "paper": {
+        "title": "MULTI3IR: A Benchmark for Multi-perspective Multi-domain Multi-modal Information Retrieval",
+        "summary": "Information retrieval (IR) increasingly targets open-ended queries that admit diverse perspectives. Existing IR benchmarks, however, focus primarily on closed-ended queries, while even open-ended benchmarks largely consist of queries whose supporting documents span a single subject domain and modality. We introduce Multi$^3$IR, a benchmark that evaluates how well retrievers cover the multifaceted perspectives of open-ended queries across diverse domains and modalities. It comprises 104.9K Stack Exchange queries, each annotated with perspective descriptions that capture the query's implicit viewpoints. We further propose SPIN, a parameter- and label-efficient method that learns noise vectors to steer embeddings toward diverse yet meaningful semantic directions. Experiments show that existing multimodal retrievers suffer from single-perspective bias, while SPIN substantially improves perspective coverage on Multi$^3$IR and generalizes well to unseen open-ended IR benchmarks. The dataset and experimental code are available at https://github.com/seokwon99/Multi3IR.",
+        "published": "2026-08-31T15:19:26Z",
+        "authors": [
+          "Seokwon Song",
+          "Sohyeon Kim",
+          "Gunhee Kim"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.30949v1"
+      },
+      "priority_score": 43
+    },
+    "2608_18972v1": {
+      "id": "2608_18972v1",
+      "filename": "post_2608_18972v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-03T07:37:58.054191+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-03T07:37:58.054192+00:00",
+      "paper": {
+        "title": "Institutional Newspapers Pipeline: Deriving billions of high quality tokens from historical newspapers",
+        "summary": "Historical newspapers are an abundant record of public life, but their dense, irregular and sometimes noisy layouts make computational access to these materials both challenging and limited. We present the Institutional Newspapers Pipeline, a modular system we jointly designed with Boston Public Library to extract high-quality, structured datasets from historical newspaper scans. It was architected so that each step remains interpretable and customizable, and so that the pipeline as a whole remains computationally frugal enough to run on workstation-level hardware. The pipeline runs each scan through a multi-step process: it segments scans into individual type-agnostic crops and performs OCR on each resulting segment before then performing text analysis, type classification, reading order detection, named entities recognition, subject classification, language detection, and pre-computed embeddings generation on every crop. We ran this pipeline against a portion of Boston Public Library's holdings and released the results as an open dataset. The optical character recognition (OCR) output represents 16.3 billion o200k_base tokens across 83.1 million individual crops, extracted from 1,473,635 public domain newspaper scans published between 1795 and 1930. This report describes our methods for each processing step, the small models we trained, as well as the evaluation results and dataset-scale measurements we collected in the process. It accompanies the release of the pipeline, models, and dataset. We position this work as a substantial step towards unlocking high-quality data from tens of millions of newspaper scans.",
+        "published": "2026-08-19T14:41:12Z",
+        "authors": [
+          "Matteo Cargnelutti",
+          "Catherine Brobston",
+          "Eben English",
+          "Jake Sadow",
+          "Kacie Bailey",
+          "Greg Leppert",
+          "Amanda Watson",
+          "Jessica Chapel",
+          "Jonathan Zittrain"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.18972v1"
+      },
+      "priority_score": 30
+    },
+    "2608_29607v1": {
+      "id": "2608_29607v1",
+      "filename": "post_2608_29607v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-09-03T07:38:35.714672+00:00",
+      "paper": {
+        "title": "SnapBench: Benchmarking Snap-and-Ask Multimodal Retrieval for Mobile Interactions",
+        "summary": "Mobile AI acts as a visual oracle, empowering users to snap a picture of something and ask for information. Snap-and-ask retrieval is now one of the most common entry points for mobile AI, yet photos are often blurry, while text questions may be short or mistyped. Existing benchmarks only test on clean inputs or do not isolate paired robustness in snap-and-ask retrieval. Therefore, we introduce SnapBench, the first paired benchmark for robust snap-and-ask multimodal retrieval, spanning 1,145 queries, 9,085 gallery items under 53 controlled corruption conditions with human annotations. We evaluate 16 multimodal retrievers, covering dual-tower encoders and embedding-based VLMs. Results show that image corruptions substantially degrade retrieval, while text corruptions mainly affect text-only retrieval and have limited impact on joint retrieval. Clean image-only retrieval often outperforms joint retrieval, indicating the coarse-text drag and the lack of cross-modal fallback under noisy inputs. SnapBench provides a controlled testbed for evaluating robust retrieval in snap-and-ask scenarios. We further propose MOOR (Modality-anchored, Outlier-aware, Optimal Reweighting), a simple adaptive fusion approach, highlighting the need for reliability-aware modality calibration in snap-and-ask retrieval.",
+        "published": "2026-08-30T06:56:11Z",
+        "authors": [
+          "Zirong Chen",
+          "Fuda Ye",
+          "Kuan Zhang",
+          "Enjun Du",
+          "Junfu Pu",
+          "Xinlei Wang",
+          "Xinyu Zuo",
+          "Lisheng Duan",
+          "Jin Ma",
+          "Yongqi Zhang"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.29607v1"
+      },
+      "priority_score": 46,
+      "korean_title": "SnapBench: 모바일 환경의 '찍고 묻기' 멀티모달 검색을 위한 벤치마킹"
+    },
+    "2608_26623v1": {
+      "id": "2608_26623v1",
+      "filename": "post_2608_26623v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-09-03T07:38:14.182792+00:00",
+      "paper": {
+        "title": "AgentJudgeBench: A Multi-Difficulty Benchmark for Evaluating LLM Judges on Agentic Tool-Calling",
+        "summary": "LLM judges are widely used to evaluate agentic tool-calling systems, yet their reliability on structured, dependency-driven workflows remains largely unexamined. We present AgentJudgeBench, the first benchmark to systematically study LLM-as-a-judge reliability for agentic tool-calling over workflow DAGs, as distinct from the broader LLM-as-a-judge task of open-ended text or preference evaluation. The benchmark comprises 3,808 instances spanning six DAG topologies and three difficulty tiers, evaluated with five generators (3B-70B open-weight models and GPT-5.4) and six judges (20B to frontier scale) under paired with- and without-ground-truth conditions. Judge alignment degrades monotonically with task difficulty, 1.5x faster without ground truth, and on hard queries without ground truth all six judges converge to a narrow 77-82% band regardless of scale, revealing a structural ceiling driven primarily by task difficulty, though its height is partly prompt-dependent for weaker generators, that model capacity alone cannot overcome. Ground-truth exposure is not uniformly beneficial: it reduces alignment for GPT-5.4 (1.5 pp) and Gemini-2.5-Pro (3.9 pp), consistent with over-anchoring. Among mitigation strategies, chain-of-thought reasoning and judge temperature both have negligible effect, while structured evaluation rubrics improve alignment by up to 6.5 pp but do not generalize uniformly across judge-generator pairs. With ground truth, QwQ-32B best matches the programmatic reference, while a human validation study identifies GPT-OSS-120B as the most human-aligned judge; without it, frontier judges lead only marginally within the shared ceiling. These results expose fundamental limitations of current LLM judges and yield practical guidelines for reliable evaluation in agentic systems.",
+        "published": "2026-08-27T05:20:22Z",
+        "authors": [
+          "Abhigya Verma",
+          "Amit Kumar Saha",
+          "Seganrasan Subramanian",
+          "Sai Harshitha Aluru"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.26623v1"
+      },
+      "priority_score": 60,
+      "korean_title": "에이전트 도구 호출 평가를 위한 다중 난이도 벤치마크: AgentJudgeBench"
+    },
+    "2608_30457v1": {
+      "id": "2608_30457v1",
+      "filename": "post_2608_30457v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-09-03T07:38:44.895086+00:00",
+      "paper": {
+        "title": "Learning Where Outcomes Change:Credit-Addressable Reasoning for Multimodal Geometry",
+        "summary": "Multimodal geometry reasoning requires VLMs to extract precise visual relations and preserve them through multi-step deduction. Existing free-form traces obscure the decisions that determine the answer, and trajectory-level reinforcement learning distributes a single terminal signal across the entire response. We introduce credit-addressable reasoning, in which the semantic units exposed during inference also define where learning compares alternatives and assigns credit. We instantiate this principle with Code-CoT, which retains the diagram, represents visual relations as line-addressable executable code, and organizes reasoning into typed events, and CE-GRPO, which selects event boundaries using structural priors and type-normalized entropy, samples complete continuations from shared prefixes, and converts outcome differences into localized advantages. Across nine geometry benchmarks, CE-GRPO achieves an average accuracy of 76.04, outperforming Qwen3-VL-8B and trajectory-level GRPO by $8.09$ and 3.43 points, respectively. Its relative advantage increases with the number of intermediate events, demonstrating the value of representation--optimization co-design for long, dependency-heavy multimodal reasoning.",
+        "published": "2026-08-31T08:44:36Z",
+        "authors": [
+          "Jiani Guo",
+          "Junjie Wang",
+          "Jie Wu",
+          "Pengxiang Zhao",
+          "Dongdong Zhang",
+          "Shaohan Huang",
+          "Yujiu Yang",
+          "Furu Wei"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.30457v1"
+      },
+      "priority_score": 45,
+      "korean_title": "결과가 변하는 지점 학습하기: 다중 모달 기하학을 위한 신용 할당 추론"
+    },
+    "2609_01147v1": {
+      "id": "2609_01147v1",
+      "filename": "post_2609_01147v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-03T07:37:58.054223+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-03T07:37:58.054225+00:00",
+      "paper": {
+        "title": "On the Design Fundamentals of Pixel Text Representation Learning",
+        "summary": "Text-rich visual inputs require models that can read, retrieve, and compress language directly in pixel space, yet existing pixel-text encoders struggle with fixed resolution pretraining, visual shortcut learning, weak visual grounding, and multilingual visual text understanding. In this work, we investigate the fundamental design principles required for robust visual text representation learning. Through systematic controlled ablations, we identify four critical components: variable image resolutions and rendered font sizes provide spatial proxies for high-resolution document generalization; natural image-text pairs are indispensable for grounding and prevent text-only collapse; layout-aware rendering helps prevent pixel-level shortcuts; and a two-stage multilingual curriculum enables effective cross-lingual alignment. By integrating these principles into a scalable training recipe, we train Pixel Linguist II, a native-resolution vision encoder trained with on-the-fly rendering, unified contrastive grounding, and a multilingual curriculum over 280M training examples. Pixel Linguist II sets new state-of-the-art results on English, cross-lingual, and multilingual Visual STS and ViDoRe, while also enabling better MLLM downstream evaluation. Notably, Pixel Linguist II remains robust under 80\\% visual token compression, showing great promise for optical context compression. Our code and resources are available at https://github.com/Pixel-Linguist/Pixel-Linguist-II.",
+        "published": "2026-09-01T12:20:19Z",
+        "authors": [
+          "Chaohao Yuan",
+          "Ruifeng Yuan",
+          "Zhuoxu Huang",
+          "Yu Rong",
+          "Hong Cheng",
+          "Hou Pong Chan",
+          "Chenghao Xiao"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.01147v1"
+      },
+      "priority_score": 38
     }
   },
   "last_run": {
-    "started_at": "2026-09-03T02:32:44.681940+00:00",
-    "discovered": 30,
+    "started_at": "2026-09-03T07:37:58.056462+00:00",
+    "discovered": 10,
     "selected": 4,
     "generated": 4,
     "failed": 0,
@@ -26867,26 +27081,26 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 21236,
-      "output_tokens": 5646,
+      "prompt_tokens": 21641,
+      "output_tokens": 5921,
       "thought_tokens": 0,
-      "total_tokens": 26882,
-      "estimated_usd": 0.013778
+      "total_tokens": 27562,
+      "estimated_usd": 0.01429175
     },
-    "finished_at": "2026-09-03T02:33:23.980201+00:00"
+    "finished_at": "2026-09-03T07:38:45.592513+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 1814,
-    "prompt_tokens": 4562564,
-    "output_tokens": 1336129,
+    "requests": 1822,
+    "prompt_tokens": 4584205,
+    "output_tokens": 1342050,
     "thought_tokens": 0,
-    "total_tokens": 5898693,
-    "estimated_usd": 3.1448345
+    "total_tokens": 5926255,
+    "estimated_usd": 3.15912625
   },
   "last_publication_run": {
-    "started_at": "2026-09-03T02:32:44.681940+00:00",
-    "discovered": 30,
+    "started_at": "2026-09-03T07:37:58.056462+00:00",
+    "discovered": 10,
     "selected": 4,
     "generated": 4,
     "failed": 0,
@@ -26896,17 +27110,17 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 21236,
-      "output_tokens": 5646,
+      "prompt_tokens": 21641,
+      "output_tokens": 5921,
       "thought_tokens": 0,
-      "total_tokens": 26882,
-      "estimated_usd": 0.013778
+      "total_tokens": 27562,
+      "estimated_usd": 0.01429175
     },
-    "finished_at": "2026-09-03T02:33:23.980201+00:00"
+    "finished_at": "2026-09-03T07:38:45.592513+00:00"
   },
   "daily_usage": {
     "date": "2026-09-03",
-    "estimated_usd": 0.013778,
-    "publications": 4
+    "estimated_usd": 0.02806975,
+    "publications": 8
   }
 }
