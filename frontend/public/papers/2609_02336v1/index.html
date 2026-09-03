@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SALA: 문맥 내 학습에서의 복합 추론을 위한 의미 인식 논리 정렬 | ArXiv Translator AI</title><meta name="description" content="SALA: 문맥 내 학습에서의 복합 추론을 위한 의미 인식 논리 정렬"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_02336v1"><meta property="og:type" content="article"><meta property="og:title" content="SALA: 문맥 내 학습에서의 복합 추론을 위한 의미 인식 논리 정렬"><meta property="og:description" content="SALA: 문맥 내 학습에서의 복합 추론을 위한 의미 인식 논리 정렬"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_02336v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="SALA: 문맥 내 학습에서의 복합 추론을 위한 의미 인식 논리 정렬"><meta name="twitter:description" content="SALA: 문맥 내 학습에서의 복합 추론을 위한 의미 인식 논리 정렬"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_02336v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "SALA: 문맥 내 학습에서의 복합 추론을 위한 의미 인식 논리 정렬", "description": "SALA: 문맥 내 학습에서의 복합 추론을 위한 의미 인식 논리 정렬", "datePublished": "2026-09-02", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_02336v1", "author": [{"@type": "Person", "name": "Zhao Ji"}, {"@type": "Person", "name": "Wenqing Chen"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_02336v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_02336v1"});gtag('event', 'paper_view', {"paper_id": "2609_02336v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>SALA: 문맥 내 학습에서의 복합 추론을 위한 의미 인식 논리 정렬</h1><p>SALA: 문맥 내 학습에서의 복합 추론을 위한 의미 인식 논리 정렬</p><pre>SALA: 문맥 내 학습에서의 복합 추론을 위한 의미 인식 논리 정렬
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** SALA: Semantic-Aware Logical Alignment for Complex Reasoning in In-Context Learning
+&gt; - **저자:** Zhao Ji, Wenqing Chen, Zhixuan Chu, Jianxing Yu, Jingping Liu, Shanhe Zhao, Zibin Zheng
+&gt; - **발행일:** 2026-09-02
+&gt; - **PDF 링크:** [SALA: Semantic-Aware Logical Alignment for Complex Reasoning in In-Context Learning](https://arxiv.org/pdf/2609.02336v1)
+
+
+✨ 3줄 핵심 요약
+* 기존의 문맥 내 학습(ICL) 예시 선택 방식은 문제의 표면적 의미에만 의존하여 논리적 추론 구조를 제대로 반영하지 못하는 한계가 있습니다.
+* SALA는 태스크별 추론 단계를 자동으로 추출하고, 이를 의미론적 임베딩 공간에서 동적 시간 워핑(DTW)을 통해 유연하게 정렬하여 최적의 예시를 선택합니다.
+* 4개의 추론 벤치마크와 3개의 거대언어모델(LLM)을 활용한 실험 결과, SALA가 기존의 예시 선택 방식들보다 우수한 성능을 입증했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+AI 모델에게 문제를 풀라고 시킬 때, 비슷한 문제를 몇 개 보여주는 &#x27;문맥 내 학습(ICL)&#x27; 방식은 예시 선택이 매우 중요합니다. 하지만 지금까지는 단순히 문장 자체가 비슷한 예시를 가져오다 보니, 정작 &#x27;어떤 논리적 단계로 문제를 풀어야 하는지&#x27;를 놓치는 경우가 많았습니다. &#x27;SALA&#x27;는 문제를 수학적/논리적 연산 단계로 잘게 쪼개어, 이 연산 흐름이 가장 유사한 예시를 찾아냅니다. 이때 단순히 똑같은 순서가 아니더라도 연산의 의미가 통하면 유연하게 연결해주는 방식을 사용하여, 훨씬 더 정확하고 논리적인 추론 결과를 도출합니다.
+
+🎯 배경 및 문제점
+* **기존 방식의 한계:** 표면적인 단어 유사도에 기반한 검색은 복잡한 추론 문제의 심층적인 해결 논리를 포착하지 못합니다.
+* **경직된 규칙의 문제:** 기존의 논리 기반 예시 선택법은 엄격한 사전 정의 규칙을 사용하여 다양한 추론 과정을 포용하기 어렵습니다.
+* **추론 바이어스:** 부적절하거나 노이즈가 섞인 예시는 모델의 추론에 편향을 발생시켜 오히려 성능을 떨어뜨립니다.
+
+💡 핵심 기술 및 아키텍처
+* **태스크별 추론 연산 유도:** 모델이 작업을 수행할 때 필요한 연산(예: &#x27;Define&#x27;, &#x27;Algebra&#x27;, &#x27;Arithmetic&#x27; 등)을 스스로 학습하고 정의합니다.
+* **2단계 중복 제거:** 휴리스틱 기반 이름 중복 제거와 LLM 판단을 통한 기능적 중복 제거를 거쳐 효율적인 연산 집합을 구축합니다.
+* **의미론적 임베딩 라이브러리:** 추출된 연산들을 연속적인 의미론적 임베딩 공간으로 변환하여, 각 연산의 기능을 수치화합니다.
+* **DTW(Dynamic Time Warping) 정렬:** 연산 시퀀스 간의 논리적 유사도를 비교할 때, 고정된 순서에 얽매이지 않고 의미가 일치하는 단계를 유연하게 매칭합니다.
+
+📊 실험 결과 분석
+* **성능 우위:** 4개의 추론 벤치마크와 3개의 서로 다른 LLM을 대상으로 테스트한 결과, SALA는 기존의 모든 예시 선택 기준 모델들보다 뛰어난 성능을 보였습니다.
+* **유연성 검증:** 사례 분석 결과, DTW를 사용하면 단순히 단어 순서가 같은 예시를 찾는 것보다, 수학적 연산 흐름이 본질적으로 일치하는 예시를 더 정확하게 선택함을 확인했습니다. (구체적인 수치 데이터는 발췌문에 포함되어 있지 않음)
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **신뢰성 향상:** 에이전트 기반 LLM 시스템에서 과거의 추론 경험을 메모리로 저장하고 이를 검색하여 활용할 때, 더욱 논리적으로 타당한 가이드를 제공할 수 있습니다.
+* **범용성 확장:** 수동으로 규칙을 설계할 필요 없이 모델이 직접 추론 과정을 학습하므로, 다양한 복합 추론 도메인에 즉시 적용 가능한 유연한 프레임워크로 활용될 수 있습니다.
+* **해석 가능성:** 추론 과정을 명시적인 연산 시퀀스로 표현하므로, LLM이 왜 해당 예시를 선택하고 어떻게 답을 도출했는지 사용자가 파악하기 용이해집니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Large Language Model Reasoning Failures - arXiv](https://arxiv.org/html/2602.06176v1)
+&gt; - [Findings of the Association for Computational Linguistics](https://aclanthology.org/volumes/2025.findings-emnlp/)
+&gt; - [PDF Domain-Specific Embedding Models for Hydrology ... - EarthArXiv](https://eartharxiv.org/repository/object/9635/download/19581/)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;DTW를 추론 시퀀스 정렬에 도입한 건 흥미롭지만, 결국 &#x27;추론 연산&#x27;을 정의하는 과정에서 발생하는 모델 자체의 편향(Bias)을 어떻게 제어할 것인지 의문이군요. 추출된 연산이 데이터셋에 따라 과적합될 위험은 없나요? 학계의 검증을 거치기엔 실험 데이터의 일반화 가능성이 좀 더 필요해 보입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 맞지만, 현업 입장에서는 이게 &#x27;자동으로&#x27; 연산을 추출하고 정렬해준다는 점이 킬포네요. 기존에 수동으로 프롬프트 엔지니어링 하던 노가다를 줄일 수 있다면 운영 리소스 측면에서 상당한 이득입니다. 다만, 추론 시퀀스 추출 단계에서 LLM 호출 비용이 꽤 발생할 텐데, Latency와 비용 대비 성능 효율(ROI)이 실서비스 적용 시 관건이겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;교수님, 엔지니어님, 다들 너무 보수적이신 거 아니에요? ㅋㅋ 지금 ICL에서 의미론적 정렬(Semantic-Aware Alignment) 시도하는 건 최근 트렌드인데, DTW로 유연성을 확보했다는 게 핵심이죠! 비록 연산 추출 시 오버헤드가 좀 있겠지만, 이걸 잘 다듬으면 에이전트 메모리 효율이 극적으로 올라갈 것 같아요. 벌써 제 실험 코드에 적용해보고 싶은데, 혹시 구현체 공유된 거 있나요?&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
