@@ -1,0 +1,72 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>WHALE: 하네스와 가중치의 결합 최적화를 위한 간단한 레시피 | ArXiv Translator AI</title><meta name="description" content="WHALE: 하네스와 가중치의 결합 최적화를 위한 간단한 레시피"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_00196v1"><meta property="og:type" content="article"><meta property="og:title" content="WHALE: 하네스와 가중치의 결합 최적화를 위한 간단한 레시피"><meta property="og:description" content="WHALE: 하네스와 가중치의 결합 최적화를 위한 간단한 레시피"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_00196v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="WHALE: 하네스와 가중치의 결합 최적화를 위한 간단한 레시피"><meta name="twitter:description" content="WHALE: 하네스와 가중치의 결합 최적화를 위한 간단한 레시피"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_00196v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "WHALE: 하네스와 가중치의 결합 최적화를 위한 간단한 레시피", "description": "WHALE: 하네스와 가중치의 결합 최적화를 위한 간단한 레시피", "datePublished": "2026-08-31", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_00196v1", "author": [{"@type": "Person", "name": "Haechan Kim"}, {"@type": "Person", "name": "Yoonho Lee"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_00196v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_00196v1"});gtag('event', 'paper_view', {"paper_id": "2609_00196v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>WHALE: 하네스와 가중치의 결합 최적화를 위한 간단한 레시피</h1><p>WHALE: 하네스와 가중치의 결합 최적화를 위한 간단한 레시피</p><pre>WHALE: 하네스와 가중치의 결합 최적화를 위한 간단한 레시피
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** WHALE: A Simple Recipe for Joint Harness-Weight Optimization
+&gt; - **저자:** Haechan Kim, Yoonho Lee, Gisang Lee, Chelsea Finn, Kangwook Lee
+&gt; - **발행일:** 2026-08-31
+&gt; - **PDF 링크:** [WHALE: A Simple Recipe for Joint Harness-Weight Optimization](https://arxiv.org/pdf/2609.00196v1)
+
+
+✨ 3줄 핵심 요약
+- AI 에이전트의 성능을 결정하는 두 요소인 &#x27;모델 가중치&#x27;와 &#x27;하네스(제어 코드)&#x27;를 개별적으로 최적화하는 대신, 상호 보완적으로 최적화하는 WHALE 방법론을 제안합니다.
+- 모델 가중치 업데이트와 하네스 탐색 단계를 번갈아 수행하며, 고정된 단계 주기나 적응형 인내 규칙을 통해 학습 효율을 높였습니다.
+- 검색 질의응답, 수학적 추론, 체스 퍼즐 등 3개 영역에서 기존 방식 대비 4.15%~24.38%p 높은 성능 향상을 보였습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+AI 에이전트는 모델의 지능(가중치)뿐만 아니라, 외부 도구를 어떻게 활용하고 상황을 통제할지를 결정하는 &#x27;하네스(harness, 일종의 에이전트 제어 코드)&#x27;가 핵심입니다. 하지만 기존 연구들은 모델 지능만 높이거나, 하네스만 수정하는 등 한쪽만 개선하는 경우가 많았습니다. WHALE은 모델 가중치를 학습시킨 뒤, 그 모델에 최적화된 하네스를 다시 찾는 과정을 반복합니다. 이 방식을 통해 모델과 하네스가 서로의 변화에 맞춰 동반 성장하며, 결과적으로 에이전트 전체의 수행 능력을 극대화합니다.
+
+🎯 배경 및 문제점
+- **시스템 병목 현상:** 에이전트 성능은 모델 가중치와 하네스라는 두 요소가 결합하여 결정됩니다. 한쪽만 개선하면 다른 한쪽이 병목 현상을 일으켜 전체 성능이 제한됩니다.
+- **기존 연구의 한계:** 기존의 공동 최적화 방식은 하네스를 단순히 텍스트 프롬프트 수준으로 제한했습니다. 도구 활용, 오류 처리, 제어 흐름 등을 포괄하는 전체 하네스 코드를 공동으로 최적화하는 방법은 명확하지 않았습니다.
+- ** timescale 차이:** 모델 가중치 학습(경사하강법 기반)과 하네스 탐색(시행착오 기반)은 수행되는 시간 단위가 달라 이 둘을 결합하기가 어렵습니다.
+
+💡 핵심 기술 및 아키텍처
+- **교대 학습(Alternating Learning):** 모델 가중치 업데이트와 하네스 검색이라는 두 단계를 교차 수행합니다.
+- **단계 구성:**
+    - 온라인 거부 샘플링 미세 조정(Rejection-sampling fine-tuning)을 통해 모델 가중치를 업데이트합니다.
+    - Meta-Harness 기술을 사용하여 업데이트된 모델에 최적화된 하네스를 검색합니다.
+- **전환 규칙(Switching Rule):** 두 단계 간의 전환 시점을 결정하기 위해 &#x27;고정 단계 주기&#x27; 혹은 학습 신호에 따른 &#x27;적응형 인내 규칙&#x27;을 사용하여 노이즈를 방지하고 최적화를 수행합니다.
+
+📊 실험 결과 분석
+- **성능 향상:** Qwen3.5-2B/4B 모델을 기반으로 실험한 결과, WHALE은 가중치만 최적화하거나 하네스만 최적화하는 방식, 그리고 프롬프트와 가중치를 결합한 Fast-Slow Training 방식보다 월등한 성과를 거두었습니다.
+- **분야별 특징:** 
+    - SearchQA 영역에서는 하네스 탐색이 적은 시도로도 가중치 중심 방식의 최고 정확도를 달성했습니다.
+    - 수학적 추론 영역에서는 가중치 업데이트가 이루어진 후에야 하네스 탐색이 성능 향상을 견인하는 것으로 나타났습니다.
+- **효율성:** 단계별로 끊어서 수행하는 최적화보다 간격을 두고 교차 업데이트하는 것이 정확도와 비용 면에서 더 우수함을 확인했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+- **에이전트 성능 극대화:** 단순한 모델 크기 확대보다 하네스와 가중치의 결합 최적화가 에이전트의 실질적인 문제 해결 능력을 비약적으로 높일 수 있음을 증명했습니다.
+- **실무 활용:** 복잡한 도구 사용이나 제어 흐름이 필요한 자동화 에이전트를 개발할 때, 모델 수정뿐만 아니라 하네스 코드 자체를 자동으로 최적화하는 파이프라인을 구축하는 데 활용될 수 있습니다. 
+- **오픈 소스:** 연구팀은 관련 코드를 오픈 소스(GitHub)로 공개하여 실무자가 현업 에이전트 시스템에 즉시 도입할 수 있도록 했습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [WHALE: A Simple Recipe for Joint Harness-Weight Optimization](https://arxiv.org/abs/2609.00196)
+&gt; - [WHALE: A Simple Recipe for Joint Harness-Weight Optimization](https://huggingface.co/papers/2609.00196)
+&gt; - [WHALE: A Simple Recipe for Joint Harness-Weight Optimization](https://www.semanticscholar.org/paper/WHALE:-A-Simple-Recipe-for-Joint-Harness-Weight-Kim-Lee/973bcfdfc18f7112fcb763d9fefeffbc50ea8236)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;이론적으로는 매력적이나, &#x27;하네스&#x27;라는 추상적인 개념을 어떻게 정형화하고 최적화 공간 내에서 수렴성을 보장할지가 관건이겠군요. 특히 하네스 검색 과정에서 발생할 수 있는 분포 이동(Distribution Shift)이 가중치 학습에 미치는 노이즈를 얼마나 정교하게 제어했는지 의문입니다. 단순한 교대 학습만으로는 동적 평형점에 도달하기 어려울 텐데, 수렴성 증명은 논문에서 생략된 건가요?&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 수렴성 증명은 현업에선 일단 뒷전이죠. 당장 4~24% 성능 향상이라니, 파이프라인에 당장 태워보고 싶네요. 다만, 하네스 탐색 단계가 매번 리소스를 얼마나 잡아먹느냐가 실무 도입의 핵심일 듯합니다. 특히 &#x27;적응형 인내 규칙&#x27;이 실제 운영 환경에서 모델 인퍼런스 비용을 얼마나 폭증시킬지 고민해봐야겠네요. GPU 낭비가 심하면 경영진 설득이 쉽지 않을 텐데 말이죠.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;선배님, 비용 걱정할 때가 아닙니다! 지금 학계에선 이 논문 구현해서 Qwen-2B로 SOTA 찍었다는 소문 돌고 있어요. 모델 가중치만 튜닝하던 시대는 끝난 것 같습니다. 하네스(코드)를 학습 대상에 포함했다는 건 에이전트의 &#x27;행동 양식&#x27;을 직접 깎았다는 건데, 이게 LLM 최적화의 다음 메타가 될 게 분명합니다. 당장 오늘 밤에 깃헙 리포지토리 클론 떠서 파인튜닝 돌려볼 생각이에요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

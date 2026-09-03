@@ -26694,11 +26694,11 @@
     "2609_02371v1": {
       "id": "2609_02371v1",
       "filename": "post_2609_02371v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-09-03T02:32:44.679665+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-03T02:32:44.679666+00:00",
+      "updated_at": "2026-09-03T22:55:55.288484+00:00",
       "paper": {
         "title": "Diagnosing with Insights: Structured Analysis of Agent Failures via Behavioral Abstractions",
         "summary": "With the proliferation of LLM agents, the ability to understand and diagnose failures in agents is essential to achieving superior effectiveness and trustworthiness. As agent failures often manifest via long and complex trajectories, manually finding the needles in the haystack is untenable. However, traditional diagnosis techniques for software bugs can hardly address LLM agent failures, while completely relying on LLMs as the judge yields unreliable diagnosis results. To overcome these challenges, this paper presents AGENTSCOPE, a new neuro-symbolic approach for agent failure mode diagnosis. The key principle of AGENTSCOPE is to abstract agent behavior, based on its trajectories, into structured representations. Furthermore, AGENTSCOPE introduces the concept of neural invariants to specify agent behavior properties. AGENTSCOPE leverages LLM-guided reasoning atop the structured representation against neural invariants to pinpoint both the failure step and its type in the trajectory. We show the effectiveness of AGENTSCOPE on publicly available agent failure datasets (Who&When) and a more comprehensive dataset created by us (AgentErrata), where AGENTSCOPE significantly outperforms the current state of the art in fault localization and attribution accuracy. Our work shows that integrating structured abstractions with LLM-guided reasoning enables effective, reliable, and interpretable diagnosis for agent failures.",
@@ -26714,7 +26714,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2609.02371v1"
       },
-      "priority_score": 37
+      "priority_score": 37,
+      "korean_title": "통찰을 통한 진단: 행동 추상화를 통한 에이전트 실패의 구조적 분석"
     },
     "2609_02366v1": {
       "id": "2609_02366v1",
@@ -26887,7 +26888,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-03T18:17:08.362401+00:00",
+      "updated_at": "2026-09-03T22:55:24.586103+00:00",
       "paper": {
         "title": "S3Gym: Can LLMs Turn Self-Testing and Self-Judging into Self-Improvement?",
         "summary": "Large language models (LLMs) increasingly interact with external environments and accumulate substantial behavioral experience, yet existing agent benchmarks largely evaluate them as fixed policies. It therefore remains unclear whether an agent can actively test its behavior, judge the resulting experience, and use that experience to improve future decisions. We introduce \\textbf{S\\textsuperscript{3}Gym}, an interactive benchmark for evaluating LLM self-improvement through three coupled capabilities: \\textbf{Self-Testing}, \\textbf{Self-Judging}, and \\textbf{Self-Improvement}. S$^3$Gym separates permissive exploration from strict held-out evaluation and instantiates this protocol in seven text-based games with executable environment verifiers. We evaluate three pathways for incorporating interaction experience: direct History ICL, score-conditioned Summary Memory, and parameter Training.   Our experiments reveal that self-improvement is neither automatic nor uniform. Context-level experience improves performance for several model--game pairs, but the most effective pathway depends strongly on the task structure: summaries are beneficial when experience can be compressed into reusable strategic rules, yet often underperform raw history when success depends on precise, state-contingent information. Parameter training produces substantial gains on some tasks, but also exhibits unstable improvement and severe negative transfer on others. These findings show that recognizing successful actions is insufficient; agents must also transform feedback into executable and transferable policies. S$^3$Gym provides a unified framework for diagnosing this process and identifying the bottlenecks that prevent agents from translating interaction experience into reliable self-improvement.",
@@ -26949,7 +26950,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-03T07:37:58.054191+00:00",
       "last_error": null,
-      "updated_at": "2026-09-03T18:17:08.362411+00:00",
+      "updated_at": "2026-09-03T22:55:24.586112+00:00",
       "paper": {
         "title": "Institutional Newspapers Pipeline: Deriving billions of high quality tokens from historical newspapers",
         "summary": "Historical newspapers are an abundant record of public life, but their dense, irregular and sometimes noisy layouts make computational access to these materials both challenging and limited. We present the Institutional Newspapers Pipeline, a modular system we jointly designed with Boston Public Library to extract high-quality, structured datasets from historical newspaper scans. It was architected so that each step remains interpretable and customizable, and so that the pipeline as a whole remains computationally frugal enough to run on workstation-level hardware. The pipeline runs each scan through a multi-step process: it segments scans into individual type-agnostic crops and performs OCR on each resulting segment before then performing text analysis, type classification, reading order detection, named entities recognition, subject classification, language detection, and pre-computed embeddings generation on every crop. We ran this pipeline against a portion of Boston Public Library's holdings and released the results as an open dataset. The optical character recognition (OCR) output represents 16.3 billion o200k_base tokens across 83.1 million individual crops, extracted from 1,473,635 public domain newspaper scans published between 1795 and 1930. This report describes our methods for each processing step, the small models we trained, as well as the evaluation results and dataset-scale measurements we collected in the process. It accompanies the release of the pipeline, models, and dataset. We position this work as a substantial step towards unlocking high-quality data from tens of millions of newspaper scans.",
@@ -26976,7 +26977,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-03T18:17:08.362415+00:00",
+      "updated_at": "2026-09-03T22:55:24.586116+00:00",
       "paper": {
         "title": "SnapBench: Benchmarking Snap-and-Ask Multimodal Retrieval for Mobile Interactions",
         "summary": "Mobile AI acts as a visual oracle, empowering users to snap a picture of something and ask for information. Snap-and-ask retrieval is now one of the most common entry points for mobile AI, yet photos are often blurry, while text questions may be short or mistyped. Existing benchmarks only test on clean inputs or do not isolate paired robustness in snap-and-ask retrieval. Therefore, we introduce SnapBench, the first paired benchmark for robust snap-and-ask multimodal retrieval, spanning 1,145 queries, 9,085 gallery items under 53 controlled corruption conditions with human annotations. We evaluate 16 multimodal retrievers, covering dual-tower encoders and embedding-based VLMs. Results show that image corruptions substantially degrade retrieval, while text corruptions mainly affect text-only retrieval and have limited impact on joint retrieval. Clean image-only retrieval often outperforms joint retrieval, indicating the coarse-text drag and the lack of cross-modal fallback under noisy inputs. SnapBench provides a controlled testbed for evaluating robust retrieval in snap-and-ask scenarios. We further propose MOOR (Modality-anchored, Outlier-aware, Optimal Reweighting), a simple adaptive fusion approach, highlighting the need for reliability-aware modality calibration in snap-and-ask retrieval.",
@@ -27051,11 +27052,11 @@
     "2609_01147v1": {
       "id": "2609_01147v1",
       "filename": "post_2609_01147v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-09-03T07:37:58.054223+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-03T13:11:33.347196+00:00",
+      "updated_at": "2026-09-03T22:55:45.178244+00:00",
       "paper": {
         "title": "On the Design Fundamentals of Pixel Text Representation Learning",
         "summary": "Text-rich visual inputs require models that can read, retrieve, and compress language directly in pixel space, yet existing pixel-text encoders struggle with fixed resolution pretraining, visual shortcut learning, weak visual grounding, and multilingual visual text understanding. In this work, we investigate the fundamental design principles required for robust visual text representation learning. Through systematic controlled ablations, we identify four critical components: variable image resolutions and rendered font sizes provide spatial proxies for high-resolution document generalization; natural image-text pairs are indispensable for grounding and prevent text-only collapse; layout-aware rendering helps prevent pixel-level shortcuts; and a two-stage multilingual curriculum enables effective cross-lingual alignment. By integrating these principles into a scalable training recipe, we train Pixel Linguist II, a native-resolution vision encoder trained with on-the-fly rendering, unified contrastive grounding, and a multilingual curriculum over 280M training examples. Pixel Linguist II sets new state-of-the-art results on English, cross-lingual, and multilingual Visual STS and ViDoRe, while also enabling better MLLM downstream evaluation. Notably, Pixel Linguist II remains robust under 80\\% visual token compression, showing great promise for optical context compression. Our code and resources are available at https://github.com/Pixel-Linguist/Pixel-Linguist-II.",
@@ -27071,7 +27072,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2609.01147v1"
       },
-      "priority_score": 38
+      "priority_score": 38,
+      "korean_title": "픽셀 기반 텍스트 표현 학습의 설계 원리에 대하여"
     },
     "2608_21450v1": {
       "id": "2608_21450v1",
@@ -27080,7 +27082,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-03T13:11:33.347128+00:00",
       "last_error": null,
-      "updated_at": "2026-09-03T18:17:08.362396+00:00",
+      "updated_at": "2026-09-03T22:55:24.586098+00:00",
       "paper": {
         "title": "Beyond Visual Similarity: Entity-Aligned Retrieval for Knowledge-Based Visual Question Answering",
         "summary": "Knowledge-Based Visual Question Answering (KB-VQA) relies on retrieving external information to answer queries involving long-tail entities. However, existing retrieval pipelines predominantly employ CLIP-style dual encoders, which prioritize surface-level visual similarity over entity-level semantic alignment. This paradigm often fails when semantically identical concepts exhibit large visual variations or when distinct entities appear visually similar. To address this, we propose KBMR, the first MLLM-based embedding retriever tailored for KB-VQA. Leveraging the robust autoregressive capabilities of MLLMs, KBMR maps images into a semantic space that better preserves concept identity. To tackle the challenge of noisy supervision in Wikipedia-scale retrieval, we introduce an MLLM-based semantic discriminator that generates continuous entity-consistency weights. These weights guide a novel continuous semantic distillation objective, enabling effective hard negative sampling and soft supervision beyond rigid binary labels. Extensive experiments demonstrate that KBMR significantly outperforms CLIP baselines, yielding up to a 14.7% improvement in retrieval Recall@1 and a 9.4% gain in end-to-end VQA accuracy. Code is available at https://github.com/realHarryX/KBMR.",
@@ -27107,7 +27109,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-03T13:11:33.347149+00:00",
       "last_error": null,
-      "updated_at": "2026-09-03T18:17:08.362387+00:00",
+      "updated_at": "2026-09-03T22:55:24.586087+00:00",
       "paper": {
         "title": "Wasserstein-Barycentric Interaction Fields for Spatial Factor Models: Evidence from Language-Model Representations",
         "summary": "Spatial return models take the interaction matrix as given and leave feedback uninterpreted. We construct a bandwidth-free field from firms' language-model article embedding distributions using target-anchored Wasserstein barycentric reconstruction. A quadratic exposure-adjustment problem maps feedback into a peer-misalignment penalty ratio. For 52 firms, the field, frozen from 2018-2022 news, yields a 2023-2026 penalty ratio of 3.46 (95% interval [2.89, 4.17]) and higher conditional quasi-likelihood than equal-weighted peer support or RBF weighting of the same distances. Joint penalty ratios for the barycentric and news co-mention fields are 2.33 and 0.86 with boundary calibrated tests which reject both exclusions.",
@@ -27123,11 +27125,11 @@
     "2608_30322v1": {
       "id": "2608_30322v1",
       "filename": "post_2608_30322v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-09-03T13:11:33.347158+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-03T18:17:08.362365+00:00",
+      "updated_at": "2026-09-03T22:56:04.890527+00:00",
       "paper": {
         "title": "Ignorance or Incompetence? Constructing Knowledge-Gated, Verifiable Tasks for LLM Agents",
         "summary": "Professional agent tasks often depend on conventions that are absent from public corpora, yet benchmarks rarely control whether an agent has access to those conventions. We introduce a knowledge-gated task-construction protocol that separates a task instruction from a compact artefact containing private conventions, reference tables, and utility operators. Construction-time provenance, byte-identical task instructions across the provided- and withheld-artefact conditions, leak audits, and executable witnesses make dependence on the artefact explicit and testable. Across fifteen calibration tasks, one frontier agent configuration achieves a 68.0% pass rate with the artefact and 0% without it; on one task, a plausible but incorrect artefact also yields 0% across five trials. Deterministic solvers and rule corpora provide exact ground truth for structured tasks, while named criterion-level rubrics support outputs that cannot be checked by a single executable oracle. A configuration-relative calibration screen retains seven tasks satisfying our five-trial empirical knowledge-gating screen. These experiments validate the behavior of the construction protocol; they do not establish that the retained tasks improve post-training. We publicly release part of the task suite and supporting tooling at https://github.com/DatagridsAI/Knowledge-Gated-Task-Construction.",
@@ -27144,7 +27146,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2608.30322v1"
       },
-      "priority_score": 37
+      "priority_score": 37,
+      "korean_title": "무지인가 무능인가? LLM 에이전트를 위한 지식 기반 검증 가능 과제 구축"
     },
     "2609_00377v1": {
       "id": "2609_00377v1",
@@ -27153,7 +27156,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-03T18:17:08.362392+00:00",
+      "updated_at": "2026-09-03T22:55:24.586093+00:00",
       "paper": {
         "title": "FoldingAgent: Inferring Parametric Origami Procedures from Demonstration Videos",
         "summary": "We present FoldingAgent, an agentic framework for inferring explicit parametric folding programs directly from origami demonstration videos. Our framework leverages the reasoning power of a pre-trained Vision-Language Model (VLM) equipped with a suite of specialized tools that enable the agent to simulate geometric transitions, verify physical plausibility, retrieve and compare visual content, and evaluate its own predictions. To translate visual content into folding programs, we define a parametric space that consists of the paper's geometry and a set of parametric folding actions. Unlike models that predict static crease patterns, our agent operates sequentially and possesses the ability to re-plan its actions, effectively mitigating the compounding errors inherent in multi-step folding. Our approach takes a step toward closing the gap between human origami knowledge, which is primarily shared through unstructured visual demonstrations, and computational methods, which typically rely on structured, parametric representations such as a crease pattern or an executable parametric plan. We evaluate our approach on PurelandFold, a newly curated benchmark of diverse Pureland origami videos with ground-truth geometry and action labels. Our results demonstrate that by combining VLM reasoning with a set of specialized tools and physical simulation, we can successfully transform unstructured visual demonstrations into executable, physically plausible folding procedures.",
@@ -27176,7 +27179,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-03T18:17:54.844607+00:00",
+      "updated_at": "2026-09-03T22:55:24.586107+00:00",
       "paper": {
         "title": "Exploring Collaboration between a language and a non-language agent",
         "summary": "LLMs are increasingly deployed as orchestrators that coordinate specialized subagents to solve complex tasks through natural language. However, in many important domains like game playing and robotics, the strongest available agents are not language models. Integrating non-language agents with LLMs would require \\emph{verbalization}: compressing their rich continuous representations into sparse textual summaries at each interaction step. To study whether verbalization constitutes a bottleneck, we introduce \\textsc{LLAMIA-Bench}, a suite of six diverse collaborative chess tasks spanning three facets: behavioral imitation, state assessment, and natural-language explanation. Each task instantiates a well-established chess problem that neither the LLM nor the chess engine can solve alone. To solve LLM collaboration with non-language agents, we introduce \\emph{latent state internalization}, which projects the subagent's continuous representations directly into the LLM's token stream as learned state tokens, with dynamic re-encoding as actions advance the environment state. Comparing internalization to verbalized integration, our experiments reveal a consistent \\emph{verbalization debt}: the performance gap widens throughout training and persists as the LLM scales from 4B to 14B parameters. A single 14B model, \\textsc{LLAMIA}, trained with latent state internalization, matches or exceeds task specialists and frontier models including GPT-5.1 with tool access across all benchmark tasks, and generalizes out-of-distribution where task-specific finetunes collapse",
@@ -27201,7 +27204,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-03T18:17:20.410853+00:00",
+      "updated_at": "2026-09-03T22:55:24.586121+00:00",
       "paper": {
         "title": "Autoregressive Mosaics: Probing 2D Spatial Reasoning in Text-Only Language Models",
         "summary": "Large language models (LLMs) trained only on text and code can sometimes generate programs that draw recognizable images. However, it is unclear whether this reflects an internal representation of 2D spatial layout or simply the ability to translate spatial descriptions into code. We introduce Autoregressive Mosaics (AM-Bench), a benchmark that separates these factors: First, a translation task gives a model a fully specified geometry of a picture in words as a prompt and asks for the code that produces it. Second, a layout task requires the model to compose an image from an underspecified prompt. Across eight open-weight text-and-code-only models, all models reliably translate specified geometry into code, but their open-ended layout performance differs substantially, indicating that these differences are not explained by code-generation ability alone. An output-medium ablation further shows that the interface or medium of expression that the model uses matters: replacing procedural code with raw SVG improves layout scores across all models. Finally, probing model activations shows that a coarse layout plan is present before generation, but reflects only the layout implied by the prompt. During generation, models track the evolving geometric state instead of executing an initially fixed plan. Overall, these results show that 2D spatial performance in text-only LLMs depends on both the model and the output medium, and is not explained by code-generation ability alone.",
@@ -27215,10 +27218,34 @@
       },
       "priority_score": 48,
       "korean_title": "자동회귀 모자이크: 텍스트 전용 언어 모델의 2차원 공간 추론 탐구"
+    },
+    "2609_00196v1": {
+      "id": "2609_00196v1",
+      "filename": "post_2609_00196v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-09-03T22:55:34.647076+00:00",
+      "paper": {
+        "title": "WHALE: A Simple Recipe for Joint Harness-Weight Optimization",
+        "summary": "Agent performance depends jointly on the model parameters and the executable harness code that manages context and control flow. Optimizing either component in isolation can leave the system bottlenecked by its frozen counterpart: weight updates can change which harness is effective, while harness updates can change which model capabilities are exposed. Existing joint-adaptation methods optimize weights and textual prompts but leave the broader harness fixed. We propose Weight-Harness Alternating LEarning (WHALE), a simple recipe that alternates two phases: updating the model under the current harness, then searching for a better harness under the updated model. We instantiate these two phases with online rejection-sampling fine-tuning and Meta-Harness, respectively. When to switch is a key design choice: to separate real improvements from noise without over-optimizing against a changing counterpart, WHALE uses either fixed phase durations or an adaptive patience rule over training signals. Using Qwen3.5-2B/4B agents across three domains (search question answering, mathematical reasoning, and chess puzzles), WHALE outperforms weight-only, harness-only, and Fast-Slow Training by 4.15-24.38 percentage points in best mean@8 accuracy. Either component can be the bottleneck: harness search matches peak weight-only accuracy with far fewer rollouts in SearchQA, but improves math accuracy only after a weight update. Small interleaved updates also outperform stagewise weight-then-harness optimization in accuracy and rollout cost. The code is available at https://github.com/krafton-ai/WHALE.",
+        "published": "2026-08-31T18:12:55Z",
+        "authors": [
+          "Haechan Kim",
+          "Yoonho Lee",
+          "Gisang Lee",
+          "Chelsea Finn",
+          "Kangwook Lee"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.00196v1"
+      },
+      "priority_score": 50,
+      "korean_title": "WHALE: 하네스와 가중치의 결합 최적화를 위한 간단한 레시피"
     }
   },
   "last_run": {
-    "started_at": "2026-09-03T18:17:08.364676+00:00",
+    "started_at": "2026-09-03T22:55:24.588517+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -27229,25 +27256,25 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 20015,
-      "output_tokens": 6121,
+      "prompt_tokens": 20284,
+      "output_tokens": 6182,
       "thought_tokens": 0,
-      "total_tokens": 26136,
-      "estimated_usd": 0.01418525
+      "total_tokens": 26466,
+      "estimated_usd": 0.014344
     },
-    "finished_at": "2026-09-03T18:17:55.444395+00:00"
+    "finished_at": "2026-09-03T22:56:05.556673+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 1838,
-    "prompt_tokens": 4623875,
-    "output_tokens": 1353997,
+    "requests": 1846,
+    "prompt_tokens": 4644159,
+    "output_tokens": 1360179,
     "thought_tokens": 0,
-    "total_tokens": 5977872,
-    "estimated_usd": 3.18696425
+    "total_tokens": 6004338,
+    "estimated_usd": 3.20130825
   },
   "last_publication_run": {
-    "started_at": "2026-09-03T18:17:08.364676+00:00",
+    "started_at": "2026-09-03T22:55:24.588517+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -27258,17 +27285,17 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 20015,
-      "output_tokens": 6121,
+      "prompt_tokens": 20284,
+      "output_tokens": 6182,
       "thought_tokens": 0,
-      "total_tokens": 26136,
-      "estimated_usd": 0.01418525
+      "total_tokens": 26466,
+      "estimated_usd": 0.014344
     },
-    "finished_at": "2026-09-03T18:17:55.444395+00:00"
+    "finished_at": "2026-09-03T22:56:05.556673+00:00"
   },
   "daily_usage": {
     "date": "2026-09-03",
-    "estimated_usd": 0.05590775,
-    "publications": 16
+    "estimated_usd": 0.07025175,
+    "publications": 20
   }
 }
