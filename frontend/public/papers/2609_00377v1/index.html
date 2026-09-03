@@ -1,0 +1,66 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>FoldingAgent: 시연 영상으로부터 매개변수 기반 종이접기 절차 추론 | ArXiv Translator AI</title><meta name="description" content="FoldingAgent: 시연 영상으로부터 매개변수 기반 종이접기 절차 추론"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_00377v1"><meta property="og:type" content="article"><meta property="og:title" content="FoldingAgent: 시연 영상으로부터 매개변수 기반 종이접기 절차 추론"><meta property="og:description" content="FoldingAgent: 시연 영상으로부터 매개변수 기반 종이접기 절차 추론"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_00377v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="FoldingAgent: 시연 영상으로부터 매개변수 기반 종이접기 절차 추론"><meta name="twitter:description" content="FoldingAgent: 시연 영상으로부터 매개변수 기반 종이접기 절차 추론"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_00377v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "FoldingAgent: 시연 영상으로부터 매개변수 기반 종이접기 절차 추론", "description": "FoldingAgent: 시연 영상으로부터 매개변수 기반 종이접기 절차 추론", "datePublished": "2026-08-31", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_00377v1", "author": [{"@type": "Person", "name": "Maya Moriya"}, {"@type": "Person", "name": "Sigal Raab"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_00377v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_00377v1"});gtag('event', 'paper_view', {"paper_id": "2609_00377v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>FoldingAgent: 시연 영상으로부터 매개변수 기반 종이접기 절차 추론</h1><p>FoldingAgent: 시연 영상으로부터 매개변수 기반 종이접기 절차 추론</p><pre>FoldingAgent: 시연 영상으로부터 매개변수 기반 종이접기 절차 추론
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** FoldingAgent: Inferring Parametric Origami Procedures from Demonstration Videos
+&gt; - **저자:** Maya Moriya, Sigal Raab, Yael Vinker, Tali Dekel
+&gt; - **발행일:** 2026-08-31
+&gt; - **PDF 링크:** [FoldingAgent: Inferring Parametric Origami Procedures from Demonstration Videos](https://arxiv.org/pdf/2609.00377v1)
+
+
+✨ 3줄 핵심 요약
+- 종이접기 시연 영상을 분석하여 실행 가능한 매개변수 기반의 종이접기 절차(Folding program)를 생성하는 에이전트 프레임워크입니다.
+- 사전 학습된 시각-언어 모델(VLM)과 기하학적 시뮬레이션 도구를 결합하여 오류를 최소화하고 물리적 타당성을 검증합니다.
+- 복잡한 다단계 접기 과정에서 발생하는 오류를 재계획(Re-planning) 기능을 통해 효과적으로 보정합니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+종이접기는 인간에게는 직관적인 시각 학습의 영역이지만, 컴퓨터에게는 정교한 계산과 순서가 필요한 복잡한 작업입니다. &#x27;FoldingAgent&#x27;는 사람이 종이를 접는 영상만 보고도 어떤 순서로, 어디를, 어떻게 접어야 하는지를 컴퓨터가 이해할 수 있는 명령어로 변환합니다. 단순히 최종 모양을 흉내 내는 것이 아니라, 접기-회전-펴기 등 실제 종이접기 과정(절차)을 매개변수화하여 재현 가능한 프로그램으로 만들어냅니다.
+
+🎯 배경 및 문제점
+- **의사소통의 간극:** 종이접기 지식은 주로 비구조화된 영상으로 공유되지만, 로봇 공학이나 수학적 분석은 구조화된 데이터(접기 패턴 등)를 요구합니다.
+- **오류 누적:** 기존 방법론들은 단계별 접기 과정에서 발생하는 미세한 오차를 해결하기 어렵고, 정적인 결과물 생성에 치중하여 복잡한 순차적 접기 과정을 충분히 반영하지 못했습니다.
+
+💡 핵심 기술 및 아키텍처
+- **에이전트 프레임워크:** VLM이 기하학적 상태를 파악하고, 내장된 전문 도구를 사용하여 가상의 종이를 접는 시뮬레이션을 수행합니다.
+- **매개변수 공간:** 종이의 기하학적 구조와 특정 접기 동작들을 매개변수화하여, 논리적이고 재현 가능한 프로그램 형태로 변환합니다.
+- **재계획 능력:** 매 단계마다 물리적 타당성을 스스로 검증하고, 오류 발생 시 계획을 수정함으로써 다단계 과정에서 발생하는 누적 오차를 줄입니다.
+
+📊 실험 결과 분석
+- **벤치마크:** 새롭게 구축된 &#x27;PurelandFold&#x27; 데이터셋(다양한 종이접기 영상과 지상 진실 기하 정보 포함)을 통해 성능을 평가했습니다.
+- **결과:** VLM의 추론 능력과 물리 시뮬레이션 도구를 결합한 결과, 비구조화된 시연 영상을 물리적으로 타당하고 실행 가능한 절차로 성공적으로 변환함을 입증했습니다. (※ 구체적인 성공률이나 수치 데이터는 발췌문 내에 명시되지 않음)
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+- **지식 자산화:** 유튜브 등 방대한 인간의 종이접기 지식을 구조화된 디지털 데이터로 변환하여 교육 및 연구 자산으로 활용할 수 있습니다.
+- **로봇 및 공학 활용:** 종이접기 원리를 활용한 전개형 로봇 설계, 공학적 구조물 제작 등 다양한 산업 분야에서 자동화 공정의 기초 기술로 활용 가능합니다.
+- **분석 및 편집:** 생성된 프로그램은 수정이 가능하므로, 복잡한 종이접기 설계의 시뮬레이션 및 교육 콘텐츠 제작을 용이하게 합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [FoldingAgent: Inferring Parametric Origami Procedures from ...](https://huggingface.co/papers/2609.00377)
+&gt; - [FoldingAgent: Inferring Parametric Origami Procedures from ...](https://gamedev.net/news/5478-foldingagent-inferring-parametric-origami-procedures-from-demonstration-videos/)
+&gt; - [Graphics - arXiv](https://arxiv.org/list/cs.GR/recent)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;VLM에 기하학적 시뮬레이터를 얹은 건 좋으나, &#x27;PurelandFold&#x27; 데이터셋의 일반화 성능이 의심스럽군요. 텍스트나 영상에서 보이지 않는 내부적인 종이의 변형이나 겹침(Occlusion) 문제를 물리 엔진이 얼마나 정확하게 보간해낼 수 있을까요? 재계획(Re-planning) 루프가 도는 동안의 계산 복잡도가 실제 로봇 팔 제어 주기에 맞출 수 있을지도 회의적입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실시간 제어는 아직 갈 길이 멀어 보입니다. 다만 저는 이 &#x27;매개변수화&#x27; 접근법 자체는 실무적으로 아주 흥미롭네요. 그냥 픽셀 단위로 추론하는 게 아니라, 구조화된 명령어(Folding program)로 뱉어주니 나중에 디버깅하기도 훨씬 편할 것 같습니다. 특히 복잡한 공정 자동화 쪽에서 &#x27;사람의 시연&#x27;을 바로 코드로 딸 수 있다면 데이터 파이프라인 구축 비용을 획기적으로 줄일 수 있겠는데요?&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;다들 너무 엄격하신 거 아니에요? ㅋㅋㅋ 일단 VLM이 영상 보고 &#x27;어떻게 접어야 할지&#x27; 코드 짜는 것부터가 엄청난 도약 아닌가요! 재계획 루프 돌아가는 거 보면 거의 강화학습이랑 심볼릭 AI가 퓨전된 느낌인데, 이거 잘 다듬으면 종이접기뿐만 아니라 가구 조립이나 요리 레시피 시연 영상도 다 데이터화할 수 있을 것 같아요. 이번 학회 &#x27;Hot topic&#x27; 예약입니다.&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

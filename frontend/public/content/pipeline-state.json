@@ -26291,11 +26291,11 @@
     "2609_02529v1": {
       "id": "2609_02529v1",
       "filename": "post_2609_02529v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-09-03T02:32:44.679554+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-03T02:32:44.679556+00:00",
+      "updated_at": "2026-09-03T13:12:03.478005+00:00",
       "paper": {
         "title": "Fine-Grained Anomaly Perception in Wild UGC-Enhanced Images: A Comprehensive Dataset and Difference-Fusion Framework",
         "summary": "Image enhancement and restoration have become standard back-end operations on short-video and social media platforms to boost UGC visual experience. Yet these processes inevitably introduce visual anomalies--especially in faces, texts, and textures--that directly undermine perceptual fidelity and viewer trust. While existing IQA methods perform well on classic distortions, they target holistic quality assessment and fail to capture the specific, localized anomalies caused by enhancement algorithms in real-world UGC. To bridge this gap, we formally define a new task-quality Anomaly Perception for UGC image Enhancement (UEAP), and contribute the first UEAP benchmark dataset, named UEAP-4k, curated from the real business scenarios. It provides fine-grained annotations for anomaly categories, localization and severity levels. Furthermore, we propose a Difference-Fusion Anomaly Perception Method (DFAP-UGC) for wild UGC-enhanced images, which leverages explicit problem-reference difference fusion with dense spatial querying, regional verification, and quality-aware ranking, enabling robust anomaly identification in challenging scenarios. To handle the inherent coupling of subtasks in this new task, we propose a Locality-Aware Dynamic Task Prioritization (LADTP) training strategy that enables effective end-to-end learning and eliminates multi-stage overhead. Extensive experiments show that our method outperforms baselines adapted from classical approaches for this task, validating the value of this dataset and the superior of DFAP-UGC for robust UGC-enhanced image anomaly perception. Code and data will be public.",
@@ -26311,7 +26311,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2609.02529v1"
       },
-      "priority_score": 40
+      "priority_score": 40,
+      "korean_title": "야생형 UGC 강화 이미지의 세밀한 이상 감지: 포괄적 데이터셋 및 차분 융합 프레임워크"
     },
     "2609_02519v1": {
       "id": "2609_02519v1",
@@ -26428,11 +26429,11 @@
     "2609_02459v1": {
       "id": "2609_02459v1",
       "filename": "post_2609_02459v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-09-03T02:32:44.679590+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-03T02:32:44.679591+00:00",
+      "updated_at": "2026-09-03T13:12:14.604355+00:00",
       "paper": {
         "title": "CivBench: A Long-Horizon Benchmark for Tool-Mediated Agents in Civilization VI",
         "summary": "We present CivBench, an open-source benchmark for evaluating language model agents in long-horizon, tool-mediated environments through the Model Context Protocol (MCP). A single episode spans 300+ turns and produces thousands of tool calls over a large action space, requiring sustained planning, state monitoring, and execution under partial observability. The environment exposes 76 MCP tools and a narration layer that converts visual game state into structured text.   We use CivBench to characterise agent behaviour across four model families in 23 admissible runs. The sample is a pilot, not a model ranking: aggregate outcomes do not reliably discriminate models at this scale. Instead, we introduce two interface-level metrics that the environment makes measurable: Proactive Monitoring Rate (PMR), capturing whether agents actively query latent strategic state, and RAG@10, capturing whether commitments stated in structured planning reflections are executed within ten subsequent turns.   Across runs we observe two consistent patterns under a shared playbook protocol. Agents under-monitor strategically relevant state that is available but requires explicit querying: despite playbook guidance to query victory progress every 20 turns, agents do so only every 30 to 75 turns, and in 7 of 20 detectable defeats they failed to query within the 20 turn warning window before game end. Agents also frequently fail to execute near-term commitments stated in their own planning reflections (RAG@10 between 48.2% and 65.8% across models). Both patterns arise despite tool access and explicit guidance, and we interpret them as deviations under instruction rather than absences of capability.   We release the environment, scenarios, logs, metrics, and analysis pipeline at https://github.com/lmwilki/civ6-mcp",
@@ -26447,7 +26448,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2609.02459v1"
       },
-      "priority_score": 40
+      "priority_score": 40,
+      "korean_title": "문명 VI에서의 도구 매개 에이전트를 위한 장기 호라이즌 벤치마크: CivBench"
     },
     "2609_02453v1": {
       "id": "2609_02453v1",
@@ -26883,7 +26885,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-03T07:38:24.063188+00:00",
+      "updated_at": "2026-09-03T13:11:33.347171+00:00",
       "paper": {
         "title": "S3Gym: Can LLMs Turn Self-Testing and Self-Judging into Self-Improvement?",
         "summary": "Large language models (LLMs) increasingly interact with external environments and accumulate substantial behavioral experience, yet existing agent benchmarks largely evaluate them as fixed policies. It therefore remains unclear whether an agent can actively test its behavior, judge the resulting experience, and use that experience to improve future decisions. We introduce \\textbf{S\\textsuperscript{3}Gym}, an interactive benchmark for evaluating LLM self-improvement through three coupled capabilities: \\textbf{Self-Testing}, \\textbf{Self-Judging}, and \\textbf{Self-Improvement}. S$^3$Gym separates permissive exploration from strict held-out evaluation and instantiates this protocol in seven text-based games with executable environment verifiers. We evaluate three pathways for incorporating interaction experience: direct History ICL, score-conditioned Summary Memory, and parameter Training.   Our experiments reveal that self-improvement is neither automatic nor uniform. Context-level experience improves performance for several model--game pairs, but the most effective pathway depends strongly on the task structure: summaries are beneficial when experience can be compressed into reusable strategic rules, yet often underperform raw history when success depends on precise, state-contingent information. Parameter training produces substantial gains on some tasks, but also exhibits unstable improvement and severe negative transfer on others. These findings show that recognizing successful actions is insufficient; agents must also transform feedback into executable and transferable policies. S$^3$Gym provides a unified framework for diagnosing this process and identifying the bottlenecks that prevent agents from translating interaction experience into reliable self-improvement.",
@@ -26919,11 +26921,11 @@
     "2608_30949v1": {
       "id": "2608_30949v1",
       "filename": "post_2608_30949v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-09-03T07:37:58.054177+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-03T07:37:58.054179+00:00",
+      "updated_at": "2026-09-03T13:11:52.613344+00:00",
       "paper": {
         "title": "MULTI3IR: A Benchmark for Multi-perspective Multi-domain Multi-modal Information Retrieval",
         "summary": "Information retrieval (IR) increasingly targets open-ended queries that admit diverse perspectives. Existing IR benchmarks, however, focus primarily on closed-ended queries, while even open-ended benchmarks largely consist of queries whose supporting documents span a single subject domain and modality. We introduce Multi$^3$IR, a benchmark that evaluates how well retrievers cover the multifaceted perspectives of open-ended queries across diverse domains and modalities. It comprises 104.9K Stack Exchange queries, each annotated with perspective descriptions that capture the query's implicit viewpoints. We further propose SPIN, a parameter- and label-efficient method that learns noise vectors to steer embeddings toward diverse yet meaningful semantic directions. Experiments show that existing multimodal retrievers suffer from single-perspective bias, while SPIN substantially improves perspective coverage on Multi$^3$IR and generalizes well to unseen open-ended IR benchmarks. The dataset and experimental code are available at https://github.com/seokwon99/Multi3IR.",
@@ -26935,7 +26937,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2608.30949v1"
       },
-      "priority_score": 43
+      "priority_score": 43,
+      "korean_title": "MULTI3IR: 다각적, 다영역, 다중 모달 정보 검색을 위한 벤치마크"
     },
     "2608_18972v1": {
       "id": "2608_18972v1",
@@ -26944,7 +26947,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-03T07:37:58.054191+00:00",
       "last_error": null,
-      "updated_at": "2026-09-03T07:37:58.054192+00:00",
+      "updated_at": "2026-09-03T13:11:33.347188+00:00",
       "paper": {
         "title": "Institutional Newspapers Pipeline: Deriving billions of high quality tokens from historical newspapers",
         "summary": "Historical newspapers are an abundant record of public life, but their dense, irregular and sometimes noisy layouts make computational access to these materials both challenging and limited. We present the Institutional Newspapers Pipeline, a modular system we jointly designed with Boston Public Library to extract high-quality, structured datasets from historical newspaper scans. It was architected so that each step remains interpretable and customizable, and so that the pipeline as a whole remains computationally frugal enough to run on workstation-level hardware. The pipeline runs each scan through a multi-step process: it segments scans into individual type-agnostic crops and performs OCR on each resulting segment before then performing text analysis, type classification, reading order detection, named entities recognition, subject classification, language detection, and pre-computed embeddings generation on every crop. We ran this pipeline against a portion of Boston Public Library's holdings and released the results as an open dataset. The optical character recognition (OCR) output represents 16.3 billion o200k_base tokens across 83.1 million individual crops, extracted from 1,473,635 public domain newspaper scans published between 1795 and 1930. This report describes our methods for each processing step, the small models we trained, as well as the evaluation results and dataset-scale measurements we collected in the process. It accompanies the release of the pipeline, models, and dataset. We position this work as a substantial step towards unlocking high-quality data from tens of millions of newspaper scans.",
@@ -26971,7 +26974,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-03T07:38:35.714672+00:00",
+      "updated_at": "2026-09-03T13:11:33.347192+00:00",
       "paper": {
         "title": "SnapBench: Benchmarking Snap-and-Ask Multimodal Retrieval for Mobile Interactions",
         "summary": "Mobile AI acts as a visual oracle, empowering users to snap a picture of something and ask for information. Snap-and-ask retrieval is now one of the most common entry points for mobile AI, yet photos are often blurry, while text questions may be short or mistyped. Existing benchmarks only test on clean inputs or do not isolate paired robustness in snap-and-ask retrieval. Therefore, we introduce SnapBench, the first paired benchmark for robust snap-and-ask multimodal retrieval, spanning 1,145 queries, 9,085 gallery items under 53 controlled corruption conditions with human annotations. We evaluate 16 multimodal retrievers, covering dual-tower encoders and embedding-based VLMs. Results show that image corruptions substantially degrade retrieval, while text corruptions mainly affect text-only retrieval and have limited impact on joint retrieval. Clean image-only retrieval often outperforms joint retrieval, indicating the coarse-text drag and the lack of cross-modal fallback under noisy inputs. SnapBench provides a controlled testbed for evaluating robust retrieval in snap-and-ask scenarios. We further propose MOOR (Modality-anchored, Outlier-aware, Optimal Reweighting), a simple adaptive fusion approach, highlighting the need for reliability-aware modality calibration in snap-and-ask retrieval.",
@@ -27050,7 +27053,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-03T07:37:58.054223+00:00",
       "last_error": null,
-      "updated_at": "2026-09-03T07:37:58.054225+00:00",
+      "updated_at": "2026-09-03T13:11:33.347196+00:00",
       "paper": {
         "title": "On the Design Fundamentals of Pixel Text Representation Learning",
         "summary": "Text-rich visual inputs require models that can read, retrieve, and compress language directly in pixel space, yet existing pixel-text encoders struggle with fixed resolution pretraining, visual shortcut learning, weak visual grounding, and multilingual visual text understanding. In this work, we investigate the fundamental design principles required for robust visual text representation learning. Through systematic controlled ablations, we identify four critical components: variable image resolutions and rendered font sizes provide spatial proxies for high-resolution document generalization; natural image-text pairs are indispensable for grounding and prevent text-only collapse; layout-aware rendering helps prevent pixel-level shortcuts; and a two-stage multilingual curriculum enables effective cross-lingual alignment. By integrating these principles into a scalable training recipe, we train Pixel Linguist II, a native-resolution vision encoder trained with on-the-fly rendering, unified contrastive grounding, and a multilingual curriculum over 280M training examples. Pixel Linguist II sets new state-of-the-art results on English, cross-lingual, and multilingual Visual STS and ViDoRe, while also enabling better MLLM downstream evaluation. Notably, Pixel Linguist II remains robust under 80\\% visual token compression, showing great promise for optical context compression. Our code and resources are available at https://github.com/Pixel-Linguist/Pixel-Linguist-II.",
@@ -27067,10 +27070,130 @@
         "pdf_link": "https://arxiv.org/pdf/2609.01147v1"
       },
       "priority_score": 38
+    },
+    "2608_21450v1": {
+      "id": "2608_21450v1",
+      "filename": "post_2608_21450v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-03T13:11:33.347128+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-03T13:11:33.347141+00:00",
+      "paper": {
+        "title": "Beyond Visual Similarity: Entity-Aligned Retrieval for Knowledge-Based Visual Question Answering",
+        "summary": "Knowledge-Based Visual Question Answering (KB-VQA) relies on retrieving external information to answer queries involving long-tail entities. However, existing retrieval pipelines predominantly employ CLIP-style dual encoders, which prioritize surface-level visual similarity over entity-level semantic alignment. This paradigm often fails when semantically identical concepts exhibit large visual variations or when distinct entities appear visually similar. To address this, we propose KBMR, the first MLLM-based embedding retriever tailored for KB-VQA. Leveraging the robust autoregressive capabilities of MLLMs, KBMR maps images into a semantic space that better preserves concept identity. To tackle the challenge of noisy supervision in Wikipedia-scale retrieval, we introduce an MLLM-based semantic discriminator that generates continuous entity-consistency weights. These weights guide a novel continuous semantic distillation objective, enabling effective hard negative sampling and soft supervision beyond rigid binary labels. Extensive experiments demonstrate that KBMR significantly outperforms CLIP baselines, yielding up to a 14.7% improvement in retrieval Recall@1 and a 9.4% gain in end-to-end VQA accuracy. Code is available at https://github.com/realHarryX/KBMR.",
+        "published": "2026-08-19T16:25:39Z",
+        "authors": [
+          "Hangrui Xu",
+          "Zhengxian Wu",
+          "Yunyao Yu",
+          "Zhuohong Chen",
+          "Rui Cong",
+          "Xiangwen Deng",
+          "Zhifang Liu",
+          "Peng Jiao",
+          "Haoqian Wang"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.21450v1"
+      },
+      "priority_score": 35
+    },
+    "2608_29669v1": {
+      "id": "2608_29669v1",
+      "filename": "post_2608_29669v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-03T13:11:33.347149+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-03T13:11:33.347152+00:00",
+      "paper": {
+        "title": "Wasserstein-Barycentric Interaction Fields for Spatial Factor Models: Evidence from Language-Model Representations",
+        "summary": "Spatial return models take the interaction matrix as given and leave feedback uninterpreted. We construct a bandwidth-free field from firms' language-model article embedding distributions using target-anchored Wasserstein barycentric reconstruction. A quadratic exposure-adjustment problem maps feedback into a peer-misalignment penalty ratio. For 52 firms, the field, frozen from 2018-2022 news, yields a 2023-2026 penalty ratio of 3.46 (95% interval [2.89, 4.17]) and higher conditional quasi-likelihood than equal-weighted peer support or RBF weighting of the same distances. Joint penalty ratios for the barycentric and news co-mention fields are 2.33 and 0.86 with boundary calibrated tests which reject both exclusions.",
+        "published": "2026-08-30T09:06:25Z",
+        "authors": [
+          "Marcus Gawronsky",
+          "Chun-Sung Huang"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.29669v1"
+      },
+      "priority_score": 9
+    },
+    "2608_30322v1": {
+      "id": "2608_30322v1",
+      "filename": "post_2608_30322v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-03T13:11:33.347158+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-03T13:11:33.347159+00:00",
+      "paper": {
+        "title": "Ignorance or Incompetence? Constructing Knowledge-Gated, Verifiable Tasks for LLM Agents",
+        "summary": "Professional agent tasks often depend on conventions that are absent from public corpora, yet benchmarks rarely control whether an agent has access to those conventions. We introduce a knowledge-gated task-construction protocol that separates a task instruction from a compact artefact containing private conventions, reference tables, and utility operators. Construction-time provenance, byte-identical task instructions across the provided- and withheld-artefact conditions, leak audits, and executable witnesses make dependence on the artefact explicit and testable. Across fifteen calibration tasks, one frontier agent configuration achieves a 68.0% pass rate with the artefact and 0% without it; on one task, a plausible but incorrect artefact also yields 0% across five trials. Deterministic solvers and rule corpora provide exact ground truth for structured tasks, while named criterion-level rubrics support outputs that cannot be checked by a single executable oracle. A configuration-relative calibration screen retains seven tasks satisfying our five-trial empirical knowledge-gating screen. These experiments validate the behavior of the construction protocol; they do not establish that the retained tasks improve post-training. We publicly release part of the task suite and supporting tooling at https://github.com/DatagridsAI/Knowledge-Gated-Task-Construction.",
+        "published": "2026-08-31T06:39:27Z",
+        "authors": [
+          "Hanlin Tian",
+          "Minhao Li",
+          "Yu Mi",
+          "Sihan Zhu",
+          "Zhao Yang",
+          "Yuxiang Wang",
+          "Hongquan Zhu",
+          "Qiufei Hu"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.30322v1"
+      },
+      "priority_score": 37
+    },
+    "2609_00377v1": {
+      "id": "2609_00377v1",
+      "filename": "post_2609_00377v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-09-03T13:11:43.515139+00:00",
+      "paper": {
+        "title": "FoldingAgent: Inferring Parametric Origami Procedures from Demonstration Videos",
+        "summary": "We present FoldingAgent, an agentic framework for inferring explicit parametric folding programs directly from origami demonstration videos. Our framework leverages the reasoning power of a pre-trained Vision-Language Model (VLM) equipped with a suite of specialized tools that enable the agent to simulate geometric transitions, verify physical plausibility, retrieve and compare visual content, and evaluate its own predictions. To translate visual content into folding programs, we define a parametric space that consists of the paper's geometry and a set of parametric folding actions. Unlike models that predict static crease patterns, our agent operates sequentially and possesses the ability to re-plan its actions, effectively mitigating the compounding errors inherent in multi-step folding. Our approach takes a step toward closing the gap between human origami knowledge, which is primarily shared through unstructured visual demonstrations, and computational methods, which typically rely on structured, parametric representations such as a crease pattern or an executable parametric plan. We evaluate our approach on PurelandFold, a newly curated benchmark of diverse Pureland origami videos with ground-truth geometry and action labels. Our results demonstrate that by combining VLM reasoning with a set of specialized tools and physical simulation, we can successfully transform unstructured visual demonstrations into executable, physically plausible folding procedures.",
+        "published": "2026-08-31T21:09:22Z",
+        "authors": [
+          "Maya Moriya",
+          "Sigal Raab",
+          "Yael Vinker",
+          "Tali Dekel"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.00377v1"
+      },
+      "priority_score": 48,
+      "korean_title": "FoldingAgent: 시연 영상으로부터 매개변수 기반 종이접기 절차 추론"
+    },
+    "2609_00474v2": {
+      "id": "2609_00474v2",
+      "filename": "post_2609_00474v2.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-03T13:11:33.347181+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-03T13:11:33.347183+00:00",
+      "paper": {
+        "title": "Exploring Collaboration between a language and a non-language agent",
+        "summary": "LLMs are increasingly deployed as orchestrators that coordinate specialized subagents to solve complex tasks through natural language. However, in many important domains like game playing and robotics, the strongest available agents are not language models. Integrating non-language agents with LLMs would require \\emph{verbalization}: compressing their rich continuous representations into sparse textual summaries at each interaction step. To study whether verbalization constitutes a bottleneck, we introduce \\textsc{LLAMIA-Bench}, a suite of six diverse collaborative chess tasks spanning three facets: behavioral imitation, state assessment, and natural-language explanation. Each task instantiates a well-established chess problem that neither the LLM nor the chess engine can solve alone. To solve LLM collaboration with non-language agents, we introduce \\emph{latent state internalization}, which projects the subagent's continuous representations directly into the LLM's token stream as learned state tokens, with dynamic re-encoding as actions advance the environment state. Comparing internalization to verbalized integration, our experiments reveal a consistent \\emph{verbalization debt}: the performance gap widens throughout training and persists as the LLM scales from 4B to 14B parameters. A single 14B model, \\textsc{LLAMIA}, trained with latent state internalization, matches or exceeds task specialists and frontier models including GPT-5.1 with tool access across all benchmark tasks, and generalizes out-of-distribution where task-specific finetunes collapse",
+        "published": "2026-08-31T23:25:10Z",
+        "authors": [
+          "Harini S",
+          "Somesh Singh",
+          "Yaman K Singla",
+          "Rajiv Ratn Shah",
+          "David Doermann",
+          "Balaji Krishnamurthy"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.00474v2"
+      },
+      "priority_score": 39
     }
   },
   "last_run": {
-    "started_at": "2026-09-03T07:37:58.056462+00:00",
+    "started_at": "2026-09-03T13:11:33.349461+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -27081,25 +27204,25 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 21641,
-      "output_tokens": 5921,
+      "prompt_tokens": 19655,
+      "output_tokens": 5826,
       "thought_tokens": 0,
-      "total_tokens": 27562,
-      "estimated_usd": 0.01429175
+      "total_tokens": 25481,
+      "estimated_usd": 0.01365275
     },
-    "finished_at": "2026-09-03T07:38:45.592513+00:00"
+    "finished_at": "2026-09-03T13:12:15.303346+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 1822,
-    "prompt_tokens": 4584205,
-    "output_tokens": 1342050,
+    "requests": 1830,
+    "prompt_tokens": 4603860,
+    "output_tokens": 1347876,
     "thought_tokens": 0,
-    "total_tokens": 5926255,
-    "estimated_usd": 3.15912625
+    "total_tokens": 5951736,
+    "estimated_usd": 3.172779
   },
   "last_publication_run": {
-    "started_at": "2026-09-03T07:37:58.056462+00:00",
+    "started_at": "2026-09-03T13:11:33.349461+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -27110,17 +27233,17 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 21641,
-      "output_tokens": 5921,
+      "prompt_tokens": 19655,
+      "output_tokens": 5826,
       "thought_tokens": 0,
-      "total_tokens": 27562,
-      "estimated_usd": 0.01429175
+      "total_tokens": 25481,
+      "estimated_usd": 0.01365275
     },
-    "finished_at": "2026-09-03T07:38:45.592513+00:00"
+    "finished_at": "2026-09-03T13:12:15.303346+00:00"
   },
   "daily_usage": {
     "date": "2026-09-03",
-    "estimated_usd": 0.02806975,
-    "publications": 8
+    "estimated_usd": 0.0417225,
+    "publications": 12
   }
 }
