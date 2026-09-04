@@ -1,0 +1,66 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ViSAR: 시각적 문서 질의응답을 위한 학습이 필요 없는 적응형-k 검색 | ArXiv Translator AI</title><meta name="description" content="ViSAR: 시각적 문서 질의응답을 위한 학습이 필요 없는 적응형-k 검색"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_02486v1"><meta property="og:type" content="article"><meta property="og:title" content="ViSAR: 시각적 문서 질의응답을 위한 학습이 필요 없는 적응형-k 검색"><meta property="og:description" content="ViSAR: 시각적 문서 질의응답을 위한 학습이 필요 없는 적응형-k 검색"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_02486v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="ViSAR: 시각적 문서 질의응답을 위한 학습이 필요 없는 적응형-k 검색"><meta name="twitter:description" content="ViSAR: 시각적 문서 질의응답을 위한 학습이 필요 없는 적응형-k 검색"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_02486v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "ViSAR: 시각적 문서 질의응답을 위한 학습이 필요 없는 적응형-k 검색", "description": "ViSAR: 시각적 문서 질의응답을 위한 학습이 필요 없는 적응형-k 검색", "datePublished": "2026-09-02", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_02486v1", "author": [{"@type": "Person", "name": "Adrien Mialland"}, {"@type": "Person", "name": "Marc Plantevit"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_02486v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_02486v1"});gtag('event', 'paper_view', {"paper_id": "2609_02486v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>ViSAR: 시각적 문서 질의응답을 위한 학습이 필요 없는 적응형-k 검색</h1><p>ViSAR: 시각적 문서 질의응답을 위한 학습이 필요 없는 적응형-k 검색</p><pre>ViSAR: 시각적 문서 질의응답을 위한 학습이 필요 없는 적응형-k 검색
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** ViSAR: Training-Free Adaptive-$k$ Retrieval for Visual Document Question Answering
+&gt; - **저자:** Adrien Mialland, Marc Plantevit, Julien Gallois, Céline Robardet
+&gt; - **발행일:** 2026-09-02
+&gt; - **PDF 링크:** [ViSAR: Training-Free Adaptive-$k$ Retrieval for Visual Document Question Answering](https://arxiv.org/pdf/2609.02486v1)
+
+
+✨ 3줄 핵심 요약
+*   ViSAR는 시각적 문서 질의응답(DocVQA)에서 질문에 맞춰 필요한 문서 페이지 수(k)를 자동으로 결정하는 학습 불필요(Training-free) 검색 기법입니다.
+*   질문 조건부 페이지 유사도 행렬을 생성하여 핵심 정보를 정밀하게 추출하며, 이를 통해 불필요한 페이지 처리를 최소화합니다.
+*   기존의 고정된 top-k 검색 방식 대비 문서 처리 지연 시간을 최대 58.7% 줄이면서도 답변 정확도를 유지하거나 향상시킵니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+문서가 수백 페이지에 달할 때, 모든 페이지를 AI에게 다 읽히는 것은 시간과 비용 면에서 비효율적입니다. 기존 방식은 무조건 고정된 개수(예: 상위 5개)의 페이지를 검색하지만, 질문에 따라 필요한 정보량은 다릅니다. ViSAR는 질문과 문서 페이지 간의 관계를 임베딩 공간에서 직접 분석하여, &quot;이 질문에는 3페이지만 보면 돼&quot; 혹은 &quot;10페이지가 필요해&quot;와 같이 최적의 페이지 수를 스스로 결정합니다. 별도의 추가 학습 과정 없이도 정확도는 높이고 처리 속도는 획기적으로 개선합니다.
+
+🎯 배경 및 문제점
+*   **고정된 top-k의 한계:** 질문의 복잡도와 무관하게 항상 일정한 수의 페이지를 검색하여, 불필요한 정보가 모델의 입력으로 들어가 답변 정확도가 떨어지거나 처리 지연(Latency)이 증가하는 문제가 있습니다.
+*   **복합적인 문서 구조:** 문서 내에 텍스트, 차트, 표 등이 혼재되어 있어, 질문과 관련된 정보가 위치한 페이지만을 효율적으로 선별하는 기술이 필수적입니다.
+
+💡 핵심 기술 및 아키텍처
+*   **Query-Conditioned Similarity Matrix:** 쿼리(질문)와 문서 페이지 간의 관계를 나타내는 유사도 행렬을 생성합니다. 이는 질문에 포함된 의미를 기반으로 어떤 페이지가 중요한지를 시각화합니다.
+*   **학습이 필요 없는(Training-free) 설계:** 기존에 사용되는 Late-interaction 인코더의 임베딩 공간을 직접 활용하며, 별도의 학습 과정 없이 수식 기반의 최적화(Optimization)를 수행합니다.
+*   **적응형 k 결정:** 손실 함수 $J(k)$를 정의하여, 정보 누락을 최소화하면서도 질문과 관련된 최적의 페이지 수($k^\star$)를 동적으로 찾습니다.
+
+📊 실험 결과 분석
+*   **지연 시간 감소:** 기존의 고정 top-k 방식과 비교하여 RAG(검색 증강 생성) 단계의 전체 지연 시간을 최대 58.7%까지 단축했습니다.
+*   **정확도 유지 및 개선:** 페이지 수를 효율적으로 조절함으로써 답변의 정확도를 기존 방식 대비 유지하거나 오히려 향상시켰습니다.
+*   **상관관계 발견:** 유사도 행렬이 희소(Sparse)할수록 답변 정확도가 높아지는 경향을 확인했습니다. 이는 행렬 구조만 보고도 향후 답변 품질을 예측할 수 있는 가능성을 제시합니다. (단, 정확한 상관관계 수치는 논문 발췌문에 구체적 수치로 명시되지 않음)
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+*   **효율적인 AI 문서 분석:** 수백 페이지에 달하는 방대한 보고서, 법률 문서, 기술 매뉴얼 등을 다루는 기업형 AI 시스템의 처리 비용과 속도를 개선할 수 있습니다.
+*   **실무적 강점:** 별도의 모델 재학습이 필요 없어 기존의 시각적 인코더(ColPali, ColQwen2.5 등) 시스템에 즉시 통합하여 적용할 수 있습니다.
+*   **향후 발전 가능성:** 유사도 행렬 자체가 질문과 정보의 적합도를 판단하는 피드백 신호로 활용될 수 있어, 향후 데이터 레이블이 없는 환경에서도 학습 가능한 차세대 검색 전략의 기반이 될 수 있습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2609.02486 ViSAR: Training-Free Adaptive-$k$ Retrieval for Visual Document Question Answering](https://arxiv.org/abs/2609.02486)
+&gt; - [Fugu-MT 論文翻訳 (概要): ViSAR: Training-Free Adaptive-$k$ Retrieval for ...](https://fugumt.com/fugumt/paper_check/2609.02486v1)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;Training-free라는 점은 높이 평가하지만, 수식 기반의 최적화가 과연 얼마나 일반화 성능을 보장할지 의문입니다. 특히 문서 구조가 매우 복잡하거나 쿼리가 모호할 때, 이 적응형 k 결정 알고리즘이 &#x27;정보 누락&#x27;이라는 치명적인 오류를 범하지 않을 근거가 부족해 보입니다. 이론적 정교함에 비해 실증적 경계 조건이 너무 단순하군요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 일리는 있지만, 현업에선 당장 &#x27;Latency 58.7% 단축&#x27;이라는 지표가 깡패입니다. ColPali 같은 모델 위에 바로 얹어서 재학습 없이 파이프라인 최적화가 가능하다는 건, 당장 다음 주 스프린트에 바로 태워볼 만한 가치가 있다는 뜻이죠. 어차피 모든 RAG는 trade-off 싸움인데, 비용 효율 면에서 이 정도면 훌륭합니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;다들 너무 진지하신 거 아닌가요?ㅋㅋ 저는 이 논문이 &#x27;유사도 행렬의 희소성(Sparsity)&#x27;을 답변 품질의 지표로 활용할 가능성을 제시했다는 점에 주목하고 있습니다. 이거 잘만 파고들면 데이터셋 정제 없이도 RAG의 신뢰도를 실시간으로 측정하는 새로운 방법론이 될 것 같은데요? 당장 내일 세미나 발표 주제는 이걸로 정했습니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
