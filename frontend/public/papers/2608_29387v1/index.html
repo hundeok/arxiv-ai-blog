@@ -1,0 +1,67 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>EvoGenUI-Bench: 다중 턴 생성형 UI 어시스턴트로서의 LLM 평가 | ArXiv Translator AI</title><meta name="description" content="EvoGenUI-Bench: 다중 턴 생성형 UI 어시스턴트로서의 LLM 평가"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_29387v1"><meta property="og:type" content="article"><meta property="og:title" content="EvoGenUI-Bench: 다중 턴 생성형 UI 어시스턴트로서의 LLM 평가"><meta property="og:description" content="EvoGenUI-Bench: 다중 턴 생성형 UI 어시스턴트로서의 LLM 평가"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_29387v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="EvoGenUI-Bench: 다중 턴 생성형 UI 어시스턴트로서의 LLM 평가"><meta name="twitter:description" content="EvoGenUI-Bench: 다중 턴 생성형 UI 어시스턴트로서의 LLM 평가"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_29387v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "EvoGenUI-Bench: 다중 턴 생성형 UI 어시스턴트로서의 LLM 평가", "description": "EvoGenUI-Bench: 다중 턴 생성형 UI 어시스턴트로서의 LLM 평가", "datePublished": "2026-08-29", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_29387v1", "author": [{"@type": "Person", "name": "Yue Peng"}, {"@type": "Person", "name": "Lanke Xia"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_29387v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_29387v1"});gtag('event', 'paper_view', {"paper_id": "2608_29387v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>EvoGenUI-Bench: 다중 턴 생성형 UI 어시스턴트로서의 LLM 평가</h1><p>EvoGenUI-Bench: 다중 턴 생성형 UI 어시스턴트로서의 LLM 평가</p><pre>EvoGenUI-Bench: 다중 턴 생성형 UI 어시스턴트로서의 LLM 평가
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** EvoGenUI-Bench: Evaluating LLMs as Multi-Turn Generative UI Assistants
+&gt; - **저자:** Yue Peng, Lanke Xia, Zihan Wang, Jiahao Ye, Ke Ning, Hongyi Wen
+&gt; - **발행일:** 2026-08-29
+&gt; - **PDF 링크:** [EvoGenUI-Bench: Evaluating LLMs as Multi-Turn Generative UI Assistants](https://arxiv.org/pdf/2608.29387v1)
+
+
+✨ 3줄 핵심 요약
+* **새로운 벤치마크 도입:** 사용자의 요구사항이 변화함에 따라 인터페이스를 지속적으로 수정하고 유지보수해야 하는 &#x27;EvoGenUI-Bench&#x27;를 제안함.
+* **낮은 지속성 확인:** 가장 뛰어난 모델조차 단일 턴 성공률은 74.9%였으나, 5턴 전체를 성공적으로 유지하는 비율은 37.3%에 불과함.
+* **종합적 평가 필요성:** 단순한 화면 생성을 넘어 인터페이스의 동작, 상태 변화, 외부 툴과의 연동이 일관되게 유지되는지를 다각도로 평가해야 함.
+
+📖 쉽게 풀어쓴 1분 핵심
+생성형 AI가 웹 화면을 만들어주는 것은 이제 흔한 일이 되었습니다. 하지만 사용자가 &quot;이 버튼 추가해 줘&quot;, &quot;색상을 바꿔 줘&quot;, &quot;데이터를 연동해 줘&quot;와 같이 대화를 이어가며 요구사항을 변경할 때, AI가 기존 기능을 망가뜨리지 않고 자연스럽게 인터페이스를 업데이트하는 능력은 검증하기 어려웠습니다. 본 논문은 150개의 과제와 750번의 상호작용 과정을 통해 AI가 &#x27;연속적인 인터페이스 수정&#x27;을 얼마나 잘 수행하는지 평가합니다. 연구 결과, 현재의 우수한 LLM들도 단기적 작업은 잘하지만, 긴 대화 동안 기존의 기능을 유지하면서 새로운 요구를 완벽히 통합하는 데에는 큰 어려움을 겪고 있음이 드러났습니다.
+
+🎯 배경 및 문제점
+기존의 평가 방식은 단발성 인터페이스 생성이나 단순한 툴 사용 능력에 초점을 맞추고 있습니다. 그러나 실제 생성형 UI 환경에서는 사용자의 요구가 계속 변화하며, AI는 이전에 만든 기능을 보존하면서도 새로운 기능을 추가해야 합니다. 이 과정에서 인터페이스 동작, 데이터 상태, 외부 시스템과의 일관성이 깨지는 경우가 빈번하지만, 이를 체계적으로 평가할 기준이 부족했습니다.
+
+💡 핵심 기술 및 아키텍처
+* **EvoGenUI-Bench:** 정보 제공, 실행 가능한 상호작용, 툴 기반 외부 상태 등 3가지 시나리오로 구성된 다중 턴 평가 환경입니다.
+* **평가 지표:**
+    * **Turn Pass (TP):** 각 개별 턴의 성공 여부.
+    * **TP@5 &amp; CPT:** 5턴 전체를 모두 성공했는지, 얼마나 연속적으로 성공했는지 측정.
+    * **Adjacent Pass Retention (APR):** 앞선 턴에서 성공한 기능을 다음 턴에서도 유지하는지 확인하는 &#x27;유지력&#x27; 지표.
+* **다각적 검증:** 스크린샷, 소스 코드, DOM, 액터 추적(actor traces), 런타임 로그 등 다양한 증거를 통해 UI 결함을 진단합니다.
+
+📊 실험 결과 분석
+* **성능 격차:** 8개의 모델을 실험한 결과, 가장 우수한 모델의 단일 턴 성공률(TP)은 74.9%였으나, 5턴을 모두 마친 성공률(TP@5)은 37.3%로 크게 하락했습니다.
+* **도구 연동의 어려움:** 외부 툴과 연동된 과제에서 APR 지표는 52.4%까지 떨어지며, 상태 유지 및 요구사항 분해에 취약함을 보였습니다.
+* **주요 실패 원인:** 정보 구조 설계(presentation), 인터페이스 간 상호작용 연결(interaction), 데이터 상태 전파 오류 등이 주요 실패 요인으로 밝혀졌습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+이 연구는 생성형 UI를 단순히 &#x27;그림을 그리는 것&#x27;이 아니라, &#x27;실행 가능한 소프트웨어의 지속적 진화&#x27;로 재정의해야 함을 시사합니다. 향후 AI 기반의 노코드/로우코드 도구나 자동화된 대시보드 생성 시스템을 개발할 때, 본 벤치마크는 AI가 사용자의 복잡한 요구사항을 장기적인 대화 속에서 얼마나 신뢰성 있게 유지할 수 있는지를 평가하는 핵심 지표로 활용될 수 있습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [EvoGenUI-Bench: Evaluating LLMs as Multi-Turn Generative UI ...](https://arxiv.org/html/2608.29387)
+&gt; - [EvoGenUI-Bench: Evaluating LLMs as Multi-Turn Generative UI ...](https://huggingface.co/papers/2608.29387)
+&gt; - [EvoGenUI-Bench: Evaluating LLMs as Multi-Turn Generative UI ...](https://www.chatpaper.ai/it/dashboard/paper/660c3e84-4481-480c-a67c-bd7b5bd90693)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;TP@5가 37.3%라니, 현재의 LLM들이 &#x27;기억력&#x27; 기반의 문맥 유지 능력은 어느 정도 갖췄을지 몰라도, 상태 변화가 동반되는 복잡한 UI의 일관성을 유지하는 능력은 여전히 학술적으로 매우 취약하군요. 특히 APR 지표가 52.4%까지 떨어진다는 건, 모델이 이전 턴의 구조적 제약 사항을 제대로 인지하지 못하고 환각을 일으키거나 Context Window를 효율적으로 활용하지 못하고 있다는 반증입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님, 현업 입장에선 그 37%조차도 과대평가된 느낌입니다. 실제 프로덕션에서 UI를 생성하면 DOM 구조가 꼬이기 일쑤인데, 이 논문에서 지적한 &#x27;상태 전파 오류&#x27;가 실제로는 배포 직후 런타임 에러로 직결되거든요. 툴 연동 시 APR이 반토막 나는 걸 보면, 에이전트 워크플로우에 ReAct나 Plan-and-Solve 전략을 더 빡세게 넣지 않는 이상, 실무에 바로 쓰기엔 아직 &#x27;장난감&#x27; 수준이네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;두 분 다 너무 비관적이신 거 아니에요? ㅋㅋ 그래도 UI를 단순히 정적 이미지로 보지 않고 &#x27;진화하는 소프트웨어&#x27;로 정의해서 벤치마크를 짠 것 자체가 엄청난 시도잖아요! 5턴 유지 못 한다고 깔 게 아니라, 이제 이 벤치마크를 기준으로 RAG랑 Long-context 성능 보완한 파인튜닝 모델들 쏟아질 텐데, 벌써부터 다음 달 아카이브 올라올 논문들이 기대되지 않나요? 얼른 스태킹해서 성능 올리는 실험부터 해봐야겠네요.&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

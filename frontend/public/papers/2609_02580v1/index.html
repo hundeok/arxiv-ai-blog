@@ -1,0 +1,70 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>거대언어모델(LLM)의 경쟁 시장 행동 | ArXiv Translator AI</title><meta name="description" content="거대언어모델(LLM)의 경쟁 시장 행동"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_02580v1"><meta property="og:type" content="article"><meta property="og:title" content="거대언어모델(LLM)의 경쟁 시장 행동"><meta property="og:description" content="거대언어모델(LLM)의 경쟁 시장 행동"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_02580v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="거대언어모델(LLM)의 경쟁 시장 행동"><meta name="twitter:description" content="거대언어모델(LLM)의 경쟁 시장 행동"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_02580v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "거대언어모델(LLM)의 경쟁 시장 행동", "description": "거대언어모델(LLM)의 경쟁 시장 행동", "datePublished": "2026-09-02", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_02580v1", "author": [{"@type": "Person", "name": "Pawel Struski"}, {"@type": "Person", "name": "Jakub Swistak"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_02580v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_02580v1"});gtag('event', 'paper_view', {"paper_id": "2609_02580v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>거대언어모델(LLM)의 경쟁 시장 행동</h1><p>거대언어모델(LLM)의 경쟁 시장 행동</p><pre>거대언어모델(LLM)의 경쟁 시장 행동
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Competitive Market Behavior of LLMs
+&gt; - **저자:** Pawel Struski, Jakub Swistak, Inez Okulska, Przemyslaw Biecek
+&gt; - **발행일:** 2026-09-02
+&gt; - **PDF 링크:** [Competitive Market Behavior of LLMs](https://arxiv.org/pdf/2609.02580v1)
+
+
+✨ 3줄 핵심 요약
+- LLM 에이전트들을 인간의 시장 경제 실험인 &#x27;이중 경매(Double Auction)&#x27;에 투입한 결과, 인간만큼 효율적으로 시장 균형에 도달하지 못하는 것으로 나타났습니다.
+- 에이전트들은 모델 종류와 시장 역할에 따라 서로 다른 거래 패턴을 보였으며, 사고 과정(CoT) 분석 결과 전략적 판단보다 &#x27;조급함&#x27;이 거래 결정에 영향을 미치는 경향이 확인되었습니다.
+- LLM을 인간 행동의 대리인으로 활용할 때는 검증이 필수적이며, 특히 시장 담합 분석 시 LLM 자체의 비효율성을 고려한 신중한 해석이 요구됩니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+이 연구는 LLM을 경제 활동의 주체로 활용할 때, 인간처럼 효율적인 시장 거래가 가능한지 실험했습니다. 연구진은 경제학의 고전적인 &#x27;이중 경매&#x27; 환경에 LLM 에이전트들을 배치했습니다. 실험 결과, LLM들은 인간보다 시장의 균형 가격을 찾는 속도가 현저히 느리거나 균형에 도달하지 못했습니다. 또한, 사고 과정에서 장기적인 전략보다는 당장의 거래를 성사시키려는 조급함이 관찰되었습니다. 이는 LLM이 경제적 의사결정을 할 때 인간과 다르게 행동할 수 있음을 의미하며, 향후 LLM을 시장 시뮬레이션에 활용하려면 반드시 엄격한 사전 검증이 필요하다는 점을 시사합니다.
+
+🎯 배경 및 문제점
+- **경제적 대리인으로서의 LLM:** 최근 LLM은 가격 책정, 입찰, 금융 업무 등 다양한 경제적 의사결정을 수행하고 있습니다.
+- **인간 행동 모사 의문:** LLM이 인간의 행동을 대리하는 경우가 늘고 있으나, 복잡한 시장 구조에서 인간처럼 효율적인 자원 배분 결과를 도출하는지에 대한 검증은 부족했습니다.
+- **이중 경매의 중요성:** 주식 거래소 등 많은 시장이 이중 경매 방식을 채택하고 있습니다. 이론적으로 이 방식은 참여자가 균형 가격을 몰라도 시장 전체의 효율적인 자원 배분을 가능케 합니다. 과연 LLM 에이전트들로 구성된 시장도 이 효율성을 확보할 수 있는지가 핵심 질문입니다.
+
+💡 핵심 기술 및 아키텍처
+- **이중 경매 시뮬레이션:** 에이전트들에게 이윤 극대화 목표를 부여하고, 시장 기록과 거래 이력을 바탕으로 스스로 가격을 제시하거나 수락하도록 설계했습니다.
+- **평가 모델:** GPT-5.4, GPT-5.4-mini, Gemini-3.1-pro-preview 모델을 사용했습니다.
+- **분석 방법론:**
+    - **시장 효율성 측정:** 균형 가격 대비 거래 가격의 분산(α)과 자원 배분 효율성(Eff.)을 지표로 삼아 인간 실험 결과와 비교했습니다.
+    - **사고 과정 분석:** Chain-of-Thought(CoT) 추론 데이터를 언어적으로 분석하여 에이전트의 의사결정 동기를 추적했습니다.
+
+📊 실험 결과 분석
+- **시장 균형 도달 실패:** 실험한 모든 LLM 모델은 인간 피험자 벤치마크와 비교했을 때 완전한 균형에 도달하지 못했습니다.
+- **성능 차이:** 모델별로 거래 건수와 효율성에 차이가 있었으며, 특정 조건에서는 균형 효율이 낮은 수치를 보였습니다. (수치는 발췌된 표 1에 상세히 나열되어 있습니다.)
+- **전략 vs 조급함:** 에이전트들의 사고 과정을 분석한 결과, 전략적으로 가격을 조정하기보다는 당장의 거래를 성사시키려는 조급함이 거래 실행 결정과 밀접한 관련이 있음을 확인했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+- **시장 담합 판별의 주의사항:** LLM이 비정상적으로 높은 가격을 제시할 경우 이를 &#x27;담합&#x27;으로 오해할 수 있으나, 본 연구는 LLM 자체가 시장 균형에 도달하지 못하는 특성이 있을 수 있음을 지적합니다. 즉, 담합으로 단정하기 전 모델의 기본적 비효율성을 먼저 검증해야 합니다.
+- **시뮬레이션 검증 필요성:** 사회과학 시뮬레이션(ABM)에 LLM을 활용할 경우, LLM이 인간 행동을 그대로 상속한다고 가정해서는 안 되며, 반드시 이론적 벤치마크를 통한 검증이 선행되어야 합니다.
+- **오픈소스 기여:** 연구진은 향후 다양한 환경에서 LLM 시장 행동을 테스트할 수 있는 프레임워크를 공개하여, 시장 설계 연구와 AI 경제 모델링의 발전을 도모했습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2609.02580 Competitive Market Behavior of LLMs](https://arxiv.org/abs/2609.02580)
+&gt; - [Competitive Market Behavior of LLMs](https://arxiv.org/html/2609.02580)
+&gt; - [Competitive Market Behavior of LLMs Pawel Struski 1 2](https://conference.mlinpl.org/docs/poster-51.pdf)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;이 논문은 LLM을 단순히 텍스트 생성기로 보는 시각에서 벗어나, 경제학적 대리인으로 활용할 때의 근본적인 한계를 잘 짚어냈군요. 특히 CoT 분석에서 드러난 &#x27;조급함&#x27;은 모델의 파라미터 최적화가 전략적 사고를 보장하지 못한다는 증거입니다. 사회과학 시뮬레이션에서 LLM을 쓸 때마다 주의를 줬건만, 이제야 실증 데이터가 나왔네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로입니다. 현업에서는 LLM 에이전트 하나 던져두고 시장 예측 모델이라고 홍보하는 곳들이 많은데, 실제로는 이 논문처럼 &#x27;비효율성&#x27; 때문에 노이즈만 끼는 경우가 태반이죠. 특히 저 &#x27;조급함&#x27;은 토큰 생성 속도나 컨텍스트 윈도우 관리 과정에서 발생하는 아티팩트일 가능성도 커 보이는데, 인프라 단에서 이걸 어떻게 제어할지가 관건이겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 근데 이거 GPT-5.4에서도 균형 도달 실패했다는 게 충격적이네요. 다들 LLM이 이제 인간 지능을 완벽히 모사한다고 호들갑 떨 때, 경제학적 합리성에서는 여전히 &#x27;학습된 멍청함&#x27;을 보여준다는 게 흥미롭지 않나요? 담합 의심 사례 분석할 때 이 논문 들고 가서 &#x27;이건 담합이 아니라 그냥 모델의 멍청함입니다&#x27;라고 하면 변명거리 하나는 확실히 생기겠네요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
