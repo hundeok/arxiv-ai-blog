@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>선택, 압축, 재투자: 장시간 비디오 다중 모달 언어 모델의 시각 토큰 할당에 관한 통제 연구 | ArXiv Translator AI</title><meta name="description" content="선택, 압축, 재투자: 장시간 비디오 다중 모달 언어 모델의 시각 토큰 할당에 관한 통제 연구"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_03820v1"><meta property="og:type" content="article"><meta property="og:title" content="선택, 압축, 재투자: 장시간 비디오 다중 모달 언어 모델의 시각 토큰 할당에 관한 통제 연구"><meta property="og:description" content="선택, 압축, 재투자: 장시간 비디오 다중 모달 언어 모델의 시각 토큰 할당에 관한 통제 연구"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_03820v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="선택, 압축, 재투자: 장시간 비디오 다중 모달 언어 모델의 시각 토큰 할당에 관한 통제 연구"><meta name="twitter:description" content="선택, 압축, 재투자: 장시간 비디오 다중 모달 언어 모델의 시각 토큰 할당에 관한 통제 연구"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_03820v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "선택, 압축, 재투자: 장시간 비디오 다중 모달 언어 모델의 시각 토큰 할당에 관한 통제 연구", "description": "선택, 압축, 재투자: 장시간 비디오 다중 모달 언어 모델의 시각 토큰 할당에 관한 통제 연구", "datePublished": "2026-09-03", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_03820v1", "author": [{"@type": "Person", "name": "Prakhar Khatri"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_03820v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_03820v1"});gtag('event', 'paper_view', {"paper_id": "2609_03820v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>선택, 압축, 재투자: 장시간 비디오 다중 모달 언어 모델의 시각 토큰 할당에 관한 통제 연구</h1><p>선택, 압축, 재투자: 장시간 비디오 다중 모달 언어 모델의 시각 토큰 할당에 관한 통제 연구</p><pre>선택, 압축, 재투자: 장시간 비디오 다중 모달 언어 모델의 시각 토큰 할당에 관한 통제 연구
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Select, Compress, Reinvest: A Controlled Study of Visual-Token Allocation in Long-Video MLLMs
+&gt; - **저자:** Prakhar Khatri
+&gt; - **발행일:** 2026-09-03
+&gt; - **PDF 링크:** [Select, Compress, Reinvest: A Controlled Study of Visual-Token Allocation in Long-Video MLLMs](https://arxiv.org/pdf/2609.03820v1)
+
+
+✨ 3줄 핵심 요약
+* 장시간 비디오 모델에서 어떤 프레임을 선택할지는 모델 성능을 결정하는 가장 중요한 변수입니다.
+* 프레임별 공간적 해상도를 절반으로 압축해도 성능 손실은 거의 없으며, 여기서 절약된 자원을 더 많은 프레임을 확인하는 데 재투자할 때 성능이 향상됩니다.
+* 십수 년 전의 고전적 알고리즘인 OMP(Orthogonal Matching Pursuit)가 최신 전문 선택기들과 대등하거나 더 우수한 성능을 보입니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+장시간 비디오를 처리하는 AI 모델은 전체 영상을 다 볼 수 없기에, 아주 적은 수의 핵심 프레임만을 골라내야 합니다. 본 논문은 이 &#x27;프레임 선택&#x27; 과정이 단순한 전처리 과정이 아니라, 모델의 성능을 좌우하는 가장 중요한 병목 구간임을 밝힙니다. 
+
+연구 결과, 모델이 영상을 보는 방식에 세 가지 효율적인 전략이 필요함을 제시합니다. 첫째, 질문과 관련 없는 단순 균등 샘플링 대신 관련성이 높은 프레임을 선택할 것. 둘째, 각 프레임의 해상도를 적절히 낮춰도 성능 하락은 미미함. 셋째, 그렇게 아낀 자원을 활용해 더 많은 프레임을 분석하는 &#x27;재투자&#x27;를 수행할 것. 이 전략을 통해 모델은 영상의 양이 많아도 더욱 정확한 답변을 내놓을 수 있습니다.
+
+🎯 배경 및 문제점
+기존 연구들은 프레임 선택 전략을 평가할 때 인코더, 해상도 정책, 모델 구조 등을 동시에 바꾸어 비교했습니다. 이로 인해 특정 기법이 성능이 좋은 이유가 선택 전략 때문인지, 아니면 더 뛰어난 인코더를 사용했기 때문인지 명확히 파악하기 어려웠습니다. 또한, 균등 샘플링이 여전히 기본값으로 사용되는 현상을 개선하기 위해 본 연구는 동일한 조건(모델, 버짓, 프레임 수 등) 하에서 다양한 선택 규칙을 엄격하게 통제 비교했습니다.
+
+💡 핵심 기술 및 아키텍처
+* **선택(Select):** 질문에 적합한 프레임을 고르는 것이 핵심입니다. 고전적인 희소 근사 알고리즘인 OMP(Orthogonal Matching Pursuit)를 사용했을 때, 수많은 최신 전용 선택기들과 비교해도 성능 차이가 1점 이내로 매우 작음을 확인했습니다.
+* **압축(Compress):** 각 프레임의 공간적 토큰 버짓을 절반으로 줄여도, 전체 답변 정확도에는 최대 0.44점의 미미한 변화만 발생합니다.
+* **재투자(Reinvest):** 압축으로 확보한 자원을 활용해 전체 프레임 수를 2배로 늘리면, 기존 버짓 대비 2~3점의 성능 향상을 얻을 수 있습니다.
+
+📊 실험 결과 분석
+* **선택의 힘:** LongVideoBench의 1시간 영상 기준, 질문과 관련된 8개의 프레임을 선택하는 방식이 균등하게 배치된 16개의 프레임을 선택하는 방식보다 6.9점 더 우수했습니다.
+* **강건성:** LongCLIP과 SigLIP이라는 서로 다른 채점기(Scorer)를 사용하여 실험한 결과, 선택 방식의 우열 순서는 바뀌지 않았습니다.
+* **통제된 실험의 중요성:** 동일한 규칙을 적용하더라도 실험 환경(Harness)에 따라 0.07~3.74점의 성능 차이가 발생했습니다. 이는 서로 다른 논문의 수치를 직접 비교하는 것이 위험함을 시사합니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **실무적 효율성:** 장시간 영상 분석 서비스(예: CCTV 분석, 긴 강의 요약, 영상 기록물 검색)에서 고가의 컴퓨팅 자원을 낭비하지 않고도 훨씬 정확한 정보를 추출할 수 있는 효율적인 파이프라인을 구축할 수 있습니다.
+* **기술적 제언:** 최신 복잡한 모델을 도입하기 전에, 기존의 단순하고 검증된 선택 알고리즘(OMP 등)을 최적화하는 것만으로도 상당한 성능 개선이 가능함을 입증했습니다.
+* **평가 방법론의 변화:** 향후 모델 평가 시 시스템의 각 구성 요소를 독립적으로 제어하는 엄격한 비교 환경이 필수적임을 강조하며, 관련 코드와 선택 프레임 데이터를 공개하여 후속 연구의 기준을 제시했습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Visual Token Coding for Video Multimodal Large Language Models](https://arxiv.org/html/2608.28008)
+&gt; - [Rethinking Visual Token Reduction in LVLMs Under Cross-Modal Misalignment](https://ojs.aaai.org/index.php/AAAI/article/download/39949/43910)
+&gt; - [Awesome-Multimodal-Token-Compression/video-llm.md at main · cokeshao/Awesome-Multimodal-Token-Compression](https://github.com/cokeshao/Awesome-Multimodal-Token-Compression/blob/main/video-llm.md)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문 제목에 &#x27;통제된 연구(Controlled Study)&#x27;를 명시한 점은 높게 평가하나, 고전적인 OMP 알고리즘이 최신 기법과 대등하다는 결과는 역설적으로 현재 학계의 모델링 방향성이 과하게 복잡성만 쫓고 있다는 방증입니다. &#x27;재투자&#x27; 전략 역시 수학적으로는 당연한 귀결인데, 이를 논문으로 정립했다는 건 그간 우리가 얼마나 비효율적인 선택 편향을 가졌는지 보여주는군요. 후속 연구에서는 이 OMP의 계산 복잡도가 실제 실시간 추론 타임라인에서 어떤 병목을 만드는지도 정량화했어야 합니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님, 실무 입장에서는 OMP 같은 고전 알고리즘이 잘 작동한다는 게 오히려 희소식입니다. 런타임에 복잡한 신경망 기반 선택기 돌리는 것보다 구현도 쉽고 디버깅도 명확하거든요. 특히 프레임 해상도 절반으로 낮춰서 프레임 수 늘리는 &#x27;재투자&#x27;는 당장 우리 서비스 파이프라인에 내일 바로 적용해볼 만한 가치가 있습니다. 결국 우리 같은 엔지니어에겐 VRAM은 한정되어 있고, 성능 지표는 올려야 하니까요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, OMP가 다시 메타로 돌아오다니... 진짜 근본이 최고네요! 다들 최신 논문 보면서 SOTA 갱신하려고 모델 구조만 계속 키우고 있었는데, 결국 &#x27;어떻게 샘플링할 것인가&#x27;가 본질이었다는 게 너무 충격적이에요. 이거 내일 랩 세미나에서 발표하면 교수님한테 &#x27;고전의 재발견&#x27;이라고 칭찬받을 각인가요? 당장 구현 코드 뜯어봐야겠어요, 비디오 LLM 트렌드 또 한 번 뒤집히겠네요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
