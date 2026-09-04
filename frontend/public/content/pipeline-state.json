@@ -25703,11 +25703,11 @@
     "2609_01032v1": {
       "id": "2609_01032v1",
       "filename": "post_2609_01032v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-09-02T02:25:42.493727+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-02T02:25:42.493728+00:00",
+      "updated_at": "2026-09-04T20:33:06.594243+00:00",
       "paper": {
         "title": "On Synthesis of Metric Interval Temporal Logics",
         "summary": "Automated mining of formal specifications is vital for verifying real-time systems. However, existing passive learning approaches remain restricted to deterministic specifications or limited fragments of Timed Regular Expressions (TRE). To our knowledge, this paper presents the first framework to tackle \\emph{precise} passive learning for an expressive timed logic, \\emph{Metric Interval Temporal Logic} (MITL) without relying on predefined templates or restricted logic fragments.   Our approach formally reduces the timed learning problem into a scalable untimed one. By identifying quantitative timing differences between positive and negative traces, we synthesise precise timed constraints and inject them as new Boolean atomic propositions. This embeds timing into the alphabet, delegating the complex formula evaluation to highly optimised, off-the-shelf untimed LTL tools.   Crucially, our framework is complete, guaranteeing a separating specification can always be found. We evaluate our implementation across several benchmarks, demonstrating the effectiveness of our approach.",
@@ -25719,7 +25719,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2609.01032v1"
       },
-      "priority_score": 33
+      "priority_score": 33,
+      "korean_title": "메트릭 구간 시간 논리의 합성 연구"
     },
     "2609_01015v1": {
       "id": "2609_01015v1",
@@ -26022,11 +26023,11 @@
     "2608_29974v1": {
       "id": "2608_29974v1",
       "filename": "post_2608_29974v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-09-02T07:31:12.278856+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-02T18:21:35.790611+00:00",
+      "updated_at": "2026-09-04T20:33:16.145607+00:00",
       "paper": {
         "title": "SpanCalib-VLM: Calibrated Hallucination Span Detection in Vision-Language Models",
         "summary": "Detecting hallucinations in Large Vision-Language Models (LVLMs) requires both accurate span localization and well-calibrated confidence scores. Fine-tuned generative VLMs excel at identifying hallucinated text spans but suffer from overconfidence and high inference latency. Discriminative sequence taggers offer deterministic speed and superior calibration but exhibit conservative span recall. We present SpanCalib-VLM, a hybrid dual-system for the SHROOM-Visions Shared Task that combines a multimodal sequence tagger, consisting of XLM-RoBERTa-Large fused with a SigLIP vision encoder via cross-attention, with our fine-tuned generative VLM (Qwen3.5-4B-SHROOM-SFT). Through a Union-Calibrated Fusion strategy, candidate spans from the generative model are re-scored with calibrated probabilities from the sequence tagger. On the SHROOM-Visions English evaluation split, our ensemble achieves a Pearson calibration correlation of 0.41 and an overall IoU of 0.39, with a clean-response IoU of 0.91} and overall detection accuracy of 70.7%. We make our model weights and code publicly available.",
@@ -26037,7 +26038,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2608.29974v1"
       },
-      "priority_score": 33
+      "priority_score": 33,
+      "korean_title": "SpanCalib-VLM: 시각-언어 모델에서의 보정된 환각 구간 탐지"
     },
     "2608_29387v1": {
       "id": "2608_29387v1",
@@ -26689,7 +26691,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-03T02:32:44.679658+00:00",
       "last_error": null,
-      "updated_at": "2026-09-04T17:59:02.473564+00:00",
+      "updated_at": "2026-09-04T20:32:34.398671+00:00",
       "paper": {
         "title": "Percolation Dynamics in Optimization : Variance Cascades and Discrete Scale Invariance",
         "summary": "We study the dynamics of Stochastic Gradient Descent (SGD), which is known to steer deep neural networks toward invariant sets that correspond to simpler subnetworks. How this steering unfolds over time remains poorly understood. We answer this by modeling the stochastic gradient flow (SGF) as a percolation process, in which architectural symmetries force subnetworks to merge in discrete simultaneous blocks rather than one at a time. These structural transitions register as variance spikes in a macroscopic order parameter, echoing physical phase transitions. We further show this trapping mechanism and its associated scaling cascade extend to Adam and AdamW under an explicit heavy-tailed noise model.",
@@ -27262,7 +27264,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-04T07:37:18.009546+00:00",
       "last_error": null,
-      "updated_at": "2026-09-04T17:59:02.473517+00:00",
+      "updated_at": "2026-09-04T20:32:34.398623+00:00",
       "paper": {
         "title": "Let Confidence Change, Not the Prediction: Prediction-Preserving Repair for Post-hoc Calibration",
         "summary": "Post-hoc calibration corrects reported confidence, yet a multiclass calibrator can also change the associated top-1 prediction. Accuracy captures only the net effect of these changes on correctness, not how often predictions change; the Top-1 Prediction Change Rate (TPCR) instead measures this frequency. We propose Calibrator-Output Repair for Top-1 Decision Preservation (CORD), the first post-fit adapter to impose exact prediction preservation by repairing the full calibrated probability vector. From the original and calibrated outputs alone, CORD determines the mass assigned to the original top-1. The calibrated conditional distribution allocates the remaining mass over the other classes, yielding a repaired vector whose own argmax recovers the original prediction. On the calibration split, CORD coordinates the repaired masses to retain the calibrated outputs' mean mass on original predictions whenever attainable. The adapter alters neither the fitted calibrator nor its direct output, fits no additional supervised map, and requires no user- or validation-tuned hyperparameter. Across CIFAR-10/100 and ImageNet-1K, CORD attains zero TPCR by construction and lowers mean ECE, NLL, and Brier relative to the corresponding direct outputs in every dataset; paired gains persist under distribution shift and across calibration-set sizes. CORD thus removes the preservation constraint from calibrator fitting and assigns exact recovery of the original decision to subsequent output repair. Our code is available at https://github.com/labhai/CORD.",
@@ -27283,7 +27285,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-04T17:59:02.473536+00:00",
+      "updated_at": "2026-09-04T20:32:34.398653+00:00",
       "paper": {
         "title": "Random Attention: Rethinking KV Cache Eviction for Efficient Reasoning",
         "summary": "Large language models achieve superior performance on tasks that require extended reasoning, but long chains of thought make the KV cache a severe memory bottleneck. Existing KV cache compression methods share one paradigm: score each cached token by some estimate of how much it will matter later, and keep the top-scoring ones. We show that the selection signal contributes almost nothing. Random Attention keeps the prompt and evicts uniformly at random within each attention head, computing no score at all; across four models and six reasoning tasks it matches the strongest prior evictor while serving 32-43% higher throughput than it in vLLM deployment. Controlled experiments explain this by showing that 1) the prompt is the fragile part of the cache, and most of the gap between selectors is just whether their selection signal happened to keep it; 2) the reasoning trace protects itself against eviction with redundancy at two levels, in the text (the model restates what it still needs as it works) and across attention heads (each keeps its own copy of the trace), so once the prompt is safe, a random draw retains enough copies of what the model still needs, and no score is required to pick them. Our code is publicly available at https://github.com/SalesforceAIResearch/Random-Attention.",
@@ -27312,7 +27314,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-04T07:37:18.009578+00:00",
       "last_error": null,
-      "updated_at": "2026-09-04T17:59:02.473547+00:00",
+      "updated_at": "2026-09-04T20:32:34.398658+00:00",
       "paper": {
         "title": "Compile by Training: Turning Natural-Language Specifications into Local Neural Functions",
         "summary": "Many recurring text functions are easy to describe but difficult to implement with rules, while calling a large remote model for every input introduces repeated cost, latency, and dependency on a provider. We present compile by training, which turns a natural-language specification into a reusable neural function. At compile time, teacher models generate task-specific examples that are used to train a small adapter for a compact interpreter. The resulting function runs without the teachers and can be stored, versioned, and composed like ordinary software. On FuzzyBench-Hard, a subset on which the Program-as-Weights fast compiler produced no exact matches, compile by training reaches 83.6% semantic accuracy. This higher accuracy comes with a higher compile-time cost: roughly a minute rather than seconds for the fast compiler. We deploy the compiler in a public interactive service and demonstrate compiled functions in a multi-site website helper, a language-controlled 3D avatar, and a bidirectional English-Claudish translator.",
@@ -27333,7 +27335,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-04T17:59:02.473551+00:00",
+      "updated_at": "2026-09-04T20:32:34.398666+00:00",
       "paper": {
         "title": "Replacing Training with Memory: Listwise Selection for Text-to-SQL",
         "summary": "Modern Text-to-SQL systems often follow generate-execute-select pipelines, generating multiple candidate queries then selecting the best one. Listwise selection, by jointly comparing multiple candidates, has been widely adopted, but fine-tuning listwise selectors is costly. We thus propose a fine-tuning-free listwise selector. We replace two major fine-tuning objectives with inference-time strategies: (1) learning selection criteria as ordering and (2) mitigating positional bias. First, we build reusable structured memories instead of learning selection behavior as model parameters. Given a question, MaP-SQL retrieves memories distilled from training data that encode how natural language maps to schema elements, SQL operations, and expected outputs. These memories serve as explicit decision criteria for evaluating candidates in a listwise manner. Second, to mitigate ordering bias of listwise selectors, we aggregate rankings across multiple input permutations, with inference cost optimized by execution results and pointwise scoring. Our approach improves selection accuracy while maintaining efficiency and compatibility with existing large language models. Across Text-to-SQL benchmarks, it produces more stable selection without fine-tuning and fewer unnecessary comparisons than existing methods. On BIRD-dev, it outperforms the previous state-of-the-art selector-based method R^3-SQL by 2.02 execution accuracy points on average using the same candidate sets, with 2.92x fewer tokens.",
@@ -27377,7 +27379,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-04T17:59:02.473560+00:00",
+      "updated_at": "2026-09-04T20:32:34.398662+00:00",
       "paper": {
         "title": "Knowing When Not to Reuse: Conditional Experience Transfer in Autonomous LLM Post-Training",
         "summary": "Large language models offer broad capabilities, but adapting them to evolving domains, tools, and requirements often entails repeated post-training. Autonomous systems automate parts of this process by proposing updates, training candidates, and using evaluation feedback to select subsequent proposals. As evidence accumulates, a central problem emerges: which past update evidence remains actionable after subsequent training has changed the parent model? An update's effect depends on its parent, data, and training stage. Treating past success as context-free permission can waste compute. If the resulting child is promoted, it can also degrade the subsequent training trajectory. We formulate this problem as conditional experience transfer and introduce Boundary-Calibrated Intervention Transfer (BCIT), a method that authorizes experience reuse before weight-changing training. BCIT binds an observed effect to its source context, checks applicability conditions, vetoes candidates with named hard conflicts, and obtains current-state evidence through a bounded training trial when needed. Fully trained candidates still face a shared adoption rule, and only observed events extend memory. On one 4B model adapted across finance reasoning, text-to-SQL, and function calling, candidate updates exhibit heterogeneous target and retention effects across the evaluated contexts. Under matched candidates, evidence, and compute, BCIT authorizes fewer harmful updates and attains higher equal-budget final-model quality than the evaluated alternatives. These results support treating experience authorization as a distinct problem in autonomous post-training.",
@@ -27402,7 +27404,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-04T07:37:18.009600+00:00",
       "last_error": null,
-      "updated_at": "2026-09-04T17:59:02.473568+00:00",
+      "updated_at": "2026-09-04T20:32:34.398675+00:00",
       "paper": {
         "title": "The Missing Temporal Link: Temporal Context Routing for Script-Driven Audio-Video Generation",
         "summary": "Joint audio-video generation models have made substantial progress in visual quality and audio-visual synchronization. However, they still provide limited control over when shot transitions occur and dialogue is spoken. This limitation constrains their application in script-driven content creation, where timing errors can undermine narrative coherence and the viewing experience. Current joint generators align video and audio representations on a shared temporal axis, yet the precise timing of shots and dialogue specified in a structured prompt is encoded only in the prompt's text representation and remains unaligned with the temporal coordinates of either modality. Consequently, video and audio may remain synchronized with each other while both fail to follow the script timeline. This mismatch motivates us to extend temporal alignment beyond video and audio to include the structured script. We therefore introduce Temporal Context Routing (TCR), which maps the script timing onto the shared temporal axis of video and audio generation and routes each prompt's guidance to the corresponding positions in both modalities. Compared with the baseline on 200 test scripts, TCR reduces Shot Boundary MAE by 96%, from 1.11 s to 0.042 s, and raises Dialogue Acc@0.5 s from 28.3% to 84.1%. TCR achieves these improvements while maintaining visual quality and audio-visual synchronization comparable to those of the baselines. A user study further shows that participants prefer TCR on all five evaluated dimensions.",
@@ -27457,7 +27459,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-04T13:04:34.882600+00:00",
       "last_error": null,
-      "updated_at": "2026-09-04T17:59:02.473542+00:00",
+      "updated_at": "2026-09-04T20:32:34.398646+00:00",
       "paper": {
         "title": "Select, Compress, Reinvest: A Controlled Study of Visual-Token Allocation in Long-Video MLLMs",
         "summary": "Long-video language models cannot look at every frame: an hour sampled once per second is 3,600 images, and a system keeps only a small fixed slice of that pool. Which frames survive that slice is usually treated as a preprocessing detail; we test whether it should be. Published selectors make the comparison hard because they change the frame scorer, the prompt boundary, the resolution policy, and the answering model all at once. We hold each fixed and vary one decision at a time: selection, spatial compression, and reinvestment of the savings, across six training-free selection rules, three long-video benchmarks, and two answering models. Selection is the largest single lever: on LongVideoBench's hour-long bin, eight query-selected frames beat sixteen uniformly spaced ones by 6.9 points, and Orthogonal Matching Pursuit, an unmodified decades-old sparse-approximation algorithm, matches or comes within a point of every purpose-built selector we compare it against, across all three benchmarks. Compression is close to free: halving each frame's spatial budget at fixed timestamps costs at most 0.44 points. Reinvestment is where that budget turns back into accuracy: spending the freed tokens on twice as many compressed frames, at a measured cost no higher than the original eight, returns a further two to three points; compression only pays off once its savings are spent this way. Along the way, an implementation bug in our own AKS baseline and a 0.07 to 3.74 point gap between two harnesses running the same published rules at the same budget show why these comparisons need to happen inside one controlled harness rather than across papers.",
@@ -27494,10 +27496,67 @@
         "pdf_link": "https://arxiv.org/pdf/2609.04201v1"
       },
       "priority_score": 14
+    },
+    "2608_29253v1": {
+      "id": "2608_29253v1",
+      "filename": "post_2608_29253v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-09-04T20:32:56.757943+00:00",
+      "paper": {
+        "title": "QCell: Recombining and Aligning Cell Queries for Overlapping Instance Segmentation",
+        "summary": "Instance segmentation of overlapping cells in microscopy remains challenging due to semi-transparent structures that produce weak boundaries and mixed visual evidence in overlap regions. Existing methods address this through local regions of interest or shape priors but lack global reasoning across overlapping objects. We present QCell, a novel query-based model that de-overlaps cell instances in microscopy scenes. Our approach combines (i) an instance recombination module that decomposes and recombines query representations in latent space, enabling the model to reason about complete object structure under overlap, and (ii) a contrastive query alignment objective that combines distinctive instance feature learning and separation of overlapping cell queries. We additionally introduce a new Organoid dataset benchmark for overlapping cell segmentation. We show that QCell outperforms state-of-the-art methods across multiple benchmarks, achieving +2.2 AP and +2.7 AJI on ISBI2014. Code is available at https://github.com/SlavkoPrytula/QCell",
+        "published": "2026-08-29T13:12:42Z",
+        "authors": [
+          "Yaroslav Prytula",
+          "Anton Popov",
+          "Dmytro Fishman"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.29253v1"
+      },
+      "priority_score": 43,
+      "korean_title": "QCell: 겹치는 세포 인스턴스 분할을 위한 세포 쿼리 재결합 및 정렬"
+    },
+    "2609_03952v1": {
+      "id": "2609_03952v1",
+      "filename": "post_2609_03952v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-09-04T20:32:46.366596+00:00",
+      "paper": {
+        "title": "WorldReward: Reward Modeling for Camera-Conditioned World Models",
+        "summary": "Camera-conditioned world models generate interactive videos in which commanded actions should induce the expected scene changes while appearance, geometry, and temporal dynamics remain coherent. Existing rewards assess these requirements separately: geometry-based rewards estimate trajectory execution but cannot judge the visual quality of the executed motion, whereas image-based rewards measure frame quality without capturing action execution or temporal dynamics. We posit that a vision-language model (VLM) offers a shared reasoning space for relating actions to their visual outcomes. However, judging a complete long video against its full action sequence creates a lengthy, noisy context in which short-lived local action evidence can be missed or diluted. We present WorldReward, a VLM-based pairwise preference reward model that unifies action-consistency and visual-quality evaluation for camera-conditioned world models. WorldReward decomposes paired videos into action-aligned chunks, organizes each chunk into structured visual evidence, and aggregates chunk-level decisions by voting into separate video-level action and visual-quality preferences. To train it, we construct a large-scale reasoning-augmented preference dataset using structured judgments generated by a frontier VLM and refined through tool-based agent auditing and targeted human review. We further introduce WorldReward-Bench, a human-annotated benchmark measuring reward-model agreement with human preferences across action consistency, appearance quality, and motion quality. WorldReward achieves the highest agreement on all three dimensions, exceeding GPT-5.5 by 3.42, 1.45, and 3.56 percentage points, respectively. When used for RL post-training of HY-WorldPlay 1.5, it consistently improves both action execution and visual quality across short- to long-term horizons.",
+        "published": "2026-09-03T14:53:53Z",
+        "authors": [
+          "Yibin Wang",
+          "Zehan Wang",
+          "Junshu Tang",
+          "Zhimin Li",
+          "Yujie Zhou",
+          "Jiazi Bu",
+          "Pengyang Ling",
+          "Feng Han",
+          "Zhixiong Zhang",
+          "Long Xing",
+          "Shengyuan Ding",
+          "Ziang Li",
+          "Cheng Jin",
+          "Yuhang Zang",
+          "Jiaqi Wang",
+          "Tianyu Pang"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.03952v1"
+      },
+      "priority_score": 60,
+      "korean_title": "WorldReward: 카메라 조건부 월드 모델을 위한 보상 모델링"
     }
   },
   "last_run": {
-    "started_at": "2026-09-04T17:59:02.475765+00:00",
+    "started_at": "2026-09-04T20:32:34.401049+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -27508,25 +27567,25 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 21827,
-      "output_tokens": 5733,
+      "prompt_tokens": 20379,
+      "output_tokens": 5822,
       "thought_tokens": 0,
-      "total_tokens": 27560,
-      "estimated_usd": 0.01405625
+      "total_tokens": 26201,
+      "estimated_usd": 0.01382775
     },
-    "finished_at": "2026-09-04T18:00:04.777711+00:00"
+    "finished_at": "2026-09-04T20:33:16.826333+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 1878,
-    "prompt_tokens": 4726538,
-    "output_tokens": 1383240,
+    "requests": 1886,
+    "prompt_tokens": 4746917,
+    "output_tokens": 1389062,
     "thought_tokens": 0,
-    "total_tokens": 6109778,
-    "estimated_usd": 3.2564945
+    "total_tokens": 6135979,
+    "estimated_usd": 3.27032225
   },
   "last_publication_run": {
-    "started_at": "2026-09-04T17:59:02.475765+00:00",
+    "started_at": "2026-09-04T20:32:34.401049+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -27537,17 +27596,17 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 21827,
-      "output_tokens": 5733,
+      "prompt_tokens": 20379,
+      "output_tokens": 5822,
       "thought_tokens": 0,
-      "total_tokens": 27560,
-      "estimated_usd": 0.01405625
+      "total_tokens": 26201,
+      "estimated_usd": 0.01382775
     },
-    "finished_at": "2026-09-04T18:00:04.777711+00:00"
+    "finished_at": "2026-09-04T20:33:16.826333+00:00"
   },
   "daily_usage": {
     "date": "2026-09-04",
-    "estimated_usd": 0.05518625,
-    "publications": 16
+    "estimated_usd": 0.069014,
+    "publications": 20
   }
 }
