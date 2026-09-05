@@ -24173,11 +24173,11 @@
     "2608_29335v1": {
       "id": "2608_29335v1",
       "filename": "post_2608_29335v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-09-01T08:12:18.300853+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-01T22:55:46.726317+00:00",
+      "updated_at": "2026-09-05T22:34:58.399609+00:00",
       "paper": {
         "title": "GenFirst: Generation Before Reconstruction for Stable End-to-End Latent Generative Modeling",
         "summary": "Latent generative models typically follow a two-stage pipeline, training a variational autoencoder for reconstruction and then a generative model on the frozen latent space. Since reconstruction-optimized latents are not necessarily generation-friendly, jointly training both models is an appealing alternative. However, direct end-to-end training remains challenging, as it is prone to latent collapse and faces a generation-reconstruction conflict. We revisit this problem by analyzing how different objectives shape the latent space and identify two key insights. First, the entropy term in the Kullback-Leibler divergence objective is essential for preventing collapse: reconstruction and prior fitting tend to shrink the posterior, while entropy preserves non-degenerate latent uncertainty. Second, reconstruction and generation exhibit asymmetric learning dynamics: reconstruction is fast and strongly supervised, whereas generation is slower and harder to optimize. Based on these insights, we achieve the first direct end-to-end training without latent collapse and propose GenFirst, a simple generation-before-reconstruction strategy. The generative objective first shapes the latent space under weak reconstruction pressure, after which reconstruction is progressively strengthened to recover visual details. We validate GenFirst with continuous autoregressive priors with exact likelihoods and SiT priors with implicit likelihoods. With our end-to-end objective and GenFirst, SiT achieves a gFID of 0.97 with CFG and 1.45 without CFG on ImageNet-256, while MMDiT reaches a GenEval score of 0.90 on text-to-image generation. Beyond image generation, we extend the framework to shared visual latents for generation and representation learning, and to continuous unified text-image generation. These results demonstrate the generality of stable end-to-end latent learning across generative priors and modalities.",
@@ -24193,7 +24193,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2608.29335v1"
       },
-      "priority_score": 30
+      "priority_score": 30,
+      "korean_title": "GenFirst: 안정적인 종단간 잠재 생성 모델링을 위한 재구성 이전의 생성 전략"
     },
     "2608_30530v1": {
       "id": "2608_30530v1",
@@ -24281,11 +24282,11 @@
     "2608_30209v1": {
       "id": "2608_30209v1",
       "filename": "post_2608_30209v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-09-01T08:12:18.300896+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-01T22:55:46.726304+00:00",
+      "updated_at": "2026-09-05T22:34:49.398383+00:00",
       "paper": {
         "title": "DICS: Exploring Data Intrinsic Consistency for Visual Instruction Selection",
         "summary": "Visual instruction tuning is crucial for advancing the vision-language alignment and instruction-following capabilities of Vision-Language Models (VLMs). However, identifying optimal subsets under a fixed ratio constraint from rapidly expanding datasets remains a significant bottleneck. While existing methods largely depend on distribution diversity or heuristic filtering, they often overlook the internal coherence within individual samples. To bridge this gap, we propose Data Intrinsic Consistency (DIC), a self-scoring metric designed to quantify the sample-level inter-component consistency. DIC consists of two modules: Visual Information Consistency (VIC), evaluating the alignment between visual content and instructions, and Response Information Consistency (RIC), assessing response coherence relative to the instruction. Building upon DIC, we introduce Data Intrinsic Consistency Selection (DICS), an adaptive data selection method that optimizes the trade-off between high intra-sample consistency and global distributional diversity under varying data budgets. Extensive experiments demonstrate that DICS consistently outperforms state-of-the-art methods across diverse dataset scales and model architectures, surpassing full-dataset fine-tuning while using only 25% of the LLaVA-1.5-665K data. We further curate DICS-6M, a 6M-sample multi-modal instruction corpus that enables the largest-scale visual instruction selection study to date; remarkably, DICS reaches 94.52\\% of the official InternVL3-8B-Instruct performance using less than 25\\% of its reported training data. Code can be seen at https://github.com/cqu-student/DICS",
@@ -24303,7 +24304,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2608.30209v1"
       },
-      "priority_score": 30
+      "priority_score": 30,
+      "korean_title": "DICS: 시각적 지시 선택을 위한 데이터 고유 일관성 탐구"
     },
     "2608_31113v1": {
       "id": "2608_31113v1",
@@ -24942,11 +24944,11 @@
     "2608_30963v1": {
       "id": "2608_30963v1",
       "filename": "post_2608_30963v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-09-01T13:52:16.244094+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-01T13:52:16.244095+00:00",
+      "updated_at": "2026-09-05T22:34:41.608750+00:00",
       "paper": {
         "title": "A Universal Context-Reuse Layer for Cross-Model KV Sharing",
         "summary": "Modern large language model (LLM) serving systems increasingly operate over repeated or shared context, yet each model typically performs its own prefill computation even when another model has already processed the same input. Existing KV-cache reuse mechanisms substantially reduce redundant computation within a single model, but generally assume that the producer and consumer of a cache are identical. We study \\emph{cross-model KV sharing}, which translates the KV state produced by a source model into a representation that can be consumed by a different target model, including models that differ in scale, architecture, attention configuration, tokenizer, and model family. We evaluate the approach in both within-family and cross-family settings. For Qwen2.5-7B $\\rightarrow$ Qwen2.5-1.5B, translated KV states improve LongBench2 accuracy from 27.59\\% to 34.48\\%, a gain of 6.89 percentage points over the native 1.5B baseline, while reducing handoff cost relative to native target prefill. For the cross-family Qwen2.5-1.5B $\\rightarrow$ Gemma-2-2B setting, KV handoff reduces target-side prefill cost by up to 67.05\\% at 4K context length while maintaining decoding perplexity close to native-model baselines. In a more heterogeneous Llama3.1-70B $\\rightarrow$ Qwen2.5-7B setting, cross-family handoff achieves 44.0\\% accuracy compared with 45.7\\% for native Qwen2.5-7B inference, while reducing measured latency from 899ms to 138ms. These results provide initial evidence that KV states can serve as transferable computational representations rather than strictly model-local caches, and motivate \\emph{context mobility} as a systems abstraction for reducing redundant prefill across heterogeneous LLM and multi-agent inference workflows.",
@@ -24959,7 +24961,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2608.30963v1"
       },
-      "priority_score": 30
+      "priority_score": 30,
+      "korean_title": "모델 간 KV 공유를 위한 범용 컨텍스트 재사용 레이어"
     },
     "2608_30959v1": {
       "id": "2608_30959v1",
@@ -25095,11 +25098,11 @@
     "2608_29137v1": {
       "id": "2608_29137v1",
       "filename": "post_2608_29137v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-09-01T18:06:07.687669+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-01T22:55:46.726309+00:00",
+      "updated_at": "2026-09-05T22:35:15.270266+00:00",
       "paper": {
         "title": "Chat-Edit-3D++: Interactive 3D and 4D Scene Editing via Large Language Models",
         "summary": "Recent work on image content manipulation based on vision-language pre-training models has been effectively extended to text-driven 3D scene editing. However, existing schemes for 3D scene editing still have certain shortcomings, hindering their further development as interactive design tools. Such schemes typically adhere to fixed input patterns, limiting flexibility in text input. Furthermore, their editing capabilities are constrained by a single or a few 2D visual models and require intricate pipeline design to integrate these models into 3D reconstruction processes. To address the aforementioned issues, we propose the Hash-Atlas network, which reformulates 3D scene editing as operations on 2D atlas images, thereby achieving a workflow decoupling of the 2D editing and 3D reconstruction processes. Building on this foundation, we introduce a dialogue-based 3D scene editing approach, termed CE3D++, which is centered on a large language model (LLM) that allows arbitrary textual input from users and interprets their intentions, subsequently facilitating the autonomous invocation of the corresponding visual models. Additionally, we extend CE3D++ to monocular 4D scenes by imposing motion constraints on moving objects and further fine-tuning the LLM by creating a trajectory dataset related to editing tasks, which enables the smaller LLM to schedule up to 30 different visual tools accurately. Experimental results demonstrate that CE3D++ effectively integrates multiple visual models to achieve diverse visual editing effects, possessing strong scene comprehension and multi-round dialog capabilities. The source codes and trained models are available at https://github.com/Fangkang515/CE3D.",
@@ -25115,7 +25118,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2608.29137v1"
       },
-      "priority_score": 30
+      "priority_score": 30,
+      "korean_title": "Chat-Edit-3D++: 대규모 언어 모델을 통한 대화형 3D 및 4D 장면 편집"
     },
     "2608_28958v1": {
       "id": "2608_28958v1",
@@ -26699,7 +26703,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-03T02:32:44.679658+00:00",
       "last_error": null,
-      "updated_at": "2026-09-05T19:48:35.235499+00:00",
+      "updated_at": "2026-09-05T22:34:33.624209+00:00",
       "paper": {
         "title": "Percolation Dynamics in Optimization : Variance Cascades and Discrete Scale Invariance",
         "summary": "We study the dynamics of Stochastic Gradient Descent (SGD), which is known to steer deep neural networks toward invariant sets that correspond to simpler subnetworks. How this steering unfolds over time remains poorly understood. We answer this by modeling the stochastic gradient flow (SGF) as a percolation process, in which architectural symmetries force subnetworks to merge in discrete simultaneous blocks rather than one at a time. These structural transitions register as variance spikes in a macroscopic order parameter, echoing physical phase transitions. We further show this trapping mechanism and its associated scaling cascade extend to Adam and AdamW under an explicit heavy-tailed noise model.",
@@ -27272,7 +27276,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-04T07:37:18.009546+00:00",
       "last_error": null,
-      "updated_at": "2026-09-05T19:48:35.235451+00:00",
+      "updated_at": "2026-09-05T22:34:33.624176+00:00",
       "paper": {
         "title": "Let Confidence Change, Not the Prediction: Prediction-Preserving Repair for Post-hoc Calibration",
         "summary": "Post-hoc calibration corrects reported confidence, yet a multiclass calibrator can also change the associated top-1 prediction. Accuracy captures only the net effect of these changes on correctness, not how often predictions change; the Top-1 Prediction Change Rate (TPCR) instead measures this frequency. We propose Calibrator-Output Repair for Top-1 Decision Preservation (CORD), the first post-fit adapter to impose exact prediction preservation by repairing the full calibrated probability vector. From the original and calibrated outputs alone, CORD determines the mass assigned to the original top-1. The calibrated conditional distribution allocates the remaining mass over the other classes, yielding a repaired vector whose own argmax recovers the original prediction. On the calibration split, CORD coordinates the repaired masses to retain the calibrated outputs' mean mass on original predictions whenever attainable. The adapter alters neither the fitted calibrator nor its direct output, fits no additional supervised map, and requires no user- or validation-tuned hyperparameter. Across CIFAR-10/100 and ImageNet-1K, CORD attains zero TPCR by construction and lowers mean ECE, NLL, and Brier relative to the corresponding direct outputs in every dataset; paired gains persist under distribution shift and across calibration-set sizes. CORD thus removes the preservation constraint from calibrator fitting and assigns exact recovery of the original decision to subsequent output repair. Our code is available at https://github.com/labhai/CORD.",
@@ -27293,7 +27297,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-05T19:48:35.235480+00:00",
+      "updated_at": "2026-09-05T22:34:33.624199+00:00",
       "paper": {
         "title": "Random Attention: Rethinking KV Cache Eviction for Efficient Reasoning",
         "summary": "Large language models achieve superior performance on tasks that require extended reasoning, but long chains of thought make the KV cache a severe memory bottleneck. Existing KV cache compression methods share one paradigm: score each cached token by some estimate of how much it will matter later, and keep the top-scoring ones. We show that the selection signal contributes almost nothing. Random Attention keeps the prompt and evicts uniformly at random within each attention head, computing no score at all; across four models and six reasoning tasks it matches the strongest prior evictor while serving 32-43% higher throughput than it in vLLM deployment. Controlled experiments explain this by showing that 1) the prompt is the fragile part of the cache, and most of the gap between selectors is just whether their selection signal happened to keep it; 2) the reasoning trace protects itself against eviction with redundancy at two levels, in the text (the model restates what it still needs as it works) and across attention heads (each keeps its own copy of the trace), so once the prompt is safe, a random draw retains enough copies of what the model still needs, and no score is required to pick them. Our code is publicly available at https://github.com/SalesforceAIResearch/Random-Attention.",
@@ -27322,7 +27326,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-04T07:37:18.009578+00:00",
       "last_error": null,
-      "updated_at": "2026-09-05T19:48:35.235485+00:00",
+      "updated_at": "2026-09-05T22:34:33.624203+00:00",
       "paper": {
         "title": "Compile by Training: Turning Natural-Language Specifications into Local Neural Functions",
         "summary": "Many recurring text functions are easy to describe but difficult to implement with rules, while calling a large remote model for every input introduces repeated cost, latency, and dependency on a provider. We present compile by training, which turns a natural-language specification into a reusable neural function. At compile time, teacher models generate task-specific examples that are used to train a small adapter for a compact interpreter. The resulting function runs without the teachers and can be stored, versioned, and composed like ordinary software. On FuzzyBench-Hard, a subset on which the Program-as-Weights fast compiler produced no exact matches, compile by training reaches 83.6% semantic accuracy. This higher accuracy comes with a higher compile-time cost: roughly a minute rather than seconds for the fast compiler. We deploy the compiler in a public interactive service and demonstrate compiled functions in a multi-site website helper, a language-controlled 3D avatar, and a bidirectional English-Claudish translator.",
@@ -27366,7 +27370,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-04T07:37:18.009588+00:00",
       "last_error": null,
-      "updated_at": "2026-09-05T19:48:35.235489+00:00",
+      "updated_at": "2026-09-05T22:34:33.624220+00:00",
       "paper": {
         "title": "FlashRender: Few-Step Generative Rendering via Camera-Controlled Video MeanFlow",
         "summary": "We present FlashRender, a few-step generative rendering framework that retakes a source video along a target camera trajectory in seconds. We identify sampling-step-dependent camera control as a prominent manifestation of discretization error in existing multi-step generative rendering models and show that resolving this inconsistency substantially lowers denoising trajectory curvature, facilitating subsequent step distillation. To this end, we introduce Representation Transformation and Alignment (RETA), which aligns hidden source-video representations with target-video features from a frozen visual geometry model. This directly encodes the geometric transformation within the source-video stream, enabling sampling-step-consistent camera control. We then fine-tune the model with the MeanFlow objective on the lower-curvature denoising trajectory induced by RETA, allowing the model to more effectively address discretization error. Finally, we apply on-policy flow map distillation to correct self-rollout errors under fixed few-step sampling. Extensive experiments show that RETA, MeanFlow, and on-policy flow map distillation play complementary roles in few-step generative rendering. Together, they enable our approach to match multi-step baselines in video quality and geometric consistency at 25x lower sampling cost while achieving superior camera controllability, even under out-of-distribution target camera trajectories.",
@@ -27387,7 +27391,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-05T19:48:35.235494+00:00",
+      "updated_at": "2026-09-05T22:34:33.624206+00:00",
       "paper": {
         "title": "Knowing When Not to Reuse: Conditional Experience Transfer in Autonomous LLM Post-Training",
         "summary": "Large language models offer broad capabilities, but adapting them to evolving domains, tools, and requirements often entails repeated post-training. Autonomous systems automate parts of this process by proposing updates, training candidates, and using evaluation feedback to select subsequent proposals. As evidence accumulates, a central problem emerges: which past update evidence remains actionable after subsequent training has changed the parent model? An update's effect depends on its parent, data, and training stage. Treating past success as context-free permission can waste compute. If the resulting child is promoted, it can also degrade the subsequent training trajectory. We formulate this problem as conditional experience transfer and introduce Boundary-Calibrated Intervention Transfer (BCIT), a method that authorizes experience reuse before weight-changing training. BCIT binds an observed effect to its source context, checks applicability conditions, vetoes candidates with named hard conflicts, and obtains current-state evidence through a bounded training trial when needed. Fully trained candidates still face a shared adoption rule, and only observed events extend memory. On one 4B model adapted across finance reasoning, text-to-SQL, and function calling, candidate updates exhibit heterogeneous target and retention effects across the evaluated contexts. Under matched candidates, evidence, and compute, BCIT authorizes fewer harmful updates and attains higher equal-budget final-model quality than the evaluated alternatives. These results support treating experience authorization as a distinct problem in autonomous post-training.",
@@ -27412,7 +27416,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-04T07:37:18.009600+00:00",
       "last_error": null,
-      "updated_at": "2026-09-05T19:48:35.235503+00:00",
+      "updated_at": "2026-09-05T22:34:33.624211+00:00",
       "paper": {
         "title": "The Missing Temporal Link: Temporal Context Routing for Script-Driven Audio-Video Generation",
         "summary": "Joint audio-video generation models have made substantial progress in visual quality and audio-visual synchronization. However, they still provide limited control over when shot transitions occur and dialogue is spoken. This limitation constrains their application in script-driven content creation, where timing errors can undermine narrative coherence and the viewing experience. Current joint generators align video and audio representations on a shared temporal axis, yet the precise timing of shots and dialogue specified in a structured prompt is encoded only in the prompt's text representation and remains unaligned with the temporal coordinates of either modality. Consequently, video and audio may remain synchronized with each other while both fail to follow the script timeline. This mismatch motivates us to extend temporal alignment beyond video and audio to include the structured script. We therefore introduce Temporal Context Routing (TCR), which maps the script timing onto the shared temporal axis of video and audio generation and routes each prompt's guidance to the corresponding positions in both modalities. Compared with the baseline on 200 test scripts, TCR reduces Shot Boundary MAE by 96%, from 1.11 s to 0.042 s, and raises Dialogue Acc@0.5 s from 28.3% to 84.1%. TCR achieves these improvements while maintaining visual quality and audio-visual synchronization comparable to those of the baselines. A user study further shows that participants prefer TCR on all five evaluated dimensions.",
@@ -27467,7 +27471,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-05T19:48:35.235474+00:00",
+      "updated_at": "2026-09-05T22:34:33.624195+00:00",
       "paper": {
         "title": "Select, Compress, Reinvest: A Controlled Study of Visual-Token Allocation in Long-Video MLLMs",
         "summary": "Long-video language models cannot look at every frame: an hour sampled once per second is 3,600 images, and a system keeps only a small fixed slice of that pool. Which frames survive that slice is usually treated as a preprocessing detail; we test whether it should be. Published selectors make the comparison hard because they change the frame scorer, the prompt boundary, the resolution policy, and the answering model all at once. We hold each fixed and vary one decision at a time: selection, spatial compression, and reinvestment of the savings, across six training-free selection rules, three long-video benchmarks, and two answering models. Selection is the largest single lever: on LongVideoBench's hour-long bin, eight query-selected frames beat sixteen uniformly spaced ones by 6.9 points, and Orthogonal Matching Pursuit, an unmodified decades-old sparse-approximation algorithm, matches or comes within a point of every purpose-built selector we compare it against, across all three benchmarks. Compression is close to free: halving each frame's spatial budget at fixed timestamps costs at most 0.44 points. Reinvestment is where that budget turns back into accuracy: spending the freed tokens on twice as many compressed frames, at a measured cost no higher than the original eight, returns a further two to three points; compression only pays off once its savings are spent this way. Along the way, an implementation bug in our own AKS baseline and a 0.07 to 3.74 point gap between two harnesses running the same published rules at the same budget show why these comparisons need to happen inside one controlled harness rather than across papers.",
@@ -27513,7 +27517,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-05T19:48:35.235508+00:00",
+      "updated_at": "2026-09-05T22:34:33.624215+00:00",
       "paper": {
         "title": "QCell: Recombining and Aligning Cell Queries for Overlapping Instance Segmentation",
         "summary": "Instance segmentation of overlapping cells in microscopy remains challenging due to semi-transparent structures that produce weak boundaries and mixed visual evidence in overlap regions. Existing methods address this through local regions of interest or shape priors but lack global reasoning across overlapping objects. We present QCell, a novel query-based model that de-overlaps cell instances in microscopy scenes. Our approach combines (i) an instance recombination module that decomposes and recombines query representations in latent space, enabling the model to reason about complete object structure under overlap, and (ii) a contrastive query alignment objective that combines distinctive instance feature learning and separation of overlapping cell queries. We additionally introduce a new Organoid dataset benchmark for overlapping cell segmentation. We show that QCell outperforms state-of-the-art methods across multiple benchmarks, achieving +2.2 AP and +2.7 AJI on ISBI2014. Code is available at https://github.com/SlavkoPrytula/QCell",
@@ -27535,7 +27539,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-05T17:03:50.379865+00:00",
+      "updated_at": "2026-09-05T22:34:33.624217+00:00",
       "paper": {
         "title": "WorldReward: Reward Modeling for Camera-Conditioned World Models",
         "summary": "Camera-conditioned world models generate interactive videos in which commanded actions should induce the expected scene changes while appearance, geometry, and temporal dynamics remain coherent. Existing rewards assess these requirements separately: geometry-based rewards estimate trajectory execution but cannot judge the visual quality of the executed motion, whereas image-based rewards measure frame quality without capturing action execution or temporal dynamics. We posit that a vision-language model (VLM) offers a shared reasoning space for relating actions to their visual outcomes. However, judging a complete long video against its full action sequence creates a lengthy, noisy context in which short-lived local action evidence can be missed or diluted. We present WorldReward, a VLM-based pairwise preference reward model that unifies action-consistency and visual-quality evaluation for camera-conditioned world models. WorldReward decomposes paired videos into action-aligned chunks, organizes each chunk into structured visual evidence, and aggregates chunk-level decisions by voting into separate video-level action and visual-quality preferences. To train it, we construct a large-scale reasoning-augmented preference dataset using structured judgments generated by a frontier VLM and refined through tool-based agent auditing and targeted human review. We further introduce WorldReward-Bench, a human-annotated benchmark measuring reward-model agreement with human preferences across action consistency, appearance quality, and motion quality. WorldReward achieves the highest agreement on all three dimensions, exceeding GPT-5.5 by 3.42, 1.45, and 3.56 percentage points, respectively. When used for RL post-training of HY-WorldPlay 1.5, it consistently improves both action execution and visual quality across short- to long-term horizons.",
@@ -28269,7 +28273,7 @@
     }
   },
   "last_run": {
-    "started_at": "2026-09-05T19:48:35.237894+00:00",
+    "started_at": "2026-09-05T22:34:33.625752+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -28280,25 +28284,25 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 19808,
-      "output_tokens": 5967,
+      "prompt_tokens": 22029,
+      "output_tokens": 5796,
       "thought_tokens": 0,
-      "total_tokens": 25775,
-      "estimated_usd": 0.0139025
+      "total_tokens": 27825,
+      "estimated_usd": 0.01420125
     },
-    "finished_at": "2026-09-05T19:49:16.275756+00:00"
+    "finished_at": "2026-09-05T22:35:15.735414+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 1934,
-    "prompt_tokens": 4867284,
-    "output_tokens": 1424844,
+    "requests": 1942,
+    "prompt_tokens": 4889313,
+    "output_tokens": 1430640,
     "thought_tokens": 0,
-    "total_tokens": 6292128,
-    "estimated_usd": 3.354087
+    "total_tokens": 6319953,
+    "estimated_usd": 3.36828825
   },
   "last_publication_run": {
-    "started_at": "2026-09-05T19:48:35.237894+00:00",
+    "started_at": "2026-09-05T22:34:33.625752+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -28309,17 +28313,17 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 19808,
-      "output_tokens": 5967,
+      "prompt_tokens": 22029,
+      "output_tokens": 5796,
       "thought_tokens": 0,
-      "total_tokens": 25775,
-      "estimated_usd": 0.0139025
+      "total_tokens": 27825,
+      "estimated_usd": 0.01420125
     },
-    "finished_at": "2026-09-05T19:49:16.275756+00:00"
+    "finished_at": "2026-09-05T22:35:15.735414+00:00"
   },
   "daily_usage": {
     "date": "2026-09-05",
-    "estimated_usd": 0.06939075,
-    "publications": 20
+    "estimated_usd": 0.083592,
+    "publications": 24
   }
 }
