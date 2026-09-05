@@ -26694,7 +26694,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-03T02:32:44.679658+00:00",
       "last_error": null,
-      "updated_at": "2026-09-05T07:17:53.775273+00:00",
+      "updated_at": "2026-09-05T12:16:41.790157+00:00",
       "paper": {
         "title": "Percolation Dynamics in Optimization : Variance Cascades and Discrete Scale Invariance",
         "summary": "We study the dynamics of Stochastic Gradient Descent (SGD), which is known to steer deep neural networks toward invariant sets that correspond to simpler subnetworks. How this steering unfolds over time remains poorly understood. We answer this by modeling the stochastic gradient flow (SGF) as a percolation process, in which architectural symmetries force subnetworks to merge in discrete simultaneous blocks rather than one at a time. These structural transitions register as variance spikes in a macroscopic order parameter, echoing physical phase transitions. We further show this trapping mechanism and its associated scaling cascade extend to Adam and AdamW under an explicit heavy-tailed noise model.",
@@ -27267,7 +27267,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-04T07:37:18.009546+00:00",
       "last_error": null,
-      "updated_at": "2026-09-05T07:17:53.775239+00:00",
+      "updated_at": "2026-09-05T12:16:41.790121+00:00",
       "paper": {
         "title": "Let Confidence Change, Not the Prediction: Prediction-Preserving Repair for Post-hoc Calibration",
         "summary": "Post-hoc calibration corrects reported confidence, yet a multiclass calibrator can also change the associated top-1 prediction. Accuracy captures only the net effect of these changes on correctness, not how often predictions change; the Top-1 Prediction Change Rate (TPCR) instead measures this frequency. We propose Calibrator-Output Repair for Top-1 Decision Preservation (CORD), the first post-fit adapter to impose exact prediction preservation by repairing the full calibrated probability vector. From the original and calibrated outputs alone, CORD determines the mass assigned to the original top-1. The calibrated conditional distribution allocates the remaining mass over the other classes, yielding a repaired vector whose own argmax recovers the original prediction. On the calibration split, CORD coordinates the repaired masses to retain the calibrated outputs' mean mass on original predictions whenever attainable. The adapter alters neither the fitted calibrator nor its direct output, fits no additional supervised map, and requires no user- or validation-tuned hyperparameter. Across CIFAR-10/100 and ImageNet-1K, CORD attains zero TPCR by construction and lowers mean ECE, NLL, and Brier relative to the corresponding direct outputs in every dataset; paired gains persist under distribution shift and across calibration-set sizes. CORD thus removes the preservation constraint from calibrator fitting and assigns exact recovery of the original decision to subsequent output repair. Our code is available at https://github.com/labhai/CORD.",
@@ -27288,7 +27288,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-05T07:17:53.775262+00:00",
+      "updated_at": "2026-09-05T12:16:41.790140+00:00",
       "paper": {
         "title": "Random Attention: Rethinking KV Cache Eviction for Efficient Reasoning",
         "summary": "Large language models achieve superior performance on tasks that require extended reasoning, but long chains of thought make the KV cache a severe memory bottleneck. Existing KV cache compression methods share one paradigm: score each cached token by some estimate of how much it will matter later, and keep the top-scoring ones. We show that the selection signal contributes almost nothing. Random Attention keeps the prompt and evicts uniformly at random within each attention head, computing no score at all; across four models and six reasoning tasks it matches the strongest prior evictor while serving 32-43% higher throughput than it in vLLM deployment. Controlled experiments explain this by showing that 1) the prompt is the fragile part of the cache, and most of the gap between selectors is just whether their selection signal happened to keep it; 2) the reasoning trace protects itself against eviction with redundancy at two levels, in the text (the model restates what it still needs as it works) and across attention heads (each keeps its own copy of the trace), so once the prompt is safe, a random draw retains enough copies of what the model still needs, and no score is required to pick them. Our code is publicly available at https://github.com/SalesforceAIResearch/Random-Attention.",
@@ -27317,7 +27317,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-04T07:37:18.009578+00:00",
       "last_error": null,
-      "updated_at": "2026-09-05T07:17:53.775266+00:00",
+      "updated_at": "2026-09-05T12:16:41.790145+00:00",
       "paper": {
         "title": "Compile by Training: Turning Natural-Language Specifications into Local Neural Functions",
         "summary": "Many recurring text functions are easy to describe but difficult to implement with rules, while calling a large remote model for every input introduces repeated cost, latency, and dependency on a provider. We present compile by training, which turns a natural-language specification into a reusable neural function. At compile time, teacher models generate task-specific examples that are used to train a small adapter for a compact interpreter. The resulting function runs without the teachers and can be stored, versioned, and composed like ordinary software. On FuzzyBench-Hard, a subset on which the Program-as-Weights fast compiler produced no exact matches, compile by training reaches 83.6% semantic accuracy. This higher accuracy comes with a higher compile-time cost: roughly a minute rather than seconds for the fast compiler. We deploy the compiler in a public interactive service and demonstrate compiled functions in a multi-site website helper, a language-controlled 3D avatar, and a bidirectional English-Claudish translator.",
@@ -27361,7 +27361,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-04T07:37:18.009588+00:00",
       "last_error": null,
-      "updated_at": "2026-09-05T07:17:53.775287+00:00",
+      "updated_at": "2026-09-05T12:16:41.790149+00:00",
       "paper": {
         "title": "FlashRender: Few-Step Generative Rendering via Camera-Controlled Video MeanFlow",
         "summary": "We present FlashRender, a few-step generative rendering framework that retakes a source video along a target camera trajectory in seconds. We identify sampling-step-dependent camera control as a prominent manifestation of discretization error in existing multi-step generative rendering models and show that resolving this inconsistency substantially lowers denoising trajectory curvature, facilitating subsequent step distillation. To this end, we introduce Representation Transformation and Alignment (RETA), which aligns hidden source-video representations with target-video features from a frozen visual geometry model. This directly encodes the geometric transformation within the source-video stream, enabling sampling-step-consistent camera control. We then fine-tune the model with the MeanFlow objective on the lower-curvature denoising trajectory induced by RETA, allowing the model to more effectively address discretization error. Finally, we apply on-policy flow map distillation to correct self-rollout errors under fixed few-step sampling. Extensive experiments show that RETA, MeanFlow, and on-policy flow map distillation play complementary roles in few-step generative rendering. Together, they enable our approach to match multi-step baselines in video quality and geometric consistency at 25x lower sampling cost while achieving superior camera controllability, even under out-of-distribution target camera trajectories.",
@@ -27382,7 +27382,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-05T07:17:53.775270+00:00",
+      "updated_at": "2026-09-05T12:16:41.790153+00:00",
       "paper": {
         "title": "Knowing When Not to Reuse: Conditional Experience Transfer in Autonomous LLM Post-Training",
         "summary": "Large language models offer broad capabilities, but adapting them to evolving domains, tools, and requirements often entails repeated post-training. Autonomous systems automate parts of this process by proposing updates, training candidates, and using evaluation feedback to select subsequent proposals. As evidence accumulates, a central problem emerges: which past update evidence remains actionable after subsequent training has changed the parent model? An update's effect depends on its parent, data, and training stage. Treating past success as context-free permission can waste compute. If the resulting child is promoted, it can also degrade the subsequent training trajectory. We formulate this problem as conditional experience transfer and introduce Boundary-Calibrated Intervention Transfer (BCIT), a method that authorizes experience reuse before weight-changing training. BCIT binds an observed effect to its source context, checks applicability conditions, vetoes candidates with named hard conflicts, and obtains current-state evidence through a bounded training trial when needed. Fully trained candidates still face a shared adoption rule, and only observed events extend memory. On one 4B model adapted across finance reasoning, text-to-SQL, and function calling, candidate updates exhibit heterogeneous target and retention effects across the evaluated contexts. Under matched candidates, evidence, and compute, BCIT authorizes fewer harmful updates and attains higher equal-budget final-model quality than the evaluated alternatives. These results support treating experience authorization as a distinct problem in autonomous post-training.",
@@ -27407,7 +27407,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-04T07:37:18.009600+00:00",
       "last_error": null,
-      "updated_at": "2026-09-05T07:17:53.775277+00:00",
+      "updated_at": "2026-09-05T12:16:41.790161+00:00",
       "paper": {
         "title": "The Missing Temporal Link: Temporal Context Routing for Script-Driven Audio-Video Generation",
         "summary": "Joint audio-video generation models have made substantial progress in visual quality and audio-visual synchronization. However, they still provide limited control over when shot transitions occur and dialogue is spoken. This limitation constrains their application in script-driven content creation, where timing errors can undermine narrative coherence and the viewing experience. Current joint generators align video and audio representations on a shared temporal axis, yet the precise timing of shots and dialogue specified in a structured prompt is encoded only in the prompt's text representation and remains unaligned with the temporal coordinates of either modality. Consequently, video and audio may remain synchronized with each other while both fail to follow the script timeline. This mismatch motivates us to extend temporal alignment beyond video and audio to include the structured script. We therefore introduce Temporal Context Routing (TCR), which maps the script timing onto the shared temporal axis of video and audio generation and routes each prompt's guidance to the corresponding positions in both modalities. Compared with the baseline on 200 test scripts, TCR reduces Shot Boundary MAE by 96%, from 1.11 s to 0.042 s, and raises Dialogue Acc@0.5 s from 28.3% to 84.1%. TCR achieves these improvements while maintaining visual quality and audio-visual synchronization comparable to those of the baselines. A user study further shows that participants prefer TCR on all five evaluated dimensions.",
@@ -27462,7 +27462,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-05T07:17:53.775257+00:00",
+      "updated_at": "2026-09-05T12:16:41.790135+00:00",
       "paper": {
         "title": "Select, Compress, Reinvest: A Controlled Study of Visual-Token Allocation in Long-Video MLLMs",
         "summary": "Long-video language models cannot look at every frame: an hour sampled once per second is 3,600 images, and a system keeps only a small fixed slice of that pool. Which frames survive that slice is usually treated as a preprocessing detail; we test whether it should be. Published selectors make the comparison hard because they change the frame scorer, the prompt boundary, the resolution policy, and the answering model all at once. We hold each fixed and vary one decision at a time: selection, spatial compression, and reinvestment of the savings, across six training-free selection rules, three long-video benchmarks, and two answering models. Selection is the largest single lever: on LongVideoBench's hour-long bin, eight query-selected frames beat sixteen uniformly spaced ones by 6.9 points, and Orthogonal Matching Pursuit, an unmodified decades-old sparse-approximation algorithm, matches or comes within a point of every purpose-built selector we compare it against, across all three benchmarks. Compression is close to free: halving each frame's spatial budget at fixed timestamps costs at most 0.44 points. Reinvestment is where that budget turns back into accuracy: spending the freed tokens on twice as many compressed frames, at a measured cost no higher than the original eight, returns a further two to three points; compression only pays off once its savings are spent this way. Along the way, an implementation bug in our own AKS baseline and a 0.07 to 3.74 point gap between two harnesses running the same published rules at the same budget show why these comparisons need to happen inside one controlled harness rather than across papers.",
@@ -27482,7 +27482,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-04T13:04:34.882637+00:00",
       "last_error": null,
-      "updated_at": "2026-09-04T17:59:02.473572+00:00",
+      "updated_at": "2026-09-05T12:16:41.790168+00:00",
       "paper": {
         "title": "Scal3R: Learning Efficient Multi-Relative Pose Query for Scalable Online 3D Reconstruction",
         "summary": "Online 3D reconstruction models perform poorly on long videos. This happens because regressing poses relative to a fixed first-frame anchor forces extrapolation far beyond the training distribution. Small drifts accumulate and amplify into significant geometric collapse. However, we observe that per-frame depth remains stable throughout this failure. The backbone's local geometry remains intact; only the global pose head breaks down. Motivated by this decoupling, we introduce Scal3R. This approach reformulates online reconstruction as multi-reference relative pose querying. We use lightweight learnable tokens, which make up about ~1% of the parameters, and inject them into a completely frozen backbone via asymmetric attention. This setup queries poses relative to multiple past keyframes. An online pose-graph optimization system with loop closure suppresses long-range drift. Scal3R reaches convergence in 8 hours on a single GPU. It reduces the average ATE by over 60% on KITTI compared to the online baseline. It also achieves state-of-the-art performance across Virtual KITTI, Sintel, TUM-Dynamic, ScanNet, and 7-Scenes. Project page: https://linjohnss.github.io/scal3r/",
@@ -27508,7 +27508,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-05T07:17:53.775280+00:00",
+      "updated_at": "2026-09-05T12:16:41.790164+00:00",
       "paper": {
         "title": "QCell: Recombining and Aligning Cell Queries for Overlapping Instance Segmentation",
         "summary": "Instance segmentation of overlapping cells in microscopy remains challenging due to semi-transparent structures that produce weak boundaries and mixed visual evidence in overlap regions. Existing methods address this through local regions of interest or shape priors but lack global reasoning across overlapping objects. We present QCell, a novel query-based model that de-overlaps cell instances in microscopy scenes. Our approach combines (i) an instance recombination module that decomposes and recombines query representations in latent space, enabling the model to reason about complete object structure under overlap, and (ii) a contrastive query alignment objective that combines distinctive instance feature learning and separation of overlapping cell queries. We additionally introduce a new Organoid dataset benchmark for overlapping cell segmentation. We show that QCell outperforms state-of-the-art methods across multiple benchmarks, achieving +2.2 AP and +2.7 AJI on ISBI2014. Code is available at https://github.com/SlavkoPrytula/QCell",
@@ -27828,11 +27828,11 @@
     "2609_04148v1": {
       "id": "2609_04148v1",
       "filename": "post_2609_04148v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-09-05T02:29:13.810626+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-05T02:29:13.810627+00:00",
+      "updated_at": "2026-09-05T12:16:51.714868+00:00",
       "paper": {
         "title": "Terminal-Universe: Turning Agent Trajectories into Scalable Terminal Environments",
         "summary": "As terminal-based code agents become prevalent, agent trajectories have accumulated at scale, while realistic, executable environments remain scarce. However, environments are what agent post-training actually requires: each can be re-queried into many verifiable tasks and provides execution feedback, whereas a trajectory is a single frozen demonstration. Rather than generating environments from scratch, we observe that the tool-execution history in existing trajectories exposes the structure and contents of the environments in which they ran, making it possible to reconstruct those environments from the trajectories themselves. Thus, we introduce Terminal-Universe, a framework which turns each trajectory into a reusable environment and explores it for synthesizing new tasks and continued interactions. Specifically, Terminal-Universe replays the file operations recorded in a trajectory to restore each file before the agent modified it, yielding a partial workspace; a completion agent then supplies the missing files and dependencies. On this recovered workspace, we both reconstruct the original intent task and synthesize entirely new ones. Besides, we also scale the tasks along two complementary axes: breadth and depth. For breadth, we mine directional dependency relations between related environments and synthesize cross-workspace queries spanning multiple codebases, as developers routinely do in real-world development. For depth, we extend the initial single-turn query into a multi-round session that captures iterative user feedback and requirement refinement via a user agent. Applied to public terminal agent trajectories, Terminal-Universe produces 37.3k task-sufficient environments. Supervised fine-tuning of Qwen3.5-27B on this corpus improves single-round performance on Terminal-Bench 2.1 by 11.9 points and multi-round performance on EvoCode-Bench v2 MT@4 by 13.8 points.",
@@ -27855,7 +27855,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2609.04148v1"
       },
-      "priority_score": 40
+      "priority_score": 40,
+      "korean_title": "터미널-유니버스: 에이전트 궤적을 확장 가능한 터미널 환경으로 전환하기"
     },
     "2609_04147v1": {
       "id": "2609_04147v1",
@@ -28029,11 +28030,11 @@
     "2609_04098v1": {
       "id": "2609_04098v1",
       "filename": "post_2609_04098v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-09-05T02:29:13.810672+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-05T02:29:13.810673+00:00",
+      "updated_at": "2026-09-05T12:17:00.678433+00:00",
       "paper": {
         "title": "Why Gated DeltaNet Survives 4-Bit Quantization: NVFP4 W4A4 for the Recurrent Half of a Hybrid 27B LLM",
         "summary": "Hybrid LLMs pair softmax attention with linear-attention layers such as Gated DeltaNet (GDN), whose recurrent state summarizes the context in fixed size. Early community 4-bit quantizations of Qwen3.8-27B (48 GDN layers, 16 attention layers) left the GDN block in 8- or 16-bit precision -- especially its decay and write-strength gates -- on the intuition that errors in a recurrence accumulate over long contexts. We test that intuition by building Minima: NVFP4 W4A4 on all 496 linear layers, GDN included. Across perplexity at 4K/32K, MMLU-Pro, GSM8K, AIME'25, GPQA-Diamond, LiveCodeBench, and RULER retrieval to 64K, Minima matches BF16 within seed noise (5-task average -0.52) while being the smallest (17.5 GiB) and fastest-prefill (+14-19%) recipe we compare, and its 32K perplexity gap shrinks with position. A four-part mechanism study explains why: (i) NVFP4's 16-element block scaling localizes the residual stream's extreme outliers, equalizing activation error across layer roles; (ii) the supposedly fragile gate projections are the least sensitive -- softplus/exponential and sigmoid parameterizations compress ~11% GEMM error to ~2% output error; (iii) the delta-rule recurrence holds injected noise at a flat plateau over 32K tokens and forgets a state impulse within hundreds of steps, because each write overwrites the state along the current key direction; (iv) the per-token quantization cost washes out with context instead of compounding. We also repair a global-scale mismatch that arises when per-module-calibrated NVFP4 checkpoints are served by kernels that fuse those modules into one GEMM, and show calibrated FP8 KV-cache scales are performance-free. The result: a practical recipe -- quantize everything, ship KV scales -- and a mechanistic account of why the recurrent half of a hybrid LLM is the easy half to quantize. Checkpoint: https://huggingface.co/minima-ai/mnma_qwen3.8_27b_nvfp4",
@@ -28044,7 +28045,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2609.04098v1"
       },
-      "priority_score": 40
+      "priority_score": 40,
+      "korean_title": "가두어 놓은 델타넷이 4비트 양자화에서 살아남는 이유: 하이브리드 27B LLM의 순환부를 위한 NVFP4 W4A4"
     },
     "2609_04096v1": {
       "id": "2609_04096v1",
@@ -28169,11 +28171,11 @@
     "2609_04066v1": {
       "id": "2609_04066v1",
       "filename": "post_2609_04066v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-09-05T02:29:13.810715+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-05T02:29:13.810716+00:00",
+      "updated_at": "2026-09-05T12:17:18.968807+00:00",
       "paper": {
         "title": "Subspace Inference Enables Efficient Active Reward Learning from Preferences",
         "summary": "Reinforcement learning from human feedback (RLHF) has emerged as a powerful yet sample-inefficient approach for learning reward models from human preferences, making active learning a critical component in synthesizing informative preference queries. However, effective uncertainty quantification required for active learning remains a key challenge for large neural network reward models. In this paper, we introduce PreferenceEKF, a sample-efficient approach that tracks reward model uncertainty by framing active preference learning as a sequential Bayesian filtering problem. Instead of relying on computationally prohibitive posterior inference over the full neural network parameter space, our method performs sequential inference via an extended Kalman filter within a low-dimensional parameter subspace, continuously updating the reward model posterior as new preference queries arrive. Our approach enables scalable sampling of neural network parameters to efficiently compute acquisition functions for active reward learning. Experiments on the D4RL and V-D4RL benchmarks demonstrate that our approach achieves better sample efficiency, runtime, scalability, and calibration compared to other Bayesian deep learning approaches, and the learned reward models lead to competitive offline reinforcement learning policy performance. This highlights the potential of scalable Bayesian methods for preference-based reward modeling in RLHF. Our code is available at https://github.com/yutaizhou/bnn_pref.",
@@ -28184,7 +28186,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2609.04066v1"
       },
-      "priority_score": 38
+      "priority_score": 38,
+      "korean_title": "부분 공간 추론을 통한 효율적인 선호도 기반 능동 보상 학습"
     },
     "2609_04063v1": {
       "id": "2609_04063v1",
@@ -28235,11 +28238,11 @@
     "2609_04048v1": {
       "id": "2609_04048v1",
       "filename": "post_2609_04048v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-09-05T02:29:13.810734+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-05T02:29:13.810736+00:00",
+      "updated_at": "2026-09-05T12:17:09.380462+00:00",
       "paper": {
         "title": "Translation as a Decision Space: A Multi-Agent Perspective on Low-Resource Dialect Generation",
         "summary": "Neural machine translation (NMT) systems typically produce a single output per input, obscuring the alternative decision trajectories implicitly available within multilingual decoding. This opacity becomes particularly problematic in low-resource dialect settings, where multiple linguistically valid realizations may differ in lexical authenticity, register, and structural stability. We propose reframing translation as a structured decision space explored by autonomous translation agents. Instead of analyzing a single output, we model distinct translation pathways as agents operating over a shared multilingual backbone. Inter-agent divergence is treated not as error but as an interpretable behavioral signal. We conduct an empirical study on Turkish--Syrian Arabic translation using three agents: (1) zero-shot direct translation, (2) dialect-stabilized translation via lightweight fine-tuning, and (3) pivot translation through English. Evaluation is performed on 5,000 dialogue sentences, while stabilization is trained on 5,000 additional Turkish--Syrian sentence pairs drawn from television dialogue and MADAR-Turk resources. Rather than optimizing for conventional performance metrics, we quantify structured behavioral displacement using dialect marker frequency, lexical proximity to standardized Arabic, and structural variance. Lightweight stabilization nearly doubles dialect marker usage, increasing it from 0.2266 to 0.4988, while significantly reducing structural instability. Pivot mediation introduces normalization pressure and measurable compression effects, whereas zero-shot translation exhibits the highest decision variance. We argue that translation divergence across agents reveals latent decision flexibility within multilingual models and we provide a principled interpretability framework for low-resource dialect generation.",
@@ -28253,11 +28256,12 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2609.04048v1"
       },
-      "priority_score": 40
+      "priority_score": 40,
+      "korean_title": "의사결정 공간으로서의 번역: 저자원 방언 생성을 위한 다중 에이전트 관점"
     }
   },
   "last_run": {
-    "started_at": "2026-09-05T07:17:53.777282+00:00",
+    "started_at": "2026-09-05T12:16:41.792377+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -28268,25 +28272,25 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 19734,
-      "output_tokens": 6063,
+      "prompt_tokens": 19751,
+      "output_tokens": 5717,
       "thought_tokens": 0,
-      "total_tokens": 25797,
-      "estimated_usd": 0.014028
+      "total_tokens": 25468,
+      "estimated_usd": 0.01351325
     },
-    "finished_at": "2026-09-05T07:18:33.517983+00:00"
+    "finished_at": "2026-09-05T12:17:19.657367+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 1910,
-    "prompt_tokens": 4806632,
-    "output_tokens": 1407285,
+    "requests": 1918,
+    "prompt_tokens": 4826383,
+    "output_tokens": 1413002,
     "thought_tokens": 0,
-    "total_tokens": 6213917,
-    "estimated_usd": 3.3125855
+    "total_tokens": 6239385,
+    "estimated_usd": 3.32609875
   },
   "last_publication_run": {
-    "started_at": "2026-09-05T07:17:53.777282+00:00",
+    "started_at": "2026-09-05T12:16:41.792377+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -28297,17 +28301,17 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 19734,
-      "output_tokens": 6063,
+      "prompt_tokens": 19751,
+      "output_tokens": 5717,
       "thought_tokens": 0,
-      "total_tokens": 25797,
-      "estimated_usd": 0.014028
+      "total_tokens": 25468,
+      "estimated_usd": 0.01351325
     },
-    "finished_at": "2026-09-05T07:18:33.517983+00:00"
+    "finished_at": "2026-09-05T12:17:19.657367+00:00"
   },
   "daily_usage": {
     "date": "2026-09-05",
-    "estimated_usd": 0.02788925,
-    "publications": 8
+    "estimated_usd": 0.0414025,
+    "publications": 12
   }
 }

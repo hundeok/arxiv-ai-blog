@@ -1,0 +1,74 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>가두어 놓은 델타넷이 4비트 양자화에서 살아남는 이유: 하이브리드 27B LLM의 순환부를 위한 NVFP4 W4A4 | ArXiv Translator AI</title><meta name="description" content="가두어 놓은 델타넷이 4비트 양자화에서 살아남는 이유: 하이브리드 27B LLM의 순환부를 위한 NVFP4 W4A4"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_04098v1"><meta property="og:type" content="article"><meta property="og:title" content="가두어 놓은 델타넷이 4비트 양자화에서 살아남는 이유: 하이브리드 27B LLM의 순환부를 위한 NVFP4 W4A4"><meta property="og:description" content="가두어 놓은 델타넷이 4비트 양자화에서 살아남는 이유: 하이브리드 27B LLM의 순환부를 위한 NVFP4 W4A4"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_04098v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="가두어 놓은 델타넷이 4비트 양자화에서 살아남는 이유: 하이브리드 27B LLM의 순환부를 위한 NVFP4 W4A4"><meta name="twitter:description" content="가두어 놓은 델타넷이 4비트 양자화에서 살아남는 이유: 하이브리드 27B LLM의 순환부를 위한 NVFP4 W4A4"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_04098v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "가두어 놓은 델타넷이 4비트 양자화에서 살아남는 이유: 하이브리드 27B LLM의 순환부를 위한 NVFP4 W4A4", "description": "가두어 놓은 델타넷이 4비트 양자화에서 살아남는 이유: 하이브리드 27B LLM의 순환부를 위한 NVFP4 W4A4", "datePublished": "2026-09-03", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_04098v1", "author": [{"@type": "Person", "name": "Sergii Kozyrev"}, {"@type": "Person", "name": "Davyd Maiboroda"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_04098v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_04098v1"});gtag('event', 'paper_view', {"paper_id": "2609_04098v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>가두어 놓은 델타넷이 4비트 양자화에서 살아남는 이유: 하이브리드 27B LLM의 순환부를 위한 NVFP4 W4A4</h1><p>가두어 놓은 델타넷이 4비트 양자화에서 살아남는 이유: 하이브리드 27B LLM의 순환부를 위한 NVFP4 W4A4</p><pre>가두어 놓은 델타넷이 4비트 양자화에서 살아남는 이유: 하이브리드 27B LLM의 순환부를 위한 NVFP4 W4A4
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Why Gated DeltaNet Survives 4-Bit Quantization: NVFP4 W4A4 for the Recurrent Half of a Hybrid 27B LLM
+&gt; - **저자:** Sergii Kozyrev, Davyd Maiboroda
+&gt; - **발행일:** 2026-09-03
+&gt; - **PDF 링크:** [Why Gated DeltaNet Survives 4-Bit Quantization: NVFP4 W4A4 for the Recurrent Half of a Hybrid 27B LLM](https://arxiv.org/pdf/2609.04098v1)
+
+
+✨ 3줄 핵심 요약
+- 하이브리드 LLM(소프트맥스 어텐션+가두어 놓은 델타넷)의 순환부도 4비트(W4A4) 양자화가 가능함을 입증했습니다.
+- 기존의 통념과 달리, 가두어 놓은 델타넷(GDN)의 게이트 투영층은 양자화 오류에 매우 강인하여 별도의 고정밀도 보호가 필요 없습니다.
+- &#x27;Minima&#x27; 모델은 4비트 양자화로도 BF16 수준의 성능을 유지하며, 추론 속도와 모델 크기 효율을 극대화했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+기존의 270억(27B) 파라미터급 하이브리드 LLM들은 순환 구조인 &#x27;가두어 놓은 델타넷(GDN)&#x27;의 게이트가 오류에 취약할 것이라 믿고 8비트나 16비트로 보호해 왔습니다. 하지만 이 연구는 GDN의 구조 자체가 양자화 오류를 스스로 상쇄한다는 것을 밝혀냈습니다. 핵심은 델타 규칙(Delta-rule)이 오래된 오류를 지속적으로 덮어쓰며 제거하고, 게이트의 수학적 표현 방식이 양자화 노이즈를 압축한다는 점입니다. 결과적으로 모든 층을 4비트로 양자화해도 모델의 정확도는 거의 떨어지지 않으면서, 메모리 사용량은 줄고 프리필(prefill) 속도는 14~19% 향상되었습니다.
+
+🎯 배경 및 문제점
+- **통념:** 순환 신경망은 긴 문맥을 처리할 때 작은 오차가 누적되어 큰 성능 저하를 유발한다고 알려져 왔습니다.
+- **현상:** Qwen3.8-27B 같은 하이브리드 모델에서 기존 방식들은 MLPs층만 4비트로 양자화하고, GDN 게이트 층은 8~16비트로 보호했습니다.
+- **문제:** 이러한 보호 전략은 모델의 메모리 효율을 저하시키고 추론 속도를 늦추는 병목 현상을 야기합니다.
+
+💡 핵심 기술 및 아키텍처
+- **NVFP4 W4A4 양자화:** 16개 요소 블록별 스케일링(block scaling)을 사용하여 이상치(outliers)에 의한 활성화 오류를 효과적으로 제어했습니다.
+- **오류 상쇄 메커니즘:**
+    1. **블록 스케일링:** 극단적인 입력값들이 국소 영역 내로 격리되어 오류가 전체로 퍼지지 않게 합니다.
+    2. **게이트 보호막:** Softplus 및 지수 함수 기반의 게이트 파라미터화가 11%의 연산 오류를 2% 수준으로 압축합니다.
+    3. **델타 규칙의 강점:** 새로운 토큰이 들어올 때마다 상태를 덮어쓰는 과정에서 과거의 양자화 오류를 물리적으로 덮어지워 오류 누적을 방지합니다.
+
+📊 실험 결과 분석
+- **성능:** BF16 모델과 비교하여 PPL(혼란도), MMLU-Pro, GSM8K 등 주요 평가 항목에서 통계적으로 유의미한 차이 없이 대등한 성능을 보였습니다.
+- **속도 및 크기:** Minima 모델은 17.5GiB로 가장 작으며, 기존 양자화 방식 대비 프리필 속도가 14~19% 빠릅니다.
+- **오류 분포:** 문맥 길이를 32K 토큰까지 늘려도 양자화 오류가 누적되지 않고 특정 수준에서 평탄화(plateau)됨을 확인했습니다. (실험 수치: 32K 지점에서의 상태 오류율 약 12.3%)
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+- **양자화 가이드라인:** &quot;하이브리드 모델에서 순환부는 보호 대상이 아니라, 오히려 가장 쉽게 양자화할 수 있는 부분&quot;이라는 새로운 실무 지침을 제시합니다.
+- **실무 적용:** 개발자들은 이제 GDN 게이트를 고정밀도로 보호할 필요 없이 모델 전체를 4비트로 양자화하여, 메모리 비용은 낮추고 처리량은 높인 고효율 모델을 배포할 수 있습니다.
+- **오픈 소스:** 연구팀은 양자화된 체크포인트를 허깅페이스에 공개하여 누구나 검증 및 활용할 수 있도록 했습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2609.04098 Why Gated DeltaNet Survives 4-Bit Quantization: NVFP4 W4A4 for the Recurrent Half of a Hybrid 27B LLM](https://arxiv.org/abs/2609.04098)
+&gt; - [Top AI Models This Week (2026) — Trending Hugging Face Models, Papers &amp; Demos, Ranked | OrangeBot.AI](https://orangebot.ai/top-ai-models-this-week)
+&gt; - [Artificial Intelligence](https://arxiv.org/list/cs.AI/pastweek?skip=)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;이 논문에서 주장하는 &#x27;델타 규칙에 의한 오류 상쇄&#x27; 메커니즘은 흥미롭지만, 32K 토큰 이상의 긴 문맥에서 정말 안정적인 수렴을 보이는지 검증이 더 필요합니다. &#x27;양자화 오류가 plateau 된다&#x27;는 현상이 단순히 게이트의 비선형 함수가 노이즈를 뭉개버리는 것인지, 아니면 동역학적으로 안정적인 고정점을 찾은 것인지 엄밀한 수식 증명이 부족해 보이네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님, 이론적 증명도 중요하지만 실무 입장에선 당장 4비트 양자화로 추론 속도 19% 펌핑 되는 게 깡패입니다. 그동안 GDN 게이트 때문에 mixed-precision 유지하느라 커스텀 커널 짜고 VRAM 낭비하던 거 생각하면... 일단 당장 서빙 환경에 올려서 MMLU-Pro 리포트랑 실시간 Latency부터 찍어봐야겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;선배님, 이미 허깅페이스에 Minima 체크포인트 올라왔길래 바로 돌려봤는데 대박입니다. 27B 모델을 17.5GiB로 돌리는데 성능 저하가 체감이 안 돼요. 이거 왠지 하이브리드 아키텍처의 표준 양자화 가이드라인이 바뀔 것 같은데요? 당장 내일 랩 세미나 주제는 이걸로 정했습니다!&quot;
+  }
+]
+]
+]
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
