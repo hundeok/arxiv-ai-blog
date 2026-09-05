@@ -1,0 +1,74 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>GRPO에 숨겨진 허위 이점(Spurious Advantage) | ArXiv Translator AI</title><meta name="description" content="GRPO에 숨겨진 허위 이점(Spurious Advantage)"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_04063v1"><meta property="og:type" content="article"><meta property="og:title" content="GRPO에 숨겨진 허위 이점(Spurious Advantage)"><meta property="og:description" content="GRPO에 숨겨진 허위 이점(Spurious Advantage)"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_04063v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="GRPO에 숨겨진 허위 이점(Spurious Advantage)"><meta name="twitter:description" content="GRPO에 숨겨진 허위 이점(Spurious Advantage)"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_04063v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "GRPO에 숨겨진 허위 이점(Spurious Advantage)", "description": "GRPO에 숨겨진 허위 이점(Spurious Advantage)", "datePublished": "2026-09-03", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_04063v1", "author": [{"@type": "Person", "name": "Jiamian Wang"}, {"@type": "Person", "name": "Samyadeep Basu"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_04063v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_04063v1"});gtag('event', 'paper_view', {"paper_id": "2609_04063v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>GRPO에 숨겨진 허위 이점(Spurious Advantage)</h1><p>GRPO에 숨겨진 허위 이점(Spurious Advantage)</p><pre>GRPO에 숨겨진 허위 이점(Spurious Advantage)
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Spurious Advantage Hidden in GRPO
+&gt; - **저자:** Jiamian Wang, Samyadeep Basu, Koustava Goswami, Tong Yu, Zhiqiang Tao
+&gt; - **발행일:** 2026-09-03
+&gt; - **PDF 링크:** [Spurious Advantage Hidden in GRPO](https://arxiv.org/pdf/2609.04063v1)
+
+
+✨ 3줄 핵심 요약
+*   GRPO 알고리즘은 추론 없이 운 좋게 정답을 맞힌 경우에도 높은 보상을 부여하는 &#x27;허위 이점(Spurious Advantage)&#x27; 문제가 존재합니다.
+*   이 문제는 답변 선택지가 제한된 문제나 검색 에이전트 환경에서 모델의 추론 능력이 아닌 &#x27;찍기&#x27; 행동을 강화하는 부작용을 낳습니다.
+*   이를 해결하기 위해 그룹 내 통계 의존성을 제거한 &#x27;SIGNBALANCE&#x27;를 제안하며, 이는 제한된 답변 환경에서 GRPO 대비 뛰어난 성능을 보입니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+강화학습을 통한 언어 모델 훈련 시, GRPO는 그룹 내에서 정답을 맞힌 시도들에 높은 가중치를 줍니다. 하지만 만약 문제가 4지선다형처럼 찍어서 맞힐 확률이 존재하는 경우, 모델은 논리적 추론이 아니라 &#x27;운 좋게 정답을 찍는 법&#x27;을 학습하게 됩니다. 저자들은 이러한 현상을 &#x27;허위 이점&#x27;이라 정의하고, 그룹 내 정답/오답 개수에 따라 보상이 변하지 않도록 설계된 &#x27;SIGNBALANCE&#x27; 방식을 도입하여 모델이 추론에 집중하도록 개선했습니다.
+
+🎯 배경 및 문제점
+*   **GRPO의 한계:** GRPO는 그룹 내 보상 통계를 바탕으로 가중치를 산출하는데, 이는 정답 도출 과정이 &#x27;논리적 추론&#x27;인지 &#x27;단순 추측&#x27;인지 구분하지 못합니다.
+*   **허위 이점 발생 원인:** 
+    1.  선택지가 제한된 문제(bounded-answer)에서 정답을 맞힐 확률이 0이 아님.
+    2.  답변의 선택지가 제한적인 하위 범주가 포함된 데이터셋(MATH-7.5K 데이터셋의 55.95%가 해당).
+    3.  검색 에이전트가 여러 경로를 통해 우연히 같은 정답에 도달하는 경우.
+*   **결과:** 모델이 추론 능력을 키우기보다 정답 확률을 높이기 위한 &#x27;운 좋은 찍기&#x27; 전략을 학습하게 됨.
+
+💡 핵심 기술 및 아키텍처
+**SIGNBALANCE**는 기존 GRPO의 보상 산출식에서 그룹 내 개수 의존성을 제거하는 3단계 설계를 적용합니다.
+1.  **클래스별 정규화:** 정답과 오답 그룹을 분리하여 각 그룹의 통계로 개별 정규화.
+2.  **부호 기반 크기 산출:** 그룹 내 정답/오답 개수에 관계없이 고정된 글로벌 스케일을 사용.
+3.  **클래스별 힘 균형(Force Balance) 복원:** 정답과 오답 배치 수준에서 평균이 0이 되도록 &#x27;stop-gradient&#x27;를 활용해 스케일을 조정. 
+*   추가적인 모델 학습이나 추론 비용 발생 없이 기존 GRPO 손실 함수에 즉시 교체 적용 가능합니다.
+
+📊 실험 결과 분석
+*   **수치 결과:** 제한된 답변 환경(AQuA, AMC 등)에서 GRPO 대비 명확한 성능 향상을 보임.
+*   **안정성:** 학습 초기(약 100단계)부터 GRPO 대비 높은 정확도를 유지하며, 이는 특정 체크포인트의 요행이 아닌 구조적 개선임을 증명함.
+*   **범용성:** Qwen2.5 0.5B, 3B, 7B 등 다양한 모델 규모와 수학 및 검색 에이전트 벤치마크에서 일관된 효과 확인.
+*   *참고: 상세한 정확도 수치 비교 등은 논문 본문의 표를 통해 제시되었으나, 본 발췌문에는 일부 특정 수치만 명시되어 있습니다.*
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+*   **신뢰성 있는 추론 모델:** 단순 운에 의존하는 모델이 아닌, 논리적 추론을 수행하는 모델을 개발하는 데 기여합니다.
+*   **실무적 활용:** 도구 선택(tool selection)이나 멀티 초이스 질문 등 정답 공간이 제한된 실무 환경에서 기존 GRPO를 사용하는 기업들에게 즉각적인 성능 개선 솔루션을 제공할 수 있습니다.
+*   **추가 연구:** 저자들은 본 방법론이 수학과 검색 에이전트를 넘어, 에이전트가 매 단계에서 도구 목록을 선택해야 하는 일반적인 설정에서도 유사한 이점을 제공할 것으로 기대합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2609.04063 Spurious Advantage Hidden in GRPO - arXiv.org](https://arxiv.org/abs/2609.04063)
+&gt; - [Spurious Advantage Hidden in GRPO - arXiv.org](https://arxiv.org/html/2609.04063v1)
+&gt; - [Spurious Advantage Hidden in GRPO | GenAI Agent News](https://www.genaiagent.net/article/arxiv-2609.04063v1)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;GRPO의 고질적인 문제인 &#x27;운빨 학습&#x27;을 SIGNBALANCE로 정교하게 짚었군. 사실 그룹 내 보상 정규화 과정에서 통계적 편향이 개입되는 건 자명했는데, 이를 &#x27;허위 이점(Spurious Advantage)&#x27;이라고 명명하고 수식적으로 해결책을 제시한 건 훌륭해. 특히 추론 비용 추가 없이 기존 손실 함수를 대체할 수 있다는 점이 실무적으로 아주 매력적이야.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에 바로 박아보기 좋습니다. 저희 팀도 최근 에이전트 훈련시키면서 모델이 정답만 외우고 추론 과정은 엉망인 케이스 때문에 고민이 많았거든요. 특히 사지선다형 데이터셋에서 모델이 &#x27;로직&#x27;을 배운 게 아니라 &#x27;정답 분포&#x27;를 훔쳐보는 느낌이었는데, SIGNBALANCE로 이 &#x27;찍기&#x27; 가중치를 쳐낼 수 있다면 데이터 클리닝 비용도 꽤 아낄 수 있겠네요. 바로 실험 돌려봅니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 100단계 만에 GRPO랑 격차 벌어지는 그래프 보고 소름 돋았습니다. 다들 GRPO만 붙잡고 있을 때 이런 엣지 케이스를 파고드는 게 진짜 논문 쓰는 맛이죠. 근데 님들, 이거 수학이나 검색 에이전트 말고 일반적인 CoT(Chain of Thought) 데이터셋에서는 어떨까요? 답변 공간이 무한한 경우에도 SIGNBALANCE가 유효할지, 아니면 또 다른 종류의 &#x27;허위 이점&#x27;이 튀어나올지 궁금해 미치겠네요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
