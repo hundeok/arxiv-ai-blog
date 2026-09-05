@@ -1,0 +1,67 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>모델이 너무 많이 수정할 때: 최소한의 코드 수정이 가지는 충실성에 대하여 | ArXiv Translator AI</title><meta name="description" content="모델이 너무 많이 수정할 때: 최소한의 코드 수정이 가지는 충실성에 대하여"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_04061v1"><meta property="og:type" content="article"><meta property="og:title" content="모델이 너무 많이 수정할 때: 최소한의 코드 수정이 가지는 충실성에 대하여"><meta property="og:description" content="모델이 너무 많이 수정할 때: 최소한의 코드 수정이 가지는 충실성에 대하여"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_04061v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="모델이 너무 많이 수정할 때: 최소한의 코드 수정이 가지는 충실성에 대하여"><meta name="twitter:description" content="모델이 너무 많이 수정할 때: 최소한의 코드 수정이 가지는 충실성에 대하여"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_04061v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "모델이 너무 많이 수정할 때: 최소한의 코드 수정이 가지는 충실성에 대하여", "description": "모델이 너무 많이 수정할 때: 최소한의 코드 수정이 가지는 충실성에 대하여", "datePublished": "2026-09-03", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_04061v1", "author": [{"@type": "Person", "name": "Tongyao Zhu"}, {"@type": "Person", "name": "Wei Hern Lim"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_04061v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_04061v1"});gtag('event', 'paper_view', {"paper_id": "2609_04061v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>모델이 너무 많이 수정할 때: 최소한의 코드 수정이 가지는 충실성에 대하여</h1><p>모델이 너무 많이 수정할 때: 최소한의 코드 수정이 가지는 충실성에 대하여</p><pre>모델이 너무 많이 수정할 때: 최소한의 코드 수정이 가지는 충실성에 대하여
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** When Models Edit Too Much: On the Fidelity of Minimal Code Edits
+&gt; - **저자:** Tongyao Zhu, Wei Hern Lim, Min-Yen Kan
+&gt; - **발행일:** 2026-09-03
+&gt; - **PDF 링크:** [When Models Edit Too Much: On the Fidelity of Minimal Code Edits](https://arxiv.org/pdf/2609.04061v1)
+
+
+✨ 3줄 핵심 요약
+- 거대언어모델(LLM)은 코드를 수정할 때 기능적으로는 정확하더라도, 불필요하게 많은 부분을 변경하는 &#x27;과잉 수정(Over-editing)&#x27; 경향이 있습니다.
+- 연구진은 400개의 BigCodeBench 문제를 활용한 평가 체계를 구축하여, 모델이 테스트를 통과하면서도 최소한의 수정만 수행하는지 측정했습니다.
+- &#x27;수정 충실성(Edit fidelity)&#x27;을 학습시키기 위해 지도 미세 조정(SFT)보다는 강화 학습(Reinforcement Learning)이 더 효과적임을 확인했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+코딩하는 AI 모델에게 &quot;이 버그 좀 고쳐줘&quot;라고 시키면, 모델은 버그를 잘 고칩니다. 하지만 종종 단순히 한 줄만 바꾸면 되는 코드를 수십 줄씩 멋대로 수정하거나, 기존의 코드 스타일을 완전히 무시해버리기도 합니다. 이를 &#x27;과잉 수정&#x27;이라고 합니다. 이 논문은 AI가 버그 수정이라는 본래 목적에 충실하면서도, 코드를 최소한으로만 건드려 사람의 검토 부담을 줄이는 능력이 중요하다고 지적합니다. 연구 결과, 단순히 큰 모델을 쓴다고 해결되는 문제가 아니며, 명시적인 학습을 통해 모델의 &#x27;수정 충실성&#x27;을 높일 수 있음이 밝혀졌습니다.
+
+🎯 배경 및 문제점
+- **과잉 수정(Over-editing) 문제:** LLM은 기능적으로 정확한 패치를 생성하지만, 요구되는 것보다 훨씬 더 많은 코드를 수정하는 경향이 있습니다. 이는 코드 리뷰의 부담을 가중하고, 의도치 않은 기능 변화나 새로운 버그를 유발할 위험이 있습니다.
+- **수정 충실성의 부재:** 기존의 코드 수정 평가 기준은 주로 &#x27;테스트 통과 여부(Pass@1)&#x27;에 집중되어 있어, 코드 수정의 최소성이나 기존 구현 방식에 대한 존중(충실성)은 제대로 평가되지 않았습니다.
+
+💡 핵심 기술 및 아키텍처
+- **평가 프레임워크:** BigCodeBench의 400개 문제를 활용하여, 코드에 고의로 AST(추상 구문 트리) 수준의 오류를 주입하고, 이를 고치기 위한 &#x27;최소 패치&#x27;를 기준으로 모델의 수정을 비교 평가했습니다.
+- **보존 지시문(Preservation Instruction):** 프롬프트에 수정을 최소화하라는 지시를 추가하여 모델의 행동 변화를 유도했습니다.
+- **학습 방법 비교:** 지도 미세 조정(SFT)은 특정 오류 패턴에 과적합(Overfitting)되는 경향을 보였고, 강화 학습(Reinforcement Learning) 방식이 도메인 외부 상황에서도 더 나은 수정 충실성을 보였습니다.
+
+📊 실험 결과 분석
+- **과잉 수정의 만연:** GPT-5.5를 포함한 강력한 모델들조차 높은 Pass@1 성능과 함께 불필요하게 방대한 수정 및 인지 복잡도 증가를 동반했습니다.
+- **지시문의 효과:** &#x27;보존 지시문&#x27;을 사용했을 때 평균 레벤슈타인 거리(Levenshtein distance)가 0.195에서 0.131로 감소했고, 인지 복잡도는 26.6% 줄어들었으며, Pass@1 성능도 2.3포인트 상승했습니다.
+- **학습의 중요성:** 모델의 크기나 더 큰 추론 예산이 항상 더 정교한 수정을 보장하지는 않았으며, 강화 학습을 통한 최적화가 수정 충실성과 성능 유지 사이의 균형을 잡는 데 가장 효과적이었습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+- **소프트웨어 유지보수:** 실제 개발 환경(Brownfield)에서 코드의 원래 의도를 보존하면서 버그를 수정해야 할 때, 모델의 수정 충실성은 매우 중요한 지표가 될 것입니다.
+- **코드 리뷰 효율화:** 과잉 수정을 줄임으로써 리뷰어의 정신적 피로를 줄이고, &#x27;코드 변경(Diff) 변화&#x27;를 최소화하여 시스템의 안정성을 높일 수 있습니다.
+- **평가 지표의 확장:** 향후 코드 생성 AI 연구에서 단순한 &#x27;정확도&#x27;뿐만 아니라, &#x27;수정의 최소성&#x27;이 평가의 필수적인 축으로 자리 잡아야 함을 시사합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Coding Models Are Doing Too Much | wh](https://nrehiew.github.io/blog/minimal_editing/)
+&gt; - [AI Code Editing Gone Too Far: Stop Over-Editing Now - DEV Community](https://dev.to/onsen/ai-code-editing-gone-too-far-stop-over-editing-now-444m)
+&gt; - [Small Edits, Big Consequences: Telling Good from Bad Robustness in Large Language Models](https://arxiv.org/html/2507.15868)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;결국 본질은 &#x27;충실성(Fidelity)&#x27;의 정의 문제군요. Pass@1 지표만 쫓던 학계의 근시안적인 태도를 꼬집는 논문이라 흥미롭습니다. 다만, RL이 SFT보다 낫다는 결론은 흥미로우나, 그 보상 모델(Reward Model)을 어떻게 설계했는지에 따라 인위적인 제약 조건에 과적합될 위험도 배제할 수 없습니다. &#x27;최소 수정&#x27;이 곧 &#x27;최적 수정&#x27;이라는 가정이 항상 성립하는지도 논의가 필요해 보이네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님, 현업에서는 이게 정말 심각한 문제입니다. 코드 리뷰할 때 LLM이 짠 100줄짜리 diff를 보고 있으면, &#x27;이게 왜 수정됐지?&#x27; 싶어서 일일이 디버깅하느라 시간이 배로 들거든요. 특히 레거시 코드 건드릴 때 불필요한 리팩토링까지 섞여서 들어오면 장애 포인트만 늘어납니다. RL로 수정 범위를 페널티 먹이는 거, 당장 프로덕션 파이프라인에 적용해보고 싶네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;선배님, 근데 이거 그냥 프롬프트에 &#x27;Minimal change&#x27; 한 문장 추가하는 거랑 결과 차이 크게 없다는 의견도 벌써 트위터에 도네요.ㅋㅋㅋ 물론 RL이 근본적인 해결책인 건 맞는데, 결국 모델이 &#x27;왜&#x27; 수정하는지 인지 구조를 바꾸지 않으면, 나중에 더 큰 모델들은 또 다른 스타일로 과잉 수정할 것 같아요. 다음 학회 때는 &#x27;Edit Fidelity&#x27;를 위한 데이터셋 구축이 또 핫한 키워드가 되겠네요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
