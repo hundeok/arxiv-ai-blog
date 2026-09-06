@@ -1,0 +1,67 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>동영상 내 객체 위치 추적을 위한 효율적이고 생성적인 시공간 그라운딩 재설계 | ArXiv Translator AI</title><meta name="description" content="동영상 내 객체 위치 추적을 위한 효율적이고 생성적인 시공간 그라운딩 재설계"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_28192v1"><meta property="og:type" content="article"><meta property="og:title" content="동영상 내 객체 위치 추적을 위한 효율적이고 생성적인 시공간 그라운딩 재설계"><meta property="og:description" content="동영상 내 객체 위치 추적을 위한 효율적이고 생성적인 시공간 그라운딩 재설계"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_28192v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="동영상 내 객체 위치 추적을 위한 효율적이고 생성적인 시공간 그라운딩 재설계"><meta name="twitter:description" content="동영상 내 객체 위치 추적을 위한 효율적이고 생성적인 시공간 그라운딩 재설계"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_28192v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "동영상 내 객체 위치 추적을 위한 효율적이고 생성적인 시공간 그라운딩 재설계", "description": "동영상 내 객체 위치 추적을 위한 효율적이고 생성적인 시공간 그라운딩 재설계", "datePublished": "2026-08-28", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_28192v1", "author": [{"@type": "Person", "name": "Hanoona Rasheed"}, {"@type": "Person", "name": "Haania Siddiqui"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_28192v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_28192v1"});gtag('event', 'paper_view', {"paper_id": "2608_28192v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>동영상 내 객체 위치 추적을 위한 효율적이고 생성적인 시공간 그라운딩 재설계</h1><p>동영상 내 객체 위치 추적을 위한 효율적이고 생성적인 시공간 그라운딩 재설계</p><pre>동영상 내 객체 위치 추적을 위한 효율적이고 생성적인 시공간 그라운딩 재설계
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Locate Anything in Videos: Rethinking Efficient Generative Spatio-Temporal Video Grounding
+&gt; - **저자:** Hanoona Rasheed, Haania Siddiqui, Ming-Hsuan Yang, Fahad Shahbaz Khan, Salman Khan
+&gt; - **발행일:** 2026-08-28
+&gt; - **PDF 링크:** [Locate Anything in Videos: Rethinking Efficient Generative Spatio-Temporal Video Grounding](https://arxiv.org/pdf/2608.28192v1)
+
+
+✨ 3줄 핵심 요약
+- 기존 비디오 시공간 그라운딩(STVG)의 순차적 디코딩 방식은 영상 길이가 길수록 지연 시간이 늘어나는 문제가 있었습니다.
+- &#x27;병렬 튜브 디코딩(PTD)&#x27; 기술을 도입하여 시간 구간을 먼저 정한 뒤 공간 정보를 한 번에 생성함으로써 디코딩 단계를 2단계로 고정했습니다.
+- 이를 통해 표준 방식 대비 튜브 생성 지연 시간을 79배 단축하고, 공간 디코딩 처리량(Throughput)을 92배 향상했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+영상 속 특정 객체를 시간과 공간(위치)으로 추적하는 기존 AI 모델들은 마치 긴 문장을 한 글자씩 순서대로 쓰듯 위치 정보를 하나씩 계산했습니다. 영상이 길어질수록 계산량이 계속 늘어나 속도가 매우 느려지고, 앞부분의 위치 정보가 뒷부분까지 영향을 미쳐 오류가 쌓이는 문제가 발생했습니다. 본 연구는 &#x27;병렬 튜브 디코딩(PTD)&#x27;을 통해 이 과정을 혁신했습니다. 영상에서 &quot;언제(시간)&quot; 발생했는지 먼저 파악하고, 그 기간 동안의 &quot;어디에(공간)&quot; 있는지에 대한 정보는 모두 동시에 한꺼번에 생성합니다. 이 기술은 영상 길이에 상관없이 고정된 2번의 계산만으로 추적을 완료하여, 기존 모델보다 훨씬 빠르면서도 정확한 결과를 보여줍니다.
+
+🎯 배경 및 문제점
+- **순차적 디코딩의 한계:** 기존 다중 모달 모델은 위치 정보(바운딩 박스)를 자기회귀(autoregressive) 방식으로 직렬화하여 처리합니다. 이는 영상 속 객체의 이동 경로가 길어질수록 디코딩 지연 시간이 선형적으로 증가하게 만듭니다.
+- **오류 전파:** 순차적 처리 과정에서 앞선 시간대의 위치 정보가 뒤쪽으로 전달되면서 localization 오류가 시간에 따라 축적되는 문제가 발생합니다.
+
+💡 핵심 기술 및 아키텍처
+- **병렬 튜브 디코딩 (PTD):** 전체 과정을 &#x27;시간 구간 예측&#x27; 이후 &#x27;시간 조건부 공간 블록 동시 생성&#x27;으로 이원화했습니다. 이를 통해 순차적 디코딩 깊이를 영상 길이와 무관하게 1+1 라운드로 고정했습니다.
+- **디커플드 블록 어텐션 (Decoupled Block Attention):** 박스 간의 상호 의존성을 제거하여 공간 정보를 병렬로 생성하면서도, 비디오-질의 간 공유되는 문맥 정보는 온전히 보존합니다.
+- **위치 인식 정책 최적화:** 시간 경계와 공간 기하학적 정확도를 높이기 위해, IoU(교집합 비율) 측정과 L1 좌표 페널티를 결합한 보상 함수를 사용하여 모델을 훈련했습니다.
+
+📊 실험 결과 분석
+- **효율성:** VidSTG 벤치마크 기준, 표준 자기회귀 방식 대비 튜브 완료 지연 시간(Tube Completion Latency)을 79배 줄였으며, 공간 디코딩 처리량(BPS)을 92배 향상했습니다.
+- **정확도:** 효율성 개선뿐만 아니라 전반적인 그라운딩 정확도 측면에서도 우수한 성능을 입증했습니다.
+- **범용성:** 4B(40억 개) 파라미터 모델임에도 VidSTG 및 HC-STVG 데이터셋에서 높은 성능을 보였으며, 시간 그라운딩, 비디오 QA, 객체 추적 등 다양한 작업에 제로샷(Zero-shot)으로 확장 가능함을 확인했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+- **실시간 비디오 분석:** 복잡한 영상 데이터에서 객체를 실시간으로 빠르게 추적해야 하는 보안 감시, 스포츠 분석 등의 분야에서 컴퓨팅 비용을 획기적으로 절감할 수 있습니다.
+- **효율적 다중 객체 추적:** 병렬 처리 능력을 통해 다수의 객체가 등장하는 영상 환경에서도 더 적은 자원으로 정확한 위치 파악이 가능합니다.
+- **연구 확장성:** 향후 파편화된 사건 발생이나 카메라 움직임으로 인한 일시적 차단 등 보다 복잡한 실제 환경의 영상 데이터 처리로 기술을 확장할 수 있는 토대를 마련했습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Locate Anything in Videos: Rethinking Efficient Generative Spatio ...](https://arxiv.org/abs/2608.28192)
+&gt; - [Locate Anything in Videos: Rethinking Efficient Generative Spatio ...](https://huggingface.co/papers/2608.28192)
+&gt; - [Locate Anything in Videos: Rethinking Efficient Generative Spatio ...](https://academ.us/article/2608.28192/)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;PTD(Parallel Tube Decoding)의 이론적 접근은 흥미롭지만, &#x27;디커플드 블록 어텐션&#x27; 과정에서 박스 간의 시공간적 연속성이 소실될 위험은 없나? 순차적 디코딩의 오류 전파를 잡겠다고 병렬화를 택했는데, 이로 인해 비디오 시퀀스의 자연스러운 흐름이 왜곡될 가능성을 어떻게 방어했는지 구체적인 ablation study가 필요해 보이네.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님, 현업 입장에선 일단 79배 속도 향상이면 논문 퀄리티를 떠나서 바로 프로덕션 도입 고려할 수준입니다. 기존 autoregressive 방식은 긴 영상에서 추론하다 보면 GPU 메모리 터지거나 타임아웃 걸리기 일쑤였거든요. 다만 4B 파라미터면 온디바이스는 무리고, 서버 비용 절감 측면에서 아주 매력적인 아키텍처네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 4B 모델로 제로샷 성능까지 잡았다니 대박인데요? 다들 디퓨전이나 LLM 기반 비디오 생성에만 몰두할 때, 이런 효율성 개선 논문이 사실 진짜 &#x27;게임 체인저&#x27;죠. 교수님 말씀대로 연속성 이슈가 있을 순 있겠지만, 일단 이 속도면 실시간 스포츠 중계나 감시 시스템에서 바로 써먹을 수 있겠는데요? 당장 내일 랩 세미나 발제 자료 이걸로 해야겠어요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
