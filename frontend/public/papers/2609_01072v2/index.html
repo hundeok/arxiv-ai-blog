@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>예측은 그대로, 신뢰도만 조정: 사후 보정을 위한 예측 보존형 수리 기법 | ArXiv Translator AI</title><meta name="description" content="예측은 그대로, 신뢰도만 조정: 사후 보정을 위한 예측 보존형 수리 기법"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_01072v2"><meta property="og:type" content="article"><meta property="og:title" content="예측은 그대로, 신뢰도만 조정: 사후 보정을 위한 예측 보존형 수리 기법"><meta property="og:description" content="예측은 그대로, 신뢰도만 조정: 사후 보정을 위한 예측 보존형 수리 기법"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_01072v2"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="예측은 그대로, 신뢰도만 조정: 사후 보정을 위한 예측 보존형 수리 기법"><meta name="twitter:description" content="예측은 그대로, 신뢰도만 조정: 사후 보정을 위한 예측 보존형 수리 기법"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_01072v2");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "예측은 그대로, 신뢰도만 조정: 사후 보정을 위한 예측 보존형 수리 기법", "description": "예측은 그대로, 신뢰도만 조정: 사후 보정을 위한 예측 보존형 수리 기법", "datePublished": "2026-09-01", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_01072v2", "author": [{"@type": "Person", "name": "Daehwan Kim"}, {"@type": "Person", "name": "Haejun Chung"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_01072v2", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_01072v2"});gtag('event', 'paper_view', {"paper_id": "2609_01072v2", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>예측은 그대로, 신뢰도만 조정: 사후 보정을 위한 예측 보존형 수리 기법</h1><p>예측은 그대로, 신뢰도만 조정: 사후 보정을 위한 예측 보존형 수리 기법</p><pre>예측은 그대로, 신뢰도만 조정: 사후 보정을 위한 예측 보존형 수리 기법
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Let Confidence Change, Not the Prediction: Prediction-Preserving Repair for Post-hoc Calibration
+&gt; - **저자:** Daehwan Kim, Haejun Chung, Ikbeom Jang
+&gt; - **발행일:** 2026-09-01
+&gt; - **PDF 링크:** [Let Confidence Change, Not the Prediction: Prediction-Preserving Repair for Post-hoc Calibration](https://arxiv.org/pdf/2609.01072v2)
+
+
+✨ 3줄 핵심 요약
+- 기존 사후 보정 방식은 신뢰도를 조정하는 과정에서 모델의 최종 예측 결과(Top-1 클래스)까지 바꿀 위험이 있습니다.
+- CORD는 모델의 기존 예측값을 유지하면서 신뢰도만 보정하는 사후 어댑터 기술을 제안합니다.
+- 복잡한 하이퍼파라미터 튜닝이나 추가 학습 없이도 다양한 데이터셋에서 예측 변경률(TPCR)을 0%로 만들면서 보정 성능을 향상합니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+인공지능 모델이 내놓은 확률값은 때때로 실제 정확도보다 지나치게 높거나 낮아 &#x27;보정&#x27; 과정이 필요합니다. 하지만 기존의 보정 방식들은 신뢰도를 고치려다 모델이 원래 선택했던 가장 유력한 답안(Top-1)까지 바꿔버리는 부작용이 있습니다. 이는 모델의 판단 기준을 임의로 변경한다는 문제를 야기합니다. CORD(Calibrator-Output Repair for Top-1 Decision Preservation)는 모델의 원래 판단(어떤 클래스가 1등인지)을 먼저 고정하고, 그 틀 안에서만 확률값을 정교하게 조정하여 신뢰도 보정의 오류를 해결하는 기술입니다.
+
+🎯 배경 및 문제점
+- **예측 변동성**: 사후 보정 기법(Post-hoc calibration) 적용 시, 분류기(Classifier)의 출력 확률 벡터를 수정하면서 argmax 결과값이 바뀌는 현상이 발생합니다.
+- **정확도의 한계**: 기존의 정확도(Accuracy) 지표는 예측 결과가 바뀌었을 때 발생한 손실과 이득을 합산하여 보여줄 뿐, 얼마나 자주 예측이 바뀌었는지는 드러내지 못합니다.
+- **예측 변경률(TPCR)의 중요성**: 논문은 예측이 바뀌는 빈도를 측정하는 지표인 TPCR을 도입하여, 기존 방식들이 보정 과정에서 얼마나 많은 원본 예측을 훼손하는지 지적합니다.
+
+💡 핵심 기술 및 아키텍처
+- **CORD(사후 어댑터)**: 모델의 기존 학습된 보정기나 출력을 바꾸지 않고, 결과값만을 수정하는 별도의 어댑터입니다.
+- **예측 보존 로직**: 원본의 Top-1 클래스에 할당된 가중치를 유지하면서, 나머지 확률 질량을 다른 클래스들에 재분배하여 최종 결과가 원래의 결정과 일치하도록 강제합니다.
+- **무튜닝 설계**: 사용자 정의 하이퍼파라미터나 검증 세트를 통한 튜닝이 전혀 필요 없는 구조로 설계되었습니다.
+
+📊 실험 결과 분석
+- **TPCR 제로**: CIFAR-10, CIFAR-100, ImageNet-1K 데이터셋에서 CORD 적용 시 TPCR(Top-1 Prediction Change Rate)이 구조적으로 0%를 달성했습니다.
+- **보정 지표 개선**: 실험 데이터에 따르면, 대부분의 환경에서 기존 보정 방식 대비 평균 ECE, NLL, Brier 점수가 낮아져 보정 성능이 향상되었습니다.
+- **일관성**: 배포된 데이터셋과 환경 변화(Distribution shift) 상황에서도 기존 예측을 유지하면서 보정 성능을 개선하는 특성이 유지되었습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+- **신뢰할 수 있는 AI**: 모델의 예측 근거를 임의로 뒤흔들지 않으면서도 신뢰도 보정이 가능해져, 의료 진단이나 자율주행과 같이 모델의 일관된 판단이 중요한 분야에서 활용 가치가 높습니다.
+- **운영 효율성**: 기존에 훈련된 모델을 재학습할 필요 없이 간편하게 부착할 수 있는 어댑터 형태이므로, 실무 현장에서 모델의 보정 문제를 해결하는 즉각적인 솔루션으로 사용될 수 있습니다.
+- **성능 지표 개선**: 모델 수정 없이도 불확실성 추정의 정확도를 높여 전체 시스템의 안전성을 제고할 수 있습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Prediction-Preserving Repair for Post-hoc Calibration - arXiv](https://arxiv.org/html/2609.01072v2)
+&gt; - [Prediction-Preserving Repair for Post-hoc Calibration](https://huggingface.co/papers/2609.01072)
+&gt; - [Machine Learning (ML) Papers on X: &quot;Let Confidence Change ...](https://x.com/Memoirs/status/2096174283068182942/photo/1)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;Calibration 과정에서 argmax가 뒤바뀌는 현상은 학계에서 오랫동안 &#x27;필요악&#x27;으로 치부되어 왔죠. CORD가 TPCR 0%를 달성한 것은 수학적으로 흥미롭지만, 단순히 확률 분포를 재분배하는 과정에서 모델이 본래 가지고 있던 &#x27;불확실성 정보&#x27;까지 인위적으로 억압하는 것은 아닌지 우려됩니다. 보정된 신뢰도가 과연 모델의 epistemic uncertainty를 얼마나 잘 대변할 수 있을지 추가 검증이 필요해 보이네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님, 이론적 우려는 차치하고라도 실무 입장에서는 이게 &#x27;신의 한 수&#x27;입니다. 프로덕션 환경에서 모델 배포해놓고 calibration 한번 돌렸다가 기존에 잘 나가던 서비스 로직이 튀어서 롤백한 경험 다들 있으시죠? 하이퍼파라미터 튜닝 없이 바로 갖다 붙일 수 있는 &#x27;무튜닝&#x27; 어댑터라는 점이 핵심입니다. 특히 의료나 금융처럼 모델의 일관된 판단이 법적/윤리적 근거가 되는 곳에선 당장 도입해도 되겠는데요?&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 이거 진짜 대박이네요! 어차피 모델 재학습할 시간도 비용도 없는 상황에서 깃허브에 코드 올라오면 바로 우리 모델들에 다 박아볼 생각입니다. 다들 Calibration 성능 지표(ECE, NLL) 올리겠다고 매번 검증셋 쪼개서 튜닝하느라 고생했는데, CORD는 그냥 &#x27;예측은 고정하고 신뢰도만 건드린다&#x27;는 철학 자체가 너무 깔끔하지 않나요? 다음 컨퍼런스 때 다들 이거 인용하느라 바쁘겠는데요?&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

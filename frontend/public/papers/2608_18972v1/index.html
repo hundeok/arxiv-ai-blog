@@ -1,0 +1,70 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>기관 신문 파이프라인: 역사적 신문에서 수십억 개의 고품질 토큰 추출하기 | ArXiv Translator AI</title><meta name="description" content="기관 신문 파이프라인: 역사적 신문에서 수십억 개의 고품질 토큰 추출하기"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_18972v1"><meta property="og:type" content="article"><meta property="og:title" content="기관 신문 파이프라인: 역사적 신문에서 수십억 개의 고품질 토큰 추출하기"><meta property="og:description" content="기관 신문 파이프라인: 역사적 신문에서 수십억 개의 고품질 토큰 추출하기"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_18972v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="기관 신문 파이프라인: 역사적 신문에서 수십억 개의 고품질 토큰 추출하기"><meta name="twitter:description" content="기관 신문 파이프라인: 역사적 신문에서 수십억 개의 고품질 토큰 추출하기"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_18972v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "기관 신문 파이프라인: 역사적 신문에서 수십억 개의 고품질 토큰 추출하기", "description": "기관 신문 파이프라인: 역사적 신문에서 수십억 개의 고품질 토큰 추출하기", "datePublished": "2026-08-19", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_18972v1", "author": [{"@type": "Person", "name": "Matteo Cargnelutti"}, {"@type": "Person", "name": "Catherine Brobston"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_18972v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_18972v1"});gtag('event', 'paper_view', {"paper_id": "2608_18972v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>기관 신문 파이프라인: 역사적 신문에서 수십억 개의 고품질 토큰 추출하기</h1><p>기관 신문 파이프라인: 역사적 신문에서 수십억 개의 고품질 토큰 추출하기</p><pre>기관 신문 파이프라인: 역사적 신문에서 수십억 개의 고품질 토큰 추출하기
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Institutional Newspapers Pipeline: Deriving billions of high quality tokens from historical newspapers
+&gt; - **저자:** Matteo Cargnelutti, Catherine Brobston, Eben English, Jake Sadow, Kacie Bailey, Greg Leppert, Amanda Watson, Jessica Chapel, Jonathan Zittrain
+&gt; - **발행일:** 2026-08-19
+&gt; - **PDF 링크:** [Institutional Newspapers Pipeline: Deriving billions of high quality tokens from historical newspapers](https://arxiv.org/pdf/2608.18972v1)
+
+
+✨ 3줄 핵심 요약
+* 보스턴 공립 도서관과 협력하여 1795~1930년 사이의 역사적 신문 스캔본에서 데이터를 구조화하고 추출하는 모듈형 파이프라인을 개발했습니다.
+* 워크스테이션급 하드웨어에서도 구동 가능하도록 설계되었으며, 147만여 개의 스캔본에서 163억 개의 토큰을 추출해 공개 데이터셋으로 배포했습니다.
+* OCR, 명명된 개체 인식(NER), 주제 분류 및 임베딩 생성 등 다단계 처리를 거쳐 신문 데이터의 계산적 접근성을 크게 향상했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+역사적 신문은 인류의 기록이지만, 레이아웃이 복잡하고 불규칙하여 컴퓨터가 내용을 이해하기 어려웠습니다. 연구진은 신문 스캔본을 잘게 쪼개어 각 부분을 분석하는 파이프라인을 구축했습니다. 이 시스템은 단순히 글자만 읽는(OCR) 것을 넘어, 무엇이 사람이고 장소인지(NER), 어떤 주제인지 등을 자동으로 분류합니다. 이 결과물은 연구자들이 방대한 과거 기록을 데이터로 분석할 수 있게 돕는 강력한 도구입니다.
+
+🎯 배경 및 문제점
+역사적 신문은 공적 생활에 대한 방대한 정보를 담고 있으나, 다음의 이유로 데이터 활용이 제한적이었습니다.
+* **불규칙한 레이아웃:** 빽빽하고 체계적이지 않은 편집으로 인해 기계적인 정보 추출이 매우 어렵습니다.
+* **기술적 접근의 한계:** 기존의 처리 방식으로는 대규모 기록물을 다루기에 계산 효율이 떨어지거나, 결과의 해석 가능성이 낮았습니다.
+
+💡 핵심 기술 및 아키텍처
+파이프라인은 인터프리터(해석)가 가능하고 커스터마이징이 용이하도록 모듈식으로 설계되었습니다.
+* **다단계 처리:** 스캔본을 유형에 상관없이 조각(crop)으로 나눈 뒤, 각 조각별로 OCR, 언어 감지, 읽기 순서 탐색, 개체 인식(NER), 주제 분류를 수행합니다.
+* **임베딩:** 텍스트와 이미지에 대해 각각 &#x27;potion-multilingual&#x27;(256차원) 및 &#x27;DINOv2-small&#x27;(384차원) 임베딩을 생성합니다.
+* **효율성:** 연구용 대형 서버가 아닌 일반 워크스테이션 환경에서도 구동 가능한 계산 효율성을 확보했습니다.
+
+📊 실험 결과 분석
+보스턴 공립 도서관의 소장 자료를 대상으로 실행한 결과는 다음과 같습니다.
+* **규모:** 1795년부터 1930년 사이의 신문 스캔본 1,473,635건을 처리했습니다.
+* **데이터:** 8,310만 개의 개별 조각(crop)에서 163억 개의 `o200k_base` 토큰을 추출했습니다.
+* **NER 성과:** 1억 4,220만 명의 인물, 1억 5,560만 곳의 장소, 4,910만 개의 조직 정보를 식별했습니다. (데이터의 한계로 인해 실험적 수치임이 명시됨)
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **오픈 데이터셋 배포:** 처리된 데이터와 모델, 파이프라인을 공개하여 역사 연구자 및 데이터 과학자들이 방대한 19~20세기 초 신문 기록을 대규모로 분석할 수 있는 기반을 마련했습니다.
+* **연구 활용:** 추출된 고품질 토큰과 개체 정보를 통해 시대적 지명, 주요 인물, 조직의 변화를 추적하는 연구가 가능해졌습니다.
+* **주의사항:** 본 연구의 NER 및 주제 분류 결과는 실험적인 단계이므로, 인종차별적 용어 등 유해한 언어가 포함될 가능성이 있으며 연구자는 이를 비판적으로 검토해야 합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Institutional Newspapers Pipeline: Deriving billions of high quality ...](https://www.catalyzex.com/paper/institutional-newspapers-pipeline-deriving)
+&gt; - [Institutional Newspapers Pipeline | OpenTrain AI](https://www.opentrain.ai/papers/institutional-newspapers-pipeline-deriving-billions-of-high-quality-tokens-from--arxiv-2608.18972/)
+&gt; - [Institutional Newspapers Pipeline: Deriving billions of high quality ...](https://aiweekly.co/alerts/institutional-newspapers-pipeline-deriving-billions-of-high-quality-tokens-from)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;데이터의 양은 인상적이나, 역사적 텍스트의 특성상 OCR 노이즈가 NER 성능에 미치는 영향이 우려되는군요. 1억 건이 넘는 개체 인식을 수행했다지만, 19세기 신문의 문체와 맞춤법 오류를 현대의 NER 모델이 얼마나 정확하게 정제했을지, 그 신뢰도 검증 파이프라인이 논문에 명확히 제시되었는지 의문입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 노이즈는 심각하겠지만, 일단 워크스테이션급에서 163억 토큰을 뽑아냈다는 건 파이프라인 최적화가 예술이라는 방증입니다. DINOv2 활용한 이미지 임베딩까지 섞은 거 보면 단순히 텍스트 추출에만 매몰되지 않고 멀티모달 데이터셋으로서의 가치를 고려한 설계라 실무적으로 상당히 고평가합니다. 다만, 배포 데이터셋의 정제 수준이 궁금하네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;다들 너무 무겁게 보시네! 이거 당장 LLM 파인튜닝용으로 털어먹기 딱 좋은 데이터셋 아닌가요? 역사적 담론 분석이나 시대별 키워드 임베딩 트렌드 뽑아내면 CV 3줄은 그냥 추가될 각인데. 노이즈? 그건 나중에 어텐션 맵으로 쳐내거나 RAG로 보정하면 되죠. 일단 163억 토큰 무료 공개라는 것부터가 이미 &#x27;갓-논문&#x27;입니다.&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
