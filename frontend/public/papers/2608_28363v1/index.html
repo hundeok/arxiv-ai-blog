@@ -1,0 +1,72 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>에보언두(EvoUndo): LLM 에이전트 하니스를 위한 복구 가능성 제약 기반 자기 진화 | ArXiv Translator AI</title><meta name="description" content="에보언두(EvoUndo): LLM 에이전트 하니스를 위한 복구 가능성 제약 기반 자기 진화"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_28363v1"><meta property="og:type" content="article"><meta property="og:title" content="에보언두(EvoUndo): LLM 에이전트 하니스를 위한 복구 가능성 제약 기반 자기 진화"><meta property="og:description" content="에보언두(EvoUndo): LLM 에이전트 하니스를 위한 복구 가능성 제약 기반 자기 진화"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_28363v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="에보언두(EvoUndo): LLM 에이전트 하니스를 위한 복구 가능성 제약 기반 자기 진화"><meta name="twitter:description" content="에보언두(EvoUndo): LLM 에이전트 하니스를 위한 복구 가능성 제약 기반 자기 진화"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_28363v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "에보언두(EvoUndo): LLM 에이전트 하니스를 위한 복구 가능성 제약 기반 자기 진화", "description": "에보언두(EvoUndo): LLM 에이전트 하니스를 위한 복구 가능성 제약 기반 자기 진화", "datePublished": "2026-08-28", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_28363v1", "author": [{"@type": "Person", "name": "Tanmay Sah"}, {"@type": "Person", "name": "Dolly Sah"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_28363v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_28363v1"});gtag('event', 'paper_view', {"paper_id": "2608_28363v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>에보언두(EvoUndo): LLM 에이전트 하니스를 위한 복구 가능성 제약 기반 자기 진화</h1><p>에보언두(EvoUndo): LLM 에이전트 하니스를 위한 복구 가능성 제약 기반 자기 진화</p><pre>에보언두(EvoUndo): LLM 에이전트 하니스를 위한 복구 가능성 제약 기반 자기 진화
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** EvoUndo: Recoverability-Constrained Self-Evolution for LLM Agent Harnesses
+&gt; - **저자:** Tanmay Sah, Dolly Sah, Harshul Jain, Tanya Sah
+&gt; - **발행일:** 2026-08-28
+&gt; - **PDF 링크:** [EvoUndo: Recoverability-Constrained Self-Evolution for LLM Agent Harnesses](https://arxiv.org/pdf/2608.28363v1)
+
+
+✨ 3줄 핵심 요약
+*   **자기 진화의 위험성:** LLM 에이전트가 스스로 환경(프롬프트, 도구 등)을 수정할 때, 문제가 발생해도 안전하게 이전 상태로 되돌리지 못하는 &#x27;비가역적 수정&#x27;이 발생함.
+*   **EvoUndo 프레임워크:** 에이전트의 자기 수정이 다양한 상태에서 항상 복구 가능한지 확인하고, 이를 보장하기 위한 합성·진단·검증 체계를 제공함.
+*   **핵심 성과:** 기존의 단순한 프롬프팅 방식으로는 복구가 불가능했던 실패 사례들 중, 복구 언어 확장과 상태 접지(Grounding) 기술을 통해 99.3% 이상의 높은 복구율을 달성함.
+
+📖 쉽게 풀어쓴 1분 핵심
+현대 AI 에이전트는 성능을 높이기 위해 스스로 프롬프트나 도구 설정을 바꿉니다. 하지만 이런 &#x27;자기 진화&#x27;는 때로 시스템을 꼬이게 만들어, 이전의 안정적인 상태로 돌아갈 수 없게 만듭니다. **EvoUndo**는 에이전트가 무언가를 수정할 때, &quot;만약 문제가 생기면 어떻게 원래대로 돌릴 것인가?&quot;를 먼저 계산하고 검증하게 하는 프레임워크입니다. 연구 결과, 단순히 에이전트에게 명령만 내리는 것이 아니라, 정확한 상태 정보를 제공하고 복구를 위한 언어를 정교하게 설계할 때 비로소 자율 에이전트가 안전하고 지속 가능하게 발전할 수 있음을 입증했습니다.
+
+🎯 배경 및 문제점
+LLM 에이전트가 런타임에 스스로 하니스(harness, 실행 환경)를 수정하는 능력이 향상되면서, 다음과 같은 한계가 드러났습니다.
+*   **비가역적 효과:** 성능 향상을 목적으로 한 수정이 기존 설정값을 덮어쓰거나 리소스를 유출시켜, 단순한 &#x27;되돌리기&#x27; 작업으로는 원래 상태를 복구할 수 없는 사례가 발생함.
+*   **상태 의존성:** 복구 절차는 수정이 이루어지기 전의 구체적인 상태 정보가 필수적이지만, 기존 시스템은 이를 체계적으로 다루지 못함.
+*   **반복 프롬프팅의 한계:** 시행착오식의 반복적 프롬프트 개선만으로는 복구 가능성을 보장할 수 없음.
+
+💡 핵심 기술 및 아키텍처
+EvoUndo는 자율적 자기 진화 과정에 &#x27;복구 가능성&#x27;을 필수 제약 조건으로 포함합니다.
+*   **복구 가능성 제약:** 수정(Mutation)이 이루어지기 전의 상태 데이터를 기록하고, 이를 활용해 관측 가능한 동일한 상태로 복구하는 로직을 생성함.
+*   **복구 언어(Recovery Language) 확장:** 단순한 역연산 수행을 넘어, 복잡한 상태를 표현하고 복구할 수 있도록 언어의 표현력을 강화함.
+*   **상태 접지(State-address Grounding):** 수정이 적용되는 정확한 위치와 상태를 식별하여, 이전 상태와의 연결 고리를 명확히 함.
+*   **오라클 분석:** 생성된 수정안이 의도한 대로 복구되는지 독립적으로 검증하는 정밀 분석기를 도입함.
+
+📊 실험 결과 분석
+600개의 새로운 자기 진화 태스크를 대상으로 실험한 결과입니다.
+*   **기존 전략의 실패:** 기존의 복구 전략으로는 자연 발생한 197건의 복구 실패 사례를 단 한 건도 해결하지 못함(0/197).
+*   **기술의 효과:** 복구 언어를 확장하자 성공률이 191/197로 급증함.
+*   **접지 및 표현력:** 정확한 상태 접지를 통해 복구 효율이 상승했고, 특정 오라클 정의 수준에서 99.3%(142/143)라는 압도적인 복구 성공률을 보임.
+*   **모델 의존성:** 실험 모델별로 차이가 있었으며, 특정 모델에서는 진단 기술을 추가했을 때 오히려 복구율이 다소 감소하는 복합적인 상호작용이 발견됨(예: gpt-oss-120b 모델에서 99.3% → 93.0%로 변화).
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+*   **신뢰할 수 있는 AI 시스템:** 에이전트가 환경을 마음껏 수정하더라도 시스템 붕괴를 막을 수 있어, 자율적인 소프트웨어 엔지니어링 및 복잡한 환경 제어 에이전트 구축에 필수적임.
+*   **엔지니어링 표준화:** 자기 진화 시스템 설계 시 복구 언어, 상태 접지, 검증 체계를 통합 설계(Co-design)해야 한다는 가이드라인을 제시함.
+*   **안전한 자동화:** 무분별한 AI의 자기 수정으로 인한 데이터 손실이나 시스템 불안정 문제를 해결하여, 보다 안전한 AI 자동화 환경(Runtime harness) 구축이 가능해짐.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [EvoUndo: Recoverability-Constrained Self-Evolution for LLM Agent Harnesses](https://arxiv.org/abs/2608.28363)
+&gt; - [EvoUndo: Recoverability-Constrained Self-Evolution for LLM Agent Harnesses](https://huggingface.co/papers/2608.28363)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문의 아이디어 자체는 &#x27;복구 가능성 제약&#x27;이라는 측면에서 꽤 견고해 보이나, 실험 결과에서 특정 모델(gpt-oss-120b)의 성능 저하 현상을 단순히 &#x27;복합적 상호작용&#x27;으로 퉁치고 넘어간 점이 아쉽군요. 상태 접지(Grounding)를 위한 오버헤드가 실제 프로덕션 환경에서 에이전트의 추론 레이턴시를 얼마나 잡아먹을지 정량적 분석이 부족해 보입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무 적용이 관건이죠. 솔직히 에이전트가 프롬프트를 지 맘대로 수정하게 두는 것 자체가 사내 보안팀이 거품 물 일인데, EvoUndo처럼 &#x27;되돌리기&#x27;가 보장된다면 도입 명분이 생기겠네요. 다만, 복구 언어(Recovery Language)를 매번 파싱하고 상태 접지 트래킹하는 시스템 구축이 꽤나 고역일 듯합니다. 인프라 비용 대비 효용성이 나올지 의문이네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 99.3% 복구율이라니! 에이전트가 자기 수정하다가 뻗어서 밤새 로그 까보던 악몽에서 드디어 탈출하는 건가요? 비록 오버헤드 이슈는 있겠지만, 이 논문은 단순히 성능 높이는 데만 급급하던 기존 에이전트 연구들에 &#x27;안전한 진화&#x27;라는 새로운 화두를 던진 것만으로도 충분히 가치가 있다고 봅니다. 당장 다음 랩 세미나 때 이거 발제해도 될까요?&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
