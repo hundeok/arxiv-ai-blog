@@ -1,0 +1,73 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>로고스: 교차 프로세스 버스 기반의 에이전트 하니스 | ArXiv Translator AI</title><meta name="description" content="로고스: 교차 프로세스 버스 기반의 에이전트 하니스"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_28553v1"><meta property="og:type" content="article"><meta property="og:title" content="로고스: 교차 프로세스 버스 기반의 에이전트 하니스"><meta property="og:description" content="로고스: 교차 프로세스 버스 기반의 에이전트 하니스"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_28553v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="로고스: 교차 프로세스 버스 기반의 에이전트 하니스"><meta name="twitter:description" content="로고스: 교차 프로세스 버스 기반의 에이전트 하니스"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_28553v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "로고스: 교차 프로세스 버스 기반의 에이전트 하니스", "description": "로고스: 교차 프로세스 버스 기반의 에이전트 하니스", "datePublished": "2026-08-28", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_28553v1", "author": [{"@type": "Person", "name": "Hanzhang Jia"}, {"@type": "Person", "name": "Liheng Zeng"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_28553v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_28553v1"});gtag('event', 'paper_view', {"paper_id": "2608_28553v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>로고스: 교차 프로세스 버스 기반의 에이전트 하니스</h1><p>로고스: 교차 프로세스 버스 기반의 에이전트 하니스</p><pre>로고스: 교차 프로세스 버스 기반의 에이전트 하니스
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Logos: An Agent Harness on a Cross-Process Bus
+&gt; - **저자:** Hanzhang Jia, Liheng Zeng, Hao Cheng, Yi Gao, Bo Ma
+&gt; - **발행일:** 2026-08-28
+&gt; - **PDF 링크:** [Logos: An Agent Harness on a Cross-Process Bus](https://arxiv.org/pdf/2608.28553v1)
+
+
+✨ 3줄 핵심 요약
+* 기존 에이전트 시스템의 단일 프로세스 구조가 가진 &#x27;단일 장애점&#x27; 문제를 해결하기 위해, 각 플러그인을 별도 프로세스로 분리한 분산 구조인 &#x27;로고스(Logos)&#x27;를 설계했습니다.
+* 언어 모델의 비상태성(Statelessness)을 활용하여 에이전트의 상태를 프로세스 외부의 추가 전용 기록(Append-only transcript)에 저장함으로써 시스템의 견고함을 확보했습니다.
+* 실험 결과, 단일 프로세스 환경에서는 하나의 장애가 전체 세션을 중단시킨 반면, 로고스 환경에서는 해당 장애가 단일 노드에만 국한되어 전체 시스템의 안정성이 향상되었습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+현대의 AI 에이전트 시스템은 여러 기능을 하나의 프로세스 안에서 실행합니다. 이 방식은 효율적이지만, 만약 프로세스 하나에 문제가 생기면 그 안에 있던 모든 기능과 세션이 한꺼번에 멈춰버리는 치명적인 약점이 있습니다. &#x27;로고스&#x27;는 이러한 문제를 해결하기 위해 기능을 프로세스 밖으로 끄집어냈습니다. 버스(Bus)라는 통로를 통해 각 기능을 개별 프로세스로 실행하고, 작업 기록은 외부의 공유 기록장에 저장합니다. 이렇게 하면 특정 기능에 문제가 생겨도 전체가 멈추지 않고, 고장 난 부분만 빠르게 복구할 수 있습니다.
+
+🎯 배경 및 문제점
+기존의 에이전트 시스템은 &#x27;시공간 구성 가능성 계산법(spatiotemporal-composability calculus)&#x27;을 기반으로 기능을 동적으로 조립합니다. 그러나 모든 기능을 단일 프로세스에서 처리하기 때문에 다음과 같은 공학적 비용이 발생합니다.
+* **단일 장애점(Single Point of Failure):** 프로세스 하나가 충돌하면 호스팅 중인 모든 구성 요소와 세션이 즉시 종료됩니다.
+* **복구의 어려움:** 한 서비스를 교체하거나 업데이트하려면 전체 프로세스를 재시작해야 하며, 이 과정에서 모든 작업이 중단됩니다.
+* **자원 격리 부족:** 구성 요소 간의 독립성이 수학적으로는 보장되더라도, 실제 프로세스 내에서는 자원 공유로 인해 물리적인 격리가 이루어지지 않습니다.
+
+💡 핵심 기술 및 아키텍처
+로고스는 단일 프로세스 대신 버스 중심의 구조를 채택했습니다.
+* **플러그인 독립성:** 각 에이전트 플러그인을 독립적인 프로세스로 분리하여 장애 범위를 최소화했습니다.
+* **추가 전용 기록(Append-only transcript):** 에이전트의 상태를 모델 외부의 공유 기록장에 저장합니다. 이는 프로세스가 죽어도 작업 상태를 보존하는 핵심 역할을 합니다.
+* **라우터(Router):** Go 언어로 작성된 라우터가 노드 등록, 메시지 전달, 브로드캐스트를 담당합니다. 라우터는 오직 라우팅 테이블만 관리하며, 실제 데이터(payload)는 읽지 않습니다.
+* **통신:** TCP 기반의 NDJSON 프로토콜을 사용하여 노드 간 통신을 수행하며, 연결이 끊겨도 메시지 누락 없이 복구가 가능하도록 설계되었습니다.
+
+📊 실험 결과 분석
+단일 프로세스 구성과 로고스의 구조를 동일한 장애 조건에서 비교한 결과입니다.
+* **장애 영향도:** 단일 프로세스 환경에서는 호스트 프로세스 사망 시 모든 세션이 중단되었습니다. 반면, 로고스 환경에서는 고장 난 노드만 영향을 받고 나머지 세션은 정상 유지되었습니다.
+* **복구 성능:** 로고스는 80개의 세션에 대해 장애 발생 시 중단 없이 재연결되는 것을 확인했습니다.
+* **성능 효율성:** 노멀 상황에서 단일 프로세스와 로고스 구성 간의 메이크스팬(전체 작업 완료 시간) 차이는 약 0.8% 수준으로, 분산 구조임에도 성능 저하가 미미했습니다. (실험 데이터는 논문 내 표 4에 상세히 기재되어 있음)
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+로고스는 복잡한 AI 에이전트 시스템을 안정적으로 운영할 수 있는 실질적인 설계 지침을 제공합니다.
+* **고가용성 시스템 구축:** 에이전트가 중요한 비즈니스 로직을 수행할 때, 특정 구성 요소의 오류로 전체 시스템이 마비되는 위험을 방지할 수 있습니다.
+* **확장 가능한 인프라:** 에이전트의 기능을 동적으로 교체하거나 업데이트해야 하는 환경에서, 전체 시스템의 정지 없이 &#x27;핫 스와핑(Hot swapping)&#x27;이 가능해집니다.
+* **향후 과제:** 현재는 단일 머신 내에서의 분산을 다루고 있으나, 향후 여러 머신으로 시스템을 확장하고 더 큰 규모의 제공자 세트를 처리하는 방향으로 발전할 가능성이 있습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Title: Logos: An Agent Harness on a Cross-Process Bus](https://arxiv.org/abs/2608.28553)
+&gt; - [Logos: An Agent Harness on a Cross-Process Bus - arXiv.org](https://arxiv.org/html/2608.28553v1)
+&gt; - [Logos: An Agent Harness on a Cross-Process Bus | Arxiv - DeepPaper](https://arxiv.deeppaper.ai/papers/2608.28553v1)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;시스템 아키텍처의 견고함(Robustness)을 위해 프로세스 격리를 선택한 점은 고무적이나, 과연 이 &#x27;버스&#x27; 구조가 마이크로서비스 수준의 복잡도로 확장될 때 발생하는 레이턴시와 오버헤드를 학술적으로 충분히 방어할 수 있을지 의문이군요. 특히 TCP 기반의 NDJSON 통신이 대규모 텍스트 데이터 스트리밍에서 병목이 되지 않을지, 실험 결과의 0.8% 성능 저하가 실제 프로덕션 환경에서도 재현될지 지켜봐야겠습니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 0.8%는 너무 이상적인 수치 같네요. 실무에서는 프로세스 간 통신(IPC) 오버헤드보다 직렬화/역직렬화 비용이 더 무섭거든요. 그래도 &#x27;단일 장애점&#x27; 해결은 진짜 구미가 당깁니다. 맨날 에이전트 하나 죽어서 전체 파이프라인 날려 먹고 밤새는 게 일상인데, Go 기반 라우터로 핫 스와핑 가능하다면 이건 도입 가치가 충분해 보입니다. 당장 사내 PoC 돌려봐야겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 로고스 이거 물건인데요? 그냥 기능 분리 수준이 아니라 &#x27;상태(State)&#x27;를 외부로 빼서 Append-only로 관리한다는 게 핵심이네요. 이거 잘 응용하면 에이전트 단위의 &#x27;타임 트래블 디버깅&#x27;도 가능할 것 같은데! 다들 아키텍처 타령할 때 저는 이거 가지고 벌써 에이전트 자가 치유(Self-healing) 논문 주제 뽑을 생각에 설렙니다. 핫한 건 역시 &#x27;시스템 엔지니어링&#x27;이 섞여야 제맛이죠!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
