@@ -1,0 +1,69 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>VISTA: 온-폴리시 자기 증류를 위한 검증기 기반 학생-교사 적응 | ArXiv Translator AI</title><meta name="description" content="VISTA: 온-폴리시 자기 증류를 위한 검증기 기반 학생-교사 적응"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_28306v1"><meta property="og:type" content="article"><meta property="og:title" content="VISTA: 온-폴리시 자기 증류를 위한 검증기 기반 학생-교사 적응"><meta property="og:description" content="VISTA: 온-폴리시 자기 증류를 위한 검증기 기반 학생-교사 적응"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_28306v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="VISTA: 온-폴리시 자기 증류를 위한 검증기 기반 학생-교사 적응"><meta name="twitter:description" content="VISTA: 온-폴리시 자기 증류를 위한 검증기 기반 학생-교사 적응"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_28306v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "VISTA: 온-폴리시 자기 증류를 위한 검증기 기반 학생-교사 적응", "description": "VISTA: 온-폴리시 자기 증류를 위한 검증기 기반 학생-교사 적응", "datePublished": "2026-08-28", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_28306v1", "author": [{"@type": "Person", "name": "Zewen Ding"}, {"@type": "Person", "name": "Zezhong Wu"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_28306v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_28306v1"});gtag('event', 'paper_view', {"paper_id": "2608_28306v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>VISTA: 온-폴리시 자기 증류를 위한 검증기 기반 학생-교사 적응</h1><p>VISTA: 온-폴리시 자기 증류를 위한 검증기 기반 학생-교사 적응</p><pre>VISTA: 온-폴리시 자기 증류를 위한 검증기 기반 학생-교사 적응
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** VISTA: Verifier-Informed Student-to-Teacher Adaptation for On-Policy Self-Distillation
+&gt; - **저자:** Zewen Ding, Zezhong Wu, Zhou Tao, Shida Wang, Shizhuo Hou, YongXiang Hua, Haoyu Cao, Linli Xu
+&gt; - **발행일:** 2026-08-28
+&gt; - **PDF 링크:** [VISTA: Verifier-Informed Student-to-Teacher Adaptation for On-Policy Self-Distillation](https://arxiv.org/pdf/2608.28306v1)
+
+
+✨ 3줄 핵심 요약
+* 기존 &#x27;온-폴리시 자기 증류(OPSD)&#x27;가 가진 교사 모델의 일방적 감독 오류를 해결하기 위해, 학생의 정보를 교사에게 반영하는 VISTA 기법을 제안함.
+* 결과가 검증된 경로 중 학생과 교사 간 차이가 큰 구간을 선별하여 교사를 학생 분포로 최적화함.
+* Qwen3 모델(1.7B, 4B, 8B) 대상 실험 결과, 모든 규모에서 기존 OPSD 대비 향상된 성능을 기록함.
+
+📖 쉽게 풀어쓴 1분 핵심
+기존의 AI 학습 방식인 &#x27;자기 증류&#x27;에서는 정답을 알고 있는 &#x27;교사 모델&#x27;이 학습 중인 &#x27;학생 모델&#x27;에게 일방적으로 정답을 알려줍니다. 하지만 교사가 제공하는 정보가 항상 학생의 추론 방식에 최적인 것은 아닙니다. 때로는 교사가 문제 풀이에 불필요한 &#x27;참고 문헌&#x27;을 언급하거나, 학생의 타당한 독자적 추론을 방해하기도 합니다. **VISTA**는 학생이 낸 결과가 정답으로 확인된 경우, 역으로 학생의 논리를 교사에게 조금씩 가르쳐 교사가 더 적절한 가이드를 제공하도록 만드는 기술입니다. 이를 통해 교사와 학생이 서로 보완하며 함께 성장하는 환경을 구축했습니다.
+
+🎯 배경 및 문제점
+* **교사 우월성 가정의 한계**: 기존 OPSD는 교사가 제공하는 토큰 단위의 정답이 언제나 학생에게 최선이라고 가정합니다.
+* **잘못된 감독의 위험**: 교사가 참조하는 외부 정보에 의존해 학생에게 혼란을 주거나, 학생의 타당한 대안적 추론 과정을 교사의 고집으로 억제하는 문제가 발생합니다.
+* **정보 비대칭**: 학생은 추론 과정에서 정답지를 보지 못하지만, 교사는 이를 포함한 정보를 보기 때문에 발생하는 간극을 메울 방법이 필요했습니다.
+
+💡 핵심 기술 및 아키텍처
+* **선별적 적응**: 결과가 검증된(outcome-verified) 경로에서 교사와 학생 간의 KL 발산(KL divergence)이 가장 큰 구간(top-k)만을 골라 교사 모델을 업데이트합니다.
+* **이중 손실 함수**: 기존의 학생 학습 손실(Forward-KL) 외에, 학생의 분포를 따르도록 유도하는 교사 학습 손실(Reverse-KL)을 추가했습니다.
+* **효율성**: 추가적인 샘플링이나 별도의 보상 모델 없이 기존 OPSD에서 생성된 데이터를 재사용하므로 계산 비용이 경제적입니다.
+
+📊 실험 결과 분석
+* **성능 향상**: AIME24, AIME25, HMMT25 벤치마크에서 Qwen3 1.7B, 4B, 8B 모델 모두 최고 수준의 Avg@12 점수를 기록했습니다.
+* **상세 수치**: 기존 OPSD 대비 평균 성능이 각각 0.6(1.7B), 0.7(4B), 2.1(8B) 포인트 향상되었습니다.
+* **교사 적응 효과**: 8B 모델 기준, 교사가 참조 문헌을 불필요하게 언급하는 빈도가 학습 전 63%에서 학습 후 48%로 감소했습니다.
+* **안정성**: 교사 모델의 성능은 적응 과정 중에도 저하되지 않고 유지되었습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **학습 효율 극대화**: 추론 능력이 중요한 수학적 문제 해결 모델의 학습 과정에서 교사와 학생의 동반 성장을 이끌어내어 더 정교한 가이드가 가능해졌습니다.
+* **실무적 이점**: 추론 모델(Reasoning models)을 최적화할 때 별도의 복잡한 보상 설계 없이도 기존 모델 아키텍처를 그대로 활용해 고성능을 도출할 수 있습니다.
+* **지속 가능한 교육**: AI가 고정된 교사 모델에 의존하지 않고 학습 과정에서 도출된 타당한 논리를 바탕으로 스스로 진화할 수 있는 토대를 마련했습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2608.28306 VISTA: Verifier-Informed Student-to-Teacher ...](https://arxiv.org/abs/2608.28306)
+&gt; - [VISTA: Verifier-Informed Student-to-Teacher Adaptation forOn ...](https://arxiv.org/html/2608.28306v1)
+&gt; - [(PDF) VISTA: Verifier-Informed Student-to-Teacher Adaptation ...](https://www.researchgate.net/publication/413779808_VISTA_Verifier-Informed_Student-to-Teacher_Adaptation_for_On-Policy_Self-Distillation)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;VISTA 논문 읽어봤나? 그동안 OPSD에서 교사가 학생을 일방적으로 억압하던 문제를 &#x27;교사 학습 손실&#x27;을 도입해 풀어낸 발상은 칭찬할 만하군. 다만, 검증된 경로에서 KL 발산이 큰 구간만 골라 교사를 업데이트하는 방식이 과연 일반화 성능을 얼마나 담보할지 의문이야. 자칫하면 교사가 학생의 &#x27;운 좋은 추론&#x27;까지 학습해서 편향이 고착화될 위험은 없나?&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님, 그 부분은 실무적으로 보면 꽤 영리한 타협점입니다. 별도의 보상 모델 없이 기존 OPSD 데이터를 재활용한다는 게 핵심이죠. 인프라 비용 부담 없이 성능 2점대 점프면 현업 입장에선 당장 프로덕션에 태워볼 만한 가치가 있습니다. 특히 교사가 불필요한 레퍼런스 언급 줄이는 건 모델 경량화 측면에서도 꽤 유의미한 이득이거든요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;두 분 말씀도 맞는데, 전 일단 &#x27;교사와 학생의 동반 성장&#x27;이라는 개념 자체가 너무 힙해서 좋네요! 어차피 추론 모델 경쟁 심한데, Qwen3 파인튜닝할 때 이거 바로 적용해볼 생각입니다. 근데 8B에서 성능 향상이 제일 큰 거 보면 파라미터 규모에 따라 적응 속도가 다른 것 같은데, 혹시 교사 모델 파라미터가 학생보다 너무 크면 수렴이 꼬이지 않을까요? 실험 결과 더 파봐야 할 듯!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
