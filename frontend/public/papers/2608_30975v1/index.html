@@ -1,0 +1,71 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MR-JEPA: 심장 MRI를 위한 범용 비디오 파운데이션 모델 | ArXiv Translator AI</title><meta name="description" content="MR-JEPA: 심장 MRI를 위한 범용 비디오 파운데이션 모델"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_30975v1"><meta property="og:type" content="article"><meta property="og:title" content="MR-JEPA: 심장 MRI를 위한 범용 비디오 파운데이션 모델"><meta property="og:description" content="MR-JEPA: 심장 MRI를 위한 범용 비디오 파운데이션 모델"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_30975v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="MR-JEPA: 심장 MRI를 위한 범용 비디오 파운데이션 모델"><meta name="twitter:description" content="MR-JEPA: 심장 MRI를 위한 범용 비디오 파운데이션 모델"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_30975v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "MR-JEPA: 심장 MRI를 위한 범용 비디오 파운데이션 모델", "description": "MR-JEPA: 심장 MRI를 위한 범용 비디오 파운데이션 모델", "datePublished": "2026-08-31", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_30975v1", "author": [{"@type": "Person", "name": "Athira J. Jacob"}, {"@type": "Person", "name": "Puneet Sharma"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_30975v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_30975v1"});gtag('event', 'paper_view', {"paper_id": "2608_30975v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>MR-JEPA: 심장 MRI를 위한 범용 비디오 파운데이션 모델</h1><p>MR-JEPA: 심장 MRI를 위한 범용 비디오 파운데이션 모델</p><pre>MR-JEPA: 심장 MRI를 위한 범용 비디오 파운데이션 모델
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** MR-JEPA: A General Purpose Video Foundation Model for Cardiac MRI
+&gt; - **저자:** Athira J. Jacob, Puneet Sharma, Dorin Comaniciu, Daniel Rueckert
+&gt; - **발행일:** 2026-08-31
+&gt; - **PDF 링크:** [MR-JEPA: A General Purpose Video Foundation Model for Cardiac MRI](https://arxiv.org/pdf/2608.30975v1)
+
+
+✨ 3줄 핵심 요약
+* **범용적 학습:** 10,505명의 환자로부터 얻은 16만여 개의 비주석(unlabeled) 다중 시퀀스 CMR 데이터를 학습한 심장 MRI 전용 비디오 파운데이션 모델입니다.
+* **우수한 성능:** 5가지 심장 기능 회귀 분석 작업에서 기존 도메인 특화 모델 및 자연 영상 기반 모델보다 뛰어난 성능을 보였습니다.
+* **핵심 설계:** LeJEPA 구조를 확장하여 튜브릿 토큰화와 시공간 마스킹을 적용하고, 2D CMR 파운데이션 모델로 초기화하여 효율성을 극대화했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+심장 MRI(CMR)는 심장의 움직임을 보여주는 동영상 데이터(cine)와 조직 상태를 보여주는 정지 영상(LGE 등)이 복합적으로 사용됩니다. 하지만 기존 AI 모델들은 주로 단일 2D 단면 분석에 치중해 왔습니다. &#x27;MR-JEPA&#x27;는 심장의 입체적인 움직임과 다양한 MRI 시퀀스를 한 번에 이해할 수 있는 AI 모델입니다. 별도의 정답 레이블 없이도 방대한 MRI 데이터를 스스로 학습하여, 심장의 기능(박출률)이나 변형(strain)을 정확하게 측정하고 질병을 탐지하는 데 탁월한 능력을 보여줍니다.
+
+🎯 배경 및 문제점
+* **공간적/시간적 맥락 결여:** 기존 딥러닝 방식은 대부분 2D 슬라이스 단위로 처리되어, 심장 영상에 내재된 시간적 연속성(cine)이나 복합적인 시퀀스 간의 관계를 활용하지 못했습니다.
+* **데이터 및 구조적 한계:** 이전의 CMR 비디오 모델은 주로 cine 영상에만 국한되거나 외부 텍스트 데이터에 의존하는 경우가 많았습니다.
+* **데이터 다양성 부족:** 서로 다른 촬영 기법(contrast)을 결합하여 분석하는 통합적인 영상 인코더의 필요성이 제기되었습니다.
+
+💡 핵심 기술 및 아키텍처
+* **MR-JEPA 아키텍처:** LeJEPA(Latent-Euclidean JEPA)를 기반으로 3D 시공간 입력을 처리합니다.
+* **기술적 특징:**
+    * **튜브릿 토큰화(Tubelet tokenization):** 영상을 작은 조각으로 나누어 시간적, 공간적 정보를 동시에 처리합니다.
+    * **시공간 마스킹(Spatiotemporal masking):** 학습 과정에서 영상의 일부를 가리고 예측하게 함으로써 모델의 표현력을 높였습니다.
+    * **2D CMR 초기화:** 이미 학습된 2D CMR 파운데이션 모델의 가중치를 가져와 학습 효율과 정확도를 향상했습니다.
+    * **게이트 어텐션(Gated attention):** 여러 각도에서 촬영된 영상의 특징을 효과적으로 통합합니다.
+
+📊 실험 결과 분석
+* **회귀 작업(Regression):** LV EF(좌심실 박출률) MAE 4.79%, GLS(전체 종단 변형률) MAE 1.87을 달성하며 기존 방식 대비 우수한 성능을 보였습니다. 특히 변형 측정 작업에서는 기준 모델 대비 MAE가 21-27% 감소했습니다.
+* **질병 탐지:** macro AUC 0.868을 기록하며, 정교한 도메인 특화 모델과 경쟁 가능한 수준의 성능을 입증했습니다.
+* **설계 요소 검증:** 2D CMR 초기화와 시공간 마스킹을 제거할 경우 모델 성능이 급격히 하락함을 확인했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **임상 진단 효율화:** 정량적 분석이 필수적인 심장 기능 평가(박출률, 변형 측정 등)에서 일관되고 정확한 결과를 제공하여 임상적 의사결정을 지원합니다.
+* **다양한 활용성:** 특정 질병에 국한되지 않고 여러 CMR 시퀀스를 통합 처리할 수 있어, 심장 질환의 진단 및 환자 모니터링 체계 구축에 기여할 수 있습니다.
+* **한계점:** 현재는 단일 공급업체(Vendor) 데이터로 학습되었으며, 추후 다양한 제조사의 데이터를 포함한 추가 연구와 실질적인 임상 환경에서의 비교 검증이 필요합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [MR-JEPA: A General Purpose Video Foundation Model for Cardiac MRI](https://arxiv.org/abs/2608.30975)
+&gt; - [MR-JEPA: A General Purpose Video Foundation Model for Cardiac MRI](https://arxivtldr.org/abs/2608.30975)
+&gt; - [MR-JEPA: A General Purpose Video Foundation Model for Cardiac MRI](https://www.aimodels.fyi/papers/arxiv/mr-jepa-general-purpose-video-foundation-model)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;LeJEPA 기반으로 3D 시공간 마스킹을 적용한 건 영리한 접근이지만, 단일 벤더 데이터셋에만 의존한 점이 뼈아프군요. 임상 현장의 장비 제조사별 도메인 시프트(Domain Shift)를 어떻게 극복할지에 대한 논의가 빠져 있습니다. 일반화 성능을 증명하지 못하면 학술적 성과에 그칠 공산이 큽니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 벤더 이슈는 크리티컬하죠. 하지만 2D CMR 파운데이션 모델로 초기화해서 효율을 뽑아낸 건 실무적으로 아주 인상적입니다. 16만 개의 비주석 데이터를 튜브릿 토큰화로 돌린 파이프라인은 당장 프로덕션 환경에 이식해도 될 만큼 완성도가 높네요. 다만 저걸 추론 서버에 올리면 Latency는 감당 가능한 건지 모르겠습니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;선배님들, 너무 부정적으로만 보지 마세요! &#x27;Self-supervised&#x27;로 이 정도 지표 뽑은 게 어디인가요? 게다가 게이트 어텐션으로 시퀀스 통합한 거, 이거 진짜 핫한 연구 방향이에요. 저도 당장 다음 프로젝트에 이 아키텍처 가져와서 벤치마크 돌려볼 겁니다. 2D 모델 가중치 가져와서 파인튜닝하는 &#x27;Transfer Learning&#x27; 전략이 지금 학계 트렌드 정석이라구요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
