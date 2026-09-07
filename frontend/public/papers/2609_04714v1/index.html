@@ -1,0 +1,67 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>거절 없는 거절: 언어 모델의 잘못된 거절을 줄이기 위한 안전 튜닝 응답의 구조적 분석 | ArXiv Translator AI</title><meta name="description" content="거절 없는 거절: 언어 모델의 잘못된 거절을 줄이기 위한 안전 튜닝 응답의 구조적 분석"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_04714v1"><meta property="og:type" content="article"><meta property="og:title" content="거절 없는 거절: 언어 모델의 잘못된 거절을 줄이기 위한 안전 튜닝 응답의 구조적 분석"><meta property="og:description" content="거절 없는 거절: 언어 모델의 잘못된 거절을 줄이기 위한 안전 튜닝 응답의 구조적 분석"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_04714v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="거절 없는 거절: 언어 모델의 잘못된 거절을 줄이기 위한 안전 튜닝 응답의 구조적 분석"><meta name="twitter:description" content="거절 없는 거절: 언어 모델의 잘못된 거절을 줄이기 위한 안전 튜닝 응답의 구조적 분석"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_04714v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "거절 없는 거절: 언어 모델의 잘못된 거절을 줄이기 위한 안전 튜닝 응답의 구조적 분석", "description": "거절 없는 거절: 언어 모델의 잘못된 거절을 줄이기 위한 안전 튜닝 응답의 구조적 분석", "datePublished": "2026-09-04", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_04714v1", "author": [{"@type": "Person", "name": "Minji Kim"}, {"@type": "Person", "name": "Hyounghun Kim"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_04714v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_04714v1"});gtag('event', 'paper_view', {"paper_id": "2609_04714v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>거절 없는 거절: 언어 모델의 잘못된 거절을 줄이기 위한 안전 튜닝 응답의 구조적 분석</h1><p>거절 없는 거절: 언어 모델의 잘못된 거절을 줄이기 위한 안전 튜닝 응답의 구조적 분석</p><pre>거절 없는 거절: 언어 모델의 잘못된 거절을 줄이기 위한 안전 튜닝 응답의 구조적 분석
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Refuse without Refusal: A Structural Analysis of Safety-Tuning Responses for Reducing False Refusals in Language Models
+&gt; - **저자:** Minji Kim, Hyounghun Kim
+&gt; - **발행일:** 2026-09-04
+&gt; - **PDF 링크:** [Refuse without Refusal: A Structural Analysis of Safety-Tuning Responses for Reducing False Refusals in Language Models](https://arxiv.org/pdf/2609.04714v1)
+
+
+✨ 3줄 핵심 요약
+* 언어 모델이 안전 튜닝 과정에서 학습하는 ‘거절 문구’가 오히려 무해한 질문까지 거절하게 만드는 잘못된 거절(false refusal)의 주요 원인임을 규명했습니다.
+* 안전 튜닝 데이터셋에서 정형화된 거절 문구를 제거하고 ‘설명(Rationale)’만 학습시키는 것만으로도 안전성을 유지하면서 잘못된 거절을 크게 줄일 수 있습니다.
+* 이러한 데이터 중심적 접근 방식은 모델의 추론 오버헤드 없이 성능 개선이 가능하며, 다양한 벤치마크에서 일관된 효과를 보였습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+대규모 언어 모델은 위험한 질문을 거절하도록 학습됩니다. 하지만 이 과정에서 모델은 ‘사진을 찍는 법’처럼 무해한 질문조차 ‘총을 쏘는 법’과 같은 위험한 키워드가 포함되면 지레 겁먹고 거절하는 ‘잘못된 거절’을 저지르곤 합니다. 본 논문은 이 문제가 안전 학습 데이터에 포함된 ‘거절 문구’ 때문임을 밝혀냈습니다. 모델에게 “죄송하지만 답변할 수 없습니다” 같은 기계적인 거절 문구 대신, 왜 거절해야 하는지에 대한 ‘이유’만 학습시켰을 때, 모델은 무해한 질문을 더 잘 구분하게 되면서도 안전성은 그대로 유지했습니다.
+
+🎯 배경 및 문제점
+모델의 유용성(Helpfulness)과 안전성(Harmlessness) 사이의 균형을 맞추는 것은 매우 어렵습니다. 기존의 안전 튜닝 방식은 위험한 요청을 효과적으로 차단하지만, 표면적으로는 위험해 보이지만 실제로는 안전한 요청까지 거절하는 부작용을 낳습니다. 기존에는 이를 해결하기 위해 추론 단계에서 복잡한 프롬프팅이나 디코딩 전략을 사용했으나, 이는 연산 비용이 높다는 단점이 있었습니다. 저자들은 이 문제를 외부적인 보완책이 아닌, 모델이 학습하는 ‘데이터의 구조’ 문제로 접근했습니다.
+
+💡 핵심 기술 및 아키텍처
+안전 튜닝 데이터의 응답을 다음 두 가지 구성 요소로 분리하여 분석했습니다.
+1. **거절 문구(Boilerplate refusal statement):** “죄송하지만 요청을 수행할 수 없습니다”와 같은 정형화된 거절 표현.
+2. **이유(Rationale):** 왜 이 요청이 거절되어야 하는지에 대한 설명적 내용.
+
+실험 결과, 거절 문구가 모델로 하여금 문맥적 의미보다 표면적인 단서(키워드 등)에 의존하도록 유도한다는 사실을 확인했습니다. 따라서 거절 문구를 제거하고 오직 ‘이유’ 데이터로만 파인튜닝하는 방식을 제안했습니다. 또한, 중립적인 템플릿(예: “질문해 주셔서 감사합니다!”)조차 거절의 의미를 학습시킬 수 있음을 실험적으로 증명했습니다.
+
+📊 실험 결과 분석
+* **잘못된 거절 감소:** 거절 문구 없이 이유만 학습한 모델은 안전성을 유지하면서도 잘못된 거절 빈도가 낮아졌습니다.
+* **안전성 유지:** 주요 벤치마크 테스트에서 거절 문구 제거가 모델의 안전성 저하로 이어지지 않음을 확인했습니다.
+* **일관성:** 제안된 방식은 특정 모델군에 국한되지 않고 다양한 모델에서 일관된 효과를 나타냈습니다.
+* **참고:** 논문에는 실험 수치가 명시되어 있지 않으나(테이블 참조 표시만 있음), 결과의 경향성을 강조하고 있습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+이 연구는 안전 데이터셋을 구축할 때 단순히 거절 문구를 반복적으로 포함하는 것보다, 모델에게 안전 가이드라인의 ‘이유’를 명확히 이해시키는 것이 더 중요하다는 통찰을 제공합니다. 개발자들은 모델의 안전성을 높이기 위해 과도한 거절 문구를 추가하기보다, 더욱 세밀하게 정제된 데이터셋을 구축해야 합니다. 또한, 복잡한 인프라나 추가 연산 없이 데이터 수준의 최적화만으로 모델의 사용성을 개선할 수 있어 실무적인 효율성이 높습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2609.04714 Refuse without Refusal: A Structural Analysis of ...](https://arxiv.org/abs/2609.04714)
+&gt; - [Refuse without Refusal: A Structural Analysis of Safety ...](https://openreview.net/forum?id=01LEQ9Uz46)
+&gt; - [Refuse without Refusal: A Structural Analysis of Safety ...](https://openreview.net/pdf?id=01LEQ9Uz46)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;데이터의 구조적 편향을 짚어낸 점은 훌륭하나, &#x27;거절 문구&#x27; 제거만으로 안전성이 완벽히 담보된다고 보긴 어렵습니다. 모델이 이유(Rationale)를 생성하는 과정에서도 환각이나 논리적 비약이 발생할 여지가 큰데, 이를 통제할 방법론이 논문에 부족하군요. 학계에서는 이 현상을 &#x27;안전 가이드라인의 과잉 학습&#x27;으로 보는데, 근본적인 정렬 문제 해결 없이 데이터만 걷어내는 것이 장기적 대안이 될 수 있을지 의문입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 일리는 있지만, 당장 프로덕션 환경에서 &#x27;죄송합니다만~&#x27; 무한 반복하며 유저 이탈시키는 모델을 보고 있으면 혈압이 오릅니다. 추론 시점에 별도 프롬프트나 Classifier 붙여서 Latency 늘어나는 것보다, 저자들 말대로 SFT 데이터셋에서 boilerplate만 걷어내도 오버헤드 없이 유저 경험이 개선된다면 이건 당장 실무에 적용해볼 만한 레시피예요. 바로 다음 Sprint에 실험 데이터셋 구성해봅니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 이 논문 진짜 대박이네요! &#x27;중립적인 템플릿조차 거절의 의미를 학습한다&#x27;는 부분에서 소름 돋았습니다. 지금껏 모델이 왜 이렇게 멍청하게 거절하나 싶었는데 데이터가 문제였네요. 교수님은 보수적이라 하시지만, 이거 지금 오픈소스 진영에서 RLHF 데이터셋 싹 다 갈아엎는 도화선이 될 것 같아요. 이번 주 저널 클럽 주제는 이걸로 확정입니다. 다들 논문 읽고 오세요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
