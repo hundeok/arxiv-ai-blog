@@ -1,0 +1,69 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>불확실성 기반 탐색을 통한 조건부 및 정량화된 효과의 행동 모델 학습 | ArXiv Translator AI</title><meta name="description" content="불확실성 기반 탐색을 통한 조건부 및 정량화된 효과의 행동 모델 학습"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2608_30955v1"><meta property="og:type" content="article"><meta property="og:title" content="불확실성 기반 탐색을 통한 조건부 및 정량화된 효과의 행동 모델 학습"><meta property="og:description" content="불확실성 기반 탐색을 통한 조건부 및 정량화된 효과의 행동 모델 학습"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2608_30955v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="불확실성 기반 탐색을 통한 조건부 및 정량화된 효과의 행동 모델 학습"><meta name="twitter:description" content="불확실성 기반 탐색을 통한 조건부 및 정량화된 효과의 행동 모델 학습"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2608_30955v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "불확실성 기반 탐색을 통한 조건부 및 정량화된 효과의 행동 모델 학습", "description": "불확실성 기반 탐색을 통한 조건부 및 정량화된 효과의 행동 모델 학습", "datePublished": "2026-08-31", "url": "https://arxiv-ai-blog.vercel.app/papers/2608_30955v1", "author": [{"@type": "Person", "name": "Jeffrey Jewett"}, {"@type": "Person", "name": "William Solow"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2608_30955v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2608_30955v1"});gtag('event', 'paper_view', {"paper_id": "2608_30955v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>불확실성 기반 탐색을 통한 조건부 및 정량화된 효과의 행동 모델 학습</h1><p>불확실성 기반 탐색을 통한 조건부 및 정량화된 효과의 행동 모델 학습</p><pre>불확실성 기반 탐색을 통한 조건부 및 정량화된 효과의 행동 모델 학습
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Learning Action Models with Conditional and Quantified Effects via Uncertainty-Guided Exploration
+&gt; - **저자:** Jeffrey Jewett, William Solow, Sandhya Saisubramanian
+&gt; - **발행일:** 2026-08-31
+&gt; - **PDF 링크:** [Learning Action Models with Conditional and Quantified Effects via Uncertainty-Guided Exploration](https://arxiv.org/pdf/2608.30955v1)
+
+
+✨ 3줄 핵심 요약
+* **OHCAM(온라인 가설 기반 조건부 행동 모델 학습)**은 환경과의 제한된 상호작용만으로 조건부·정량화된 행동 모델을 학습하는 방법론입니다.
+* 불확실성을 최대화하는 행동을 적극적으로 선택하여 관측 노이즈 속에서도 효율적으로 학습하며, 필요할 때만 가설을 복잡하게 확장하여 확장성을 확보했습니다.
+* 6개의 벤치마크 도메인과 실제 로봇 실험을 통해 기존 방식 대비 높은 샘플 효율성과 작업 성공률을 입증했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+로봇이 복잡한 실제 환경에서 일하려면 특정 조건에서만 발생하는 효과(예: 더러운 스펀지로 닦으면 오히려 얼룩이 생김)와 주변 사물에 미치는 영향(예: 닦다가 옆의 캔을 쓰러뜨림)을 이해해야 합니다. 하지만 기존 기술은 계산량이 너무 많거나 노이즈에 취약했습니다. OHCAM은 로봇이 무엇을 모르는지 파악하여 가장 정보가 많은 행동을 골라 스스로 학습합니다. 처음에는 간단한 가설로 시작해 데이터와 맞지 않을 때만 가설을 정교하게 다듬어, 복잡한 환경에서도 빠르고 정확하게 행동 모델을 학습합니다.
+
+🎯 배경 및 문제점
+* **복잡한 환경:** 실제 환경에서는 행동의 결과가 상황과 주변 객체에 따라 달라집니다. 이를 표현하기 위해서는 조건부(conditional) 및 정량화된(quantified) 효과를 학습해야 합니다.
+* **계산 및 노이즈 문제:** 기존 방식은 가능한 효과의 경우의 수가 너무 많아(조합 폭발) 계산이 어렵거나, 실제 환경의 흔한 노이즈(센서 오류 등)에 대처하지 못해 실무 적용이 제한적이었습니다.
+* **샘플 효율성:** 실제 로봇 상에서의 데이터 수집은 시간이 오래 걸리므로, 최소한의 상호작용으로 모델을 완성하는 능력이 필수적입니다.
+
+💡 핵심 기술 및 아키텍처
+* **불확실성 유도 탐색(Uncertainty-Guided Exploration):** 여러 가설 모델 간의 의견 불일치를 최대화하는 행동을 선택하여, 학습 속도를 높이고 불확실성을 빠르게 줄입니다.
+* **점진적 가설 확장:** 처음에는 단순한 행동 모델로 시작하고, 현재 모델이 실제 관측된 데이터와 일치하지 않을 때만 더 복잡한 조건부 효과 가설을 추가합니다. 이는 모델의 확장성을 보장합니다.
+* **노이즈 강건성:** 확률적 접근을 통해 노이즈가 섞인 환경에서도 실제 환경의 규칙을 오판하지 않도록 견고함을 유지합니다.
+
+📊 실험 결과 분석
+* **벤치마크 성능:** 6개의 계획(Planning) 도메인 실험에서 OHCAM은 기존 방식 대비 훨씬 많은 작업을 해결하며 높은 샘플 효율성을 보였습니다.
+* **로봇 검증:** &#x27;MagnetBlocks&#x27;와 &#x27;SpongeWorld&#x27; 두 환경에서 Kinova Gen3 로봇을 사용하여 실증했습니다.
+* **데이터 수집:** 총 250회의 기술 실행 데이터를 수집했으며, 약 5%의 관측 노이즈가 존재하는 환경에서도 성공적으로 학습을 수행했습니다.
+* **수치적 상세:** 원문 발췌에는 성능 지표의 구체적인 수치(정확도 등)는 기재되어 있지 않으나, 실험 결과 OHCAM이 baseline보다 우월한 성공률을 보였음을 명시하고 있습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **자율형 로봇의 고도화:** 복잡한 주방 도구 조작이나 물류 로봇처럼 상황에 따라 결과가 변하는 환경에서 로봇의 작업 성공률을 크게 높일 수 있습니다.
+* **실무적 가치:** 사전 정의된 복잡한 규칙 없이도 로봇이 실제 현장에서의 경험을 통해 스스로 환경의 규칙을 깨닫게 함으로써, 엔지니어링 비용을 절감할 수 있습니다.
+* **안전한 탐색:** 하드웨어에 무리가 갈 수 있는 환경을 학습 과정에서 직면할 수 있으므로, 실제 로봇 적용 시 인간 감독하에 안전하게 온라인 학습을 수행하는 절차를 포함하고 있습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2608.30955 Learning Action Models with Conditional and Quantified Effects via Uncertainty-Guided Exploration](https://arxiv.org/abs/2608.30955)
+&gt; - [Authors and titles for recent submissions - Computer Science](https://www.arxiv.org/list/cs/recent)
+&gt; - [Learning Action Models with Conditional and Quantified Effects via Uncertainty-Guided Exploration](https://arxiv.org/html/2608.30955)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문을 훑어보니 불확실성 기반 탐색(Uncertainty-Guided Exploration)을 통해 모델 복잡도를 점진적으로 늘려가는 전략은 이론적으로 깔끔하군요. 다만, 250회의 실행으로 충분한 일반화가 보장될지 의문입니다. 특히 5%의 노이즈 조건에서 가설 확장이 과적합(overfitting)으로 이어지지 않을지, 수렴 속도에 대한 엄밀한 증명이 더 필요해 보입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에선 5% 노이즈는 양반이죠. 실제 필드에선 센서 드리프트에 조명 변화까지 겹치면 노이즈가 훨씬 튈 텐데, 이 모델이 정말 현장에서도 &#x27;점진적 확장&#x27;만으로 버틸 수 있을까요? 차라리 로우 레벨에서 데이터 증강을 더 빡세게 돌리는 게 나을 것 같은데, 일단 로봇 실험까지 했다는 건 현업 입장에서 군침 도는 포인트네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 다들 비판적이지만 저는 이 방식이 &#x27;효율성&#x27; 측면에서 게임 체인저가 될 것 같아요! 매번 모든 경우의 수를 다 때려 박는 기존 방식은 계산 복잡도 때문에 졸업 논문 쓰다 죽을 뻔했는데, OHCAM처럼 필요할 때만 가설 확장하는 방식은 엣지 디바이스나 로봇 제어단에 올리기 딱 좋잖아요. 당장 이번 주 세미나 때 이거 발표해서 교수님께 어필해야겠네요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

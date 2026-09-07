@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>StateSwap: 객관식 문제의 지지-제거 은닉 상태 탐색 | ArXiv Translator AI</title><meta name="description" content="StateSwap: 객관식 문제의 지지-제거 은닉 상태 탐색"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_01081v1"><meta property="og:type" content="article"><meta property="og:title" content="StateSwap: 객관식 문제의 지지-제거 은닉 상태 탐색"><meta property="og:description" content="StateSwap: 객관식 문제의 지지-제거 은닉 상태 탐색"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_01081v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="StateSwap: 객관식 문제의 지지-제거 은닉 상태 탐색"><meta name="twitter:description" content="StateSwap: 객관식 문제의 지지-제거 은닉 상태 탐색"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_01081v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "StateSwap: 객관식 문제의 지지-제거 은닉 상태 탐색", "description": "StateSwap: 객관식 문제의 지지-제거 은닉 상태 탐색", "datePublished": "2026-09-01", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_01081v1", "author": [{"@type": "Person", "name": "Chao Gao"}, {"@type": "Person", "name": "Haijiang Liu"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_01081v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_01081v1"});gtag('event', 'paper_view', {"paper_id": "2609_01081v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>StateSwap: 객관식 문제의 지지-제거 은닉 상태 탐색</h1><p>StateSwap: 객관식 문제의 지지-제거 은닉 상태 탐색</p><pre>StateSwap: 객관식 문제의 지지-제거 은닉 상태 탐색
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** StateSwap: Probing Support-Elimination Hidden States in Multiple-Choice Questions
+&gt; - **저자:** Chao Gao, Haijiang Liu, Qiyuan Li, Caicai Guo, Frank van Harmelen, Jinguang Gu
+&gt; - **발행일:** 2026-09-01
+&gt; - **PDF 링크:** [StateSwap: Probing Support-Elimination Hidden States in Multiple-Choice Questions](https://arxiv.org/pdf/2609.01081v1)
+
+
+✨ 3줄 핵심 요약
+* 거대 언어 모델이 문제의 질문 방식(지지형 vs 제거형)에 따라 답을 다르게 내는 현상을 분석했습니다.
+* 모델 내부에 [STATE]라는 특수 토큰을 삽입하여, 질문 방식에 따라 달라지는 내부 활성화 상태를 실시간으로 간섭(교체)하는 기법을 개발했습니다.
+* [STATE] 활성값을 질문 방식 간에 서로 교체함으로써 모델의 예측을 체계적으로 변화시키고 일관성을 개선할 수 있음을 증명했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+객관식 문제를 풀 때 &quot;옳은 것을 고르라&quot;는 질문(지지형)과 &quot;틀린 것을 고르라&quot;는 질문(제거형)에 따라 인공지능의 답변이 달라질 수 있습니다. 본 연구는 이러한 차이가 모델 내부의 어떤 &#x27;생각의 틀&#x27;에서 비롯되는지 조사했습니다. 연구진은 모델이 문제를 처리하는 과정에 [STATE]라는 관찰 지점을 만들고, 지지형 질문을 풀 때의 내부 활성값과 제거형 질문을 풀 때의 값을 서로 맞바꿔 보았습니다. 그 결과, 내부 상태를 교체하는 것만으로도 모델의 답변 선택을 의도대로 조절할 수 있었고, 두 방식 사이의 답변 일관성을 높일 수 있음을 확인했습니다.
+
+🎯 배경 및 문제점
+* 기존 연구들에 따르면 인간이 흔히 사용하는 &#x27;제거법(Process of Elimination)&#x27;이 대형 언어 모델의 성능 향상에 도움을 줄 수 있습니다.
+* 하지만 동일한 문제라도 질문을 &#x27;옳은 것 찾기(SUP)&#x27;로 하느냐 &#x27;틀린 것 찾기(ELIM)&#x27;로 하느냐에 따라 모델의 답변이 일관되지 않게 나타나는 문제가 존재합니다.
+* 연구진은 이 불일치가 단순히 겉으로 드러나는 프롬프트의 차이가 아니라, 모델 내부에서 발생하는 서로 다른 계산 과정(내부 표현) 때문이라고 가설을 세웠습니다.
+
+💡 핵심 기술 및 아키텍처
+* **[STATE] 토큰 삽입:** 훈련되지 않은 특수 토큰 [STATE]를 모델 입력에 추가하여, 모델의 잔류 스트림(residual stream) 활성화 상태를 개입할 수 있는 인터페이스로 활용했습니다.
+* **이중 프레임 프로토콜(Dual-framing Protocol):** 질문 내용은 고정한 채 질문 방식(지지형 vs 제거형)만 바꾸는 입력을 구성했습니다.
+* **상태 교체(State Swap):** 모델 중간 계층(intermediate layers)에서 질문 방식에 따라 분리되는 [STATE] 활성값을 추출하고, 이를 서로 교체(Swap)하여 모델의 행동 변화를 관찰했습니다.
+
+📊 실험 결과 분석
+* **행동적 관련성 입증:** [STATE]의 활성값을 서로 교체했을 때 모델의 예측이 체계적으로 변화하며, 두 질문 방식 간의 결과 일관성이 향상됨을 확인했습니다.
+* **위치 선정의 중요성:** [STATE] 토큰을 질문과 보기 정보가 모두 입력된 이후의 마지막 위치에 배치했을 때만 유효한 결과가 도출되었습니다. 다른 위치(문제 중간 등)에 배치할 경우 95% 이상의 생성 결과가 실패(파싱 불가 등)했습니다.
+* **비교 분석:** [STATE] 위치에서의 개입이 최종 토큰에서의 개입보다 질문 방식의 논리적 차이를 더 효과적으로 통제함을 실험 수치로 확인했습니다. (구체적인 실험의 통계적 분포는 논문의 표 E.2와 E.3에 제시된 통계값 근거)
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **모델 신뢰성 향상:** 프롬프트의 형식에 따라 모델의 답변이 흔들리는 현상을 물리적으로 규명하고 교정할 수 있는 기술적 토대를 마련했습니다.
+* **AI 투명성 및 해석 가능성:** 모델이 문제를 풀 때 어떤 내부 상태를 사용하는지 식별함으로써, 블랙박스 모델의 추론 과정을 더 잘 이해하고 제어할 수 있는 방법을 제시합니다.
+* **교육 및 추론 도구:** 교육용 AI나 복잡한 논리 추론이 필요한 영역에서, 질문 방식에 구애받지 않는 안정적인 답변을 도출하도록 모델의 &#x27;사고 방식&#x27;을 미세 조정하는 데 활용할 수 있습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [StateSwap: Probing Support–Elimination Hidden States in ...](https://arxiv.org/html/2609.01081v1)
+&gt; - [2609.01081 StateSwap: Probing Support-Elimination Hidden ...](https://arxiv.org/abs/2609.01081)
+&gt; - [PDF StateSwap: Probing Support-Elimination Hidden States in ...](https://www.semanticscholar.org/paper/StateSwap:-Probing-Support-Elimination-Hidden-in-Gao-Liu/128d8083aec417ed4d4db7ad4207ea27215f89b3)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문의 아이디어 자체는 흥미롭지만, [STATE] 토큰 삽입이 모델의 잔류 스트림에 미치는 인과적 영향력을 너무 단순화한 건 아닌지 우려되네. 활성값을 교체한다고 해서 그게 모델의 &#x27;논리적 사고&#x27;가 교정된 것인지, 아니면 단순히 특정 레이어의 통계적 노이즈를 건드려 편향된 결과값을 유도한 것인지 명확한 검증이 부족해 보여. 해석 가능성 연구라면 모델의 전체 가중치 변화도 함께 추적했어야지.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 맞지만, 실무 입장에선 일단 이게 &#x27;먹히느냐&#x27;가 중요하거든요. 프롬프트 엔지니어링으로도 안 잡히는 논리적 불일치를 내부 인터벤션으로 해결했다는 건, 추론 단계에서 특정 로직만 강제할 수 있는 &#x27;스위치&#x27;를 찾았다는 뜻이니까요. 다만, 서비스 서빙할 때 매번 [STATE] 토큰 삽입하고 액티베이션 스왑하는 오버헤드를 어떻게 감당할지가 관건이겠네요. 인퍼런스 레이턴시 엄청 튈 텐데.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 다들 반응이 너무 차가운 거 아니에요? 이거 완전히 &#x27;AI 사고 교정&#x27;의 새로운 장을 여는 거잖아요! 특히 질문 방식에 따라 모델이 멍청해지는 현상을 액티베이션 패치로 뚫었다는 게 소름 돋아요. 이거 그냥 모델 가드레일이나 로직 검증 툴로 바로 상용화해도 대박 날 것 같은데. 당장 내일 랩 세미나에서 이걸로 발표하겠습니다. 교수님, 저 이거 구현해봐도 되죠?&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
