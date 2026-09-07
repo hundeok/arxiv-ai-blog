@@ -27299,7 +27299,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-06T22:37:41.663954+00:00",
+      "updated_at": "2026-09-07T07:47:20.995017+00:00",
       "paper": {
         "title": "Let Confidence Change, Not the Prediction: Prediction-Preserving Repair for Post-hoc Calibration",
         "summary": "Post-hoc calibration corrects reported confidence, yet a multiclass calibrator can also change the associated top-1 prediction. Accuracy captures only the net effect of these changes on correctness, not how often predictions change; the Top-1 Prediction Change Rate (TPCR) instead measures this frequency. We propose Calibrator-Output Repair for Top-1 Decision Preservation (CORD), the first post-fit adapter to impose exact prediction preservation by repairing the full calibrated probability vector. From the original and calibrated outputs alone, CORD determines the mass assigned to the original top-1. The calibrated conditional distribution allocates the remaining mass over the other classes, yielding a repaired vector whose own argmax recovers the original prediction. On the calibration split, CORD coordinates the repaired masses to retain the calibrated outputs' mean mass on original predictions whenever attainable. The adapter alters neither the fitted calibrator nor its direct output, fits no additional supervised map, and requires no user- or validation-tuned hyperparameter. Across CIFAR-10/100 and ImageNet-1K, CORD attains zero TPCR by construction and lowers mean ECE, NLL, and Brier relative to the corresponding direct outputs in every dataset; paired gains persist under distribution shift and across calibration-set sizes. CORD thus removes the preservation constraint from calibrator fitting and assigns exact recovery of the original decision to subsequent output repair. Our code is available at https://github.com/labhai/CORD.",
@@ -27350,7 +27350,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-04T07:37:18.009578+00:00",
       "last_error": null,
-      "updated_at": "2026-09-06T22:37:41.664004+00:00",
+      "updated_at": "2026-09-07T07:47:20.995035+00:00",
       "paper": {
         "title": "Compile by Training: Turning Natural-Language Specifications into Local Neural Functions",
         "summary": "Many recurring text functions are easy to describe but difficult to implement with rules, while calling a large remote model for every input introduces repeated cost, latency, and dependency on a provider. We present compile by training, which turns a natural-language specification into a reusable neural function. At compile time, teacher models generate task-specific examples that are used to train a small adapter for a compact interpreter. The resulting function runs without the teachers and can be stored, versioned, and composed like ordinary software. On FuzzyBench-Hard, a subset on which the Program-as-Weights fast compiler produced no exact matches, compile by training reaches 83.6% semantic accuracy. This higher accuracy comes with a higher compile-time cost: roughly a minute rather than seconds for the fast compiler. We deploy the compiler in a public interactive service and demonstrate compiled functions in a multi-site website helper, a language-controlled 3D avatar, and a bidirectional English-Claudish translator.",
@@ -27497,7 +27497,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-06T22:37:41.663997+00:00",
+      "updated_at": "2026-09-07T07:47:20.995030+00:00",
       "paper": {
         "title": "Select, Compress, Reinvest: A Controlled Study of Visual-Token Allocation in Long-Video MLLMs",
         "summary": "Long-video language models cannot look at every frame: an hour sampled once per second is 3,600 images, and a system keeps only a small fixed slice of that pool. Which frames survive that slice is usually treated as a preprocessing detail; we test whether it should be. Published selectors make the comparison hard because they change the frame scorer, the prompt boundary, the resolution policy, and the answering model all at once. We hold each fixed and vary one decision at a time: selection, spatial compression, and reinvestment of the savings, across six training-free selection rules, three long-video benchmarks, and two answering models. Selection is the largest single lever: on LongVideoBench's hour-long bin, eight query-selected frames beat sixteen uniformly spaced ones by 6.9 points, and Orthogonal Matching Pursuit, an unmodified decades-old sparse-approximation algorithm, matches or comes within a point of every purpose-built selector we compare it against, across all three benchmarks. Compression is close to free: halving each frame's spatial budget at fixed timestamps costs at most 0.44 points. Reinvestment is where that budget turns back into accuracy: spending the freed tokens on twice as many compressed frames, at a measured cost no higher than the original eight, returns a further two to three points; compression only pays off once its savings are spent this way. Along the way, an implementation bug in our own AKS baseline and a 0.07 to 3.74 point gap between two harnesses running the same published rules at the same budget show why these comparisons need to happen inside one controlled harness rather than across papers.",
@@ -28260,7 +28260,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-06T02:26:02.891886+00:00",
+      "updated_at": "2026-09-07T07:47:20.995041+00:00",
       "paper": {
         "title": "When Models Edit Too Much: On the Fidelity of Minimal Code Edits",
         "summary": "Large language models (LLMs) are increasingly used to edit existing code, but correctness alone is not enough: useful repairs should also be minimal, reviewable, and faithful to the original implementation. We study over-editing, the tendency of a model to rewrite code beyond what is required to fix a bug. We construct an evaluation framework from 400 BigCodeBench problems by injecting controlled AST-level corruptions into reference solutions, giving each repair task a known minimal patch. Across frontier LLMs, over-editing is widespread even among strong models like GPT-5.5: high Pass@1 can coexist with unnecessarily large edits and added cognitive complexity. A preservation instruction substantially reduces this behavior, lowering average excess Levenshtein distance from 0.195 to 0.131, reducing added cognitive complexity by 26.6%, and increasing Pass@1 by 2.3 points. However, these gains do not simply follow from a larger reasoning budget or larger models. We next ask whether minimal editing can be learned directly during post-training. We observe that supervised fine-tuning overfits to seen corruption patterns, whereas reinforcement learning gives the best out-of-domain edit-fidelity and performance-retention trade-off. These results position edit fidelity as a distinct axis of code-repair quality and show that it can be measured and learned.",
@@ -28298,11 +28298,169 @@
       },
       "priority_score": 40,
       "korean_title": "의사결정 공간으로서의 번역: 저자원 방언 생성을 위한 다중 에이전트 관점"
+    },
+    "2609_00444v1": {
+      "id": "2609_00444v1",
+      "filename": "post_2609_00444v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-09-07T07:47:56.881703+00:00",
+      "paper": {
+        "title": "Group Adaptive Clipping Policy Optimization",
+        "summary": "Group relative policy optimization for reinforcement learning with verifiable rewards (RLVR) typically uses a fixed importance-sampling (IS) ratio clipping boundary across all rollouts. We identify a key limitation: rare correct rollouts on harder problems and abundant correct rollouts on easier problems are clipped at comparable rates, despite contributing very different learning signals. Rollouts with low group success exhibit larger IS ratios and carry stronger gradient signal for exploration and solving new problems, yet are disproportionately suppressed by fixed clipping.   To address this, we propose Group Adaptive Clipping Policy Optimization (GAPO), a plug-in modification to GRPO methods that adapts the clipping boundary to the rollout advantage. GAPO is motivated by a reverse-KL trust-region perspective, which suggests that rollouts with larger learning signal should receive proportionally greater update headroom. GAPO requires no reward shaping and preserves the standard PPO/GSPO surrogate while adapting only the clipping threshold. Across Qwen and Llama models, GAPO consistently improves both Pass@1 and Pass@k over fixed clipping and advantage-shaping baselines on math reasoning and coding benchmarks where the pass rates by the base model are relatively low.",
+        "published": "2026-08-31T22:32:32Z",
+        "authors": [
+          "Sheng Jia",
+          "Xiao Wang",
+          "Shiva Prasad Kasiviswanathan",
+          "Rein Houthooft"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.00444v1"
+      },
+      "priority_score": 36,
+      "korean_title": "그룹 적응형 클리핑 정책 최적화"
+    },
+    "2608_05879v2": {
+      "id": "2608_05879v2",
+      "filename": "post_2608_05879v2.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-07T07:47:20.995023+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-07T07:47:20.995025+00:00",
+      "paper": {
+        "title": "To See a World in a Living Context: Unified Indoor-Outdoor Urban World Generation",
+        "summary": "Text-driven 3D generation has advanced rapidly in creating large-scale outdoor environments and detailed indoor scenes, but these domains are usually synthesized independently, lacking the correspondence required for a coherent urban world. We present HoloWorld, a unified indoor-outdoor urban world generation framework built on a continuously updated cross-scale world context. Initializing from a user description, HoloWorld progressively represents and updates the diverse world information, from city-scale planning to individual buildings, allowing generated interiors to maintain explicit correspondence with their associated exterior buildings. Conditioned on the evolving context and previously generated neighboring blocks, HoloWorld autoregressively generates urban exteriors with consistent spatial organization and visual identity across blocks. The generated exterior representations are further grounded in 3D building instances and footprints, enabling building-specific indoor generation with geometry-constrained layouts and inherited appearance characteristics. To our knowledge, HoloWorld is the first framework to unify indoor and outdoor generation within a coherent 3D urban world. Extensive experiments demonstrate that HoloWorld achieves superior urban exterior generation performance, improving the average AQS score over the SOTA by 7.68\\% and obtaining the highest average RDR score, while maintaining strong building-level indoor-outdoor correspondence and cross-block continuity within a unified 3D urban world. Our project page: https://huangxb326.github.io/HoloWorld/.",
+        "published": "2026-08-06T11:00:38Z",
+        "authors": [
+          "Xiaobin Huang",
+          "Zilong Huang",
+          "Yang Luo",
+          "Hongchao Fan",
+          "Yiping Chen",
+          "Ting Han"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.05879v2"
+      },
+      "priority_score": 20
+    },
+    "2609_04304v1": {
+      "id": "2609_04304v1",
+      "filename": "post_2609_04304v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-09-07T07:47:29.422583+00:00",
+      "paper": {
+        "title": "Iris: Climbing to the Search Frontier",
+        "summary": "We present Iris-mini and Iris-pro, two search agents trained at the 35B-A3B and 397B-A17B scales, together with the data pipeline and training recipe behind them. Tasks are reverse-constructed from the hyperlink structure of a web corpus: we author multi-hop chains over an entity graph distilled from a seed page and its out-links, rewrite every non-answer entity into a descriptive reference so that no clue can be resolved by string matching, and admit only questions that a reference model fails closed-book yet solves once the supporting evidence is supplied. These questions are then turned into trajectories, which are filtered at both the trajectory and the turn level before SFT. The policy is then optimized by RL against live search, with the reward judge and the observation summarizer served inside the training cluster, and with over-long rollouts interrupted at the request level and resumed from their committed prefix at the next step. We alternate the two stages in a procedure we call SFT-RL climbing, returning the hardest solved and most efficient rollouts of each RL round to the next supervised pass. Because inference-time context management is worth more on these benchmarks than most reported differences between systems, we evaluate every benchmark both with and without it, holding the tool set, the context limit, and the judge fixed. All results come from a single ReAct agent, with no sub-agents and no test-time verification. With management enabled, on BrowseComp, BrowseComp-ZH, DeepSearchQA, and HLE the two models reach $82.2/84.8/86.9/52.3$ and $88.6/85.1/92.9/56.4$, the strongest overall results among open-source search agents in their respective parameter ranges. We plan to release the model weights together with the complete recipe for data construction, training, and evaluation.",
+        "published": "2026-09-03T17:51:01Z",
+        "authors": [
+          "Ziyuan Liu",
+          "Hengqi Liu",
+          "Zichuan Wang",
+          "Yang Qin",
+          "Jiachen Liang",
+          "Xu Chu",
+          "Shaowei Chen",
+          "Yuantao Gu",
+          "Mu Chuan"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.04304v1"
+      },
+      "priority_score": 50,
+      "korean_title": "아이리스: 검색의 최전선을 향한 등반"
+    },
+    "2609_00581v2": {
+      "id": "2609_00581v2",
+      "filename": "post_2609_00581v2.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-07T07:47:20.995054+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-07T07:47:20.995056+00:00",
+      "paper": {
+        "title": "Enoki: Efficient Multi-Level Hallucination Detection",
+        "summary": "Ensuring factuality remains a critical challenge for deploying LLMs in high-stakes settings. Existing hallucination detectors usually operate at a single level: claim-level methods provide interpretable factual units, while span-level methods localize unsupported text. Bridging these views is costly, as LLM-heavy pipelines require multiple decomposition and verification calls, and modular systems need additional claim-to-span alignment. We propose Enoki, an Open Information Extraction framework for multi-level hallucination detection. Enoki extracts text-anchored relational facts, verifies them against evidence, and projects unsupported facts back to hallucinated spans. This shared representation enables claim-level verification and span-level localization without requiring separate alignment. Enoki supports LLM-based, encoder-based, and rule-based extraction regimes, balancing accuracy and inference cost through a common interface. Experiments show that Enoki remains competitive with strong claim-level systems while using fewer resources and achieves superior performance on fine-grained span- and entity-level localization. We also release EnokiQA, a dual-granularity dataset with aligned claim-level verification and span-level localization annotations.",
+        "published": "2026-09-01T02:21:28Z",
+        "authors": [
+          "Elisei Rykov",
+          "Timur Ionov",
+          "Nikolay Ivanov",
+          "Maksim Savkin",
+          "Maksim Makarenko",
+          "Alexander Panchenko",
+          "Vasily Konovalov",
+          "Julia Belikova"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.00581v2"
+      },
+      "priority_score": 25
+    },
+    "2609_04523v1": {
+      "id": "2609_04523v1",
+      "filename": "post_2609_04523v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-09-07T07:47:47.497744+00:00",
+      "paper": {
+        "title": "MaxKernel: Agentic Kernel Generation for TPUs",
+        "summary": "Designing and authoring high-performance custom kernels for accelerators is a complex task that requires deep hardware-level expertise. Large Language Models (LLM) can be leveraged together with real-time compiler feedback to build agentic systems for kernel generation. In this work, we present MaxKernel, a multi-agent system that implements three distinct paradigms for TPU kernel development: (1) a Human-in-the-Loop (HITL) agent for collaborative, step-by-step design; (2) an Autonomous (Auto) agent that executes a fully automated, metric/trace-driven optimization loop; and (3) a Graph-Based Autonomous Search that scales the Auto agent for global exploration of the design space. All three paradigms leverage a shared pool of specialized sub-agents to handle planning, implementation, self-debugging, testing, and hardware profiling. We evaluate MaxKernel on JaxBench, a comprehensive suite of 50 diverse kernel tasks for TPUs, alongside complex, real-world workloads from state-of-the-art open-source models. We demonstrate that MaxKernel consistently generates highly optimized implementations, matching expert hand-tuned baselines and delivering significant performance across the benchmark. Our agent is open-sourced and available https://github.com/AI-Hypercomputer/accelerator-agents/tree/main/MaxKernel.",
+        "published": "2026-09-03T22:22:37Z",
+        "authors": [
+          "Shangkun Wang",
+          "Nina Cai",
+          "Charles Hoong",
+          "Julian Walker",
+          "Gerson Kroiz",
+          "George Vanica",
+          "Deepak Patil",
+          "Andi Gavrilescu",
+          "Hassan Sipra",
+          "Sethu Sankaran"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.04523v1"
+      },
+      "priority_score": 36,
+      "korean_title": "MaxKernel: TPU를 위한 에이전트 기반 커널 생성"
+    },
+    "2609_04369v1": {
+      "id": "2609_04369v1",
+      "filename": "post_2609_04369v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-09-07T07:47:38.848027+00:00",
+      "paper": {
+        "title": "AdaptVPR: Route-Aware Hard Positive Generation for Robust Visual Place Recognition",
+        "summary": "Visual Place Recognition (VPR) localizes a query image by retrieving database images of the same or nearby place, yet its robustness is often degraded by domain shifts arising from illumination, weather, seasonal changes, and dynamic occlusions. One contributing factor is the limited appearance diversity of the same place in existing training data. To address this issue, we propose AdaptVPR, a route-aware generative augmentation framework that constructs same-place hard positives for robust VPR training. AdaptVPR first uses a vision language model to parse scene attributes and estimate editing feasibility, while a rule-based scheduler determines the generation route according to editability scores and risk constraints. The generation process is decomposed into three complementary routes: the Global Appearance Route introduces global scene changes in weather, illumination, and time of day; the Local Occlusion Route inserts plausible dynamic occluders; and the Dual Route combines both types of perturbations to produce more challenging appearance shifts. Each generated candidate is evaluated using a VPR-oriented verification scheme based on geometric consistency and appearance diversity, reducing the risk of structural drift while ensuring sufficient appearance variation. Global candidates are generated once and rejected if verification fails, while Local Occlusion and Dual candidates use verification feedback for limited prompt refinement and regeneration. Using this framework, we construct AdaptCities, containing 160K verified synthetic same-place hard positives. Experiments across multiple VPR baselines and vision foundation backbones show consistent gains on standard benchmarks and substantial improvements under challenging domain shifts, with R@1 gains of up to 9.2%. The source code and data resources are publicly available at https://github.com/chenshunpeng/AdaptVPR.",
+        "published": "2026-09-03T18:34:17Z",
+        "authors": [
+          "Shunpeng Chen",
+          "Jingyi Zhang",
+          "Changwei Wang",
+          "Shengpeng Xu",
+          "Yukun Song",
+          "Xingtian Pei",
+          "Jinzhou Lin",
+          "Li Guo",
+          "Shibiao Xu"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.04369v1"
+      },
+      "priority_score": 40,
+      "korean_title": "AdaptVPR: 강력한 시각적 장소 인식을 위한 경로 인식 기반 하드 포지티브 생성"
     }
   },
   "last_run": {
-    "started_at": "2026-09-07T02:23:19.112975+00:00",
-    "discovered": 0,
+    "started_at": "2026-09-07T07:47:20.996934+00:00",
+    "discovered": 10,
     "selected": 4,
     "generated": 4,
     "failed": 0,
@@ -28312,26 +28470,26 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 18837,
-      "output_tokens": 5544,
+      "prompt_tokens": 19644,
+      "output_tokens": 5850,
       "thought_tokens": 0,
-      "total_tokens": 24381,
-      "estimated_usd": 0.01302525
+      "total_tokens": 25494,
+      "estimated_usd": 0.013686
     },
-    "finished_at": "2026-09-07T02:23:57.557044+00:00"
+    "finished_at": "2026-09-07T07:47:57.631759+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 1998,
-    "prompt_tokens": 5034951,
-    "output_tokens": 1471757,
+    "requests": 2006,
+    "prompt_tokens": 5054595,
+    "output_tokens": 1477607,
     "thought_tokens": 0,
-    "total_tokens": 6506708,
-    "estimated_usd": 3.46637325
+    "total_tokens": 6532202,
+    "estimated_usd": 3.48005925
   },
   "last_publication_run": {
-    "started_at": "2026-09-07T02:23:19.112975+00:00",
-    "discovered": 0,
+    "started_at": "2026-09-07T07:47:20.996934+00:00",
+    "discovered": 10,
     "selected": 4,
     "generated": 4,
     "failed": 0,
@@ -28341,17 +28499,17 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 18837,
-      "output_tokens": 5544,
+      "prompt_tokens": 19644,
+      "output_tokens": 5850,
       "thought_tokens": 0,
-      "total_tokens": 24381,
-      "estimated_usd": 0.01302525
+      "total_tokens": 25494,
+      "estimated_usd": 0.013686
     },
-    "finished_at": "2026-09-07T02:23:57.557044+00:00"
+    "finished_at": "2026-09-07T07:47:57.631759+00:00"
   },
   "daily_usage": {
     "date": "2026-09-07",
-    "estimated_usd": 0.01302525,
-    "publications": 4
+    "estimated_usd": 0.02671125,
+    "publications": 8
   }
 }

@@ -1,0 +1,71 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>아이리스: 검색의 최전선을 향한 등반 | ArXiv Translator AI</title><meta name="description" content="아이리스: 검색의 최전선을 향한 등반"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_04304v1"><meta property="og:type" content="article"><meta property="og:title" content="아이리스: 검색의 최전선을 향한 등반"><meta property="og:description" content="아이리스: 검색의 최전선을 향한 등반"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_04304v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="아이리스: 검색의 최전선을 향한 등반"><meta name="twitter:description" content="아이리스: 검색의 최전선을 향한 등반"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_04304v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "아이리스: 검색의 최전선을 향한 등반", "description": "아이리스: 검색의 최전선을 향한 등반", "datePublished": "2026-09-03", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_04304v1", "author": [{"@type": "Person", "name": "Ziyuan Liu"}, {"@type": "Person", "name": "Hengqi Liu"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_04304v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_04304v1"});gtag('event', 'paper_view', {"paper_id": "2609_04304v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>아이리스: 검색의 최전선을 향한 등반</h1><p>아이리스: 검색의 최전선을 향한 등반</p><pre>아이리스: 검색의 최전선을 향한 등반
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Iris: Climbing to the Search Frontier
+&gt; - **저자:** Ziyuan Liu, Hengqi Liu, Zichuan Wang, Yang Qin, Jiachen Liang, Xu Chu, Shaowei Chen, Yuantao Gu, Mu Chuan
+&gt; - **발행일:** 2026-09-03
+&gt; - **PDF 링크:** [Iris: Climbing to the Search Frontier](https://arxiv.org/pdf/2609.04304v1)
+
+
+✨ 3줄 핵심 요약
+*   웹 코퍼스의 하이퍼링크 구조를 활용하여 &#x27;검색 없이는 풀 수 없는&#x27; 난이도 높은 질문 데이터를 자동 생성하는 체계적인 파이프라인을 구축했습니다.
+*   학습 효율을 극대화하기 위해 &#x27;SFT-RL 클라이밍&#x27;이라는 순환 학습 기법을 도입하여, 성공적인 검색 경로를 모델에 지속적으로 재학습시킵니다.
+*   공개된 검색 에이전트 중 각 매개변수 규모(35B 및 397B) 내에서 가장 우수한 성능을 달성했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+검색 에이전트는 단순히 정보를 찾는 것을 넘어, 질문의 의도를 파악하고 적절한 정보를 검색해 스스로 판단하는 능력이 중요합니다. 이 연구는 외부 API 없이도 모델 스스로 보상(Reward)을 판단하고 검색 결과를 요약하게 하여, 검색 과정을 하나의 전문 기술(Atomic capability)로 정립했습니다. 이를 통해 모델은 검색 환경뿐만 아니라 도구 사용 및 사무 업무 자동화와 같은 광범위한 에이전트 작업에서도 향상된 능력을 보여줍니다.
+
+🎯 배경 및 문제점
+기존 검색 에이전트는 검색 도구와 언어 모델을 결합하는 데 치중했으나, 다음과 같은 한계가 있었습니다.
+*   **데이터의 한계:** 웹에서 자연 발생하는 질문들은 단순 검색이나 문자열 일치만으로 해결되는 경우가 많아 복잡한 추론 능력을 키우기 어렵습니다.
+*   **학습 환경의 비효율:** 외부 검색 API에 의존할 경우 학습 속도가 느려지고 동기화 문제가 발생합니다.
+*   **평가 체계의 모호함:** 인프라 자원이나 문맥 관리 전략에 따라 성능 차이가 크게 벌어지며, 일관된 에이전트 평가가 어렵습니다.
+
+💡 핵심 기술 및 아키텍처
+*   **역방향 질문 생성:** 엔티티 그래프를 활용해 중간 단계의 논리 추론이 반드시 필요한 질문을 생성하고, 레퍼런스 모델이 풀지 못하는 경우만 선별하여 데이터셋을 구축했습니다.
+*   **SFT-RL 클라이밍:** 지도 학습(SFT)과 강화 학습(RL)을 순환시키는 방식으로, 강화 학습 중 가장 효율적이고 성공적인 검색 경로를 지도 학습의 재료로 사용하여 모델의 성능을 단계적으로 높입니다.
+*   **인-클러스터(In-cluster) 자립형 구조:** 보상 판단(Judge) 및 결과 요약(Summarizer)을 담당하는 고성능 모델을 학습 클러스터 내부에 배치하여 외부 API 의존성을 제거하고 학습 효율을 높였습니다.
+*   **부분 롤아웃(Partial Rollout):** 긴 검색 세션이 발생할 경우 전체를 기다리지 않고 중간 단계에서 작업을 끊고 재개함으로써 GPU 자원 활용도를 극대화했습니다.
+
+📊 실험 결과 분석
+본 모델(Iris-mini 및 Iris-pro)은 BrowseComp, BrowseComp-ZH, DeepSearchQA, Humanity’s Last Exam(HLE) 벤치마크에서 기존 공개 모델들을 능가하는 성과를 거두었습니다.
+*   **Iris-mini (35B):** BrowseComp 82.2, DeepSearchQA 86.9 등 해당 규모에서 가장 높은 점수를 기록했습니다.
+*   **Iris-pro (397B):** BrowseComp 88.6, DeepSearchQA 92.9 등 최고 수준의 성능을 보였습니다.
+*   *참고: 성능 수치는 발췌된 표(Figure 1)에 명시된 값을 근거로 함.*
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+*   **범용 에이전트 능력 향상:** 검색 기술이 단순한 정보 탐색을 넘어 도구 사용(General Tool Use)이나 업무 보조(Cowork) 영역으로 전이됨을 확인했습니다.
+*   **데이터 구축 레시피 공개:** 검색 에이전트의 데이터 생성부터 학습, 평가까지의 전체 과정을 공개하여 향후 AI 에이전트 연구의 표준화된 방법론을 제시합니다.
+*   **검색의 원자적 가치:** 검색 기능을 단순히 웹 서핑 도구가 아닌, 불완전한 정보 환경에서 의사결정을 내려야 하는 모든 AI 시스템의 필수 기초 역량으로 재정의했습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2609.04304 Iris: Climbing to the Search Frontier](https://arxiv.org/abs/2609.04304)
+&gt; - [Iris Search Agents Combine SFT, RL, and Context Management - CCTest](https://cctest.ai/en/articles/iris-pushes-search-agents-forward-with-sft-rl-climbing)
+&gt; - [Computer Science](https://arxiv.org/list/cs/recent?skip=493&amp;show=1000)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;데이터셋 구축 방식은 흥미롭지만, &#x27;SFT-RL 클라이밍&#x27;이 과연 일반적인 에이전트 태스크에서도 안정적인 수렴을 보일지 의문이군요. 특히 부분 롤아웃 기법이 보상 함수(Reward Function)의 신뢰도에 미치는 편향(Bias)을 어떻게 통제했는지 추가 검증이 필요해 보입니다. 단순 벤치마크 점수 올리기에 치중한 건 아닌지 우려되네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 일리가 있지만, 실무자 입장에서 &#x27;외부 API 의존성 제거&#x27;와 &#x27;인-클러스터 자립형 구조&#x27;는 정말 매력적입니다. 매번 서드파티 API 비용 지불하고 네트워크 레이턴시 핑계 대는 거 지쳤거든요. 특히 부분 롤아웃으로 자원 효율 잡은 건 바로 프로덕션 파이프라인에 이식해보고 싶네요. 인프라 비용 절감 효과가 상당할 것 같습니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 다들 반응이 너무 냉소적인 거 아니에요? 이번 주 내내 학계에서 Iris 얘기로 난리인데! 특히 &#x27;검색&#x27;을 단순히 툴 사용이 아니라 &#x27;원자적 능력&#x27;으로 재정의한 건 진짜 킥(kick)인 듯. 저도 바로 깃허브 클론 떠서 제 데이터셋으로 파인튜닝 돌려볼 생각입니다. HLE 벤치마크 뚫은 거 보면 이건 에이전트 덕후들에게 &#x27;성배&#x27;나 다름없다고요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
