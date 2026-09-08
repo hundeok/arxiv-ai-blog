@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>LLM 디컴파일러가 더 많이 재컴파일할수록 보존력은 떨어지는 현상에 대하여 | ArXiv Translator AI</title><meta name="description" content="LLM 디컴파일러가 더 많이 재컴파일할수록 보존력은 떨어지는 현상에 대하여"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_05370v1"><meta property="og:type" content="article"><meta property="og:title" content="LLM 디컴파일러가 더 많이 재컴파일할수록 보존력은 떨어지는 현상에 대하여"><meta property="og:description" content="LLM 디컴파일러가 더 많이 재컴파일할수록 보존력은 떨어지는 현상에 대하여"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_05370v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="LLM 디컴파일러가 더 많이 재컴파일할수록 보존력은 떨어지는 현상에 대하여"><meta name="twitter:description" content="LLM 디컴파일러가 더 많이 재컴파일할수록 보존력은 떨어지는 현상에 대하여"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_05370v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "LLM 디컴파일러가 더 많이 재컴파일할수록 보존력은 떨어지는 현상에 대하여", "description": "LLM 디컴파일러가 더 많이 재컴파일할수록 보존력은 떨어지는 현상에 대하여", "datePublished": "2026-09-04", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_05370v1", "author": [{"@type": "Person", "name": "Chang Liu"}, {"@type": "Person", "name": "Edward Raff"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_05370v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_05370v1"});gtag('event', 'paper_view', {"paper_id": "2609_05370v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>LLM 디컴파일러가 더 많이 재컴파일할수록 보존력은 떨어지는 현상에 대하여</h1><p>LLM 디컴파일러가 더 많이 재컴파일할수록 보존력은 떨어지는 현상에 대하여</p><pre>LLM 디컴파일러가 더 많이 재컴파일할수록 보존력은 떨어지는 현상에 대하여
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** When LLM Decompilers Recompile More and Preserve Less
+&gt; - **저자:** Chang Liu, Edward Raff, Kristopher Micinski
+&gt; - **발행일:** 2026-09-04
+&gt; - **PDF 링크:** [When LLM Decompilers Recompile More and Preserve Less](https://arxiv.org/pdf/2609.05370v1)
+
+
+✨ 3줄 핵심 요약
+- LLM 기반 디컴파일러는 재컴파일 가능성을 높이지만, 정작 원본 코드의 동작을 정확히 보존하는 데는 한계를 보입니다.
+- 기존의 &#x27;재컴파일 및 테스트 통과&#x27; 중심 평가 방식은 원본 코드와의 동작 불일치나 보안 취약점 소실을 감지하지 못합니다.
+- 연구진은 퍼징(Fuzzing) 기반의 &#x27;Decompile-Diverge&#x27; 평가 체계를 제안하여, 컴파일은 성공하더라도 실제 동작은 원본과 다른 코드들을 성공적으로 식별했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+기존의 디컴파일러(Ghidra 등)는 코드를 해석하지 못하면 모르는 부분임을 표시했지만, 최신 LLM 디컴파일러는 그 자리를 그럴싸한 코드로 임의로 채워 넣어 재컴파일 성공률을 높입니다. 하지만 연구 결과, 이렇게 생성된 코드는 보기엔 깔끔해도 원본과 다르게 동작하거나, 원래 포함되어 있던 보안 취약점을 감쪽같이 사라지게 만드는 &#x27;동작 오류&#x27;를 일으킵니다. 연구진은 입력값을 다양하게 변형하여 실행해보는 방식으로 원본과 디컴파일된 코드의 동작을 비교하는 새로운 평가 기법을 개발했습니다.
+
+🎯 배경 및 문제점
+- **평가 지표의 함정:** 현재 LLM 디컴파일러는 &#x27;재컴파일 성공 여부&#x27;와 &#x27;제공된 테스트 케이스 통과 여부&#x27;로 성능을 평가받습니다.
+- **불완전한 검증:** 이 방식은 통과했더라도 입력값이 조금만 달라지면 원본과 다르게 동작할 수 있고, 무엇보다 코드 내의 보안 취약점이 의도치 않게 삭제되어도 이를 인지하지 못하는 치명적인 한계가 있습니다.
+
+💡 핵심 기술 및 아키텍처
+- **Decompile-Diverge:** 고정된 테스트 대신 퍼징(fuzzing)을 통해 원본 코드의 행동을 학습하고, 디컴파일된 코드에 동일한 입력을 넣어 결과를 비교하는 행동 오라클(Behavioral Comparison Oracle)입니다.
+- **평가 방식:** 생성된 드라이버를 통해 입력값을 자동으로 주입하고, 함수 실행 후의 상태(post-state)를 요약하여 원본과 비교합니다.
+- **데이터 분석:** 300개의 실제 GitHub 라이브러리 함수와 287개의 CVE 기반 취약점 함수를 대상으로 성능을 검증했습니다.
+
+📊 실험 결과 분석
+- **성능의 역설:** 가장 뛰어난 모델의 경우 Ghidra의 빌드 성공률을 75%에서 90%로 향상시켰지만, 실제 원본 코드와의 동작 일치율은 74%에서 62%로 오히려 하락했습니다.
+- **취약점 소실:** CVE(보안 취약점) 함수 평가 시, 최대 1/10의 모델 결과물에서 취약점이 사라지는 &#x27;Crash Absence&#x27; 현상이 발견되었습니다.
+- **발산 원인:** LLM이 모르는 부분을 스스로 지어낸 코드(introduced fields, types, callees)로 채우면서 원본과 다른 동작이 발생함이 소스 레벨 분석을 통해 확인되었습니다.
+- **정량적 수치:** 테스트를 통과한 결과물 중 4.9%는 전체적으로, 특정 시스템에서는 최대 13%까지 원본 코드와 동작이 다르게 나타났습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+- **보안 분석의 신뢰성:** 악성코드 분석이나 취약점 점검 시 LLM 디컴파일러를 맹신할 경우, 실제 존재하는 보안 결함을 놓칠 위험이 있음을 경고합니다.
+- **평가 패러다임 전환:** 단순히 &quot;코드가 잘 만들어지는가&quot;를 넘어 &quot;원본과 동일하게 동작하는가&quot;를 평가하는 것이 보안 및 소프트웨어 엔지니어링 도구 개발의 핵심임을 제시합니다.
+- **실무 권고:** 디컴파일된 코드를 통합하거나 분석할 때, 자동화된 재컴파일 평가 외에도 이번 연구에서 제안된 것과 같은 엄격한 행동 기반 비교 검증 단계가 필수적입니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [When LLM Decompilers Recompile More and Preserve Less](https://arxiv.org/html/2609.05370v1)
+&gt; - [When LLM Decompilers Recompile More and Preserve Less](https://deeplearn.org/arxiv/819351/when-llm-decompilers-recompile-more-and-preserve-less)
+&gt; - [When LLM Decompilers Recompile More and Preserve Less](https://theresanaiforthat.com/paper/when-llm-decompilers-recompile-more-and-preserve-less/)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;LLM이 환각(Hallucination)을 생성하는 건 어제오늘 일이 아니지만, 디컴파일 분야에서 이 문제가 &#x27;성능 향상&#x27;으로 포장되는 건 학문적 윤리 측면에서 심각한 결함입니다. 재컴파일 성공률이 높다고 해서 모델이 코드를 &#x27;이해&#x27;했다고 착각해서는 안 됩니다. 이번 &#x27;Decompile-Diverge&#x27; 프레임워크는 단순히 지표의 함정을 지적하는 것을 넘어, 행동 오라클을 통해 실질적인 동작 보존성(Semantic Preserving)을 검증하려 했다는 점에서 학술적 가치가 매우 높습니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에서는 이게 정말 치명적입니다. 당장 보안 분석이나 리버스 엔지니어링 툴에 LLM 도입해서 쓴다고 치면, 모델이 취약점을 &#x27;깔끔하게&#x27; 삭제해버리는 바람에 보안 구멍이 뚫린 줄도 모르고 배포할 수 있다는 거잖아요? 컴파일 잘 된다고 CI 통과했다가 나중에 런타임에서 사이드 이펙트 터지면 누가 책임집니까. 당분간은 자동화된 디컴파일러의 결과물을 100% 신뢰하기보다는, 이 논문에서 제시한 퍼징 기반의 검증 툴셋을 파이프라인에 필수적으로 붙여야겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 13%의 동작 불일치라니 진짜 충격적이네요. 다들 &#x27;LLM이 코드 다 짜준다&#x27;고 호들갑 떨 때, 정작 중요한 로직의 무결성이 깨지고 있었다는 게 소름 돋습니다. 이거 보니까 당장 우리 랩실 세미나 주제로 딱이네요! &#x27;Decompile-Diverge&#x27; 기법을 다른 도메인에도 적용할 수 있을까요? 예를 들어 LLM이 변환한 레거시 코드 변환 작업에서도 원본과 똑같이 동작하는지 검증하는 용도로 확장하면 바로 탑티어 학회 논문 하나 뚝딱일 것 같은데, 다들 어떻게 생각하시나요?&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
