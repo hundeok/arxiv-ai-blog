@@ -1,0 +1,71 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>한국 공공 오픈 API를 활용한 다단계 도구 호출: 벤치마크와 데이터 합성 레시피 | ArXiv Translator AI</title><meta name="description" content="한국 공공 오픈 API를 활용한 다단계 도구 호출: 벤치마크와 데이터 합성 레시피"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_05395v1"><meta property="og:type" content="article"><meta property="og:title" content="한국 공공 오픈 API를 활용한 다단계 도구 호출: 벤치마크와 데이터 합성 레시피"><meta property="og:description" content="한국 공공 오픈 API를 활용한 다단계 도구 호출: 벤치마크와 데이터 합성 레시피"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_05395v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="한국 공공 오픈 API를 활용한 다단계 도구 호출: 벤치마크와 데이터 합성 레시피"><meta name="twitter:description" content="한국 공공 오픈 API를 활용한 다단계 도구 호출: 벤치마크와 데이터 합성 레시피"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_05395v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "한국 공공 오픈 API를 활용한 다단계 도구 호출: 벤치마크와 데이터 합성 레시피", "description": "한국 공공 오픈 API를 활용한 다단계 도구 호출: 벤치마크와 데이터 합성 레시피", "datePublished": "2026-09-04", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_05395v1", "author": [{"@type": "Person", "name": "Dain Kim"}, {"@type": "Person", "name": "Eungi Cho"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_05395v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_05395v1"});gtag('event', 'paper_view', {"paper_id": "2609_05395v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>한국 공공 오픈 API를 활용한 다단계 도구 호출: 벤치마크와 데이터 합성 레시피</h1><p>한국 공공 오픈 API를 활용한 다단계 도구 호출: 벤치마크와 데이터 합성 레시피</p><pre>한국 공공 오픈 API를 활용한 다단계 도구 호출: 벤치마크와 데이터 합성 레시피
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Multi-Step Tool-Calling over Korean Open Public APIs: A Benchmark and a Data-Synthesis Recipe
+&gt; - **저자:** Dain Kim, Eungi Cho, Kyumin Kim, Shinyeong Noh, Kyuseong Lim
+&gt; - **발행일:** 2026-09-04
+&gt; - **PDF 링크:** [Multi-Step Tool-Calling over Korean Open Public APIs: A Benchmark and a Data-Synthesis Recipe](https://arxiv.org/pdf/2609.05395v1)
+
+
+✨ 3줄 핵심 요약
+*   공공기관의 데이터 주권 준수를 위한 오픈소스 LLM 에이전트의 다단계 도구 호출 성능이 저조하여, 이를 해결하기 위한 벤치마크(KOPA-BENCH)와 데이터 합성 기법(EDGE)을 제안함.
+*   EDGE는 실제 API 호출 성공 여부를 기반으로 도구 간 연결 고리를 검증하고, 이를 통해 실행 가능한 다단계 궤적 데이터를 합성함.
+*   9B 모델을 합성 데이터로 미세 조정(Fine-tuning)한 결과, 기존의 27B 모델과 유사한 성능을 보이며 도구 호출 정확도를 크게 개선함.
+
+📖 쉽게 풀어쓴 1분 핵심
+공공기관은 보안상의 이유로 외부 클라우드 서비스 대신 직접 설치 가능한 오픈소스 AI 모델을 써야 합니다. 하지만 이 모델들은 복잡한 공공 데이터를 가져오기 위해 여러 단계를 거치는 &#x27;도구 호출&#x27; 능력에서 자주 실수합니다. 연구팀은 145개의 실제 공공 데이터 과제로 구성된 벤치마크를 만들고, AI가 실제 API 호출을 시도하며 성공적인 경로만을 학습하도록 돕는 &#x27;EDGE&#x27; 기술을 개발했습니다. 이 방식으로 학습한 AI는 데이터를 더 정확하게 가져오고 여러 번의 명령을 스스로 연결해 정답을 찾아낼 수 있게 되었습니다.
+
+🎯 배경 및 문제점
+*   **데이터 주권:** 공공기관은 규정에 따라 오픈소스 LLM을 로컬 인프라에서 운영해야 함.
+*   **성능 부족:** 오픈소스 모델들은 법령, 기업 공시, 교통 정보 등 공공 API를 활용하는 다단계 환경에서 지속적으로 낮은 성능을 보임.
+*   **평가 도구 부재:** 현재 이러한 다단계 도구 호출 환경에서의 성능 차이를 정량적으로 측정할 수 있는 벤치마크가 존재하지 않음.
+
+💡 핵심 기술 및 아키텍처
+*   **KOPA-BENCH:** 6개 도메인(교통, 금융, 교육, 법률, 정치, 행정)에 걸쳐 145개의 실제 과제를 포함하는 벤치마크.
+*   **EDGE (Execution-grounded Dynamic Graph):**
+    *   도구 간 입출력 연결 구조를 그래프로 구축.
+    *   실제 API 호출을 통해 성공한 연결만을 유지하고, 실패한 경로는 가지치기(Pruning)함.
+    *   베타 분포(Beta-posterior)를 사용하여 구조적 오류(도구 간 결합 오류)와 환경적 오류(인프라 문제)를 구분하고, 구조적 오류에 더 큰 페널티를 부여하여 최적의 경로를 정교화함.
+*   **학습 방법:** 합성된 데이터를 바탕으로 GRPO(Group Relative Policy Optimization)를 사용하여 모델을 미세 조정함.
+
+📊 실험 결과 분석
+*   **성능 개선:** 9B 모델을 미세 조정했을 때, 같은 계열의 조정되지 않은 27B 모델과 거의 대등한 성능을 보임.
+*   **학습 효과:** EDGE를 통한 반복 과정에서 도구 호출 성공률이 지속적으로 상승함(궤적 통과율 +31pp, 단계별 성공률 +28pp).
+*   **범용성:** KOPA-BENCH뿐만 아니라 기존의 BFCL 벤치마크에서도 성능이 대폭 향상됨.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+*   **공공 서비스 효율화:** 복잡한 공공 데이터 조회를 자동화하여 대민 서비스의 응답 정확도와 속도를 높임.
+*   **인프라 독립성:** 상용 클라우드 API에 의존하지 않고도 높은 성능의 오픈소스 AI 에이전트를 구축할 수 있게 되어 공공기관의 데이터 주권 준수를 지원함.
+*   **실무 적용:** API 키 관리, 페이징 처리, 결과 집계 등 실제 현장에서 발생하는 복잡한 데이터 처리 요구사항을 AI가 스스로 수행하도록 유도함.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Multi-Step Tool-Calling over Korean Open Public API... | AI Research](https://franklineh.com/learn/research/7poWohyG1DE5vGyvFTeL)
+&gt; - [Fugu-MT 論文翻訳(概要): Multi-Step Tool-Calling over Korean Open Public APIs ...](https://fugumt.com/fugumt/paper_check/2609.05395v1)
+&gt; - [2609.05395 Multi-Step Tool-Calling over Korean Open Public APIs: A Benchmark and a Data-Synthesis Recipe](https://arxiv.org/abs/2609.05395)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;EDGE의 베타 분포를 활용한 오류 분류는 흥미롭지만, 과연 실제 공공 API의 가변적인 응답 스키마와 불안정한 네트워크 지연 환경에서도 이 &#x27;구조적 오류&#x27; 판별이 일관성을 유지할 수 있을지 의문입니다. 특히 9B 모델에서 이런 성능이 나온 건 데이터 품질 덕분이겠지만, 도메인 확장 시 hallucination으로 인한 체인 붕괴 가능성을 어떻게 통제할지 추가 분석이 필요해 보이네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에선 API 스키마 변경이 제일 골치인데, 이 논문은 그걸 합성 데이터로 학습시켜서 27B급 성능을 9B에서 뽑아냈다는 게 핵심이죠. 공공기관 인프라에서 서빙하려면 경량화가 필수인데, GRPO로 최적화한 모델을 바로 레거시 환경에 올릴 수 있다는 건 엔지니어 입장에서 아주 매력적인 포인트입니다. 다만, 실제 API 키 관리나 토큰 제한 이슈는 어떻게 핸들링할지 아키텍처 단의 고민이 더 필요할 것 같네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;다들 너무 무겁게 보시는 거 아니에요? ㅋㅋㅋ 그냥 공공 데이터 특화 벤치마크가 나왔다는 거 자체가 대박인데! KOPA-BENCH 데이터셋 바로 깃허브에서 클론해서 돌려봤는데, 기존 범용 모델들 진짜 처참하게 깨지더라고요. EDGE 레시피 그대로 따와서 우리 연구실 모델에 적용하면 당장 다음 학회 논문 하나 뚝딱 나오겠는데요? 데이터 주권 이슈까지 건드려서 임팩트도 확실하고, 이거 무조건 핫해집니다.&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
