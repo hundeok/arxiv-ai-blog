@@ -28269,7 +28269,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-08T07:42:13.837046+00:00",
+      "updated_at": "2026-09-08T13:13:46.515973+00:00",
       "paper": {
         "title": "When Models Edit Too Much: On the Fidelity of Minimal Code Edits",
         "summary": "Large language models (LLMs) are increasingly used to edit existing code, but correctness alone is not enough: useful repairs should also be minimal, reviewable, and faithful to the original implementation. We study over-editing, the tendency of a model to rewrite code beyond what is required to fix a bug. We construct an evaluation framework from 400 BigCodeBench problems by injecting controlled AST-level corruptions into reference solutions, giving each repair task a known minimal patch. Across frontier LLMs, over-editing is widespread even among strong models like GPT-5.5: high Pass@1 can coexist with unnecessarily large edits and added cognitive complexity. A preservation instruction substantially reduces this behavior, lowering average excess Levenshtein distance from 0.195 to 0.131, reducing added cognitive complexity by 26.6%, and increasing Pass@1 by 2.3 points. However, these gains do not simply follow from a larger reasoning budget or larger models. We next ask whether minimal editing can be learned directly during post-training. We observe that supervised fine-tuning overfits to seen corruption patterns, whereas reinforcement learning gives the best out-of-domain edit-fidelity and performance-retention trade-off. These results position edit fidelity as a distinct axis of code-repair quality and show that it can be measured and learned.",
@@ -28338,7 +28338,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-07T07:47:20.995023+00:00",
       "last_error": null,
-      "updated_at": "2026-09-08T07:42:13.837011+00:00",
+      "updated_at": "2026-09-08T13:13:46.515963+00:00",
       "paper": {
         "title": "To See a World in a Living Context: Unified Indoor-Outdoor Urban World Generation",
         "summary": "Text-driven 3D generation has advanced rapidly in creating large-scale outdoor environments and detailed indoor scenes, but these domains are usually synthesized independently, lacking the correspondence required for a coherent urban world. We present HoloWorld, a unified indoor-outdoor urban world generation framework built on a continuously updated cross-scale world context. Initializing from a user description, HoloWorld progressively represents and updates the diverse world information, from city-scale planning to individual buildings, allowing generated interiors to maintain explicit correspondence with their associated exterior buildings. Conditioned on the evolving context and previously generated neighboring blocks, HoloWorld autoregressively generates urban exteriors with consistent spatial organization and visual identity across blocks. The generated exterior representations are further grounded in 3D building instances and footprints, enabling building-specific indoor generation with geometry-constrained layouts and inherited appearance characteristics. To our knowledge, HoloWorld is the first framework to unify indoor and outdoor generation within a coherent 3D urban world. Extensive experiments demonstrate that HoloWorld achieves superior urban exterior generation performance, improving the average AQS score over the SOTA by 7.68\\% and obtaining the highest average RDR score, while maintaining strong building-level indoor-outdoor correspondence and cross-block continuity within a unified 3D urban world. Our project page: https://huangxb326.github.io/HoloWorld/.",
@@ -28390,7 +28390,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-08T07:42:13.837050+00:00",
+      "updated_at": "2026-09-08T13:13:46.515990+00:00",
       "paper": {
         "title": "Enoki: Efficient Multi-Level Hallucination Detection",
         "summary": "Ensuring factuality remains a critical challenge for deploying LLMs in high-stakes settings. Existing hallucination detectors usually operate at a single level: claim-level methods provide interpretable factual units, while span-level methods localize unsupported text. Bridging these views is costly, as LLM-heavy pipelines require multiple decomposition and verification calls, and modular systems need additional claim-to-span alignment. We propose Enoki, an Open Information Extraction framework for multi-level hallucination detection. Enoki extracts text-anchored relational facts, verifies them against evidence, and projects unsupported facts back to hallucinated spans. This shared representation enables claim-level verification and span-level localization without requiring separate alignment. Enoki supports LLM-based, encoder-based, and rule-based extraction regimes, balancing accuracy and inference cost through a common interface. Experiments show that Enoki remains competitive with strong claim-level systems while using fewer resources and achieves superior performance on fine-grained span- and entity-level localization. We also release EnokiQA, a dual-granularity dataset with aligned claim-level verification and span-level localization annotations.",
@@ -28417,7 +28417,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-08T07:42:13.837055+00:00",
+      "updated_at": "2026-09-08T13:13:46.515994+00:00",
       "paper": {
         "title": "MaxKernel: Agentic Kernel Generation for TPUs",
         "summary": "Designing and authoring high-performance custom kernels for accelerators is a complex task that requires deep hardware-level expertise. Large Language Models (LLM) can be leveraged together with real-time compiler feedback to build agentic systems for kernel generation. In this work, we present MaxKernel, a multi-agent system that implements three distinct paradigms for TPU kernel development: (1) a Human-in-the-Loop (HITL) agent for collaborative, step-by-step design; (2) an Autonomous (Auto) agent that executes a fully automated, metric/trace-driven optimization loop; and (3) a Graph-Based Autonomous Search that scales the Auto agent for global exploration of the design space. All three paradigms leverage a shared pool of specialized sub-agents to handle planning, implementation, self-debugging, testing, and hardware profiling. We evaluate MaxKernel on JaxBench, a comprehensive suite of 50 diverse kernel tasks for TPUs, alongside complex, real-world workloads from state-of-the-art open-source models. We demonstrate that MaxKernel consistently generates highly optimized implementations, matching expert hand-tuned baselines and delivering significant performance across the benchmark. Our agent is open-sourced and available https://github.com/AI-Hypercomputer/accelerator-agents/tree/main/MaxKernel.",
@@ -28446,7 +28446,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-08T07:42:13.837059+00:00",
+      "updated_at": "2026-09-08T13:13:46.515997+00:00",
       "paper": {
         "title": "AdaptVPR: Route-Aware Hard Positive Generation for Robust Visual Place Recognition",
         "summary": "Visual Place Recognition (VPR) localizes a query image by retrieving database images of the same or nearby place, yet its robustness is often degraded by domain shifts arising from illumination, weather, seasonal changes, and dynamic occlusions. One contributing factor is the limited appearance diversity of the same place in existing training data. To address this issue, we propose AdaptVPR, a route-aware generative augmentation framework that constructs same-place hard positives for robust VPR training. AdaptVPR first uses a vision language model to parse scene attributes and estimate editing feasibility, while a rule-based scheduler determines the generation route according to editability scores and risk constraints. The generation process is decomposed into three complementary routes: the Global Appearance Route introduces global scene changes in weather, illumination, and time of day; the Local Occlusion Route inserts plausible dynamic occluders; and the Dual Route combines both types of perturbations to produce more challenging appearance shifts. Each generated candidate is evaluated using a VPR-oriented verification scheme based on geometric consistency and appearance diversity, reducing the risk of structural drift while ensuring sufficient appearance variation. Global candidates are generated once and rejected if verification fails, while Local Occlusion and Dual candidates use verification feedback for limited prompt refinement and regeneration. Using this framework, we construct AdaptCities, containing 160K verified synthetic same-place hard positives. Experiments across multiple VPR baselines and vision foundation backbones show consistent gains on standard benchmarks and substantial improvements under challenging domain shifts, with R@1 gains of up to 9.2%. The source code and data resources are publicly available at https://github.com/chenshunpeng/AdaptVPR.",
@@ -28499,7 +28499,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-07T18:57:14.463801+00:00",
       "last_error": null,
-      "updated_at": "2026-09-08T07:42:13.837033+00:00",
+      "updated_at": "2026-09-08T13:13:46.515985+00:00",
       "paper": {
         "title": "The 2026 PNPL Competition: Word Classification and Efficient Cross-Subject Generalisation in LibriBrain100",
         "summary": "The ambition of the 2025 PNPL competition (Landau et al., 2025) was to launch a multi-year curriculum for non-invasive speech decoding. Designed to progress from foundational tasks toward the linguistic complexity required for a practical brain-computer interface (BCI), it set the stage with speech detection and phoneme classification tasks. Winning submissions reached F1-macro scores of 95.6% and 73.6% on the respective tasks (Elvers et al., 2026), highly significant advances. This success was built on the LibriBrain dataset (Özdogan et al., 2025), the largest within-subject MEG dataset recorded at the time with ${\\sim}50$ hours of data for one subject. However, while within-subject scale drives strong decoding performance, a practical BCI must generalise to new users from minutes of data, not hours.   The 2026 PNPL competition responds to this challenge with LibriBrain100 (Mantegna et al., 2026), an extended LibriBrain dataset with 32 additional subjects (${\\sim}40$ minutes each) plus even more within-subject data (${\\sim}80$ hours). Advancing the curriculum of tasks to focus on word classification, two complementary tracks are presented in this competition: the Deep track targets within-subject word classification at scale, aiming at the best possible performance; the Broad track targets cross-subject generalisation, progressively reducing the amount of subject-specific fine-tuning data from ${\\sim}40$ to ${\\sim}20$ to ${\\sim}10$ minutes, a duration that falls within a clinically feasible range and brings us a step closer to a non-invasive BCI capable of restoring communication to people living with profound paralysis.",
@@ -28789,11 +28789,11 @@
     "2609_05364v1": {
       "id": "2609_05364v1",
       "filename": "post_2609_05364v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-09-08T02:35:28.596682+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-08T02:35:28.596684+00:00",
+      "updated_at": "2026-09-08T13:14:05.155103+00:00",
       "paper": {
         "title": "Design Docs Are All You Need: An AI-native Machine-Learning Performance Tool",
         "summary": "Machine-learning performance modeling is a uniquely hostile terrain for long-lived software: the assumptions baked into today's abstractions are invalidated by tomorrow's models and systems, forcing perpetual refactoring of performance-modeling frameworks. Meanwhile, AI coding agents have become fast and capable enough that regenerating an entire library is cheaper than paying down the tech debt of incrementally patching it. We describe SMART, a rigorous symbolic performance-modeling library for ML systems whose main branch contains almost no code: the repository is a DAG of self-contained natural-language design docs, coding sub-agents regenerate the implementation from only the docs on new version updates, and every human change is a natural-language edit to a doc--self-documenting by construction. Two ingredients make regeneration reliable: (i) a design-doc style built around step-by-step worked examples that act as in-context demonstrations for the generating agents, and (ii) a minimal, recursively defined operator IR with symbolic (SymPy) cost expressions, a fast analytical roll-up mode for large sweeps, and a slow modulo-scheduling mode for fine-grained schedule studies. Regenerated implementations reproduce hand-audited reference models--including DeepSeek-V3 serving on a TPU pod slice--to round-off precision, suggesting that design docs--not code--can be the durable artifact for ML-systems co-design tools.",
@@ -28811,7 +28811,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2609.05364v1"
       },
-      "priority_score": 37
+      "priority_score": 37,
+      "korean_title": "설계 문서가 전부다: AI 네이티브 머신러닝 성능 도구"
     },
     "2609_05346v1": {
       "id": "2609_05346v1",
@@ -28856,11 +28857,11 @@
     "2609_05335v1": {
       "id": "2609_05335v1",
       "filename": "post_2609_05335v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-09-08T02:35:28.596702+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-08T02:35:28.596703+00:00",
+      "updated_at": "2026-09-08T13:13:55.973033+00:00",
       "paper": {
         "title": "The History Is the Detector: Executing CVE Patch History, End-to-End",
         "summary": "Public vulnerability databases collect rich information about known software flaws, including their weakness types, affected components, and related patches. Fixing commits provide the exact code changes that removed these flaws. While these records capture why the original code was unsafe, they are documented mainly for human inspection rather than automated reuse. Consequently, the same unsafe conditions may still exist elsewhere in code without a known advisory, leaving much of this detection knowledge unused.   We present BUGSTONE-E2E, a framework that transforms vulnerability history into executable detection rules and validates their findings. First, BUGSTONE-E2E mines reusable rules from verified fixing commits, capturing scan anchors, fix semantics, and CVE provenance and organizing them by CWE and language. Second, detection follows a funnel-shaped pipeline: early stages process a large pool of candidates using lightweight analysis, while later stages apply increasingly capable and expensive models to a shrinking set of targets. Specifically, BUGSTONE-E2E first enumerates call sites matching rule anchors using Tree-sitter, then removes benign sites using lightweight heuristics without LLM calls. Next, LLM-based agents inspect the remaining candidates guided by the rule. Following this inspection, the system re-triages surviving candidates and builds runtime verifications, then generates scope-checked patches validated via two-sided differential tests. Using 19,325 high-severity CVEs from 2022 to 2026, BUGSTONE-E2E identifies 2,710 fixing commits and constructs 1,033 detection rules across 56 CWE families, packaged into 172 skills. When applied across 14 programs, it produced runtime evidence for 644 findings. These results demonstrate that CVE history can be turned into an executable workflow, transforming past vulnerabilities into reproducible detection and repair.",
@@ -28876,7 +28877,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2609.05335v1"
       },
-      "priority_score": 40
+      "priority_score": 40,
+      "korean_title": "역사는 탐지기다: CVE 패치 이력의 엔드투엔드 실행"
     },
     "2609_05334v1": {
       "id": "2609_05334v1",
@@ -29056,11 +29058,11 @@
     "2609_05289v1": {
       "id": "2609_05289v1",
       "filename": "post_2609_05289v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-09-08T02:35:28.596752+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-08T02:35:28.596753+00:00",
+      "updated_at": "2026-09-08T13:14:23.755301+00:00",
       "paper": {
         "title": "Beyond Aggregate Scores: Behavioral Correctness Assumptions for Assessing Reference-Based Automatic Evaluation Methods",
         "summary": "Automated reference-based evaluation methods play a critical role in assessing natural language generation systems. Existing meta-evaluation primarily measures agreement with human judgments or benchmark labels, providing limited insight into evaluator behavior under controlled conditions. We introduce behavioral correctness assumptions, a complementary framework for evaluating reference-based automatic evaluation methods. We define a taxonomy of correctness-preserving and correctness-altering assumptions and operationalize them through controlled response transformations that specify expected scoring behaviors. We evaluate diverse lexical, character-level, semantic, LLM-based, and hybrid evaluators and analyze their assumption-level behavior, stability, sensitivity, repeat-run variability, configuration sensitivity, and reproducibility. Our experiments reveal distinct behavioral trade-offs across evaluation paradigms: no evaluator satisfies all proposed correctness assumptions, and evaluators with similar aggregate performance can exhibit substantially different behavioral profiles. These findings demonstrate that behavioral correctness assumptions provide diagnostic information obscured by conventional aggregate meta-evaluation.",
@@ -29074,7 +29076,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2609.05289v1"
       },
-      "priority_score": 35
+      "priority_score": 35,
+      "korean_title": "집계 점수를 넘어서: 참조 기반 자동 평가 방법론의 행동적 정확성 가정을 위한 평가"
     },
     "2609_05284v1": {
       "id": "2609_05284v1",
@@ -29247,7 +29250,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-08T07:42:13.836988+00:00",
       "last_error": null,
-      "updated_at": "2026-09-08T07:42:13.837003+00:00",
+      "updated_at": "2026-09-08T13:13:46.515945+00:00",
       "paper": {
         "title": "EmbodiedSkills: A Unified Framework for Orchestrating, Training, and Deploying VLA Agents",
         "summary": "Vision-language-action (VLA) models map visual observations and language instructions directly to robot actions, but long-horizon tasks require more than action prediction. An agent must coordinate perception, planning, execution, progress verification, and recovery as the physical state evolves. An action prediction or a model-generated skill decision does not, by itself, guarantee that the proposed operation is valid in the current state or that its outcome will be verified. We propose EmbodiedSkills, a unified framework that treats each skill decision as an execution proposal: the runtime checks its prerequisites before execution and verifies the outcome afterward. A shared executable-skill interface connects high-level skill selection, bounded low-level VLA execution, and post-action verification within a single agent loop. Because this interface remains fixed, low-level VLA policies can be replaced or adapted without changing the agent loop. The interface also records planning, execution, verification, and recovery events as structured trajectories, which provide supervision for individual components and can support optional online adaptation when interactive feedback is available. We instantiate EmbodiedSkills with Qwen3-VL and OpenPI/pi0.5 on RoboTwin 2.0 and LIBERO. Task-adapted low-level VLA policies achieve an average success rate of 86.20% across 50 RoboTwin 2.0 tasks and 97.40% across the four LIBERO suites. These results establish the execution performance of the task-adapted low-level VLA policies used in EmbodiedSkills. On four memory-dependent RMBench tasks, the same task-adapted execution approach achieves 12.5% average success. The framework provides a trainable and inspectable agent layer for turning these policies into closed-loop embodied systems.",
@@ -29282,7 +29285,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-08T07:42:13.837017+00:00",
       "last_error": null,
-      "updated_at": "2026-09-08T07:42:13.837019+00:00",
+      "updated_at": "2026-09-08T13:13:46.515978+00:00",
       "paper": {
         "title": "What Else Needs Fixing? Exploring Cost-Effective Test-Time Compute for Revision Propagation in Artifacts Generated Through Conversation",
         "summary": "Large Language Models (LLMs) often help users generate artifacts through iterative cycles of generation and revision in conversation. A challenge here is that, when users specify only a local change during revision, LLMs must instead identify the relevant dependencies and propagate the revision to all affected parts of the artifact. This paper studies this ability of LLMs on conversationally generated artifacts, where the artifact context and its dependencies may be embedded in the conversation history. Toward practical use, we also explore cost-effective test-time compute for this new setting. Specifically, we introduce a new benchmark for this setting, and evaluate nine revision methods, including sequential reflection and parallel sampling variants, using gpt-oss-20b/120b, gpt-5.4-mini, and qwen3.5-9b/27b/122b on the benchmark. The results show that baselines achieve accuracies of 68.3--93%, and the most cost-effective method is selecting from three parallel samples using either LLM-based or medoid selection, which improves accuracy by 2.2--9.7%. Our code and dataset are available at https://github.com/ntt-dkiku/llm-revision-propagation.",
@@ -29301,7 +29304,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-08T07:42:13.837026+00:00",
       "last_error": null,
-      "updated_at": "2026-09-08T07:42:13.837028+00:00",
+      "updated_at": "2026-09-08T13:13:46.515981+00:00",
       "paper": {
         "title": "FlowBalance: Verifier-Grounded Self-Improvement from On-Policy Reasoning Experience",
         "summary": "A reasoning model can improve from its own on-policy experience, but this inner loop is fragile: terminal verifiers provide reliable yet sparse supervision, while dense same-model guidance can reinforce false confidence or overconcentrate learning on a narrow solution mode. We introduce FlowBalance, a verifier-grounded self-improvement method that learns a normalized distribution over complete responses. For each on-policy trajectory, a frozen training-time view of the same policy uses privileged context to produce token-level log-probability gains, which are aggregated into a trajectory-level self-guidance score. FlowBalance calibrates this score with the verifier-derived group advantage: guidance is retained on positive-advantage trajectories, reversed on negative-advantage trajectories, and disabled when the rollout group provides no outcome preference. The resulting energy exponentially reweights a reference policy, and profiled trajectory balance fits the normalized target with one log-partition estimate per rollout group. This realizes outcome-calibrated self-guidance via trajectory balance, without a separate token-level imitation loss. Our analysis establishes within-group contrast preservation, a minimum-change reverse-KL characterization, monotonic verifier control of target reward, and an exact correction against false-positive self-guidance on rejected responses. On mathematical reasoning, FlowBalance improves average performance over FlowRL on both Qwen3-4B and Qwen3-8B, while also improving training speed and stability, avoiding direct OPSD's response-length collapse, and exhibiting higher correct-strategy diversity in a controlled AIME24 diagnostic.",
@@ -29319,11 +29322,11 @@
     "2609_02998v1": {
       "id": "2609_02998v1",
       "filename": "post_2609_02998v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-09-08T07:42:13.837039+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-08T07:42:13.837041+00:00",
+      "updated_at": "2026-09-08T13:14:14.319426+00:00",
       "paper": {
         "title": "Verify Before You Distill: Prompt-Level Teacher Gating for On-Policy Distillation",
         "summary": "On-policy distillation (OPD) accelerates post-training by providing dense token-level supervision from a frozen teacher on the student's own rollouts. Vanilla OPD applies this supervision uniformly across prompts, without checking whether the teacher is reliable for each prompt. Because reverse KL is mode-seeking, a confidently wrong teacher can induce a strong yet misleading update. Distributional proxies, such as entropy or teacher-student likelihood agreement, measure uncertainty or agreement but do not directly verify outcome correctness. We introduce Teacher-Gated On-Policy Distillation (TGOPD), built on the principle that teacher reliability should be verified at the prompt level before dense supervision is admitted. TGOPD estimates reliability from a small set of verifier-scored teacher probes and routes each prompt exclusively to dense OPD when the reliability check passes or to verifier-grounded GRPO otherwise. Across 4B and 35B students in mathematics, code, and instruction following, TGOPD outperforms Vanilla OPD in all six single-domain settings and achieves higher seven-benchmark averages at both scales under multi-domain training. By using otherwise-idle teacher capacity for reliability estimation, TGOPD also reduces teacher-side compute waste in asynchronous OPD, increasing teacher-node GPU utilization from 9.8% to 78.9% in the measured 4B single-domain run.",
@@ -29341,11 +29344,12 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2609.02998v1"
       },
-      "priority_score": 37
+      "priority_score": 37,
+      "korean_title": "교사 게이팅을 활용한 온폴리시 증류: 증류 전 검증 단계 도입"
     }
   },
   "last_run": {
-    "started_at": "2026-09-08T07:42:13.839506+00:00",
+    "started_at": "2026-09-08T13:13:46.517984+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -29356,25 +29360,25 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 21827,
-      "output_tokens": 5727,
+      "prompt_tokens": 18908,
+      "output_tokens": 5901,
       "thought_tokens": 0,
-      "total_tokens": 27554,
-      "estimated_usd": 0.01404725
+      "total_tokens": 24809,
+      "estimated_usd": 0.0135785
     },
-    "finished_at": "2026-09-08T07:42:54.443966+00:00"
+    "finished_at": "2026-09-08T13:14:24.553254+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 2046,
-    "prompt_tokens": 5159891,
-    "output_tokens": 1506891,
+    "requests": 2054,
+    "prompt_tokens": 5178799,
+    "output_tokens": 1512792,
     "thought_tokens": 0,
-    "total_tokens": 6666782,
-    "estimated_usd": 3.55030925
+    "total_tokens": 6691591,
+    "estimated_usd": 3.56388775
   },
   "last_publication_run": {
-    "started_at": "2026-09-08T07:42:13.839506+00:00",
+    "started_at": "2026-09-08T13:13:46.517984+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -29385,17 +29389,17 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 21827,
-      "output_tokens": 5727,
+      "prompt_tokens": 18908,
+      "output_tokens": 5901,
       "thought_tokens": 0,
-      "total_tokens": 27554,
-      "estimated_usd": 0.01404725
+      "total_tokens": 24809,
+      "estimated_usd": 0.0135785
     },
-    "finished_at": "2026-09-08T07:42:54.443966+00:00"
+    "finished_at": "2026-09-08T13:14:24.553254+00:00"
   },
   "daily_usage": {
     "date": "2026-09-08",
-    "estimated_usd": 0.0283205,
-    "publications": 8
+    "estimated_usd": 0.041899,
+    "publications": 12
   }
 }
