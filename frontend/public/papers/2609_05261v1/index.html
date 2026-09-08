@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Trace2Tower: LLM 에이전트를 위한 전환 인지형 다단계 스킬 유도 프레임워크 | ArXiv Translator AI</title><meta name="description" content="Trace2Tower: LLM 에이전트를 위한 전환 인지형 다단계 스킬 유도 프레임워크"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_05261v1"><meta property="og:type" content="article"><meta property="og:title" content="Trace2Tower: LLM 에이전트를 위한 전환 인지형 다단계 스킬 유도 프레임워크"><meta property="og:description" content="Trace2Tower: LLM 에이전트를 위한 전환 인지형 다단계 스킬 유도 프레임워크"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_05261v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Trace2Tower: LLM 에이전트를 위한 전환 인지형 다단계 스킬 유도 프레임워크"><meta name="twitter:description" content="Trace2Tower: LLM 에이전트를 위한 전환 인지형 다단계 스킬 유도 프레임워크"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_05261v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Trace2Tower: LLM 에이전트를 위한 전환 인지형 다단계 스킬 유도 프레임워크", "description": "Trace2Tower: LLM 에이전트를 위한 전환 인지형 다단계 스킬 유도 프레임워크", "datePublished": "2026-09-04", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_05261v1", "author": [{"@type": "Person", "name": "Jiazheng Sun"}, {"@type": "Person", "name": "Boyu Yang"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_05261v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_05261v1"});gtag('event', 'paper_view', {"paper_id": "2609_05261v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>Trace2Tower: LLM 에이전트를 위한 전환 인지형 다단계 스킬 유도 프레임워크</h1><p>Trace2Tower: LLM 에이전트를 위한 전환 인지형 다단계 스킬 유도 프레임워크</p><pre>Trace2Tower: LLM 에이전트를 위한 전환 인지형 다단계 스킬 유도 프레임워크
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Trace2Tower: Transition-Aware EigenTrace Induction of Multi-Level Skills for LLM Agents
+&gt; - **저자:** Jiazheng Sun, Boyu Yang, Binhao Yuan, Mingxuan Li, Xin Peng
+&gt; - **발행일:** 2026-09-04
+&gt; - **PDF 링크:** [Trace2Tower: Transition-Aware EigenTrace Induction of Multi-Level Skills for LLM Agents](https://arxiv.org/pdf/2609.05261v1)
+
+
+✨ 3줄 핵심 요약
+* LLM 에이전트의 실행 궤적에서 비효율적인 탐색과 실패 사례를 제거하고, 성공 기반의 행동 패턴을 계층적 스킬 구조로 추출합니다.
+* &#x27;전환 인지형 EigenTrace&#x27; 그래프를 통해 의미론적 유사성, 실행 전환 역학, 성공 결과를 통합적으로 분석하여 견고한 행동 위계(Tower)를 구축합니다.
+* ALFWorld 및 WebShop 벤치마크에서 기존 방식 대비 높은 성공률과 효율적인 지식 재사용 성능을 입증했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+기존의 LLM 에이전트는 과거의 실행 기록(궤적)을 학습에 활용할 때, 단순히 정보를 나열하거나 성공/실패 여부를 제대로 구분하지 못하는 문제가 있었습니다. **Trace2Tower**는 실행 과정을 일종의 &#x27;지도&#x27;로 변환합니다. 이때, 단순히 경로를 기억하는 것이 아니라, 어떤 행동이 성공으로 이어지고 어떤 행동이 실패(지름길 등)를 유발하는지를 통계적으로 분석합니다. 이렇게 추출된 핵심 행동들은 &#x27;스킬 타워&#x27;라는 계층 구조로 정리되어, 에이전트가 복잡한 과제를 수행할 때 더 똑똑하고 효율적으로 과거의 경험을 재사용할 수 있게 돕습니다.
+
+🎯 배경 및 문제점
+* **데이터의 중복성과 노이즈:** 원시 실행 궤적은 너무 길고 중복되는 정보가 많으며, 불필요한 시행착오나 실패 사례가 포함되어 그대로 재사용하기 어렵습니다.
+* **표면적 학습의 한계:** 기존 방식은 개별 경험의 내용에만 집중할 뿐, 행동 간의 인과관계나 성공적인 절차로 이어지는 구조적 연결 고리를 명확히 파악하지 못합니다.
+* **실패 유도성 지름길:** 성공으로 이끄는 유용한 행동과 단순히 실패를 유발하는 임시방편적인 행동(Shortcut)을 구분하는 메커니즘이 부족합니다.
+
+💡 핵심 기술 및 아키텍처
+* **전환 인지형 그래프(Transition-Aware Graph):** 의미론적 호환성, 전환 역학(성공/실패 빈도), 결과 증거를 기하학적으로 통합하여 행동 토폴로지를 구성합니다.
+* **대조적 스펙트럼 분해(Contrastive Spectral Decomposition):** 실패와 연관된 행동 패턴은 억제하고 성공과 연관된 패턴만 강조하는 수학적 변환을 통해 안정적인 행동 모드를 추출합니다.
+* **스킬 타워(Skill Tower):** 행동 템플릿, 절차적 루틴, 그리고 상위 과제 전략이라는 3단계 계층 구조로 지식을 조직화하며, 피드백에 따라 타워를 지속적으로 정교화합니다.
+
+📊 실험 결과 분석
+* **성능 지표:** ALFWorld 벤치마크에서 87.31%의 성공률을 기록했으며, 평균 10.35단계의 짧은 실행 과정과 0.26회의 낮은 무효 행동 수를 보였습니다. WebShop 벤치마크에서는 50.67%의 정확한 성공률을 달성했습니다.
+* **효율성:** 기존 방식(SkillX) 대비 구축 과정에서 GPT 토큰 사용량을 16.85% 절감했습니다.
+* **유연성:** 검증자 피드백을 통해 타워를 재구축하지 않고도 그래프 편집만으로 배포 후 성능(성공률 80.42% → 84.58%)을 향상시킬 수 있음을 확인했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **지식 재사용 극대화:** 에이전트가 경험을 통해 얻은 노하우를 &#x27;라이브러리&#x27; 형태로 저장하여, 새로운 환경이나 과제에서도 빠르게 적응하고 동일한 실수를 반복하지 않도록 합니다.
+* **견고한 행동 패턴 확보:** 특정 모델 아키텍처에 종속되지 않는 범용적인 행동 구조를 제공하므로, 다양한 LLM 에이전트 시스템의 안정성을 높이는 데 기여할 수 있습니다.
+* **실무적 유연성:** 서비스 운영 중 발생하는 오류에 대해 전체 시스템을 재학습할 필요 없이, 지식 그래프의 구조를 편집하는 것만으로 에이전트의 전략을 즉시 수정할 수 있어 유지보수 효율이 매우 높습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Trace2Tower: Transition-Aware EigenTrace Induction of Multi ...](https://arxiv.org/abs/2609.05261)
+&gt; - [Trace2Tower: Transition-Aware EigenTrace Induction of Multi ...](https://arxiv.org/html/2609.05261v1)
+&gt; - [Trace2Tower: Transition-Aware EigenTrace Induction of Multi ...](https://chatpaper.com/paper/341610)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문의 수학적 접근 자체는 흥미로우나, &#x27;대조적 스펙트럼 분해&#x27;를 통해 얻은 토폴로지가 과연 복잡하고 동적인 환경에서도 일반화 성능을 보장할 수 있을지 의문입니다. 특히 궤적 데이터가 적을 때 고유값 기반의 클러스터링이 과연 노이즈에 얼마나 강건할지, 저자들이 더 엄밀한 바운드 증명을 제시했어야 합니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님, 이론적 완결성도 중요하지만 현업 입장에서는 &#x27;그래프 편집만으로 전략 수정 가능&#x27;하다는 대목이 진짜 눈에 띄네요. 에이전트 서비스 배포하고 나면 모델 재학습 없이 핫픽스하는 게 제일 골치 아픈데, 이 구조라면 운영 리소스 아낄 수 있겠는데요? 다만, 그 &#x27;스킬 타워&#x27; 계층 구조를 관리하는 파이프라인이 얼마나 무겁게 돌아갈지가 관건이겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;두 분 다 너무 진지하신 거 아닌가요? 지금 트위터에선 벌써 ALFWorld SOTA 찍었다고 난리예요! SkillX보다 토큰 16% 아낀 거면 비용 이슈 때문에 에이전트 도입 망설이던 스타트업들 바로 달려들 텐데, 이거 구현체 깃허브 올라오면 바로 땡겨서 제 모델에 이식해 볼 생각입니다. 일단 논문부터 읽어보고 튜토리얼 뜯어봐야겠네요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

@@ -1,0 +1,66 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>분자 데자뷔: 최신 언어 모델에서의 출판된 값 추출 현상 분석 | ArXiv Translator AI</title><meta name="description" content="분자 데자뷔: 최신 언어 모델에서의 출판된 값 추출 현상 분석"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_05381v1"><meta property="og:type" content="article"><meta property="og:title" content="분자 데자뷔: 최신 언어 모델에서의 출판된 값 추출 현상 분석"><meta property="og:description" content="분자 데자뷔: 최신 언어 모델에서의 출판된 값 추출 현상 분석"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_05381v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="분자 데자뷔: 최신 언어 모델에서의 출판된 값 추출 현상 분석"><meta name="twitter:description" content="분자 데자뷔: 최신 언어 모델에서의 출판된 값 추출 현상 분석"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_05381v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "분자 데자뷔: 최신 언어 모델에서의 출판된 값 추출 현상 분석", "description": "분자 데자뷔: 최신 언어 모델에서의 출판된 값 추출 현상 분석", "datePublished": "2026-09-04", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_05381v1", "author": [{"@type": "Person", "name": "Matthias Busch"}, {"@type": "Person", "name": "Marius Tacke"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_05381v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_05381v1"});gtag('event', 'paper_view', {"paper_id": "2609_05381v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>분자 데자뷔: 최신 언어 모델에서의 출판된 값 추출 현상 분석</h1><p>분자 데자뷔: 최신 언어 모델에서의 출판된 값 추출 현상 분석</p><pre>분자 데자뷔: 최신 언어 모델에서의 출판된 값 추출 현상 분석
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Molecular Déjà Vu: Digit-Level Retrieval of Published Values in Frontier Language Models
+&gt; - **저자:** Matthias Busch, Marius Tacke, Sviatlana V. Lamaka, Mikhail L. Zheludkevich, Christian J. Cyron, Roland C. Aydin, Christian Feiler
+&gt; - **발행일:** 2026-09-04
+&gt; - **PDF 링크:** [Molecular Déjà Vu: Digit-Level Retrieval of Published Values in Frontier Language Models](https://arxiv.org/pdf/2609.05381v1)
+
+
+✨ 3줄 핵심 요약
+* 최신 거대언어모델(LLM)이 분자 특성 예측 벤치마크에서 보이는 높은 정확도는 실제 예측 능력이 아니라, 학습 데이터에 포함된 정답을 그대로 추출(retrieval)한 결과일 가능성이 큽니다.
+* 실험 결과, 추론 단계(reasoning level)가 높을수록 정답 추출 빈도가 89% 증가하며, 이는 모델이 스스로 학습한 지식이 아닌 암기된 정보를 출력하고 있음을 시사합니다.
+* 특정 기술을 통해 추출을 억제하면 모델 간의 예측 오차 차이가 줄어드는 것으로 보아, 모델의 성능이 단순히 암기량으로 결정되는 것은 아님을 확인했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+분자 데이터를 예측하는 AI 모델들이 마치 화학 전문가처럼 정답을 맞히는 것처럼 보이지만, 사실은 논문에 발표된 수치를 그대로 기억해서 읊고 있을 가능성이 매우 높습니다. 연구진은 22개의 최첨단 모델을 대상으로 이를 조사했습니다. 그 결과, 12개 중 5개 데이터셋에서 절반 이상의 모델이 정답을 그대로 ‘베껴 쓰는’ 현상을 발견했습니다. 모델에게 복잡한 사고를 요구할수록(추론 단계 상향) 이런 현상은 더 심해졌습니다. 연구진은 모델이 정보를 암기하는 능력과 실제로 추론하는 능력이 서로 별개의 역량임을 입증했습니다.
+
+🎯 배경 및 문제점
+- **평가 방식의 한계:** 현재의 벤치마크는 모델이 분자의 구조를 이해하고 예측하는지, 단순히 학습 데이터에 있는 기존의 정답 수치를 찾아내어 출력하는지 구분하지 못합니다.
+- **실험적 증거:** FreeSolv 데이터셋의 경우, 실제 측정값의 오차 범위보다 모델의 예측 오차가 훨씬 낮게 나타나는 등 일반적인 예측 모델의 한계를 벗어난 수치가 관찰되었습니다. 이는 모델이 학습 과정에서 노출된 문헌의 데이터를 그대로 재생산하고 있음을 의미합니다.
+
+💡 핵심 기술 및 아키텍처
+- **추론 단계(Reasoning Level) 비교:** 낮은 추론 단계(L1)와 높은 추론 단계(L5)로 나누어, 모델의 사고 강도에 따라 암기된 정보를 인출하는 방식이 어떻게 달라지는지 분석했습니다.
+- **추출 억제 테스트:** SMILES 문자열을 변형하는 등 모델이 학습 데이터를 식별하지 못하도록 차단하는 실험을 진행하여, 그럼에도 불구하고 모델이 정답을 찾아내는지 확인했습니다.
+- **데이터 분석:** 벤치마크의 정답을 소수점 단위로 분해하여, 모델이 생성한 수치가 출판된 데이터와 어느 정도로 일치하는지를 정밀하게 측정했습니다.
+
+📊 실험 결과 분석
+- **추출의 광범위성:** 12개 벤치마크 중 5개에서 모델의 50% 이상이 정답을 그대로 추출하는 현상을 보였습니다.
+- **추론의 역효과:** 높은 추론 단계에서 실험했을 때, 낮은 단계보다 정답 추출(verbatim retrieval) 현상이 89% 더 자주 발생했습니다.
+- **모델 간 격차:** 추출 현상을 인위적으로 억제하면 각 모델의 예측 오차값이 서로 유사해지는 경향을 보입니다. 이는 모델의 성능이 단순히 데이터 암기량으로만 결정되지 않으며, 모델별로 정보 활용 능력이 다름을 보여줍니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+- **AI 평가 패러다임 변화:** 화학 및 재료 과학 분야에서 사용되는 LLM 벤치마크의 신뢰성을 재검토해야 할 필요성을 제기합니다. 단순히 높은 점수가 곧 모델의 지능을 의미하지 않음을 시사합니다.
+- **실무 적용 시 주의점:** 연구나 상업적 목적으로 분자 특성 예측 모델을 도입할 때, 해당 모델이 데이터 암기에 의존하고 있는지 철저히 검증해야 합니다. 본 연구는 향후 모델의 &#x27;진정한 일반화 능력&#x27;을 측정하는 새로운 평가 표준을 마련하는 데 기여할 것입니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2609.05381 Molecular Déjà Vu: Digit-Level Retrieval of Published Values in Frontier Language Models](https://arxiv.org/abs/2609.05381)
+&gt; - [Computer Science](https://arxiv.org/list/cs/pastweek)
+&gt; - [Artificial Intelligence](https://arxiv.org/list/cs.AI/recent)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;데이터 오염(Data Contamination) 문제는 어제오늘 일이 아니지만, 분자 과학 도메인에서 &#x27;추론 단계가 높을수록 암기 추출이 심화된다&#x27;는 발견은 충격적이군요. 이는 모델의 Chain-of-Thought(CoT)가 오히려 학습 데이터의 인덱스를 찾아가는 경로로 악용될 수 있음을 시사합니다. 우리가 그동안 찬양하던 &#x27;과학적 추론 능력&#x27;이 사실은 고도의 패턴 매칭에 불과했다면, 벤치마크 설계부터 다시 해야 합니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에서는 이미 분자 특성 예측 모델 도입할 때 특정 데이터셋에 과적합된 것 같다는 의심을 많이 했습니다. 특히 SMILES 문자열 변형했을 때 성능 널뛰는 거 보면 답 나오죠. &#x27;추출 억제 테스트&#x27; 결과를 보니 모델 간 성능 격차가 줄어든다는 점이 핵심이네요. 결국 &#x27;진짜 성능&#x27;은 암기를 걷어낸 상태에서 나오는 건데, 이걸 어떻게 현업에서 자동화해서 검증할지가 당장 우리 팀의 숙제입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 89% 증가라니... 이거 완전 &#x27;분자 데자뷔&#x27; 논문 하나로 SOTA 모델들 줄줄이 소환당하겠는데요? 다들 성능 점수 올리려고 데이터 셋 증강에만 목매고 있었는데, 정작 모델은 고차원적인 사고를 하는 척하면서 구글 검색 결과 복붙하고 있었다는 거잖아요. 내일 랩미팅 때 이 논문 들고 가서 우리 모델들 죄다 다시 테스트해봐야겠어요. 우리 모델도 &#x27;데자뷔&#x27; 중인지 확인해보면 밤샘 각 나오겠죠?&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
