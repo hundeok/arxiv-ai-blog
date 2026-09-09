@@ -1,0 +1,67 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Scratchy: EasyCrypt 암호학적 증명 생성을 위한 시각적 스크래치패드 멀티모달 추론 | ArXiv Translator AI</title><meta name="description" content="Scratchy: EasyCrypt 암호학적 증명 생성을 위한 시각적 스크래치패드 멀티모달 추론"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_06226v1"><meta property="og:type" content="article"><meta property="og:title" content="Scratchy: EasyCrypt 암호학적 증명 생성을 위한 시각적 스크래치패드 멀티모달 추론"><meta property="og:description" content="Scratchy: EasyCrypt 암호학적 증명 생성을 위한 시각적 스크래치패드 멀티모달 추론"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_06226v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Scratchy: EasyCrypt 암호학적 증명 생성을 위한 시각적 스크래치패드 멀티모달 추론"><meta name="twitter:description" content="Scratchy: EasyCrypt 암호학적 증명 생성을 위한 시각적 스크래치패드 멀티모달 추론"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_06226v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Scratchy: EasyCrypt 암호학적 증명 생성을 위한 시각적 스크래치패드 멀티모달 추론", "description": "Scratchy: EasyCrypt 암호학적 증명 생성을 위한 시각적 스크래치패드 멀티모달 추론", "datePublished": "2026-09-05", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_06226v1", "author": [{"@type": "Person", "name": "Yupeng Ren"}, {"@type": "Person", "name": "Zhaoxuan Li"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_06226v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_06226v1"});gtag('event', 'paper_view', {"paper_id": "2609_06226v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>Scratchy: EasyCrypt 암호학적 증명 생성을 위한 시각적 스크래치패드 멀티모달 추론</h1><p>Scratchy: EasyCrypt 암호학적 증명 생성을 위한 시각적 스크래치패드 멀티모달 추론</p><pre>Scratchy: EasyCrypt 암호학적 증명 생성을 위한 시각적 스크래치패드 멀티모달 추론
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Scratchy: Visual-Scratchpad Multimodal Reasoning for Cryptographic Proof Generation in EasyCrypt
+&gt; - **저자:** Yupeng Ren, Zhaoxuan Li, Rui Zhang
+&gt; - **발행일:** 2026-09-05
+&gt; - **PDF 링크:** [Scratchy: Visual-Scratchpad Multimodal Reasoning for Cryptographic Proof Generation in EasyCrypt](https://arxiv.org/pdf/2609.06226v1)
+
+
+✨ 3줄 핵심 요약
+* **한계 극복**: 암호학적 증명은 복잡한 논리적 의존성을 가지지만, 기존 LLM은 이를 선형적인 텍스트로 처리하는 데 어려움을 겪음.
+* **기술 제안**: &#x27;Scratchy&#x27;는 암호학적 증명 정보를 유형화된 관계 그래프와 시각적 상태로 변환하여 멀티모달 모델에 제공하는 프레임워크임.
+* **성능 입증**: 제안된 시각적 증명 상태를 활용했을 때, 전문적인 멀티모달 그래프 기반 방식이 62.5%의 컴파일 성공률을 기록하며 기존 텍스트 기반 방식보다 우수한 성능을 보임.
+
+📖 쉽게 풀어쓴 1분 핵심
+암호학적 증명은 단순한 계산을 넘어 확률, 적대적 게임, 불변성 등 여러 요소가 복잡하게 얽혀 있습니다. 기존 AI 모델들은 이를 글로 읽고 해결하려다 보니 중요한 논리적 연결 고리를 놓치곤 했습니다. &#x27;Scratchy&#x27;는 이 복잡한 정보들을 마치 지도처럼 한눈에 들어오는 &#x27;시각적 증명 상태(Visual Proof State)&#x27;로 변환해 줍니다. AI가 이 시각적 정보를 보고 증명을 작성하게 함으로써, 더 정확하고 논리적인 암호학적 증명 생성이 가능해졌습니다.
+
+🎯 배경 및 문제점
+* 암호학적 증명은 확률적 프로그램, 게임, 가정, 불변성 등이 유기적으로 결합되어야 하며, EasyCrypt와 같은 기계 검증 프레임워크가 필요함.
+* LLM은 이러한 증명 요소를 텍스트로만 받아들일 때, 요소 간의 내재된 의존성을 파악하지 못해 증명 생성에 실패하는 경우가 많음.
+* 기존의 방식은 단순히 정렬된 텍스트 정보에 의존하므로, 복잡한 암호학적 환원이나 관계적 판단을 수행하는 데 한계가 있음.
+
+💡 핵심 기술 및 아키텍처
+* **SNPS (Structured Natural-Language Proof Sketch)**: 위협 모델, 프로그램 사실, 증명 의무 등 6가지 필드로 구성된 구조화된 입력 형식.
+* **시각적 컴파일러**: SNPS를 유형화된 &#x27;증명-관계 그래프&#x27;로 변환하고, 이를 다시 정보가 풍부한 &#x27;시각적 증명 상태&#x27;로 컴파일함.
+* **멀티모달 모델 활용**: 시각적 상태를 입력으로 받은 멀티모달 모델이 EasyCrypt 증명 조각을 생성하고, 이를 다시 기계 검증 과정을 통해 최종 확인받음.
+
+📊 실험 결과 분석
+* **성능 지표**: Scratchy-eval 데이터셋(114개 태스크)을 통해 평가한 결과, &#x27;전문적인 멀티모달 그래프&#x27; 방식이 62.5%(25/40)의 컴파일 성공률로 가장 높은 성능을 보임.
+* **비교군**: 일반 텍스트 기반 방식(27.5%), 단순 관계 텍스트(15.0%), 일반 다이어그램(20.0%) 등과 비교하여 유의미한 성능 향상을 입증함.
+* **데이터셋 구성**: Scratchy-eval은 64개의 보안 형식 증명 생성 태스크와 50개의 객관식 지식 테스트로 구성됨.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **기계 보조 암호학(Computer-aided Cryptography)**: 복잡한 암호학적 안전성 증명을 자동화하여 검증 속도와 정확도를 높일 수 있음.
+* **실무적 가치**: 모델이 증명 구조를 명시적으로 파악하게 함으로써, 사람이 일일이 증명 단계를 입력하는 부담을 줄이고 자동 검증의 신뢰성을 확보함.
+* **향후 방향성**: 특정 증명 분야에 맞춘 최적의 시각적 관계 정의 및 증명 오류 발생 시 검증 피드백을 통한 자동 수정 기능으로 발전 가능함.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2609.06226 Scratchy: Visual-Scratchpad Multimodal Reasoning for ...](https://arxiv.org/abs/2609.06226)
+&gt; - [Cryptography and Security](https://export.arxiv.org/list/cs.CR/pastweek?show=250&amp;skip=39)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;62.5%라... 학계 기준에서는 의미 있는 도약이지만, 실제 EasyCrypt의 엄격한 증명 요구사항을 생각하면 여전히 갈 길이 멀군요. &#x27;시각적 상태&#x27;가 모델의 환각(Hallucination)을 제어하는 근본적인 해결책이 될 수 있을지 의문입니다. 결국 기계 검증이 필수인데, 이 37.5%의 실패 사례에 대한 엄밀한 오차 분석이 선행되어야 할 것 같네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 맞지만, 실무 입장에선 텍스트 기반으로 27.5% 나오던 게 62.5%로 뛴 건 가뭄에 단비 같은 소식입니다. 특히 암호학 증명은 디버깅이 지옥인데, 증명 관계를 그래프로 시각화해서 모델한테 던져준다는 아이디어 자체가 현업에서 바로 써먹기 좋은 아키텍처네요. 다만 인프라 단에서 시각적 컴파일러 연동할 때 레이턴시가 좀 걱정되긴 합니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 다들 반응이 너무 차가운 거 아니에요? &#x27;Scratchy&#x27;는 단순히 성능 올린 게 아니라 &#x27;멀티모달이 논리적 추론을 어떻게 보조해야 하는가&#x27;에 대한 정답지를 보여준 거잖아요! 텍스트로만 끙끙대던 LLM한테 &#x27;그림&#x27;이라는 힌트를 준 게 신의 한 수라고 봅니다. 당장 다음 학기 세미나 주제로 이거 찜했습니다. 이거 완전 대세 될 것 같은데요?&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
