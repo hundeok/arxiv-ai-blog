@@ -1,0 +1,70 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>다이아몬드 에이전트: 서비스형 고성능 컴퓨팅(HPC) 자원의 에이전트 기반 제어 | ArXiv Translator AI</title><meta name="description" content="다이아몬드 에이전트: 서비스형 고성능 컴퓨팅(HPC) 자원의 에이전트 기반 제어"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_06181v1"><meta property="og:type" content="article"><meta property="og:title" content="다이아몬드 에이전트: 서비스형 고성능 컴퓨팅(HPC) 자원의 에이전트 기반 제어"><meta property="og:description" content="다이아몬드 에이전트: 서비스형 고성능 컴퓨팅(HPC) 자원의 에이전트 기반 제어"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_06181v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="다이아몬드 에이전트: 서비스형 고성능 컴퓨팅(HPC) 자원의 에이전트 기반 제어"><meta name="twitter:description" content="다이아몬드 에이전트: 서비스형 고성능 컴퓨팅(HPC) 자원의 에이전트 기반 제어"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_06181v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "다이아몬드 에이전트: 서비스형 고성능 컴퓨팅(HPC) 자원의 에이전트 기반 제어", "description": "다이아몬드 에이전트: 서비스형 고성능 컴퓨팅(HPC) 자원의 에이전트 기반 제어", "datePublished": "2026-09-05", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_06181v1", "author": [{"@type": "Person", "name": "Haotian Xie"}, {"@type": "Person", "name": "Junlin Chen"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_06181v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_06181v1"});gtag('event', 'paper_view', {"paper_id": "2609_06181v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>다이아몬드 에이전트: 서비스형 고성능 컴퓨팅(HPC) 자원의 에이전트 기반 제어</h1><p>다이아몬드 에이전트: 서비스형 고성능 컴퓨팅(HPC) 자원의 에이전트 기반 제어</p><pre>다이아몬드 에이전트: 서비스형 고성능 컴퓨팅(HPC) 자원의 에이전트 기반 제어
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Diamond Agent: Agentic Control of Federated HPC Resources as a Service
+&gt; - **저자:** Haotian Xie, Junlin Chen, Mingkai Zheng, Yifan Zhu, Minu Mathew, Max Burnette, Yadu Babuji, Volodymyr Kindratenko, Shivaram Venkataraman, Kyle Chard, Ian Foster, Zhao Zhang
+&gt; - **발행일:** 2026-09-05
+&gt; - **PDF 링크:** [Diamond Agent: Agentic Control of Federated HPC Resources as a Service](https://arxiv.org/pdf/2609.06181v1)
+
+
+✨ 3줄 핵심 요약
+- Diamond Agent는 서로 다른 환경의 여러 슈퍼컴퓨터를 하나의 통합 인터페이스로 관리하고 워크플로우를 실행하는 AI 에이전트 시스템입니다.
+- 이벤트 중심의 지속성 메커니즘을 통해 장시간 소요되는 배치 작업 중에도 에이전트를 비활성화하여 리소스 낭비를 방지하고 효율성을 극대화합니다.
+- 4개의 실제 슈퍼컴퓨터 환경에서 테스트한 결과, 작업 완료 시간의 중앙값을 기존 방식 대비 약 10.5배 단축하는 성과를 거두었습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+연구자들은 여러 대의 슈퍼컴퓨터를 동시에 사용해야 할 때, 각각의 컴퓨터에 개별 에이전트를 설치하고 관리해야 하는 큰 불편을 겪습니다. &#x27;Diamond Agent&#x27;는 이러한 복잡함을 해결하기 위해 개발되었습니다. 사용자가 일일이 개별 시스템에 접속할 필요 없이, 중앙의 AI 에이전트가 데이터 이동부터 작업 배정, 실행 결과 회수까지 모든 과정을 통합 관리합니다. 특히 작업이 진행되는 동안 에이전트가 계속 켜져 있을 필요가 없도록 설계되어, 시스템 부하를 낮추면서도 여러 기종의 슈퍼컴퓨터를 마치 하나의 장비처럼 원활하게 운영할 수 있게 합니다.
+
+🎯 배경 및 문제점
+고성능 컴퓨팅(HPC) 환경에서 여러 클러스터를 연동할 때 다음과 같은 실무적 난관이 존재합니다.
+- **파편화된 관리:** 개별적으로 관리되는 클러스터마다 에이전트를 실행해야 하므로 워크플로우 문맥과 실행 상태가 분리됨.
+- **시스템 부하:** 에이전트가 로그인 노드에서 상시 작동할 경우 서버 부하를 유발해 센터에서 사용을 제한하는 경우가 있음.
+- **이종 환경의 복잡성:** 사이트마다 서로 다른 스케줄러 정책, 데이터 이동 요구사항, 환경 설정 등을 실시간으로 파악하여 효율적으로 자원을 배정하기 어려움.
+
+💡 핵심 기술 및 아키텍처
+- **통합 인터페이스:** 자원 탐색, 명세, 데이터 이동(Globus Transfer 활용), 작업 실행을 통일된 에이전트 기반 워크스페이스로 제공합니다.
+- **이벤트 중심 지속성:** 에이전트 실행과 장기 배치 작업을 분리했습니다. 작업 도중에는 에이전트가 휴면 상태로 전환되고, 결과 발생 등 결정이 필요한 이벤트가 발생할 때만 다시 깨어납니다.
+- **리소스 엔벨로프(ResourceEnvelope):** 최소/최대 필요 자원 및 호환성 제약을 포함한 데이터 구조를 통해 유연하게 작업을 배정합니다.
+- **연합, 통합이 아닌 관리:** 개별 슈퍼컴퓨터의 독립적 정책을 존중하며, 오직 사용자가 권한을 가진 범위 내에서만 자원을 연동합니다.
+
+📊 실험 결과 분석
+실제 운영 중인 4개의 슈퍼컴퓨터를 대상으로 27시간 동안 총 83개의 작업을 수행하며 성능을 평가했습니다.
+- **완료 시간 단축:** 고정된 사이트를 사용하는 기준 방식과 비교했을 때, 최적의 배치가 가능한 상황에서 작업 완료까지 걸리는 추가 시간의 중앙값이 42초에서 4초로 줄어들어 **10.5배의 효율 개선**을 보였습니다.
+- **운영 효율:** 별도의 사이트별 에이전트 유지나 상시 폴링(Polling) 없이도 효율적인 작업 배정이 가능함을 증명했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+Diamond Agent는 복잡한 HPC 자원 활용의 진입장벽을 낮추어 과학 연구의 속도를 가속화할 수 있습니다. 
+- **연구 효율 증대:** 연구자들은 시스템 구조를 고민하기보다 AI 에이전트에게 목적을 제시하는 것만으로 복잡한 멀티 사이트 컴퓨팅 자원을 활용할 수 있습니다.
+- **미래 확장성:** 본 연구진은 향후 실시간 학습을 통한 스케줄링 최적화, 자원 크기와 위치의 동시 최적화, 그리고 예산 기반의 워크플로우 감사 제어 기능을 추가할 계획입니다. 이는 대규모 프로젝트에서 컴퓨팅 비용과 자원 사용을 더욱 정밀하게 통제할 수 있는 기반이 될 것입니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2505.05428 Empowering Scientific Workflows with Federated ...Empowering Scientific Workflows with Federated AgentsEmpowering Scientific Workflows with Federated AgentsFederatedHPC: a scalable framework for privacy-preserving ...Integrating Heterogeneous HPC Resources into National ...Federated HPC, Cloud and Data infrastructures - ZenodoFederated HPC, Cloud and Data infrastructures - Zenodo](https://arxiv.org/abs/2505.05428)
+&gt; - [Empowering Scientific Workflows with Federated Agents](https://arxiv.org/html/2505.05428v1)
+&gt; - [Empowering Scientific Workflows with Federated Agents](https://www.computer.org/csdl/proceedings-article/ipdps/2026/060200b403/2hJUt1IfKN2)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;이벤트 중심의 지속성 메커니즘을 통한 리소스 최적화는 흥미롭지만, 학술적으로는 &#x27;에이전트의 결정론적 보장&#x27;이 의문입니다. 슈퍼컴퓨터 센터들이 보안상 에이전트의 외부 통신을 얼마나 허용해줄지가 관건인데, 과연 실제 프로덕션 환경에서 이 유연성을 얼마나 신뢰할 수 있을지 의문이 드네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 보안 이슈는 빡세겠지만, 실무 입장에서는 10.5배 속도 향상이라는 수치가 너무 달콤하네요. 특히 로그인 노드에 에이전트 띄워두고 징징대는 거 센터 관리자들한테 엄청 눈치 보이는데, 휴면 상태로 제어한다는 아이디어 하나로 운영 리스크를 확 줄인 건 정말 칭찬할 만한 엔지니어링입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;선배님들, 핵심은 &#x27;연합된 HPC&#x27;라는 키워드예요! 이제 멀티 사이트 자원 관리를 인간이 하는 시대는 끝났습니다. Diamond Agent가 스케줄러 정책까지 학습해서 최적화하는 단계까지 가면, 조만간 우리 연구실 클러스터도 이 에이전트한테 다 맡기고 저는 논문만 쓰면 되는 거 아닌가요? 빨리 오픈소스 풀렸으면 좋겠네요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

@@ -1,0 +1,69 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CoVeR: 다중 뷰 3D 추론을 위한 커버리지 기반 토큰 프루닝 | ArXiv Translator AI</title><meta name="description" content="CoVeR: 다중 뷰 3D 추론을 위한 커버리지 기반 토큰 프루닝"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_08345v1"><meta property="og:type" content="article"><meta property="og:title" content="CoVeR: 다중 뷰 3D 추론을 위한 커버리지 기반 토큰 프루닝"><meta property="og:description" content="CoVeR: 다중 뷰 3D 추론을 위한 커버리지 기반 토큰 프루닝"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_08345v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="CoVeR: 다중 뷰 3D 추론을 위한 커버리지 기반 토큰 프루닝"><meta name="twitter:description" content="CoVeR: 다중 뷰 3D 추론을 위한 커버리지 기반 토큰 프루닝"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_08345v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "CoVeR: 다중 뷰 3D 추론을 위한 커버리지 기반 토큰 프루닝", "description": "CoVeR: 다중 뷰 3D 추론을 위한 커버리지 기반 토큰 프루닝", "datePublished": "2026-09-08", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_08345v1", "author": [{"@type": "Person", "name": "Nhat-Tan Bui"}, {"@type": "Person", "name": "Varshini Elangovan"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_08345v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_08345v1"});gtag('event', 'paper_view', {"paper_id": "2609_08345v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>CoVeR: 다중 뷰 3D 추론을 위한 커버리지 기반 토큰 프루닝</h1><p>CoVeR: 다중 뷰 3D 추론을 위한 커버리지 기반 토큰 프루닝</p><pre>CoVeR: 다중 뷰 3D 추론을 위한 커버리지 기반 토큰 프루닝
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** CoVeR: Coverage-Based Token Pruning for Multi-View 3D Reasoning in VLMs
+&gt; - **저자:** Nhat-Tan Bui, Varshini Elangovan, Arun Reddy Anugu, Sreyas Mohan, Wei Ye, Dilin Wang, JQ Huang, Rakesh Ranjan, Aviral Chharia, Fernando De la Torre
+&gt; - **발행일:** 2026-09-08
+&gt; - **PDF 링크:** [CoVeR: Coverage-Based Token Pruning for Multi-View 3D Reasoning in VLMs](https://arxiv.org/pdf/2609.08345v1)
+
+
+✨ 3줄 핵심 요약
+* **데이터 효율적 프루닝:** CoVeR은 기하학적 정보만을 활용해 다중 뷰 데이터의 중복 토큰을 제거하는 학습 불필요(Training-free) 선택기입니다.
+* **성능 및 효율 극대화:** 전체 토큰의 약 8%만 사용하고도 기존 성능의 93.5%를 유지하며, 이전 최고 성능(SOTA) 모델 대비 평균 3.9%p 높은 성능을 기록했습니다.
+* **범용적 적용:** 특정 모델에 의존하지 않는 결정론적 방식으로, 다양한 비전-언어 모델(VLM)에 즉시 적용 가능한 플러그 앤 플레이 모듈입니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+2D 비전-언어 모델(VLM)을 이용해 3D 공간을 이해하려면 여러 각도에서 찍은 사진(다중 뷰)이 필요합니다. 하지만 뷰가 늘어날수록 이미지에서 추출되는 시각적 토큰(데이터 단위)이 급격히 많아져 연산 비용이 폭증하는 문제가 발생합니다. 기존의 프루닝(가지치기) 방식은 토큰의 중요도를 모델이 스스로 학습하거나(성능 저하 우려), 복셀화(공간 분할) 방식을 썼지만(공간 중복 해결 미흡), 모두 한계가 있었습니다. CoVeR은 학습 없이 오직 3D 좌표 정보만을 사용하여 공간을 고르게 커버하도록 토큰을 선택함으로써, 데이터는 대폭 줄이면서도 3D 추론 정확도는 최상위 수준으로 유지합니다.
+
+🎯 배경 및 문제점
+* **연산 병목 현상:** 3D 추론을 위해 뷰가 늘어날 때마다 토큰 수가 선형적으로 증가하여 VLM 추론 비용이 감당하기 어려울 정도로 커집니다.
+* **기존 방식의 한계:**
+    * **중요도 기반 학습:** 공간적 중복성을 무시하고 특정 지역의 토큰만 반복적으로 선택하여 전체 3D 장면 표현이 불균형해집니다.
+    * **복셀화 방식:** 3D 공간의 특정 영역에 토큰을 할당하지만, 뷰가 겹치는 영역에서 포화 상태가 발생하고, 전체 출력 토큰 수를 정확하게 제어하기 어렵습니다.
+
+💡 핵심 기술 및 아키텍처
+* **학습 불필요(Training-free):** 모델이 따로 학습할 필요 없이 오직 토큰의 3D 좌표 정보만을 활용하는 결정론적 선택 방식입니다.
+* **공간 커버리지 보장:** 전체 장면의 모든 영역을 빠짐없이 표현하도록 토큰을 선택하여, 중요도가 높은 정보가 누락되는 것을 방지합니다.
+* **토큰 예산 제어:** 사용자가 원하는 만큼의 토큰 수만 정확하게 유지하도록 설계되어, 연산 비용을 유연하게 조절할 수 있습니다.
+
+📊 실험 결과 분석
+* **성능 유지:** 전체 토큰의 약 8%만 사용해도 전체 토큰 기반 모델 성능의 93.5%를 보존합니다.
+* **SOTA 경신:** 3개의 3D 추론 벤치마크에서 기존 최고 성능 모델들을 능가했으며, 평균적으로 3.9%p 더 높은 성능을 보였습니다.
+* **강건성:** 4개의 서로 다른 VLM에 적용했을 때 모두 일관된 성능을 보여 범용성을 입증했습니다. (단, 벤치마크별 구체적인 모델명과 세부 수치는 발췌된 표를 통해 확인 가능합니다.)
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **접근성 향상:** 컴퓨팅 자원이 제한된 환경에서도 고성능 3D 추론 모델을 운영할 수 있게 하여 접근성을 높입니다.
+* **에너지 효율화:** 로봇 공학 및 임베디드 AI 분야에서 불필요한 연산을 줄여 에너지 소비를 절감할 수 있습니다.
+* **주의사항:** 공격적인 프루닝은 안전이 중요한 시스템(자율주행, 의료 등)에서 중요한 시각적 정보를 누락시킬 위험이 있습니다. 또한 일반적인 VLM에 적용되므로 해당 모델이 내포한 사회적 편향이나 오류가 그대로 나타날 수 있음을 인지해야 합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2608.13226 CoverPrune: Coverage-Driven Token Pruning for 3D VLMs via Optimal Transport](https://arxiv.org/abs/2608.13226)
+&gt; - [CoverPrune: Coverage-Driven Token Pruning for 3D VLMs via Optimal Transport](https://arxiv.org/html/2608.13226)
+&gt; - [2608.13226 CoverPrune: Coverage-Driven Token Pruning for 3D VLMs via Optimal Transport - Academus scientific article reader](https://academ.us/article/2608.13226/)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;학습 불필요(Training-free) 방식이라는 점은 매력적이나, 기하학적 정보 기반의 결정론적 프루닝이 과연 복잡한 의미론적 맥락(Semantic context)까지 충분히 보존할 수 있을지 의문입니다. 8%의 토큰으로 93.5%의 성능을 유지했다는 결과는 인상적이지만, 특정 도메인이나 노이즈가 많은 실제 환경에서의 강건성(Robustness) 검증이 더 필요해 보입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 맞지만, 현업 입장에서는 &#x27;학습이 필요 없다&#x27;는 것 자체가 엄청난 강점입니다. 파이프라인에 즉시 끼워 넣을 수 있는 플러그 앤 플레이 모듈이라니, 서버 비용 절감 측면에서 당장 데모 돌려보고 싶네요. 특히 토큰 예산을 제어할 수 있다는 점은 대규모 배포 시 인프라 안정성을 확보하는 데 핵심적인 기능입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;선배님, 이건 그냥 넘길 논문이 아닙니다. 최근 LLM/VLM 쪽에서 토큰 효율화가 화두인데, 복잡한 Reinforcement Learning이나 Distillation 없이 기하학적 커버리지로 이 정도 성능을 뽑아낸 건 진짜 &#x27;깔끔한&#x27; 수법이에요. 벌써 커뮤니티에선 이거 바로 LLaVA나 다른 오픈소스 모델에 붙여서 실험해보겠다는 반응이 폭주 중입니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
