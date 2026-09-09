@@ -1,0 +1,69 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SCIRIGOR: 최종 점수를 넘어선 개방형 과학적 분석 평가 | ArXiv Translator AI</title><meta name="description" content="SCIRIGOR: 최종 점수를 넘어선 개방형 과학적 분석 평가"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_06192v1"><meta property="og:type" content="article"><meta property="og:title" content="SCIRIGOR: 최종 점수를 넘어선 개방형 과학적 분석 평가"><meta property="og:description" content="SCIRIGOR: 최종 점수를 넘어선 개방형 과학적 분석 평가"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_06192v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="SCIRIGOR: 최종 점수를 넘어선 개방형 과학적 분석 평가"><meta name="twitter:description" content="SCIRIGOR: 최종 점수를 넘어선 개방형 과학적 분석 평가"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_06192v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "SCIRIGOR: 최종 점수를 넘어선 개방형 과학적 분석 평가", "description": "SCIRIGOR: 최종 점수를 넘어선 개방형 과학적 분석 평가", "datePublished": "2026-09-05", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_06192v1", "author": [{"@type": "Person", "name": "Bowen Liu"}, {"@type": "Person", "name": "Shuo Nie"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_06192v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_06192v1"});gtag('event', 'paper_view', {"paper_id": "2609_06192v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>SCIRIGOR: 최종 점수를 넘어선 개방형 과학적 분석 평가</h1><p>SCIRIGOR: 최종 점수를 넘어선 개방형 과학적 분석 평가</p><pre>SCIRIGOR: 최종 점수를 넘어선 개방형 과학적 분석 평가
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** SCIRIGOR:Evaluating Open-Ended Scientific Analysis Beyond Final Scores
+&gt; - **저자:** Bowen Liu, Shuo Nie, Bodong Du, Xiaomeng Li
+&gt; - **발행일:** 2026-09-05
+&gt; - **PDF 링크:** [SCIRIGOR:Evaluating Open-Ended Scientific Analysis Beyond Final Scores](https://arxiv.org/pdf/2609.06192v1)
+
+
+✨ 3줄 핵심 요약
+* 과학적 코딩 에이전트의 결과물이 데이터·코드·시각화와 논리적으로 연결되었는지 검증하는 새로운 평가 프레임워크인 &#x27;SCIRIGOR&#x27;를 제안합니다.
+* 연구 결과, 기존 에이전트들은 자신의 결과물과 주장 간의 일관성은 높지만, 실제 데이터에 기반한 과학적 정확성은 현저히 낮은 것으로 나타났습니다.
+* 단순히 결과물의 &#x27;그럴듯함&#x27;만 평가하는 방식에서 벗어나, 데이터에서 결론에 이르는 전체 과정의 무결성을 검증해야 함을 입증했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+최근 AI 연구 에이전트는 복잡한 데이터 분석, 코드 작성, 시각화, 결론 도출을 수행합니다. 하지만 기존 평가 방식은 최종 결과물만 보고 &quot;그럴듯해 보이는가?&quot;를 따지는 경우가 많았습니다. 이로 인해 AI가 잘못된 계산을 하고도 그에 맞춰 그럴듯한 거짓 결론을 내리는 &#x27;환각 현상&#x27;을 제대로 잡아내지 못했습니다. SCIRIGOR는 AI가 제출한 모든 단계(데이터 처리→수치 계산→시각화→최종 주장)를 하나의 &#x27;증거 그래프&#x27;로 연결하여, 데이터부터 결론까지의 모든 경로가 과학적으로 타당한지 엄격하게 검증합니다.
+
+🎯 배경 및 문제점
+* **기존 평가의 한계:** 코드 수행 여부나 결과물의 외형적 완성도만 평가할 뿐, 보고된 결론이 실제 데이터와 코드에 의해 뒷받침되는지 검증하지 못함.
+* **자기 일관성의 오류:** AI가 잘못된 수치를 산출하더라도 그 수치에 맞춰 결론을 내리면 내부적으로는 일관성이 있어 보임. 이는 결과물 자체의 신뢰도를 왜곡함.
+* **복잡성 대응 부족:** 데이터셋이 커지고 분석 단계가 복잡해질수록 기존 평가 방식으로는 오류의 원인을 파악하기 어려움.
+
+💡 핵심 기술 및 아키텍처
+* **증거 기반 분석(Evidence-grounded Analysis):** 과학적 질문을 해결하기 위한 데이터, 분석 코드, 결과값, 시각화, 결론을 하나로 묶어 평가.
+* **증거 그래프(Evidence Graph) 구축:** 생성된 결과물을 타입별로 분류하고, 데이터에서 결론으로 이어지는 경로(컴퓨팅 및 시각적 경로)를 재구성.
+* **약한 고리 법칙(Weakest-link Scoring):** 전체 과정 중 가장 신뢰도가 낮은 단계를 찾아내 점수화하고, 실패 지점을 자동으로 로컬라이징(추적)함.
+* **유연한 대안 경로 인정:** 과학적으로 타당한 방법론이라면 원본 논문과 다른 방식이라도 입증 가능한 경로라면 성공으로 인정.
+
+📊 실험 결과 분석
+* **낮은 성공률:** 11개 에이전트/모델 구성에 대해 100개의 사례를 실험한 결과, 엄격한 전체 체인 성공률은 18.0% 이하로 나타남.
+* **일관성의 역설:** AI는 결과가 과학적 목표와 일치하든 아니든 상관없이, 자신의 결과물과 주장 사이의 일관성을 유지하는 비율이 비슷함(일치할 때 91.0% vs 불일치할 때 91.8%). 즉, 스스로 모순되지 않는다고 해서 과학적으로 옳은 것은 아님.
+* **복잡성 민감도:** 입력 데이터와 분석 단계가 많아질수록 &#x27;엄격한 성공률&#x27;이 급격히 하락함. 실패의 78.3%는 데이터 변환 또는 실행 초기 단계에서 발생함.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **과학 연구의 신뢰성 제고:** 논문이나 보고서의 결론이 데이터로부터 유도되었음을 수학적으로 보증할 수 있는 표준을 제시함.
+* **AI 개발 가이드라인:** AI 연구 에이전트 개발 시, 결과물의 형태적 완성도뿐만 아니라 &#x27;증거 경로의 연결성&#x27;을 핵심 성능 지표로 삼아야 함을 시사함.
+* **자동화된 검토 시스템:** 향후 학술지나 기업의 데이터 분석팀에서 AI가 수행한 분석 보고서의 과학적 타당성을 자동 검증하는 도구로 활용 가능.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [SCORE | Center for Open Science](https://www.cos.io/score)
+&gt; - [Assessing the Effectiveness of SciScore in Supporting the Reproducibility of Scientific Research - Science Editor](https://www.csescienceeditor.org/article/4257/)
+&gt; - [OpenScholar: Synthesizing ScientificLiterature with Retrieval-augmented LMs](https://arxiv.org/html/2411.14199v1)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;결국 터질 게 터졌군. 지난 몇 년간 생성형 모델들이 그럴듯한 문장으로 학계를 현혹하는 걸 보며 우려가 컸는데, SCIRIGOR가 내놓은 &#x27;일관성의 역설&#x27; 데이터는 충격적이면서도 필연적이네. 18% 미만의 성공률이라... AI가 &#x27;논리적&#x27;인 게 아니라 그저 &#x27;말대꾸&#x27;를 잘하는 것뿐이라는 증거야. 앞으로 우리 연구실에서 AI가 짠 코드는 무조건 이 증거 그래프 기반으로 검증부터 거치게 하겠네.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 맞지만, 실무 입장에선 인프라 부하가 걱정되네요. 증거 그래프 구축하고 약한 고리 추적하는 게 연산 비용이 만만치 않을 텐데, 프로덕션 레벨에서 실시간으로 돌릴 수 있을까요? 특히 데이터 파이프라인이 수시로 바뀌는 환경에서 이 엄격한 검증을 적용하다 보면, 모델 개선보다 검증 로직 디버깅에 시간을 다 쏟을 것 같은데... 효율성 확보가 관건이겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;선배님, 이건 &#x27;효율&#x27;의 문제가 아니라 &#x27;존재론&#x27;의 문제예요! ㅋㅋㅋ 어차피 벤치마크 점수 높이려고 모델들 튜닝만 하던 시대는 끝났잖아요. 이번 논문 덕분에 이제 &#x27;그럴듯한 환각&#x27;은 바로 걸러지겠네요. 저 지금 당장 이 프레임워크 우리 에이전트 실험에 붙여보러 갑니다. 엄격한 성공률 18% 벽을 우리가 깨면 바로 탑티어 학회감 아닐까요?&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
