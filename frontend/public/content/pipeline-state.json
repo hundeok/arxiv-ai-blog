@@ -29253,11 +29253,11 @@
     "2609_01281v1": {
       "id": "2609_01281v1",
       "filename": "post_2609_01281v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-09-08T07:42:13.836988+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-08T23:06:27.671227+00:00",
+      "updated_at": "2026-09-10T18:00:00.463920+00:00",
       "paper": {
         "title": "EmbodiedSkills: A Unified Framework for Orchestrating, Training, and Deploying VLA Agents",
         "summary": "Vision-language-action (VLA) models map visual observations and language instructions directly to robot actions, but long-horizon tasks require more than action prediction. An agent must coordinate perception, planning, execution, progress verification, and recovery as the physical state evolves. An action prediction or a model-generated skill decision does not, by itself, guarantee that the proposed operation is valid in the current state or that its outcome will be verified. We propose EmbodiedSkills, a unified framework that treats each skill decision as an execution proposal: the runtime checks its prerequisites before execution and verifies the outcome afterward. A shared executable-skill interface connects high-level skill selection, bounded low-level VLA execution, and post-action verification within a single agent loop. Because this interface remains fixed, low-level VLA policies can be replaced or adapted without changing the agent loop. The interface also records planning, execution, verification, and recovery events as structured trajectories, which provide supervision for individual components and can support optional online adaptation when interactive feedback is available. We instantiate EmbodiedSkills with Qwen3-VL and OpenPI/pi0.5 on RoboTwin 2.0 and LIBERO. Task-adapted low-level VLA policies achieve an average success rate of 86.20% across 50 RoboTwin 2.0 tasks and 97.40% across the four LIBERO suites. These results establish the execution performance of the task-adapted low-level VLA policies used in EmbodiedSkills. On four memory-dependent RMBench tasks, the same task-adapted execution approach achieves 12.5% average success. The framework provides a trainable and inspectable agent layer for turning these policies into closed-loop embodied systems.",
@@ -29283,7 +29283,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2609.01281v1"
       },
-      "priority_score": 30
+      "priority_score": 30,
+      "korean_title": "EmbodiedSkills: VLA 에이전트의 조율, 학습 및 배포를 위한 통합 프레임워크"
     },
     "2609_03254v1": {
       "id": "2609_03254v1",
@@ -30422,11 +30423,11 @@
     "2609_09153v1": {
       "id": "2609_09153v1",
       "filename": "post_2609_09153v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-09-09T13:19:19.671311+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-09T13:19:19.671312+00:00",
+      "updated_at": "2026-09-10T18:00:22.386082+00:00",
       "paper": {
         "title": "Procedural Graphs: Self-Evolving Execution Structures for LLM Agents",
         "summary": "Large language models are increasingly deployed as agents that plan over long horizons and act through external tools. Most agents select actions through unconstrained generation over an accumulating history, leaving implicit the procedural knowledge of what to do, in what order, and under which conditions. As trajectories lengthen, agents can lose track of their objectives, invoke tools out of order, and repeat unproductive actions. We introduce the Procedural Graph: just as a knowledge graph organizes factual knowledge into (entity, relation, entity) triplets for what-is questions, a Procedural Graph organizes procedural knowledge into (procedure, relation, procedure) triplets for what-to-do questions. At each decision step, the framework localizes the agent's active node, and a guidance model translates the surrounding subgraph into step-level situational guidance that biases the solver's next action without dictating it. The graph is self-evolving: an LLM refiner contrasts failed trajectories with successful ones and edits the graph's topology and attributes, committing edits that preserve or improve held-out validation performance while retaining rejected ones to discourage repetition. Starting from a minimal skeleton, the loop builds graphs that match or surpass hand-designed ones. It can also repair a flawed expert prior. Across multiple datasets, task types, and LLMs, the Procedural Graph delivers consistent gains over memory-based baselines, and self-evolution further improves performance without manual engineering.",
@@ -30439,7 +30440,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2609.09153v1"
       },
-      "priority_score": 29
+      "priority_score": 29,
+      "korean_title": "절차적 그래프: LLM 에이전트를 위한 자가 진화형 실행 구조"
     },
     "2609_04942v1": {
       "id": "2609_04942v1",
@@ -30570,7 +30572,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-10T07:46:41.244493+00:00",
       "last_error": null,
-      "updated_at": "2026-09-10T13:16:25.712617+00:00",
+      "updated_at": "2026-09-10T17:59:42.145429+00:00",
       "paper": {
         "title": "SyncWorld: Visual Calibration Enables World Models as Zero-Shot Simulators",
         "summary": "World models are increasingly used as policy-in-the-loop imagination environments, where reliable rollouts require fine-grained controllability with respect to low-level robot actions. A key obstacle to scaling such models in robotics is that actions are not a universal language in pixel space: changes in visual environment, camera view, robot placement, or embodiment alter how the same numerical action manifests visually, leading to conflicting supervision under mixed training and brittle generalization at deployment. We introduce SyncWorld, an action-conditioned world model that serves as a zero-shot simulator across unseen environments without any additional training. SyncWorld leverages a visual calibration episode---paired frames and actions that showcase all the controllable degrees of freedom---to specify the setup-specific Action--Visual Mapping in context. Training with visual calibration contexts teaches the model to interpret actions through visual evidence and to leverage interaction history when explicit calibration is unavailable. Experiments show that SyncWorld can accurately simulate action outcomes in previously unseen settings, and that its capability of simulating rollouts enables test-time policy improvement without training.",
@@ -30597,7 +30599,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-10T13:16:25.712644+00:00",
+      "updated_at": "2026-09-10T17:59:42.145450+00:00",
       "paper": {
         "title": "Revisiting Complete Reasoning Traces for Post-Training",
         "summary": "Large language models (LLMs) are often post-trained on pre-collected reasoning trajectories to improve their reasoning capability. Such trajectories tend to be long due to complex, interwoven paths, which often include detours on the path toward the answer. However, it has been underexplored whether LLMs indeed benefit from learning complete trajectories in post-training, such as supervised fine-tuning (SFT). Starting from our pilot study, we find that full trajectories provide only limited benefit, while partial trajectories are effective even under heavy truncation. We analyze redundancy in reasoning trajectories through attention-based analyses and controlled token-removal studies, both of which show that intermediate tokens contribute minimally to final reasoning quality. This suggests that avoiding redundant information may allow LLMs to internally infer coherent alternatives by inferring missing steps from their internal knowledge, given known trajectory endpoints. Furthermore, we show that training LLMs using endpoints leads to consistent changes in reasoning behavior, and that it also benefits post-training methods based on reinforcement learning or on-policy distillation, highlighting the need to revisit complete reasoning traces. Code is available at https://github.com/naver-ai/revisiting-trace.",
@@ -30620,7 +30622,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-10T13:16:25.712656+00:00",
+      "updated_at": "2026-09-10T17:59:42.145460+00:00",
       "paper": {
         "title": "Scores Alone Do Not Prove Discovery: The Discovery Certification Protocol for Auditing AI Research Agents",
         "summary": "AI research agents combine prior knowledge, public sources, and experimental feedback to produce useful results. The Discovery Certification Protocol (DCP) turns claims about these results into executable recovery and feedback tests. Gate 1 validates useful improvement on sealed evaluation. Gate 2 gives matched agents the registered starting information and observed Web content while withholding the target research history. Every valid method reaching the numerical target supplies a recovery witness and triggers the Core veto. DCP Core requires adequate controls, zero observed recoveries, and a finite-sample bound on recovery in one fresh registered episode. Optional Gate 3 measures the average effect of truthful feedback relative to a specified neutral policy from a shared checkpoint. DCP Evidence adds this effect after independent null calibration and a registered effect margin. Two controlled audits exercise the complete protocol in SQLite optimization and virtual catalyst control under different models. Each produced zero recoveries in 96 episodes, with an upper bound of 0.0468. Each paired study yielded 30 truthful recoveries and zero neutral recoveries, with passing 60-pair null studies. Additional cases exercise Core, recovered, and audit-incomplete decisions. A deterministic, LLM-free verifier reproduces the decisions from frozen evidence. DCP provides a common evidence language for useful outcomes, alternative routes, and feedback effects across AI research.",
@@ -30643,7 +30645,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-10T13:16:36.114818+00:00",
+      "updated_at": "2026-09-10T17:59:42.145456+00:00",
       "paper": {
         "title": "Reference-Based Bias Detection in LLMs via Relative Representations of Hidden States",
         "summary": "Existing bias auditing methods typically rely on model outputs, requiring costly benchmarks or judge models and potentially missing internal shifts that never appear in generated text. We propose a reference-based method that audits bias in hidden-state representations across related model variants, for example before and after fine-tuning. Because fine-tuning reshapes representation geometry, absolute hidden states are not directly comparable, so we encode each sentence by its similarities to a fixed set of anchor sentences, yielding relative representations in a shared comparison space. There we measure how target groups shift in their association with positive and negative attributes, a quantity we call the Representational Bias Shift $ΔB$. Across three model families and the WildGuardMix, DecodingTrust and ToxiGen benchmarks, $ΔB$ correlates with output-level bias change in 15 of the 18 settings we test, reaching $|r| = 0.84$ ($p < 0.001$) under full fine-tuning and becoming more model-dependent under parameter-efficient adaptation. Thresholding $ΔB$ detects checkpoints whose bias increased with ROC AUC between $0.65$ and $0.99$, and on WildGuardMix and DecodingTrust it separates them better than a SEAT-based baseline for all three families. $ΔB$ is also stable under changes to the anchor set, attribute sets and target templates. Our method requires no task-specific evaluation data and audits a model in about three minutes, using $3$-$50\\times$ less compute than the output-level benchmarks considered here. We view it as complementary to output-based auditing rather than a replacement for it.",
@@ -30666,7 +30668,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-10T13:17:04.007146+00:00",
+      "updated_at": "2026-09-10T17:59:42.145468+00:00",
       "paper": {
         "title": "Diffs vs. Whole Files: An Empirical Comparison of Iterative Edit-Based and Direct Generation for Flutter/Dart Code Models",
         "summary": "Large language models used for code editing can be trained and deployed in at least two output regimes: direct generation, where the model emits the entire modified file in one shot, and iterative diff-based generation (\"steps\"), where the model emits a sequence of localized search/replace edits applied one at a time until it signals completion or a step budget is exhausted. The diff-based regime is attractive because it mirrors how developers edit code and should require far fewer generated tokens per turn. We train two code models - a 100M-parameter model trained from scratch (Rainbow-Pony-100M) and a fine-tuned Qwen2.5-Coder-0.5B - in both regimes on a shared Flutter/Dart dataset, and evaluate all four resulting models on a held-out set of approx 1,790 tasks per model. Direct generation substantially outperforms diff-based generation on every metric we measure - compilation/static-analysis pass rate, bits-per-byte, character-level similarity to the reference, and blinded LLM-judge ratings of goal fulfillment, correctness, and code quality - and the gap persists after controlling for task difficulty via a matched-ID comparison and when restricting to code that compiles on both sides. We then identify a single, architecture-independent mechanism behind the conditions where diff-based generation does win: it is competitive on short, spatially localized edits, and its category-level wins concentrate in exactly the two task categories - refactoring and error-handling/edge-case fixes - with the lowest mean edit-step count in our dataset. We term this task locality and discuss its implications for when an edit-based training regime is and is not the right choice for a code-editing model.",
@@ -30686,7 +30688,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-10T13:16:55.206238+00:00",
+      "updated_at": "2026-09-10T17:59:42.145476+00:00",
       "paper": {
         "title": "StochBench: A Domain-Specific Benchmark for Stochastic Processes in Lean",
         "summary": "Leading benchmarks for formal theorem proving with large language models are small collections drawn from competition math, such as the IMO and Putnam, that poorly represent field-specific applications. We introduce StochBench, a Lean 4 benchmark of 450 graduate stochastic-processes problems at varying abstraction levels, each paired with its natural-language source. Addressing a field underrepresented in Mathlib, it covers finite and countable Markov chains, renewal processes, random walks, martingales, stopping times, queues, Brownian motion, stochastic calculus, weak convergence, and Poisson and continuous-time Markov processes. Our Opus 4.8-based agent achieves a 34.9% proof rate (157/450) under a 15-minute per-problem limit. StochBench better represents domain-specific applied mathematics while remaining challenging for advanced provers.",
@@ -30709,7 +30711,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-10T13:16:25.712671+00:00",
       "last_error": null,
-      "updated_at": "2026-09-10T13:16:25.712672+00:00",
+      "updated_at": "2026-09-10T17:59:42.145472+00:00",
       "paper": {
         "title": "Train Smarter, Not Harder: Switching Signal-Guided Training in Active Learning",
         "summary": "Training strategy, namely whether to retrain from scratch or fine-tune from the previous checkpoint, is an overlooked decision variable in active learning. We show that this choice has exploitable structure: retraining is most useful in early rounds, when each batch can substantially reshape the labeled distribution, while fine-tuning becomes safer once the model trajectory stabilizes. We propose HybridAL, an adaptive training schedule that monitors an online stabilization signal and switches from retraining to fine-tuning after sustained stabilization. Two complementary signals, spectral exponent change $Δα$ (weight-based) and accuracy change $Δ$Acc (validation-based), span different points on the time-calibration trade-off. Across three encoder backbones and six text-classification tasks (five seeds each), HybridAL keeps endpoint macro-F1 non-inferior to retraining and fine-tuning at a 0.010 margin, saves up to 49% of retraining time, and recovers a substantial fraction of retraining's calibration advantage as measured by negative log-likelihood (NLL). Compared with schedules that switch at a pre-committed round, HybridAL obtains lower NLL at moderate additional cost, showing that trajectory-dependent switching provides a stronger time-calibration trade-off than fixed early switching.",
@@ -30731,7 +30733,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-10T13:16:45.765238+00:00",
+      "updated_at": "2026-09-10T17:59:42.145464+00:00",
       "paper": {
         "title": "AgentGrad: Intervention-guided Prompt Optimization for Multi Agent Systems",
         "summary": "Large language model (LLM)-based multi-agent systems (MAS) achieve strong performance by employing specialized multiple agents, yet their performance depends on the prompt design of each agent. For MAS prompt optimization, textual gradient methods that guide prompt updates using natural-language feedback have emerged as a leading paradigm. In this paper, we identify limitations in two stages of existing textual gradient approaches: gradient extraction and gradient aggregation. In gradient extraction, previous works select a target prompt without verifying whether modifying it resolves the failure, and derive gradients without agent-level supervision over the corresponding agent's intermediate output. In gradient aggregation, individual gradients are randomly grouped and concatenated, often mixing unrelated failure modes and producing prompts that fail to generalize. To address these limitations, we propose \\textbf{AgentGrad}, a prompt optimization framework for multi-agent systems based on sequential intervention and semantic textual gradient abstraction. For each failure, sequential intervention modifies the behavior of one agent at a time to identify the target agent whose modification resolves the failure. The modified output of the target agent then serves as agent-level supervision for extracting a fine-grained gradient. Semantic textual gradient abstraction clusters semantically similar gradients to prevent mixing unrelated failure modes, and abstracts each cluster into a generalized gradient that captures the shared corrective pattern. Experimental results show that AgentGrad achieves state-of-the-art performance across five MAS benchmarks and reduces wall-clock optimization time by $2.5\\times$ on average compared to the next-fastest baseline.",
@@ -30749,10 +30751,66 @@
       },
       "priority_score": 40,
       "korean_title": "AgentGrad: 개입 유도형 프롬프트 최적화를 활용한 다중 에이전트 시스템 개선"
+    },
+    "2609_10522v1": {
+      "id": "2609_10522v1",
+      "filename": "post_2609_10522v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-09-10T18:00:37.415505+00:00",
+      "paper": {
+        "title": "Show-Harness: Just a VLM Agent Can Play Robots",
+        "summary": "Foundation vision-language models (VLMs) exhibit broad intelligence about the world, yet translating this intelligence into robot control remains challenging. We present Show-Harness, an Embodied Harness that enables VLMs to \"play\" robots through a compact semantic interface linking intent to action. Show-Harness exposes discrete semantic action units that VLMs can naturally reason over, while embodiment-specific interpreters deterministically ground them into local robot actions, keeping the VLM directly responsible for fine-grained physical decisions. Through the same interface, Show-Harness demonstrates the feasibility of (1) directly unlocking closed-source frontier VLMs for zero-shot robot control, and (2) adapting small-scale open-source VLMs for low-cost deployment with just a few GPU-hours of fine-tuning. We further develop GUMI (GUI Manipulation Interface), which extends the same semantic action space to GUI-based demonstration collection, allowing humans and agents to \"play\" robots across embodiments without specialized teleoperation hardware. Extensive experiments show that Show-Harness-equipped VLM agents generalize robustly across tasks, embodiments, and environments, outperforming representative agentic and VLA paradigms. These results suggest that the right interface can unlock substantial embodied capability from foundation VLMs, without requiring additional model capacity or costly embodiment-specific pretraining.",
+        "published": "2026-09-09T17:53:38Z",
+        "authors": [
+          "Yanzhe Chen",
+          "Zechen Bai",
+          "Zhijun Cao",
+          "Wenzheng Zeng",
+          "Kevin Qinghong Lin",
+          "Yiqi Lin",
+          "Guoqiang Liang",
+          "Kevin Yuchen Ma",
+          "Qiming Huang",
+          "Mike Zheng Shou"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.10522v1"
+      },
+      "priority_score": 28,
+      "korean_title": "쇼-하니스: 로봇 제어를 수행하는 VLM 에이전트"
+    },
+    "2609_05405v1": {
+      "id": "2609_05405v1",
+      "filename": "post_2609_05405v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-09-10T17:59:51.768782+00:00",
+      "paper": {
+        "title": "WearableQA: A Benchmark for Health Reasoning over Real-World Wearable Data",
+        "summary": "Recent advances in wearable sensing enable continuous monitoring of physiological and behavioral signals, yet existing benchmarks rarely evaluate whether AI systems can reason over a real user's longitudinal wearable record. We introduce WearableQA, a benchmark comprising 4,084 10-option multiple-choice questions constructed from the wearable time series, blood biomarkers, and demographics of 200 real users, each with up to 500 days of daily measurements. WearableQA preserves authentic wearable distributions that include device noise and inter-individual variability. To evaluate distinct reasoning capabilities, we introduce 16 question types organized along two complementary axes: data versus health reasoning, which distinguishes computation over longitudinal measurements from physiological interpretation; and single- versus cross-signal reasoning, which separates reasoning about individual signals from the integration of multiple signals. To construct reliable questions at scale, we adopt a dual-grounding framework that combines literature-grounded physiological findings with statistically validated population-grounded physiological patterns. This enables the capture of meaningful relationships observed in real-world wearable data. Evaluation of 14 proprietary and open-source LLMs demonstrates that WearableQA effectively differentiates model capabilities, with performance ranging from 19.6% to 72.9% against a 10% chance baseline. Moreover, WearableQA remains far from solved: most models achieve accuracies below 60%. Overall, WearableQA provides a realistic and diagnostic benchmark for evaluating LLM reasoning over real-world wearable data.",
+        "published": "2026-09-04T17:52:37Z",
+        "authors": [
+          "Ji Soo Lee",
+          "Xilun Chen",
+          "Pierce Chuang",
+          "Ashish Shenoy",
+          "Jason Wei",
+          "Dohwan Ko",
+          "Hyunwoo J. Kim",
+          "Benoit Corda"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.05405v1"
+      },
+      "priority_score": 50,
+      "korean_title": "WearableQA: 실제 웨어러블 데이터를 활용한 건강 추론 벤치마크"
     }
   },
   "last_run": {
-    "started_at": "2026-09-10T13:16:25.714523+00:00",
+    "started_at": "2026-09-10T17:59:42.147705+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -30763,25 +30821,25 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 21560,
-      "output_tokens": 5728,
+      "prompt_tokens": 18851,
+      "output_tokens": 5542,
       "thought_tokens": 0,
-      "total_tokens": 27288,
-      "estimated_usd": 0.013982
+      "total_tokens": 24393,
+      "estimated_usd": 0.01302575
     },
-    "finished_at": "2026-09-10T13:17:04.630997+00:00"
+    "finished_at": "2026-09-10T18:00:38.242166+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 2134,
-    "prompt_tokens": 5379720,
-    "output_tokens": 1571646,
+    "requests": 2142,
+    "prompt_tokens": 5398571,
+    "output_tokens": 1577188,
     "thought_tokens": 0,
-    "total_tokens": 6951366,
-    "estimated_usd": 3.702399
+    "total_tokens": 6975759,
+    "estimated_usd": 3.71542475
   },
   "last_publication_run": {
-    "started_at": "2026-09-10T13:16:25.714523+00:00",
+    "started_at": "2026-09-10T17:59:42.147705+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -30792,17 +30850,17 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 21560,
-      "output_tokens": 5728,
+      "prompt_tokens": 18851,
+      "output_tokens": 5542,
       "thought_tokens": 0,
-      "total_tokens": 27288,
-      "estimated_usd": 0.013982
+      "total_tokens": 24393,
+      "estimated_usd": 0.01302575
     },
-    "finished_at": "2026-09-10T13:17:04.630997+00:00"
+    "finished_at": "2026-09-10T18:00:38.242166+00:00"
   },
   "daily_usage": {
     "date": "2026-09-10",
-    "estimated_usd": 0.041885,
-    "publications": 12
+    "estimated_usd": 0.05491075,
+    "publications": 16
   }
 }
