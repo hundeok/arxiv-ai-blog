@@ -30518,7 +30518,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-09T22:52:13.900808+00:00",
       "last_error": null,
-      "updated_at": "2026-09-10T07:46:41.244478+00:00",
+      "updated_at": "2026-09-10T13:16:25.712636+00:00",
       "paper": {
         "title": "RenderFormer-V2: Neural Rendering with Heterogeneous Scene Primitives",
         "summary": "We present 'RenderFormer-V2', a unified learned transformer-based neural rendering model, complementary to modern physics-based rendering systems, that can handle diverse light-transport effects such as caustics, volumetric scattering, environment lighting, textured and displaced surfaces and out-of-distribution materials without per-scene training or specialized code. RenderFormer-V2 models global light transport as a sequence-to-sequence transformation. Following its predecessor, RenderFormer-V2 also employs a two stage process: a view-independent stage that resolves intra-scene primitive to primitive transport, and a view-dependent stage that transforms the internal neural scene representation into image pixels. Different from RenderFormer, our model employs a novel combined windowed-attention and rendering-informed attention sink in the view-independent stage to improve scalability while maintaining render accuracy. To further improve versatility, RenderFormerV2 supports heterogeneous scene primitives, including environment maps and participating media, and it employs a material encoding independent of the underlying surface reflectance model that encodes material appearance via a novel neural embedding. We demonstrate the versatility of RenderFormer-V2 on a variety of scenes and perform an extensive ablation of the improved attention mechanism.",
@@ -30541,7 +30541,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-10T07:47:00.546261+00:00",
+      "updated_at": "2026-09-10T13:16:25.712640+00:00",
       "paper": {
         "title": "StudyBench: Can Self-Evolution Squeeze Textbooks for Olympiad Capability?",
         "summary": "Humans need to study only a handful of well-written textbooks to master a discipline and attempt its hardest problems. We argue that an ideal self-evolution method should share the same property, that is autonomously learning from raw training material for transferable problem-solving capability. However, we still lack a direct measurement for it. We introduce StudyBench, a controlled physics benchmark that directly measures how efficiently a self-evolution method converts training material into capability. We organise the test set into an Application Set, consisting of difficult textbook problems and evaluating absorption ability, and a Transfer Set, consisting of olympiad-level problems and evaluating transfer ability. Benchmarking representative self-evolution methods across three base models, we find that improvements on the Application Set rarely translate to the harder Transfer Set. A guidance ablation exposes a Guidance Gap: even the strongest method closes only a small fraction of what the same material unlocks when supplied as in-context guidance. Besides, every method hits a Compute Plateau, saturating well before exhausting its compute budget. The remaining gap is therefore a method problem rather than a data or compute problem. By offering a clean and controlled benchmark, StudyBench turns self-evolution progress from an open-ended pursuit into a measurable target for future research. Our code is released at https://github.com/thunlp/StudyBench.",
@@ -30570,7 +30570,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-10T07:46:41.244493+00:00",
       "last_error": null,
-      "updated_at": "2026-09-10T07:46:41.244495+00:00",
+      "updated_at": "2026-09-10T13:16:25.712617+00:00",
       "paper": {
         "title": "SyncWorld: Visual Calibration Enables World Models as Zero-Shot Simulators",
         "summary": "World models are increasingly used as policy-in-the-loop imagination environments, where reliable rollouts require fine-grained controllability with respect to low-level robot actions. A key obstacle to scaling such models in robotics is that actions are not a universal language in pixel space: changes in visual environment, camera view, robot placement, or embodiment alter how the same numerical action manifests visually, leading to conflicting supervision under mixed training and brittle generalization at deployment. We introduce SyncWorld, an action-conditioned world model that serves as a zero-shot simulator across unseen environments without any additional training. SyncWorld leverages a visual calibration episode---paired frames and actions that showcase all the controllable degrees of freedom---to specify the setup-specific Action--Visual Mapping in context. Training with visual calibration contexts teaches the model to interpret actions through visual evidence and to leverage interaction history when explicit calibration is unavailable. Experiments show that SyncWorld can accurately simulate action outcomes in previously unseen settings, and that its capability of simulating rollouts enables test-time policy improvement without training.",
@@ -30597,7 +30597,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-10T07:47:09.598323+00:00",
+      "updated_at": "2026-09-10T13:16:25.712644+00:00",
       "paper": {
         "title": "Revisiting Complete Reasoning Traces for Post-Training",
         "summary": "Large language models (LLMs) are often post-trained on pre-collected reasoning trajectories to improve their reasoning capability. Such trajectories tend to be long due to complex, interwoven paths, which often include detours on the path toward the answer. However, it has been underexplored whether LLMs indeed benefit from learning complete trajectories in post-training, such as supervised fine-tuning (SFT). Starting from our pilot study, we find that full trajectories provide only limited benefit, while partial trajectories are effective even under heavy truncation. We analyze redundancy in reasoning trajectories through attention-based analyses and controlled token-removal studies, both of which show that intermediate tokens contribute minimally to final reasoning quality. This suggests that avoiding redundant information may allow LLMs to internally infer coherent alternatives by inferring missing steps from their internal knowledge, given known trajectory endpoints. Furthermore, we show that training LLMs using endpoints leads to consistent changes in reasoning behavior, and that it also benefits post-training methods based on reinforcement learning or on-policy distillation, highlighting the need to revisit complete reasoning traces. Code is available at https://github.com/naver-ai/revisiting-trace.",
@@ -30620,7 +30620,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-10T07:46:51.217209+00:00",
+      "updated_at": "2026-09-10T13:16:25.712656+00:00",
       "paper": {
         "title": "Scores Alone Do Not Prove Discovery: The Discovery Certification Protocol for Auditing AI Research Agents",
         "summary": "AI research agents combine prior knowledge, public sources, and experimental feedback to produce useful results. The Discovery Certification Protocol (DCP) turns claims about these results into executable recovery and feedback tests. Gate 1 validates useful improvement on sealed evaluation. Gate 2 gives matched agents the registered starting information and observed Web content while withholding the target research history. Every valid method reaching the numerical target supplies a recovery witness and triggers the Core veto. DCP Core requires adequate controls, zero observed recoveries, and a finite-sample bound on recovery in one fresh registered episode. Optional Gate 3 measures the average effect of truthful feedback relative to a specified neutral policy from a shared checkpoint. DCP Evidence adds this effect after independent null calibration and a registered effect margin. Two controlled audits exercise the complete protocol in SQLite optimization and virtual catalyst control under different models. Each produced zero recoveries in 96 episodes, with an upper bound of 0.0468. Each paired study yielded 30 truthful recoveries and zero neutral recoveries, with passing 60-pair null studies. Additional cases exercise Core, recovered, and audit-incomplete decisions. A deterministic, LLM-free verifier reproduces the decisions from frozen evidence. DCP provides a common evidence language for useful outcomes, alternative routes, and feedback effects across AI research.",
@@ -30635,10 +30635,124 @@
       },
       "priority_score": 38,
       "korean_title": "점수만으로는 발견을 증명할 수 없다: AI 연구 에이전트 감사를 위한 발견 인증 프로토콜"
+    },
+    "2609_10060v1": {
+      "id": "2609_10060v1",
+      "filename": "post_2609_10060v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-09-10T13:16:36.114818+00:00",
+      "paper": {
+        "title": "Reference-Based Bias Detection in LLMs via Relative Representations of Hidden States",
+        "summary": "Existing bias auditing methods typically rely on model outputs, requiring costly benchmarks or judge models and potentially missing internal shifts that never appear in generated text. We propose a reference-based method that audits bias in hidden-state representations across related model variants, for example before and after fine-tuning. Because fine-tuning reshapes representation geometry, absolute hidden states are not directly comparable, so we encode each sentence by its similarities to a fixed set of anchor sentences, yielding relative representations in a shared comparison space. There we measure how target groups shift in their association with positive and negative attributes, a quantity we call the Representational Bias Shift $ΔB$. Across three model families and the WildGuardMix, DecodingTrust and ToxiGen benchmarks, $ΔB$ correlates with output-level bias change in 15 of the 18 settings we test, reaching $|r| = 0.84$ ($p < 0.001$) under full fine-tuning and becoming more model-dependent under parameter-efficient adaptation. Thresholding $ΔB$ detects checkpoints whose bias increased with ROC AUC between $0.65$ and $0.99$, and on WildGuardMix and DecodingTrust it separates them better than a SEAT-based baseline for all three families. $ΔB$ is also stable under changes to the anchor set, attribute sets and target templates. Our method requires no task-specific evaluation data and audits a model in about three minutes, using $3$-$50\\times$ less compute than the output-level benchmarks considered here. We view it as complementary to output-based auditing rather than a replacement for it.",
+        "published": "2026-09-09T11:33:35Z",
+        "authors": [
+          "Marek Jeliński",
+          "Jan Dubiński",
+          "Maciej Chrabaszcz",
+          "Sebastian Cygert"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.10060v1"
+      },
+      "priority_score": 50,
+      "korean_title": "거대언어모델의 은닉 상태 상대적 표현을 통한 참조 기반 편향 탐지"
+    },
+    "2609_05779v1": {
+      "id": "2609_05779v1",
+      "filename": "post_2609_05779v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-09-10T13:17:04.007146+00:00",
+      "paper": {
+        "title": "Diffs vs. Whole Files: An Empirical Comparison of Iterative Edit-Based and Direct Generation for Flutter/Dart Code Models",
+        "summary": "Large language models used for code editing can be trained and deployed in at least two output regimes: direct generation, where the model emits the entire modified file in one shot, and iterative diff-based generation (\"steps\"), where the model emits a sequence of localized search/replace edits applied one at a time until it signals completion or a step budget is exhausted. The diff-based regime is attractive because it mirrors how developers edit code and should require far fewer generated tokens per turn. We train two code models - a 100M-parameter model trained from scratch (Rainbow-Pony-100M) and a fine-tuned Qwen2.5-Coder-0.5B - in both regimes on a shared Flutter/Dart dataset, and evaluate all four resulting models on a held-out set of approx 1,790 tasks per model. Direct generation substantially outperforms diff-based generation on every metric we measure - compilation/static-analysis pass rate, bits-per-byte, character-level similarity to the reference, and blinded LLM-judge ratings of goal fulfillment, correctness, and code quality - and the gap persists after controlling for task difficulty via a matched-ID comparison and when restricting to code that compiles on both sides. We then identify a single, architecture-independent mechanism behind the conditions where diff-based generation does win: it is competitive on short, spatially localized edits, and its category-level wins concentrate in exactly the two task categories - refactoring and error-handling/edge-case fixes - with the lowest mean edit-step count in our dataset. We term this task locality and discuss its implications for when an edit-based training regime is and is not the right choice for a code-editing model.",
+        "published": "2026-09-05T00:13:49Z",
+        "authors": [
+          "Andrej Andrejev"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.05779v1"
+      },
+      "priority_score": 30,
+      "korean_title": "차트 기반 생성 vs 전체 파일 생성: Flutter/Dart 코드 모델을 위한 반복적 편집 기반 생성과 직접 생성의 실증적 비교"
+    },
+    "2609_09264v1": {
+      "id": "2609_09264v1",
+      "filename": "post_2609_09264v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-09-10T13:16:55.206238+00:00",
+      "paper": {
+        "title": "StochBench: A Domain-Specific Benchmark for Stochastic Processes in Lean",
+        "summary": "Leading benchmarks for formal theorem proving with large language models are small collections drawn from competition math, such as the IMO and Putnam, that poorly represent field-specific applications. We introduce StochBench, a Lean 4 benchmark of 450 graduate stochastic-processes problems at varying abstraction levels, each paired with its natural-language source. Addressing a field underrepresented in Mathlib, it covers finite and countable Markov chains, renewal processes, random walks, martingales, stopping times, queues, Brownian motion, stochastic calculus, weak convergence, and Poisson and continuous-time Markov processes. Our Opus 4.8-based agent achieves a 34.9% proof rate (157/450) under a 15-minute per-problem limit. StochBench better represents domain-specific applied mathematics while remaining challenging for advanced provers.",
+        "published": "2026-09-08T17:59:46Z",
+        "authors": [
+          "Idan Davidovich",
+          "Debargha Ganguly",
+          "Vikash Singh",
+          "Vipin Chaudhary"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.09264v1"
+      },
+      "priority_score": 30,
+      "korean_title": "StochBench: Lean을 활용한 확률 과정 도메인별 벤치마크"
+    },
+    "2609_06806v1": {
+      "id": "2609_06806v1",
+      "filename": "post_2609_06806v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-10T13:16:25.712671+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-10T13:16:25.712672+00:00",
+      "paper": {
+        "title": "Train Smarter, Not Harder: Switching Signal-Guided Training in Active Learning",
+        "summary": "Training strategy, namely whether to retrain from scratch or fine-tune from the previous checkpoint, is an overlooked decision variable in active learning. We show that this choice has exploitable structure: retraining is most useful in early rounds, when each batch can substantially reshape the labeled distribution, while fine-tuning becomes safer once the model trajectory stabilizes. We propose HybridAL, an adaptive training schedule that monitors an online stabilization signal and switches from retraining to fine-tuning after sustained stabilization. Two complementary signals, spectral exponent change $Δα$ (weight-based) and accuracy change $Δ$Acc (validation-based), span different points on the time-calibration trade-off. Across three encoder backbones and six text-classification tasks (five seeds each), HybridAL keeps endpoint macro-F1 non-inferior to retraining and fine-tuning at a 0.010 margin, saves up to 49% of retraining time, and recovers a substantial fraction of retraining's calibration advantage as measured by negative log-likelihood (NLL). Compared with schedules that switch at a pre-committed round, HybridAL obtains lower NLL at moderate additional cost, showing that trajectory-dependent switching provides a stronger time-calibration trade-off than fixed early switching.",
+        "published": "2026-09-06T19:45:17Z",
+        "authors": [
+          "Nagham Omar",
+          "Maya Rozenshtein",
+          "Evgeny Mishlyakov",
+          "Avigdor Gal"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.06806v1"
+      },
+      "priority_score": 26
+    },
+    "2609_08572v1": {
+      "id": "2609_08572v1",
+      "filename": "post_2609_08572v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-09-10T13:16:45.765238+00:00",
+      "paper": {
+        "title": "AgentGrad: Intervention-guided Prompt Optimization for Multi Agent Systems",
+        "summary": "Large language model (LLM)-based multi-agent systems (MAS) achieve strong performance by employing specialized multiple agents, yet their performance depends on the prompt design of each agent. For MAS prompt optimization, textual gradient methods that guide prompt updates using natural-language feedback have emerged as a leading paradigm. In this paper, we identify limitations in two stages of existing textual gradient approaches: gradient extraction and gradient aggregation. In gradient extraction, previous works select a target prompt without verifying whether modifying it resolves the failure, and derive gradients without agent-level supervision over the corresponding agent's intermediate output. In gradient aggregation, individual gradients are randomly grouped and concatenated, often mixing unrelated failure modes and producing prompts that fail to generalize. To address these limitations, we propose \\textbf{AgentGrad}, a prompt optimization framework for multi-agent systems based on sequential intervention and semantic textual gradient abstraction. For each failure, sequential intervention modifies the behavior of one agent at a time to identify the target agent whose modification resolves the failure. The modified output of the target agent then serves as agent-level supervision for extracting a fine-grained gradient. Semantic textual gradient abstraction clusters semantically similar gradients to prevent mixing unrelated failure modes, and abstracts each cluster into a generalized gradient that captures the shared corrective pattern. Experimental results show that AgentGrad achieves state-of-the-art performance across five MAS benchmarks and reduces wall-clock optimization time by $2.5\\times$ on average compared to the next-fastest baseline.",
+        "published": "2026-09-08T11:07:04Z",
+        "authors": [
+          "Jaewon Chu",
+          "Jinwoo Seo",
+          "Jaewon Cho",
+          "Jeehye Na",
+          "Yunyang Xiong",
+          "Youngdae Kim",
+          "Hyunwoo J. Kim"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.08572v1"
+      },
+      "priority_score": 40,
+      "korean_title": "AgentGrad: 개입 유도형 프롬프트 최적화를 활용한 다중 에이전트 시스템 개선"
     }
   },
   "last_run": {
-    "started_at": "2026-09-10T07:46:41.246689+00:00",
+    "started_at": "2026-09-10T13:16:25.714523+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -30649,25 +30763,25 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 19036,
-      "output_tokens": 6004,
+      "prompt_tokens": 21560,
+      "output_tokens": 5728,
       "thought_tokens": 0,
-      "total_tokens": 25040,
-      "estimated_usd": 0.013765
+      "total_tokens": 27288,
+      "estimated_usd": 0.013982
     },
-    "finished_at": "2026-09-10T07:47:21.144337+00:00"
+    "finished_at": "2026-09-10T13:17:04.630997+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 2126,
-    "prompt_tokens": 5358160,
-    "output_tokens": 1565918,
+    "requests": 2134,
+    "prompt_tokens": 5379720,
+    "output_tokens": 1571646,
     "thought_tokens": 0,
-    "total_tokens": 6924078,
-    "estimated_usd": 3.688417
+    "total_tokens": 6951366,
+    "estimated_usd": 3.702399
   },
   "last_publication_run": {
-    "started_at": "2026-09-10T07:46:41.246689+00:00",
+    "started_at": "2026-09-10T13:16:25.714523+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -30678,17 +30792,17 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 19036,
-      "output_tokens": 6004,
+      "prompt_tokens": 21560,
+      "output_tokens": 5728,
       "thought_tokens": 0,
-      "total_tokens": 25040,
-      "estimated_usd": 0.013765
+      "total_tokens": 27288,
+      "estimated_usd": 0.013982
     },
-    "finished_at": "2026-09-10T07:47:21.144337+00:00"
+    "finished_at": "2026-09-10T13:17:04.630997+00:00"
   },
   "daily_usage": {
     "date": "2026-09-10",
-    "estimated_usd": 0.027903,
-    "publications": 8
+    "estimated_usd": 0.041885,
+    "publications": 12
   }
 }
