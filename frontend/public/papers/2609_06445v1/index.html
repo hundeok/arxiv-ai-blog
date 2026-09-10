@@ -1,0 +1,70 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>에이전트 의사결정에 대한 인과적 귀속: 추정기, 결합 및 추적 가능성 명세 | ArXiv Translator AI</title><meta name="description" content="에이전트 의사결정에 대한 인과적 귀속: 추정기, 결합 및 추적 가능성 명세"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_06445v1"><meta property="og:type" content="article"><meta property="og:title" content="에이전트 의사결정에 대한 인과적 귀속: 추정기, 결합 및 추적 가능성 명세"><meta property="og:description" content="에이전트 의사결정에 대한 인과적 귀속: 추정기, 결합 및 추적 가능성 명세"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_06445v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="에이전트 의사결정에 대한 인과적 귀속: 추정기, 결합 및 추적 가능성 명세"><meta name="twitter:description" content="에이전트 의사결정에 대한 인과적 귀속: 추정기, 결합 및 추적 가능성 명세"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_06445v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "에이전트 의사결정에 대한 인과적 귀속: 추정기, 결합 및 추적 가능성 명세", "description": "에이전트 의사결정에 대한 인과적 귀속: 추정기, 결합 및 추적 가능성 명세", "datePublished": "2026-09-06", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_06445v1", "author": [{"@type": "Person", "name": "Ajay Pravin Mahale"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_06445v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_06445v1"});gtag('event', 'paper_view', {"paper_id": "2609_06445v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>에이전트 의사결정에 대한 인과적 귀속: 추정기, 결합 및 추적 가능성 명세</h1><p>에이전트 의사결정에 대한 인과적 귀속: 추정기, 결합 및 추적 가능성 명세</p><pre>에이전트 의사결정에 대한 인과적 귀속: 추정기, 결합 및 추적 가능성 명세
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Causal Attribution for Agentic Decisions: Estimators, Coupling, and a Traceability Specification
+&gt; - **저자:** Ajay Pravin Mahale
+&gt; - **발행일:** 2026-09-06
+&gt; - **PDF 링크:** [Causal Attribution for Agentic Decisions: Estimators, Coupling, and a Traceability Specification](https://arxiv.org/pdf/2609.06445v1)
+
+
+✨ 3줄 핵심 요약
+*   AI 에이전트의 의사결정 과정을 사후에 분석하고 원인을 추적하기 위한 인과적 추정 프레임워크와 그 한계를 제시함.
+*   기존의 매개 분석(mediation analysis) 방식이 특정 상황(부정적 매개, suppression)에서 수학적으로 왜곡된 결과를 도출함을 증명함.
+*   EU AI 법(AI Act) 준수를 위해 필요한 시스템 기록의 요건과 기술적 명세를 정의함.
+
+📖 쉽게 풀어쓴 1분 핵심
+최근 AI 에이전트는 복잡한 단계를 거쳐 스스로 결정을 내립니다. 만약 AI가 잘못된 결정을 내렸을 때, 어떤 단계가 결정적인 원인이었는지 사후에 밝혀내는 것은 매우 중요합니다. 본 논문은 기존의 인과 분석 방법들이 에이전트의 복잡한 실행 과정에서 어떻게 실패하는지 분석합니다. 특히, 특정 단계가 서로 상충하는 역할을 할 때 분석 결과가 왜곡되는 문제를 지적하며, 이를 올바르게 기록하고 해석하기 위한 규제 대응 명세를 제안합니다.
+
+🎯 배경 및 문제점
+*   **규제적 공백:** EU AI 법에 따라 고위험 AI 시스템은 의사결정에 대한 설명 책임과 기록 보존 의무가 있으나, 실제 이행을 위한 기술적 기준과 인과적 귀속 방법론이 미비함.
+*   **기존 방법론의 오류:** 인과 분석에서 &#x27;매개된 비율&#x27;을 측정할 때, 직접 효과와 간접 효과의 방향이 반대인 경우 결과값이 비정상적으로 산출되는 &#x27;불일치 매개(inconsistent mediation)&#x27; 문제가 발생함.
+*   **평가 프로토콜 부재:** 에이전트 실행 과정에 대한 추적 및 원인 분석을 위한 합의된 정의나 평가 프로토콜이 존재하지 않음.
+
+💡 핵심 기술 및 아키텍처
+*   **추정기 프레임워크:** 주변적 총 효과(marginal total effect)와 공통 난수를 사용한 총 효과를 분리하여 단계별 기여도를 측정함.
+*   **인과적 결합(Coupling):** 문맥이 달라져도 직접 효과를 추정할 수 있도록 결합 방식을 유도함.
+*   **추적 가능성 명세:** AI Act 제12조 및 제13조의 요구사항을 충족하기 위해, 향후 감사나 설명 요구 시 무엇을 기록해야 하는지에 대한 구체적인 명세를 정의함.
+
+📊 실험 결과 분석
+*   **수학적 증명:** 부정적 매개(suppression) 상황에서 측정된 비율이 1을 초과하거나 왜곡될 수 있음을 수학적으로 증명함. (논문은 해당 수치가 실제 실험 데이터가 아닌 이론적 파생값임을 명시)
+*   **알고리즘적 오류:** 기존 방식대로라면 영향력이 없는 단계와 결정적인 단계가 동일한 총 효과를 나타내는 등 분석의 변별력이 떨어지는 현상을 확인.
+*   **예외 처리:** 부적절한 수치를 강제로 보정하는 대신, 조건에 맞지 않는 경우 결과를 제외하고 제외율을 함께 보고하는 방식을 제안.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+*   **규제 준수 가이드라인:** EU AI 법 적용이 유예된 기간 동안, AI 제공자가 법적 책임을 이행하기 위해 갖춰야 할 내부 기록 장치 및 로그 데이터 설계의 표준을 제시함.
+*   **AI 설명 가능성(XAI) 개선:** 단순히 결과만 제시하는 AI를 넘어, 어떤 에이전트 단계가 최종 결정에 기여했는지 인과적으로 증명함으로써 고위험 AI 시스템의 신뢰성을 확보하는 데 기여.
+*   **사후 감사(Post-hoc Audit) 체계:** 사고 발생 시 책임 소재를 명확히 가리고, 시스템의 결함을 공학적으로 수정하는 데 필요한 근거 자료를 생성하는 프레임워크로 활용 가능.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2609.06445 Causal Attribution for Agentic Decisions: Estimators, Coupling, and a Traceability Specification](https://arxiv.org/abs/2609.06445)
+&gt; - [Artificial Intelligence - arXiv](https://arxiv.org/list/cs.AI/new)
+&gt; - [Computer Science - arXiv](https://arxiv.org/list/cs/new)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;이 논문은 그동안 학계에서 쉬쉬하던 인과적 추론의 &#x27;매개 효과 왜곡&#x27; 문제를 정면으로 돌파했군요. 특히 부정적 매개(suppression) 상황에서 기존 지표들이 수학적으로 붕괴한다는 점을 명확히 지적한 것은 가치 있습니다. 하지만, 이 명세가 실무 현장의 복잡한 블랙박스 에이전트에도 일반화될 수 있을지는 여전히 회의적입니다. 이론적 정교함만큼이나 실제 시스템에서의 오버헤드 문제가 관건이겠군요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 오버헤드가 제일 걱정입니다. EU AI Act 대응한다고 로그를 이만큼씩 쌓으면 추론 Latency는 어쩌라고요? 이론은 완벽해 보이지만, 현업에서 매번 &#x27;인과적 결합&#x27;을 계산하면서 서비스 돌리면 인프라 비용 폭발할 게 뻔합니다. 그래도 사고 터졌을 때 &#x27;왜 그랬냐&#x27;는 질문에 로그로 반박할 근거가 생긴다는 건 관리자 입장에서 구미가 당기긴 하네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;두 분 다 너무 보수적이신 거 아니에요? 지금 LLM 에이전트들이 제멋대로 행동해서 기업들이 도입을 망설이는 게 현실인데, 이 프레임워크가 &#x27;설명 가능한 에이전트&#x27;의 표준이 되면 규제 이슈를 비즈니스 기회로 바꿀 수 있는 킬러 컨텐츠라고요! 벌써 이 추적 가능성 명세대로 구현한 감사 툴 오픈소스 프로젝트 나오면 무조건 별 달릴 것 같은데요? 저 이거 학회 논문 쓸 때 바로 인용해야겠어요.&quot;
+  }
+]
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
