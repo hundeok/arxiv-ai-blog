@@ -1,0 +1,69 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>그래프 복잡도를 통한 거대 언어 모델의 추론 불확실성 정량화 및 최적화 | ArXiv Translator AI</title><meta name="description" content="그래프 복잡도를 통한 거대 언어 모델의 추론 불확실성 정량화 및 최적화"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_05284v1"><meta property="og:type" content="article"><meta property="og:title" content="그래프 복잡도를 통한 거대 언어 모델의 추론 불확실성 정량화 및 최적화"><meta property="og:description" content="그래프 복잡도를 통한 거대 언어 모델의 추론 불확실성 정량화 및 최적화"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_05284v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="그래프 복잡도를 통한 거대 언어 모델의 추론 불확실성 정량화 및 최적화"><meta name="twitter:description" content="그래프 복잡도를 통한 거대 언어 모델의 추론 불확실성 정량화 및 최적화"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_05284v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "그래프 복잡도를 통한 거대 언어 모델의 추론 불확실성 정량화 및 최적화", "description": "그래프 복잡도를 통한 거대 언어 모델의 추론 불확실성 정량화 및 최적화", "datePublished": "2026-09-04", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_05284v1", "author": [{"@type": "Person", "name": "Shuang Liang"}, {"@type": "Person", "name": "Xin-Yu Hu"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_05284v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_05284v1"});gtag('event', 'paper_view', {"paper_id": "2609_05284v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>그래프 복잡도를 통한 거대 언어 모델의 추론 불확실성 정량화 및 최적화</h1><p>그래프 복잡도를 통한 거대 언어 모델의 추론 불확실성 정량화 및 최적화</p><pre>그래프 복잡도를 통한 거대 언어 모델의 추론 불확실성 정량화 및 최적화
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** GUT: Quantifying and Optimizing the Reasoning Uncertainty of LLMs via Graph Complexity
+&gt; - **저자:** Shuang Liang, Xin-Yu Hu, Xiang-Jun Ou, Shao-Qun Zhang
+&gt; - **발행일:** 2026-09-04
+&gt; - **PDF 링크:** [GUT: Quantifying and Optimizing the Reasoning Uncertainty of LLMs via Graph Complexity](https://arxiv.org/pdf/2609.05284v1)
+
+
+✨ 3줄 핵심 요약
+* 거대 언어 모델(LLM)의 추론 과정을 방향성 비순환 그래프(DAG)로 모델링하여, 추론 단계마다 발생하는 다양한 분기점과 불확실성을 정량화하는 GUT(Graph-complexity-based UncerTainty) 기법을 제안함.
+* 정량화 모듈(GUT-Q)로 추론 공간의 복잡도를 측정하고, 최적화 모듈(GUT-O)로 강화학습의 보상 함수에 불확실성을 역으로 활용하여 모델의 추론 정확도를 개선함.
+* 4개의 LLM과 5개의 데이터셋을 활용한 실험에서 기존 기법 대비 우수한 성능을 입증함.
+
+📖 쉽게 풀어쓴 1분 핵심
+LLM은 동일한 질문을 해도 매번 다른 답변을 내놓거나, 논리적으로 앞뒤가 맞지 않는 &#x27;엉뚱한&#x27; 경로로 추론을 이어가는 불확실성을 가지고 있습니다. 이 논문은 이러한 추론 과정을 하나의 &#x27;그래프&#x27;로 그려냅니다. 특정 단계에서 파생되는 여러 가능성을 그래프의 가지(node/edge)로 표현함으로써, 어떤 추론 경로가 더 복잡하고 불확실한지를 수치화합니다. 이렇게 측정한 불확실성을 바탕으로, 모델이 더 안정적이고 정확한 추론 경로를 선택하도록 학습시키는 것이 이 기술의 핵심입니다.
+
+🎯 배경 및 문제점
+* **추론 불확실성:** LLM은 토큰 단위의 확률적 샘플링으로 인해 매번 다른 추론 체인을 생성하며, 때로는 의미 없는 논리적 오류를 범함.
+* **기존 기법의 한계:** 
+    * 모델 스스로 불확실성을 판단하게 하는 방식은 샘플링 과정 자체가 불확실성을 증폭시킴.
+    * 단순히 추론 경로를 선형적인 &#x27;시퀀스&#x27;로 보거나, 그래프 모델링을 하더라도 자가 프롬프팅(self-prompting)에 과도하게 의존하는 문제가 있음.
+* **도전 과제:** 토큰 분포와 샘플링 기법 모두에서 발생하는 추론 분기들을 정교하고 효과적으로 포착하는 것이 중요함.
+
+💡 핵심 기술 및 아키텍처
+* **GUT-Q (정량화 모듈):** LLM이 생성한 추론 과정을 그래프로 변환하고, 그 그래프의 복잡도를 계산하여 추론 공간의 불확실성을 수치화함. NLI(Natural Language Inference) 모델을 활용하여 의미가 같은 추론 단계를 병합함.
+* **GUT-O (최적화 모듈):** 강화학습 구조를 도입하여, 측정된 불확실성의 음수 값을 보상(reward)으로 사용함으로써 모델이 낮은 불확실성을 가진 경로를 선택하도록 유도함.
+* **효율성:** vllm 등을 활용한 배치 병렬 처리를 통해, 실제 추론 시 기존 최신 기법들과 비교 가능한 수준의 실행 시간(wall-clock time)을 달성함.
+
+📊 실험 결과 분석
+* **성능 평가:** Qwen3 모델 시리즈(0.6B ~ 8B 파라미터)를 대상으로 GSM8K, MATH-500 등 5개 데이터셋에서 테스트함. GUT-Q가 모든 지표와 난이도 수준에서 기존 방식보다 우수한 성능을 보임.
+* **복잡도 비교:** GUT-Q의 연산 복잡도는 기존의 다양성 기반(SE, Eig-E) 및 그래프 기반(Topo-UQ) 기법들과 비교하여 동등한 수준임을 확인.
+* **실행 속도:** 10회 샘플링(K=10) 조건에서, 실제 구동 시에는 배치 처리 기법을 통해 단순히 기존 방식보다 2.5배 정도의 시간만 소요되어 실용성이 높음.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **적용 가능 분야:** 의료 진단, 자율 주행, 정량적 거래(퀀트) 등 추론의 신뢰성이 필수적인 분야에 즉각적으로 활용 가능함.
+* **기술적 의의:** LLM이 내뱉는 답변의 &#x27;논리적 궤적&#x27;을 시각적/수학적으로 제어할 수 있게 됨으로써, 모델이 왜 그런 답변을 도출했는지 설명 가능성(Explainability)을 확보하고 신뢰할 수 있는 AI 시스템 구축을 앞당길 것으로 기대됨.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Quantifying and Optimizing the Reasoning Uncertainty of LLMs ...](https://arxiv.org/html/2609.05284)
+&gt; - [Quantifying and Optimizing the Reasoning Uncertainty of LLMs ...](https://papers.cool/arxiv/2609.05284)
+&gt; - [Artificial Intelligence Papers on X: &quot;GUT: Quantifying and ...](https://x.com/SciFi/status/2097437733941559355/photo/1)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;GUT 논문의 핵심인 DAG 모델링과 NLI 기반 노드 병합은 이론적으로 꽤 흥미롭군. 하지만 그래프의 복잡도를 보상 함수에 직접 매핑하는 방식은 자칫 모델이 &#x27;안전하고 지루한&#x27; 경로만 선택하는 수렴 문제를 야기할 수 있어. 불확실성을 낮추는 게 곧 정답을 의미하진 않거든. 성능 평가에서 단순히 GSM8K 같은 벤치마크 점수만 볼 게 아니라, 논리적 비약이 발생하는 Edge-case에 대한 수학적 엄밀함이 더 검증되어야 할 것 같네.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 맞지만, 실무자 입장에선 &#x27;실행 시간&#x27;이 2.5배 늘어나는 게 제일 뼈아픕니다. vLLM 배치 처리로 최적화했다 해도, 추론 비용이 배로 든다는 건 프로덕션 환경에선 치명적이죠. 그래도 의료나 금융처럼 &#x27;틀리면 안 되는&#x27; 도메인이라면 이 정도 오버헤드는 비즈니스적으로 충분히 감수할 가치가 있어 보입니다. 일단 다음 스프린트 때 PoC로 돌려볼 만하겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 님들 이거 벌써 아카이브 올라오자마자 트위터에서 난리 났어요! 그래프 복잡도로 RL 보상을 조절한다는 아이디어 자체가 너무 힙하지 않나요? 기존에 단순 샘플링 기법(Self-Consistency 등) 쓰던 거 이제 올드해질 듯. 다들 &#x27;GUT-O&#x27; 모듈 튜닝해서 SOTA 갱신하려고 난리일 텐데, 저도 당장 Qwen3 베이스로 구현 들어가야겠네요. 속도? GPU는 빌리면 그만입니다! 논문 깎는 장인들 화이팅!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
