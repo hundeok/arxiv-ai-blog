@@ -1,0 +1,64 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>사후 학습을 위한 완전한 추론 경로 재고 | ArXiv Translator AI</title><meta name="description" content="사후 학습을 위한 완전한 추론 경로 재고"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_07103v1"><meta property="og:type" content="article"><meta property="og:title" content="사후 학습을 위한 완전한 추론 경로 재고"><meta property="og:description" content="사후 학습을 위한 완전한 추론 경로 재고"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_07103v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="사후 학습을 위한 완전한 추론 경로 재고"><meta name="twitter:description" content="사후 학습을 위한 완전한 추론 경로 재고"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_07103v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "사후 학습을 위한 완전한 추론 경로 재고", "description": "사후 학습을 위한 완전한 추론 경로 재고", "datePublished": "2026-09-07", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_07103v1", "author": [{"@type": "Person", "name": "Jaehui Hwang"}, {"@type": "Person", "name": "Sangdoo Yun"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_07103v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_07103v1"});gtag('event', 'paper_view', {"paper_id": "2609_07103v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>사후 학습을 위한 완전한 추론 경로 재고</h1><p>사후 학습을 위한 완전한 추론 경로 재고</p><pre>사후 학습을 위한 완전한 추론 경로 재고
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Revisiting Complete Reasoning Traces for Post-Training
+&gt; - **저자:** Jaehui Hwang, Sangdoo Yun, Byeongho Heo, Dongyoon Han
+&gt; - **발행일:** 2026-09-07
+&gt; - **PDF 링크:** [Revisiting Complete Reasoning Traces for Post-Training](https://arxiv.org/pdf/2609.07103v1)
+
+
+✨ 3줄 핵심 요약
+* 거대 언어 모델(LLM)의 사후 학습에 쓰이는 긴 추론 경로 중 중간 단계는 추론 품질에 기여도가 낮으며, 오히려 중복된 정보로 인해 학습 효율을 저하시킵니다.
+* 연구진은 불필요한 중간 단계를 생략하고 핵심적인 시작과 끝 부분 위주로 학습하는 &#x27;E-SFT(Essential SFT)&#x27; 방식을 제안했습니다.
+* 실험 결과, E-SFT는 모델이 스스로 누락된 논리를 보완하게 함으로써 추론 품질을 높이고 학습 수렴 속도를 개선함을 확인했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+인공지능 모델을 학습시킬 때, 문제부터 정답까지의 모든 과정을 상세히 적은 &#x27;추론 경로(Reasoning Traces)&#x27;를 함께 학습시키는 방식이 널리 쓰입니다. 하지만 이 과정은 종종 너무 길고 중복된 내용을 포함하여 모델의 학습을 방해합니다. 본 논문은 이 긴 경로의 &#x27;중간 과정&#x27;이 사실은 추론 성능에 큰 도움이 되지 않는다는 점을 밝혀냈습니다. 모델에게 정답과 핵심적인 단서만 제공해도, 모델은 자신의 지식을 활용해 스스로 논리적 단계를 채워 넣으며 더 똑똑하게 학습합니다. 결과적으로 전체 추론 과정을 다 보여주는 것보다 핵심 위주로 학습하는 것이 훨씬 효율적이라는 사실을 증명했습니다.
+
+🎯 배경 및 문제점
+기존의 LLM 사후 학습(SFT 등)에서는 정답에 이르기까지의 모든 추론 경로를 데이터로 활용해 왔습니다. 그러나 이러한 경로들은 길고 복잡하며, 때로는 불필요한 우회로를 포함하고 있어 오히려 모델의 학습에 혼란을 주거나 비효율적인 최적화 결과를 초래한다는 의문이 제기되어 왔습니다. 핵심은 &quot;전체 경로가 반드시 필요한가?&quot;와 &quot;어떤 부분이 중복인가?&quot;를 파악하는 것이었습니다.
+
+💡 핵심 기술 및 아키텍처
+* **중간 단계 제거 분석**: 어텐션 분석 및 토큰 제거 실험을 통해 추론 경로의 시작과 끝 부분은 중요하지만, 중간 부분은 최종 결과물에 미치는 영향이 미미함을 정량적으로 입증했습니다.
+* **E-SFT(Essential SFT)**: 추론 경로의 중간 단계를 의도적으로 마스킹(생략)하여 모델이 학습하는 방식을 도입했습니다. 이를 통해 모델이 부족한 정보를 내부 지식으로 직접 메우도록 유도합니다.
+* **학습 최적화**: 이 방식은 단순히 SFT뿐만 아니라 강화학습(RL)이나 온-폴리시 증류(On-policy distillation) 방식의 사후 학습에도 적용하여 성능을 높일 수 있음을 확인했습니다.
+
+📊 실험 결과 분석
+* **추론 품질**: GPT-OSS-120B를 이용한 LLM-as-judge 평가에서 E-SFT로 학습된 모델은 표준 SFT 대비 불필요한 반복이 줄고 논리적 흐름이 매끄러운 답변을 생성했습니다.
+* **학습 효율**: 학습 과정에서의 손실(Perplexity) 곡선을 분석한 결과, 중간 단계를 제거한 E-SFT가 표준 SFT보다 더 낮은 손실 값으로 안정적으로 수렴함을 확인했습니다.
+* **적응형 행동**: E-SFT는 지나치게 긴 원본 추론 데이터는 줄이고, 짧은 데이터는 보완하는 등 모델의 추론 길이를 상황에 맞게 최적화하는 특성을 보였습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+이번 연구는 거대 모델 학습 시 방대한 양의 추론 데이터를 무조건 학습시키는 것이 능사가 아님을 시사합니다. 실무적으로는 학습 데이터 정제 비용을 줄이고, 모델의 추론 능력을 극대화할 수 있는 새로운 가이드라인을 제시합니다. 특히 복잡한 논리적 추론이 필요한 수학, 코딩 분야의 모델 학습에서 데이터의 &#x27;양&#x27;보다 &#x27;질&#x27;과 &#x27;효율&#x27; 중심의 학습 체계로 전환하는 계기가 될 것으로 보입니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Revisiting Complete Reasoning Traces for Post-Training](https://arxiv.org/abs/2609.07103)
+&gt; - [Revisiting Complete Reasoning Traces for Post-Training](https://huggingface.co/papers/2609.07103)
+&gt; - [GitHub - naver-ai/revisiting-trace: EMNLP 2026 Findings](https://github.com/naver-ai/revisiting-trace)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;데이터의 양보다 질이라는 명제는 고전적이지만, &#x27;중간 추론 단계&#x27;를 의도적으로 마스킹하여 모델의 내적 논리 보완을 유도했다는 점은 주목할 만합니다. 다만, 이 &#x27;Essential&#x27;한 부분을 결정짓는 기준이 데이터셋의 도메인이나 복잡도에 따라 얼마나 견고하게 유지될지 의문이 드는군요. 일반화 성능에 대한 엄밀한 검증이 추가로 필요해 보입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 일반화는 지켜봐야겠지만, 실무 입장에서는 이게 진짜 &#x27;가뭄의 단비&#x27;입니다. 매번 토큰 길이 때문에 컨텍스트 윈도우 터지고 학습 비용 폭증해서 골머리 앓았는데, E-SFT로 학습 데이터 정제하면 비용 절감은 물론이고 추론 속도까지 잡을 수 있겠는데요? 당장 내일 프로덕션 파이프라인에 테스트 데이터셋으로 돌려봅니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 선배님들 벌써 실무 적용 고민하시네요! 저는 이 논문 보고 &#x27;모델이 스스로 부족한 논리를 메운다&#x27;는 부분에서 소름 돋았습니다. 이게 결국 모델이 추론을 &#x27;흉내&#x27; 내는 게 아니라 &#x27;이해&#x27;하고 있다는 증거 아닐까요? 당장 오늘 저녁부터 깃허브 코드 클론해서 제 실험용 모델에 E-SFT 적용해 보겠습니다. SOTA 기록 갈아치우러 갑니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
