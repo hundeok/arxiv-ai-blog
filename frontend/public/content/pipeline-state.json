@@ -30694,7 +30694,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-11T07:40:53.189314+00:00",
+      "updated_at": "2026-09-11T13:10:20.859630+00:00",
       "paper": {
         "title": "StochBench: A Domain-Specific Benchmark for Stochastic Processes in Lean",
         "summary": "Leading benchmarks for formal theorem proving with large language models are small collections drawn from competition math, such as the IMO and Putnam, that poorly represent field-specific applications. We introduce StochBench, a Lean 4 benchmark of 450 graduate stochastic-processes problems at varying abstraction levels, each paired with its natural-language source. Addressing a field underrepresented in Mathlib, it covers finite and countable Markov chains, renewal processes, random walks, martingales, stopping times, queues, Brownian motion, stochastic calculus, weak convergence, and Poisson and continuous-time Markov processes. Our Opus 4.8-based agent achieves a 34.9% proof rate (157/450) under a 15-minute per-problem limit. StochBench better represents domain-specific applied mathematics while remaining challenging for advanced provers.",
@@ -30740,7 +30740,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-11T07:40:53.189303+00:00",
+      "updated_at": "2026-09-11T13:10:20.859606+00:00",
       "paper": {
         "title": "AgentGrad: Intervention-guided Prompt Optimization for Multi Agent Systems",
         "summary": "Large language model (LLM)-based multi-agent systems (MAS) achieve strong performance by employing specialized multiple agents, yet their performance depends on the prompt design of each agent. For MAS prompt optimization, textual gradient methods that guide prompt updates using natural-language feedback have emerged as a leading paradigm. In this paper, we identify limitations in two stages of existing textual gradient approaches: gradient extraction and gradient aggregation. In gradient extraction, previous works select a target prompt without verifying whether modifying it resolves the failure, and derive gradients without agent-level supervision over the corresponding agent's intermediate output. In gradient aggregation, individual gradients are randomly grouped and concatenated, often mixing unrelated failure modes and producing prompts that fail to generalize. To address these limitations, we propose \\textbf{AgentGrad}, a prompt optimization framework for multi-agent systems based on sequential intervention and semantic textual gradient abstraction. For each failure, sequential intervention modifies the behavior of one agent at a time to identify the target agent whose modification resolves the failure. The modified output of the target agent then serves as agent-level supervision for extracting a fine-grained gradient. Semantic textual gradient abstraction clusters semantically similar gradients to prevent mixing unrelated failure modes, and abstracts each cluster into a generalized gradient that captures the shared corrective pattern. Experimental results show that AgentGrad achieves state-of-the-art performance across five MAS benchmarks and reduces wall-clock optimization time by $2.5\\times$ on average compared to the next-fastest baseline.",
@@ -31443,11 +31443,11 @@
     "2609_11414v1": {
       "id": "2609_11414v1",
       "filename": "post_2609_11414v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-09-11T02:32:02.645032+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-11T02:32:02.645033+00:00",
+      "updated_at": "2026-09-11T13:10:52.058450+00:00",
       "paper": {
         "title": "SWRouter: Similarity-Contractive Window Routing for Multi-Turn Large Language Model Conversations",
         "summary": "Large language models exhibit complementary strengths, motivating routing methods that dispatch each query to the most suitable model. Although existing routers are effective in single-turn settings, they do not directly transfer to multi-turn dialogue, where routing performance critically depends on how historical context is segmented, retained, and incorporated into the current prompt. This introduces two fundamental challenges: preventing information loss and information confusion during context construction, and evaluating routing quality without conflating model selection with prompt construction quality. In this paper, we propose SWRouter, a Similarity-Contractive Window Router for multi-turn large language model routing. SWRouter combines a similarity-based context segmentation mechanism for prompt construction with a dual-metric evaluation framework that decouples construction accuracy from router performance. Experiments on multi-turn dialogue benchmarks demonstrate that SWRouter consistently surpasses strong baselines, achieving a 16.26% improvement in evaluation accuracy over the best individual large language model and an additional 8.22% gain over the Conv-ID Context baseline. Our results highlight that multi-turn large language model routing requires a joint design of context construction and evaluation, rather than a direct extension of single-turn routing methods.",
@@ -31470,16 +31470,17 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2609.11414v1"
       },
-      "priority_score": 37
+      "priority_score": 37,
+      "korean_title": "SWRouter: 다중 턴 대규모 언어 모델 대화를 위한 유사성 기반 윈도우 라우팅"
     },
     "2609_11412v1": {
       "id": "2609_11412v1",
       "filename": "post_2609_11412v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-09-11T02:32:02.645039+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-11T02:32:02.645041+00:00",
+      "updated_at": "2026-09-11T13:11:01.899615+00:00",
       "paper": {
         "title": "X-AuT: Progressive Audio-Encoder Compression for Speech LLMs with Cross-Scale Distillation",
         "summary": "Reducing audio-encoder depth lowers the inference cost of speech large language models, but removing complete blocks perturbs the embeddings consumed by the decoder and can cause deletion and premature end-of-sequence errors. We introduce X-AuT, a progressive framework that selects layer combinations through short behavioral probes and restores the pruned model through representation alignment, cross-scale distillation, scheduled student-policy supervision, and LoRA finetuning. The language-model backbone remains frozen, while attention LoRA adapters and the tied output embedding adapt during distillation. Training uses the highest-agreement tier from a transcript-consistency pipeline, followed by source reweighting during finetuning. On ten public Chinese--English benchmarks, compressing Qwen3-ASR-0.6B from 18 to 16 audio-encoder layers reduces macro-average error from 5.61% to 5.27%. The 14-layer model reaches 5.75% with 20.7% fewer audio-tower parameters. Under the matched recipe, the 1.7B teacher yields 5.55% mean error, compared with 8.45% for self-distillation, and progressive 18$\\rightarrow$14 pruning outperforms direct pruning (5.75% vs. 6.73%). These single-run results establish two practical operating points and show that the accuracy effects vary across benchmarks. Project website: https://xpeng-ai.github.io/x-aut",
@@ -31498,7 +31499,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2609.11412v1"
       },
-      "priority_score": 36
+      "priority_score": 36,
+      "korean_title": "X-AuT: 음성 거대언어모델을 위한 교차 스케일 증류 기반 점진적 오디오 인코더 압축"
     },
     "2609_11404v1": {
       "id": "2609_11404v1",
@@ -31554,7 +31556,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-11T07:41:22.330422+00:00",
+      "updated_at": "2026-09-11T13:10:20.859569+00:00",
       "paper": {
         "title": "TempCloze: Can Video-LLMs Identify the Missing Middle?",
         "summary": "Temporal reasoning benchmarks for Video-LLMs are often mediated by language, leaving room for linguistic shortcuts from option wording, answer correlations, or language priors. To reduce such shortcuts, we introduce TempCloze, a video cloze benchmark for evaluating visual temporal reasoning in Video-LLMs. Given the beginning and ending clips of a video, models must identify the true missing middle from four candidates. TempCloze contains 1,521 carefully filtered videos from seven sources, mainly long-take and egocentric videos. We construct same-source distractors along three dimensions: Semantic asks what event should happen, Alignment probes when it should occur, and Progression tests how it should unfold, while shared scenes and objects reduce appearance cues. Our evaluation of 10 proprietary and 21 open-source Video-LLMs reveals Alignment as the primary bottleneck: models often recognize plausible semantic content and local event progression but struggle with temporal alignment. We further conduct error pattern and behavioral sensitivity analyses on TempCloze-Mixed and TempCloze-Hard with four representative models to examine where errors arise and how candidate order, context direction, visible span, frame density, and test-time scaling influence model choices.",
@@ -31576,11 +31578,11 @@
     "2609_11929v1": {
       "id": "2609_11929v1",
       "filename": "post_2609_11929v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-09-11T07:40:53.189278+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-11T07:40:53.189280+00:00",
+      "updated_at": "2026-09-11T13:10:30.572243+00:00",
       "paper": {
         "title": "SenseNova-U1.5: Towards Native Unified Visual Intelligence",
         "summary": "We launch SenseNova-U1.5, an 8B-MoT native unified multimodal model that understands, reasons about, and generates visual content within an encoder-free and VAE-free architecture. We strengthen its visual interface through spatially coherent patch reconstruction and scale its training with carefully curated generation and editing data, improved task formulation, structural prompt enhancement, and native resolutions of up to 4K. For post-training, we optimize specialized experts for visual aesthetics, bilingual text rendering, infographic generation, and image editing, and consolidate their capabilities through multi-expert on-policy distillation. Across extensive evaluations, SenseNova-U1.5 largely advances image fidelity, text rendering, complex composition, multi-reference editing, and interleaved generation, while improving instruction following and preserving subject identity, geometry, and unmodified regions. Despite limited exposure to structured formats in its generation data, SenseNova-U1.5 generalizes effectively to long, complex, and structured visual instructions, further proving that multimodal understanding can transfer to visual planning and creation. Together, these findings position native unified modelling as a promising path towards systems that perceive, reason and create within a fully end-to-end framework. We will open-source training code, including supervised fine-tuning, reinforcement learning, and on-policy distillation.",
@@ -31654,7 +31656,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2609.11929v1"
       },
-      "priority_score": 38
+      "priority_score": 38,
+      "korean_title": "SenseNova-U1.5: 네이티브 통합 시각 지능을 향하여"
     },
     "2609_05903v1": {
       "id": "2609_05903v1",
@@ -31663,7 +31666,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-11T07:41:03.406505+00:00",
+      "updated_at": "2026-09-11T13:10:20.859622+00:00",
       "paper": {
         "title": "EvoSafeHarness: Evolving Model- and Domain-Specific Harnesses for Securing Agents",
         "summary": "Large Language Model (LLM) agents are turning language into real-world effects, making safety necessary against both indirect prompt injections and direct harmful requests. System-level safety harnesses add an enforcement layer beyond model-level defenses, but existing harnesses are usually designed once by experts and applied across heterogeneous models and domains. Effective protection is deployment-dependent: models differ in how much enforcement they need before utility declines, while domains differ in the effects, state, and action sequences that must be governed. A harness that is strict enough for one model may over-block another, and a policy that transfers across domains may miss application-specific safety relations.   We present EvoSafeHarness, a safety-specific optimization framework that synthesizes a deployable harness for a frozen model in a target domain. It jointly searches a natural-language policy and executable code logic, guided by model behavior, domain specifications, and fresh-context adversarial review to reject benchmark-specific rules. Across four agent benchmark families, EvoSafeHarness achieves a stronger safety-utility frontier than fixed expert-designed defenses. On DecodingTrust-Agent, it reduces average attack success rate from 45.6% to 10.0% at a 3.3-point utility cost and achieves the best score in 14 of 15 cells. On AgentDojo, it reaches 82.8% utility at 0.0% ASR, twice CaMeL's utility at the same operating point, and transfers unchanged to unseen AgentDyn suites. It also achieves the best score on Agent-SafetyBench for every victim and keeps mean ASR below 20% under adaptive PAIR attacks with a refinement budget of 16. Analysis shows that domain semantics determine which safety relations and trajectory state are needed, while model and runtime behavior determine how and where those relations should be enforced.",
@@ -31689,7 +31692,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-11T07:41:13.256980+00:00",
+      "updated_at": "2026-09-11T13:10:20.859626+00:00",
       "paper": {
         "title": "MetroLLM-Bench: Evaluating Language Models as Transit Kiosk Runtimes",
         "summary": "We introduce MetroLLM-Bench, a 955-case benchmark for testing language models as the policy layer of a transit kiosk. It covers six real metro systems, ranging from 37 to 414 stations, and eleven categories that include routing, fare calculation, disruptions, accessibility, and adversarial input. In each case, the model must call structured tools and submit a machine-renderable terminal state containing an outcome, a per-ticket fare quote when applicable, and a kiosk action. Fourteen deterministic scoring components form Tier 1; eight semantic-quality components form Tier 2, six of which use a language-model judge. We report Tier 1 and the combined score of both tiers. A stratified 75/25 split reserves 717 cases for training-data generation and 238 for held-out evaluation.   We evaluate twenty-six models from six vendors, of which twenty-three are ranked. On the held-out partition, a 4B Qwen 3.5 student trained through parameter-efficient fine-tuning (PEFT) exceeds both GPT-5.6 tiers on Tier 1 (91.3 against 90.6 and 90.0) and matches GPT-5.4 full at maximum reasoning effort (91.4), with a 2.6 GB Q4_K_M footprint. Larger 9B and 27B students provide no further Tier 1 improvement over the 4B student at this training scale. Across the four Qwen sizes, the PEFT gain over the corresponding base model decreases from +7.03 points at 2B (three training seeds) to -0.91 at 27B; every seed shows the same direction at every size. A deterministic rule-based baseline reaches 84.6 on Tier 1, with the remaining language-model advantage concentrated in policy adaptation, compound scenarios, accessibility, and temporal reasoning. Muse Glimmer 30B leads the composite ranking, and serving configuration alone moves the Qwen 3.5-to-3.8 comparison by 2.7 Tier 1 points. The benchmark, harness, reproduction guide, and fine-tuned students are released at https://github.com/continker/metrollm-bench.",
@@ -31709,7 +31712,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-11T07:41:30.340674+00:00",
+      "updated_at": "2026-09-11T13:10:20.859618+00:00",
       "paper": {
         "title": "UniH$^3$: Unifying Hierarchical Homogeneity and Heterogeneity for All-in-One Medical Image Restoration",
         "summary": "All-in-One medical image restoration (MedIR) aims to address diverse tasks across modalities and degradation types using a single universal model. Existing methods typically prioritize modeling inter-task heterogeneity (e.g., distinct data distributions and degradation types). However, they largely neglect the inherent homogeneity present in medical images, such as widely shared anatomical structures within and across modalities, which can be leveraged to ease model training and improve generalization. To this end, we propose UniH3, a novel framework that Unifies Hierarchical Homogeneity and Heterogeneity for all-in-one medical image restoration. Specifically, to comprehensively exploit homogeneity, we introduce a Hierarchical Homogeneity Memory (H2M) module that progressively distills intra- and inter-task homogeneity priors from high-quality images during training, and adaptively retrieves the most relevant priors tailored to the input for guided restoration. These retrieved priors are then injected into the restoration pipeline via an efficient Homogeneity-Guided Attention (HGA) mechanism. Furthermore, to comprehensively address heterogeneity, we design a Hierarchical Heterogeneity Balancer (H2B) that mitigates both inter- and intra-task conflicts during optimization, facilitating balanced and effective multi-task learning. Extensive experiments on two large-scale benchmarks, MedIR-2D-500K and MedIR-3D-3K, demonstrate that UniH3 achieves state-of-the-art performance on both all-in-one and single-task medical image restoration. We hope this work establishes a strong benchmark and advances the development of general-purpose medical image restoration models. Code is available at https://github.com/Yaziwel/UniH3.",
@@ -31730,11 +31733,11 @@
     "2609_11499v1": {
       "id": "2609_11499v1",
       "filename": "post_2609_11499v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-09-11T07:40:53.189319+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-11T07:40:53.189320+00:00",
+      "updated_at": "2026-09-11T13:10:44.012611+00:00",
       "paper": {
         "title": "Recursive Code World Models: Building Complex Worlds through Recursive Scene Programs",
         "summary": "Code world models represent worlds as executable programs, but this representation alone does not determine how to construct a complex world. We introduce Recursive Code World Models (RCWM), a framework for reconstructing complex 3D worlds in code from a single reference image. RCWM couples a Recursive Scene Program (RSP) representation with a construction solver that recursively calls itself. An RSP represents the executable world as compositional scene code, while each solver call follows the same complete process: establish the whole, recursively reconstruct unresolved parts, and revisit the whole to refine their composition. This global-local-global recursion gives fine-scale structures their own perception-and-editing loops while preserving scene-wide geometry and relationships. Reference-aligned views propagate a shared camera projection across levels, while parent revisitation addresses boundaries, spatial relations, and shared errors that emerge after local refinement. A vision-language coding agent directly compares reference images with scene renders to guide refinement, recursive descent, and return. Across complex scenes, RCWM outperforms prior code-based image-to-scene reconstruction methods. Ablation studies further support the benefits of recursive construction and suggest that deeper calls can improve finer-scale reconstruction. RCWM provides a recursive construction principle for building complex executable worlds from visual evidence.",
@@ -31746,11 +31749,55 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2609.11499v1"
       },
-      "priority_score": 38
+      "priority_score": 38,
+      "korean_title": "재귀적 코드 세계 모델: 재귀적 장면 프로그램을 통한 복잡한 세계 구축"
+    },
+    "2609_11486v1": {
+      "id": "2609_11486v1",
+      "filename": "post_2609_11486v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-11T13:10:20.859592+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-11T13:10:20.859595+00:00",
+      "paper": {
+        "title": "FreeFlow: A Bias-free Hierarchical Transformer for Optical Flow Estimation",
+        "summary": "Optical flow methods typically rely on task-specific inductive biases, such as correlation volumes, feature warping, and iterative refinement, among others, to reach high accuracy. While effective, such biases constrain the model to predefined heuristics, which can limit its expressivity and lead to more complex pipelines and additional computational cost. We present FreeFlow, a hierarchical transformer built without any flow-specific components, using instead a single feed-forward encoder--decoder. FreeFlow combines three attention variants: window attention for local processing, shifted-window attention for cross-window information exchange, and a global attention operating at a reduced resolution. The resulting architecture scales naturally with model capacity, enabling a consistent accuracy gain from small to large variants. Despite the absence of standard inductive biases, FreeFlow achieves state-of-the-art results on major benchmarks, including Sintel (0.68/1.48 EPE on Clean/Final), KITTI-2015 (3.23 Fl-all), and Spring (3.192 1px), while remaining memory efficient at 1080p inference.",
+        "published": "2026-09-10T12:55:04Z",
+        "authors": [
+          "Vladislav Bargatin",
+          "Alexander Yakovenko",
+          "Khaled Abud",
+          "Dmitriy Vatolin"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.11486v1"
+      },
+      "priority_score": 33
+    },
+    "2609_11317v1": {
+      "id": "2609_11317v1",
+      "filename": "post_2609_11317v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-11T13:10:20.859611+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-11T13:10:20.859613+00:00",
+      "paper": {
+        "title": "Mi-Ripple: Restoring Images Degraded by Iterative AI Editing",
+        "summary": "Iterative reference-conditioned image editing can introduce grid-like and granular textures, commonly described as digital ripple. We present Mi-Ripple, a diagnosis-guided restoration workflow that suppresses this digital ripple while protecting image structure. Mi-Ripple separates periodic lattice artifacts from content-entangled granular texture, then combines selective spectral notching, structure-aware smoothing, and cleaned-reference regeneration. This separation enables low-distortion filtering when artifacts are spectrally isolated and visual reconstruction when filtering would erase legitimate detail. Across fourteen notch-only executions, whole-image residual standard deviation is 0.08--0.44 in CIELAB lightness units. In a paired regeneration example, reference cleaning reduces output debris density by 45\\%. Mi-Ripple links measurable artifact reduction to visibly cleaner generated images, rather than optimizing a spectral score alone.",
+        "published": "2026-09-10T09:46:42Z",
+        "authors": [
+          "Jiayin Chen",
+          "Yicheng Xu",
+          "Muting Wang"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.11317v1"
+      },
+      "priority_score": 11
     }
   },
   "last_run": {
-    "started_at": "2026-09-11T07:40:53.191752+00:00",
+    "started_at": "2026-09-11T13:10:20.862166+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -31761,25 +31808,25 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 20548,
-      "output_tokens": 5916,
+      "prompt_tokens": 20486,
+      "output_tokens": 5775,
       "thought_tokens": 0,
-      "total_tokens": 26464,
-      "estimated_usd": 0.014011
+      "total_tokens": 26261,
+      "estimated_usd": 0.013784
     },
-    "finished_at": "2026-09-11T07:41:31.152588+00:00"
+    "finished_at": "2026-09-11T13:11:02.681078+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 2174,
-    "prompt_tokens": 5479868,
-    "output_tokens": 1600957,
+    "requests": 2182,
+    "prompt_tokens": 5500354,
+    "output_tokens": 1606732,
     "thought_tokens": 0,
-    "total_tokens": 7080825,
-    "estimated_usd": 3.7714025
+    "total_tokens": 7107086,
+    "estimated_usd": 3.7851865
   },
   "last_publication_run": {
-    "started_at": "2026-09-11T07:40:53.191752+00:00",
+    "started_at": "2026-09-11T13:10:20.862166+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -31790,17 +31837,17 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 20548,
-      "output_tokens": 5916,
+      "prompt_tokens": 20486,
+      "output_tokens": 5775,
       "thought_tokens": 0,
-      "total_tokens": 26464,
-      "estimated_usd": 0.014011
+      "total_tokens": 26261,
+      "estimated_usd": 0.013784
     },
-    "finished_at": "2026-09-11T07:41:31.152588+00:00"
+    "finished_at": "2026-09-11T13:11:02.681078+00:00"
   },
   "daily_usage": {
     "date": "2026-09-11",
-    "estimated_usd": 0.02776575,
-    "publications": 8
+    "estimated_usd": 0.04154975,
+    "publications": 12
   }
 }

@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SWRouter: 다중 턴 대규모 언어 모델 대화를 위한 유사성 기반 윈도우 라우팅 | ArXiv Translator AI</title><meta name="description" content="SWRouter: 다중 턴 대규모 언어 모델 대화를 위한 유사성 기반 윈도우 라우팅"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_11414v1"><meta property="og:type" content="article"><meta property="og:title" content="SWRouter: 다중 턴 대규모 언어 모델 대화를 위한 유사성 기반 윈도우 라우팅"><meta property="og:description" content="SWRouter: 다중 턴 대규모 언어 모델 대화를 위한 유사성 기반 윈도우 라우팅"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_11414v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="SWRouter: 다중 턴 대규모 언어 모델 대화를 위한 유사성 기반 윈도우 라우팅"><meta name="twitter:description" content="SWRouter: 다중 턴 대규모 언어 모델 대화를 위한 유사성 기반 윈도우 라우팅"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_11414v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "SWRouter: 다중 턴 대규모 언어 모델 대화를 위한 유사성 기반 윈도우 라우팅", "description": "SWRouter: 다중 턴 대규모 언어 모델 대화를 위한 유사성 기반 윈도우 라우팅", "datePublished": "2026-09-10", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_11414v1", "author": [{"@type": "Person", "name": "Yu Wang"}, {"@type": "Person", "name": "Yuchen Li"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_11414v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_11414v1"});gtag('event', 'paper_view', {"paper_id": "2609_11414v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>SWRouter: 다중 턴 대규모 언어 모델 대화를 위한 유사성 기반 윈도우 라우팅</h1><p>SWRouter: 다중 턴 대규모 언어 모델 대화를 위한 유사성 기반 윈도우 라우팅</p><pre>SWRouter: 다중 턴 대규모 언어 모델 대화를 위한 유사성 기반 윈도우 라우팅
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** SWRouter: Similarity-Contractive Window Routing for Multi-Turn Large Language Model Conversations
+&gt; - **저자:** Yu Wang, Yuchen Li, Rui Kong, Xinran Chen, Jiamin Chen, Hengyi Cai, Shuaiqiang Wang, Jiashu Zhao, Yulun Zhang, Zhonghao Lyu, Haoyi Xiong, Linghe Kong, Jimmy Xiangji Huang, Dawei Yin
+&gt; - **발행일:** 2026-09-10
+&gt; - **PDF 링크:** [SWRouter: Similarity-Contractive Window Routing for Multi-Turn Large Language Model Conversations](https://arxiv.org/pdf/2609.11414v1)
+
+
+✨ 3줄 핵심 요약
+* 다중 턴 대화에서 발생하는 정보 손실과 혼선을 방지하기 위해 &#x27;유사성 기반 윈도우 분할&#x27;을 도입했습니다.
+* 프롬프트 구성 품질과 라우터의 모델 선택 능력을 분리하여 평가하는 체계적인 프레임워크를 제시합니다.
+* 기존 최고 성능의 LLM 대비 16.26%, 기존 기준 모델(Conv-ID) 대비 8.22%의 평가 정확도 향상을 달성했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+여러 대규모 언어 모델(LLM) 중 최적의 모델을 선택해 질문을 보내는 &#x27;라우팅&#x27; 기술은 단일 질문에는 효과적이지만, 대화가 이어지는 &#x27;다중 턴&#x27; 상황에서는 과거 대화 맥락을 어떻게 처리하느냐에 따라 성능이 크게 좌우됩니다. SWRouter는 대화 맥락을 의미적으로 관련 있는 조각으로 잘 나누어 프롬프트를 구성하고, &#x27;모델을 잘 골랐는지&#x27;와 &#x27;프롬프트가 잘 만들어졌는지&#x27;를 따로 평가하는 방식을 통해 라우팅 성능을 극대화했습니다.
+
+🎯 배경 및 문제점
+기존의 라우팅 기법은 다중 턴 대화에서 다음과 같은 근본적인 한계를 지닙니다.
+* **맥락 구성의 어려움:** 대화 히스토리를 요약하거나 유지하는 과정에서 정보 손실이나 혼선이 발생합니다.
+* **평가 방식의 오류:** 프롬프트가 잘 작성되어 성능이 좋은 것인지, 라우터가 모델을 잘 선택해서 좋은 것인지 구분하지 못하는 평가 방식이 사용됩니다.
+
+💡 핵심 기술 및 아키텍처
+* **유사성 기반 윈도우 분할(Similarity-based Window Partitioning):** 대화 히스토리를 의미적으로 응집력 있는 윈도우로 나누어, 모델이 맥락을 정확히 이해할 수 있는 최적의 프롬프트를 구성합니다.
+* **분리된 평가 프레임워크(Decoupled Evaluation Framework):** 
+    * **평가 정확도(Evaluation Accuracy):** 라우팅된 응답의 실제 최종 품질.
+    * **구성 정확도(Construction Accuracy):** 프롬프트 구성 자체가 얼마나 정보를 잘 보존했는지 측정.
+    * **라우터 성능(Router Performance):** 프롬프트 품질과 상관없이 라우터가 실제로 더 나은 모델을 선택했는지 측정.
+
+📊 실험 결과 분석
+* **성능 향상:** ShareGPT 및 MTBench 벤치마크에서 개별 최강 모델 대비 16.26%, Conv-ID Context 기준 모델 대비 8.22% 높은 평가 정확도를 기록했습니다.
+* **일반화 성능:** PreAlgebra, MBPP, C-EVAL 등 분포 외(Out-of-distribution) 태스크에서도 Conv-ID Context 대비 평균 2.68% 더 나은 성과를 보였습니다.
+* **분석 결과:** 향상된 성능은 주로 프롬프트 구성 정확도의 개선에서 비롯되었으며, 라우터 성능 지표(P_router)가 항상 1보다 커 효율적인 모델 선택이 이루어지고 있음을 확인했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+이 연구는 LLM 라우팅이 단순히 모델을 선택하는 문제를 넘어, **&#x27;맥락 최적화(프롬프트 구성)&#x27;와 &#x27;모델 선택&#x27;을 통합적으로 설계**해야 함을 입증했습니다. 대화형 AI 서비스나 복잡한 추론이 필요한 AI 에이전트 시스템에서 과거 대화 기록을 효율적으로 활용하여 답변의 품질을 높이는 데 기여할 수 있습니다. 현재는 7B/8B 규모의 모델을 기준으로 평가되었으며, 향후 다양한 크기 및 상용 LLM으로의 확장 적용 가능성을 제시합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2609.11414 SWRouter: Similarity-Contractive Window Routing for Multi-Turn Large Language Model Conversations](https://arxiv.org/abs/2609.11414)
+&gt; - [SWRouter: Similarity-Contractive Window Routing for Multi-Turn Large Language Model Conversations](https://arxiv.org/html/2609.11414)
+&gt; - [Computation and Language](https://arxiv.org/list/cs.CL/pastweek?show=50&amp;skip=0)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;라우팅 성능 평가에서 &#x27;프롬프트 구성&#x27;과 &#x27;모델 선택&#x27;을 분리해낸 점은 학술적으로 아주 흥미롭군요. 다만 유사성 기반 윈도우 분할 시 의미적 응집력을 계산하는 임베딩 모델의 편향성이 전체 시스템 성능에 미칠 영향을 간과해선 안 됩니다. 과연 이게 상용 LLM의 컨텍스트 윈도우 한계 내에서 얼마나 일반화될지 의문이네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에선 임베딩 오버헤드가 관건이죠. 윈도우 나눌 때마다 리소스 태우는 건데, 추론 레이턴시 증가분만큼 성능 향상이 담보되느냐가 핵심입니다. 특히 7B 모델 위주 실험은 좀 아쉽네요. 당장 클라우드 환경에서 GPT-4o나 Claude 3.5 Sonnet 같은 거 물릴 때도 이 라우팅 로직이 16% 성능 향상을 유지할지 궁금합니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;다들 너무 비판적이에요! 대화형 에이전트에서 맥락 손실 때문에 매번 토큰 낭비하며 전체 히스토리 밀어 넣던 거 생각하면 이 정도 최적화는 &#x27;가뭄의 단비&#x27;입니다. 특히 분리 평가 프레임워크 제시는 앞으로 라우터 연구의 표준(Standard)이 될 것 같은데요? 당장 내일 랩 세미나 발제 자료에 이 논문 넣어야겠어요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
