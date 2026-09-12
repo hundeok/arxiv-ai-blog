@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>대규모 언어 모델을 위한 도메인 특화 환각 탐지 | ArXiv Translator AI</title><meta name="description" content="대규모 언어 모델을 위한 도메인 특화 환각 탐지"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_11878v1"><meta property="og:type" content="article"><meta property="og:title" content="대규모 언어 모델을 위한 도메인 특화 환각 탐지"><meta property="og:description" content="대규모 언어 모델을 위한 도메인 특화 환각 탐지"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_11878v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="대규모 언어 모델을 위한 도메인 특화 환각 탐지"><meta name="twitter:description" content="대규모 언어 모델을 위한 도메인 특화 환각 탐지"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_11878v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "대규모 언어 모델을 위한 도메인 특화 환각 탐지", "description": "대규모 언어 모델을 위한 도메인 특화 환각 탐지", "datePublished": "2026-09-10", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_11878v1", "author": [{"@type": "Person", "name": "Varun Teja Chundru"}, {"@type": "Person", "name": "Debasmita Biswas"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_11878v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_11878v1"});gtag('event', 'paper_view', {"paper_id": "2609_11878v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>대규모 언어 모델을 위한 도메인 특화 환각 탐지</h1><p>대규모 언어 모델을 위한 도메인 특화 환각 탐지</p><pre>대규모 언어 모델을 위한 도메인 특화 환각 탐지
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Domain-Specific Hallucination Detection in Large Language Models
+&gt; - **저자:** Varun Teja Chundru, Debasmita Biswas
+&gt; - **발행일:** 2026-09-10
+&gt; - **PDF 링크:** [Domain-Specific Hallucination Detection in Large Language Models](https://arxiv.org/pdf/2609.11878v1)
+
+
+✨ 3줄 핵심 요약
+* DeBERTa-v3 기반의 다중 신호 탐지 파이프라인으로 일반 도메인 환각을 정밀하게 탐지합니다.
+* DPO(Direct Preference Optimization)를 통해 생성 모델의 환각 발생률을 55.9% 감소시켰습니다.
+* 도메인 특화 데이터로 사전 학습된 모델(예: PubMedBERT)을 사용하는 것이 도메인 간 전이 학습에 가장 효과적입니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+대규모 언어 모델(LLM)이 그럴듯하지만 틀린 정보를 만들어내는 &#x27;환각&#x27; 현상은 전문 분야 도입의 큰 걸림돌입니다. 이 논문은 단순히 답변을 읽는 것을 넘어, 여러 기술(DeBERTa-v3 분류, MC Dropout 불확실성 측정, 온도 스케일링 보정)을 결합해 AI가 스스로 자신의 답변을 얼마나 확신하는지 평가하는 시스템을 제안합니다. 또한, 이 시스템으로 찾아낸 환각 데이터를 역으로 AI 학습에 활용(DPO)하여 환각 발생을 절반 이상 줄였습니다. 나아가 의료 등 특수 분야에서는 일반 모델보다 해당 도메인 지식을 갖춘 모델을 쓰는 것이 훨씬 정확하다는 점을 실험으로 증명했습니다.
+
+🎯 배경 및 문제점
+* **기존의 한계:** 환각 탐지 모델들이 예측에 대한 &#x27;확신도(confidence)&#x27;를 제공하지 못해, AI가 모호한 답변을 할 때 실무자가 이를 구분하기 어렵습니다.
+* **도메인 격차:** 일반적인 데이터로 학습된 탐지기는 전문 용어나 고도의 추론 패턴이 필요한 의료, 법률, 과학 분야에서 성능이 급격히 떨어집니다.
+
+💡 핵심 기술 및 아키텍처
+* **탐지 파이프라인:** 
+    * **DeBERTa-v3:** 자연어 추론(NLI) 방식으로 환각을 탐지합니다.
+    * **MC Dropout:** 모델의 답변을 여러 번 추론해 확률적 변화를 분석함으로써 불확실성을 정량화합니다.
+    * **온도 스케일링(Temperature Scaling):** 모델의 출력 확률을 보정하여 신뢰도를 높입니다.
+* **학습 및 완화:** DPO 기법을 적용해 생성 모델이 환각을 피하도록 직접 학습시켰습니다.
+
+📊 실험 결과 분석
+* **일반 도메인(HaluEval):** 제안한 모델은 F1 점수 0.915, AUROC 0.977을 기록했습니다. 특히 MC Dropout 적용 시 정확도가 93.2%까지 향상되었습니다.
+* **환각 완화:** Qwen2.5-0.5B 모델에 DPO를 적용한 결과, 환각 발생률이 85.5%에서 37.7%로 55.9% 상대적 감소했습니다.
+* **도메인 전이:** 의학 데이터셋(SciFact) 테스트에서 일반 학습 데이터만으로는 F1 점수가 0.52에 그쳤으나, 의학 전문 모델(PubMedBERT)을 사용했을 때 F1 0.63, AUROC 0.81로 가장 우수한 성능을 보였습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **신뢰성 있는 AI:** 의료, 법률 등 정확도가 필수적인 분야에서 AI가 생성한 정보의 진위 여부를 판별하는 실질적인 도구로 활용될 수 있습니다.
+* **적응형 학습:** 기업이 특정 도메인(금융, 기술 문서 등)에 맞는 환각 탐지 시스템을 구축할 때, 방대한 데이터를 새로 학습시키는 것보다 도메인 지식을 갖춘 사전 학습 모델을 활용하는 것이 가장 효율적임을 시사합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2609.11878 Domain-Specific Hallucination Detection in Large Language Models](https://arxiv.org/abs/2609.11878)
+&gt; - [Domain-Specific Hallucination Detection in Large Language Models](https://arxiv.org/html/2609.11878)
+&gt; - [Domain-Specific Hallucination Detection in Large Language ...](https://arxiv.org/html/2609.11878v1)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;DeBERTa-v3와 MC Dropout 조합이라니, 방법론 자체는 꽤 고전적이면서도 견고하군요. 다만, MC Dropout을 사용하면 추론 지연 시간(latency)이 꽤 클 텐데 실시간 서비스 환경에서 이를 어떻게 감당하겠다는 건지 논문에 명확한 수치가 부족해 보입니다. 이론적 신뢰도와 실무적 효율성 사이의 trade-off를 너무 가볍게 다룬 건 아닌지 우려되네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 MC Dropout은 실무에서 재앙이죠. 안 그래도 GPU 리소스 튀는데 저걸 얹으면 인프라 비용 폭발합니다. 차라리 DPO로 환각 자체를 줄이는 접근이 훨씬 실효성 있어요. 55.9% 감소 수치는 확실히 매력적이라, 우리 팀에서도 Qwen 기반으로 파이프라인 태워서 바로 PoC 돌려볼 만합니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;선배님, 너무 실용성만 따지시는 거 아니에요? ㅋㅋㅋ 핵심은 &#x27;도메인 전이&#x27;예요. PubMedBERT 같은 특화 모델이 일반 모델 압살하는 건 당연하지만, 이걸 DPO랑 엮어서 환각 잡는 논리는 지금 학계에서 가장 핫한 담론이잖아요! 당장 다음 주 세미나 때 이 논문으로 발표할 건데, 교수님 지적하신 latency 문제는 제가 &#x27;최신 경량화 기법으로 해결 가능&#x27;하다고 쉴드치면서 발표해야겠네요.&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
