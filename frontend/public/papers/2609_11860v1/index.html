@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>설명 가능성 어시스턴트: 에너지 소비 모델 해석을 위한 대화형 XAI 인터페이스 | ArXiv Translator AI</title><meta name="description" content="설명 가능성 어시스턴트: 에너지 소비 모델 해석을 위한 대화형 XAI 인터페이스"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_11860v1"><meta property="og:type" content="article"><meta property="og:title" content="설명 가능성 어시스턴트: 에너지 소비 모델 해석을 위한 대화형 XAI 인터페이스"><meta property="og:description" content="설명 가능성 어시스턴트: 에너지 소비 모델 해석을 위한 대화형 XAI 인터페이스"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_11860v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="설명 가능성 어시스턴트: 에너지 소비 모델 해석을 위한 대화형 XAI 인터페이스"><meta name="twitter:description" content="설명 가능성 어시스턴트: 에너지 소비 모델 해석을 위한 대화형 XAI 인터페이스"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_11860v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "설명 가능성 어시스턴트: 에너지 소비 모델 해석을 위한 대화형 XAI 인터페이스", "description": "설명 가능성 어시스턴트: 에너지 소비 모델 해석을 위한 대화형 XAI 인터페이스", "datePublished": "2026-09-10", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_11860v1", "author": [{"@type": "Person", "name": "Rodion Krjutškov"}, {"@type": "Person", "name": "Eduard Barbu"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_11860v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_11860v1"});gtag('event', 'paper_view', {"paper_id": "2609_11860v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>설명 가능성 어시스턴트: 에너지 소비 모델 해석을 위한 대화형 XAI 인터페이스</h1><p>설명 가능성 어시스턴트: 에너지 소비 모델 해석을 위한 대화형 XAI 인터페이스</p><pre>설명 가능성 어시스턴트: 에너지 소비 모델 해석을 위한 대화형 XAI 인터페이스
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Explainability Assistant: A Conversational XAI Interface for Interpreting Energy Consumption Models
+&gt; - **저자:** Rodion Krjutškov, Eduard Barbu, Nikos Sakkas, Sofia Yfanti
+&gt; - **발행일:** 2026-09-10
+&gt; - **PDF 링크:** [Explainability Assistant: A Conversational XAI Interface for Interpreting Energy Consumption Models](https://arxiv.org/pdf/2609.11860v1)
+
+
+✨ 3줄 핵심 요약
+*   최신 LLM의 &#x27;함수 호출(Function-calling)&#x27; 기능을 활용하여 복잡한 머신러닝 모델을 자연어로 해석하는 대화형 XAI 시스템을 개발함.
+*   기존 문법 기반 시스템의 한계인 76.8% 수준의 의도 파악 정확도를 94%까지 끌어올려 성능을 크게 개선함.
+*   에너지 전문가 대상 평가 결과, 기존의 대시보드 방식보다 사용성과 선호도 면에서 압도적으로 높은 평가를 받음.
+
+📖 쉽게 풀어쓴 1분 핵심
+에너지 관리나 의료 분야에서 사용되는 복잡한 AI 모델은 왜 그런 결과가 나왔는지 이해하기 어렵습니다. 지금까지는 &#x27;설명 가능한 AI(XAI)&#x27; 도구들이 대시보드 형태로 제공되었지만, 사용자가 복잡한 기술적 지식을 갖춰야 하고 질문도 제한적이었습니다. &#x27;설명 가능성 어시스턴트(Explainability Assistant)&#x27;는 사용자가 마치 동료와 대화하듯 AI에게 모델의 결과를 물어보면, AI가 복잡한 데이터 분석 과정을 대신 수행해 답을 찾아주는 시스템입니다. 별도의 학습 없이도 다양한 데이터 환경에 바로 적용할 수 있는 유연함을 갖췄습니다.
+
+🎯 배경 및 문제점
+*   **해석의 불투명성:** 에너지 관리 등 중요한 분야에서 사용되는 머신러닝 모델의 판단 근거를 사용자가 확인하기 어려움.
+*   **기술적 진입장벽:** 기존의 클릭 기반 대시보드 방식은 전문적인 지식이 없는 사용자에게 사용이 어렵고, 상황에 따른 유연한 질의가 불가능함.
+*   **기존 대화형 시스템의 한계:** 과거의 대화형 시스템(예: TalkToModel)은 정해진 문법 규칙에 의존하여 사용자의 질문 의도를 파악하는 정확도가 76.8% 수준으로 낮았음.
+
+💡 핵심 기술 및 아키텍처
+*   **LLM 함수 호출 활용:** 특정 문법을 익힐 필요 없이 최신 LLM의 함수 호출(Function-calling) 능력을 활용하여 사용자의 자연어 질문을 실행 가능한 작업으로 변환함.
+*   **구조적 모듈화:** 시스템의 핵심 로직 수정이나 모델별 미세 조정(Fine-tuning) 없이, JSON 형태의 함수 정의만 업데이트하면 에너지 예측 외에 심장 질환 분류 등 다른 도메인으로도 즉시 확장이 가능함.
+*   **범용성:** 특정 작업에 국한된 학습이 필요하지 않아 다양한 머신러닝 모델과 환경에 빠르게 적응할 수 있음.
+
+📊 실험 결과 분석
+*   **의도 파악 정확도:** 테스트 데이터셋에서 Gemini-2.5-Flash 모델을 사용했을 때 최대 94%의 정확도를 기록함.
+*   **전문가 검증:** 3명의 에너지 도메인 전문가를 대상으로 기존 대시보드와 본 시스템을 비교 평가한 결과, 모든 전문가가 대화형 인터페이스를 선호함. (표본의 통계적 유의성은 논문에서 실험 대상이 3명으로 소수임을 밝힘)
+*   **기타 모델 성능:** GPT-5-mini(최대 79%), Llama-3.3-70B(최대 78%), Gemini-2.0-Flash(최대 91%)의 정확도를 보임.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+*   **운영 효율성 제고:** 시설 관리자나 엔지니어가 AI 예측 모델의 결과를 즉각적이고 직관적으로 이해함으로써 에너지 관리 효율을 높일 수 있음.
+*   **신뢰성 확보:** 모델의 예측 근거를 투명하게 제시하여 전문 분야에서의 AI 도입에 필요한 신뢰도를 증대시킴.
+*   **적용 가능성:** 단순 에너지 분야를 넘어 의료 등 복잡한 판단이 필요한 타 전문 분야에서도 범용적인 해석 도구로 활용될 잠재력을 증명함. 단, 본 연구는 에너지 분야에 집중하여 검증되었으므로 타 분야 적용 시 추가 검증이 필요하다고 밝힘.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Explainability Assistant: A Conversational XAI Interface for ...](https://www.catalyzex.com/paper/explainability-assistant-a-conversational-xai)
+&gt; - [Explainability Assistant: a Conversational XAI Interface for ...](https://www.tib.eu/de/suchen/id/ieee:858ead1e87cb6c0f3cb1d42bb1c397c83c407405/Explainability-Assistant-a-Conversational-XAI-Interface)
+&gt; - [Fugu-MT 論文翻訳 (概要): Explainability Assistant: A Conversational XAI ...](https://fugumt.com/fugumt/paper_check/2609.11860v1)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;실험 대상이 3명이라니, 이걸 &#x27;검증&#x27;이라고 부를 수 있나? 통계적 유의성은 어디에 팔아먹었는지 모르겠군. 게다가 LLM의 함수 호출을 활용한 의도 파악은 흥미롭지만, 할루시네이션이 발생했을 때 모델의 판단 근거를 어떻게 신뢰할 수 있지? 학술적으로는 더 엄밀한 검증이 필요해 보이네.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 맞지만, 실무 입장에선 일단 돌아가고 고객이 좋아하면 장땡입니다. 기존 대시보드 툴들, 사실 현업 담당자들은 보지도 않거든요. JSON 스키마만 잘 짜면 도메인 확장성도 높아서 엔지니어 입장에선 유지보수 부담이 확 줄어들 것 같은데요? 당장 프로덕션에 붙여보고 싶은 수준입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;헐, 이거 벌써 깃허브에 올라왔나요? 에너지 분야 말고 의료 데이터에 붙여서 다음 랩 미팅 때 발표하면 교수님한테 칭찬받을 각인데! 3명 대상이라도 일단 &#x27;대화형 XAI&#x27;는 요즘 메타잖아요. Gemini 2.5 Flash 성능 뽑아내는 거 보니까 저도 당장 파이프라인 짜러 갑니다. 님들, 이건 그냥 대세예요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
