@@ -31564,7 +31564,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-11T22:55:59.164524+00:00",
+      "updated_at": "2026-09-12T20:01:16.704342+00:00",
       "paper": {
         "title": "TempCloze: Can Video-LLMs Identify the Missing Middle?",
         "summary": "Temporal reasoning benchmarks for Video-LLMs are often mediated by language, leaving room for linguistic shortcuts from option wording, answer correlations, or language priors. To reduce such shortcuts, we introduce TempCloze, a video cloze benchmark for evaluating visual temporal reasoning in Video-LLMs. Given the beginning and ending clips of a video, models must identify the true missing middle from four candidates. TempCloze contains 1,521 carefully filtered videos from seven sources, mainly long-take and egocentric videos. We construct same-source distractors along three dimensions: Semantic asks what event should happen, Alignment probes when it should occur, and Progression tests how it should unfold, while shared scenes and objects reduce appearance cues. Our evaluation of 10 proprietary and 21 open-source Video-LLMs reveals Alignment as the primary bottleneck: models often recognize plausible semantic content and local event progression but struggle with temporal alignment. We further conduct error pattern and behavioral sensitivity analyses on TempCloze-Mixed and TempCloze-Hard with four representative models to examine where errors arise and how candidate order, context direction, visible span, frame density, and test-time scaling influence model choices.",
@@ -31590,7 +31590,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-11T22:55:59.164563+00:00",
+      "updated_at": "2026-09-12T20:01:16.704377+00:00",
       "paper": {
         "title": "SenseNova-U1.5: Towards Native Unified Visual Intelligence",
         "summary": "We launch SenseNova-U1.5, an 8B-MoT native unified multimodal model that understands, reasons about, and generates visual content within an encoder-free and VAE-free architecture. We strengthen its visual interface through spatially coherent patch reconstruction and scale its training with carefully curated generation and editing data, improved task formulation, structural prompt enhancement, and native resolutions of up to 4K. For post-training, we optimize specialized experts for visual aesthetics, bilingual text rendering, infographic generation, and image editing, and consolidate their capabilities through multi-expert on-policy distillation. Across extensive evaluations, SenseNova-U1.5 largely advances image fidelity, text rendering, complex composition, multi-reference editing, and interleaved generation, while improving instruction following and preserving subject identity, geometry, and unmodified regions. Despite limited exposure to structured formats in its generation data, SenseNova-U1.5 generalizes effectively to long, complex, and structured visual instructions, further proving that multimodal understanding can transfer to visual planning and creation. Together, these findings position native unified modelling as a promising path towards systems that perceive, reason and create within a fully end-to-end framework. We will open-source training code, including supervised fine-tuning, reinforcement learning, and on-policy distillation.",
@@ -31674,7 +31674,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-11T22:55:59.164567+00:00",
+      "updated_at": "2026-09-12T20:01:16.704386+00:00",
       "paper": {
         "title": "EvoSafeHarness: Evolving Model- and Domain-Specific Harnesses for Securing Agents",
         "summary": "Large Language Model (LLM) agents are turning language into real-world effects, making safety necessary against both indirect prompt injections and direct harmful requests. System-level safety harnesses add an enforcement layer beyond model-level defenses, but existing harnesses are usually designed once by experts and applied across heterogeneous models and domains. Effective protection is deployment-dependent: models differ in how much enforcement they need before utility declines, while domains differ in the effects, state, and action sequences that must be governed. A harness that is strict enough for one model may over-block another, and a policy that transfers across domains may miss application-specific safety relations.   We present EvoSafeHarness, a safety-specific optimization framework that synthesizes a deployable harness for a frozen model in a target domain. It jointly searches a natural-language policy and executable code logic, guided by model behavior, domain specifications, and fresh-context adversarial review to reject benchmark-specific rules. Across four agent benchmark families, EvoSafeHarness achieves a stronger safety-utility frontier than fixed expert-designed defenses. On DecodingTrust-Agent, it reduces average attack success rate from 45.6% to 10.0% at a 3.3-point utility cost and achieves the best score in 14 of 15 cells. On AgentDojo, it reaches 82.8% utility at 0.0% ASR, twice CaMeL's utility at the same operating point, and transfers unchanged to unseen AgentDyn suites. It also achieves the best score on Agent-SafetyBench for every victim and keeps mean ASR below 20% under adaptive PAIR attacks with a refinement budget of 16. Analysis shows that domain semantics determine which safety relations and trajectory state are needed, while model and runtime behavior determine how and where those relations should be enforced.",
@@ -31700,7 +31700,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-11T22:55:59.164571+00:00",
+      "updated_at": "2026-09-12T20:01:16.704390+00:00",
       "paper": {
         "title": "MetroLLM-Bench: Evaluating Language Models as Transit Kiosk Runtimes",
         "summary": "We introduce MetroLLM-Bench, a 955-case benchmark for testing language models as the policy layer of a transit kiosk. It covers six real metro systems, ranging from 37 to 414 stations, and eleven categories that include routing, fare calculation, disruptions, accessibility, and adversarial input. In each case, the model must call structured tools and submit a machine-renderable terminal state containing an outcome, a per-ticket fare quote when applicable, and a kiosk action. Fourteen deterministic scoring components form Tier 1; eight semantic-quality components form Tier 2, six of which use a language-model judge. We report Tier 1 and the combined score of both tiers. A stratified 75/25 split reserves 717 cases for training-data generation and 238 for held-out evaluation.   We evaluate twenty-six models from six vendors, of which twenty-three are ranked. On the held-out partition, a 4B Qwen 3.5 student trained through parameter-efficient fine-tuning (PEFT) exceeds both GPT-5.6 tiers on Tier 1 (91.3 against 90.6 and 90.0) and matches GPT-5.4 full at maximum reasoning effort (91.4), with a 2.6 GB Q4_K_M footprint. Larger 9B and 27B students provide no further Tier 1 improvement over the 4B student at this training scale. Across the four Qwen sizes, the PEFT gain over the corresponding base model decreases from +7.03 points at 2B (three training seeds) to -0.91 at 27B; every seed shows the same direction at every size. A deterministic rule-based baseline reaches 84.6 on Tier 1, with the remaining language-model advantage concentrated in policy adaptation, compound scenarios, accessibility, and temporal reasoning. Muse Glimmer 30B leads the composite ranking, and serving configuration alone moves the Qwen 3.5-to-3.8 comparison by 2.7 Tier 1 points. The benchmark, harness, reproduction guide, and fine-tuned students are released at https://github.com/continker/metrollm-bench.",
@@ -31720,7 +31720,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-11T22:55:59.164578+00:00",
+      "updated_at": "2026-09-12T20:01:16.704398+00:00",
       "paper": {
         "title": "UniH$^3$: Unifying Hierarchical Homogeneity and Heterogeneity for All-in-One Medical Image Restoration",
         "summary": "All-in-One medical image restoration (MedIR) aims to address diverse tasks across modalities and degradation types using a single universal model. Existing methods typically prioritize modeling inter-task heterogeneity (e.g., distinct data distributions and degradation types). However, they largely neglect the inherent homogeneity present in medical images, such as widely shared anatomical structures within and across modalities, which can be leveraged to ease model training and improve generalization. To this end, we propose UniH3, a novel framework that Unifies Hierarchical Homogeneity and Heterogeneity for all-in-one medical image restoration. Specifically, to comprehensively exploit homogeneity, we introduce a Hierarchical Homogeneity Memory (H2M) module that progressively distills intra- and inter-task homogeneity priors from high-quality images during training, and adaptively retrieves the most relevant priors tailored to the input for guided restoration. These retrieved priors are then injected into the restoration pipeline via an efficient Homogeneity-Guided Attention (HGA) mechanism. Furthermore, to comprehensively address heterogeneity, we design a Hierarchical Heterogeneity Balancer (H2B) that mitigates both inter- and intra-task conflicts during optimization, facilitating balanced and effective multi-task learning. Extensive experiments on two large-scale benchmarks, MedIR-2D-500K and MedIR-3D-3K, demonstrate that UniH3 achieves state-of-the-art performance on both all-in-one and single-task medical image restoration. We hope this work establishes a strong benchmark and advances the development of general-purpose medical image restoration models. Code is available at https://github.com/Yaziwel/UniH3.",
@@ -31767,7 +31767,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-11T22:56:11.008404+00:00",
+      "updated_at": "2026-09-12T20:01:16.704372+00:00",
       "paper": {
         "title": "FreeFlow: A Bias-free Hierarchical Transformer for Optical Flow Estimation",
         "summary": "Optical flow methods typically rely on task-specific inductive biases, such as correlation volumes, feature warping, and iterative refinement, among others, to reach high accuracy. While effective, such biases constrain the model to predefined heuristics, which can limit its expressivity and lead to more complex pipelines and additional computational cost. We present FreeFlow, a hierarchical transformer built without any flow-specific components, using instead a single feed-forward encoder--decoder. FreeFlow combines three attention variants: window attention for local processing, shifted-window attention for cross-window information exchange, and a global attention operating at a reduced resolution. The resulting architecture scales naturally with model capacity, enabling a consistent accuracy gain from small to large variants. Despite the absence of standard inductive biases, FreeFlow achieves state-of-the-art results on major benchmarks, including Sintel (0.68/1.48 EPE on Clean/Final), KITTI-2015 (3.23 Fl-all), and Spring (3.192 1px), while remaining memory efficient at 1080p inference.",
@@ -31790,7 +31790,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-11T13:10:20.859611+00:00",
       "last_error": null,
-      "updated_at": "2026-09-11T22:55:59.164575+00:00",
+      "updated_at": "2026-09-12T20:01:16.704394+00:00",
       "paper": {
         "title": "Mi-Ripple: Restoring Images Degraded by Iterative AI Editing",
         "summary": "Iterative reference-conditioned image editing can introduce grid-like and granular textures, commonly described as digital ripple. We present Mi-Ripple, a diagnosis-guided restoration workflow that suppresses this digital ripple while protecting image structure. Mi-Ripple separates periodic lattice artifacts from content-entangled granular texture, then combines selective spectral notching, structure-aware smoothing, and cleaned-reference regeneration. This separation enables low-distortion filtering when artifacts are spectrally isolated and visual reconstruction when filtering would erase legitimate detail. Across fourteen notch-only executions, whole-image residual standard deviation is 0.08--0.44 in CIELAB lightness units. In a paired regeneration example, reference cleaning reduces output debris density by 45\\%. Mi-Ripple links measurable artifact reduction to visibly cleaner generated images, rather than optimizing a spectral score alone.",
@@ -31811,7 +31811,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-11T22:55:59.164545+00:00",
+      "updated_at": "2026-09-12T20:01:16.704361+00:00",
       "paper": {
         "title": "Adaptive Bridge: A Proxy-Based Decoupling Layer for Mitigating DDS Backpressure in ROS 2",
         "summary": "In systems built on Robot Operating System 2 (ROS 2) and using Data Distribution Service (DDS), a single network-impaired or throttled subscriber on a RELIABLE topic can cause backpressure that degrades throughput and latency for all other subscribers, including safety-critical ones sharing the publisher, because the publisher's DDS writer can no longer accept new samples. We present Adaptive Bridge, a proxy-based layer that decouples critical subscribers from degraded or noncritical ones, thereby isolating the critical path through topic splitting and dynamic rate control. The proxy acts as a middleman and subscribes to the original topic and republishes the messages to two independent DDS writers: one RELIABLE writer for critical nodes and one BEST EFFORT writer for noncritical or degraded nodes, thus isolating the degraded nodes and safeguarding the publisher and critical nodes from backpressure. A probe-based classifier actively monitors subscriber health through sampling with hysteresis and adjusts subscriber rate limits in real time. We evaluate the system under a Gilbert-Elliott bursty wireless loss model using a reproducible Docker-based harness. The results show that using the Adaptive Bridge in our evaluation harness reduces the critical subscriber tail p95 latency from up to 15 s to 1.55 ms across all impairment severities while preserving the publisher's configured throughput.",
@@ -31832,7 +31832,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-11T22:55:59.164551+00:00",
+      "updated_at": "2026-09-12T20:01:16.704367+00:00",
       "paper": {
         "title": "IdeaAMBIG: Benchmarking Implementation-Critical Gaps in Research-Idea Specifications",
         "summary": "A research idea may be novel, coherent, and scientifically plausible, yet its proposed method may remain insufficiently specified for faithful implementation. We study the codification readiness of implementation-facing research-method specifications, defined by whether they provide sufficient methodological information for a competent implementer or coding agent to construct the intended method without unsupported assumptions. We construct evidence-grounded specifications and their supported resolutions from papers, codebases, issue threads, and reproduction artifacts. We introduce IdeaAMBIG, a benchmark of 660 evidence-grounded instances: 163 real-world gaps from reproducibility reports and GitHub issues, and 497 controlled synthetic gaps injected into codification-ready references. IdeaAMBIG evaluates three capabilities: codification-readiness assessment, defect localization, and clarification action generation. Defect localization receives only the specification, whereas clarification additionally receives the annotated defect. Across 13 LLMs, the best model achieves 9.6% Macro Defect Recovery Rate on real-world instances but 80.6% Macro Clarification Action Success Rate when given the defect. In an oracle study, supplying the gold resolution raises the downstream codification-ready rate from 14% to 98%. Across all evaluated models, defect localization is the main bottleneck, with stronger clarification given the defect.",
@@ -31856,7 +31856,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-11T22:55:59.164559+00:00",
+      "updated_at": "2026-09-12T20:01:16.704382+00:00",
       "paper": {
         "title": "Building Multilingual Bridges: Data Mixing as the Pillar of Generalization for In-Language Reasoning",
         "summary": "Reasoning language models have made substantial advances on a variety of complex tasks, yet their capabilities remain overwhelmingly English-centric: models primarily reason in English regardless of the language they are prompted in. This is inaccessible for non-English-speaking users, risks losing the intent of the original question, and forgoes knowledge more readily expressed in the target language. In this work, we advance L2 reasoning, the ability of a model to reason consistently in the language of the user's prompt, thus building an in-language bridge between the prompt and the answer. We approach this problem from a data-centric angle, investigating how to optimize data composition and scheduling in SFT for reasoning generalization. Building Tiny Aya L2-Thinker at 3.35B scale, we achieve an L2 reasoning rate above 93% across 60 languages on 6 benchmarks spanning math, commonsense reasoning, instruction following, open-ended generation, and cultural reasoning while keeping performance strong. We show the path to generalizing L2 reasoning to held-out languages goes through broader language coverage, readily available multilingual non-reasoning data, and a sufficient English reasoning backbone. These findings indicate that reasoning is a language-agnostic behavior that can be transferred across typologically diverse languages through careful data mixing and without requiring reasoning supervision in every target language. We release our model weights and multilingual reasoning data to support further research on accessible, in-language reasoning.",
@@ -31879,11 +31879,11 @@
     "2609_11923v1": {
       "id": "2609_11923v1",
       "filename": "post_2609_11923v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-09-12T07:35:13.901468+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-12T17:37:55.388668+00:00",
+      "updated_at": "2026-09-12T20:01:27.608775+00:00",
       "paper": {
         "title": "GPU-CFR: 80x Faster Counterfactual Regret Minimization by Compiling the Game to Static Dataflow and CUDA Graph Replay",
         "summary": "Counterfactual regret minimization (CFR) is one of the few large numerical workloads that still runs faster on CPUs than on GPUs. Each iteration sweeps a game tree with up to billions of states in millions of small, interdependent gather and scatter steps issued through a generic tree interface. On a GPU every kernel finishes in microseconds, so kernel launches and framework dispatch dominate the run time, and prior GPU implementations have lost to optimized CPU code. We observe that for a fixed game, everything about a CFR iteration except the numerical values is known before the first iteration runs. We propose GPU-CFR, a compiler and runtime built on this observation. It compiles any game once into static dataflow: flat edge and information-set arrays, precomputed indices, and depth-level batched passes fix the entire operation sequence, and only solver state changes between iterations. Static chance folding, depth-level execution blocks, and a dual-lane reach buffer cut the number of framework operations by up to 18.1x. Because shapes, indices, and buffer addresses never change, CUDA Graph Replay records the iteration once and replays it with a single graph launch. On one A100, across an eight-game suite that spans card games, dice games, and board games, GPU-CFR runs 29.8--80.4x faster than the fastest prior GPU CFR on the same accelerator, and 14--258x faster than LiteEFG, one of the fastest open-source CPU implementations, on the four largest games. The compiled representation carries most of that margin: on eight CPU threads with no accelerator it is already 2.2--51.1x faster than the GPU baseline. On the CPU the optimized path reproduces the reference iterates bitwise, and tree construction and graph capture pay for themselves within the first solve. GPU-CFR beats every CPU and GPU baseline on the mid-to-large games of the suite without changing the update rule.",
@@ -31894,7 +31894,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2609.11923v1"
       },
-      "priority_score": 30
+      "priority_score": 30,
+      "korean_title": "GPU-CFR: 정적 데이터 흐름 컴파일 및 CUDA 그래프 리플레이를 통한 80배 더 빠른 반사실적 후회 최소화"
     },
     "2609_11918v1": {
       "id": "2609_11918v1",
@@ -31919,11 +31920,11 @@
     "2609_11916v1": {
       "id": "2609_11916v1",
       "filename": "post_2609_11916v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-09-12T07:35:13.901500+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-12T17:37:55.388690+00:00",
+      "updated_at": "2026-09-12T20:01:35.816379+00:00",
       "paper": {
         "title": "Can Edge-Deployable Vision-Language Models Identify Species?",
         "summary": "Camera traps often run in the field on edge hardware with limited or no connectivity, making small, locally-deployable vision-language models (VLMs) -- not frontier-scale ones -- the practically relevant class to evaluate for species identification. We test whether models in this deployment-relevant 2--8B range carry genuine taxonomic knowledge, evaluating four such VLMs (Qwen3-VL 2B/4B/8B, Gemma3 4B) against the domain-specific specialist BioCLIP (300M parameters) on a 96-species task, comparing clean iNaturalist photographs against camera-trap imagery from 6 LILA.science collections, on two independently-sampled evaluation sets. All models identify species far above chance, but every model -- general-purpose or specialist -- degrades sharply on field imagery (domain gaps of 9.6--26.6 percentage points, consistent across taxonomic levels and both evaluation sets), indicating the degradation reflects general image legibility rather than fine-grained discrimination failure. BioCLIP substantially outperforms every VLM tested (by 33.2--59.2 percentage points across an expanded 200-image sample for every model) despite its far smaller size, suggesting the gap reflects specialized training data rather than model scale; yet BioCLIP's own domain gap (18.0 points) is statistically indistinguishable from the best VLM's (22.3 points), suggesting the clean-to-field degradation itself is a property of the image-quality shift rather than a general-purpose-model weakness. Under open-set prompting, 5.9--9.6% of responses are syntactically valid but taxonomically nonexistent species names; the relative fabrication-rate ranking across models replicates exactly across both evaluation sets, a more robust finding than any single point estimate.",
@@ -31937,7 +31938,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2609.11916v1"
       },
-      "priority_score": 30
+      "priority_score": 30,
+      "korean_title": "엣지 환경에 배포 가능한 시각-언어 모델은 종을 식별할 수 있는가?"
     },
     "2609_11915v1": {
       "id": "2609_11915v1",
@@ -32184,11 +32186,11 @@
     "2609_11859v1": {
       "id": "2609_11859v1",
       "filename": "post_2609_11859v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-09-12T07:35:13.901562+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-12T17:37:55.388725+00:00",
+      "updated_at": "2026-09-12T20:01:45.155878+00:00",
       "paper": {
         "title": "From Parameters to Answers: How LLMs Retrieve and Use Their Internal Knowledge",
         "summary": "How does a language model's dependence on query-routing information and target knowledge change as it answers a question? We study this question through layerwise interventions on the hidden state at the end of the question. Across Qwen, Llama, and Gemma, we compare country-continent questions with noun, adjective, and code answers while keeping several fitted measurements distinct. A pair-conditioned request direction describes which country is queried in natural single-country questions; a global request direction describes first- versus second-country requests in paired questions; separate selection candidates test control among contents already available in the hidden state. A diagnostic reanalysis of frozen Qwen natural-question states shows that the pair-conditioned direction grows stronger before interventions on it begin to alter later fitted knowledge, with this causal window opening while answer-supporting content is still forming. The paired three-model trajectories are not uniform: Gemma shows a partially overlapping mid-layer routing-content profile, whereas Llama has no sustained routing-effect window under the same gates. In the paired protocol, dependence on the global request direction decreases from fixed earlier to later layer sets while dependence on fitted content persists. A matched Qwen comparison shows that the pair-conditioned direction retains a late effect, so this operational handoff concerns the global fitted direction rather than all request information. These results separate early readability, natural strength, causal steering, and later content dependence.",
@@ -32202,16 +32204,17 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2609.11859v1"
       },
-      "priority_score": 30
+      "priority_score": 30,
+      "korean_title": "매개변수에서 답까지: 거대 언어 모델은 어떻게 내부 지식을 검색하고 사용하는가"
     },
     "2609_11842v1": {
       "id": "2609_11842v1",
       "filename": "post_2609_11842v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-09-12T07:35:13.901568+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-12T17:37:55.388728+00:00",
+      "updated_at": "2026-09-12T20:01:53.976414+00:00",
       "paper": {
         "title": "Model-Aware Schedules Improve Generation via Fiberwise Optimal Transport",
         "summary": "Diffusion and flow-matching schedules control the signal and noise coefficients that mix data and noise along affine probability paths. Minimizing a kinetic action defined on coefficient paths, motivated by optimal transport, helps explain strong baselines but remains model-agnostic and ignores prediction error. Here we introduce a model-aware schedule construction based on fiberwise optimal transport. At a fixed time and state on the probability path, compatible signal/noise decompositions form an affine fiber. We define a fiberwise prediction risk by averaging optimal-transport costs between the true and predictor-induced decompositions within these fibers. On a fixed coefficient curve, combining this risk with coefficient-path kinetic action yields a closed-form optimal time allocation. This construction extends to general linear prediction targets, and the risk profile can be estimated from an early baseline checkpoint. We evaluate DDPMs and flow matching across prediction targets, training configurations, risk-estimation checkpoints, datasets, and architectures. Our model-aware schedules consistently outperform strong baselines, including a 38.6% relative FID reduction for flow matching on CIFAR-10 at 16 function evaluations. Each model-agnostic kinetic baseline determines its own kinetic reference coordinate. In these coordinates, fiberwise-risk profiles from independently trained models in different settings align closely after normalization to unit area. The resulting schedule deformations used in training also align, suggesting empirical universality across the evaluated models and settings. Pretrained-checkpoint diagnostics extend this normalized-risk agreement to larger conditional latent diffusion and 2-RF models. A frozen analytic allocation template retains most of the model-aware improvement without further risk estimation or model-specific fitting.",
@@ -32224,7 +32227,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2609.11842v1"
       },
-      "priority_score": 30
+      "priority_score": 30,
+      "korean_title": "모델 인식 스케줄을 통한 섬유별 최적 운송 기반 생성 품질 향상"
     },
     "2609_11805v1": {
       "id": "2609_11805v1",
@@ -32598,8 +32602,8 @@
     }
   },
   "last_run": {
-    "started_at": "2026-09-12T17:37:55.391009+00:00",
-    "discovered": 30,
+    "started_at": "2026-09-12T20:01:16.707001+00:00",
+    "discovered": 10,
     "selected": 4,
     "generated": 4,
     "failed": 0,
@@ -32609,26 +32613,26 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 19757,
-      "output_tokens": 5935,
+      "prompt_tokens": 20265,
+      "output_tokens": 5856,
       "thought_tokens": 0,
-      "total_tokens": 25692,
-      "estimated_usd": 0.01384175
+      "total_tokens": 26121,
+      "estimated_usd": 0.01385025
     },
-    "finished_at": "2026-09-12T17:38:34.831121+00:00"
+    "finished_at": "2026-09-12T20:01:54.830122+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 2230,
-    "prompt_tokens": 5620212,
-    "output_tokens": 1642496,
+    "requests": 2238,
+    "prompt_tokens": 5640477,
+    "output_tokens": 1648352,
     "thought_tokens": 0,
-    "total_tokens": 7262708,
-    "estimated_usd": 3.868797
+    "total_tokens": 7288829,
+    "estimated_usd": 3.88264725
   },
   "last_publication_run": {
-    "started_at": "2026-09-12T17:37:55.391009+00:00",
-    "discovered": 30,
+    "started_at": "2026-09-12T20:01:16.707001+00:00",
+    "discovered": 10,
     "selected": 4,
     "generated": 4,
     "failed": 0,
@@ -32638,17 +32642,17 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 19757,
-      "output_tokens": 5935,
+      "prompt_tokens": 20265,
+      "output_tokens": 5856,
       "thought_tokens": 0,
-      "total_tokens": 25692,
-      "estimated_usd": 0.01384175
+      "total_tokens": 26121,
+      "estimated_usd": 0.01385025
     },
-    "finished_at": "2026-09-12T17:38:34.831121+00:00"
+    "finished_at": "2026-09-12T20:01:54.830122+00:00"
   },
   "daily_usage": {
     "date": "2026-09-12",
-    "estimated_usd": 0.0556275,
-    "publications": 16
+    "estimated_usd": 0.06947775,
+    "publications": 20
   }
 }
