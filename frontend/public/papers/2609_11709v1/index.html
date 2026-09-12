@@ -1,0 +1,72 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>에이전트 간 의견 불일치 시: 다중 에이전트 집단 의사결정을 위한 라벨 없는 닻으로서의 베이지안 역추론 | ArXiv Translator AI</title><meta name="description" content="에이전트 간 의견 불일치 시: 다중 에이전트 집단 의사결정을 위한 라벨 없는 닻으로서의 베이지안 역추론"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_11709v1"><meta property="og:type" content="article"><meta property="og:title" content="에이전트 간 의견 불일치 시: 다중 에이전트 집단 의사결정을 위한 라벨 없는 닻으로서의 베이지안 역추론"><meta property="og:description" content="에이전트 간 의견 불일치 시: 다중 에이전트 집단 의사결정을 위한 라벨 없는 닻으로서의 베이지안 역추론"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_11709v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="에이전트 간 의견 불일치 시: 다중 에이전트 집단 의사결정을 위한 라벨 없는 닻으로서의 베이지안 역추론"><meta name="twitter:description" content="에이전트 간 의견 불일치 시: 다중 에이전트 집단 의사결정을 위한 라벨 없는 닻으로서의 베이지안 역추론"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_11709v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "에이전트 간 의견 불일치 시: 다중 에이전트 집단 의사결정을 위한 라벨 없는 닻으로서의 베이지안 역추론", "description": "에이전트 간 의견 불일치 시: 다중 에이전트 집단 의사결정을 위한 라벨 없는 닻으로서의 베이지안 역추론", "datePublished": "2026-09-10", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_11709v1", "author": [{"@type": "Person", "name": "Ken Chen"}, {"@type": "Person", "name": "Wei Wang"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_11709v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_11709v1"});gtag('event', 'paper_view', {"paper_id": "2609_11709v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>에이전트 간 의견 불일치 시: 다중 에이전트 집단 의사결정을 위한 라벨 없는 닻으로서의 베이지안 역추론</h1><p>에이전트 간 의견 불일치 시: 다중 에이전트 집단 의사결정을 위한 라벨 없는 닻으로서의 베이지안 역추론</p><pre>에이전트 간 의견 불일치 시: 다중 에이전트 집단 의사결정을 위한 라벨 없는 닻으로서의 베이지안 역추론
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** When Agents Disagree: Bayesian Backward Reasoning as a Label-Free Anchor for Multi-Agent Collective Decision-Making
+&gt; - **저자:** Ken Chen, Wei Wang, Sachith Seneviratne, Hansani Weeratunge, Saman Halgamuge
+&gt; - **발행일:** 2026-09-10
+&gt; - **PDF 링크:** [When Agents Disagree: Bayesian Backward Reasoning as a Label-Free Anchor for Multi-Agent Collective Decision-Making](https://arxiv.org/pdf/2609.11709v1)
+
+
+✨ 3줄 핵심 요약
+- 기존 의사결정 방식(투표 등)은 동일한 추론 경로를 사용하여 공통된 오류를 범할 위험이 큼.
+- 베이지안 역추론으로 생성한 &#x27;역방향 사후확률(reverse posterior)&#x27;을 의사결정의 독립적 기준으로 활용.
+- 실험 결과, 제안된 3가지 방식(MinJS, FwdJS, LogLin)은 모든 백본 모델에서 기존 방식을 능가하며 특히 의견 불일치 상황에서 성능 향상이 두드러짐.
+
+📖 쉽게 풀어쓴 1분 핵심
+여러 명의 인공지능(AI) 에이전트에게 같은 질문을 던졌을 때, 서로 다른 답을 내놓으면 무엇이 옳은지 판단하기 어렵습니다. 보통은 다수결을 따르지만, AI 모델들은 비슷한 논리 구조를 가졌기에 모두가 똑같이 틀리는 &#x27;집단 오류&#x27;에 빠지기 쉽습니다. 
+
+이 논문은 해결책으로 &#x27;거꾸로 생각하기(역추론)&#x27;를 제시합니다. 정답에서 증거를 찾아가는 역방향 확률 모델을 만들어 일종의 &#x27;기준점(Anchor)&#x27;을 세우는 것입니다. 이 기준점과 에이전트들의 결과를 비교해, 누가 더 신뢰할 만한지 판단하거나 정보를 통합함으로써 집단 지성의 정확도를 높입니다.
+
+🎯 배경 및 문제점
+- **기존 방식의 한계:** 투표, 선거 규칙, LLM 판사 모델 등은 모두 &#x27;증거→라벨&#x27;로 향하는 순방향 추론에 의존함.
+- **오류 상관성:** 에이전트들이 같은 데이터 처리 방식을 공유하기 때문에, 독립적인 판단을 내리지 못하고 동일한 오류를 반복함.
+- **부작용:** LLM 판사를 쓸 경우, 모델 자체의 편향(위치 편향, 장황함 등)이 결과에 개입됨.
+
+💡 핵심 기술 및 아키텍처
+- **베이지안 역추론 (Bayesian Backward Reasoning):** 순방향과는 다른 &#x27;역방향 사후확률(R)&#x27;을 생성하여 시스템의 기준으로 삼음. 이는 예측 정확도가 다소 낮더라도, 순방향 모델과는 다른 오답 패턴을 보여주므로 유용한 보완책이 됨.
+- **집단 의사결정 전략:**
+    1. **MinJS (Hard Selection):** &#x27;젠슨-샤논 발산(JS Divergence)&#x27;을 통해 기준점 R과 가장 일치하는 에이전트 하나를 선택.
+    2. **FwdJS (Soft Reweighting):** R과의 일치도에 따라 에이전트별 가중치를 조정하여 결과 조합.
+    3. **LogLin (Forward-Reverse Fusion):** 순방향 조합 결과와 역방향 기준점 R을 직접 결합하여 최종 결과 도출.
+- **선택적 보정:** 라벨 데이터가 있는 경우, 두 단계의 가벼운 교정을 통해 역방향 기준점 R의 정확도를 높일 수 있음.
+
+📊 실험 결과 분석
+- **성능 향상:** DDXPlus 벤치마크 및 5개 LLM 백본에서 기존 방식 대비 일관된 성능 향상을 보임.
+- **불일치 상황의 강점:** 에이전트 간 의견이 갈리는(Disagree) 사례에서 LogLin 방식이 가장 큰 성능 개선 폭을 기록함.
+- **역추론의 가치:** 역방향 기준점(R)은 단독 예측기일 때는 성능이 낮더라도, 의사결정의 &#x27;닻(Anchor)&#x27; 역할을 할 때는 순방향 평균이나 일반 모델보다 훨씬 우수한 보완 정보를 제공함.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+- **집단 지성 강화:** AI 협업 시스템에서 단순히 다수결에 의존하지 않고, 논리적 다양성을 확보하여 복잡한 문제 해결의 정확도를 높일 수 있음.
+- **실무 적용 한계:** 본 연구는 49개 질병 진단 등 정해진 후보군(Closed-set) 내의 분류 작업에 최적화되어 있음.
+- **주의사항:** 제안된 방식은 임상 의사결정 보조 시스템으로 바로 사용되어서는 안 되며, 현재는 다중 에이전트의 논리적 합의를 도출하는 연구 단계임.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [When Agents Disagree: Bayesian Backward Reasoning as a Label ...](https://www.catalyzex.com/paper/when-agents-disagree-bayesian-backward)
+&gt; - [When Agents Disagree: Bayesian Backward Reasoning as a Label ...](https://chatpaper.com/paper/343678)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;베이지안 역추론을 닻(Anchor)으로 활용한다는 아이디어 자체는 고전적인 통계적 방법론을 LLM 멀티 에이전트 시스템에 우아하게 이식했군요. 다만, 순방향 모델과 역방향 모델 간의 확률 분포 괴리가 클 때 LogLin 방식이 과연 안정적인 수렴을 보장할지 의문입니다. 특히 닫힌 도메인(Closed-set)을 벗어나면 역방향 추론의 사후확률 추정치가 급격히 붕괴할 텐데, 이에 대한 일반화 성능 검증이 부족해 보입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에선 &#x27;Closed-set&#x27; 제약이 가장 큰 걸림돌이죠. 현업에선 당장 프로덕션에 올려야 하는데, 역방향 모델까지 서빙하려면 추론 비용(Inference Cost)이 2배로 뛸 텐데 이걸 상쇄할 만큼의 성능 향상이 있느냐가 관건입니다. 제 생각엔 FwdJS로 에이전트 가중치만 조정하는 정도가 그나마 배포 가능한 마지노선 같네요. LogLin은 모델 간의 확률 보정을 위해 별도 파이프라인 구축해야 해서 유지보수 지옥이 열릴 듯합니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;다들 너무 보수적이신 거 아니에요? ㅋㅋ 지금 LLM 판사 모델들 편향성 때문에 난리인데, 적어도 &#x27;투표&#x27;라는 단순한 로직에서 벗어나 통계적 근거를 제시했다는 것만으로도 충분히 의미 있다고 봅니다! 당장 제 졸업 논문 실험에도 적용해볼 생각인데, 특히 저 LogLin 방식이 의견 불일치 상황에서 보여준 강점은 파이프라인 복잡도를 감수할 가치가 충분해 보여요. 릿지(Ridge)나 로지스틱 회귀로 간단히 보정만 잘해도 꽤 재미있는 결과 나올 듯?&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
