@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>텍스트-이미지 생성 시스템에서의 문화적 편향의 원인으로서의 프롬프트 수정 | ArXiv Translator AI</title><meta name="description" content="텍스트-이미지 생성 시스템에서의 문화적 편향의 원인으로서의 프롬프트 수정"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_11532v1"><meta property="og:type" content="article"><meta property="og:title" content="텍스트-이미지 생성 시스템에서의 문화적 편향의 원인으로서의 프롬프트 수정"><meta property="og:description" content="텍스트-이미지 생성 시스템에서의 문화적 편향의 원인으로서의 프롬프트 수정"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_11532v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="텍스트-이미지 생성 시스템에서의 문화적 편향의 원인으로서의 프롬프트 수정"><meta name="twitter:description" content="텍스트-이미지 생성 시스템에서의 문화적 편향의 원인으로서의 프롬프트 수정"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_11532v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "텍스트-이미지 생성 시스템에서의 문화적 편향의 원인으로서의 프롬프트 수정", "description": "텍스트-이미지 생성 시스템에서의 문화적 편향의 원인으로서의 프롬프트 수정", "datePublished": "2026-09-10", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_11532v1", "author": [{"@type": "Person", "name": "Aleksandra Urman"}, {"@type": "Person", "name": "Elsa Lichtenegger"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_11532v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_11532v1"});gtag('event', 'paper_view', {"paper_id": "2609_11532v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>텍스트-이미지 생성 시스템에서의 문화적 편향의 원인으로서의 프롬프트 수정</h1><p>텍스트-이미지 생성 시스템에서의 문화적 편향의 원인으로서의 프롬프트 수정</p><pre>텍스트-이미지 생성 시스템에서의 문화적 편향의 원인으로서의 프롬프트 수정
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Prompt Revision as a Source of Cultural Bias in Text-to-Image Systems
+&gt; - **저자:** Aleksandra Urman, Elsa Lichtenegger, Salima Jaoua, Azza Bouleimen, Robin Forsberg, Corinna Hertweck, Stefania Ionescu, Nicolò Pagan, Ancsa Hannak, Joachim Baumann
+&gt; - **발행일:** 2026-09-10
+&gt; - **PDF 링크:** [Prompt Revision as a Source of Cultural Bias in Text-to-Image Systems](https://arxiv.org/pdf/2609.11532v1)
+
+
+✨ 3줄 핵심 요약
+* 상용 텍스트-이미지 생성 모델은 사용자가 인지하거나 비활성화할 수 없는 &#x27;프롬프트 수정(Prompt Revision)&#x27; 단계를 내부적으로 거칩니다.
+* 연구 결과, 미국 기반이 아닌 비서구권 맥락은 수정 과정에서 좁은 어휘로 단순화되고 특정 고정관념으로 변질되는 현상이 확인되었습니다.
+* 문화적 편향을 제거하려면 이미지 생성 모델 자체뿐만 아니라, 그 앞단에 존재하는 프롬프트 수정 계층을 함께 감사하고 개선해야 합니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+현재의 생성형 AI 모델들은 사용자가 입력한 프롬프트를 AI가 이해하기 쉬운 형태로 몰래 다듬는 &#x27;수정 계층&#x27;을 두고 있습니다. 그동안의 AI 편향성 연구는 결과물인 &#x27;이미지&#x27;만 분석해 왔기에, 편향이 프롬프트 수정 단계에서 생긴 것인지 이미지 생성 단계에서 생긴 것인지 알 수 없었습니다. 본 연구는 15개 언어와 31개의 문화적 맥락을 포함한 8,960개의 프롬프트 벤치마크(WORLDVIEW)를 통해, 상용 모델들이 비서구권 프롬프트를 획일적인 고정관념의 틀로 강제로 압축한다는 사실을 밝혀냈습니다. 결론적으로, 우리가 보는 AI 이미지의 편향은 시스템 내부의 &#x27;보이지 않는 편집자&#x27;에 의해 강화되고 있습니다.
+
+🎯 배경 및 문제점
+* **보이지 않는 수정:** DALL-E-3, Imagen-4 등 상용 모델들은 사용자 모르게 프롬프트를 확장하거나 번역하는 수정 계층을 운영합니다.
+* **분석의 한계:** 기존 연구는 결과물(이미지)만을 독립적인 결과로 간주하여, 문화적 편향이 생성 파이프라인의 어디에서 시작되는지 규명하지 못했습니다.
+* **디지털 식민주의:** 모델들이 주로 미국 중심의 데이터로 학습되면서, 비서구권 문화를 스테레오타입으로 단순화하거나 왜곡하는 문제가 지속적으로 지적되어 왔습니다.
+
+💡 핵심 기술 및 아키텍처
+* **WORLDVIEW 벤치마크:** 15개 언어 및 31개 언어-문화 맥락 조합을 포함하는 총 8,960개의 대규모 데이터셋을 구축했습니다.
+* **분석 방법론:** 세 단계의 분석을 통해 프롬프트 수정 계층이 특정 문화를 어떻게 표시(marking)하는지, 어휘를 얼마나 좁게 평탄화(flattening)하는지, 그리고 그 어휘가 고정관념에 기반하는지를 평가했습니다.
+* **인과관계 확인:** 프롬프트 수정 계층이 없는 모델과 수정 계층이 있는 모델의 출력물을 비교하여, 수정 단계 자체가 고정관념을 생성하는 직접적인 원인임을 증명했습니다.
+
+📊 실험 결과 분석
+* **미국 vs. 비서구권:** 미국 관련 맥락은 가장 적게 표시(least-marked)되는 반면, 비서구권 및 비영어권 맥락은 훨씬 더 강하게 표시되며 특정 어휘로 단순화되는 경향을 보였습니다.
+* **고정관념으로의 강제 수렴:** 예를 들어, 호주(Australia) 맥락에서는 &#x27;arid(건조한)&#x27;, &#x27;desert(사막)&#x27;, &#x27;kangaroo(캥거루)&#x27; 등 특정 단어들이 프롬프트 수정 과정에서 인위적으로 증폭되었습니다.
+* **수정 계층의 책임:** 프롬프트 수정 과정에서만 발생하는 고유 어휘들이 존재하며, 이는 이미지 생성 모델의 원래 의도와 무관하게 시스템이 강제하는 문화적 편향임이 입증되었습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **편향 제거 전략의 전환:** 이미지 모델의 파라미터만 조정하는 방식은 근본적인 해결책이 될 수 없습니다. 편향이 수정 단계에서 주입된다면, 프롬프트 수정 계층에 대한 투명성 확보와 제어권 제공이 필수적입니다.
+* **실무적 제언:** AI 시스템을 설계하거나 도입할 때, 모델 자체의 성능뿐만 아니라 내부적인 프롬프트 처리 과정이 사용자의 문화적 다양성을 어떻게 왜곡하고 있는지 반드시 평가해야 합니다.
+* **연구의 확장:** 본 연구는 향후 시스템 배포 과정에서 발생하는 문화적 편향을 감사(audit)하는 표준적인 기준을 제시하며, AI의 문화적 형평성을 제고하는 중요한 지표가 될 것입니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Prompt Revision as a Source of Cultural Bias in Text-to-Image Systems](https://arxiv.org/html/2609.11532v1)
+&gt; - [Prompt Revision as a Source of Cultural Bias in Text-to-Image Systems](https://aiweekly.co/alerts/prompt-revision-as-a-source-of-cultural-bias-in-text-to-image-systems)
+&gt; - [Prompt Revision as a Source of Cultural Bias in Text-to-Image Systems](https://www.catalyzex.com/paper/prompt-revision-as-a-source-of-cultural-bias)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문 읽어봤네. 결국 &#x27;프롬프트 수정 계층&#x27;이라는 블랙박스가 모델의 창의성을 오히려 억압하고 서구 중심의 스테레오타입을 강제하고 있다는 지적이 핵심이군. 단순히 레이턴트 스페이스의 문제가 아니라 파이프라인 설계 단계의 오만함이 드러난 셈이지. 데이터 오염을 넘어 시스템의 &#x27;의도된 왜곡&#x27;을 규명했다는 점에서 학술적 가치가 매우 크다고 본다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로인데, 실무 입장에서는 좀 골치 아프네요. 지금 대다수 상용 서비스가 &#x27;사용자 경험(UX)&#x27; 개선을 명분으로 쿼리 최적화를 강제하거든요. 이거 걷어내면 일반 사용자들은 프롬프트 작성을 더 어려워할 텐데, &#x27;편향성 제거&#x27;와 &#x27;사용성&#x27; 사이에서 어떻게 타협점을 찾을지가 엔지니어들의 다음 숙제가 되겠네요. 서비스 배포 단계에서 이 수정 계층을 튜닝하는 게 모델 파인튜닝보다 훨씬 복잡할 것 같습니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 님들 이거 진짜 대박인 게, 이제 &#x27;프롬프트 엔지니어링&#x27;이라는 게 사실상 모델의 편향을 수정하는 게 아니라 &#x27;시스템의 강제 주입을 어떻게 피하느냐&#x27;의 싸움이 된 거잖아요? WORLDVIEW 벤치마크 바로 깃허브 스타 찍으러 갑니다. 이거 다음 학회에서 무조건 핫할 주제인데, 이제 이미지 생성 모델 논문 쓸 때 &#x27;Prompt Revision Audit&#x27; 섹션 없으면 리뷰어들한테 엄청 깨지겠는데요?&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
