@@ -1,0 +1,67 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>정량적 양극 논증 프레임워크에서의 대조적 설명 | ArXiv Translator AI</title><meta name="description" content="정량적 양극 논증 프레임워크에서의 대조적 설명"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_02399v1"><meta property="og:type" content="article"><meta property="og:title" content="정량적 양극 논증 프레임워크에서의 대조적 설명"><meta property="og:description" content="정량적 양극 논증 프레임워크에서의 대조적 설명"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_02399v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="정량적 양극 논증 프레임워크에서의 대조적 설명"><meta name="twitter:description" content="정량적 양극 논증 프레임워크에서의 대조적 설명"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_02399v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "정량적 양극 논증 프레임워크에서의 대조적 설명", "description": "정량적 양극 논증 프레임워크에서의 대조적 설명", "datePublished": "2026-09-02", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_02399v1", "author": [{"@type": "Person", "name": "Xiang Yin"}, {"@type": "Person", "name": "Nico Potyka"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_02399v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_02399v1"});gtag('event', 'paper_view', {"paper_id": "2609_02399v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>정량적 양극 논증 프레임워크에서의 대조적 설명</h1><p>정량적 양극 논증 프레임워크에서의 대조적 설명</p><pre>정량적 양극 논증 프레임워크에서의 대조적 설명
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Contrastive Explanations in Quantitative Bipolar Argumentation Frameworks
+&gt; - **저자:** Xiang Yin, Nico Potyka, Antonio Rago, Francesca Toni
+&gt; - **발행일:** 2026-09-02
+&gt; - **PDF 링크:** [Contrastive Explanations in Quantitative Bipolar Argumentation Frameworks](https://arxiv.org/pdf/2609.02399v1)
+
+
+✨ 3줄 핵심 요약
+- 정량적 양극 논증 프레임워크(QBAF)에서 두 논증 간의 점수 차이를 설명하는 &#x27;대조적 귀인 함수(CAF)&#x27; 개념을 도입했습니다.
+- 제거 기반, 기울기 기반, 샤플리 값 기반의 세 가지 CAF 기법을 제시하고 각각의 수학적 특성을 규명했습니다.
+- 동적 계획법을 통해 다수의 논증에 대한 대조적 설명을 효율적으로 계산하는 알고리즘을 제안했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+기존의 AI 모델이나 논증 시스템은 주로 &quot;왜 이 결론이 나왔는가?&quot;라는 단일 질문에 답하는 데 집중했습니다. 하지만 인간은 실제 생활에서 &quot;왜 A가 아니라 B인가?&quot;와 같은 **대조적 질문**을 자주 던집니다. 이 논문은 QBAF라는 논리 모델 내에서 두 가지 결론(논증) 사이의 강도 차이를 유발한 핵심 요인을 찾아내는 방법을 다룹니다. 예를 들어, AI가 동물을 분류할 때 &#x27;얼룩말&#x27;로 판단한 이유를 &#x27;말&#x27;과 비교하여 설명함으로써, 무엇이 두 결과의 차이를 만들었는지 명확히 밝혀냅니다.
+
+🎯 배경 및 문제점
+- **기존의 한계:** 대부분의 QBAF 설명 모델은 단 하나의 특정 논증이 왜 선택되었는지에만 초점을 맞추어, 다른 선택지와 비교했을 때의 차별점(결정적 이유)을 제시하는 데 부족함이 있었습니다.
+- **철학적 필요성:** 심리학 및 사회과학 연구에 따르면, 인간의 설명 방식은 근본적으로 &#x27;대조적&#x27;입니다. 즉, 사실(P)에 대해 대조군(Q)을 상정하여 그 차이를 파악하려는 경향이 강합니다.
+- **복잡도 문제:** 여러 대안이 존재하는 환경(예: 의료 진단)에서 모든 경우의 수를 따지는 것은 계산적으로 매우 비효율적입니다.
+
+💡 핵심 기술 및 아키텍처
+- **대조적 귀인 함수(CAF):** 두 논증의 강도 차이를 설명하기 위해 제거(Removal), 기울기(Gradients), 샤플리 값(Shapley values)에 기반한 CAF를 정의했습니다.
+- **수학적 속성 규명:** 반대칭성(Anti-symmetry), 가법성(Additivity), 반사실성(Counterfactuality) 등 CAF가 갖추어야 할 속성들을 설정하여 모델의 타당성을 검증했습니다.
+- **효율적인 계산:** 가법성 속성을 활용한 동적 계획법 알고리즘을 도입하여, T개의 대안 논증이 있을 때 필요한 계산량을 $O(T^2)$에서 $O(T)$ 수준으로 획기적으로 줄였습니다. (※ 구체적인 실험 수치는 원문 발췌에 포함되어 있지 않습니다.)
+
+📊 실험 결과 분석
+- **속성별 차이:** 제거 기반, 기울기 기반, 샤플리 값 기반 방법들이 각각 다른 수학적 속성(반사실성, 국소적 충실성, 교차 주제 효율성)을 만족함을 확인했습니다. 
+- **활용 사례:** 의료 분야의 치료법 선택 및 AI 분류기의 편향 식별 사례를 통해, 제안된 기법이 단순히 이론에 그치지 않고 실제 시스템에서 특정 논증이 선택된 차별적 이유를 효과적으로 추출함을 보였습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+- **의료 및 의사결정:** 수십 가지 진단이나 치료법 중 특정 선택이 이루어진 이유를 의사와 환자에게 대조적으로 제시하여 설명 가능한 AI 시스템을 구축할 수 있습니다.
+- **AI 투명성 및 공정성:** 분류 모델에서 발생하는 결과값의 차이를 논리적으로 분석함으로써, 특정 데이터로 인해 발생하는 편향을 식별하고 수정하는 데 기여합니다.
+- **향후 전망:** 제품 추천 시스템 등 논증 프레임워크가 적용된 다양한 분야에서 사용자 이해도를 높이는 도구로 활용될 것으로 기대됩니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Contrastive Explanations in Quantitative Bipolar Argumentation Frameworks](https://arxiv.org/pdf/2609.02399)
+&gt; - [Contrastive Explanations in Quantitative Bipolar Argumentation Frameworks](https://arxiv.org/html/2609.02399v1)
+&gt; - [Contrastive Explanations in Quantitative Bipolar Argumentation Frameworks](https://www.layerthelatestinalattice.com/papers/arxiv:2609.02399)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;QBAF 위에서 대조적 설명을 다룬 점은 흥미롭지만, 논문에서 제시한 CAF의 속성들이 과연 복잡한 실세계의 논증 구조에서도 엄밀하게 유지될지는 의문입니다. 특히 샤플리 값 기반 접근법은 계산 효율성 측면에서 이론적 O(T) 복잡도를 보장하더라도, 논증 간의 복잡한 의존성(Dependencies)이 존재할 때도 동일한 신뢰도를 보일지 추가 검증이 필요해 보입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에선 &#x27;이론적 속성&#x27;보다 &#x27;레이턴시&#x27;가 깡패입니다. O(T) 알고리즘으로 최적화한 건 박수 쳐줄 만하네요. 근데 이거 프로덕션 환경에서 모델 드리프트 생기면 대조적 설명값이 널뛰기할 텐데, 사후 설명(Post-hoc) 모델로서의 안정성 데이터가 실험 결과에 좀 부족한 거 아닙니까? 당장 현업 서비스에 붙이기엔 리스크가 좀 커 보이는데요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;두 분 너무 보수적이신 거 아니에요? &#x27;왜 A가 아니라 B인가&#x27;라는 질문은 인간 인지 모델의 핵심인데, 이걸 QBAF 프레임워크에 성공적으로 녹여냈다는 것 자체가 올해 XAI 분야 탑티어급 기여라고 봅니다! 특히 의료 진단처럼 설명 가능한 AI가 필수적인 도메인에서 &#x27;반사실적 설명&#x27;은 거의 치트키 수준 아닌가요? 저는 이거 바로 제 연구에 접목해 볼 생각입니다.&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
