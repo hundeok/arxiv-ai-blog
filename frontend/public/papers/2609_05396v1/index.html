@@ -1,0 +1,69 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>레이블이 지정된 무선 신호 합성을 위한 딥 생성 모델 | ArXiv Translator AI</title><meta name="description" content="레이블이 지정된 무선 신호 합성을 위한 딥 생성 모델"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_05396v1"><meta property="og:type" content="article"><meta property="og:title" content="레이블이 지정된 무선 신호 합성을 위한 딥 생성 모델"><meta property="og:description" content="레이블이 지정된 무선 신호 합성을 위한 딥 생성 모델"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_05396v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="레이블이 지정된 무선 신호 합성을 위한 딥 생성 모델"><meta name="twitter:description" content="레이블이 지정된 무선 신호 합성을 위한 딥 생성 모델"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_05396v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "레이블이 지정된 무선 신호 합성을 위한 딥 생성 모델", "description": "레이블이 지정된 무선 신호 합성을 위한 딥 생성 모델", "datePublished": "2026-09-04", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_05396v1", "author": [{"@type": "Person", "name": "Yuxiao Li"}, {"@type": "Person", "name": "Keke Hu"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_05396v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_05396v1"});gtag('event', 'paper_view', {"paper_id": "2609_05396v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>레이블이 지정된 무선 신호 합성을 위한 딥 생성 모델</h1><p>레이블이 지정된 무선 신호 합성을 위한 딥 생성 모델</p><pre>레이블이 지정된 무선 신호 합성을 위한 딥 생성 모델
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** A Deep Generative Model for Synthesizing Labeled Wireless Signals
+&gt; - **저자:** Yuxiao Li, Keke Hu, Santiago Mazuelas, Yuan Shen
+&gt; - **발행일:** 2026-09-04
+&gt; - **PDF 링크:** [A Deep Generative Model for Synthesizing Labeled Wireless Signals](https://arxiv.org/pdf/2609.05396v1)
+
+
+✨ 3줄 핵심 요약
+* 무선 센싱 모델 학습에 필수적인 &#x27;레이블이 포함된 고품질 무선 신호&#x27; 데이터셋 확보의 어려움을 해결하기 위해 딥러닝 기반의 IIns-GAN을 제안함.
+* 제안 모델은 변분 추론(Variational Inference) 기법을 활용하여 거리 및 환경 특징을 분리하고, 이를 통해 실제와 유사한 무선 신호를 생성함.
+* 실험 결과, 생성된 신호는 거리 추정 및 환경 식별과 같은 무선 센싱 작업에서 학습 모델의 성능을 향상시키는 효과적인 데이터 증강 수단임을 입증함.
+
+📖 쉽게 풀어쓴 1분 핵심
+무선 센싱 분야에서 인공지능 모델을 제대로 학습시키려면 정확한 거리나 환경 정보(레이블)가 담긴 대량의 신호 데이터가 필요합니다. 하지만 현실에서는 신호를 일일이 측정하고 라벨링하는 데 너무 많은 시간과 비용이 듭니다. 기존 방법들은 환경 모델에 의존하여 설정이 까다롭고 실제 데이터와의 차이가 컸습니다. 이 논문은 IIns-GAN이라는 새로운 딥러닝 모델을 통해, 복잡한 환경에서도 실제 신호의 물리적 특성을 그대로 반영한 &#x27;가짜 신호&#x27;를 생성합니다. 이 데이터로 AI를 학습시키면 실제 측정 데이터가 부족한 환경에서도 훨씬 더 정확하고 신뢰할 수 있는 무선 센싱 기술을 구현할 수 있습니다.
+
+🎯 배경 및 문제점
+* **데이터 확보의 난제:** 위치 기반 레이블이 포함된 무선 신호 데이터셋은 무선 센싱의 핵심이지만, 실측 및 라벨링 과정에 과도한 비용과 인력이 소요됨.
+* **기존 방식의 한계:** 기존 신호 합성 방식은 환경 모델링에 의존하여 하이퍼파라미터 튜닝이 복잡하고, 현실적인 환경(실내 다중 경로, NLOS 등)을 충분히 반영하지 못해 학습 효과가 떨어짐.
+
+💡 핵심 기술 및 아키텍처
+* **IIns-GAN (Inter-Instance Generative Adversarial Networks):** 레이블이 지정된 신호 생성을 잠재 변수 모델(LVM) 내의 추론 문제로 해석하여 해결.
+* **변분 추론(VI) 결합:** 엔코더와 디코더를 활용해 거리($z_d$)와 환경($z_e$) 특징을 분리하고, 이를 토대로 목표 레이블에 맞는 신호를 생성함.
+* **3단계 학습 흐름:**
+    1. **IIns-VAE:** 신호에서 특징을 분리하고 재구성함.
+    2. **역추정(Inverse Estimator):** 레이블로부터 거리 특징을 생성하여 신호 합성 유도.
+    3. **판별자(Discriminator):** 생성된 신호와 실제 신호를 비교하여 생성 품질을 강화.
+
+📊 실험 결과 분석
+* **데이터 증강 효과:** 초광대역(UWB) 데이터셋을 활용해 학습시킨 CNN 모델에서, IIns-GAN으로 생성된 데이터를 증강했을 때 거리 추정 및 환경 식별 성능이 개선됨.
+* **실제 데이터와 유사성:** 생성된 신호가 실제 물리적 측정치의 특성을 효과적으로 모사하며, 특히 10배 증강 데이터(x10)를 사용했을 때 성능 향상폭이 큼.
+* *주의: 본 발췌문에는 구체적인 RMSE, MAE 수치 및 상세 성능 지표의 정확한 수치값이 기재되어 있지 않으며, 데이터셋의 규모나 실험 환경의 절대적 수치는 논문 내 표를 통해 확인 가능함.*
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **실무 적용:** 고가의 측정 장비나 인력 없이도 가상 환경에서 무선 센싱 알고리즘을 테스트하고 고도화할 수 있어 IoT, 실내 위치 추적, 웨어러블 기기 개발 비용을 획기적으로 절감함.
+* **연구 기여:** 복잡한 환경에서의 신호 처리 문제를 딥러닝과 통계적 추론(변분 추론)을 결합하여 해결함으로써, 향후 무선 통신 및 센싱 분야의 데이터 기반 연구에 새로운 방법론을 제시함.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2609.05396 A Deep Generative Model for Synthesizing Labeled Wireless Signals](https://arxiv.org/abs/2609.05396)
+&gt; - [A Deep Generative Model for Synthesizing Labeled Wireless Signals](https://arxiv.org/html/2609.05396)
+&gt; - [A Deep Generative Model for Synthesizing Labeled Wireless Signals — Generative Models](https://awesomepapers.io/generative-models/papers/2609.05396)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;변분 추론을 활용해 거리와 환경 특징을 disentanglement 하겠다는 발상은 좋으나, 과연 실제 다중 경로(Multipath) 환경의 통계적 분포를 GAN이 어디까지 정교하게 모사할 수 있을지 의문이군요. 특히 생성된 신호가 OOD(Out-of-Distribution) 샘플링 시 물리적 제약 조건을 위반하지 않는다는 수학적 보장이 있습니까?&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 일리는 있지만, 필드에서는 당장 라벨링된 데이터가 없어서 모델을 못 돌리는 게 더 큰 문제입니다. UWB 환경에서 10배 증강이라니, 실무자 입장에선 검증만 확실하면 바로 프로덕션 파이프라인에 올릴 만한 꿀템인데요? 다만, 학습 안정성 잡느라 하이퍼파라미터 튜닝에 얼마나 고생했을지 벌써 눈에 선합니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;교수님, 엔지니어님 싸우지 마세요! 이번 논문 핵심은 &#x27;물리 기반&#x27;과 &#x27;생성 모델&#x27;을 섞었다는 거잖아요. 요즘 LLM만 핫한데, 이런 무선 신호 도메인에 생성 모델 적용하는 거 완전 논문 쓰기 좋은 타겟입니다. 내일 당장 코드 뜯어보고 우리 랩 세미나에서 발표해야겠네요. 혹시 이거 Diffusion 모델로 바꿔서 돌리면 성능 더 나오지 않을까요?&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
