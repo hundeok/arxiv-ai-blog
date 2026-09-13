@@ -1,0 +1,69 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>RINSE: 제로샷 그래프 이상 탐지를 위한 강건한 타겟 시간 정상성 추정 | ArXiv Translator AI</title><meta name="description" content="RINSE: 제로샷 그래프 이상 탐지를 위한 강건한 타겟 시간 정상성 추정"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_02497v1"><meta property="og:type" content="article"><meta property="og:title" content="RINSE: 제로샷 그래프 이상 탐지를 위한 강건한 타겟 시간 정상성 추정"><meta property="og:description" content="RINSE: 제로샷 그래프 이상 탐지를 위한 강건한 타겟 시간 정상성 추정"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_02497v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="RINSE: 제로샷 그래프 이상 탐지를 위한 강건한 타겟 시간 정상성 추정"><meta name="twitter:description" content="RINSE: 제로샷 그래프 이상 탐지를 위한 강건한 타겟 시간 정상성 추정"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_02497v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "RINSE: 제로샷 그래프 이상 탐지를 위한 강건한 타겟 시간 정상성 추정", "description": "RINSE: 제로샷 그래프 이상 탐지를 위한 강건한 타겟 시간 정상성 추정", "datePublished": "2026-09-02", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_02497v1", "author": [{"@type": "Person", "name": "Taufikur Rahman Fuad"}, {"@type": "Person", "name": "Md Abrar Jahin"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_02497v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_02497v1"});gtag('event', 'paper_view', {"paper_id": "2609_02497v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>RINSE: 제로샷 그래프 이상 탐지를 위한 강건한 타겟 시간 정상성 추정</h1><p>RINSE: 제로샷 그래프 이상 탐지를 위한 강건한 타겟 시간 정상성 추정</p><pre>RINSE: 제로샷 그래프 이상 탐지를 위한 강건한 타겟 시간 정상성 추정
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** RINSE: Robust Target-Time Normality Estimation for Zero-Shot Graph Anomaly Detection
+&gt; - **저자:** Taufikur Rahman Fuad, Md Abrar Jahin, Amir Hussain
+&gt; - **발행일:** 2026-09-02
+&gt; - **PDF 링크:** [RINSE: Robust Target-Time Normality Estimation for Zero-Shot Graph Anomaly Detection](https://arxiv.org/pdf/2609.02497v1)
+
+
+✨ 3줄 핵심 요약
+- **제로샷 대응:** 학습 데이터와 타겟 데이터 간의 도메인 차이를 극복하기 위해, 별도의 추가 학습(Gradient) 없이 타겟 그래프 자체에서 정상 패턴을 스스로 추정하는 프레임워크입니다.
+- **강건한 추정:** 전체 노드 중 정상 가능성이 높은 노드만을 반복적으로 선별하여 정상성 사전을 구축함으로써, 이상치가 결과에 미치는 오염을 최소화합니다.
+- **성능 검증:** 8개의 테스트 그래프에서 기존 방법론 대비 가장 높은 평균 AUPRC(곡선 아래 면적)를 기록하며, 타겟별 별도 튜닝 없이도 안정적인 성능을 보입니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+그래프 이상 탐지는 사기 탐지나 스팸 식별에 필수적이지만, 기존 방식은 새로운 데이터가 들어올 때마다 다시 학습해야 하는 비용 문제가 있었습니다. &#x27;RINSE&#x27;는 이미 학습된 탐지 모델을 그대로 고정(Frozen)한 채, 타겟 데이터에서 정상적인 노드들을 스스로 찾아내어 기준점을 재조정합니다. 마치 새로 전학 온 학생이 반 분위기를 빠르게 파악해 적응하는 것처럼, 모델이 타겟 그래프의 정상 패턴을 스스로 학습해 이상치를 잡아내는 방식입니다. 이 과정에서 이상치가 섞인 데이터에 모델이 휘둘리지 않도록 노드를 걸러내는 &#x27;강건한 추정&#x27; 기술을 핵심으로 합니다.
+
+🎯 배경 및 문제점
+- **도메인 이동(Domain Shift):** 기존 제로샷 탐지 모델은 소스 데이터에서 학습한 정상성 기준을 사용하는데, 실제 타겟 그래프와 분포가 다를 경우 성능이 크게 저하됩니다.
+- **레이블 부족:** 타겟 데이터에는 이상치 레이블이 없는 경우가 많아, 별도의 미세 조정이나 파라미터 최적화가 어렵습니다.
+- **오염된 데이터:** 비지도 학습 기반의 모델은 타겟 데이터 내에 존재하는 이상치까지 정상으로 학습해버리는 문제(이상치가 모델 성능을 잠식하는 현상)가 발생합니다.
+
+💡 핵심 기술 및 아키텍처
+- **반복적 정상성 추정(Iterative Self-Estimation):** 노드 재구성 오차(residual)가 낮은 노드들을 지속적으로 선택하여 타겟 맞춤형 정상성 사전(Dictionary)을 구축합니다.
+- **임베딩 보정(Calibration):** 통계적 모멘트를 사용하여 소스 모델과 타겟 그래프 간의 임베딩 스케일 차이를 맞춥니다.
+- **다중 관점 증거 결합:** kNN 거리, 타겟 사전 재구성, 속성 친화도 등 다양한 관점에서 이상 증거를 수집합니다.
+- **신뢰도 게이팅(Reliability Gating):** 각 증거의 신뢰도를 자동으로 평가하여, 신뢰도가 낮은 정보는 억제하고 높은 정보 위주로 가중치를 부여해 최종 점수를 산출합니다.
+
+📊 실험 결과 분석
+- **성능 우위:** 8개의 unseen 타겟 그래프에서 제안된 방식이 가장 높은 평균 AUPRC를 달성했습니다. (수치 정보: 앙상블 적용 시 최대 2.7점, 반복 추정 시 최대 1.9점의 성능 향상 확인).
+- **구성 요소 검증:** 앙상블(E=5개) 사용 시 3.5점의 성능 향상이 있었으며, 신뢰도 게이팅 기법을 도입했을 때 특정 그래프(Weibo)에서 AUPRC가 15.6점(표준 프로토콜 기준) 대폭 상승했습니다.
+- **안정성:** 하이퍼파라미터(ρ, k, τ 등)의 민감도 분석 결과, 고정된 설정값으로도 모든 타겟에서 일관된 성능을 보임으로써 별도의 타겟별 튜닝 불필요성을 입증했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+- **비용 절감:** 매번 새로운 그래프에 대해 모델을 재학습할 필요가 없어 실시간 혹은 대규모 환경에서 계산 효율성을 극대화합니다.
+- **실무 가이드:** 금융 사기, e-커머스 이상 거래, 소셜 네트워크 스팸 탐지 등 레이블을 확보하기 어려운 실제 현장에서 즉각적인 적용이 가능합니다.
+- **윤리적 고려:** 이상치 탐지는 &#x27;자동 징벌&#x27;이 아닌 &#x27;인간의 검토 보조&#x27; 도구로 사용되어야 하며, 탐지 결과에 포함될 수 있는 오탐(False Positive) 가능성과 특정 그룹에 대한 편향성을 방지하기 위한 도메인별 검증이 필수적입니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [RINSE: Robust Target-Time Normality Estimation for Zero-Shot Graph ...](https://www.catalyzex.com/paper/rinse-robust-target-time-normality-estimation)
+&gt; - [RINSE: Robust Target-Time Normality Estimation for Zero-Shot Graph ...](https://aitrendhub.jp/article/d10f2db4baf3)
+&gt; - [2609.02497v1 RINSE: Robust Target-Time Normality Estimation for Zero-Shot Graph Anomaly Detection](https://arxiv.org/abs/2609.02497v1)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문 제목만 보고 또 흔한 &#x27;Self-correction&#x27; 계열의 변주곡이겠거니 했는데, 반복적 정상성 추정 과정에서 노드 오염을 걸러내는 로직이 꽤 정교하군요. 다만, &#x27;신뢰도 게이팅&#x27;이 과연 데이터의 분포가 극단적으로 편향된 경우에도 이론적 보장이 되는지는 의문입니다. 실무에서 쓰기 전에 수렴 속도에 대한 엄밀한 분석이 선행되어야 할 것 같네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 맞지만, 현업 입장에서는 &#x27;하이퍼파라미터 튜닝이 필요 없다&#x27;는 점 하나만으로도 게임 체인저입니다. 매번 데이터 바뀔 때마다 파이프라인 재학습 돌리느라 쓴 GPU 비용 생각하면... 이 정도 성능에 제로샷이면 당장 PoC 진행해 볼 가치가 충분합니다. 다만 프로덕션 환경에서 인퍼런스 레이턴시가 얼마나 튈지가 관건이겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;다들 너무 진지하신 거 아니에요? ㅋㅋㅋ Weibo 데이터셋에서 AUPRC 15.6점 펌핑된 거 보면 이 정도면 사실상 &#x27;Zero-shot SOTA&#x27; 찍은 거 아닌가요? 며칠 뒤에 GitHub 레포 올라오면 바로 뜯어볼 예정인데, 혹시 이거 기반으로 LLM 에이전트랑 연동해서 실시간 금융 탐지 시스템 파이프라인 짜면 바로 NeurIPS 컷 가능할 듯요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
