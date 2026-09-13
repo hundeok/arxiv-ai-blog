@@ -1,0 +1,69 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>전력 유연성 AI 학습을 위한 작업 전력 탄력성 특성화 | ArXiv Translator AI</title><meta name="description" content="전력 유연성 AI 학습을 위한 작업 전력 탄력성 특성화"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_11542v1"><meta property="og:type" content="article"><meta property="og:title" content="전력 유연성 AI 학습을 위한 작업 전력 탄력성 특성화"><meta property="og:description" content="전력 유연성 AI 학습을 위한 작업 전력 탄력성 특성화"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_11542v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="전력 유연성 AI 학습을 위한 작업 전력 탄력성 특성화"><meta name="twitter:description" content="전력 유연성 AI 학습을 위한 작업 전력 탄력성 특성화"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_11542v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "전력 유연성 AI 학습을 위한 작업 전력 탄력성 특성화", "description": "전력 유연성 AI 학습을 위한 작업 전력 탄력성 특성화", "datePublished": "2026-09-10", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_11542v1", "author": [{"@type": "Person", "name": "Philip Colangelo"}, {"@type": "Person", "name": "Charles Dawson"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_11542v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_11542v1"});gtag('event', 'paper_view', {"paper_id": "2609_11542v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>전력 유연성 AI 학습을 위한 작업 전력 탄력성 특성화</h1><p>전력 유연성 AI 학습을 위한 작업 전력 탄력성 특성화</p><pre>전력 유연성 AI 학습을 위한 작업 전력 탄력성 특성화
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Characterizing Job Power Elasticity for Power-Flexible AI Training
+&gt; - **저자:** Philip Colangelo, Charles Dawson, Shayan Sengupta, Ayse Coskun, Varun Sivaram
+&gt; - **발행일:** 2026-09-10
+&gt; - **PDF 링크:** [Characterizing Job Power Elasticity for Power-Flexible AI Training](https://arxiv.org/pdf/2609.11542v1)
+
+
+✨ 3줄 핵심 요약
+* LLM 학습 시 GPU 전력 제한이 성능(처리량)에 미치는 민감도를 정량화하는 &#x27;전력 유연성 지수(PFI)&#x27;를 개발했습니다.
+* 실험 결과, 모델 아키텍처와 학습 작업에 따라 전력 탄력성이 크게 다르며, GPU 원격 측정(telemetry) 데이터로 이를 예측 가능함을 확인했습니다.
+* PFI 기반 전력 할당을 통해 전력 제약 환경에서도 학습 처리량 손실을 최소화하고 효율적인 자원 운영이 가능함을 증명했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+최근 AI 인프라 확장의 가장 큰 걸림돌 중 하나는 전력 부족입니다. 데이터 센터가 전력망 상황에 맞춰 유연하게 전력을 소비해야 하지만, 무작정 전력을 줄이면 AI 모델 학습 속도가 느려지는 문제가 발생합니다. 이 연구는 특정 AI 학습 작업이 전력을 줄였을 때 얼마나 성능이 저하되는지를 수치화한 &#x27;전력 유연성 지수(PFI)&#x27;를 제안합니다. 이를 활용하면 전력이 부족할 때 성능 하락이 적은 작업부터 전력을 할당하여, 전체 시스템의 처리량을 극대화할 수 있습니다.
+
+🎯 배경 및 문제점
+* **전력 병목 현상:** 데이터 센터의 전력 수요 급증으로 인해 신규 AI 인프라 확장이 지연되는 문제가 발생하고 있습니다.
+* **유연한 전력 소비의 필요성:** 데이터 센터가 유연한 부하(flexible load)로 작동하여 전력 피크 시간대에 소비를 줄이면, 전력망 용량을 확보할 수 있습니다.
+* **성능 보존의 난제:** 서비스 수준 협약(SLA)을 준수하면서 전력을 줄이려면, 전력 감소가 학습 처리량에 미치는 영향(전력 탄력성)을 정확히 이해해야 하는데, 이에 대한 체계적인 연구가 부족했습니다.
+
+💡 핵심 기술 및 아키텍처
+* **PFI(Power Flexibility Index):** 전력 감소에 따른 처리량 저하를 정량화하는 지표입니다.
+* **실시간 예측:** DCGM(Data Center GPU Manager)에서 얻을 수 있는 메모리 사용량, 텐서 파이프 가동률 등 GPU 원격 측정 신호를 통해 실행 중인 작업의 PFI를 예측합니다.
+* **PFI 기반 스케줄링:** 작업별 PFI를 계산하고 이를 바탕으로 전력을 지능적으로 할당하여, 제한된 전력 환경 하에서 &#x27;토큰/초&#x27; 단위의 전체 처리량을 최대화합니다.
+
+📊 실험 결과 분석
+* **데이터 규모:** H200 및 H100 GPU를 사용하여 총 131개의 LLM 학습 실행 데이터를 분석했습니다.
+* **상당한 변동성:** PFI 값은 1.10에서 2.67 사이로, 학습 작업마다 전력 탄력성이 크게 다름을 확인했습니다. (Dense 모델보다 MoE 미세 조정 작업의 PFI가 상대적으로 높음)
+* **상관관계:** 메모리 관련 신호(DRAM 가동률 등)는 PFI와 양의 상관관계를, 텐서 파이프 가동률은 음의 상관관계를 보였습니다.
+* **성능 향상:** 전력을 30% 줄이는 상황에서 PFI 기반 전력 할당을 적용했을 때, 작업당 약 1.5k 토큰/초의 처리량을 회복했으며, 이는 이상적인 정보(Oracle)를 가진 경우와 균등 배분 방식 사이 성능 격차의 63%를 메우는 수치입니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **전력망 친화적 인프라:** AI 데이터 센터가 전력망 운영에 협조적인 자원으로 변모하여 전력망 안정성에 기여할 수 있습니다.
+* **비용 절감 및 효율화:** 전력 제약 상황에서도 SLA를 준수하며 학습을 지속할 수 있어 인프라 비용을 최적화하고 AI 배포 속도를 높일 수 있습니다.
+* **실무적 적용:** 전용 하드웨어 제어 없이도 기존의 원격 측정 데이터로 PFI를 예측할 수 있어, 실제 데이터 센터 환경에 즉시 적용 가능한 실용적인 솔루션을 제공합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Characterizing Job Power Elasticity for Power-Flexible AI Training](https://arxiv.org/abs/2609.11542)
+&gt; - [Characterizing Job Power Elasticity for Power-Flexible AI Training](https://arxiv.org/html/2609.11542v1)
+&gt; - [Literature Review Characterizing Job Power Elasticity for ...](https://www.themoonlight.io/review/characterizing-job-power-elasticity-for-power-flexible-ai-training)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;PFI라는 지표 자체는 흥미로우나, 131개의 실험 데이터로 일반화하기엔 통계적 유의성이 부족해 보입니다. 특히 MoE 아키텍처에서 전력 탄력성이 높게 나온 이유를 단순히 메모리 대역폭 상관관계로만 설명하는 건 너무 단편적이지 않나요? 전력 제한이 커널 런타임의 Jitter에 미치는 영향까지 고려했어야 논문의 완성도가 살았을 겁니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 일리가 있지만, 현업 입장에선 &#x27;실시간 예측 가능성&#x27; 하나만으로도 이 논문은 가치가 큽니다. 당장 DCGM 지표로 오케스트레이터단에서 전력 제한(Power Cap) 정책을 동적으로 변경할 수 있다는 거니까요. 다만, 하이퍼스케일 환경에서 수천 대의 GPU에 이 로직을 실시간으로 물렸을 때 발생하는 제어 오버헤드는 어떻게 감당할지가 관건이겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 다들 비판적이지만 이거 진짜 핫한 주제예요! 요즘 전력망 이슈 때문에 GPU 수급보다 전력 확보가 더 큰 병목인 거 아시죠? PFI를 스케줄러에 녹여서 전력 피크 타임에 부하를 분산한다? 이건 바로 데이터 센터 운영 효율성 지표(PUE) 개선으로 직결되는 거라 대기업 인프라 팀에서 바로 PoC 들어갈 각입니다. 저도 다음 프로젝트는 이걸로 논문 디벨롭해봐야겠어요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

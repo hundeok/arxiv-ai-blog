@@ -1,0 +1,66 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>디자인 템플릿의 통합적 이미지-레이아웃 생성을 위한 상호작용 학습 | ArXiv Translator AI</title><meta name="description" content="디자인 템플릿의 통합적 이미지-레이아웃 생성을 위한 상호작용 학습"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_11519v1"><meta property="og:type" content="article"><meta property="og:title" content="디자인 템플릿의 통합적 이미지-레이아웃 생성을 위한 상호작용 학습"><meta property="og:description" content="디자인 템플릿의 통합적 이미지-레이아웃 생성을 위한 상호작용 학습"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_11519v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="디자인 템플릿의 통합적 이미지-레이아웃 생성을 위한 상호작용 학습"><meta name="twitter:description" content="디자인 템플릿의 통합적 이미지-레이아웃 생성을 위한 상호작용 학습"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_11519v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "디자인 템플릿의 통합적 이미지-레이아웃 생성을 위한 상호작용 학습", "description": "디자인 템플릿의 통합적 이미지-레이아웃 생성을 위한 상호작용 학습", "datePublished": "2026-09-10", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_11519v1", "author": [{"@type": "Person", "name": "Shirong Yang"}, {"@type": "Person", "name": "Bo Yang"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_11519v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_11519v1"});gtag('event', 'paper_view', {"paper_id": "2609_11519v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>디자인 템플릿의 통합적 이미지-레이아웃 생성을 위한 상호작용 학습</h1><p>디자인 템플릿의 통합적 이미지-레이아웃 생성을 위한 상호작용 학습</p><pre>디자인 템플릿의 통합적 이미지-레이아웃 생성을 위한 상호작용 학습
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Learning Interaction between Image and Layout Priors for Joint Image-Layout Generation in Design Templates
+&gt; - **저자:** Shirong Yang, Bo Yang, Ying Cao
+&gt; - **발행일:** 2026-09-10
+&gt; - **PDF 링크:** [Learning Interaction between Image and Layout Priors for Joint Image-Layout Generation in Design Templates](https://arxiv.org/pdf/2609.11519v1)
+
+
+✨ 3줄 핵심 요약
+*   기존의 순차적 생성 방식에서 벗어나, 배경 이미지와 전경 레이아웃을 동시에 생성하는 통합 모델 &#x27;InterIL&#x27;을 제안함.
+*   사전 학습된 모델의 백본을 동결한 상태에서 &#x27;통신 모듈(Communication Module)&#x27;을 학습시켜 이미지와 레이아웃 간의 조화를 최적화함.
+*   추가 재학습 없이도 사용자 선호도를 반영할 수 있는 가이던스 전략을 통해 시각적 가독성과 요소 배치를 효과적으로 제어함.
+
+📖 쉽게 풀어쓴 1분 핵심
+그래픽 디자인 템플릿을 만들 때 기존 방식은 배경을 먼저 만들고 레이아웃을 얹거나 그 반대 순서로 작업했습니다. 하지만 이 방식은 이미지와 레이아웃 사이의 긴밀한 관계를 놓치기 쉽습니다. 본 논문은 이 두 요소를 하나의 생성 과정에서 동시에 다루는 &#x27;InterIL&#x27; 모델을 선보입니다. 마치 두 전문가(이미지 생성기, 레이아웃 생성기)가 실시간으로 대화하며 작업하는 것처럼, 통신 모듈을 통해 서로의 특징을 파악하게 함으로써 훨씬 조화로운 디자인 결과물을 만들어냅니다. 또한, 사용자가 특정 위치에 글자를 배치하거나 특정 영역을 가리지 않게 하는 등 세부적인 요구사항을 즉시 반영할 수 있는 기능도 갖췄습니다.
+
+🎯 배경 및 문제점
+기존의 그래픽 디자인 생성 방식은 주로 요소를 하나씩 차례대로 만드는 &#x27;순차적 패러다임(Sequential paradigm)&#x27;을 따랐습니다. 그러나 이러한 방식은 배경과 전경 요소 간의 의존성을 충분히 반영하지 못해, 완성된 템플릿의 구성이 자연스럽지 못하다는 한계가 있었습니다. 결과적으로 배경 이미지와 레이아웃이 따로 노는 듯한 부자연스러운 결과물을 초래하는 경우가 많았습니다.
+
+💡 핵심 기술 및 아키텍처
+*   **통합 생성 모델(InterIL):** 이미지와 레이아웃 디퓨전 모델의 백본을 연결하여 동시에 생성하는 구조입니다.
+*   **통신 모듈(Communication Module):** 학습 과정에서 사전 학습된 이미지 및 레이아웃 백본은 동결하고, 이들 사이의 상호작용을 담당하는 모듈만 학습시켜 이미지-레이아웃 분포를 정교하게 학습합니다.
+*   **테스트 시점 가이던스(Test-time guidance):** 재학습 없이도 사용자가 원하는 디자인 방향을 강제할 수 있습니다. 
+    *   **폐쇄 인식 가이던스(OAG):** 전경 요소가 중요한 배경 영역을 가리지 않도록 조정합니다.
+    *   **가독성 인식 가이던스(RAG):** 텍스트를 배경이 단순한 평탄한 영역에 배치하여 가독성을 높입니다.
+
+📊 실험 결과 분석
+Web-design 데이터셋(약 5만 개)을 사용한 실험 결과, 본 모델은 기존 방법론 대비 이미지 품질, 레이아웃 정렬, 그리고 이 둘의 조화 측면에서 더 우수한 성능을 보였습니다. 
+*   **정량적 성과:** 가이드 기술 적용 시, OAG는 배경 가림 비율을 19.30%에서 12.66%로 낮췄고, RAG는 텍스트 가독성 수치를 11.41%에서 7.49%로 크게 개선했습니다(수치가 낮을수록 가독성이 개선된 것으로 해석됨). 
+*   **정성적 평가:** 생성된 결과물이 실제 데이터 샘플과 더 유사하며, 사용자 요구사항에 따른 유연한 디자인 변형이 가능함을 확인했습니다. 
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+이 기술은 웹 배너 제작 등 자동화된 디자인 템플릿 생성 분야에 큰 기여를 할 수 있습니다. 사용자는 간단한 텍스트 입력만으로도 디자인 전문가 수준의 조화로운 레이아웃과 배경을 얻을 수 있으며, 동시에 본인의 선호도를 즉각 반영하여 디자인을 수정할 수 있습니다. 이는 반복적이고 수동적인 디자인 작업을 대폭 단축하고, 비전문가도 창의적인 고품질 템플릿을 빠르게 생성할 수 있게 함으로써 디자인 실무 효율성을 높일 것입니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Learning Interaction between Image and Layout Priors for Joint Image ...](https://www.catalyzex.com/paper/learning-interaction-between-image-and-layout)
+&gt; - [2609.11519 Learning Interaction between Image and Layout Priors for Joint Image-Layout Generation in Design Templates](https://arxiv.org/abs/2609.11519)
+&gt; - [Learning Interaction between Image and Layout Priors for Joint Image-Layout Generation in Design Templates · Pith](https://pith.science/paper/2609.11519)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;통신 모듈 하나로 성능을 견인했다는 논리 자체는 흥미로우나, 과연 이 &#x27;상호작용&#x27;이 임베딩 공간에서의 단순한 정렬을 넘어선 Semantic한 이해를 동반하는지 의문입니다. 특히 5만 개의 데이터셋에서만 검증된 성능이 일반화된 디자인 문맥에서도 통용될지, 소위 말하는 &#x27;Overfitting to style&#x27; 문제는 없는지 추가 실험 데이터가 필요해 보이는군요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 일반화가 관건이긴 한데, 현업 입장에서는 백본을 freeze하고 가볍게 붙일 수 있다는 점이 진짜 킬포입니다. 매번 모델 전체 파인튜닝 돌리느라 GPU 태우는 거 지쳤거든요. 테스트 시점 가이던스(RAG/OAG) 적용해서 바로 배너 자동화 파이프라인에 태우면 디자인 팀 리소스 30%는 바로 세이브 가능할 것 같습니다. 당장 프로토타입 돌려봐야겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 다들 반응 너무 진지하신 거 아닌가요? ㅋㅋㅋ 이거 디자인 툴 API에만 붙여도 바로 &#x27;디자인계의 LLM&#x27; 소리 들을 각인데요? OAG 가이던스 적용된 결과물 봤는데, 텍스트가 얼굴 안 가리는 거 보고 소름 돋았습니다. 지금 학회 논문들 다 밀어내고 이거 베이스라인으로 잡고 바로 연구 방향 틀어야 할 듯합니다. 역시 세상은 넓고 천재는 많네요...&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
