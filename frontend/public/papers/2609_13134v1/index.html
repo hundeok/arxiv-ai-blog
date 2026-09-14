@@ -1,0 +1,70 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>서브쿼드라틱 어텐션을 위한 이기종 시스템 분산 처리의 재고 | ArXiv Translator AI</title><meta name="description" content="서브쿼드라틱 어텐션을 위한 이기종 시스템 분산 처리의 재고"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_13134v1"><meta property="og:type" content="article"><meta property="og:title" content="서브쿼드라틱 어텐션을 위한 이기종 시스템 분산 처리의 재고"><meta property="og:description" content="서브쿼드라틱 어텐션을 위한 이기종 시스템 분산 처리의 재고"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_13134v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="서브쿼드라틱 어텐션을 위한 이기종 시스템 분산 처리의 재고"><meta name="twitter:description" content="서브쿼드라틱 어텐션을 위한 이기종 시스템 분산 처리의 재고"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_13134v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "서브쿼드라틱 어텐션을 위한 이기종 시스템 분산 처리의 재고", "description": "서브쿼드라틱 어텐션을 위한 이기종 시스템 분산 처리의 재고", "datePublished": "2026-09-11", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_13134v1", "author": [{"@type": "Person", "name": "Arya Tschand"}, {"@type": "Person", "name": "Yaosheng Fu"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_13134v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_13134v1"});gtag('event', 'paper_view', {"paper_id": "2609_13134v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>서브쿼드라틱 어텐션을 위한 이기종 시스템 분산 처리의 재고</h1><p>서브쿼드라틱 어텐션을 위한 이기종 시스템 분산 처리의 재고</p><pre>서브쿼드라틱 어텐션을 위한 이기종 시스템 분산 처리의 재고
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Rethinking Heterogeneous System Disaggregation for Subquadratic Attention
+&gt; - **저자:** Arya Tschand, Yaosheng Fu, Vikram Sharma Mailthody, Nicolai Oswald, Po-An Tsai, Ritchie Zhao, Oreste Villa, Vijay Janapa Reddi, Karu Sankaralingam
+&gt; - **발행일:** 2026-09-11
+&gt; - **PDF 링크:** [Rethinking Heterogeneous System Disaggregation for Subquadratic Attention](https://arxiv.org/pdf/2609.13134v1)
+
+
+✨ 3줄 핵심 요약
+* **SQD(SubQuadraticDisaggregation)**는 LLM 추론 시 연산 특성과 메모리 점유율에 따라 작업을 세밀하게 분리하여 이기종 하드웨어(GPU 및 SRAM 기반 ASIC)에 할당하는 기술입니다.
+* 기존의 연산자 단위 분산 방식과 달리, 쿼드라틱(Quadratic)과 서브쿼드라틱(SubQuadratic) 어텐션을 구분하여 배치함으로써 데이터 이동 병목과 에너지 소비를 대폭 줄였습니다.
+* 실제 실험 및 모델링 결과, GPU 전용 시스템 대비 에너지 효율은 최대 56% 향상되었고, 처리량은 최대 3.6배까지 개선되었습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+최신 인공지능 모델들은 &#x27;서브쿼드라틱 어텐션&#x27;이라는 기술을 사용하여 메모리 사용량을 줄이고 있습니다. 하지만 기존 시스템은 이 모델들을 효율적으로 처리하지 못하고 비효율적인 분산 방식을 사용해왔습니다. 연구진이 제안한 SQD는 모델의 각 부분이 GPU에 적합한지, 아니면 속도가 빠른 SRAM 기반의 특수 칩(ASIC)에 적합한지를 정확히 판단해 작업을 나누어줍니다. 이를 통해 추론 속도는 빨라지고, 사용자당 토큰 처리 비용은 낮아지며, 전력 효율은 크게 개선됩니다.
+
+🎯 배경 및 문제점
+* **비효율적 시스템 활용:** LLM 추론 시 연산 비용이 커지고 있으나, 메모리 대역폭 대비 낮은 처리량으로 인해 시스템 활용도가 낮아지고 있습니다.
+* **하드웨어 불일치:** 기존 GPU 기반 시스템은 대용량 메모리를 갖췄지만 대역폭이 제한적입니다. 반면, SRAM 기반 ASIC은 대역폭과 에너지 효율은 높지만 메모리 용량이 작습니다.
+* **기존 방식의 한계:** 단순히 &#x27;어텐션&#x27;과 &#x27;FFN(Feed-Forward Network)&#x27;으로만 작업을 나누는 기존의 분산 방식은 하드웨어 특성을 충분히 고려하지 못해 성능 저하를 초래합니다.
+
+💡 핵심 기술 및 아키텍처
+* **세밀한 작업 분리:** SQD는 연산자 단위가 아니라, 메모리 점유율이 문맥 길이에 따라 변하는 &#x27;쿼드라틱 어텐션&#x27;과 독립적인 &#x27;서브쿼드라틱 어텐션&#x27;으로 구분합니다.
+* **하드웨어 최적화:** 
+    * **GPU:** KV 캐시를 유지하며 메모리 요구량이 큰 &#x27;쿼드라틱 어텐션&#x27;을 처리합니다.
+    * **SRAM ASIC:** 연산 밀도가 높고 메모리 점유율이 일정한 &#x27;서브쿼드라틱 어텐션&#x27; 및 FFN을 처리합니다.
+* **통신 오버헤드 완화:** 스파스(Sparse) 어텐션 모델에서 &#x27;IndexShare&#x27; 기법을 통해 레이어 간 인덱스 정보를 공유함으로써 통신 지연을 앞선 연산 뒤에 숨기는 방식을 사용합니다.
+
+📊 실험 결과 분석
+* **에너지 효율 개선:** 8×B200 이기종 시스템 프록시 환경에서 GPU 전용 베이스라인 대비 GLM 5.2 모델 53%, Nemotron 3 Ultra 31%, Gemma 4 31B 56%의 에너지 효율(tokens/J) 향상을 확인했습니다.
+* **성능 극대화:** 고정 전력 예산 내에서 기존 어텐션-FFN 분산 방식보다 1.2배~1.5배 짧은 지연 시간과 최대 3.6배 높은 처리량을 달성했습니다.
+* **실험 환경:** 32K에서 1M 토큰의 문맥 길이를 포함하는 워크로드를 사용하여 측정 및 모델링했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **대규모 언어 모델 서비스:** 고성능 LLM을 더 적은 비용과 낮은 전력으로 실시간 서비스할 수 있게 하여 인공지능 기술의 대중화에 기여합니다.
+* **차세대 하드웨어 설계:** 향후 시스템 설계 시 대역폭보다는 &#x27;지연 시간(Latency)&#x27; 최적화가 중요함을 시사하며, SRAM 용량 증설이 추론 성능 향상에 핵심적임을 입증했습니다.
+* **실무 적용 방향:** 서브쿼드라틱 어텐션을 활용하는 모델이 늘어남에 따라, 이기종 시스템(GPU+ASIC)을 활용하는 것이 추론 인프라 구축의 표준이 될 가능성을 보여줍니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Rethinking Heterogeneous System Disaggregation for Subquadratic Attention](https://arxiv.org/abs/2609.13134)
+&gt; - [Rethinking Heterogeneous System Disaggregation for Subquadratic Attention](https://arxiv.deeppaper.ai/papers/2609.13134v1)
+&gt; - [Rethinking Heterogeneous System Disaggregation for... | AI Research](https://franklineh.com/learn/research/V7vkpeM7hborXL4RLFzl)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;이 논문은 이기종 컴퓨팅의 고전적인 문제를 서브쿼드라틱 어텐션이라는 최신 워크로드 특성에 맞춰 아주 정교하게 재해석했군. 특히 단순히 연산자를 쪼개는 수준을 넘어 데이터 의존성과 SRAM 대역폭을 고려한 &#x27;IndexShare&#x27; 기법은 학술적으로도 꽤 흥미로운 접근이야. 다만, 실제 하드웨어 환경에서 ASIC과 GPU 간의 인터커넥트 병목이 논문에서 가정한 만큼 깔끔하게 숨겨질지(hide)는 조금 더 지켜봐야겠어.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 인터커넥트 이슈가 핵심이죠. 실무에서 ASIC이랑 GPU 섞어 쓰려면 드라이버 단부터 오케스트레이션까지 지옥이 펼쳐지거든요. 에너지 효율 56% 향상은 정말 매력적인 수치인데, 이걸 프로덕션 환경에 올리려면 데이터 센터의 전력 단가랑 하드웨어 유지보수 비용을 다 따져봐야 합니다. 솔직히 &#x27;하드웨어 스택의 복잡도 증가 vs 인프라 비용 절감&#x27; 사이에서 경영진 설득하는 게 더 큰 관건일 것 같네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;아니, 다들 너무 현실적인 이야기만 하시네요! 3.6배 처리량 향상이면 지금 우리가 겪는 1M 컨텍스트 윈도우 추론 병목을 거의 해결한다는 소리잖아요? 당장 랩실 GPU 부족해서 쩔쩔매는데, ASIC 몇 개 붙여서 성능 뻥튀기할 수 있다면 당장이라도 구현해보고 싶습니다. 이거 깃허브 코드 언제 올라오죠? 논문 저자들한테 메일 한 번 넣어봐야겠네요, 벌써 가슴이 웅장해집니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
