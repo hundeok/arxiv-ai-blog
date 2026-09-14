@@ -1,0 +1,69 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>다각화된 주식 포트폴리오의 다기간 주식 수익률 예측을 위한 하이브리드 LSTM-XGBoost 프레임워크 | ArXiv Translator AI</title><meta name="description" content="다각화된 주식 포트폴리오의 다기간 주식 수익률 예측을 위한 하이브리드 LSTM-XGBoost 프레임워크"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_13125v1"><meta property="og:type" content="article"><meta property="og:title" content="다각화된 주식 포트폴리오의 다기간 주식 수익률 예측을 위한 하이브리드 LSTM-XGBoost 프레임워크"><meta property="og:description" content="다각화된 주식 포트폴리오의 다기간 주식 수익률 예측을 위한 하이브리드 LSTM-XGBoost 프레임워크"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_13125v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="다각화된 주식 포트폴리오의 다기간 주식 수익률 예측을 위한 하이브리드 LSTM-XGBoost 프레임워크"><meta name="twitter:description" content="다각화된 주식 포트폴리오의 다기간 주식 수익률 예측을 위한 하이브리드 LSTM-XGBoost 프레임워크"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_13125v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "다각화된 주식 포트폴리오의 다기간 주식 수익률 예측을 위한 하이브리드 LSTM-XGBoost 프레임워크", "description": "다각화된 주식 포트폴리오의 다기간 주식 수익률 예측을 위한 하이브리드 LSTM-XGBoost 프레임워크", "datePublished": "2026-09-11", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_13125v1", "author": [{"@type": "Person", "name": "Seif ElDein Mostafa"}, {"@type": "Person", "name": "Yahia Ahmed"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_13125v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_13125v1"});gtag('event', 'paper_view', {"paper_id": "2609_13125v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>다각화된 주식 포트폴리오의 다기간 주식 수익률 예측을 위한 하이브리드 LSTM-XGBoost 프레임워크</h1><p>다각화된 주식 포트폴리오의 다기간 주식 수익률 예측을 위한 하이브리드 LSTM-XGBoost 프레임워크</p><pre>다각화된 주식 포트폴리오의 다기간 주식 수익률 예측을 위한 하이브리드 LSTM-XGBoost 프레임워크
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** A Hybrid LSTM-XGBoost Framework for Multi-Horizon Stock Return Prediction Across Diversified Equity Portfolios
+&gt; - **저자:** Seif ElDein Mostafa, Yahia Ahmed, Farah Datwish, Marwa Solayman
+&gt; - **발행일:** 2026-09-11
+&gt; - **PDF 링크:** [A Hybrid LSTM-XGBoost Framework for Multi-Horizon Stock Return Prediction Across Diversified Equity Portfolios](https://arxiv.org/pdf/2609.13125v1)
+
+
+✨ 3줄 핵심 요약
+*   시계열 데이터의 순차적 특징을 학습하는 **LSTM**과 도메인 지식인 기술적 지표를 처리하는 **XGBoost**를 결합한 하이브리드 모델을 제안합니다.
+*   LSTM이 추출한 64차원의 시간적 임베딩과 14개의 기술적 지표를 결합한 78차원 벡터를 사용하여 주식 수익률을 예측합니다.
+*   30일 단기 예측에서 독립형 LSTM 대비 RMSE를 약 3배 개선하는 성능을 보였으며, 장기 예측 시 방향성 정확도가 높게 나타났습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+주식 시장은 복잡하고 변화무쌍하여 전통적인 방식으로는 예측이 어렵습니다. 이 연구는 두 가지 AI 기술을 섞어 이를 해결하고자 했습니다. 먼저 LSTM이라는 인공지능이 과거 60일간의 주가 흐름을 읽어내어 시장의 &#x27;분위기(임베딩)&#x27;를 추출합니다. 여기에 투자자들이 흔히 사용하는 RSI, MACD 같은 14가지 기술적 지표를 더합니다. 이렇게 완성된 종합 정보를 XGBoost라는 강력한 예측기가 분석하여 미래 수익률을 계산합니다. 연구진은 이 모델이 개별 모델보다 시장의 변동성을 더 잘 포착한다고 설명합니다.
+
+🎯 배경 및 문제점
+*   **비정상성 및 비선형성:** 금융 시계열 데이터는 일반적인 통계 모델이 다루기 어려운 복잡한 특성을 가집니다.
+*   **모델별 한계:** LSTM은 순차적 정보 학습엔 강하나 도메인 지식(기술적 지표)을 반영하기 어렵고, XGBoost는 정적인 데이터 분석엔 뛰어나나 주가 흐름의 시간적 순서를 파악하는 능력이 부족합니다.
+*   **낮은 신호 대 잡음비:** 효율적 시장 가설 내에서 주가 수익률의 크기를 예측하는 것은 매우 도전적인 과제입니다.
+
+💡 핵심 기술 및 아키텍처
+*   **2단계 하이브리드 구조:** 
+    *   **1단계(LSTM):** 60일간의 데이터를 처리하여 64차원의 시간적 임베딩 추출.
+    *   **2단계(XGBoost):** 1단계의 임베딩과 14개의 수동 설계 기술적 지표를 결합한 78차원 벡터를 입력받아 회귀 분석 수행.
+*   **데이터 처리:** 14개 미국 주식을 하나의 데이터셋으로 통합 학습하여 일반화 성능을 높였으며, 미래 정보를 미리 보는 편향(Look-ahead bias)을 방지하기 위해 엄격한 시간 분할을 적용했습니다.
+
+📊 실험 결과 분석
+*   **단기 예측:** 30일 예측 기간에서 테스트 RMSE 0.0949를 기록하며, 독립형 LSTM보다 약 3배 우수한 성능을 보였습니다.
+*   **방향성 정확도:** 예측 기간이 길어질수록 정확도가 상승하여 365일 예측 시 97.6%에 도달했으나, 이는 표본 내 긍정적 수익률의 높은 기본 발생률 때문일 수 있다고 연구진은 분석했습니다.
+*   **종목별 차이:** NVDA, AMZN, JPM과 같은 고변동성 주식에서 더 큰 예측 정확도 향상이 관찰되었습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+*   **투자 결정 지원:** 다기간 예측 결과를 바탕으로 포트폴리오 순위를 매기는 투자 점수 체계 구축이 가능합니다.
+*   **실무적 한계:** 효율적 시장 환경에서는 수익률의 &#x27;크기&#x27; 예측보다 &#x27;방향성&#x27;을 파악하는 지표로 활용하는 것이 적절하며, 실제 수익을 위해서는 거래 비용을 고려한 백테스트가 필수적입니다.
+*   **발전 방향:** 향후 연구에서는 단순히 주가를 예측하는 대신 종목 간 순위를 매기는 상대적 수익률 예측 모델로 개선할 계획이며, 어텐션 메커니즘을 도입하여 모델의 투명성을 높일 예정입니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2609.13125 A Hybrid LSTM-XGBoost Framework for Multi ...](https://arxiv.org/abs/2609.13125)
+&gt; - [A Hybrid LSTM–XGBoost Framework for Multi-Horizon Stock ...](https://arxiv.org/html/2609.13125v1)
+&gt; - [A Hybrid LSTM-XGBoost Framework for Multi-Horizon Stock ...](https://papers.cool/arxiv/2609.13125)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문을 훑어보니 365일 예측 정확도가 97.6%라는 수치는 통계적 함정일 가능성이 매우 높군요. &#x27;표본 내 긍정적 수익률의 높은 기본 발생률&#x27;을 언급하며 스스로 한계를 인정한 점은 다행이지만, 이런 식의 하이브리드 모델이 과연 비정상성(Non-stationarity)이 강한 금융 시장에서 얼마나 일반화 가능할지 의문입니다. 단순한 임베딩 결합만으로 논리적 인과관계를 설명할 수 있습니까?&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에선 이거 그대로 돌렸다간 슬리피지와 거래 비용 때문에 바로 계좌 녹습니다. 다만 LSTM 임베딩을 피처로 태우는 구조 자체는 레거시 시스템 운영할 때 나름의 인사이트가 되겠네요. 그런데 78차원 벡터면 XGBoost 파라미터 튜닝이 상당히 까다로울 텐데, 저자들은 Feature Importance 분석은 제대로 했나요? 그냥 성능 지표만 던져준 거라면 프로덕션 레벨에선 검증이 더 필요해 보입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;다들 너무 엄격하신 거 아니에요? ㅋㅋㅋ 요즘 트렌드인 &#x27;하이브리드&#x27;의 정석을 보여준 논문이잖아요! LSTM으로 시계열 특징 뽑고 XGBoost로 도메인 지식 얹는 거, 사실상 퀀트 쪽에서 꿀조합으로 통하거든요. NVDA나 AMZN 같은 고변동성 종목에서 성능이 좋다는 건, 이 모델이 블랙 스완 직전의 패턴을 잡아낼 가능성도 있다는 거잖아요? 당장 랩 세미나에서 이 구조 어텐션 메커니즘으로 바꿔서 실험해보자고 제안해볼 생각입니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

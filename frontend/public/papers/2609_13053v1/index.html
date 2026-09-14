@@ -1,0 +1,66 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>다이닌-로보틱스: 옴니모달 통합 확산 비전-언어-행동 모델 | ArXiv Translator AI</title><meta name="description" content="다이닌-로보틱스: 옴니모달 통합 확산 비전-언어-행동 모델"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_13053v1"><meta property="og:type" content="article"><meta property="og:title" content="다이닌-로보틱스: 옴니모달 통합 확산 비전-언어-행동 모델"><meta property="og:description" content="다이닌-로보틱스: 옴니모달 통합 확산 비전-언어-행동 모델"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_13053v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="다이닌-로보틱스: 옴니모달 통합 확산 비전-언어-행동 모델"><meta name="twitter:description" content="다이닌-로보틱스: 옴니모달 통합 확산 비전-언어-행동 모델"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_13053v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "다이닌-로보틱스: 옴니모달 통합 확산 비전-언어-행동 모델", "description": "다이닌-로보틱스: 옴니모달 통합 확산 비전-언어-행동 모델", "datePublished": "2026-09-11", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_13053v1", "author": [{"@type": "Person", "name": "Hoeun Lee"}, {"@type": "Person", "name": "Jaeik Kim"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_13053v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_13053v1"});gtag('event', 'paper_view', {"paper_id": "2609_13053v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>다이닌-로보틱스: 옴니모달 통합 확산 비전-언어-행동 모델</h1><p>다이닌-로보틱스: 옴니모달 통합 확산 비전-언어-행동 모델</p><pre>다이닌-로보틱스: 옴니모달 통합 확산 비전-언어-행동 모델
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Dynin-Robotics: Omnimodal Unified Diffusion Vision-Language-Action Model
+&gt; - **저자:** Hoeun Lee, Jaeik Kim, Jusang Oh, Jinhyeok Kim, Geon Choi, Hyeonggeun Kim, Jaeyoung Do
+&gt; - **발행일:** 2026-09-11
+&gt; - **PDF 링크:** [Dynin-Robotics: Omnimodal Unified Diffusion Vision-Language-Action Model](https://arxiv.org/pdf/2609.13053v1)
+
+
+✨ 3줄 핵심 요약
+* **통합 모델 구조**: 언어, 시각 정보, 목표 상태, 로봇 행동을 동일한 토큰 체계로 처리하는 옴니모달 마스크 확산(Masked-Diffusion) 기반 모델입니다.
+* **다목적 학습**: 행동 예측뿐만 아니라 미래 상태 예측, 목표 상태 예측 등 상호 보완적인 로봇 학습 목표를 공유 궤적 모델로 통합했습니다.
+* **성능 및 효율**: 실제 로봇 환경에서 높은 성공률을 기록했으며, 블록 병렬 처리 구현을 통해 행동 디코딩 속도를 획기적으로 개선했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+로봇이 &quot;컵을 집어서 접시에 놓아라&quot;는 명령을 이해하고 수행하려면, 단순히 명령을 해석하는 것을 넘어 실제 주변 환경의 변화를 예측할 수 있어야 합니다. **Dynin-Robotics**는 이 모든 정보를 하나의 언어로 이해합니다. 마치 문장의 다음 단어를 맞추듯, 로봇의 다음 행동과 로봇이 움직인 후의 환경 변화를 동시에 예측하도록 훈련되었습니다. 이러한 통합 방식 덕분에 로봇은 목표 지점을 더 정확하게 파악하고 더 효율적으로 움직일 수 있습니다.
+
+🎯 배경 및 문제점
+기존의 비전-언어-행동(VLA) 모델들은 언어 지시와 시각 정보를 연결하는 데 집중했으나, 행동 수행과 관련된 물리적 환경 변화를 정교하게 반영하는 데 한계가 있었습니다. 특히, 작업의 의미(Task semantics)와 실제 물리적 실행(Physical execution) 사이의 간극을 좁히기 위해, 단순히 행동만을 출력하는 모델을 넘어 목표 지향적인 예측과 환경 역학(Dynamics)을 통합한 모델링이 필요했습니다.
+
+💡 핵심 기술 및 아키텍처
+* **옴니모달 마스크 확산**: 언어, 시각 데이터(이미지/비디오), 목표 상태, 로봇 행동을 모두 개별 토큰화하여 동일한 확산 모델 내에서 생성합니다.
+* **공유 궤적 모델링**: 행동 예측, 행동 조건부 다음 관측 예측, 최종 목표 상태 예측 등을 하나의 모델이 공통 인터페이스로 학습합니다.
+* **테스트 시간 확장(Test-time Scaling)**: 목표 예측과 행동 후보 평가에 더 많은 계산 자원을 할당하여, 필요에 따라 성능을 정밀하게 조정할 수 있습니다.
+* **최적화**: 블록 병렬 처리 구현을 통해 모델 측 행동 디코딩 속도를 기존 대비 최대 29.2배 가속화했습니다.
+
+📊 실험 결과 분석
+* **로봇 환경 성능**: Franka Research 3 로봇을 이용한 4가지 조작 조건 실험에서 78.4%의 평균 성공률을 달성했습니다.
+* **학습 효율**: 48개의 Open X-Embodiment 데이터셋에서 약 133만 개의 궤적을 지속적으로 사전 학습하여 적응력을 높였습니다.
+* **디코딩 방식**: 목표 가이드와 행동-상태 동시 노이즈 제거(Joint denoising)를 결합했을 때, 단순히 행동만을 디코딩하는 것보다 명령어 변경 상황에서의 성공률이 더 높았습니다.
+* **손실 함수 가중치**: 사전 학습 시 보조 학습 목표(보조 손실)에 너무 높은 가중치를 두는 것보다, 동일한 가중치(1:1:1:1)를 부여했을 때 ID(In-Distribution) 및 OOD(Out-of-Distribution) 성능이 가장 우수했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+이 연구는 복잡한 로봇 제어 시스템을 하나의 통합된 모델로 단순화할 수 있는 가능성을 제시합니다. 특히 다양한 로봇 플랫폼과 환경에 범용적으로 적용 가능한 사전 학습 모델로서, 실무에서는 새로운 작업 도메인에 로봇을 빠르게 적응시키는 데 기여할 수 있습니다. 향후 더 긴 미래 예측이나 다양한 센서 모달리티 확장 등, 로봇의 지능적 자율성 강화에 중요한 토대가 될 것으로 기대됩니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2609.13053 Dynin-Robotics: Omnimodal Unified Diffusion Vision-Language-Action Model](https://arxiv.org/abs/2609.13053)
+&gt; - [Dynin-Robotics: Omnimodal Unified Diffusion Vision-Language-Action Model](https://arxiv.org/html/2609.13053)
+&gt; - [Dynin-Robotics: Omnimodal Unified Diffusion Vision-Language-Action Model · Pith Review](https://pith.science/paper/2609.13053)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;이 논문의 핵심인 옴니모달 마스크 확산 모델은 이론적으로는 흥미롭지만, 손실 함수 가중치를 1:1:1:1로 고정했을 때 최적 성능이 나왔다는 점은 조금 의아하군요. 물리적 환경 역학(Dynamics)과 행동(Action)의 스케일 차이가 클 텐데, 과연 복잡한 실제 환경에서도 이 정적 가중치가 견고하게 작동할지 의문입니다. 단순한 실험적 결과에 안주하지 말고, 도메인별 가중치 적응 기법에 대한 심도 있는 논의가 필요해 보입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 일리가 있지만, 실무자 입장에서는 &#x27;행동 디코딩 29.2배 가속화&#x27;라는 숫자가 훨씬 매력적입니다. 기존 VLA 모델들이 추론 속도 때문에 실시간 로봇 제어에 도입하기 정말 까다로웠거든요. 블록 병렬 처리 구현을 위해 커스텀 커널을 얼마나 짰을지 고생이 눈에 선하네요. 다만, 이 정도 최적화가 특정 하드웨어 종속적인지, 아니면 범용적인 임베딩 최적화인지가 관건이겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;두 분 다 너무 진지하신 거 아닌가요? 저는 133만 개의 궤적을 때려 넣은 사전 학습 모델이라는 점에 주목하고 있습니다! 이제 VLA도 단순 태스크 수행을 넘어 &#x27;미래 상태 예측&#x27;까지 통합하는 게 트렌드인데, Dynin-Robotics가 그 표준을 제시한 것 같아요. 비록 1:1:1:1 가중치가 투박해 보여도, 결국 스케일링 법칙으로 밀어붙이면 해결된다는 걸 보여준 거 아닐까요? 당장 다음 주부터 저희 랩 세미나 발제는 이걸로 갑니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
