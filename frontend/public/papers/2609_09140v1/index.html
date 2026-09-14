@@ -1,0 +1,70 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>NOAH: 전체 환자 여정을 학습하는 시간 인지형 멀티모달 예측 모델 | ArXiv Translator AI</title><meta name="description" content="NOAH: 전체 환자 여정을 학습하는 시간 인지형 멀티모달 예측 모델"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_09140v1"><meta property="og:type" content="article"><meta property="og:title" content="NOAH: 전체 환자 여정을 학습하는 시간 인지형 멀티모달 예측 모델"><meta property="og:description" content="NOAH: 전체 환자 여정을 학습하는 시간 인지형 멀티모달 예측 모델"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_09140v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="NOAH: 전체 환자 여정을 학습하는 시간 인지형 멀티모달 예측 모델"><meta name="twitter:description" content="NOAH: 전체 환자 여정을 학습하는 시간 인지형 멀티모달 예측 모델"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_09140v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "NOAH: 전체 환자 여정을 학습하는 시간 인지형 멀티모달 예측 모델", "description": "NOAH: 전체 환자 여정을 학습하는 시간 인지형 멀티모달 예측 모델", "datePublished": "2026-09-08", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_09140v1", "author": [{"@type": "Person", "name": "Tobias Susetzky"}, {"@type": "Person", "name": "Raphael Rehms"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_09140v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_09140v1"});gtag('event', 'paper_view', {"paper_id": "2609_09140v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>NOAH: 전체 환자 여정을 학습하는 시간 인지형 멀티모달 예측 모델</h1><p>NOAH: 전체 환자 여정을 학습하는 시간 인지형 멀티모달 예측 모델</p><pre>NOAH: 전체 환자 여정을 학습하는 시간 인지형 멀티모달 예측 모델
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** NOAH: Learning the Full Patient Journey. A Longitudinal Multimodal Time-Aware Model for Representation and Forecasting
+&gt; - **저자:** Tobias Susetzky, Raphael Rehms, Dmitrii Seletkov, Özgün Turgut, Michelle Espranita Liman, Lisa Steinhelfer, Rickmer Braren, Daniel Rueckert
+&gt; - **발행일:** 2026-09-08
+&gt; - **PDF 링크:** [NOAH: Learning the Full Patient Journey. A Longitudinal Multimodal Time-Aware Model for Representation and Forecasting](https://arxiv.org/pdf/2609.09140v1)
+
+
+✨ 3줄 핵심 요약
+- NOAH는 의료 기록, 이미지, 수치 등 다양한 형태의 데이터를 통합하여 환자의 전체 생애 여정을 학습하고 미래 상태를 예측하는 생성형 AI 모델입니다.
+- 양방향 시간 통합과 변분 잠재 공간을 통해 임상 데이터의 복잡한 비선형성과 불확실성을 효과적으로 처리합니다.
+- 제로샷 분류, 미래 상태 자동 회귀 예측, 반사실적 치료 시뮬레이션 등 다목적 임상 의사결정을 지원하는 기초 모델입니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+병원에는 검사 결과, 의료 영상, 약물 처방, 진단 기록 등 서로 다른 형태의 데이터가 쌓입니다. 하지만 기존 AI 모델들은 특정 데이터 형식만 다루거나 시간 흐름을 단순하게만 처리하는 한계가 있었습니다. NOAH는 이 모든 데이터를 하나의 &#x27;환자 여정&#x27;으로 통합하여 학습합니다. 마치 사람이 환자의 전체 병력을 훑어보듯, NOAH는 환자의 과거를 이해하고 미래에 어떤 일이 벌어질지 예측합니다. 특히 단순히 결과를 맞히는 것을 넘어, &quot;만약 이 약을 썼다면 어떻게 되었을까?&quot;와 같은 시뮬레이션까지 가능해 개인 맞춤형 정밀 의료를 돕는 차세대 기반 모델입니다.
+
+🎯 배경 및 문제점
+- **데이터의 파편화:** 의료 데이터는 영상, 시계열 신호, 정형 데이터 등 형태가 매우 다양하며 비정기적으로 발생하여 통합적 분석이 어렵습니다.
+- **기존 모델의 한계:** 대다수 모델이 특정 데이터 형식에 국한되거나, 시간이 흐름에 따라 변하는 환자 상태의 복잡성 및 불확실성(stochasticity)을 제대로 반영하지 못합니다.
+- **예측 중심의 부족:** 과거 상태를 분석하는 것에서 나아가 미래의 임상적 변화를 예측하고 치료 개입 효과를 시뮬레이션하는 데 한계가 있었습니다.
+
+💡 핵심 기술 및 아키텍처
+- **멀티모달 통합:** MIMIC 데이터셋 패밀리를 활용해 5억 5,900만 개 이상의 임상 이벤트를 학습했으며, 영상부터 텍스트까지 모든 의료 데이터를 Natively하게 처리합니다.
+- **양방향 시간 통합:** 시간적 정보를 단순한 선형 흐름이 아닌, 양방향으로 통합하여 과거와 미래 간의 복잡한 관계를 파악합니다.
+- **변분 잠재 공간(Variational Latent Space):** 임상 경로의 확률적 성질을 캡처하여 추론 시 환자 상태의 가변성을 유지하면서도 결과의 의미적 일관성을 확보합니다.
+- **기초 모델 구조:** 작업에 독립적(Task-agnostic)인 아키텍처를 채택하여, 특정 목적에 얽매이지 않고 다양한 임상 작업에 재사용 가능합니다.
+
+📊 실험 결과 분석
+- **예측 성능:** 제로샷 환경에서 고령 환자의 입원 장기화 예측 시, 환자 이력이 포함될 경우 AUROC가 0.63에서 0.68로 상승하는 등 이력 정보가 중요함을 확인했습니다. 전체적인 예측 정확도(AUROC)는 0.70에서 0.72로 향상되었습니다.
+- **임상 활용도:** 질병 결과, 15개의 ICD 챕터(질병 분류), 29개의 동반 질환 예측 및 사건 발생 시간 예측에서 높은 성능을 보였습니다.
+- **확장성:** 8개의 NVIDIA A100 GPU 환경에서 학습되었으며, 다양한 다운스트림 작업에서 경량 선형 모델만으로도 복잡한 정보를 효과적으로 추출할 수 있음을 입증했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+- **개인 맞춤형 의료:** 환자 개인의 전체 병력을 바탕으로 미래 건강 상태를 예측하여 예방적 치료를 설계하는 데 활용될 수 있습니다.
+- **임상 시뮬레이션:** 특정 치료법을 적용했을 때의 변화를 예측하는 &#x27;반사실적 시뮬레이션&#x27;을 통해 의료진의 의사결정을 지원합니다.
+- **의료 AI의 기반:** 특정한 진단 업무에 국한되지 않는 범용적 모델로서, 향후 병원 내 지능형 시스템 구축을 위한 강력한 기초 엔진 역할을 할 것으로 기대됩니다.
+- **주의사항:** 본 모델은 생리학적 결정론적 시뮬레이터가 아닌 확률적 패턴 예측 모델이므로, 통계적 추론에 기반하며 실제 인과관계 모델링과는 구분되어야 합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [NOAH: Learning the Full Patient Journey. A Longitudinal Multimodal Time-Aware Model for Representation and Forecasting · Pith](https://pith.science/paper/2609.09140)
+&gt; - [NOAH: Learning the Full Patient Journey. A Longitudinal Multimodal Time-Aware Model for Representation and Forecasting (arXiv:2609.09140) | Papers with Code](https://paperswithcode.co/paper/2609.09140)
+&gt; - [Paper page - NOAH: Learning the Full Patient Journey. A Longitudinal Multimodal Time-Aware Model for Representation and Forecasting](https://huggingface.co/papers/2609.09140)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문은 흥미로우나 &#x27;반사실적 시뮬레이션&#x27;이라는 표현은 주의가 필요하네. 변분 잠재 공간을 통해 확률적 패턴을 학습한 것과 인과관계를 추론하는 것은 엄연히 다르지. 의료 현장에서 이 모델의 예측을 인과적 근거로 오해할 가능성이 다분한데, 이에 대한 윤리적 가이드라인이나 신뢰도 보정(Calibration)에 대한 논의가 부족해 보이는군.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 인과관계 해석은 위험하죠. 실무자 입장에서 가장 걱정되는 건 8개의 A100으로 학습했다는 &#x27;기초 모델&#x27;의 서빙 비용입니다. 병원 EMR 데이터는 실시간으로 들어오는데, 환자 여정을 매번 재구성해서 추론하려면 레이턴시가 장난 아닐 텐데... 현장 적용하려면 경량화나 지식 증류(Distillation)가 필수겠는데요?&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 다들 너무 비판적이시네요! 5억 5천만 개의 이벤트를 멀티모달로 녹여낸 거 자체가 대단한 거 아닌가요? 선배님 말씀하신 서빙 비용은 어차피 나중에 칩 성능 좋아지면 해결될 문제고요. 저는 이 모델로 제로샷 분류가 된다는 점에 꽂혔습니다. 이제 의료 AI도 데이터 셋마다 모델 새로 안 짜고 파인튜닝만 하면 되는 시대가 온 것 같아서 가슴이 웅장해지네요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

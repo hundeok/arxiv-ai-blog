@@ -1,0 +1,64 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>기계 학습과 일기 예보를 활용한 풍력 발전기 출력 예측 | ArXiv Translator AI</title><meta name="description" content="기계 학습과 일기 예보를 활용한 풍력 발전기 출력 예측"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_06194v1"><meta property="og:type" content="article"><meta property="og:title" content="기계 학습과 일기 예보를 활용한 풍력 발전기 출력 예측"><meta property="og:description" content="기계 학습과 일기 예보를 활용한 풍력 발전기 출력 예측"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_06194v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="기계 학습과 일기 예보를 활용한 풍력 발전기 출력 예측"><meta name="twitter:description" content="기계 학습과 일기 예보를 활용한 풍력 발전기 출력 예측"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_06194v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "기계 학습과 일기 예보를 활용한 풍력 발전기 출력 예측", "description": "기계 학습과 일기 예보를 활용한 풍력 발전기 출력 예측", "datePublished": "2026-09-05", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_06194v1", "author": [{"@type": "Person", "name": "Khivishta Boodhoo"}, {"@type": "Person", "name": "Isaac Triguero"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_06194v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_06194v1"});gtag('event', 'paper_view', {"paper_id": "2609_06194v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>기계 학습과 일기 예보를 활용한 풍력 발전기 출력 예측</h1><p>기계 학습과 일기 예보를 활용한 풍력 발전기 출력 예측</p><pre>기계 학습과 일기 예보를 활용한 풍력 발전기 출력 예측
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Predicting Wind Turbine Power Using Machine Learning and Weather Forecasts
+&gt; - **저자:** Khivishta Boodhoo, Isaac Triguero, Josh Plumbly, Bruce Nicolson, Nicholas Watson
+&gt; - **발행일:** 2026-09-05
+&gt; - **PDF 링크:** [Predicting Wind Turbine Power Using Machine Learning and Weather Forecasts](https://arxiv.org/pdf/2609.06194v1)
+
+
+✨ 3줄 핵심 요약
+*   인공신경망(ANN) 모델을 활용해 풍력 발전기의 전력 생산량을 예측하고 유지보수 최적 시기를 도출했습니다.
+*   데이터 전처리(이상치 제거 등)와 충분한 학습 데이터 확보가 모델 성능 향상에 결정적인 역할을 함을 확인했습니다.
+*   제안된 방법론은 근처 기상 관측소 데이터를 활용하여 타 지역 발전기에도 적용 가능한 확장성을 확보했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+해상 풍력 발전은 효율적인 유지보수가 필수적이지만, 발전 중단은 에너지 생산 손실로 이어집니다. 본 연구는 인공신경망을 통해 미래의 풍력 발전량 패턴을 미리 예측함으로써, 발전량이 낮아 유지보수를 하기에 가장 적합한 시간대를 찾아냅니다. 특히 기존 모델들과 달리 주변 기상 관측소의 데이터를 함께 활용하여, 장소에 구애받지 않고 다른 풍력 발전기에도 범용적으로 적용할 수 있는 기틀을 마련했습니다.
+
+🎯 배경 및 문제점
+해상 풍력 발전은 효율이 높으나, 유지보수를 위한 강제 가동 중단 시 발생하는 비용 부담이 큽니다. 기존 예측 모델들은 데이터 양, 특성 선택(feature selection), 전처리 방식이 성능에 미치는 영향이 충분히 연구되지 않았으며, 특정 발전기에 종속되어 다른 환경으로의 전이 학습이 어렵다는 한계가 있었습니다.
+
+💡 핵심 기술 및 아키텍처
+*   **모델 구성**: 선형 회귀(Linear Regression) 모델을 베이스라인으로 설정하고, 더 복잡한 인공신경망(ANN) 모델을 설계하여 비교했습니다.
+*   **데이터 전처리**: 마할라노비스 거리(Mahalanobis Distance)를 이용한 이상치 제거, 브레이크 상태에 따른 비정상 데이터 필터링, 그리고 랜덤 포레스트 회귀(RFR)를 이용한 특성 선택을 수행했습니다.
+*   **확장성**: 발전기 자체 데이터(SCADA)뿐만 아니라 인근 기상 관측소의 일기 예보 데이터를 통합하여 활용함으로써 범용성을 높였습니다.
+
+📊 실험 결과 분석
+*   **정확도 비교**: ANN 모델이 R² 점수 0.98, 평균 절대 오차(MAE) 194를 기록하여, 베이스라인인 선형 회귀(R² 0.94, MAE 441)보다 우수한 성능을 보였습니다.
+*   **데이터 양의 영향**: 학습 데이터 기간을 1개월에서 1년으로 늘렸을 때, ANN 모델의 NRMSE(정규화된 평균 제곱근 오차)가 21.09%에서 11%로 개선되었습니다.
+*   **전처리 효과**: 전처리 과정은 베이스라인 모델의 R² 점수를 0.31에서 0.94로 대폭 향상할 만큼 모델 성능에 핵심적이었습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+본 연구는 유지보수 시기를 발전량이 낮은 4시간 단위의 특정 기간으로 정확히 예측하여, 유지보수 1회당 약 2,000kW의 전력 생산 손실을 방지할 수 있음을 입증했습니다. 이를 통해 풍력 발전 운영사들은 발전 손실을 최소화하면서도 체계적인 유지보수 계획을 수립할 수 있게 되며, 기상 데이터 기반의 범용적인 모델 구조를 통해 다양한 해상 풍력 단지로의 기술 이식 및 상용화가 가능해졌습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2609.06194 Predicting Wind Turbine Power Using Machine Learning and Weather Forecasts](https://arxiv.org/abs/2609.06194)
+&gt; - [Predicting Wind Turbine Power Using Machine Learning and Weather Forecasts · Pith](https://pith.science/paper/2609.06194)
+&gt; - [Predicting Wind Turbine Power Using Machine Learning and Weather Forecasts — Time Series](https://awesomepapers.io/time-series/papers/2609.06194)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;데이터 전처리가 모델 성능을 R² 0.31에서 0.94로 견인했다는 건, 모델의 영리함보다는 데이터 정제 과정의 노가다가 핵심이었다는 방증이군요. 마할라노비스 거리 기반의 이상치 제거는 고전적이지만 확실한 선택입니다. 다만, 현장의 동적 환경에서 이 정적 전처리 파이프라인이 얼마나 견고하게 유지될지 의문이 드는군요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에선 데이터 분포 변할 때마다 저 전처리 로직 튜닝하느라 밤샙니다. 특히 기상 관측소 데이터와 발전기 SCADA 데이터 간의 Time-alignment 이슈는 해결했나요? 현장에선 데이터 하나만 튀어도 파이프라인 전체가 죽는데, 논문처럼 깔끔한 1년 치 데이터는 실제 운영 환경에선 거의 판타지 수준입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;현업 형님들, 너무 부정적으로만 보지 마세요! R² 0.98 찍은 거면 꽤 훌륭한 &#x27;Baseline&#x27; 잡은 거 아닌가요? 요즘 같은 때에 가볍고 효율적인 ANN 구조로 유지보수 손실 2,000kW를 방지했다는 건, 바로 비즈니스 모델로 직결되는 거니까요. 저는 이거 기반으로 최신 트랜스포머 모델 붙여서 SOTA 찍어볼 생각입니다. 엣지 디바이스에도 올릴 수 있을 것 같아요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
