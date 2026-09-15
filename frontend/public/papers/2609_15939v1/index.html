@@ -1,0 +1,69 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>취약점 위치 파악 벤치마크: 리포지토리 규모에서의 에이전트 보안 분석 측정 | ArXiv Translator AI</title><meta name="description" content="취약점 위치 파악 벤치마크: 리포지토리 규모에서의 에이전트 보안 분석 측정"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_15939v1"><meta property="og:type" content="article"><meta property="og:title" content="취약점 위치 파악 벤치마크: 리포지토리 규모에서의 에이전트 보안 분석 측정"><meta property="og:description" content="취약점 위치 파악 벤치마크: 리포지토리 규모에서의 에이전트 보안 분석 측정"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_15939v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="취약점 위치 파악 벤치마크: 리포지토리 규모에서의 에이전트 보안 분석 측정"><meta name="twitter:description" content="취약점 위치 파악 벤치마크: 리포지토리 규모에서의 에이전트 보안 분석 측정"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_15939v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "취약점 위치 파악 벤치마크: 리포지토리 규모에서의 에이전트 보안 분석 측정", "description": "취약점 위치 파악 벤치마크: 리포지토리 규모에서의 에이전트 보안 분석 측정", "datePublished": "2026-09-14", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_15939v1", "author": [{"@type": "Person", "name": "Aman Priyanshu"}, {"@type": "Person", "name": "Supriti Vijay"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_15939v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_15939v1"});gtag('event', 'paper_view', {"paper_id": "2609_15939v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>취약점 위치 파악 벤치마크: 리포지토리 규모에서의 에이전트 보안 분석 측정</h1><p>취약점 위치 파악 벤치마크: 리포지토리 규모에서의 에이전트 보안 분석 측정</p><pre>취약점 위치 파악 벤치마크: 리포지토리 규모에서의 에이전트 보안 분석 측정
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Vulnerability Localization Benchmark: Measuring Agentic Security Analysis at Repository Scale
+&gt; - **저자:** Aman Priyanshu, Supriti Vijay, Kimia Majd, Xuhong He, Fraser Burch, Takahiro Matsumoto, Jianliang He, Baturay Saglam, Arthur Goldblatt, Zhuoran Yang, Amin Karbasi
+&gt; - **발행일:** 2026-09-14
+&gt; - **PDF 링크:** [Vulnerability Localization Benchmark: Measuring Agentic Security Analysis at Repository Scale](https://arxiv.org/pdf/2609.15939v1)
+
+
+✨ 3줄 핵심 요약
+*   **새로운 기준 제시:** 기존의 패치 생성이나 수정 중심 평가에서 벗어나, 대규모 리포지토리에서 취약점 관련 코드를 정확히 식별하는 &#x27;취약점 위치 파악(Vulnerability Localization)&#x27; 능력을 평가하는 &#x27;VLoc Bench&#x27;를 도입했습니다.
+*   **실제 성능 한계:** 27개 언어 모델과 4개 정적 분석 도구를 평가한 결과, 가장 우수한 모델도 File F1 점수가 0.229에 그쳤으며, 38.4%의 작업에서는 어떤 모델도 올바른 위치를 찾지 못했습니다.
+*   **검증의 중요성:** 취약점을 잘 찾는 모델이 반드시 패치된 코드에서 &#x27;취약점 없음&#x27;을 잘 판단하는 것은 아니며, 보안 에이전트는 취약점 탐색 능력과 함께 오탐지(False Positive)를 방지하는 절제 능력을 동시에 갖춰야 함을 확인했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+보안 에이전트가 방대한 소스 코드 속에서 실제 문제가 있는 파일을 찾아내는 것은 매우 어려운 작업입니다. 연구진은 290개 리포지토리의 500개 실제 취약점 사례를 모아 &#x27;VLoc Bench&#x27;를 만들었습니다. 에이전트는 CWE(공통 약점 열거) 설명만 가지고 읽기 전용 터미널 환경에서 취약 파일의 위치를 찾아내야 합니다(Phase A). 그다음, 보안 패치가 적용된 코드에서는 아무런 취약점이 없음을 판단해야 합니다(Phase B). 실험 결과, 모델의 크기가 성능을 보장하지 않았고, 특히 취약점을 잘 찾는 모델이 정작 문제가 없는 코드에서도 취약점이 있다고 착각하는 경우가 많아 실무 적용을 위해서는 개선이 필요함을 보여주었습니다.
+
+🎯 배경 및 문제점
+기존 보안 AI 연구는 주로 취약점 탐지, 재현, 수리에 집중되어 왔습니다. 그러나 실제 보안 전문가의 업무 흐름에서 &#x27;취약한 코드 위치를 정확히 특정하는 것&#x27;은 매우 중요한 단계임에도 이를 정교하게 측정하는 도구가 부족했습니다. 또한, 기존 평가들은 단순히 코드를 고치는 능력에 치중해, 모델이 패치된 이후에도 불필요한 알람을 발생시키는지 확인하는 &#x27;검증 단계&#x27;의 중요성을 간과했습니다.
+
+💡 핵심 기술 및 아키텍처
+*   **VLoc Bench 구성:** 500개의 실제 취약점 데이터셋으로, 각 사례는 취약한 상태와 패치된 상태의 리포지토리 스냅샷으로 구성됩니다.
+*   **에이전트 인터페이스:** 에이전트에게는 오직 CWE 설명과 읽기 전용 터미널(ls, grep, cat 등) 권한만 주어지며, 네트워크 접근이나 코드 실행은 불가능한 샌드박스 환경에서 평가됩니다.
+*   **이중 평가 체계:** 
+    *   **Phase A (위치 파악):** 패치된 파일들을 정답지로 하여 에이전트가 취약 파일을 얼마나 정확히 지목하는지 평가.
+    *   **Phase B (검증):** 패치된 리포지토리에서 에이전트가 취약점이 없음을 올바르게 보고하는지(오탐지 방지 능력) 평가.
+
+📊 실험 결과 분석
+*   **성능:** 최고 성적을 거둔 모델의 File F1 점수는 0.229였으며, 전체 작업의 38.4%는 성공적인 위치 파악에 실패했습니다.
+*   **모델 규모와 성능:** 모델의 파라미터 수(규모)가 반드시 성능으로 직결되지 않았습니다. 오히려 일부 작은 모델이 대형 모델보다 나은 성능을 보이기도 했습니다.
+*   **도구 비교:** 정적 분석 도구(Semgrep, CodeQL 등)는 여전히 경쟁력 있는 기준점 역할을 하며, 미세 조정(fine-tuning)되지 않은 LLM보다 일부 상황에서 우수한 성능을 보였습니다.
+*   **오탐지 제어:** 취약점 위치 파악 성능과 오탐지 방지 성능 사이에는 일관된 상관관계가 없었습니다. 이는 단순히 취약점을 찾는 것보다 &#x27;취약점이 아닐 때 없다고 말할 수 있는 능력&#x27;이 별개의 역량임을 시사합니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+*   **실무적 시사점:** 자동화된 취약점 위치 파악 도구는 보안 전문가를 보조하는 강력한 도구가 될 수 있지만, 현재 기술 수준에서는 최종 결정자가 아닌 &#x27;인간 검토를 위한 후보군 제공자&#x27; 수준으로 사용되어야 합니다.
+*   **학계 기여:** 본 연구는 보안 에이전트의 중간 단계 역량을 측정할 수 있는 표준 환경을 제공하여, 향후 더 정교하고 실용적인 방어 도구 개발을 가속화할 것으로 기대됩니다.
+*   **안전한 발전:** 연구진은 데이터셋 구성 시 이미 공개된 취약점만을 사용하고, 분석 도구가 아닌 탐색 도구로서의 역량만을 측정함으로써 보안 연구의 윤리적 가이드라인을 준수했습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Vulnerability Localization Benchmark: Measuring Agentic Security Analysis at Repository Scale · Pith](https://pith.science/paper/2609.15939)
+&gt; - [AI News, Trends &amp; Industry Intelligence | AIGC.NEWS](https://aigc.news/)
+&gt; - [LLM Digest — AI news feed for platform and agent engineers](https://www.llm-digest.com/)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;이 논문은 보안 에이전트 연구가 단순히 &#x27;코드 생성&#x27;이라는 허상에서 벗어나, &#x27;탐색과 검증&#x27;이라는 본질적인 정밀도 문제로 회귀했다는 점에서 매우 고무적입니다. 특히 F1 점수가 0.229에 머물렀다는 결과는, 모델들이 문맥을 이해하는 게 아니라 단순히 확률적 패턴을 흉내 내고 있음을 방증합니다. 학계는 이제 모델 크기를 키우는 &#x27;스케일링 법칙&#x27;에서 벗어나, 논리적 추론 기반의 탐색 알고리즘을 설계하는 데 집중해야 합니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에선 이 점수가 더 처참할 겁니다. 실제 리포지토리는 스파게티 코드 그 자체인데, 샌드박스에서 grep만 던져서 위치 찾으라니 모델들이 헤맬 수밖에요. 특히 오탐지(False Positive) 문제는 치명적입니다. 배포 파이프라인에서 보안 에이전트가 툭하면 &#x27;위험함&#x27; 띄우면 바로 개발팀한테 욕먹고 끄게 될 텐데, 정적 분석 도구랑 모델을 어떻게 하이브리드로 엮을지가 다음 과제겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;두 분 다 너무 진지하신 거 아닌가요? ㅋㅋ 전 이 데이터셋 바로 클론해서 다음 주 학회용으로 &#x27;VLoc-CoT(Chain of Thought)&#x27; 프롬프팅 기법 하나 뽑아낼 생각입니다. 어차피 38.4%가 아예 못 찾는다면, 그냥 리트리버(RAG)를 강화하거나 에이전트가 터미널 히스토리 보면서 스스로 반성하게 하는 루프만 돌려도 SOTA는 바로 찍을 것 같은데요? 실무 성능이요? 그건 나중에 졸업할 때쯤 생각하죠 뭐!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
