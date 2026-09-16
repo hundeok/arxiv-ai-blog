@@ -34181,11 +34181,11 @@
     "2609_15745v1": {
       "id": "2609_15745v1",
       "filename": "post_2609_15745v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-09-15T14:05:26.821018+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-15T14:05:26.821019+00:00",
+      "updated_at": "2026-09-16T02:53:55.558280+00:00",
       "paper": {
         "title": "Look Before You Leap: Factual Decoding with Internal Attribution Signals",
         "summary": "Hallucination remains a critical challenge in large language models (LLMs), where early factual errors compound through autoregressive generation in a snowballing effect that neither post-hoc correction nor weight-level intervention can effectively preempt. We propose DescaPE (DEcoding Signal Control Against Path Error-snowballing), a decoding framework that leverages internal model signals to suppress hallucination-prone trajectories at inference time. Through sliding-window MLP ablation, we identify a factual-salient layer span within LLMs whose derived signal is selectively elevated for factual tokens and exhibits anomalous spikes at hallucination-prone steps. We train a lightweight probe to approximate this signal from a single forward pass and integrate it into candidate scoring to penalize high-risk continuations while rewarding factually grounded ones. Experiments across five factuality benchmarks on three LLMs demonstrate that DescaPE achieves factuality improvements over decoding-time baselines in multiple settings, while incurring only 1.10x latency overhead in our efficiency evaluation. Our code is available at https://github.com/hayeonggg/DESCAPE.",
@@ -34199,7 +34199,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2609.15745v1"
       },
-      "priority_score": 44
+      "priority_score": 44,
+      "korean_title": "앞서 보고 뛰어라: 내부 귀속 신호를 활용한 사실적 디코딩"
     },
     "2609_15744v1": {
       "id": "2609_15744v1",
@@ -34502,11 +34503,706 @@
         "pdf_link": "https://arxiv.org/pdf/2609.13443v1"
       },
       "priority_score": 27
+    },
+    "2609_17123v1": {
+      "id": "2609_17123v1",
+      "filename": "post_2609_17123v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-16T02:53:09.636998+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-16T02:53:09.637011+00:00",
+      "paper": {
+        "title": "AI for Science with GPT-6 Astra: Thermal Design and Electrothermal Analysis of 2D CFET",
+        "summary": "Thermal optimization of 2D CFET inverters requires testing structural proposals against their electrical costs. We examine these research tasks using an AI agent workflow within a supplied electrothermal model. At 12 nm, Astra selects a redistributed source-interconnect geometry, while a coordinating agent proposes a substrate-directed heat-removal path. The combined design reduces peak temperature rise by 1.67 K at fixed metal volume and 20 μW. A subsequent metal-resistance sensitivity gives about 0.6-K inverter cooling alongside a 2% nFET on-current loss. Effective contact-length scaling further shows that lower temperature can accompany higher thermal resistance when current falls. Reproduction identifies agreeing implementations and retains a 104.95-K failure for diagnosis. These results show that an AI scientist workflow can propose thermal structures, test them under common constraints, and quantify their electrical cost.",
+        "published": "2026-09-15T12:48:44Z",
+        "authors": [
+          "Min-Hui Kim",
+          "Khushi Sharma",
+          "Sarah Zhang",
+          "Ye Wang"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.17123v1"
+      },
+      "priority_score": 21
+    },
+    "2609_17111v1": {
+      "id": "2609_17111v1",
+      "filename": "post_2609_17111v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-16T02:53:09.637019+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-16T02:53:09.637021+00:00",
+      "paper": {
+        "title": "Finding Common Mistakes In Modelling With Mathematical Formalisms Using LLMs",
+        "summary": "Modelling with mathematical formalisms like logical formulas, mathematical equations, or regular expressions is an important yet challenging task for students of computer science and other STEM disciplines. Identifying common mistakes occurring in this context is an important step towards helping struggling students by providing targeted high-quality feedback, e.g. in interactive learning systems.   We present a tool-supported workflow that allows to (1) identify candidates for common mistakes that explain many student mistakes in large educational data sets, (2) cluster candidates according to similarities, and (3) visualize resulting clusters for instructors and CS education researchers. The visualization is designed to help researchers to identify common modelling mistakes. The candidates for common mistakes are represented by bug fixing transformations that translate incorrect formalizations into correct formalizations; they are generated by an LLM and validated algorithmically.   We show that this approach works well by reproducing common mistakes in propositional logic modelling that were identified by hand in the literature; showing that, unlike other algorithmic approaches, the LLM-based approach is suitable for very large sets of data; and applying it to multiple other formalisms to showcase it generalizes beyond propositional logic.",
+        "published": "2026-09-15T12:40:27Z",
+        "authors": [
+          "Lilian Killich",
+          "Marko Schmellenkamp",
+          "Fabian Vehlken",
+          "Thomas Zeume"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.17111v1"
+      },
+      "priority_score": 17
+    },
+    "2609_17109v1": {
+      "id": "2609_17109v1",
+      "filename": "post_2609_17109v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-16T02:53:09.637028+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-16T02:53:09.637029+00:00",
+      "paper": {
+        "title": "Shared-Prefix KV Reuse Across Standard LoRA Adapters: Quality and Serving Tradeoffs",
+        "summary": "A common small-model deployment runs one shared backbone with several LoRA specialists that answer over the same context. Serving them naively re-prefills that shared context once per specialist. We study a narrow, practical question: for already-trained standard LoRA adapters -- not adapters retrained for cache compatibility -- how much task quality is preserved if the backbone's prefill KV cache is computed once and reused across specialists, and what does that buy in serving cost? On a Qwen3-1.7B backbone with two adapters (extractive QA on HotpotQA, arithmetic reasoning on GSM8K), we sweep the boundary at which the specialist takes over from the reused base cache and measure paired quality differences and serving cost. Full-prefix reuse had the lowest prefill cost and a small quality difference on held-out GSM8K (Delta = -4.6 EM at a 160-token budget; -3.0 at 320 tokens; -0.8 under a second training seed -- all favoring native, only the first excluding zero, and the magnitude not consistent). Partial recomputation provided no demonstrated advantage. Neither quality equivalence nor a general boundary-selection rule is established. We also report a closed-form ridge KV translator that did not beat direct reuse, and specialist-dependence contrasts whose intervals all include zero. The measured serving benefit is warm-cache time-to-first-token, which grows with context (~16x at 8K); two-branch peak memory was only 12% lower and, on inspection, the prefix was never physically shared across branches -- this implementation reuses KV values but copies their storage, so shared-cache memory savings are not achieved.",
+        "published": "2026-09-15T12:39:16Z",
+        "authors": [
+          "Dushyant Rajput"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.17109v1"
+      },
+      "priority_score": 30
+    },
+    "2609_17107v1": {
+      "id": "2609_17107v1",
+      "filename": "post_2609_17107v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-16T02:53:09.637034+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-16T02:53:09.637036+00:00",
+      "paper": {
+        "title": "Symbolic Separation: Grounding Deep Agents in Knowledge Graphs for Trustworthy Operational Data Analytics",
+        "summary": "Generative AI promises natural language access to the massive numerical telemetry of data centers and Industry 4.0 installations, yet text-to-query and tool-using agents stay unreliable: even frontier models answer little more than half of real-world database questions, and far fewer of the multi-step, operational ones, because the LLM must compose how heterogeneous sources relate and hallucinates the relations, not just the fields. We propose symbolic separation: a deep agent reasons freely but may act on data only through an ontology-constrained Virtual Knowledge Graph with deterministic pre-execution validation. Unlike a tool API's interface contract, this domain-semantic contract turns a complex question into one validated graph traversal instead of LLM-inferred joins. Instantiated as the Neurosymbolic Deep Analyst and evaluated on 49.9 TB of superconputer telemetry against a rigid workflow and a non-symbolic ablation, it raises end-to-end task success from 43% to 86%, prevents silent data-integrity errors that no syntactic check catches, and cuts token cost by 2.4x, letting a smaller on-premise model outperform a larger one.",
+        "published": "2026-09-15T12:38:43Z",
+        "authors": [
+          "Baibek Davletiyarov",
+          "Junaid Ahmed Khan",
+          "Andrea Bartolini"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.17107v1"
+      },
+      "priority_score": 24
+    },
+    "2609_17100v1": {
+      "id": "2609_17100v1",
+      "filename": "post_2609_17100v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-16T02:53:09.637041+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-16T02:53:09.637043+00:00",
+      "paper": {
+        "title": "Semi-Supervised Learning-Based Genetic Biomarkers Dataset for Multiple-Stage Hepatocellular Carcinoma Prediction",
+        "summary": "Liver cancer is a complex disease responsible for a high number of deaths across the globe each year, making automated solutions for liver cancer classification urgent. The most common form of liver cancer is hepatocellular carcinoma (HCC), accounting for over 90% of liver cancer cases. There is a distinct lack of publicly available HCC datasets utilizing genomic data, which is necessary for training artificial intelligence (AI) models for automated HCC classification. This study proposes constructing a multi-stage HCC dataset using XGBoost and Semi-Supervised learning on three separate datasets of genomic biomarkers, utilizing their existing labels in the Semi-Supervised learning process to label the proposed dataset. The proposed dataset consists of 770 patient samples in total, categorized into five classes that represent normal tissue alongside different stages of HCC. Each sample in the dataset consists of 11,150 different gene expression levels. The XGBoost model demonstrated a final classification accuracy of 96.5% during the Semi-Supervised learning process.",
+        "published": "2026-09-15T12:33:12Z",
+        "authors": [
+          "Ahmed Ammar Kubba",
+          "Manar Abu Talib",
+          "Jibran Sualeh Muhammad",
+          "Ali Bou Nassif",
+          "Abdalla Sayed Mohamed",
+          "Darko Castven",
+          "Jens U. Marquardt"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.17100v1"
+      },
+      "priority_score": 13
+    },
+    "2609_17091v1": {
+      "id": "2609_17091v1",
+      "filename": "post_2609_17091v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-16T02:53:09.637048+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-16T02:53:09.637049+00:00",
+      "paper": {
+        "title": "Scaling-Score Conformal Prediction for Multi-Target Regression",
+        "summary": "Multi-target regression requires a model to simultaneously predict several related outputs. Conformal prediction provides distribution-free, finite-sample marginal coverage guarantees, but extending these to joint multi-dimensional regions in a model-agnostic, sample-efficient manner remains challenging: max-aggregation ignores scale differences, copula-based methods are only asymptotically valid, rectangular methods typically split the calibration set, and quantile or density-based methods require training a specialised model beyond a plain point predictor. We propose the scaling-score conformal method, which is model-agnostic (requires only component-wise absolute residuals), uses a single calibration set, and yields four nested output types: an outer rectangle (SCO) with valid joint coverage, the exact set R $α$ , a staircase (SC 2 ) over approximation of R $α$ , and an inner rectangle (SCI). A single hyperparameter $γ$ $\\in$ (0, 1) controls the base-rectangle quantile level independently of $α$. We prove downward-closedness and a rectangular sandwich bound and derive a closed-form outer rectangle. Experiments on 29 realworld datasets confirm valid joint coverage; SC 2 with $γ$ = 1-$α$ consistently achieves competitive volume relative to baselines, with the advantage growing with output dimension d.",
+        "published": "2026-09-15T12:23:57Z",
+        "authors": [
+          "Sylvain Rousseau",
+          "Soundouss Messoudi"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.17091v1"
+      },
+      "priority_score": 16
+    },
+    "2609_17088v1": {
+      "id": "2609_17088v1",
+      "filename": "post_2609_17088v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-16T02:53:09.637054+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-16T02:53:09.637055+00:00",
+      "paper": {
+        "title": "Interactive Memory Learning for Long-Term Conversations",
+        "summary": "Recent advancements in large language models have significantly enhanced the capabilities of agents in modeling long-term conversations. Despite these successes, existing approaches typically adopt a static heuristic paradigm, where information is passively archived without adaptive memory valuation. Consequently, these methods fail to self-evolve or align their memory management with evolving user needs. To address this, we propose ICML (InteraCtive Memory Learning), a multi-agent framework that transforms the memory mechanism from a passive archive into a learnable, interactive memory policy. Specifically, we first employ a session synthesis pipeline to generate expert data, facilitating rapid test-time adaptation in unseen scenarios. Building on this, ICML utilizes an online reinforcement learning mechanism where a Planner agent selectively encodes high-value information and a Trigger agent dynamically retrieves it to optimize response quality, whereby the two agents co-evolve through continuous interaction feedback. Crucially, both agents are synchronized through a delayed reward mechanism that propagates future feedback back to earlier storage decisions, ensuring memory policies are precisely aligned with user expectations. Experimental results demonstrate that ICML significantly outperforms strong baselines, exhibiting the unique capability to continuously improve response quality as interactions accumulate.",
+        "published": "2026-09-15T12:21:41Z",
+        "authors": [
+          "Cai Ke",
+          "Jiangyue Yan",
+          "Han Zhang",
+          "Xin Liu",
+          "Zike Yuan",
+          "Yue Yu",
+          "Hui Wang",
+          "Ruifeng Xu"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.17088v1"
+      },
+      "priority_score": 37
+    },
+    "2609_17076v1": {
+      "id": "2609_17076v1",
+      "filename": "post_2609_17076v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-16T02:53:09.637060+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-16T02:53:09.637062+00:00",
+      "paper": {
+        "title": "Sample-Conditioned Representation Selection for Audio Few-Shot Learning",
+        "summary": "Few-shot audio classifiers may rely on foreground-background co-occurrences and fail when those correlations shift. On SpurAudio, the resulting representation shift is concentrated and class dependent: for ResNet12, the top 10 percent of channels explain 82.80 percent of the null-corrected shift contribution. We propose SAMPLESELECT, which predicts a fixed-budget feature mask independently for each input while keeping the encoder and source classifier frozen. Training uses differentiable Gumbel Top-k selection with foreground classification and cross-background contrastive losses; inference uses deterministic Top-k masks and support-only linear adaptation. Across ResNet12 and Conv64 in 5-way 1-shot and 5-shot evaluation, SAMPLESELECT gives the best OOD accuracy among the compared methods and improves the matched full-representation control by 4.90-8.38 percentage points. Ablations and representation analyses further support the learned selection mechanism. Code is available at https://github.com/Cross-Innovation-Lab/SAMPLESELECT/",
+        "published": "2026-09-15T12:15:12Z",
+        "authors": [
+          "Fengrui Liu",
+          "Ningxin Shen",
+          "Yi Li",
+          "Yiwei Fu",
+          "Feng Liu",
+          "Jiangmeng Li"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.17076v1"
+      },
+      "priority_score": 33
+    },
+    "2609_17068v1": {
+      "id": "2609_17068v1",
+      "filename": "post_2609_17068v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-16T02:53:09.637067+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-16T02:53:09.637068+00:00",
+      "paper": {
+        "title": "Beyond In-Distribution Metrics: A Systematic Out-of-Distribution Evaluation of Congenital Heart Disease Segmentation",
+        "summary": "Congenital heart disease (CHD) diagnosis and surgical planning often require patient-specific 3D anatomical models, but manual segmentation is labor-intensive, particularly in complex anatomies. Although deep-learning methods can automate this process, they are typically evaluated in-distribution, despite clinically relevant shifts in scanner, protocol, institution, population, and imaging modality. We present, to our knowledge, the first systematic evaluation of out-of-distribution (OOD) generalization in CHD segmentation, using ImageCHD as a held-out target cohort. We compare representative segmentation architectures under combined CT and CMR training, CT-only training, self-supervised pretraining, and limited target-domain adaptation. In-distribution performance proves to be a poor indicator of cross-cohort robustness: nnU-Net achieves the highest validation Dice (0.77) but falls to 0.51 on ImageCHD, while SwinUNETR generalizes substantially better, reaching 0.67 Dice. MAE and JEPA pretraining provide only modest additional benefit, suggesting that architecture contributes more to robustness than the tested pretraining strategies in this setting. When limited target-domain supervision is introduced, all SwinUNETR variants exceed 0.76 Dice with only 11 labeled ImageCHD cases. These findings demonstrate that conventional in-distribution evaluation can obscure clinically important generalization failures and support explicit cross-dataset testing as a key component of CHD segmentation evaluation.",
+        "published": "2026-09-15T12:10:52Z",
+        "authors": [
+          "Aniketh Vijesh",
+          "Shrisharanyan Vasu",
+          "Abhijit Ramesh",
+          "Clare Pomeroy-Ward",
+          "Harikrishnan Anil Maya",
+          "Sarin Xavier",
+          "Mahesh Kappanayil",
+          "Gilad Gressel"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.17068v1"
+      },
+      "priority_score": 29
+    },
+    "2609_17065v1": {
+      "id": "2609_17065v1",
+      "filename": "post_2609_17065v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-16T02:53:09.637073+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-16T02:53:09.637075+00:00",
+      "paper": {
+        "title": "Beyond \"ChatGPT Can Make Mistakes\": Designing Interventions to Support Metacognitive Monitoring in AI-Assisted Work",
+        "summary": "AI assistance places a metacognitive demand on users, who must judge their own competence and the system's. Yet designers lack comparative evidence on which interventions to choose, where to place them, and how to tell whether they worked. We elicited 30 interventions from 11 experts and, with prior work, organized them into a design space of time (when an intervention acts), level (whose competence is judged), and source (who supplies the monitoring cue). A between-subjects experiment (N = 917; 12 planning-and-organizing problems) compared a per-task reliability card, contrasting replies, pause points, and post-problem reflection against a baseline LLM assistant. Reliability cards and contrasting replies reduced estimation error and overconfidence and increased aggregate confidence discrimination. No task-performance improvement or average within-item discrimination gain was established. We contribute a shared vocabulary, a design space, and evidence that measured monitoring and task performance are separable design targets.",
+        "published": "2026-09-15T12:09:18Z",
+        "authors": [
+          "Manuel A. D. Santos",
+          "Paul Thiesse",
+          "Steeven Villa",
+          "Daniela Fernandes",
+          "Albrecht Schmidt",
+          "Verena Distler",
+          "Robin Welsch"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.17065v1"
+      },
+      "priority_score": 13
+    },
+    "2609_17064v1": {
+      "id": "2609_17064v1",
+      "filename": "post_2609_17064v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-16T02:53:09.637080+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-16T02:53:09.637081+00:00",
+      "paper": {
+        "title": "Neuro-Symbolic Hierarchical Intention Anticipation in Human Behavior",
+        "summary": "Assistive autonomous systems must anticipate human goals before an observed behavior is complete. This article formulates anticipation as goal inference from a partially observed multimodal episode together with structured prediction of the remaining behavior, rather than exact motor forecasting. A compact Hierarchical Planning Decoder (HPD) is attached to a frozen neuro-symbolic recognition encoder and predicts, at four ontological levels, the next actions, the remaining activities and low-level intentions, and the episode high-level intention(HLI). The decoder is trained with soft neuro-symbolic regularization combining transition-coherence and hierarchical continuity losses, and is decoded with hard reachability masks that enforce ontological validity at inference. On a compositional four-level benchmark of 15,002 multimodal episodes built over NTU RGB+D 120 features, three headline properties are observed together. The advantage over the strongest sequential baseline grows with the anticipation horizon, from +1.7 points at step 1 to +7.3 points at step 3 (top-5). Under compositional generalization, where one parent association per multi-parent low level intention is held out, this advantage widens to +4.9 points at step 1. At the episode level, 96.8% of anticipated trajectories satisfy the joint logic constraints, above the 88.1% strongest-baseline value and the 73.9% ground-truth floor; soft logic terms alone account for a 59.8 to 71.1% relative reduction of HLI-reachability violations, and the hard masks then eliminate them entirely. Neural generation supplies predictive ranking, symbolic constraints supply onto logical validity, and their combination yields coherent hierarchical anticipation while exposing remaining challenges in compositional goal generalization and unordered set prediction.",
+        "published": "2026-09-15T12:09:03Z",
+        "authors": [
+          "Farnaz Soleimani",
+          "Abdelghani Chibani",
+          "Yacine Amirat",
+          "Ghazaleh Khodabandelou"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.17064v1"
+      },
+      "priority_score": 40
+    },
+    "2609_17061v1": {
+      "id": "2609_17061v1",
+      "filename": "post_2609_17061v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-16T02:53:09.637086+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-16T02:53:09.637087+00:00",
+      "paper": {
+        "title": "Repurposing Unified Topological Signatures for Graph Representation Learning",
+        "summary": "Message-passing Graph Neural Networks (GNNs) iteratively propagate and aggregate local neighborhood information followed by global readout to learn graph representations. However, their discriminative power is upper-bounded by the Weisfeiler--Lehman (1-WL) graph isomorphism test. This prevents GNNs from distinguishing certain non-isomorphic graphs with identical local neighborhood structures, often leading to similar graph representations. Unified Topological Signatures (UTS) capture compact, multi-scale representation of global graph topology derived from persistent homology. We introduce two complementary UTS signatures: Graph_UTS- a static signature of the input graph topology, and Embedding_UTS- a dynamic signature of the evolving embedding topology. They encode structural information inaccessible to 1-WL-based message-passing GNNs, yet their capabilities are explored solely for post-hoc embedding-space analysis. We integrate UTS into GNN training across three architectural interventions: (i) UTS-Aug: augmenting with standard readout feature that encodes graph's true topology; (ii) UTS-Reg: topological regularizer that constrains representation collapse; (iii) UTS-Pool: topology-guided pooling that retains structurally critical nodes. We further leverage UTS as a layer-wise diagnostic to quantify oversmoothing during GNN training. Theoretically, we show that integrating UTS into GNN optimization strictly extends GNN expressivity beyond the 1-WL hierarchy. Experiments on three graph classification benchmarks show consistent benefits: Graph-UTS, Dual-UTS, and UTS-Pool improve accuracy across all three datasets, Embedding-UTS provides smaller but similarly consistent gains, and UTS-Reg's benefit varies across graph domains. Accuracy improves by up to 5.8% with Graph-UTS augmentation, by up to 1.9% with UTS-Reg, and achieves comparable performance to TOGL with UTS-Pool.",
+        "published": "2026-09-15T12:07:05Z",
+        "authors": [
+          "Sanyam Sanjay Jain",
+          "Anshika Krishnatray",
+          "Aditya Sharma",
+          "Vinti Agarwal"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.17061v1"
+      },
+      "priority_score": 40
+    },
+    "2609_17043v1": {
+      "id": "2609_17043v1",
+      "filename": "post_2609_17043v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-09-16T02:53:34.421031+00:00",
+      "paper": {
+        "title": "Diagnosing the Fact-Grounding Gap in Multi-Hop Question Answering",
+        "summary": "Multi-hop question answering requires combining information from multiple documents to answer complex questions. These systems have grown increasingly capable, yet when they fail, the error is typically attributed to not finding the right documents. Whether this holds at the level of individual reasoning steps remains largely unexamined. We investigate this across three standard multi-hop QA benchmarks and find that failures decompose into two distinct modes: retrieval failures, where the needed passage was not retrieved, and extraction failures, where the passage was retrieved but the needed fact could not be extracted - a phenomenon we term the fact-grounding gap. Extraction failures account for nearly half of all per-hop deficiencies and are invisible to standard retrieval metrics. They remain unresolved by every retrieval intervention we test, establishing a ceiling for retrieval-only improvements. The gap's severity varies across benchmarks and question types, but extraction failures appear on every dataset we measure. Our findings reveal that retrieval failures and extraction failures are fundamentally different bottlenecks requiring different solutions - a distinction absent from current evaluation practice.",
+        "published": "2026-09-15T11:51:52Z",
+        "authors": [
+          "Kevin Mo",
+          "Nathan Mo",
+          "Richard Zhu"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.17043v1"
+      },
+      "priority_score": 55,
+      "korean_title": "다중 홉 질문 답변 시스템에서의 사실 근거 부족 격차 진단"
+    },
+    "2609_17040v1": {
+      "id": "2609_17040v1",
+      "filename": "post_2609_17040v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-09-16T02:53:45.551092+00:00",
+      "paper": {
+        "title": "Sparse MLLM Anchors, Dense Adaptation: Breaking the Self-Referential Loop in Wild Test-Time Adaptation",
+        "summary": "Wild test-time adaptation (WTTA) updates a source model online under small test batches, concurrent distribution shifts, and time-varying class imbalance. Most WTTA methods derive their adaptation signals, including predictive uncertainty, sample reliability, and local feature geometry, from the model being adapted. When the source model is unreliable under shift, these signals can reinforce its own errors, forming a self-referential loop. We introduce MASA (Multimodal-LLM-Anchored Semantic Adaptation), which complements model-internal evidence with structured semantic descriptions from a frozen multimodal large language model (MLLM). To limit inference cost, MASA queries the MLLM only for a small set of diverse, reliability-ranked anchors. The resulting descriptions capture the object family and nuisance factors such as style, viewpoint, and occlusion. MASA encodes these descriptions, propagates them to neighboring test samples, and stores the resulting visual-semantic information in an online prototype memory. Descriptor-aware retrieval from this memory provides an auxiliary target for lightweight adaptation of normalization-affine parameters. We evaluate MASA on the WTTA ImageNet-C benchmark under limited-batch, mixed-domain, and imbalanced-label-shift settings with ResNet and ViT backbones.",
+        "published": "2026-09-15T11:48:30Z",
+        "authors": [
+          "Zhenbin Wang",
+          "Lei Zhang",
+          "Lituan Wang",
+          "Yan Wang",
+          "Zhao Zhang",
+          "Wei Huang"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.17040v1"
+      },
+      "priority_score": 46,
+      "korean_title": "희소한 MLLM 앵커와 밀집 적응: 야생 환경의 테스트 타임 적응에서 자기 참조 루프 끊기"
+    },
+    "2609_17029v1": {
+      "id": "2609_17029v1",
+      "filename": "post_2609_17029v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-16T02:53:09.637105+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-16T02:53:09.637106+00:00",
+      "paper": {
+        "title": "Distributed JEPA: A Self-Supervised Framework for Energy Forecasting",
+        "summary": "Traditional energy forecasting solutions rely on task-specific supervision and energy asset representations, limiting transferability and the ability to capture general temporal dynamics across heterogeneous assets. We address this by proposing a distributed Joint Embedding Predictive Architecture (JEPA) for self-supervised learning from heterogeneous energy time-series. The framework predicts latent representations of masked temporal segments while integrating temporal observations and contextual information within a shared embedding space. To prevent representation collapse, training combines a latent-space predictive objective with covariance and temporal variance regularization. The evaluation was conducted on energy consumption and generation datasets under data-degradation scenarios and compared with a Transformer forecasting baseline. The learned representations remained stable (cosine similarity $\\approx 0.98$; effective rank 185-235). JEPA achieved performance comparable to a Transformer on building energy data, higher $R^2$ in 3/5 consumer clusters, and outperformed the baseline on 9/10 unseen PVs ($R^2$=0.73-0.88 vs. <0.45), while showing greater robustness to missing data.",
+        "published": "2026-09-15T11:36:20Z",
+        "authors": [
+          "Liana Toderean",
+          "Tudor Cioara",
+          "Vasilis Michalakopoulos",
+          "Efstathios Sarantinopoulos",
+          "Ionut Anghel",
+          "Elissaios Sarmas"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.17029v1"
+      },
+      "priority_score": 25
+    },
+    "2609_17019v1": {
+      "id": "2609_17019v1",
+      "filename": "post_2609_17019v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-16T02:53:09.637111+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-16T02:53:09.637113+00:00",
+      "paper": {
+        "title": "SKIP: a Self-knowledge-guided Step-wise Preference Learning Framework for Concise Reasoning",
+        "summary": "While Chain-of-Thought (CoT) reasoning has been proven to be effective, it often leads to overthinking, resulting in computational overhead, inference latency, and even degraded performance in large language models (LLMs). Existing concise reasoning frameworks significantly compromise accuracy while compressing the length of output. In this paper, we propose SKIP, a self-knowledge-guided step-wise preference learning framework. Starting with lightweight fine-tuning to adjust the model's output style, SKIP introduces a carefully designed knowledge probing mechanism to guide model to output an answer at each reasoning step. Based on the correctness of intermediate steps, we construct preference data that guide the model toward more efficient and correct reasoning by leveraging DPO. Experimental results demonstrate that our method effectively improves reasoning compression while mitigating performance degradation after fine-tuning. Besides, SKIP shows strong generalization ability on out-of-distribution datasets. We further conducted ablation studies on the component parameters of our framework.",
+        "published": "2026-09-15T11:29:29Z",
+        "authors": [
+          "Qinhong Lin",
+          "Yuhao Zhang",
+          "Yinglun Feng",
+          "Zhongliang Yang",
+          "Linna Zhou"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.17019v1"
+      },
+      "priority_score": 23
+    },
+    "2609_17012v1": {
+      "id": "2609_17012v1",
+      "filename": "post_2609_17012v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-16T02:53:09.637117+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-16T02:53:09.637119+00:00",
+      "paper": {
+        "title": "ORDER: Task-Conditioned Routing for Retrieval-Augmented Generation",
+        "summary": "Retrieval-Augmented Generation (RAG) pipelines typically rely on a fixed indexing and retrieval configuration determined at preprocessing time. This one-size-fits-all design is ill-suited to domain-expert settings, where heterogeneous queries require different chunking granularities, metadata constraints, and source-selection strategies. As a result, configurations that are effective for one family of queries often perform poorly for others. In this paper, we introduce ORDER (Optimal Routing for Dynamic Evidence Retrieval), a query-conditioned RAG framework that jointly adapts indexing and retrieval to the incoming query. Our approach first discovers semantic clusters over a given set of questions associated to a corpus and learns, for each cluster, a chunking strategy together with a suited metadata filtering and reranking configuration. At inference time, queries are routed to the appropriate pre-built index through nearest-centroid assignment. To further improve retrieval, we propose a supervised query router (QRe) that predicts which collections are most likely to contain relevant evidence, coupled with a Uniform Multi-source Sampler (UMS) that allocates the retrieval budget evenly across the selected sources. We evaluate our framework on large-scale, heterogeneous historical archives and show that conditioning both indexing and retrieval on the query consistently outperforms both naive baselines and strong state-of-the-art RAG systems in complex expert-domain environments.",
+        "published": "2026-09-15T11:23:16Z",
+        "authors": [
+          "Aurélien Pellet",
+          "Julien Perez",
+          "Marie Puren"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.17012v1"
+      },
+      "priority_score": 28
+    },
+    "2609_17010v1": {
+      "id": "2609_17010v1",
+      "filename": "post_2609_17010v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-16T02:53:09.637123+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-16T02:53:09.637125+00:00",
+      "paper": {
+        "title": "ThinkFlow: Self-Evolving Probabilistic Latent Memory for Lifelong Conversational Agents",
+        "summary": "Lifelong conversational agents rely on memory systems to maintain deep, context-aware interactions with users. However, existing explicit textual memory pipelines suffer from a severe information bottleneck, often losing subtle behavioral patterns and emotional shifts. Furthermore, being typically static post-deployment, they cannot autonomously adapt to personal habits and preferences without manual feedback. Cognitive science, however, suggests that humans maintain mental models purely in a latent space and continuously refine them through predictive coding. Inspired by this, we propose \\textbf{ThinkFlow}, a novel end-to-end latent memory framework for lifelong conversational agents. ThinkFlow bypasses the text bottleneck by dynamically compressing conversational flows into probabilistic latent memory skills, autonomously consolidating complex user states into disentangled, continuous vectors without semantic interference. To break this barrier, we introduce a test-time evolution paradigm. By coupling teacher-guided latent alignment to bootstrap the initial state with a self-supervised next-user-utterance prediction task for continuous refinement, the framework successfully overcomes cold-start challenges and achieves label-free lifelong personalization. Extensive experiments on long-term conversation benchmarks demonstrate that ThinkFlow significantly outperforms prevailing memory systems, providing highly personalized and contextually accurate responses over extended multi-session interactions.",
+        "published": "2026-09-15T11:21:39Z",
+        "authors": [
+          "Cai Ke",
+          "Xin Liu",
+          "Han Zhang",
+          "Jiangyue Yan",
+          "Zike Yuan",
+          "Ling Deng",
+          "Yue Yu",
+          "Hui Wang",
+          "Ruifeng Xu"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.17010v1"
+      },
+      "priority_score": 39
+    },
+    "2609_17008v1": {
+      "id": "2609_17008v1",
+      "filename": "post_2609_17008v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-16T02:53:09.637130+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-16T02:53:09.637131+00:00",
+      "paper": {
+        "title": "FlexEE: Self-Speculative and KV-Compatible Early Exiting for Offloading-Aware LLM Inference",
+        "summary": "Large language model (LLM) inference is often constrained by both computation and memory, especially in offloading-based deployments where model weights are transferred across memory hierarchies during autoregressive decoding. In this setting, reducing the number of executed layers can lower per-token latency while also avoiding costly weight movement. Motivated by this observation, we present FlexEE, an early exiting framework for resource-constrained and offloading-based LLM inference. FlexEE makes early exiting practical for LLM decoding through layer-wise exit supervision for reliable intermediate-layer prediction, self-speculative decoding over a Top-K local vocabulary for low-cost exit decisions, and dynamic hidden state management for KV-cache-correct and memory-aware execution. Across generative and downstream tasks, FlexEE enables efficient early exit with minimal accuracy degradation, delivering up to 1.27$\\times$/3.16$\\times$ and 1.25$\\times$/2.83$\\times$ end-to-end speedups on Llama2-7B and Llama3-8B under 0\\%/50\\% weight offloading, respectively.",
+        "published": "2026-09-15T11:20:23Z",
+        "authors": [
+          "Qihu Xie",
+          "Ziwei Li",
+          "Yi Kang"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.17008v1"
+      },
+      "priority_score": 13
+    },
+    "2609_16993v1": {
+      "id": "2609_16993v1",
+      "filename": "post_2609_16993v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-16T02:53:09.637145+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-16T02:53:09.637147+00:00",
+      "paper": {
+        "title": "The Role of Implicit and Explicit Demographic Signals in Large Language Model-based Student Assessment",
+        "summary": "Large Language Models are now common in student assessment, but we know little about how student demographics affect their use. Sometimes, considering student demographics may be necessary -- for example, to improve readability for users with lower educational levels. However, it also risks being a cause of discrimination, e.g., when assigning lower scores to students from lower socioeconomic backgrounds. We set up controlled prompts to test 1) explicit demographic effects, where we mention demographic details directly, and 2) implicit effects, where we use conversation history as a demographic signal. We test these settings in three tasks: Automated Essay Scoring, Formative Feedback, and Metalinguistic Question Answering. We test six state-of-the-art LLMs on these tasks. In both explicit and implicit cases, the models pick up on demographic cues and can change their scoring, feedback, and answers accordingly. We find that LLMs frequently adjust the readability of feedback to education levels when these are explicitly mentioned. On the other hand, implicit conditions produce unpredictable biases, such as in question answering, where responses from lower-education levels receive lower sentiment scores. Our results provide clear evidence of demographic sensitivity in LLMs for educational assessment tasks.",
+        "published": "2026-09-15T11:07:26Z",
+        "authors": [
+          "Donya Rooein",
+          "Luca Benedetto",
+          "Dirk Hovy"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.16993v1"
+      },
+      "priority_score": 16
+    },
+    "2609_16962v1": {
+      "id": "2609_16962v1",
+      "filename": "post_2609_16962v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-16T02:53:09.637152+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-16T02:53:09.637154+00:00",
+      "paper": {
+        "title": "Affect-Prototype Guided Fusion for Open-Vocabulary Incomplete Multi-modal Emotion Recognition",
+        "summary": "Open-vocabulary multimodal emotion recognition (OV-MER) aims to generate open natural-language emotion labels from multimodal affective cues. In real-world scenarios, however, complete and synchronized modal data are difficult to obtain due to limitations of acquisition devices and user privacy constraints. Existing OV-MER methods are largely designed for full-modal inputs, and fail to perform effective feature fusion under modal missing conditions. Meanwhile, current fusion approaches designed for incomplete modalities mainly focus on fixed-label recognition context, and cannot satisfy the demand for fuse emotional cues guided with arbitrary emotion semantics in OV-MER context. To tackle these challenges, this paper proposes an Affect-Prototype-Conditioned Fusion (APCF) framework for incomplete open-vocabulary emotion recognition. As a candidate-free generative framework, APCF extends modal contribution learning to scenarios guided by arbitrary emotional semantics. Specifically, we construct an affect-prototype library to explicitly model multimodal contribution characteristics corresponding to diverse emotions, which provides dynamic constraints for modal fusion under different emotional semantic perspectives. Conditional retrieval and feature aggregation are conducted based on available modal features. The refined fused affective representations are then fed into an LLM decoder to produce open-vocabulary emotion labels. Experiments on the OV-MERD+ and MER-FG datasets demonstrate that APCF substantially outperforms state-of-the-art baselines.",
+        "published": "2026-09-15T10:37:26Z",
+        "authors": [
+          "Yichi Zhang",
+          "Shenyue Wang",
+          "Jing Luo",
+          "Chunyang Yu",
+          "Xinyu Yang"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.16962v1"
+      },
+      "priority_score": 39
+    },
+    "2609_16948v1": {
+      "id": "2609_16948v1",
+      "filename": "post_2609_16948v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-16T02:53:09.637158+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-16T02:53:09.637160+00:00",
+      "paper": {
+        "title": "AntennaFlow: A Generative Flow Model for Offset Correction in Phaseless Antenna Testing",
+        "summary": "Near-field to far-field transformation is central to large-aperture antenna testing, yet two coupled challenges remain: costly phase acquisition at millimeter-wave bands and violations of the centering assumption under offset mounting. Existing methods address these issues separately, requiring either dense full-field data or offset vectors. We tackle both jointly by exploiting a key observation: amplitude fields under different offsets are coordinate-transformed views of the same near field. The challenge is to recover the center-aligned field from offset amplitudes without a phase or offset vector. We propose AntennaFlow, a three-stage framework: a contrastively learned encoder that maps offset views to an offset-invariant embedding, a deterministic flow-matching transport that maps offset amplitudes to center-aligned ones, and the Simplified Extrapolation Technique, whose Green-function Taylor expansion is valid only for centered fields. Experiments show that AntennaFlow enables fast, phaseless, offset-vector-free NF--FF reconstruction from sparse amplitude-only measurements, consistently outperforming existing baselines while preserving physical consistency.",
+        "published": "2026-09-15T10:28:20Z",
+        "authors": [
+          "Yongzhi Li",
+          "Chongting Shen",
+          "Menglin Chen",
+          "Xun Jiang",
+          "Zhengpeng Wang"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.16948v1"
+      },
+      "priority_score": 24
+    },
+    "2609_16947v1": {
+      "id": "2609_16947v1",
+      "filename": "post_2609_16947v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-16T02:53:09.637164+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-16T02:53:09.637166+00:00",
+      "paper": {
+        "title": "AeroLat: Channel-Aware Latent Space Semantic Communication for Decentralized UAV Swarms",
+        "summary": "Communication in latent space offers an intriguing alternative to symbolic messages for decentralized autonomous Unmanned Aerial Vehicle (UAV) swarms operating over bandwidth-constrained, time-varying wireless links. However, when homogeneous frozen models are prompted with discretized perceptual inputs, their broadcast states collapse toward the shared prompt template. In view of this, we propose AeroLat, a channel-aware latent semantic communication framework that uses evidence injection. The resulting latent states are then passed through an explicit communication model that encompasses bandwidth-limited serialization, additive noise and information staleness, which facilitates a joint assessment of communication fidelity and swarm-level coordination. Across multi-seed simulations, AeroLat provably remains resilient to codec choice, faults and increasing swarm size. It consistently reproduces the latent-swarm anomaly, while no-whitening controls recover the collapse. In particular, AeroLat is capable of reducing false similarity by 97.5%.",
+        "published": "2026-09-15T10:26:23Z",
+        "authors": [
+          "Rajdeep Ghosh",
+          "Goparaju Venkata Seshachala Sree Vatsava",
+          "Sudip Misra"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.16947v1"
+      },
+      "priority_score": 23
+    },
+    "2609_16937v1": {
+      "id": "2609_16937v1",
+      "filename": "post_2609_16937v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-16T02:53:09.637170+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-16T02:53:09.637172+00:00",
+      "paper": {
+        "title": "Beyond Token-Local Imitation: Reward-Compatible Temporal Credit Assignment for On-Policy Distillation",
+        "summary": "On-policy distillation (OPD) has emerged as an effective approach for large language model post-training, yet existing objectives face a trade-off between objective fidelity and optimization stability. Token-level OPD provides stable but local supervision, whereas sequence-level OPD captures future credit at the cost of horizon-dependent variance. We establish a unified temporal-credit view of these formulations, showing that practical token-level OPD can be interpreted as a temporal approximation to the sequence-level reverse-KL gradient. Building on this connection, we propose $γ$OPD, which uses discounted temporal credit assignment to balance long-horizon supervision and optimization stability, while admitting a horizon-independent variance bound. We further develop a reward-compatible bounded mixing (RBM) mechanism for $γ\\mathrm{OPD}$ that balances verifiable outcome feedback with the discounted OPD advantage to move beyond purely teacher-dependent optimization. Experiments on mathematical and code reasoning demonstrate consistent improvements over existing OPD methods across vanilla, size-mismatched, and multi-teacher distillation settings.",
+        "published": "2026-09-15T10:12:56Z",
+        "authors": [
+          "Shiqi Liu",
+          "Zeyu He",
+          "Letian Tao",
+          "Guojian Zhan",
+          "Jiaxin Gao",
+          "Feihong Zhang",
+          "Jingliang Duan",
+          "Wei Xiong",
+          "Kehua Sheng",
+          "Bo Zhang",
+          "Yang Guan",
+          "Shengbo Eben Li"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.16937v1"
+      },
+      "priority_score": 34
+    },
+    "2609_16936v1": {
+      "id": "2609_16936v1",
+      "filename": "post_2609_16936v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-16T02:53:09.637176+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-16T02:53:09.637178+00:00",
+      "paper": {
+        "title": "RepoAtlas: Guiding Coding Agents via Evolving Multimodal Repository Views",
+        "summary": "Large language model (LLM)-powered coding agents have made rapid progress in automating software engineering tasks, yet repository-level issue resolution remains challenging. Beyond generating a plausible patch, an agent must localize relevant code across interdependent files and maintain repository context that is both sufficient and focused. Code graphs expose non-local relations, but linear text interfaces obscure their topology; rendering the full repository graph yields visual representations that are too dense to perceive reliably, whereas a one-shot local view becomes stale as exploration proceeds. We present \\textbf{RepoAtlas}, a training-free module that maintains evolving multimodal repository views through a \\emph{select--project--refresh} loop over a repository code graph. RepoAtlas combines evidence from the issue with the agent's current exploration state to select a task-relevant region under a fixed budget, projects the selected structure into complementary visual and textual representations, and refreshes the view when changes in the exploration state render it outdated. We evaluate RepoAtlas on SWE-bench Verified, where it improves the resolve rate by 2.4 points while reducing input tokens and model calls by 5.8\\% and 7.8\\% on average, relative to the strongest multimodal graph baseline, with consistent gains across three models of different families and scales.",
+        "published": "2026-09-15T10:11:51Z",
+        "authors": [
+          "Yunxiang Zhang",
+          "Haiquan Wang",
+          "JiaWei Guo",
+          "Hanyang Xia",
+          "Yan Chen",
+          "Tong Chen",
+          "Zhang Zhiwei",
+          "Junchen Ye"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.16936v1"
+      },
+      "priority_score": 37
+    },
+    "2609_16933v1": {
+      "id": "2609_16933v1",
+      "filename": "post_2609_16933v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-16T02:53:09.637182+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-16T02:53:09.637184+00:00",
+      "paper": {
+        "title": "When Confidence Signals Disagree: Local and Global Confidence in Autoregressive Language Models",
+        "summary": "Modern predictive systems expose multiple quantities that are commonly interpreted as measures of confidence. However, these quantities can summarize different aspects of the predictive process. This distinction matters when confidence is used to evaluate reliability or inform downstream oversight and control. We investigate whether different confidence readouts are empirically interchangeable in an autoregressive language model by comparing local confidence, defined from the probability of the greedy-selected answer token, with global confidence, defined from modal-answer frequency under repeated sampling. Across MMLU and ARC Challenge, the two signals are weakly correlated and differ substantially in their association with correctness: global confidence is moderately associated with correctness, whereas local confidence shows little association. We further test whether question-level disagreement between the signals is associated with sampling instability. On ARC, larger local--global confidence gaps are associated with higher answer entropy, more distinct sampled answers, and lower modal-answer concentration. The gap--entropy association persists when disagreement and instability are estimated from disjoint stochastic samples, indicating that it is not explained by shared finite-sample variation. The corresponding relationship is substantially weaker on MMLU, where only 4% of questions exhibit sampling instability. These results show that confidence readouts derived from the same predictive system are not empirically interchangeable and that their disagreement can provide a diagnostic of unstable sampling behavior. Confidence should therefore be treated as an explicitly defined measurement rather than as a single intrinsic scalar property of a model, particularly when it is used to inform downstream evaluation, oversight, or control.",
+        "published": "2026-09-15T10:08:48Z",
+        "authors": [
+          "Julio C. Amador Diaz Lopez"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.16933v1"
+      },
+      "priority_score": 30
+    },
+    "2609_16931v1": {
+      "id": "2609_16931v1",
+      "filename": "post_2609_16931v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-16T02:53:09.637188+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-16T02:53:09.637190+00:00",
+      "paper": {
+        "title": "Causal Discovery via Transformed Low-Rank Quantile Surfaces",
+        "summary": "We propose Low-Rank Quantile Surfaces (LRQS), a bivariate causal model in which, in the causal direction, an unknown monotone transformation of the conditional quantile surface admits a low-rank functional decomposition. LRQS subsumes location-scale noise models and post-nonlinear heteroscedastic noise models, while allowing multiple quantile bases to represent changes beyond location-scale effects. We prove generic identifiability of LRQS: the transformed quantile surface is low rank in the causal direction, whereas reverse representability under the corresponding constraints occurs only for exceptional, fine-tuned cause marginals. We provide a simple-yet-powerful causal score using a nonparametric fitting procedure that alternates between rank-constrained approximation of discretized quantile surfaces and isotonic estimation of the unknown monotone transformation. Experiments on synthetic mechanisms with higher-rank distributional shape variation and strong nonlinear distortions, together with standard bivariate benchmarks, show that LRQS is especially effective when conditional distributional shape or observation distortion goes beyond existing location-scale assumptions.",
+        "published": "2026-09-15T10:06:19Z",
+        "authors": [
+          "Ryo Kamimura",
+          "Thong Pham"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.16931v1"
+      },
+      "priority_score": 24
+    },
+    "2609_16930v1": {
+      "id": "2609_16930v1",
+      "filename": "post_2609_16930v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-16T02:53:09.637195+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-16T02:53:09.637196+00:00",
+      "paper": {
+        "title": "Repurposing Deep Limit Order Book Forecasting for Scenario-Conditioned Market Impact Modeling",
+        "summary": "Deep Limit Order Book forecasting models capture nonlinear market dynamics, but their ability to quantify the effects of counterfactual order book messages has not been systematically validated. We introduce a model-agnostic framework that compares a trained forecaster's predictive distributions before and after injecting mechanically valid counterfactual messages, defining short-horizon model-implied market impact. A Transformer-based forecaster recovered scenario rankings with a Spearman correlation of 0.99 and 97.2% directional agreement with realized historical outcomes among non-neutral scenarios. Observation-level analysis further showed that estimated impacts captured incremental sequence-dependent variation beyond scenario identity and the pre-event forecast. These results provide evidence that pretrained Limit Order Book forecasters can be repurposed for scenario-conditioned response modeling without retraining.",
+        "published": "2026-09-15T10:06:03Z",
+        "authors": [
+          "Eljas Linna",
+          "Kestutis Baltakys",
+          "Derrick Manoharan",
+          "Alexandros Iosifidis",
+          "Juho Kanniainen"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.16930v1"
+      },
+      "priority_score": 11
+    },
+    "2609_16927v1": {
+      "id": "2609_16927v1",
+      "filename": "post_2609_16927v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-16T02:53:09.637201+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-16T02:53:09.637202+00:00",
+      "paper": {
+        "title": "Verbalizing Subliminal Learning Effects Using Text Optimization",
+        "summary": "Subliminal learning is a phenomenon in which a distillation dataset transmits traits from the teacher model that are not legibly encoded in the dataset itself. This introduces a new challenge for model development and creates new risks from data poisoning. In this work, we use text optimization to detect subliminal learning effects and describe them as legible prompts. Subliminal learning from a prompted teacher motivates our approach. We observe that this is a special case of context distillation and leverage this observation to show that, in theory, the prompted subliminal learning dataset identifies the teacher's prompt. We reduce recovering this prompt to a text optimization problem and present a method to approximately solve it. Our method, SALVE (Search-Aided Latent Verbalization), optimizes a soft prompt, queries the same model to verbalize it as text, and uses beam search to make the verbalization reliable. In the standard subliminal learning setting, SALVE reliably recovers legible prompts that name the teacher's trait, while common text optimization methods fail to do so. In addition, we find that there are settings in which SALVE recovers the teacher's trait from a dataset even when subliminal learning fails, but that modifying student training to improve context distillation can create subliminal learning effects. We lastly show that SALVE detects subliminal learning effects in three additional settings: (1) mixtures of subliminal learning data and unrelated data, (2) data generated when the teacher is biased via activation steering, and (3) subsets of real preference data selected via Logit-Linear Selection. Overall, our results deepen our understanding of subliminal learning and present SALVE as a method to proactively detect subliminal learning effects.",
+        "published": "2026-09-15T10:03:31Z",
+        "authors": [
+          "Nathan Hu",
+          "Sanmi Koyejo",
+          "Christopher Potts"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.16927v1"
+      },
+      "priority_score": 30
+    },
+    "2609_16887v1": {
+      "id": "2609_16887v1",
+      "filename": "post_2609_16887v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-09-16T02:53:22.474157+00:00",
+      "paper": {
+        "title": "QART: A Quantum-Classical Hybrid Architecture for Long-Horizon Reasoning -- Exploring a Conditional Path toward Quantum Scaling",
+        "summary": "Long-horizon reasoning is vulnerable to early errors that compromise later decisions. We present QART, the Quantum-Augmented Reasoning Transformer, a quantum--classical hybrid architecture combining a backbone language model with quantum encoding, CIM-based QUBO optimization, and quantum decoding. Semantic information can come from hidden representations or model-generated text; detailed encoding and optimization procedures remain proprietary. Under explicit assumptions, we establish a conditional asymptotic reliability separation from single-trajectory autoregressive LLMs. For a common task family with aligned optimality and acceptance criteria, autoregressive acceptance probability tends to zero when cumulative conditional risk of irreversible errors diverges. QART's task-optimal-path recovery probability remains bounded away from zero if conditional probabilities for optimal-path coverage and semantic fidelity, spectral certification, dynamical reachability, and faithful readout remain uniformly positive under a specified resource schedule. The architecture alone does not imply these bounds. Paired measurements on six long-horizon benchmarks using DeepSeek V4 Flash, GLM-5.3, and GPT-5.5 xhigh in a Codex agent environment favor QART in 14 of 15 backbone--benchmark pairs. Relative gains reach 84.0% on SciCode, 47.6% on $τ^3$-Bench, and 44.4% on Terminal-Bench 4.0; the DeepSeek V4 Flash configuration regresses by 7.8% on DeepSWE. These results do not directly validate the asymptotic separation. Potential quantum scaling laws are formulated as conditional hypotheses. A quantum-advantage interpretation requires a demonstrated CIM quantum advantage over strong classical solvers and its transfer to end-to-end reasoning after all system overheads.",
+        "published": "2026-09-15T09:21:45Z",
+        "authors": [
+          "Lehao Lin",
+          "Yuheng Cheng",
+          "Guolong Liu",
+          "Yao Li",
+          "Xuning Tan",
+          "Xiyuan Zhou",
+          "Ruixi Zou",
+          "Shi Wang",
+          "Huan Zhao",
+          "Wenxuan Liu",
+          "Haifeng Wu",
+          "Junhua Zhao"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.16887v1"
+      },
+      "priority_score": 60,
+      "korean_title": "QART: 장기 추론을 위한 양자-고전 하이브리드 아키텍처 — 양자 확장을 향한 조건부 경로 탐색"
     }
   },
   "last_run": {
-    "started_at": "2026-09-15T23:22:26.084930+00:00",
-    "discovered": 10,
+    "started_at": "2026-09-16T02:53:09.640058+00:00",
+    "discovered": 30,
     "selected": 4,
     "generated": 4,
     "failed": 0,
@@ -34516,26 +35212,26 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 20469,
-      "output_tokens": 5674,
+      "prompt_tokens": 19917,
+      "output_tokens": 5930,
       "thought_tokens": 0,
-      "total_tokens": 26143,
-      "estimated_usd": 0.01362825
+      "total_tokens": 25847,
+      "estimated_usd": 0.01387425
     },
-    "finished_at": "2026-09-15T23:23:04.239559+00:00"
+    "finished_at": "2026-09-16T02:53:56.456871+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 2366,
-    "prompt_tokens": 5962738,
-    "output_tokens": 1741876,
+    "requests": 2374,
+    "prompt_tokens": 5982655,
+    "output_tokens": 1747806,
     "thought_tokens": 0,
-    "total_tokens": 7704614,
-    "estimated_usd": 4.1034985
+    "total_tokens": 7730461,
+    "estimated_usd": 4.11737275
   },
   "last_publication_run": {
-    "started_at": "2026-09-15T23:22:26.084930+00:00",
-    "discovered": 10,
+    "started_at": "2026-09-16T02:53:09.640058+00:00",
+    "discovered": 30,
     "selected": 4,
     "generated": 4,
     "failed": 0,
@@ -34545,17 +35241,17 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 20469,
-      "output_tokens": 5674,
+      "prompt_tokens": 19917,
+      "output_tokens": 5930,
       "thought_tokens": 0,
-      "total_tokens": 26143,
-      "estimated_usd": 0.01362825
+      "total_tokens": 25847,
+      "estimated_usd": 0.01387425
     },
-    "finished_at": "2026-09-15T23:23:04.239559+00:00"
+    "finished_at": "2026-09-16T02:53:56.456871+00:00"
   },
   "daily_usage": {
-    "date": "2026-09-15",
-    "estimated_usd": 0.07002675,
-    "publications": 20
+    "date": "2026-09-16",
+    "estimated_usd": 0.01387425,
+    "publications": 4
   }
 }
