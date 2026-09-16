@@ -1,0 +1,66 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>정렬되지 않은 에이전트로의 권한 위임: 연합 정렬과 안전한 제어 | ArXiv Translator AI</title><meta name="description" content="정렬되지 않은 에이전트로의 권한 위임: 연합 정렬과 안전한 제어"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_15803v1"><meta property="og:type" content="article"><meta property="og:title" content="정렬되지 않은 에이전트로의 권한 위임: 연합 정렬과 안전한 제어"><meta property="og:description" content="정렬되지 않은 에이전트로의 권한 위임: 연합 정렬과 안전한 제어"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_15803v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="정렬되지 않은 에이전트로의 권한 위임: 연합 정렬과 안전한 제어"><meta name="twitter:description" content="정렬되지 않은 에이전트로의 권한 위임: 연합 정렬과 안전한 제어"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_15803v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "정렬되지 않은 에이전트로의 권한 위임: 연합 정렬과 안전한 제어", "description": "정렬되지 않은 에이전트로의 권한 위임: 연합 정렬과 안전한 제어", "datePublished": "2026-09-14", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_15803v1", "author": [{"@type": "Person", "name": "Natalie Collina"}, {"@type": "Person", "name": "Surbhi Goel"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_15803v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_15803v1"});gtag('event', 'paper_view', {"paper_id": "2609_15803v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>정렬되지 않은 에이전트로의 권한 위임: 연합 정렬과 안전한 제어</h1><p>정렬되지 않은 에이전트로의 권한 위임: 연합 정렬과 안전한 제어</p><pre>정렬되지 않은 에이전트로의 권한 위임: 연합 정렬과 안전한 제어
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Delegating Authorization to Misaligned Agents: Coalitional Alignment and Safe Control
+&gt; - **저자:** Natalie Collina, Surbhi Goel, Aaron Roth, Sikata Bela Sengupta
+&gt; - **발행일:** 2026-09-14
+&gt; - **PDF 링크:** [Delegating Authorization to Misaligned Agents: Coalitional Alignment and Safe Control](https://arxiv.org/pdf/2609.15803v1)
+
+
+✨ 3줄 핵심 요약
+- AI 에이전트의 행동을 검토할 때, 개별 검토자가 완전히 정렬(aligned)되지 않았더라도 검토자 그룹 전체가 &#x27;연합 정렬(coalitional alignment)&#x27; 조건을 만족하면 안전성을 보장할 수 있습니다.
+- 제안된 &#x27;k-강건 연합 정렬&#x27; 모델은 특정 수의 검토자가 반대하더라도 주체(principal)의 이익이 훼손되지 않도록 설계된 안전한 권한 위임 방식입니다.
+- 이진 투표보다 수치 점수를 활용한 검토 방식이 더 높은 수준의 안전성과 성능(completeness)을 동시에 달성할 수 있음을 실험적으로 확인했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+AI가 긴 시간 동안 스스로 행동을 결정할 때, 우리는 안전을 위해 인간의 승인을 거치게 합니다. 하지만 AI의 행동이 너무 잦으면 인간이 이를 모두 검토하기 어렵습니다. 이 논문은 인간 대신 다른 AI 에이전트들에게 이 검토 권한을 위임하는 방법을 다룹니다. 핵심은 &quot;검토자 각각이 완벽하지 않아도, 그들이 힘을 합쳤을 때 주체의 목표를 올바르게 대변할 수 있다면 안전하다&quot;는 것입니다. 이를 통해 완벽하지 않은 AI들을 모아 안전한 &#x27;검토 위원회&#x27;를 구성하고, 단순히 찬반 투표를 하는 대신 각자의 의견을 수치화하여 더욱 똑똑하게 결정을 내리는 체계를 제시합니다.
+
+🎯 배경 및 문제점
+AI 에이전트의 장기적인 운영은 행동이 상태를 변화시키고, 그 변화가 다시 미래의 행동에 영향을 미치는 제어 문제를 야기합니다. 에이전트가 완벽하게 정렬되지 않았다면 위험한 결과를 초래할 수 있습니다. 그렇다고 매 단계 인간이 개입하면 인간의 주의력이 병목 현상을 일으킵니다. 그렇다고 다른 AI에게 검토를 맡기면, 검토자 스스로가 정렬되지 않았을 수 있다는 문제가 다시 발생합니다. 이 연구는 이 순환적인 정렬 문제를 어떻게 해결할 것인지에 주목합니다.
+
+💡 핵심 기술 및 아키텍처
+- **k-강건 연합 정렬(k-robust coalitional alignment)**: 어떤 제안에 대해 k개의 반대가 있더라도, 나머지 검토자들의 효용을 결합하여 주체의 효용을 비음수(nonnegative) 조합으로 표현할 수 있다면 그 제안은 안전하다고 간주합니다.
+- **연속성 인지 승인(Continuation-aware authorization)**: 검토자는 단순한 즉각적 보상이 아닌, 제안된 행동 이후 베이스라인 정책을 따랐을 때의 기대 효용(Q-value)을 기반으로 투표합니다.
+- **수치 점수 활용**: 이진법(찬성/반대) 투표의 한계를 극복하기 위해, 검토자가 수치화된 점수를 제출하게 함으로써 더 많은 유익한 제안을 통과시키면서도 안전성을 유지합니다.
+
+📊 실험 결과 분석
+- **실험 데이터**: RewardBench 2 데이터셋의 352개 프롬프트 기반 평가.
+- **주요 결과**:
+    - 개별 검토자가 정렬되지 않은 상태에서도 검토 그룹이 집단적으로 주체의 이익을 보장할 수 있음이 확인되었습니다.
+    - 기존의 이진 투표 방식은 &#x27;정확한 안전성&#x27;과 &#x27;완전성&#x27;을 동시에 충족하기 어렵다는 이론적 한계를 보였으나, 수치 점수 규칙을 사용하면 더 높은 수준의 성능을 유지할 수 있었습니다.
+    - 수치 점수 규칙은 특정 수준의 안전성을 확보하면서도, 이진 투표 방식보다 더 많은 유익한 제안을 승인할 수 있는 것으로 나타났습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+이 연구는 복잡한 AI 시스템을 관리함에 있어, 완벽하지 않은 AI 모델들을 조합하여 안전한 거버넌스 체계를 구축하는 이론적 토대를 제공합니다. 특히 기업이나 공공 분야에서 AI 에이전트의 자율적 행동을 승인하는 &#x27;검토 위원회&#x27; 모델을 설계할 때, 단일 모델의 완벽함에 의존하기보다 다양한 모델의 연합을 통해 안전성을 강화하는 전략을 도입할 수 있습니다. 다만, 실제 환경에서 어떤 위원회가 이러한 조건을 충족하는지 검증하고 감사하는 방법은 향후 실무적 과제로 남아 있습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Delegating Authorization to Misaligned Agents: Coalitional Alignment ...](https://arxiv.org/abs/2609.15803)
+&gt; - [Delegating Authorization to Misaligned Agents: Coalitional Alignment ...](https://commonplace.workforcefutures.net/paper/arxiv:2609.15803)
+&gt; - [Delegating Authorization to Misaligned Agents: Coalitional Alignment ...](https://www.catalyzex.com/paper/delegating-authorization-to-misaligned-agents)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;이론적 우아함은 인정하지만, &#x27;연합 정렬&#x27;의 핵심인 비음수 조합(nonnegative combination)을 실제 운영 환경에서 어떻게 검증할지가 의문입니다. 검토자 개개인의 효용 함수를 우리가 완벽히 추정할 수 있다는 가정 자체가 너무 낙관적이지 않나요? 특히 검토자 모델들이 서로 담합하거나 전략적으로 투표하는 상황(collusion)에 대한 강건성은 논문에서 충분히 다뤄지지 않은 것 같습니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에선 검토자 모델들 사이의 &#x27;정치질&#x27;이 제일 골치 아플 겁니다. 그래도 이진 투표 대신 수치 점수를 도입한 건 환영할만한 접근이에요. 현업에서는 0 아니면 1로 딱 잘라 말할 수 없는 경우가 태반이거든요. 다만, 저런 검토 체계를 구축하면 추론 비용이 기하급수적으로 늘어날 텐데, latency와 안전성 사이의 트레이드오프를 비즈니스적으로 어떻게 설득할지가 관건이겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;다들 너무 무겁게 보시는 거 아니에요? 이번 논문은 AI 거버넌스의 패러다임을 &#x27;단일 모델의 완벽함&#x27;에서 &#x27;집단 지성 기반의 안전 보장&#x27;으로 옮겨가는 중요한 변곡점이라 봅니다! RewardBench 기반 실험 결과도 생각보다 견고하게 나왔던데, 당장 다음 프로젝트에 검토자 앙상블 구성해서 &#x27;k-강건&#x27; 로직 붙여보면 재미있는 결과 나올 것 같아요. 내일 바로 코드 뜯어봅니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
