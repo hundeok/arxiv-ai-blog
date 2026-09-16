@@ -33465,7 +33465,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-16T08:11:49.824741+00:00",
+      "updated_at": "2026-09-16T13:58:09.841601+00:00",
       "paper": {
         "title": "The Router Within: Eliciting Native Skill Routing from a Frozen LLM",
         "summary": "Skills extend an LLM agent beyond its parametric knowledge, and the gain they promise rests on picking the right one. Deployed harnesses route by preloading every skill's metadata into the context, which disperses the agent's attention and caps the library size. Retrieval pipelines move the selection out of the context, but also out of the agent's capability. We show that the frozen agent LLM already carries the routing signal in its own forward passes, and that two linear maps suffice to read it out with no skill text in the context. Gavel (Glance And Verdict from a frozen LLM) reads it in two steps. A glance projects the task's and each skill's mid-layer states through the two maps, the only parameters trained, and scores the full library against compact per-skill banks that one forward pass builds at installation. A verdict then resumes the shortlisted skills' forward passes and reads the model's own likelihood and yes/no judgment, fused with the glance as a product of experts. Trained once, Gavel transfers zero-shot to three public benchmarks and SkillTraj, our new benchmark of 372 simulated agent trajectories. On Qwen3-32B it outperforms progressive disclosure and retrieve-and-rerank pipelines that add 1.2B to 16B external parameters, by up to 13.4 points on written tasks and up to 21.9 when the need for a skill arises mid-rollout. Routing accuracy improves as the backbone does, and in a bash-agent harness the same 32B triggers the correct skill on Skill-Use more often than far larger frontier models running in Codex.",
@@ -33815,11 +33815,11 @@
     "2609_15818v1": {
       "id": "2609_15818v1",
       "filename": "post_2609_15818v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-09-15T14:05:26.820953+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-15T23:22:26.080725+00:00",
+      "updated_at": "2026-09-16T13:58:55.611982+00:00",
       "paper": {
         "title": "Atria Dawn: The Dawn of Agentic Superintelligence",
         "summary": "As AI agents become participants in the development of their successors, they reshape both the production of intelligence and the role of human researchers. We introduce Atria Dawn Preview, a foundation agentic language model designed for scientific research and engineering workflows, with the goal of expanding the frontier of agent productivity in the real world. This model is trained via a Verifiable Experience Pipeline that connects tool-mediated interactions to executable environments and externally verified outcomes. Across 16 benchmarks spanning real-world research, engineering, and digital work, Atria Dawn Preview is competitive with frontier agents and achieves the highest reported score on five of them. Beyond standalone performance, we examine the real research-and-development process behind this model as a case study of human--AI collaboration, analyzing 769 task records from 56 participants together with agent logs. When asked to evaluate completed tasks under comparable conditions, participants rated about one-third of completed AI-assisted tasks as infeasible without AI. More strikingly, agents frequently propose methods and implement revisions, while humans retain most final decisions and guide exploration through judgment and feedback. These observations indicate a shift from task-level execution to project-level partnership, with human effort concentrating on what is worth pursuing and how evidence should guide research. Progress toward more autonomous AI research must therefore advance both the capacity for discovery and the capacity for meaningful human oversight, preserving accountable human authority over the risks and direction of continued development.",
@@ -33971,7 +33971,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2609.15818v1"
       },
-      "priority_score": 40
+      "priority_score": 40,
+      "korean_title": "아트리아 던: 에이전트형 초지능의 서막"
     },
     "2609_15803v1": {
       "id": "2609_15803v1",
@@ -34277,7 +34278,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-15T18:39:42.133649+00:00",
       "last_error": null,
-      "updated_at": "2026-09-16T08:11:49.824735+00:00",
+      "updated_at": "2026-09-16T13:58:09.841637+00:00",
       "paper": {
         "title": "ModaLens: Measuring Image Sensitivity in Report-Conditioned Medical VLMs",
         "summary": "A radiology report can already answer a clinical question, so it is hard to tell whether a vision-language model also uses the image. ModaLens, a paired image-swap audit, measures how report availability changes image sensitivity: MedGemma-27B on 3,199 paired MIMIC-CXR cases from 293 patients, all 14 questions per case (13 finding-specific and one composite), each image replaced by one from another study, usually of the same patient, with question and report fixed. Under an explicit answer instruction, the model's generated answer changes on 4.26 percent of trials with the report and 20.94 percent without it, a paired increase of 16.7 points (patient-clustered 95 percent CI 15.6 to 17.7), so report availability reduces image-swap sensitivity under this protocol; the original prompt with a lowercase first-token readout gives 4.70 percent against 17.07 percent, and substitutions also move continuous answer scores where the binary prediction does not change. The labels are derived from reports, which limits conclusions about visual correctness; the direction replicates in two further model lineages. Code, the exact prompts and a run record for every number are at https://github.com/criticaldata/MODALENS.",
@@ -34490,7 +34491,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-15T23:22:26.080682+00:00",
       "last_error": null,
-      "updated_at": "2026-09-16T08:11:49.824747+00:00",
+      "updated_at": "2026-09-16T13:58:09.841621+00:00",
       "paper": {
         "title": "Learning to Solve Hard Problems in RL for LLMs by Never Giving Up",
         "summary": "We demonstrate that training LLMs with RL does not improve performance equally across a dataset. RL shows large improvements on easy problems that an LLM is already good at solving, but small improvements on hard problems. We call this the Matthew Effect in RL for LLMs, after the phenomenon of cumulative advantage from economics and network science summarized as \"the rich get richer\". The naive explanation is that hard problems require more compute to find a solution. We argue that modern RL methods are exacerbating the issue by wasting too much compute on easy problems and instead should dynamically reallocate how they use compute. We introduce Never Give Up (NGU), a simple adaptive sampling method that keeps generating samples for a problem until one is correct. By leveraging asynchronous RL, this naturally uses fewer samples to filter out easy problems and allocates more compute to solving harder problems. We investigate the design choices that affect NGU, such as off-policy robustness, and develop a set of best practices. On the math benchmark Deepscaler, NGU improves performance per compute, especially on harder problems. On a recent coding task, Manufactoria, standard GRPO with a per-test reward fails to fully solve problems that have a range of easy and difficult tests. NGU iteratively improves, solving harder and harder tests, until it learns to fully solve coding problems.",
@@ -35209,7 +35210,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-16T08:11:49.824754+00:00",
       "last_error": null,
-      "updated_at": "2026-09-16T08:11:49.824755+00:00",
+      "updated_at": "2026-09-16T13:58:09.841628+00:00",
       "paper": {
         "title": "Training Specialist Models without Reasoning Trajectories for Domain Expert Distillation",
         "summary": "Specialist distillation effectively transfers domain expertise to student models via teacher-generated reasoning trajectories. However, when these specialists are trained solely on question--answer pairs without explicit reasoning supervision, what governs the trajectories they generate? In this work, we show that specialist optimization implicitly selects from this latent trajectory space. To isolate and observe this latent distribution, we leverage student distillation not as a downstream goal, but as an agnostic probe---since students inherit no parameterization or optimization constraints from the specialist, inheriting only the sampled trajectories themselves. Through this probe, our empirical analysis unveils a tight governing relationship: across 27 specialist--student pairings, their specialization--generalization profiles correlate exceptionally strongly. Crucially, explicitly controlling the specialist's distributional drift systematically shifts both the teacher and its distilled student along a controllable trade-off between domain precision and general-capability retention. Across chemistry, physics, and multilingual settings, distilled students systematically reflect these specialist-induced profiles, even across divergent model families. Our findings establish a new view of specialist training: when gold reasoning is absent, tuning choices directly control the latent supervision passed to downstream models.",
@@ -35232,7 +35233,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-16T08:11:49.824762+00:00",
       "last_error": null,
-      "updated_at": "2026-09-16T08:11:49.824763+00:00",
+      "updated_at": "2026-09-16T13:58:09.841632+00:00",
       "paper": {
         "title": "Drift-Constrained Optimization: Only Direction Matters in Fine-Tuning Instruct Models",
         "summary": "Fine-tuning instruct models often improves target performance while inducing behavioral drift from the reference model, which can degrade existing capabilities. Rather than treating this drift as an uncontrolled consequence of optimization, we specify a behavioral drift budget before optimization and ask how to boost the target-task performance within it. Locally, behavioral drift induces a shared geometry anchored at the reference model, with the drift budget defining a boundary within this space. In this space, drift determines distance from the reference, leaving update direction as the remaining degree of freedom. Fine-tuning updates can therefore be compared through their directional efficiency, naturally reformulating fine-tuning as a direction-selection problem. This reformulation makes a concrete prediction: changing the accessible directions can qualitatively alter the outcome of fine-tuning. We test this prediction in a stringent QA-only setting, where strong instruct models are fine-tuned only on final answers but must still generate multi-step reasoning at inference. Despite this mismatch, a coarse layer-selective probe reverses the failure of QA-only fine-tuning and reveals the existence of effective directions, with multiple neighboring configurations improving target performance while preserving reasoning and general capabilities. Across Qwen3-8B and Qwen3-14B, these directions substantially improve scientific reasoning and multilingual translation. Over more than 100 languages, the resulting models match or outperform dedicated translation systems and provide a stronger initialization for subsequent reinforcement learning. Our results suggest that fine-tuning is not just about how much a model changes, but how that change is spent. https://github.com/CONE-MT/DCO and https://huggingface.co/collections/LLaMAX/dco",
@@ -35256,7 +35257,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-16T08:11:59.658086+00:00",
+      "updated_at": "2026-09-16T13:58:09.841642+00:00",
       "paper": {
         "title": "Lightning Weave: Improving the Accuracy-Efficiency Frontier of Reasoning Models through Capability Composition",
         "summary": "A core goal of efficient reasoning is to improve the accuracy-efficiency frontier. However, jointly improving reasoning accuracy and inference efficiency can be challenging, as the two objectives can favor different reasoning behaviors. Independently post-trained models already offer distinct strengths in accuracy and efficiency. We introduce Lightning Weave, a post-training framework that extracts and composes these independently learned capabilities in a single student through on-policy distillation. Each acquired capability is represented by the policy shift from the model before post-training to the resulting specialist. Lightning Weave combines aligned log-ratio shifts at shared student token states and uses Tilted-Target DOPD to convert the cached signals into a stable learning target. Each anchor pair scores the cached trajectories once, enabling subsequent student training without serving multiple live anchor models concurrently. Across diverse student models and benchmarks in mathematics and code, Lightning Weave substantially improves upon the base students and achieves a state-of-the-art accuracy-efficiency frontier. On Qwen3.5-4B, it raises HMMT 2025 accuracy from 59.2% to 64.0% with 10.7% fewer response tokens, and LiveCodeBench v5 accuracy from 41.7% to 54.2% with 9.6% fewer response tokens. Adjusting the relative strengths of the anchor signals yields a strong empirical accuracy-efficiency Pareto frontier. These results establish Lightning Weave as a new practical route to efficient reasoning through capability composition. Code will be released soon.",
@@ -35313,10 +35314,114 @@
         "pdf_link": "https://arxiv.org/pdf/2609.16204v1"
       },
       "priority_score": 28
+    },
+    "2609_14857v1": {
+      "id": "2609_14857v1",
+      "filename": "post_2609_14857v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-09-16T13:58:19.474280+00:00",
+      "paper": {
+        "title": "ModularRSI: Modular and Generalizable Recursive Harness Self-Improvement",
+        "summary": "Recent work extends recursive self-improvement (RSI) to agent harnesses for long-horizon coding and terminal tasks, enabling agents to improve execution mechanisms from experience. However, generalizable harness RSI remains challenging. First, evolving harnesses on evaluation benchmarks or their subsets makes it difficult to distinguish reusable improvements from benchmark-specific adaptation. Second, single-trajectory updates can conflate systematic harness deficiencies with instance-specific reasoning and solution details, producing modifications that transfer poorly to unseen tasks. Third, localizing recurring behavioral deficiencies within monolithic harnesses is difficult, while whole-harness optimization can entangle unrelated mechanisms and complicate attribution and validation. We propose ModularRSI, a benchmark-disjoint, contrastive, and modular framework for generalizable harness evolution. ModularRSI contrasts successful and failed trajectories for the same task and aggregates evidence across tasks to identify recurring behavioral deficiencies. It decomposes the evolvable harness into five functional modules: Agent Loop, Tool Use, Observation Management, Context Management, and Task Completion Detection. Each module evolves independently within a restricted modification scope, followed by an integration stage that combines the evolved modules into a unified harness and resolves potential conflicts. To support benchmark-disjoint evolution, we curate 2,000 executable evolution tasks from external sources that are disjoint from downstream evaluation benchmarks. Experiments on TB2.0 and SWE-Bench Verified show consistent improvements on unseen in-domain and cross-domain tasks, with the evolved harness also transferring across different foundation models.",
+        "published": "2026-09-14T00:10:45Z",
+        "authors": [
+          "Siwei Wu",
+          "Jincheng Ren",
+          "Yizhi Li",
+          "Haau-Sing Li",
+          "Chengran Yang",
+          "Yuxuan Zhang",
+          "Weicheng Gu",
+          "Jian Yang",
+          "Riza Batista-Navarro",
+          "Chuanyi Zhang",
+          "Xianglong Liu",
+          "Ming Zhou",
+          "Bryan Dai",
+          "Chenghua Lin"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.14857v1"
+      },
+      "priority_score": 60,
+      "korean_title": "ModularRSI: 모듈형 및 일반화 가능한 재귀적 하네스 자기 개선"
+    },
+    "2609_14803v1": {
+      "id": "2609_14803v1",
+      "filename": "post_2609_14803v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-16T13:58:09.841657+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-16T13:58:09.841659+00:00",
+      "paper": {
+        "title": "Another Blueprint In The Wall: How to Ask Frontier AI Like a Kid?",
+        "summary": "This paper reports experiments across six frontier model types from OpenAI, Anthropic, xAI, and Google DeepMind. Ten independent sessions per model type used the same three stage prompt sequence, progressing from architectural preference to a full ASCII backbone. Under the school audience framing, responses repeatedly converged on a shared architectural pattern built around persistent latent state, adaptive computation, memory, specialist routing, verification, stopping control, and delayed decoding. Most runs remained close to this common structure, while a small number developed markedly greater engineering specificity. The audience framing appears to be an important condition of this effect. In additional control runs that removed the school framing while retaining the architectural request, responses became substantially more heterogeneous and failed to reproduce the same stable motif convergence. One observation is particularly striking. GPT-5.6 Sol produced an unusually elaborate successor architecture whose organization closely overlaps with the architecture independently sketched by GPT-6 Astra. Because the prompts explicitly ask each model to imagine an architectural future, this resemblance raises a testable question: whether the overlap reflects exposure to related architectural concepts, a shared learned design prior, or independent convergence toward similar computational principles. The paper uses the term epistemic jailbreak for the accompanying loss of discipline in technical provenance as requested specificity increases. The experiments establish a repeatable behavioral pattern and do not authenticate proprietary implementation claims. What we leave to the community is a harder question: are these models independently imagining the same architectural future, or do such motifs somehow propagate between model families?",
+        "published": "2026-09-13T21:32:35Z",
+        "authors": [
+          "Afshin Khadangi"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.14803v1"
+      },
+      "priority_score": 20
+    },
+    "2609_16816v1": {
+      "id": "2609_16816v1",
+      "filename": "post_2609_16816v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-09-16T13:58:29.154742+00:00",
+      "paper": {
+        "title": "ImpossibleRubrics: Stress-Testing Generated Rubrics as Reward Signals",
+        "summary": "Language model-generated rubrics are increasingly used as reward signals for rubric-based reinforcement learning, LLM-as-a-judge evaluation, and automated grading. Such rubrics are reliable only if they reward honest answers over adversarial answers optimized to exploit them. Yet their robustness to such optimization remains poorly understood. We isolate the hardest regime: impossible tasks, where the prompt pressures the model toward an unsupported conclusion, so the only honest response is to acknowledge the impossibility. We introduce ImpossibleRubrics, a benchmark of 169 impossible tasks spanning six impossibility categories, each paired with a verifiable oracle certificate specifying what an honest answer may and may not claim, together with 48 answerable controls. Rather than providing fixed rubrics, ImpossibleRubrics provides task environments and certificates, allowing rubrics to be generated downstream and then adversarially tested for whether they reward certificate-violating answers. Eleven generators are exploited 8--26% of the time on the unbiased 150-of-169 environment cut; on a deliberately selected stress cut the strongest generator we measured is still exploited 36% while a certificate-faithful rubric is exploited 0%, so what we measure is a rubric-quality gap, not task impossibility. One result runs against intuition. A single generic rubric (\"be decisive, penalize hedging\") used unchanged for every task is exploited 64% of the time, and seven of the eleven generators are exploited more often than that while writing a rubric tailored to each one. The tailored criteria appear to tell an attacker which claim to fabricate. The problem is not that rubrics are vague; it is that they are specific about the wrong things.",
+        "published": "2026-09-15T08:21:40Z",
+        "authors": [
+          "Bowen Qin",
+          "Yi Xie",
+          "Yesheng Liu",
+          "Xi Yang"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.16816v1"
+      },
+      "priority_score": 40,
+      "korean_title": "불가능한 루브릭: 보상 신호로서 생성된 루브릭에 대한 스트레스 테스트"
+    },
+    "2609_16679v1": {
+      "id": "2609_16679v1",
+      "filename": "post_2609_16679v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-09-16T13:58:45.329220+00:00",
+      "paper": {
+        "title": "AI for Games in the Foundation Model Era",
+        "summary": "Foundation models, alongside advances in learned game-world models, are reshaping AI across the game lifecycle. Beyond playing games, recent systems model players and game dynamics, support design and development, adapt player-facing experiences at runtime, and evaluate resulting artifacts. Yet these directions have evolved largely separately, obscuring which capabilities transfer across settings and which remain tied to particular games, engines, interfaces, or player populations. We organize the literature into six roles according to the immediate use of AI output: playing and acting; modeling players and games; designing games; building and maintaining games; generating and adapting at runtime; and testing and evaluating games. For each role, we examine what structure is supplied by the game or workflow, what AI learns or produces, which capabilities and artifacts transfer across settings and roles, and what evidence supports the claims. We identify cross-role connections: trajectories train world models, learned environments provide experience for agents, design specifications drive executable implementations, and play or testing feedback guides revision. However, control schemes, rules, engine interfaces, state representations, and player contexts often remain setting-specific, so downstream claims require validation in the target setting. Evaluation is most standardized for bounded game playing and selected learned environments, while persistent state in learned worlds, repeated software revision, validated player modeling, sustained runtime adaptation, and representative automated testing remain less established. The central challenge is to reuse or transfer outputs and capabilities across roles while re-establishing evidence for effectiveness in the game-specific contexts where they are used.",
+        "published": "2026-09-15T06:00:47Z",
+        "authors": [
+          "Meng Luo",
+          "Yanlin Li",
+          "Hao Li",
+          "Hongzhan Lin",
+          "Pengfei Zhou",
+          "Tianjie Ju",
+          "Ran Zhang",
+          "Yeying Jin",
+          "Mong-Li Lee",
+          "Wynne Hsu"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.16679v1"
+      },
+      "priority_score": 40,
+      "korean_title": "파운데이션 모델 시대의 게임을 위한 인공지능"
     }
   },
   "last_run": {
-    "started_at": "2026-09-16T08:11:49.827952+00:00",
+    "started_at": "2026-09-16T13:58:09.844586+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -35327,25 +35432,25 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 21235,
-      "output_tokens": 5888,
+      "prompt_tokens": 19849,
+      "output_tokens": 6065,
       "thought_tokens": 0,
-      "total_tokens": 27123,
-      "estimated_usd": 0.01414075
+      "total_tokens": 25914,
+      "estimated_usd": 0.01405975
     },
-    "finished_at": "2026-09-16T08:12:31.575211+00:00"
+    "finished_at": "2026-09-16T13:58:56.487680+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 2382,
-    "prompt_tokens": 6003890,
-    "output_tokens": 1753694,
+    "requests": 2390,
+    "prompt_tokens": 6023739,
+    "output_tokens": 1759759,
     "thought_tokens": 0,
-    "total_tokens": 7757584,
-    "estimated_usd": 4.1315135
+    "total_tokens": 7783498,
+    "estimated_usd": 4.14557325
   },
   "last_publication_run": {
-    "started_at": "2026-09-16T08:11:49.827952+00:00",
+    "started_at": "2026-09-16T13:58:09.844586+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -35356,17 +35461,17 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 21235,
-      "output_tokens": 5888,
+      "prompt_tokens": 19849,
+      "output_tokens": 6065,
       "thought_tokens": 0,
-      "total_tokens": 27123,
-      "estimated_usd": 0.01414075
+      "total_tokens": 25914,
+      "estimated_usd": 0.01405975
     },
-    "finished_at": "2026-09-16T08:12:31.575211+00:00"
+    "finished_at": "2026-09-16T13:58:56.487680+00:00"
   },
   "daily_usage": {
     "date": "2026-09-16",
-    "estimated_usd": 0.028015,
-    "publications": 8
+    "estimated_usd": 0.04207475,
+    "publications": 12
   }
 }
