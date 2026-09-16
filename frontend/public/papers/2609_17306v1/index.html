@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>더 많은 모델, 더 많은 문제: 다중 에이전트 시스템 설계 시 최적의 모델 풀 선정 방법 | ArXiv Translator AI</title><meta name="description" content="더 많은 모델, 더 많은 문제: 다중 에이전트 시스템 설계 시 최적의 모델 풀 선정 방법"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_17306v1"><meta property="og:type" content="article"><meta property="og:title" content="더 많은 모델, 더 많은 문제: 다중 에이전트 시스템 설계 시 최적의 모델 풀 선정 방법"><meta property="og:description" content="더 많은 모델, 더 많은 문제: 다중 에이전트 시스템 설계 시 최적의 모델 풀 선정 방법"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_17306v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="더 많은 모델, 더 많은 문제: 다중 에이전트 시스템 설계 시 최적의 모델 풀 선정 방법"><meta name="twitter:description" content="더 많은 모델, 더 많은 문제: 다중 에이전트 시스템 설계 시 최적의 모델 풀 선정 방법"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_17306v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "더 많은 모델, 더 많은 문제: 다중 에이전트 시스템 설계 시 최적의 모델 풀 선정 방법", "description": "더 많은 모델, 더 많은 문제: 다중 에이전트 시스템 설계 시 최적의 모델 풀 선정 방법", "datePublished": "2026-09-15", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_17306v1", "author": [{"@type": "Person", "name": "Sara Vera Marjanović"}, {"@type": "Person", "name": "Jiacheng Xu"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_17306v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_17306v1"});gtag('event', 'paper_view', {"paper_id": "2609_17306v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>더 많은 모델, 더 많은 문제: 다중 에이전트 시스템 설계 시 최적의 모델 풀 선정 방법</h1><p>더 많은 모델, 더 많은 문제: 다중 에이전트 시스템 설계 시 최적의 모델 풀 선정 방법</p><pre>더 많은 모델, 더 많은 문제: 다중 에이전트 시스템 설계 시 최적의 모델 풀 선정 방법
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Mo&#x27; Models, Mo&#x27; Problems: How to best select model pools when designing Multi-Agent Systems
+&gt; - **저자:** Sara Vera Marjanović, Jiacheng Xu, Aleksandr Laptev, Grigor Nalbandyan, Erik Arakelyan, Evelina Bakhaturina
+&gt; - **발행일:** 2026-09-15
+&gt; - **PDF 링크:** [Mo&#x27; Models, Mo&#x27; Problems: How to best select model pools when designing Multi-Agent Systems](https://arxiv.org/pdf/2609.17306v1)
+
+
+✨ 3줄 핵심 요약
+* 다중 에이전트 시스템(MAS)에서 모델 후보군을 무조건 늘리는 것은 오히려 시스템 성능을 저하시킬 수 있습니다.
+* 동일한 모델 계열 내에서 후보군을 선정하는 전략이 단일 모델보다 뛰어난 상대적 성능을 보이는 것으로 확인되었습니다.
+* 이론적 잠재력(Oracle potential)과 실제 성능 사이에는 큰 격차가 존재하며, 모델 선정은 MAS 설계의 매우 중요한 요소입니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+최근 여러 AI 모델을 협업시키는 다중 에이전트 시스템(MAS)이 주목받고 있습니다. 하지만 오픈소스 모델이 수백만 개에 달하는 상황에서, 어떤 모델들을 조합해야 최상의 성능을 낼 수 있을지는 불분명했습니다. 본 연구는 다양한 모델 선정 전략을 체계적으로 비교 분석했습니다. 그 결과, 무작정 다양한 모델을 섞는 것보다 같은 계열의 모델들로 구성하는 것이 더 효과적임을 밝혀냈습니다. 이는 아무 모델이나 조합할 경우 시스템의 불안정성을 초래하여, 오히려 성능이 가장 뛰어난 단일 베이스 모델보다 못한 결과를 낼 수 있음을 시사합니다.
+
+🎯 배경 및 문제점
+* **선택의 역설:** 허깅페이스(Hugging Face) 등에 존재하는 수많은 모델 중 어떤 것을 골라야 MAS의 성능과 비용을 최적화할 수 있는지에 대한 연구가 부족했습니다.
+* **이론과 실제의 괴리:** 시스템 내 모델 수가 많을수록 이론적 잠재력은 높을 수 있으나, 실제 구현 시 발생하는 성능 저하 문제를 해결해야 합니다.
+* **시스템 설계의 복잡성:** 생성 전(routing) 방식과 생성 후(majority-voting, LLM-as-a-judge) 방식 등 다양한 MAS 구조에 따라 적합한 모델 선정 기준이 필요합니다.
+
+💡 핵심 기술 및 아키텍처
+* **8가지 모델 선정 전략:** 모델 크기, 정확도, 답변 다양성 등을 기준으로 모델 후보군 선정 전략을 체계화했습니다.
+* **MAS 아키텍처 분류:**
+    * **생성 전(Before-generation):** 라우터가 쿼리에 적합한 모델을 선택하는 방식.
+    * **생성 후(After-generation):** 여러 모델이 답변한 후 최종 결과를 합치는 방식.
+* **실험 대상:** 과학적 추론 벤치마크(HLE, FrontierScience-Olympiad, GPQA-Diamond)를 사용하여 모델 조합의 성능을 평가했습니다.
+
+📊 실험 결과 분석
+* **성능 저하 현상:** 후보 모델군(candidate pool)의 크기를 확대할 경우, 오히려 가장 성능이 좋은 단일 모델보다도 시스템 전체 성능이 낮아지는 현상이 빈번하게 관찰되었습니다.
+* **동일 계열 전략의 우위:** 서로 다른 모델을 섞는 것보다, 동일한 모델 가문(model family, 예: 특정 시리즈의 Llama나 Qwen 등) 내에서 모델들을 선정할 때 가장 우수한 상대적 성능 향상이 나타났습니다.
+* **수치적 상세:** 본문 발췌 내에는 실험의 구체적인 성능 수치(accuracy)나 정확한 성능 향상 폭은 명시되어 있지 않으나, &#x27;상당한 격차&#x27;와 &#x27;시스템 불안정성&#x27;이 발생함이 강조되었습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **효율적인 MAS 설계:** 실무에서 무조건 많은 수의 LLM을 결합하려는 시도는 비용 낭비와 성능 저하를 야기할 수 있음을 경고합니다.
+* **모델 전략의 표준화:** 특정 도메인이나 작업에 특화된 모델을 선정할 때, 무분별한 조합보다는 계열화된 모델 풀을 구성하는 것이 시스템 안정성 확보에 유리합니다.
+* **연구 가이드라인:** 모델 선정 자체가 MAS 설계의 핵심적인 최적화 문제임을 제시하며, 향후 시스템 구축 시 모델 선정 전략이 설계 단계의 필수 검토 항목이 되어야 함을 시사합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [📚 ArXiv AI Research Digest 2026-09-16 · Issue #62 · kouweizhu/agents-radar](https://github.com/kouweizhu/agents-radar/issues/62)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;이 논문은 &#x27;다다익선&#x27;이라는 환상에 빠진 MAS 연구계에 시의적절한 경종을 울리는군요. 특히 동일 계열 모델 조합이 이질적 조합보다 우세하다는 결과는, 모델 간의 어휘 분포나 추론 스타일의 정렬(Alignment)이 MAS의 협업 메커니즘에서 얼마나 핵심적인 변수인지 보여줍니다. 다만, 성능 저하의 정확한 원인을 Latency 때문인지 아니면 라우팅 알고리즘의 오버피팅 때문인지 더 엄밀히 분석하지 않은 점은 아쉽네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로입니다. 현업에서는 온갖 오픈소스 모델들 다 섞어서 로드 밸런싱 하다가, 정작 서빙 비용만 터지고 성능은 단일 SOTA 모델보다 못 나와서 밤새는 경우가 허다하죠. 특히 &#x27;동일 계열&#x27;로 묶으면 시스템 복잡도가 확 줄어듭니다. 쿠버네티스 위에 모델 인스턴스 띄울 때 환경 설정 일관성 유지하기도 훨씬 편하고요. 당장 다음 스프린트부터 라우팅 전략 수정해야겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;선배님, 무조건 동일 계열로만 가는 게 능사는 아닐걸요? 최근에 나오는 에이전트 프레임워크들은 서로 다른 모델의 편향성을 상쇄(Debiasing)하는 걸 목표로 하는데, 이 논문은 실험 환경이 너무 보수적인 거 아닐까요? 당장 다음 주 학회에서 이 논문 들고 가서 &#x27;그럼 LoRA 튜닝된 모델들로만 섞으면 어떻게 되냐&#x27;고 저자한테 챌린지 넣을 생각입니다. 이게 요즘 MAS 트렌드라고요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
