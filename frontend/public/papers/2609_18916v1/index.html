@@ -1,0 +1,70 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>전문가 혼합 언어 모델에서의 고차 전문가 가지치기 | ArXiv Translator AI</title><meta name="description" content="전문가 혼합 언어 모델에서의 고차 전문가 가지치기"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_18916v1"><meta property="og:type" content="article"><meta property="og:title" content="전문가 혼합 언어 모델에서의 고차 전문가 가지치기"><meta property="og:description" content="전문가 혼합 언어 모델에서의 고차 전문가 가지치기"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_18916v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="전문가 혼합 언어 모델에서의 고차 전문가 가지치기"><meta name="twitter:description" content="전문가 혼합 언어 모델에서의 고차 전문가 가지치기"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_18916v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "전문가 혼합 언어 모델에서의 고차 전문가 가지치기", "description": "전문가 혼합 언어 모델에서의 고차 전문가 가지치기", "datePublished": "2026-09-16", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_18916v1", "author": [{"@type": "Person", "name": "Alex M. Tseng"}, {"@type": "Person", "name": "Prannay Kaul"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_18916v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_18916v1"});gtag('event', 'paper_view', {"paper_id": "2609_18916v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>전문가 혼합 언어 모델에서의 고차 전문가 가지치기</h1><p>전문가 혼합 언어 모델에서의 고차 전문가 가지치기</p><pre>전문가 혼합 언어 모델에서의 고차 전문가 가지치기
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Higher-order pruning of experts in mixture-of-experts language models
+&gt; - **저자:** Alex M. Tseng, Prannay Kaul, Luca Zancato, Wei Xia, Stefano Soatto
+&gt; - **발행일:** 2026-09-16
+&gt; - **PDF 링크:** [Higher-order pruning of experts in mixture-of-experts language models](https://arxiv.org/pdf/2609.18916v1)
+
+
+✨ 3줄 핵심 요약
+* MoE(전문가 혼합) 모델의 전문가들은 상호 협력적으로 작동하지만, 기존 가지치기 기법은 각 전문가를 독립적으로 평가하는 1차 방식이라 한계가 있었습니다.
+* 본 논문은 전문가 간의 상호작용을 고려하여 오차 범위를 최소화하는 2차 가지치기 기법인 &#x27;HOPE&#x27;를 제안합니다.
+* HOPE는 특히 높은 가지치기 비율과 복잡한 에이전트 작업에서 기존 기법들을 능가하며, 50% 가지치기 시 가장 뛰어난 성능을 기록했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+최신 대규모 언어 모델인 MoE는 여러 개의 &#x27;전문가(Expert)&#x27; 모델을 섞어서 사용합니다. 모델을 가볍게 만들기 위해 불필요한 전문가를 삭제하는 &#x27;가지치기&#x27;가 필수적이지만, 기존 방식은 전문가들을 하나씩 따로 평가하여 협력적인 특성을 놓치곤 했습니다. 
+
+연구진이 개발한 **HOPE**는 전문가들 사이의 &#x27;관계&#x27;를 수학적으로 계산해, 삭제했을 때 성능 저하가 가장 적은 조합을 찾아냅니다. 결과적으로 HOPE를 사용하면 모델의 크기를 절반으로 줄이면서도 똑똑한 성능을 그대로 유지할 수 있어, 메모리가 제한된 환경에서도 고성능 모델을 원활하게 실행할 수 있습니다.
+
+🎯 배경 및 문제점
+* **메모리 병목:** MoE 모델(예: Qwen3.5-122B)은 파라미터 수가 매우 많아 전문가 MLP들이 GPU 메모리의 대부분을 점유합니다.
+* **비효율적 가지치기:** 기존의 1차(First-order) 방식은 각 전문가의 중요도를 독립적인 점수로만 평가합니다. 
+* **협력의 무시:** 실제 MoE 모델에서 토큰은 여러 전문가의 조합을 통해 처리되는데, 기존 방식은 전문가들이 함께 작동할 때 발생하는 시너지를 무시하여 최적의 압축을 달성하지 못합니다.
+
+💡 핵심 기술 및 아키텍처
+* **HOPE (Higher-Order Pruning of Experts):** 전문가들의 상호작용 항을 포함한 2차 가지치기 목적 함수를 도출했습니다. 이는 가지치기로 인해 발생하는 오차의 상한선을 수학적으로 최소화합니다.
+* **상호작용 행렬(F):** 특정 토큰이 활성화될 때 전문가들이 공동으로 선택되는 빈도와 그 기여도를 계산하여, 전문가 쌍(pair)의 중요도를 평가하는 2차 행렬을 구성합니다.
+* **2차 계획법 최적화:** 최적의 전문가 집합을 찾는 문제를 &#x27;이진 2차 계획법(Binary Quadratic Program)&#x27;으로 정의하고, 연속적 완화(Continuous relaxation) 기법을 통해 해결합니다.
+
+📊 실험 결과 분석
+* **실험 환경:** 최대 122B 파라미터 규모의 모델 3종, 2개의 보정 데이터셋, 다양한 벤치마크(수학, 코딩, 에이전트 작업 등)에서 테스트했습니다.
+* **압도적 성능:** 50% 가지치기 시, HOPE는 평가된 5개 기법 중 평균 순위 1.58위를 기록하여 2위인 REAP(2.42위)를 크게 앞섰습니다.
+* **특수 작업 강점:** 특히 에이전트 기반 코딩 작업에서 기존 대비 최대 +6.1%의 성능 향상을 보였으며, 높은 가지치기 비율일수록 기존 방식과의 격차가 더 벌어졌습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **하드웨어 효율성:** 50%의 전문가를 삭제하면 대규모 모델의 메모리 점유율을 대폭 낮출 수 있어, 동일한 하드웨어에서 더 긴 문맥 처리나 더 많은 툴 호출이 가능해집니다.
+* **즉각적 배포:** HOPE는 별도의 재학습(Retraining)이 필요 없는 일회성(One-shot) 방식이므로, 현업에서 즉시 모델을 최적화하여 배포하는 데 매우 실용적입니다.
+* **복잡한 에이전트 서비스:** 다양한 전문가 조합이 필요한 복잡한 추론이나 에이전트 워크로드에서 성능 저하를 최소화하면서 경량화를 달성함으로써, 온디바이스 AI나 제한된 자원의 클라우드 환경에서 고성능 LLM 활용을 가속화할 것입니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2609.18916 Higher-order pruning of experts in mixture-of ...](https://arxiv.org/abs/2609.18916)
+&gt; - [Higher-order pruning of experts in mixture-of-experts ...](https://arxiv.org/pdf/2609.18916)
+&gt; - [Higher-order pruning of experts in mixture-of-experts ...](https://papers.cool/arxiv/2609.18916)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;HOPE의 이론적 접근은 흥미롭군요. 2차 계획법을 도입해 상호작용 항을 최적화한 것은 높게 평가하지만, 연속적 완화 과정에서 발생하는 근사 오차가 실무적인 도메인 적응성(domain transfer)을 얼마나 보장할지 의문입니다. 특히 50% 가지치기 이후의 tail latency 분포를 제대로 분석했는지 궁금하군요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님, 이론도 중요하지만 실무에선 &#x27;재학습 없이(One-shot)&#x27; 바로 50%를 날릴 수 있다는 게 핵심이죠. 사실 122B 모델 서빙 비용 때문에 매번 눈물 흘리는데, 이거 적용해서 인프라 비용 절반으로 줄이면 바로 프로덕션 태울 수 있겠는데요? 다만, 배포 후 엣지 케이스에서 전문가 조합이 꼬일 때의 후속 처리가 숙제겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;선배님들, 벌써 적용 고민하시나요? 저는 이 논문 보면서 바로 제 실험 코드에 적용해봤는데, 에이전트 작업에서 +6% 성능 향상이라는 게 진짜 체감되더라고요! 다들 1차원적인 중요도 평가에 매몰돼 있을 때 &#x27;관계성&#x27;을 파고든 저자들의 통찰력이 대단합니다. 이거 다음 주 학회 발표에서 무조건 인용될 핫픽입니다, 다들 빨리 코드 뜯어보시죠!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
