@@ -1,0 +1,67 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>RepoAtlas: 진화하는 멀티모달 저장소 뷰를 통한 코딩 에이전트 가이드 | ArXiv Translator AI</title><meta name="description" content="RepoAtlas: 진화하는 멀티모달 저장소 뷰를 통한 코딩 에이전트 가이드"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_16936v1"><meta property="og:type" content="article"><meta property="og:title" content="RepoAtlas: 진화하는 멀티모달 저장소 뷰를 통한 코딩 에이전트 가이드"><meta property="og:description" content="RepoAtlas: 진화하는 멀티모달 저장소 뷰를 통한 코딩 에이전트 가이드"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_16936v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="RepoAtlas: 진화하는 멀티모달 저장소 뷰를 통한 코딩 에이전트 가이드"><meta name="twitter:description" content="RepoAtlas: 진화하는 멀티모달 저장소 뷰를 통한 코딩 에이전트 가이드"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_16936v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "RepoAtlas: 진화하는 멀티모달 저장소 뷰를 통한 코딩 에이전트 가이드", "description": "RepoAtlas: 진화하는 멀티모달 저장소 뷰를 통한 코딩 에이전트 가이드", "datePublished": "2026-09-15", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_16936v1", "author": [{"@type": "Person", "name": "Yunxiang Zhang"}, {"@type": "Person", "name": "Haiquan Wang"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_16936v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_16936v1"});gtag('event', 'paper_view', {"paper_id": "2609_16936v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>RepoAtlas: 진화하는 멀티모달 저장소 뷰를 통한 코딩 에이전트 가이드</h1><p>RepoAtlas: 진화하는 멀티모달 저장소 뷰를 통한 코딩 에이전트 가이드</p><pre>RepoAtlas: 진화하는 멀티모달 저장소 뷰를 통한 코딩 에이전트 가이드
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** RepoAtlas: Guiding Coding Agents via Evolving Multimodal Repository Views
+&gt; - **저자:** Yunxiang Zhang, Haiquan Wang, JiaWei Guo, Hanyang Xia, Yan Chen, Tong Chen, Zhang Zhiwei, Junchen Ye
+&gt; - **발행일:** 2026-09-15
+&gt; - **PDF 링크:** [RepoAtlas: Guiding Coding Agents via Evolving Multimodal Repository Views](https://arxiv.org/pdf/2609.16936v1)
+
+
+✨ 3줄 핵심 요약
+* **동적 저장소 시각화:** RepoAtlas는 코드 저장소 그래프를 기반으로 에이전트의 탐색 상태에 맞춰 변화하는 멀티모달(텍스트+시각적) 뷰를 제공합니다.
+* **학습 불필요 모듈:** 사전 학습 없이 선택(Select)·투영(Project)·새로고침(Refresh) 루프를 통해 에이전트에게 필요한 최적의 컨텍스트를 제공합니다.
+* **성능 향상:** SWE-bench Verified 평가 결과, 기존 멀티모달 그래프 베이스라인 대비 해결률은 높이고 입력 토큰 및 모델 호출 횟수는 줄였습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+코딩 에이전트가 방대한 코드 저장소에서 버그를 수정할 때, 모든 코드를 다 읽는 것은 불가능합니다. 기존 방식은 저장소 전체를 선형 텍스트로 보거나 고정된 그래프를 사용하여 정보가 너무 많거나(dense) 탐색 흐름에 뒤처지는(stale) 문제가 있었습니다. **RepoAtlas**는 에이전트의 현재 작업 맥락을 실시간으로 파악하여, 지금 당장 필요한 코드 구조만을 시각적·텍스트적 정보로 요약해 보여줍니다. 마치 지도 없이 길을 찾는 에이전트에게 상황에 맞는 지도를 그때그때 갱신해 주는 내비게이션과 같은 역할을 합니다.
+
+🎯 배경 및 문제점
+* **정보 과부하:** 대규모 저장소 전체를 문맥 창에 넣기에는 정보가 너무 방대합니다.
+* **정적 그래프의 한계:** 정적 그래프는 코드 간의 비지역적 관계를 보여주지만, 에이전트의 탐색이 진행됨에 따라 변화하는 동적 요구사항을 반영하지 못합니다.
+* **시각화의 복잡성:** 저장소 전체 그래프를 시각화하면 노드가 너무 밀집되어 에이전트가 구조를 파악하기 어렵습니다.
+
+💡 핵심 기술 및 아키텍처
+* **선택(Select):** 이슈 내용과 에이전트의 탐색 상태를 결합하여, 정해진 예산 내에서 가장 관련성 높은 코드 영역을 그래프에서 추출합니다.
+* **투영(Project):** 선택된 구조를 텍스트(상세 정보)와 시각적(구조적 관계) 표현으로 상호 보완적인 멀티모달 뷰로 변환합니다.
+* **새로고침(Refresh):** 에이전트의 파일 읽기, 코드 수정 등 탐색 상태가 변화하여 기존 뷰가 부적절해지면 이를 실시간으로 갱신합니다.
+
+📊 실험 결과 분석
+* **해결률:** SWE-bench Verified에서 기존 최강 멀티모달 그래프 베이스라인 대비 해결률이 2.4 포인트 향상되었습니다.
+* **효율성:** 입력 토큰 수와 모델 호출 횟수가 평균적으로 각각 5.8%, 7.8% 감소했습니다.
+* **일관성:** 다양한 규모와 계열의 3개 모델에서 일관된 성능 향상을 보였습니다.
+* **한계점:** 정적 분석 기반 그래프이므로, 런타임에만 발생하는 의존성을 포착하지 못할 경우 성능 저하가 발생할 수 있습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+RepoAtlas는 복잡한 소프트웨어 유지보수 작업을 자동화하는 코딩 에이전트의 효율성을 극대화합니다. 정적인 데이터 전달에서 벗어나 &#x27;진화하는 컨텍스트&#x27;를 제공함으로써, 향후 대규모 엔터프라이즈 코드베이스를 다루는 자율형 에이전트 시스템의 핵심 아키텍처로 활용될 가능성이 큽니다. 향후에는 정적 분석뿐만 아니라 실행 로그 및 테스트 피드백을 반영하여 더 정확한 의존성 추론이 가능해질 전망입니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [RepoAtlas: Guiding Coding Agents via Evolving Multimodal Repository Views](https://arxiv.org/abs/2609.16936)
+&gt; - [RepoAtlas: Guiding Coding Agents via Evolving Multimodal Repository Views](https://arxiv.org/pdf/2609.16936)
+&gt; - [RepoAtlas: Guiding Coding Agents via Evolving Multimodal Repository Views](https://www.aimodels.fyi/papers/arxiv/repoatlas-guiding-coding-agents-via-evolving-multimodal)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문 제목만 보고 또 정적 분석 그래프에 LLM 끼얹은 건가 싶었는데, &#x27;Refresh&#x27; 루프를 통한 동적 컨텍스트 관리는 꽤 논리적이군요. 다만, 정적 분석에만 의존한다는 점이 치명적입니다. 런타임 의존성이나 동적 바인딩이 난무하는 대규모 프레임워크에서 이 &#x27;시각적 뷰&#x27;가 얼마나 유효할지 의문이네요. 연구실 학생들, 다음 세미나 때 이 부분 한계점 벤치마크 제대로 뜯어보세요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에서는 런타임 의존성이 90%죠. 하지만 토큰 비용과 호출 횟수 5~7% 줄인 건 현업 입장에선 꽤 매력적인데요? 특히 대규모 레포지토리에서 RAG 돌리다 보면 컨텍스트 윈도우 때문에 텅장되는 게 일상인데, 이 &#x27;선택-투영&#x27; 메커니즘이 실제 프로덕션 환경에서 추론 지연 시간(latency)을 얼마나 유의미하게 단축할지가 관건이겠네요. 일단 사내 에이전트 파이프라인에 PoC 돌려볼 가치는 있어 보입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;다들 너무 엄근진하신 거 아닌가요? ㅋㅋㅋ 멀티모달 뷰를 에이전트 가이드로 쓴다는 아이디어 자체는 확실히 힙합니다! SWE-bench 점수 올라가는 거 보니까 이제 그냥 코드 텍스트 긁어다 주는 시대는 끝난 것 같아요. 저는 이 모델이 실행 로그랑 테스트 피드백까지 실시간으로 반영해서 &#x27;Self-healing&#x27; 레벨까지 도달하면 진짜 게임 체인저가 될 것 같은데, 깃허브에 코드 올라오면 바로 뜯어볼 생각입니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
