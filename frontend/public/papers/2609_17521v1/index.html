@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PhysStream: 구조화된 장면 메모리와 세밀한 동작 제어를 통한 스트리밍 물리 기반 비디오 생성 | ArXiv Translator AI</title><meta name="description" content="PhysStream: 구조화된 장면 메모리와 세밀한 동작 제어를 통한 스트리밍 물리 기반 비디오 생성"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_17521v1"><meta property="og:type" content="article"><meta property="og:title" content="PhysStream: 구조화된 장면 메모리와 세밀한 동작 제어를 통한 스트리밍 물리 기반 비디오 생성"><meta property="og:description" content="PhysStream: 구조화된 장면 메모리와 세밀한 동작 제어를 통한 스트리밍 물리 기반 비디오 생성"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_17521v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="PhysStream: 구조화된 장면 메모리와 세밀한 동작 제어를 통한 스트리밍 물리 기반 비디오 생성"><meta name="twitter:description" content="PhysStream: 구조화된 장면 메모리와 세밀한 동작 제어를 통한 스트리밍 물리 기반 비디오 생성"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_17521v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "PhysStream: 구조화된 장면 메모리와 세밀한 동작 제어를 통한 스트리밍 물리 기반 비디오 생성", "description": "PhysStream: 구조화된 장면 메모리와 세밀한 동작 제어를 통한 스트리밍 물리 기반 비디오 생성", "datePublished": "2026-09-15", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_17521v1", "author": [{"@type": "Person", "name": "Chuhao Chen"}, {"@type": "Person", "name": "Peter Wonka"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_17521v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_17521v1"});gtag('event', 'paper_view', {"paper_id": "2609_17521v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>PhysStream: 구조화된 장면 메모리와 세밀한 동작 제어를 통한 스트리밍 물리 기반 비디오 생성</h1><p>PhysStream: 구조화된 장면 메모리와 세밀한 동작 제어를 통한 스트리밍 물리 기반 비디오 생성</p><pre>PhysStream: 구조화된 장면 메모리와 세밀한 동작 제어를 통한 스트리밍 물리 기반 비디오 생성
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** PhysStream: Streaming Physics-Grounded Video Generation with Structured Scene Memory and Fine-Grained Motion Control
+&gt; - **저자:** Chuhao Chen, Peter Wonka, Chaoyang Wang, Chen Wang, Qiao Feng, Sergey Tulyakov, Lingjie Liu
+&gt; - **발행일:** 2026-09-15
+&gt; - **PDF 링크:** [PhysStream: Streaming Physics-Grounded Video Generation with Structured Scene Memory and Fine-Grained Motion Control](https://arxiv.org/pdf/2609.17521v1)
+
+
+✨ 3줄 핵심 요약
+* **물리 기반 제어:** 사용자가 물체의 속도 방향을 지정하면, 모델이 이를 물리적으로 타당한 다중 객체 역학으로 변환하여 비디오를 생성합니다.
+* **구조화된 장면 메모리:** 생성 도중 실시간으로 추적되는 위치 맵과 객체 추적 맵을 활용하여, 비디오 생성 과정에서 객체의 일관성을 유지합니다.
+* **향상된 정밀도:** 기존 최신 모델 대비 동작 분포 거리(FVMD)를 33%, 궤적 오차를 12% 개선하였으며, 사용자 평가에서 85% 이상의 선호도를 기록했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+기존의 비디오 생성 기술은 단순히 텍스트 명령에 의존하거나, 영상의 특정 위치를 픽셀 단위로 일일이 지정해야 하는 한계가 있었습니다. **PhysStream**은 이를 해결하기 위해 물리 법칙을 반영한 &#x27;속도 제어&#x27; 방식을 도입했습니다. 사용자가 물체를 어떻게 움직일지 간단히 지정하면, AI가 장면의 구조를 실시간으로 기억(메모리)하며 물체가 물리적으로 자연스럽게 움직이도록 비디오를 만들어냅니다. 특히 생성 중에 개입하여 동작을 수정할 수 있어, 탁상 위에서 물체가 부딪히고 이동하는 복잡한 물리적 상호작용을 정교하게 구현합니다.
+
+🎯 배경 및 문제점
+* **기존 방식의 한계:** 기존 제어 방법은 생성 전 전체 경로를 미리 계획해야 하거나, 물리적 역학보다는 단순한 픽셀 위치 지정에 머물러 있어 자연스러운 물리 법칙 구현이 어려웠습니다.
+* **동적 장면의 복잡성:** 정적인 이미지를 동영상으로 바꿀 때, 특히 다수의 객체가 상호작용하는 경우 시간적 일관성을 유지하며 물리적으로 타당한 움직임을 생성하는 것은 도전적인 과제였습니다.
+
+💡 핵심 기술 및 아키텍처
+* **구조화된 장면 메모리:** 이전 프레임에서 유도된 &#x27;위치 맵(Positional Map)&#x27;과 &#x27;객체 추적 맵(Object-Tracking Map)&#x27;을 온라인으로 생성하여 모델에 입력합니다.
+* **세밀한 동작 제어:** 사용자가 제공하는 &#x27;희소 속도 증분 신호(Sparse velocity-increment signals)&#x27;를 통해 물리량을 인코딩하고 학습합니다.
+* **2단계 학습 전략:** 
+    1. 동작 제어 조건이 포함된 양방향 모델을 먼저 미세 조정합니다.
+    2. 이후 구조화된 장면 메모리를 결합하여 인과적(Causal) 자기회귀 모델을 학습시켜 물리적 일관성을 강화합니다.
+
+📊 실험 결과 분석
+* **성능 지표:** 합성 벤치마크 테스트에서 기존 최강 모델 대비 동작 분포 거리(FVMD) 33% 감소, 궤적 오차 12% 감소라는 수치를 기록했습니다.
+* **인간 평가:** 실제 환경 비교 평가에서 85% 이상의 사용자 선호도를 얻었습니다.
+* **아키텍처 증명:** 실험 결과, &#x27;객체 추적 맵&#x27;이 포함되지 않은 구성은 복잡한 궤적(지그재그 움직임 등)을 끝까지 완료하지 못하고 멈추는 현상이 발생함을 확인했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **실무 적용:** 탁상 위 강체(Rigid-body) 객체 간의 상호작용이 필요한 시뮬레이션, 게임 에셋 생성, 인터랙티브 콘텐츠 제작에 즉각적으로 활용될 수 있습니다.
+* **한계점:** 현재는 강체 역학에 집중되어 있으며, 매우 복잡한 움직임(예: 물체의 구름 현상)에는 여전히 어려움을 겪습니다. 또한, 논문에 따르면 시스템을 실시간 수준으로 구동하는 것은 향후 해결해야 할 과제로 남겨두었습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2609.17521 PhysStream: Streaming Physics-Grounded Video ...](https://arxiv.org/abs/2609.17521)
+&gt; - [Paper page - PhysStream: Streaming Physics-Grounded Video ...](https://huggingface.co/papers/2609.17521)
+&gt; - [PhysStream: Streaming Physics-Grounded Video Generation with ...](https://arxivsignals.io/papers/2609.17521)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;물리 기반 제어를 도입해 FVMD를 33% 줄인 점은 고무적이나, 결국 강체 역학에 국한된 모델이군요. 논문에서 언급된 &#x27;구조화된 장면 메모리&#x27;가 과연 비정형적인 변형체(deformable objects)나 유체 역학을 만났을 때도 인과적 일관성을 유지할 수 있을지 의문입니다. 단순한 강체 시뮬레이션 이상의 확장성에 대한 논의가 부족해 보여요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에 바로 쓰기엔 &#x27;실시간 구동 불가&#x27;라는 치명적인 단점이 있네요. 인퍼런스 타임이 안 나오면 결국 프로덕션 단계에선 오프라인 렌더링 툴로 전락할 텐데, 궤적 오차 12% 개선을 위해 모델 구조를 얼마나 무겁게 만든 건지 메트릭보다 아키텍처 오버헤드부터 확인해봐야 할 것 같습니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;아니, 다들 너무 엄격하신 거 아니에요? ㅋㅋㅋ 일단 텍스트 프롬프트로만 뭉뚱그리던 비디오 생성 분야에서 &#x27;속도 증분 신호&#x27;라는 물리적 제어 인터페이스를 가져왔다는 것 자체가 대박인데요? 이거 구현해서 게임 에셋 자동 생성 파이프라인에 태우면 아트 팀에서 바로 환호할 듯! 실시간성은 어차피 우리 랩실 형들이 모델 경량화로 해결해주겠죠 뭐.&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
