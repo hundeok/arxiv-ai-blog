@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ProgramDistill: 인터랙티브 웹 앱에서 검증 가능한 참조 기반 소프트웨어 공학 과제로의 전환 | ArXiv Translator AI</title><meta name="description" content="ProgramDistill: 인터랙티브 웹 앱에서 검증 가능한 참조 기반 소프트웨어 공학 과제로의 전환"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_18805v1"><meta property="og:type" content="article"><meta property="og:title" content="ProgramDistill: 인터랙티브 웹 앱에서 검증 가능한 참조 기반 소프트웨어 공학 과제로의 전환"><meta property="og:description" content="ProgramDistill: 인터랙티브 웹 앱에서 검증 가능한 참조 기반 소프트웨어 공학 과제로의 전환"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_18805v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="ProgramDistill: 인터랙티브 웹 앱에서 검증 가능한 참조 기반 소프트웨어 공학 과제로의 전환"><meta name="twitter:description" content="ProgramDistill: 인터랙티브 웹 앱에서 검증 가능한 참조 기반 소프트웨어 공학 과제로의 전환"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_18805v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "ProgramDistill: 인터랙티브 웹 앱에서 검증 가능한 참조 기반 소프트웨어 공학 과제로의 전환", "description": "ProgramDistill: 인터랙티브 웹 앱에서 검증 가능한 참조 기반 소프트웨어 공학 과제로의 전환", "datePublished": "2026-09-16", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_18805v1", "author": [{"@type": "Person", "name": "Jeonghye Kim"}, {"@type": "Person", "name": "Minseon Kim"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_18805v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_18805v1"});gtag('event', 'paper_view', {"paper_id": "2609_18805v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>ProgramDistill: 인터랙티브 웹 앱에서 검증 가능한 참조 기반 소프트웨어 공학 과제로의 전환</h1><p>ProgramDistill: 인터랙티브 웹 앱에서 검증 가능한 참조 기반 소프트웨어 공학 과제로의 전환</p><pre>ProgramDistill: 인터랙티브 웹 앱에서 검증 가능한 참조 기반 소프트웨어 공학 과제로의 전환
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** ProgramDistill: From Interactive Web Apps to Verifiable Reference-Guided SWE Tasks
+&gt; - **저자:** Jeonghye Kim, Minseon Kim, Young Jin Kim, Matheus Pereira, Marc-Alexandre Côté, Alessandro Sordoni, Xingdi Yuan, Zhengyan Shi
+&gt; - **발행일:** 2026-09-16
+&gt; - **PDF 링크:** [ProgramDistill: From Interactive Web Apps to Verifiable Reference-Guided SWE Tasks](https://arxiv.org/pdf/2609.18805v1)
+
+
+✨ 3줄 핵심 요약
+- 인터랙티브 웹 애플리케이션의 작동 방식을 관찰하여 누락된 기능을 복구하는 새로운 코딩 에이전트 평가 벤치마크 &#x27;ProgramDistill&#x27;을 제안함.
+- 26개의 애플리케이션에서 1,975개의 재생 가능한 행동을 자동 추출하여 4,063개의 검증 가능한 과제를 생성함.
+- 에이전트의 복구 작업 난이도가 깊어질수록 성공률이 급격히 하락하며, 이는 단순히 문맥 길이 문제보다는 복합적인 수정 작업의 어려움 때문임을 규명함.
+
+📖 쉽게 풀어쓴 1분 핵심
+기존 코딩 에이전트 평가는 명확한 요구사항이 주어진 환경에서 이루어졌으나, 실제 개발 현장에서는 작동 중인 웹사이트나 프로토타입을 보고 기능을 유추해야 하는 경우가 많습니다. &#x27;ProgramDistill&#x27;은 이러한 현실을 반영하여, 잘 작동하는 &#x27;참조 애플리케이션&#x27;을 에이전트에게 제공하고, 기능이 누락된 &#x27;현재 애플리케이션&#x27;을 그와 동일하게 수정하도록 요구합니다. 이 과정에서 에이전트는 참조 앱을 직접 조작하며 의도된 동작을 학습하고 이를 코드에 반영해야 합니다.
+
+🎯 배경 및 문제점
+- **지시사항 중심 평가의 한계:** 기존 벤치마크는 이미 정의된 이슈나 지시 사항을 따르는 것에 집중함.
+- **실무 환경과의 괴리:** 실제 개발자는 완성된 앱의 동작을 보고 기능을 파악해야 할 때가 많으며, 특히 웹 앱은 사용자의 특정 동작(로그인 후 객체 생성 등)에 따른 상태 변화가 존재하여 더욱 복잡함.
+- **벤치마크의 부재:** 실행 가능한 소프트웨어 자체를 명세서로 활용하여 에이전트를 평가하고 진단할 수 있는 확장성 있는 벤치마크가 필요함.
+
+💡 핵심 기술 및 아키텍처
+- **mine-craft-patch 파이프라인:** 사람의 개입 없이 애플리케이션의 기능을 세분화하여, 각 기능을 다시 실행할 수 있는 형태(replayable behavior)로 변환하고 그에 맞는 정답 패치(gold patch)를 자동으로 생성함.
+- **참조 기반 검증:** 에이전트가 수정 결과물을 참조 애플리케이션과 비교하여 기능을 올바르게 구현했는지 자동으로 검증할 수 있는 환경을 구축함.
+- **복구 난이도 제어:** 복구해야 할 기능의 깊이(depth)를 1에서 8단계까지 조절하여 에이전트의 문제 해결 능력을 점진적으로 테스트함.
+
+📊 실험 결과 분석
+- **성능 하락:** GPT-6 Astra와 Claude Opus 5 모델의 전체 애플리케이션 복구 성공률은 각각 49.2%, 28.8%로 나타남.
+- **깊이에 따른 난이도:** 복구 깊이가 1에서 8로 증가함에 따라, 부분 애플리케이션 복구 성공률이 100%에서 64%(GPT-6 Astra 기준) 또는 96%에서 32%(Claude Opus 5 기준)까지 떨어짐.
+- **원인 규명:** 실험 결과, 성공률 하락은 문맥(context) 길이에 의한 영향보다, 의존성을 가진 여러 수정 사항을 동시에 해결해야 하는 작업 자체의 복잡성이 주원인임을 밝힘.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+- **에이전트 진단:** 코딩 에이전트의 강점과 약점을 파악하여 고도화하는 데 필요한 정밀한 진단 도구로 활용 가능함.
+- **교육 기반 훈련:** 단계별 난이도 조절이 가능한 본 벤치마크는 향후 커리큘럼 기반의 에이전트 학습 시스템을 구축하는 토대가 됨.
+- **실무 소프트웨어 유지보수:** 소스 코드가 불완전하거나 문서화되지 않은 레거시 시스템을 수정해야 하는 실무 상황에서 에이전트가 &#x27;작동하는 샘플&#x27;을 통해 올바른 기능을 추론하도록 돕는 차세대 개발 환경의 이정표를 제시함.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2609.18805 ProgramDistill: From Interactive Web Apps to Verifiable Reference-Guided SWE Tasks](https://arxiv.org/abs/2609.18805)
+&gt; - [ProgramDistill: From Interactive Web Apps to Verifiable Reference-Guided SWE Tasks](https://arxiv.org/html/2609.18805)
+&gt; - [ProgramDistill: From Interactive Web Apps to Verifiable Reference-Guided SWE Tasks (arXiv:2609.18805) | Papers with Code](https://paperswithcode.co/paper/2609.18805)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;이 논문의 의의는 단순 지시어 수행을 넘어 &#x27;참조 기반(Reference-Guided)&#x27;이라는 동적 검증 환경을 구축했다는 점입니다. 하지만 복구 깊이가 깊어질수록 성능이 급락하는 것은 에이전트의 Reasoning 부족이 아니라, 현행 Transformer 기반 모델들이 복합적인 의존성 그래프를 추론하는 데에 근본적인 한계가 있음을 시사하죠. 특히 &#x27;복구 난이도&#x27;를 정량화한 점은 높게 사지만, 과연 이것이 실제 레거시 코드의 스파게티 구조에서도 범용적으로 통할지는 의문이군요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에선 &#x27;작동하는 샘플&#x27;이 있어도 환경 설정(Environment Setup)에서부터 에이전트가 뻗어버리는 경우가 태반입니다. 4,063개의 과제를 생성했다는 건 고무적이지만, 이걸 돌리기 위한 인프라 비용과 환경 격리 작업이 만만치 않아 보여요. 그래도 &#x27;문맥 길이 문제&#x27;가 아니라 &#x27;작업 복잡도&#x27; 때문이라는 분석은 뼈를 때리네요. 우리 팀 에이전트도 긴 코드만 줬다 하면 엉뚱한 곳을 건드리는데, 이 벤치마크로 우리 모델의 &#x27;의존성 처리 능력&#x27; 좀 테스트해 봐야겠습니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 벤치마크 데이터셋이 26개 앱에 4천 개 태스크라니 이거 진짜 미친 거 아닌가요? 지금 당장 GitHub 긁어서 에이전트 돌려볼 생각에 설렙니다! 교수님은 한계를 지적하시지만, 사실 49% 성공률이면 실무 보조용으로는 &#x27;충분히 쓸만한&#x27; 수치 아닌가요? 이제 &#x27;코딩 잘하는 모델&#x27; 찾지 말고 &#x27;복잡한 의존성 잘 해결하는 모델&#x27;로 연구 트렌드가 확 바뀔 것 같아요. 일단 이 벤치마크로 논문 몇 편은 뚝딱 나오겠는데요?&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
