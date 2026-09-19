@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>일시적 프롬프트에서 지속적 제어로: 재귀적 의미-기하학적 계약을 통한 과학 포스터 생성 | ArXiv Translator AI</title><meta name="description" content="일시적 프롬프트에서 지속적 제어로: 재귀적 의미-기하학적 계약을 통한 과학 포스터 생성"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_17326v1"><meta property="og:type" content="article"><meta property="og:title" content="일시적 프롬프트에서 지속적 제어로: 재귀적 의미-기하학적 계약을 통한 과학 포스터 생성"><meta property="og:description" content="일시적 프롬프트에서 지속적 제어로: 재귀적 의미-기하학적 계약을 통한 과학 포스터 생성"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_17326v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="일시적 프롬프트에서 지속적 제어로: 재귀적 의미-기하학적 계약을 통한 과학 포스터 생성"><meta name="twitter:description" content="일시적 프롬프트에서 지속적 제어로: 재귀적 의미-기하학적 계약을 통한 과학 포스터 생성"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_17326v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "일시적 프롬프트에서 지속적 제어로: 재귀적 의미-기하학적 계약을 통한 과학 포스터 생성", "description": "일시적 프롬프트에서 지속적 제어로: 재귀적 의미-기하학적 계약을 통한 과학 포스터 생성", "datePublished": "2026-09-15", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_17326v1", "author": [{"@type": "Person", "name": "Runze Li"}, {"@type": "Person", "name": "Yukun Zhao"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_17326v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_17326v1"});gtag('event', 'paper_view', {"paper_id": "2609_17326v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>일시적 프롬프트에서 지속적 제어로: 재귀적 의미-기하학적 계약을 통한 과학 포스터 생성</h1><p>일시적 프롬프트에서 지속적 제어로: 재귀적 의미-기하학적 계약을 통한 과학 포스터 생성</p><pre>일시적 프롬프트에서 지속적 제어로: 재귀적 의미-기하학적 계약을 통한 과학 포스터 생성
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** From Transient Prompts to Persistent Control: Scientific Poster Generation via Recursive Semantic-Geometric Contracts
+&gt; - **저자:** Runze Li, Yukun Zhao, Can Xu, Yucheng Shen, Shuaiqiang Wang, Jianmin Wu, Lingyong Yan, Dawei Yin
+&gt; - **발행일:** 2026-09-15
+&gt; - **PDF 링크:** [From Transient Prompts to Persistent Control: Scientific Poster Generation via Recursive Semantic-Geometric Contracts](https://arxiv.org/pdf/2609.17326v1)
+
+
+✨ 3줄 핵심 요약
+*   기존의 단계별 포스터 생성 방식은 요구사항이 파편화되어 수정 시 앞선 단계의 결과가 무효화되는 문제가 있었습니다.
+*   &#x27;PosterVisor&#x27;는 논문 내용을 기반으로 의미적·기하학적 제약 조건을 담은 &#x27;SGC(Semantic–Geometric Contract)&#x27;를 구축하여 생성 전 과정을 일관되게 제어합니다.
+*   재귀적 계약 집행(RCE)을 통해 수정 단계에서도 이전 상태를 실시간으로 검증함으로써 오류 확산을 방지하고 생성 품질을 높입니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+과학 포스터를 만들 때, 인공지능은 보통 글을 요약하고 그림을 배치하는 여러 단계를 거칩니다. 하지만 기존 방식은 각 단계가 따로 놀아서, 나중에 디자인을 조금만 수정해도 처음에 정한 글의 핵심 내용이나 규칙이 깨지는 일이 잦았습니다. 연구진이 개발한 **PosterVisor**는 포스터 제작을 위한 일종의 &#x27;스마트 계약서(SGC)&#x27;를 작성합니다. 이 계약서에는 &quot;어떤 내용이 어디에 들어가야 하고, 공간은 얼마나 차지해야 하는지&quot;가 명시되어 있어, 전체 생성 과정에서 이 원칙을 어기지 않도록 관리합니다. 수정이 필요할 때도 이 계약을 기준으로 다시 검사하기 때문에, 일관성 있고 완성도 높은 포스터를 만들 수 있습니다.
+
+🎯 배경 및 문제점
+학술 포스터 생성은 제한된 공간 안에 논문의 핵심 주장과 증거를 시각적으로 효과 있게 담아내야 하는 복합적인 과제입니다. 기존 시스템들은 이를 다단계 프로세스로 처리하지만, 두 가지 치명적인 한계가 있습니다.
+1.  **제어의 일관성 결여**: 초기 기획 단계에서 수립된 의미적·공간적 요구사항이 생성 과정이 진행될수록 파편화됩니다.
+2.  **침묵하는 회귀(Silent Regression)**: 생성 후반부에 요구사항이 변경될 경우, 초기 단계에서 검증했던 내용이 자동으로 무효화되는데 이를 추적하지 못해 결과물에 오류가 누적됩니다.
+
+💡 핵심 기술 및 아키텍처
+*   **Orchestrator(조정자)**: 논문과 시각 자료를 분석하여 &#x27;의미-기하학적 계약(SGC)&#x27;을 생성합니다. 이는 주장, 소스, 시각 자료, 공간 배분 등을 하나의 체계적인 요구사항으로 묶습니다.
+*   **재귀적 계약 집행(RCE, Recursive Contract Enforcement)**: 생성 단계 전반에서 계약 준수 여부를 동적으로 확인합니다. 특히 수정이 발생할 때, 영향을 받는 이전 체크포인트를 재검사하여 기존 계획과 충돌하는 부분을 차단합니다.
+*   **이행 가능한 주장(Executable Assertions)**: 완전히 수립된 요구사항은 즉시 실행 가능한 명령으로 변환되며, 그렇지 않은 부분은 유연한 가이드라인으로 유지하여 생성 효율을 조절합니다.
+
+📊 실험 결과 분석
+*   **Paper2Poster 벤치마크(100개 논문 대상)**: PosterVisor-PPT 모델은 기존 PosterGen 대비 포스터의 정보를 얼마나 잘 반영했는지 측정하는 &#x27;포스터 기반 QA 정확도&#x27;에서 64.47%를 기록하여 기존(58.53%)보다 우수한 성능을 보였습니다.
+*   **인간 평가**: 비교 실험에서 사람이 직접 평가한 결과, PosterVisor가 우세하다는 응답이 비동률 비교(non-tied) 중 72.5%를 차지했습니다. (95% 신뢰구간: 61.6–83.4%)
+*   **추가 연구**: 30개 논문을 대상으로 한 추가 실험에서도 VLM(시각 언어 모델) 평가 기준 전반에서 더 높은 평균 점수를 획득했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+*   **학술 커뮤니케이션 효율화**: 복잡한 논문 데이터를 단 한 페이지의 시각적 자료로 정밀하게 변환함으로써 연구 성과의 가독성을 크게 높일 수 있습니다.
+*   **콘텐츠 제작 자동화 도구**: 본 프레임워크는 HTML/CSS 및 편집 가능한 PPTX 생성기에 성공적으로 이식되었습니다. 이는 학계뿐만 아니라 기획서, 보고서 등 공간 제약이 있는 다양한 비즈니스 문서 자동화 솔루션의 토대로 활용될 수 있습니다.
+*   **지능형 에이전트 설계**: 생성형 AI가 복잡한 다단계 작업을 수행할 때, &#x27;계약(Contract)&#x27; 기반의 제어 구조를 도입하는 것이 시스템의 신뢰성과 일관성을 확보하는 데 효과적임을 입증했습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2609.17326 From Transient Prompts to Persistent Control: Scientific Poster Generation via Recursive Semantic-Geometric Contracts](https://arxiv.org/abs/2609.17326)
+&gt; - [From Transient Prompts to Persistent Control: Scientific Poster Generation via Recursive Semantic-Geometric Contracts · Pith](https://pith.science/paper/2609.17326)
+&gt; - [From Transient Prompts to Persistent Control: Scientific Poster Generation via Recursive Semantic–Geometric Contracts](https://arxiv.org/html/2609.17326)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;SGC(Semantic–Geometric Contract) 개념은 흥미롭지만, 재귀적 계약 집행(RCE)의 연산 복잡도가 우려되는군요. 학술 포스터는 단순한 레이아웃이 아니라 데이터의 정합성이 핵심인데, 단순히 VLM 점수만으로 품질을 논하기엔 &#x27;의미적 충돌&#x27;을 감지하는 메커니즘의 엄밀함이 부족해 보입니다. 실험 결과의 QA 정확도가 6%p 상승한 것은 고무적이나, 복잡한 수식이 포함된 논문에서도 이 계약 모델이 파괴되지 않고 유지될지 의문이네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에선 렌더링 속도가 관건입니다. 논문에서 제안한 RCE가 매 수정마다 전체 그래프를 순회한다면 대규모 배치 작업 시 인프라 비용이 상당할 텐데요. 하지만 &#x27;침묵하는 회귀&#x27; 문제를 잡기 위해 단계별로 Assertions를 심어둔 설계는 높게 평가합니다. 특히 PPTX로 바로 떨어지게 구현한 건 바로 사내 보고서 자동화 툴에 도입해볼 만한 가치가 있겠네요. 추론 비용만 최적화된다면요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;다들 너무 보수적이신 거 아니에요? 이번 학회 때 PosterVisor 써봤는데, 수정할 때마다 레이아웃 깨져서 스트레스받던 거 생각하면 이 정도 오버헤드는 감수할 가치가 있습니다! 무엇보다 &#x27;이행 가능한 주장(Executable Assertions)&#x27;을 통해 제약을 하드 코딩하지 않고 유연하게 가져가는 방식은 차세대 에이전트 설계의 표준이 될 것 같은데... 당장 다음 주 세미나 포스터부터 이걸로 돌려보렵니다. 다들 논문만 읽지 말고 일단 설치부터 해보시죠!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
