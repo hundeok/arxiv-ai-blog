@@ -1,0 +1,65 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>보고 관행이 중요하다: 흉부 X-선 보고서 평가에서 참조 선택이 미치는 영향 | ArXiv Translator AI</title><meta name="description" content="보고 관행이 중요하다: 흉부 X-선 보고서 평가에서 참조 선택이 미치는 영향"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_19093v1"><meta property="og:type" content="article"><meta property="og:title" content="보고 관행이 중요하다: 흉부 X-선 보고서 평가에서 참조 선택이 미치는 영향"><meta property="og:description" content="보고 관행이 중요하다: 흉부 X-선 보고서 평가에서 참조 선택이 미치는 영향"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_19093v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="보고 관행이 중요하다: 흉부 X-선 보고서 평가에서 참조 선택이 미치는 영향"><meta name="twitter:description" content="보고 관행이 중요하다: 흉부 X-선 보고서 평가에서 참조 선택이 미치는 영향"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_19093v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "보고 관행이 중요하다: 흉부 X-선 보고서 평가에서 참조 선택이 미치는 영향", "description": "보고 관행이 중요하다: 흉부 X-선 보고서 평가에서 참조 선택이 미치는 영향", "datePublished": "2026-09-16", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_19093v1", "author": [{"@type": "Person", "name": "Daniel P. Jeong"}, {"@type": "Person", "name": "Charles Q. Li"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_19093v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_19093v1"});gtag('event', 'paper_view', {"paper_id": "2609_19093v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>보고 관행이 중요하다: 흉부 X-선 보고서 평가에서 참조 선택이 미치는 영향</h1><p>보고 관행이 중요하다: 흉부 X-선 보고서 평가에서 참조 선택이 미치는 영향</p><pre>보고 관행이 중요하다: 흉부 X-선 보고서 평가에서 참조 선택이 미치는 영향
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Reporting Practice Matters: The Impact of Reference Choice on Chest X-ray Report Evaluation
+&gt; - **저자:** Daniel P. Jeong, Charles Q. Li, Hossein Hosseiny, Nitya M. Bhalla, Fatma Uyar Morency, Pradeep Ravikumar, Zachary C. Lipton, Michael Oberst
+&gt; - **발행일:** 2026-09-16
+&gt; - **PDF 링크:** [Reporting Practice Matters: The Impact of Reference Choice on Chest X-ray Report Evaluation](https://arxiv.org/pdf/2609.19093v1)
+
+
+✨ 3줄 핵심 요약
+* 방사선 전문의마다 보고 방식(용어, 형식, 상세 수준 등)이 다르며, 이는 AI 모델의 성능을 평가할 때 공정성을 해치는 주요 요인이 됩니다.
+* 연구진은 참조 보고서를 임상적 의미는 유지한 채 다양한 형식으로 재작성하는 &#x27;REREF&#x27; 방법론을 개발했습니다.
+* 실험 결과, 참조 보고서의 작성 방식만 바꿔도 AI 모델 간의 순위가 뒤바뀔 정도로 평가 지표가 보고 관행에 민감하게 반응함이 확인되었습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+AI가 작성한 흉부 X-선 보고서를 평가할 때는 사람이 쓴 &#x27;참조 보고서&#x27;와 얼마나 일치하는지를 확인합니다. 그런데 똑같은 사진을 봐도 의사마다 글을 쓰는 방식이 다릅니다. 누군가는 아주 자세하게 쓰고, 누군가는 요약해서 씁니다. 이 논문은 AI 모델의 실력과는 상관없이, &#x27;어떤 의사의 보고서를 정답지(참조)로 선택하느냐&#x27;에 따라 모델의 등수가 바뀔 수 있다는 점을 지적합니다. 연구진은 정답지 보고서를 의학적 의미는 그대로 둔 채 표현만 다르게 바꾸는 기술을 통해, 현재의 평가 지표들이 보고서의 형식에 얼마나 휘둘리는지를 증명했습니다.
+
+🎯 배경 및 문제점
+흉부 X-선 보고서 생성(RRG) AI 모델의 성능을 평가할 때, 흔히 기존 방사선 보고서를 참조 데이터로 활용합니다. 그러나 의사마다 용어 선택, 약어 사용, 형식, 세부 묘사 수준이 제각각입니다. 이러한 &#x27;보고 관행의 차이&#x27;는 AI 모델의 임상적 정확도를 객관적으로 판단하는 데 방해가 됩니다. 기존 평가 지표(RadCliQ, RadGraph 등)가 이러한 형식적 차이를 임상적 정보와 분리하지 못해, 모델의 실제 성능을 왜곡할 위험이 있습니다.
+
+💡 핵심 기술 및 아키텍처
+연구진은 **REREF(Radiologist-informed Evaluation via REference Rewriting)**라는 방법론을 제안했습니다.
+* **분류 체계(Taxonomy):** 방사선 전문의의 자문을 받아 보고서 변동 사항을 정의했습니다.
+* **참조 보고서 재작성:** 임상적 해석의 일관성은 유지하면서 보고 관행의 축(용어, 구조, 명시적/암시적 표현 등)을 따라 참조 보고서를 재구성합니다.
+* **검증된 데이터셋:** MIMIC-CXR 데이터셋에서 120개의 (원문, 대안) 참조 보고서 쌍으로 구성된 &#x27;MIMIC-CXR-EXT-REREF&#x27;를 구축하여 향후 연구를 지원합니다.
+
+📊 실험 결과 분석
+* **모델 순위 변동:** MIMIC-CXR에서 9개 모델을 비교했을 때, 참조 보고서에서 정상 소견을 요약하는 방식만 바꿔도 &#x27;Libra&#x27; 모델은 1위에서 2위로, &#x27;CheXOne&#x27; 모델은 3위에서 1위로 순위가 변동되었습니다.
+* **민감도 측정:** 보고 관행을 여러 단계(1~3단계)로 복합적으로 수정할수록 모델 간의 순위 역전 비율이 높아졌습니다.
+* **데이터 미제시 사항:** 실험에 사용된 구체적인 모든 모델의 개별 점수와 특정 질환군에 대한 상세 수치는 발췌본에 포함되지 않았습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+이 연구는 현재의 AI 모델 평가 방식이 신뢰성을 확보하기 위해 개선되어야 함을 시사합니다. 모델을 단순히 자동화된 지표로 줄 세우는 것보다, &#x27;어떤 보고 관행을 정답으로 설정할 것인가&#x27;에 대한 신중한 접근이 필요합니다. 실무적으로는 AI 모델 도입 시 해당 기관의 실제 방사선 보고 관행을 반영한 평가 기준 마련이 필수적이며, 연구진이 공개한 데이터셋은 더 공정하고 견고한 의료 AI 평가 시스템을 구축하는 데 기여할 것으로 기대됩니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2609.19093 Reporting Practice Matters: The Impact of Reference Choice on Chest X-ray Report Evaluation](https://arxiv.org/abs/2609.19093)
+&gt; - [Reporting Practice Matters: The Impact of Reference Choice on Chest X-ray Report Evaluation · Pith](https://pith.science/paper/2609.19093)
+&gt; - [Reporting Practice Matters: The Impact of Reference Choice on Chest X-ray Report Evaluation](https://arxiv.org/html/2609.19093)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;이 논문은 그간 우리가 N-gram 기반 평가 지표나 RadCliQ 같은 메트릭을 맹신하며 범해온 &#x27;Ground Truth의 환상&#x27;을 아주 날카롭게 찔렀군요. 결국 임상적 실체(Clinical Ground)와 서술 방식(Reporting Style)을 분리하지 못한 채 정량 평가를 돌리는 건 통계적 유의미함을 잃은 행위입니다. REREF 방법론은 학계가 반드시 주목해야 할 정량적 엄밀함의 전환점입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에선 이게 진짜 골치입니다. 프로덕션 환경에서 모델 성능 검증할 때, 우리 병원 의사들 스타일이 논문 데이터셋이랑 다르면 모델 성능이 바닥을 치거든요. REREF를 이용해서 우리 병원 스타일로 정답지를 리라이팅해서 벤치마킹하는 파이프라인을 당장 구축해야겠네요. 다만, 이걸 실시간 추론에 반영할 수 있을지는 별개의 문제겠지만요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;선배님, 제 생각엔 이 논문 덕분에 이제 기존 SOTA 모델들 다 재평가 들어가야 할 것 같은데요? 1위 모델이 정답지 스타일만 바뀌어도 3위로 밀려난다는 게 소름 돋네요. 이거 완전 &#x27;평가 지표의 취약성&#x27;을 공략한 논문인데, 당장 다음 학기 세미나 주제로 잡고 REREF 데이터셋 뜯어보겠습니다! 핫하네요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
