@@ -1,0 +1,72 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>거절, 분해, 갱신: 폐쇄 루프 AI 평가를 위한 주장-안전 프로토콜 | ArXiv Translator AI</title><meta name="description" content="거절, 분해, 갱신: 폐쇄 루프 AI 평가를 위한 주장-안전 프로토콜"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_20538v1"><meta property="og:type" content="article"><meta property="og:title" content="거절, 분해, 갱신: 폐쇄 루프 AI 평가를 위한 주장-안전 프로토콜"><meta property="og:description" content="거절, 분해, 갱신: 폐쇄 루프 AI 평가를 위한 주장-안전 프로토콜"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_20538v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="거절, 분해, 갱신: 폐쇄 루프 AI 평가를 위한 주장-안전 프로토콜"><meta name="twitter:description" content="거절, 분해, 갱신: 폐쇄 루프 AI 평가를 위한 주장-안전 프로토콜"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_20538v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "거절, 분해, 갱신: 폐쇄 루프 AI 평가를 위한 주장-안전 프로토콜", "description": "거절, 분해, 갱신: 폐쇄 루프 AI 평가를 위한 주장-안전 프로토콜", "datePublished": "2026-09-17", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_20538v1", "author": [{"@type": "Person", "name": "Peiying Zhu"}, {"@type": "Person", "name": "Sidi Chang"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_20538v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_20538v1"});gtag('event', 'paper_view', {"paper_id": "2609_20538v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>거절, 분해, 갱신: 폐쇄 루프 AI 평가를 위한 주장-안전 프로토콜</h1><p>거절, 분해, 갱신: 폐쇄 루프 AI 평가를 위한 주장-안전 프로토콜</p><pre>거절, 분해, 갱신: 폐쇄 루프 AI 평가를 위한 주장-안전 프로토콜
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Refuse, Decompose, Refresh: A Claim-Safe Protocol for Closed-Loop AI Evaluation
+&gt; - **저자:** Peiying Zhu, Sidi Chang
+&gt; - **발행일:** 2026-09-17
+&gt; - **PDF 링크:** [Refuse, Decompose, Refresh: A Claim-Safe Protocol for Closed-Loop AI Evaluation](https://arxiv.org/pdf/2609.20538v1)
+
+
+✨ 3줄 핵심 요약
+* 폐쇄 루프 시스템 평가 시, 에이전트가 특정 상태를 방문하지 않으면 해당 구성 요소의 결함을 측정할 수 없으므로 단순히 점수를 매기는 방식은 위험합니다.
+* 연구진은 평가 불가능한 데이터를 걸러내는 &#x27;거절&#x27;, 결론을 분리하는 &#x27;분해&#x27;, 환경 변화를 재인식하는 &#x27;갱신&#x27;의 3단계 프로토콜을 제안합니다.
+* 이 방식은 평가자가 자신의 측정값이 어떤 의미를 갖는지 명확히 정의함으로써, 무비판적인 성능 수치 도출 대신 신뢰할 수 있는 &#x27;주장 계약(Claim Contract)&#x27;을 체결하게 합니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+현대의 AI 평가는 수치가 정확하더라도 그 수치가 의미하는 &#x27;주장&#x27;의 범위가 모호한 경우가 많습니다. 특히 에이전트가 환경과 상호작용하는 &#x27;폐쇄 루프&#x27; 시스템에서는 에이전트가 방문하지 않은 상태에 대해서는 성능을 확인할 수 없습니다. 이 논문은 모든 상황을 하나의 점수(PASS/FAIL)로 퉁치지 말 것을 권고합니다. 대신, 근거가 부족하면 평가를 &#x27;거절&#x27;하고, 다양한 가설을 별도로 &#x27;분해&#x27;하여 보고하며, 데이터 분포가 바뀌면 기준을 &#x27;갱신&#x27;하는 체계적인 프로토콜을 제시합니다.
+
+🎯 배경 및 문제점
+* **데이터 편향**: 폐쇄 루프 시스템에서는 평가 대상인 정책이 방문하는 상태만 관찰 가능합니다. 즉, 방문하지 않은 영역의 결함은 측정되지 않습니다.
+* **측정 오류**: 단순히 모든 케이스를 스칼라 점수로 변환하면, 증거가 없는 상태를 마치 &#x27;성능이 좋다&#x27;는 의미로 오해할 위험이 있습니다.
+* **모호한 결론**: 벤치마크 점수가 정밀하게 계산되더라도, 그 점수가 실제 측정하고자 했던 이론적 구성 요소와 일치하지 않는 &#x27;구성 타당성&#x27; 결여 문제가 발생합니다.
+
+💡 핵심 기술 및 아키텍처
+제안된 프로토콜은 3단계 동작으로 구성됩니다:
+1. **거절(Refuse)**: 기준 데이터(reference stream)나 런타임 비교 대상이 부족하여 결론을 뒷받침할 수 없는 경우 평가를 중단합니다.
+2. **분해(Decompose)**: 전체 결과를 하나의 과학적 PASS/FAIL 라벨로 뭉뚱그리지 않고, 프로토콜 실행 여부, 운영 안전성, 구조적 가설 등을 각각 독립적으로 보고합니다.
+3. **갱신(Refresh)**: 데이터 분포의 변화를 결함의 증거가 아닌, 기준 지도(reference map)를 무효화하고 재계산해야 한다는 신호로 처리합니다.
+
+📊 실험 결과 분석
+* **실험 환경**: 24개 정책 구성 요소, 3개 수요 체계, 2개 결함 마스크를 가진 시뮬레이터에서 1,440개의 사례와 21,600개의 파티션 행을 분석했습니다.
+* **주요 수치**:
+    * 72개 단위 중 55개만이 기준 데이터에 의해 승인(reference-admitted)되었고, 그중 54개만이 런타임 승인을 통과하여 &#x27;거절&#x27;이 결과의 일부가 되었습니다.
+    * 20개 구성 요소의 허위 승인(false admission) 상한선은 0.20 기준 하에서 95% 신뢰 구간의 상한이 0.1391로 측정되었습니다.
+    * 구조적 결론 도출 시, 셀별 모델과 교통량 모델 간의 음의 로그 우도(negative-log-likelihood) 차이는 행당 0.1264 nats였습니다(95% 구간 [0.0593, 0.1918]).
+* **분석 결과**: &#x27;null&#x27; 값은 기준 데이터와 상대적이어야 하며, 데이터 흐름이 달라지면 동일한 결함 발생 조건에서도 경보가 울릴 수도, 아닐 수도 있음을 확인했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **평가 관행의 변화**: AI 평가를 단순히 점수를 매기는 &#x27;리더보드&#x27; 방식에서, 증거와 주장의 범위를 명확히 규정하는 &#x27;계약&#x27; 방식으로 전환하도록 제안합니다.
+* **실무적 제언**: 평가자는 배포 환경의 특성에 따라 가용 데이터를 보고하고, 경보와 결함 증거를 분리하며, 시스템 변화 시 도메인별 재보정을 수행해야 합니다.
+* **한계**: 본 연구의 임계값은 특정 시뮬레이터 환경에 맞춰져 있으므로 기계적으로 타 도메인에 적용해서는 안 되며, 외부 타당성을 위해 추가적인 시스템 및 운영 조건에서의 검증이 필요합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Refuse, Decompose, Refresh: A Claim-Safe Protocol f... | AI Research](https://franklineh.com/learn/research/ifYwwfKpl2E9FwyK2bMQ)
+&gt; - [1Introduction - arXiv.org](https://arxiv.org/html/2609.20538v1)
+&gt; - [ChatPaper: Explore and AI Chat with the Academic Papers](https://chatpaper.com/)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;최근 벤치마크 점수 놀음에 지쳐있던 차에 아주 반가운 논문이군요. 구성 타당성(construct validity)을 무시하고 스칼라 값 하나로 에이전트의 안전성을 증명하려는 시도는 사실상 &#x27;통계적 사기&#x27;에 가깝죠. 특히 &#x27;거절(Refuse)&#x27;을 평가 프로토콜의 핵심으로 가져온 점은 높게 평가합니다. 과학적 엄밀함을 위해 데이터가 부족하면 평가를 멈추는 용기가 필요한 시점입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀은 이상적이지만, 실무 현장에선 &#x27;거절&#x27;이라는 단어 하나 때문에 PM한테 깨질 생각에 아찔하네요. &#x27;우리 모델 성능이 왜 안 나와?&#x27;라고 물었을 때 &#x27;데이터 분포가 바뀌어서 프로토콜에 따라 거절했습니다&#x27;라고 답하면 경영진이 이해해줄까요? 다만, &#x27;분해(Decompose)&#x27;를 통해 결함을 구조적으로 보고하는 방식은 운영 효율 측면에서 디버깅 시간을 획기적으로 줄여줄 것 같아 당장 도입해보고 싶긴 합니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;두 분 다 너무 진지하신 거 아닌가요? ㅎㅎ 이번 논문의 핵심은 &#x27;주장 계약(Claim Contract)&#x27;이라는 개념 그 자체라고 봅니다. 이제 리더보드에 점수 올리는 시대는 끝났고, 앞으로는 &#x27;내가 이 점수를 산출하기 위해 어떤 근거 데이터를 썼는지&#x27;를 증명 못 하면 논문 게재도 힘들어질 거예요. 저도 다음 프로젝트에 &#x27;Refuse-Decompose-Refresh&#x27; 프레임워크 당장 적용해서 실험 설계 짤 겁니다. 이 방법론, 분명 다음 SOTA급 평가 논문들의 레퍼런스 표준이 될 것 같아요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
