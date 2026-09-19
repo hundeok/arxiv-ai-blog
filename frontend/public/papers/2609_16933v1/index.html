@@ -1,0 +1,71 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>신뢰도 신호가 불일치할 때: 자기회귀 언어 모델에서의 국소적 및 전역적 신뢰도 | ArXiv Translator AI</title><meta name="description" content="신뢰도 신호가 불일치할 때: 자기회귀 언어 모델에서의 국소적 및 전역적 신뢰도"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_16933v1"><meta property="og:type" content="article"><meta property="og:title" content="신뢰도 신호가 불일치할 때: 자기회귀 언어 모델에서의 국소적 및 전역적 신뢰도"><meta property="og:description" content="신뢰도 신호가 불일치할 때: 자기회귀 언어 모델에서의 국소적 및 전역적 신뢰도"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_16933v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="신뢰도 신호가 불일치할 때: 자기회귀 언어 모델에서의 국소적 및 전역적 신뢰도"><meta name="twitter:description" content="신뢰도 신호가 불일치할 때: 자기회귀 언어 모델에서의 국소적 및 전역적 신뢰도"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_16933v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "신뢰도 신호가 불일치할 때: 자기회귀 언어 모델에서의 국소적 및 전역적 신뢰도", "description": "신뢰도 신호가 불일치할 때: 자기회귀 언어 모델에서의 국소적 및 전역적 신뢰도", "datePublished": "2026-09-15", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_16933v1", "author": [{"@type": "Person", "name": "Julio C. Amador Diaz Lopez"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_16933v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_16933v1"});gtag('event', 'paper_view', {"paper_id": "2609_16933v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>신뢰도 신호가 불일치할 때: 자기회귀 언어 모델에서의 국소적 및 전역적 신뢰도</h1><p>신뢰도 신호가 불일치할 때: 자기회귀 언어 모델에서의 국소적 및 전역적 신뢰도</p><pre>신뢰도 신호가 불일치할 때: 자기회귀 언어 모델에서의 국소적 및 전역적 신뢰도
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** When Confidence Signals Disagree: Local and Global Confidence in Autoregressive Language Models
+&gt; - **저자:** Julio C. Amador Diaz Lopez
+&gt; - **발행일:** 2026-09-15
+&gt; - **PDF 링크:** [When Confidence Signals Disagree: Local and Global Confidence in Autoregressive Language Models](https://arxiv.org/pdf/2609.16933v1)
+
+
+✨ 3줄 핵심 요약
+*   언어 모델의 &#x27;신뢰도&#x27;는 측정 방식(국소적 vs 전역적)에 따라 서로 다른 결과를 나타내며, 이는 상호 교체 가능한 값이 아님을 확인했습니다.
+*   전역적 신뢰도가 정답 여부와 더 높은 상관관계를 보였으며, 국소적 신뢰도와의 큰 격차는 모델의 답변 불안정성을 나타내는 진단 지표로 활용될 수 있습니다.
+*   모델의 신뢰도를 활용하는 평가 및 제어 시스템 구축 시, 신뢰도의 측정 정의를 명확히 하고 용도에 맞는 지표를 선택하는 것이 필수적입니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+우리는 흔히 AI가 내놓는 &#x27;자신감(신뢰도)&#x27;을 하나의 통일된 개념으로 생각합니다. 하지만 이 논문은 AI가 답변을 고를 때 사용하는 **&#x27;국소적 신뢰도(해당 토큰의 확률)&#x27;**와 **&#x27;전역적 신뢰도(반복 생성 시 답변의 빈도)&#x27;**가 실제로는 완전히 다른 정보를 담고 있다고 지적합니다. 연구 결과, 이 두 값은 서로 잘 맞지 않으며, 특히 전역적 신뢰도가 정답을 예측하는 데 더 유용했습니다. 또한, 두 신뢰도 값의 차이가 크면 모델의 답변이 불안정하다는 신호가 될 수 있으므로, AI 시스템 설계 시 &#x27;신뢰도&#x27;라는 용어를 뭉뚱그려 쓰지 말고 측정 방식을 명확히 정의해야 합니다.
+
+🎯 배경 및 문제점
+대규모 언어 모델은 예측 결과와 함께 신뢰도를 출력하며, 이는 시스템의 오류 방지, 사람의 검토 요청, 피드백 가중치 설정 등 중요한 제어 수단으로 사용됩니다. 그러나 &#x27;모델 신뢰도&#x27;는 학술적으로 유일하게 정의된 값이 아닙니다. 연구진은 동일한 모델에서 추출한 서로 다른 신뢰도 지표들이 실제로 동일한 모델의 상태를 반영하는지, 그리고 이들이 서로 교체 가능한지를 검증하고자 했습니다.
+
+💡 핵심 기술 및 아키텍처
+연구에서는 Llama 3.3 70B 모델을 대상으로 다음 두 가지 신뢰도를 비교했습니다.
+*   **국소적 신뢰도(Local Confidence):** 탐욕적(Greedy) 선택으로 결정된 답변 토큰에 부여된 조건부 확률.
+*   **전역적 신뢰도(Global Confidence):** 반복적인 확률적 샘플링(T=0.7)을 통해 얻은 답변들 중 최빈값(Modal-answer)의 빈도.
+*   **측정 지표:** MMLU 및 ARC 벤치마크 데이터셋을 사용하였으며, Pearson 상관계수와 Spearman 순위 상관계수를 통해 신뢰도 지표 간의 일치도, 정답과의 연관성, 그리고 샘플링 불안정성과의 관계를 분석했습니다.
+
+📊 실험 결과 분석
+*   **낮은 상관관계:** MMLU와 ARC에서 국소적 신뢰도와 전역적 신뢰도의 상관관계는 각각 r=0.086, r=0.175로 매우 낮았습니다.
+*   **정답 예측력 차이:** 전역적 신뢰도는 정답 여부와 중간 수준의 연관성(r=0.494, r=0.374)을 보였으나, 국소적 신뢰도는 거의 연관성이 없었습니다(r=0.102, r=0.072).
+*   **불안정성 진단:** ARC 데이터셋에서 두 신뢰도의 차이가 클수록 답변 엔트로피가 높고, 서로 다른 답변이 많이 생성되는 등 샘플링이 불안정했습니다(Spearman ρ=0.42). 
+*   **강건성:** 200개의 비중첩 샘플 분할을 통한 교차 검증에서도 결과가 유지되어, 단순히 통계적 우연에 의한 결과가 아님을 입증했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+이번 연구는 AI 신뢰도 지표의 오용 가능성에 경종을 울립니다.
+*   **시스템 설계:** 신뢰도를 기반으로 모델의 답변을 거부하거나 인간에게 검토를 맡기는 시스템을 설계할 때, 어떤 신뢰도 지표를 사용할지 명확히 정의해야 합니다.
+*   **진단 도구:** 신뢰도 격차를 모델의 불안정성을 진단하는 지표로 활용하여, 모델이 특정 질문에 대해 일관성 없는 답변을 내놓는지 사전에 파악할 수 있습니다.
+*   **주의사항:** 신뢰도 지표 간의 불일치가 곧바로 위험을 나타내는 척도는 아니므로, 실무 적용 시 해당 모델과 특정 작업 환경에 맞는 검증 과정이 반드시 선행되어야 합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2609.16933 When Confidence Signals Disagree: Local and Global Confidence in Autoregressive Language Models](https://arxiv.org/abs/2609.16933)
+&gt; - [When Confidence Signals Disagree: Local and Global Confidence in Autoregressive Language Models · Pith](https://pith.science/paper/2609.16933)
+&gt; - [When Confidence Signals Disagree: Local and Global Confidence in Autoregressive Language Models — Large Language Models](https://awesomepapers.io/llm-papers/papers/2609.16933)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;신뢰도라는 모호한 개념을 국소적/전역적 관점에서 분리해 정량화한 점은 훌륭하네. 하지만 실험 결과에서 상관계수가 0.1 내외라는 건, 우리가 그동안 사용해온 Log-probability 기반의 Confidence score가 사실상 정답 예측과 무관한 &#x27;허상&#x27;이었음을 시사하는군. 학계에서는 이를 좀 더 엄밀하게 다룰 필요가 있어.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에선 바로 체감되는 문제입니다. 프로덕션에서 &#x27;모델이 자신 없으면 답변 안 하게&#x27; 만들 때 보통 로짓(Logit) 값을 쓰는데, 이게 사실 정답률과 따로 논다는 거잖아요? 당장 우리 서비스에서 샘플링 횟수 늘려서 전역적 신뢰도 뽑으려면 비용이 몇 배는 뛸 텐데... 모델 불안정성 진단용으로만 쓰기엔 인프라 부담이 너무 큽니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;선배님, 비용 걱정도 되지만 이게 오히려 &#x27;불확실성 정량화(Uncertainty Quantification)&#x27; 연구의 새로운 돌파구가 될 것 같아요! 국소적/전역적 신뢰도 갭을 활용하면 RLHF 할 때 Reward 모델링이나 DPO 데이터 필터링 전략을 완전히 새로 짤 수 있을 것 같은데요? 당장 다음 주 세미나 때 이거 발표해야겠어요!&quot;
+  }
+]
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
