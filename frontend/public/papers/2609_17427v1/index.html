@@ -1,0 +1,65 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>보이지 않는 것의 추적: 완전 및 장기 폐색 상황에서의 객체 추적을 위한 강인한 프레임워크 | ArXiv Translator AI</title><meta name="description" content="보이지 않는 것의 추적: 완전 및 장기 폐색 상황에서의 객체 추적을 위한 강인한 프레임워크"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_17427v1"><meta property="og:type" content="article"><meta property="og:title" content="보이지 않는 것의 추적: 완전 및 장기 폐색 상황에서의 객체 추적을 위한 강인한 프레임워크"><meta property="og:description" content="보이지 않는 것의 추적: 완전 및 장기 폐색 상황에서의 객체 추적을 위한 강인한 프레임워크"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_17427v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="보이지 않는 것의 추적: 완전 및 장기 폐색 상황에서의 객체 추적을 위한 강인한 프레임워크"><meta name="twitter:description" content="보이지 않는 것의 추적: 완전 및 장기 폐색 상황에서의 객체 추적을 위한 강인한 프레임워크"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_17427v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "보이지 않는 것의 추적: 완전 및 장기 폐색 상황에서의 객체 추적을 위한 강인한 프레임워크", "description": "보이지 않는 것의 추적: 완전 및 장기 폐색 상황에서의 객체 추적을 위한 강인한 프레임워크", "datePublished": "2026-09-15", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_17427v1", "author": [{"@type": "Person", "name": "Mais Mohammed"}, {"@type": "Person", "name": "Sharifa Mohammed"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_17427v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_17427v1"});gtag('event', 'paper_view', {"paper_id": "2609_17427v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>보이지 않는 것의 추적: 완전 및 장기 폐색 상황에서의 객체 추적을 위한 강인한 프레임워크</h1><p>보이지 않는 것의 추적: 완전 및 장기 폐색 상황에서의 객체 추적을 위한 강인한 프레임워크</p><pre>보이지 않는 것의 추적: 완전 및 장기 폐색 상황에서의 객체 추적을 위한 강인한 프레임워크
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Tracking the Unseen: An Occlusion-Robust Framework for Target Tracking Under Full and Long-Term Occlusion
+&gt; - **저자:** Mais Mohammed, Sharifa Mohammed, Hanan Awadh, Haneen Bamaas, Raghad Bawazeer, Elham Alghamdi
+&gt; - **발행일:** 2026-09-15
+&gt; - **PDF 링크:** [Tracking the Unseen: An Occlusion-Robust Framework for Target Tracking Under Full and Long-Term Occlusion](https://arxiv.org/pdf/2609.17427v1)
+
+
+✨ 3줄 핵심 요약
+*   건물이나 지형지물에 의해 객체가 완전히 가려지는 &#x27;완전·장기 폐색&#x27; 상황에서 발생하는 추적 끊김과 식별 실패 문제를 해결했습니다.
+*   YOLOv11n 탐지기, 칼만 필터 예측, 그리고 폐색 인지 기반의 재식별(Re-ID) 기술을 통합한 3단계 파이프라인을 구축했습니다.
+*   공공 데이터셋(OVIS) 및 군사 시뮬레이션 데이터셋에서 기존 기술 대비 추적 정확도(MOTA)와 식별 유지율(IDF1)을 크게 개선했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+기존의 객체 추적 시스템은 추적 대상이 건물 뒤로 숨거나 완전히 사라지면 대상을 &#x27;추적 종료&#x27;로 처리해버리는 치명적인 약점이 있습니다. 본 연구는 대상이 보이지 않는 순간에도 칼만 필터를 통해 위치를 예측하고, 다시 나타났을 때 재식별 기술을 사용하여 동일 인물(또는 물체)임을 정확히 찾아내는 지능형 프레임워크를 제안합니다. 특히 군사적 감시와 같이 대상이 짧은 시간이라도 놓치면 안 되는 상황에서 추적의 연속성을 유지하는 데 탁월한 성능을 발휘합니다.
+
+🎯 배경 및 문제점
+현대 컴퓨터 비전 시스템은 건물, 차량, 지형지물에 의해 대상이 가려지는 &#x27;폐색(Occlusion)&#x27; 현상에 매우 취약합니다. 대상이 잠시라도 시야에서 사라지면 시스템은 추적 궤적을 강제로 종료하며, 이는 추적 대상의 ID 혼동이나 임무 실패로 이어질 수 있습니다. 특히 군사·방산 분야에서는 시야 확보가 안 된 상황에서도 대상의 위치를 논리적으로 추론하고 유지하는 능력이 필수적이나, 기존 기술들은 주로 실시간 시각적 관측에만 의존한다는 한계가 있습니다.
+
+💡 핵심 기술 및 아키텍처
+제안된 시스템은 다음 3단계로 구성됩니다.
+1.  **객체 탐지:** 효율성이 강화된 YOLOv11n을 사용하여 실시간으로 대상의 위치를 정밀하게 파악합니다.
+2.  **위치 추정:** 폐색 발생 시 칼만 필터를 활용합니다. 특히 폐색 기간이 길어질수록 위치 불확실성을 반영하여 필터의 잡음 공분산을 적응적으로 조정함으로써 궤적을 유지합니다.
+3.  **재식별(Re-ID):** 폐색에서 벗어난 대상이 이전에 추적하던 대상과 동일한지 확인합니다. 총 6개의 재식별 모델을 실험했으며, 가장 성능이 우수한 &#x27;폐색 인지 마스크 네트워크(OAMN)&#x27;를 최종 채택했습니다.
+
+📊 실험 결과 분석
+*   **OVIS 데이터셋:** 기존 OccluTrack 대비 MOTA 18.1%, IDF1 25.1% 향상되었으며, ID 전환 오류는 12.8% 감소했습니다.
+*   **군사 시뮬레이션 데이터셋:** 실제 전장 환경을 모사한 실험에서 MOTA 0.734, IDF1 0.729를 기록하여 OccluTrack 대비 각각 14.2%, 5.8% 성능 향상을 보였습니다.
+*   **성능 비교:** YOLOv11n은 타 모델 대비 탐지 일관성(프레임당 평균 3.12개 탐지)과 실시간 속도(15.41 FPS) 사이에서 최적의 균형을 보여주었습니다. 또한, 칼만 필터는 복잡한 학습 기반 예측기보다 식별 유지 능력(IDF1) 면에서 우수한 성능을 입증했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+본 연구는 국방 및 보안 분야의 감시 시스템에 즉각적으로 적용 가능합니다. 특히 건물이 밀집된 도시 지역이나 복잡한 지형에서의 군사 작전 시, 대상이 일시적으로 사라지더라도 추적을 놓치지 않음으로써 작전의 성공률을 높이고 상황 인식 능력을 극대화할 수 있습니다. 또한, 폐색에 강한 이번 프레임워크는 장시간 추적이 필요한 보안 관제 서비스의 신뢰성을 크게 향상시킬 것으로 기대됩니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [#computervision #multiobjecttracking #ai #defensetech - LinkedIn](https://www.linkedin.com/posts/mais-mazen_computervision-multiobjecttracking-ai-activity-7506714117525712896-yXKI)
+&gt; - [Fugu-MT 論文翻訳 (概要): Tracking the Unseen: An Occlusion-Robust Framework ...](https://fugumt.com/fugumt/paper_check/2609.17427v1)
+&gt; - [2609.17427 Tracking the Unseen: An Occlusion-Robust Framework for Target Tracking Under Full and Long-Term Occlusion](https://arxiv.org/abs/2609.17427)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;칼만 필터와 YOLOv11n을 결합한 고전적 접근방식에 OAMN을 얹은 형태군요. MOTA 개선폭은 인상적이지만, 장기 폐색 시 칼만 필터의 공분산이 과하게 커질 때 발생하는 드리프트 문제를 어떻게 &#x27;적응적으로&#x27; 해결했는지에 대한 수학적 엄밀함이 부족해 보입니다. 실무 성능은 좋겠지만, 학술적으로는 일반화 가능성에 대한 검증이 더 필요하겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님, 현업에서는 수학적 엄밀함보다 15 FPS 이상의 실시간성과 ID 스위칭 12.8% 감소가 훨씬 중요합니다. 특히 복잡한 트랜스포머 기반 모델보다 경량 모델 조합이 배포 관점에서 훨씬 매력적이죠. 다만, 군사 시뮬레이션 데이터셋이 실제 노이즈가 심한 야외 환경에서도 동일한 IDF1을 유지할지가 의문이네요. 현장 테스트 결과가 궁금합니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;선배님들, 요점은 &#x27;폐색 인지 마스크 네트워크&#x27;가 Re-ID를 하드캐리했다는 거잖아요! YOLOv11n 최신 모델 붙여서 SOTA 찍은 것만으로도 학회 컨퍼런스 데모용으론 충분히 핫할 것 같은데요? 당장 내일 랩 세미나 때 이 아키텍처 따와서 우리 데이터셋에 파인튜닝 바로 돌려보겠습니다. 15.41 FPS면 엣지 디바이스에도 올릴 수 있겠는데요?&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
