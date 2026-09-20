@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>추론 경로 없이 도메인 전문가 증류를 위한 전문 모델 학습 | ArXiv Translator AI</title><meta name="description" content="추론 경로 없이 도메인 전문가 증류를 위한 전문 모델 학습"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_13770v1"><meta property="og:type" content="article"><meta property="og:title" content="추론 경로 없이 도메인 전문가 증류를 위한 전문 모델 학습"><meta property="og:description" content="추론 경로 없이 도메인 전문가 증류를 위한 전문 모델 학습"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_13770v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="추론 경로 없이 도메인 전문가 증류를 위한 전문 모델 학습"><meta name="twitter:description" content="추론 경로 없이 도메인 전문가 증류를 위한 전문 모델 학습"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_13770v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "추론 경로 없이 도메인 전문가 증류를 위한 전문 모델 학습", "description": "추론 경로 없이 도메인 전문가 증류를 위한 전문 모델 학습", "datePublished": "2026-09-12", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_13770v1", "author": [{"@type": "Person", "name": "Yilei Tu"}, {"@type": "Person", "name": "Zihao Li"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_13770v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_13770v1"});gtag('event', 'paper_view', {"paper_id": "2609_13770v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>추론 경로 없이 도메인 전문가 증류를 위한 전문 모델 학습</h1><p>추론 경로 없이 도메인 전문가 증류를 위한 전문 모델 학습</p><pre>추론 경로 없이 도메인 전문가 증류를 위한 전문 모델 학습
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Training Specialist Models without Reasoning Trajectories for Domain Expert Distillation
+&gt; - **저자:** Yilei Tu, Zihao Li, Shaoxiong Ji, Jörg Tiedemann, Fei Yuan
+&gt; - **발행일:** 2026-09-12
+&gt; - **PDF 링크:** [Training Specialist Models without Reasoning Trajectories for Domain Expert Distillation](https://arxiv.org/pdf/2609.13770v1)
+
+
+✨ 3줄 핵심 요약
+* 전문가 모델을 학습할 때 명시적인 추론 경로(reasoning trajectories)가 없더라도, 최적화 과정에서 잠재적인 추론 경로 분포가 암묵적으로 선택됩니다.
+* 27개의 전문가-학생 모델 조합을 분석한 결과, 전문가의 학습 방식이 학생 모델의 성능 프로파일(전문화-일반화 정도)을 결정하는 강력한 상관관계를 확인했습니다.
+* KL 발산 제약을 통해 전문가의 추론 경로 분포를 조정함으로써, 도메인 정밀도와 일반 능력 사이의 균형을 체계적으로 제어할 수 있습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+보통 AI 모델을 특정 분야의 &#x27;전문가&#x27;로 만들 때는 정답과 함께 그 이유(추론 과정)를 가르칩니다. 하지만 실제 현실에서는 정답만 있고 이유는 없는 경우가 많습니다. 연구진은 정답만 보고 학습한 모델들이 내부적으로는 저마다 다른 추론 방식을 스스로 선택한다는 점에 주목했습니다. 이를 관찰하기 위해 &#x27;학생 모델&#x27;을 일종의 탐지기로 활용한 결과, 전문가가 선택한 추론 방식이 그대로 학생에게 전달되어 모델의 성능 특성을 결정짓는다는 사실을 밝혀냈습니다. 결론적으로, 추론 과정이 없어도 학습 시 제약 조건을 조절하는 것만으로 전문가와 학생 모델의 행동을 의도한 방향으로 유도할 수 있음을 입증했습니다.
+
+🎯 배경 및 문제점
+* **데이터 부족:** 도메인 전문가 모델을 학습시킬 때 정답(QA) 데이터는 구하기 쉽지만, 전문가의 사고 과정을 담은 &#x27;골드 추론 경로&#x27;는 확보가 매우 어렵습니다.
+* **잠재적 분포의 모호함:** 정답만을 맞히도록 학습된 모델은 다양한 잠재적 추론 경로를 선택할 수 있는데, 무엇이 이 선택을 지배하는지 불분명했습니다.
+* **잘못된 추론 문제:** 단순히 정답만 맞히는 방식은 &#x27;결과는 맞지만 과정은 틀린&#x27; 현상을 유발하여 일반화 능력을 저해할 위험이 있습니다.
+
+💡 핵심 기술 및 아키텍처
+* **잠재 경로 제어:** 학습 시 &#x27;KL 제약(KL-constrained optimization)&#x27;을 도입하여 전문가 모델이 학습하는 추론 경로 분포가 기초 모델로부터 지나치게 이탈하지 않도록 통제합니다.
+* **추론 경로 재가중치(Reweightings):** 단순히 정답률을 올리는 것이 아니라, 라그랑주 승수를 통해 옳은 답을 도출하는 경로에 가중치를 부여하는 방식으로 최적화를 수행합니다.
+* **학생 모델을 통한 검증:** 전문가 모델이 생성한 경로를 학생 모델이 증류받게 함으로써, 전문가 내부의 잠재적인 정보가 어떻게 전달되는지 체계적으로 관찰했습니다.
+
+📊 실험 결과 분석
+* **강력한 상관관계:** 27개 조합의 전문가-학생 모델을 분석한 결과, 전문가의 전문화 수준과 학생 모델의 성능 프로파일이 매우 강한 상관관계를 보였습니다.
+* **분야별 일관성:** 화학, 물리학, 다국어 처리 등 다양한 분야에서 전문가 모델의 조정이 학생 모델의 결과에 그대로 반영되었습니다.
+* **하이퍼파라미터 영향:** LoRA 랭크 설정 실험(16, 32, 64, 128) 결과, 지나치게 높은 랭크는 도메인 외부(OOD) 성능을 저해할 수 있음을 확인했습니다. 또한, 표준 LoRA가 RsLoRA보다 추론 경로 선택 및 증류 품질 면에서 더 균형 잡힌 결과를 보였습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **데이터 비용 절감:** 고비용의 전문가 추론 데이터 없이도 정답 데이터만으로 수준 높은 도메인 특화 모델을 구축할 수 있는 이론적 근거를 제공합니다.
+* **모델 행동 제어:** 특정 도메인에서 정밀도를 높일지, 아니면 일반적인 범용 능력을 유지할지 등을 학습 설정만으로 제어할 수 있어 실무적인 튜닝 효율이 극대화됩니다.
+* **범용적 증류:** 특정 모델 아키텍처에 종속되지 않고 전문가의 지식을 학생 모델로 효율적으로 전수할 수 있어, 다양한 산업용 AI 모델 경량화 및 고도화에 기여할 수 있습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Paper page - Training Specialist Models without Reasoning Trajectories ...](https://huggingface.co/papers/2609.13770)
+&gt; - [Training Specialist Models without Reasoning Trajectories for Domain ...](https://www.catalyzex.com/paper/training-specialist-models-without-reasoning)
+&gt; - [2609.13770 Training Specialist Models without Reasoning Trajectories for Domain Expert Distillation](https://arxiv.org/abs/2609.13770)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문의 아이디어 자체는 흥미롭지만, &#x27;잠재적 추론 경로&#x27;를 KL 제약 하나로 통제 가능하다는 주장은 지나치게 낙관적입니다. 결국 분포의 근사일 뿐인데, 수학적 엄밀함이 결여된 상태에서 &#x27;의도된 방향으로 유도&#x27;된다는 표현은 위험합니다. 특히 27개 조합의 실험 결과가 과연 일반화 가능한지, 단순 데이터셋의 편향을 학습한 것은 아닌지 재검증이 필요해 보이네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 일리가 있지만, 실무자 입장에선 &#x27;추론 경로 데이터&#x27; 만드는 게 진짜 지옥이거든요. CoT 데이터셋 구축 비용을 획기적으로 줄일 수 있다면 저는 당장 도입할 의향이 있습니다. LoRA 랭크 설정에 따른 OOD 성능 저하 이슈는 튜닝 포인트로 관리하면 되니까요. 표준 LoRA가 RsLoRA보다 낫다는 지점은 현업에서 실험할 때 꽤 유용한 가이드가 될 것 같습니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;두 분 논쟁하시는 거 보니 오늘 밤샘 각이네요! ㅋㅋㅋ 저는 이 논문의 핵심이 &#x27;블랙박스인 모델 내부를 학생 모델이라는 탐지기로 엿봤다&#x27;는 점에 있다고 봅니다. 추론 과정 없이도 증류가 된다니, 이제 데이터 라벨링 노가다에서 해방되는 건가요? 당장 우리 랩 세미나 주제로 발제하고 코드 뜯어봐야겠어요. 랭크 128로 뻥튀기했을 때 무너지는 지점 확인하는 게 꿀잼 포인트일 듯!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
