@@ -1,0 +1,72 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>LLM은 언제 답변을 거부해야 하는가? 선택적 위험 관리를 위한 자기 질문 연쇄 기법 | ArXiv Translator AI</title><meta name="description" content="LLM은 언제 답변을 거부해야 하는가? 선택적 위험 관리를 위한 자기 질문 연쇄 기법"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_17516v1"><meta property="og:type" content="article"><meta property="og:title" content="LLM은 언제 답변을 거부해야 하는가? 선택적 위험 관리를 위한 자기 질문 연쇄 기법"><meta property="og:description" content="LLM은 언제 답변을 거부해야 하는가? 선택적 위험 관리를 위한 자기 질문 연쇄 기법"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_17516v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="LLM은 언제 답변을 거부해야 하는가? 선택적 위험 관리를 위한 자기 질문 연쇄 기법"><meta name="twitter:description" content="LLM은 언제 답변을 거부해야 하는가? 선택적 위험 관리를 위한 자기 질문 연쇄 기법"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_17516v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "LLM은 언제 답변을 거부해야 하는가? 선택적 위험 관리를 위한 자기 질문 연쇄 기법", "description": "LLM은 언제 답변을 거부해야 하는가? 선택적 위험 관리를 위한 자기 질문 연쇄 기법", "datePublished": "2026-09-15", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_17516v1", "author": [{"@type": "Person", "name": "Ali Şenol"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_17516v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_17516v1"});gtag('event', 'paper_view', {"paper_id": "2609_17516v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>LLM은 언제 답변을 거부해야 하는가? 선택적 위험 관리를 위한 자기 질문 연쇄 기법</h1><p>LLM은 언제 답변을 거부해야 하는가? 선택적 위험 관리를 위한 자기 질문 연쇄 기법</p><pre>LLM은 언제 답변을 거부해야 하는가? 선택적 위험 관리를 위한 자기 질문 연쇄 기법
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** When Should LLMs Abstain? Chain-of-Self-Questioning for Selective Risk Control
+&gt; - **저자:** Ali Şenol
+&gt; - **발행일:** 2026-09-15
+&gt; - **PDF 링크:** [When Should LLMs Abstain? Chain-of-Self-Questioning for Selective Risk Control](https://arxiv.org/pdf/2609.17516v1)
+
+
+✨ 3줄 핵심 요약
+* **CoSQ(자기 질문 연쇄) 프레임워크**는 LLM이 답변을 확정하기 전, 필요한 정보를 스스로 평가하여 답변 여부를 결정하도록 유도하는 프롬프트 기반 기법입니다.
+* 11개 모델 대상 실험 결과, CoSQ는 일반적인 사고 연쇄(CoT) 방식 대비 잘못된 답변 제출 비율을 최대 4.24%p까지 낮추면서도 답변 정확도를 향상시켰습니다.
+* 본 기법은 할루시네이션(환각) 위험이 큰 분야에서 모델이 &#x27;모른다&#x27;고 답변하거나 전문가 검토를 요청하게 함으로써 신뢰성을 확보합니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+거대언어모델(LLM)은 근거가 부족해도 매우 유창하게 답변하는 경향이 있어, 틀린 정보를 사실인 것처럼 말하는 할루시네이션 문제가 발생합니다. 이 논문은 **&#x27;답변 전 스스로 질문하기(CoSQ)&#x27;**라는 기술을 제안합니다. 모델이 최종 답변을 내놓기 전에 &quot;내가 이 질문에 답하기 위해 필요한 정보를 충분히 알고 있는가?&quot;를 먼저 점검하게 만드는 것입니다. 이를 통해 모델은 자신의 지식이 부족하다고 판단될 때 답변을 거부하거나 신중한 태도를 취하게 되며, 결과적으로 잘못된 정보를 제공할 위험을 획기적으로 줄일 수 있습니다.
+
+🎯 배경 및 문제점
+* **무비판적 답변:** 기존의 모델들은 모든 질문에 대해 억지로 답변을 내놓으려는 경향이 있어, 정보가 불완전함에도 불구하고 확신에 찬 잘못된 답변(wrong-commitment)을 생성할 위험이 있습니다.
+* **고위험군 분야의 한계:** 의료, 법률, 금융 등 정확성이 생명인 분야에서는 틀린 답을 제공하는 것보다 차라리 답변을 거부하고 전문가의 검토를 유도하는 것이 훨씬 안전합니다.
+* **기존 방식의 미흡함:** CoT(사고 연쇄) 기법은 논리력을 향상시키지만 답변 거부 여부를 판단하지는 못하며, 외부 지식 검색이나 사후 검증은 추가적인 인프라 비용이 발생합니다.
+
+💡 핵심 기술 및 아키텍처
+CoSQ는 모델 구조 수정 없이 프롬프트만으로 작동하는 3단계 체계입니다.
+1. **정보 단위 식별:** 질문에 답하기 위해 필요한 핵심 정보가 무엇인지 추출합니다.
+2. **지원 근거 평가:** 추출된 정보에 대해 모델 스스로 충분한 근거를 확보하고 있는지 평가합니다.
+3. **답변 또는 거부:** 근거가 충분하면 답변을 생성하고, 부족하면 답변을 거부하거나 보류합니다.
+* 연구에서는 세 가지 변형 모델(Grounded-CoSQ, Critical-CoSQ, Adaptive-CoSQ)을 통해 필요에 따라 답변 범위를 조절할 수 있도록 했습니다.
+
+📊 실험 결과 분석
+* **위험 감소:** TruthfulQA-MC 벤치마크 데이터셋 기준, CoT와 비교하여 잘못된 답변 제출 비율을 Grounded-CoSQ(τ=0.90)는 13.1%에서 8.9%로 **32.1% 상대적 감소**시켰습니다.
+* **정확도 향상:** 잘못된 답변을 배제함에 따라 실제 답변한 항목의 정확도는 86.9%에서 89.7%로 상승했습니다.
+* **작동 지점:** Adaptive-CoSQ는 가장 낮은 위험률을 보였고, Critical-CoSQ는 더 넓은 범위의 질문에 답변하면서도 신뢰성을 유지했습니다. (모든 실험 결과는 11개 모델 모두에서 일관되게 나타남)
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **신뢰성 있는 AI 구축:** 답변의 유창함보다 &#x27;정확성&#x27;이 중요한 비즈니스 환경에서 모델이 스스로 한계를 인정하게 함으로써 실무적 안전장치를 마련합니다.
+* **비용 대비 효용:** 추론 단계가 추가되어 연산 비용은 다소 증가하지만, 잘못된 정보로 인한 피해 비용을 방지해야 하는 고위험 환경(의료 진단 보조, 법률 상담 등)에서 효과적인 대안이 됩니다.
+* **구현 용이성:** 별도의 외부 인프라 없이 프롬프트 설계만으로 적용 가능하여 기존 LLM 시스템에 즉시 도입할 수 있습니다. 
+
+*주의: 본 기법은 100% 사실 보증을 의미하지 않으며, 고위험군 설정에서는 반드시 인간의 검토와 도메인별 검증이 병행되어야 합니다.*
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [When Should LLMs Abstain? Chain-of-Self-Questioning for Selective Risk ...](https://bharathunt.org/ai/when-should-llms-abstain-chain-of-self-questioning-for-selective-risk)
+&gt; - [When Should LLMs Abstain? Chain-of-Self-Questioning for Selective Risk ...](https://simpleprog.com/papers/when-should-llms-abstain-chain-of-self-questioning-for-selective-risk-816c2606)
+&gt; - [2609.17516v1 When Should LLMs Abstain? Chain-of-Self-Questioning for Selective Risk Control](https://arxiv.org/abs/2609.17516v1)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문 자체는 흥미롭지만, &#x27;프롬프트 설계만으로 3단계 체계를 구현한다&#x27;는 점이 학술적으로는 다소 불안정해 보입니다. 모델의 자기 성찰 능력(Self-reflection)이 고정적인 것이 아니라 문맥과 하이퍼파라미터에 따라 요동치는데, 과연 이를 &#x27;신뢰성 있는 안전장치&#x27;라고 부를 수 있을까요? 특히 벤치마크 점수 외에 실제 에지 케이스에서의 안정성 검증이 더 필요해 보입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에선 &#x27;연산 비용&#x27;이 제일 큰 걸림돌입니다. 추론 단계가 늘어난다는 건 곧 Latency 증가를 의미하거든요. 하지만 의료나 법률 서비스에선 잘못된 답변 한 번이 치명적인 리스크가 되니, 비용을 지불하더라도 이런 &#x27;거부(Abstain)&#x27; 로직이 들어간다는 건 비즈니스 관점에서 굉장히 매력적입니다. 당장 사내 파이프라인에 적용해서 AB 테스트 돌려보고 싶네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;다들 너무 진지하신 거 아닌가요? ㅋㅋ 프롬프트 엔지니어링으로 할루시네이션을 30% 넘게 깎았다는 건 거의 &#x27;연금술&#x27; 수준인데요. 모델 파라미터 업데이트 없이 이렇게 성능 뽑아내는 게 요즘 트렌드잖아요. 물론 추론 속도는 느려지겠지만, &#x27;모르는 걸 모른다고 말하는 법&#x27;을 가르치는 건 AGI로 가는 필수 관문이라고 봅니다. 당장 랩 세미나 발제 주제로 가져가야겠어요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
