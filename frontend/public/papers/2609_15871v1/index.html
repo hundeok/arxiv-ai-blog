@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>이기종 설문 데이터 간 정신 건강 상태 예측을 위한 LLM 기반 스키마 인식 분할 학습 | ArXiv Translator AI</title><meta name="description" content="이기종 설문 데이터 간 정신 건강 상태 예측을 위한 LLM 기반 스키마 인식 분할 학습"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_15871v1"><meta property="og:type" content="article"><meta property="og:title" content="이기종 설문 데이터 간 정신 건강 상태 예측을 위한 LLM 기반 스키마 인식 분할 학습"><meta property="og:description" content="이기종 설문 데이터 간 정신 건강 상태 예측을 위한 LLM 기반 스키마 인식 분할 학습"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_15871v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="이기종 설문 데이터 간 정신 건강 상태 예측을 위한 LLM 기반 스키마 인식 분할 학습"><meta name="twitter:description" content="이기종 설문 데이터 간 정신 건강 상태 예측을 위한 LLM 기반 스키마 인식 분할 학습"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_15871v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "이기종 설문 데이터 간 정신 건강 상태 예측을 위한 LLM 기반 스키마 인식 분할 학습", "description": "이기종 설문 데이터 간 정신 건강 상태 예측을 위한 LLM 기반 스키마 인식 분할 학습", "datePublished": "2026-09-14", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_15871v1", "author": [{"@type": "Person", "name": "Md Khalid Syfullah"}, {"@type": "Person", "name": "Alvi Ataur Khalil"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_15871v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_15871v1"});gtag('event', 'paper_view', {"paper_id": "2609_15871v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>이기종 설문 데이터 간 정신 건강 상태 예측을 위한 LLM 기반 스키마 인식 분할 학습</h1><p>이기종 설문 데이터 간 정신 건강 상태 예측을 위한 LLM 기반 스키마 인식 분할 학습</p><pre>이기종 설문 데이터 간 정신 건강 상태 예측을 위한 LLM 기반 스키마 인식 분할 학습
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** LLM-Based Schema-Aware Split Learning for Privacy-Preserving Mental Distress Prediction Across Heterogeneous Surveys
+&gt; - **저자:** Md Khalid Syfullah, Alvi Ataur Khalil
+&gt; - **발행일:** 2026-09-14
+&gt; - **PDF 링크:** [LLM-Based Schema-Aware Split Learning for Privacy-Preserving Mental Distress Prediction Across Heterogeneous Surveys](https://arxiv.org/pdf/2609.15871v1)
+
+
+✨ 3줄 핵심 요약
+- 서로 다른 질문과 형식을 가진 설문 데이터를 자연어 설명으로 통일하여, 기관 간 데이터 공유 없이도 협력적인 정신 건강 예측 모델을 구축함.
+- LLM에 LoRA(저순위 적응) 기술과 분할 학습(Split Learning)을 결합해 클라이언트의 계산 자원 소모를 1,000배(3오더) 이상 줄임.
+- 연합 학습(Federated Learning) 대비 9개 환경 중 8개에서 더 우수한 성능을 기록하며, 적은 데이터로도 높은 범용성을 확보함.
+
+📖 쉽게 풀어쓴 1분 핵심
+정신 건강 설문조사는 기관마다 질문 방식이나 척도가 달라 데이터를 한데 모으기가 매우 어렵습니다. 또한 개인정보 보호법 때문에 환자의 원본 데이터를 외부로 반출하는 것도 불가능합니다. 본 연구는 LLM을 활용해 다양한 형식의 설문을 공통된 자연어 문장으로 변환하고, 모델을 클라이언트와 서버로 나누어 학습시키는 &#x27;분할 학습&#x27; 방식을 제안합니다. 이를 통해 각 기관은 원본 데이터를 안전하게 유지하면서도, 서버에 있는 똑똑한 AI 모델의 학습에 참여하여 정확한 정신 건강 예측 결과를 얻을 수 있습니다.
+
+🎯 배경 및 문제점
+- **데이터 파편화:** 기관마다 사용하는 정신 건강 설문 도구(DASS 등)가 달라 데이터 형태가 제각각인 &#x27;데이터 이질성&#x27; 문제가 존재함.
+- **개인정보 보호:** 정신 건강 데이터는 민감하여 HIPAA, GDPR 등 강력한 규제로 인해 데이터 통합 공유가 제한됨.
+- **기존 방식의 한계:** 기존 모델들은 데이터 이질성을 해결하거나 개인정보를 보호하는 방식 중 하나에만 치중되어 있으며, 두 문제를 동시에 해결하면서 클라이언트의 자원 부담을 낮추는 통합 솔루션이 부족했음.
+
+💡 핵심 기술 및 아키텍처
+- **스키마 인식 직렬화:** 서로 다른 형식의 설문 데이터를 &#x27;질문: 응답&#x27; 형태의 자연어 문장으로 변환하여 LLM이 동일한 의미 공간에서 처리하도록 함.
+- **분할 학습(Split Learning):** 무거운 LLM의 백본(Backbone)은 서버가 담당하고, 클라이언트는 가벼운 프론트엔드만 실행하여 기관 내부에서 원본 데이터를 보호함.
+- **LoRA 기반 파인튜닝:** LLaMA-3.2-3B 모델에 LoRA를 적용하여 전체 파라미터의 약 0.75%만을 학습함으로써 계산 효율성을 극대화함.
+
+📊 실험 결과 분석
+- **성능:** 2,000개의 학습 샘플만으로도 평균 0.708의 ANLS(Average Normalized Levenshtein Similarity) 점수를 기록함.
+- **효율성:** 기존 연합 학습(FL) 모델 대비 클라이언트 측 계산량을 3오더(1,000배) 가량 절감함 (FL 클라이언트 15~25GB vs 본 연구 1.3GB 수준).
+- **우수성:** 연합 학습 모델과 비교하여 9개 실험 환경 중 8개에서 더 높은 성능을 보임. 다만, 모델 반전 공격(model-inversion attacks)에 대한 방어는 본 연구의 범위를 벗어난다고 명시함.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+- **의료 데이터 활용:** 병원, 학교, 기업 등 각기 다른 환경에서 수집된 정신 건강 데이터를 원본 유출 없이 안전하게 공유·분석하여 공중 보건 개선에 기여함.
+- **자원 효율성:** 고성능 GPU가 부족한 현장에서도 분할 학습 방식을 통해 대규모 LLM 기반의 AI 예측 모델을 도입할 수 있는 길을 제시함.
+- **범용성:** 새로운 설문조사 방식이 도입되더라도 스키마 직렬화 과정을 통해 즉각적으로 기존 시스템에 통합할 수 있는 확장성을 확보함.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2609.15871 LLM-Based Schema-Aware Split Learning for Privacy ...](https://arxiv.org/abs/2609.15871)
+&gt; - [LLM-Based Schema-Aware Split Learning for Privacy-Preserving Mental ...](https://arxiv.deeppaper.ai/papers/2609.15871v1)
+&gt; - [LLM-Based Schema-Aware Split Learning for Privacy-Preserving Mental ...](https://www.catalyzex.com/paper/llm-based-schema-aware-split-learning-for)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;스키마 인식 직렬화라는 접근은 흥미롭지만, 모델 반전 공격에 대한 방어를 &#x27;범위 밖&#x27;이라며 명시한 점은 학술적으로 매우 아쉽군요. 의료 데이터는 보수적인 보안 기준이 핵심인데, 이 정도로 &#x27;개인정보 보호&#x27;를 주장하기엔 현장 도입 시 법적 이슈가 클 것입니다. LoRA 효율성만 강조할 게 아니라, 분할 학습 시 노출되는 중간 활성화 값(intermediate activations)에 대한 보안 분석이 선행되어야 합니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 맞지만, 실무자 입장에선 계산량 1,000배 절감이라는 숫자가 훨씬 눈에 들어오네요. 기존 연합 학습(FL)은 클라이언트단에서 모델 전체를 돌리느라 셋업부터 지옥이었는데, 이건 1.3GB 메모리로 LLM을 태울 수 있다는 거잖아요? 일단 프로토타입 뽑아내기엔 최적의 아키텍처 같습니다. 보안은... 뭐, Differential Privacy 얹어서 후속 연구 나오겠죠.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;역시 폼 미쳤다! 9개 환경 중 8개에서 FL 털어버린 거 보면, 이제 데이터 파편화 문제는 LLM이 다 해결하는 시대가 오나 봅니다. LoRA + Split Learning 조합은 진짜 국밥처럼 어디든 갖다 붙일 수 있을 것 같아요. 다음 논문은 아마 여기에 &#x27;Privacy-preserving&#x27; 강화하려고 DP-SGD 섞어서 나오겠네요. 교수님, 이거 구현해서 ICML에 투고하면 안 될까요?&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
