@@ -1,0 +1,67 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>일상적인 AI 에이전트 사용에서의 가치 민감적 위임: OpenClaw를 통한 실증 연구 | ArXiv Translator AI</title><meta name="description" content="일상적인 AI 에이전트 사용에서의 가치 민감적 위임: OpenClaw를 통한 실증 연구"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_22067v1"><meta property="og:type" content="article"><meta property="og:title" content="일상적인 AI 에이전트 사용에서의 가치 민감적 위임: OpenClaw를 통한 실증 연구"><meta property="og:description" content="일상적인 AI 에이전트 사용에서의 가치 민감적 위임: OpenClaw를 통한 실증 연구"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_22067v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="일상적인 AI 에이전트 사용에서의 가치 민감적 위임: OpenClaw를 통한 실증 연구"><meta name="twitter:description" content="일상적인 AI 에이전트 사용에서의 가치 민감적 위임: OpenClaw를 통한 실증 연구"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_22067v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "일상적인 AI 에이전트 사용에서의 가치 민감적 위임: OpenClaw를 통한 실증 연구", "description": "일상적인 AI 에이전트 사용에서의 가치 민감적 위임: OpenClaw를 통한 실증 연구", "datePublished": "2026-09-18", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_22067v1", "author": [{"@type": "Person", "name": "Renkai Ma"}, {"@type": "Person", "name": "Ruyuan Wan"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_22067v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_22067v1"});gtag('event', 'paper_view', {"paper_id": "2609_22067v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>일상적인 AI 에이전트 사용에서의 가치 민감적 위임: OpenClaw를 통한 실증 연구</h1><p>일상적인 AI 에이전트 사용에서의 가치 민감적 위임: OpenClaw를 통한 실증 연구</p><pre>일상적인 AI 에이전트 사용에서의 가치 민감적 위임: OpenClaw를 통한 실증 연구
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Value-Sensitive Delegation in Everyday AI Agent Use: Evidence from OpenClaw
+&gt; - **저자:** Renkai Ma, Ruyuan Wan, Xuan Lu, Fan Yang, Chen Chen, Lingyao Li
+&gt; - **발행일:** 2026-09-18
+&gt; - **PDF 링크:** [Value-Sensitive Delegation in Everyday AI Agent Use: Evidence from OpenClaw](https://arxiv.org/pdf/2609.22067v1)
+
+
+✨ 3줄 핵심 요약
+* AI 에이전트의 성과를 단순히 작업 완료 여부로만 평가하는 기존 방식에서 벗어나, 사용자가 중요하게 생각하는 6가지 인간적 가치 기준을 분석했습니다.
+* 연구 결과, 가치 충족 여부는 에이전트의 최종 출력물보다는 사용자가 설정한 운영 조건(비용, 접근 권한, 감독 체계 등)에 의해 결정되는 ‘가치 민감적 위임’ 현상이 확인되었습니다.
+* 성공적인 에이전트 설계를 위해서는 에이전트의 결과물뿐만 아니라 사용자가 위임 과정에서 설정하는 환경적 조건에 대한 고려가 필수적입니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+우리는 AI 에이전트에게 복잡한 업무를 맡길 때, 에이전트가 단순히 &#x27;결과를 잘 냈는지&#x27;만 확인하곤 합니다. 하지만 연구진은 사용자가 직접 작성한 7만여 건의 레딧(Reddit) 게시글을 분석해 본 결과, 사용자들이 실제로 중요하게 여기는 가치들은 에이전트가 최종적으로 내놓은 결과물 자체보다는 **&#x27;그 에이전트를 어떻게 운영했는가&#x27;**라는 조건에 더 깊게 연관되어 있다는 사실을 발견했습니다. 즉, 작업은 성공했더라도 사용자가 설정한 비용 한도나 안전장치 등의 조건이 충족되지 않으면 사용자는 이를 실패로 간주하는 경우가 많았습니다. 따라서 앞으로의 AI 설계는 결과 중심의 평가를 넘어, 사용자의 가치를 보호하기 위한 운영 조건(감독, 제한 등)을 시스템 차원에서 기본적으로 제공해야 합니다.
+
+🎯 배경 및 문제점
+기존의 AI 에이전트 연구는 에이전트의 모듈을 분리하여 작업 완료 여부를 점수화하는 데 치중해 왔습니다. 그러나 일상에서 사용하는 에이전트는 일반적인 챗봇과 달리 사용자의 컴퓨터 권한으로 직접 파일을 수정하거나 결제를 실행하는 등 위험 요소가 큽니다. 논문은 기존의 평가 방식이 &#x27;작업 완료&#x27;라는 기술적 지표에만 매몰되어, 실제 사용자가 중요하게 여기는 인간적 가치와 그들이 체감하는 위임의 실패를 간과하고 있다고 지적합니다.
+
+💡 핵심 기술 및 아키텍처
+연구진은 &#x27;가치 민감적 설계(Value Sensitive Design, VSD)&#x27; 프레임워크를 활용했습니다.
+* **분석 대상:** 2025년 11월 출시 후 2026년 8월까지 37만 개의 별을 받은 오픈소스 AI 에이전트 &#x27;OpenClaw&#x27; 관련 레딧 게시글 73,093건.
+* **분류 기준:** 인간 가치(자율성, 신뢰성, 경제성, 범위 제한, 검토 가능성, 공정한 접근)를 6개 그룹으로 범주화하여 AI 에이전트의 작동 방식과 결합해 분석했습니다.
+* **분석 도구:** LLM(거대언어모델) 보조를 통해 게시글을 코딩하고 가치 충족 여부를 확인했습니다.
+
+📊 실험 결과 분석
+* **가치와 운영 조건의 결합:** 대부분의 인간 가치는 에이전트가 내놓은 최종 결과물이 아니라, 사용자가 에이전트를 실행하기 전후로 설정한 운영 조건(예: 비용 제한, 접근 범위 등)과 깊은 상관관계를 보였습니다.
+* **충족 vs 미충족 패턴:** 사용자가 에이전트의 결과물을 설명할 때는 6개 가치 그룹 중 5개에서 가치가 충족된 것으로 나타났으나, 에이전트의 행동을 &#x27;감독&#x27;하는 상황을 설명할 때는 6개 그룹 모두에서 가치 충족이 미흡했습니다.
+* **성과 지표:** 가장 빈번한 사용 결과는 &#x27;작업 효율성(41.7%)&#x27;이었으며, 그 뒤를 &#x27;자원 부담(15.5%)&#x27;과 &#x27;시간 효율성(11.9%)&#x27;이 이었습니다. (수치는 원문 발췌에 명시됨)
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **에이전트 설계 방향:** 에이전트 개발자는 사용자가 직접 설정해야 하는 보안 및 운영 설정(지출 한도, 접근 범위, 승인 절차 등)을 시스템 내부의 기본값(Default)으로 제공해야 합니다. 
+* **평가 지표의 변화:** 향후 AI 에이전트 성능 평가는 단순한 작업 완수율 측정을 넘어, 사용자가 요구하는 가치 준수 조건을 포함한 &#x27;운영 환경 평가&#x27;를 병행해야 합니다.
+* **실무적 제언:** 사용자가 명령 줄(Command line) 없이도 에이전트의 운영 조건을 즉시 수정할 수 있는 사용자 친화적인 인터페이스 구축이 필요합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Value-Sensitive Delegation in Everyday AI Agent Use: Evidence from OpenClaw](https://arxiv.org/abs/2609.22067)
+&gt; - [Value-Sensitive Delegation in Everyday AI Agent Use: Evidence from OpenClaw](https://arxiv.deeppaper.ai/papers/2609.22067v1)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;결국 VSD(Value Sensitive Design)를 에이전트 도메인에 이식한 건 좋으나, 7만 건의 레딧 데이터를 정성적으로 코딩한 방식이 과연 일반화 가능한 데이터셋인가에 대해선 의문이 듭니다. &#x27;사용자 가치&#x27;는 매우 주관적인데, 이를 운영 조건과 등치시키는 것이 엔지니어링 관점에서 얼마나 견고한 메트릭이 될지 학계에서 논쟁이 좀 있겠군요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 데이터의 편향성은 있겠지만, 현업 입장에선 뼈 때리는 논문입니다. 매번 모델 성능(Success Rate)만 올리려고 튜닝했는데, 실제 사용자들은 &#x27;내 예산을 얼마나 썼냐&#x27;, &#x27;어디까지 건드렸냐&#x27; 같은 &#x27;운영 컨텍스트&#x27;에서 이탈하더군요. 시스템 프롬프트에 이런 안전장치를 기본 탑재하는 게, 사실 모델 하나 더 튜닝하는 것보다 유저 리텐션에는 훨씬 효과적일 겁니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 다들 진지하시네! 전 이거 읽고 바로 우리 연구실 에이전트 프레임워크에 &#x27;가치 기반 가드레일&#x27; 모듈 추가하려고요. 결과물만 잘 뽑는 시대는 끝났고, 이제는 사용자가 &#x27;내가 통제하고 있다&#x27;고 느끼게 만드는 &#x27;운영 가시성(Operational Visibility)&#x27;을 UI/UX 단에서 어떻게 녹일지가 SOTA가 될 듯합니다. 이거 다음 학회에 당장 투고하면 핫할 것 같은데 어떠세요?&quot;
+  }
+]
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
