@@ -1,0 +1,73 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CIBuzzBench: 중국 인터넷 유행어의 교차 언어 이해를 위한 벤치마크 | ArXiv Translator AI</title><meta name="description" content="CIBuzzBench: 중국 인터넷 유행어의 교차 언어 이해를 위한 벤치마크"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_21722v1"><meta property="og:type" content="article"><meta property="og:title" content="CIBuzzBench: 중국 인터넷 유행어의 교차 언어 이해를 위한 벤치마크"><meta property="og:description" content="CIBuzzBench: 중국 인터넷 유행어의 교차 언어 이해를 위한 벤치마크"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_21722v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="CIBuzzBench: 중국 인터넷 유행어의 교차 언어 이해를 위한 벤치마크"><meta name="twitter:description" content="CIBuzzBench: 중국 인터넷 유행어의 교차 언어 이해를 위한 벤치마크"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_21722v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "CIBuzzBench: 중국 인터넷 유행어의 교차 언어 이해를 위한 벤치마크", "description": "CIBuzzBench: 중국 인터넷 유행어의 교차 언어 이해를 위한 벤치마크", "datePublished": "2026-09-18", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_21722v1", "author": [{"@type": "Person", "name": "Yifan Wang"}, {"@type": "Person", "name": "Junyu Lu"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_21722v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_21722v1"});gtag('event', 'paper_view', {"paper_id": "2609_21722v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>CIBuzzBench: 중국 인터넷 유행어의 교차 언어 이해를 위한 벤치마크</h1><p>CIBuzzBench: 중국 인터넷 유행어의 교차 언어 이해를 위한 벤치마크</p><pre>CIBuzzBench: 중국 인터넷 유행어의 교차 언어 이해를 위한 벤치마크
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** CIBuzzBench: A Benchmark for Cross-Lingual Understanding of Chinese Internet Buzzwords
+&gt; - **저자:** Yifan Wang, Junyu Lu, Qifan Wang, Shun Zhang, Chaozhuo Li, Jiahao Liu, Zhijun Cao, Lingbin Bu, Fanliang Bu
+&gt; - **발행일:** 2026-09-18
+&gt; - **PDF 링크:** [CIBuzzBench: A Benchmark for Cross-Lingual Understanding of Chinese Internet Buzzwords](https://arxiv.org/pdf/2609.21722v1)
+
+
+✨ 3줄 핵심 요약
+*   중국 인터넷 유행어의 비문자적 의미와 문화적 맥락을 영어로 정확히 해석하고 이해하는 능력을 평가하는 최초의 벤치마크 &#x27;CIBuzzBench&#x27;를 구축함.
+*   3,001개의 유행어를 데이터셋으로 구성하여 의미 설명, 영어 대응어 선택, 유해성 탐지 등 3가지 과제를 수행함.
+*   최신 거대언어모델(LLM)들을 평가한 결과, 문화적 맥락이 짙은 유행어 해석 및 유해성 판별에서 여전히 상당한 한계를 보임.
+
+📖 쉽게 풀어쓴 1분 핵심
+중국 소셜 미디어의 인터넷 유행어는 직역하면 뜻이 통하지 않는 경우가 많습니다. &#x27;월하노인(Yue Lao)&#x27;처럼 특정 문화를 알아야 이해할 수 있거나, 은어와 동음이의어를 활용해 유해한 의도를 숨기는 경우도 흔합니다. 연구진은 이러한 복잡한 문화적 유행어를 AI가 영어로 얼마나 잘 이해하는지 측정하기 위해 3,001개의 데이터를 모아 CIBuzzBench를 만들었습니다. 실험 결과, 현재 최고의 성능을 자랑하는 모델들도 정교한 의미 파악이나 유해성 탐지에서 종종 오답을 내거나 겉핥기식 해석에 그치는 등 어려움을 겪고 있음이 밝혀졌습니다.
+
+🎯 배경 및 문제점
+*   **문화적 복잡성:** 중국 인터넷 유행어는 음운 유희, 약어, 대중문화 참조, 비유 등 비문자적 요소가 강해 원어민조차 이해하기 어려울 때가 있음.
+*   **교차 언어 전이의 한계:** LLM이 이러한 문화적 맥락을 다른 언어(영어)로 정확히 전달할 수 있는지에 대한 연구가 부족했음.
+*   **안전성 문제:** 유해한 표현들이 은유, 동음이의어, 코드화된 언어 등으로 포장되어 AI의 유해 콘텐츠 필터링을 회피할 위험이 있음.
+
+💡 핵심 기술 및 아키텍처
+*   **데이터셋 구축:** 3,001개의 중국 인터넷 유행어를 수집하고, 전문가 검토를 거쳐 영어 설명, 영어 대응어, 카테고리, 유해성 여부를 레이블링함.
+*   **3가지 평가 과제:**
+    1.  **의미 설명(Meaning Explanation):** 비문자적 의미를 자연스러운 영어로 설명하는 능력 평가.
+    2.  **대응어 선택(Equivalent Selection):** 문맥상 가장 적절한 영어 표현을 고르는 능력 평가(함정 보기 포함).
+    3.  **유해성 탐지(Harmfulness Detection):** 유행어에 담긴 공격성이나 비하 의도를 정확히 식별하는지 평가.
+*   **검증 방식:** 제로샷(Zero-shot) 및 퓨샷(Few-shot) 학습, LoRA 미세 조정을 통해 최신 상용 및 중국어 특화 모델들을 다각도로 테스트함.
+
+📊 실험 결과 분석
+*   **모델별 성능:** GPT-5.5, Claude Opus 4.8, Gemini 3.1 Pro 등을 포함한 최신 모델들이 평가 대상이었음.
+*   **공통적인 취약점:** 
+    *   문화적 맥락이 담긴 미세한 의미 차이를 구별하는 데 어려움을 겪음.
+    *   유해한 표현임을 알면서도 정작 유해성 탐지 과제에서는 &#x27;무해&#x27;로 잘못 분류하는 사례가 발견됨.
+    *   영어 프롬프트 사용 시보다 중국어 프롬프트 사용 시 모델이 표면적인 어휘 대응보다 실용적 의미를 파악하려 시도하나, 여전히 세부적인 뉘앙스 차이에서 오류가 발생함.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+*   **교차 언어 통신:** 서로 다른 언어 사용자 간의 문화적 장벽을 허물고, 온라인 담론을 더 정확하게 이해하는 데 기여할 수 있음.
+*   **안전한 AI 운영:** 은유적으로 표현된 온라인 혐오나 유해 콘텐츠를 AI가 더 정교하게 잡아낼 수 있도록 하는 안전 강화 지표로 활용 가능함.
+*   **한계 고지:** 연구진은 본 데이터셋의 유해성 레이블이 일반적인 온라인 사용례를 반영할 뿐이며, 상황별 판단을 대체하는 절대적 기준이 아니므로 추가적인 맥락 검토가 필요함을 명시함.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Can Large Language Models Understand Internet Buzzwords Through User-Generated Content](https://arxiv.org/html/2505.15071v1)
+&gt; - [A Research on the Translation Strategies of Chinese Internet Buzzwords Culture](https://webofproceedings.org/proceedings_series/ESSP/IEMETC+2024/C15.pdf)
+&gt; - [English Translation of China&#x27;s Internet Buzzwords from the ...](https://www.atlantis-press.com/article/125918873.pdf)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문은 흥미로우나, &#x27;문화적 맥락&#x27;을 단순히 3,001개의 정적 데이터셋으로 정량화하려는 시도가 얼마나 유효할지 의문이군요. 언어적 유희는 시시각각 변하는데, 이 벤치마크가 과연 6개월 뒤에도 유의미한 지표가 될까요? 데이터의 휘발성을 어떻게 방어할 것인지에 대한 통찰이 부족해 보입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 맞지만, 실무자 입장에선 당장 유해 콘텐츠 필터링이 골치입니다. 요즘 악성 유저들이 유행어를 코드처럼 써서 필터링을 다 우회하거든요. 모델이 뉘앙스를 이해 못 해서 &#x27;무해&#x27; 판정 내리는 거, 로그 볼 때마다 뒷목 잡습니다. 이 벤치마크가 RAG나 파인튜닝용 데이터셋으로라도 잘 정제되어 있다면, 당장 프로덕션에 적용해서 튜닝해볼 가치는 충분합니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 드디어 나올 게 나왔네요! 저도 얼마 전에 중국 밈(Meme) 해석하다가 모델이 &#x27;월하노인&#x27;을 그냥 직역해서 헛소리하는 거 보고 현타 왔었거든요. 근데 이 논문 보니까 GPT-5.5나 Claude Opus도 아직 &#x27;유해성 탐지&#x27;에서 삽질한다는 게 킬포네요ㅋㅋㅋ 역시 AI의 최종 관문은 결국 &#x27;문맥적 센스&#x27;인가 봅니다. 내일 세미나 때 이 벤치마크로 우리 모델 돌려봐야겠어요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
