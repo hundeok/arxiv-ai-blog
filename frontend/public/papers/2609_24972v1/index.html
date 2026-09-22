@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>RRSI: 에이전트 하네스의 정규화된 재귀적 자기 개선 | ArXiv Translator AI</title><meta name="description" content="RRSI: 에이전트 하네스의 정규화된 재귀적 자기 개선"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_24972v1"><meta property="og:type" content="article"><meta property="og:title" content="RRSI: 에이전트 하네스의 정규화된 재귀적 자기 개선"><meta property="og:description" content="RRSI: 에이전트 하네스의 정규화된 재귀적 자기 개선"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_24972v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="RRSI: 에이전트 하네스의 정규화된 재귀적 자기 개선"><meta name="twitter:description" content="RRSI: 에이전트 하네스의 정규화된 재귀적 자기 개선"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_24972v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "RRSI: 에이전트 하네스의 정규화된 재귀적 자기 개선", "description": "RRSI: 에이전트 하네스의 정규화된 재귀적 자기 개선", "datePublished": "2026-09-21", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_24972v1", "author": [{"@type": "Person", "name": "Peng Xia"}, {"@type": "Person", "name": "Rujun Han"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_24972v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_24972v1"});gtag('event', 'paper_view', {"paper_id": "2609_24972v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>RRSI: 에이전트 하네스의 정규화된 재귀적 자기 개선</h1><p>RRSI: 에이전트 하네스의 정규화된 재귀적 자기 개선</p><pre>RRSI: 에이전트 하네스의 정규화된 재귀적 자기 개선
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** RRSI: Regularized Recursive Self-Improvement of Agent Harnesses
+&gt; - **저자:** Peng Xia, Rujun Han, Zifeng Wang, Yanfei Chen, Yufan Zhang, Yoonho Lee, Chengsong Huang, Han Yu, Zhongying CuiZhu, Yifei Ming, Huaxiu Yao, Burak Gokturk, Tomas Pfister, Chen-Yu Lee
+&gt; - **발행일:** 2026-09-21
+&gt; - **PDF 링크:** [RRSI: Regularized Recursive Self-Improvement of Agent Harnesses](https://arxiv.org/pdf/2609.24972v1)
+
+
+✨ 3줄 핵심 요약
+*   **문제점:** LLM 에이전트의 하네스(프롬프트, 도구, 메모리 등)를 자동 개선하는 기존 방식은 특정 벤치마크에 과적합되어 실제 환경에서의 일반화 성능이 저하되는 문제가 있습니다.
+*   **핵심 솔루션:** &#x27;RRSI&#x27;는 개선 제안과 선택 과정에 정규화 원리를 도입하여, 불필요하거나 특정 작업에만 치중된 하네스 수정을 방지하고 재사용 가능한 메커니즘을 강화합니다.
+*   **성과:** 8개 벤치마크에서 우수한 성능 향상을 보였으며, 일반화 성능은 높이면서도 기존 방식 대비 추론 시 사용하는 정책 토큰을 30% 절감했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+LLM 에이전트는 두뇌에 해당하는 모델뿐만 아니라, 그를 둘러싼 프롬프트나 도구 사용 방식인 &#x27;하네스&#x27;의 역할이 매우 큽니다. 최근에는 AI가 스스로 자신의 하네스를 고쳐 성능을 높이는 &#x27;재귀적 자기 개선&#x27;이 시도되고 있는데, 자칫하면 특정 시험 문제만 잘 풀도록 암기(과적합)해버리는 부작용이 생깁니다. RRSI는 마치 운동선수가 특정 기술만 반복 연습하는 대신 전반적인 기초 체력을 기르도록 하는 &#x27;정규화(Regularization)&#x27; 기법을 도입했습니다. 이를 통해 AI는 더 영리하면서도, 불필요한 비용을 줄이고, 처음 보는 작업에서도 더 잘 작동하는 똑똑한 시스템으로 진화합니다.
+
+🎯 배경 및 문제점
+현대 LLM 에이전트는 단일 모델이 아닌 &#x27;시스템&#x27;으로 작동하며, 하네스(도구 인터페이스, 컨텍스트 관리 등)가 성능을 결정합니다. 기존에는 사람이 직접 하네스를 수정했으나, 최근에는 LLM이 스스로 성능 피드백을 받아 하네스를 반복 개선하는 자동화 기법이 등장했습니다. 하지만 이 과정에서 한정된 벤치마크 데이터만 반복 사용함에 따라, 시스템이 벤치마크의 정답이나 특정 로직을 암기하는 &#x27;적응적 과적합&#x27; 현상이 발생하여 실제 배포 환경에서의 성능이 떨어지는 문제가 지적되었습니다.
+
+💡 핵심 기술 및 아키텍처
+RRSI는 하네스 개선 과정에 정규화 원리를 적용한 세 가지 핵심 메커니즘을 사용합니다.
+1.  **제안 단계(Proposer):** 시간 경과에 따라 수정을 제한하는 &#x27;어닐링 예산(annealed budget)&#x27;을 적용하고, 이전 진화 이력을 고려하여 탐색되지 않은 새로운 경로를 우선적으로 제안합니다.
+2.  **비평 및 가지치기(Critic &amp; Pruner):** 벤치마크별 특화된 데이터가 포함된 제안은 미리 걸러내고, 기여도가 낮거나 비용이 과도한 변경 사항은 제거합니다.
+3.  **수용 단계(Selector):** 
+    *   **안정성 기반 수용:** 평가 노이즈를 고려한 기준을 설정하여 불필요한 하향 수정을 방지합니다.
+    *   **복잡성 기반 수용(Ridge 스타일):** 성능 향상 대비 비용 증가를 통제하여 무분별한 복잡도 증가를 억제합니다.
+    *   **구조적 가지치기(Lasso 스타일):** 실질적인 성능 향상 증거가 부족한 구성 요소는 삭제하여 구조를 간결하게 유지합니다.
+
+📊 실험 결과 분석
+코딩, 에이전트 워크스페이스, 공학 설계 등 8개 벤치마크를 대상으로 실험한 결과입니다.
+*   **성능 향상:** 진화가 진행된 벤치마크에서는 최대 14.1포인트, 학습에 사용되지 않은 5개 아웃-오브-분포(OOD) 벤치마크에서도 최대 4.7포인트의 성능 향상을 기록했습니다.
+*   **효율성:** 정규화를 적용하지 않은 기존 방식보다 30% 적은 정책 토큰을 사용하면서도 더 나은 성능을 보여, 하네스의 효율성과 재사용성이 개선되었음을 증명했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+RRSI는 인공지능이 스스로 자신의 구조를 개선할 때 발생할 수 있는 &#x27;좁은 시야(과적합)&#x27; 문제를 해결함으로써, 더욱 범용적이고 효율적인 AI 에이전트를 구축할 수 있는 토대를 마련했습니다. 특히 매번 새로운 모델이 출시될 때마다 인간이 하네스를 수동으로 최적화해야 하는 비효율적인 과정을 자동화하고, 한 번 구축된 하네스가 다양한 실제 업무 환경에서 안정적으로 작동하도록 돕습니다. 다만, 본 연구는 고정된 모델 백본을 전제로 하므로 향후 모델 파라미터가 실시간으로 업데이트되는 환경에서의 추가 검증이 필요합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2609.24972 RRSI: Regularized Recursive Self-Improvement of Agent Harnesses](https://arxiv.org/abs/2609.24972)
+&gt; - [RRSI: Regularized Recursive Self-Improvement of Agent Harnesses](https://arxiv.org/html/2609.24972)
+&gt; - [RRSI: Regularized Recursive Self-Improvement of Agent Harnesses (arXiv:2609.24972) | Papers with Code](https://paperswithcode.co/paper/2609.24972)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;Self-improvement의 고질적 문제인 &#x27;적응적 과적합&#x27;을 정규화 기법으로 해결하려 한 시도는 학술적으로 꽤 흥미롭군요. 특히 제안 단계에서 어닐링 예산을 도입해 탐색 경로를 제어한 것은, 통계적 안정성을 확보하려는 영리한 설계입니다. 다만, 이 &#x27;정규화&#x27;가 실제 복잡한 에이전트 환경에서 가설 공간(hypothesis space)을 얼마나 효과적으로 좁혀주는지, 이론적인 수렴 보장이 가능한지는 좀 더 뜯어봐야겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 맞는데, 현업 입장에선 &#x27;추론 토큰 30% 절감&#x27;이라는 수치가 더 눈에 띄네요. 에이전트 시스템에서 토큰은 곧 돈이거든요. 다만 Ridge/Lasso 스타일로 구조를 가지치기한다고 하셨는데, 이게 운영 환경에서 예기치 못한 엣지 케이스를 날려버릴 리스크는 없을까요? OOD 성능 향상이 4.7포인트라지만, 프로덕션에선 0.1%의 불안정성도 치명적이라 도입하기엔 아직 검증이 더 필요해 보입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;두 분 다 너무 진지하신 거 아닌가요? ㅋㅋㅋ 요즘 Agentic Workflow가 대세인데, 하네스를 사람이 직접 튜닝하는 시대는 이제 끝난 것 같습니다. RRSI로 자동화 루프 돌려놓고 성능 개선되는 거 보면 진짜 AI가 AI를 키우는 느낌이라 소름 돋아요. 교수님 말씀대로 이론적 검증도 중요하겠지만, 일단 내일 당장 제 실험 코드에 이 Lasso 스타일 pruning 로직부터 이식해 볼 생각입니다. 30% 절감이면 제 GPU 클라우드 비용도 좀 아끼겠는데요?&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
