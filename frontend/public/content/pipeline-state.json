@@ -38679,11 +38679,11 @@
     "2609_24446v1": {
       "id": "2609_24446v1",
       "filename": "post_2609_24446v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-09-22T02:52:37.232960+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-22T02:52:37.232962+00:00",
+      "updated_at": "2026-09-22T18:27:59.078425+00:00",
       "paper": {
         "title": "ActGov: Governing LLM Agent Actions via Policy-Constrained Validation",
         "summary": "Large language model (LLM) agents increasingly execute long-horizon workflows through external tools, allowing untrusted outputs to influence subsequent actions and exceed user authorization. Existing defenses isolate injected content or constrain execution with predefined plans and static policies, but these approaches are brittle under dynamic workflows and scale poorly across extensible tool ecosystems.   In this work, we present ActGov, a runtime enforcement framework that validates each LLM-proposed tool action before it causes external effects. Built on a unified semantic model of authorization, actions, runtime context, and security constraints, the ActGov-Policy component iteratively constructs a policy set from tool specifications, benign tasks, and observed failure traces, with each update verified through SMT-based counterexample checking. At runtime, ActGov-Runtime abstracts each tool call into finite policy records and permits it only if it remains within the task-scoped authorization boundary and satisfies all applicable policies. This per-action enforcement preserves authorization throughout long-horizon, dynamically branching workflows.   We evaluate ActGov on the AgentDojo and AgentDyn benchmarks across multiple models and attack configurations. It shows that ActGov consistently reduces the success rate of indirect prompt-injection attacks while preserving task utility, significantly outperforming existing defenses. These results demonstrate that ActGov can enforce fine-grained authorization over dynamic agent executions without relying on the underlying LLM to correctly identify malicious instructions.",
@@ -38696,7 +38696,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2609.24446v1"
       },
-      "priority_score": 40
+      "priority_score": 40,
+      "korean_title": "ActGov: 정책 제약 검증을 통한 LLM 에이전트 행동 거버넌스"
     },
     "2609_24444v1": {
       "id": "2609_24444v1",
@@ -39110,11 +39111,11 @@
     "2609_25001v1": {
       "id": "2609_25001v1",
       "filename": "post_2609_25001v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-09-22T08:09:29.923609+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-22T13:50:03.279519+00:00",
+      "updated_at": "2026-09-22T18:27:29.361826+00:00",
       "paper": {
         "title": "GameHorizon Suite: Multi-Horizon Data and Evaluation in Gameplay",
         "summary": "Modern video games provide a measurable testbed for AI models, combining abilities of visual understanding, instruction decomposition, goal planning, and precise action control over multiple temporal horizons. Existing datasets and benchmarks, however, either cover a narrow range of games, lack language instructions, or rely on high-variance online rollouts. To address these challenges, we introduce GameHorizon, a unified data and evaluation suite that measures gameplay capabilities at different horizons for diverse model families. GameHorizon Suite consists of three components. First, GameHorizon-Annotator is a scalable and automated annotation pipeline for multi-horizon instructions. Second, utilizing the pipeline, we construct GameHorizon-Data, the first large-scale AAA gameplay dataset with temporally aligned videos, player actions, and multi-horizon instructions. It comprises 5,000 hours of recordings from 21 games, collected by 100 human expert players. Third, we build GameHorizon-Bench with reproducible offline and stepwise online testing. The offline track enables reproducible evaluation using thousands of standardized questions organized into three primary tasks and a series of diagnostic variants, while the online track tests whether offline scores reflect actual gameplay capabilities and localizes failures to specific steps within long-horizon gameplay. Based on our GameHorizon Suite, we evaluate 47 models through more than one million model invocations, revealing a meaningful hierarchy of task difficulty and pronounced differences in model capabilities. Our work can provide a standardized yardstick for evaluating gameplay capabilities across horizons and model families. We will release our dataset, annotator, and benchmark to facilitate future research.",
@@ -39138,7 +39139,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2609.25001v1"
       },
-      "priority_score": 40
+      "priority_score": 40,
+      "korean_title": "게임 플레이에서의 다중 시간 지평 데이터 및 평가를 위한 GameHorizon Suite"
     },
     "2609_24984v1": {
       "id": "2609_24984v1",
@@ -39147,7 +39149,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-22T08:09:29.923628+00:00",
       "last_error": null,
-      "updated_at": "2026-09-22T13:50:03.279535+00:00",
+      "updated_at": "2026-09-22T18:27:18.484904+00:00",
       "paper": {
         "title": "WorldCrafter: Consistent Video World Model with Implicit 3D-aware Memory",
         "summary": "Video world models enable interactive exploration of dynamic environments, yet struggle to respect prior observations over long horizons and across viewpoints. We present WorldCrafter, a video world model that learns a camera-queryable implicit 3D-aware memory for this purpose. The key insight is to let the requested viewpoint shape how multi-view evidence is compressed into the video generator's limited token budget. Trained jointly with the video generator, a memory encoder and pose-conditioned readout module integrate historical observations into a fixed set of target view-specific tokens before denoising, without explicit depth-based correspondences. By combining this memory with recent temporal context and few-step distillation, WorldCrafter enables streaming scene exploration from a single input image or text prompt. Experiments across static and dynamic scenes show substantial gains in long-horizon consistency and camera-control accuracy while preserving visual quality during minute-scale exploration.",
@@ -39176,7 +39178,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-22T08:09:29.923635+00:00",
       "last_error": null,
-      "updated_at": "2026-09-22T13:50:03.279541+00:00",
+      "updated_at": "2026-09-22T18:27:18.484910+00:00",
       "paper": {
         "title": "DexTacWAM: A Visuo-Tactile World-Action Model for Dexterous Manipulation",
         "summary": "Dexterous manipulation depends on contact dynamics that are often only partially observable from vision. Recent World-Action Models (WAMs) couple predictive video world modeling with action generation, but remain largely vision-centric and therefore cannot directly model these contact dynamics. We present DexTacWAM, a visuo-tactile WAM that encodes each fingertip independently, aggregates the resulting features through a finger- and pose-aware tactile compressor, and injects the tactile latent into a video diffusion world model for joint visuo-tactile world modeling. Across six contact-rich dexterous manipulation tasks on a 22-DoF bimanual platform, DexTacWAM achieves the highest score on every task, averaging 70.6 versus 38.0 for the strongest baseline. Ablations attribute the gain to modeling contact evolution as part of the predicted world state rather than tactile conditioning alone: removing tactile world modeling reduces the four-task mean from 74.7 to 26.6 while keeping the same tactile features and action expert. After four hours of tactile-encoder adaptation with a frozen pretrained vision VAE, our continual vision-to-touch learning extends the pretrained video model to touch using roughly 100 demonstrations per task without tactile midtraining, while retaining visual prediction quality within 0.5 dB of vision-only counterparts. The compressor retains 89.4% of pre-fusion contact recall while enabling 2.26x faster training and 1.29x faster inference. Together, these results show that pretrained video priors can be extended to distributed multi-finger contact dynamics in a data- and compute-efficient manner.",
@@ -39197,11 +39199,11 @@
     "2609_24974v1": {
       "id": "2609_24974v1",
       "filename": "post_2609_24974v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-09-22T08:09:29.923642+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-22T13:50:03.279546+00:00",
+      "updated_at": "2026-09-22T18:27:39.607744+00:00",
       "paper": {
         "title": "Harness-Zero: Harness Distillation via Agent-as-Harness",
         "summary": "Agent harnesses, the external systems that mediate model-environment interaction, can substantially improve agent performance, but their gains remain tied to the harness at deployment. Because the best harness varies across domains, instances, and models, a general-purpose agent must either settle for a suboptimal shared harness or route among an ever-growing set of specialized ones. We therefore study agent harness distillation: using a domain- or instance-optimized harness as training-time guidance and transferring the behaviors it induces into model weights, so that its gains survive under a single fixed target harness. The challenge is that the two harnesses differ in action space and available information, so guidance from the optimized harness cannot serve directly as supervision for the target one. We introduce Harness-Zero, which enables harness distillation through agent-as-harness. Guided by the optimized harness, a harnessing agent corrects student responses before execution in the target harness's action space, turning harness guidance into training demonstrations. Fine-tuning on the resulting trajectories internalizes harness-induced behavior into the model, so the specialized harness can be removed at deployment. Our experiments spanning knowledge work, tool use, and science domains show that: (1) For frontier LLMs using the same evolved harness, agent-as-harness outperforms code-as-harness. (2) With the specialized harness removed at deployment, Harness-Zero improves the base model's macro-average task success from 23.3% to 44.3%, even exceeding the 41.7% it reaches with that harness still attached. (3) Harness-Zero recovers harness-induced behaviors absent from the base model, with 82.3% average recovery across 28 patterns in the three domains.",
@@ -39215,7 +39217,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2609.24974v1"
       },
-      "priority_score": 40
+      "priority_score": 40,
+      "korean_title": "하니스-제로: 에이전트-하니스 기반 하니스 증류"
     },
     "2609_24972v1": {
       "id": "2609_24972v1",
@@ -39224,7 +39227,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-22T13:50:03.279551+00:00",
+      "updated_at": "2026-09-22T18:27:18.484920+00:00",
       "paper": {
         "title": "RRSI: Regularized Recursive Self-Improvement of Agent Harnesses",
         "summary": "An LLM agent's capability is largely magnified by its harness, namely the prompts, control flow, tooling, memory, and context management surrounding the frozen backbone model. Recent methods increasingly automate this process by iteratively proposing and selecting component-wise edits of an agent harness, practically establishing a form of recursive self-improvement (RSI) at the agent-system level. However, such recursive evolution may overfit by memorizing the training tasks, showing large in-distribution gains that shrink or even vanish on out-of-distribution benchmarks. We introduce Regularized Recursive Self-Improvement of Agent Harnesses (RRSI), which incorporates the principles of regularizations into harness self-improvement by constraining the evolution candidate proposal and selection. The proposer operates with a temporally annealed budget, limiting how many edits a candidate can bundle, and it encourages unexplored trajectories based on evolution history. The selector is equipped with a critic and a pruner: the critic screens benchmark-specific proposals, while the pruner, removes changes that are too small, too expensive, or no longer useful. Together these constraints favor reusable agent mechanisms over benchmark-specific ones or even noises. Across eight benchmarks spanning coding, agentic workspace and engineering design tasks, RRSI gains up to 14.1 points on the split it evolves against and up to 4.7 points on the five out-of-distribution benchmarks, while producing a harness that runs on 30% fewer policy tokens than the unregularized evolution. Code is available at https://github.com/google-research/rrsi and project page is https://regularized-rsi.com/.",
@@ -39257,7 +39260,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-22T13:50:03.279555+00:00",
+      "updated_at": "2026-09-22T18:27:18.484924+00:00",
       "paper": {
         "title": "DolphinBench: Mapping the Pareto Frontier of Agent Memory",
         "summary": "Agents today often take real-world actions that depend on long-term memory and context recall over time. However, most current memory benchmarks are built for a conversational question-answer format, where the question itself signals that some fact must be retrieved, and often which one. Moreover, benchmarks rarely require anything beyond accuracy from submissions, allowing memory systems to make unreasonable cost/time tradeoffs to achieve higher scores.   We present DolphinBench, a benchmark that evaluates memory directly through an agent's task completion. DolphinBench includes three knowledge-work personas with roughly 500k tokens of user messages per persona and evaluates agents on tasks that depend on information from that history. We verify all 200 tasks per persona by running an agent with and without the relevant history, requiring success with it and failure without it.   Finally, we require all evaluations to report total cost and latency alongside accuracy, which enables us to evaluate agent memory systems holistically. No existing memory benchmark combines all three. The dataset and evaluation code are available at https://dolphinbench.ai.",
@@ -39279,7 +39282,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-22T08:09:29.923662+00:00",
       "last_error": null,
-      "updated_at": "2026-09-22T13:50:03.279558+00:00",
+      "updated_at": "2026-09-22T18:27:18.484928+00:00",
       "paper": {
         "title": "Rare Event Estimation via Iterative Unalignment",
         "summary": "As agents are deployed with increased autonomy, even extremely rare events along their stochastic output trajectories can occur and prove catastrophic. Safe deployment therefore does not depend on whether these events can occur, but on how often they might. We study the problem of estimating the probability of rare events that arise from stochastic variation in the agent's own actions. Estimating this type of risk requires searching over the combinatorially vast space of trajectories. Naive Monte Carlo is computationally prohibitive in this regime, and constructing effective importance sampling (IS) proposals requires coordinated changes to a context-dependent chain of conditional distributions. We develop a new IS method that perturbs the original model's weights to construct the proposal. The proposal is itself a differentiably parameterized language model, enabling gradient-based search over weight space. We formulate an objective that combines a differentiable surrogate for event amplification and an adaptive regularization scheme that dynamically balances amplification against estimator stability. We evaluate our approach on $\\sim$120M and $\\sim$2.6B models across three event families spanning 300+ rare events as rare as $10^{-9}$, with reference probabilities computed with $<10\\%$ relative standard error. In our most verifiable settings, we observe that our IS estimator achieves over $800\\times$ compute-weighted efficiency gains over naive Monte Carlo for events with probabilities lower than $10^{-7}$. Our implementation is available at https://github.com/namkoong-lab/iterative-unalignment.",
@@ -39301,7 +39304,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-22T08:09:29.923668+00:00",
       "last_error": null,
-      "updated_at": "2026-09-22T13:50:03.279562+00:00",
+      "updated_at": "2026-09-22T18:27:18.484932+00:00",
       "paper": {
         "title": "Emergent Collusion in Long-Horizon LLM Agent Interaction",
         "summary": "LLM agents are increasingly deployed in collaborative settings, yet long-term interaction may give rise to undesirable coordination. We study the emergence of collusion in a long-horizon multi-agent environment: two agents repeatedly complete individual tasks, share task logs, verify each other's work, and receive rewards. We introduce realistic constraints that make compliance with the verification protocol incompatible with reward maximization, and find that agents increasingly deviate from the protocol over repeated interactions. Collusion emerges in 94% of trajectories across 10 models, and more capable models within the same family reach it earlier. Controlled peer interventions show that collusion is shaped by peer behavior, while ablations reveal additional effects of reward structure, the verification feedback agents receive, and their interaction history. In particular, restricting the amount and scope of interaction history available to agents reduces collusion. Overall, our findings show that long-horizon interaction can reshape how agents coordinate in ways that create safety risks.",
@@ -39322,7 +39325,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-22T08:09:29.923675+00:00",
       "last_error": null,
-      "updated_at": "2026-09-22T13:50:03.279566+00:00",
+      "updated_at": "2026-09-22T18:27:18.484936+00:00",
       "paper": {
         "title": "Jev for Scientific Decisions: Evaluating Semantic Choices and Their Consequences",
         "summary": "Scientific workflows often require choosing among known relations before a deterministic calculation can proceed. Whether observations share a culture, treatment or reference standard can change the scientific meaning of the resulting count or comparison. We evaluate Jev as a semantic decision component using a harness that follows its documented guidance and assigns arithmetic to code. The study compares twelve model configurations on twenty source-grounded Choices across ten scientific cases, each repeated five times. We measure semantic selections, downstream outputs and final claim labels separately. Jev matched five other configurations at complete semantic correctness and achieved the lowest observed median latency among successful responses. Across three comparison models, seven wrong selections on one culture-history question changed downstream counts while preserving the correct final label. These results identify a useful role for Jev in prepared scientific decision tasks and show why evaluating that role requires checking the relations and quantities that a workflow will reuse.",
@@ -39344,7 +39347,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-22T08:09:29.923681+00:00",
       "last_error": null,
-      "updated_at": "2026-09-22T13:50:03.279569+00:00",
+      "updated_at": "2026-09-22T18:27:18.484940+00:00",
       "paper": {
         "title": "Generative Tutorial: Towards Live Contextualized Visual Instructions for Physical Tasks",
         "summary": "Visual instructions for physical tasks are typically authored in one context and followed in another, requiring users to translate demonstrated tools, materials, and spatial relationships into their own environment. We introduce Generative Tutorial, a conceptual framework for live visual instruction that depicts intended outcomes and actions within the user's environment and task flow. A formative evaluation of state-of-the-art image and video generation identifies failures and potential benefits across 15 physical tasks. Drawing on these findings, we build an augmented-reality prototype system that proactively generates goal images and demonstration videos using observed workspace context and predicted visual outcomes of preceding actions. A 24-participant lab study found higher task performance quality, greater perceived workspace correspondence, and shorter step-confirmation intervals with the system than with pre-authored guidance. Qualitative findings highlighted how contextual resemblance shapes trust, how generation errors affect interpretation, and how guidance delivery should adapt to users' needs, informing future designs.",
@@ -39366,7 +39369,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-22T08:09:29.923687+00:00",
       "last_error": null,
-      "updated_at": "2026-09-22T13:50:03.279573+00:00",
+      "updated_at": "2026-09-22T18:27:18.484944+00:00",
       "paper": {
         "title": "Exactness at Inference: A Representational Criterion for Out-of-Distribution Generalization",
         "summary": "A model generalizes outside its training distribution only when it computes a representation structurally equivalent to the generating mechanism, not an approximation fitted to it. Such equivalence is necessary for exactness in and out of distribution, and extrapolation is governed by this exactness at inference, whatever its realization. Tensor Logic shows this: a zero-temperature contraction is equivalent to discrete logic, deducing in place with no artefact extracted, its tensors Boolean, its embeddings orthonormal, only its arithmetic continuous. Lacking infinite recursion it reaches Datalog, not Prolog, and though exact over closed domains it needs external memory to bind a novel entity. The criterion needs neither a discrete representation nor an extracted expression, and constrains inference, not training: an exact marginal in $[0,1]$ passes, a Neural Network thresholded to a hard label does not. Logic Tensor Networks fail it, while differentiable ILP and Tensor Logic at $T=0$ pass. Piecewise-affine extrapolation divergence and an inability to bind novel entities are two faces of a shortfall in exact representability. For hybrid architectures, a propagation rule follows: the output inherits the bounds of every fitted estimator on its path, explaining which axes fail in equivariant models and the ARC-AGI induction/transduction split. Only an exact hypothesis class certifies what the training data leave underdetermined: on a law-derived partition it finds the $56.3\\%$ of distant queries that are answerable, which ensembles meet with false confidence and distance metrics rank backwards. Common inductive biases, from symmetries to memory, reach exactness only because humans inject them, an argument for inducing exact representations rather than fitting surrogates whose residuals, even at the arithmetic floor in training, diverge outside the data and compound under composition.",
@@ -39388,7 +39391,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-22T08:09:29.923694+00:00",
       "last_error": null,
-      "updated_at": "2026-09-22T13:50:03.279577+00:00",
+      "updated_at": "2026-09-22T18:27:18.484948+00:00",
       "paper": {
         "title": "Et Tu, Brute? Economic Misalignment in Personal AI Agents",
         "summary": "Personal AI agents make recommendations and take actions on people's behalf in high-stakes economic contexts, e.g., buying a flight, choosing health insurance, or selecting a graduate program. The agent is given access to the user's personal context, e.g., their email inbox and a structured profile of personal attributes, with the intention of making an optimal, personalized decision for the user. We show that by simply providing this personal context, the agent steers recommendations based on inferred wealth, without being explicitly instructed to do so. In a suite of 325K experiments on 13 agents across three types of economic decisions (flights, health insurance, and graduate programs), we find that 8 models systematically choose more expensive options for wealthier users when requests are identical. This steering continues even when it directly goes against the user's stated objective: when explicitly instructed to find the cheapest option, some agents still act on the wealth profile they have inferred. It also occurs when wealth is inferred from ambient data, such as emails unrelated to the task. And it persists under privacy controls that block specific attributes: blocking financial attributes largely removes the disparity, but blocking other attributes leaves it unchanged and can increase it by up to 40% for insurance, as agents rely on the remaining signals to infer wealth. Larger and more capable models are no better; Claude Opus 4.8 shows the largest effect. We term this misalignment \"adversarial delegation\", in which the very conditions that make a personal AI agent useful - access to personal information - enable it to act against the user's interests.",
@@ -39410,7 +39413,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-22T13:50:32.789758+00:00",
+      "updated_at": "2026-09-22T18:27:18.484953+00:00",
       "paper": {
         "title": "BackTrend: Evaluating Scientific Weak-Signal Prediction via Backward Reconstruction",
         "summary": "Scientific weak signals are early, low-visibility research directions that later become central to mature scientific topics, yet existing resources such as trend tracking, citation forecasting, and foresight reports rarely provide validated reference sets that link concrete early precursors to later paradigms. We introduce BackTrend, a retrospective benchmark in which, given a mature target topic and a temporal evidence constraint, systems must recover two types of precursors: problem-space signals, underrecognized research problems, and solution-space signals, emerging methods for known problems. BackTrend contains 25 mature target topics in artificial intelligence and machine learning and 66 human-validated weak signals, reconstructed from large-scale literature by grounding each candidate in its 2019-2024 publication-frequency trajectory. We evaluate frontier LLMs, RAG systems, and agentic research systems using semantic matching and coverage-based metrics. Current systems often generate plausible but misaligned precursors, exhibiting topic drift, granularity mismatch, near-miss matching, and incomplete coverage; the strongest system achieves only 10.1% F1, while Coverage10 reaches at most 18.5% of the reference signals. Our budget analyses show that additional retrieval and web-search evidence can improve performance up to a moderate budget, but does not by itself close the substantial performance gap.",
@@ -39436,7 +39439,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-22T08:09:29.923706+00:00",
       "last_error": null,
-      "updated_at": "2026-09-22T13:50:03.279584+00:00",
+      "updated_at": "2026-09-22T18:27:18.484956+00:00",
       "paper": {
         "title": "Visuomotor Robotic Pruning in Planar Orchards Using Hybrid Reinforcement Learning",
         "summary": "Dormant tree pruning is labor-intensive yet essential for maintaining modern high-productivity fruit orchards. In this work, we focus on pruning of modern planar tree training systems - V-Trellis apples and UFO cherries - where trunks and primary branches are trained into approximately planar walls. We introduce an end-to-end pipeline to learn a closed-loop visuomotor controller for robotic pruning. This controller is trained entirely using simulation and synthetically generated data and deployed in real orchards in a zero-shot manner. The pipeline comprises synthetic generation of planar orchard tree meshes, construction of a physics-based orchard simulator, automated collection of successful pruning trajectories via motion planning, and policy learning with a novel hybrid reinforcement-learning algorithm that combines offline demonstrations with online simulated rollouts. The controller uses optical-flow inputs from a wrist-mounted camera - avoiding the need for full 3D-reconstruction - and continuously guides the cutter through cluttered branch environments to a specified cutpoint with correct tool orientation. In exhaustive simulated task-space evaluations over 3,000 pruning points, the policy attains 49.9% success on V-Trellis apples and 46.0% on UFO cherries. We validate the learned controller across 38 physical trials - comprising 28 outdoor field trials in commercial and experimental orchards and 10 indoor laboratory tests - demonstrating zero-shot sim-to-real transfer. The learned policy also outperforms a classical RRT-Connect baseline on physical hardware in laboratory trials.",
@@ -39457,7 +39460,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-22T08:09:29.923712+00:00",
       "last_error": null,
-      "updated_at": "2026-09-22T13:50:03.279588+00:00",
+      "updated_at": "2026-09-22T18:27:18.484960+00:00",
       "paper": {
         "title": "OSWorld-Pro: Process-based Evaluation for Computer Use Agents",
         "summary": "Evaluation of Computer-Use Agents (CUAs) is often limited to the final deliverables they create (at the end of hundreds of steps) and assessed with functional verifiers, as seen in OSWorld. However, such evaluation of end-state performance lacks transparency into how and why agents fail in various tasks, obfuscating critical insight for subsequent improvement. For instance, agents that err during keyboard inputs would require a different mitigation strategy from those that fail to precisely provide click-based inputs on the graphical UI. We introduce OSWorld-Pro: a set of over 300 tasks containing over 2800 subgoals to enable the procedural evaluation of CUAs grounded in over 67,000 human annotations. We use robust human-aligned LLM-Judges to evaluate the fulfillment of OSWorld-Pro subgoals and thereby reveal the progress that models make throughout a series of sequentially dependent subgoals. Our findings reveal that OSWorld-Pro is challenging even for state-of-the-art LLMs, with top performers like Claude Opus 5 achieving only 75.7% vs. 83.4% on OSWorld. Furthermore, we identify critical process-focused failure modes of various models (e.g. subgoal-irrelevant actions and click-based mistakes) to provide insights to improve performance and efficiency of CUAs.",
@@ -39487,7 +39490,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-22T08:09:29.923718+00:00",
       "last_error": null,
-      "updated_at": "2026-09-22T13:50:03.279591+00:00",
+      "updated_at": "2026-09-22T18:27:18.484965+00:00",
       "paper": {
         "title": "A Global Comparison of Schemas, Transparency, and Interoperability in Public-Sector AI Registers and Inventories",
         "summary": "Artificial intelligence (AI) registers and inventories aim to make governmental AI visible, but their institutional scope, schemas, and reporting practices construct different representations of public-sector AI. We compare 8,368 records from country-specific and transnational inventories covering 72 countries. Across 23 harmonized fields, registers shared a descriptive core but rarely requested information about appeals, risks, legal bases, or external evaluation. We found that broad schemas often contained substantial missingness, schema similarity showed no significant patterned convergence, and multiple sources covering the same jurisdictions overlapped only selectively. Based on these findings, we synthesize a layered visibility framework that shows how register records reflect disclosure arrangements and why interoperability requires shared concepts, clear definitions, and preserved provenance.",
@@ -39507,7 +39510,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-22T08:09:29.923749+00:00",
       "last_error": null,
-      "updated_at": "2026-09-22T13:50:03.279595+00:00",
+      "updated_at": "2026-09-22T18:27:18.484969+00:00",
       "paper": {
         "title": "Pinocchio: Fast Uncertainty Estimates for Black-Box Language Models",
         "summary": "In high-stakes decision-making applications of large language models (LLMs), practitioners require not only accurate LLMs but also uncertainty estimates for their predictions. Existing approaches to uncertainty estimation for LLMs require access to log-probabilities output by the model or require fine-tuning access. However, many industrial LLM products use closed-source API models, and many such API models like GPT do not return log-probabilities and may not allow fine-tuning. We introduce Pinocchio, an external calibrator that estimates the correctness of responses from black-box API models. Trained jointly on responses from seven LLMs, it achieves 0.862 AUROC predicting the correctness of held-out responses from those same models, and shows zero-shot transfer to thirteen unseen models across eight organizations. Our model needs only a single forward pass to generate an uncertainty estimate and requires no access to the target model's logits, weights, or internal states. A lightweight text only 0.8B checkpoint matches our largest model's AUROC. We release code for adding uncertainty estimation to existing repos in only two additional lines of code.",
@@ -39530,7 +39533,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-22T08:09:29.923760+00:00",
       "last_error": null,
-      "updated_at": "2026-09-22T13:50:03.279599+00:00",
+      "updated_at": "2026-09-22T18:27:18.484973+00:00",
       "paper": {
         "title": "Partner-Specific Affective Precision in Social Active Inference",
         "summary": "In multi-agent social settings, model reliability varies across relationships. Beyond inferring what others will do, an agent must calibrate how confidently those inferences should guide policy selection for each relationship. An agent may maintain a well-validated model of one partner, a fragile model of another, and a model under revision for a third; collapsing these into a single confidence estimate loses information relevant to policy selection. We therefore formalize affective precision as a relationship-specific metacognitive estimate of confidence in the current partner model. Each partner's behavioral evidence updates a local confidence estimate that modulates policy precision during selection, regulating how strongly current beliefs are expressed in policy rather than changing the content of those beliefs. Simulations in a multi-partner graded trust game show that partner-local affective precision influences behavior primarily through policy commitment rather than direct improvement of partner-state inference. Because the mechanism tracks partner-response predictability rather than realized payoff, greater confidence produces sharper policy commitment without necessarily producing higher rewards. Under abrupt shifts in social behavior, confidence accumulated from previously reliable predictions can remain behaviorally active after the relationship changes, showing that confidence revision can lag behind social change. Finally, varying precision gain and priors produce distinct trust-calibration dynamics, showing how confidence accumulation and revision depend on model parameters. Together, these results show how relationship-specific affective precision can distinguish social prediction from social policy commitment.",
@@ -39550,7 +39553,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-22T08:09:29.923775+00:00",
       "last_error": null,
-      "updated_at": "2026-09-22T13:50:03.279603+00:00",
+      "updated_at": "2026-09-22T18:27:18.484976+00:00",
       "paper": {
         "title": "SE(3) Neural Potential Fields for 6-DoF Trajectory Planning Directly from Images Without Explicit 3D Reconstruction",
         "summary": "Reaching a 6-DoF grasp pose in clutter requires a collision-free trajectory, conventionally obtained by reconstructing the scene in 3D and planning inside that reconstruction, at the cost of its accuracy and compute. Potential fields learned directly from images remove that dependency but inherit the classical weakness of artificial potential fields: where attractive and repulsive gradients cancel, the descent grazes the obstacle instead of going around it, and can stall short of the goal. We present an SE(3) neural potential field learned from posed RGB images and supervised with a navigation function, the geodesic distance to the grasp through free space recovered from those same images during training, which removes both failures. On two tabletop scenes, from obstacle-blocked starts executed on a UR10, the field converges within 3 cm of the grasp from every start and every path it executes is collision-free against the ground-truth geometry, against 25% and 0% under image supervision alone; mean clearance rises from under a centimeter to 8.6-8.8 cm and arm-link contacts fall from 20.6-50.4% to 2.7-5.5% of executed configurations. Executed grasp success is 90.0% and 40.0% on the two scenes, the residual failures being refusals of the Cartesian executor rather than of the field. Planning takes about 2 s against 67-133 s for RRT* on a reconstruction of the same images, though under a common offline harness the two are comparable: the deployed margin is the cost of collision-checking a dense reconstruction, not planner complexity.",
@@ -39572,7 +39575,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-22T13:50:12.487166+00:00",
+      "updated_at": "2026-09-22T18:27:18.484980+00:00",
       "paper": {
         "title": "When Tomorrow Becomes Today: Self-Evolving Policies for Agentic Time-Series Forecasting",
         "summary": "Agentic time series forecasting concerns systems whose underlying mechanisms evolve, making the relative effectiveness of numerical models, reasoning strategies, and intervention rules inherently time-varying. Consequently, a time series agent must adapt the forecasts it produces and the orchestration policy that determines which components to trust and how to coordinate them. The deployment process naturally provides supervision for this adaptation as forecast horizons elapse and realized targets reveal the effectiveness of earlier decisions. Committing all numerical expert forecasts and candidate agent paths before target observation allows each realized outcome to evaluate the entire alternative set, providing delayed feedback without additional annotation. However, existing time series agents primarily incorporate prior experience through forecast refinement, reflection, or retrieval, without systematically converting realized outcomes into persistent updates to the joint orchestration policy governing later origins. To exploit this delayed feedback systematically, we introduce TimEvolve, a frozen-backbone time series agent that converts each realized outcome into persistent joint updates of expert trust, agent path selection, and intervention strength. A temporally ordered predict, reveal, and update protocol applies this feedback to subsequent forecasts. Experiments across eight Time-MMD domains show that TimEvolve achieves the best average MSE and MAE ranks among fifteen methods and the lowest errors on both metrics in seven domains. These results demonstrate the value of learning forecasting policies from the futures encountered during deployment.",
@@ -39594,11 +39597,11 @@
     "2609_24859v1": {
       "id": "2609_24859v1",
       "filename": "post_2609_24859v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-09-22T08:09:29.923788+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-22T13:50:03.279611+00:00",
+      "updated_at": "2026-09-22T18:27:49.435801+00:00",
       "paper": {
         "title": "Small-world Networks of Agents Brainstorm AI Risks to Support Ideation",
         "summary": "The ideation phase of participatory AI risk assessment often starts with a blank slate or a limited list of predefined risks, making it difficult to surface indirect or systemic harms. To address this limitation, we propose a three-stage ideation support tool. The tool complements participatory AI, rather than replacing it, and helps focus later engagement with affected communities. First, it dynamically discovers stakeholders depending on the given AI use and recursively expanding outward, allowing overlooked or indirect stakeholders to emerge. Second, it simulates these stakeholders with LLMs, connecting them into a network of a given topology, and having them ideate about risks. Third, it prioritizes risks using network centrality measures. In an initial evaluation, we found that betweenness centrality run through agents connected in a small-world network works best as it elevates risks raised by stakeholders who bridge disconnected groups, surfacing novel, systemic harms that traditional methods often miss. On an AI chatbot companion use case, this approach increased the novelty of the identified risks by approximately 1.1 points over single LLM brainstorming, and by 0.5 points over agentic LLM brainstorming, measured on a normalized five-point Likert scale, without reducing the plausibility or severity of the identified risks. To test whether our framework helps a human-led ideation session using the Futures Wheel approach, we divided 11 teams of non-western young chatbot users into two types: control (team) and treatment (team) in a participatory AI risk assessment. The control teams started from a list of risks generated by the 45 AI practitioners in the initial evaluation; the treatment teams started from a list generated by our framework. The treatment teams identified more risks overall, and more systemic, human-computer interaction, and environmental risks.",
@@ -39610,7 +39613,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2609.24859v1"
       },
-      "priority_score": 40
+      "priority_score": 40,
+      "korean_title": "에이전트의 소규모 세계 네트워크를 활용한 AI 위험 요소 브레인스토밍 지원"
     },
     "2609_24855v1": {
       "id": "2609_24855v1",
@@ -39619,7 +39623,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-22T08:09:29.923795+00:00",
       "last_error": null,
-      "updated_at": "2026-09-22T13:50:03.279614+00:00",
+      "updated_at": "2026-09-22T18:27:18.484988+00:00",
       "paper": {
         "title": "Extracting Arguments, Not Just Classifying Them: Instruction-Tuned LLMs for Generative Component Detection",
         "summary": "Argumentative component detection (ACD) is a core subtask of Argument(ation) Mining (AM) and one of its most challenging aspects, as it requires jointly delimiting argumentative spans and classifying them into components such as claims and premises. While research on this subtask remains relatively limited compared to other AM tasks, most existing approaches formulate it as a simplified sequence labeling problem, component classification, or a pipeline of component segmentation followed by classification. In this paper, we propose ITFACD, a novel approach based on instruction-tuned Large Language Models (LLMs) using compact instruction-based prompts, and reframe ACD as a language generation task, enabling arguments to be identified directly from plain text without relying on pre-segmented components. Experiments on standard benchmarks show that our approach achieves higher performance compared to state-of-the-art systems. To the best of our knowledge, this is one of the first attempts to fully model ACD as a generative task, highlighting the potential of instruction tuning for complex AM problems. Our code and the datasets used are openly available in the following GitHub repository.",
@@ -39641,7 +39645,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-22T08:09:29.923802+00:00",
       "last_error": null,
-      "updated_at": "2026-09-22T13:50:03.279618+00:00",
+      "updated_at": "2026-09-22T18:27:18.484992+00:00",
       "paper": {
         "title": "SPECTRA: Adaptive Execution of Speculative Decoding on a Runtime-Reconfigurable Tiled Architecture",
         "summary": "LLM inference on edge devices is constrained by computational and memory resources, making efficient autoregressive decoding challenging. Speculative decoding alleviates this bottleneck by generating tokens with a smaller draft model and verifying multiple tokens in parallel with a batched target model pass. However, verification introduces a runtime-dependent intermediate regime between memory-bound general matrix-vector (GEMV) operations in decoding and compute-bound general matrix-matrix (GEMM) operations in prefill, as its arithmetic intensity varies with speculation length and acceptance rate. We present SPECTRA, a runtime-reconfigurable tiled architecture that sustains high utilization across the full speculative decoding pipeline. Within each tile, the compute engine switches between systolic execution for GEMMs and vector-lane execution for GEMVs. Across tiles, SPECTRA dynamically adapts computation parallelism by selecting tile count, kernel partitioning, and communication pattern. Both tile-level and system-level reconfiguration operate on a per-kernel basis, enabling efficient execution across these diverse regimes. Evaluated on a 20-tile FPGA prototype across the Pythia, SmolLM2, and GPT-2 families, SPECTRA achieves up to $2.09\\times$ speedup from tile-level reconfiguration and a further $1.25\\times$ gain from system-level adaptability over fixed designs.",
@@ -39667,7 +39671,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-22T13:50:03.279621+00:00",
+      "updated_at": "2026-09-22T18:27:18.484996+00:00",
       "paper": {
         "title": "MedRSI: Recursive Self-Improvement for Medical Agents via Clinically Aligned Self-Evolution",
         "summary": "Medical agents increasingly combine general reasoning models with specialized clinical tools, yet their capabilities remain largely fixed by what clinicians and engineers design before deployment. Recursive self-improvement (RSI) offers a different paradigm in which agents learn from their own failures and autonomously expand their capabilities, but directly applying RSI to medicine introduces fundamental safety challenges. We introduce MedRSI, the first recursive self-improvement framework for medicine, which continuously transforms diagnostic failures into new clinical capabilities through tool composition and task-specific model training. Inspired by clinical practice, MedRSI introduces two mechanisms for clinically aligned self-evolution. Clinical-cost-aware failure prioritization directs improvement toward errors according to their potential clinical consequences rather than frequency alone. Fast discovery with slow registration separates rapid capability invention from conservative adoption, allowing new tools to enter the persistent agent only after demonstrating sustained benefit across subsequent patient cohorts. Across public glaucoma and heart disease benchmarks and two private clinical tasks, MedRSI progressively develops segmentation, measurement, prediction, multimodal reasoning, and generative capabilities, surpasses manually engineered medical agents, and autonomously discovers solutions to clinical problems not anticipated by its original designers. Our results show that medical agents need not remain constrained by capabilities specified before deployment: with clinically grounded mechanisms governing what to improve and what to retain, they can continuously construct, validate, and accumulate new capabilities from diagnostic experience. Code is available at https://github.com/ImprintLab/MedRSI.",
@@ -39691,7 +39695,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-22T13:50:03.279625+00:00",
+      "updated_at": "2026-09-22T18:27:18.484999+00:00",
       "paper": {
         "title": "GRUET: Quantifying Uncertainty of Agentic Reasoning-and-Acting Processes",
         "summary": "Agents have attracted considerably increasing attention due to the power of executing both Reasoning and Acting (ReAct) in open and dynamic environments. The ReAct process typically exhibits a multi-turn trajectory in which one drives Large Language Models (LLMs) to generate both reasoning chains and task-specific actions in an interleaved manner. However, agents often suffer from significant uncertainty, where identical tasks yield divergent trajectories; trajectories with higher uncertainty often produce incomprehensible behaviors, severely undermining agent credibility. This work conjectures that such trajectory-level uncertainty frequently stems from cumulative turn-level reasoning uncertainty induced by LLMs; the latter often exhibits a collection of branches of divergent reasoning chains and their resulting actions. Built upon this, we present the Graph-based Reasoning UncErtainty in Trajectories (GRUET) method for the uncertainty quantification of ReAct, comprising turn-level reasoning uncertainty quantification and trajectory-level uncertainty aggregation; the former precisely quantifies reasoning uncertainty via modeling the reasoning space spanned by potential reasoning branches as a graph and then approximating the reasoning space complexity with graph complexity, while the latter employs simple aggregation strategies for quantifying the overall trajectory credibility. Empirical evaluations across nine LLMs and five benchmarks validate the effectiveness of our proposed GRUET in terms of selective generation performance, measured by AUROC, AUPRC, and AUARC.",
@@ -39713,7 +39717,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-22T08:09:29.923820+00:00",
       "last_error": null,
-      "updated_at": "2026-09-22T13:50:03.279629+00:00",
+      "updated_at": "2026-09-22T18:27:18.485003+00:00",
       "paper": {
         "title": "Uranus: Building the Next-Generation Simulation Infrastructure for Embodied AI",
         "summary": "Scalable simulation is essential for robot data generation, policy training, evaluation, and safe iteration, yet real-world interaction is costly and conventional simulators require labor-intensive construction. We present Uranus, a data-driven robot simulator built around a joint-trajectory-conditioned autoregressive diffusion model. Uranus offers three key capabilities: (1) streaming, open-ended rollout, which receives future joint-position trajectories online and autoregressively generates one latent frame per step, corresponding to four RGB frames, without a fixed horizon; (2) low-latency generation, achieving 24 FPS after inference optimization; and (3) scalable, extensible robot control, providing a unified interface for synchronized multi-view generation across diverse robot embodiments and camera configurations. We conduct comprehensive quantitative and qualitative evaluations on both in-distribution and out-of-distribution data, providing an objective assessment of Uranus and clearly identifying its current limitations. We release the code and model weights to empower the community with practical tools and insights.",
@@ -39739,7 +39743,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-22T08:09:29.923826+00:00",
       "last_error": null,
-      "updated_at": "2026-09-22T13:50:03.279634+00:00",
+      "updated_at": "2026-09-22T18:27:18.485008+00:00",
       "paper": {
         "title": "Mobile Imaging Solutions for Medical Diagnosis: Trends and Applications",
         "summary": "Advances in processing power, camera technologies, and mobile image analysis have made smartphones and other mobile devices, such as laptops, increasingly suitable for medical diagnosis and healthcare applications. Researchers have developed low-cost solutions for the early detection and monitoring of various health conditions, including eye and ENT diseases, malnutrition, heart rate variability, skin and oral conditions, and injuries, using images captured by non-medical devices such as smartphones and webcams. This survey examines existing research on mobile image-based medical diagnosis, with an emphasis on its potential to enable low-cost and accessible healthcare. We comparatively analyze state-of-the-art solutions across different healthcare application categories, examining their advantages and limitations. Based on this analysis, we identify desirable characteristics of mobile image-based diagnostic tools and highlight areas where existing approaches have made progress as well as areas requiring further research. We also discuss application-specific and common challenges and outline directions for future research. Overall, this study provides a comprehensive overview of mobile image-based healthcare solutions and their potential to support low-cost disease diagnosis and monitoring, particularly for underserved populations in remote and resource-constrained settings.",
@@ -39767,7 +39771,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-22T08:09:29.923837+00:00",
       "last_error": null,
-      "updated_at": "2026-09-22T13:50:03.279638+00:00",
+      "updated_at": "2026-09-22T18:27:18.485012+00:00",
       "paper": {
         "title": "Decoding Guardrails: XAI-Guided Perturbation Analysis of Prompt Injection Detection",
         "summary": "Large language models (LLMs) are increasingly deployed in production systems, raising concerns about their exposure to adversarial manipulation through prompt injection and jailbreak attacks. Classifier-based guardrails, such as Prompt Guard 2, are widely used as a first line of defense against such attacks, but their internal decision logic is largely opaque to both defenders and attackers. This paper presents an exploratory case study that applies explainable artificial intelligence (XAI) techniques to analyze how Prompt Guard 2 distinguishes malicious from benign prompts.   We conduct four experiments to probe this question empirically. Guided by Vanilla Gradient and SHAP attributions, we find that Prompt Guard 2's decisions rely on the cumulative contribution of many tokens rather than a few dominant ones, yet saliency-guided synonym substitution and sentence-level paraphrasing can flip its predictions while altering only a moderate fraction of the text, in some cases yielding a successful jailbreak against the underlying LLM. A dataset-scale saliency analysis further shows that undetected injection prompts systematically lack the lexical markers the classifier relies on. We discuss the implications of these findings for the design and evaluation of classifier-based guardrails, and argue that explanation methods intended to support transparency can simultaneously lower the cost of constructing successful adversarial bypasses.",
@@ -39789,7 +39793,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-22T08:09:29.923844+00:00",
       "last_error": null,
-      "updated_at": "2026-09-22T13:50:03.279642+00:00",
+      "updated_at": "2026-09-22T18:27:18.485016+00:00",
       "paper": {
         "title": "When Quantization Preserves Accuracy but Not Evidence: Explanation-Aware Post-Training Quantization for Medical LLMs",
         "summary": "Post-training quantization (PTQ) enables efficient deployment of large language models, and PTQ methods are usually optimized and evaluated with generic reconstruction, perplexity, or answer accuracy. But in explanation-critical domains, preserving only the final answer may be insufficient, since users may also inspect generated rationales to judge whether a prediction is trustworthy. We study this issue in medical multiple-choice question answering, where rationales should provide evidence that supports the selected answer.   We propose an explanation-aware objective for transformation-based PTQ. Our method builds an offline faithfulness cache from full-precision teacher rationales and uses it during optimization to preserve answer-supporting evidence tokens and evidence-conditioned answer behavior. We instantiate it on OSTQuant under W4A4KV4 quantization and evaluate four 7B--8B medical and instruction-tuned LLMs on MedExQA, MedExpQA, and ChallengeClinicalQA. While a same-calibration OSTQuant baseline preserves task accuracy, it can substantially weaken answer-supporting rationales. Our objective is to preserve the full-precision model's answer-supporting behavior rather than improve gold-label accuracy, and our method better preserves the full-precision model's answer behavior and rationale-to-answer support. These results suggest that PTQ for explanation-critical settings should evaluate preservation of answer-supporting evidence, not only answer accuracy. Code and evaluation scripts are available at https://github.com/dut0817/EAQuant.",
@@ -39810,7 +39814,7 @@
       "attempts": 0,
       "next_retry_at": "2026-09-22T08:09:29.923850+00:00",
       "last_error": null,
-      "updated_at": "2026-09-22T13:50:03.279645+00:00",
+      "updated_at": "2026-09-22T18:27:18.485019+00:00",
       "paper": {
         "title": "Convex AI Compositionality and the Governance of AI System Populations",
         "summary": "AI governance increasingly requires providers and public authorities to reason about multiple AI instantiations, alternative versions, and deployment configurations of multiple AI systems. Yet current regulation remains predominantly single-system-centric, acknowledging such multiplicity only sparsely without treating collections of related AI systems as governance objects. This creates an AI population governance problem: determining which instantiations can be meaningfully considered together and how their changing configurations can be represented and monitored. The first requirement has recently been addressed through trustworthiness-based accounts of AI identity. We address the second by introducing convex AI compositionality: a formal representation of the configurations generated by finite AI system populations that uses convex spaces. The core idea is that convex compositions of the operational states that a population of AI system instantiations may occupy over time are compatible with lifecycle reachability across the population and can preserve the formal identity relations between these systems. Well-known statistical and geometric constructions, such as weighted state distributions and convex hulls, become AI governance tools for distinguishing operational states, population weights, heterogeneity, and AI configuration change across different governance modes while remaining compatible, under stated conditions, with lifecycle reachability and AI identity. We illustrate our AI population governance framework through distributed healthcare deployments and controlled deployment of recruitment AI variants.",
@@ -39824,7 +39828,7 @@
     }
   },
   "last_run": {
-    "started_at": "2026-09-22T13:50:03.283179+00:00",
+    "started_at": "2026-09-22T18:27:18.488593+00:00",
     "discovered": 30,
     "selected": 4,
     "generated": 4,
@@ -39835,25 +39839,25 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 19916,
-      "output_tokens": 5675,
+      "prompt_tokens": 19620,
+      "output_tokens": 6043,
       "thought_tokens": 0,
-      "total_tokens": 25591,
-      "estimated_usd": 0.0134915
+      "total_tokens": 25663,
+      "estimated_usd": 0.0139695
     },
-    "finished_at": "2026-09-22T13:50:44.300936+00:00"
+    "finished_at": "2026-09-22T18:28:00.078081+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 2638,
-    "prompt_tokens": 6638512,
-    "output_tokens": 1943349,
+    "requests": 2646,
+    "prompt_tokens": 6658132,
+    "output_tokens": 1949392,
     "thought_tokens": 0,
-    "total_tokens": 8581861,
-    "estimated_usd": 4.5746515
+    "total_tokens": 8607524,
+    "estimated_usd": 4.588621
   },
   "last_publication_run": {
-    "started_at": "2026-09-22T13:50:03.283179+00:00",
+    "started_at": "2026-09-22T18:27:18.488593+00:00",
     "discovered": 30,
     "selected": 4,
     "generated": 4,
@@ -39864,17 +39868,17 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 19916,
-      "output_tokens": 5675,
+      "prompt_tokens": 19620,
+      "output_tokens": 6043,
       "thought_tokens": 0,
-      "total_tokens": 25591,
-      "estimated_usd": 0.0134915
+      "total_tokens": 25663,
+      "estimated_usd": 0.0139695
     },
-    "finished_at": "2026-09-22T13:50:44.300936+00:00"
+    "finished_at": "2026-09-22T18:28:00.078081+00:00"
   },
   "daily_usage": {
     "date": "2026-09-22",
-    "estimated_usd": 0.041353,
-    "publications": 12
+    "estimated_usd": 0.0553225,
+    "publications": 16
   }
 }

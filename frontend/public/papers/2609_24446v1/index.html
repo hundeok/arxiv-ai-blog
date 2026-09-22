@@ -1,0 +1,69 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ActGov: 정책 제약 검증을 통한 LLM 에이전트 행동 거버넌스 | ArXiv Translator AI</title><meta name="description" content="ActGov: 정책 제약 검증을 통한 LLM 에이전트 행동 거버넌스"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_24446v1"><meta property="og:type" content="article"><meta property="og:title" content="ActGov: 정책 제약 검증을 통한 LLM 에이전트 행동 거버넌스"><meta property="og:description" content="ActGov: 정책 제약 검증을 통한 LLM 에이전트 행동 거버넌스"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_24446v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="ActGov: 정책 제약 검증을 통한 LLM 에이전트 행동 거버넌스"><meta name="twitter:description" content="ActGov: 정책 제약 검증을 통한 LLM 에이전트 행동 거버넌스"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_24446v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "ActGov: 정책 제약 검증을 통한 LLM 에이전트 행동 거버넌스", "description": "ActGov: 정책 제약 검증을 통한 LLM 에이전트 행동 거버넌스", "datePublished": "2026-09-21", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_24446v1", "author": [{"@type": "Person", "name": "Kaiyuan Zhang"}, {"@type": "Person", "name": "Yuke Peng"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_24446v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_24446v1"});gtag('event', 'paper_view', {"paper_id": "2609_24446v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>ActGov: 정책 제약 검증을 통한 LLM 에이전트 행동 거버넌스</h1><p>ActGov: 정책 제약 검증을 통한 LLM 에이전트 행동 거버넌스</p><pre>ActGov: 정책 제약 검증을 통한 LLM 에이전트 행동 거버넌스
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** ActGov: Governing LLM Agent Actions via Policy-Constrained Validation
+&gt; - **저자:** Kaiyuan Zhang, Yuke Peng, Ke Jiang, Yinqian Zhang
+&gt; - **발행일:** 2026-09-21
+&gt; - **PDF 링크:** [ActGov: Governing LLM Agent Actions via Policy-Constrained Validation](https://arxiv.org/pdf/2609.24446v1)
+
+
+✨ 3줄 핵심 요약
+- **ActGov**는 LLM 에이전트가 외부 도구를 호출할 때, 실행 전 정책 기반 검증을 거쳐 권한 밖의 행동을 차단하는 런타임 보안 프레임워크입니다.
+- 실행 문맥을 구조화된 2차원 기록 스키마로 추상화하여, 자연어 모델의 해석 오류에 의존하지 않고 결정론적인 보안 정책을 적용합니다.
+- AgentDojo 및 AgentDyn 벤치마크 실험 결과, 기존 방어 체계 대비 공격 성공률을 현저히 낮추면서도 높은 작업 수행 효율성을 유지했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+LLM 에이전트는 복잡한 업무를 자동 수행하지만, 외부의 악의적인 지시(프롬프트 주입 공격)에 속아 사용자 권한을 넘어서는 작업을 실행할 위험이 큽니다. **ActGov**는 이를 해결하기 위해 에이전트가 &#x27;무엇을 할지&#x27; 결정하면, 실제 실행 직전에 보안 정책과 대조하여 허용 여부를 판단하는 &#x27;중간 검문소&#x27; 역할을 합니다. 에이전트의 복잡한 실행 과정을 이해하기 쉬운 구조적 데이터로 변환함으로써, LLM이 보안 정책을 스스로 판단하게 하는 대신 검증된 규칙에 따라 안전하게 움직이도록 통제합니다.
+
+🎯 배경 및 문제점
+- **권한 초과 위험:** 기존 LLM 에이전트는 외부 도구를 자유롭게 사용하며 사용자의 인가 범위를 벗어난 작업을 수행할 위험이 있습니다.
+- **기존 방어의 한계:** 프롬프트 필터링이나 사전 계획 기반의 방어는 동적으로 변하는 업무 환경이나 확장되는 도구 생태계에서 매우 취약합니다.
+- **문맥 이해의 부재:** 기존 체계는 에이전트의 행동과 데이터 간의 복잡한 관계를 통합적으로 이해하지 못해, 악의적인 콘텐츠를 사용자 의도로 오인하거나 권한 없는 경로를 차단하지 못하는 문제를 겪습니다.
+
+💡 핵심 기술 및 아키텍처
+- **통합 시맨틱 모델:** 권한, 행동, 실행 문맥, 보안 제약 조건을 하나로 묶어 정책을 관리합니다.
+- **ActGov-Policy (정책 생성):** 도구 사양, 정상 작업 사례, 공격 흔적을 기반으로 정책을 구축하며, SMT(Satisfiability Modulo Theories) 기반의 반례 검증을 통해 정책의 무결성을 확보합니다.
+- **2차원 기록 스키마(Orthogonal 2D Schema):** 실행 문맥을 &#x27;형성 수준(L1~L3)&#x27;과 &#x27;의미론적 범위(행동, 권한, 이력 등)&#x27;라는 두 축으로 추상화합니다. 이를 통해 자연어 문맥을 직접 해석하는 대신, 고정된 규칙 집합에 따라 안전하게 판단합니다.
+- **런타임 강제 집행:** 모든 도구 호출을 정책 기록과 비교하여, 작업 범위 내의 허용된 요청일 때만 실행되도록 통제합니다.
+
+📊 실험 결과 분석
+- **공격 방어:** AgentDojo 및 AgentDyn 벤치마크에서 간접적 프롬프트 주입 공격의 성공률을 0에 가깝게(0.007 이하) 감소시켰습니다.
+- **성능 유지:** 보안을 강화하면서도 작업 수행 효율성(utility)을 효과적으로 보존했습니다.
+- **일반화 한계:** 실험 결과, 훈련 데이터에 없던 새로운 환경(Out-of-domain)에서는 보안을 위해 매우 엄격한 정책을 적용하여 안전성은 확보했으나, 작업 수행 효율이 크게 하락하는 현상을 보였습니다. 이는 향후 해결해야 할 과제로 제시되었습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+- **에이전트 보안 표준화:** LLM의 자연어 이해 능력에 의존하지 않는 결정론적 보안 체계를 제공함으로써, 기업용 자율 에이전트의 안정성을 크게 높일 수 있습니다.
+- **실무 적용:** 이메일 관리, 금융 거래, 파일 시스템 접근 등 높은 권한이 필요한 업무를 수행하는 에이전트 시스템에 도입하여, 비정상적인 지시로 인한 데이터 유출이나 시스템 오작동을 원천적으로 방지할 수 있습니다.
+- **확장성:** 다양한 도구와 환경으로 확장 가능한 프레임워크를 제공하여, 복잡한 비즈니스 워크플로우를 처리하는 AI 에이전트의 핵심 보안 인프라로 활용될 가능성이 큽니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [ActGov: Governing LLM Agent Actions via Policy-Constrained ...](https://arxiv.org/pdf/2609.24446)
+&gt; - [ActGov: Governing LLM Agent Actions via Policy-Constrained ...](https://www.tickervault.net/news/f453c0bc-1a45-4627-8cf0-d12d80bb7501)
+&gt; - [ActGov: Governing LLM Agent Actions via Policy-Constrained ...](https://papers.cool/arxiv/2609.24446)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;이 논문의 2차원 기록 스키마(Orthogonal 2D Schema) 설계는 참신하지만, 결국 SMT 기반 반례 검증의 오버헤드가 실시간 에이전트 시스템의 Latency를 얼마나 갉아먹을지 의문입니다. 특히 OOD 환경에서 효율성이 급락한다는 결과는 이 프레임워크가 아직 &#x27;범용적 보안 표준&#x27;이 되기엔 갈 길이 멀다는 방증이죠. 결정론적 강제 집행이 유연성을 어떻게 확보할지가 관건입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에선 Latency가 깡패입니다. 하지만 기존의 &#x27;프롬프트 필터링&#x27; 같은 주먹구구식 방어보다는 훨씬 견고해 보이네요. 특히 자연어 해석 오류를 배제했다는 점이 매력적입니다. 다만, 도구 사양(Tool spec)이 바뀔 때마다 정책을 다시 SMT로 검증해야 한다면 운영 리소스가 엄청날 텐데... 현업 도입은 자동화된 정책 업데이트 파이프라인이 선행되지 않으면 쉽지 않겠는데요?&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;두 분 다 너무 보수적이신 거 아니에요? AgentDojo에서 공격 성공률을 0.007까지 낮춘 건 진짜 미친 수치인데요! 비록 OOD 성능이 좀 깎여도, 일단 &#x27;보안 사고&#x27;가 나면 끝장인 금융/의료 도메인에선 당장 도입하고 싶어 안달일걸요. 저는 이거 기반으로 에이전트 보안 서빙 플랫폼 하나 만들면 펀딩 바로 받을 수 있을 것 같은데, 논문 코드 뜯어보러 갑니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
