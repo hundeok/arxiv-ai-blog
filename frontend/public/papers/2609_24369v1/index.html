@@ -1,0 +1,71 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DeceptionAnalyser: 논증 구조와 LLM을 활용한 구조적 기만 분석 웹 기반 AI 도구 | ArXiv Translator AI</title><meta name="description" content="DeceptionAnalyser: 논증 구조와 LLM을 활용한 구조적 기만 분석 웹 기반 AI 도구"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_24369v1"><meta property="og:type" content="article"><meta property="og:title" content="DeceptionAnalyser: 논증 구조와 LLM을 활용한 구조적 기만 분석 웹 기반 AI 도구"><meta property="og:description" content="DeceptionAnalyser: 논증 구조와 LLM을 활용한 구조적 기만 분석 웹 기반 AI 도구"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_24369v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="DeceptionAnalyser: 논증 구조와 LLM을 활용한 구조적 기만 분석 웹 기반 AI 도구"><meta name="twitter:description" content="DeceptionAnalyser: 논증 구조와 LLM을 활용한 구조적 기만 분석 웹 기반 AI 도구"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_24369v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "DeceptionAnalyser: 논증 구조와 LLM을 활용한 구조적 기만 분석 웹 기반 AI 도구", "description": "DeceptionAnalyser: 논증 구조와 LLM을 활용한 구조적 기만 분석 웹 기반 AI 도구", "datePublished": "2026-09-21", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_24369v1", "author": [{"@type": "Person", "name": "Stefan Sarkadi"}, {"@type": "Person", "name": "Xabier Garmendia"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_24369v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_24369v1"});gtag('event', 'paper_view', {"paper_id": "2609_24369v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>DeceptionAnalyser: 논증 구조와 LLM을 활용한 구조적 기만 분석 웹 기반 AI 도구</h1><p>DeceptionAnalyser: 논증 구조와 LLM을 활용한 구조적 기만 분석 웹 기반 AI 도구</p><pre>DeceptionAnalyser: 논증 구조와 LLM을 활용한 구조적 기만 분석 웹 기반 AI 도구
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** DeceptionAnalyser: A Web-Based AI Tool for Performing Structured Deception Analysis with Argumentation Schemes and LLMs
+&gt; - **저자:** Stefan Sarkadi, Xabier Garmendia, Jack Mumford, Trevor Bench-Capon
+&gt; - **발행일:** 2026-09-21
+&gt; - **PDF 링크:** [DeceptionAnalyser: A Web-Based AI Tool for Performing Structured Deception Analysis with Argumentation Schemes and LLMs](https://arxiv.org/pdf/2609.24369v1)
+
+
+✨ 3줄 핵심 요약
+- 기만적 서술을 체계적으로 분석하기 위해 10개의 고유한 &#x27;논증 스킴(Argumentation Schemes)&#x27; 라이브러리를 최초로 구축함.
+- LLM의 전제 추출과 비판적 질문 평가를 결합한 2단계 파이프라인 기반의 웹 도구 &#x27;DeceptionAnalyser&#x27;를 개발함.
+- 기만 여부를 단정 짓는 대신, 분석가에게 기만 가능성이 있는 주장을 시각적으로 제시하여 투명하고 설명 가능한 판단을 지원함.
+
+📖 쉽게 풀어쓴 1분 핵심
+정보 분석이나 전략적 소통에서 상대방이 진실을 감추거나 속이는 &#x27;기만&#x27;을 파악하는 것은 매우 어렵습니다. 기존의 AI 모델들은 기만 여부를 단순 분류하는 데 그쳤지만, 이 논문은 기만이 어떤 논리적 구조를 가지는지에 주목했습니다. 연구진은 기만 유형을 10가지 논증 방식으로 정의하고, 이를 분석하는 도구를 만들었습니다. 이 도구는 사용자가 읽고 있는 문서에서 기만적 징후를 실시간으로 추출해 보여주며, 분석가는 AI가 제시한 근거를 바탕으로 직접 최종 판단을 내립니다. 즉, AI가 대신 결정을 내리는 것이 아니라, 인간 분석가가 기만 패턴을 쉽게 발견하고 검토할 수 있도록 돕는 &#x27;협업형 지능 도구&#x27;입니다.
+
+🎯 배경 및 문제점
+- 기만 분석은 전문 지식 없이는 체계화하기 어려우며, 특히 계산 논증(Computational Argumentation) 분야에서 통계적 검증을 뒷받침할 &#x27;스킴 수준의 골든 스탠다드 데이터셋&#x27;이 존재하지 않음.
+- 기존 연구들은 기만적 언어나 전략적 대화 모델을 다뤘으나, 서술 텍스트 내의 기만 방식을 체계적으로 모델링한 라이브러리가 부족함.
+- 기만을 단순히 &#x27;진실&#x27; 또는 &#x27;거짓&#x27;으로 분류하는 방식은 정보 분석에서 요구되는 투명성과 설명 가능성을 충족하기 어려움.
+
+💡 핵심 기술 및 아키텍처
+- **논증 스킴 라이브러리**: 기만의 다양한 형태를 모델링한 10개의 표준화된 논증 스킴 및 비판적 질문 세트 구축.
+- **2단계 파이프라인**: 
+    1. **전제 추출**: LLM이 문서 내에서 논증 스킴에 해당하는 전제들을 식별.
+    2. **평가**: 비판적 질문을 통해 전제를 검증하고 기만 가능성을 평가.
+- **시각적 인터페이스**: 색상 코드를 사용하여 기만 징후를 중요도별(녹색/노란색/빨간색)로 표시하며, 문서 내 관련 텍스트를 직접 하이라이트하여 근거의 출처를 투명하게 공개.
+- **인간-AI 협업**: 분석가가 LLM의 분석 결과에 개입하거나 수정할 수 있는 구조를 갖추어 인간의 통제권을 보장.
+
+📊 실험 결과 분석
+- 기만 분류 정확도를 측정하는 벤치마크 대신, 10개의 대규모 언어 모델(LLM)을 대상으로 도구의 일관성과 신뢰성을 측정함.
+- 실험 결과, 명확한 기만 패턴에 대해서는 높은 안정성을 보였으며, 모호한 정보 분석용 서술에서는 결과가 점진적으로 하향되는(degrading gracefully) 해석 가능한 패턴을 확인.
+- 도구의 결과는 기만 여부에 대한 최종 판결이 아닌, 추가 조사가 필요한 부분을 식별하기 위한 &#x27;프로비저널(임시) 가설&#x27;로 기능함.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+- **정보 분석 및 전략 커뮤니케이션**: 정보 보고서나 전략적 텍스트에서 은밀한 기만 전략을 체계적으로 식별할 수 있는 표준 프레임워크 제공.
+- **투명한 의사결정**: AI의 판단 과정을 논리적으로 추적 가능하게 함으로써, 데이터 기반 의사결정의 신뢰성을 높임.
+- **실무 확장성**: 제공된 크롬 확장 프로그램과 코드를 통해 실제 정보 분석가들이 업무 현장에서 문서의 진실성을 스크리닝하는 데 활용 가능함.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [onekin/DeceptionAnalyser | DeepWiki](https://deepwiki.com/onekin/DeceptionAnalyser)
+&gt; - [Deception Analysis with Artificial Intelligence: An Interdisciplinary Perspective](https://arxiv.org/html/2406.05724v1)
+&gt; - [GitHub - lechmazur/deception: Benchmark evaluating LLMs on their ability to create and resist disinformation. Includes comprehensive testing across major models (Claude, GPT-4, Gemini, Llama, etc.) with standardized evaluation metrics. · GitHub](https://github.com/lechmazur/deception)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논증 스킴을 10개로 구조화한 건 학술적으로 높이 평가할 만하네. 하지만 LLM의 전제 추출 단계에서 발생하는 할루시네이션이 비판적 질문 평가 과정에서 증폭될 위험은 고려했나? &#x27;Graceful degradation&#x27;이라고 포장했지만, 결국 분석가의 편향을 강화하는 도구로 전락할 가능성이 커 보여. 설명 가능성(XAI) 측면에서 이 도구가 논리적 비약을 어떻게 필터링하는지 더 엄밀한 검증이 필요해.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에서는 그 &#x27;편향&#x27;이 더 큰 문제죠. 특히 2단계 파이프라인에서 LLM이 논리 구조를 추론할 때 토큰당 비용과 레이턴시는 어떻게 감당하려고요? 기업용 대시보드에 붙이기엔 API 콜 비용이 만만치 않을 텐데, 이걸 로컬 LLM으로 돌렸을 때의 성능 하락폭이 어느 정도인지가 도입의 관건입니다. 예쁘게 시각화해놓긴 했지만, 현장에서는 &#x27;그래서 이게 진짜 거짓말이야?&#x27;라고 묻는 결정권자들을 설득하기엔 여전히 모호함이 많네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;에이, 두 분 너무 부정적이신 거 아니에요? 요즘 &#x27;AI의 판단&#x27;을 블랙박스로 두지 않고 논리 구조로 시각화하려는 시도 자체가 대세인데! 특히 기만 패턴을 &#x27;임시 가설&#x27;로 제시하는 접근법은 지금 AI 거버넌스 논의에서 가장 핫한 &#x27;Human-in-the-loop&#x27;의 모범 사례잖아요. 당장 깃헙 가서 코드 뜯어보고 있는데, 이거 튜닝해서 선거철 가짜뉴스 필터링 툴로 만들면 펀딩 바로 따올 수 있을 것 같아요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
