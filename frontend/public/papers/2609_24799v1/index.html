@@ -1,0 +1,69 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>양자화가 정확도는 유지하되 근거는 상실할 때: 의료용 거대언어모델을 위한 설명 인식 사후 양자화 | ArXiv Translator AI</title><meta name="description" content="양자화가 정확도는 유지하되 근거는 상실할 때: 의료용 거대언어모델을 위한 설명 인식 사후 양자화"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_24799v1"><meta property="og:type" content="article"><meta property="og:title" content="양자화가 정확도는 유지하되 근거는 상실할 때: 의료용 거대언어모델을 위한 설명 인식 사후 양자화"><meta property="og:description" content="양자화가 정확도는 유지하되 근거는 상실할 때: 의료용 거대언어모델을 위한 설명 인식 사후 양자화"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_24799v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="양자화가 정확도는 유지하되 근거는 상실할 때: 의료용 거대언어모델을 위한 설명 인식 사후 양자화"><meta name="twitter:description" content="양자화가 정확도는 유지하되 근거는 상실할 때: 의료용 거대언어모델을 위한 설명 인식 사후 양자화"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_24799v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "양자화가 정확도는 유지하되 근거는 상실할 때: 의료용 거대언어모델을 위한 설명 인식 사후 양자화", "description": "양자화가 정확도는 유지하되 근거는 상실할 때: 의료용 거대언어모델을 위한 설명 인식 사후 양자화", "datePublished": "2026-09-21", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_24799v1", "author": [{"@type": "Person", "name": "Yeji Kim"}, {"@type": "Person", "name": "Mi-Young Kim"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_24799v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_24799v1"});gtag('event', 'paper_view', {"paper_id": "2609_24799v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>양자화가 정확도는 유지하되 근거는 상실할 때: 의료용 거대언어모델을 위한 설명 인식 사후 양자화</h1><p>양자화가 정확도는 유지하되 근거는 상실할 때: 의료용 거대언어모델을 위한 설명 인식 사후 양자화</p><pre>양자화가 정확도는 유지하되 근거는 상실할 때: 의료용 거대언어모델을 위한 설명 인식 사후 양자화
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** When Quantization Preserves Accuracy but Not Evidence: Explanation-Aware Post-Training Quantization for Medical LLMs
+&gt; - **저자:** Yeji Kim, Mi-Young Kim, Randy Goebel
+&gt; - **발행일:** 2026-09-21
+&gt; - **PDF 링크:** [When Quantization Preserves Accuracy but Not Evidence: Explanation-Aware Post-Training Quantization for Medical LLMs](https://arxiv.org/pdf/2609.24799v1)
+
+
+✨ 3줄 핵심 요약
+*   기존의 모델 양자화(PTQ)는 정답 정확도에만 집중하여, 의료 분야처럼 중요한 판단 근거(설명)의 왜곡을 방지하지 못하는 한계가 있음.
+*   본 논문은 정답을 지지하는 근거 토큰과 논리적 관계를 유지하는 &#x27;설명 인식(Explanation-Aware)&#x27; 사후 양자화 기법을 제안함.
+*   실험 결과, 제안 방법은 양자화 후에도 정답 정확도를 유지하면서 기존 모델의 논리적 근거를 더 효과적으로 보존함을 확인함.
+
+📖 쉽게 풀어쓴 1분 핵심
+거대언어모델을 가볍게 만드는 &#x27;양자화&#x27; 기술은 흔히 모델이 정답만 맞히면 성공했다고 간주합니다. 하지만 의료진단처럼 왜 그런 결론이 나왔는지 &#x27;이유&#x27;가 중요한 분야에서는, 정답이 같더라도 그 과정을 설명하는 논리가 왜곡되면 매우 위험합니다. 이 논문은 모델이 정답을 낼 때 사용한 핵심 근거(Evidence)를 캐시(cache) 형태로 저장하여, 양자화 과정에서도 이 논리적 흐름이 깨지지 않도록 유도하는 새로운 학습 방법을 제시했습니다. 결과적으로 모델의 압축 효율은 챙기면서도 의료적 신뢰성을 잃지 않는 모델을 만들 수 있게 되었습니다.
+
+🎯 배경 및 문제점
+*   **양자화의 한계:** 기존 양자화 기법들은 주로 재구성 오류 감소, 혼란도(perplexity) 개선, 정답 정확도 유지에만 초점을 맞춤.
+*   **설명 불일치(Rationale Drift):** 정답은 일치하더라도 양자화 후 모델이 제시하는 설명이 원본 모델과 달라지거나, 근거 없는 주장을 추가하는 등의 현상이 발생함.
+*   **의료 분야의 특수성:** 의료 분야에서는 모델의 답변뿐만 아니라 그 답변을 뒷받침하는 임상적 근거를 검토하는 것이 필수적이므로, 양자화 과정에서 설명의 무결성을 유지하는 기술이 필요함.
+
+💡 핵심 기술 및 아키텍처
+*   **설명 인식 객체(Explanation-Aware Objective):** 정답을 지지하는 핵심 근거 토큰과 그에 따른 답변 행동을 유지하도록 설계된 최적화 방식.
+*   **신뢰성 캐시(Faithfulness Cache):** 전체 정밀도(Full-precision) 모델이 생성한 설명을 &#x27;원본 근거&#x27;로 활용하기 위해 오프라인 상태에서 미리 캐시로 구축함.
+*   **적용:** 이를 OSTQuant 기반의 W4A4KV4 양자화 환경에 구현하여 기존 방식과 성능을 비교함.
+
+📊 실험 결과 분석
+*   **평가 데이터셋:** MedExQA, MedExpQA, ChallengeClinicalQA 등 의료 관련 질의응답 데이터셋 활용.
+*   **비교 모델:** 7B~8B 규모의 의료 및 명령어 튜닝된 LLM 4종.
+*   **분석 결과:** 기존의 OSTQuant 기준 모델도 정답 정확도는 유지했으나, 답변을 지지하는 근거의 질이 저하되는 현상이 관찰됨. 반면, 제안된 기법은 원본 모델의 임상적 근거와 논리적 구조를 훨씬 더 정확하게 보존함. 
+*   *참고: 실험의 구체적인 정확도 수치 등은 발췌문에 명시되어 있지 않음.*
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+*   **의료 AI 신뢰성 향상:** 임상의가 모델의 진단 결과를 신뢰할 수 있도록, 근거 기반의 설명 능력을 유지한 경량화 모델 배포가 가능해짐.
+*   **효율적 배포:** 성능 손실 없이 메모리 점유율을 줄일 수 있어, 컴퓨팅 자원이 제한적인 의료 현장의 온디바이스(on-device) 환경에서도 신뢰도 높은 AI 활용이 기대됨.
+*   **기술 확산:** 설명의 논리적 일관성이 중요한 법률, 금융 등 &#x27;설명 요구가 높은(explanation-critical)&#x27; 도메인 전반에 걸쳐 유사한 접근 방식을 적용할 수 있는 토대를 마련함.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2609.24799 When Quantization Preserves Accuracy but Not Evidence: Explanation-Aware Post-Training Quantization for Medical LLMs](https://arxiv.org/abs/2609.24799)
+&gt; - [When Quantization Preserves Accuracy but Not Evidence: Explanation-Aware Post-Training Quantization for Medical LLMs](https://arxiv.org/html/2609.24799)
+&gt; - [Latest 20 Papers - September 23, 2026 · Issue #566 · zachysun/DailyArXiv](https://github.com/zachysun/DailyArXiv/issues/566)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;양자화 과정에서의 &#x27;설명 불일치(Rationale Drift)&#x27;를 지적한 점은 매우 고무적입니다. 그동안 정답률(Accuracy)이라는 지표 뒤에 숨겨진 모델의 논리적 붕괴를 간과해왔죠. 다만, 이 &#x27;신뢰성 캐시&#x27;가 과연 다양한 증상과 변수가 복잡하게 얽힌 실제 임상 데이터에서도 일반화 성능을 보장할 수 있을지 의문이 드는군요. 오버피팅의 위험성은 검토하셨나요?&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에선 바로 적용하기가 좀 겁나네요. W4A4KV4까지 내리면 레이턴시는 확실히 줄겠지만, 매번 &#x27;신뢰성 캐시&#x27;를 생성하고 정렬하는 파이프라인이 추가되는 게 리소스 관점에서 부담입니다. 그래도 의료 도메인이라면 비용 지불 의사가 있는 고객이 많으니, &#x27;설명 가능한 경량화&#x27;라는 세일즈 포인트는 확실히 먹힐 것 같습니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 이거 진짜 대박인데요? 단순히 정답만 맞히는 모델은 이제 &#x27;환각 생성기&#x27; 취급받는 시대잖아요. 이 논문 방식대로라면 법률이나 금융처럼 &#x27;왜(Why)&#x27;가 중요한 다른 도메인으로 바로 확장 가능할 것 같아요. 당장 내일 연구실 세미나 주제로 발제해야겠네요. 다들 퀀타이제이션 논문 볼 때 이제는 &#x27;정확도&#x27; 말고 &#x27;근거&#x27;를 따지는 게 메타가 되겠는데요?&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

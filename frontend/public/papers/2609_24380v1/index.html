@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>정보-시간 근사 정책 최적화 (Information-Time Proximal Policy Optimization) | ArXiv Translator AI</title><meta name="description" content="정보-시간 근사 정책 최적화 (Information-Time Proximal Policy Optimization)"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_24380v1"><meta property="og:type" content="article"><meta property="og:title" content="정보-시간 근사 정책 최적화 (Information-Time Proximal Policy Optimization)"><meta property="og:description" content="정보-시간 근사 정책 최적화 (Information-Time Proximal Policy Optimization)"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_24380v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="정보-시간 근사 정책 최적화 (Information-Time Proximal Policy Optimization)"><meta name="twitter:description" content="정보-시간 근사 정책 최적화 (Information-Time Proximal Policy Optimization)"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_24380v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "정보-시간 근사 정책 최적화 (Information-Time Proximal Policy Optimization)", "description": "정보-시간 근사 정책 최적화 (Information-Time Proximal Policy Optimization)", "datePublished": "2026-09-21", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_24380v1", "author": [{"@type": "Person", "name": "Yongcheng Zeng"}, {"@type": "Person", "name": "Xinyu Cui"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_24380v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_24380v1"});gtag('event', 'paper_view', {"paper_id": "2609_24380v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>정보-시간 근사 정책 최적화 (Information-Time Proximal Policy Optimization)</h1><p>정보-시간 근사 정책 최적화 (Information-Time Proximal Policy Optimization)</p><pre>정보-시간 근사 정책 최적화 (Information-Time Proximal Policy Optimization)
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Information-Time Proximal Policy Optimization
+&gt; - **저자:** Yongcheng Zeng, Xinyu Cui, Yan Song, Guoqing Liu, Hongsheng Xin, Kaike Zhang, Cheng Deng, Kun Zhan, Jian Ying, Jian Zhao, Haifeng Zhang, Jun Wang
+&gt; - **발행일:** 2026-09-21
+&gt; - **PDF 링크:** [Information-Time Proximal Policy Optimization](https://arxiv.org/pdf/2609.24380v1)
+
+
+✨ 3줄 핵심 요약
+*   기존의 토큰 단위 시간 측정 방식에서 벗어나, 문맥의 &#x27;정보 밀도&#x27;를 기준으로 학습 시간을 재정의하는 InfoPPO 알고리즘을 제안합니다.
+*   상태별 정보 밀도에 맞춰 정책 업데이트 제약(클리핑)을 조정함으로써, 긴 추론 과정에서도 효율적이고 안정적인 학습이 가능합니다.
+*   Qwen3 모델을 활용한 수학적 추론 벤치마크 실험에서 기존 방식 대비 성능 향상과 일관된 응답 길이를 확인했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+대규모 언어 모델(LLM)을 강화학습으로 훈련할 때, 기존에는 단순히 토큰을 하나씩 생성하는 순서를 &#x27;시간&#x27;으로 간주했습니다. 하지만 토큰마다 담긴 정보량은 다릅니다. 이 논문은 토큰 개수가 아닌 **&#x27;정보가 얼마나 쌓였는가&#x27;**를 기준으로 학습의 시간 축을 다시 설정합니다. 마치 중요한 대목을 읽을 때 더 집중하는 것처럼, 모델이 정보 밀도가 높은 지점에서 더 정밀하게 정책을 수정하게 함으로써, 긴 논리적 추론이 필요한 작업에서 훨씬 뛰어난 성능을 내도록 설계되었습니다.
+
+🎯 배경 및 문제점
+기존의 RLVR(Verifiable Rewards 기반 강화학습)은 각 토큰을 마르코프 결정 과정(MDP)의 단위로 처리합니다. 이 방식에는 두 가지 주요 한계가 있습니다.
+*   **정보 흐름의 불균형:** 토큰 개수만으로는 실제 정보의 중요도 변화를 반영하지 못합니다.
+*   **보상 희석 문제:** 긴 추론 과정에서 매 토큰마다 할인을 적용하면 최종 보상 신호가 너무 약해지고, 할인을 없애면 학습 범위(horizon)를 제어하기 어렵습니다.
+
+💡 핵심 기술 및 아키텍처
+*   **정보-시간(Information-Time) 재매개변수화:** 시간의 흐름을 토큰 수가 아닌, 누적 정보 밀도로 측정합니다.
+*   **적응형 클리핑(Adaptive Clipping):** 현재 상태의 정보 밀도를 기반으로 정책 업데이트 제약(클리핑 임계값)을 실시간으로 조절합니다. 
+*   **정보 밀도 측정:** 모델의 다음 토큰 예측 엔트로피를 정보 밀도의 대리 지표로 사용하여, 모델 스스로 불확실성이 높은 구간을 파악하고 학습 강도를 최적화합니다.
+
+📊 실험 결과 분석
+*   **벤치마크:** AIME24, AIME25를 포함한 5개의 수학적 추론 벤치마크에서 Qwen3(4B, 8B, 14B) 모델로 테스트했습니다.
+*   **성능:** 기존 PPO 및 DAPO 방법론 대비 일관된 정확도 향상을 보였습니다.
+*   **안정성:** 기존 PPO는 토큰 단위 시간 측정으로 인해 학습 중 응답 길이가 비정상적으로 변하는 경우가 있으나, InfoPPO는 긴 추론 시에도 안정적인 정확도와 응답 길이를 유지했습니다. (구체적인 수치값은 논문 그림 7을 참조)
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+*   **복잡한 논리 추론:** 수학, 코딩 등 여러 단계의 논리적 사고가 필요한 분야에서 모델의 추론 정확도를 높일 수 있습니다.
+*   **효율적인 강화학습:** 토큰 길이에 의존하지 않고 정보의 중요도에 따라 학습 자원을 집중함으로써, 더 긴 문맥을 다루는 모델 학습 시 발생하는 보상 신호 소멸 문제를 효과적으로 해결합니다.
+*   **범용성:** 특정 모델 구조에 종속되지 않고 정보 밀도를 측정하는 방식만 적용 가능하다면 다양한 언어 모델 학습 과정에 확장 적용할 수 있습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2609.24380 Information-Time Proximal Policy Optimization](https://arxiv.org/abs/2609.24380)
+&gt; - [Information-Time Proximal Policy Optimization | Arxiv - DeepPaper](https://arxiv.deeppaper.ai/papers/2609.24380v1)
+&gt; - [Information-Time Proximal Policy Optimization - papers.cool](https://papers.cool/arxiv/2609.24380)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;정보 이론적 관점에서 시간 축을 재정의하려는 시도는 고무적이나, 엔트로피를 정보 밀도의 대리 지표로 사용하는 방식은 과연 견고한가? 특히 OOD 상황에서 엔트로피가 급증할 때, 이를 모델의 &#x27;중요한 추론 과정&#x27;으로 오인하여 정책 업데이트를 과도하게 제약하는 부작용은 없는지 검증이 필요해 보인다. 수식적 엄밀함이 다소 부족한 느낌이야.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 일리가 있지만, 실무에선 &#x27;학습 안정성&#x27;이 깡패입니다. 기존 PPO로 긴 추론 태스크 돌릴 때마다 응답 길이 튀어서 하이퍼파라미터 튜닝하느라 밤샌 거 생각하면... 적응형 클리핑으로 학습 시퀀스 길이 제어하는 건 꽤 매력적인데요? 다만, 정보 밀도 계산 오버헤드가 추론 타임에 얼마나 영향을 줄지가 관건이겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;아니, 다들 너무 진지하신 거 아니에요? 이번 Qwen3 벤치마크 결과 보면 AIME25에서 기존 PPO 씹어 먹던데요? 토큰 개수 기반의 낡은 방식 버리고 &#x27;정보&#x27; 중심으로 사고를 전환했다는 거 자체가 이미 SOTA 찍으려는 신호탄이죠. 당장 코드 뜯어보고 우리 랩 셋업에 이식해 봐야겠어요. 내일 당장 세미나 발표 자료 만듭니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
