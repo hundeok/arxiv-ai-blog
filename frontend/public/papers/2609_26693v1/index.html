@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>모델이 아닌 서빙 스택 측정하기: 로컬 도구 사용 평가의 숨겨진 혼란 변수 | ArXiv Translator AI</title><meta name="description" content="모델이 아닌 서빙 스택 측정하기: 로컬 도구 사용 평가의 숨겨진 혼란 변수"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_26693v1"><meta property="og:type" content="article"><meta property="og:title" content="모델이 아닌 서빙 스택 측정하기: 로컬 도구 사용 평가의 숨겨진 혼란 변수"><meta property="og:description" content="모델이 아닌 서빙 스택 측정하기: 로컬 도구 사용 평가의 숨겨진 혼란 변수"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_26693v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="모델이 아닌 서빙 스택 측정하기: 로컬 도구 사용 평가의 숨겨진 혼란 변수"><meta name="twitter:description" content="모델이 아닌 서빙 스택 측정하기: 로컬 도구 사용 평가의 숨겨진 혼란 변수"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_26693v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "모델이 아닌 서빙 스택 측정하기: 로컬 도구 사용 평가의 숨겨진 혼란 변수", "description": "모델이 아닌 서빙 스택 측정하기: 로컬 도구 사용 평가의 숨겨진 혼란 변수", "datePublished": "2026-09-22", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_26693v1", "author": [{"@type": "Person", "name": "Lijuan Tang"}, {"@type": "Person", "name": "Yuemeng Zheng"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_26693v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_26693v1"});gtag('event', 'paper_view', {"paper_id": "2609_26693v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>모델이 아닌 서빙 스택 측정하기: 로컬 도구 사용 평가의 숨겨진 혼란 변수</h1><p>모델이 아닌 서빙 스택 측정하기: 로컬 도구 사용 평가의 숨겨진 혼란 변수</p><pre>모델이 아닌 서빙 스택 측정하기: 로컬 도구 사용 평가의 숨겨진 혼란 변수
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Measuring the Serving Stack Instead of the Model: Hidden Confounds in Local Tool-Use Evaluation
+&gt; - **저자:** Lijuan Tang, Yuemeng Zheng
+&gt; - **발행일:** 2026-09-22
+&gt; - **PDF 링크:** [Measuring the Serving Stack Instead of the Model: Hidden Confounds in Local Tool-Use Evaluation](https://arxiv.org/pdf/2609.26693v1)
+
+
+✨ 3줄 핵심 요약
+* 로컬 모델의 도구 사용 능력을 평가할 때, 모델 자체보다 &#x27;서빙 스택(Ollama, vLLM 등)&#x27;의 설정이 평가 결과에 결정적인 영향을 미치는 혼란 변수로 작용합니다.
+* 서빙 계층이 모델의 도구 호출 요청을 사전에 거부하거나 잘못 처리해도 이를 구조적 실패로 기록하지 않아, 유능한 모델도 &#x27;도구 사용 능력 0%&#x27;로 잘못 측정될 수 있습니다.
+* 정확한 평가를 위해서는 서빙 환경을 고정하고, 서버에 의한 요청 거부와 모델의 실제 호출 실패를 구분하며, 데이터 편향을 막기 위해 시드별(per-seed) 분석을 수행해야 합니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+AI 모델이 도구를 사용하려면 먼저 서버(서빙 스택)가 이 요청을 받아들여야 합니다. 그러나 연구 결과, Ollama나 vLLM 같은 서빙 소프트웨어들은 모델의 성능과 상관없이 특정 모델에 대해 &quot;도구 사용 불가능&quot;이라는 사전 설정을 강제합니다. 평가 도구는 서버가 모델을 실행조차 하지 않고 거부한 상황을 모델이 스스로 도구 사용을 포기한 것으로 오인하여 잘못된 성적표를 매깁니다. 즉, 지금의 평가는 &#x27;모델의 지능&#x27;이 아닌 &#x27;서버의 설정&#x27;을 측정하고 있을 가능성이 큽니다.
+
+🎯 배경 및 문제점
+로컬 코딩 에이전트의 도구 사용 성공률을 측정할 때, 평가 환경(Harness)은 모델에 도구 목록을 보냅니다. 하지만 서빙 계층은 모델 호출 전 단계에서 이 요청을 가로챕니다. 
+* **구조적 결함:** 서버가 요청을 거부(HTTP 400 등)해도 평가 시스템은 이를 구조적인 실패로 기록하지 않고, 단순히 모델이 도구를 호출하지 않은 것으로 처리합니다.
+* **통계적 오류:** 시드별 데이터가 부족하거나, 반복적인 루프를 도는 에이전트의 결과가 결과값 전체를 왜곡(Pool 분석의 한계)하여 통계적 신뢰도가 낮아집니다.
+
+💡 핵심 기술 및 아키텍처
+연구팀은 Ollama, llama.cpp, vLLM, SGLang 등 주요 서빙 스택을 비교 분석했습니다. 
+* **서빙 게이팅:** 모델 자체의 능력보다 서빙 스택의 설정(정적 템플릿 플래그)에 따라 호출 방식이 결정됩니다. (예: 어떤 모델은 텍스트로 응답하고, 어떤 모델은 시스템에서 원천 차단됨)
+* **제약된 디코딩(Constrained Decoding):** 모델이 형식에 맞는 응답을 강제하도록 설정할 경우 파싱 실패는 해결되지만, 반대로 모델이 종료 조건을 찾지 못해 무한 루프에 빠지는 &#x27;종료 실패&#x27; 문제가 발생합니다.
+
+📊 실험 결과 분석
+* **서버별 차이:** 동일한 요청임에도 Ollama, vLLM, SGLang은 각각 다르게 반응합니다. vLLM은 특정 플래그 설정 없이는 요청을 outright 거부하며, 이는 모델의 능력과는 무관합니다.
+* **측정 데이터의 변동성:** 통계 분석에서 &#x27;시드별(per-seed)&#x27; 수치와 &#x27;전체 통합(pooled)&#x27; 수치가 최대 약 55포인트까지 차이 났습니다. 
+* **신뢰 구간:** 약한 모델들의 경우 95% 신뢰 구간이 매우 넓어(예: 12~75) 모델 간 성능 순위를 매기는 것이 불가능한 수준이었습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **평가 방법론 개선:** 향후 로컬 에이전트 평가 시 모델 정보뿐만 아니라 &#x27;서빙 스택&#x27;, &#x27;버전&#x27;, &#x27;도구 호출 파서 설정&#x27;을 반드시 함께 기록해야 합니다.
+* **공정 비교:** 모델을 비교할 때는 반드시 서빙 환경을 고정해야 하며, &#x27;서버에 의한 요청 거부&#x27;를 모델의 능력 부족과 명확히 구분하는 분석 체계가 도입되어야 합니다.
+* **실무적 제언:** 연구팀은 서빙 스택의 행동을 평가 프로토콜의 일부로 간주하는 체크리스트 준수를 권고합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Measuring the Serving Stack Instead of the Model: Hidden Confounds in ...](https://www.genaiagent.net/article/arxiv-2609.26693v1)
+&gt; - [GitHub - LijuanTang94/serving-confound-repo](https://github.com/LijuanTang94/serving-confound-repo)
+&gt; - [Measuring the Serving Stack Instead of the | One9Founders](https://www.one9founders.com/research/2609.26693)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;이 논문은 그동안 우리가 벤치마크 점수에 얼마나 눈이 멀어 있었는지 적나라하게 보여주는군요. 서빙 스택의 게이팅을 모델의 추론 능력으로 오인했다는 건 학계의 수치입니다. 앞으로 모든 논문은 서빙 환경을 제어 변수로 고정하지 않으면 학술적 가치가 없다고 간주해야 할 겁니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님, 현업에서는 이미 느끼던 문제였습니다. vLLM이랑 Ollama 돌려보면 특정 모델에서 400 에러 뱉는 거 매번 파싱해서 예외 처리하느라 죽을 맛이었거든요. 모델 성능 1% 올리겠다고 갈아끼우다가 서빙 스택 설정 꼬여서 날린 시간만 생각하면... 이제야 이게 학술적으로 정리되었네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 그럼 지금까지 리더보드 상단 차지하던 모델들 중에 서빙 스택 잘 골라서 점수 뻥튀기한 놈들이 수두룩하다는 거잖아요? 이거 완전 &#x27;평가 방법론의 대격변&#x27;인데... 논문 저자분들 GitHub 리포지토리 별점 벌써 폭발 중이네요. 당장 우리 연구실 벤치마크 파이프라인부터 다 엎어야겠습니다. 흑흑.&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

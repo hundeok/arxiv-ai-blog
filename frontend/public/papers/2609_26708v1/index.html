@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>양자화 모델이 향하는 곳으로 훈련하기: 저비트 추론을 위한 온-폴리시 증류 | ArXiv Translator AI</title><meta name="description" content="양자화 모델이 향하는 곳으로 훈련하기: 저비트 추론을 위한 온-폴리시 증류"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_26708v1"><meta property="og:type" content="article"><meta property="og:title" content="양자화 모델이 향하는 곳으로 훈련하기: 저비트 추론을 위한 온-폴리시 증류"><meta property="og:description" content="양자화 모델이 향하는 곳으로 훈련하기: 저비트 추론을 위한 온-폴리시 증류"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_26708v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="양자화 모델이 향하는 곳으로 훈련하기: 저비트 추론을 위한 온-폴리시 증류"><meta name="twitter:description" content="양자화 모델이 향하는 곳으로 훈련하기: 저비트 추론을 위한 온-폴리시 증류"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_26708v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "양자화 모델이 향하는 곳으로 훈련하기: 저비트 추론을 위한 온-폴리시 증류", "description": "양자화 모델이 향하는 곳으로 훈련하기: 저비트 추론을 위한 온-폴리시 증류", "datePublished": "2026-09-22", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_26708v1", "author": [{"@type": "Person", "name": "Yuanteng Chen"}, {"@type": "Person", "name": "Zhilei Liu"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_26708v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_26708v1"});gtag('event', 'paper_view', {"paper_id": "2609_26708v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>양자화 모델이 향하는 곳으로 훈련하기: 저비트 추론을 위한 온-폴리시 증류</h1><p>양자화 모델이 향하는 곳으로 훈련하기: 저비트 추론을 위한 온-폴리시 증류</p><pre>양자화 모델이 향하는 곳으로 훈련하기: 저비트 추론을 위한 온-폴리시 증류
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Train Where the Quantized Model Goes: On-Policy Distillation for Low-Bit Reasoning
+&gt; - **저자:** Yuanteng Chen, Zhilei Liu, Peisong Wang, Yuantian Shao, Chuangyi Li, Weining Wang, Shuang Qiu, Gang Li, Jing Liu, Jian Cheng
+&gt; - **발행일:** 2026-09-22
+&gt; - **PDF 링크:** [Train Where the Quantized Model Goes: On-Policy Distillation for Low-Bit Reasoning](https://arxiv.org/pdf/2609.26708v1)
+
+
+✨ 3줄 핵심 요약
+- 3비트 미만의 극단적 양자화 모델은 긴 문맥 추론 시 반복 루프에 빠지며 성능이 급격히 저하되는 문제가 있습니다.
+- 기존의 양자화 증류(QAD)는 정적인 데이터 경로만 학습시켜 모델 자체의 오차 누적을 해결하지 못합니다.
+- 본 논문이 제안한 &#x27;온-폴리시 증류(OPD)&#x27;는 모델이 실제 생성 경로에서 추론하도록 유도하여 수학 및 코드 추론 성능을 크게 향상합니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+거대언어모델을 압축할 때 사용하는 &#x27;양자화&#x27;는 모델을 작고 빠르게 만들지만, 3비트 미만으로 넘어가면 모델이 말을 끝맺지 못하고 같은 말을 반복하는 치명적인 오류가 발생합니다. 기존 학습 방식은 정해진 정답 경로만 따라가도록 가르치지만, 실제 모델은 스스로 생성한 결과물을 바탕으로 그다음 글자를 예측하므로 여기서 발생하는 오차가 눈덩이처럼 불어납니다. 본 연구의 &#x27;온-폴리시 증류(OPD)&#x27;는 모델이 실제 서비스 환경에서 생성하는 경로를 따라가며 똑똑한(풀 프리시전) 교사 모델에게 실시간 피드백을 받는 방식입니다. 이를 통해 모델은 스스로 만든 긴 추론 경로에서도 길을 잃지 않고 정확한 결론에 도달할 수 있게 됩니다.
+
+🎯 배경 및 문제점
+- **성능 저하:** 3비트 미만 양자화 시 일반 질의응답 성능은 비교적 잘 유지되나, 수학(MATH-500) 등 추론 능력은 크게 훼손됩니다.
+- **반복 루프:** 긴 생성을 수행할 때 모델이 특정 토큰을 반복하는 루프에 빠져 추론을 완료하지 못하고 연산 자원만 낭비합니다.
+- **데이터 불일치(Mismatch):** 기존 양자화 증류(QAD)는 교사가 제시한 고정된 데이터만 학습하지만, 실제 배포된 모델은 자신이 생성한 오차 섞인 경로를 따라가므로 학습 경로와 실제 배포 경로 간 괴리가 발생합니다.
+
+💡 핵심 기술 및 아키텍처
+- **QAD 초기화:** 우선 양자화 증류(QAD)를 통해 모델의 기본적인 언어 능력과 정책의 유효성을 확보합니다.
+- **온-폴리시 증류(OPD):** QAD 단계 이후, 모델이 배포 환경과 동일한 양자화 경로를 통해 스스로 문장을 생성하게 합니다.
+- **피드백 결합:** 모델이 생성한 경로에 대해 고정된 풀 프리시전(BF16) 교사 모델이 토큰 단위의 지도를 제공하고, 정답 확인(Task-verifier) 보상을 통해 성공적인 추론을 강화합니다.
+
+📊 실험 결과 분석
+- **성능 유지 및 향상:** 2.79비트 및 1.88비트 모델에서 MATH-500 성능 유지율이 35%에서 70%로, HumanEval 성능 유지율이 66%에서 91%로 상승했습니다.
+- **비교 분석:** 기존의 교사 강제 학습(Teacher-forced) 방식과 동일한 예산으로 실험했을 때, OPD가 모든 벤치마크에서 더 우수한 성능을 보였습니다. 
+- **반복 감소:** 수학 문제 해결 시 모델이 반복 루프에 빠지는 비율이 현저히 줄어들었으며, 더 긴 추론 과정을 완벽하게 완료하는 능력이 입증되었습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+- **고효율 추론:** 극단적인 저비트 압축을 통해서도 고성능 모델 수준의 수학적 추론과 코드 작성 능력을 유지할 수 있어, 제한된 하드웨어 자원(엣지 디바이스 등)에서도 고성능 AI 활용이 가능해집니다.
+- **비용 절감:** 추론 시 메모리 요구량을 획기적으로 낮추면서도 복잡한 논리적 추론이 필요한 작업에 투입할 수 있어 기업의 서빙 비용을 최적화할 수 있습니다.
+- **기술 공개:** 연구진은 해당 프레임워크의 코드를 GitHub를 통해 공개하여 실무 적용을 지원합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2609.26708 Train Where the Quantized Model Goes: On-Policy Distillation for Low-Bit Reasoning](https://arxiv.org/abs/2609.26708)
+&gt; - [GitHub - MingZwhy/QAOPD: Quantization-Aware On-Policy Distillation for LLM · GitHub](https://github.com/MingZwhy/QAOPD)
+&gt; - [📚 ArXiv AI 研究日报 2026-09-23 · Issue #566 · howe12/agents-radar](https://github.com/howe12/agents-radar/issues/566)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;Teacher-forcing의 고질적인 exposure bias 문제를 양자화 환경에서 온-폴리시 증류로 풀어낸 건 흥미롭군요. 다만, 매 스텝마다 풀 프리시전 교사 모델을 호출하는 방식은 학습 비용이 만만치 않을 텐데, 실무적인 스케일업 가능성에 대해서는 논문에서 조금 더 명확한 프로파일링을 보여줬어야 합니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 비용은 좀 들겠지만, 3비트 미만에서 MATH 벤치마크 70% 복구면 비즈니스 임팩트는 확실합니다. 엣지 디바이스 서빙 비용 절감액이 학습 비용보다 훨씬 클 테니까요. 당장 다음 스프린트에 우리 모델 서빙 환경에 도입해서 반복 루프 잡히는지 테스트해 봐야겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;선배님, 당장 깃헙 코드 떴습니다! 이미 트위터에서도 &#x27;Quantization의 구원자&#x27;라고 난리 났어요. 단순히 정적 증류를 넘어 모델이 스스로 만든 오차 경로를 학습시킨다는 아이디어 자체가 너무 힙하지 않나요? 오늘 밤샘하면서 바로 튜닝 돌려볼 생각입니다.&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
