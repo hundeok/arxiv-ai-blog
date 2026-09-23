@@ -1,0 +1,72 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SWE-Serve: 프로덕션 추론 서빙을 위한 에이전트 엔지니어링 벤치마크 | ArXiv Translator AI</title><meta name="description" content="SWE-Serve: 프로덕션 추론 서빙을 위한 에이전트 엔지니어링 벤치마크"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_26777v1"><meta property="og:type" content="article"><meta property="og:title" content="SWE-Serve: 프로덕션 추론 서빙을 위한 에이전트 엔지니어링 벤치마크"><meta property="og:description" content="SWE-Serve: 프로덕션 추론 서빙을 위한 에이전트 엔지니어링 벤치마크"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_26777v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="SWE-Serve: 프로덕션 추론 서빙을 위한 에이전트 엔지니어링 벤치마크"><meta name="twitter:description" content="SWE-Serve: 프로덕션 추론 서빙을 위한 에이전트 엔지니어링 벤치마크"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_26777v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "SWE-Serve: 프로덕션 추론 서빙을 위한 에이전트 엔지니어링 벤치마크", "description": "SWE-Serve: 프로덕션 추론 서빙을 위한 에이전트 엔지니어링 벤치마크", "datePublished": "2026-09-22", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_26777v1", "author": [{"@type": "Person", "name": "Jennifer Williams"}, {"@type": "Person", "name": "Dave Farris"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_26777v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_26777v1"});gtag('event', 'paper_view', {"paper_id": "2609_26777v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>SWE-Serve: 프로덕션 추론 서빙을 위한 에이전트 엔지니어링 벤치마크</h1><p>SWE-Serve: 프로덕션 추론 서빙을 위한 에이전트 엔지니어링 벤치마크</p><pre>SWE-Serve: 프로덕션 추론 서빙을 위한 에이전트 엔지니어링 벤치마크
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** SWE-Serve: Benchmarking Agentic Engineering For Production Inference Serving
+&gt; - **저자:** Jennifer Williams, Dave Farris, Jeff Farris, Jiantao Jiao
+&gt; - **발행일:** 2026-09-22
+&gt; - **PDF 링크:** [SWE-Serve: Benchmarking Agentic Engineering For Production Inference Serving](https://arxiv.org/pdf/2609.26777v1)
+
+
+✨ 3줄 핵심 요약
+*   **SWE-Serve**는 실제 프로덕션 환경의 추론 시스템(SGLang) 변경 사항을 기반으로 구축된 에이전트 평가용 벤치마크입니다.
+*   단순한 코드 작성 능력을 넘어, 모델 서빙, 런타임 최적화 등 시스템 전반의 복잡한 요구사항을 충족하는 &#x27;프로덕션 정확성&#x27;을 측정합니다.
+*   많은 에이전트가 로컬 테스트는 통과하지만, 실제 환경의 E2E(End-to-End) 테스트 단계에서 실패하여 프로덕션 배포가 불가능한 성능 격차를 보입니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+코딩하는 AI 에이전트들은 이제 소프트웨어 개발의 어려운 작업들을 척척 해냅니다. 하지만 실제 서비스 운영 환경은 다릅니다. &#x27;로컬 환경&#x27;에서는 코드가 잘 작동해도, 수많은 사용자가 동시에 접근하고 복잡한 서버 로직이 돌아가는 &#x27;프로덕션&#x27; 환경에서는 작은 오류가 치명적인 장애를 일으킬 수 있습니다. SWE-Serve는 AI가 작성한 코드가 단순히 문법적으로 맞는지 확인하는 것을 넘어, 실제 추론 서버가 정상적으로 작동할 수 있는지(프로덕션 정확성)를 검증하는 엄격한 시험대입니다.
+
+🎯 배경 및 문제점
+기존 소프트웨어 엔지니어링 벤치마크는 주로 일반적인 저장소 수준의 과제에 집중되어 있어, 추론 엔진의 특수한 환경을 반영하지 못합니다. 실제 프로덕션 추론 시스템에서는 다음과 같은 문제가 발생합니다:
+*   **격리 환경의 한계:** 특정 코드가 단독으로는 잘 돌아가도, 시스템 전체와 결합했을 때 충돌이 발생할 수 있습니다.
+*   **동시성 및 상태 공유:** 여러 요청이 동시에 들어오거나 서버의 내부 상태를 공유할 때 발생하는 오류가 간과되기 쉽습니다.
+*   **평가 방식의 부족:** 기존 벤치마크는 추론 성능 최적화나 핵심 커널 생성 등 제한적인 영역만 다루어, 전체 시스템의 완성도를 평가하기 어렵습니다.
+
+💡 핵심 기술 및 아키텍처
+SWE-Serve는 오픈소스 추론 서빙 시스템인 &#x27;SGLang&#x27;의 실제 변경 이력을 바탕으로 **53개의 과제**를 설계했습니다.
+*   **다양한 기술 영역:** 모델 지원, 디코딩, 분산 실행, 서빙 API 등 6가지 추론 엔지니어링 분야를 포함합니다.
+*   **검증 체계:** 숨겨진 기능 테스트, 회귀 테스트, E2E 서빙 테스트, 성능 제한 사항(Performance Gates) 등을 사용하여 다각도로 검증합니다.
+*   **평가 무결성:** 실행 가능한 제어(no-op/oracle), 적대적 검증자 리뷰 등을 도입하여 모델이 스스로 꼼수를 부리거나 부정확한 코드를 제출하지 못하도록 설계했습니다.
+
+📊 실험 결과 분석
+11개 모델과 31개 설정으로 테스트한 결과는 다음과 같습니다:
+*   **성능:** 가장 우수한 설정은 75%의 mean pass@1(첫 번째 시도 성공률)을 기록했습니다.
+*   **프로덕션 격차:** 로컬 테스트를 통과한 패치 중 약 3분의 1이 E2E 테스트에서 거부당했습니다.
+*   **데이터 수치:** E2E 테스트를 제외하면 69.4%의 통과율을 보이나, E2E 검증을 포함할 경우 통과율이 45.9%로 급락하여 프로덕션 정확성 구현이 매우 어려움을 시사합니다.
+*   **실패 원인:** 실패한 패치들은 성공한 패치에 비해 수정 범위(코드 라인 수, 파일 변경 등)가 더 넓은 경향을 보입니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+*   **에이전트 개발 지표:** 향후 개발되는 AI 에이전트들이 단순한 &#x27;코드 작성기&#x27;를 넘어 실제 산업 현장에서 즉시 투입 가능한 수준의 &#x27;시스템 엔지니어&#x27;로 발전할 수 있도록 명확한 척도를 제시합니다.
+*   **생산 안정성 향상:** 프로덕션 수준의 안정성을 요구하는 기업 환경에서 AI 도입 시 발생할 수 있는 잠재적인 배포 실패 위험을 현저히 낮출 수 있습니다.
+*   **표준화:** 추론 엔지니어링 분야에서 모델 서빙의 복잡성을 관리하고, 자동화된 검증 프로세스를 구축하는 표준 모델로서 기여할 것으로 기대됩니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Agentic Inference for MLPerf Inference - MLCommons](https://mlcommons.org/2026/07/agentic-inference-for-mlperf-inference/)
+&gt; - [From LLM Inference to Agentic Workloads: Characterization and Implications for Serving Systems](https://arxiv.org/html/2608.15127)
+&gt; - [Benchmarking Inference Engines on Agentic Workloads | Applied Compute](https://www.appliedcompute.com/research/inference-benchmark)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;기존 SWE-bench가 단순히 코드 생성의 문법적 정합성만 따졌다면, 이번 SWE-Serve는 &#x27;시스템적 인과관계&#x27;를 검증한다는 점에서 학술적 가치가 높군요. 특히 E2E 테스트에서 통과율이 45.9%로 급락하는 현상은, 모델이 로컬 스코프를 넘어 분산 시스템의 상태 머신을 이해하지 못하고 있다는 강력한 증거입니다. LLM의 추론 능력이 아직 프로덕션 수준의 결정론적 시스템을 다루기엔 부족하다는 방증이죠.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로입니다. 현업에서 제일 공포스러운 게 &#x27;로컬에선 되는데 왜 프로덕션에선 터지지?&#x27;거든요. SGLang 같은 복잡한 서빙 프레임워크는 동시성 이슈나 메모리 관리가 핵심인데, 에이전트가 그 미묘한 Race condition을 다 고려할 리가 없죠. 3분의 1이 E2E에서 거부당한다는 건, 에이전트가 짠 코드를 배포했다간 우리 팀원들 전부 새벽에 PagerDuty 울려서 깨어날 거라는 소리랑 똑같습니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;두 분 다 너무 회의적이신 거 아닌가요? 75%의 mean pass@1이면 이 정도 복잡도의 벤치마크치고는 엄청난 수치 아닌가요? 지금 SOTA 모델들로 이 벤치마크 파이프라인 돌려보면서 오답 분석하는 것만으로도 &#x27;Agentic System Integrity&#x27; 관련 논문 최소 3개는 뽑을 수 있을 것 같아요. 프로덕션 격차는 결국 RAG나 더 긴 컨텍스트 윈도우로 시스템 아키텍처 다 때려 박으면 조만간 해결될 문제라고 봅니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
