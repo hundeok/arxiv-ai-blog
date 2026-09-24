@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Fed-ReMasker: 특징 수준 결측이 존재하는 환경에서의 연합형 정형 데이터 대치 | ArXiv Translator AI</title><meta name="description" content="Fed-ReMasker: 특징 수준 결측이 존재하는 환경에서의 연합형 정형 데이터 대치"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_28105v1"><meta property="og:type" content="article"><meta property="og:title" content="Fed-ReMasker: 특징 수준 결측이 존재하는 환경에서의 연합형 정형 데이터 대치"><meta property="og:description" content="Fed-ReMasker: 특징 수준 결측이 존재하는 환경에서의 연합형 정형 데이터 대치"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_28105v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Fed-ReMasker: 특징 수준 결측이 존재하는 환경에서의 연합형 정형 데이터 대치"><meta name="twitter:description" content="Fed-ReMasker: 특징 수준 결측이 존재하는 환경에서의 연합형 정형 데이터 대치"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_28105v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Fed-ReMasker: 특징 수준 결측이 존재하는 환경에서의 연합형 정형 데이터 대치", "description": "Fed-ReMasker: 특징 수준 결측이 존재하는 환경에서의 연합형 정형 데이터 대치", "datePublished": "2026-09-23", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_28105v1", "author": [{"@type": "Person", "name": "Ioannis Papathanail"}, {"@type": "Person", "name": "Rooholla Poursoleymani"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_28105v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_28105v1"});gtag('event', 'paper_view', {"paper_id": "2609_28105v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>Fed-ReMasker: 특징 수준 결측이 존재하는 환경에서의 연합형 정형 데이터 대치</h1><p>Fed-ReMasker: 특징 수준 결측이 존재하는 환경에서의 연합형 정형 데이터 대치</p><pre>Fed-ReMasker: 특징 수준 결측이 존재하는 환경에서의 연합형 정형 데이터 대치
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Fed-ReMasker: Federated Tabular Imputation under Feature-Level Missingness
+&gt; - **저자:** Ioannis Papathanail, Rooholla Poursoleymani, Lubnaa Abdur Rahman, Stavroula Georgia Mougiakakou
+&gt; - **발행일:** 2026-09-23
+&gt; - **PDF 링크:** [Fed-ReMasker: Federated Tabular Imputation under Feature-Level Missingness](https://arxiv.org/pdf/2609.28105v1)
+
+
+✨ 3줄 핵심 요약
+* **핵심 과제:** 다기관 연구에서 기관별로 측정하는 데이터 항목이 서로 달라 발생하는 &#x27;특징(feature) 수준의 결측&#x27; 문제를 연합 학습 환경에서 해결함.
+* **기술적 접근:** 마스크드 오토인코더(Masked Autoencoder) 모델인 &#x27;ReMasker&#x27;를 연합 학습에 적합하게 적용하여, 로컬 데이터에 없는 특징값도 타 기관의 정보를 활용해 대치.
+* **성과:** 균일한 환경에서 값 수준 결측의 93.2%, 특징 수준 결측의 96.7% 시나리오에서 가장 낮은 오차를 기록했으며, 중앙 집중식 모델과 비교해도 성능 차이가 평균 3.0% 이내로 매우 근접함.
+
+📖 쉽게 풀어쓴 1분 핵심
+여러 병원이 공동 연구를 할 때, 개인정보 보호 때문에 환자 데이터를 한곳으로 모으기 어렵습니다. 또한, 병원마다 측정하는 검사 항목이 달라 어떤 병원에는 아예 없는 데이터 항목(특징 수준 결측)이 발생하곤 합니다. &#x27;Fed-ReMasker&#x27;는 데이터를 직접 공유하지 않고도, 다른 병원들이 학습한 정보를 활용해 우리 병원에 없는 데이터 항목을 추론하여 채워 넣는 기술입니다. 이를 통해 데이터를 모으지 않고도 서로 다른 특징을 가진 데이터셋들을 하나처럼 활용할 수 있게 합니다.
+
+🎯 배경 및 문제점
+* **데이터 파편화:** 의료 및 생의학 분야에서는 데이터 보호 규정으로 인해 로컬 데이터를 외부로 반출하는 것이 제한됨.
+* **불완전한 데이터셋:** 기관마다 데이터 수집 프로토콜이 달라, 특정 기관에서는 특정 데이터 항목(feature) 자체가 아예 기록되지 않는 &#x27;특징 수준 결측&#x27; 문제가 발생함.
+* **기존 방법의 한계:** 기존의 연합 학습 기반 결측치 대치법들은 특정 기관에 데이터 항목이 완전히 누락된 경우 학습할 정보가 부족해 대치에 어려움을 겪음.
+
+💡 핵심 기술 및 아키텍처
+* **Fed-ReMasker:** 마스크드 오토인코더 모델을 연합 학습 환경에 최적화함.
+* **협력적 학습:** 로컬 데이터에 존재하지 않는 특징이라도 타 기관에서 학습된 모델 정보를 통해 해당 분포와 타 변수와의 상관관계를 파악하여 대치값을 생성.
+* **단순화된 집계:** 복잡한 추가 전략 없이 단순 연합 평균(FedAvg)을 사용하면서도 다양한 데이터 불균형(heterogeneity) 환경에서 견고한 성능을 유지함.
+
+📊 실험 결과 분석
+* **성능 우위:** 36개의 값 수준 결측 시나리오 모두에서, 그리고 36개의 특징 수준 결측 시나리오 중 최소 35개에서 기존 방식들보다 뛰어난 성능을 보임.
+* **중앙 집중 모델과의 비교:** 원시 데이터를 모두 모아 학습한 모델과 비교했을 때, 성능 격차는 평균 3.0% 수준으로 매우 낮음.
+* **확장성:** 3개, 5개, 10개의 기관 수 변화 시나리오에서 일관된 성능을 보였으나, 기관 수가 늘어남에 따라 중앙 집중식 모델과의 격차는 약간 확대되는 경향이 확인됨. (단, 실험의 구체적인 절대 수치는 발췌문에 명시된 대로 3.0% 평균 격차 외에 시나리오별 미세한 차이를 포함함)
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **다기관 공동 연구 활성화:** 서로 다른 검사 항목을 보유한 병원들이 개인정보를 보호하면서도 대규모 협력 연구를 수행할 수 있는 기반 마련.
+* **실무적 제약:** 연구진은 본 연구에서 보안을 위한 차분 프라이버시(Differential Privacy)나 시스템 비용 등을 평가하지 않았으며, 현재로서는 결측치 대치 정확도 자체에 집중했다고 밝힘.
+* **향후 연구 방향:** 대치된 데이터가 실제 예측 모델이나 통계 분석 결과에 미치는 영향에 대한 추가 연구가 필요함.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Fed-ReMasker: Federated Tabular Imputation under Feature-Level Missingness](https://arxiv.org/abs/2609.28105)
+&gt; - [Fed-ReMasker: Federated Tabular Imputation under Feature-Level Missingness](https://www.roboticscenter.ai/research/papers/fed-remasker-federated-tabular-imputation-under-feature-level-missingness-2609)
+&gt; - [Fed-ReMasker: Federated Tabular Imputation under Feature-Level Missingness](https://arxiv.deeppaper.ai/papers/2609.28105v1)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문 결과를 보니 성능 수치는 꽤 고무적입니다만, 보안 측면에서 언급이 부족하군요. &#x27;차분 프라이버시&#x27;를 적용하지 않은 상태에서의 연합 학습은 그 자체로 모델 역공학을 통한 데이터 누출 위험이 큽니다. 특히 의료 데이터라면 논문 수준의 단순 FedAvg 구현으로는 실제 병원 현장에 도입하기엔 리스크가 너무 큽니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에선 바로 못 씁니다. 당장 데이터 파이프라인 정합성 맞추는 게 일인데, 기관마다 스키마가 다른 &#x27;특징 수준 결측&#x27;을 모델이 알아서 메워준다? 이론적으로는 훌륭하지만, 실제 배포 시 클라이언트 간의 통신 비용과 모델 드리프트 대응이 관건이겠네요. 그래도 일단 베이스라인으로 얹어놓고 DP(Differential Privacy) 얹어서 튜닝해볼 가치는 있어 보입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;아니, 다들 너무 엄근진하신 거 아니에요? ㅋㅋㅋ 일단 MAE(Masked Autoencoder) 구조를 연합 학습에 녹여서 이 정도 성능 뽑은 거면 당장 다음 학회 챌린지나 논문 베이스라인으로 핫할 것 같은데요? 프라이버시 이슈는 나중에 &#x27;DP-Fed-ReMasker&#x27; 같은 후속 논문으로 해결하면 되죠! 일단 구현체부터 뜯어봐야겠네요.&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
