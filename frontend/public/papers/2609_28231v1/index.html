@@ -1,0 +1,70 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>병리 기초 모델의 전신 슬라이드 이미지 분류 성능에서 센터 편향이 전파되는가? | ArXiv Translator AI</title><meta name="description" content="병리 기초 모델의 전신 슬라이드 이미지 분류 성능에서 센터 편향이 전파되는가?"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_28231v1"><meta property="og:type" content="article"><meta property="og:title" content="병리 기초 모델의 전신 슬라이드 이미지 분류 성능에서 센터 편향이 전파되는가?"><meta property="og:description" content="병리 기초 모델의 전신 슬라이드 이미지 분류 성능에서 센터 편향이 전파되는가?"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_28231v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="병리 기초 모델의 전신 슬라이드 이미지 분류 성능에서 센터 편향이 전파되는가?"><meta name="twitter:description" content="병리 기초 모델의 전신 슬라이드 이미지 분류 성능에서 센터 편향이 전파되는가?"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_28231v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "병리 기초 모델의 전신 슬라이드 이미지 분류 성능에서 센터 편향이 전파되는가?", "description": "병리 기초 모델의 전신 슬라이드 이미지 분류 성능에서 센터 편향이 전파되는가?", "datePublished": "2026-09-23", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_28231v1", "author": [{"@type": "Person", "name": "Ilán Carretero"}, {"@type": "Person", "name": "Pablo Meseguer"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_28231v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_28231v1"});gtag('event', 'paper_view', {"paper_id": "2609_28231v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>병리 기초 모델의 전신 슬라이드 이미지 분류 성능에서 센터 편향이 전파되는가?</h1><p>병리 기초 모델의 전신 슬라이드 이미지 분류 성능에서 센터 편향이 전파되는가?</p><pre>병리 기초 모델의 전신 슬라이드 이미지 분류 성능에서 센터 편향이 전파되는가?
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Do Center Biases Propagate? Robustness of Pathology Foundation Models in Whole-Slide Image Classification
+&gt; - **저자:** Ilán Carretero, Pablo Meseguer, Rocío del Amor, Valery Naranjo
+&gt; - **발행일:** 2026-09-23
+&gt; - **PDF 링크:** [Do Center Biases Propagate? Robustness of Pathology Foundation Models in Whole-Slide Image Classification](https://arxiv.org/pdf/2609.28231v1)
+
+
+✨ 3줄 핵심 요약
+* 병리 기초 모델(PFM)이 학습한 데이터 표현에 특정 병원(센터)의 기술적 정보가 포함되어, 이것이 질병 분류 시 잘못된 판단 근거(지름길)로 작용할 수 있음을 확인했습니다.
+* 새로운 성능 지표인 &#x27;AUCC(Cramér’s V 곡선 아래 면적)&#x27;를 도입하여 모델의 정확도와 편향에 대한 강건성을 동시에 평가했습니다.
+* 흔히 사용되는 데이터 조화 기법인 &#x27;ComBat&#x27;은 모델의 강건성을 일관되게 개선하지 못했으며, 오히려 성능이 저하되는 경우도 확인되었습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+AI 모델은 암 진단 같은 의료 영상 분석에서 매우 뛰어난 성능을 보입니다. 하지만 병원마다 사용하는 스캐너 기기나 염색 방식이 다르다 보니, AI가 질병의 생물학적 특징이 아닌 &#x27;어느 병원에서 찍었는지&#x27;에 대한 정보(센터 편향)를 학습해버리는 문제가 생깁니다. 이 논문은 AI가 이런 &#x27;편향된 정보&#x27;에 얼마나 의존하는지 체계적으로 실험했습니다. 그 결과, 뛰어난 성능을 자랑하는 기초 모델들도 특정 센터 정보가 질병 데이터와 섞여 있을 때 오작동할 가능성이 크며, 기존의 데이터 보정 방식(ComBat)만으로는 이 문제를 완벽히 해결하기 어렵다는 사실을 밝혀냈습니다.
+
+🎯 배경 및 문제점
+* **기술적 편향(Spurious Shortcuts):** 병리 영상은 조직 처리, 염색법, 스캔 방식에 따라 외형적 차이가 발생합니다. 모델이 이를 생물학적 특징이 아닌 분류를 위한 &#x27;지름길&#x27;로 이용하면, 새로운 환경의 데이터에 적용할 때 성능이 떨어질 수 있습니다.
+* **검증 체계 부족:** 기존에는 특정 데이터셋에서의 정확도만 주로 보았으나, &#x27;센터 정보&#x27;와 &#x27;라벨&#x27; 간의 상관관계가 변할 때 모델이 얼마나 흔들리지 않고 버티는지(강건성)를 종합적으로 평가하는 지표가 부족했습니다.
+
+💡 핵심 기술 및 아키텍처
+* **Cramér’s V 기반 제어:** 학습 데이터에서 병원 센터와 질병 라벨 사이의 상관관계를 강제로 조절(0에서 1까지)하여, 모델이 얼마나 편향에 의존하는지 측정했습니다.
+* **AUCC(Area Under the Cramér’s V Curve):** 모델의 정확도와 센터 편향 증가에 따른 성능 저하 정도를 하나의 수치로 종합 평가하는 지표를 제안했습니다.
+* **비교 분석:** 6개의 대표적인 병리 기초 모델(CONCH, KEEP, VIRCHOW-2 등)과 2개의 MIL(다중 인스턴스 학습) 집계 방식을 사용하여 실험했습니다.
+
+📊 실험 결과 분석
+* **편향 전파 확인:** 모든 모델에서 센터 정보가 최종 분류 결과에 전파되어 영향을 미치고 있었습니다.
+* **모델별 차이:** 시각-언어 멀티모달 기반의 모델(CONCH, KEEP 등)이 시각 정보만 사용한 모델들보다 센터 편향으로부터 상대적으로 더 강건했습니다.
+* **집계 방식:** ABMIL 방식이 TransMIL보다 전반적으로 편향에 대해 더 나은 강건성을 보였습니다.
+* **보정 기법의 한계:** ComBat을 적용했을 때, 48개 실험 사례 중 34개 사례에서 오히려 AUCC 점수가 하락하거나 개선 효과가 미미했습니다. 즉, 일반적인 데이터 조화 기법이 반드시 강건성을 높여주지는 못했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **임상 도입의 신중성:** AI 모델을 실제 병원에 도입할 때, 특정 병원 데이터에만 과적합되지 않았는지 철저히 검증해야 함을 시사합니다.
+* **모델 선택 가이드:** 병리 분야에서 모델을 선택할 때 단순 정확도뿐만 아니라 &#x27;센터 편향 강건성&#x27;을 함께 고려해야 하며, 멀티모달 기초 모델이 더 유리할 수 있음을 보여줍니다.
+* **향후 연구 방향:** 단순히 데이터를 보정하는 기법보다는, 처음부터 센터 편향에 강건하게 설계된 기초 모델이나 새로운 학습 전략 개발이 필요함을 강조합니다.
+
+*참고: 본 연구는 4개의 이진 분류 데이터셋(피부, 유방, 폐 암 관련)을 바탕으로 수행되었습니다.*
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2609.28231 Do Center Biases Propagate? Robustness of Pathology Foundation Models in Whole-Slide Image Classification](https://arxiv.org/abs/2609.28231)
+&gt; - [Do Center Biases Propagate? Robustness of Pathology Foundation Models in Whole-Slide Image Classification](https://arxiv.org/html/2609.28231)
+&gt; - [Latest 20 Papers - September 24, 2026 · Issue #1050 · junjianli106/DailyArXiv](https://github.com/junjianli106/DailyArXiv/issues/1050)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;기초 모델(PFM)이 단순히 성능 지표만 높은 줄 알았더니, 사실은 &#x27;데이터의 외형&#x27;을 암기하고 있었다는 게 증명됐군요. 특히 ComBat 같은 전통적인 조화 기법이 오히려 독이 된다는 대목은 시사하는 바가 큽니다. 단순한 통계적 보정으로 생물학적 특징과 기술적 노이즈를 분리할 수 없다는 건데, 이제는 모델 아키텍처 레벨에서 어떻게 편향을 배제할지 근본적인 고민이 필요합니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에선 ComBat 쓰다가 오히려 성능 망가져서 롤백한 적이 한두 번이 아니거든요. 이번 논문에서 제시한 AUCC 지표는 팀원들과 당장 도입해봐야겠네요. 맨날 &#x27;정확도&#x27;만 보고 모델 고르다가 실제 환경(In-the-wild) 나가면 성능이 곤두박질치는 이유가 결국 센터 편향 때문이었네요. 멀티모달 모델이 좀 더 강건하다는 결과는 꽤 흥미롭네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, AUCC 지표 진짜 잘 뽑았네요! VIRCHOW나 CONCH 같은 SOTA 모델들도 센터 편향 앞에서는 장사 없다는 게 드러나니 뭔가 속이 다 시원합니다. 다들 파라미터 키우기 경쟁만 할 때, 이렇게 모델의 &#x27;안전성&#x27;과 &#x27;강건성&#x27;을 파고드는 논문이 진짜 가치 있는 거 같아요. 당장 다음 랩 미팅 때 이 논문 들고 가서 제 실험 셋팅에 적용해봐야겠어요. 이번 학기 세미나 주제는 이걸로 가야겠네요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
