@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PASTABench: 에이전트 안전을 위한 순차적 궤적의 사전 평가 | ArXiv Translator AI</title><meta name="description" content="PASTABench: 에이전트 안전을 위한 순차적 궤적의 사전 평가"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_28197v1"><meta property="og:type" content="article"><meta property="og:title" content="PASTABench: 에이전트 안전을 위한 순차적 궤적의 사전 평가"><meta property="og:description" content="PASTABench: 에이전트 안전을 위한 순차적 궤적의 사전 평가"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_28197v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="PASTABench: 에이전트 안전을 위한 순차적 궤적의 사전 평가"><meta name="twitter:description" content="PASTABench: 에이전트 안전을 위한 순차적 궤적의 사전 평가"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_28197v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "PASTABench: 에이전트 안전을 위한 순차적 궤적의 사전 평가", "description": "PASTABench: 에이전트 안전을 위한 순차적 궤적의 사전 평가", "datePublished": "2026-09-23", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_28197v1", "author": [{"@type": "Person", "name": "Jiapeng Sun"}, {"@type": "Person", "name": "Yujin Zhou"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_28197v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_28197v1"});gtag('event', 'paper_view', {"paper_id": "2609_28197v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>PASTABench: 에이전트 안전을 위한 순차적 궤적의 사전 평가</h1><p>PASTABench: 에이전트 안전을 위한 순차적 궤적의 사전 평가</p><pre>PASTABench: 에이전트 안전을 위한 순차적 궤적의 사전 평가
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** PASTABench: Proactive Assessment of Sequential Trajectories for Agent Safety
+&gt; - **저자:** Jiapeng Sun, Yujin Zhou, Han Zhu, Pengcheng Wen, Jiayi Zhou, Sirui Han, Yike Guo
+&gt; - **발행일:** 2026-09-23
+&gt; - **PDF 링크:** [PASTABench: Proactive Assessment of Sequential Trajectories for Agent Safety](https://arxiv.org/pdf/2609.28197v1)
+
+
+✨ 3줄 핵심 요약
+- AI 에이전트의 다단계 작업 중 발생하는 위험을 사전에 모니터링하고 적절한 시점에 개입하기 위한 벤치마크인 &#x27;PASTABench&#x27;를 제안합니다.
+- 16개 LLM을 평가한 결과, 최적의 타이밍에 개입하는 비율이 40.74%에 그쳐 사전 안전 개입 능력이 매우 부족함이 드러났습니다.
+- 소형 모델들은 위험을 실질적으로 이해하기보다 특정 키워드에만 과민하게 반응하는 &#x27;어휘적 과적합(lexical overfitting)&#x27; 현상을 보였습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+최근 AI 에이전트는 단순히 글을 쓰는 단계를 넘어, 도구를 사용하고 현실 세계에 영향을 미치는 복잡한 작업을 수행합니다. 하지만 기존 안전 평가는 작업이 끝난 뒤에 결과를 사후 검토하는 방식이라, 위험이 발생하기 전 개입할 기회를 놓치는 치명적인 한계가 있었습니다. 이를 해결하기 위해 본 논문은 AI가 작업을 수행하는 도중 위험을 감지하고, &quot;개입할 것인가(Whether)&quot;, &quot;언제 개입할 것인가(When)&quot;, &quot;무엇이 위험인가(What)&quot;를 판단하는지 평가하는 &#x27;PASTABench&#x27;를 도입했습니다. 연구 결과, 많은 모델이 상황의 물리적 맥락을 파악하기보다 특정 단어에 의존해 위험을 판단하고 있으며, 실제 위험 상황에서의 적시 개입 능력은 여전히 낮은 수준입니다.
+
+🎯 배경 및 문제점
+- **사후 검토의 한계:** 기존 평가는 에이전트의 작업이 완료된 후 수행되어, 위험 발생 시 실시간 차단이 불가능합니다.
+- **위험 누적의 간과:** 단일 단계 평가 방식은 작업 과정에서 서서히 쌓이는 위험을 탐지하지 못합니다.
+- **물리적 맥락 파악 부족:** 에이전트가 현실 세계의 상태 변화(예: 압력 상승 등)를 이해하지 못하고 텍스트 키워드에만 의존하는 문제가 있습니다.
+
+💡 핵심 기술 및 아키텍처
+- **Decoupled Proactive Safety Monitoring:** 모니터링을 세 가지 차원(Whether, When, What)으로 분리하여 능동적인 안전 감시 체계를 정립했습니다.
+- **최적 개입 구간(OIW, Optimal Intervention Window):** 위험 신호가 나타나는 시점(Earliest-Signal)과 피해가 발생하는 시점(Trigger Turn)을 주석으로 달아, 모델이 가장 효율적인 시점에 개입했는지 정량적으로 측정합니다.
+- **PASTABench 데이터셋:** 1,139개의 다단계 궤적과 5개의 위험 카테고리, 13개의 하위 카테고리로 구성되어 모델의 판단력을 다각도로 검증합니다.
+
+📊 실험 결과 분석
+- **저조한 개입 능력:** 16개 LLM을 테스트한 결과, 최적의 타이밍에 올바르게 개입한 비율은 최고 40.74%에 불과했습니다.
+- **어휘적 과적합:** 소형 모델들은 위험 단어가 제거되면 사전 개입 능력이 급격히 붕괴하는 모습을 보였습니다. 이는 실질적인 위험 이해도가 낮음을 의미합니다.
+- **절차적 맹점:** 특히 &#x27;생략에 의한 오류(Errors of Omission)&#x27;를 탐지하는 능력이 매우 취약했습니다. 예를 들어, 보안 검증 과정을 건너뛰는 상황에서 모델들은 위험을 제대로 감지하지 못했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+- **안전한 에이전트 설계:** 본 벤치마크는 개발자들이 에이전트의 물리적 맥락 이해도를 높이고, 위험을 조기에 차단하는 &#x27;관리자(Supervisor)&#x27; 모델을 설계하는 기준이 될 것입니다.
+- **실시간 모니터링 시스템 구축:** 제안된 방법론을 활용하여 산업 현장이나 디지털 환경에서 에이전트의 오작동을 사전에 방지하는 안전 프레임워크를 강화할 수 있습니다.
+- **연구 한계:** 현재 본 데이터셋은 영어 기반의 텍스트 기술 환경에 국한되어 있으며, 실제 물리 환경의 복합적인 불확실성을 완전히 반영하기에는 한계가 있다고 논문에서 밝혔습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [PASTABench: Proactive Assessment of Sequential Trajectories ...](https://arxiv.org/pdf/2609.28197)
+&gt; - [PASTABench: Proactive Assessment of Sequential Trajectories ...](https://openreview.net/pdf?id=2IqSjWFIxd)
+&gt; - [PASTABench: Proactive Assessment of Sequential Trajectories ...](https://openreview.net/forum?id=2IqSjWFIxd)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문에서 지적한 &#x27;어휘적 과적합&#x27;은 사실 예견된 결과입니다. 모델들이 궤적의 인과 관계(causal reasoning)를 추론하는 게 아니라, 확률적 패턴 매칭에 머물러 있다는 방증이죠. 특히 &#x27;생략에 의한 오류&#x27;를 놓친다는 건 에이전트가 시스템의 상태 변화를 이해하지 못하고 있다는 뜻인데, 단순히 벤치마크를 통과하는 게 아니라 근본적인 세계 모델(World Model) 구축이 시급합니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 맞지만, 현장에서는 당장 에이전트를 상용화해야 하는 입장에서 40%라는 수치는 꽤나 충격적이네요. OIW 개념은 실무에서 가드레일 설계할 때 당장 참고할 만한 좋은 프레임워크 같습니다. 다만, 실시간 모니터링 시스템에 이 모델들을 그대로 올리면 레이턴시가 엄청날 텐데, 연산 비용 대비 효율을 어떻게 잡을지가 관건이겠는데요?&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 16개 모델 다 돌려본 거 진짜 대단하네요! 이제 다들 &#x27;안전&#x27; 키워드 붙은 논문만 나오면 눈이 돌아가는데, PASTABench는 확실히 실전성 면에서 임팩트가 있네요. 다들 &#x27;어휘적 과적합&#x27; 까면서도 정작 우리 실험실 서버에서는 저 모델들로 에이전트 굴리고 있다는 게 함정...ㅋㅋㅋ 다음 주 세미나 때 다들 이 논문 들고 와서 엄청 싸울 거 같네요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
