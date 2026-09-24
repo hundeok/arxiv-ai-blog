@@ -1,0 +1,71 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>얼어붙은 흐름은 잊는다: 잠재 흐름 월드 모델에서의 손실된 움직임 진단 및 복구 | ArXiv Translator AI</title><meta name="description" content="얼어붙은 흐름은 잊는다: 잠재 흐름 월드 모델에서의 손실된 움직임 진단 및 복구"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_28414v1"><meta property="og:type" content="article"><meta property="og:title" content="얼어붙은 흐름은 잊는다: 잠재 흐름 월드 모델에서의 손실된 움직임 진단 및 복구"><meta property="og:description" content="얼어붙은 흐름은 잊는다: 잠재 흐름 월드 모델에서의 손실된 움직임 진단 및 복구"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_28414v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="얼어붙은 흐름은 잊는다: 잠재 흐름 월드 모델에서의 손실된 움직임 진단 및 복구"><meta name="twitter:description" content="얼어붙은 흐름은 잊는다: 잠재 흐름 월드 모델에서의 손실된 움직임 진단 및 복구"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_28414v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "얼어붙은 흐름은 잊는다: 잠재 흐름 월드 모델에서의 손실된 움직임 진단 및 복구", "description": "얼어붙은 흐름은 잊는다: 잠재 흐름 월드 모델에서의 손실된 움직임 진단 및 복구", "datePublished": "2026-09-23", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_28414v1", "author": [{"@type": "Person", "name": "Xiwen Chen"}, {"@type": "Person", "name": "Rigaudiere Z. Li"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_28414v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_28414v1"});gtag('event', 'paper_view', {"paper_id": "2609_28414v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>얼어붙은 흐름은 잊는다: 잠재 흐름 월드 모델에서의 손실된 움직임 진단 및 복구</h1><p>얼어붙은 흐름은 잊는다: 잠재 흐름 월드 모델에서의 손실된 움직임 진단 및 복구</p><pre>얼어붙은 흐름은 잊는다: 잠재 흐름 월드 모델에서의 손실된 움직임 진단 및 복구
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Frozen Flows Forget: Diagnosing and Restoring Lost Motion in a Latent-flow World Model
+&gt; - **저자:** Xiwen Chen, Rigaudiere Z. Li, Zhiruo Zhou, Xiaojun Zhu, Houde Liu
+&gt; - **발행일:** 2026-09-23
+&gt; - **PDF 링크:** [Frozen Flows Forget: Diagnosing and Restoring Lost Motion in a Latent-flow World Model](https://arxiv.org/pdf/2609.28414v1)
+
+
+✨ 3줄 핵심 요약
+- 잠재 공간(Latent space)에서만 학습하는 기존 월드 모델은 정지 상태를 유지하거나 물체를 순간 이동시키는 &#x27;움직임 붕괴&#x27; 현상을 겪습니다.
+- 연구진은 이 문제가 훈련 신호의 부족(anchor-sparse) 때문임을 밝혀내고, 디코딩 과정을 학습에 포함하는 DART 기법을 제안했습니다.
+- DART는 사전 학습된 표현을 고정한 채 흐름(flow)만을 재학습하여 움직임의 구조를 복구하고 예측 품질을 개선했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+최신 AI 월드 모델은 효율성을 위해 데이터를 고정된 잠재 공간에서 학습합니다. 하지만 이 방식은 모델이 화면 속 물체가 어떻게 움직여야 하는지를 배우지 못하게 만드는 치명적인 부작용을 낳습니다. 모델이 정지 화면을 유지하거나 물체를 갑자기 순간 이동시키는 현상이 발생하는 것입니다. 이 연구는 모델이 &#x27;보는&#x27; 영역(디코딩된 화면)에서 학습하도록 강제하는 &#x27;DART&#x27;라는 기술을 도입해, 복잡한 인공지능 모델 구조를 크게 바꾸지 않고도 부드럽고 정확한 움직임을 되살리는 데 성공했습니다.
+
+🎯 배경 및 문제점
+기존 월드 모델은 학습 안정성을 위해 인코더를 고정하고 잠재 공간에서만 학습합니다. 연구진은 이러한 시스템이 &#x27;움직임 붕괴(motion collapse)&#x27;를 일으킨다는 사실을 발견했습니다. 
+- **원인:** 잠재 공간에서만 학습하고, 훈련용 이정표(anchor)가 부족하여 특정 시간대에 움직임을 배치해야 한다는 정보를 모델이 학습하지 못함.
+- **오류:** 표준 손실 함수(Loss)로는 이 정지 현상이 감지되지 않으며, 오히려 픽셀 오차 지표가 이러한 정지 상태를 좋게 평가하는 왜곡 현상이 발생함.
+
+💡 핵심 기술 및 아키텍처
+제안된 **DART(Decode-augmented rollout training)**는 시스템의 표현(인코더/디코더)을 고정한 채 흐름 모듈만 재학습합니다.
+- **디코드 경로 감독:** 잠재 공간의 오차뿐만 아니라, 디코더를 통해 실제 이미지로 변환된 값과 DINOv2 특징(feature)을 비교하여 오차를 계산함.
+- **학습 목표:** $L = L_{lat} + 0.5L_{dec} + 0.5L_{reg}$ (잠재 오차 + 디코딩 프레임 오차 + 영역별 특징 일치 오차).
+- **효과:** 그래디언트(Gradient)가 디코드 경로를 따라 흐름 모듈에 직접 전달되므로, 모델이 시각적인 움직임을 물리적으로 이해하게 됨.
+
+📊 실험 결과 분석
+실험은 LIBERO 데이터를 활용하여 수행되었습니다.
+- **움직임 복구:** DART는 기존 모델 대비 움직임의 시간적 구조를 회복시켰으며, 예측된 움직임과 실제 장면을 일치시켰습니다.
+- **정밀도:** 650개 데모에 대한 벤치마크 결과, DART는 기존 모델보다 전반적으로 낮은 L1 오차를 기록했습니다. 
+- **성과:** 다른 비디오 예측 모델과의 비교에서, 사전 학습된 모델 대비 약 47%의 성능 격차를 줄였으며, 단순 픽셀 오차 지표가 가진 한계를 극복했습니다.
+- *주: 구체적인 수치는 원문 표와 본문을 참고하십시오.*
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+이 연구는 복잡한 월드 모델을 처음부터 다시 학습시키지 않고도, 사소한 훈련 전략 수정만으로 움직임 이해도를 극대화할 수 있음을 입증했습니다. 이는 특히 로봇 학습이나 비디오 생성 AI 분야에서 실무적인 기여를 합니다.
+- **실무 적용:** 고비용의 인코더/디코더 재학습 없이 기존 모델의 성능을 향상할 수 있어 효율적인 AI 개발이 가능합니다.
+- **평가 관점:** 픽셀 오차 지표가 오히려 정지 화면을 선호하는 오류를 범할 수 있음을 경고하며, 향후 월드 모델 평가 시 움직임 특화 지표(conc 3 등)가 필수적임을 제시했습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2609.28414 Frozen Flows Forget: Diagnosing and Restoring Lost Motion in a Latent-flow World Model](https://arxiv.org/abs/2609.28414)
+&gt; - [FROZEN FLOWS FORGET: DIAGNOSING AND RESTORING LOST MOTION IN A LATENT-FLOW WORLD MODEL](https://arxiv.org/html/2609.28414)
+&gt; - [Computer Vision and Pattern Recognition](https://arxiv.org/list/cs.CV/recent)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문의 핵심인 &#x27;움직임 붕괴&#x27;는 사실 잠재 공간의 정보 손실을 픽셀 수준에서 보정하려는 시도로 보이는데, DART 기법에서 디코더를 매번 거쳐야 하는 연산 비용은 어떻게 감당할 생각인가? 이론적 정교함은 인정하지만, 실제 대규모 배포 시의 레이턴시(Latency) 이슈는 논의가 부족해 보이는군.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 연산량은 부담이죠. 하지만 현업에서는 모델을 처음부터 다시 학습(Full Fine-tuning)하는 비용이 더 치명적입니다. 인코더/디코더를 락(Lock) 걸어두고 흐름 모듈만 튜닝해서 성능 47%를 올렸다는 건, 로봇 제어 서비스 배포 시에 &#x27;가성비&#x27;가 엄청나다는 뜻입니다. 이건 바로 프로덕션 파이프라인에 태워볼 만한 가치가 있어요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;다들 성능이랑 비용 이야기만 하시는데, 이번 논문의 진짜 포인트는 &#x27;픽셀 오차 지표의 기만성&#x27;을 밝혀냈다는 거 아닙니까? 그동안 우리가 벤치마크 점수 높다고 좋아하던 모델들이 사실은 &#x27;정지 화면&#x27;을 뱉고 있었다니 소름 돋네요. 이제 SOTA 찍었다고 다 믿으면 안 되겠어요. 교수님, 저 이번에 &#x27;움직임 특화 지표&#x27; 연구로 논문 하나 더 써도 될까요?&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
