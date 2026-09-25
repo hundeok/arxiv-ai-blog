@@ -1,0 +1,69 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>일반화된 작업 및 모션 계획 문제를 위한 코딩 에이전트 | ArXiv Translator AI</title><meta name="description" content="일반화된 작업 및 모션 계획 문제를 위한 코딩 에이전트"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_30233v1"><meta property="og:type" content="article"><meta property="og:title" content="일반화된 작업 및 모션 계획 문제를 위한 코딩 에이전트"><meta property="og:description" content="일반화된 작업 및 모션 계획 문제를 위한 코딩 에이전트"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_30233v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="일반화된 작업 및 모션 계획 문제를 위한 코딩 에이전트"><meta name="twitter:description" content="일반화된 작업 및 모션 계획 문제를 위한 코딩 에이전트"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_30233v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "일반화된 작업 및 모션 계획 문제를 위한 코딩 에이전트", "description": "일반화된 작업 및 모션 계획 문제를 위한 코딩 에이전트", "datePublished": "2026-09-24", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_30233v1", "author": [{"@type": "Person", "name": "Matteo Merler"}, {"@type": "Person", "name": "Bowen Li"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_30233v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_30233v1"});gtag('event', 'paper_view', {"paper_id": "2609_30233v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>일반화된 작업 및 모션 계획 문제를 위한 코딩 에이전트</h1><p>일반화된 작업 및 모션 계획 문제를 위한 코딩 에이전트</p><pre>일반화된 작업 및 모션 계획 문제를 위한 코딩 에이전트
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Coding Agents for Generalized Task and Motion Planning Problems
+&gt; - **저자:** Matteo Merler, Bowen Li, Josh Roy, Yichao Liang, Qianwei Wang, Yixuan Huang, Tom Silver
+&gt; - **발행일:** 2026-09-24
+&gt; - **PDF 링크:** [Coding Agents for Generalized Task and Motion Planning Problems](https://arxiv.org/pdf/2609.30233v1)
+
+
+✨ 3줄 핵심 요약
+*   코딩 에이전트(Claude Code, Codex 등)를 활용해 복잡한 기하학적·물리적 제약이 있는 TAMP(Task and Motion Planning) 문제를 해결하는 범용적인 프로그램을 생성함.
+*   에이전트가 환경과 상호작용하며 시행착오를 거쳐 생성한 프로그램은 기존의 수동 설계된 계획기(Planner)나 일회성 생성 방식보다 훨씬 높은 성공률을 기록함.
+*   문제의 규모가 커져도 계산 효율성을 유지하며 더 높은 성능을 보였으며, 에이전트가 스스로 물리 모델을 보정하고 전략을 정교화하는 능력을 입증함.
+
+📖 쉽게 풀어쓴 1분 핵심
+로봇이 복잡한 환경에서 물체를 옮기거나 정렬하는 작업을 수행하려면 &#x27;작업 계획(무엇을 할 것인가)&#x27;과 &#x27;모션 계획(어떻게 움직일 것인가)&#x27;이 동시에 해결되어야 합니다. 기존 방식은 사람이 직접 정교한 알고리즘을 설계해야 해서 매우 번거롭고 어려웠습니다. 연구팀은 AI 코딩 에이전트에게 시뮬레이터 접근 권한을 주고 스스로 문제를 해결하는 코드를 작성하게 했습니다. 그 결과, 에이전트는 사람이 짠 코드보다 더 똑똑하게 환경을 이해하고, 훨씬 다양한 상황에서 성공적으로 작업을 수행하는 범용적인 프로그램을 스스로 만들어냈습니다.
+
+🎯 배경 및 문제점
+*   **복잡한 제약:** TAMP 문제는 긴 계획 시간, 드문 피드백, 그리고 물리적·기하학적 제약이 서로 밀접하게 얽혀 있어 해결하기 매우 어렵습니다.
+*   **높은 엔지니어링 비용:** 기존의 일반화된 TAMP 방식은 알고리즘 설계 등 많은 수작업(Scaffolding)이 필요합니다.
+*   **기존 모델의 한계:** 단순히 LLM을 활용한 계획 생성만으로는 복잡한 물리적 환경에서의 의사결정에 한계가 있습니다.
+
+💡 핵심 기술 및 아키텍처
+*   **코딩 에이전트 활용:** Claude Code(Opus 5) 및 Codex(GPT-5.6 Sol, GPT-6 Astra)를 활용하여 TAMP 환경에 최적화된 코드를 합성함.
+*   **환경과의 상호작용:** 에이전트는 시뮬레이터에 직접 접속하여 물리 모델을 보정하고, 예외 케이스를 테스트하며 전략을 다듬는 과정을 통해 프로그램을 생성함.
+*   **범용적 프로그램:** 특정 문제에서만 작동하는 것이 아니라, 새로운 인스턴스에도 적용 가능한 프로그램을 생성한 뒤 이를 고정(Frozen)하여 평가함.
+
+📊 실험 결과 분석
+*   **압도적 성능:** 28개 시뮬레이션 환경에서 980개의 프로그램을 생성하여 평가한 결과, 모든 에이전트 구성이 수동 설계된 계획기, 일회성 생성 방식, LLM 기반 계획기보다 높은 성공률을 보임.
+*   **수치:** 계획기가 사용 가능한 16개 환경에서 평균 성공률은 56%~95%로, 기존 계획기(47%)보다 월등함. (수치가 언급되지 않은 환경에 대한 정보는 발췌문에 없음)
+*   **확장성:** 문제 내 물체 수가 증가할수록 에이전트의 프로그램은 기존 계획기 대비 더 높은 성공률을 유지하면서도, 인스턴스당 연산 비용은 10분의 1 수준으로 줄어듦.
+*   **최고 성능:** GPT-6 Astra 모델이 가장 우수한 성능을 기록함.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+*   **TAMP 연구의 이정표:** 복잡한 물리적 제약이 있는 환경에서도 코딩 에이전트가 강력한 기본 모델(Baseline)이 될 수 있음을 증명함.
+*   **자동화의 확장:** 환경에 대한 symbolic 모델이나 사전 정의된 기술(Skills) 없이도 에이전트가 환경을 탐구하고 스스로 해결책을 찾아내므로, 로봇 제어 시스템 구축 비용을 획기적으로 낮출 수 있음.
+*   **향후 과제:** 현재는 완전 관측 가능 환경과 시뮬레이터 접근을 전제로 하므로, 향후 실제 환경의 인식 불확실성 등을 해결하는 방향으로의 발전이 기대됨.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Coding Agents for Generalized Task and Motion Planning Problems](https://agenticgentamp.github.io/)
+&gt; - [Coding Agents for Generalized Task and Motion Planning Problems](https://r8508271-lang.github.io/)
+&gt; - [GitHub - AgenticGenTamp/AgenticGenTamp.github.io · GitHub](https://github.com/AgenticGenTamp/AgenticGenTamp.github.io)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문 결과를 보니 시뮬레이터 의존성이 너무 높군. 상징적 모델이나 사전 정의된 기술 없이 에이전트가 스스로 코드를 짜는 건 흥미롭지만, 현실의 노이즈와 불확실성(Partial Observability)이 섞인 환경에서도 이 &#x27;코드 생성&#x27; 방식이 Robust하게 작동할지 의문이네. 과연 실세계의 기구학적 에러까지 보정할 수 있을까?&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실전 배포는 다른 차원의 문제죠. 그래도 기존 TAMP가 수동 설계(Scaffolding) 때문에 리소스 갈아 넣던 걸 생각하면, 에이전트가 그 프로세스를 자동화했다는 것만으로도 실무적 가치는 엄청납니다. 특히 연산 비용이 기존 대비 1/10 수준이라는 건 대규모 로봇 팜을 운영하는 입장에선 당장 도입해보고 싶은 수치네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;다들 너무 진지하신 거 아닌가요? GPT-6 Astra가 95% 성공률 찍는 거 보셨잖아요! 이제 TAMP도 알고리즘 직접 짜는 시대는 끝났습니다. 그냥 에이전트한테 시뮬레이터 던져주고 커피 마시고 오면 SOTA 찍혀 있는 건데, 이거 다음 주 학회 발표 자료에 바로 인용해서 &#x27;Agentic TAMP&#x27; 키워드로 싹 밀어버릴 생각입니다. 폼 미쳤다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
