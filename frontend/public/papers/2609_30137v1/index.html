@@ -1,0 +1,67 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>고객 경험 AI 에이전트를 위한 시뮬레이션 기반 사전 검사 | ArXiv Translator AI</title><meta name="description" content="고객 경험 AI 에이전트를 위한 시뮬레이션 기반 사전 검사"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_30137v1"><meta property="og:type" content="article"><meta property="og:title" content="고객 경험 AI 에이전트를 위한 시뮬레이션 기반 사전 검사"><meta property="og:description" content="고객 경험 AI 에이전트를 위한 시뮬레이션 기반 사전 검사"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_30137v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="고객 경험 AI 에이전트를 위한 시뮬레이션 기반 사전 검사"><meta name="twitter:description" content="고객 경험 AI 에이전트를 위한 시뮬레이션 기반 사전 검사"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_30137v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "고객 경험 AI 에이전트를 위한 시뮬레이션 기반 사전 검사", "description": "고객 경험 AI 에이전트를 위한 시뮬레이션 기반 사전 검사", "datePublished": "2026-09-24", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_30137v1", "author": [{"@type": "Person", "name": "Edesio Alcoba"}, {"@type": "Person", "name": "Kevin Rossell"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_30137v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_30137v1"});gtag('event', 'paper_view', {"paper_id": "2609_30137v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>고객 경험 AI 에이전트를 위한 시뮬레이션 기반 사전 검사</h1><p>고객 경험 AI 에이전트를 위한 시뮬레이션 기반 사전 검사</p><pre>고객 경험 AI 에이전트를 위한 시뮬레이션 기반 사전 검사
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Screen Before You Serve: Simulation for Production Customer Experience AI Agents at 140M Scale
+&gt; - **저자:** Edesio Alcoba, Kevin Rossell, Aman Gupta, Shao Tang, Jiwoo Hong, Pabel Carrillo-Mendoza, Wanderson Conceição Ferreira, Alvaro Tedeschi, Zayd Simjee, Shreya Rajpal, Bruno Finardi Hime, Christian Sousa, Luis Moneda, Herbert Fei, Daniel Silva, Rohan Ramanath
+&gt; - **발행일:** 2026-09-24
+&gt; - **PDF 링크:** [Screen Before You Serve: Simulation for Production Customer Experience AI Agents at 140M Scale](https://arxiv.org/pdf/2609.30137v1)
+
+
+✨ 3줄 핵심 요약
+* 고객 경험(CX) AI 에이전트의 배포 전 안전성과 성능을 검증하기 위해 가상 고객과 도구 출력을 활용한 &#x27;가설 중심 시뮬레이션 워크플로우&#x27;를 제안합니다.
+* 실제 환경에 배포하기 전 시뮬레이션을 통해 모델을 개선함으로써, 실무 A/B 테스트에서 고객 만족도(tNPS)와 셀프 서비스율(SSR)을 크게 향상했습니다.
+* 이 방식은 실제 고객에게 위험을 노출하지 않고도 다양한 모델과 프롬프트 설정을 대규모로 테스트할 수 있게 함으로써 개발 효율성을 높였습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+기업의 고객 응대 AI는 복잡한 운영 정책을 따라야 하며, 실수할 경우 고객의 신뢰를 잃을 위험이 큽니다. 연구진은 실제 운영 환경과 유사한 환경을 구현한 &#x27;스노우글로브(Snowglobe)&#x27; 시뮬레이터를 개발했습니다. 이 시뮬레이터는 실제 백엔드를 호출하지 않고도 AI 에이전트가 가상 고객과 대화하고 필요한 도구를 사용하는 과정을 모의 테스트합니다. 덕분에 개발자들은 새로운 AI 모델을 배포하기 전에 치명적인 오류를 사전에 차단하고, 가장 성능이 좋은 버전을 골라내어 더 안전하고 효과적으로 AI를 업그레이드할 수 있게 되었습니다.
+
+🎯 배경 및 문제점
+* **검증의 어려움:** 고객 경험(CX) 에이전트는 의도 파악, 운영 정책 준수, 도구 활용 등 다차원적인 능력이 필요하여 검증이 매우 까다롭습니다.
+* **실험의 한계:** 수동으로 진행하는 테스트는 범위가 제한적이며, 실제 운영 환경에서의 실험은 고객에게 직접적인 실패 경험을 주어 신뢰도를 훼손할 위험이 있습니다.
+
+💡 핵심 기술 및 아키텍처
+* **가설 중심 시뮬레이션:** 에이전트가 배포되기 전, 가상의 고객과 상호작용하게 하여 성능을 평가합니다.
+* **모의 도구(Mocked Tools):** 실제 백엔드를 직접 호출하지 않고 시뮬레이션 환경 내에서 도구 출력값을 생성하여, 실제 운영 시스템에 영향을 주지 않으면서도 다단계 워크플로우를 테스트합니다.
+* **LLM-as-a-Judge:** 개발된 에이전트의 대화 경로를 평가하기 위해 별도의 LLM(GPT-4.1-Mini 등)이 실패 여부를 이진법(pass/fail)으로 판정하도록 설계했습니다.
+
+📊 실험 결과 분석
+* **고객 만족도 향상:** 시뮬레이션을 거친 에이전트를 적용한 결과, 실제 A/B 테스트에서 거래 순 추천 지수(tNPS)가 36.69포인트 상승했습니다.
+* **서비스 효율 개선:** 오픈 웨이트 모델 설정을 시뮬레이션으로 선별하여 적용한 결과, 셀프 서비스율(SSR)이 8.82%포인트 상승하여 누뱅크(Nubank) 역대 최고치를 기록했습니다.
+* **데이터 규모:** 16,000건 이상의 시뮬레이션 대화와 8,000건의 실제 대화 데이터를 기반으로 성능을 검증했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **안전한 AI 배포:** 실무 환경에서 위험을 최소화하면서 공격적인 AI 최적화 실험이 가능해졌습니다.
+* **개발 속도 가속화:** 시뮬레이션을 통해 100건의 대화 트래픽을 10분 이내에 처리할 수 있어, 반복적인 모델 개선 주기를 획기적으로 단축했습니다.
+* **적용 사례:** 브라질의 금융 기업 누뱅크(Nubank)의 &#x27;카드 배송&#x27; 및 &#x27;카드 관리&#x27; 에이전트에 적용되어 운영 효율을 증명했습니다. 단, 시뮬레이션은 백엔드의 실제 지연 시간이나 데이터 일관성 자체를 테스트하는 것은 아니며, 도구 경계까지만 검증한다는 한계가 있음을 밝히고 있습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2609.30137 Screen Before You Serve: Simulation for Production ...](https://arxiv.org/abs/2609.30137)
+&gt; - [Screen Before You Serve: Simulation for Production Customer Experience ...](https://arxiv.deeppaper.ai/papers/2609.30137v1)
+&gt; - [Screen Before You Serve: Simulation for | One9Founders](https://www.one9founders.com/research/2609.30137)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;시뮬레이션 환경 구축 자체는 흥미로우나, &#x27;LLM-as-a-Judge&#x27;의 판정 편향성에 대한 검증이 부족해 보이네. 평가 모델이 에이전트의 로직을 과대평가하거나, 특정 스타일의 답변을 선호하는 현상을 배제할 수 있나? 140M 규모의 트래픽을 다룬다면 평가 모델 자체의 비용과 정합성도 중요한 연구 주제일 텐데 말이야.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 일리가 있지만, 현업에서는 &#x27;완벽한 평가&#x27;보다 &#x27;빠른 반복&#x27;이 생존입니다. 실제 서비스에서 8.82%p SSR 상승이면 비즈니스 임팩트는 엄청난 거죠. 백엔드 호출을 Mocking 처리해서 지연 시간 검증이 안 된다는 한계는 명확하지만, 일단 운영 장애 리스크를 획기적으로 줄였다는 점에서 이 정도 아키텍처면 당장 우리 팀에 도입하고 싶네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;두 분 다 너무 진지하신 거 아닌가요? ㅎㅎ 어쨌든 &#x27;Snowglobe&#x27;라는 명칭부터 벌써 힙하잖아요! LLM이 LLM을 채점하는 게 지금 학계 트렌드인데, 그걸 실무 레벨에서 16,000건이나 돌려서 성능 최적화까지 성공했다는 게 대단한 거죠. 내일 랩 세미나 때 이 논문으로 발제하면 교수님도 좋아하시겠는데요? 바로 긁어서 구현해봐야겠음!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
