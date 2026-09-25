@@ -1,0 +1,73 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>제브-모바일: 모바일 GUI 에이전트를 위한 실행기로서의 Jev | ArXiv Translator AI</title><meta name="description" content="제브-모바일: 모바일 GUI 에이전트를 위한 실행기로서의 Jev"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_30186v1"><meta property="og:type" content="article"><meta property="og:title" content="제브-모바일: 모바일 GUI 에이전트를 위한 실행기로서의 Jev"><meta property="og:description" content="제브-모바일: 모바일 GUI 에이전트를 위한 실행기로서의 Jev"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_30186v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="제브-모바일: 모바일 GUI 에이전트를 위한 실행기로서의 Jev"><meta name="twitter:description" content="제브-모바일: 모바일 GUI 에이전트를 위한 실행기로서의 Jev"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_30186v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "제브-모바일: 모바일 GUI 에이전트를 위한 실행기로서의 Jev", "description": "제브-모바일: 모바일 GUI 에이전트를 위한 실행기로서의 Jev", "datePublished": "2026-09-24", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_30186v1", "author": [{"@type": "Person", "name": "Linghua Zhang"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_30186v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_30186v1"});gtag('event', 'paper_view', {"paper_id": "2609_30186v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>제브-모바일: 모바일 GUI 에이전트를 위한 실행기로서의 Jev</h1><p>제브-모바일: 모바일 GUI 에이전트를 위한 실행기로서의 Jev</p><pre>제브-모바일: 모바일 GUI 에이전트를 위한 실행기로서의 Jev
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Jev-Mobile: Jev as an Executor for Mobile GUI Agents
+&gt; - **저자:** Linghua Zhang
+&gt; - **발행일:** 2026-09-24
+&gt; - **PDF 링크:** [Jev-Mobile: Jev as an Executor for Mobile GUI Agents](https://arxiv.org/pdf/2609.30186v1)
+
+
+✨ 3줄 핵심 요약
+* **역할 분담 모델:** 시각-언어 모델(VLM)이 상위 목표를 설정하고, 빠르고 가벼운 &#x27;Jev&#x27; 모델이 실제 GUI 조작을 수행하도록 분리했습니다.
+* **효율성 극대화:** 단계별 VLM 방식 대비 평균 실행 시간은 32.7%, 모델 API 비용은 73.4% 절감했습니다.
+* **성능 유지:** AndroidWorld 벤치마크에서 79%의 작업 성공률을 기록하며, 기존 방식과 경쟁력 있는 성능을 유지했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+기존 모바일 에이전트는 화면의 모든 움직임을 결정할 때마다 무겁고 비싼 VLM을 호출해야 했습니다. &#x27;Jev-Mobile&#x27;은 이 과정을 똑똑하게 바꿨습니다. VLM은 &quot;이 앱에서 이 작업을 해줘&quot;라는 큰 목표만 제시하고, 실제 화면 속 버튼을 누르거나 글자를 입력하는 반복적이고 구체적인 행동은 가벼운 &#x27;Jev&#x27;라는 결정 모델이 도맡습니다. 덕분에 복잡한 연산은 줄어들고, 모바일 환경에서 훨씬 빠르고 저렴하게 작업을 완수할 수 있게 되었습니다.
+
+🎯 배경 및 문제점
+대부분의 기존 모바일 GUI 에이전트는 거의 모든 상호작용 단계에서 VLM을 사용해 계획과 행동을 결정합니다. 이는 다음과 같은 치명적인 단점을 유발합니다.
+* **높은 지연 시간(Latency):** 매 단계마다 대규모 모델의 추론을 기다려야 함.
+* **높은 비용:** 고성능 VLM API 사용으로 인한 운영 비용 상승.
+* **과도한 의존:** 복잡한 의사결정 모델을 불필요한 단순 반복 작업에까지 투입함.
+
+💡 핵심 기술 및 아키텍처
+Jev-Mobile은 **&#x27;VLM 계획 - Jev 실행&#x27;**이라는 이원화 구조를 채택했습니다.
+* **VLM (상위 계획):** 작업의 목표와 필요한 입력 텍스트를 지정합니다.
+* **접근성 트리 (AXTree):** 화면 내 조작 가능한 요소들을 구조화된 형식으로 제공합니다.
+* **Jev (빠른 결정 모델):** 접근성 트리를 바탕으로 VLM이 설정한 목표 안에서 반복적으로 최적의 행동을 선택합니다.
+* **재관찰 루프:** 각 행동 후 화면과 트리를 새로 갱신하여, 인터페이스가 변하더라도 오작동하지 않도록 설계되었습니다.
+
+📊 실험 결과 분석
+AndroidWorld 전체 작업군을 대상으로 한 비교 실험 결과입니다.
+* **작업 성공률:** Jev-Mobile 79%, SeeAct-V 78%, 단계별(Step-wise) VLM 84%를 기록했습니다.
+* **실행 시간:** 단계별 VLM 대비 평균 전체 실행 시간을 32.7% 단축했습니다.
+* **운영 비용:** 단계별 VLM 대비 성공한 경로당 평균 모델 API 비용을 73.4% 절감했습니다.
+* **실행기 시간:** 실행 모델이 소요한 시간은 5.16초로, 단계별 VLM(94.30초)이나 UI-TARS(12.37초)보다 월등히 빠릅니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **효율적인 에이전트 구축:** 리소스가 제한된 모바일 환경에서 실시간 GUI 에이전트 도입의 문턱을 낮췄습니다.
+* **비용 절감:** 자동화 시스템 운영 시 발생하는 API 비용을 대폭 줄여 상용화 가능성을 높였습니다.
+* **향후 과제:** 현재는 Android 환경에 국한되어 있으며, 향후 웹 인터페이스와 같은 다양한 플랫폼으로의 확장 가능성과, Jev 모델이 소형 VLM으로 대체될 수 있는지에 대한 연구가 추가로 필요합니다. 또한 접근성 트리에 나타나지 않는 시각적 요소는 직접 감지하지 못한다는 한계가 있습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Jev-Mobile: Jev as an Executor for Mobile GUI Agents](https://arxiv.org/abs/2609.30186)
+&gt; - [Jev-Mobile: Jev as an Executor for Mobile GUI Agents](https://arxiv.deeppaper.ai/papers/2609.30186v1)
+&gt; - [Jev-Mobile: Jev as an Executor for Mobile GUI Agents - One9Founders](https://www.one9founders.com/research/2609.30186)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문의 아이디어 자체는 실용적이나, &#x27;접근성 트리(AXTree)&#x27;에 과도하게 의존한다는 점이 우려되는군요. 만약 앱 디자인이 복잡해지거나 커스텀 뷰를 사용하여 트리가 제대로 생성되지 않는 환경에서는 이 &#x27;Jev&#x27;라는 모델이 얼마나 견고하게 작동할지 의문입니다. 결국 시각적 정보와 구조적 정보의 결합이 완벽하지 않다면, 실제 필드 테스트에서는 성공률이 79% 밑으로 곤두박질칠 가능성이 커 보입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 일리는 있지만, 실무에서는 79% 성공률이면 당장 도입 고려해볼 만한 수치입니다. 특히 비용 73% 절감은 경영진 설득할 때 가장 강력한 무기거든요. API 호출 횟수 줄이는 게 모바일 에이전트 서비스화의 핵심인데, 이 정도 Latency 단축이면 사용자 경험 측면에서도 충분히 유의미한 변화를 만들 수 있을 것 같습니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;역시 선배님들은 바로 비용부터 계산하시네요! 저는 이 논문이 &#x27;VLM-Executor&#x27;라는 패러다임을 확립했다는 점이 너무 흥미롭습니다. 요즘 LLM 에이전트 쪽이 다들 무거운 거 한 방으로 해결하려다가 성능에 허덕이는데, 이렇게 모듈화해서 가벼운 모델로 굴리는 게 최신 트렌드죠. 당장 다음 랩 세미나 때 이거 가져가서 &#x27;우리 모델도 이렇게 쪼개서 돌리면 어떨까?&#x27;라고 던져봐야겠네요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

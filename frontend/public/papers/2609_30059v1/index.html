@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>KernelOPT: 디스패치 인식형 에이전트 기반 GPU 커널 최적화 | ArXiv Translator AI</title><meta name="description" content="KernelOPT: 디스패치 인식형 에이전트 기반 GPU 커널 최적화"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_30059v1"><meta property="og:type" content="article"><meta property="og:title" content="KernelOPT: 디스패치 인식형 에이전트 기반 GPU 커널 최적화"><meta property="og:description" content="KernelOPT: 디스패치 인식형 에이전트 기반 GPU 커널 최적화"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_30059v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="KernelOPT: 디스패치 인식형 에이전트 기반 GPU 커널 최적화"><meta name="twitter:description" content="KernelOPT: 디스패치 인식형 에이전트 기반 GPU 커널 최적화"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_30059v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "KernelOPT: 디스패치 인식형 에이전트 기반 GPU 커널 최적화", "description": "KernelOPT: 디스패치 인식형 에이전트 기반 GPU 커널 최적화", "datePublished": "2026-09-24", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_30059v1", "author": [{"@type": "Person", "name": "Aheli Poddar"}, {"@type": "Person", "name": "Sanskar Prasad"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_30059v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_30059v1"});gtag('event', 'paper_view', {"paper_id": "2609_30059v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>KernelOPT: 디스패치 인식형 에이전트 기반 GPU 커널 최적화</h1><p>KernelOPT: 디스패치 인식형 에이전트 기반 GPU 커널 최적화</p><pre>KernelOPT: 디스패치 인식형 에이전트 기반 GPU 커널 최적화
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** KernelOPT: Dispatch-Aware Agentic Search for GPU Kernel Optimization
+&gt; - **저자:** Aheli Poddar, Sanskar Prasad, Arindam Samanta, Subha Chakraborty, Vishal Goyal, Rohit Singh Rathaur
+&gt; - **발행일:** 2026-09-24
+&gt; - **PDF 링크:** [KernelOPT: Dispatch-Aware Agentic Search for GPU Kernel Optimization](https://arxiv.org/pdf/2609.30059v1)
+
+
+✨ 3줄 핵심 요약
+* **구조적 최적화:** 컴파일러가 생성한 모델을 &#x27;블랙박스&#x27;가 아닌 구조화된 아티팩트로 취급하여, 기존 라이브러리(cuBLAS, cuDNN)를 보존하고 Triton 서브 커널 최적화에 집중합니다.
+* **4단계 검증 프로세스:** 정적 검증, 다중 시드 정확성 검사, float64 기반 모델 수준 검증, 성능 게이팅을 거쳐 최종 코드의 신뢰성을 확보합니다.
+* **성능 향상:** 250개의 KernelBench 문제에서 `torch.compile` 대비 기하평균 기준 레벨 1에서 1.40배, 레벨 2에서 1.15배, 레벨 3에서 1.07배의 속도 향상을 달성했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+딥러닝 모델을 실행할 때 사용하는 컴파일러(예: PyTorch Inductor)는 자동화된 방식으로 GPU 커널을 생성하지만, 전문가가 직접 짠 코드에 비해 성능이 낮은 경우가 많습니다. KernelOPT는 5개의 특화된 AI 에이전트를 활용해 이 간극을 메웁니다. 단순히 커널만 수정하는 것이 아니라, 전체 모델의 흐름을 이해하고 검증 과정을 통해 성능이 입증된 경우에만 코드를 교체합니다. 덕분에 개발자의 수고를 덜면서도 GPU 성능을 최대한 끌어낼 수 있습니다.
+
+🎯 배경 및 문제점
+* 기존 컴파일러는 자동 튜닝 범위가 제한적이고 융합(Fusion) 전략이 보수적입니다.
+* 전문가가 최적화한 커널(예: FlashAttention)은 매우 빠르지만, 구현에 막대한 시간과 공학적 노력이 필요합니다.
+* 기존 LLM 기반 최적화 도구들은 모델을 개별 커널의 집합으로만 보거나, 모델 전체에 대한 검증을 수행하지 못하는 한계가 있습니다.
+
+💡 핵심 기술 및 아키텍처
+* **디스패치 인식(Dispatch-Aware):** 컴파일러의 구조적 결정(cuBLAS/cuDNN 사용 등)을 존중하며 Triton 서브 커널 최적화에 집중합니다.
+* **5단계 에이전트 루프:** 진단(DIAGNOSE) → 검사(INSPECT) → 탐색(SEARCH) → 계획(PLAN) → 제출(SUBMIT)의 과정을 통해 최적화를 수행합니다.
+* **4단계 검증 캐스케이드:** 정적 검증부터 최종 엔드투엔드 모델 성능 게이팅까지 철저한 필터링 과정을 거칩니다. 만약 어떤 후보도 통과하지 못하면 기존 컴파일러의 기본 코드를 유지합니다.
+
+📊 실험 결과 분석
+* **속도 향상:** KernelBench 기준 250개 문제에서 `torch.compile` 대비 유의미한 속도 향상을 입증했습니다. (레벨 1: 1.40배, 레벨 2: 1.15배, 레벨 3: 1.07배)
+* **사례 분석:** L1-007 행렬 곱셈 커널의 경우, 레지스터 압박 완화(FP16 누적)와 자동 튜닝 설정 확장을 통해 최종 2.89배의 속도 향상을 보였습니다.
+* **하드웨어/소프트웨어:** NVIDIA H200 SXM GPU, PyTorch 2.7.0, Triton 3.3.0 환경에서 수행되었습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **생산성 극대화:** 딥러닝 모델의 학습 및 추론 성능을 하드웨어 수준까지 끌어올리기 위해 필요한 숙련된 엔지니어링 공수를 획기적으로 줄여줍니다.
+* **범용성:** PyTorch `nn.Module`, 독립적인 Triton 커널, Helion 커널 등 다양한 형태의 입력값을 처리할 수 있어 실무 환경에서 폭넓게 적용 가능합니다.
+* **안정성:** 단순히 성능만 높이는 것이 아니라, 엔드투엔드 검증을 거치므로 실제 배포 환경에서의 안정적인 성능 보장이 가능합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2609.30059 KernelOPT: Dispatch-Aware Agentic Search for GPU ...](https://arxiv.org/abs/2609.30059)
+&gt; - [KernelOPT: Dispatch-Aware Agentic Search for GPU Kernel ...](https://arxivsignals.io/papers/2609.30059)
+&gt; - [KernelOPT: Dispatch-Aware Agentic Search for GPU Kernel ...](https://www.genaiagent.net/article/arxiv-2609.30059v1)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;이 논문의 &#x27;4단계 검증 프로세스&#x27;는 확실히 학술적으로 인상적입니다. 그동안 LLM 기반 코드 생성 모델들이 성능 향상만 외치며 정작 중요한 수치적 안정성을 간과했던 것에 비하면 진일보했네요. 다만, 매번 최적화 때마다 이 정도의 검증 오버헤드를 감당하는 것이 실무적 타당성이 있을지는 의문입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 오버헤드가 좀 크긴 하죠. 하지만 실제 프로덕션 환경에서 &#x27;성능 게이팅&#x27;이 보장된다는 건 엄청난 메리트입니다. 매번 Triton 커널 짤 때마다 레지스터 압박이랑 싸우느라 밤새는 주니어들 생각하면, 성능 1.4배 향상보다 &#x27;검증된 자동화&#x27;라는 측면에서 당장 도입해보고 싶네요. 일단 빌드 파이프라인에 태워봐야겠습니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;선배님, 이건 그냥 단순 최적화 툴이 아니라 &#x27;에이전트가 컴파일러를 학습하는&#x27; 패러다임 변화예요! 요즘 다들 LLM 파라미터 늘리는 데만 혈안인데, 이런 하드웨어 친화적(Hardware-aware) 에이전트 연구가 진짜 실력인 거 아시죠? 저 당장 이 논문 구현체 깃허브 올라오는지 팔로우 눌러놨습니다. SOTA 찍으려면 이거 무조건 써야 할 듯요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
