@@ -1,0 +1,64 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>작업 현장 스케줄링을 위한 그래프 신경망 기반 강화학습과 커리큘럼 학습 | ArXiv Translator AI</title><meta name="description" content="작업 현장 스케줄링을 위한 그래프 신경망 기반 강화학습과 커리큘럼 학습"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_28085v1"><meta property="og:type" content="article"><meta property="og:title" content="작업 현장 스케줄링을 위한 그래프 신경망 기반 강화학습과 커리큘럼 학습"><meta property="og:description" content="작업 현장 스케줄링을 위한 그래프 신경망 기반 강화학습과 커리큘럼 학습"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_28085v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="작업 현장 스케줄링을 위한 그래프 신경망 기반 강화학습과 커리큘럼 학습"><meta name="twitter:description" content="작업 현장 스케줄링을 위한 그래프 신경망 기반 강화학습과 커리큘럼 학습"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_28085v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "작업 현장 스케줄링을 위한 그래프 신경망 기반 강화학습과 커리큘럼 학습", "description": "작업 현장 스케줄링을 위한 그래프 신경망 기반 강화학습과 커리큘럼 학습", "datePublished": "2026-09-23", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_28085v1", "author": [{"@type": "Person", "name": "Jayakrishnan K. Vasudevan"}, {"@type": "Person", "name": "Jonathan Hoss"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_28085v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_28085v1"});gtag('event', 'paper_view', {"paper_id": "2609_28085v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>작업 현장 스케줄링을 위한 그래프 신경망 기반 강화학습과 커리큘럼 학습</h1><p>작업 현장 스케줄링을 위한 그래프 신경망 기반 강화학습과 커리큘럼 학습</p><pre>작업 현장 스케줄링을 위한 그래프 신경망 기반 강화학습과 커리큘럼 학습
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Curriculum Learning with GNN-based Reinforcement Learning for Job Shop Scheduling
+&gt; - **저자:** Jayakrishnan K. Vasudevan, Jonathan Hoss, Noah Klarmann
+&gt; - **발행일:** 2026-09-23
+&gt; - **PDF 링크:** [Curriculum Learning with GNN-based Reinforcement Learning for Job Shop Scheduling](https://arxiv.org/pdf/2609.28085v1)
+
+
+✨ 3줄 핵심 요약
+*   작업 현장 스케줄링(JSSP) 문제에서 강화학습의 학습 효율을 높이기 위해, 작은 문제에서 큰 문제로 점진적으로 학습하는 &#x27;커리큘럼 학습(CL)&#x27; 기법을 도입했습니다.
+*   실험 결과, 특히 가장 큰 문제 크기인 30×30 설정에서 커리큘럼 학습은 약 50시간의 학습 시간을 단축했습니다.
+*   문제 크기가 커질수록 일반화 성능과 학습 효율 면에서 커리큘럼 학습의 이점이 극대화됨을 확인했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+공장에서 어떤 작업을 먼저 처리할지 결정하는 &#x27;작업 현장 스케줄링&#x27;은 경우의 수가 매우 많아 난도가 높습니다. 최근 이를 해결하기 위해 그래프 신경망(GNN)을 활용한 강화학습이 주목받고 있으나, 문제가 커질수록 학습에 드는 시간과 계산 비용이 너무 크다는 문제가 있습니다. 본 연구는 바로 복잡한 문제를 풀기 전에, 쉬운(작은) 문제부터 차근차근 학습하게 하는 &#x27;커리큘럼 학습&#x27;을 적용했습니다. 그 결과, 최종적으로는 더 적은 시간으로 더 좋은 성능을 내는 효율적인 모델을 완성했습니다.
+
+🎯 배경 및 문제점
+JSSP는 작업과 기계가 늘어날수록 해결해야 할 경우의 수가 급격히 증가하는 대표적인 조합 최적화 문제입니다. 기존의 강화학습 방식은 큰 문제에 직접 적용할 경우, 더 긴 에피소드와 복잡한 그래프 구조로 인해 계산 비용이 과도하게 발생한다는 한계가 있었습니다. 이를 극복하고 다양한 크기의 문제에 공통적으로 적용 가능한 범용 정책을 학습하는 것이 연구의 핵심 과제였습니다.
+
+💡 핵심 기술 및 아키텍처
+*   **커리큘럼 설계**: 20×20, 25×25, 30×30 등 목표 크기에 도달하기 위해 작은 문제부터 단계적으로 학습을 진행하는 3단계 커리큘럼을 구성했습니다.
+*   **학습 전략**: 각 단계별로 고정된 계산 자원(1,000만 스텝)을 할당하여, 이전 단계에서 학습한 정책과 가치 함수 매개변수를 다음 단계로 전이(Transfer)시키는 방식을 택했습니다.
+*   **환경 구성**: 문제의 난이도를 일정하게 유지하기 위해 작업과 기계의 비율을 1:1로 고정하여 실험했습니다.
+
+📊 실험 결과 분석
+*   **학습 시간**: 모든 설정에서 학습 시간이 단축되었으며, 특히 30×30 크기에서 약 50시간의 학습 시간을 절약하는 가장 큰 효율을 보였습니다.
+*   **성능 지표(최적해와의 간격, OG)**: 30×30 크기에서 전체 평가 데이터에 대한 평균 최적해 간격(Mean Optimality Gap)을 약 8.1%p, 해당 목표 크기에 대한 간격을 약 8.6%p 개선했습니다.
+*   **트레이드오프**: 20×20 및 25×25와 같은 상대적으로 작은 크기에서는 커리큘럼 학습이 일반화 성능은 높였으나, 목표 크기에만 집중하는 단일 크기 학습보다 미세한 성능 손실이 일부 관찰되었습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+이번 연구는 복잡한 제조 공정이나 자원 배분 문제에서 인공지능을 도입할 때, 무작정 큰 문제에 매달리기보다 작은 단위부터 학습시키는 것이 훨씬 경제적이고 효율적임을 입증했습니다. 특히 학습 시간을 크게 줄여주어, 현장에서 빈번하게 발생하는 스케줄링 변경이나 대규모 인프라 도입 시 AI 모델을 훨씬 빠르게 재학습하고 적응시킬 수 있는 가능성을 제시했습니다. 향후에는 문제의 난이도에 따라 유연하게 커리큘럼을 조정하는 적응형 학습으로 발전할 것으로 기대됩니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2609.28085v1 Curriculum Learning with GNN-based Reinforcement Learning for Job Shop Scheduling](https://arxiv.org/abs/2609.28085v1)
+&gt; - [2609.28085 Curriculum Learning with GNN-based Reinforcement Learning for Job Shop Scheduling](https://arxiv.org/abs/2609.28085)
+&gt; - [Curriculum Learning with GNN-based Reinforcement Learning for Job Shop Scheduling](https://arxiv.org/html/2609.28085v1)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;JSSP에서 커리큘럼 학습의 효용성을 입증한 건 좋으나, 30x30 사이즈에서 일반화 성능을 논하기엔 여전히 케이스가 부족해 보입니다. 특히 작은 문제에서 큰 문제로 넘어갈 때 발생하는 catastrophic forgetting을 어떻게 완벽히 제어했는지 방법론적 깊이가 조금 아쉽군요. ablation study에서 보인 작은 문제에서의 성능 손실은 결국 정교하지 못한 커리큘럼 설계의 방증 아닐까요?&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님, 현업에서는 50시간 학습 시간 단축이면 논문 디테일 따지기 전에 당장 도입부터 고민합니다. 스케줄링 모델은 데이터 분포가 조금만 바뀌어도 재학습 필수인데, 커리큘럼으로 학습 효율 챙기면 유지보수 비용이 획기적으로 줄거든요. 다만, 실제 공장 환경은 1:1 비율 같은 이상적인 조건이 아닌데, 노이즈 낀 실데이터에서도 이 아키텍처가 버틸 수 있을지가 관건이겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 다들 반응이 너무 냉소적인 거 아니에요? GNN에 커리큘럼 학습 얹어서 30x30까지 스케일업한 거 자체가 힙한 포인트인데! 50시간 절약이면 GPU 비용이 얼마를 세이브한 건지 계산해 보셨나요? 조만간 이거 적응형 학습(Adaptive CL) 버전으로 변형해서 SOTA 찍는 논문 쏟아질 게 뻔한데, 일단 깃허브 코드부터 뜯어보러 갑니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
