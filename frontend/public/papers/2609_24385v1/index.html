@@ -1,0 +1,69 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tactile-JEPA: 분산형 촉각 센서를 위한 토폴로지 인식 자기지도 표현 학습 | ArXiv Translator AI</title><meta name="description" content="Tactile-JEPA: 분산형 촉각 센서를 위한 토폴로지 인식 자기지도 표현 학습"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_24385v1"><meta property="og:type" content="article"><meta property="og:title" content="Tactile-JEPA: 분산형 촉각 센서를 위한 토폴로지 인식 자기지도 표현 학습"><meta property="og:description" content="Tactile-JEPA: 분산형 촉각 센서를 위한 토폴로지 인식 자기지도 표현 학습"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_24385v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Tactile-JEPA: 분산형 촉각 센서를 위한 토폴로지 인식 자기지도 표현 학습"><meta name="twitter:description" content="Tactile-JEPA: 분산형 촉각 센서를 위한 토폴로지 인식 자기지도 표현 학습"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_24385v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Tactile-JEPA: 분산형 촉각 센서를 위한 토폴로지 인식 자기지도 표현 학습", "description": "Tactile-JEPA: 분산형 촉각 센서를 위한 토폴로지 인식 자기지도 표현 학습", "datePublished": "2026-09-21", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_24385v1", "author": [{"@type": "Person", "name": "Elizaveta Kovtun"}, {"@type": "Person", "name": "Matvey Konovalov"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_24385v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_24385v1"});gtag('event', 'paper_view', {"paper_id": "2609_24385v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>Tactile-JEPA: 분산형 촉각 센서를 위한 토폴로지 인식 자기지도 표현 학습</h1><p>Tactile-JEPA: 분산형 촉각 센서를 위한 토폴로지 인식 자기지도 표현 학습</p><pre>Tactile-JEPA: 분산형 촉각 센서를 위한 토폴로지 인식 자기지도 표현 학습
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Tactile-JEPA: Topology-Aware Self-Supervised Representation Learning for Distributed Tactile Sensors
+&gt; - **저자:** Elizaveta Kovtun, Matvey Konovalov, Andrey Sakhovskiy, Semen Budennyy
+&gt; - **발행일:** 2026-09-21
+&gt; - **PDF 링크:** [Tactile-JEPA: Topology-Aware Self-Supervised Representation Learning for Distributed Tactile Sensors](https://arxiv.org/pdf/2609.24385v1)
+
+
+✨ 3줄 핵심 요약
+* **토폴로지 인식 학습:** 센서 간의 공간적 배치(그래프 구조)를 활용해 촉각 데이터를 학습하는 새로운 자기지도 학습 방법론입니다.
+* **멀티 스케일 마스킹:** 국소적인 접촉 정보와 전체적인 접촉 상태를 동시에 포착하기 위해 로컬 및 글로벌 마스킹을 혼합하여 사용합니다.
+* **성능 향상:** 기존 방식 대비 힘 추정 오차를 6.3%, 손안의 물체 방향 추정 오차를 20.8% 개선하며 학습 효율성과 안정성을 높였습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+로봇이 물체를 정교하게 다루려면 &#x27;촉각&#x27;이 필수적이지만, 기존 로봇 학습은 시각 정보에 크게 의존해 왔습니다. 분산형 촉각 센서(전자 피부 등)는 센서가 불규칙하게 배치되어 있어 기존의 이미지 기반 학습 방식을 그대로 적용하기 어려웠습니다. **Tactile-JEPA**는 이러한 센서의 &#x27;위치 관계(토폴로지)&#x27;를 그래프로 정의하여, 특정 센서의 신호를 가렸을 때 주변 센서 정보로 이를 예측하도록 학습합니다. 이를 통해 로봇은 미세한 접촉부터 전체적인 접촉 상태까지 효과적으로 이해하게 되어, 더욱 정밀하고 안정적인 작업 수행이 가능해집니다.
+
+🎯 배경 및 문제점
+* **기존 방식의 한계:** 시각 기반 로봇 학습은 가려짐(occlusion)이 심한 상황에서 한계를 보입니다.
+* **데이터 불균형:** 시각 센서와 달리, 분산형 전자 피부(e-skin)는 센서가 희소하고 불규칙하게 배치되어 있어 기존 이미지 중심의 자기지도 학습(SSL) 방식으로는 최적의 성능을 내기 어렵습니다.
+* **촉각 인코더의 부재:** 많은 경우 촉각 인코더를 처음부터(scratch) 학습시켜야 하므로 학습 효율이 떨어집니다.
+
+💡 핵심 기술 및 아키텍처
+* **그래프 기반 마스킹:** 센서들의 공간적 연결성을 바탕으로 마스킹을 수행하여 토폴로지 정보를 학습에 반영합니다.
+* **듀얼 스케일(Dual-scale) 마스킹:** 미세한 접촉 디테일을 잡는 &#x27;로컬 마스킹&#x27;과 전체적인 표면 상태를 파악하는 &#x27;글로벌 마스킹&#x27;을 결합하여 범용적인 표현을 학습합니다.
+* **Transformer 기반 인코더:** 센서 신호를 처리할 때 각 센서의 위치 임베딩을 더해 공간 정보를 보존하며, EMA(지수 이동 평균) 방식으로 안정적인 학습을 유도합니다.
+
+📊 실험 결과 분석
+* **정량적 성과:** 기존 최고 수준(SOTA) 모델과 비교하여 힘 추정 RMSE를 6.3%, 물체 방향 추정 오차를 20.8% 감소시켰습니다.
+* **학습 효율성:** 다른 자기지도 학습 모델인 DINO와 비교했을 때, 65~75% 더 빠른 사전 학습 속도를 보였습니다.
+* **안정성:** 다양한 센서 타입(자기식, 압저항식 등)과 로봇 환경에서도 모델 붕괴 없이 일관된 성능을 보였습니다.
+* **참고:** 실험은 Sparsh-skin, Tactile socks, DECO-50 등 세 가지 서로 다른 데이터셋을 기반으로 진행되었습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **정교한 조작:** 시각 정보만으로는 해결하기 어려운 복잡한 물체 조작이나 가려짐이 발생할 수 있는 공정 환경에서 로봇의 작업 성공률을 높입니다.
+* **범용성:** 센서의 물리적 배치 정보는 학습 시에만 사용되므로, 실제 배포 단계에서는 별도의 레이아웃 정보 없이도 범용적인 촉각 인코더로 활용 가능합니다.
+* **산업 적용:** 제조, 가사 도우미 로봇, 농업 등 정밀한 접촉 제어가 필요한 다양한 로봇 분야에서 촉각 기반 지능을 강화하는 데 핵심적인 역할을 할 것으로 기대됩니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2609.24385 Tactile-JEPA: Topology-Aware Self-Supervised ...](https://arxiv.org/abs/2609.24385)
+&gt; - [Tactile-JEPA: Topology-Aware Self-Supervised Representation Learning ...](https://arxiv.org/pdf/2609.24385)
+&gt; - [GitHub - Bosbobos/Tactile-JEPA](https://github.com/Bosbobos/Tactile-JEPA)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문의 핵심인 &#x27;그래프 기반 토폴로지 임베딩&#x27; 자체는 신선하나, 수렴 안정성에 대한 수학적 증명이 다소 부족해 보입니다. 특히 EMA 방식이 다양한 센서 노이즈 환경에서 장기적인 표현의 일관성을 얼마나 유지할지가 관건인데, 과적합 위험은 없는지 검증 데이터셋의 분포를 더 면밀히 봐야 할 것 같군요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 맞지만, 실무자 입장에선 학습 속도가 65~75% 개선됐다는 점이 일단 깡패네요. 현업에서 e-skin 같은 비정형 센서 데이터로 삽질해본 분들은 알겠지만, 데이터 전처리에서 토폴로지 정보 녹이는 게 일인데, 이걸 SSL로 풀어낸 건 생산성 측면에서 엄청난 이득입니다. 다만, 실제 로봇 배포 시 센서 노후화로 인한 토폴로지 왜곡을 모델이 얼마나 강건하게 버틸지가 궁금하네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;다들 너무 진지하신 거 아닌가요? JEPA 아키텍처를 촉각에 적용해서 시각 의존성을 깬 것만으로도 일단 학회 데드라인 근처에서 바로 인용 폭발할 각입니다! 특히 듀얼 스케일 마스킹은 요즘 멀티모달 트렌드랑 딱 맞아서, 이거 가져다가 햅틱-비전 통합 모델로 확장하면 바로 탑티어 컨퍼런스 논문 뚝딱 나올 것 같은데요? 당장 내일 깃헙 코드 돌려보러 갑니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
