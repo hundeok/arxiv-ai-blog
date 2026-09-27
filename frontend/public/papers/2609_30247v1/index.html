@@ -1,0 +1,72 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Rolling-WAM: 롤링 상상력을 통한 월드 액션 모델 | ArXiv Translator AI</title><meta name="description" content="Rolling-WAM: 롤링 상상력을 통한 월드 액션 모델"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_30247v1"><meta property="og:type" content="article"><meta property="og:title" content="Rolling-WAM: 롤링 상상력을 통한 월드 액션 모델"><meta property="og:description" content="Rolling-WAM: 롤링 상상력을 통한 월드 액션 모델"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_30247v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Rolling-WAM: 롤링 상상력을 통한 월드 액션 모델"><meta name="twitter:description" content="Rolling-WAM: 롤링 상상력을 통한 월드 액션 모델"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_30247v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Rolling-WAM: 롤링 상상력을 통한 월드 액션 모델", "description": "Rolling-WAM: 롤링 상상력을 통한 월드 액션 모델", "datePublished": "2026-09-24", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_30247v1", "author": [{"@type": "Person", "name": "Yinghua Zhou"}, {"@type": "Person", "name": "Junjie Ye"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_30247v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_30247v1"});gtag('event', 'paper_view', {"paper_id": "2609_30247v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>Rolling-WAM: 롤링 상상력을 통한 월드 액션 모델</h1><p>Rolling-WAM: 롤링 상상력을 통한 월드 액션 모델</p><pre>Rolling-WAM: 롤링 상상력을 통한 월드 액션 모델
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Rolling-WAM: World Action Models with Rolling Imagination
+&gt; - **저자:** Yinghua Zhou, Junjie Ye, Yiqi Zhao, Hao Dong, Celina Shiyu Wang, Ruohai Ge, Tingyi Yang, Basile Van Hoorick, Gaurav Sukhatme, Vitor Guizilini, Yue Wang
+&gt; - **발행일:** 2026-09-24
+&gt; - **PDF 링크:** [Rolling-WAM: World Action Models with Rolling Imagination](https://arxiv.org/pdf/2609.30247v1)
+
+
+✨ 3줄 핵심 요약
+* **롤링 디노이징:** 전체 예측 구간을 매번 처음부터 다시 계산하는 대신, 시점별로 노이즈 수준을 달리하여 계산량을 분산하는 ‘롤링(Rolling)’ 방식을 도입했습니다.
+* **압도적 속도 향상:** 기존의 공동(Joint) 월드 액션 모델 대비 추론 속도를 4.5배 개선하여 실시간 로봇 제어의 반응성을 획기적으로 높였습니다.
+* **성능 유지:** 계산 효율성을 극대화하면서도 LIBERO, RoboTwin, 실제 휴머노이드 로봇(Unitree G1) 실험에서 경쟁력 있는 작업 성공률을 입증했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+로봇이 복잡한 환경에서 작업을 수행하려면 끊임없이 다음 행동을 계획(Replanning)해야 합니다. 기존의 월드 액션 모델(WAM)은 매번 미래의 영상과 행동을 처음부터 끝까지 정교하게 생성해야 했기에 계산 시간이 너무 오래 걸려 실시간 반응이 느려지는 문제가 있었습니다. 
+
+Rolling-WAM은 이 문제를 해결하기 위해 &#x27;롤링 상상력&#x27; 개념을 도입했습니다. 미래의 영상과 행동 데이터를 한꺼번에 처리하는 대신, 여러 시점의 예측치를 슬라이딩 윈도우 방식으로 관리하며 점진적으로 정교화합니다. 이미 처리 중인 예측 데이터는 버리지 않고 다음 단계로 넘겨 재사용함으로써, 매 순간 모든 것을 새로 계산할 필요 없이 효율적으로 최적의 행동을 즉각 도출합니다.
+
+🎯 배경 및 문제점
+* **연산 병목:** 표준 WAM은 매 재계획(Replanning) 주기마다 전체 예측 기간에 대해 노이즈 제거(Denoising)를 처음부터 수행하여 심각한 지연 시간을 발생시킵니다.
+* **실시간성 저하:** 이러한 계산 지연은 로봇이 환경 변화에 즉각 대응하는 폐루프(Closed-loop) 제어를 방해합니다.
+* **기존 방식의 비효율:** 기존 기법들은 미래 예측을 생략하여 속도를 높이기도 하지만, 이는 행동 생성에 필수적인 시각적 맥락 정보를 상실하게 만드는 단점이 있습니다.
+
+💡 핵심 기술 및 아키텍처
+* **슬라이딩 윈도우:** 영상과 행동 청크(Chunk)를 윈도우 형태로 유지하며, 현재 실행할 청크는 완전히 정교화하고 먼 미래의 청크는 부분적으로만 다듬는 &#x27;단계적 노이즈 스케줄&#x27;을 적용합니다.
+* **Mixture-of-Transformers (MoT):** 비디오 전문가(Video Expert)와 행동 전문가(Action Expert) 모델을 결합하고, 교차 주의(Cross-attention)를 통해 비디오 예측이 행동 생성에 반영되도록 설계했습니다.
+* **흐름 매칭(Flow Matching):** 훈련 과정에서 롤링 모드와 초기화 모드를 혼합 학습하여, 모델이 새로운 예측을 시작함과 동시에 기존 예측을 지속적으로 개선할 수 있도록 했습니다.
+
+📊 실험 결과 분석
+* **추론 속도:** Rolling-WAM은 재계획당 215ms의 지연 시간을 기록하여, Joint-WAM(978ms) 및 Fast-WAM(548ms) 대비 월등히 빠른 속도를 보였습니다.
+* **작업 성공률:** 
+    * **실제 환경(Unitree G1):** 85.0%의 성공률을 기록하여 Joint-WAM(78.3%)과 Fast-WAM(75.0%)을 상회했습니다.
+    * **시뮬레이션(RoboTwin 등):** 93.3%의 성공률로 타 기법들(각각 90.6%, 91.9%)보다 우수한 성능을 입증했습니다.
+* **상세 비교:** 행동 간 직접 주의(Direct action-to-action attention)보다는 시각적 예측을 통한 맥락 공유가 더 효과적임을 확인했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **차세대 로봇 제어:** 휴머노이드 로봇과 같은 복잡한 플랫폼이 고해상도 환경 예측을 유지하면서도 실시간으로 민첩하게 움직일 수 있는 기술적 토대를 마련했습니다.
+* **효율적 자원 활용:** GPU 자원을 반복적인 연산에 낭비하지 않고 시계열 데이터 전반에 분산함으로써, 한정된 연산 능력을 가진 로봇에서도 고성능 AI 모델을 탑재할 가능성을 높였습니다.
+* **한계점:** 긴 윈도우 설정 시 빠른 환경 변화를 따라가지 못할 가능성이 있으며, 향후 적응형 윈도우 관리 기술을 통해 더욱 개선될 여지가 있습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2609.30247 Rolling-WAM: World Action Models with Rolling Imagination](https://arxiv.org/abs/2609.30247)
+&gt; - [2609.30247v1 Rolling-WAM: World Action Models with Rolling Imagination](https://arxiv.org/abs/2609.30247v1)
+&gt; - [Rolling-WAM: World Action Models with Rolling Imagination Yinghua Zhou1,2,*](https://arxiv.org/pdf/2609.30247)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;이론적으로는 흥미롭지만, &#x27;롤링&#x27; 과정에서 발생하는 누적 오차(Drift)를 어떻게 정량적으로 통제했는지 의문이 드는군요. 매번 다시 계산하는 비용을 줄인 건 알겠는데, 시점별로 노이즈 수준을 달리하는 방식이 장기적인 궤적의 일관성을 얼마나 해치지 않는지 ablation study가 좀 더 엄격했어야 합니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 일리가 있지만, 현업 입장에선 215ms 지연 시간 하나만으로도 절을 하고 싶네요. 매번 1초 가까이 멈춰 서서 고민하는 로봇을 현장에 배치할 순 없으니까요. 다만 MoT 아키텍처가 들어갔는데, 실시간 추론 시 가용 VRAM이랑 병렬화 효율이 실제 배포 환경에서 어떻게 나올지가 관건이겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;선배님들, 핵심은 &#x27;흐름 매칭&#x27;을 롤링 모드랑 섞어서 훈련했다는 거 아니겠어요? 이거 당장 Unitree G1이나 다른 휴머노이드 쪽 깃헙에 올라오면 바로 땡겨서 돌려볼 생각입니다. 4.5배 속도면 이제 로봇 시뮬레이터에서 쾌적하게 강화학습 돌릴 수 있겠는데요? 내일 랩 세미나 주제는 이걸로 정했습니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
