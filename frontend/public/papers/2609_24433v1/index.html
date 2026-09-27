@@ -1,0 +1,66 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>FoldQuantVLA: 일관된 폴딩을 통한 비전-언어-행동 모델의 네이티브 저비트 양자화 | ArXiv Translator AI</title><meta name="description" content="FoldQuantVLA: 일관된 폴딩을 통한 비전-언어-행동 모델의 네이티브 저비트 양자화"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_24433v1"><meta property="og:type" content="article"><meta property="og:title" content="FoldQuantVLA: 일관된 폴딩을 통한 비전-언어-행동 모델의 네이티브 저비트 양자화"><meta property="og:description" content="FoldQuantVLA: 일관된 폴딩을 통한 비전-언어-행동 모델의 네이티브 저비트 양자화"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_24433v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="FoldQuantVLA: 일관된 폴딩을 통한 비전-언어-행동 모델의 네이티브 저비트 양자화"><meta name="twitter:description" content="FoldQuantVLA: 일관된 폴딩을 통한 비전-언어-행동 모델의 네이티브 저비트 양자화"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_24433v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "FoldQuantVLA: 일관된 폴딩을 통한 비전-언어-행동 모델의 네이티브 저비트 양자화", "description": "FoldQuantVLA: 일관된 폴딩을 통한 비전-언어-행동 모델의 네이티브 저비트 양자화", "datePublished": "2026-09-21", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_24433v1", "author": [{"@type": "Person", "name": "Hung T. Ho"}, {"@type": "Person", "name": "Khanh D. Nguyen"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_24433v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_24433v1"});gtag('event', 'paper_view', {"paper_id": "2609_24433v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>FoldQuantVLA: 일관된 폴딩을 통한 비전-언어-행동 모델의 네이티브 저비트 양자화</h1><p>FoldQuantVLA: 일관된 폴딩을 통한 비전-언어-행동 모델의 네이티브 저비트 양자화</p><pre>FoldQuantVLA: 일관된 폴딩을 통한 비전-언어-행동 모델의 네이티브 저비트 양자화
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** FoldQuantVLA: Native Low-Bit Quantization of Vision-Language-Action Models via Consistent Folding
+&gt; - **저자:** Hung T. Ho, Khanh D. Nguyen, Quang D. Nguyen, Thanh Q. Duong, Ngan Le, Meng Guo, Vien A. Ngo, An T. Le
+&gt; - **발행일:** 2026-09-21
+&gt; - **PDF 링크:** [FoldQuantVLA: Native Low-Bit Quantization of Vision-Language-Action Models via Consistent Folding](https://arxiv.org/pdf/2609.24433v1)
+
+
+✨ 3줄 핵심 요약
+* **일관된 폴딩 기술:** 보정, 가중치 라운딩, 실행 단계 전반에 걸쳐 일관된 활성화 좌표를 유지하여 저비트 양자화 시의 성능 저하를 방지함.
+* **W4A4 네이티브 실행:** 4비트 가중치 및 활성화를 지원하는 커스텀 TensorRT 플러그인을 통해 데스크톱과 Jetson AGX Orin에서 추론 속도를 획기적으로 개선함.
+* **선택적 INT8 전략:** 언어 모델의 핵심 레이어에만 8비트 정밀도를 적용하여, 속도 손실(1ms)은 최소화하면서 로봇의 작업 성공률을 크게 높임.
+
+📖 쉽게 풀어쓴 1분 핵심
+로봇이 사물을 인식하고 행동을 결정하는 &#x27;비전-언어-행동(VLA)&#x27; 모델은 실시간 처리가 매우 중요합니다. 하지만 모델 크기가 크면 로봇의 두뇌인 엣지 기기(Jetson AGX Orin 등)에서 반응 속도가 느려집니다. 연구진이 개발한 **FoldQuantVLA**는 모델의 복잡한 수치들을 4비트로 줄이면서도, 데이터의 흐름을 일정하게 유지하는 &#x27;폴딩(Folding)&#x27; 기술을 적용했습니다. 특히 중요한 부위만 8비트로 남겨두는 전략을 통해, 로봇이 실시간으로 빠르게 움직이면서도 정확하게 작업을 수행할 수 있도록 최적화했습니다.
+
+🎯 배경 및 문제점
+VLA 모델은 비전 처리, 언어 백본, 행동 전문가(Action Expert)로 구성되며, 이 모든 과정이 실시간 성능의 핵심입니다. 기존 양자화 방식은 큰 활성화 값으로 인해 정확도가 떨어지거나, 모델을 재학습해야 하는 부담이 있었습니다. 또한, 로봇은 폐루프(closed-loop) 환경에서 작동하므로, 양자화로 인한 작은 행동 오차가 이후 관측 데이터에 악영향을 주어 연쇄적인 실패를 초래할 수 있다는 점이 큰 기술적 난제였습니다.
+
+💡 핵심 기술 및 아키텍처
+* **일관된 폴딩(Consistent Folding):** 활성화 위치마다 좌표계를 변환하고, 그 역행렬을 가중치에 통합하는 폴딩 계약을 체결하여 보정부터 실행까지 일관된 좌표를 유지합니다.
+* **W4A4 Recipe:** 채널 스케일링, 빠른 Walsh-Hadamard 변환(FWHT)을 통한 블록 회전, 토큰별 양자화를 사용하여 재학습 없이도 4비트 정밀도를 구현합니다.
+* **선택적 INT8:** 언어 모델의 어텐션 출력 및 피드포워드 하향 투영 레이어는 오차에 민감하므로, 이 부분만 8비트로 유지하는 하이브리드 구성을 채택했습니다.
+* **커스텀 TensorRT 플러그인:** 정수 기반의 행렬 곱셈 연산을 수행하여 Ada GPU 및 Orin 기기에서 네이티브 INT4 연산을 지원합니다.
+
+📊 실험 결과 분석
+* **속도 향상:** W4A4 구성은 기존 부동소수점 TensorRT 대비 Orin에서 1.20~1.33배, 데스크톱에서 1.25~1.52배의 속도 향상을 보였습니다.
+* **성공률:** 실제 로봇 실험에서 W4A4 방식은 80.0%의 성공률을 기록했으나, 선택적 INT8(o/d INT8)을 적용할 경우 성공률이 **92.5%**로 상승했습니다.
+* **성능 비용:** 선택적 INT8 추가에 따른 Orin의 지연 시간 증가는 1ms에 불과했습니다.
+* *참고: 수치는 제공된 4개 모델 체크포인트 및 80회의 반복 테스트를 기준으로 합니다.*
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+이 연구는 복잡한 AI 모델을 고성능 서버가 아닌 저사양 로봇 하드웨어에서도 실시간으로 구동할 수 있는 길을 열었습니다. 특히 로봇의 반응 속도를 최우선으로 해야 하는 산업 현장이나 자율 주행 로봇 분야에서, 모델의 정밀도를 크게 해치지 않으면서도 연산 효율성을 극대화할 수 있는 강력한 실무 가이드를 제공합니다. 다만, 연구진은 특정 모델(SmolVLA 등)에서는 성능 하락이 발생할 수 있으므로 모델별 맞춤형 평가가 필수적이라고 경고했습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [GitHub - cair-vinuni/FoldQuantVLA: FoldQuant: offline folding for W4A4 ...](https://github.com/cair-vinuni/FoldQuantVLA)
+&gt; - [FoldQuantVLA: Native Low-Bit Quantization of Vision-Language-Action ...](https://www.modelscope.ai/papers/2609.24433)
+&gt; - [GitHub - cair-vinuni/FoldQuantVLA: FoldQuant: offline folding for W4A4 ...](https://github.com/cair-vinuni/FoldQuantVLA/tree/main)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;이론적으론 흥미롭지만, &#x27;Consistent Folding&#x27;의 수학적 정합성이 과연 다양한 분포를 가진 VLA 모델 전반에 일반화될 수 있을지 의문이군요. 특히 로봇의 폐루프 제어 환경에서 4비트 양자화로 인한 누적 오차를 단순히 하이브리드 INT8 전략으로 덮는 게 최선인지 검증이 더 필요해 보입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님, 현업에서는 일단 돌아가는 게 중요합니다. 1ms 지연으로 Orin에서 성공률 12.5%p 올렸으면 이건 당장 프로덕션에 올려야 할 수치예요. 커스텀 TensorRT 플러그인까지 짰다는 건 실무적인 타협점을 정말 잘 찾았다는 건데, 레포지토리 가서 빌드부터 해봐야겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;선배님, 이미 스타 찍고 코드 뜯어보고 있습니다! W4A4로 엣지 디바이스에서 VLA 돌리는 거, 이거 사실상 로봇 분야 게임 체인저 아닌가요? SmolVLA에서 성능 드롭 나는 건 그냥 모델 구조 문제겠죠. 이거 다음 주 세미나 때 발표 주제로 잡으면 교수님한테 칭찬받을 각인가요?&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
