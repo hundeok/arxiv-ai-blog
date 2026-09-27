@@ -1,0 +1,69 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>양자화가 정보 검색 성능에 미치는 보이지 않는 피해와 그 해결책 | ArXiv Translator AI</title><meta name="description" content="양자화가 정보 검색 성능에 미치는 보이지 않는 피해와 그 해결책"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_24322v1"><meta property="og:type" content="article"><meta property="og:title" content="양자화가 정보 검색 성능에 미치는 보이지 않는 피해와 그 해결책"><meta property="og:description" content="양자화가 정보 검색 성능에 미치는 보이지 않는 피해와 그 해결책"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_24322v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="양자화가 정보 검색 성능에 미치는 보이지 않는 피해와 그 해결책"><meta name="twitter:description" content="양자화가 정보 검색 성능에 미치는 보이지 않는 피해와 그 해결책"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_24322v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "양자화가 정보 검색 성능에 미치는 보이지 않는 피해와 그 해결책", "description": "양자화가 정보 검색 성능에 미치는 보이지 않는 피해와 그 해결책", "datePublished": "2026-09-21", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_24322v1", "author": [{"@type": "Person", "name": "Luca Zhou"}, {"@type": "Person", "name": "Alessandro Zirilli"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_24322v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_24322v1"});gtag('event', 'paper_view', {"paper_id": "2609_24322v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>양자화가 정보 검색 성능에 미치는 보이지 않는 피해와 그 해결책</h1><p>양자화가 정보 검색 성능에 미치는 보이지 않는 피해와 그 해결책</p><pre>양자화가 정보 검색 성능에 미치는 보이지 않는 피해와 그 해결책
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** The Undetected Damage of Quantization on Retrieval and How to Fix It
+&gt; - **저자:** Luca Zhou, Alessandro Zirilli, Daniele Solombrino, Roberto Dessì, Emanuele Rodolà
+&gt; - **발행일:** 2026-09-21
+&gt; - **PDF 링크:** [The Undetected Damage of Quantization on Retrieval and How to Fix It](https://arxiv.org/pdf/2609.24322v1)
+
+
+✨ 3줄 핵심 요약
+* 양자화 모델은 분류 정확도를 유지하더라도 정보 검색(retrieval) 작업에서는 검색 결과의 14~46%를 변화시키는 심각한 성능 저하를 보입니다.
+* 이는 양자화 과정에서 발생하는 오차(ε)가 상위 1위와 2위 결과 사이의 점수 격차(gap)보다 클 때 발생하며, 기존의 요약된 평가 지표는 이 문제를 감지하지 못합니다.
+* 점수 격차를 측정하여 안정적인 예측 결과를 식별하거나, 격차가 좁은 구간에 정밀도를 추가 배정함으로써 이 문제를 효율적으로 해결할 수 있습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+딥러닝 모델의 크기를 줄이는 &#x27;양자화&#x27; 기법은 분류 문제(예: 고양이 vs 강아지 식별)에서는 잘 작동하지만, 정보 검색(예: 검색 엔진, 추천 시스템)에서는 예상외의 큰 문제를 일으킵니다. 분류 작업은 모델이 확신을 가지고 정답과 오답 간의 간격을 벌리도록 학습되지만, 검색 작업은 단순히 순위를 매기는 방식이라 상위권 후보들 간 점수 차이가 매우 작습니다. 양자화로 인해 발생하는 미세한 오차가 이 작은 점수 차이를 뒤집어버리면서 상위 검색 결과가 엉뚱한 결과로 바뀌게 되는 것입니다. 본 논문은 모델이 양자화에 견딜 수 있는지 평가하고, 문제가 생길 곳에만 정밀도를 보강하여 비용 효율적으로 성능을 보존하는 방법을 제시합니다.
+
+🎯 배경 및 문제점
+* **기존 평가의 한계:** 포스트 트레이닝 양자화(PTQ)는 보통 정확도 유지만을 성공 기준으로 삼는데, 이는 정보 검색 작업의 특성(순위 매기기)을 제대로 반영하지 못합니다.
+* **현상:** 분류 모델은 3~6%만 top-1 결과가 변하는 반면, 동일한 모델을 검색 작업에 사용하면 33~46%의 쿼리에서 검색 결과가 뒤바뀝니다.
+* **데이터 부족:** 논문은 특정 실험 수치를 통해 Recall@1이 1.3% 하락할 때 정답의 1/10이 사라지고, nDCG@10이 3.1% 하락할 때 정답의 1/6이 사라지는 등, aggregate(통합) 지표가 실제 손실을 심각하게 저평가하고 있음을 지적합니다.
+
+💡 핵심 기술 및 아키텍처
+* **양자화 안정성 조건:** 양자화로 인한 최대 점수 오차를 ε이라 할 때, 상위 1위와 2위의 점수 격차가 2ε보다 크면 양자화 후에도 순위가 유지됨을 수학적으로 증명했습니다.
+* **격차 측정:** 라벨 정보 없이도 각 입력값에 대해 점수 격차를 측정하여, 양자화된 답변을 신뢰할 수 있는지 판단할 수 있습니다.
+* **최적화 전략:**
+    * **검색 작업:** 점수 격차에 가장 큰 영향을 주는 계층에 추가 비트(bit-width)를 할당하여, 전체 비트를 올리는 것 대비 절반의 비용으로 75% 이상의 성능 손실을 회복합니다.
+    * **분류 작업:** 격차가 좁아 위험한 입력값만 선택적으로 전체 정밀도(full-precision)로 처리하는 &#x27;라우팅&#x27; 전략을 통해 적은 비용으로 정확도를 회복합니다.
+
+📊 실험 결과 분석
+* 양자화가 분류 작업에는 무해하지만, 검색 작업에는 매우 파괴적인 영향을 미침을 입증했습니다.
+* 실험에 사용된 모델 정보(CLIP, Qwen3-Embedding-8B 등)를 바탕으로, 표준 지표상으로는 성능이 거의 유지되는 것처럼 보여도 실제 상위 검색 결과의 상당수가 변경되는 &#x27;보이지 않는 피해&#x27;가 존재함을 확인했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **검색 엔진 및 추천 시스템:** 검색 및 추천 모델을 양자화할 때 발생하던 원인 불명의 성능 저하를 방지할 수 있습니다.
+* **비용 효율적 모델 배포:** 모든 파라미터를 고정밀도로 유지할 필요 없이, 중요한 입력값이나 계층에만 자원을 집중함으로써 효율성과 성능의 균형을 맞춘 모델 배포가 가능해집니다.
+* **신뢰성 검증:** 배포 전후 단계에서 입력을 실시간 모니터링하여 양자화된 결과의 신뢰도를 사전에 계산할 수 있는 도구로 활용할 수 있습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [The Undetected Damage of Quantization on Retrieval and How to Fix It](https://arxiv.org/abs/2609.24322)
+&gt; - [The Undetected Damage of Quantization on Retrieval and How to Fix It](https://arxiv.org/pdf/2609.24322)
+&gt; - [The Undetected Damage of Quantization on Retrieval and How to Fix It](https://arxiv.deeppaper.ai/papers/2609.24322v1)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;이 논문의 핵심은 결국 &#x27;Aggregated Metric의 함정&#x27;을 수학적으로 파헤쳤다는 점이군요. 그간 우리가 분류 성능 지표만 믿고 검색 도메인에 무지성으로 양자화를 적용해온 게 얼마나 학술적인 태만이었는지 반성하게 됩니다. 특히 ε-보존 조건에 대한 증명은 실무자들에게 아주 좋은 가이드라인이 되겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님, 이론은 훌륭한데 현업에서는 latency가 깡패라... 사실 모든 계층을 8-bit으로 밀어버리는 게 국룰이거든요. 근데 이 논문 방식대로 격차 좁은 구간만 라우팅하거나 레이어별로 비트 수 조정하면, 구현 복잡도가 미친 듯이 올라갈 텐데 인프라 팀에서 좋아할지 모르겠네요. 그래도 검색 품질 46%가 날아가는 건 운영 레벨에서 치명적이니, &#x27;안전성 모니터링 툴&#x27; 정도로 도입해볼 가치는 있겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;아, 이거 어제부터 트위터에서 난리더라고요! CLIP이나 Qwen 임베딩 모델 쓸 때 다들 그냥 양자화 때리고 &#x27;어? 성능 괜찮네?&#x27; 했는데, 이게 순위가 뒤바뀌고 있었다니 소름 돋네요. 당장 저희 랩 세미나 주제로 잡아야겠어요. 이제 양자화도 무지성으로 하는 시대는 갔고, 이제 &#x27;Selective Precision&#x27;이 대세가 될 듯. 교수님, 이거 구현해서 다음 주에 실험 결과 보여드릴까요?&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
