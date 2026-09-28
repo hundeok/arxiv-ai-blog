@@ -1,0 +1,65 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ActKV: 행동 유도형 KV 캐시 관리를 통한 효율적인 LLM 에이전트 | ArXiv Translator AI</title><meta name="description" content="ActKV: 행동 유도형 KV 캐시 관리를 통한 효율적인 LLM 에이전트"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_31395v1"><meta property="og:type" content="article"><meta property="og:title" content="ActKV: 행동 유도형 KV 캐시 관리를 통한 효율적인 LLM 에이전트"><meta property="og:description" content="ActKV: 행동 유도형 KV 캐시 관리를 통한 효율적인 LLM 에이전트"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_31395v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="ActKV: 행동 유도형 KV 캐시 관리를 통한 효율적인 LLM 에이전트"><meta name="twitter:description" content="ActKV: 행동 유도형 KV 캐시 관리를 통한 효율적인 LLM 에이전트"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_31395v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "ActKV: 행동 유도형 KV 캐시 관리를 통한 효율적인 LLM 에이전트", "description": "ActKV: 행동 유도형 KV 캐시 관리를 통한 효율적인 LLM 에이전트", "datePublished": "2026-09-25", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_31395v1", "author": [{"@type": "Person", "name": "Zihan Wang"}, {"@type": "Person", "name": "Cheng Tang"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_31395v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_31395v1"});gtag('event', 'paper_view', {"paper_id": "2609_31395v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>ActKV: 행동 유도형 KV 캐시 관리를 통한 효율적인 LLM 에이전트</h1><p>ActKV: 행동 유도형 KV 캐시 관리를 통한 효율적인 LLM 에이전트</p><pre>ActKV: 행동 유도형 KV 캐시 관리를 통한 효율적인 LLM 에이전트
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** ActKV: Efficient LLM Agents through Action-Guided KV Cache Management
+&gt; - **저자:** Zihan Wang, Cheng Tang, Lei Gong, Chao Wang, Wenqi Lou, Teng Wang, Xuehai Zhou
+&gt; - **발행일:** 2026-09-25
+&gt; - **PDF 링크:** [ActKV: Efficient LLM Agents through Action-Guided KV Cache Management](https://arxiv.org/pdf/2609.31395v1)
+
+
+✨ 3줄 핵심 요약
+* **행동 중심 압축:** 전체 출력 품질이 아닌, 작업 진행에 직접적인 영향을 미치는 &#x27;행동(Action)&#x27; 생성 기여도를 기준으로 KV 캐시를 압축합니다.
+* **적응형 메모리 관리:** LLM의 추론 자신감(Confidence)을 실시간으로 분석하여, 작업 난이도에 따라 유동적으로 메모리 예산을 할당합니다.
+* **압축 성능 최적화:** 페이징된 메모리 구조에서 직접 동작하는 전용 커널을 통해 추가 데이터 복사 없이 높은 처리량(Throughput)을 달성합니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+최신 LLM 에이전트는 복잡한 환경에서 관찰, 추론, 행동을 반복하며 긴 대화 기록(KV 캐시)을 생성합니다. 이로 인해 메모리 부하가 급증하여 시스템 속도가 저하되는 문제가 발생합니다. &#x27;ActKV&#x27;는 에이전트의 목표가 &#x27;질문 답변&#x27;이 아닌 &#x27;작업 완수(행동)&#x27;에 있다는 점에 착안했습니다. 중요하지 않은 기억은 삭제하고 행동에 필수적인 정보만 유지하여, 기존 방식 대비 약 4배 높은 작업 처리 속도를 구현하면서도 에이전트의 수행 정확도는 거의 그대로 유지합니다.
+
+🎯 배경 및 문제점
+LLM 에이전트의 작업 방식(ReAct 등)은 반복적인 루프를 돌며 많은 양의 토큰을 생성합니다. 기존의 KV 캐시 압축 기술은 문장 전체의 품질 유지에만 집중할 뿐, 에이전트의 핵심인 &#x27;행동 생성&#x27;에 어떤 정보가 기여하는지 고려하지 않았습니다. 이로 인해 불필요한 정보까지 메모리에 과도하게 적재되어 전체 시스템의 성능을 저해하는 병목 현상이 발생합니다.
+
+💡 핵심 기술 및 아키텍처
+1. **행동 지향적 캐시 퇴거(Action-oriented Eviction):** 행동 생성 시 주목도가 높은 KV 엔트리를 안정적으로 유지하는 정책을 사용합니다.
+2. **자신감 기반 예산 할당(Confidence-driven Budget Allocation):** LLM의 토큰 확률 분포에서 얻은 자신감 점수를 바탕으로, 작업이 어려워지면 더 많은 메모리를 할당하는 적응형 시스템을 갖췄습니다.
+3. **페이지 인식 압축 관리(Page-aware Management):** 복잡한 데이터 이동 과정(Gather-based compaction) 없이, 메모리 페이지 내부에서 직접 동작하는 커널을 설계하여 시스템 오버헤드를 줄였습니다.
+
+📊 실험 결과 분석
+* **정확도 유지:** 기존 방식(FullKV) 대비 98.53%의 정확도를 유지하면서도 메모리 사용량은 25.98% 수준으로 절감했습니다.
+* **처리량 향상:** 토큰 처리량은 평균 3.97배, 작업 처리량은 3.58배 향상되었습니다.
+* **속도 개선:** 페이징 압축 커널 도입으로 기존 방식(paged R-KV) 대비 평균 10.41배의 속도 향상을 기록했습니다.
+* **기타 수치:** 실험 결과 보고된 정확도(98.53%)와 메모리 절감율(25.98%) 등은 논문에 명시된 수치입니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+ActKV는 대규모 언어 모델을 활용한 자율 에이전트 서비스의 운영 비용을 획기적으로 낮출 수 있습니다. 특히 복잡한 웹 쇼핑, 정보 검색 등 장기적인 추론이 필요한 태스크를 수행하는 에이전트 시스템에서 메모리 제약 없이 더 많은 사용자를 동시에 수용할 수 있게 합니다. 이는 LLM이 단순히 챗봇을 넘어 실제 실무 현장에서 효율적인 문제 해결 도구로 자리 잡는 데 기여할 것입니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2609.31395 ActKV: Efficient LLM Agents through Action-Guided KV Cache Management](https://arxiv.org/abs/2609.31395)
+&gt; - [ActKV: Efficient LLM Agents through Action-Guided KV Cache Management](https://arxiv.org/html/2609.31395)
+&gt; - [Latest 15 Papers - September 28, 2026 · Issue #323 · yuque01/DailyArXiv](https://github.com/yuque01/DailyArXiv/issues/323)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문 제목 보고 또 단순한 KV 캐시 압축 기법인 줄 알았는데, &#x27;행동(Action)&#x27;의 기여도를 정량화한 방식은 확실히 영리하네요. 다만, 자신감(Confidence) 점수를 기반으로 예산을 동적으로 할당할 때, 에이전트가 오판(Hallucination)하는 상황에서도 자신감이 높게 측정된다면 시스템 전체의 안정성이 급격히 무너질 텐데, 이 부분에 대한 견고성(Robustness) 분석이 너무 빈약해 보입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 엣지 케이스는 우려되지만, 실무자 입장에서 &#x27;페이지 인식 압축 커널&#x27;을 직접 건드렸다는 건 박수 칠 일입니다. 보통 KV 캐시 튜닝하면 메모리 복사 오버헤드 때문에 배보다 배꼽이 더 큰 경우가 많은데, 3.9배 처리량 향상이면 당장 사내 서빙 인프라에 올려보고 싶네요. CUDA 커널 최적화가 얼마나 범용적인지가 관건이겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 10배 속도 향상이라니... 이거 ReAct 루프 도는 에이전트들한테는 게임 체인저 아닌가요? 지금 당장 GitHub 리포 열리는지 확인해봐야겠네요! 교수님이 말씀하신 견고성 이슈는 나중에 누군가 &#x27;Robust-ActKV&#x27;로 논문 내서 털어먹겠죠. 일단 내일 세미나 발표 자료는 이걸로 확정입니다. 에이전트 서비스 비용 절감 폭이 너무 커서 회사들이 군침 엄청 흘릴 듯요.&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

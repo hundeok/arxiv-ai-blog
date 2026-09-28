@@ -38846,7 +38846,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-26T15:33:27.464242+00:00",
+      "updated_at": "2026-09-28T21:00:33.283383+00:00",
       "paper": {
         "title": "Tactile-JEPA: Topology-Aware Self-Supervised Representation Learning for Distributed Tactile Sensors",
         "summary": "Tactile sensing is an essential modality for robots performing contact-rich, dexterous manipulation, particularly under visual occlusion. While pre-trained image encoders are standard in robot learning pipelines, tactile encoders are still commonly trained from scratch from raw, noisy signals, which might limit their expressivity. Existing self-supervised learning (SSL) approaches focus predominantly on vision-based tactile sensors, leaving distributed electronic skins largely unaddressed. These sensors, however, have a distinctive property: their sensing elements are sparse and irregularly arranged over the surface they cover, which makes direct reuse of visual SSL methods suboptimal. We present Tactile-JEPA, an efficient self-supervised pre-training method that uses the spatial arrangement of tactile sensors to learn topology-aware representations. Specifically, it is trained to predict the embeddings of masked sensing elements from the unmasked remainder, using the sensor connectivity graph to guide spatial masking. Our analysis shows that effective tactile representations require capturing both local contact details and the global state of the tactile surface, which we achieve through dual-scale masking. Across three diverse datasets spanning magnetic and piezoresistive sensors, different robot embodiments, and single- and paired-sensor configurations, Tactile-JEPA reduces force estimation error by 6.3% and in-hand orientation error by 20.8% over the prior state-of-the-art, with consistent gains in other downstream applications, including policy learning. Overall, our results demonstrate that the benefit of tactile sensing depends critically on the quality of encoder pre-training, a problem which Tactile-JEPA addresses directly. Code is available at https://github.com/E-Kovtun/tactile.",
@@ -41429,7 +41429,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-27T23:32:31.278278+00:00",
+      "updated_at": "2026-09-28T21:00:33.283401+00:00",
       "paper": {
         "title": "TrackEverything: Long Horizon Dense Tracking via De-Duplicating 3D Scene Representations",
         "summary": "Existing point tracking models face a fundamental tradeoff: they can either track a sparse set of query points over long horizons, or track all points across only short clips. We introduce TrackEverything, a 3D point tracker that breaks this trade-off by representing videos as persistent 3D scene tracks in world coordinates. Grounded in the insight that videos are 2D projections of an underlying 3D world, TrackEverything decouples model complexity from video duration, allowing it to scale with unique physical scene geometry instead. Our approach introduces three key innovations. First, we employ a voxelization-based de-duplication mechanism at sliding-window boundaries to merge co-located tracks, preventing repeated observations of the same surface from redundantly accumulating. Second, we decompose tracking into an endpoint refiner that predicts each point's destination and static-versus-dynamic classification, followed by a lightweight trajectory refiner that decodes dense trajectories exclusively for dynamic points. Third, we propose 3D WAFT, replacing memory-prohibitive 4D correlation volumes with efficient feature sampling in the scene cloud. To the best of our knowledge, TrackEverything is the first 3D tracker capable of tracking all visible points across videos exceeding 1000 frames within 40 GB of GPU memory. On TAPVid-3D, TrackEverything outperforms all open-source all-frame dense 3D trackers by more than 20% APD on short clips, while remaining competitive with state-of-the-art sparse trackers on long sequences, despite tracking far more points.",
@@ -41634,7 +41634,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-27T23:32:31.278305+00:00",
+      "updated_at": "2026-09-28T21:00:33.283353+00:00",
       "paper": {
         "title": "SAGE: Mitigating Long-Horizon Reasoning Biases via Topological Guidance",
         "summary": "Long-horizon reasoning remains a central challenge for large language models (LLMs) under sparse-reward regimes. We argue that this brittleness arises from two biases induced by complex reasoning spaces: an exploration bias, where models are drawn toward locally plausible but structurally unstable branches, and a compounding bias, where small local deviations accumulate across depth and suppress rare rewards. We introduce Symbolic Closure Analysis (SCA) as a theoretical lens characterizing how branching structures and sparse rewards induce these biases in long-horizon reasoning with local admissibility, and as a design principle for structural priors in less formal reasoning tasks. Motivated by this analysis, we propose SAGE (Structural Admissibility-Guided Exploration), a unified framework that injects structural guidance to alleviate exploration bias and compounding bias in long-horizon reasoning. SAGE combines two complementary structural guidance: algebraic sparsification, which projects locally admissible candidates onto operator-indexed algebraic subspaces to suppress spurious branching and mitigate exploration bias, and hyperbolic structural guidance, which embeds reasoning states into a negatively curved space to provide dense depth-wise signals and mitigate compounding bias. Across 12 benchmarks and 7 model families, SAGE outperforms competitive baselines. In particular, SAGE achieves up to an 8-fold improvement on the Andrews-Curtis problem, an open real-world long-horizon task. Code is available at: https://github.com/Susan571/SAGE-NeurIPS2026.",
@@ -42566,11 +42566,11 @@
     "2609_31422v1": {
       "id": "2609_31422v1",
       "filename": "post_2609_31422v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-09-28T03:04:59.621299+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-28T12:39:00.092231+00:00",
+      "updated_at": "2026-09-28T21:00:54.303684+00:00",
       "paper": {
         "title": "Towards Mitigating Fabricated Consensus: The Active Provenance Gate for Multi-Agent Debate Synthesis",
         "summary": "Large language model-based multi-agent debate (MAD) systems are being increasingly used as complex decision pipelines in distributed processes. However, their final synthesis phase still remains inadequately controlled. Even with detailed debate logs, summarizing models are prone to fabricating smoothly written debate consensus that is not grounded in the debate's history. To address this safety gap, this paper presents empirical research and studies if the introduction of active post-debate verification can mitigate the production of such factually unsupported summaries, while still providing valuable information. Furthermore, it is examined whether explicitly signalling divergence is preferable in the absence of a reliable compromise. The Active Provenance Gate (APG) is introduced as a post-debate verification layer that treats the source as a hard constraint, analysing the debate logs, auditing each claim, and applying self-correction. In crisis simulations, the self-healing mechanism more than doubles the average data Provenance Fidelity in difficult condition scenarios, before the strict gate blocks unsupported claims and generates divergence reports. In the human study, a vast majority of the users (over 75%) preferred a report explicitly stating failure in critical scenarios, despite most of them perceiving fabricated consensus from the baseline system as more fluent. Our main contribution is the transition of data origin tracing from passive logging to active conditional blocking before publication.",
@@ -42581,7 +42581,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2609.31422v1"
       },
-      "priority_score": 39
+      "priority_score": 39,
+      "korean_title": "조작된 합의 완화: 다중 에이전트 토론 합성을 위한 능동적 출처 게이트(APG)"
     },
     "2609_31403v1": {
       "id": "2609_31403v1",
@@ -42631,11 +42632,11 @@
     "2609_31395v1": {
       "id": "2609_31395v1",
       "filename": "post_2609_31395v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-09-28T03:04:59.621316+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-28T12:39:00.092242+00:00",
+      "updated_at": "2026-09-28T21:01:27.056445+00:00",
       "paper": {
         "title": "ActKV: Efficient LLM Agents through Action-Guided KV Cache Management",
         "summary": "Agentic LLM inference accumulates long KV caches across iterative observation-reasoning-action loops, imposing substantial memory overhead and limiting serving throughput. Existing compression methods emphasize overall output quality, overlooking the asymmetric importance of actions in driving task progress. Our key idea is to establish a compression criterion that values KV entries by their contribution to action generation and prioritizes action quality. However, iterative execution, dynamic memory demands, and scattered action-critical entries pose challenges to eviction policies, budget allocation, and paged memory integration. To this end, we propose ActKV, the first KV cache compression framework tailored for agentic LLM inference. (i) Action-oriented KV cache eviction exploits stable action access patterns to retain entries critical to future actions, supporting reliable task progress under compression. (ii) Confidence-driven adaptive budget allocation uses LLM's intrinsic confidence to adapt the budget to evolving action-critical memory demands. (iii) Page-aware compression management standardizes compression into three primitives with customized kernels, realizing practical throughput gains. On long-trace tasks, ActKV retains an average of 98.53% of FullKV's accuracy with only 25.98% of its peak KV cache memory. It also achieves 3.97 times and 3.58 times FullKV's token and task throughput, delivering state-of-the-art performance.",
@@ -42651,7 +42652,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2609.31395v1"
       },
-      "priority_score": 38
+      "priority_score": 38,
+      "korean_title": "ActKV: 행동 유도형 KV 캐시 관리를 통한 효율적인 LLM 에이전트"
     },
     "2609_31383v1": {
       "id": "2609_31383v1",
@@ -42724,11 +42726,201 @@
       },
       "priority_score": 40,
       "korean_title": "완료된 쌍은 캡이 씌워진 실패를 숨긴다: 선택적 문맥 투영에 대한 ReVerPi 사례 연구"
+    },
+    "2601_06352v3": {
+      "id": "2601_06352v3",
+      "filename": "post_2601_06352v3.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-28T21:00:33.283315+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-28T21:00:33.283337+00:00",
+      "paper": {
+        "title": "CARD: Cluster-level Adaptation with Reward-guided Decoding for Personalized Text Generation",
+        "summary": "Adapting large language models to individual users remains challenging due to the tension between fine-grained personalization and scalable deployment. We present CARD, a hierarchical framework that achieves effective personalization through progressive refinement. CARD first clusters users according to shared stylistic patterns and learns group-specific LoRA adapters, enabling robust generalization and strong low-resource performance. To capture individual differences within each cluster, we propose an implicit preference learning mechanism that contrasts user-authored text with cluster-level generations, allowing the model to infer user-specific style preferences without manual annotation. At inference time, CARD injects personalization exclusively at decoding via lightweight user preference vectors and low-rank logit corrections, while keeping the base model frozen. Experiments on the LaMP and LongLaMP benchmarks show that CARD achieves superior generation quality compared to baselines, while significantly improving efficiency and scalability for practical personalized text generation.",
+        "published": "2026-01-09T23:16:39Z",
+        "authors": [
+          "Yutong Song",
+          "Jiang Wu",
+          "Weijia Zhang",
+          "Chengze Shen",
+          "Shaofan Yuan",
+          "Weitao Lu",
+          "Jian Wang",
+          "Yu Wang",
+          "Nikil Dutt",
+          "Amir M. Rahmani"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2601.06352v3"
+      },
+      "priority_score": 23
+    },
+    "2609_29050v1": {
+      "id": "2609_29050v1",
+      "filename": "post_2609_29050v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-09-28T21:01:15.856114+00:00",
+      "paper": {
+        "title": "SLCA-GRPO: Resolving Cross-Segment Credit Misattribution in Tool-Calling RL",
+        "summary": "Tool-calling agents produce heterogeneous outputs, interleaving structured tool invocations with user-facing natural language summaries. This output heterogeneity presents a structural failure mode in standard on-policy Reinforcement Learning (RL): algorithms like GRPO indiscriminately broadcast a homogeneous trajectory-level scalar advantage to all tokens. Consequently, gradient noise from summary generation leaks into tool-decision tokens, causing cross-segment credit misattribution and brittle optimization. In this work, we propose SLCA-GRPO, a framework incorporating Segment-Locked Credit Assignment (SLCA). To enable scalable exploration without costly real APIs and stable training, we first construct the Schema-Guided LLM Simulator (SGLS) as foundational training infrastructure. Building on this, SLCA decouples advantage estimation at the structural segment level within a single group of rollouts, without requiring additional rollouts from intermediate states. Supported by Hierarchical Rewards (HierR), SLCA routes execution advantages to tool tokens and preference advantages to summary tokens, eliminating advantage contamination (the dominant cross-segment credit misattribution channel) within each policy update. On a 7B backbone, SLCA-GRPO accelerates convergence and outperforms standard GRPO, ToolPO, and RLTR by +2.53 pp on in-domain evaluation, +1.36 pp on the Berkeley Function-Calling Leaderboard (BFCL), and +9.15 pp on $τ^2$-Bench under the same training budgets, achieving higher accuracy with reduced tool redundancy and costs.",
+        "published": "2026-09-24T05:31:54Z",
+        "authors": [
+          "Yan Zhan",
+          "Shaobo Liu",
+          "Qiunan Liu",
+          "Yuanjun Shi",
+          "Siqi Xu",
+          "WeiYi Hou",
+          "Xiang Xu",
+          "Zekang Li",
+          "Weizhou Pan",
+          "Jiahong Yan"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.29050v1"
+      },
+      "priority_score": 39,
+      "korean_title": "SLCA-GRPO: 도구 호출 강화학습에서의 세그먼트 간 신용 할당 오류 해결"
+    },
+    "2609_31620v1": {
+      "id": "2609_31620v1",
+      "filename": "post_2609_31620v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-28T21:00:33.283360+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-28T21:00:33.283362+00:00",
+      "paper": {
+        "title": "FuseReg: Regularizing Layer Fusion Mitigates the Reconstruction-Generation Gap in Representation Autoencoders",
+        "summary": "Representation autoencoders (RAEs) reuse features from a pretrained visual encoder as reconstruction and diffusion latents, integrating strong visual representations into image generation. However, RAEs still need to decide which encoder layers form the shared latent space for the generator and pixel decoder. This choice involves a trade-off. Shallower layers tend to preserve fine pixel details better, while deeper layers tend to yield better generation metrics. A fixed heuristic layer fusion therefore couples two stages that benefit from different information. We introduce FuseReg, which replaces heuristic feature selection with training over random subsets of encoder layers. We theoretically analyze the underlying mechanism: subset sampling explicitly penalizes sensitivity to cross-layer disagreement. On ImageNet-256 with DINOv3-L, a single FuseReg decoder reconstructs from full, sparse, and single-layer fusions without retraining, achieving higher PSNR than decoders specialized to fixed fusions. This flexibility also benefits generation: decoder replacement alone reduces unguided gFID by 27% with an unchanged RAEv2 DiT-XL generator. The same regularization principle extends to diffusion training, with joint regularization of both stages reducing unguided gFID by 29% on DiT-Base. These results show that training downstream models for layer-fusion robustness narrows the reconstruction-generation gap without modifying the pretrained encoder.",
+        "published": "2026-09-25T17:59:59Z",
+        "authors": [
+          "Hongyang Du",
+          "Yunfei Xie",
+          "Junjie Ye",
+          "Jiawei Yang",
+          "Xiaoyan Cong",
+          "Haodong Zhang",
+          "Yongchao Huang",
+          "Haiyu Wu",
+          "Zongxia Li",
+          "Shihang Gui",
+          "Dawei Liu",
+          "Runhao Li",
+          "Jingcheng Ni",
+          "Chen Wei",
+          "Randall Balestriero",
+          "Yue Wang"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.31620v1"
+      },
+      "priority_score": 28
+    },
+    "2608_09444v2": {
+      "id": "2608_09444v2",
+      "filename": "post_2608_09444v2.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-28T21:00:33.283367+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-28T21:00:33.283369+00:00",
+      "paper": {
+        "title": "Depth-adaptive Inference of Looped Language Models via Continuous Depth Batching",
+        "summary": "A main promise of looped language models is depth-adaptive inference. By looping a block of shared layers a variable number of times, the model can use less compute for \"easy\" tokens and more for \"hard\" ones. However, tokens with different numbers of loops cannot share a uniform forward pass and therefore cannot be handled by standard batching systems such as vLLM. The practical value of depth-adaptive inference thus hinges on whether batching can be made efficient. We introduce the first efficient method for depth-adaptive looped LMs via continuous depth batching (CDB), which forms new batches between loop steps. Our method dynamically schedules looped and non-looped parts of the architecture, manages looped KV-caching, and predicts which tokens will exit the loop in advance so it can prepare batches asynchronously. Experiments on Ouro 1.4B and Huginn 3.5B show that fully looped architectures are best suited to depth-adaptive inference, as large non-looped layers outside the recurrent core (e.g., token embedding, LM head, and unshared transformer blocks) slow down and complicate scheduling. Overall, CDB realizes up to 99% of the estimated maximum speedup available, leaving further gains primarily dependent on model architecture and exit behavior.",
+        "published": "2026-08-10T11:20:14Z",
+        "authors": [
+          "Kristian Schwethelm",
+          "Daniel Rueckert",
+          "Georgios Kaissis"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2608.09444v2"
+      },
+      "priority_score": 15
+    },
+    "2609_30837v1": {
+      "id": "2609_30837v1",
+      "filename": "post_2609_30837v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-28T21:00:33.283376+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-28T21:00:33.283377+00:00",
+      "paper": {
+        "title": "MOPD-Router: Rethinking Teacher Routing in Multi-Teacher On-Policy Distillation",
+        "summary": "Multi-teacher on-policy distillation (MOPD) integrates specialized capabilities into a single student, but existing practice typically hard-routes each prompt to a domain-matched teacher for the entire rollout. This dependence on prompt-level domain labels restricts using unlabeled training mixtures and leaves complementary signals from other teachers unused. We introduce MOPD-Router, a framework that routes supervision over the full teacher pool at each token, without domain labels or training a separate routing model. Its plug-in interface supports different metrics for selecting and weighting teacher-specific OPD signals. Within this interface, we propose ExpertAlign, which scores each teacher by whether its correction to the student at the current token expresses the specialization that teacher acquired during post-training, and compare it against two reference metrics built on teacher confidence (Entropy) and teacher-student discrepancy (Novelty). Experiments on unlabeled and domain-labeled training mixtures under strong-to-weak and same-size distillation scenarios show that ExpertAlign achieves the strongest overall performance in all four settings. On unlabeled data, it improves the overall score by 5.88 (+12.3%) points over Mean aggregation; on domain-labeled data, it outperforms standard MOPD by 3.95 (+7.8%) points without using available domain labels. These results demonstrate token-level routing can exploit cross-domain complementary supervision, and reduce exclusive reliance on prompt-level domain assignment. Code is available at: https://github.com/TURLEing/MOPD-Router.",
+        "published": "2026-09-25T05:32:03Z",
+        "authors": [
+          "Tianze Xu",
+          "Yanzhao Zheng",
+          "Zhentao Zhang",
+          "Yuanqiang Yu",
+          "Chao Ma",
+          "Jihuai Zhu",
+          "Lelun Wu",
+          "Lyumanshan Ye",
+          "Pengfei Liu",
+          "Baohua Dong",
+          "Hangcheng Zhu",
+          "Ruohui Huang",
+          "Gang Yu"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.30837v1"
+      },
+      "priority_score": 30
+    },
+    "2609_26333v1": {
+      "id": "2609_26333v1",
+      "filename": "post_2609_26333v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-28T21:00:33.283388+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-28T21:00:33.283390+00:00",
+      "paper": {
+        "title": "Disaggregated Quantization: Specializing LLM Prefill and Decode",
+        "summary": "Prefill and decode reward different approaches to quantization: low-precision arithmetic accelerates prompt processing, while compact weights reduce memory traffic during generation. We propose \"disaggregated quantization\" (DQ), which specializes computation formats, weights and storage placement to both of these phases. On Qwen 3 and Gemma 3, removing activation quantization specifically on decode improves accuracy on decode-heavy tasks without increasing inference cost. Training separate compute-native prefill weights accelerates prompt processing relative to weight-only inference while matching or exceeding its accuracy at 2-3-bit decode on both decode-heavy and prefill-heavy tasks. With released Qwen3.8-27B GGUF decoders, training an NVFP4 prefiller improves 1-bit accuracy by 32.5 points on MMLU-Pro and 35.3 on MMMU-Pro without modifying the decode checkpoint. To accommodate the additional checkpoint on a single device, offloaded disaggregated prefill (ODP) streams its weights from SSD, amortizing loading over prompt length. On the same 27B model, ODP delivers a 1.78x time-to-first-token speedup over the weight-only baseline at 8K prompt length in llama.cpp. We evaluate accuracy under disaggregated serving in vLLM and further validate shared-weight format disaggregation through post-training quantization on models up to 2.8T parameters.",
+        "published": "2026-09-22T12:44:16Z",
+        "authors": [
+          "Andrei Panferov",
+          "Maximilian Kleinegger",
+          "Sweta Priyadarshi",
+          "Tijmen Blankevoort",
+          "Dan Alistarh"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.26333v1"
+      },
+      "priority_score": 27
+    },
+    "2609_29474v1": {
+      "id": "2609_29474v1",
+      "filename": "post_2609_29474v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-09-28T21:00:44.089091+00:00",
+      "paper": {
+        "title": "CodeGraph: Open-Taxonomy Knowledge Graph for Source Code with Wikidata Grounding",
+        "summary": "Public software repositories, like GitHub and Software Heritage Archive, store billions of files, yet extracting their implicit engineering knowledge ---i.e., the algorithms they implement, the paradigms they follow, the patterns they instantiate, and the application domains they serve--- remains challenging, as current tools are constrained to syntactic and token-level analysis. We present a pipeline for building an open-taxonomy semantic annotation of source code using a code-specialised Large Language Model. The extracted entities are grounded in Wikidata through a three-stage linking procedure: a deterministic SPARQL stage handles unambiguous entities, a Deep Research Agent resolves the residual long tail, and a hierarchy-rollup stage imports the parent-of closure of each resolved Wikidata identifier. The resulting annotations are materialised as a source-code-specific open-taxonomy knowledge graph. We further introduce a calibrated quality-assurance protocol that quantifies annotation precision by combining a small human gold set with an LLM-as-a-judge filter. We applied our pipeline to the 167 million files of the Stack-Edu corpus, creating the first known large-scale open-taxonomy knowledge graph for source code. Our graph, named CodeGraph, contains approximately 158 million nodes, which include around 145 million files, about 63,000 extracted concept entities (such as algorithms, paradigms, design patterns, and application domains), and roughly 19,800 grounded Wikidata entities. Furthermore, CodeGraph features approximately 1 billion typed edges that connect files to their respective concepts, link these concepts to their grounded Wikidata identifiers, and relate them to their parent categories, covering 14 programming languages.",
+        "published": "2026-09-24T12:31:05Z",
+        "authors": [
+          "Federico Pennino",
+          "Andrea Gurioli",
+          "Stefano Zacchiroli",
+          "Maurizio Gabbrielli",
+          "Paolo Ferragina"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.29474v1"
+      },
+      "priority_score": 40,
+      "korean_title": "CodeGraph: 위키데이터 접지를 활용한 소스 코드용 오픈 분류 지식 그래프"
     }
   },
   "last_run": {
-    "started_at": "2026-09-28T12:39:00.095958+00:00",
-    "discovered": 30,
+    "started_at": "2026-09-28T21:00:33.287290+00:00",
+    "discovered": 10,
     "selected": 4,
     "generated": 4,
     "failed": 0,
@@ -42738,26 +42930,26 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 19631,
-      "output_tokens": 6003,
+      "prompt_tokens": 19477,
+      "output_tokens": 5981,
       "thought_tokens": 0,
-      "total_tokens": 25634,
-      "estimated_usd": 0.01391225
+      "total_tokens": 25458,
+      "estimated_usd": 0.01384075
     },
-    "finished_at": "2026-09-28T12:39:40.277864+00:00"
+    "finished_at": "2026-09-28T21:01:28.600846+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 2870,
-    "prompt_tokens": 7211889,
-    "output_tokens": 2113475,
+    "requests": 2878,
+    "prompt_tokens": 7231366,
+    "output_tokens": 2119456,
     "thought_tokens": 0,
-    "total_tokens": 9325364,
-    "estimated_usd": 4.97318475
+    "total_tokens": 9350822,
+    "estimated_usd": 4.9870255
   },
   "last_publication_run": {
-    "started_at": "2026-09-28T12:39:00.095958+00:00",
-    "discovered": 30,
+    "started_at": "2026-09-28T21:00:33.287290+00:00",
+    "discovered": 10,
     "selected": 4,
     "generated": 4,
     "failed": 0,
@@ -42767,17 +42959,17 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 19631,
-      "output_tokens": 6003,
+      "prompt_tokens": 19477,
+      "output_tokens": 5981,
       "thought_tokens": 0,
-      "total_tokens": 25634,
-      "estimated_usd": 0.01391225
+      "total_tokens": 25458,
+      "estimated_usd": 0.01384075
     },
-    "finished_at": "2026-09-28T12:39:40.277864+00:00"
+    "finished_at": "2026-09-28T21:01:28.600846+00:00"
   },
   "daily_usage": {
     "date": "2026-09-28",
-    "estimated_usd": 0.02742375,
-    "publications": 8
+    "estimated_usd": 0.0412645,
+    "publications": 12
   }
 }
