@@ -1,0 +1,70 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>분리형 및 보상형 작업 전반에 걸친 다중 에이전트 확장성 | ArXiv Translator AI</title><meta name="description" content="분리형 및 보상형 작업 전반에 걸친 다중 에이전트 확장성"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_31563v1"><meta property="og:type" content="article"><meta property="og:title" content="분리형 및 보상형 작업 전반에 걸친 다중 에이전트 확장성"><meta property="og:description" content="분리형 및 보상형 작업 전반에 걸친 다중 에이전트 확장성"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_31563v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="분리형 및 보상형 작업 전반에 걸친 다중 에이전트 확장성"><meta name="twitter:description" content="분리형 및 보상형 작업 전반에 걸친 다중 에이전트 확장성"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_31563v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "분리형 및 보상형 작업 전반에 걸친 다중 에이전트 확장성", "description": "분리형 및 보상형 작업 전반에 걸친 다중 에이전트 확장성", "datePublished": "2026-09-25", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_31563v1", "author": [{"@type": "Person", "name": "Carolina Fortuna"}, {"@type": "Person", "name": "Blaz Bertalanic"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_31563v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_31563v1"});gtag('event', 'paper_view', {"paper_id": "2609_31563v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>분리형 및 보상형 작업 전반에 걸친 다중 에이전트 확장성</h1><p>분리형 및 보상형 작업 전반에 걸친 다중 에이전트 확장성</p><pre>분리형 및 보상형 작업 전반에 걸친 다중 에이전트 확장성
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Multi-agent Scaling Across Disjunctive and Compensatory Tasks
+&gt; - **저자:** Carolina Fortuna, Blaz Bertalanic
+&gt; - **발행일:** 2026-09-25
+&gt; - **PDF 링크:** [Multi-agent Scaling Across Disjunctive and Compensatory Tasks](https://arxiv.org/pdf/2609.31563v1)
+
+
+✨ 3줄 핵심 요약
+* 다중 에이전트 시스템의 성능은 &#x27;작업 구조(과업 유형)&#x27;에 따라 확장 양상이 완전히 다르게 나타납니다.
+* &#x27;분리형 작업&#x27;에서는 팀 규모를 늘려도 결과 개선이 미미하며, &#x27;보상형 작업(Fermi 추정 등)&#x27;은 모델 고유의 편향으로 인해 평균화 효과가 제한적입니다.
+* 단순히 에이전트 수(N)를 늘리는 것보다 작업의 특성에 맞는 적절한 조합 메커니즘을 찾는 것이 시스템 성능 결정의 핵심입니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+많은 연구자가 &quot;에이전트 팀의 규모가 커지면 AI 성능도 자연스럽게 향상될 것&quot;이라 가정합니다. 하지만 이 논문은 인간의 집단 행동 이론인 &#x27;스타이너(Steiner)의 분류법&#x27;을 AI에 적용하여 이 가정을 검증했습니다. 실험 결과, 정답을 찾는 &#x27;분리형 작업&#x27;과 수치를 추정하는 &#x27;보상형 작업&#x27; 모두 단순히 에이전트 수를 늘린다고 해서 성능이 선형적으로 좋아지지 않았습니다. 특히 모델들이 공통으로 가진 편향(bias)이 제거되지 않는 한, 집단지성의 이점은 기대보다 훨씬 낮게 나타났습니다.
+
+🎯 배경 및 문제점
+기존 연구들은 다중 에이전트 LLM 시스템에서 팀 규모(N)를 늘리는 것이 성능 향상을 보장한다고 전제해 왔습니다. 하지만 저자들은 인간 사회의 &#x27;링겔만 효과(집단 규모가 커질수록 1인당 효율이 떨어지는 현상)&#x27;처럼 AI 팀에서도 확장성에 따른 한계가 존재할 수 있다고 보았습니다. 본 연구는 작업의 구조가 다중 에이전트 시스템의 확장 가능성에 어떠한 제약을 가하는지 분석하는 것을 목적으로 합니다.
+
+💡 핵심 기술 및 아키텍처
+* **스타이너의 분류법 활용**: 인간 집단 행동 분석 프레임워크를 도입하여 AI 과업을 분류했습니다.
+    * **분리형 작업(Disjunctive Tasks)**: 팀원 중 최소 한 명이라도 정답을 맞히면 성공하는 과업.
+    * **보상형 작업(Compensatory Tasks)**: 여러 팀원의 개별 추정치를 통계적으로 합산하여 오차를 상쇄하는 과업.
+* **모델 및 팀 구성**: 13개의 오픈 웨이트 모델을 활용하여 최대 30명의 에이전트 팀을 구성했습니다.
+* **개입 전략(Intervention)**: 단순히 수를 늘리는 대신, 구조화된 스캐폴딩(scaffolding), 프롬프트 앵커링 등 에이전트 간의 오차를 상쇄하기 위한 다양한 전략을 시도했습니다.
+
+📊 실험 결과 분석
+* **분리형 작업**: 최소 한 명의 에이전트가 정답을 맞힐 확률은 팀 규모 증가에 따라 5~20%p 향상되지만, 투표 방식 등을 통한 최종 결정은 그 잠재력을 거의 실현하지 못했습니다(예측 정확도 차이 0.5%p 이내). 다중 라운드 수정 방식도 팀 규모가 1명일 때와 29명일 때의 이득이 거의 같았습니다.
+* **보상형 작업(Fermi 추정)**: 모델 고유의 편향이 전체 제곱 오차의 약 87%를 차지했습니다. 이로 인해 에이전트들의 결과를 평균화하더라도 오차는 약 6% 정도만 감소하여, 규모 확장에 따른 이점이 매우 적었습니다.
+* **모델 혼합**: 모델 패밀리를 조합하면 보상형 작업에서 일부 도움이 되지만, 분리형 작업에서는 가장 성능이 좋은 단일 모델의 성과를 뛰어넘지 못했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+이 연구는 기업이나 연구자가 AI 에이전트 시스템을 설계할 때 &quot;무조건 많은 에이전트를 투입하는 것이 능사가 아님&quot;을 시사합니다.
+* **실무적 교훈**: 개발자는 해결하려는 작업이 &#x27;정답 확인형&#x27;인지 &#x27;통계적 추정형&#x27;인지 먼저 파악해야 합니다.
+* **설계 지침**: 보상형 작업에서는 단순히 팀 규모를 늘리는 것보다, 에이전트 간의 편향을 줄일 수 있는 &#x27;구조화된 스캐폴딩&#x27;이나 &#x27;다양한 사고 방식의 프롬프팅&#x27;을 적용하는 것이 시스템 최적화에 훨씬 효과적입니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2609.31563 Multi-agent Scaling Across Disjunctive and Compensatory Tasks](https://arxiv.org/abs/2609.31563)
+&gt; - [Multi-agent Scaling Across Disjunctive and Compensatory Tasks](https://arxiv.org/html/2609.31563)
+&gt; - [Takes: Most of the headline revision gain in the multi-agent scaling paper comes from letting agents fix an answer they committed to before reasoning, not from information passed between agents. The… · Issue #1834 · jjakimoto/research-issues](https://github.com/jjakimoto/research-issues/issues/1834)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;결국 LLM의 &#x27;집단 지성&#x27;이라는 것이 통계적 환상에 불과하다는 점을 아주 명확히 짚어냈군요. 특히 보상형 작업에서 오차의 87%가 모델 고유의 편향에서 기인한다는 지점은 시사하는 바가 큽니다. 에이전트를 늘리는 건 마치 썩은 과일 여러 개를 바구니에 담아 신선도를 기대하는 것과 같습니다. 본질적인 편향을 해결하지 않는 &#x27;규모의 경제&#x27;는 학술적으로나 실무적으로나 낭비일 뿐입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로입니다. 현업에서 에이전트 늘려놓고 비용만 태우는 프로젝트들 보면 정말 답답하죠. 30개 에이전트 돌릴 인프라 비용이면, 차라리 그 돈으로 프롬프트 튜닝이나 RAG 파이프라인 최적화하는 게 성능은 훨씬 더 잘 나옵니다. 이 논문 덕분에 다음 기획 회의 때 &#x27;무지성 에이전트 확장&#x27; 제안하는 팀원들 완벽하게 방어할 수 있겠네요. 팩트 폭격 감사합니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 다들 너무 냉소적이신 거 아니에요? ㅋㅋㅋ 물론 맹목적인 확장이 비효율적이라는 건 동의하지만, 스캐폴딩과 모델 혼합 전략을 통해 편향을 상쇄할 가능성을 열어둔 점은 꽤 흥미롭거든요. 당장 다음 랩 세미나에서 이 페이퍼 들고 가서 &#x27;그럼 에이전트 간 인지적 다양성(Diversity)을 강제로 주입하면 성능이 퀀텀 점프하지 않을까?&#x27;라고 찔러볼 생각입니다. 이거 진짜 다음 SOTA 경쟁의 핵심 키워드 될 것 같은데요?&quot;
+  }
+]
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
