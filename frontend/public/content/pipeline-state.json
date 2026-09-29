@@ -41940,7 +41940,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-27T23:32:31.278355+00:00",
+      "updated_at": "2026-09-29T11:57:38.385539+00:00",
       "paper": {
         "title": "How Reproducible Are Evaluation Conclusions? A Self-Audit of LLM-Inferred Prompt Structure",
         "summary": "Evaluations of LLM systems routinely average over small prompt sets and report models as a ranked table. We ask how much confidence such a table deserves, using LLM-based prompt-structure inference as the case study: eight open model variants across five families and 8B to 675B parameters, caching disabled, 293 raw intermediate representations persisted. The measured phenomenon is unstable to begin with. Identical calls do not reliably recover identical structure, with mean node-set Jaccard from 0.39 to 0.96 and 72% of prompt-model cells never node-set-perfect. Auditing the evaluation weakens its conclusions further, and this is our main contribution. Under a joint cluster bootstrap over prompts, only the bottom of the ranking is firm: the two least reproducible models hold rank in 99% and 86% of replicates, the middle four in 27% to 48%, and the top two in 68% each, so the table identifies the worst model reliably but does not reliably identify the best. Two equally defensible rules for merging repeated campaigns change four of eight rows and move the study-wide headline by 7 percentage points. Checking the inferred structure against ground-truth annotations shows reproducibility cannot be read as accuracy. And four of the eight endpoints were withdrawn within ten weeks of measurement, so the study as specified can no longer be run. Small-sample LLM evaluations can therefore look far more definitive than their evidence supports. We recommend reporting rank stability, per-cell provenance, executed sensitivity comparisons, raw per-run outputs, and a measurement date alongside any ranking.",
@@ -42613,11 +42613,11 @@
     "2609_31397v1": {
       "id": "2609_31397v1",
       "filename": "post_2609_31397v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-09-28T03:04:59.621310+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-28T12:39:00.092239+00:00",
+      "updated_at": "2026-09-29T11:58:06.759420+00:00",
       "paper": {
         "title": "Intent2Tc: Automated Intent-to-Traffic Control Translation with Language Models",
         "summary": "Automated and highly usable Quality-of-Service (QoS) enforcement requires translating high-level service intents into deployable traffic-management policies. Although intent-based networking (IBN) has simplified policy specification, bridging the gap between business-level intents and executable network configurations remains complex, error-prone, and difficult to automate. This paper presents Intent2Tc, a closed-loop language-model-driven framework that translates business-level traffic-shaping intents into declarative sub-intents and subsequently into validated, executable Linux traffic control (tc) configurations. The framework integrates an Active Queue Management (AQM)-based digital twin (DT) semantic model, automated metadata extraction, critique-driven refinement, and Retrieval-Augmented Generation (RAG)-based knowledge reuse to improve semantic consistency and configuration reliability. We evaluate multiple open-source large language models (LLMs) and small language models (SLMs), together with Claude Sonnet-4.6, on 100 Request for Comments (RFC) 9315-compliant traffic-shaping intents. Across both translation stages, Intent2Tc achieves high semantic fidelity, configuration accuracy, and deployment readiness, with Claude Sonnet-4.6 reaching 0.98 semantic similarity, 1.0 semantic unit coverage, and 0.045 normalized edit distance. Furthermore, RAG reduces token consumption and inference latency while enabling compact models such as Phi-4-mini to approach the performance of substantially larger models. Linux tc serves as the target configuration platform, demonstrating the practical applicability of the proposed framework.",
@@ -42631,7 +42631,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2609.31397v1"
       },
-      "priority_score": 30
+      "priority_score": 30,
+      "korean_title": "Intent2Tc: 언어 모델을 활용한 의도 기반 트래픽 제어 자동 번역"
     },
     "2609_31395v1": {
       "id": "2609_31395v1",
@@ -42846,11 +42847,11 @@
     "2609_30837v1": {
       "id": "2609_30837v1",
       "filename": "post_2609_30837v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-09-28T21:00:33.283376+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-28T21:00:33.283377+00:00",
+      "updated_at": "2026-09-29T11:58:16.405364+00:00",
       "paper": {
         "title": "MOPD-Router: Rethinking Teacher Routing in Multi-Teacher On-Policy Distillation",
         "summary": "Multi-teacher on-policy distillation (MOPD) integrates specialized capabilities into a single student, but existing practice typically hard-routes each prompt to a domain-matched teacher for the entire rollout. This dependence on prompt-level domain labels restricts using unlabeled training mixtures and leaves complementary signals from other teachers unused. We introduce MOPD-Router, a framework that routes supervision over the full teacher pool at each token, without domain labels or training a separate routing model. Its plug-in interface supports different metrics for selecting and weighting teacher-specific OPD signals. Within this interface, we propose ExpertAlign, which scores each teacher by whether its correction to the student at the current token expresses the specialization that teacher acquired during post-training, and compare it against two reference metrics built on teacher confidence (Entropy) and teacher-student discrepancy (Novelty). Experiments on unlabeled and domain-labeled training mixtures under strong-to-weak and same-size distillation scenarios show that ExpertAlign achieves the strongest overall performance in all four settings. On unlabeled data, it improves the overall score by 5.88 (+12.3%) points over Mean aggregation; on domain-labeled data, it outperforms standard MOPD by 3.95 (+7.8%) points without using available domain labels. These results demonstrate token-level routing can exploit cross-domain complementary supervision, and reduce exclusive reliance on prompt-level domain assignment. Code is available at: https://github.com/TURLEing/MOPD-Router.",
@@ -42872,7 +42873,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2609.30837v1"
       },
-      "priority_score": 30
+      "priority_score": 30,
+      "korean_title": "다중 교사 온-폴리시 증류에서의 교사 라우팅 재고: MOPD-Router"
     },
     "2609_26333v1": {
       "id": "2609_26333v1",
@@ -42920,11 +42922,238 @@
       },
       "priority_score": 40,
       "korean_title": "CodeGraph: 위키데이터 접지를 활용한 소스 코드용 오픈 분류 지식 그래프"
+    },
+    "2609_33378v1": {
+      "id": "2609_33378v1",
+      "filename": "post_2609_33378v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-29T11:57:38.385484+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-29T11:57:38.385501+00:00",
+      "paper": {
+        "title": "Recursive Harness Distillation across Agents for Robot Manipulation",
+        "summary": "A central goal in robotics is to enable manipulation across changing tasks and environments. Vision-language-action (VLA) models provide broad manipulation capabilities but can struggle when execution requires diagnosing failures and adapting behavior. Strong agents can discover effective interventions through interaction with these policies. We propose Recursive Harness Distillation to accumulate this experience as reusable guidance across agents. A strong agent distills its experience into a playbook for a light agent, then recursively refines the playbook using the light agent's execution feedback. The resulting playbook enables agents to reuse accumulated intervention knowledge in new task instances without updating model parameters. In real-world manipulation, the harness improves success from 37.3% to 64.0%. On SimplerEnv Bridge, the light agent with the playbook achieves 66.7% success, compared with 41.7% for the GR00T-only baseline, and outperforms the strong agent without a playbook. The same playbook also benefits the strong agent, which reaches 79.2% success. These results demonstrate the feasibility of harness distillation for robotics: intervention experience can be accumulated, refined through execution, and reused across agents to improve manipulation.",
+        "published": "2026-09-27T09:01:15Z",
+        "authors": [
+          "Seungyeon Kim",
+          "Junhoo Lee",
+          "Minkyu Kim",
+          "Baekseung Kim",
+          "Nojun Kwak"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.33378v1"
+      },
+      "priority_score": 26
+    },
+    "2609_33074v1": {
+      "id": "2609_33074v1",
+      "filename": "post_2609_33074v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-29T11:57:38.385510+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-29T11:57:38.385512+00:00",
+      "paper": {
+        "title": "KernelZero: Co-Evolving Proposer and Coder for Continuously Improved GPU Kernel Generation",
+        "summary": "High-performance GPU kernels are essential to modern machine learning systems, yet automatically generating kernels that are both correct and efficient remains challenging. Existing LLM-based approaches face two major limitations: the scarcity of high-quality training data aligned with the model's current capabilities, and the inherent trade-off between kernel correctness and performance. To address these challenges, we propose KernelZero, a co-evolution framework that continuously improves GPU kernel generation through two specialized models: a Proposer that generates Torch modules from API sets and a Coder that translates them into CUDA or Triton kernels. KernelZero uses a frontier-driven module generation mechanism to continuously produce capability-aligned training modules based on the Coder's current weaknesses. It further introduces Correctness-Aware Group Relative Policy Optimization (CA-GRPO), which optimizes performance only after correctness becomes sufficiently reliable. By alternating the optimization of the Proposer and Coder, KernelZero forms an automatic curriculum that enables targeted and training-efficient capability improvement. Empirically, KernelZero-7B surpasses Claude-4.5-Sonnet on CUDA and DeepSeek-V4-Pro on Triton. On KernelBench Level 1 and 2, it achieves CUDA pass@1 scores of 75.8% and 69.6%, respectively, with pass@10 reaching 100% and 97%. On Triton, it achieves pass@1 scores of 77.2% and 72.5%, respectively.",
+        "published": "2026-09-27T01:09:18Z",
+        "authors": [
+          "Changxin Ke",
+          "Rui Zhang",
+          "Zixiang Fang",
+          "Zhenghong Li",
+          "Yuanbo Wen",
+          "Jiashuo Shen",
+          "Shuo Wang",
+          "Jiaming Guo",
+          "Ling Li",
+          "Qi Guo",
+          "Yunji Chen"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.33074v1"
+      },
+      "priority_score": 28
+    },
+    "2609_34899v1": {
+      "id": "2609_34899v1",
+      "filename": "post_2609_34899v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-09-29T11:57:49.263810+00:00",
+      "paper": {
+        "title": "ColNanoVDR: Document-Free Query Distillation for Multi-Vector Visual Document Retrieval via Optimal Transport",
+        "summary": "Multi-vector retrievers built on vision-language models lead visual document retrieval (VDR), but they run a multi-billion-parameter query encoder on every search. Distilling this encoder into a small student that queries the teacher's existing index would remove the bottleneck. The standard recipe, however, matches the teacher's MaxSim scores and so requires encoding and caching every training page, which can reach terabytes of page tokens. NanoVDR avoids pages entirely by training on the teacher's query embeddings alone, but only for single-vector retrievers. We present ColNanoVDR, to our knowledge the first framework to bring this document-free distillation to multi-vector VDR. Its objective, OTW (Optimal Transport with Learned Weights), aligns the student's query tokens with the teacher's by entropic optimal transport, with a learned weight for each student token, and needs no correspondence between the two tokenizations. We prove that the resulting alignment cost bounds the MaxSim score difference on every page. Distilled from five state-of-the-art teachers, the 149M text-only students retain about 95% of their teachers' NDCG@5 on ViDoRe v1-v3 while encoding queries up to 26x faster. Under identical training, OTW matches score distillation while encoding no page and reading 12.6x less cached teacher data.",
+        "published": "2026-09-28T11:05:45Z",
+        "authors": [
+          "Zhuchenyang Liu",
+          "Ziyi Wang",
+          "Yao Zhang",
+          "Yu Xiao"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.34899v1"
+      },
+      "priority_score": 36,
+      "korean_title": "ColNanoVDR: 최적 운송을 통한 시각적 문서 검색을 위한 문서 없는 쿼리 증류"
+    },
+    "2609_35767v1": {
+      "id": "2609_35767v1",
+      "filename": "post_2609_35767v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-29T11:57:38.385525+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-29T11:57:38.385527+00:00",
+      "paper": {
+        "title": "Learning Native Reflection in Unified Models with Interleaved Reinforcement Learning",
+        "summary": "Unified multimodal models can both look at and render images, so in principle they can repair their own generations: diagnose what an image gets wrong, revise it, observe the result, and diagnose again. Whether a revision helps is known only after it is rendered, so the reflection text and the image generation must be learned jointly, over the whole loop. Supervised fine-tuning (SFT) on reflection trajectories gives a cold start but does not find the high-success repair paths, and naive RL that optimizes only the renderer or only one head leaves most of the gain untapped. We introduce UMM-Reflection, which applies reinforcement learning (RL) to complete reflection trajectories inside one unified model: sibling trajectories share one initial image, so the group-relative advantage compares reflection strategies, and one trajectory-level advantage updates both the reflection tokens and the flow-based revisions, avoiding the combinatorial blow-up of per-round credit assignment. Unlike single-round editing or pipelines with an external critic, credit flows across rounds and to both roles of the same model, and no verifier is needed at inference. On BAGEL, UMM-Reflection improves GenEval by 12.05 points over SFT, and the gains transfer to WISE (+10.97), OneIG-Bench (+3.48), and T2I-CompBench++ (+4.63), none of which is used in training.",
+        "published": "2026-09-28T17:59:36Z",
+        "authors": [
+          "Yijia Fan",
+          "Ziqi Huang",
+          "Zhongang Cai",
+          "Yan Li",
+          "Zimo Wen",
+          "Wanqi Yin",
+          "Haiwen Diao",
+          "Ziwei Liu"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.35767v1"
+      },
+      "priority_score": 16
+    },
+    "2609_35734v1": {
+      "id": "2609_35734v1",
+      "filename": "post_2609_35734v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-29T11:57:38.385532+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-29T11:57:38.385534+00:00",
+      "paper": {
+        "title": "GeoVerse: World-Consistent Novel View Synthesis in Geometric Latent Space",
+        "summary": "Novel view synthesis from sparse images must reconcile faithful reconstruction of observed regions with plausible completion of unseen content, while maintaining world consistency across viewpoints. Existing geometry-based methods preserve observed scene structure but often struggle to complete unseen regions, whereas video generative models offer rich appearance priors but accumulate inconsistencies during sequential view generation. We propose GeoVerse, a framework that synthesizes world-consistent novel views by performing generation within the geometric latent space of a pretrained 3D foundation model and injecting appearance priors from a video generative model. Specifically, GeoVerse extracts multilevel features from Wan2.2 VACE and injects them into the geometric latent diffusion model via a ControlNet-style adapter, incorporating video-learned appearance priors to enhance structural completion. To enforce cross-view coherence, a global spatial memory continuously aggregates observed and synthesized content, reprojecting target-aligned guidance to anchor subsequent predictions to a shared scene representation. Extensive experiments across diverse datasets demonstrate improved visual quality and geometric consistency, with a 2.23 dB higher PSNR on DL3DV and 32.4% lower ATE on Mip-NeRF360 compared to GLD.",
+        "published": "2026-09-28T17:51:48Z",
+        "authors": [
+          "Kerui Ren",
+          "Tao Lu",
+          "Linning Xu",
+          "Changjian Jiang",
+          "Mu Huang",
+          "Chunhua Shen",
+          "Mulin Yu",
+          "Bo Dai"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.35734v1"
+      },
+      "priority_score": 16
+    },
+    "2606_29521v2": {
+      "id": "2606_29521v2",
+      "filename": "post_2606_29521v2.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-29T11:57:38.385545+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-29T11:57:38.385547+00:00",
+      "paper": {
+        "title": "Not All Objectives Are Born Equal: Priority-Constrained Descent for Hierarchical Multi-Objective Optimization",
+        "summary": "Deep learning problems rarely involve objectives that are equal in importance. A primary objective defines the goal, whilst secondary objectives, such as sparsity, compression, or robustness constrain the solution. While existing multi-objective methods have proven effective in practice, they have a clear symmetry problem and neglect the inherent objective hierarchy built into these objective spaces. We introduce Priority-Constrained Descent (PCD), a gradient-based optimization framework designed to explicitly exploit hierarchical objective structures. PCD preserves the direction of primary descent whilst allowing for the minimal distortion necessary to guarantee progress on secondary objectives, controlled by a single $τ\\in [0, 1]$ that dictates the strength of the distortion. The resulting formulation is invariant to objective scaling and admits exact closed-form solutions for problems with two and three objectives. We evaluate PCD within structured network compression settings, unstructured sparsity and low-rankness, and across a variety of synthetic experiments, showing Pareto dominance and better per-objective performance with secondary progress guarantees over existing methods, further exhibiting the interpretable trade-off that $τ$ provides.",
+        "published": "2026-06-28T17:31:47Z",
+        "authors": [
+          "Dara Varam",
+          "Mohamed I. Alhajri"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2606.29521v2"
+      },
+      "priority_score": 15
+    },
+    "2609_31009v1": {
+      "id": "2609_31009v1",
+      "filename": "post_2609_31009v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-29T11:57:38.385552+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-29T11:57:38.385554+00:00",
+      "paper": {
+        "title": "G$^2$PTQ: Improving LLM Post-Training Quantization with Generalized Gradient Compensation",
+        "summary": "Post-training quantization (PTQ) is a practical approach to reducing the memory and computational footprint of large language models (LLMs) without retraining. GPTQ-based methods have become the de facto standard, yet they suffer from two complementary limitations. Methods with local, layer-wise objectives lack global supervision; while methods with global objectives fix their Hessian estimates at the start and ignore first-order gradients, so their guidance grows stale as quantization proceeds. This paper presents G$^2$PTQ, a unified PTQ framework with Generalized Gradient Compensation that integrates both first- and second-order information under a globally supervised, block-wise optimization objective. By refreshing gradient and Hessian estimates before quantizing each Transformer block, G$^2$PTQ avoids the staleness of prior global methods. Furthermore, to stabilize the exact first-order compensation, we introduce a trust-region scaling mechanism that dynamically bounds the gradient step to prevent exploding weight updates. Finally, we derive efficient implementations for block-wise Hessian approximation and exact gradient compensation. Experimental results on various model families and bit-widths demonstrate that G$^2$PTQ enables better alignment with the full-precision model, outperforming state-of-the-art baselines. Code is available at: https://github.com/G2PTQ/G2PTQ.",
+        "published": "2026-09-25T08:53:14Z",
+        "authors": [
+          "Ruikang Liu",
+          "Haoli Bai",
+          "Yuxuan Sun",
+          "Qian Zhang",
+          "Wenzheng Cai",
+          "Yanqi Hao",
+          "Feiyu Wang",
+          "Weidong Zhong",
+          "Zhuang Wang",
+          "Tong Yang",
+          "Xiangsheng Zhou"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.31009v1"
+      },
+      "priority_score": 27
+    },
+    "2609_33848v1": {
+      "id": "2609_33848v1",
+      "filename": "post_2609_33848v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-09-29T11:57:59.107299+00:00",
+      "paper": {
+        "title": "QwenGyre: An Elastic Reinforcement Learning Framework for Training xLong-Horizon Agents",
+        "summary": "Large language model (LLM) agents increasingly undertake extreme-long (xlong) horizon tasks, where a single execution can span hours, hundreds of model--environment interactions, and nearly 1M tokens per rollout. Applying online reinforcement learning (RL) to such executions poses two fundamental challenges: (1) severe execution variance and prolonged rollout delays cause massive GPU idling; and (2) complex non-linear branching generates massive trajectory redundancy, crippling training efficiency. To address these, we presents QwenGyre, an end-to-end framework for xlong-horizon online RL. QwenGyre elastically reallocates GPUs between rollout and training without interrupting live executions, while its trajectory processor reconstructs branching histories, scores partial progress, and deduplicates redundant paths to bound training costs. Scaled to our flagship model, Qwen~3.8 2.4T, with 700K tokens per rollout, QwenGyre yields a 6.0% absolute gain on NL2RepoBench (52.5% $\\to$ 58.5%) in 48 steps. Across our evaluations on diverse domains of training datasets, QwenGyre delivers up to $1.85\\times$ and $1.78\\times$ speedups over Colocate and Async, respectively.",
+        "published": "2026-09-27T19:02:03Z",
+        "authors": [
+          "Weiqi Wang",
+          "Yuxin Zhou",
+          "Mouxiang Chen",
+          "Siyuan Zhang",
+          "Yi Zhang",
+          "Yuyan Luo",
+          "Zhiyu Yin",
+          "Chencan Wu",
+          "Jiemin Jiang",
+          "Wentao Yao",
+          "Chujie Zheng",
+          "JianWei Zhang"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.33848v1"
+      },
+      "priority_score": 34,
+      "korean_title": "퀭자이어(QwenGyre): 초장기 호라이즌 에이전트 학습을 위한 탄력적 강화학습 프레임워크"
+    },
+    "2609_32814v1": {
+      "id": "2609_32814v1",
+      "filename": "post_2609_32814v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-09-29T11:57:38.385565+00:00",
+      "last_error": null,
+      "updated_at": "2026-09-29T11:57:38.385567+00:00",
+      "paper": {
+        "title": "Change the Product, Keep the Parameters: Associative Algebra Layers for Transformers",
+        "summary": "Fast matrix multiplication algorithms keep the product fixed and search for a cheaper way to evaluate it. We instead ask whether a Transformer's learned projections can use a different, cheaper product altogether. Building on an associative-algebra construction that replaces ordinary matrix multiplication with a sparser interaction table over the same weight blocks, we construct a family with quadratic arithmetic in the matrix dimension when the physical block size remains fixed, and derive finite-shape constraints for GPU execution. The construction is provably optimal for its bilinear rank by the Alder--Strassen bound and can be realized as row-typed rectangular projections compatible with causal masking and KV-cached decoding. We provide an empirical test of this approach by training two approximately 110M-parameter decoder-only Transformer LMs from the same recipe and 12.3B-token budget, differing only in their feed-forward layer: one uses ordinary dense matrix multiplication and the other uses the associative-algebra product. Across four prompt domains, the algebraic model achieves a 6.2--7.8\\% increase in end-to-end generation throughput, while obtaining lower scores on all three reported downstream metrics. We treat these results as a feasibility and trainability check for the proposed approach at small scale, leaving further investigation to future work.",
+        "published": "2026-09-26T17:39:58Z",
+        "authors": [
+          "Ilya Koziev",
+          "Ivan Oseledets"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.32814v1"
+      },
+      "priority_score": 27
     }
   },
   "last_run": {
-    "started_at": "2026-09-29T03:44:40.173361+00:00",
-    "discovered": 0,
+    "started_at": "2026-09-29T11:57:38.389249+00:00",
+    "discovered": 10,
     "selected": 4,
     "generated": 4,
     "failed": 0,
@@ -42933,27 +43162,27 @@
     "failures": [],
     "usage": {
       "model": "gemini-3.1-flash-lite",
-      "requests": 7,
-      "prompt_tokens": 17320,
-      "output_tokens": 5238,
+      "requests": 8,
+      "prompt_tokens": 20323,
+      "output_tokens": 5677,
       "thought_tokens": 0,
-      "total_tokens": 22558,
-      "estimated_usd": 0.012187
+      "total_tokens": 26000,
+      "estimated_usd": 0.01359625
     },
-    "finished_at": "2026-09-29T03:45:19.157891+00:00"
+    "finished_at": "2026-09-29T11:58:17.659329+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 2885,
-    "prompt_tokens": 7248686,
-    "output_tokens": 2124694,
+    "requests": 2893,
+    "prompt_tokens": 7269009,
+    "output_tokens": 2130371,
     "thought_tokens": 0,
-    "total_tokens": 9373380,
-    "estimated_usd": 4.9992125
+    "total_tokens": 9399380,
+    "estimated_usd": 5.01280875
   },
   "last_publication_run": {
-    "started_at": "2026-09-29T03:44:40.173361+00:00",
-    "discovered": 0,
+    "started_at": "2026-09-29T11:57:38.389249+00:00",
+    "discovered": 10,
     "selected": 4,
     "generated": 4,
     "failed": 0,
@@ -42962,18 +43191,18 @@
     "failures": [],
     "usage": {
       "model": "gemini-3.1-flash-lite",
-      "requests": 7,
-      "prompt_tokens": 17320,
-      "output_tokens": 5238,
+      "requests": 8,
+      "prompt_tokens": 20323,
+      "output_tokens": 5677,
       "thought_tokens": 0,
-      "total_tokens": 22558,
-      "estimated_usd": 0.012187
+      "total_tokens": 26000,
+      "estimated_usd": 0.01359625
     },
-    "finished_at": "2026-09-29T03:45:19.157891+00:00"
+    "finished_at": "2026-09-29T11:58:17.659329+00:00"
   },
   "daily_usage": {
     "date": "2026-09-29",
-    "estimated_usd": 0.012187,
-    "publications": 4
+    "estimated_usd": 0.02578325,
+    "publications": 8
   }
 }

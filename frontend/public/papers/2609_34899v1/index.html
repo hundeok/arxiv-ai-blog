@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ColNanoVDR: 최적 운송을 통한 시각적 문서 검색을 위한 문서 없는 쿼리 증류 | ArXiv Translator AI</title><meta name="description" content="ColNanoVDR: 최적 운송을 통한 시각적 문서 검색을 위한 문서 없는 쿼리 증류"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_34899v1"><meta property="og:type" content="article"><meta property="og:title" content="ColNanoVDR: 최적 운송을 통한 시각적 문서 검색을 위한 문서 없는 쿼리 증류"><meta property="og:description" content="ColNanoVDR: 최적 운송을 통한 시각적 문서 검색을 위한 문서 없는 쿼리 증류"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_34899v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="ColNanoVDR: 최적 운송을 통한 시각적 문서 검색을 위한 문서 없는 쿼리 증류"><meta name="twitter:description" content="ColNanoVDR: 최적 운송을 통한 시각적 문서 검색을 위한 문서 없는 쿼리 증류"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_34899v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "ColNanoVDR: 최적 운송을 통한 시각적 문서 검색을 위한 문서 없는 쿼리 증류", "description": "ColNanoVDR: 최적 운송을 통한 시각적 문서 검색을 위한 문서 없는 쿼리 증류", "datePublished": "2026-09-28", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_34899v1", "author": [{"@type": "Person", "name": "Zhuchenyang Liu"}, {"@type": "Person", "name": "Ziyi Wang"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_34899v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_34899v1"});gtag('event', 'paper_view', {"paper_id": "2609_34899v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>ColNanoVDR: 최적 운송을 통한 시각적 문서 검색을 위한 문서 없는 쿼리 증류</h1><p>ColNanoVDR: 최적 운송을 통한 시각적 문서 검색을 위한 문서 없는 쿼리 증류</p><pre>ColNanoVDR: 최적 운송을 통한 시각적 문서 검색을 위한 문서 없는 쿼리 증류
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** ColNanoVDR: Document-Free Query Distillation for Multi-Vector Visual Document Retrieval via Optimal Transport
+&gt; - **저자:** Zhuchenyang Liu, Ziyi Wang, Yao Zhang, Yu Xiao
+&gt; - **발행일:** 2026-09-28
+&gt; - **PDF 링크:** [ColNanoVDR: Document-Free Query Distillation for Multi-Vector Visual Document Retrieval via Optimal Transport](https://arxiv.org/pdf/2609.34899v1)
+
+
+✨ 3줄 핵심 요약
+* **문서 없는 증류**: 시각적 문서 검색(VDR) 시 대규모 교사 모델의 쿼리 임베딩만을 활용하여, 원본 문서 데이터를 읽지 않고도 학생 모델을 효율적으로 학습시킵니다.
+* **최적 운송 기술(OTW)**: 학습 가능한 가중치를 적용한 엔트로피 최적 운송(Optimal Transport)을 도입하여 교사와 학생 간의 쿼리 토큰을 정렬합니다.
+* **고성능 및 고효율**: 149M 크기의 텍스트 전용 학생 모델이 교사 모델의 NDCG@5 성능을 약 95% 유지하면서, 쿼리 인코딩 속도를 최대 26배 향상했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+기존의 시각적 문서 검색 모델은 수십억 개의 매개변수를 가진 거대 비전-언어 모델(VLM)을 사용하기 때문에 검색할 때마다 엄청난 비용과 시간이 소요됩니다. 이를 해결하기 위해 모델을 압축하는 &#x27;증류&#x27; 기술이 쓰이지만, 기존 방식은 수 테라바이트에 달하는 문서 데이터를 학습 과정에서 계속 읽어야 하는 병목 현상이 있었습니다. **ColNanoVDR**은 문서 데이터를 전혀 보지 않고 오직 교사 모델이 생성한 쿼리 임베딩만을 사용해 학생 모델을 똑똑하게 가르칩니다. 특히 &#x27;최적 운송&#x27;이라는 수학적 기법을 통해 쿼리 토큰 간의 대응 관계를 정밀하게 맞춤으로써, 작은 모델로도 거대 모델에 버금가는 성능을 훨씬 빠른 속도로 구현합니다.
+
+🎯 배경 및 문제점
+* **연산 병목**: VDR 시스템에서 검색 시마다 거대 VLM을 구동해야 하므로 실시간 검색 환경에서 속도 저하가 발생합니다.
+* **데이터 과부하**: 기존 증류 방식(Score Distillation)은 교사 모델의 성능을 모방하기 위해 모든 학습 페이지를 인코딩하고 캐싱해야 하므로, 수 테라바이트 규모의 데이터 처리가 필수적입니다.
+* **다중 벡터 검색의 한계**: 기존의 문서 없는 증류 방식(NanoVDR)은 단일 벡터 모델에만 국한되어, 최신 다중 벡터(Multi-Vector) 검색 모델의 성능을 따라가지 못하는 제약이 있었습니다.
+
+💡 핵심 기술 및 아키텍처
+* **OTW(Optimal Transport with Learned Weights)**: 학생 모델의 토큰과 교사 모델의 토큰을 정렬하는 핵심 학습 목표입니다. 각 학생 토큰에 학습 가능한 가중치를 부여하여 두 모델 간의 토큰화 방식이 달라도 효과적으로 대응시킵니다.
+* **문서 독립적 학습**: 학습 과정에서 실제 이미지나 문서를 입력받지 않고, 교사 모델이 이미 추출해둔 쿼리 임베딩만으로 학습을 완료합니다.
+* **수학적 설계**: 정렬 비용이 모든 페이지에서의 MaxSim 점수 차이를 제한하도록 설계되어, 성능 손실을 최소화합니다.
+
+📊 실험 결과 분석
+* **속도 및 효율성**: ColNanoVDR은 기존 방식 대비 학습 중 읽어야 하는 캐시 데이터를 12.6배 줄였으며, 쿼리 인코딩 속도는 최대 26배 빠릅니다.
+* **성능 유지**: 149M 크기의 학생 모델은 ViDoRe v1–v3 벤치마크에서 5개의 최신 교사 모델 대비 약 95%의 NDCG@5 성능을 유지했습니다.
+* **데이터 수치**: 본 논문에 제시된 수치에 따르면, OTW 학습 방식은 기존 방식(343 GiB) 대비 27 GiB의 캐시 데이터만을 사용하여 학습 효율을 극대화했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **실시간 문서 검색 최적화**: 대규모 문서 기반 서비스(검색 엔진, 문서 자동화 시스템)에서 하드웨어 비용을 크게 절감하면서도 신속한 검색 경험을 제공할 수 있습니다.
+* **온디바이스 AI 활용**: 모델 크기가 작고 효율적이기 때문에, 클라우드 서버뿐만 아니라 상대적으로 자원이 제한된 환경에서도 고성능 시각적 문서 검색 기능을 구동할 가능성을 제시합니다.
+* **지속 가능한 AI**: 모델 학습 및 추론 시 발생하는 에너지 소비와 데이터 로드량을 획기적으로 줄여 친환경적인 AI 운영에 기여합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2609.34899 ColNanoVDR: Document-Free Query Distillation for Multi-Vector Visual Document Retrieval via Optimal Transport](https://arxiv.org/abs/2609.34899)
+&gt; - [ColNanoVDR: Document-Free Query Distillation for Multi-Vector Visual Document Retrieval via Optimal Transport](https://arxiv.org/html/2609.34899)
+&gt; - [Information Retrieval - arXiv.org](https://arxiv.org/list/cs.IR/recent)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;OTW(Optimal Transport with Learned Weights)를 도입해 토큰 정렬을 최적화한 점은 수학적으로 우아하지만, &#x27;문서 없는 증류&#x27;가 과연 실제 복잡한 도메인에서도 일반화가 가능할지 의문이군요. 결국 교사 모델의 편향(bias)까지 그대로 학습하게 될 텐데, 데이터의 다양성이 부족한 상황에서의 성능 하락은 어떻게 보완할 생각입니까?&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 일리가 있지만, 실무에서는 &#x27;일단 돌아가는 효율&#x27;이 깡패입니다. 쿼리 인코딩 속도 26배 개선에 캐시 데이터 12배 절감이면, 파이프라인 단에서 바로 도입할 수준인데요? 다만, 학습 가능한 가중치가 특정 데이터셋에서 과적합(overfitting)될 가능성이 커 보이는데, 서빙 환경에서 추론할 때 정밀도 보정이 필수적이겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;아니, 지금 그게 문제가 아닙니다! ViDoRe 벤치마크 95% 성능 유지면 사실상 149M 모델로 거대 VLM을 퇴출시킬 수 있다는 건데, 온디바이스 VDR 시대가 열린 거예요! 내일부터 바로 코드 뜯어보고 우리 랩 세미나 주제로 올릴 겁니다. 다들 딴지 걸지 말고 일단 돌려보고 얘기하시죠!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
