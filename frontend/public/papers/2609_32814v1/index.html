@@ -1,0 +1,66 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>제품은 바꾸되 파라미터는 유지하라: 트랜스포머를 위한 결합 대수 계층 | ArXiv Translator AI</title><meta name="description" content="제품은 바꾸되 파라미터는 유지하라: 트랜스포머를 위한 결합 대수 계층"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_32814v1"><meta property="og:type" content="article"><meta property="og:title" content="제품은 바꾸되 파라미터는 유지하라: 트랜스포머를 위한 결합 대수 계층"><meta property="og:description" content="제품은 바꾸되 파라미터는 유지하라: 트랜스포머를 위한 결합 대수 계층"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_32814v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="제품은 바꾸되 파라미터는 유지하라: 트랜스포머를 위한 결합 대수 계층"><meta name="twitter:description" content="제품은 바꾸되 파라미터는 유지하라: 트랜스포머를 위한 결합 대수 계층"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_32814v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "제품은 바꾸되 파라미터는 유지하라: 트랜스포머를 위한 결합 대수 계층", "description": "제품은 바꾸되 파라미터는 유지하라: 트랜스포머를 위한 결합 대수 계층", "datePublished": "2026-09-26", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_32814v1", "author": [{"@type": "Person", "name": "Ilya Koziev"}, {"@type": "Person", "name": "Ivan Oseledets"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_32814v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_32814v1"});gtag('event', 'paper_view', {"paper_id": "2609_32814v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>제품은 바꾸되 파라미터는 유지하라: 트랜스포머를 위한 결합 대수 계층</h1><p>제품은 바꾸되 파라미터는 유지하라: 트랜스포머를 위한 결합 대수 계층</p><pre>제품은 바꾸되 파라미터는 유지하라: 트랜스포머를 위한 결합 대수 계층
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Change the Product, Keep the Parameters: Associative Algebra Layers for Transformers
+&gt; - **저자:** Ilya Koziev, Ivan Oseledets
+&gt; - **발행일:** 2026-09-26
+&gt; - **PDF 링크:** [Change the Product, Keep the Parameters: Associative Algebra Layers for Transformers](https://arxiv.org/pdf/2609.32814v1)
+
+
+✨ 3줄 핵심 요약
+*   트랜스포머의 연산 방식인 행렬 곱셈을 더 효율적인 &#x27;결합 대수(Associative Algebra)&#x27; 기반의 희소 상호작용 방식으로 대체하였습니다.
+*   기존의 학습된 가중치 블록을 그대로 사용하면서도, 연산 규칙을 변경하여 행렬 곱셈의 복잡도를 낮추고 처리량(throughput)을 개선했습니다.
+*   실험 결과, 110M 파라미터 모델에서 생성 속도는 6.2~7.8% 향상되었으나, 하류 작업(downstream) 성능은 기존 방식보다 낮게 나타났습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+일반적인 트랜스포머는 데이터를 처리할 때 모든 가중치를 행렬 곱셈이라는 표준적인 방식으로 계산합니다. 연구진은 &quot;꼭 항상 똑같은 방식으로 계산해야 할까?&quot;라는 질문을 던졌습니다. 그 결과, 기존 가중치 값들은 그대로 두되, 행렬 간의 상호작용 규칙만 효율적으로 바꾼 새로운 &#x27;결합 대수 계층&#x27;을 고안했습니다. 이는 불필요한 계산 과정을 제거하여 연산 속도를 높이는 방식입니다. 실제 110M 규모의 모델로 테스트한 결과, 생성 속도는 빨라졌지만 모델이 문제를 해결하는 정확도는 다소 떨어지는 결과가 나와, 기술의 실용성을 확인하는 초기 단계에 머물러 있습니다.
+
+🎯 배경 및 문제점
+대부분의 고속 행렬 곱셈 연구는 행렬 곱셈이라는 &#x27;결과&#x27; 자체를 고정하고 이를 구하는 &#x27;알고리즘&#x27;을 최적화하는 데 집중해 왔습니다. 그러나 본 연구는 모델의 은닉 표현과 계층이 함께 학습된다는 점에 착안하여, 행렬 곱셈이 반드시 전통적인 방식일 필요가 없다고 보았습니다. 더 가볍고 효율적이면서도 신경망 전반에 사용할 수 있는 새로운 연산 규칙을 찾는 것이 핵심 과제였습니다.
+
+💡 핵심 기술 및 아키텍처
+*   **연산 규칙 변경:** 전통적인 행렬 곱셈(GEMM)에서 일부 연산 항목을 제거하여 계산량을 줄이는 결합 대수 구조를 도입했습니다.
+*   **데이터 독립성:** 제거된 연산 항목이 있더라도 가중치 블록 자체는 독립적으로 학습되므로, 모델의 파라미터 구조는 유지됩니다.
+*   **GPU 호환성:** 행 기반의 직사각형 투영 방식을 사용하여 인과적 마스킹(causal masking) 및 KV 캐싱 기반 디코딩과 호환되도록 설계했습니다.
+*   **수학적 최적성:** Alder-Strassen 경계에 따라 이중 선형 순위(bilinear rank) 측면에서 최적화된 구조를 가집니다.
+
+📊 실험 결과 분석
+*   **실험 환경:** 약 110M 파라미터의 디코더 전용 트랜스포머 언어 모델 2개를 동일한 조건에서 학습(12.3B 토큰 예산)하여 비교했습니다.
+*   **생성 처리량:** 기존 밀집 행렬 곱셈 방식 대비 6.2~7.8%의 처리량 개선을 보였습니다.
+*   **성능 지표:** 보고된 3가지 하류 작업 평가 지표 모두에서 기존 방식보다 낮은 점수를 기록했습니다.
+*   **결론:** 연구진은 이 결과를 소규모 환경에서의 타당성 및 학습 가능성을 확인하는 체크로 간주하며, 향후 더 많은 연구가 필요하다고 밝혔습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+본 연구는 모델의 구조나 가중치를 대규모로 변경하지 않고도 연산 방식의 개선만으로 추론 속도를 높일 수 있는 가능성을 제시합니다. 다만, 현재 단계에서는 속도 향상과 성능 유지 사이의 트레이드오프가 존재하므로 즉각적인 상용화보다는 고성능 연산 효율화를 위한 학술적 기반으로 평가됩니다. 향후 이 연산 방식이 정교해진다면, 더 적은 컴퓨팅 자원으로 더 빠른 응답을 생성하는 경량화된 AI 모델 개발에 기여할 수 있을 것으로 보입니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Paper page - Change the Product, Keep the Parameters: Associative ...](https://huggingface.co/papers/2609.32814)
+&gt; - [Daily Papers - Hugging Face](https://huggingface.co/papers/week/2026-W40)
+&gt; - [换积不换参，110M代数层生成快6-8%，三项全落后 · AGI Hunt](https://agihunt.info/papers/2609.32814)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;수학적으로는 흥미로운 시도입니다만, 하류 작업 성능의 하락을 감수하고 7% 내외의 처리량 개선을 얻는 것이 과연 산업계에서 수용될지 의문이군요. 대수적 구조를 변경하여 연산 복잡도를 줄이는 이론적 접근은 좋지만, 결국 모델은 &#x27;정확도&#x27;라는 비용을 지불하고 있는 셈입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에선 &#x27;성능 저하&#x27;가 발생하는 순간 바로 리젝입니다. 7% 향상치도 사실 커스텀 커널 최적화나 퀀타이제이션(Quantization) 살짝 건드리면 나오는 수치거든요. 복잡한 대수 구조까지 도입해서 유지보수 포인트만 늘리는 건, 생산성 측면에서 가성비가 안 나오네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;아니 다들 너무 냉소적이신 거 아니에요? ㅋㅋ 지금 당장 실무에 못 쓴다고 무시할 건 아니죠! &#x27;행렬 곱셈의 틀을 깬다&#x27;는 개념 자체가 중요하잖아요. 이 로직을 더 큰 스케일의 모델이나 비전 트랜스포머에 적용해서 성능 손실을 줄이는 후속 논문이 나오면 그때부턴 상황이 달라질걸요? 전 일단 이 아이디어 브랜치 따서 실험 돌려봅니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

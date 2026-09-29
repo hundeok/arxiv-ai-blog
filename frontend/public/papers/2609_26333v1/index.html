@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>분산 양자화: 거대 언어 모델의 프리필 및 디코드 단계 특화 | ArXiv Translator AI</title><meta name="description" content="분산 양자화: 거대 언어 모델의 프리필 및 디코드 단계 특화"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_26333v1"><meta property="og:type" content="article"><meta property="og:title" content="분산 양자화: 거대 언어 모델의 프리필 및 디코드 단계 특화"><meta property="og:description" content="분산 양자화: 거대 언어 모델의 프리필 및 디코드 단계 특화"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_26333v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="분산 양자화: 거대 언어 모델의 프리필 및 디코드 단계 특화"><meta name="twitter:description" content="분산 양자화: 거대 언어 모델의 프리필 및 디코드 단계 특화"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_26333v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "분산 양자화: 거대 언어 모델의 프리필 및 디코드 단계 특화", "description": "분산 양자화: 거대 언어 모델의 프리필 및 디코드 단계 특화", "datePublished": "2026-09-22", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_26333v1", "author": [{"@type": "Person", "name": "Andrei Panferov"}, {"@type": "Person", "name": "Maximilian Kleinegger"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_26333v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_26333v1"});gtag('event', 'paper_view', {"paper_id": "2609_26333v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>분산 양자화: 거대 언어 모델의 프리필 및 디코드 단계 특화</h1><p>분산 양자화: 거대 언어 모델의 프리필 및 디코드 단계 특화</p><pre>분산 양자화: 거대 언어 모델의 프리필 및 디코드 단계 특화
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Disaggregated Quantization: Specializing LLM Prefill and Decode
+&gt; - **저자:** Andrei Panferov, Maximilian Kleinegger, Sweta Priyadarshi, Tijmen Blankevoort, Dan Alistarh
+&gt; - **발행일:** 2026-09-22
+&gt; - **PDF 링크:** [Disaggregated Quantization: Specializing LLM Prefill and Decode](https://arxiv.org/pdf/2609.26333v1)
+
+
+✨ 3줄 핵심 요약
+- 거대 언어 모델(LLM)의 프리필(Prefill)과 디코드(Decode) 단계에 서로 다른 양자화 전략을 적용하는 &#x27;분산 양자화(DQ)&#x27; 기술을 제안함.
+- 연산 위주의 프리필 단계에는 전용 가중치를 학습시켜 속도를 높이고, 메모리 제한적인 디코드 단계에는 압축 효율을 극대화함.
+- SSD를 활용한 &#x27;오프로드 분산 프리필(ODP)&#x27; 기법으로 메모리 추가 부담 없이 첫 토큰 생성 시간(TTFT)을 최대 1.78배 단축함.
+
+📖 쉽게 풀어쓴 1분 핵심
+LLM이 글을 읽고(프리필) 답을 쓰는(디코드) 방식은 서로 다릅니다. 읽을 때는 한꺼번에 많은 정보를 처리하므로 연산 속도가 중요하고, 쓸 때는 한 글자씩 생성하므로 메모리 대역폭이 중요합니다. 기존 방식은 이 두 단계를 동일한 방식으로 처리했지만, 이 논문은 각 단계의 성격에 맞춰 계산 방식과 저장 형태를 다르게 가져가는 &#x27;분산 양자화&#x27;를 도입했습니다. 이를 통해 모델의 성능은 그대로 유지하면서, 처리 속도를 획기적으로 개선했습니다.
+
+🎯 배경 및 문제점
+- 기존의 일괄적인 양자화 방식은 프리필(연산 집약적)과 디코드(메모리 집약적) 단계 모두에서 최적의 성능을 내기 어렵습니다.
+- 낮은 비트의 양자화는 디코드 단계의 메모리 점유율을 낮추지만, 프리필 단계에서는 연산 효율이나 정확도 손실을 유발할 수 있습니다.
+- 성능을 높이기 위해 별도의 체크포인트를 추가하면 단일 장치의 메모리 부족 문제가 발생한다는 제약이 있습니다.
+
+💡 핵심 기술 및 아키텍처
+- **분산 양자화(DQ):** 프리필과 디코드 단계의 계산 포맷, 가중치, 저장 위치를 개별적으로 최적화합니다.
+- **NVFP4 프리필러(Prefiller):** 프리필 전용 가중치를 별도 학습시켜 연산 속도를 높입니다. 이를 통해 디코드 체크포인트는 수정하지 않고도 정확도를 크게 개선합니다.
+- **오프로드 분산 프리필(ODP):** 추가적인 프리필 가중치를 SSD에서 실시간으로 스트리밍하여 로딩 시간을 프롬프트 길이에 분산시킵니다. 이 방식은 추가적인 기기 내 메모리 오버헤드 없이 작동합니다.
+
+📊 실험 결과 분석
+- **정확도 향상:** Qwen3.8-27B 모델에서 NVFP4 프리필러를 적용했을 때, MMLU-Pro에서 32.5점, MMMU-Pro에서 35.3점의 1비트 정확도 향상을 기록했습니다.
+- **처리 속도 개선:** 27B 모델 기준, 8K 프롬프트 길이에서 ODP를 적용했을 때 기존 방식 대비 첫 토큰 생성 시간(TTFT)이 1.78배 빨라졌습니다.
+- **범용성:** vLLM을 이용한 서빙 테스트와 최대 2.8조 파라미터 모델까지 후학습 양자화(Post-training quantization)를 통해 기술의 확장성을 검증했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+- 고성능 LLM을 제한된 메모리 환경의 하드웨어에서도 훨씬 효율적으로 구동할 수 있게 합니다.
+- 서버 운영 관점에서는 동일한 하드웨어 리소스로도 이전보다 긴 프롬프트 처리 속도를 비약적으로 높일 수 있어 사용자 경험 개선에 기여합니다.
+- 특화된 프리필 가중치 관리 기술은 대규모 언어 모델 서비스의 추론 비용 절감 및 처리량 극대화에 활용될 수 있습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2609.26333 Disaggregated Quantization: Specializing LLM Prefill and Decode](https://arxiv.org/abs/2609.26333)
+&gt; - [2609.26333v1 Disaggregated Quantization: Specializing LLM Prefill and Decode](https://arxiv.org/abs/2609.26333v1)
+&gt; - [Latest: Disaggregated Quantization: Specializing LLM Prefill and Decode · Issue #1857 · jjakimoto/research-issues](https://github.com/jjakimoto/research-issues/issues/1857)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문에서 제시한 프리필과 디코드의 분산 처리는 학술적으로 흥미로운 접근이나, 결국 &#x27;프리필 전용 가중치&#x27;라는 추가적인 아티팩트를 관리해야 한다는 점이 걸리는군요. 모델 가중치를 동적으로 스와핑하는 과정에서의 정합성 검증과 오버헤드를 현장에서 어떻게 완벽히 제어할지가 관건일 것 같습니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에선 &#x27;SSD 스트리밍&#x27;이 양날의 검입니다. ODP 기법으로 메모리 오버헤드를 해결했다지만, 실시간 추론 환경에서 I/O 큐잉 때문에 오히려 레이턴시 지터(Jitter)가 발생하면 vLLM 스케줄러가 비명을 지를 텐데요. 하지만 TTFT 1.78배 향상은 솔깃하네요. 일단 프로덕션 환경에서 스트레스 테스트부터 돌려봐야겠습니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;선배님들, 너무 보수적이신 거 아니에요? 2.8조 파라미터 모델까지 후학습 양자화로 커버했다는 건 대규모 서빙에서 &#x27;게임 체인저&#x27;라는 뜻이잖아요! 프리필러 따로 학습시키는 노가다가 좀 힘들겠지만, 어차피 LLM 서빙 비용 줄이려면 이 정도 리소스 투입은 당연한 거 아닌가요? 바로 깃헙 클론해서 실험 들어갑니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
