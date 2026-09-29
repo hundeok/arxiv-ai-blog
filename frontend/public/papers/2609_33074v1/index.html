@@ -1,0 +1,70 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>커널제로: 지속적인 GPU 커널 생성을 위한 제안자와 코더의 상호 진화 | ArXiv Translator AI</title><meta name="description" content="커널제로: 지속적인 GPU 커널 생성을 위한 제안자와 코더의 상호 진화"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_33074v1"><meta property="og:type" content="article"><meta property="og:title" content="커널제로: 지속적인 GPU 커널 생성을 위한 제안자와 코더의 상호 진화"><meta property="og:description" content="커널제로: 지속적인 GPU 커널 생성을 위한 제안자와 코더의 상호 진화"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_33074v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="커널제로: 지속적인 GPU 커널 생성을 위한 제안자와 코더의 상호 진화"><meta name="twitter:description" content="커널제로: 지속적인 GPU 커널 생성을 위한 제안자와 코더의 상호 진화"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_33074v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "커널제로: 지속적인 GPU 커널 생성을 위한 제안자와 코더의 상호 진화", "description": "커널제로: 지속적인 GPU 커널 생성을 위한 제안자와 코더의 상호 진화", "datePublished": "2026-09-27", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_33074v1", "author": [{"@type": "Person", "name": "Changxin Ke"}, {"@type": "Person", "name": "Rui Zhang"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_33074v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_33074v1"});gtag('event', 'paper_view', {"paper_id": "2609_33074v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>커널제로: 지속적인 GPU 커널 생성을 위한 제안자와 코더의 상호 진화</h1><p>커널제로: 지속적인 GPU 커널 생성을 위한 제안자와 코더의 상호 진화</p><pre>커널제로: 지속적인 GPU 커널 생성을 위한 제안자와 코더의 상호 진화
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** KernelZero: Co-Evolving Proposer and Coder for Continuously Improved GPU Kernel Generation
+&gt; - **저자:** Changxin Ke, Rui Zhang, Zixiang Fang, Zhenghong Li, Yuanbo Wen, Jiashuo Shen, Shuo Wang, Jiaming Guo, Ling Li, Qi Guo, Yunji Chen
+&gt; - **발행일:** 2026-09-27
+&gt; - **PDF 링크:** [KernelZero: Co-Evolving Proposer and Coder for Continuously Improved GPU Kernel Generation](https://arxiv.org/pdf/2609.33074v1)
+
+
+✨ 3줄 핵심 요약
+* **KernelZero**는 GPU 커널 생성의 정확성과 효율성을 동시에 최적화하기 위해, PyTorch 모듈을 생성하는 &#x27;제안자(Proposer)&#x27;와 이를 커널로 변환하는 &#x27;코더(Coder)&#x27;를 공동 진화시키는 프레임워크입니다.
+* &#x27;프런티어 기반 모듈 생성&#x27;과 &#x27;정확성 인지 그룹 상대 정책 최적화(CA-GRPO)&#x27;를 통해 모델의 현재 취약점에 맞춤화된 학습 데이터를 자동으로 생성하고 최적화합니다.
+* KernelBench 테스트에서 Claude-4.5-Sonnet 및 DeepSeek-V4-Pro를 상회하는 고성능 CUDA 및 Triton 커널 생성 능력을 입증했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+GPU에서 돌아가는 고성능 프로그램인 &#x27;커널&#x27;을 AI가 직접 짜는 것은 매우 어렵습니다. 기존 방식은 데이터가 부족하거나, 코드가 맞으면 성능이 떨어지고 성능을 쫓으면 오류가 나는 &#x27;정확성-성능 간의 딜레마&#x27;에 빠져 있었습니다. **KernelZero**는 이 문제를 해결하기 위해 두 명의 전문가를 협업시켰습니다. 하나는 어떤 기능을 구현할지 기획하는 &#x27;제안자&#x27;이고, 다른 하나는 실제로 코드를 짜는 &#x27;코더&#x27;입니다. 이 둘은 서로의 약점을 보완하며 함께 발전하며, 정확성이 확보된 뒤에만 성능을 극대화하는 전략을 사용해 매우 빠르고 정확한 GPU 코드를 스스로 만들어냅니다.
+
+🎯 배경 및 문제점
+* **데이터 부족:** 현재 모델의 능력치와 일치하는 고품질 학습 데이터가 부족하여 학습 효율이 낮습니다.
+* **딜레마:** 커널 생성 시 정확성만을 강조하면 성능 향상이 제한적이고, 성능을 최우선으로 하면 코드 오류 가능성이 급격히 커집니다.
+* **복잡성:** CUDA나 Triton 같은 도메인 특화 언어와 컴퓨터 아키텍처에 대한 깊은 이해가 필수적이라 자동화가 매우 까다롭습니다.
+
+💡 핵심 기술 및 아키텍처
+* **공동 진화(Co-evolution) 프레임워크:** 제안자와 코더를 번갈아 최적화하여 점진적으로 실력을 향상시키는 교육 커리큘럼을 자동으로 구축합니다.
+* **프런티어 기반 모듈 생성:** 코더의 현재 약점을 분석하여 이에 특화된 PyTorch 학습 모듈을 생성합니다.
+* **CA-GRPO (Correctness-Aware Group Relative Policy Optimization):** 코드의 정확성이 충분히 검증된 후에만 성능 최적화 단계로 진입하도록 하여 안정성을 확보합니다.
+
+📊 실험 결과 분석
+* **성능 우위:** KernelZero-7B 모델은 CUDA 생성 분야에서 Claude-4.5-Sonnet을, Triton 생성 분야에서는 DeepSeek-V4-Pro를 능가했습니다.
+* **정확도(pass@1):** 
+    * KernelBench Level 1/2 기준 CUDA 코드의 pass@1은 각각 75.8%, 69.6%입니다.
+    * Triton 코드의 pass@1은 각각 77.2%, 72.5%를 기록했습니다.
+* **최대 정확도(pass@10):** CUDA 코드의 경우 pass@10 기준 Level 1은 100%, Level 2는 97%의 높은 성공률을 보였습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **개발 생산성 향상:** 전문적인 GPU 커널 작성에 필요한 높은 진입 장벽을 낮춰 머신러닝 시스템 최적화 시간을 대폭 단축할 수 있습니다.
+* **최적화 자동화:** 모델 학습 및 추론 과정에서 가장 핵심적인 연산 커널을 상황에 맞춰 최적으로 자동 생성함으로써, 하드웨어 활용도와 실행 속도를 극대화할 수 있습니다.
+* **실무적 유연성:** 하드웨어 아키텍처(NVIDIA A100 등)의 특성을 고려한 타일링, 융합, 파이프라이닝 등의 최적화 기법을 자동으로 적용하여 대규모 모델 학습의 효율성을 개선합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Paper page - KernelZero: Co-Evolving Proposer and Coder for ...](https://huggingface.co/papers/2609.33074)
+&gt; - [Software Engineering - arXiv.org](https://arxiv.org/list/cs.SE/recent?skip=50)
+&gt; - [Machine Learning - arXiv.org](https://arxiv.org/list/cs.LG/recent?skip=401)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문을 훑어봤는데, CA-GRPO를 통해 정확성을 보장한 뒤 성능 최적화로 넘어가는 전략은 꽤 우아하군요. 하지만 벤치마크 점수만 보고 환호하기엔 이릅니다. 실제 하드웨어의 미세한 아키텍처 차이(warp divergence나 memory coalescing 이슈)를 LLM이 얼마나 일반화된 형태로 해결할 수 있을지 의문입니다. 제안자와 코더의 공동 진화가 과연 과적합(Overfitting) 없이 범용적인 커널 최적화로 이어질지, 저자들의 ablation study가 좀 더 엄격했어야 했다고 봅니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에선 &#x27;동작은 하지만 느린 코드&#x27;가 제일 골치 아픈데, 일단 pass@1 70%대를 넘겼다는 건 현업에서 레버리지로 쓰기엔 충분히 매력적입니다. 트라이톤(Triton) 커널 짜느라 밤새는 주니어들 생각하면 이건 정말 혁명적이죠. 다만, production 환경에서 빌드 시 발생하는 컴파일 에러나 드라이버 버전에 따른 의존성 문제를 어떻게 처리할지가 관건이겠네요. 일단 프로덕션 코드에 붙여서 테스트해 볼 가치는 충분해 보입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;교수님은 너무 보수적이세요! 지금 SOTA가 Claude랑 DeepSeek을 땄다는 게 중요한 거죠. 🚀 &#x27;프런티어 기반 모듈 생성&#x27;으로 학습 데이터를 스스로 만들어낸다는 발상은 정말 천재적이지 않나요? 데이터 부족 문제를 &#x27;셀프 커리큘럼&#x27;으로 뚫어버린 건데, 이건 커널 최적화뿐만 아니라 다른 코드 생성 도메인으로도 충분히 확장 가능할 것 같아요. 내일부터 당장 코드 파서 실험 돌려볼 사람 구합니다. 커널제로로 GPU 최적화 자동화 끝판왕 가보자고!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

@@ -1,0 +1,67 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>메모리 효율적인 대용어휘 자동 음성 인식을 위한 가지치기된 CTC 학습 | ArXiv Translator AI</title><meta name="description" content="메모리 효율적인 대용어휘 자동 음성 인식을 위한 가지치기된 CTC 학습"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_33645v1"><meta property="og:type" content="article"><meta property="og:title" content="메모리 효율적인 대용어휘 자동 음성 인식을 위한 가지치기된 CTC 학습"><meta property="og:description" content="메모리 효율적인 대용어휘 자동 음성 인식을 위한 가지치기된 CTC 학습"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_33645v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="메모리 효율적인 대용어휘 자동 음성 인식을 위한 가지치기된 CTC 학습"><meta name="twitter:description" content="메모리 효율적인 대용어휘 자동 음성 인식을 위한 가지치기된 CTC 학습"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_33645v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "메모리 효율적인 대용어휘 자동 음성 인식을 위한 가지치기된 CTC 학습", "description": "메모리 효율적인 대용어휘 자동 음성 인식을 위한 가지치기된 CTC 학습", "datePublished": "2026-09-27", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_33645v1", "author": [{"@type": "Person", "name": "Yifan Yang"}, {"@type": "Person", "name": "Xiaoyu Yang"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_33645v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_33645v1"});gtag('event', 'paper_view', {"paper_id": "2609_33645v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>메모리 효율적인 대용어휘 자동 음성 인식을 위한 가지치기된 CTC 학습</h1><p>메모리 효율적인 대용어휘 자동 음성 인식을 위한 가지치기된 CTC 학습</p><pre>메모리 효율적인 대용어휘 자동 음성 인식을 위한 가지치기된 CTC 학습
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Pruned CTC for Memory-Efficient Large-Vocabulary ASR Training
+&gt; - **저자:** Yifan Yang, Xiaoyu Yang, Zengrui Jin, Xian Shi, Yuxuan Wang, Yu Xi, Ziyang Ma, Qi Chen, Ruiyang Xu, Hui Wang, Dongchao Yang, Jin Xu, Xie Chen
+&gt; - **발행일:** 2026-09-27
+&gt; - **PDF 링크:** [Pruned CTC for Memory-Efficient Large-Vocabulary ASR Training](https://arxiv.org/pdf/2609.33645v1)
+
+
+✨ 3줄 핵심 요약
+* **Pruned CTC 개발:** 전체 어휘 사전 대신 학습 배치 내에 존재하는 타겟 토큰과 공백(blank)으로만 정렬 계산을 제한하여 메모리 효율을 극대화했습니다.
+* **LLM-CTC 도입:** 사전 학습된 거대언어모델(LLM)을 비자기회귀(non-autoregressive) 방식의 음성 인식에 최적화하여, 기존 LLM 기반 학습 대비 훨씬 빠른 인식 성능을 구현했습니다.
+* **학습 효율성 증대:** 기존 CTC와 수학적으로 동일한 성능을 유지하면서, 대규모 어휘 사전 환경에서 메모리 사용량을 5.1배 절감하고 인식 속도를 7~10배 향상했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+기존의 음성 인식 모델(CTC 방식)은 수만 개에 달하는 전체 단어(어휘 사전)를 매번 계산해야 해서 메모리 사용량이 매우 컸습니다. 연구진은 실제 발화에 필요한 단어만 골라내어 계산하는 &#x27;가지치기된 CTC(Pruned CTC)&#x27;를 개발했습니다. 이를 통해 거대언어모델(LLM)의 방대한 어휘력을 활용하면서도, 메모리 부담 없이 빠르게 음성을 텍스트로 변환할 수 있게 되었습니다.
+
+🎯 배경 및 문제점
+* **메모리 과부하:** 기존 CTC는 전체 어휘 크기에 비례해 활성화 값(activation)이 메모리를 차지하므로, LLM의 방대한 어휘(Native Vocabulary)를 적용하기엔 메모리 비용이 너무 컸습니다.
+* **학습 방식의 제약:** 기존 LLM 기반 음성 인식(LLM-CE)은 순차적으로 단어를 생성하는 자기회귀(autoregressive) 방식을 사용하여 속도가 느리고, 스트리밍 시 복잡한 정렬 작업이 필요했습니다.
+
+💡 핵심 기술 및 아키텍처
+* **Pruned CTC:** 정렬 계산 시 배치 내에 등장하지 않는 불필요한 단어를 배제하여 메모리 사용량을 줄이되, 정규화 과정은 전체 어휘 사전을 유지함으로써 수학적으로 원본 CTC와 동일한 손실(loss)과 기울기(gradient)를 보장합니다.
+* **LLM-CTC:** Pruned CTC를 기반으로 LLM을 음성 인식에 맞게 적응시킨 구조입니다. 비자기회귀 방식으로 동작하여 병렬 처리가 가능하며, 덩어리 단위(chunk-level)의 정렬 없이도 스트리밍 음성 인식을 수행할 수 있습니다.
+* **유한 빔 가지치기(Finite-beam alignment pruning):** 계산 복잡도를 추가로 낮추기 위해 적용된 기법입니다.
+
+📊 실험 결과 분석
+* **메모리 및 속도:** 180K 규모의 어휘 사전을 사용한 환경에서 메모리 사용량을 5.1배 줄였고, 17%의 시간 오버헤드만으로 효율적인 학습이 가능했습니다.
+* **성능 일관성:** 세 가지 말뭉치(corpora) 실험에서 기존 표준 CTC와 대등한 정확도를 기록했습니다.
+* **LLM 성능:** 0.6B부터 32B 크기의 Qwen3 모델 실험에서, 기존 LLM-CE 방식 대비 WER(단어 오류율) 차이를 7% 이내로 유지하면서 인식 속도는 7~10배 빨라졌습니다. 
+* **스트리밍:** 스트리밍 환경에서도 오프라인 모델과 비교해 3% 이내의 낮은 오류율을 보였습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **실시간 음성 인식:** 복잡한 정렬 과정이 필요한 기존 스트리밍 음성 인식 모델을 대체하여, 더 빠르고 가벼운 실시간 대화형 AI 서비스 개발이 가능해졌습니다.
+* **모델 확장성:** 거대언어모델의 언어 지식을 활용하면서도 학습 비용을 획기적으로 낮췄기 때문에, 다양한 언어와 방대한 어휘를 다루는 고성능 음성 인식 시스템의 표준적 방법론으로 활용될 것으로 기대됩니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Pruned CTC for Memory-Efficient Large-Vocabulary ASR Training](https://huggingface.co/papers/2609.33645)
+&gt; - [2609.33645 Pruned CTC for Memory-Efficient Large-Vocabulary ASR Training](https://arxiv.org/abs/2609.33645)
+&gt; - [Pruned CTC for Memory-Efficient Large-Vocabulary ASR Training](https://arxiv.org/html/2609.33645)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;수학적으로 원본 CTC와 동일한 손실을 보장하면서 가지치기를 수행한다는 점은 흥미롭군요. 하지만 유한 빔 가지치기(Finite-beam alignment pruning) 과정에서 발생하는 근사치가 실제 극단적인 노이즈 환경이나 언어적 변동성이 큰 데이터셋에서 얼마나 견고한지(robust) 증명된 건가요? 성능 일관성을 논하기엔 에지 케이스에 대한 엄밀한 검증이 부족해 보입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님, 현업에서는 그 &#x27;엄밀함&#x27;보다 메모리 5배 절감이 주는 임팩트가 훨씬 큽니다. 당장 LLM-ASR 모델 올릴 때마다 VRAM 터져서 파라미터 깎던 팀들 입장에서는 구원투수죠. 특히 180K 어휘 사전 다 올리고도 학습이 된다는 건 리소스 비용 측면에서 엄청난 효율입니다. 바로 프로덕션 PoC 들어가도 될 것 같은데요?&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;선배님, 맞아요! 저 이거 보고 바로 Qwen3 32B 얹어서 테스트 돌려보는 중입니다. 7~10배 속도 향상이면 스트리밍 레이턴시 해결도 시간 문제겠네요. 다만, 이게 특정 도메인 데이터에 과적합될 가능성도 있어 보이는데, 혹시 LLM의 파라미터 효율적 튜닝(PEFT) 기법들과 결합했을 때의 상호작용도 논문에 언급되어 있나요? 이거 이번 학회 &#x27;Best Paper&#x27; 후보 아닐까요?&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
