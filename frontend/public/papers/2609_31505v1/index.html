@@ -1,0 +1,44 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>프롬프트 최소화: 출력 충실도를 희생하지 않으면서 입력 중복성을 줄이기 | ArXiv Translator AI</title><meta name="description" content="프롬프트 최소화: 출력 충실도를 희생하지 않으면서 입력 중복성을 줄이기"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_31505v1"><meta property="og:type" content="article"><meta property="og:title" content="프롬프트 최소화: 출력 충실도를 희생하지 않으면서 입력 중복성을 줄이기"><meta property="og:description" content="프롬프트 최소화: 출력 충실도를 희생하지 않으면서 입력 중복성을 줄이기"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_31505v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="프롬프트 최소화: 출력 충실도를 희생하지 않으면서 입력 중복성을 줄이기"><meta name="twitter:description" content="프롬프트 최소화: 출력 충실도를 희생하지 않으면서 입력 중복성을 줄이기"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_31505v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "프롬프트 최소화: 출력 충실도를 희생하지 않으면서 입력 중복성을 줄이기", "description": "프롬프트 최소화: 출력 충실도를 희생하지 않으면서 입력 중복성을 줄이기", "datePublished": "2026-09-25", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_31505v1", "author": [{"@type": "Person", "name": "Marius F. R. Juston"}, {"@type": "Person", "name": "Kevin A. Karim"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_31505v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_31505v1"});gtag('event', 'paper_view', {"paper_id": "2609_31505v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>프롬프트 최소화: 출력 충실도를 희생하지 않으면서 입력 중복성을 줄이기</h1><p>프롬프트 최소화: 출력 충실도를 희생하지 않으면서 입력 중복성을 줄이기</p><pre>프롬프트 최소화: 출력 충실도를 희생하지 않으면서 입력 중복성을 줄이기
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Prompt Minimization: Reducing Input Redundancy Without Sacrificing Output Fidelity
+&gt; - **저자:** Marius F. R. Juston, Kevin A. Karim, Jonathan Gao, Kevin C. Li, Rudhi Bashambu
+&gt; - **발행일:** 2026-09-25
+&gt; - **PDF 링크:** [Prompt Minimization: Reducing Input Redundancy Without Sacrificing Output Fidelity](https://arxiv.org/pdf/2609.31505v1)
+
+
+✨ 3줄 핵심 요약
+* 거대언어모델(LLM)의 긴 프롬프트는 계산 비용을 높이고 모델의 추론 성능을 저하시키는 부작용이 있습니다.
+* 본 논문은 출력의 품질을 유지하면서 프롬프트를 가장 정보 밀도가 높은 최소 형태로 압축하는 &#x27;프롬프트 최소화(Prompt Minimization)&#x27; 프레임워크를 제안합니다.
+* 실험 결과, 최소화된 프롬프트로도 긴 원본 프롬프트와 비교 가능한 수준의 출력 결과를 얻을 수 있음을 확인했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+사용자들은 흔히 LLM이 더 정확하게 답변하도록 돕기 위해 불필요하게 긴 문서나 방대한 지시사항을 프롬프트에 포함합니다. 하지만 이러한 &#x27;긴 프롬프트&#x27;는 실제로는 모델의 추론 과정을 방해하고 처리 속도를 늦추는 역효과를 냅니다. 본 연구팀은 프롬프트에서 핵심 정보를 잃지 않으면서도 길이만 획기적으로 줄이는 기술을 개발했습니다. 이는 LLM 사용 시 발생하는 성능 저하를 방지하고, 모델이 프롬프트를 어떻게 해석하는지에 대한 통찰을 제공합니다.
+
+🎯 배경 및 문제점
+* **비효율성**: 긴 프롬프트는 불필요한 컴퓨팅 자원을 소모하고 추론 지연 시간(latency)을 증가시킵니다.
+* **성능 저하**: 연구에 따르면, 프롬프트가 길어질수록 모델이 불필요한 정보에 산만해져 오히려 추론 정확도가 낮아집니다.
+* **불투명성(Explainability) 부족**: 모델이 긴 입력 중에서 무엇을 중요하게 여기는지 알기 어려워, 사용자가 최적의 프롬프트를 설계하기 어렵습니다.
+
+💡 핵심 기술 및 아키텍처
+* **프롬프트 최소화 기법**: 입력 데이터의 중복성을 제거하여 가장 밀도 높은 형태로 변환하는 세 가지 변형 프레임워크를 제안합니다.
+* **RL(강화학습) 파인튜닝 활용**: 알고리즘을 통해 점진적으로 프롬프트를 줄여나가며, BERT-score 등의 평가 지표를 활용해 원본과 유사한 성능을 유지하도록 유도합니다.
+* **최적화 방향**: 강화학습 과정을 통해 모델이 &#x27;어떤 정보를 가장 중요하게 판단하는지&#x27; 학습하고, 이를 바탕으로 불필요한 토큰을 제거합니다.
+
+📊 실험 결과 분석
+* **성능 유지**: 압축된 프롬프트는 원본보다 훨씬 짧음에도 불구하고, Llama-3.1 및 Qwen-2.5 모델 등에서 기존과 대등한 출력 품질(BERT-score 등으로 측정)을 기록했습니다.
+* **최적화 과정**: 실험 사례(그림 12, 13)에서 확인된 것처럼, 반복적인 최적화 과정을 거치며 의미 전달에 불필요한 수식어나 장황한 표현이 제거되었으며, 결과적으로 모델의 응답 성능을 유지하는 최소치의 프롬프트를 도출했습니다.
+* *주의: 본 발췌문에는 압축 전후의 구체적인 소요 시간 단축 수치나 경제적 비용 절감 수치는 명시되어 있지 않습니다.*
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **프롬프트 엔지니어링의 표준화**: 직관적인 추측에 의존하던 프롬프트 설계를 데이터 기반의 효율적인 프로세스로 전환할 수 있습니다.
+* **운영 비용 절감**: 불필요하게 긴 입력을 제거함으로써 API 비용을 낮추고, 처리량(throughput)을 개선하여 대규모 LLM 배포 환경에서 효율성을 극대화할 수 있습니다.
+* **실무 활용성 강화**: 향후 연구팀은 이 기술을 라이브러리화하여 실무자들이 쉽게 도입할 수 있도록 할 예정이며, 이는 LLM을 활용한 다양한 서비스(헬스케어, 정책, 금융 등)의 신뢰성과 효율성을 높이는 데 기여할 것입니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Prompt Minimization: Reducing Input Redundancy Without Sacrificing ...](https://papers.cool/arxiv/2609.31505)
+&gt; - [Prompt Minimization: Reducing Input Redundancy With... | AI Research](https://franklineh.com/learn/research/lV2OTZAVhmcFXal7SvEN)
+&gt; - [2609.31505 Prompt Minimization: Reducing Input Redundancy Without Sacrificing Output Fidelity](https://arxiv.org/abs/2609.31505)
+
+</pre></article></main></body></html>
