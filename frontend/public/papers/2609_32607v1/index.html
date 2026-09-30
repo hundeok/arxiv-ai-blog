@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>VoxMem: 대형 오디오 언어 모델의 멀티모달 기억력 벤치마킹 | ArXiv Translator AI</title><meta name="description" content="VoxMem: 대형 오디오 언어 모델의 멀티모달 기억력 벤치마킹"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_32607v1"><meta property="og:type" content="article"><meta property="og:title" content="VoxMem: 대형 오디오 언어 모델의 멀티모달 기억력 벤치마킹"><meta property="og:description" content="VoxMem: 대형 오디오 언어 모델의 멀티모달 기억력 벤치마킹"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_32607v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="VoxMem: 대형 오디오 언어 모델의 멀티모달 기억력 벤치마킹"><meta name="twitter:description" content="VoxMem: 대형 오디오 언어 모델의 멀티모달 기억력 벤치마킹"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_32607v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "VoxMem: 대형 오디오 언어 모델의 멀티모달 기억력 벤치마킹", "description": "VoxMem: 대형 오디오 언어 모델의 멀티모달 기억력 벤치마킹", "datePublished": "2026-09-26", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_32607v1", "author": [{"@type": "Person", "name": "Yang Xiao"}, {"@type": "Person", "name": "Vidhyasaharan Sethu"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_32607v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_32607v1"});gtag('event', 'paper_view', {"paper_id": "2609_32607v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>VoxMem: 대형 오디오 언어 모델의 멀티모달 기억력 벤치마킹</h1><p>VoxMem: 대형 오디오 언어 모델의 멀티모달 기억력 벤치마킹</p><pre>VoxMem: 대형 오디오 언어 모델의 멀티모달 기억력 벤치마킹
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** VoxMem: Benchmarking Multimodal Memory in Large Audio Language Models
+&gt; - **저자:** Yang Xiao, Vidhyasaharan Sethu, Eun-Jung Holden, Ting Dang
+&gt; - **발행일:** 2026-09-26
+&gt; - **PDF 링크:** [VoxMem: Benchmarking Multimodal Memory in Large Audio Language Models](https://arxiv.org/pdf/2609.32607v1)
+
+
+✨ 3줄 핵심 요약
+- 오디오 언어 모델(LALM)의 기억력을 평가하기 위해 &#x27;음향적 증거 유형&#x27;과 &#x27;기억 조작 방식&#x27;을 결합한 새로운 분류 체계와 벤치마크인 &#x27;VoxMem&#x27;을 제시함.
+- 15개 모델을 평가한 결과, 32K 토큰 환경에서 성능이 40%를 넘는 모델이 없었으며 모델들은 화자나 환경음보다 텍스트 기반 정보 기억에 치중하는 경향을 보임.
+- 대화 기록이 길어지고 작업이 복잡해질수록 모델의 기억 오류가 심화되며, 이는 기억 시스템의 발전 방향을 측정하는 기초가 됨.
+
+📖 쉽게 풀어쓴 1분 핵심
+사람은 대화를 할 때 단순히 &#x27;무슨 말을 했는지&#x27;뿐만 아니라 &#x27;누가 말했는지&#x27;, &#x27;어떤 목소리 톤(감정)인지&#x27;, &#x27;주변 환경 소리는 어땠는지&#x27;를 모두 기억합니다. 하지만 기존의 인공지능 모델들은 주로 텍스트 정보에만 집중하고, 오디오 정보가 담고 있는 풍부한 맥락을 기억하는 데에는 한계를 보입니다. VoxMem은 실제 대화처럼 여러 세션에 걸쳐 쌓인 오디오 데이터를 얼마나 정확히 기억하고 활용하는지 테스트합니다. 실험 결과, 현재의 대형 오디오 언어 모델들은 텍스트는 잘 기억하지만, 오디오 특유의 복잡한 정보들은 대화가 길어질수록 놓치는 경우가 많다는 점을 확인했습니다.
+
+🎯 배경 및 문제점
+- **오디오 정보의 다면성:** 대화의 진정한 기억은 텍스트를 넘어 화자 식별, 준언어적 단서(어조 등), 환경음 등을 포괄해야 하지만 기존 모델은 이를 간과함.
+- **기억 작업의 복잡성:** 단순히 정보를 추출하는 것을 넘어, 여러 세션 간의 정보를 통합하고, 상태 변화를 추적하며, 질문에 적절히 대응하는 등 다양한 조작 능력이 필요함.
+- **기존 벤치마크의 한계:** 기존 방식은 특정 언어 내용에만 치우쳐 있거나, 단일 세션 문제로 한정되어 있어 복합적인 오디오 기억 능력을 종합적으로 평가할 수 없음.
+
+💡 핵심 기술 및 아키텍처
+- **분류 체계(Taxonomy):** 4가지 음향 증거 유형(의미, 화자 식별, 준언어적 단서, 환경음)과 4가지 기억 조작(정보 추출, 다중 세션 추론, 시간 추적, 답변 거부)을 결합하여 체계적인 평가 기준을 마련함.
+- **VoxMem 데이터셋:** 총 34,743개의 대화 세션(177시간 분량)으로 구성된 3,196개의 평가 인스턴스.
+- **제어된 히스토리 구성:** 8K에서 64K 토큰 범위의 맥락 길이에 따라, 질문과 관련 없는 정보(Distractor)와 일반적인 대화(Filler)를 적절히 배치하여 모델이 정보의 중요도를 구분하게 함.
+
+📊 실험 결과 분석
+- **모델 성능:** 총 15개 LALM을 대상으로 평가한 결과, 32K 토큰 기준 모든 모델의 성공률이 40% 미만임.
+- **기억 편향:** 모델들은 화자의 정체성, 발화 방식, 환경음보다 텍스트(말한 내용)를 훨씬 더 잘 기억함.
+- **오류 패턴:** 대화 길이가 길어질수록, 질문이 복잡한 추론을 요구할수록 성능이 급격히 저하되며, 각 증거 유형별로 질적으로 다른 실패 모드가 관찰됨.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+- **음성 대화 시스템 발전:** 사용자의 미묘한 감정 변화나 환경적 맥락을 파악하여 더 인간적인 상호작용이 가능한 AI 비서 개발의 기반을 마련함.
+- **지능형 기억 시스템 설계:** 단순히 긴 문맥을 처리하는 것을 넘어, 실제 필요한 오디오 정보를 정확히 인출하고 유지하는 고성능 모델 개발의 지표로 활용될 수 있음.
+- **분야별 적용:** 상담 센터의 다회차 상담 분석, 회의 기록 시스템에서의 발화자 및 환경적 맥락 추적 등 정밀한 기억력이 요구되는 산업군에 즉각적인 평가 잣대를 제공함.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [VoxMem: Benchmarking Multimodal Memory in Large Audio Language Models](https://arxiv.org/pdf/2609.32607)
+&gt; - [VoxMem: Benchmarking Multimodal Memory in Large Audio Language Models](https://huggingface.co/papers/2609.32607)
+&gt; - [VoxMem: Benchmarking Multimodal Memory in Large Audio Language Models](https://www.aimodels.fyi/papers/arxiv/voxmem-benchmarking-multimodal-memory-large-audio-language)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;VoxMem의 분류 체계 자체는 참신하나, 32K 토큰에서 40% 미만의 성공률을 보인 건 모델의 구조적 결함이라기보다 데이터의 노이즈 처리 미숙으로 보입니다. 기억의 &#x27;의미적 텍스트&#x27; 편향은 결국 오디오 인코더가 토큰화 과정에서 손실하는 정보가 너무 많다는 반증이죠. 아키텍처 개선 없이 벤치마크만 늘어놓는다고 모델이 똑똑해지지는 않습니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 인코더 문제도 크지만, 실무에서는 32K 문맥에서 준언어적 단서까지 다 살리려면 추론 비용이 감당이 안 됩니다. 당장 현업에선 긴 대화 기록을 RAG로 쳐내는 게 현실인데, VoxMem이 제시한 복잡한 기억 조작 로직을 모델에 내재화하려면 메모리 풋프린트 최적화가 선행되어야 할 겁니다. 지금 40% 성능이면 서비스 배포는 꿈도 못 꾸죠.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;선배님들, 너무 비관적인 거 아니에요? 오히려 화자 식별이랑 감정 추적까지 벤치마크에 넣었다는 건 이제 &#x27;대화&#x27;의 정의를 텍스트 너머로 확장하려는 시도잖아요! 40%라는 낮은 수치는 역설적으로 이 분야가 아직 블루오션이라는 뜻이죠. 당장 랩 세미나에서 이거 구현해서 오디오 기반 Memory-Efficient 모델로 논문 하나 뽑아보겠습니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
