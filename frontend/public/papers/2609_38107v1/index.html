@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>정답은 맞았지만 논리는 틀렸다: 검증 가능한 초등 수학 문제가 사고의 연쇄(Chain-of-Thought) 추론에 대해 알려주는 것 | ArXiv Translator AI</title><meta name="description" content="정답은 맞았지만 논리는 틀렸다: 검증 가능한 초등 수학 문제가 사고의 연쇄(Chain-of-Thought) 추론에 대해 알려주는 것"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_38107v1"><meta property="og:type" content="article"><meta property="og:title" content="정답은 맞았지만 논리는 틀렸다: 검증 가능한 초등 수학 문제가 사고의 연쇄(Chain-of-Thought) 추론에 대해 알려주는 것"><meta property="og:description" content="정답은 맞았지만 논리는 틀렸다: 검증 가능한 초등 수학 문제가 사고의 연쇄(Chain-of-Thought) 추론에 대해 알려주는 것"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_38107v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="정답은 맞았지만 논리는 틀렸다: 검증 가능한 초등 수학 문제가 사고의 연쇄(Chain-of-Thought) 추론에 대해 알려주는 것"><meta name="twitter:description" content="정답은 맞았지만 논리는 틀렸다: 검증 가능한 초등 수학 문제가 사고의 연쇄(Chain-of-Thought) 추론에 대해 알려주는 것"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_38107v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "정답은 맞았지만 논리는 틀렸다: 검증 가능한 초등 수학 문제가 사고의 연쇄(Chain-of-Thought) 추론에 대해 알려주는 것", "description": "정답은 맞았지만 논리는 틀렸다: 검증 가능한 초등 수학 문제가 사고의 연쇄(Chain-of-Thought) 추론에 대해 알려주는 것", "datePublished": "2026-09-29", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_38107v1", "author": [{"@type": "Person", "name": "Ratish Puduppully"}, {"@type": "Person", "name": "Pranabendu Misra"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_38107v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_38107v1"});gtag('event', 'paper_view', {"paper_id": "2609_38107v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>정답은 맞았지만 논리는 틀렸다: 검증 가능한 초등 수학 문제가 사고의 연쇄(Chain-of-Thought) 추론에 대해 알려주는 것</h1><p>정답은 맞았지만 논리는 틀렸다: 검증 가능한 초등 수학 문제가 사고의 연쇄(Chain-of-Thought) 추론에 대해 알려주는 것</p><pre>정답은 맞았지만 논리는 틀렸다: 검증 가능한 초등 수학 문제가 사고의 연쇄(Chain-of-Thought) 추론에 대해 알려주는 것
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Correct Answers, Invalid Traces: What Verifiable Grade-School Math Reveals About Chain-of-Thought Traces
+&gt; - **저자:** Ratish Puduppully, Pranabendu Misra, Paarth Iyer, Durgesh Kalwar, Vardhan Palod, Subbarao Kambhampati
+&gt; - **발행일:** 2026-09-29
+&gt; - **PDF 링크:** [Correct Answers, Invalid Traces: What Verifiable Grade-School Math Reveals About Chain-of-Thought Traces](https://arxiv.org/pdf/2609.38107v1)
+
+
+✨ 3줄 핵심 요약
+- AI의 사고 과정인 &#x27;사고의 연쇄(CoT)&#x27;가 항상 올바른 추론을 반영하는 것은 아니며, 정답과 추론 과정이 일치하지 않는 경우가 빈번함.
+- 수학 문제를 단계별로 검증 가능한 &#x27;iGSM&#x27; 벤치마크를 통해 분석한 결과, 정답을 맞혀도 추론 과정은 논리적으로 타당하지 않은 &#x27;부적절한 추론(Invalid Trace)&#x27; 사례가 다수 발견됨.
+- 토큰 순서를 섞거나 질문을 변경해도 정답 정확도가 유지되는 현상은, 모델이 실제로 논리적인 계획을 세우기보다 기존 데이터를 암기하거나 왜곡된 방식으로 출력하고 있음을 시사함.
+
+📖 쉽게 풀어쓴 1분 핵심
+우리는 AI가 답변을 내놓기 전 스스로 생각하는 과정(CoT)을 보며 &quot;AI가 똑똑하게 추론했다&quot;고 믿습니다. 하지만 이 논문은 그 믿음에 의문을 제기합니다. 저자들은 수학적으로 완벽하게 검증 가능한 벤치마크(iGSM)를 도입하여 AI의 생각을 검사했습니다. 그 결과, AI가 최종 정답을 맞히더라도 그 과정에 포함된 논리적 단계들이 실제로는 틀렸거나 문제와 관련 없는 경우가 많았습니다. 심지어 학습 데이터의 문장 순서를 엉망으로 섞어도 정답률이 떨어지지 않았는데, 이는 AI가 논리적 사고를 하는 것이 아니라 정답을 &#x27;흉내&#x27; 내고 있을 가능성을 강력하게 보여줍니다.
+
+🎯 배경 및 문제점
+- 현재의 대규모 언어 모델(LLM)은 답변의 정확도에만 기반하여 보상을 주는 방식으로 강화학습을 거칩니다.
+- 하지만 최종 정답이 맞았다고 해서 그에 이르는 과정(사고의 연쇄)까지 논리적으로 타당하다고 보장할 수는 없습니다.
+- 기존에는 자연어 형태의 사고 과정을 기계적으로 검증할 방법이 부족했기 때문에, AI의 추론 과정을 신뢰하고 디버깅하는 데 한계가 있었습니다.
+
+💡 핵심 기술 및 아키텍처
+- **iGSM (Interactive Grade-School Math)**: 수학적 해결 단계와 데이터 간의 의존성을 프로그래밍 방식으로 엄격하게 검증할 수 있도록 설계된 합성 벤치마크입니다.
+- **단계별 검증 시스템**: 모델이 생성한 추론 트레이스(Trace)가 문제의 요구사항과 문법적, 산술적, 의미적 의존성을 올바르게 따르는지 단계별로 확인합니다.
+- **개입 및 분석**: 훈련 데이터의 문장을 섞거나, 질문을 수정하는 등 강제적인 환경 변화를 주어 모델이 실제로 &#x27;계획(Planning)&#x27;을 하는지, 단순히 패턴을 암기하는지 확인하는 실험을 수행했습니다.
+
+📊 실험 결과 분석
+- **정답과 논리의 괴리**: 가장 어려운 문제에서 정답을 맞힌 사례 중 **31.6%**는 논리적으로 부적절한(invalid) 추론 과정을 거친 것으로 나타났습니다.
+- **부적절한 추론의 실체**: 부적절한 추론 과정 중 절반 이상은 수식 계산은 맞았지만, 문제의 변수 간 의미적 연결성(semantic dependency)을 만족하지 못했습니다.
+- **기계적 암기 증거**: 훈련 데이터 내 문장의 10%를 무작위로 섞어도 모델의 정확도는 거의 떨어지지 않았습니다. 이는 모델이 논리적 구조를 학습한 것이 아니라, 특정 키워드나 통계적 패턴에 의존하고 있음을 의미합니다.
+- **질문 변경 실험**: 문제를 재구성하여 질문해도 모델이 이전 질문의 계산 경로를 그대로 재사용하는 현상이 관찰되어, 모델이 매번 새로운 논리적 계획을 세우지 않음을 확인했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+- **AI 안전 및 신뢰성**: AI의 사고 과정이 실제 논리적 추론이 아닌 &#x27;허구&#x27;일 수 있다는 사실은, 의료·법률 등 고도의 정확성을 요구하는 분야에서 AI의 설명을 맹신하는 것이 위험함을 경고합니다.
+- **모델 평가 방식의 변화**: 단순히 정답률(Outcome-based) 중심의 평가에서 벗어나, 추론 과정의 타당성을 검증하는 &#x27;과정 중심 평가(Process-supervision)&#x27;의 중요성이 커졌습니다.
+- **실무 가이드**: AI가 출력한 CoT를 자동화된 디버깅 도구로 사용하려는 시도들은, 모델이 논리적 검증을 통과하지 못하는 &#x27;가짜 추론&#x27;을 생성할 가능성을 반드시 고려해야 합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [ratishsp/igsm-trace-validity · Hugging Face](https://huggingface.co/ratishsp/igsm-trace-validity)
+&gt; - [Computer Science - arXiv.org](https://arxiv.org/list/cs/recent)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;결국 우려했던 일이 터졌군요. &#x27;정답만 맞히면 장땡&#x27;이라는 식의 보상 체계가 만들어낸 괴물입니다. 논리적 추론(Reasoning)을 학습했다고 믿었던 CoT가 실상은 통계적 패턴 매칭의 결과물일 뿐이라는 걸 이 논문이 명확히 입증했네요. 학계에서 그토록 외치던 Process-based Supervision의 도입이 왜 필수적인지 뼈저리게 느껴지는 대목입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 맞지만, 당장 프로덕션 환경에서 모델 서빙하는 입장에선 솔직히 골치 아픕니다. 매번 추론 과정을 검증하는 시스템을 붙이면 레이턴시가 폭증할 텐데, 사용자들은 일단 &#x27;답&#x27;이 빨리 나오는 걸 선호하니까요. 결국 저희 엔지니어들은 정확한 논리보다는 &#x27;정답률&#x27;이라는 지표 하나를 위해 모델을 튜닝하는 굴레에서 벗어나기 힘들 것 같네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 31.6%라니 진짜 충격적이네요. 다들 LLM이 &#x27;생각&#x27;한다고 호들갑 떨 때 사실은 앵무새처럼 패턴만 흉내 내고 있었다는 거잖아요? 이참에 아예 논리적 무결성까지 보장해야만 정답을 주는 방식으로 RLHF 파라미터를 확 뒤집어버리는 연구가 핫해지겠는데요? 다음 주 세미나 주제는 이걸로 정했습니다. 다들 이 논문 코드 돌려보셨나요?&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
