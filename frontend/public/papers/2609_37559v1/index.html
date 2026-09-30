@@ -1,0 +1,66 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>APM-Bench: 자기중심적 스트리밍 영상 비서를 위한 세션 간 지속적 메모리 벤치마크 | ArXiv Translator AI</title><meta name="description" content="APM-Bench: 자기중심적 스트리밍 영상 비서를 위한 세션 간 지속적 메모리 벤치마크"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_37559v1"><meta property="og:type" content="article"><meta property="og:title" content="APM-Bench: 자기중심적 스트리밍 영상 비서를 위한 세션 간 지속적 메모리 벤치마크"><meta property="og:description" content="APM-Bench: 자기중심적 스트리밍 영상 비서를 위한 세션 간 지속적 메모리 벤치마크"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_37559v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="APM-Bench: 자기중심적 스트리밍 영상 비서를 위한 세션 간 지속적 메모리 벤치마크"><meta name="twitter:description" content="APM-Bench: 자기중심적 스트리밍 영상 비서를 위한 세션 간 지속적 메모리 벤치마크"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_37559v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "APM-Bench: 자기중심적 스트리밍 영상 비서를 위한 세션 간 지속적 메모리 벤치마크", "description": "APM-Bench: 자기중심적 스트리밍 영상 비서를 위한 세션 간 지속적 메모리 벤치마크", "datePublished": "2026-09-29", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_37559v1", "author": [{"@type": "Person", "name": "Jianguo Huang"}, {"@type": "Person", "name": "Jinming Liu"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_37559v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_37559v1"});gtag('event', 'paper_view', {"paper_id": "2609_37559v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>APM-Bench: 자기중심적 스트리밍 영상 비서를 위한 세션 간 지속적 메모리 벤치마크</h1><p>APM-Bench: 자기중심적 스트리밍 영상 비서를 위한 세션 간 지속적 메모리 벤치마크</p><pre>APM-Bench: 자기중심적 스트리밍 영상 비서를 위한 세션 간 지속적 메모리 벤치마크
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** APM-Bench: Benchmarking Cross-session Persistent Memory for Egocentric Streaming Video Assistants
+&gt; - **저자:** Jianguo Huang, Jinming Liu, Qiyao Wang, Liang Xu, Jianhang Li, Zhimian Wen, Mingda Li, Shule Lu, Zhicheng Wang, Yuhan Guo, Xin Jin, Wenjun Zeng
+&gt; - **발행일:** 2026-09-29
+&gt; - **PDF 링크:** [APM-Bench: Benchmarking Cross-session Persistent Memory for Egocentric Streaming Video Assistants](https://arxiv.org/pdf/2609.37559v1)
+
+
+✨ 3줄 핵심 요약
+- 기존 스트리밍 영상 모델의 한계를 넘어, 여러 세션에 걸쳐 정보를 기억하고 활용해야 하는 &#x27;다중 세션 삶의 궤적&#x27;을 다루는 새로운 벤치마크 APM-Bench를 제안합니다.
+- 549개의 세션과 104개의 궤적으로 구성되어, 모델이 과거 경험을 회상하고 능동적으로 대응하며 정보 부족 시 이를 인지할 수 있는지 평가합니다.
+- 평가 결과, 모델의 실시간 성능과 저장 효율성, 기억의 신뢰성 사이에 명확한 상충 관계(trade-off)가 존재함을 확인했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+우리가 매일 겪는 일상은 짧은 영상 한 편으로 끝나지 않습니다. 하지만 지금까지의 AI 영상 모델은 개별적인 영상 분석에만 집중해 왔습니다. APM-Bench는 인간의 실제 생활처럼 여러 번의 상호작용이 끊겼다 이어지는 &#x27;다중 세션&#x27; 환경을 설계했습니다. 이 벤치마크는 AI가 과거의 기억을 저장했다가 나중에 다시 꺼내 쓰고, 현재 정보가 부족할 때 솔직하게 모른다고 답할 수 있는 능력을 테스트합니다. 즉, 단순히 영상을 보는 것을 넘어 진정한 &#x27;개인 비서&#x27;가 되기 위해 필요한 기억과 판단 능력을 측정합니다.
+
+🎯 배경 및 문제점
+- **기존 연구의 한계:** 기존 스트리밍 벤치마크는 단일 영상이나 짧은 클립 분석에 치중되어, 실제 삶처럼 불연속적으로 이어지는 긴 상호작용 상황을 반영하지 못했습니다.
+- **기술적 과제:** 효과적인 지속적 메모리를 위해 모델은 1) 정보를 효율적으로 저장하고, 2) 선택적으로 기억하며, 3) 적절한 시점에 정보를 주입하고, 4) 실시간성을 유지해야 합니다.
+- **증거 부족 문제:** 모든 정보를 저장하는 것은 물리적으로 불가능하므로, 모델이 충분한 증거를 확보하지 못했을 때 이를 인지하고 판단하는 능력이 필요합니다.
+
+💡 핵심 기술 및 아키텍처
+- **다중 세션 데이터셋:** 총 549개의 세션과 104개의 궤적(trajectory), 2,719개의 질의응답 후보로 구성되어 과거와 현재의 맥락을 연결합니다.
+- **메모리 프로토콜:** 각 세션이 끝나면 요약본을 생성하여 보관하는 &#x27;텍스트 요약 메모리 프로토콜&#x27; 등을 도입하여, 원본 영상을 다시 볼 수 없는 환경에서도 필요한 정보를 지속적으로 유지합니다.
+- **능동적 대응:** 모델은 질문에 답할 때 데이터가 충분한지, 혹은 나중에 알게 될 정보인지 판단하여, 확실하지 않을 경우 답변을 보류하는 기능을 평가합니다.
+
+📊 실험 결과 분석
+- **상충 관계 발견:** 일반적인 비디오 모델과 전문 스트리밍 메모리 시스템을 평가한 결과, &#x27;장기 기억 회상 성능&#x27;, &#x27;실시간 반응 속도(지연 시간)&#x27;, &#x27;저장 효율성&#x27; 세 마리 토끼를 동시에 잡는 모델은 아직 부족한 실정입니다.
+- **수치적 상세:** 본 발췌문에는 구체적인 모델별 성능 수치(점수 등)는 포함되어 있지 않으며, 현존하는 방법론들이 신뢰성 있는 장기 기억과 낮은 오버헤드를 동시에 달성하는 데 어려움을 겪고 있다는 경향성이 보고되었습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+- **개인 비서 AI의 진화:** 단순한 질의응답을 넘어 사용자의 과거 활동, 선호도, 이전 수행 과제 등을 기억하는 &#x27;진정한 의미의 개인 비서&#x27; 기술 개발을 가속화할 것입니다.
+- **실무 적용:** 웨어러블 카메라나 스마트 글래스를 활용한 일상 기록 장치에서 사용자가 &quot;어제 마지막으로 내 열쇠를 어디에 뒀지?&quot;와 같은 질문을 했을 때, AI가 과거 세션을 회상하여 정확히 답변하는 실무적 구현이 가능해집니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Paper page - APM-Bench: Benchmarking Cross-session Persistent Memory ...](https://huggingface.co/papers/2609.37559)
+&gt; - [Fugu-MT 論文翻訳 (概要): APM-Bench: Benchmarking Cross-session Persistent ...](https://fugumt.com/fugumt/paper_check/2609.37559v1)
+&gt; - [Recent AI research papers | Papers with Code](https://paperswithcode.co/papers/recent)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;메모리 프로토콜로 텍스트 요약에만 의존하는 방식은 정보 손실이 너무 큽니다. &#x27;지속적 메모리&#x27;를 표방하면서 정작 멀티모달 임베딩의 시공간적 일관성을 어떻게 보존할지에 대한 논의가 부족하군요. 학술적으로는 흥미롭지만, 실제 임상이나 산업 현장에서 이 &#x27;요약본&#x27;이 환각(hallucination)을 유발할 리스크는 고려했나요?&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 요약본만 쓰면 배보다 배꼽이 더 큽니다. 현업에서는 실시간 추론 지연 시간(latency)이 생명인데, 549개 세션의 벡터 DB를 검색하면서 실시간 스트리밍을 유지하는 건 GPU 낭비가 심하거든요. 벤치마크 자체는 환영하지만, 결국 모델 경량화와 인덱싱 효율 최적화가 안 되면 그냥 논문용 데모로 끝날 것 같네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;두 분 다 너무 비판적이시네요! 그래도 &#x27;모른다고 답하는 능력&#x27;을 벤치마크에 넣은 건 진짜 혁신 아닌가요? 맨날 거짓말만 늘어놓는 LLM들 보다가, 세션 간 기억을 추적하면서 증거 불충분을 스스로 판단한다는 개념 자체가 SOTA 갱신 각입니다. 당장 다음 주 세미나 때 이 논문으로 발표 준비해야겠어요. 무조건 뜨는 주제입니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
