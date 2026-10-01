@@ -1,0 +1,60 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>OSWorld-Science: 과학 소프트웨어 학습 및 활용을 위한 컴퓨터 사용 에이전트 벤치마크 | ArXiv Translator AI</title><meta name="description" content="OSWorld-Science: 과학 소프트웨어 학습 및 활용을 위한 컴퓨터 사용 에이전트 벤치마크"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_39903v1"><meta property="og:type" content="article"><meta property="og:title" content="OSWorld-Science: 과학 소프트웨어 학습 및 활용을 위한 컴퓨터 사용 에이전트 벤치마크"><meta property="og:description" content="OSWorld-Science: 과학 소프트웨어 학습 및 활용을 위한 컴퓨터 사용 에이전트 벤치마크"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_39903v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="OSWorld-Science: 과학 소프트웨어 학습 및 활용을 위한 컴퓨터 사용 에이전트 벤치마크"><meta name="twitter:description" content="OSWorld-Science: 과학 소프트웨어 학습 및 활용을 위한 컴퓨터 사용 에이전트 벤치마크"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_39903v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "OSWorld-Science: 과학 소프트웨어 학습 및 활용을 위한 컴퓨터 사용 에이전트 벤치마크", "description": "OSWorld-Science: 과학 소프트웨어 학습 및 활용을 위한 컴퓨터 사용 에이전트 벤치마크", "datePublished": "2026-09-30", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_39903v1", "author": [{"@type": "Person", "name": "Dingyuan Dai"}, {"@type": "Person", "name": "Heli Qi"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_39903v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_39903v1"});gtag('event', 'paper_view', {"paper_id": "2609_39903v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>OSWorld-Science: 과학 소프트웨어 학습 및 활용을 위한 컴퓨터 사용 에이전트 벤치마크</h1><p>OSWorld-Science: 과학 소프트웨어 학습 및 활용을 위한 컴퓨터 사용 에이전트 벤치마크</p><pre>OSWorld-Science: 과학 소프트웨어 학습 및 활용을 위한 컴퓨터 사용 에이전트 벤치마크
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** OSWorld-Science: A Benchmark of Computer Use Agents for Learning and Using Scientific Software
+&gt; - **저자:** Dingyuan Dai, Heli Qi, Lei Liu, Yinxi Li, Baiding Chen, Zijun Dou, Qingcheng Zeng, Qi Kang, Oliver Sun, Eric Wang, Bo Zhou, Haixin Wang, Yufan Du, Shi Bo, Ruihan Lin, Mengqi Yuan, Dunjie Lu, Steven Dillmann, Yiming Shi, Tina Su, Amy Xin, Minghao Liu, Xi Wang, Xu Huang, Ge Zhang, Pengyu Nie, Zhen Yang, Jie Tang, Juanzi Li, Weihao Xuan, Tianyu Liu
+&gt; - **발행일:** 2026-09-30
+&gt; - **PDF 링크:** [OSWorld-Science: A Benchmark of Computer Use Agents for Learning and Using Scientific Software](https://arxiv.org/pdf/2609.39903v1)
+
+
+✨ 3줄 핵심 요약
+* 시각 언어 모델(VLM) 기반 에이전트가 과학적 연구 워크플로우를 수행할 수 있는지 평가하는 전문 벤치마크 &#x27;OSWorld-Science&#x27;를 구축함.
+* 분자 구조 분석, 통계 컴퓨팅, 물리 시뮬레이션 등 146개의 고품질 과학 과제를 포함하며, 결과물 검증 기반 평가 시스템을 도입함.
+* 최신 VLM들은 여전히 복잡한 과학 소프트웨어 환경에서 정교한 GUI 조작과 긴 호흡의 계획 수립에 상당한 어려움을 겪는 것으로 나타남.
+
+📖 쉽게 풀어쓴 1분 핵심
+과학 연구 현장에서는 다양한 전문 소프트웨어를 활용합니다. 최근 인공지능 에이전트는 화면을 보고 마우스와 키보드를 조작하는 수준까지 발전했지만, 과연 복잡한 과학 도구들을 얼마나 잘 다룰 수 있는지는 미지수였습니다. &#x27;OSWorld-Science&#x27;는 인공지능이 실제 과학 소프트웨어를 얼마나 정확하게 이해하고, 복잡한 단계(예: 분자 생성, 물리 시뮬레이션 등)를 거쳐 결과물을 만들어내는지 측정하는 일종의 &#x27;과학 수행 능력 시험&#x27;입니다. 연구 결과, 현재의 최고 성능 모델들도 GUI 기반 편집 도구를 다룰 때나 긴 과정이 필요한 작업에서 상당한 오류를 보이며, 실제 연구 도구로 활용되기에는 아직 기술적 한계가 있음을 보여주었습니다.
+
+🎯 배경 및 문제점
+기존의 컴퓨터 사용 에이전트 벤치마크들은 주로 일반적인 웹 브라우징이나 운영체제 기능을 테스트하는 데 집중되어 있었습니다. 그러나 과학 분야의 소프트웨어는 다음과 같은 특수한 도전 과제를 안겨줍니다.
+* **학습 곡선:** 전문적인 인터페이스와 복잡한 도메인 지식이 요구됨.
+* **복합 데이터:** 이질적인 데이터 형식과 시각적 정보의 정밀한 처리가 필수적임.
+* **평가 난점:** 단순한 답변이 아니라, 생성된 분자 구조나 수치적 시뮬레이션 결과물의 정합성을 검증해야 함.
+
+💡 핵심 기술 및 아키텍처
+* **다양한 과학 과제:** 분자 합성, 병리학 이미지 분석, 통계 계산, 물리 시뮬레이션 등 146개의 과제 구성.
+* **결과 중심 평가:** 단순히 단계를 수행했는지를 넘어, 소프트웨어 상태와 생성된 파일(분자 구조, 세그멘테이션 마스크, 수치 결과물 등)을 직접 검사하여 부분 점수를 부여함.
+* **특화된 하네스(Harness):** 모델 어댑터, 상호작용 제어 루프, 작업 기록(Trajectory logging) 기능을 통해 에이전트의 전략과 조작 방식을 정밀하게 비교 분석함.
+
+📊 실험 결과 분석
+* **상호작용 모드 비용:** GUI 기반의 텍스트 편집기(gedit, VS Code)를 사용하는 경우, 셸(Shell) 모드에 비해 평균적으로 점수가 낮고 더 많은 단계와 토큰을 소비하는 경향을 보임.
+* **성능 격차:** OpenFOAM(물리 시뮬레이션) 테스트 결과, 특정 모델은 14개 과제를 모두 성공했으나, 하위 모델들은 설정 오류, 수렴 실패, 결과물 내보내기 오류(Export crash) 등으로 인해 성공률이 매우 낮게 나타남.
+* **도구 조작의 어려움:** 에이전트가 복잡한 GUI 환경에서 작업을 수행할 때 시각적 정보 처리와 계획 수립의 한계로 인해 추가적인 비용(단계, 토큰)이 발생함.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+이 벤치마크는 인공지능 에이전트가 과학 연구의 자동화 파트너로 성장하기 위해 넘어야 할 기술적 장벽을 명확히 제시합니다. 개발자들에게는 에이전트의 시각적 해석 능력과 명령줄 도구 활용 능력을 동시에 향상할 수 있는 지표를 제공합니다. 향후 이 기술이 고도화되면 연구자들이 복잡한 과학 소프트웨어 조작 부담에서 벗어나, 데이터 분석과 시뮬레이션 수행 시간을 획기적으로 단축하여 연구 생산성을 크게 높일 수 있을 것으로 기대됩니다.
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;이 논문에서 가장 인상 깊은 점은 단순한 &#x27;Task Success Rate&#x27;를 넘어 결과물의 정합성 검증을 도입했다는 겁니다. 많은 모델이 쉘 명령어 몇 줄 치는 시늉은 하지만, 막상 OpenFOAM 시뮬레이션 결과값의 물리적 타당성을 검증해보면 처참하거든요. 에이전트가 GUI를 다룰 수 있다는 환상에서 깨어나, 실제 과학적 데이터의 신뢰성을 담보할 아키텍처를 고민해야 할 때입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로입니다. 현업 입장에서 보면 GUI 조작은 정말 비용 대비 효율이 최악이에요. 벤치마크 결과에서도 나왔듯, 쉘 모드보다 GUI 환경에서 토큰과 단계가 압도적으로 많이 소모되죠. 결국 엔지니어링 관점에서는 복잡한 GUI를 시각적으로 처리하는 모델을 튜닝하는 것보다, 과학 툴들의 API를 직접 호출하는 방식의 하이브리드 에이전트가 훨씬 현실적인 솔루션 아닐까요?&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;두 분 다 너무 보수적이신 거 아니에요? ㅋㅋ 이번 OSWorld-Science 데이터셋으로 SOTA 모델들 갈아 끼우면서 파인튜닝 돌려봤는데, 확실히 &#x27;과학 특화 Vision-Language Pre-training&#x27; 데이터가 부족한 게 보여요. 지금은 툴 조작하다 길 잃고 헤매지만, 몇 달 안에 이 벤치마크 점수 뚫어버리는 놈들 분명 나옵니다. 조만간 실험실에 GPU 풀가동해서 벤치마크 리더보드 상단 찍으러 갑니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

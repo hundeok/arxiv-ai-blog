@@ -1,0 +1,66 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>순환 혼합 전문가 모델을 위한 스케일링 법칙 | ArXiv Translator AI</title><meta name="description" content="순환 혼합 전문가 모델을 위한 스케일링 법칙"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_40316v1"><meta property="og:type" content="article"><meta property="og:title" content="순환 혼합 전문가 모델을 위한 스케일링 법칙"><meta property="og:description" content="순환 혼합 전문가 모델을 위한 스케일링 법칙"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_40316v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="순환 혼합 전문가 모델을 위한 스케일링 법칙"><meta name="twitter:description" content="순환 혼합 전문가 모델을 위한 스케일링 법칙"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_40316v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "순환 혼합 전문가 모델을 위한 스케일링 법칙", "description": "순환 혼합 전문가 모델을 위한 스케일링 법칙", "datePublished": "2026-09-30", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_40316v1", "author": [{"@type": "Person", "name": "Yanbei Chen"}, {"@type": "Person", "name": "Anirudh Goyal"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_40316v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_40316v1"});gtag('event', 'paper_view', {"paper_id": "2609_40316v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>순환 혼합 전문가 모델을 위한 스케일링 법칙</h1><p>순환 혼합 전문가 모델을 위한 스케일링 법칙</p><pre>순환 혼합 전문가 모델을 위한 스케일링 법칙
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Scaling Laws for Looped Mixture of Experts
+&gt; - **저자:** Yanbei Chen, Anirudh Goyal, Raghuraman Krishnamoorthi
+&gt; - **발행일:** 2026-09-30
+&gt; - **PDF 링크:** [Scaling Laws for Looped Mixture of Experts](https://arxiv.org/pdf/2609.40316v1)
+
+
+✨ 3줄 핵심 요약
+- 본 논문은 순환(Recurrence)과 희소성(Sparsity)을 모델 크기 및 데이터와 함께 통합적으로 모델링하는 최초의 &#x27;순환 스케일링 법칙(Loop Scaling Laws)&#x27;을 제안합니다.
+- 순환은 추론 효율성을 높이고, 혼합 전문가(MoE)는 활성 파라미터 효율성을 높여 두 기술이 상호 보완적으로 작동함을 입증했습니다.
+- 제안된 법칙을 활용하면 자원 제약 환경에서 순환과 희소성을 최적으로 조합한 고성능 모델 설계가 가능하며, 실질적인 추론 시간 스케일링(test-time scaling)을 지원합니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+기존의 AI 모델은 단순히 모델을 키우거나 데이터를 늘리는 방식으로 성능을 높여왔습니다. 최근에는 모델의 일부만 사용하는 &#x27;혼합 전문가(MoE)&#x27; 기법과 같은 가중치를 여러 번 재사용하는 &#x27;순환(Loop)&#x27; 기법이 주목받고 있습니다. 하지만 이 둘을 동시에 고려한 체계적인 설계 기준은 부족했습니다. 연구진은 두 기법이 결합했을 때 성능이 어떻게 변하는지 예측하는 새로운 공식을 만들었습니다. 이 공식을 사용하면 정해진 메모리와 연산 자원 안에서 모델을 가장 똑똑하게 만드는 &#x27;순환 횟수&#x27;와 &#x27;전문가 수&#x27;를 수학적으로 계산할 수 있습니다.
+
+🎯 배경 및 문제점
+- **기술적 공백**: 기존 스케일링 법칙들은 순환과 희소성을 각각 별개로 다루어, 이 둘을 함께 적용한 모델의 통합적 성능 변화를 예측하기 어려웠습니다.
+- **기존 한계**: 순환 모델에 대한 기존 법칙들은 무한히 성능이 증가한다고 가정하는 선형 또는 거듭제곱 형태여서 실제 나타나는 성능 평탄화 현상을 제대로 반영하지 못했습니다.
+- **연구 목적**: 순환 횟수와 희소성이 상호작용하여 유효 파라미터 용량을 어떻게 변화시키는지 규명하고, 이를 반영한 통합 모델링 기법을 확립하고자 했습니다.
+
+💡 핵심 기술 및 아키텍처
+- **유한한 순환 매핑(Bounded Recurrence Mapping)**: 순환 횟수가 늘어남에 따라 성능 향상이 둔화되는 현상을 수학적으로 모델링하여 기존의 비현실적인 예측치를 보정했습니다.
+- **희소성 조건부 매핑**: MoE의 희소성 수준(전문가 경로 비율)이 순환으로 얻는 파라미터 이득을 얼마나 증폭시키는지 수식화했습니다.
+- **통합 공식**: 활성 파라미터(Nact)를 희소성 조건이 포함된 유효 파라미터 수(Neff)로 치환하여, 기존 MoE 및 Dense 스케일링 법칙을 포괄하는 범용 법칙을 수립했습니다.
+
+📊 실험 결과 분석
+- **효율성 검증**: 실험 결과, 희소성 기법은 활성 파라미터 효율을 약 3배, 순환 기법은 추론(reasoning) 성능에서 총 파라미터 효율을 약 2배 향상했습니다.
+- **성능 비교**: 1조 토큰 규모의 학습 환경에서, 제안된 법칙으로 설계된 순환 MoE 모델은 일반적인 MoE 모델보다 약 2배 적은 파라미터를 사용하고도 추론 벤치마크에서 대등한 성능을 보였습니다.
+- **추론 시간 확장**: 순환 횟수를 늘리는 것만으로도 전체 성능 점수가 36.6에서 46.9로 약 10.3포인트 상승하는 등 유연한 추론 자원 활용이 가능함을 확인했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+- **모델 설계의 표준화**: 클라우드 서버부터 엣지 디바이스까지, 제한된 연산 자원 내에서 최적의 모델 구조를 결정할 수 있는 실질적인 가이드라인을 제공합니다.
+- **비용 절감 및 성능 최적화**: 적은 파라미터로도 고성능 모델을 구현할 수 있어 추론 비용을 획기적으로 줄이고, 필요에 따라 순환 횟수를 조정하여 성능을 유연하게 높이는 설계가 가능해집니다.
+- **미래 방향성**: 향후 더 복잡한 순환 전략이나 조기 종료(early-exit) 게이팅 기술을 결합하여, 필요한 상황에서만 연산을 집중하는 스마트한 차세대 AI 아키텍처 발전에 기여할 것입니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Fugu-MT 論文翻訳 (概要): Scaling Laws for Looped Mixture of Experts](https://fugumt.com/fugumt/paper_check/2609.40316v1)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;순환(Recurrence)과 MoE의 희소성을 통합한 스케일링 법칙이라니 이론적 정합성은 흥미롭군. 하지만 &#x27;유한한 순환 매핑&#x27;을 도입했음에도 불구하고, 순환 횟수가 깊어질 때 발생하는 그래디언트 소실이나 노이즈 증폭 문제를 실제 학습 단계에서 어떻게 완벽히 제어했는지에 대한 깊이 있는 논의가 부족해 보여. 수식은 깔끔하지만, 실제 수렴 과정에서의 불안정성을 고려하지 않은 법칙은 실험실 밖에서는 공염불에 불과할 수 있네.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 맞지만, 현업 입장에서는 가성비가 깡패입니다. 추론 시간 스케일링으로 파라미터 2배 절감하면서 성능 유지되는 건 인프라 비용 측면에서 엄청난 메리트거든요. 다만, 실제 프로덕션에서 순환 구조 돌리면 레이턴시 튀는 건 어떻게 잡을 건지 고민이네요. 게이팅 로직 수정할 때마다 모델 다시 다 뜯어고쳐야 할 텐데, 엔지니어링 오버헤드가 배보다 배꼽이 더 클 것 같습니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;두 분 다 너무 회의적인 거 아니에요? 이번 논문 핵심은 &#x27;추론 시간 확장(test-time scaling)&#x27;을 공식화했다는 거잖아요! 엣지 디바이스에서 순환 횟수만 조절해서 성능 10포인트 올릴 수 있다면, 이건 사실상 LLM 경량화의 끝판왕 아닐까요? 당장 다음 주 세미나 때 이거 코드 구현해서 실험 돌려볼 생각인데, 벌써 가슴이 웅장해지네요. 누가 뭐래도 이게 지금 트렌드입니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

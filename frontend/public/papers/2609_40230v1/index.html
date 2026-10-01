@@ -1,0 +1,67 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>EviRover: 단 한 번의 눈길을 넘어선 에이전트 기반 지각 강화 | ArXiv Translator AI</title><meta name="description" content="EviRover: 단 한 번의 눈길을 넘어선 에이전트 기반 지각 강화"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_40230v1"><meta property="og:type" content="article"><meta property="og:title" content="EviRover: 단 한 번의 눈길을 넘어선 에이전트 기반 지각 강화"><meta property="og:description" content="EviRover: 단 한 번의 눈길을 넘어선 에이전트 기반 지각 강화"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_40230v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="EviRover: 단 한 번의 눈길을 넘어선 에이전트 기반 지각 강화"><meta name="twitter:description" content="EviRover: 단 한 번의 눈길을 넘어선 에이전트 기반 지각 강화"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_40230v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "EviRover: 단 한 번의 눈길을 넘어선 에이전트 기반 지각 강화", "description": "EviRover: 단 한 번의 눈길을 넘어선 에이전트 기반 지각 강화", "datePublished": "2026-09-30", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_40230v1", "author": [{"@type": "Person", "name": "Kaixuan Fan"}, {"@type": "Person", "name": "Kaituo Feng"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_40230v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_40230v1"});gtag('event', 'paper_view', {"paper_id": "2609_40230v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>EviRover: 단 한 번의 눈길을 넘어선 에이전트 기반 지각 강화</h1><p>EviRover: 단 한 번의 눈길을 넘어선 에이전트 기반 지각 강화</p><pre>EviRover: 단 한 번의 눈길을 넘어선 에이전트 기반 지각 강화
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** EviRover: Reinforcing Agentic Perception Beyond a Glance
+&gt; - **저자:** Kaixuan Fan, Kaituo Feng, Tianshuo Peng, Yilei Jiang, Manyuan Zhang, Junke Wang, Xiangyu Yue
+&gt; - **발행일:** 2026-09-30
+&gt; - **PDF 링크:** [EviRover: Reinforcing Agentic Perception Beyond a Glance](https://arxiv.org/pdf/2609.40230v1)
+
+
+✨ 3줄 핵심 요약
+* 기존의 시각 지각 방식(한 번의 이미지 확인으로 결론 도출)이 가진 한계를 극복하기 위해, 정보를 능동적으로 탐색하는 &#x27;지각 에이전트&#x27; 프레임워크인 EviRover를 제안합니다.
+* 연구진은 이를 학습시키기 위한 데이터셋(EviRover-SFT-5K, EviRover-RL-12K)과 성능 평가를 위한 벤치마크(EviLens)를 새롭게 구축했습니다.
+* EviRover는 일반적인 멀티모달 모델 대비 주요 벤치마크에서 뛰어난 성능 향상을 보였으며, 특히 복잡한 시각적 질문 해결 능력을 입증했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+우리가 무언가를 볼 때 한 번 훑어보는 것만으로는 모든 정보를 파악하기 어렵습니다. 인공지능도 마찬가지입니다. 기존의 시각 모델들은 이미지 한 장을 보고 바로 답을 내리려 하기 때문에 세밀한 정보가 필요하거나 외부 지식이 결합되어야 하는 상황에서 자주 틀립니다. EviRover는 &#x27;궁금한 점이 있으면 직접 더 자세히 들여다보고, 도구를 사용해 확인한다&#x27;는 원칙을 가진 에이전트입니다. 이 모델은 사진 속 작은 차이를 찾거나 복잡한 정보를 파악해야 할 때, 단번에 판단하지 않고 여러 번의 상호작용을 거쳐 정확한 결론에 도달합니다.
+
+🎯 배경 및 문제점
+대부분의 멀티모달 모델은 시각 지각을 &#x27;이미지 한 장을 입력받아 즉시 예측하는 작업&#x27;으로 정의합니다. 하지만 다음과 같은 상황에서는 이런 방식이 작동하지 않습니다.
+* **불충분한 증거 기반의 지각:** 이미지 내 세밀한 부분 확인이 필요하거나, 모델 내부에 저장된 지식만으로는 답변하기 어려운 경우.
+* **한계점:** 모델이 더 조사할 기회 없이 바로 결과(위치, 경계, 개수 등)를 내놓아야 하므로, 증거가 부족한 상황에서 오류가 발생하기 쉽습니다.
+
+💡 핵심 기술 및 아키텍처
+EviRover는 시각 지각을 단순 예측이 아닌 &#x27;증거 수집 과정&#x27;으로 재정의합니다.
+* **데이터 생성 파이프라인:** 모델 학습을 위해 자체적인 데이터 생성 파이프라인을 구축하여 EviRover-SFT-5K와 EviRover-RL-12K를 제작했습니다.
+* **학습 방식:** 지도 미세 조정(SFT)을 거친 후, 에이전트형 강화 학습(Reinforcement Learning)을 적용하여 복잡한 시각적 질문을 해결하도록 훈련되었습니다.
+* **상호작용 도구:** 영역 확대, 세그멘테이션(SAM3), 좌우 비교(spot-the-difference), 파이썬 코드 실행 등 정밀한 정보 확인이 가능한 도구들을 활용합니다.
+
+📊 실험 결과 분석
+* **EviLens 벤치마크:** 4B(40억) 파라미터 규모의 EviRover는 기존 백본 모델 대비 평균 30점의 성능 향상을 기록하며, 상용 모델과 견줄만한 성과를 보였습니다.
+* **일반화 성능:** EviLens뿐만 아니라 WebEyes, 기타 전통적인 지각 벤치마크 및 멀티모달 벤치마크에서도 성능 향상이 확인되었습니다. 특히 BrowseComp-VL 벤치마크에서는 15점 개선되었습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **지각의 재정의:** AI가 시각 정보를 처리하는 방식을 &#x27;단순 응시&#x27;에서 &#x27;능동적 탐색&#x27;으로 전환함으로써, 정밀도가 필수적인 산업 현장에 적용할 수 있는 길을 열었습니다.
+* **실무 적용:** 고도의 정확도가 필요한 의료 영상 분석, 복잡한 설계 도면 검사, 대조 분석이 필요한 보안 모니터링 등 인간의 심층적인 시각적 분석이 필요한 영역에 AI를 효과적으로 도입할 수 있는 기반이 됩니다. (코드, 모델, 데이터는 모두 공개됨)
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [EviRover: Reinforcing Agentic Perception Beyond a Glance](https://arxiv.org/html/2609.40230v1)
+&gt; - [EviRover: Reinforcing Agentic Perception Beyond a Glance](https://huggingface.co/papers/2609.40230)
+&gt; - [evirover/README.md at main · kxfan2002/evirover · GitHub](https://github.com/kxfan2002/evirover/blob/main/README.md)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;시각 지각을 단순히 입력을 처리하는 &#x27;단일 패스(Single-pass)&#x27; 모델에서 &#x27;능동적 탐색&#x27; 에이전트로 전환하겠다는 아이디어 자체는 고무적입니다. 하지만 RL 기반의 에이전트가 매번 도구 사용(SAM3, 확대 등)을 결정할 때 발생하는 지연 시간(Latency) 이슈를 어떻게 감당할 것인가요? 학술적 성능 향상은 인정하지만, 실시간성이 중요한 환경에서 이 오버헤드는 치명적인 결함이 될 수 있습니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실시간 서비스에는 쥐약이죠. 매번 파이썬 코드 실행하고 세그멘테이션 도구 돌리면 API 비용은 둘째치고 추론 시간 때문에 사용자 다 떠납니다. 다만, 이 논문이 내놓은 EviRover-RL-12K 데이터셋은 꽤 잘 뽑힌 것 같아요. 굳이 에이전트 프레임워크를 안 쓰더라도, VLM 파인튜닝용 학습 데이터로 증류(Distillation)해서 쓰면 경량 모델에서도 꽤 쏠쏠한 성능 개선이 나올 것 같은데요?&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;선배님 말씀처럼 증류도 좋지만, 저는 &#x27;지각을 증거 수집 과정으로 재정의했다&#x27;는 점에 꽂혔습니다! 이거 완전 시스템 2 사고(System 2 thinking) 흐름 아닌가요? 지금 당장 깃허브 클론해서 제 실험 모델에 붙여볼 생각입니다. 벤치마크 30점 향상이면 사실상 SOTA급인데, 다들 실시간성 걱정할 때 저는 이걸로 논문 한 편 더 뽑을 궁리 중입니다. 교수님, 저 이거 랩 세미나에서 발표해도 될까요?&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
