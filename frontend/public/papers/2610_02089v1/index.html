@@ -1,0 +1,67 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>휴머노이드 툴벤치: 도구 선택부터 이동 실행까지의 휴머노이드 도구 사용 벤치마킹 | ArXiv Translator AI</title><meta name="description" content="휴머노이드 툴벤치: 도구 선택부터 이동 실행까지의 휴머노이드 도구 사용 벤치마킹"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2610_02089v1"><meta property="og:type" content="article"><meta property="og:title" content="휴머노이드 툴벤치: 도구 선택부터 이동 실행까지의 휴머노이드 도구 사용 벤치마킹"><meta property="og:description" content="휴머노이드 툴벤치: 도구 선택부터 이동 실행까지의 휴머노이드 도구 사용 벤치마킹"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2610_02089v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="휴머노이드 툴벤치: 도구 선택부터 이동 실행까지의 휴머노이드 도구 사용 벤치마킹"><meta name="twitter:description" content="휴머노이드 툴벤치: 도구 선택부터 이동 실행까지의 휴머노이드 도구 사용 벤치마킹"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2610_02089v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "휴머노이드 툴벤치: 도구 선택부터 이동 실행까지의 휴머노이드 도구 사용 벤치마킹", "description": "휴머노이드 툴벤치: 도구 선택부터 이동 실행까지의 휴머노이드 도구 사용 벤치마킹", "datePublished": "2026-10-01", "url": "https://arxiv-ai-blog.vercel.app/papers/2610_02089v1", "author": [{"@type": "Person", "name": "Kyochul Jang"}, {"@type": "Person", "name": "Seohyeon Park"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2610_02089v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2610_02089v1"});gtag('event', 'paper_view', {"paper_id": "2610_02089v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>휴머노이드 툴벤치: 도구 선택부터 이동 실행까지의 휴머노이드 도구 사용 벤치마킹</h1><p>휴머노이드 툴벤치: 도구 선택부터 이동 실행까지의 휴머노이드 도구 사용 벤치마킹</p><pre>휴머노이드 툴벤치: 도구 선택부터 이동 실행까지의 휴머노이드 도구 사용 벤치마킹
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** HumanoidToolBench: Benchmarking Humanoid Tool Use from Selection to Mobile Execution
+&gt; - **저자:** Kyochul Jang, Seohyeon Park, Ohchul Kwon, Sangjun Park, Junhyeok Choi, Seungyeop Yi, Chaeyun Kim, Sangkyu Lee, Idan Szpektor, Avi Caciularu, Jongmin Park, Youngjae Yu
+&gt; - **발행일:** 2026-10-01
+&gt; - **PDF 링크:** [HumanoidToolBench: Benchmarking Humanoid Tool Use from Selection to Mobile Execution](https://arxiv.org/pdf/2610.02089v1)
+
+
+✨ 3줄 핵심 요약
+* 휴머노이드의 도구 선택, 조작, 이동을 통합 평가하기 위한 18개 과제 중심의 &#x27;HumanoidToolBench&#x27;를 제안합니다.
+* 3.1k 규모의 인간 시연 데이터셋 &#x27;ToolBook&#x27;을 구축하여 시뮬레이션과 실제 로봇(Unitree G1) 환경에서 검증했습니다.
+* 실험 결과, 현재의 로봇 정책들은 도구 선택의 정확도와 지시어에 따른 작업 수행 능력에서 명확한 한계를 보였습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+휴머노이드 로봇이 인간처럼 도구를 사용하려면 단순히 도구를 집는 것을 넘어, 특정 과제에 적합한 도구를 골라내고 이를 활용해 목표를 달성하는 복합적인 과정이 필요합니다. 이 논문은 기존 벤치마크들이 이 과정을 포괄적으로 평가하지 못한다는 점에 착안했습니다. 연구진은 55개의 도구 자산과 로봇 제어 기술을 활용하여 로봇이 적절한 도구를 선택하고 이동하며 과제를 완수하는지 테스트하는 새로운 기준을 마련했습니다. 검증 결과, 로봇은 학습하지 않은 도구를 만났을 때 선택 오류를 범하거나, 작업 지시와 관계없이 이미 학습된 동작을 반복하는 경향이 있음이 밝혀졌습니다.
+
+🎯 배경 및 문제점
+* **기존의 한계:** 기존 벤치마크들은 고정된 기지(Fixed-base) 팔 로봇에 집중하거나, 도구 선택 능력보다는 시각적 질의응답(VQA)에 치중하여 실제 휴머노이드의 도구 사용 전체 과정을 평가하지 못했습니다.
+* **복합적 요구:** 휴머노이드가 물리적 한계를 극복하려면 적절한 도구를 식별하는 능력(선택)과, 도구를 잡고 조작하며 필요시 이동까지 결합하는(실행) 능력이 필수적입니다. 이를 통합적으로 평가할 표준화된 데이터와 환경이 부족했습니다.
+
+💡 핵심 기술 및 아키텍처
+* **HumanoidToolBench:** 18개의 과제로 구성되며 세 가지 시나리오(BallMove, BallRetrieve, IceBreak)와 도구 세트(표준 및 Decoy 모드)를 포함합니다.
+* **ToolBook 데이터셋:** 메타 퀘스트(Meta Quest) 원격 조종을 통해 시뮬레이션(3,003개)과 실제 로봇(91개)에서 수집된 총 3,094개의 인간 시연 데이터를 제공합니다.
+* **로봇 제어:** Unitree G1 로봇을 사용하며, MuJoCo 환경 내에서 GR00T 기반의 전신 제어(Whole-Body Control)와 강화학습 컨트롤러를 통해 동작을 수행합니다.
+
+📊 실험 결과 분석
+* **정책 성능:** 시뮬레이션 환경에서 7개 정책, 실제 로봇에서 3개 정책을 평가했습니다.
+* **성능 격차:** 도구 선택(Selection) 단계와 과제 완료(Task Completion) 단계 사이에서 상당한 수행 능력의 격차가 발견되었습니다.
+* **지시어 무관성:** GR00T N1.7 모델을 정밀 조사한 결과, 과제와 전혀 상관없는 문장(예: &quot;오늘 날씨가 좋다&quot;)을 입력해도 기존에 학습된 과제 동작을 거의 동일하게 수행하는 모습을 보였습니다. 이는 로봇이 언어 지시어를 완벽히 이해하기보다는 학습된 패턴에 의존하고 있음을 시사합니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **차세대 휴머노이드 개발:** 본 연구는 휴머노이드가 미지의 도구를 마주했을 때 더욱 유연하게 대처하고, 지시어에 따라 목표를 전환할 수 있는 &#x27;지능형 로봇 정책&#x27; 개발의 밑거름이 됩니다.
+* **실무 활용:** 물류 센터나 가사 도우미 로봇처럼 다양한 환경에서 도구를 사용해야 하는 로봇 시스템의 신뢰성을 검증하는 표준 툴로 활용될 수 있습니다. 
+* **연구 방향 제시:** 단순히 동작을 흉내 내는 것을 넘어, 도구의 물리적 특성을 이해하고 선택하는 학습 방향으로 연구의 전환을 촉구합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [HumanoidToolBench: Benchmarking Humanoid Tool Use from ...](https://www.researchia.net/explorer/e941000f-f201-406d-a278-bee677d6abdc)
+&gt; - [GitHub - SNU-PI/HumanoidToolBench: Official HumanoidToolBench ...](https://github.com/SNU-PI/HumanoidToolBench)
+&gt; - [HumanoidToolBench: Benchmarking Humanoid Tool Use from ...](https://papers.cool/arxiv/2610.02089)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문을 훑어보니 GR00T 모델이 지시어와 무관한 입력에도 학습된 패턴을 반복한다는 결과가 아주 인상적이군. 결국 &#x27;지능&#x27;이 아니라 &#x27;고급 모방 학습&#x27;에 머물러 있다는 방증이지. 도구 선택의 인과적 추론 능력이 결여된 채로 벤치마크 점수만 올리는 방식은 학계가 지양해야 할 방향이야.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 맞지만, 현장에서는 일단 돌아가는 게 중요합니다. GR00T가 패턴 의존적이라 해도 3.1k 규모의 실데이터셋인 &#x27;ToolBook&#x27;을 확보했다는 것 자체가 큰 진일보예요. 다만 실제 Unitree G1에 올렸을 때의 sim-to-real gap을 어떻게 메울지가 실무적 관건인데, 과연 현장에서 튜닝 없이 바로 쓸 수 있을지는 의문이네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;두 분 의견 다 일리 있는데, 저는 이번에 공개된 18개 과제 벤치마크가 꽤 핫하다고 생각합니다! 특히 &#x27;오늘 날씨가 좋다&#x27;고 해도 알아서 도구 집고 동작 수행하는 거, 이거 완전 LLM 초기 때 환각 현상 보는 것 같아서 짜릿하지 않나요? 당장 이 벤치마크로 SOTA 찍는 모델 하나 내놓으면 CVPR은 따놓은 당상일 듯요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
