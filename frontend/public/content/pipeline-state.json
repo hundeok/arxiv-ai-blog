@@ -45638,11 +45638,11 @@
     "2610_02200v1": {
       "id": "2610_02200v1",
       "filename": "post_2610_02200v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-10-02T09:15:24.890781+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-02T09:15:24.890782+00:00",
+      "updated_at": "2026-10-02T17:16:12.605160+00:00",
       "paper": {
         "title": "VISTA: A Visual Harness for Reasoning in an Interactive World",
         "summary": "We show that multimodal models possess strong reasoning abilities and that an appropriate harness can unlock their potential to solve tasks across diverse interactive environments. We introduce VISTA, a visual harness that gives a general-purpose multimodal model long-horizon vision. VISTA allows the model to directly perceive the environment through visual observations and maintains a lossless visual memory that preserves past observations in their original form. The model can actively retrieve these observations and reorganize its visual input as it reasons. On ARC-AGI-3, VISTA improves Claude Opus 5.0's Relative Human Action Efficiency score from 40.68 to a perfect 100.00, with the model completing all 25 public games using 57.4% fewer actions than first-time human participants. VISTA's simple design also allows it to extend naturally to diverse visual environments with minimal adaptation. Across three additional benchmarks covering a diverse range of visual games and puzzles, it substantially outperforms baselines using the same underlying model with minimal harnesses. Our results highlight VISTA's potential as a general-purpose visual harness for advancing multimodal agents in complex visual environments.",
@@ -45656,7 +45656,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2610.02200v1"
       },
-      "priority_score": 45
+      "priority_score": 45,
+      "korean_title": "상호작용하는 세계에서의 추론을 위한 시각적 하니스, VISTA"
     },
     "2610_02198v1": {
       "id": "2610_02198v1",
@@ -46225,11 +46226,267 @@
         "pdf_link": "https://arxiv.org/pdf/2610.02043v1"
       },
       "priority_score": 19
+    },
+    "2609_35259v1": {
+      "id": "2609_35259v1",
+      "filename": "post_2609_35259v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-02T17:15:40.148662+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-02T17:15:40.148676+00:00",
+      "paper": {
+        "title": "On-Policy or Off-Policy Learning? A Systematic Study of Distillation Dynamics",
+        "summary": "On-policy learning has been argued to reduce catastrophic forgetting, produce sparser parameter updates, and improve generalisation. However, existing comparisons between supervised fine-tuning and reinforcement learning vary many factors simultaneously, making the contribution of rollout policy difficult to isolate. We study the effect of rollout policy in a controlled strong-to-weak distillation setting, by independently varying rollout policy, token-level KL direction, and learning rate across the Llama3 and Qwen2.5 model families and reasoning tasks spanning scientific, medical, and arithmetic domains. Our analysis reveals a nuanced picture of distillation dynamics in which rollout policy does not necessarily play a central role. Instead, token-level KL direction more clearly shapes task performance and output coverage, while learning rate governs forgetting and update sparsity. Analysis of KL gradients and experiments along a continuous student-teacher rollout-policy spectrum explain this pattern: forward KL is remarkably robust to rollout policy, with its performance stable and strong despite changes to the rollout policy, whereas reverse KL is substantially more sensitive and favours student-generated rollouts. On-policy data nevertheless improves generalisation to harder variants of the Countdown arithmetic task under both KL directions, although this advantage does not reliably persist after subsequent RLVR. Our broader conclusions remain robust to removing gradient clipping, using sampled KL estimators, and training on tasks requiring longer reasoning chains. Overall, our results challenge the view that on-policy rollouts are inherently preferable and show that their value depends critically on the objective, evaluation setting, and optimisation hyperparameters.",
+        "published": "2026-09-28T14:20:42Z",
+        "authors": [
+          "Julianna Piskorz",
+          "Antonin Berthon",
+          "Mihaela van der Schaar"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.35259v1"
+      },
+      "priority_score": 40
+    },
+    "2609_36138v1": {
+      "id": "2609_36138v1",
+      "filename": "post_2609_36138v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-10-02T17:16:24.156218+00:00",
+      "paper": {
+        "title": "When Does Correction Become Repair? Mechanistic Auditing of Internal Interventions in Tool-Using LLMs",
+        "summary": "Before invoking external tools, an agentic LLM must select among a K-way action space: executing a call, seeking clarification, answering directly, or declining. While internal activation steering can alter these pre-execution decisions, conventional aggregate metrics obscure where altered states land and what collateral damage they inflict. We present SAKIKO, an auditing framework that formalizes representation repair via directional error discovery, router-conditioned intervention, destination-resolved verification, and prospectively frozen statistical licensing. Across seven LLMs on When2Call and MetaTool, channel-keyed interventions induce direction-specific net gains in five models; across three sealed evaluations, none of 59 budget-matched random directions matches calibrated target gain. Crucially, destination auditing shows that behavioral movement does not equal repair: an intervention achieving +55 net gain corrupts over half of the baseline-correct decisions it touches, and promising point estimates on Qwen3-4B and Gemma-2-9B are formally declined due to finite-sample uncertainty. SAKIKO establishes the necessity of outcome-resolved adjudication before claiming internal repair. Code: https://github.com/ruizheliUOA/mechanistic-tool-use-llm.",
+        "published": "2026-09-28T19:12:55Z",
+        "authors": [
+          "Jiayi Li",
+          "Ruizhe Li"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.36138v1"
+      },
+      "priority_score": 45,
+      "korean_title": "도구 활용 LLM의 내부 개입에 대한 기계론적 감사: 교정은 언제 수리가 되는가?"
+    },
+    "2609_36820v1": {
+      "id": "2609_36820v1",
+      "filename": "post_2609_36820v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-10-02T17:16:01.681047+00:00",
+      "paper": {
+        "title": "CorrGRPO: Correlation-Normalized GRPO for Multi-Reward Learning",
+        "summary": "Group Relative Policy Optimization (GRPO) is widely used to train reasoning language models, where it computes advantages by centering and normalizing rewards across rollouts of the same prompt. For multiple rewards, GRPO sums the reward components and normalizes the total reward by its within-group standard deviation. The corresponding variance equals the sum of all pairwise reward covariances. For a fixed centered reward, larger aggregate covariance produces smaller advantages, and vice versa, allowing update magnitudes to adapt to reward dependence. However, correlated rewards with large scales can dominate this normalization and suppress signals from smaller-scale rewards. We propose Correlation-Normalized GRPO (CorrGRPO), which normalizes pairwise covariances into Pearson correlation coefficients. CorrGRPO keeps the centered total reward unchanged while balancing the influence of differently scaled rewards on the correlation-based normalization. This allows advantage magnitudes to adapt to reward correlations without the normalization being dominated by large-scale reward components. We compare CorrGRPO with GRPO and other variants on code generation, tool calling, and agent security, using models ranging from 0.5B to 8B parameters. These tasks all involve multiple rewards that can improve together or present tradeoffs. Results show improvements across three domains, including code generation, tool calling, and agent security. Our code is available at https://github.com/HKUST-KnowComp/CorrGRPO.",
+        "published": "2026-09-29T06:30:02Z",
+        "authors": [
+          "Wenbin Hu",
+          "Huihao Jing",
+          "Haochen Shi",
+          "Yuxuan Liu",
+          "Haoran Li",
+          "Yangqiu Song"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.36820v1"
+      },
+      "priority_score": 49,
+      "korean_title": "CorrGRPO: 다중 보상 학습을 위한 상관관계 정규화 GRPO"
+    },
+    "2609_37568v1": {
+      "id": "2609_37568v1",
+      "filename": "post_2609_37568v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-02T17:15:40.148699+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-02T17:15:40.148700+00:00",
+      "paper": {
+        "title": "Devils in Question Relay: Source-Conditioned Relay Steering to Mitigate Hallucinations in Audio-visual Large Language Models",
+        "summary": "Audio-visual large language models (AVLLMs) have made remarkable progress in multimodal understanding and reasoning through interactions among visual, auditory, and linguistic information. However, recent studies show that AVLLMs face a critical challenge: $\\textbf{source-confused grounding hallucination}$, where cues from the unused modality induce responses that the required modality does not support, undermining reliability in real-world applications. Existing methods have made progress in mitigating this failure, yet how it arises from internal cross-modal interactions remains insufficiently understood. To address this gap, we conduct path-intervention and representation analyses, revealing a $\\textbf{question-relay}$ mechanism: question states carry interfering cues alongside required-source evidence, undermining grounding in required-modality evidence. Cutting pathways from interfering modality to question states yields greater correct-answer logit recovery than cutting those to the generation position. Motivated by these findings, we propose $\\textbf{SECRET}$ ($\\textbf{S}$ourc$\\textbf{E}$-$\\textbf{C}$onditioned $\\textbf{RE}$lay s$\\textbf{T}$eering), a training-free method that mitigates cross-modal interference at the question relay. Using contrasting question representations elicited through different modality-pathway interventions, SECRET steers the original question states toward required-source evidence. Experiments on two widely adopted benchmarks CMM and AVHBench across three AVLLMs show that SECRET consistently outperforms prior training-free methods, substantially mitigating source-confused grounding hallucinations (e.g., up to +18.0 and +7.1 percentage points over base models). Modality-specific captioning further demonstrates its generalizability to open-ended generation.",
+        "published": "2026-09-29T13:37:31Z",
+        "authors": [
+          "Yu Zhang",
+          "Pingrui Zhang",
+          "Xuefeng Bai",
+          "Pengfei Zhang",
+          "Yang Xiang",
+          "Kehai Chen"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.37568v1"
+      },
+      "priority_score": 40
+    },
+    "2609_39378v1": {
+      "id": "2609_39378v1",
+      "filename": "post_2609_39378v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-10-02T17:15:50.579624+00:00",
+      "paper": {
+        "title": "EgoTools: Towards Tool-Centric Reasoning in Real-World Egocentric Videos",
+        "summary": "Real-world embodied tasks, from everyday activities to professional procedures, require agents to act under physical constraints while tracking evolving object and task states. Tool use sits at the heart of such tasks, as many everyday and professional activities are tool-mediated. Understanding them requires reasoning about affordances, hand-tool-object geometry, procedural progress, and causal effects on target objects. Yet despite strong performance on perception-oriented video tasks such as captioning and general video QA, current multimodal video models remain limited in this form of tool-centric embodied reasoning. Progress in this direction has been limited by the lack of real-world egocentric data and diagnostic benchmarks. To address this gap, we introduce EgoTools, the first comprehensive suite for egocentric tool-use understanding. It consists of two complementary components: EgoTools-Data, a large-scale corpus of 100 hours of tool-centric egocentric recordings with synchronized audio, dense captions, reasoning-heavy narrations, and supplementary 3D information; and EgoTools-Bench, a diagnostic benchmark of 1,000 QA pairs across four tracks that cover tool-use understanding from perception and geometry to procedure and causal reasoning. Experimental results show that current models still struggle to ground tool use in visual evidence: Gemini-3.1-Pro achieves 66.9% overall accuracy but only 51.7% on Perception & Grounding. Beyond evaluation, we validate EgoTools-Data as a training resource. On the full 1,000-question benchmark, full supervised fine-tuning improves Qwen3-VL-8B-Instruct from 50.0% to 60.9%, under strict source-video separation. Together, these results establish EgoTools as a unified resource for both training and diagnostic evaluation of real-world egocentric tool-use understanding.",
+        "published": "2026-09-30T09:30:23Z",
+        "authors": [
+          "Shulin Tian",
+          "Junsu Kim",
+          "Shuai Liu",
+          "Hao Li",
+          "Yujiao Shen",
+          "Sihan Li",
+          "Zhe Yang",
+          "Yeongon Kim",
+          "Feiyu Li",
+          "Jialin Wu",
+          "Yichi Zhang",
+          "Wenhui Wang",
+          "Runmao Yao",
+          "Yuhao Dong",
+          "Zhaoxi Chen",
+          "Fangzhou Hong",
+          "Antonino Furnari",
+          "Jingkang Yang",
+          "Hongyuan Zhu",
+          "Ziwei Liu"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.39378v1"
+      },
+      "priority_score": 60,
+      "korean_title": "EgoTools: 실세계 1인칭 영상에서의 도구 중심 추론을 향하여"
+    },
+    "2609_39687v1": {
+      "id": "2609_39687v1",
+      "filename": "post_2609_39687v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-02T17:15:40.148712+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-02T17:15:40.148713+00:00",
+      "paper": {
+        "title": "Better Supervision Is Nearby: Neighborhood On-Policy Self-Distillation",
+        "summary": "On-policy self-distillation (OPSD) trains mathematical reasoning models using a privileged teacher that sees a reference solution and supervises student-sampled prefixes. Standard OPSD uses one fixed parameter setting at every state, but nearby settings may offer additional supervision. We find that local parameter perturbations reveal complementary reference-aligned corrections under the same reference context. Different experts supply these corrections at different reference positions. Their pool covers more such positions than the unperturbed privileged teacher. We introduce Neighborhood OPSD (N-OPSD) to turn these corrections into supervision at student-visited states. Offline, greedy selection builds a compact pool of frozen experts by rewarding filtered reference-token gains beyond the pool's current best at each position. The highest-peak expert need not provide the best training target. Online routing therefore separates the anchor direction from its level of support. MaxPeak selects the anchor token, and quantile selection chooses among experts whose top token matches it. The student learns from the chosen expert's full next-token distribution through the clipped forward-KL objective inherited from OPSD. We evaluate on AIME 2024, AIME 2025, and HMMT February 2025. Across three independent runs per method, Neighborhood OPSD improves the three-benchmark Average@12 over OPSD by 2.75, 1.67, and 1.94 points on Qwen3-1.7B, 4B, and 8B, respectively. Student-prefix continuations support using the pool beyond the reference trajectories used for selection. Matched ablations support filtered reference-token gains as a selection criterion. Accounting for overlap within the pool and routing by state further improve student accuracy. Inference uses only the distilled student.",
+        "published": "2026-09-30T13:14:39Z",
+        "authors": [
+          "Xincheng Wei",
+          "Yifan Ding",
+          "Yoshua Li",
+          "Yuquan Lu",
+          "Ziheng Li",
+          "Yi Lu",
+          "Dongsheng Ma",
+          "Rongxiang Weng",
+          "Xunliang Cai"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.39687v1"
+      },
+      "priority_score": 40
+    },
+    "2610_02185v1": {
+      "id": "2610_02185v1",
+      "filename": "post_2610_02185v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-02T17:15:40.148718+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-02T17:15:40.148719+00:00",
+      "paper": {
+        "title": "Decoding Looped Transformers Better for (Almost) Free",
+        "summary": "Looped Transformers achieve parameter efficiency by repeatedly executing a shared block across recurrent loops. Each loop yields an intermediate representation decodable for the same next token, yet standard decoding discards earlier states. Because earlier loops embody less computation, recurrence inherently supplies aligned weak-and-strong prediction pairs without auxiliary models or external training. We introduce LoopCD, a training-free contrastive decoding framework that guides token selection by contrasting the final prediction with an earlier recurrent pass, operating either in logit space with one extra output pass (LoopCD-Logits) or in hidden-state space with zero output overhead (LoopCD-Hidden). Across four looped Transformer families, LoopCD delivers substantial, consistent gains at full recurrent depth: LoopCD-Logits raises Ouro-2.6B-Thinking's AIME 2024 pass@1 from 61.88% to 73.33%, while LoopCD-Hidden lifts Huginn's HumanEval pass@1 from 22.56% to 31.71%. Crucially, these performance gains enable halving the number of recurrent loops while still matching or exceeding full-depth unguided baselines, reducing forward FLOPs by 22.5% to 48.2%. By transforming intermediate recurrent states into effective guidance signals, LoopCD achieves superior decoding quality while substantially reducing inference compute.",
+        "published": "2026-10-01T17:58:38Z",
+        "authors": [
+          "Weihao Liu",
+          "Huangjie Zheng",
+          "Tianrong Chen",
+          "Rohit Dilip",
+          "Richard He Bai",
+          "Yizhu Jiao",
+          "Yuyang Wang",
+          "Ruixiang Zhang"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.02185v1"
+      },
+      "priority_score": 16
+    },
+    "2610_01428v1": {
+      "id": "2610_01428v1",
+      "filename": "post_2610_01428v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-02T17:15:40.148724+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-02T17:15:40.148726+00:00",
+      "paper": {
+        "title": "Generalization Is Stability, Not Accuracy: Multi-Axis Evaluation of LLMs",
+        "summary": "Generalization in large language models (LLMs) is the ability to produce consistent and semantically stable outputs when the same input is expressed in different ways. Existing work typically evaluates generalization through aggregate accuracy on a single prompt format, task, or set of variations, which conflates robustness with overall benchmark performance. In this work, we show generalization evaluation at the level of individual examples, across multiple input variants, and across different aspects of model behavior, focusing on variability rather than reducing performance to a score that can be improved through narrow training or other ways that obfuscate generalization evaluation. Following this view, we introduce the Stability-Aware Generalization Objective (SAGO), a framework that measures how much model behavior changes for the same input under different variations and benchmarks, capturing variability across several dimensions including generation consistency, internal activations, confidence, and response mirroring. We show that many commonly used models exhibit statistically significant and consistent generalization instability: no model generalizes uniformly, behavioral axes capture independent failure modes, and cross-dataset variation can reverse model rankings.",
+        "published": "2026-10-01T10:27:25Z",
+        "authors": [
+          "Nagham Omar",
+          "Mahmoud Jabarin",
+          "Maya Rozenshtein",
+          "Rom Himelstein",
+          "Avi Mendelson",
+          "Amit LeVi"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.01428v1"
+      },
+      "priority_score": 36
+    },
+    "2609_34210v2": {
+      "id": "2609_34210v2",
+      "filename": "post_2609_34210v2.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-02T17:15:40.148730+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-02T17:15:40.148732+00:00",
+      "paper": {
+        "title": "RLE-Bench: A Qualifying Exam for Coding Agents as Robot Learning Engineers",
+        "summary": "Coding agents are beginning to move beyond purely digital tasks to tackle physical-world challenges, particularly in robotics. Existing robotics benchmarks, however, primarily focus on the performance of individual artifacts, such as policies or controllers, offering limited coverage of coding agents' broader engineering capabilities. Real-world robotics extends beyond control: agents must build, integrate, diagnose, and improve heterogeneous artifacts under resource constraints and reason from multimodal feedback. To evaluate these broader capabilities, we introduce RLE-Bench, a benchmark of robot-learning tasks spanning four representative robotics development workflows: interactive control, policy learning, perception and estimation, and mechanical design. We use diverse task-specific metrics to evaluate the artifacts submitted by the coding agents, from the success rate the agents achieved to the policy agents trained, the harness agent built, and the mechanical structures the agent designed. We aggregate these metrics into an overall RLE Index and report workflow-specific capability profiles, enabling systematic comparison of coding agents' capabilities across multiple capability dimensions. Beyond performance ranks, we also conduct in-depth case studies examining agent behavior on representative tasks, highlighting both current capabilities and limitations, and pointing to the opportunities robotics tasks have to offer for future agent training.",
+        "published": "2026-09-28T03:16:09Z",
+        "authors": [
+          "Haitong Ma",
+          "Chenxiao Gao",
+          "Rushi Qiang",
+          "Bo Dai",
+          "Na Li"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.34210v2"
+      },
+      "priority_score": 38
+    },
+    "2609_36602v1": {
+      "id": "2609_36602v1",
+      "filename": "post_2609_36602v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-02T17:15:40.148737+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-02T17:15:40.148739+00:00",
+      "paper": {
+        "title": "OTRetarget: Joint Robot and Object Motion Retargeting via Optimal Transport",
+        "summary": "Transferring human motion to humanoid robots requires adapting the demonstrated motion to the robot morphology while preserving interactions with the environment. This is particularly challenging for loco-manipulation tasks, where contacts with the ground and manipulated objects must remain consistent despite differences in body proportions. Yet, skeletal motion alone does not fully describe these interactions, and fixing object trajectories limits the adaptation to a new embodiment. In this paper, we introduce OTR ETARGET, a unified approach to jointly retarget robot and multi-object motion from human demonstrations. Our approach represents surface interactions through signed distances, closest surface points, and relative directions, and uses entropic optimal transport to transfer these quantities across human, robot, and object geometries. We incorporate the resulting interaction targets into a constrained inverse kinematics formulation that balances contact preservation with motion style and jointly optimizes robot and object poses at each frame. This formulation accommodates robot-object and object-object interactions without rescaling the scene or the demonstration. We validate the proposed approach on OMOMO, where it achieves a robot- object interaction Jaccard score of 87% and a depth error of 8.7 mm, compared with 28% and 29.3 mm for OmniRetarget. Finally, we demonstrate transfer to a physical G1 humanoid using whole-body policies trained with reinforcement learning on the retargeted references, across motions including two-handed box pick-and-place onto a table.",
+        "published": "2026-09-29T03:18:14Z",
+        "authors": [
+          "Guillaume Besset",
+          "Erwann Carn",
+          "Timothée Carecchio",
+          "Valentin Tordjman-Levavasseur",
+          "Fabian Schramm",
+          "Yann de Mont-Marin",
+          "Justin Carpentier",
+          "Ajay Suresha Sathya"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.36602v1"
+      },
+      "priority_score": 19
     }
   },
   "last_run": {
-    "started_at": "2026-10-02T09:15:24.894443+00:00",
-    "discovered": 30,
+    "started_at": "2026-10-02T17:15:40.153466+00:00",
+    "discovered": 10,
     "selected": 4,
     "generated": 4,
     "failed": 0,
@@ -46239,26 +46496,26 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 19954,
+      "prompt_tokens": 21190,
       "output_tokens": 5889,
       "thought_tokens": 0,
-      "total_tokens": 25843,
-      "estimated_usd": 0.013822
+      "total_tokens": 27079,
+      "estimated_usd": 0.014131
     },
-    "finished_at": "2026-10-02T09:16:07.930836+00:00"
+    "finished_at": "2026-10-02T17:16:25.446956+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 2981,
-    "prompt_tokens": 7500709,
-    "output_tokens": 2195361,
+    "requests": 2989,
+    "prompt_tokens": 7521899,
+    "output_tokens": 2201250,
     "thought_tokens": 0,
-    "total_tokens": 9696070,
-    "estimated_usd": 5.16821875
+    "total_tokens": 9723149,
+    "estimated_usd": 5.18234975
   },
   "last_publication_run": {
-    "started_at": "2026-10-02T09:15:24.894443+00:00",
-    "discovered": 30,
+    "started_at": "2026-10-02T17:15:40.153466+00:00",
+    "discovered": 10,
     "selected": 4,
     "generated": 4,
     "failed": 0,
@@ -46268,17 +46525,17 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 19954,
+      "prompt_tokens": 21190,
       "output_tokens": 5889,
       "thought_tokens": 0,
-      "total_tokens": 25843,
-      "estimated_usd": 0.013822
+      "total_tokens": 27079,
+      "estimated_usd": 0.014131
     },
-    "finished_at": "2026-10-02T09:16:07.930836+00:00"
+    "finished_at": "2026-10-02T17:16:25.446956+00:00"
   },
   "daily_usage": {
     "date": "2026-10-02",
-    "estimated_usd": 0.0280615,
-    "publications": 8
+    "estimated_usd": 0.0421925,
+    "publications": 12
   }
 }

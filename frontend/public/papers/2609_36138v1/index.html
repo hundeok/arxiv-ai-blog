@@ -1,0 +1,70 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>도구 활용 LLM의 내부 개입에 대한 기계론적 감사: 교정은 언제 수리가 되는가? | ArXiv Translator AI</title><meta name="description" content="도구 활용 LLM의 내부 개입에 대한 기계론적 감사: 교정은 언제 수리가 되는가?"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_36138v1"><meta property="og:type" content="article"><meta property="og:title" content="도구 활용 LLM의 내부 개입에 대한 기계론적 감사: 교정은 언제 수리가 되는가?"><meta property="og:description" content="도구 활용 LLM의 내부 개입에 대한 기계론적 감사: 교정은 언제 수리가 되는가?"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_36138v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="도구 활용 LLM의 내부 개입에 대한 기계론적 감사: 교정은 언제 수리가 되는가?"><meta name="twitter:description" content="도구 활용 LLM의 내부 개입에 대한 기계론적 감사: 교정은 언제 수리가 되는가?"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_36138v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "도구 활용 LLM의 내부 개입에 대한 기계론적 감사: 교정은 언제 수리가 되는가?", "description": "도구 활용 LLM의 내부 개입에 대한 기계론적 감사: 교정은 언제 수리가 되는가?", "datePublished": "2026-09-28", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_36138v1", "author": [{"@type": "Person", "name": "Jiayi Li"}, {"@type": "Person", "name": "Ruizhe Li"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_36138v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_36138v1"});gtag('event', 'paper_view', {"paper_id": "2609_36138v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>도구 활용 LLM의 내부 개입에 대한 기계론적 감사: 교정은 언제 수리가 되는가?</h1><p>도구 활용 LLM의 내부 개입에 대한 기계론적 감사: 교정은 언제 수리가 되는가?</p><pre>도구 활용 LLM의 내부 개입에 대한 기계론적 감사: 교정은 언제 수리가 되는가?
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** When Does Correction Become Repair? Mechanistic Auditing of Internal Interventions in Tool-Using LLMs
+&gt; - **저자:** Jiayi Li, Ruizhe Li
+&gt; - **발행일:** 2026-09-28
+&gt; - **PDF 링크:** [When Does Correction Become Repair? Mechanistic Auditing of Internal Interventions in Tool-Using LLMs](https://arxiv.org/pdf/2609.36138v1)
+
+
+✨ 3줄 핵심 요약
+*   도구 활용 LLM은 외부 도구 사용 전 &#x27;실행, 정보 요청, 거부, 직접 답변&#x27; 등 다중 선택지 상황에 직면하는데, 기존의 내부 활성화 조작 방식은 행동의 변화만을 일으킬 뿐 근본적인 &#x27;수리&#x27;를 보장하지 못합니다.
+*   연구진은 내부 개입이 실제 의도한 올바른 결과로 이어지는지, 기존의 올바른 결정까지 망가뜨리지는 않는지 검증하는 감사 프레임워크 &#x27;SAKIKO&#x27;를 제안했습니다.
+*   실험 결과, 높은 수치적 이득을 보이는 개입이라도 절반 이상의 기존 올바른 결정을 훼손할 수 있으며, 일부 모델의 성과는 통계적 불확실성으로 인해 공식적으로 기각되었습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+AI 모델이 도구를 쓸지 말지 고민하는 단계(실행 전 단계)에서 내리는 결정은 매우 중요합니다. 기존 방식은 잘못된 결정을 내리는 AI의 내부 상태를 강제로 수정하여 올바른 쪽으로 유도하려고 시도했습니다. 하지만 연구진은 이러한 수정이 단순히 다른 잘못된 행동으로 튀는 것은 아닌지, 혹은 원래 잘하고 있던 답변까지 망치고 있는 것은 아닌지 의문을 제기했습니다. SAKIKO는 AI 내부 상태를 바꿀 때, 그 결과가 정말 &#x27;수리&#x27;인지 아니면 그저 &#x27;행동의 이동&#x27;일 뿐인지 엄격하게 검증하는 틀입니다. 연구 결과, 겉보기에 성적이 좋아 보여도 실제로는 모델의 판단력을 훼손하는 경우가 많아, 단순한 수치 개선보다는 정밀한 결과 검증이 필수적임을 강조합니다.
+
+🎯 배경 및 문제점
+LLM은 도구 사용 전 단계에서 도구 호출 여부, 정보 부족, 답변 불가능 등 다중 선택 상황(K-way action space)에 놓입니다. 기존의 내부 활성화 조작 연구(ASA, CAST 등)는 주로 이진법적인 결정 공간을 가정하거나, 단순히 특정 상태에서 벗어나면 자동으로 올바른 상태가 될 것이라고 낙관했습니다. 그러나 실제로는 수정된 정보가 의도치 않은 제3의 오류 경로로 흐를 위험이 있으며, 결과적으로 &#x27;행동의 변화&#x27;가 곧 &#x27;수리&#x27;를 의미하지 않는다는 구조적 한계가 존재합니다.
+
+💡 핵심 기술 및 아키텍처
+연구진이 개발한 **SAKIKO** 프레임워크는 다음 4단계 검증 과정을 거칩니다:
+1.  **방향성 오류 발견(Directional Error Discovery):** 모델 내부 표현에서 오류가 발생하는 경로를 특정합니다.
+2.  **라우터 조건부 개입(Router-conditioned Intervention):** 모델 내부 상태를 수정하여 특정 결정 경로를 유도합니다.
+3.  **목적지 해결 검증(Destination-resolved Verification):** 조작된 상태가 실제로 어떤 결과(도구 호출, 직접 답변 등)로 이어지는지 추적합니다.
+4.  **통계적 라이선스(Statistical Licensing):** 무작위 방향성 개입 대비 통계적 유의성을 검증하여 성과의 신뢰도를 판별합니다.
+
+📊 실험 결과 분석
+*   **성과:** 7개의 LLM을 대상으로 테스트한 결과, 채널 기반 개입이 5개 모델에서 방향성 이득을 유도했습니다.
+*   **위험성:** +55의 순이익을 기록한 개입조차 원래 올바르게 처리하던 결정의 절반 이상을 훼손하는 등, &#x27;행동 이동&#x27;에 따른 부작용이 큼을 확인했습니다.
+*   **신뢰도:** Qwen3-4B와 Gemma-2-9B 모델에서 나타난 긍정적 추정치들은 유한 표본 불확실성(finite-sample uncertainty)으로 인해 공식적으로 기각되었습니다.
+*   **무결성:** 어떤 개입 방식도 &#x27;기존 올바른 결정의 보존&#x27;에 대한 인증을 통과하지 못했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+본 연구는 AI의 내부 상태를 건드려 성능을 올리려는 기술적 시도들에 대해 &#x27;사후적 검증의 중요성&#x27;을 일깨워줍니다. 실무적으로는 단순한 벤치마크 점수 향상에 매몰되지 않고, AI 에이전트가 도구 활용 결정을 내릴 때 발생하는 의도치 않은 부작용을 감시할 수 있는 &#x27;기계론적 감사 체계&#x27;를 구축해야 한다는 교훈을 줍니다. 이는 특히 정밀한 판단이 필요한 에이전트 시스템에서 오류를 줄이고 신뢰성을 확보하는 설계 원칙으로 활용될 수 있습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2609.36138 When Does Correction Become Repair? Mechanistic ...](https://arxiv.org/abs/2609.36138)
+&gt; - [When Does Correction Become Repair? Mechanistic Auditing of ...](https://arxiv.org/pdf/2609.36138)
+&gt; - [GitHub - ruizheliUOA/mechanistic-tool-use-llm: When Does ...](https://github.com/ruizheliUOA/mechanistic-tool-use-llm)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;이 논문은 그간 &#x27;해석 가능성&#x27;이라는 명목으로 행해지던 기계적인 활성화 조작이 얼마나 위험한 환상이었는지 잘 짚어냈군요. 특히 SAKIKO 프레임워크를 통해 기존의 &#x27;수치적 개선&#x27;이 사실상 모델의 무결성을 해치는 &#x27;파괴적 간섭&#x27;임을 입증한 점은 학계가 깊이 반성해야 할 대목입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로입니다. 현업에선 당장 벤치마크 점수 올리는 게 급급해서 특정 레이어 가중치나 액티베이션 튜닝으로 &#x27;행동 유도&#x27;를 하곤 하는데, 결국 프로덕션 환경에서 엣지 케이스 터지면 원인 파악도 안 되는 블랙박스가 되거든요. 55% 이상의 올바른 판단을 망가뜨린다는 통계는 정말 소름 돋네요. 당장 우리 팀 로드맵에서 내부 개입형 최적화 방식은 전면 재검토해야겠습니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;두 분 다 너무 진지하신 거 아닌가요? ㅋㅋㅋ 그래도 SAKIKO 덕분에 이제 &#x27;내 모델 튜닝 좀 했다&#x27;고 우기는 논문들은 다 걸러지겠네요. Qwen3랑 Gemma-2 결과 기각된 거 보고 완전 빵 터졌습니다. 결국 &#x27;수리&#x27;인 척하는 &#x27;행동 이동&#x27; 메타는 이제 끝물인 듯? 다음엔 이 프레임워크를 아예 학습 루프에 넣어서 정규화하는 연구가 나오지 않을까요?&quot;
+  }
+]
+  }
+]
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
