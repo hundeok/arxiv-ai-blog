@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Dr. OPD: 거대 언어 모델의 최적 온-폴리시 증류를 위해 무엇을 따라야 하는가 학습 | ArXiv Translator AI</title><meta name="description" content="Dr. OPD: 거대 언어 모델의 최적 온-폴리시 증류를 위해 무엇을 따라야 하는가 학습"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_38025v1"><meta property="og:type" content="article"><meta property="og:title" content="Dr. OPD: 거대 언어 모델의 최적 온-폴리시 증류를 위해 무엇을 따라야 하는가 학습"><meta property="og:description" content="Dr. OPD: 거대 언어 모델의 최적 온-폴리시 증류를 위해 무엇을 따라야 하는가 학습"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_38025v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Dr. OPD: 거대 언어 모델의 최적 온-폴리시 증류를 위해 무엇을 따라야 하는가 학습"><meta name="twitter:description" content="Dr. OPD: 거대 언어 모델의 최적 온-폴리시 증류를 위해 무엇을 따라야 하는가 학습"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_38025v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Dr. OPD: 거대 언어 모델의 최적 온-폴리시 증류를 위해 무엇을 따라야 하는가 학습", "description": "Dr. OPD: 거대 언어 모델의 최적 온-폴리시 증류를 위해 무엇을 따라야 하는가 학습", "datePublished": "2026-09-29", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_38025v1", "author": [{"@type": "Person", "name": "Zhenyu Wang"}, {"@type": "Person", "name": "Tianze Wang"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_38025v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_38025v1"});gtag('event', 'paper_view', {"paper_id": "2609_38025v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>Dr. OPD: 거대 언어 모델의 최적 온-폴리시 증류를 위해 무엇을 따라야 하는가 학습</h1><p>Dr. OPD: 거대 언어 모델의 최적 온-폴리시 증류를 위해 무엇을 따라야 하는가 학습</p><pre>Dr. OPD: 거대 언어 모델의 최적 온-폴리시 증류를 위해 무엇을 따라야 하는가 학습
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Dr. OPD: Learning What to Follow for Optimal On-Policy Distillation of Large Language Models
+&gt; - **저자:** Zhenyu Wang, Tianze Wang, Linjun Zhang, Yifan Hu
+&gt; - **발행일:** 2026-09-29
+&gt; - **PDF 링크:** [Dr. OPD: Learning What to Follow for Optimal On-Policy Distillation of Large Language Models](https://arxiv.org/pdf/2609.38025v1)
+
+
+✨ 3줄 핵심 요약
+- 기존의 온-폴리시 증류(OPD)는 모든 토큰에 동일한 가중치를 부여하지만, 이는 토큰마다 학습 기여도가 다르다는 점을 간과합니다.
+- 연구진은 학생 모델의 최종 보상을 극대화하는 방향으로 토큰별 가중치를 학습하는 ‘Dr. OPD’ 프레임워크를 제안했습니다.
+- 실험 결과, Dr. OPD는 수학 및 코드 작업에서 기존 방식보다 높은 성능을 보였으며, 작은 학생 모델이 더 큰 교사 모델의 성능을 능가하게 만들었습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+거대 언어 모델을 학습시킬 때, 더 뛰어난 모델(교사)의 지식을 배우는 ‘증류(Distillation)’ 기법이 널리 쓰입니다. 기존 방식은 교사가 주는 모든 조언을 똑같이 중요하게 취급했습니다. 하지만 사람이 공부할 때 모든 문장이 중요하지 않듯, AI도 추론 과정의 핵심 단계와 단순히 표현만 다른 부분은 중요도가 다릅니다. &#x27;Dr. OPD&#x27;는 어떤 조언이 학생의 최종 성적을 높이는 데 실질적으로 기여하는지를 수학적으로 분석하여, 중요한 토큰에는 더 큰 가중치를 주고 덜 중요한 토큰은 무시하도록 최적화합니다. 이를 통해 학생 모델은 교사의 지식을 더 효율적으로 습득하게 됩니다.
+
+🎯 배경 및 문제점
+- **기존 OPD의 한계:** 모든 토큰에 대해 교사의 피드백을 동일한 중요도로 처리합니다.
+- **실제 상황과의 괴리:** 수학 문제 풀이 시, 중요한 논리적 오류를 수정하는 신호와 단순한 표현 방식의 차이는 최종 정답에 미치는 영향이 매우 다릅니다. 모든 신호를 동일하게 반영하는 것은 비효율적입니다.
+- **최적화 과제:** 학생 모델의 최종 성능(보상)을 극대화하기 위해 각 토큰별로 최적의 가중치를 어떻게 결정할 것인가가 핵심적인 해결 과제였습니다.
+
+💡 핵심 기술 및 아키텍처
+- **이계층 최적화(Bilevel Optimization):** 학생 모델이 가중치가 부여된 교사의 지도를 받는 &#x27;하위 문제&#x27;와, 학생의 최종 보상을 극대화하도록 가중치를 선택하는 &#x27;상위 문제&#x27;로 구성됩니다.
+- **폐쇄형 업데이트(Closed-form Update):** 복잡한 별도의 학습 모델 없이, 매 반복마다 토큰의 중요도(Credit)를 계산하여 가중치를 즉시 업데이트하는 효율적인 방식을 구현했습니다.
+- **JVP(Jacobian-Vector Product) 활용:** 수많은 모델 파라미터 전체의 그라디언트를 일일이 계산하지 않고도, 방향 도함수 개념을 활용하여 계산 비용을 획기적으로 낮추었습니다.
+
+📊 실험 결과 분석
+- **성능 향상:** 수학 및 코드 작업에서 기존의 일반적인 OPD 대비 일관되게 높은 성능을 보였습니다.
+- **수치적 성과:** 발췌문에 따르면, 수학 문제 수행 능력에서 기존 OPD 대비 평균 9.7점의 성능 향상을 기록했습니다.
+- **교사 초월:** 특히 강사 모델에서 학생 모델로 지식을 전달하는 강력한 증류 환경에서, 더 작은 학생 모델이 원본인 더 큰 교사 모델의 성능을 넘어서는 결과를 보여주었습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+- **모델 경량화:** 동일한 성능을 유지하면서도 더 작고 가벼운 모델을 효율적으로 학습시킬 수 있어, AI의 배포 및 추론 비용을 획기적으로 줄일 수 있습니다.
+- **학습 효율화:** 수학 풀이, 프로그래밍 코드 생성 등 추론 단계가 명확하고 검증 가능한 작업 분야에서 모델의 학습 품질을 실질적으로 높이는 데 기여합니다.
+- **실무 적용:** 모델의 파라미터가 매우 큰 환경에서도 계산 효율성이 입증되었기에, 대규모 언어 모델의 사후 학습(Post-training) 단계에서 정밀한 지식 전달 방법론으로 활용될 수 있습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Dr. OPD: Learning What to Follow for Optimal On-Policy Distillation of ...](https://www.catalyzex.com/paper/dr-opd-learning-what-to-follow-for-optimal-on)
+&gt; - [Dr. OPD: Learning What to Follow for Optimal On-Policy Distillation of ...](https://arxiv.deeppaper.ai/papers/2609.38025v1)
+&gt; - [Dr. OPD: Learning What to Follow for Optimal On-Policy Distillation of ...](https://papers.cool/arxiv/2609.38025)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;이계층 최적화(Bilevel Optimization)를 JVP로 풀어내어 계산 복잡도를 잡았다는 점은 인상적입니다만, 결국 &#x27;최적 가중치&#x27;를 학습하는 과정에서 발생하는 분포 변화(distribution shift)가 안정성을 해치진 않을지 의문입니다. 논문에서 언급된 수렴성 증명은 충분히 엄밀한가요?&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님, 이론도 중요하지만 실무에선 &#x27;수학 9.7점 향상&#x27;이 더 중요합니다. 폐쇄형 업데이트(Closed-form update) 덕분에 학습 파이프라인에 큰 수정 없이 바로 끼워 넣을 수 있을 것 같네요. 다만, 매 스텝마다 가중치 계산하느라 학습 시간이 늘어지면 GPU 비용 감당이 안 될 텐데 그 부분 최적화가 관건이겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;엔지니어님, 그게 바로 이번 논문의 킥(kick)이죠! JVP로 연산량 쳐내고 작은 모델로 큰 모델을 넘어서는 &#x27;학생의 반란&#x27;을 보여줬는데, 이게 곧 모델 경량화의 끝판왕 아닐까요? 당장 다음 주 세미나 때 이거 발표하고 코드 뜯어볼 생각에 벌써 가슴이 뜁니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

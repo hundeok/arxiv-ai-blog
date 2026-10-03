@@ -43796,11 +43796,11 @@
     "2609_38025v1": {
       "id": "2609_38025v1",
       "filename": "post_2609_38025v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-09-30T03:32:14.655482+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-30T17:26:32.080158+00:00",
+      "updated_at": "2026-10-03T15:34:27.069388+00:00",
       "paper": {
         "title": "Dr. OPD: Learning What to Follow for Optimal On-Policy Distillation of Large Language Models",
         "summary": "On-policy distillation (OPD) trains a student on its own generated responses using dense, token-level supervision from a stronger teacher. Vanilla OPD treats all teacher signals equally, assuming that the teacher's supervision is equally important for every token. However, teacher signals at different tokens may have very different effects on the student's performance: some correct important reasoning errors, while others have little effect on the final answer. Motivated by this observation, we introduce Dr. OPD (OPD Done Right), which defines the optimal weighted OPD to maximize the student's performance. We formulate Dr. OPD as a bilevel optimization problem in which the student learns from weighted teacher supervision, while the weights are selected to maximize the expected reward of the resulting student. To solve Dr. OPD, we develop an efficient iterative solver that updates the token weights and student policy alternatively. At each round, it updates weights in closed form and then takes one gradient step on the resulting weighted OPD objective. Under regularity conditions, we show that this weighted update achieves a higher expected reward than a vanilla OPD update. Empirically, across strong-to-weak and same-size distillation on math and code, Dr. OPD consistently outperforms all evaluated baselines. In particular, in the strong-to-weak distillation setting, Dr. OPD improves average math performance by $9.7$ points over vanilla OPD, and enables the smaller student to surpass its larger teacher.",
@@ -43813,7 +43813,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2609.38025v1"
       },
-      "priority_score": 39
+      "priority_score": 39,
+      "korean_title": "Dr. OPD: 거대 언어 모델의 최적 온-폴리시 증류를 위해 무엇을 따라야 하는가 학습"
     },
     "2609_38024v1": {
       "id": "2609_38024v1",
@@ -44327,11 +44328,11 @@
     "2609_37402v1": {
       "id": "2609_37402v1",
       "filename": "post_2609_37402v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-09-30T21:46:03.983008+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-30T21:46:03.983010+00:00",
+      "updated_at": "2026-10-03T15:34:37.256392+00:00",
       "paper": {
         "title": "Routing Should Pay for Itself: Sparse Supervision for Economical LLM Routing",
         "summary": "Large language model (LLM) routing reduces serving cost by assigning each query to an appropriate model while preserving response quality. Learning such a router, however, often requires executing multiple candidate models on historical queries to collect query--model quality feedback, creating a nontrivial supervision cost before deployment. Existing work largely focuses on serving-time efficiency, overlooking whether the resulting savings are sufficient to recover this upfront expenditure. We further observe that routing quality often saturates well before all query--model feedback is collected, suggesting that dense supervision can be economically over-provisioned. We propose SaveRouter, a sparse-supervision routing framework that selectively acquires informative model feedback and shares capability information across related queries, while retaining query-level refinement for fine-grained routing. We evaluate routing by jointly accounting for supervision expenditure and subsequent serving-time savings. Across four routing benchmarks, the main setting uses only about 33--41% of available training feedback while maintaining competitive or better routing quality, and reduces the break-even deployment volume by approximately 1.9--9.5 times compared with the fastest conventional router. Further analysis shows that acquiring more supervision is not always economically preferable: the supervision level that minimizes serving cost can differ from the one that achieves the earliest payback. Our code is publicly available at https://github.com/LAMDA-Model-Reuse/SaveRouter.",
@@ -44348,7 +44349,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2609.37402v1"
       },
-      "priority_score": 39
+      "priority_score": 39,
+      "korean_title": "라우팅은 스스로 비용을 충당해야 한다: 경제적인 LLM 라우팅을 위한 희소 지도 학습"
     },
     "2609_37147v1": {
       "id": "2609_37147v1",
@@ -44684,11 +44686,11 @@
     "2609_40269v1": {
       "id": "2609_40269v1",
       "filename": "post_2609_40269v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-10-01T03:37:26.020119+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-02T00:26:32.410122+00:00",
+      "updated_at": "2026-10-03T15:34:17.062758+00:00",
       "paper": {
         "title": "Belief-Aware Multi-Agent Path Finding under Map Uncertainty",
         "summary": "Multi-Agent Path Finding (MAPF) aims to find collision-free paths for multiple agents in a shared environment. Classical MAPF assumes that all static obstacles are known in advance, but real-world environments can change unexpectedly due to fallen objects, spills, or other local disturbances. When such changes are spatially correlated, an observation can inform traversability estimates beyond the observed location. Prior approaches address uncertainty in traversability through contingent plans or replanning based on direct observations, but do not leverage this spatial dependence to infer the traversability of nearby unobserved locations. As a result, they cannot use one observation to anticipate nearby unobserved obstacles that may cause costly rerouting later. We focus on Belief-Aware MAPF, where map discrepancies are fixed during execution but initially unknown, and observations can be informative beyond the observed location. We propose Multi-Agent Gaussian belief Inference for Coordination (MAGIC), a framework that updates a shared belief about traversability online based on agents' observations. MAGIC uses a Gaussian Markov Random Field and Gaussian Belief Propagation to approximately infer traversability and construct detour-aware costs for standard MAPF planners. Our experiments on MAPF benchmarks show that MAGIC reduces the executed sum of costs compared to existing approaches on 96.3% of instances, across several planner families and teams of up to 800 agents, demonstrating its applicability to large-scale MAPF problems.",
@@ -44702,7 +44704,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2609.40269v1"
       },
-      "priority_score": 39
+      "priority_score": 39,
+      "korean_title": "신뢰 인식 다중 에이전트 경로 탐색: 지도 불확실성 환경에서의 경로 최적화"
     },
     "2609_40253v1": {
       "id": "2609_40253v1",
@@ -46148,11 +46151,11 @@
     "2610_02070v1": {
       "id": "2610_02070v1",
       "filename": "post_2610_02070v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-10-02T09:15:24.890897+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-03T03:21:12.776032+00:00",
+      "updated_at": "2026-10-03T15:34:07.981553+00:00",
       "paper": {
         "title": "Causal Memory Policy: Making Memory Utility Identifiable by Intervening on Retrieval",
         "summary": "Memory-augmented large language models must decide which memories to retain, and recent systems do so by estimating each memory's effect on task performance. However, these estimates rely entirely on retrieved memories. When a memory is never retrieved, store-level interventions produce identical outcomes, leaving its utility unidentified. This is a retrieval-level positivity violation, invisible to diagnostics that examine only memory operations. We introduce Causal Memory Policy (CMP), a causal framework that restores identification by intervening on retrieval itself, reserving a fixed number of context slots for memories sampled with known propensities. CMP estimates memory utility by self-normalized inverse propensity weighting under a balanced assignment design. We prove the causal factorization of memory utility through retrieval, the unbiasedness and exact variance of the estimator, and the optimal decision rule under irreversible operations. Empirically, identification fails for 54% of required memories on LongMemEval and 67% on LoCoMo, and the failure persists in a deployed memory system. CMP improves discrimination between required and non-required memories from 0.54 to 0.66 AUC. Finally, we show that identified memory utility alone is insufficient for retention decisions: per-query utility reaches 0.78 AUC on the query for which it is estimated, yet no aggregation available to a retention policy predicts a memory's value on unseen queries. Code is available at: https://anonymous.4open.science/r/cmp-release-D0C3/.",
@@ -46163,7 +46166,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2610.02070v1"
       },
-      "priority_score": 39
+      "priority_score": 39,
+      "korean_title": "인과적 메모리 정책: 검색 개입을 통한 메모리 유용성 식별"
     },
     "2610_02066v1": {
       "id": "2610_02066v1",
@@ -46241,7 +46245,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-03T10:57:42.178110+00:00",
+      "updated_at": "2026-10-03T15:33:58.713443+00:00",
       "paper": {
         "title": "On-Policy or Off-Policy Learning? A Systematic Study of Distillation Dynamics",
         "summary": "On-policy learning has been argued to reduce catastrophic forgetting, produce sparser parameter updates, and improve generalisation. However, existing comparisons between supervised fine-tuning and reinforcement learning vary many factors simultaneously, making the contribution of rollout policy difficult to isolate. We study the effect of rollout policy in a controlled strong-to-weak distillation setting, by independently varying rollout policy, token-level KL direction, and learning rate across the Llama3 and Qwen2.5 model families and reasoning tasks spanning scientific, medical, and arithmetic domains. Our analysis reveals a nuanced picture of distillation dynamics in which rollout policy does not necessarily play a central role. Instead, token-level KL direction more clearly shapes task performance and output coverage, while learning rate governs forgetting and update sparsity. Analysis of KL gradients and experiments along a continuous student-teacher rollout-policy spectrum explain this pattern: forward KL is remarkably robust to rollout policy, with its performance stable and strong despite changes to the rollout policy, whereas reverse KL is substantially more sensitive and favours student-generated rollouts. On-policy data nevertheless improves generalisation to harder variants of the Countdown arithmetic task under both KL directions, although this advantage does not reliably persist after subsequent RLVR. Our broader conclusions remain robust to removing gradient clipping, using sampled KL estimators, and training on tasks requiring longer reasoning chains. Overall, our results challenge the view that on-policy rollouts are inherently preferable and show that their value depends critically on the objective, evaluation setting, and optimisation hyperparameters.",
@@ -46263,7 +46267,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-03T10:57:17.834686+00:00",
+      "updated_at": "2026-10-03T15:33:58.713459+00:00",
       "paper": {
         "title": "When Does Correction Become Repair? Mechanistic Auditing of Internal Interventions in Tool-Using LLMs",
         "summary": "Before invoking external tools, an agentic LLM must select among a K-way action space: executing a call, seeking clarification, answering directly, or declining. While internal activation steering can alter these pre-execution decisions, conventional aggregate metrics obscure where altered states land and what collateral damage they inflict. We present SAKIKO, an auditing framework that formalizes representation repair via directional error discovery, router-conditioned intervention, destination-resolved verification, and prospectively frozen statistical licensing. Across seven LLMs on When2Call and MetaTool, channel-keyed interventions induce direction-specific net gains in five models; across three sealed evaluations, none of 59 budget-matched random directions matches calibrated target gain. Crucially, destination auditing shows that behavioral movement does not equal repair: an intervention achieving +55 net gain corrupts over half of the baseline-correct decisions it touches, and promising point estimates on Qwen3-4B and Gemma-2-9B are formally declined due to finite-sample uncertainty. SAKIKO establishes the necessity of outcome-resolved adjudication before claiming internal repair. Code: https://github.com/ruizheliUOA/mechanistic-tool-use-llm.",
@@ -46284,7 +46288,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-03T10:57:17.834690+00:00",
+      "updated_at": "2026-10-03T15:33:58.713463+00:00",
       "paper": {
         "title": "CorrGRPO: Correlation-Normalized GRPO for Multi-Reward Learning",
         "summary": "Group Relative Policy Optimization (GRPO) is widely used to train reasoning language models, where it computes advantages by centering and normalizing rewards across rollouts of the same prompt. For multiple rewards, GRPO sums the reward components and normalizes the total reward by its within-group standard deviation. The corresponding variance equals the sum of all pairwise reward covariances. For a fixed centered reward, larger aggregate covariance produces smaller advantages, and vice versa, allowing update magnitudes to adapt to reward dependence. However, correlated rewards with large scales can dominate this normalization and suppress signals from smaller-scale rewards. We propose Correlation-Normalized GRPO (CorrGRPO), which normalizes pairwise covariances into Pearson correlation coefficients. CorrGRPO keeps the centered total reward unchanged while balancing the influence of differently scaled rewards on the correlation-based normalization. This allows advantage magnitudes to adapt to reward correlations without the normalization being dominated by large-scale reward components. We compare CorrGRPO with GRPO and other variants on code generation, tool calling, and agent security, using models ranging from 0.5B to 8B parameters. These tasks all involve multiple rewards that can improve together or present tradeoffs. Results show improvements across three domains, including code generation, tool calling, and agent security. Our code is available at https://github.com/HKUST-KnowComp/CorrGRPO.",
@@ -46401,7 +46405,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-02T17:15:40.148718+00:00",
       "last_error": null,
-      "updated_at": "2026-10-03T10:57:17.834694+00:00",
+      "updated_at": "2026-10-03T15:33:58.713466+00:00",
       "paper": {
         "title": "Decoding Looped Transformers Better for (Almost) Free",
         "summary": "Looped Transformers achieve parameter efficiency by repeatedly executing a shared block across recurrent loops. Each loop yields an intermediate representation decodable for the same next token, yet standard decoding discards earlier states. Because earlier loops embody less computation, recurrence inherently supplies aligned weak-and-strong prediction pairs without auxiliary models or external training. We introduce LoopCD, a training-free contrastive decoding framework that guides token selection by contrasting the final prediction with an earlier recurrent pass, operating either in logit space with one extra output pass (LoopCD-Logits) or in hidden-state space with zero output overhead (LoopCD-Hidden). Across four looped Transformer families, LoopCD delivers substantial, consistent gains at full recurrent depth: LoopCD-Logits raises Ouro-2.6B-Thinking's AIME 2024 pass@1 from 61.88% to 73.33%, while LoopCD-Hidden lifts Huginn's HumanEval pass@1 from 22.56% to 31.71%. Crucially, these performance gains enable halving the number of recurrent loops while still matching or exceeding full-depth unguided baselines, reducing forward FLOPs by 22.5% to 48.2%. By transforming intermediate recurrent states into effective guidance signals, LoopCD achieves superior decoding quality while substantially reducing inference compute.",
@@ -46427,7 +46431,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-02T17:15:40.148724+00:00",
       "last_error": null,
-      "updated_at": "2026-10-03T10:57:17.834697+00:00",
+      "updated_at": "2026-10-03T15:33:58.713469+00:00",
       "paper": {
         "title": "Generalization Is Stability, Not Accuracy: Multi-Axis Evaluation of LLMs",
         "summary": "Generalization in large language models (LLMs) is the ability to produce consistent and semantically stable outputs when the same input is expressed in different ways. Existing work typically evaluates generalization through aggregate accuracy on a single prompt format, task, or set of variations, which conflates robustness with overall benchmark performance. In this work, we show generalization evaluation at the level of individual examples, across multiple input variants, and across different aspects of model behavior, focusing on variability rather than reducing performance to a score that can be improved through narrow training or other ways that obfuscate generalization evaluation. Following this view, we introduce the Stability-Aware Generalization Objective (SAGO), a framework that measures how much model behavior changes for the same input under different variations and benchmarks, capturing variability across several dimensions including generation consistency, internal activations, confidence, and response mirroring. We show that many commonly used models exhibit statistically significant and consistent generalization instability: no model generalizes uniformly, behavioral axes capture independent failure modes, and cross-dataset variation can reverse model rankings.",
@@ -46451,7 +46455,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-02T17:15:40.148730+00:00",
       "last_error": null,
-      "updated_at": "2026-10-03T10:57:17.834700+00:00",
+      "updated_at": "2026-10-03T15:33:58.713471+00:00",
       "paper": {
         "title": "RLE-Bench: A Qualifying Exam for Coding Agents as Robot Learning Engineers",
         "summary": "Coding agents are beginning to move beyond purely digital tasks to tackle physical-world challenges, particularly in robotics. Existing robotics benchmarks, however, primarily focus on the performance of individual artifacts, such as policies or controllers, offering limited coverage of coding agents' broader engineering capabilities. Real-world robotics extends beyond control: agents must build, integrate, diagnose, and improve heterogeneous artifacts under resource constraints and reason from multimodal feedback. To evaluate these broader capabilities, we introduce RLE-Bench, a benchmark of robot-learning tasks spanning four representative robotics development workflows: interactive control, policy learning, perception and estimation, and mechanical design. We use diverse task-specific metrics to evaluate the artifacts submitted by the coding agents, from the success rate the agents achieved to the policy agents trained, the harness agent built, and the mechanical structures the agent designed. We aggregate these metrics into an overall RLE Index and report workflow-specific capability profiles, enabling systematic comparison of coding agents' capabilities across multiple capability dimensions. Beyond performance ranks, we also conduct in-depth case studies examining agent behavior on representative tasks, highlighting both current capabilities and limitations, and pointing to the opportunities robotics tasks have to offer for future agent training.",
@@ -46474,7 +46478,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-02T17:15:40.148737+00:00",
       "last_error": null,
-      "updated_at": "2026-10-03T10:57:17.834703+00:00",
+      "updated_at": "2026-10-03T15:33:58.713474+00:00",
       "paper": {
         "title": "OTRetarget: Joint Robot and Object Motion Retargeting via Optimal Transport",
         "summary": "Transferring human motion to humanoid robots requires adapting the demonstrated motion to the robot morphology while preserving interactions with the environment. This is particularly challenging for loco-manipulation tasks, where contacts with the ground and manipulated objects must remain consistent despite differences in body proportions. Yet, skeletal motion alone does not fully describe these interactions, and fixing object trajectories limits the adaptation to a new embodiment. In this paper, we introduce OTR ETARGET, a unified approach to jointly retarget robot and multi-object motion from human demonstrations. Our approach represents surface interactions through signed distances, closest surface points, and relative directions, and uses entropic optimal transport to transfer these quantities across human, robot, and object geometries. We incorporate the resulting interaction targets into a constrained inverse kinematics formulation that balances contact preservation with motion style and jointly optimizes robot and object poses at each frame. This formulation accommodates robot-object and object-object interactions without rescaling the scene or the demonstration. We validate the proposed approach on OMOMO, where it achieves a robot- object interaction Jaccard score of 87% and a depth error of 8.7 mm, compared with 28% and 29.3 mm for OmniRetarget. Finally, we demonstrate transfer to a physical G1 humanoid using whole-body policies trained with reinforcement learning on the retargeted references, across motions including two-handed box pick-and-place onto a table.",
@@ -46500,7 +46504,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-02T21:42:33.900786+00:00",
       "last_error": null,
-      "updated_at": "2026-10-03T10:57:17.834705+00:00",
+      "updated_at": "2026-10-03T15:33:58.713476+00:00",
       "paper": {
         "title": "Fewer Tokens, Better Action: GPT-6 Astra Robot Agents with 14% Higher Success Rate but 65% Fewer Tokens",
         "summary": "Vision language model (VLM) agents can control robots through visual feedback and action primitives, but repeated model invocations and redundant observations incur substantial token overhead. We introduce PyRUA-Lean, an interactive code-execution framework that couples feedback-driven primitive composition with selective observation: the agent composes classical robot primitives and learned vision-language-action (VLA) policies into Python cells that perform conditional checks and local retries, returning only explicitly requested images and state feedback for replanning. Across 700 simulated task instances from LIBERO-PRO, RoboTwin 2.0, and RoboCasa365, we compare PyRUA-Lean with a tool-calling baseline using the same GPT-6 Astra planner and underlying robot primitives. Under equal LLM-call budgets, PyRUA-Lean increases overall success from 63.1% to 71.7%. On instances solved by both agents, it uses 49% fewer LLM calls and 65% fewer input tokens.",
@@ -46530,7 +46534,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-03T10:57:17.834708+00:00",
+      "updated_at": "2026-10-03T15:33:58.713478+00:00",
       "paper": {
         "title": "Keyword Harnesses Fail Open: A Cheap Diagnostic Ladder for Tool-Use Claims in Small Language Models",
         "summary": "Keyword-matching benchmarks can credit small models for tool use they never perform. We document such a false positive in a matched-architecture pair of Spanish security language models and propose a ladder of strict, cheap diagnostics. A 661.6M parameter model (approx. 65% code/technical text; no dedicated SFT) and a 1,109M model (web-heavy multi-phase curriculum; 6B-token tool-SFT) share decoder, tokenizer, and special tokens, scoring almost identically on lenient tool-use metrics (B4: 0.660 vs. 0.650).   Verbatim-reproduction checks on training examples separate them completely: the 600M emits valid tool calls with generalized arguments on 6/6 examples; the 1B does so on 0/6 across checkpoints. A first-token probe localizes the 1B's failure to a missing prior (prob. $10^{-4}$--$10^{-5}$ on <|tool_call|>), which was erased by its web-heavy training phase. A targeted SFT recipe (diverse corpus, 5x higher learning rate, 2,202 steps, ~3.3 GPU-hours) repairs the 1B using three orders of magnitude fewer tokens than the failed phase. On all 269 corpus rows, valid emission rises from 0.100 to 0.959 (600M: 0.926). On 238 unseen prompts, the repaired 1B passes 0.536 vs. the 600M's 0.428 ($p = 0.004$). Embedding-drift checks show the repair did not move the trigger token's tied embedding (97.7% of the bf16 table remains bit-identical), meaning changes live in the surrounding network.   Both models over-trigger, rarely answering negative prompts without a call (0.09 for 600M, 0.17 for repaired 1B). Factorial analyses confirm all repair configurations install the format, though suppression benefits from a diverse corpus remain a hypothesis due to seed sensitivity. This cheap diagnostic ladder costs minutes of CPU time and should gate tool-use claims on small models.",
@@ -46550,7 +46554,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-03T10:57:29.019495+00:00",
+      "updated_at": "2026-10-03T15:33:58.713481+00:00",
       "paper": {
         "title": "PhysVista: Benchmarking Physical Intelligence in VLMs via a Perception-Reasoning-Assessment Loop",
         "summary": "Vision-Language Models (VLMs) have shown strong multimodal reasoning capabilities, yet whether they truly capture the physical consistency underlying real-world dynamics remains unclear. Existing benchmark paradigms often suffer from fragmented evaluation, focusing on isolated cognitive stages while overlooking the inherent synergy between perception, reasoning, and physical judgment. The lack of a holistic perspective limits the ability to diagnose whether VLMs can reliably evaluate the physical authenticity of emerging generative models. To address these issues, we introduce PhysVista, a benchmark designed to evaluate physical intelligence in VLMs through a closed cognitive loop framework inspired by the human seeing-reasoning-assessment process. PhysVista restores this loop by jointly evaluating physical state perception, physical dynamics reasoning, and physical plausibility assessment. It further distinguishes event-level reasoning and scale-level reasoning to enable fine-grained analysis of physical understanding. In addition, PhysVista incorporates both real-world and AI-generated videos, allowing evaluation across diverse domains and emerging generative scenarios. Extensive experiments across a diverse set of VLMs reveal substantial limitations in physical reasoning and plausibility assessment, highlighting a persistent gap between visual recognition and genuine physical understanding, and pointing toward more principled designs for physically grounded multimodal intelligence.",
@@ -46571,7 +46575,7 @@
     }
   },
   "last_run": {
-    "started_at": "2026-10-03T10:57:17.838245+00:00",
+    "started_at": "2026-10-03T15:33:58.716815+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -46582,25 +46586,25 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 18988,
-      "output_tokens": 5863,
+      "prompt_tokens": 19215,
+      "output_tokens": 5829,
       "thought_tokens": 0,
-      "total_tokens": 24851,
-      "estimated_usd": 0.0135415
+      "total_tokens": 25044,
+      "estimated_usd": 0.01354725
     },
-    "finished_at": "2026-10-03T10:58:03.338742+00:00"
+    "finished_at": "2026-10-03T15:34:38.172851+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 3012,
-    "prompt_tokens": 7579808,
-    "output_tokens": 2218337,
+    "requests": 3020,
+    "prompt_tokens": 7599023,
+    "output_tokens": 2224166,
     "thought_tokens": 0,
-    "total_tokens": 9798145,
-    "estimated_usd": 5.2224575
+    "total_tokens": 9823189,
+    "estimated_usd": 5.23600475
   },
   "last_publication_run": {
-    "started_at": "2026-10-03T10:57:17.838245+00:00",
+    "started_at": "2026-10-03T15:33:58.716815+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -46611,17 +46615,17 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 18988,
-      "output_tokens": 5863,
+      "prompt_tokens": 19215,
+      "output_tokens": 5829,
       "thought_tokens": 0,
-      "total_tokens": 24851,
-      "estimated_usd": 0.0135415
+      "total_tokens": 25044,
+      "estimated_usd": 0.01354725
     },
-    "finished_at": "2026-10-03T10:58:03.338742+00:00"
+    "finished_at": "2026-10-03T15:34:38.172851+00:00"
   },
   "daily_usage": {
     "date": "2026-10-03",
-    "estimated_usd": 0.02595125,
-    "publications": 8
+    "estimated_usd": 0.0394985,
+    "publications": 12
   }
 }
