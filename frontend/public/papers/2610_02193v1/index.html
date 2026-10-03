@@ -1,0 +1,66 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>계층적 연속 확산 언어 모델 | ArXiv Translator AI</title><meta name="description" content="계층적 연속 확산 언어 모델"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2610_02193v1"><meta property="og:type" content="article"><meta property="og:title" content="계층적 연속 확산 언어 모델"><meta property="og:description" content="계층적 연속 확산 언어 모델"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2610_02193v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="계층적 연속 확산 언어 모델"><meta name="twitter:description" content="계층적 연속 확산 언어 모델"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2610_02193v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "계층적 연속 확산 언어 모델", "description": "계층적 연속 확산 언어 모델", "datePublished": "2026-10-01", "url": "https://arxiv-ai-blog.vercel.app/papers/2610_02193v1", "author": [{"@type": "Person", "name": "Hui Ren"}, {"@type": "Person", "name": "Zihan Li"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2610_02193v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2610_02193v1"});gtag('event', 'paper_view', {"paper_id": "2610_02193v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>계층적 연속 확산 언어 모델</h1><p>계층적 연속 확산 언어 모델</p><pre>계층적 연속 확산 언어 모델
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Hierarchical Continuous Diffusion Language Models
+&gt; - **저자:** Hui Ren, Zihan Li, Chang Liu, Huidong Liu, Alexander Schwing
+&gt; - **발행일:** 2026-10-01
+&gt; - **PDF 링크:** [Hierarchical Continuous Diffusion Language Models](https://arxiv.org/pdf/2610.02193v1)
+
+
+✨ 3줄 핵심 요약
+* 기존 확산 모델의 토큰 간 의존성 파괴 문제를 해결하기 위해, 연속적인 잠재 공간(latent space)과 이산적 토큰 생성을 결합한 &#x27;계층적 연속 확산 모델(HC-DLM)&#x27;을 제안합니다.
+* 잠재 공간을 유일한 생성 상태로 사용하여, 모든 단계에서 토큰을 잠재 공간으로부터 읽어오고 이를 다음 단계의 업데이트 근거로 활용하는 구조를 갖췄습니다.
+* 스도쿠(구조적 추론), 카운트다운(수학적 계획), LM1B(언어 모델링) 실험에서 기존 확산 모델들보다 높은 성능을 보였습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+기존의 확산 언어 모델은 여러 단어를 동시에 생성할 때 각 단어가 서로 독립적으로 샘플링되어, 단어들 사이의 문법적·논리적 연결 고리가 끊어지는 문제가 있었습니다. 이를 해결하기 위해 HC-DLM은 정보를 연속적인 &#x27;잠재 공간&#x27;에 담아 처리합니다. 마치 그림을 그릴 때 전체적인 윤곽을 먼저 잡고 세부 묘사를 하는 것처럼, 모델은 잠재 공간을 지속적으로 다듬고 그 안에서 토큰(단어)들을 일관성 있게 추출합니다. 이렇게 하면 단어들이 서로 독립적이지 않고 잠재 공간이라는 하나의 뿌리에서 생성되므로, 논리적인 구조가 중요한 퍼즐 풀이나 복잡한 계획 수립 문제에서 훨씬 더 똑똑한 결과를 낼 수 있습니다.
+
+🎯 배경 및 문제점
+* **자기회귀 모델의 한계:** 왼쪽에서 오른쪽으로만 생성하는 기존 방식은 논리 퍼즐이나 복잡한 계획 수립처럼 전체 맥락을 동시에 고려해야 하는 작업에서 초기 선택을 수정하기 어렵습니다.
+* **이산 확산 모델의 구조적 병목:** 여러 토큰을 병렬로 생성할 때, 각 토큰이 독립적으로 샘플링되어 문법적·논리적 의존성이 파괴됩니다.
+* **기존 연속 확산 모델의 한계:** 연속적인 상태를 사용하더라도 모델이 학습 과정에서 토큰 간의 구체적인 연결을 고려하지 않아, 마지막 단계가 되기 전까지는 유효한 단어 구성과 거리가 먼 상태로 유지됩니다.
+
+💡 핵심 기술 및 아키텍처
+* **통합된 디노이징 과정:** 이산적 토큰 생성과 연속적 잠재 궤적을 하나의 정교한 디노이징 과정으로 결합했습니다.
+* **잠재 상태 중심 설계:** 잠재 공간을 유일한 지속적 생성 상태로 정의합니다. 토큰은 매 단계 이 잠재 공간으로부터 읽히며, 생성된 토큰 정보는 다시 다음 단계의 잠재 상태를 업데이트하는 &#x27;비계(scaffold)&#x27; 역할을 수행합니다.
+* **변분 상계 최적화:** 토큰의 우도(likelihood)에 대한 변분 상계를 활용하여 학습 목표를 설계하였습니다.
+
+📊 실험 결과 분석
+* **성능 지표:** 스도쿠 퍼즐 정확도, 카운트다운 계획 정확도, LM1B 언어 모델링의 생성 퍼플렉서티(perplexity) 측면에서 비교 대상이 된 기존 이산 및 연속 확산 모델들보다 우수한 성능을 나타냈습니다. (※ 논문은 모델 크기가 동일한 조건에서의 우위를 언급하며, 상세한 수치 값은 본 발췌문에 포함되어 있지 않습니다.)
+* **효율성:** 학습 시에는 인코더 등의 결합으로 인해 단계별 비용이 발생하지만, 추론(샘플링) 시에는 인코더가 제거되므로 동일한 단계 수를 기준으로 할 때 기존 모델보다 빠르고 효율적입니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **복합 추론 능력 강화:** 수학적 계산이나 논리 퍼즐처럼 엄격한 규칙 준수와 전체적인 계획이 필요한 작업에 효과적입니다.
+* **확장성:** 제시된 모델 구조는 표준 DiT(Diffusion Transformer) 블록을 기반으로 하므로, 대규모 언어 모델 백본으로의 확장 가능성이 큽니다. 다만, 대규모 확장은 컴퓨팅 자원이 필요한 미래 연구 과제로 남겨두었습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2610.02193 Hierarchical Continuous Diffusion Language Models](https://arxiv.org/abs/2610.02193)
+&gt; - [Paper page - Hierarchical Continuous Diffusion Language Models](https://huggingface.co/papers/2610.02193)
+&gt; - [Hierarchical Continuous Diffusion Language Models](https://www.one9founders.com/research/2610.02193)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;이산적 토큰 공간과 연속적 잠재 공간 사이의 괴리를 &#x27;비계(scaffold)&#x27; 개념으로 해결하려는 시도는 흥미롭지만, 변분 상계 최적화 과정에서의 수렴 안정성에 대한 논의가 부족하군요. 특히 다단계 업데이트 과정에서 오차가 누적될 경우, 결국 자기회귀 모델보다 더 큰 결함이 발생할 텐데 이 부분을 어떻게 수학적으로 방어했는지 의문입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에선 &#x27;inference 속도&#x27;가 핵심인데, 논문에서는 인코더 떼고 빠르다고 주장하지만 실제 GPU 텐서 연산 효율은 DiT 블록의 복잡도 때문에 생각보다 안 나올 겁니다. 그래도 스도쿠나 카운트다운 같은 구조적 태스크에서 SOTA 찍은 건 인정. 일단 프로덕션에 올리기 전에 학습 파이프라인부터 다시 짜야겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;다들 너무 회의적인 거 아니에요? ㅋㅋㅋ 이거 LLM 백본으로 확장 가능성 열어둔 게 진짜 대박인데! 기존 확산 모델의 고질병인 &#x27;토큰 독립성&#x27;을 이렇게 깔끔하게 잠재 공간으로 묶어버린 건 진짜 신선함 그 자체임. 당장 오늘 세미나 발표 주제는 이걸로 정했습니다. 일단 구현 코드부터 깃허브에서 긁어와야겠네요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
