@@ -1,0 +1,71 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>온-정책 또는 오프-정책 학습? 증류 역학에 대한 체계적 연구 | ArXiv Translator AI</title><meta name="description" content="온-정책 또는 오프-정책 학습? 증류 역학에 대한 체계적 연구"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_35259v1"><meta property="og:type" content="article"><meta property="og:title" content="온-정책 또는 오프-정책 학습? 증류 역학에 대한 체계적 연구"><meta property="og:description" content="온-정책 또는 오프-정책 학습? 증류 역학에 대한 체계적 연구"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_35259v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="온-정책 또는 오프-정책 학습? 증류 역학에 대한 체계적 연구"><meta name="twitter:description" content="온-정책 또는 오프-정책 학습? 증류 역학에 대한 체계적 연구"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_35259v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "온-정책 또는 오프-정책 학습? 증류 역학에 대한 체계적 연구", "description": "온-정책 또는 오프-정책 학습? 증류 역학에 대한 체계적 연구", "datePublished": "2026-09-28", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_35259v1", "author": [{"@type": "Person", "name": "Julianna Piskorz"}, {"@type": "Person", "name": "Antonin Berthon"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_35259v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_35259v1"});gtag('event', 'paper_view', {"paper_id": "2609_35259v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>온-정책 또는 오프-정책 학습? 증류 역학에 대한 체계적 연구</h1><p>온-정책 또는 오프-정책 학습? 증류 역학에 대한 체계적 연구</p><pre>온-정책 또는 오프-정책 학습? 증류 역학에 대한 체계적 연구
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** On-Policy or Off-Policy Learning? A Systematic Study of Distillation Dynamics
+&gt; - **저자:** Julianna Piskorz, Antonin Berthon, Mihaela van der Schaar
+&gt; - **발행일:** 2026-09-28
+&gt; - **PDF 링크:** [On-Policy or Off-Policy Learning? A Systematic Study of Distillation Dynamics](https://arxiv.org/pdf/2609.35259v1)
+
+
+✨ 3줄 핵심 요약
+- 거대 언어 모델의 지식 증류 시, 데이터 생성 방식(온-정책 vs 오프-정책)보다 학습률과 토큰 단위 KL 방향이 성능과 학습 안정성에 훨씬 더 결정적인 영향을 미침.
+- 전방(Forward) KL은 데이터 생성 방식에 상관없이 강력하고 안정적인 성능을 보이나, 후방(Reverse) KL은 학생 모델이 생성한 데이터에 민감하게 반응함.
+- &#x27;온-정책 학습이 파멸적 망각을 방지하고 일반화 성능을 높인다&#x27;는 기존 통념은 학습률 등 다른 최적화 하이퍼파라미터의 영향력 아래에 있음을 시사함.
+
+📖 쉽게 풀어쓴 1분 핵심
+최근 언어 모델 학습에서는 모델이 스스로 생성한 데이터를 사용하는 &#x27;온-정책(On-policy)&#x27; 방식이 &#x27;오프-정책(Off-policy)&#x27;보다 더 나은 학습 효과를 낸다고 알려져 왔습니다. 하지만 이 논문은 여러 변수를 동시에 제어하여 실험한 결과, 사실은 학습률(Learning Rate)이나 KL 발산의 방향(전방/후방) 설정이 모델 성능에 훨씬 더 큰 영향을 미친다는 것을 밝혀냈습니다. 즉, 무조건 온-정책이 우월한 것이 아니라 상황과 설정에 따라 효율적인 최적화 조합이 달라질 수 있습니다.
+
+🎯 배경 및 문제점
+- 그간 온-정책 학습(예: RLVR)이 오프-정책(예: SFT)보다 파멸적 망각을 줄이고, 파라미터 업데이트를 희소하게 만들며, 일반화 성능을 높인다는 주장이 우세했음.
+- 그러나 기존 연구들은 여러 요인을 동시에 변경하며 비교했기 때문에, 실제 성능 차이가 &#x27;데이터 생성 방식(롤아웃 정책)&#x27;에서 기인한 것인지 명확히 구분하기 어려웠음.
+- 본 연구는 Llama 3 및 Qwen 2.5 모델군을 대상으로 롤아웃 정책, KL 방향, 학습률을 독립적으로 변주하여 증류(Distillation) 역학의 인과관계를 체계적으로 분석함.
+
+💡 핵심 기술 및 아키텍처
+- **독립적 변인 통제:** 증류 과정에서 롤아웃 정책, 토큰 단위 KL 방향, 학습률을 각각 분리하여 테스트함.
+- **다양한 영역 데이터:** 과학, 의학, 산술 문제 등 추론 능력을 요하는 도메인에서 실험을 수행함.
+- **KL 방향 분석:** 
+    - 전방(Forward) KL: 롤아웃 정책 변화에 매우 강력하고 안정적인 성능 유지.
+    - 후방(Reverse) KL: 학생 모델의 데이터에 민감하며, 데이터 생성 정책의 영향을 크게 받음.
+- **학습률의 역할:** 파멸적 망각의 정도와 파라미터 업데이트의 희소성을 결정하는 핵심 변수임을 확인.
+
+📊 실험 결과 분석
+- **성능 영향도:** 롤아웃 정책의 영향은 상대적으로 제한적이며, 성능과 출력 범위는 주로 KL 방향에 의해 결정됨.
+- **학습률과 안정성:** 학습률이 1×10⁻⁵에서 5×10⁻⁵로 증가할 때, OOD(도메인 밖) 정확도가 하락하고 업데이트 희소성이 낮아짐.
+- **일반화 성능:** 산술 문제(Countdown)에서 온-정책 방식이 일반화에 도움을 주기도 하지만, 이 이점이 강화학습(RLVR) 이후에는 일관되게 유지되지 않음.
+- **견고성:** 그래디언트 클리핑 제거, 샘플링 KL 추정기 사용 등 다양한 환경 변화에도 학습률이 망각과 업데이트 희소성을 지배한다는 결론은 변함없음.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+- **모델 개발 전략 수정:** 무조건적으로 온-정책 학습을 고집하기보다, 목표하는 학습 알고리즘의 KL 방향과 학습률 설정을 먼저 최적화하는 것이 효율적임.
+- **비용 효율적 학습:** 학습률만 잘 조절해도 불필요한 모델 업데이트(업데이트 밀도)를 줄이고 안정적인 학습 경로를 확보할 수 있어, 자원 소모적인 LLM 사후 학습의 효율성을 높일 수 있음.
+- **연구 기준 제시:** 향후 모델 사후 학습 방법론 연구 시, 단순히 정책의 종류를 비교하는 것을 넘어 학습률 등 하이퍼파라미터 변수를 철저히 통제한 정밀한 비교가 필요함을 시사함.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [On-Policy or Off-Policy Learning? A Systematic Study of Distillation ...](https://arxiv.org/html/2609.35259v1)
+&gt; - [On-Policy Distillation&#x27;s Edge Dissolves… · AGI Hunt](https://agihunt.info/en/papers/2609.35259)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문에서 지적했듯, 그간 학계가 데이터 생성 방식(On-policy vs Off-policy)이라는 피상적인 변수에 매몰되어 정작 중요한 최적화 역학을 간과한 감이 있네. 특히 Forward KL이 정책 변화에 강건하다는 점은 이론적으로 매우 흥미롭군. 하지만 저자들이 학습률의 영향력을 증명했다고 해서 정책 자체의 중요성이 사라지는 건 아닐세. 근본적인 분포 편향 문제는 여전히 남은 숙제야.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 맞지만, 현업 입장에서는 &#x27;온-정책&#x27; 고집하느라 롤아웃 비용 태우던 게 좀 뼈아프네요. 특히 SFT 단계에서 학습률 튜닝만으로도 성능 방어가 가능하다면 굳이 복잡한 RL 파이프라인 안 돌려도 되는 경우가 많을 것 같습니다. 이번 연구 덕분에 사후 학습 파이프라인 설계할 때 하이퍼파라미터 서치 우선순위를 다시 정해야겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 이거 읽고 지금 랩실에서 다들 난리 났어요! 그동안 논문들 보면서 &#x27;온-정책 아니면 성능 안 나온다&#x27;는 게 일종의 정설처럼 굳어졌는데, 이걸 학습률이랑 KL 방향으로 다 발라버리다니... 이거 웬만한 모델 학습 방법론들 다 다시 검증해야 하는 거 아닌가요? 내일 당장 SFT 실험 코드 싹 다 뜯어고쳐야겠네요. 갓 논문 인정합니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

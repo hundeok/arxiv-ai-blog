@@ -45347,11 +45347,11 @@
     "2609_32720v1": {
       "id": "2609_32720v1",
       "filename": "post_2609_32720v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-10-01T20:03:14.573153+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-01T20:03:14.573169+00:00",
+      "updated_at": "2026-10-03T10:57:52.028640+00:00",
       "paper": {
         "title": "BiasReducer: Adaptive Bias Mitigation for Reward Models",
         "summary": "Reward models score responses from large language models (LLMs) and guide LLM training toward human preferences. However, reward models can favor superficial attributes such as length or confidence, leading LLMs to produce higher-scoring but not more correct responses. Existing mitigation methods either retrain the reward model or apply a fixed correction to one known bias, such as a preference for longer responses. Retraining requires additional data and computational resources, while existing editing methods require the target bias to be specified in advance and use a fixed edit for that bias. To this end, we propose BiasReducer, a lightweight framework that edits only the linear reward head and selects the relevant edits for each new dataset. First, BiasReducer uses a sparse autoencoder (SAE)-style encoder to learn which attributes (e.g., length and confidence) the reward model is sensitive to. Second, it learns how to reduce the reward model's dependence on each attribute by determining which direction to adjust the reward head and how much to adjust it. Third, for a new dataset, it ranks the attributes by their influence on reward scores, selects the relevant ones, and edits the reward model accordingly. BiasReducer consistently improves reward-model robustness to biases toward superficial response attributes. Across five reward models, BiasReducer-M improves the three benchmarks by 8.3, 18.0, and 6.9 percentage points on average, outperforming the two training-based baselines. The gains transfer downstream, reducing unnecessary verbosity and sycophancy while maintaining comparable judged quality.",
@@ -45365,7 +45365,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2609.32720v1"
       },
-      "priority_score": 40
+      "priority_score": 40,
+      "korean_title": "바이어스 리듀서: 보상 모델을 위한 적응형 편향 완화"
     },
     "2609_40295v1": {
       "id": "2609_40295v1",
@@ -45862,11 +45863,11 @@
     "2610_02150v1": {
       "id": "2610_02150v1",
       "filename": "post_2610_02150v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-10-02T09:15:24.890841+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-03T03:21:12.775987+00:00",
+      "updated_at": "2026-10-03T10:58:02.092571+00:00",
       "paper": {
         "title": "From Knowledge Access to Source Learning: Developing Source-Specific Competence",
         "summary": "Large language model (LLM) agents increasingly rely on persistent external sources to solve sequences of knowledge-intensive tasks. Existing methods improve how source content is accessed and organized, while agent-memory systems preserve reusable knowledge from prior interactions, but repeated use of the same source is still largely treated as repeated access rather than an opportunity to progressively improve understanding of that source. We study source learning: developing reusable source-specific competence over a persistent authoritative source. We represent this competence with a persistent source model that captures reusable understanding of the source, including how its knowledge is structured, interpreted, and applied. To construct and progressively refine such models, we propose SourceLearn, which combines two complementary learning mechanisms. Self-Directed Source Learning identifies what remains incompletely understood and adaptively revisits the source, while Task-Guided Source Learning uses downstream experience to reveal local representational gaps and recurring needs in how source knowledge should be organized. In both cases, learning signals determine what should be reconsidered, while persistent updates are reconstructed from the authoritative source. Across five benchmarks and three LLM backends, SourceLearn achieves the best performance in 13 of 15 settings, with gains of up to 22.6 points over Hybrid RAG and substantial overall improvements over static source representations and experience-based memory baselines.",
@@ -45888,7 +45889,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2610.02150v1"
       },
-      "priority_score": 39
+      "priority_score": 39,
+      "korean_title": "지식 접근에서 원천 학습으로: 원천별 역량 개발"
     },
     "2610_02140v1": {
       "id": "2610_02140v1",
@@ -46235,11 +46237,11 @@
     "2609_35259v1": {
       "id": "2609_35259v1",
       "filename": "post_2609_35259v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-10-02T17:15:40.148662+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-02T21:42:33.900731+00:00",
+      "updated_at": "2026-10-03T10:57:42.178110+00:00",
       "paper": {
         "title": "On-Policy or Off-Policy Learning? A Systematic Study of Distillation Dynamics",
         "summary": "On-policy learning has been argued to reduce catastrophic forgetting, produce sparser parameter updates, and improve generalisation. However, existing comparisons between supervised fine-tuning and reinforcement learning vary many factors simultaneously, making the contribution of rollout policy difficult to isolate. We study the effect of rollout policy in a controlled strong-to-weak distillation setting, by independently varying rollout policy, token-level KL direction, and learning rate across the Llama3 and Qwen2.5 model families and reasoning tasks spanning scientific, medical, and arithmetic domains. Our analysis reveals a nuanced picture of distillation dynamics in which rollout policy does not necessarily play a central role. Instead, token-level KL direction more clearly shapes task performance and output coverage, while learning rate governs forgetting and update sparsity. Analysis of KL gradients and experiments along a continuous student-teacher rollout-policy spectrum explain this pattern: forward KL is remarkably robust to rollout policy, with its performance stable and strong despite changes to the rollout policy, whereas reverse KL is substantially more sensitive and favours student-generated rollouts. On-policy data nevertheless improves generalisation to harder variants of the Countdown arithmetic task under both KL directions, although this advantage does not reliably persist after subsequent RLVR. Our broader conclusions remain robust to removing gradient clipping, using sampled KL estimators, and training on tasks requiring longer reasoning chains. Overall, our results challenge the view that on-policy rollouts are inherently preferable and show that their value depends critically on the objective, evaluation setting, and optimisation hyperparameters.",
@@ -46251,7 +46253,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2609.35259v1"
       },
-      "priority_score": 40
+      "priority_score": 40,
+      "korean_title": "온-정책 또는 오프-정책 학습? 증류 역학에 대한 체계적 연구"
     },
     "2609_36138v1": {
       "id": "2609_36138v1",
@@ -46260,7 +46263,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-02T21:42:33.900751+00:00",
+      "updated_at": "2026-10-03T10:57:17.834686+00:00",
       "paper": {
         "title": "When Does Correction Become Repair? Mechanistic Auditing of Internal Interventions in Tool-Using LLMs",
         "summary": "Before invoking external tools, an agentic LLM must select among a K-way action space: executing a call, seeking clarification, answering directly, or declining. While internal activation steering can alter these pre-execution decisions, conventional aggregate metrics obscure where altered states land and what collateral damage they inflict. We present SAKIKO, an auditing framework that formalizes representation repair via directional error discovery, router-conditioned intervention, destination-resolved verification, and prospectively frozen statistical licensing. Across seven LLMs on When2Call and MetaTool, channel-keyed interventions induce direction-specific net gains in five models; across three sealed evaluations, none of 59 budget-matched random directions matches calibrated target gain. Crucially, destination auditing shows that behavioral movement does not equal repair: an intervention achieving +55 net gain corrupts over half of the baseline-correct decisions it touches, and promising point estimates on Qwen3-4B and Gemma-2-9B are formally declined due to finite-sample uncertainty. SAKIKO establishes the necessity of outcome-resolved adjudication before claiming internal repair. Code: https://github.com/ruizheliUOA/mechanistic-tool-use-llm.",
@@ -46281,7 +46284,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-02T21:42:33.900757+00:00",
+      "updated_at": "2026-10-03T10:57:17.834690+00:00",
       "paper": {
         "title": "CorrGRPO: Correlation-Normalized GRPO for Multi-Reward Learning",
         "summary": "Group Relative Policy Optimization (GRPO) is widely used to train reasoning language models, where it computes advantages by centering and normalizing rewards across rollouts of the same prompt. For multiple rewards, GRPO sums the reward components and normalizes the total reward by its within-group standard deviation. The corresponding variance equals the sum of all pairwise reward covariances. For a fixed centered reward, larger aggregate covariance produces smaller advantages, and vice versa, allowing update magnitudes to adapt to reward dependence. However, correlated rewards with large scales can dominate this normalization and suppress signals from smaller-scale rewards. We propose Correlation-Normalized GRPO (CorrGRPO), which normalizes pairwise covariances into Pearson correlation coefficients. CorrGRPO keeps the centered total reward unchanged while balancing the influence of differently scaled rewards on the correlation-based normalization. This allows advantage magnitudes to adapt to reward correlations without the normalization being dominated by large-scale reward components. We compare CorrGRPO with GRPO and other variants on code generation, tool calling, and agent security, using models ranging from 0.5B to 8B parameters. These tasks all involve multiple rewards that can improve together or present tradeoffs. Results show improvements across three domains, including code generation, tool calling, and agent security. Our code is available at https://github.com/HKUST-KnowComp/CorrGRPO.",
@@ -46398,7 +46401,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-02T17:15:40.148718+00:00",
       "last_error": null,
-      "updated_at": "2026-10-02T21:42:33.900767+00:00",
+      "updated_at": "2026-10-03T10:57:17.834694+00:00",
       "paper": {
         "title": "Decoding Looped Transformers Better for (Almost) Free",
         "summary": "Looped Transformers achieve parameter efficiency by repeatedly executing a shared block across recurrent loops. Each loop yields an intermediate representation decodable for the same next token, yet standard decoding discards earlier states. Because earlier loops embody less computation, recurrence inherently supplies aligned weak-and-strong prediction pairs without auxiliary models or external training. We introduce LoopCD, a training-free contrastive decoding framework that guides token selection by contrasting the final prediction with an earlier recurrent pass, operating either in logit space with one extra output pass (LoopCD-Logits) or in hidden-state space with zero output overhead (LoopCD-Hidden). Across four looped Transformer families, LoopCD delivers substantial, consistent gains at full recurrent depth: LoopCD-Logits raises Ouro-2.6B-Thinking's AIME 2024 pass@1 from 61.88% to 73.33%, while LoopCD-Hidden lifts Huginn's HumanEval pass@1 from 22.56% to 31.71%. Crucially, these performance gains enable halving the number of recurrent loops while still matching or exceeding full-depth unguided baselines, reducing forward FLOPs by 22.5% to 48.2%. By transforming intermediate recurrent states into effective guidance signals, LoopCD achieves superior decoding quality while substantially reducing inference compute.",
@@ -46424,7 +46427,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-02T17:15:40.148724+00:00",
       "last_error": null,
-      "updated_at": "2026-10-02T21:42:33.900771+00:00",
+      "updated_at": "2026-10-03T10:57:17.834697+00:00",
       "paper": {
         "title": "Generalization Is Stability, Not Accuracy: Multi-Axis Evaluation of LLMs",
         "summary": "Generalization in large language models (LLMs) is the ability to produce consistent and semantically stable outputs when the same input is expressed in different ways. Existing work typically evaluates generalization through aggregate accuracy on a single prompt format, task, or set of variations, which conflates robustness with overall benchmark performance. In this work, we show generalization evaluation at the level of individual examples, across multiple input variants, and across different aspects of model behavior, focusing on variability rather than reducing performance to a score that can be improved through narrow training or other ways that obfuscate generalization evaluation. Following this view, we introduce the Stability-Aware Generalization Objective (SAGO), a framework that measures how much model behavior changes for the same input under different variations and benchmarks, capturing variability across several dimensions including generation consistency, internal activations, confidence, and response mirroring. We show that many commonly used models exhibit statistically significant and consistent generalization instability: no model generalizes uniformly, behavioral axes capture independent failure modes, and cross-dataset variation can reverse model rankings.",
@@ -46448,7 +46451,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-02T17:15:40.148730+00:00",
       "last_error": null,
-      "updated_at": "2026-10-02T21:42:33.900775+00:00",
+      "updated_at": "2026-10-03T10:57:17.834700+00:00",
       "paper": {
         "title": "RLE-Bench: A Qualifying Exam for Coding Agents as Robot Learning Engineers",
         "summary": "Coding agents are beginning to move beyond purely digital tasks to tackle physical-world challenges, particularly in robotics. Existing robotics benchmarks, however, primarily focus on the performance of individual artifacts, such as policies or controllers, offering limited coverage of coding agents' broader engineering capabilities. Real-world robotics extends beyond control: agents must build, integrate, diagnose, and improve heterogeneous artifacts under resource constraints and reason from multimodal feedback. To evaluate these broader capabilities, we introduce RLE-Bench, a benchmark of robot-learning tasks spanning four representative robotics development workflows: interactive control, policy learning, perception and estimation, and mechanical design. We use diverse task-specific metrics to evaluate the artifacts submitted by the coding agents, from the success rate the agents achieved to the policy agents trained, the harness agent built, and the mechanical structures the agent designed. We aggregate these metrics into an overall RLE Index and report workflow-specific capability profiles, enabling systematic comparison of coding agents' capabilities across multiple capability dimensions. Beyond performance ranks, we also conduct in-depth case studies examining agent behavior on representative tasks, highlighting both current capabilities and limitations, and pointing to the opportunities robotics tasks have to offer for future agent training.",
@@ -46471,7 +46474,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-02T17:15:40.148737+00:00",
       "last_error": null,
-      "updated_at": "2026-10-02T21:42:33.900779+00:00",
+      "updated_at": "2026-10-03T10:57:17.834703+00:00",
       "paper": {
         "title": "OTRetarget: Joint Robot and Object Motion Retargeting via Optimal Transport",
         "summary": "Transferring human motion to humanoid robots requires adapting the demonstrated motion to the robot morphology while preserving interactions with the environment. This is particularly challenging for loco-manipulation tasks, where contacts with the ground and manipulated objects must remain consistent despite differences in body proportions. Yet, skeletal motion alone does not fully describe these interactions, and fixing object trajectories limits the adaptation to a new embodiment. In this paper, we introduce OTR ETARGET, a unified approach to jointly retarget robot and multi-object motion from human demonstrations. Our approach represents surface interactions through signed distances, closest surface points, and relative directions, and uses entropic optimal transport to transfer these quantities across human, robot, and object geometries. We incorporate the resulting interaction targets into a constrained inverse kinematics formulation that balances contact preservation with motion style and jointly optimizes robot and object poses at each frame. This formulation accommodates robot-object and object-object interactions without rescaling the scene or the demonstration. We validate the proposed approach on OMOMO, where it achieves a robot- object interaction Jaccard score of 87% and a depth error of 8.7 mm, compared with 28% and 29.3 mm for OmniRetarget. Finally, we demonstrate transfer to a physical G1 humanoid using whole-body policies trained with reinforcement learning on the retargeted references, across motions including two-handed box pick-and-place onto a table.",
@@ -46497,7 +46500,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-02T21:42:33.900786+00:00",
       "last_error": null,
-      "updated_at": "2026-10-02T21:42:33.900788+00:00",
+      "updated_at": "2026-10-03T10:57:17.834705+00:00",
       "paper": {
         "title": "Fewer Tokens, Better Action: GPT-6 Astra Robot Agents with 14% Higher Success Rate but 65% Fewer Tokens",
         "summary": "Vision language model (VLM) agents can control robots through visual feedback and action primitives, but repeated model invocations and redundant observations incur substantial token overhead. We introduce PyRUA-Lean, an interactive code-execution framework that couples feedback-driven primitive composition with selective observation: the agent composes classical robot primitives and learned vision-language-action (VLA) policies into Python cells that perform conditional checks and local retries, returning only explicitly requested images and state feedback for replanning. Across 700 simulated task instances from LIBERO-PRO, RoboTwin 2.0, and RoboCasa365, we compare PyRUA-Lean with a tool-calling baseline using the same GPT-6 Astra planner and underlying robot primitives. Under equal LLM-call budgets, PyRUA-Lean increases overall success from 63.1% to 71.7%. On instances solved by both agents, it uses 49% fewer LLM calls and 65% fewer input tokens.",
@@ -46527,7 +46530,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-02T21:43:09.315651+00:00",
+      "updated_at": "2026-10-03T10:57:17.834708+00:00",
       "paper": {
         "title": "Keyword Harnesses Fail Open: A Cheap Diagnostic Ladder for Tool-Use Claims in Small Language Models",
         "summary": "Keyword-matching benchmarks can credit small models for tool use they never perform. We document such a false positive in a matched-architecture pair of Spanish security language models and propose a ladder of strict, cheap diagnostics. A 661.6M parameter model (approx. 65% code/technical text; no dedicated SFT) and a 1,109M model (web-heavy multi-phase curriculum; 6B-token tool-SFT) share decoder, tokenizer, and special tokens, scoring almost identically on lenient tool-use metrics (B4: 0.660 vs. 0.650).   Verbatim-reproduction checks on training examples separate them completely: the 600M emits valid tool calls with generalized arguments on 6/6 examples; the 1B does so on 0/6 across checkpoints. A first-token probe localizes the 1B's failure to a missing prior (prob. $10^{-4}$--$10^{-5}$ on <|tool_call|>), which was erased by its web-heavy training phase. A targeted SFT recipe (diverse corpus, 5x higher learning rate, 2,202 steps, ~3.3 GPU-hours) repairs the 1B using three orders of magnitude fewer tokens than the failed phase. On all 269 corpus rows, valid emission rises from 0.100 to 0.959 (600M: 0.926). On 238 unseen prompts, the repaired 1B passes 0.536 vs. the 600M's 0.428 ($p = 0.004$). Embedding-drift checks show the repair did not move the trigger token's tied embedding (97.7% of the bf16 table remains bit-identical), meaning changes live in the surrounding network.   Both models over-trigger, rarely answering negative prompts without a call (0.09 for 600M, 0.17 for repaired 1B). Factorial analyses confirm all repair configurations install the format, though suppression benefits from a diverse corpus remain a hypothesis due to seed sensitivity. This cheap diagnostic ladder costs minutes of CPU time and should gate tool-use claims on small models.",
@@ -46539,11 +46542,37 @@
       },
       "priority_score": 40,
       "korean_title": "키워드 기반 벤치마크는 왜 소형 언어 모델의 도구 사용 능력을 오판하는가: 저비용 진단 사다리 제안"
+    },
+    "2610_00559v1": {
+      "id": "2610_00559v1",
+      "filename": "post_2610_00559v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-10-03T10:57:29.019495+00:00",
+      "paper": {
+        "title": "PhysVista: Benchmarking Physical Intelligence in VLMs via a Perception-Reasoning-Assessment Loop",
+        "summary": "Vision-Language Models (VLMs) have shown strong multimodal reasoning capabilities, yet whether they truly capture the physical consistency underlying real-world dynamics remains unclear. Existing benchmark paradigms often suffer from fragmented evaluation, focusing on isolated cognitive stages while overlooking the inherent synergy between perception, reasoning, and physical judgment. The lack of a holistic perspective limits the ability to diagnose whether VLMs can reliably evaluate the physical authenticity of emerging generative models. To address these issues, we introduce PhysVista, a benchmark designed to evaluate physical intelligence in VLMs through a closed cognitive loop framework inspired by the human seeing-reasoning-assessment process. PhysVista restores this loop by jointly evaluating physical state perception, physical dynamics reasoning, and physical plausibility assessment. It further distinguishes event-level reasoning and scale-level reasoning to enable fine-grained analysis of physical understanding. In addition, PhysVista incorporates both real-world and AI-generated videos, allowing evaluation across diverse domains and emerging generative scenarios. Extensive experiments across a diverse set of VLMs reveal substantial limitations in physical reasoning and plausibility assessment, highlighting a persistent gap between visual recognition and genuine physical understanding, and pointing toward more principled designs for physically grounded multimodal intelligence.",
+        "published": "2026-09-30T18:34:22Z",
+        "authors": [
+          "Xinge Peng",
+          "Yiting Lu",
+          "Tianwu Zhi",
+          "Wen Wen",
+          "Jianzhao Liu",
+          "Xin Li",
+          "Zhibo Chen"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.00559v1"
+      },
+      "priority_score": 48,
+      "korean_title": "PhysVista: 인지-추론-평가 루프를 통한 시각-언어 모델(VLM)의 물리 지능 벤치마킹"
     }
   },
   "last_run": {
-    "started_at": "2026-10-03T03:21:12.780737+00:00",
-    "discovered": 30,
+    "started_at": "2026-10-03T10:57:17.838245+00:00",
+    "discovered": 10,
     "selected": 4,
     "generated": 4,
     "failed": 0,
@@ -46552,27 +46581,27 @@
     "failures": [],
     "usage": {
       "model": "gemini-3.1-flash-lite",
-      "requests": 7,
-      "prompt_tokens": 17737,
-      "output_tokens": 5317,
+      "requests": 8,
+      "prompt_tokens": 18988,
+      "output_tokens": 5863,
       "thought_tokens": 0,
-      "total_tokens": 23054,
-      "estimated_usd": 0.01240975
+      "total_tokens": 24851,
+      "estimated_usd": 0.0135415
     },
-    "finished_at": "2026-10-03T03:21:52.028046+00:00"
+    "finished_at": "2026-10-03T10:58:03.338742+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 3004,
-    "prompt_tokens": 7560820,
-    "output_tokens": 2212474,
+    "requests": 3012,
+    "prompt_tokens": 7579808,
+    "output_tokens": 2218337,
     "thought_tokens": 0,
-    "total_tokens": 9773294,
-    "estimated_usd": 5.208916
+    "total_tokens": 9798145,
+    "estimated_usd": 5.2224575
   },
   "last_publication_run": {
-    "started_at": "2026-10-03T03:21:12.780737+00:00",
-    "discovered": 30,
+    "started_at": "2026-10-03T10:57:17.838245+00:00",
+    "discovered": 10,
     "selected": 4,
     "generated": 4,
     "failed": 0,
@@ -46581,18 +46610,18 @@
     "failures": [],
     "usage": {
       "model": "gemini-3.1-flash-lite",
-      "requests": 7,
-      "prompt_tokens": 17737,
-      "output_tokens": 5317,
+      "requests": 8,
+      "prompt_tokens": 18988,
+      "output_tokens": 5863,
       "thought_tokens": 0,
-      "total_tokens": 23054,
-      "estimated_usd": 0.01240975
+      "total_tokens": 24851,
+      "estimated_usd": 0.0135415
     },
-    "finished_at": "2026-10-03T03:21:52.028046+00:00"
+    "finished_at": "2026-10-03T10:58:03.338742+00:00"
   },
   "daily_usage": {
     "date": "2026-10-03",
-    "estimated_usd": 0.01240975,
-    "publications": 4
+    "estimated_usd": 0.02595125,
+    "publications": 8
   }
 }
