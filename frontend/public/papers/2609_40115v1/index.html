@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>학습 불가능인가, 측정되지 않은 것인가? RLVR에서의 난이도 라벨 신뢰성에 관하여 | ArXiv Translator AI</title><meta name="description" content="학습 불가능인가, 측정되지 않은 것인가? RLVR에서의 난이도 라벨 신뢰성에 관하여"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_40115v1"><meta property="og:type" content="article"><meta property="og:title" content="학습 불가능인가, 측정되지 않은 것인가? RLVR에서의 난이도 라벨 신뢰성에 관하여"><meta property="og:description" content="학습 불가능인가, 측정되지 않은 것인가? RLVR에서의 난이도 라벨 신뢰성에 관하여"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_40115v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="학습 불가능인가, 측정되지 않은 것인가? RLVR에서의 난이도 라벨 신뢰성에 관하여"><meta name="twitter:description" content="학습 불가능인가, 측정되지 않은 것인가? RLVR에서의 난이도 라벨 신뢰성에 관하여"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_40115v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "학습 불가능인가, 측정되지 않은 것인가? RLVR에서의 난이도 라벨 신뢰성에 관하여", "description": "학습 불가능인가, 측정되지 않은 것인가? RLVR에서의 난이도 라벨 신뢰성에 관하여", "datePublished": "2026-09-30", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_40115v1", "author": [{"@type": "Person", "name": "Chandak Chakma"}, {"@type": "Person", "name": "Syed Nazmus Sakib"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_40115v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_40115v1"});gtag('event', 'paper_view', {"paper_id": "2609_40115v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>학습 불가능인가, 측정되지 않은 것인가? RLVR에서의 난이도 라벨 신뢰성에 관하여</h1><p>학습 불가능인가, 측정되지 않은 것인가? RLVR에서의 난이도 라벨 신뢰성에 관하여</p><pre>학습 불가능인가, 측정되지 않은 것인가? RLVR에서의 난이도 라벨 신뢰성에 관하여
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Unlearnable, or Unmeasured? On the Reliability of Difficulty Labels in RLVR
+&gt; - **저자:** Chandak Chakma, Syed Nazmus Sakib, Nafiul Haque, Shifat E. Arman
+&gt; - **발행일:** 2026-09-30
+&gt; - **PDF 링크:** [Unlearnable, or Unmeasured? On the Reliability of Difficulty Labels in RLVR](https://arxiv.org/pdf/2609.40115v1)
+
+
+✨ 3줄 핵심 요약
+* RLVR(검증 가능한 보상을 활용한 강화학습)에서 특정 프롬프트가 학습되지 않는다는 &#x27;비학습성(unlearnability)&#x27; 현상은 과장되었을 가능성이 큼.
+* 프롬프트 난이도 라벨은 표본 응답 수에 따라 불안정하게 변하며, 이를 측정하는 평가 방식 자체가 재현성이 낮음.
+* 비학습성으로 간주되던 프롬프트들도 실제로는 학습 가능한 프롬프트의 약 1/3 속도로 개선되고 있음을 확인.
+
+📖 쉽게 풀어쓴 1분 핵심
+강화학습 기반의 AI 학습(RLVR) 과정에서, 모델이 아무리 해도 실력이 늘지 않는 일명 &#x27;학습 불가능한 프롬프트&#x27;들이 존재한다는 주장이 있었습니다. 하지만 이 논문은 그 주장의 근거가 되는 &#x27;난이도 측정 방식&#x27;에 의문을 제기합니다. 연구진이 재검증해 본 결과, 해당 프롬프트들은 완전히 학습이 불가능한 것이 아니라 단지 학습 속도가 매우 느릴 뿐이었습니다. 또한, 특정 프롬프트를 &#x27;어렵다&#x27;고 분류하는 기준 자체가 무작위 샘플링 과정에서 발생하는 측정 노이즈에 매우 취약하다는 점을 밝혀냈습니다. 결론적으로, AI가 특정 문제를 풀지 못하는 것이 모델의 구조적 한계인지, 아니면 잘못된 측정 방식 때문인지를 더 정밀하게 구분해야 합니다.
+
+🎯 배경 및 문제점
+* **RLVR의 한계:** 최근 추론 능력을 높이기 위해 RLVR을 활용하지만, 일부 프롬프트는 정답을 내놓는 빈도가 낮거나 학습이 전혀 되지 않는 현상이 보고됨.
+* **비학습성 논란:** 일부 연구자들은 이를 &#x27;비학습성(unlearnability)&#x27;으로 정의하고, 모델 내부의 표현 오류 때문이라고 주장함.
+* **측정의 불확실성:** 난이도 라벨은 제한된 수의 샘플 응답을 통해 추정되므로, 평가를 반복할 때마다 같은 프롬프트라도 난이도가 바뀌는 등 측정값의 재현성이 매우 낮음.
+
+💡 핵심 기술 및 아키텍처
+* **샘플링 기반 프레임워크:** 난이도 라벨의 불안정성을 정량화하기 위해 새로운 샘플링 기반 평가 프레임워크를 개발.
+* **비교 분석:** 기존의 &#x27;비학습성&#x27; 주장이 근거로 삼았던 &#x27;기울기 유사도(gradient similarity)&#x27; 분석을 재검토함. 난이도가 높을수록 성공적인 응답 샘플 수가 적어 기울기 추정 오차가 커지는 현상을 확인.
+* **통제된 실험:** 동일한 샘플링 횟수를 적용했을 때, 비학습성 프롬프트와 일반 프롬프트 간의 기울기 차이가 줄어듦을 증명.
+
+📊 실험 결과 분석
+* **재현성 부족:** 두 번의 독립적인 평가를 비교했을 때 난이도 라벨이 일치할 확률(Jaccard similarity)은 약 0.88 수준임.
+* **속도의 차이:** 비학습성으로 분류되었던 프롬프트들은 실제로는 학습 가능한 그룹의 약 1/3 속도로 성능이 향상됨.
+* **측정 편향:** 프롬프트 난이도 설정 시 토큰 예산(token budget)을 늘려 응답 길이를 확보해도, 난이도 분류 결과는 기존의 재현성 변동 범위 내에서만 변할 뿐 근본적인 분류 체계가 뒤바뀌지는 않음. (단, 본 실험에 사용된 구체적인 수치는 원문 발췌에 명시된 설정을 따름)
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **데이터 필터링의 재고:** AI 학습 시 특정 데이터를 &#x27;학습 불가능&#x27;으로 간주하여 제외하거나 가중치를 두는 전략이 오히려 측정 오류에 기반했을 가능성을 시사함.
+* **평가 방법론 개선:** AI 모델의 성능을 평가할 때, 단기적인 성공률에 의존하기보다 더 많은 샘플링을 통해 난이도 라벨의 신뢰성을 확보하는 표준화된 절차가 필요함.
+* **연구 방향성:** 앞으로의 연구는 모델의 근본적인 학습 능력 한계와 단순한 평가 노이즈를 명확히 구분하는 방향으로 나아가야 함.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2609.40115 Unlearnable, or Unmeasured? On the Reliability ...](https://arxiv.org/abs/2609.40115)
+&gt; - [Unlearnable, or Unmeasured? On the Reliability of Difficulty ...](https://arxiv.deeppaper.ai/papers/2609.40115v1)
+&gt; - [Unlearnable, or Unmeasured? On the Reliability of Difficulty ...](https://papers.cool/arxiv/2609.40115)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;이 논문은 RLVR의 방법론적 허점을 정확히 찔렀군요. 비학습성(unlearnability)이라는 용어를 남발하며 데이터의 질을 탓하던 그간의 관행이 사실은 불충분한 샘플링에 따른 노이즈였다는 점은 학계가 뼈아프게 받아들여야 합니다. 통계적 유의성조차 확보하지 못한 채 &#x27;학습 불가&#x27; 딱지를 붙이는 게 과학인가요?&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로입니다. 현업에서는 &#x27;이 데이터는 안 먹히네&#x27; 하고 그냥 버리는 경우가 부지기수거든요. 1/3 속도라도 학습이 진행된다면 그건 데이터 문제가 아니라 비용과 시간의 문제인 건데, 이걸 모델 탓으로 돌려 시간 낭비한 팀들이 한둘이 아닐 겁니다. 당장 데이터 필터링 파이프라인부터 재검토해야겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;역시 킹갓 논문! 그럼 이제 기존 SOTA 논문들 중에 &#x27;어려운 프롬프트는 버리고 학습했다&#x27;는 곳들은 다 재현성 논란 생기는 건가요? 이거 당장 다음 세미나 발제 자료로 들고 갑니다. 다들 &#x27;비학습성&#x27; 프레임 씌우느라 고생했는데, 사실은 우리가 그냥 성격 급한 거였다는 게 킬포네요.&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
