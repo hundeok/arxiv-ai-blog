@@ -1,0 +1,71 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>더 적은 토큰으로 더 나은 동작을: 14% 향상된 성공률과 65% 절감된 토큰 사용량을 기록한 GPT-6 Astra 로봇 에이전트 | ArXiv Translator AI</title><meta name="description" content="더 적은 토큰으로 더 나은 동작을: 14% 향상된 성공률과 65% 절감된 토큰 사용량을 기록한 GPT-6 Astra 로봇 에이전트"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2610_01939v1"><meta property="og:type" content="article"><meta property="og:title" content="더 적은 토큰으로 더 나은 동작을: 14% 향상된 성공률과 65% 절감된 토큰 사용량을 기록한 GPT-6 Astra 로봇 에이전트"><meta property="og:description" content="더 적은 토큰으로 더 나은 동작을: 14% 향상된 성공률과 65% 절감된 토큰 사용량을 기록한 GPT-6 Astra 로봇 에이전트"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2610_01939v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="더 적은 토큰으로 더 나은 동작을: 14% 향상된 성공률과 65% 절감된 토큰 사용량을 기록한 GPT-6 Astra 로봇 에이전트"><meta name="twitter:description" content="더 적은 토큰으로 더 나은 동작을: 14% 향상된 성공률과 65% 절감된 토큰 사용량을 기록한 GPT-6 Astra 로봇 에이전트"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2610_01939v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "더 적은 토큰으로 더 나은 동작을: 14% 향상된 성공률과 65% 절감된 토큰 사용량을 기록한 GPT-6 Astra 로봇 에이전트", "description": "더 적은 토큰으로 더 나은 동작을: 14% 향상된 성공률과 65% 절감된 토큰 사용량을 기록한 GPT-6 Astra 로봇 에이전트", "datePublished": "2026-10-01", "url": "https://arxiv-ai-blog.vercel.app/papers/2610_01939v1", "author": [{"@type": "Person", "name": "Ruiyang Si"}, {"@type": "Person", "name": "Jianxin Bi"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2610_01939v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2610_01939v1"});gtag('event', 'paper_view', {"paper_id": "2610_01939v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>더 적은 토큰으로 더 나은 동작을: 14% 향상된 성공률과 65% 절감된 토큰 사용량을 기록한 GPT-6 Astra 로봇 에이전트</h1><p>더 적은 토큰으로 더 나은 동작을: 14% 향상된 성공률과 65% 절감된 토큰 사용량을 기록한 GPT-6 Astra 로봇 에이전트</p><pre>더 적은 토큰으로 더 나은 동작을: 14% 향상된 성공률과 65% 절감된 토큰 사용량을 기록한 GPT-6 Astra 로봇 에이전트
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Fewer Tokens, Better Action: GPT-6 Astra Robot Agents with 14% Higher Success Rate but 65% Fewer Tokens
+&gt; - **저자:** Ruiyang Si, Jianxin Bi, Shunyu Yang, Rui Ni, Wenbo Huang, Qiang Wang, Shulong Jiang, Duomin Wang, Xiuyu Li, Haiwen Feng, Zhen Dong, Daquan Zhou
+&gt; - **발행일:** 2026-10-01
+&gt; - **PDF 링크:** [Fewer Tokens, Better Action: GPT-6 Astra Robot Agents with 14% Higher Success Rate but 65% Fewer Tokens](https://arxiv.org/pdf/2610.01939v1)
+
+
+✨ 3줄 핵심 요약
+* **PyRUA-Lean**은 로봇 제어 시 불필요한 모델 호출과 데이터 전송을 줄이는 인터랙티브 코드 실행 프레임워크입니다.
+* 기존 도구 호출 방식 대비 로봇 작업 성공률을 63.1%에서 71.7%로 개선했습니다.
+* 동일한 작업 환경에서 LLM 호출 횟수는 49%, 입력 토큰은 65% 절감하여 효율성을 크게 높였습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+로봇을 제어하는 AI 모델(VLM)은 동작을 수행할 때마다 매번 상황을 다시 확인하고 명령을 내리느라 수많은 데이터를 주고받습니다. 마치 로봇이 한 걸음 내디딜 때마다 본부(LLM)에 무전으로 &quot;다음은 어떻게 할까요?&quot;라고 묻는 것과 같습니다. **PyRUA-Lean**은 로봇이 자체적으로 파이썬 코드를 작성해 스스로 판단하고 수행하게 함으로써 본부와의 통신을 최소화합니다. 이를 통해 로봇은 더 복잡한 동작을 더 적은 비용으로 빠르고 정확하게 처리할 수 있게 되었습니다.
+
+🎯 배경 및 문제점
+기존의 비전-언어 모델(VLM) 기반 로봇 제어는 &#x27;도구 호출(tool-calling)&#x27; 방식을 주로 사용합니다. 이 방식은 다음과 같은 한계가 있습니다.
+* **통신 과부하:** 작업 중간의 확인이나 재시도가 필요할 때마다 반복적인 모델 호출이 발생합니다.
+* **중복 정보:** 동작 완료 후 불필요한 시각적 피드백이나 상태 정보가 계속 LLM 컨텍스트에 쌓여 비용과 처리 효율을 떨어뜨립니다.
+* **복잡도 한계:** 매번 호출을 거쳐야 하므로 연속적이고 복잡한 동작(Long-horizon)을 수행하는 데 제약이 따릅니다.
+
+💡 핵심 기술 및 아키텍처
+PyRUA-Lean은 로봇이 파이썬 코드를 직접 실행하는 방식을 도입했습니다.
+* **피드백 기반 프리미티브 조합:** 로봇의 기초 동작(Primitive)과 학습된 비전-언어-동작(VLA) 정책을 파이썬 코드로 묶어 실행합니다.
+* **선택적 관측:** 에이전트는 코드 내부에서 상황을 판단하고, 오직 필요한 경우에만 명시적으로 이미지나 상태 정보를 본부(LLM)에 요청하여 재계획(replanning)을 수행합니다.
+* **자동 재시도 및 조건부 제어:** 코드 안에서 에러 처리나 조건문을 사용하여 모델 호출 없이도 로봇이 스스로 동작을 수정하거나 재시도할 수 있습니다.
+
+📊 실험 결과 분석
+700개의 시뮬레이션 작업(LIBERO-PRO, RoboTwin 2.0, RoboCasa365)을 통해 성능을 검증했습니다.
+* **성공률:** 도구 호출 방식 대비 전체 성공률이 63.1%에서 71.7%로 상승했습니다. 특히 복잡도가 높은 작업(Multi-step, Long-horizon)에서 36%~40%의 큰 성공률 개선을 보였습니다.
+* **효율성:** 동일하게 성공한 사례를 기준으로, LLM 호출 횟수는 49%, 입력 토큰 사용량은 평균 65% 감소했습니다.
+* **비용:** 평균적인 추론 비용이 기존 대비 2.2배 저렴해졌습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **실용성 증대:** 높은 비용과 통신 부담 때문에 제약받던 로봇 에이전트의 현장 적용 가능성을 높였습니다.
+* **지능적 자율성:** 로봇이 단순한 명령 수행자를 넘어, 파이썬 코드를 통해 스스로 논리적 판단을 내리고 오류를 해결하는 &#x27;스마트 에이전트&#x27;로 진화하는 기반을 마련했습니다.
+* **향후 과제:** 현재는 시뮬레이션 환경에 국한되어 있으며, 향후 실제 물리 로봇에서의 제어 성능, 복잡한 로봇 하드웨어 구성에서의 일반화 성능을 검증할 계획입니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2610.01939 Fewer Tokens, Better Action: GPT-6 Astra Robot Agents with ...](https://arxiv.org/abs/2610.01939)
+&gt; - [Paper page - Fewer Tokens, Better Action: GPT-6 Astra Robot Agents with ...](https://huggingface.co/papers/2610.01939)
+&gt; - [Fewer Tokens, Better Action: GPT-6 Astra Robot Agents with 14% Higher ...](https://arxiv.deeppaper.ai/papers/2610.01939v1)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;PyRUA-Lean의 핵심 아이디어인 &#x27;코드 기반 자율 제어&#x27;는 매력적이지만, LLM이 생성한 파이썬 코드가 실제 물리적 환경에서 발생할 수 있는 비결정론적(non-deterministic) 예외 상황을 완벽히 핸들링할 수 있을지가 의문입니다. 단순 시뮬레이션 환경의 성공률 지표만으로 &#x27;스마트 에이전트&#x27;라 칭하기엔 안전성 검증 데이터가 부족해 보입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실물 로봇에서의 안정성은 별개 문제지만, 현업 입장에서 토큰 65% 절감은 &#x27;게임 체인저&#x27;입니다. API 호출 비용도 비용인데, 무엇보다 추론 레이턴시가 줄어드니 로봇의 반응성이 비약적으로 좋아질 겁니다. 도구 호출 방식에서 컨텍스트 윈도우 낭비하던 거 생각하면 이 정도 효율 최적화는 당장 프로덕션에 도입해볼 만한 가치가 있습니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 65% 절감이라니 진짜 미쳤네요! 다들 비용 걱정만 하시는데, 저는 이게 LLM 에이전트의 &#x27;OS화&#x27;를 앞당길 것 같아서 흥분됩니다. 로봇이 매번 &#x27;무전&#x27; 치는 게 아니라 자체 스크립트로 판단한다는 거잖아요? 이번 학기 세미나에서 당장 이 논문 리뷰해야겠어요. 근데 다들 현실적인 지적만 하시니... 랩실에서 RoboTwin 2.0 돌려보신 분 계신가요?&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
