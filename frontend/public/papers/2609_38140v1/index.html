@@ -1,0 +1,69 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>균일성 함정 돌파: SplitMoE를 통한 비디오 확산 모델의 확장 | ArXiv Translator AI</title><meta name="description" content="균일성 함정 돌파: SplitMoE를 통한 비디오 확산 모델의 확장"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_38140v1"><meta property="og:type" content="article"><meta property="og:title" content="균일성 함정 돌파: SplitMoE를 통한 비디오 확산 모델의 확장"><meta property="og:description" content="균일성 함정 돌파: SplitMoE를 통한 비디오 확산 모델의 확장"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_38140v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="균일성 함정 돌파: SplitMoE를 통한 비디오 확산 모델의 확장"><meta name="twitter:description" content="균일성 함정 돌파: SplitMoE를 통한 비디오 확산 모델의 확장"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_38140v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "균일성 함정 돌파: SplitMoE를 통한 비디오 확산 모델의 확장", "description": "균일성 함정 돌파: SplitMoE를 통한 비디오 확산 모델의 확장", "datePublished": "2026-09-29", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_38140v1", "author": [{"@type": "Person", "name": "Yu Xu"}, {"@type": "Person", "name": "Yuxin Zhang"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_38140v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_38140v1"});gtag('event', 'paper_view', {"paper_id": "2609_38140v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>균일성 함정 돌파: SplitMoE를 통한 비디오 확산 모델의 확장</h1><p>균일성 함정 돌파: SplitMoE를 통한 비디오 확산 모델의 확장</p><pre>균일성 함정 돌파: SplitMoE를 통한 비디오 확산 모델의 확장
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Breaking the Uniformity Trap: Scaling Video Diffusion Model via SplitMoE
+&gt; - **저자:** Yu Xu, Yuxin Zhang, Xiao Yang, Haotian Yang, Yizhi Wang, Xinwei Huang, Minxuan Lin, Angtian Wang, Chongyang Ma, Fan Tang
+&gt; - **발행일:** 2026-09-29
+&gt; - **PDF 링크:** [Breaking the Uniformity Trap: Scaling Video Diffusion Model via SplitMoE](https://arxiv.org/pdf/2609.38140v1)
+
+
+✨ 3줄 핵심 요약
+- 기존 비디오 생성 모델의 MoE(Mixture-of-Experts)는 데이터의 비균일성을 무시하고 강제적인 부하 분산을 수행하여 &#x27;균일성 함정&#x27;에 빠집니다.
+- SplitMoE는 전문가 그룹을 &#x27;의미론적(Semantic) 전문가&#x27;와 &#x27;범용(Generic) 전문가&#x27;로 분리하여 영상의 의미 구조와 세부 정보를 효율적으로 처리합니다.
+- 프로토타입 기반 라우팅과 인력(Pull)-척력(Push) 정규화를 통해 모델의 수렴 속도와 영상 생성 품질을 유의미하게 개선했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+대규모 언어 모델에서 가져온 기존의 MoE 기술은 모든 토큰을 똑같이 나누어 처리하려 합니다. 하지만 영상 데이터는 배경과 피사체가 명확히 구분되어 있어, 이런 방식은 오히려 영상의 일관성을 깨뜨리고 비효율을 초래합니다. 연구진은 전문가를 두 역할로 나누어, 영상의 핵심적인 &#x27;의미&#x27;를 담당하는 전문가 그룹과 남은 &#x27;질감/배경&#x27;을 담당하는 그룹을 분리했습니다. 이를 통해 비디오의 복잡한 움직임 속에서도 일관성을 유지하며 더 고품질의 영상을 빠르게 생성할 수 있게 되었습니다.
+
+🎯 배경 및 문제점
+- **균일성 함정(Uniformity Trap):** 영상 데이터는 공간적·시간적으로 중복이 많고 의미가 불균형하게 분포되어 있는데, 기존 MoE는 모든 전문가에게 토큰을 균일하게 배분하도록 강제합니다.
+- **라우팅 파편화(Routing Fragmentation):** 강제적 균일성 때문에 인접한 화소들이 서로 다른 전문가에게 흩어지며, 이는 시각적 왜곡(시간적 떨림, 공간적 줄무늬 현상, 의미 파편화)을 유발합니다.
+- **데이터 불일치:** 언어 모델용으로 설계된 기존 MoE 방식이 비디오의 비정형적이고 불균형한 특성을 제대로 반영하지 못한다는 한계가 있습니다.
+
+💡 핵심 기술 및 아키텍처
+- **이중 역할 아키텍처:** 전문가 풀을 &#x27;의미론적 전문가&#x27;와 &#x27;범용 전문가&#x27;로 이분화하여 역할에 맞는 특화된 처리를 수행합니다.
+- **프로토타입 기반 라우팅(Prototype-Guided Routing):** VAE(Variational Autoencoder)의 특징을 활용하여 각 토큰이 어떤 의미론적 그룹에 속할지 결정합니다.
+- **인력-척력 정규화(Pull-Push Regularization):**
+    - **Pull(인력):** 프로토타입을 중요한 영상 의미 영역으로 끌어당겨 의미 파악 능력을 높입니다.
+    - **Push(척력):** 프로토타입 간의 거리를 두어 중복을 방지하고 전문가 그룹의 다양성을 확보합니다.
+
+📊 실험 결과 분석
+- **성능:** 동일한 활성 파라미터 예산 하에서, SplitMoE는 기존의 부하 분산 중심 MoE 대비 수렴 속도, 라우팅 일관성, 생성 품질 측면에서 우수한 성능을 보였습니다.
+- **동역학적 분석:** 초기 노이즈 제거 단계(10~15단계)에서 의미론적 전문가의 활성도가 높게 나타나, 모델이 &#x27;거친 구조에서 미세한 디테일로&#x27; 나아가는 학습 방식을 체득함을 확인했습니다.
+- **비교 분석:** 표준 MoE가 발생하는 시간적 떨림이나 공간적 파편화 현상이 SplitMoE에서 크게 감소했음을 시각적으로 확인했습니다. (단, 구체적인 벤치마크 점수 수치는 본문에 명시되지 않았습니다.)
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+- **비디오 세계 모델(World Models):** 대규모 비디오 생성 모델 구축에 필요한 효율적이고 구조화된 확장 경로를 제시합니다.
+- **모달리티 인식 확장:** 영상 데이터의 특성을 고려한 희소(Sparse) 모델링 기법으로서, 향후 다양한 생성형 AI 아키텍처 설계에 있어 중요한 참조점이 될 것입니다.
+- **실무적 제언:** 현재는 냉동(Frozen)된 시각적 특징 추출기를 사용한다는 제약이 있으나, 향후 배포 효율성 및 적응형 전문가 분할 연구를 통해 더 고도의 비디오 생성 엔진으로 발전 가능합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Breaking the Uniformity Trap: Scaling Video Diffusion Model via SplitMoE](https://arxiv.org/abs/2609.38140)
+&gt; - [GitHub - yuci-gpt/SplitMoE: Project page for &quot;Breaking the Uniformity ...](https://github.com/yuci-gpt/SplitMoE)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;이 논문에서 제안한 &#x27;인력-척력 정규화&#x27;는 흥미롭지만, 이론적 수렴성에 대한 엄밀한 증명이 부족해 보입니다. 단순히 경험적인 실험 결과로 라우팅 안정성을 논하기엔 비디오 확산 모델의 확률 공간이 너무 복잡하지 않나요? 특히 고해상도 시퀀스에서 이 프로토타입 기반 라우팅이 얼마나 일반화 성능을 유지할지 의문입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님, 이론적 증명도 중요하지만 현업에선 당장 &#x27;시간적 떨림&#x27;을 잡는 게 급선무입니다. 기존 MoE는 부하 분산 강제하다가 영상 다 깨먹어서 골치였는데, 전문가 그룹을 의미론적/범용으로 나눈 건 실무적으로 아주 영리한 접근이에요. 특히 추론 시점에 연산 효율까지 챙길 수 있다면 이건 당장 우리 프로덕션 파이프라인에 태워볼 만합니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;선배님, 이미 저희 랩에서는 구현 코드 뜯어보고 있습니다! 이게 단순히 비디오 모델에만 국한될까요? 멀티모달 LLM 라우팅에도 적용하면 &#x27;균일성 함정&#x27;으로 낭비되던 연산 자원을 획기적으로 아낄 수 있을 것 같아요. 벤치마크 점수 없다고 비판하시지만, 이 정도 시각적 일관성 개선이면 SOTA 갈아치우는 건 시간문제 아닌가요? 빨리 깃허브 스타 박으러 가시죠!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

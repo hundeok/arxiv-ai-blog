@@ -43494,11 +43494,11 @@
     "2609_38140v1": {
       "id": "2609_38140v1",
       "filename": "post_2609_38140v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-09-30T03:32:14.655317+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-30T17:26:32.080109+00:00",
+      "updated_at": "2026-10-04T23:47:18.399901+00:00",
       "paper": {
         "title": "Breaking the Uniformity Trap: Scaling Video Diffusion Model via SplitMoE",
         "summary": "Mixture-of-Experts (MoE), popularized by large language models, is a promising paradigm for scaling visual generative models. However, conventional token-wise MoE routes tokens independently within a homogeneous expert pool and regularizes expert usage toward uniformity, making it poorly matched to video data that is spatiotemporally redundant and semantically long-tailed. We show that existing visual MoEs fall into a uniformity trap: semantically under-organized routing, compounded by uniform expert-usage regularization, scatters coherent patches across disparate experts, causing routing fragmentation and structural distortion. To address this, we propose SplitMoE, a split-role sparse architecture that breaks the shackles of uniformity. To accommodate the inherent semantic imbalance, we explicitly bifurcate the expert pool into semantic experts and generic experts, with semantic experts capturing high-level semantic abstraction and generic experts preserving residual visual information and flexible generative capacity. Leveraging prototype-guided routing and pull-push regularization, SplitMoE enables tokens to cluster naturally by semantic attributes rather than arbitrary balancing constraints. Extensive results show that under an equivalent activated-parameter budget, SplitMoE outperforms traditional load-balanced MoEs in convergence speed, routing coherence, and video generation quality across standard benchmarks. By revealing an emergent coarse-to-fine denoising logic, SplitMoE provides the community with a modality-aware scaling path, serving as a critical reference for building large-scale video world models.",
@@ -43517,7 +43517,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2609.38140v1"
       },
-      "priority_score": 30
+      "priority_score": 30,
+      "korean_title": "균일성 함정 돌파: SplitMoE를 통한 비디오 확산 모델의 확장"
     },
     "2609_38120v1": {
       "id": "2609_38120v1",
@@ -44063,11 +44064,11 @@
     "2609_38157v1": {
       "id": "2609_38157v1",
       "filename": "post_2609_38157v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-09-30T11:45:44.899156+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-09-30T11:45:44.899158+00:00",
+      "updated_at": "2026-10-04T23:47:07.608772+00:00",
       "paper": {
         "title": "EmoRES-TTS: Residual-Enhanced Vector Steering for Emotional Speech Generation",
         "summary": "Emotion-conditioned text-to-speech (TTS) models may fail to express the requested emotion reliably, and improving controllability by additional training is costly in both computation and emotion-labeled speech training data. We therefore study vector steering, a training-free approach that modifies the internal representations of a frozen model. CoCoEmo, a conventional vector steering method for emotion TTS, treats each emotion vector as an indivisible direction controlled by a single global strength, limiting adherence to the requested emotion. In this work, we first discover that an emotion vector can be decomposed into a shared component that moves speech away from neutral expression and a residual component that directs generation toward the requested emotion. Building on this finding, we propose Emotion Residual-Enhanced Steering for TTS (EmoRES), a novel method that controls the two components without retraining the backbone. On IEMOCAP, EmoRES outperforms CoCoEmo across all four objective emotion metrics on the IndexTTS-2 and CosyVoice2 backbones. Rank correlation improves by 26.13 and 12.97 percentage points, corresponding to relative gains of 118.8% and 33.1%, while emotion hit rate improves by 12.95 and 6.92 points, corresponding to relative gains of 20.1% and 9.8%. Human evaluation further shows a relative improvement up to 35.0% in the rate at which listeners correctly identified the dominant requested emotion and up to a 17.3% improvement in fidelity, while listeners prefer EmoRES for naturalness in up to 63.8% of pairwise comparisons. Component ablations further demonstrate that effective control benefits from preserving the shared component while strengthening the residual of the emotion steering vectors.",
@@ -44084,7 +44085,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2609.38157v1"
       },
-      "priority_score": 30
+      "priority_score": 30,
+      "korean_title": "EmoRES-TTS: 감정 음성 생성을 위한 잔차 강화 벡터 조향"
     },
     "2609_36965v1": {
       "id": "2609_36965v1",
@@ -45024,11 +45026,11 @@
     "2609_40111v1": {
       "id": "2609_40111v1",
       "filename": "post_2609_40111v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-10-01T03:37:26.020215+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-02T00:26:32.410173+00:00",
+      "updated_at": "2026-10-04T23:46:40.617482+00:00",
       "paper": {
         "title": "Agent Error Dataset: Scaling 50,000 Error--Diagnosis Pairs for Failure Analysis and Error-Aware Post-Training",
         "summary": "An unsuccessful LLM agent rollout contains more information than its final reward: the observations available to the agent, the actions it chose, and the environment's responses. Reusing this experience for learning requires identifying a decision to revise and testing a concrete alternative. We introduce the Agent Error Dataset (AED), comprising 50,228 error-diagnosis pairs from 9,961 source tasks across 33 environments, 19 harness families, and 23 policy models in text-based agent systems. We retain source traces and execution metadata to support cross-setting failure analysis and re-diagnosis without repeating the original rollout. Our five-stage Agentic Error-to-Training (AET) pipeline collects natural failures, generates diagnoses and proposed corrections, and checks them against recorded evidence. Where replay is supported, we compare corrections with original-action retries from the same checkpoint under matched execution settings. We then construct separate training views for diagnosis and actor recovery. Across 3,062 matched replay pairs, first-proposal corrections raise verifier pass rates from 18.4% to 51.1%, a gain of 32.7 percentage points. Using a separately frozen diagnosis release, full-diagnosis fine-tuning on 1,656 source tasks raises Qwen3-8B's exact-step agreement with internal teacher labels from 47.2% to 63.6%, averaged over three seeds on a 943-case holdout. The strongest prompted reference in this comparison scores 54.7%, and mean agreement improves at each of four increasing training-set sizes. In a single-seed comparison of actor-training recipes, action-only repair training scores 6.67 percentage points higher on WebShop-lite than success-only training.",
@@ -45043,7 +45045,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2609.40111v1"
       },
-      "priority_score": 30
+      "priority_score": 30,
+      "korean_title": "에이전트 오류 데이터셋: 실패 분석 및 오류 인지 사후 학습을 위한 50,000개 오류-진단 쌍 확장"
     },
     "2609_40091v1": {
       "id": "2609_40091v1",
@@ -45414,11 +45417,11 @@
     "2609_38349v1": {
       "id": "2609_38349v1",
       "filename": "post_2609_38349v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-10-01T20:03:14.573197+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-01T20:03:14.573199+00:00",
+      "updated_at": "2026-10-04T23:46:58.239946+00:00",
       "paper": {
         "title": "MILO: Automated Harness Discovery via Orchestrated Multi-Agent Evolution",
         "summary": "Modern agentic systems combine an AI model with a harness that controls execution and environmental interactions. Harness design strongly affects long-horizon performance, yet its combinatorial search space demands substantial human effort that must be repeated as models change. Existing automated methods explore this space narrowly, optimizing only components such as prompts or skills or becoming trapped by fixed, exploitative search strategies. We introduce MILO (Meta-evolutionary Island Orchestration), a framework that co-evolves agent harnesses and the strategy used to discover them. MILO combines: (i) hierarchical lineage memory over island-based trees, using rejected mutations as negative evidence; (ii) per-island mutator agents that rewrite complete harnesses using global search history and parent-specific feedback; and (iii) an orchestrator that adapts search through lineage grafting and speciation, mutator reassignment and curriculum revision. Across Terminal-Bench 2.1, PaperBench, and DeepSWE, MILO-discovered harnesses outperform eight state-of-the-art harnesses and six search methods using frontier (Opus 4.8) and open-weight (gpt-oss-120b) models. With Opus 4.8, MILO improves resolution over its initial harness by $+12.0\\%$, $+28.3\\%$, and $+10.3\\%$, respectively, compared with best prior-search gains of $+4.5\\%$, $+18.3\\%$, and $0\\%$. On Terminal-Bench 2.1, it achieves $86.1 \\pm 2.0\\%$, exceeding the official leaderboard's top entry ($83.8 \\pm 2.3\\%$) while using 26\\% fewer tokens than its initial harness. On EinsteinArena open problems, MILO improves best-known upper bounds for Erdős minimum-overlap ($0.3808586 \\to 0.3808568$) and the first and third autocorrelation inequalities ($1.50274365 \\to 1.50274360$; $1.45081 \\to 1.44889$).",
@@ -45439,7 +45442,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2609.38349v1"
       },
-      "priority_score": 30
+      "priority_score": 30,
+      "korean_title": "밀로: 오케스트레이션된 다중 에이전트 진화를 통한 자동 하니스 발견"
     },
     "2609_39938v1": {
       "id": "2609_39938v1",
@@ -46266,7 +46270,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-04T20:45:59.778193+00:00",
+      "updated_at": "2026-10-04T23:46:28.850346+00:00",
       "paper": {
         "title": "On-Policy or Off-Policy Learning? A Systematic Study of Distillation Dynamics",
         "summary": "On-policy learning has been argued to reduce catastrophic forgetting, produce sparser parameter updates, and improve generalisation. However, existing comparisons between supervised fine-tuning and reinforcement learning vary many factors simultaneously, making the contribution of rollout policy difficult to isolate. We study the effect of rollout policy in a controlled strong-to-weak distillation setting, by independently varying rollout policy, token-level KL direction, and learning rate across the Llama3 and Qwen2.5 model families and reasoning tasks spanning scientific, medical, and arithmetic domains. Our analysis reveals a nuanced picture of distillation dynamics in which rollout policy does not necessarily play a central role. Instead, token-level KL direction more clearly shapes task performance and output coverage, while learning rate governs forgetting and update sparsity. Analysis of KL gradients and experiments along a continuous student-teacher rollout-policy spectrum explain this pattern: forward KL is remarkably robust to rollout policy, with its performance stable and strong despite changes to the rollout policy, whereas reverse KL is substantially more sensitive and favours student-generated rollouts. On-policy data nevertheless improves generalisation to harder variants of the Countdown arithmetic task under both KL directions, although this advantage does not reliably persist after subsequent RLVR. Our broader conclusions remain robust to removing gradient clipping, using sampled KL estimators, and training on tasks requiring longer reasoning chains. Overall, our results challenge the view that on-policy rollouts are inherently preferable and show that their value depends critically on the objective, evaluation setting, and optimisation hyperparameters.",
@@ -46288,7 +46292,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-04T20:45:59.778217+00:00",
+      "updated_at": "2026-10-04T23:46:28.850314+00:00",
       "paper": {
         "title": "When Does Correction Become Repair? Mechanistic Auditing of Internal Interventions in Tool-Using LLMs",
         "summary": "Before invoking external tools, an agentic LLM must select among a K-way action space: executing a call, seeking clarification, answering directly, or declining. While internal activation steering can alter these pre-execution decisions, conventional aggregate metrics obscure where altered states land and what collateral damage they inflict. We present SAKIKO, an auditing framework that formalizes representation repair via directional error discovery, router-conditioned intervention, destination-resolved verification, and prospectively frozen statistical licensing. Across seven LLMs on When2Call and MetaTool, channel-keyed interventions induce direction-specific net gains in five models; across three sealed evaluations, none of 59 budget-matched random directions matches calibrated target gain. Crucially, destination auditing shows that behavioral movement does not equal repair: an intervention achieving +55 net gain corrupts over half of the baseline-correct decisions it touches, and promising point estimates on Qwen3-4B and Gemma-2-9B are formally declined due to finite-sample uncertainty. SAKIKO establishes the necessity of outcome-resolved adjudication before claiming internal repair. Code: https://github.com/ruizheliUOA/mechanistic-tool-use-llm.",
@@ -46309,7 +46313,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-04T20:45:59.778223+00:00",
+      "updated_at": "2026-10-04T23:46:28.850343+00:00",
       "paper": {
         "title": "CorrGRPO: Correlation-Normalized GRPO for Multi-Reward Learning",
         "summary": "Group Relative Policy Optimization (GRPO) is widely used to train reasoning language models, where it computes advantages by centering and normalizing rewards across rollouts of the same prompt. For multiple rewards, GRPO sums the reward components and normalizes the total reward by its within-group standard deviation. The corresponding variance equals the sum of all pairwise reward covariances. For a fixed centered reward, larger aggregate covariance produces smaller advantages, and vice versa, allowing update magnitudes to adapt to reward dependence. However, correlated rewards with large scales can dominate this normalization and suppress signals from smaller-scale rewards. We propose Correlation-Normalized GRPO (CorrGRPO), which normalizes pairwise covariances into Pearson correlation coefficients. CorrGRPO keeps the centered total reward unchanged while balancing the influence of differently scaled rewards on the correlation-based normalization. This allows advantage magnitudes to adapt to reward correlations without the normalization being dominated by large-scale reward components. We compare CorrGRPO with GRPO and other variants on code generation, tool calling, and agent security, using models ranging from 0.5B to 8B parameters. These tasks all involve multiple rewards that can improve together or present tradeoffs. Results show improvements across three domains, including code generation, tool calling, and agent security. Our code is available at https://github.com/HKUST-KnowComp/CorrGRPO.",
@@ -46426,7 +46430,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-02T17:15:40.148718+00:00",
       "last_error": null,
-      "updated_at": "2026-10-04T20:45:59.778229+00:00",
+      "updated_at": "2026-10-04T23:46:28.850338+00:00",
       "paper": {
         "title": "Decoding Looped Transformers Better for (Almost) Free",
         "summary": "Looped Transformers achieve parameter efficiency by repeatedly executing a shared block across recurrent loops. Each loop yields an intermediate representation decodable for the same next token, yet standard decoding discards earlier states. Because earlier loops embody less computation, recurrence inherently supplies aligned weak-and-strong prediction pairs without auxiliary models or external training. We introduce LoopCD, a training-free contrastive decoding framework that guides token selection by contrasting the final prediction with an earlier recurrent pass, operating either in logit space with one extra output pass (LoopCD-Logits) or in hidden-state space with zero output overhead (LoopCD-Hidden). Across four looped Transformer families, LoopCD delivers substantial, consistent gains at full recurrent depth: LoopCD-Logits raises Ouro-2.6B-Thinking's AIME 2024 pass@1 from 61.88% to 73.33%, while LoopCD-Hidden lifts Huginn's HumanEval pass@1 from 22.56% to 31.71%. Crucially, these performance gains enable halving the number of recurrent loops while still matching or exceeding full-depth unguided baselines, reducing forward FLOPs by 22.5% to 48.2%. By transforming intermediate recurrent states into effective guidance signals, LoopCD achieves superior decoding quality while substantially reducing inference compute.",
@@ -46452,7 +46456,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-04T20:45:59.778233+00:00",
+      "updated_at": "2026-10-04T23:46:28.850333+00:00",
       "paper": {
         "title": "Generalization Is Stability, Not Accuracy: Multi-Axis Evaluation of LLMs",
         "summary": "Generalization in large language models (LLMs) is the ability to produce consistent and semantically stable outputs when the same input is expressed in different ways. Existing work typically evaluates generalization through aggregate accuracy on a single prompt format, task, or set of variations, which conflates robustness with overall benchmark performance. In this work, we show generalization evaluation at the level of individual examples, across multiple input variants, and across different aspects of model behavior, focusing on variability rather than reducing performance to a score that can be improved through narrow training or other ways that obfuscate generalization evaluation. Following this view, we introduce the Stability-Aware Generalization Objective (SAGO), a framework that measures how much model behavior changes for the same input under different variations and benchmarks, capturing variability across several dimensions including generation consistency, internal activations, confidence, and response mirroring. We show that many commonly used models exhibit statistically significant and consistent generalization instability: no model generalizes uniformly, behavioral axes capture independent failure modes, and cross-dataset variation can reverse model rankings.",
@@ -46477,7 +46481,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-04T20:45:59.778246+00:00",
+      "updated_at": "2026-10-04T23:46:28.850350+00:00",
       "paper": {
         "title": "RLE-Bench: A Qualifying Exam for Coding Agents as Robot Learning Engineers",
         "summary": "Coding agents are beginning to move beyond purely digital tasks to tackle physical-world challenges, particularly in robotics. Existing robotics benchmarks, however, primarily focus on the performance of individual artifacts, such as policies or controllers, offering limited coverage of coding agents' broader engineering capabilities. Real-world robotics extends beyond control: agents must build, integrate, diagnose, and improve heterogeneous artifacts under resource constraints and reason from multimodal feedback. To evaluate these broader capabilities, we introduce RLE-Bench, a benchmark of robot-learning tasks spanning four representative robotics development workflows: interactive control, policy learning, perception and estimation, and mechanical design. We use diverse task-specific metrics to evaluate the artifacts submitted by the coding agents, from the success rate the agents achieved to the policy agents trained, the harness agent built, and the mechanical structures the agent designed. We aggregate these metrics into an overall RLE Index and report workflow-specific capability profiles, enabling systematic comparison of coding agents' capabilities across multiple capability dimensions. Beyond performance ranks, we also conduct in-depth case studies examining agent behavior on representative tasks, highlighting both current capabilities and limitations, and pointing to the opportunities robotics tasks have to offer for future agent training.",
@@ -46501,7 +46505,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-02T17:15:40.148737+00:00",
       "last_error": null,
-      "updated_at": "2026-10-04T20:45:59.778250+00:00",
+      "updated_at": "2026-10-04T23:46:28.850353+00:00",
       "paper": {
         "title": "OTRetarget: Joint Robot and Object Motion Retargeting via Optimal Transport",
         "summary": "Transferring human motion to humanoid robots requires adapting the demonstrated motion to the robot morphology while preserving interactions with the environment. This is particularly challenging for loco-manipulation tasks, where contacts with the ground and manipulated objects must remain consistent despite differences in body proportions. Yet, skeletal motion alone does not fully describe these interactions, and fixing object trajectories limits the adaptation to a new embodiment. In this paper, we introduce OTR ETARGET, a unified approach to jointly retarget robot and multi-object motion from human demonstrations. Our approach represents surface interactions through signed distances, closest surface points, and relative directions, and uses entropic optimal transport to transfer these quantities across human, robot, and object geometries. We incorporate the resulting interaction targets into a constrained inverse kinematics formulation that balances contact preservation with motion style and jointly optimizes robot and object poses at each frame. This formulation accommodates robot-object and object-object interactions without rescaling the scene or the demonstration. We validate the proposed approach on OMOMO, where it achieves a robot- object interaction Jaccard score of 87% and a depth error of 8.7 mm, compared with 28% and 29.3 mm for OmniRetarget. Finally, we demonstrate transfer to a physical G1 humanoid using whole-body policies trained with reinforcement learning on the retargeted references, across motions including two-handed box pick-and-place onto a table.",
@@ -46527,7 +46531,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-04T20:45:59.778254+00:00",
+      "updated_at": "2026-10-04T23:46:28.850357+00:00",
       "paper": {
         "title": "Fewer Tokens, Better Action: GPT-6 Astra Robot Agents with 14% Higher Success Rate but 65% Fewer Tokens",
         "summary": "Vision language model (VLM) agents can control robots through visual feedback and action primitives, but repeated model invocations and redundant observations incur substantial token overhead. We introduce PyRUA-Lean, an interactive code-execution framework that couples feedback-driven primitive composition with selective observation: the agent composes classical robot primitives and learned vision-language-action (VLA) policies into Python cells that perform conditional checks and local retries, returning only explicitly requested images and state feedback for replanning. Across 700 simulated task instances from LIBERO-PRO, RoboTwin 2.0, and RoboCasa365, we compare PyRUA-Lean with a tool-calling baseline using the same GPT-6 Astra planner and underlying robot primitives. Under equal LLM-call budgets, PyRUA-Lean increases overall success from 63.1% to 71.7%. On instances solved by both agents, it uses 49% fewer LLM calls and 65% fewer input tokens.",
@@ -46558,7 +46562,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-04T20:45:59.778242+00:00",
+      "updated_at": "2026-10-04T23:46:28.850361+00:00",
       "paper": {
         "title": "Keyword Harnesses Fail Open: A Cheap Diagnostic Ladder for Tool-Use Claims in Small Language Models",
         "summary": "Keyword-matching benchmarks can credit small models for tool use they never perform. We document such a false positive in a matched-architecture pair of Spanish security language models and propose a ladder of strict, cheap diagnostics. A 661.6M parameter model (approx. 65% code/technical text; no dedicated SFT) and a 1,109M model (web-heavy multi-phase curriculum; 6B-token tool-SFT) share decoder, tokenizer, and special tokens, scoring almost identically on lenient tool-use metrics (B4: 0.660 vs. 0.650).   Verbatim-reproduction checks on training examples separate them completely: the 600M emits valid tool calls with generalized arguments on 6/6 examples; the 1B does so on 0/6 across checkpoints. A first-token probe localizes the 1B's failure to a missing prior (prob. $10^{-4}$--$10^{-5}$ on <|tool_call|>), which was erased by its web-heavy training phase. A targeted SFT recipe (diverse corpus, 5x higher learning rate, 2,202 steps, ~3.3 GPU-hours) repairs the 1B using three orders of magnitude fewer tokens than the failed phase. On all 269 corpus rows, valid emission rises from 0.100 to 0.959 (600M: 0.926). On 238 unseen prompts, the repaired 1B passes 0.536 vs. the 600M's 0.428 ($p = 0.004$). Embedding-drift checks show the repair did not move the trigger token's tied embedding (97.7% of the bf16 table remains bit-identical), meaning changes live in the surrounding network.   Both models over-trigger, rarely answering negative prompts without a call (0.09 for 600M, 0.17 for repaired 1B). Factorial analyses confirm all repair configurations install the format, though suppression benefits from a diverse corpus remain a hypothesis due to seed sensitivity. This cheap diagnostic ladder costs minutes of CPU time and should gate tool-use claims on small models.",
@@ -46578,7 +46582,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-04T20:45:59.778237+00:00",
+      "updated_at": "2026-10-04T23:46:28.850365+00:00",
       "paper": {
         "title": "PhysVista: Benchmarking Physical Intelligence in VLMs via a Perception-Reasoning-Assessment Loop",
         "summary": "Vision-Language Models (VLMs) have shown strong multimodal reasoning capabilities, yet whether they truly capture the physical consistency underlying real-world dynamics remains unclear. Existing benchmark paradigms often suffer from fragmented evaluation, focusing on isolated cognitive stages while overlooking the inherent synergy between perception, reasoning, and physical judgment. The lack of a holistic perspective limits the ability to diagnose whether VLMs can reliably evaluate the physical authenticity of emerging generative models. To address these issues, we introduce PhysVista, a benchmark designed to evaluate physical intelligence in VLMs through a closed cognitive loop framework inspired by the human seeing-reasoning-assessment process. PhysVista restores this loop by jointly evaluating physical state perception, physical dynamics reasoning, and physical plausibility assessment. It further distinguishes event-level reasoning and scale-level reasoning to enable fine-grained analysis of physical understanding. In addition, PhysVista incorporates both real-world and AI-generated videos, allowing evaluation across diverse domains and emerging generative scenarios. Extensive experiments across a diverse set of VLMs reveal substantial limitations in physical reasoning and plausibility assessment, highlighting a persistent gap between visual recognition and genuine physical understanding, and pointing toward more principled designs for physically grounded multimodal intelligence.",
@@ -46599,7 +46603,7 @@
     }
   },
   "last_run": {
-    "started_at": "2026-10-04T20:45:59.782634+00:00",
+    "started_at": "2026-10-04T23:46:28.854048+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -46610,25 +46614,25 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 21284,
-      "output_tokens": 6011,
+      "prompt_tokens": 20368,
+      "output_tokens": 5685,
       "thought_tokens": 0,
-      "total_tokens": 27295,
-      "estimated_usd": 0.0143375
+      "total_tokens": 26053,
+      "estimated_usd": 0.0136195
     },
-    "finished_at": "2026-10-04T20:46:50.008000+00:00"
+    "finished_at": "2026-10-04T23:47:19.457561+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 3068,
-    "prompt_tokens": 7724333,
-    "output_tokens": 2259379,
+    "requests": 3076,
+    "prompt_tokens": 7744701,
+    "output_tokens": 2265064,
     "thought_tokens": 0,
-    "total_tokens": 9983712,
-    "estimated_usd": 5.32015175
+    "total_tokens": 10009765,
+    "estimated_usd": 5.33377125
   },
   "last_publication_run": {
-    "started_at": "2026-10-04T20:45:59.782634+00:00",
+    "started_at": "2026-10-04T23:46:28.854048+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -46639,17 +46643,17 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 21284,
-      "output_tokens": 6011,
+      "prompt_tokens": 20368,
+      "output_tokens": 5685,
       "thought_tokens": 0,
-      "total_tokens": 27295,
-      "estimated_usd": 0.0143375
+      "total_tokens": 26053,
+      "estimated_usd": 0.0136195
     },
-    "finished_at": "2026-10-04T20:46:50.008000+00:00"
+    "finished_at": "2026-10-04T23:47:19.457561+00:00"
   },
   "daily_usage": {
     "date": "2026-10-04",
-    "estimated_usd": 0.056811,
-    "publications": 16
+    "estimated_usd": 0.0704305,
+    "publications": 20
   }
 }

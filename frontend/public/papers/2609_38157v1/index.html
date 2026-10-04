@@ -1,0 +1,66 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>EmoRES-TTS: 감정 음성 생성을 위한 잔차 강화 벡터 조향 | ArXiv Translator AI</title><meta name="description" content="EmoRES-TTS: 감정 음성 생성을 위한 잔차 강화 벡터 조향"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_38157v1"><meta property="og:type" content="article"><meta property="og:title" content="EmoRES-TTS: 감정 음성 생성을 위한 잔차 강화 벡터 조향"><meta property="og:description" content="EmoRES-TTS: 감정 음성 생성을 위한 잔차 강화 벡터 조향"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_38157v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="EmoRES-TTS: 감정 음성 생성을 위한 잔차 강화 벡터 조향"><meta name="twitter:description" content="EmoRES-TTS: 감정 음성 생성을 위한 잔차 강화 벡터 조향"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_38157v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "EmoRES-TTS: 감정 음성 생성을 위한 잔차 강화 벡터 조향", "description": "EmoRES-TTS: 감정 음성 생성을 위한 잔차 강화 벡터 조향", "datePublished": "2026-09-29", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_38157v1", "author": [{"@type": "Person", "name": "Kuan-Po Huang"}, {"@type": "Person", "name": "Haohe Liu"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_38157v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_38157v1"});gtag('event', 'paper_view', {"paper_id": "2609_38157v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>EmoRES-TTS: 감정 음성 생성을 위한 잔차 강화 벡터 조향</h1><p>EmoRES-TTS: 감정 음성 생성을 위한 잔차 강화 벡터 조향</p><pre>EmoRES-TTS: 감정 음성 생성을 위한 잔차 강화 벡터 조향
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** EmoRES-TTS: Residual-Enhanced Vector Steering for Emotional Speech Generation
+&gt; - **저자:** Kuan-Po Huang, Haohe Liu, Puyuan Peng, Haibin Wu, Zhaoheng Ni, Hung-yi Lee, Jinwon Lee, Neha Chachra
+&gt; - **발행일:** 2026-09-29
+&gt; - **PDF 링크:** [EmoRES-TTS: Residual-Enhanced Vector Steering for Emotional Speech Generation](https://arxiv.org/pdf/2609.38157v1)
+
+
+✨ 3줄 핵심 요약
+* 기존의 감정 TTS 모델은 특정 감정을 완벽히 표현하는 데 한계가 있으며, 이를 개선하기 위한 재학습은 비용이 많이 듭니다.
+* 감정 벡터를 &#x27;중립에서 벗어나게 하는 공유 성분&#x27;과 &#x27;특정 감정으로 유도하는 잔차 성분&#x27;으로 분해하는 방식을 제안합니다.
+* 모델을 재학습할 필요 없이 두 성분을 독립적으로 제어하는 EmoRES 기술로 기존 방식 대비 우수한 감정 표현력을 확인했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+텍스트를 음성으로 바꿀 때, 기계적인 느낌이 나거나 요청한 감정이 충분히 전달되지 않는 경우가 많습니다. 최근에는 이를 해결하기 위해 모델을 수정하지 않고 내부 신호를 살짝 바꾸는 &#x27;벡터 조향(Vector Steering)&#x27; 방식이 쓰입니다. 기존 방식(CoCoEmo)은 감정 벡터를 하나로 묶어 처리해 정교한 제어가 어려웠습니다. EmoRES는 이 벡터를 &#x27;공통적인 감정 변화&#x27;와 &#x27;개별 감정의 특징&#x27;으로 나누어, 개별적인 특징(잔차)을 더 강조함으로써 훨씬 더 풍부하고 명확한 감정 표현이 가능하도록 만들었습니다.
+
+🎯 배경 및 문제점
+기존의 감정 기반 TTS는 내장된 감정 조절 기능을 사용하지만, 요청한 감정이 음성에 충분히 반영되지 않는 문제가 있었습니다. 이를 개선하기 위해 기존 &#x27;벡터 조향&#x27; 방식인 CoCoEmo가 제안되었으나, 이는 감정 벡터를 분리할 수 없는 하나의 방향으로만 다루어 감정 제어의 정확도가 제한적이었습니다. 또한, 모델을 추가로 학습시키는 방법은 연산 자원과 감정 라벨링 데이터 확보 측면에서 비용이 많이 듭니다.
+
+💡 핵심 기술 및 아키텍처
+EmoRES는 모델의 파라미터를 그대로 유지(Frozen)하면서 감정 벡터를 두 가지 성분으로 분해합니다.
+* **공유 성분 (Shared component):** 음성을 중립 상태에서 벗어나게 하여 감정 표현의 기틀을 마련합니다.
+* **잔차 성분 (Residual component):** 특정 감정으로 음성을 강하게 유도하는 역할을 합니다.
+EmoRES는 이 두 성분을 독립적으로 조절할 수 있게 설계되었으며, 특히 잔차 성분을 강화하여 감정의 명확성을 높입니다. 별도의 재학습 없이 추론 과정에서 이 벡터들을 활성화 함수 출력 단계에 적용합니다.
+
+📊 실험 결과 분석
+IEMOCAP 데이터셋을 사용하여 실험한 결과, IndexTTS-2와 CosyVoice2 모델 모두에서 기존 CoCoEmo 방식을 능가했습니다.
+* **성능 지표:** 랭크 상관관계는 기존 대비 상대적으로 33.1%~118.8%, 감정 적중률(Hit rate)은 9.8%~20.1% 개선되었습니다.
+* **사람 평가:** 사용자가 의도한 감정을 정확히 인지하는 비율이 최대 35.0% 향상되었고, 자연스러움 측면에서도 최대 63.8%의 선호도를 기록했습니다.
+* **시각화:** t-SNE 분석 결과, EmoRES를 적용했을 때 감정별 군집이 더 조밀하고 뚜렷하게 분리되는 것을 확인했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+EmoRES는 대화형 AI 에이전트, 스토리텔링 서비스, 접근성 보조 기술, 영화 더빙 등 고도의 감정 전달이 필요한 분야에 즉각적으로 활용될 수 있습니다. 특히 추가적인 학습 데이터 구축이나 모델 재학습 없이도 기존 TTS 모델의 성능을 향상할 수 있어 실무적인 효율성이 높습니다. 향후 연구에서는 문장 내에서 변화하는 감정이나 더 다양한 언어 및 아키텍처에 대한 범용성을 확장할 계획입니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2609.38157 EmoRES-TTS: Residual-Enhanced Vector Steering ...](https://arxiv.org/abs/2609.38157)
+&gt; - [EmoRES-TTS: Residual-Enhanced Vector Steering for Emotional ...](https://arxiv.org/pdf/2609.38157)
+&gt; - [GitHub - facebookresearch/EmoRES-TTS: Residual emotion ...](https://github.com/facebookresearch/EmoRES-TTS)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;벡터 조향(Vector Steering)을 통해 모델을 동결(Frozen)시킨 채로 감정 표현을 정교화한다는 접근은 흥미롭군요. 하지만 &#x27;공유 성분&#x27;과 &#x27;잔차 성분&#x27;을 분리하는 과정에서 발생할 수 있는 오버피팅이나, 특정 감정의 강도를 과도하게 올렸을 때 나타나는 음질 열화(Artifacts)에 대한 분석이 논문에 충분한지 의문입니다. 단순 수치적 개선보다 실사용 환경에서의 Robustness가 검증되어야 의미가 있을 것 같군요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에선 바로 배포하기엔 좀 조심스럽긴 하죠. 근데 재학습 비용 0원에 기존 모델 위에서 살짝 얹기만 하면 되는 &#x27;Plug-and-Play&#x27; 방식이라니, PM들이 좋아할 요소는 확실합니다. 특히 CosyVoice2 같은 대규모 모델 파인튜닝 없이 성능 뽑아내는 거면, 비용 절감 면에서 이건 현업에서 바로 MVP 테스트 돌려볼 만한 가치가 있다고 봅니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;아니 교수님, 이건 그냥 찢었습니다! 33% 개선이면 거의 공짜로 모델 업그레이드한 거잖아요? 요즘 LLM 기반 TTS가 대세인데, 이렇게 가볍게 붙이는 기법들이 나중에 모델 사이즈 키우는 것보다 훨씬 효율적일 것 같아요. 저 바로 깃헙 클론해서 제 프로젝트에 붙여보겠습니다. &#x27;감정 분해&#x27;라는 아이디어 자체가 너무 세련되지 않았나요?&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
