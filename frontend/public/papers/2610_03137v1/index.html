@@ -1,0 +1,67 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>JEPA 세계 모델이 프레임 내 변화가 적을 때에도 계획 능력을 유지하도록 개선하는 방법 | ArXiv Translator AI</title><meta name="description" content="JEPA 세계 모델이 프레임 내 변화가 적을 때에도 계획 능력을 유지하도록 개선하는 방법"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2610_03137v1"><meta property="og:type" content="article"><meta property="og:title" content="JEPA 세계 모델이 프레임 내 변화가 적을 때에도 계획 능력을 유지하도록 개선하는 방법"><meta property="og:description" content="JEPA 세계 모델이 프레임 내 변화가 적을 때에도 계획 능력을 유지하도록 개선하는 방법"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2610_03137v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="JEPA 세계 모델이 프레임 내 변화가 적을 때에도 계획 능력을 유지하도록 개선하는 방법"><meta name="twitter:description" content="JEPA 세계 모델이 프레임 내 변화가 적을 때에도 계획 능력을 유지하도록 개선하는 방법"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2610_03137v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "JEPA 세계 모델이 프레임 내 변화가 적을 때에도 계획 능력을 유지하도록 개선하는 방법", "description": "JEPA 세계 모델이 프레임 내 변화가 적을 때에도 계획 능력을 유지하도록 개선하는 방법", "datePublished": "2026-10-02", "url": "https://arxiv-ai-blog.vercel.app/papers/2610_03137v1", "author": [{"@type": "Person", "name": "Florian Strohm"}, {"@type": "Person", "name": "Patrick Wagner"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2610_03137v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2610_03137v1"});gtag('event', 'paper_view', {"paper_id": "2610_03137v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>JEPA 세계 모델이 프레임 내 변화가 적을 때에도 계획 능력을 유지하도록 개선하는 방법</h1><p>JEPA 세계 모델이 프레임 내 변화가 적을 때에도 계획 능력을 유지하도록 개선하는 방법</p><pre>JEPA 세계 모델이 프레임 내 변화가 적을 때에도 계획 능력을 유지하도록 개선하는 방법
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Keeping JEPA World Models Plannable When Little of the Frame Moves
+&gt; - **저자:** Florian Strohm, Patrick Wagner, Jannik Schwab, Marco Huber
+&gt; - **발행일:** 2026-10-02
+&gt; - **PDF 링크:** [Keeping JEPA World Models Plannable When Little of the Frame Moves](https://arxiv.org/pdf/2610.03137v1)
+
+
+✨ 3줄 핵심 요약
+- 기존 JEPA 세계 모델은 화면 속 변화가 적은 환경(SLIM)에서 행동에 무감각한 잠재 공간을 형성하여 계획 수립에 실패함.
+- 역동학(Inverse-dynamics) 보조 손실 함수를 도입하여 인코더가 행동 정보를 학습하도록 강제함으로써 모델의 계획 성능을 비약적으로 향상함.
+- 개선된 모델은 언어 명령을 통해 목표를 이해하고, 단계별 지시를 따라 복잡한 밀기 작업을 수행할 수 있음.
+
+📖 쉽게 풀어쓴 1분 핵심
+기존의 인공지능 세계 모델들은 화면에서 아주 조금만 움직여도 그 변화를 포착해 미래를 예측하도록 설계되어 있습니다. 하지만 여러 작은 물체를 다루는 복잡한 환경에서는 로봇이 물체를 건드리지 않는 경우가 많아, 인공지능이 &quot;움직임과 행동의 관계&quot;를 제대로 배우지 못하고 계획을 세우지 못하는 문제가 발생합니다. 연구진은 로봇의 행동이 상태 변화에 어떤 영향을 주는지 인공지능이 강제로 학습하게 만드는 &#x27;역동학 보조 손실&#x27; 기법을 추가했습니다. 이 방법을 통해 모델은 행동에 민감해졌고, 이제는 복잡한 언어 명령을 이해하고 로봇을 움직여 물체를 옮기는 정교한 작업이 가능해졌습니다.
+
+🎯 배경 및 문제점
+- **문제 인식**: JEPA(Joint-Embedding Predictive Architecture) 기반 세계 모델은 이미지 수준이 아닌 잠재 공간에서 미래를 예측하여 효율적이나, 행동에 따른 변화가 적은 환경에서는 인코더가 행동과 관련된 정보를 무시하는 경향이 있음.
+- **SLIM 벤치마크**: 연구진은 다수의 작은 물체와 언어 명령이 결합된 SLIM 환경을 구축함. 실험 결과, 기존 모델은 1,200회의 시도 중 단 3회 성공(0.25%)에 그침.
+- **원인 분석**: 인코더 잠재 공간에서 로봇의 위치나 물체의 위치를 전혀 식별할 수 없는 &#x27;행동 무감각&#x27; 상태가 관찰됨.
+
+💡 핵심 기술 및 아키텍처
+- **역동학 보조 손실 (Inverse-Dynamics Auxiliary Loss)**: 인코더와 예측된 잠재 상태에 역동학 헤드를 추가하여, 모델이 현재 상태에서 다음 상태로 가기 위해 어떤 행동이 필요했는지를 역으로 학습함.
+- **LeWM+I**: 위 기술이 적용된 모델을 지칭함. 테스트 시에는 추가한 헤드를 제거하므로 연산 비용이 거의 추가되지 않음.
+- **언어 명령 모듈**: 개선된 잠재 공간 위에 작은 언어 처리 헤드를 올려, 별도의 세계 모델 재학습 없이도 언어 명령을 바탕으로 계획을 수립함.
+
+📊 실험 결과 분석
+- **성공률**: SLIM 벤치마크의 어려운 단계에서 기존 모델은 성공률 0%를 기록했으나, LeWM+I 모델은 16% 성공률을 달성함.
+- **행동 민감도**: 제안된 모델은 기존 모델 대비 행동 민감도가 1,500배 이상 개선되었으며, 로봇과 물체 위치를 잠재 공간에서 복구할 수 있게 됨.
+- **일반화**: 언어 명령이 주어질 때 시각적 목표 제시자와 대등한 수준의 내비게이션 성능을 보임. 단계별 언어 명령을 조합할 경우, 성공률이 4%에서 25%로 상승함.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+- **자연어 인터페이스 강화**: 복잡한 좌표나 이미지 기반 목표 대신 일상적인 언어 명령으로 로봇 제어가 가능해짐으로써 범용적인 로봇 운영 환경을 제공함.
+- **데이터 효율성**: 세계 모델이 적은 변화를 가진 환경에서도 행동의 인과관계를 학습하게 됨으로써, 실제 물리 환경에서 발생하는 데이터 부족 문제를 해결하는 데 기여함.
+- **실무 적용**: 로봇 팔이 물체를 옮기는 물류 자동화나 좁은 공간 내의 정밀 작업 등 행동의 변화가 미세한 작업 환경에서 세계 모델 기반 제어 알고리즘의 신뢰성을 확보함.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Keeping JEPA World Models Plannable When Little of the Frame Moves](https://arxiv.org/abs/2610.03137)
+&gt; - [Keeping JEPA World Models Plannable When Little of the Frame Moves ...](https://papers.cool/arxiv/2610.03137)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문의 동기 자체는 타당해 보이나, 역동학 보조 손실(Inverse-dynamics loss)이 단순히 잠재 공간의 행동 민감도를 높이는 데 그치지 않고, 복잡한 물리 법칙의 인과관계를 얼마나 일반화할 수 있을지는 의문입니다. 16%의 성공률이 과연 산업계에서 유의미한 수치인지, 아니면 특정 환경에만 과적합된 결과인지 엄격한 검증이 필요하겠군요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님, 현업에서는 0.25%에서 16%까지 개선했다는 것 자체가 &#x27;게임 체인저&#x27;입니다. 특히 추론 시점에 보조 헤드를 제거해 연산 비용을 안 늘린 건 정말 영리하네요. 모델 배포할 때 성능은 올리면서 레이턴시는 그대로 유지해야 하는 우리 입장에선 당장 프로덕션에 올려보고 싶은 수준입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 다들 진지하시네! 제 생각엔 이게 그냥 &#x27;행동 민감도&#x27; 문제가 아니라, JEPA 구조의 고질적인 정적 정보 소실을 잡았다는 게 핵심인 듯? 이제 이걸로 LLM이랑 엮어서 VLA(Vision-Language-Action) 모델 만들면, 다음 SOTA는 무조건 이거네요. 내일 아침에 바로 레포지토리 클론해서 파인튜닝 돌려볼 사람 구합니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

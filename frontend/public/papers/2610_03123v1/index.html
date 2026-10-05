@@ -1,0 +1,65 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>포사이트: 재학습 없이 스트리밍 VLM에서 미래 인식을 계획하다 | ArXiv Translator AI</title><meta name="description" content="포사이트: 재학습 없이 스트리밍 VLM에서 미래 인식을 계획하다"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2610_03123v1"><meta property="og:type" content="article"><meta property="og:title" content="포사이트: 재학습 없이 스트리밍 VLM에서 미래 인식을 계획하다"><meta property="og:description" content="포사이트: 재학습 없이 스트리밍 VLM에서 미래 인식을 계획하다"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2610_03123v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="포사이트: 재학습 없이 스트리밍 VLM에서 미래 인식을 계획하다"><meta name="twitter:description" content="포사이트: 재학습 없이 스트리밍 VLM에서 미래 인식을 계획하다"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2610_03123v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "포사이트: 재학습 없이 스트리밍 VLM에서 미래 인식을 계획하다", "description": "포사이트: 재학습 없이 스트리밍 VLM에서 미래 인식을 계획하다", "datePublished": "2026-10-02", "url": "https://arxiv-ai-blog.vercel.app/papers/2610_03123v1", "author": [{"@type": "Person", "name": "Ashok Prasad Neupane"}, {"@type": "Person", "name": "Dipan Bartaula"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2610_03123v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2610_03123v1"});gtag('event', 'paper_view', {"paper_id": "2610_03123v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>포사이트: 재학습 없이 스트리밍 VLM에서 미래 인식을 계획하다</h1><p>포사이트: 재학습 없이 스트리밍 VLM에서 미래 인식을 계획하다</p><pre>포사이트: 재학습 없이 스트리밍 VLM에서 미래 인식을 계획하다
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Foresight: planning future perception in streaming VLMs without retraining
+&gt; - **저자:** Ashok Prasad Neupane, Dipan Bartaula, Ankit Belbase, Saugat Adhikari, Samip Ghimire, Saroj Poudel, Binod Bhattarai, Danda Pani Paudel
+&gt; - **발행일:** 2026-10-02
+&gt; - **PDF 링크:** [Foresight: planning future perception in streaming VLMs without retraining](https://arxiv.org/pdf/2610.03123v1)
+
+
+✨ 3줄 핵심 요약
+* **재학습 불필요:** 별도의 추가 학습 없이 기존 스트리밍 VLM의 능력을 활용해 미래 상황을 예측하고 계산 자원을 동적으로 최적화합니다.
+* **이중 스트림 아키텍처:** 두 개의 LLM이 협력하여, 하나는 현재 입력을 처리하고 다른 하나는 앞서 나가 미래의 맥락을 계획하고 응답을 생성합니다.
+* **성능 및 효율성:** 실시간 추론보다 우수한 성능을 보이면서도, 오버헤드가 적은 효율적인 재구성 프로토콜을 통해 실시간 스트리밍 환경에 최적화되었습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+기존의 비전-언어 모델(VLM)들은 들어오는 영상을 순서대로 처리하는 &#x27;반응형&#x27; 방식에 머물러 있었습니다. 이는 갑작스러운 상황 변화에 기민하게 대응하거나 자원을 효율적으로 쓰기 어렵다는 한계가 있습니다. &#x27;포사이트(Foresight)&#x27;는 마치 운전자가 먼 앞을 내다보고 운전하듯, 모델이 들어오는 영상 스트림을 분석하면서 동시에 미래의 상황을 예측하여 어떤 정보에 집중할지 미리 계획을 세웁니다. 이 모든 과정은 모델을 다시 학습시킬 필요 없이, 이중으로 구성된 모델 구조와 가벼운 업데이트 기술을 통해 수행됩니다.
+
+🎯 배경 및 문제점
+대부분의 VLM은 오프라인에서 고정된 입력과 계산 경로를 따라 결과를 내놓습니다. 그러나 실시간 스트리밍 환경에서는 새로운 정보를 지속적으로 처리하면서, 언제 충분한 정보를 얻었는지, 다음에 무엇을 관찰해야 할지, 상황에 따라 얼마만큼의 컴퓨팅 자원을 할당할지 결정해야 합니다. 기존 스트리밍 모델들은 이러한 요구사항을 일부만 충족하거나, 추가적인 학습이 필요하며, 실시간성과 비동기적 처리를 동시에 확보하는 데 어려움을 겪어왔습니다.
+
+💡 핵심 기술 및 아키텍처
+* **이중 스트림 구조 (Dual-Stream):** 가중치와 인코더, KV 캐시를 공유하는 두 개의 시암(Siamese) LLM으로 구성됩니다. 첫 번째 LLM은 현재 입력을 처리하고, 두 번째 LLM은 미래 상황을 미리 예측하고 계획을 세웁니다.
+* **예측 기반 계산:** 미래의 어떤 시점에 추론할지, 무엇을 확인할지, 얼마나 밀도 있게 샘플링할지를 계획하여 필요한 순간에만 집중적으로 컴퓨팅 자원을 사용합니다.
+* **효율적인 재구성:** 스키마 가이드 디코딩과 경량화된 &#x27;diff 기반 업데이트&#x27;를 사용하여, 스트리밍 추론을 중단하지 않고도 동적으로 시스템을 재구성함으로써 오버헤드를 최소화합니다.
+
+📊 실험 결과 분석
+* **OmniPro 벤치마크:** Qwen3-VL-8B 백본을 기반으로, 기존의 가장 뛰어난 학습 기반 모델보다 평균 Joint F1 점수가 9.5% 높았습니다.
+* **성능 향상:** StreamingBench에서 6.7점, OVO-Bench에서 15.4점의 성능 향상을 보였으며, 비디오 스트림 후반부에 증거가 나타나는 상황에서는 최대 18.7점의 가장 큰 성능 개선을 기록했습니다.
+* **효율성:** 실시간 스트리밍 환경에서 효율적인 계산이 가능하도록 설계되었으며, 구체적인 계산 비용 수치는 논문 발췌문에 제시되지 않았으나 기존 방식 대비 매우 낮은 오버헤드를 달성했다고 보고합니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **실시간 AI 에이전트:** 영상 스트리밍을 실시간으로 분석하는 보안 카메라, 로봇 비전, 자율 주행 등에서 상황 판단의 선제적 대응 능력을 획기적으로 높일 수 있습니다.
+* **자원 최적화:** 특정 상황에서만 고밀도 추론을 수행하므로, 제한된 하드웨어 환경에서도 효율적인 비디오 언어 모델 운용이 가능해집니다.
+* **범용성:** 재학습이 필요 없는 구조이므로, 다양한 오픈 소스 VLM 모델에 즉각적으로 적용하여 최신 모델의 능력을 스트리밍 환경으로 확장할 수 있습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Foresight: planning future perception in streaming VLMs without retraining](https://arxiv.deeppaper.ai/papers/2610.03123v1)
+&gt; - [Artificial Intelligence - arXiv.org](https://arxiv.org/list/cs.AI/recent?skip=150)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;이중 스트림 구조를 통한 미래 인식 계획이라... &#x27;재학습 없이&#x27;라는 점은 흥미로우나, 시암 구조에서 미래 맥락을 추론할 때 발생하는 KV 캐시의 복잡도와 동기화 오버헤드를 어떻게 제어했는지 의문이 드는군요. 특히 비동기적 추론에서 발생하는 드리프트 현상을 단순히 경량화된 diff 업데이트로 해결할 수 있을지 실험 파라미터를 좀 더 꼼꼼히 뜯어봐야겠습니다. 방법론이 지나치게 휴리스틱에 의존하는 경향이 보이네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에선 바로 배포하기엔 좀 조심스럽긴 합니다. 하지만 기존 SOTA 모델들 파인튜닝 비용 생각하면, 이 정도의 성능 향상(OVO-Bench 15.4점)을 추가 학습 없이 파이프라인 단에서 뽑아낸다는 건 가성비 측면에서 엄청난 메리트죠. 특히 자원 할당을 다이나믹하게 조절할 수 있다는 게 핵심인데, GPU 클라우드 비용 절감 측면에서 우리 팀 프로덕션에 당장 PoC 해볼 가치가 있겠는데요?&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;선배님들, 핵심은 &#x27;재학습 제로&#x27;라는 범용성 아닐까요? 당장 Qwen3-VL 8B 같은 가벼운 백본에 바로 얹어서 로봇 제어 시스템에 올려보면 반응 속도 체감이 확 달라질 것 같은데요. 요즘처럼 모델 사이즈 키우기 경쟁이 심한데, 이런 구조적 최적화 논문이 실질적인 &#x27;스트리밍 AI&#x27;의 판도를 바꿀 것 같습니다. 논문 링크 따왔으니 다들 오늘 밤은 이거 구현해 보면서 밤새시죠!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

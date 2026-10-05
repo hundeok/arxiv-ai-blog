@@ -47062,11 +47062,11 @@
     "2610_03137v1": {
       "id": "2610_03137v1",
       "filename": "post_2610_03137v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-10-05T03:33:45.445823+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-05T03:33:45.445825+00:00",
+      "updated_at": "2026-10-05T21:46:53.665356+00:00",
       "paper": {
         "title": "Keeping JEPA World Models Plannable When Little of the Frame Moves",
         "summary": "Specifying a goal in language rather than as a goal frame is a natural interface for planning with a latent world model, but testing it needs scenes in which language must discriminate between several objects. We build SLIM, a pushing benchmark with several small objects and paired visual and language goals on identical scenes. On SLIM a LeWM world model that solves PushT succeeds on under 1% of trials, although a scripted controller with simulator state solves every tier. Probes locate the failure in the encoder: its latent is nearly action-insensitive, neither pusher nor object positions can be decoded from it, and rollouts are no better than copying the current latent forward. One inverse-dynamics auxiliary loss, applied to encoder latents and to predicted latents through a shared head discarded at test time, restores every probe and raises success from 0.003 to 0.35 (0.16 on the hard pushing tier, where a goal-agnostic policy scores zero), and improves PushT at twice the trained horizon. Controls attribute the repair to the gradient into the encoder, and a response sweep shows that the vanilla model plans once enough of the frame responds to actions. A cheap action-sensitivity probe, computable without environment access, acts as an empirical necessary condition: all configurations below its threshold failed to plan. On the repaired latent, a small language-goal head plans from sentences without retraining the world model: it reaches 0.84 on navigation (visual-goal oracle 1.00), follows the named zone when it is swapped with a decoy, and degrades gracefully to unseen nouns. A single goal sentence rarely completes a push, but given the push as a sequence of stage sentences the head raises success on the medium and hard pushing tiers from 0.04 to 0.25, on par with the goal-frame oracle, also when the switch between stages is read from the latent alone.",
@@ -47079,7 +47079,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2610.03137v1"
       },
-      "priority_score": 40
+      "priority_score": 40,
+      "korean_title": "JEPA 세계 모델이 프레임 내 변화가 적을 때에도 계획 능력을 유지하도록 개선하는 방법"
     },
     "2610_03128v1": {
       "id": "2610_03128v1",
@@ -47133,11 +47134,11 @@
     "2610_03123v1": {
       "id": "2610_03123v1",
       "filename": "post_2610_03123v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-10-05T03:33:45.445843+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-05T03:33:45.445845+00:00",
+      "updated_at": "2026-10-05T21:47:04.750801+00:00",
       "paper": {
         "title": "Foresight: planning future perception in streaming VLMs without retraining",
         "summary": "Existing streaming vision-language models (VLMs) continuously perceive and reason over visual streams, but their computational pathways remain fixed throughout inference. Consequently, they cannot adapt computation to evolving scene dynamics, where different future events demand different levels and forms of perception. We show that streaming VLMs inherently possess the ability to anticipate the immediate future, and leverage this capability to dynamically configure future computation in a training-free manner. Realizing such anticipatory computation, however, is very challenging: future anticipation must be sufficiently reliable to guide computation, planning must run concurrently with streaming inference, and online reconfiguration must incur negligible overhead. To address these challenges, we introduce FORESIGHT, a dual-stream architecture comprising two Siamese LLMs with shared weights, input encoders, and KV cache. The first LLM continuously processes incoming tokens, while the second runs ahead of the stream to anticipate future context, plan future computation, and generate task responses without interrupting streaming inference. Each plan decides when to reason next, what to check then, and how densely to sample, keeping transient evidence separate from persistent control. The resulting computation plan is executed online through an efficient reconfiguration protocol with schemaguided decoding and lightweight diff-based updates, enabling dynamic adaptation with low overhead. With a frozen Qwen3-VL-8B backbone, FORESIGHT achieves 23.0 mean joint F1 on OmniPro Online evaluation beating strongest trained baseline by 9.5%, while improving the backbone by 6.7 on StreamingBench and 15.4 on OVO-Bench, with the largest gain of 18.7 when evidence arrives later in the video stream. Our source code will be made publicly available.",
@@ -47154,7 +47155,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2610.03123v1"
       },
-      "priority_score": 40
+      "priority_score": 40,
+      "korean_title": "포사이트: 재학습 없이 스트리밍 VLM에서 미래 인식을 계획하다"
     },
     "2610_03119v1": {
       "id": "2610_03119v1",
@@ -47451,11 +47453,11 @@
     "2610_03367v1": {
       "id": "2610_03367v1",
       "filename": "post_2610_03367v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-10-05T13:19:32.012387+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-05T13:19:32.012388+00:00",
+      "updated_at": "2026-10-05T21:46:42.883050+00:00",
       "paper": {
         "title": "Multilingual GSM-Symbolic: What determines capability transfer across languages?",
         "summary": "We understand little about how capabilities acquired in one language carry over to another, or what governs this transfer: evaluations rely on incomparable, saturation-prone datasets and rarely examine its determinants jointly. Identifying what predicts transfer would let us avoid exhaustive evaluation across all language pairs and let developers target the factors that limit performance in low-resource languages. To evaluate cross-lingual capability transfer, we introduce Multilingual GSM-Symbolic, an extensible multilingual mathematical dataset covering 30,000 item-matched question-answer pairs and spanning 15 languages. It utilises symbolic templates to prevent overfitting and ensure generalisation by allowing generation of millions of high-quality variations from a single sample. Using Multilingual GSM-Symbolic, we quantify the largest determinants of capability as model size ($β= 1.77$), language resource level ($β= 0.77$), reasoning ($β= 0.67$) and typological distance ($β= -0.25$). This joint estimation allows these determinants to be expressed in terms of one another: a 32B model evaluated in Marathi performs like a 10B model in English. Our findings have important implications for model developers, showing that model size and reasoning narrow the performance gap between low- and high-resource languages ($β= -0.27$ and $β= -0.20$, respectively), while similar levers have little or no effect on typologically distant languages.   Overall, our analysis framework explains 92% of between-language variation, but only 23% of the model-by-language variation, and predicts a model's performance on an unseen language within 6.0pp (r=.96). Incorporating measurements from just 10 templates in the target language reduces this to 4.19pp, enabling reasonable estimates of performance with little or no downstream dataset.",
@@ -47489,7 +47491,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2610.03367v1"
       },
-      "priority_score": 40
+      "priority_score": 40,
+      "korean_title": "다국어 GSM-Symbolic: 언어 간 능력 전이는 무엇으로 결정되는가?"
     },
     "2609_34715v1": {
       "id": "2609_34715v1",
@@ -47544,7 +47547,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-05T13:19:32.012402+00:00",
       "last_error": null,
-      "updated_at": "2026-10-05T13:19:32.012404+00:00",
+      "updated_at": "2026-10-05T21:46:16.073237+00:00",
       "paper": {
         "title": "Can Computation from Earlier Problems Help LLMs Solve New Ones?",
         "summary": "Large language models often solve independent problems in the same conversation. Can computation from earlier problems help them solve new ones? To answer this question, we first conduct preliminary experiments showing that retained history can raise or lower later-turn accuracy, even within the same domain. To understand these effects, we use controlled replay to isolate internal state changes specific to each problem-history pairing. Across different histories, these changes preserve similar relationships among current problems. To improve reasoning under retained history, we introduce STAIR (Stale-Token Attention for Inter-query Reuse). STAIR captures keys and values from earlier response generation in a fixed bank. It learns to redirect current queries when they read this bank during prompt processing. The base model remains frozen; only 12,288 parameters are trained. Across three Qwen models and four benchmarks, STAIR improves average later-turn accuracy by up to 11.67 percentage points over the unmodified model with history.",
@@ -47597,10 +47600,214 @@
       },
       "priority_score": 53,
       "korean_title": "HyperBrowseComp: 웹 브라우징 에이전트를 위한 다국어 및 멀티모달 스트레스 테스트"
+    },
+    "2609_32759v1": {
+      "id": "2609_32759v1",
+      "filename": "post_2609_32759v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-05T21:46:16.073145+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-05T21:46:16.073158+00:00",
+      "paper": {
+        "title": "The Extender: A Log-Structured Transformer",
+        "summary": "We introduce the Extender, a log-structured variant of the standard Transformer architecture. In a standard Transformer, each layer communicates with subsequent layers exclusively via the residual $\\mathbf{h}$, a superposition channel. The Extender adds a concatenation channel $\\mathbf{x}$: each layer $\\ell$ emits both a residual update $δ_\\ell$ which is added to $\\mathbf{h}$, and a much smaller extension $ε_\\ell$ which is appended to $\\mathbf{x}$. While both the FFN and $\\mathbf{q}$ see $\\mathbf{h}$, the attention $\\mathbf{kv}$ projections take only $\\mathbf{x}$ as input. As a result, the fully extended $\\mathbf{x}$ contains the complete input for the $\\mathbf{kv}$ projections of all layers, reducing the persistent attention memory footprint from $2Ld_{model}$ to $\\sum|ε_\\ell|$. We find that with $|ε_\\ell|=32$, the Extender matches Transformer accuracy on short-context (CORE) tasks at 199M-924M parameters, and exceeds Transformer accuracy on long-context (RULER) workloads, again at 924M parameters. For our 1664-wide, 924M model, the Extender's persistent attention memory footprint is $104\\times$ smaller than MHA. The memory savings grow with model width.",
+        "published": "2026-09-26T16:27:09Z",
+        "authors": [
+          "Jakob Eriksson"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.32759v1"
+      },
+      "priority_score": 14
+    },
+    "2609_33804v1": {
+      "id": "2609_33804v1",
+      "filename": "post_2609_33804v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-05T21:46:16.073182+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-05T21:46:16.073185+00:00",
+      "paper": {
+        "title": "MinkowskiPE: Minkowski Positional Encoding for Spatiotemporal Perception",
+        "summary": "Modeling spatiotemporal coupling is a key challenge in building physical intelligence across scales, from microscopic to macroscopic. Existing models capture such structure broadly through physics-motivated dynamical formulations or learning-motivated architectures. The former provide stronger priors but may constrain flexibility, whereas the latter are more flexible but leave the spatiotemporal coupling largely implicit. We therefore seek an approach that combines flexible learning with an explicit geometric bias for jointly modeling time and space. To this end, we propose Minkowski Positional Encoding (MinkowskiPE), which uses joint temporal and spatial coordinates to parameterize Lorentz transformations applied to query and key features. With MinkowskiPE, the query-key attention score depends on position only through the relative spacetime displacement between the two tokens and is therefore invariant to global translation of the coordinates. This paradigm retains the standard dot-product attention interface and remains compatible with efficient attention implementations. We evaluate MinkowskiPE on microscopic molecular dynamics and macroscopic video prediction tasks, achieving the best results on all nine multi-trajectory molecular evaluations and reducing KTH video-prediction MSE by 9.9% relative to the best baseline while using roughly one-tenth as many parameters.",
+        "published": "2026-09-27T17:58:16Z",
+        "authors": [
+          "Yuhao Li",
+          "Louie Hong Yao",
+          "Tianyi Shi",
+          "Hanqun Cao",
+          "Hongxia Hao",
+          "Zhen Zhao",
+          "Shengchao Liu"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.33804v1"
+      },
+      "priority_score": 27
+    },
+    "2609_36887v1": {
+      "id": "2609_36887v1",
+      "filename": "post_2609_36887v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-05T21:46:16.073191+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-05T21:46:16.073193+00:00",
+      "paper": {
+        "title": "WEFT: Scaling Tool-Use Post-Training for General-Purpose Agents",
+        "summary": "Recent efforts to scale tool-use post-training have largely centered on the synthesis of executable environments, which constitute only one component of a broader agentic interaction system comprising the environment, task, agent harness, and evaluator. Scaling environments in isolation, however, does not guarantee commensurate gains in model performance, because reliable learning signals depend on coherent interactions among all components of the agentic interaction system. To address this problem, we introduce WEFT (Whole-system Evolution For Tool-use Post-training), which couples scalable agentic interaction system construction, execution-driven self-evolution, and stable post-training. WEFT scales agentic interaction system construction across environment breadth, task complexity, and interaction diversity. Execution-driven self-evolution iteratively uses execution traces and state evidence to attribute failures and revise the responsible components, with fresh rollouts evaluating the changes and providing evidence for subsequent evolution rounds. For stable post-training at scale, WEFT addresses both optimization and execution reliability: prefix-preserving sampling retains verified progress and atomic-turn credit assignment localizes learning signals, while MegaMCP maintains isolated, recoverable state across concurrent rollouts over shared tool services. Extensive experiments across various models and benchmarks demonstrate the effectiveness of WEFT for tool-use post-training. WEFT-8B and WEFT-14B outperform all evaluated matched-size environment-scaling baselines on BFCL V4, $τ^2$-Bench, and Claw-Eval. In particular, WEFT-14B improves over Agent-World-14B by 6.41, 2.23, and 12.27 percentage points. WEFT-35B-A3B further extends these gains to more challenging long-horizon workflow benchmarks, including Toolathlon-Verified and AutomationBench.",
+        "published": "2026-09-29T07:14:53Z",
+        "authors": [
+          "Bo Mao",
+          "Hang He",
+          "Linting Wang",
+          "Lizhi Lin",
+          "Maosen Zhou",
+          "Guanming Liu",
+          "Jinxiu Liu",
+          "Tianyu Huai",
+          "Chaoyun Zhang",
+          "Bingxuan Li",
+          "Kepeng Lei",
+          "Guanting Dong",
+          "Zhou Shao",
+          "Rui Zheng",
+          "Hang Yan",
+          "Jie Zhou",
+          "Chengcheng Wan",
+          "Tao Gui",
+          "Liang He",
+          "Xipeng Qiu"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.36887v1"
+      },
+      "priority_score": 40
+    },
+    "2609_38325v1": {
+      "id": "2609_38325v1",
+      "filename": "post_2609_38325v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-05T21:46:16.073198+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-05T21:46:16.073199+00:00",
+      "paper": {
+        "title": "Strike a Chord! Modal Kinetic Typography",
+        "summary": "We introduce modal kinetic typography, which animates a vector glyph to express a semantic concept while keeping it legible. Our key idea is to build motion from the glyph's natural vibration modes. Specifically, a finite-element eigenproblem assembled from the vector outline yields the glyph's softest modes, for the whole letter and for each of its parts, allowing it to bend. The problem's zero-energy solutions, i.e., rigid translations and rotations, are applied in closed form to each part, allowing parts to also move as blocks. To animate the glyph, a frozen video diffusion model supervises only the modes' amplitudes and phases. Our modal approach addresses two weaknesses of prior work. Free-form point optimization under video score distillation (SDS) moves each point and frame independently along noisy gradients, tearing the outline and causing jitter. In contrast, our modes are smooth along the outline and driven by a few whole-cycle harmonics, which restricts these gradients to smooth, seamlessly looping motion. On the other hand, structured alternatives rely on skeletons or keypoints from category-specific priors, whereas our modes come from the glyph itself; the only prior is a list naming each letter's moving parts, generated once for the whole alphabet by a language model. In modal kinetic typography, shape and motion are disentangled by construction: a single base outline is sculpted toward the concept, and the modal drive cannot alter it, so a letter can also be animated without being reshaped. Our method produces more articulated and smoother motion than Dynamic Typography and AniClipart at comparable or better concept alignment, with less glyph tearing than Dynamic Typography, and is preferred by human raters, including in a frozen-shape setting where motion alone must carry the concept. Our results were also preferred over Astra (GPT-6) by human raters.",
+        "published": "2026-09-29T18:00:15Z",
+        "authors": [
+          "Maham Tanveer",
+          "Jiyeon Han",
+          "Nanxuan Zhao",
+          "Hao Zhang"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.38325v1"
+      },
+      "priority_score": 20
+    },
+    "2610_02179v1": {
+      "id": "2610_02179v1",
+      "filename": "post_2610_02179v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-05T21:46:16.073204+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-05T21:46:16.073206+00:00",
+      "paper": {
+        "title": "From Gradients to Capabilities: Understanding Multi-Teacher On-Policy Distillation",
+        "summary": "Multi-teacher on-policy distillation (MOPD) aims to combine the strengths of RL-trained teachers in a single student, but how teacher signals affect parameter changes remains underexplored. We study Qwen3-1.7B with four domain teachers trained with RL from the same initialization as the student, comparing gradients, optimizer updates, and task learning curves, with additional SmolLM3-3B diagnostics. We find that several factors influence teacher signals. First, loss averaging implicitly weights responses: token averaging favors longer responses, and equalizing domain contributions retains this weighting within domains. Second, Adam's first moment reduces differences in parameter updates: the cosine similarity is 0.83 between teachers and 0.96 between averaging rules, despite differences in raw gradients. Third, BF16 rounding hides small changes: about 97\\% of FP32 master weights differ from initialization, but only 7--11\\% of BF16 weights do. Finally, the top-64 intersection KL gradient closely matches Qwen's full-vocabulary gradient, but the effect on task performance depends on averaging: mathematics accuracy is 2.6 points higher than with sampled-token policy-gradient (PG) under response averaging and 2.1 points lower under global token averaging.",
+        "published": "2026-10-01T17:57:44Z",
+        "authors": [
+          "Siqi Zhu",
+          "Suozhi Huang",
+          "Kaixuan Zhang",
+          "Yuheng Yang",
+          "Zhanyang Jin",
+          "Yihang Sun",
+          "Jiaxuan You"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.02179v1"
+      },
+      "priority_score": 15
+    },
+    "2610_03715v1": {
+      "id": "2610_03715v1",
+      "filename": "post_2610_03715v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-10-05T21:46:31.221512+00:00",
+      "paper": {
+        "title": "4DCodeBench: Benchmarking Agents on Inverse Graphics of Dynamic Scenes",
+        "summary": "We introduce 4DCodeBench, a benchmark for 4D inverse graphics through code generation, in which agents reconstruct dynamic scenes from video as executable graphics programs. To accomplish this, agents must translate visual observations into compact representations of scene structure and dynamics, by implementing abstractions such as physical simulations to reproduce complex behavior. To evaluate this capability, we curate a set of real-world videos and construct synthetic scenes spanning diverse physical phenomena, including deformation, fluid flow, and fracture. We perform extensive benchmarking of frontier models, finding that strong static reconstruction capabilities do not yet translate into reliable reconstruction of complex dynamics. 4DCodeBench provides a testbed for tracking progress toward agents that can interpret the dynamics of the world through code. Our benchmark is available at https://github.com/4DCodeBench/4DCodeBench",
+        "published": "2026-10-02T17:58:49Z",
+        "authors": [
+          "Ruihong Shen",
+          "Žiga Kovačič",
+          "Peter Kulits",
+          "Xingrui Wang",
+          "Zizhang Li",
+          "Joshua B. Tenenbaum",
+          "Alan Yuille",
+          "Jieneng Chen",
+          "Jiajun Wu"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.03715v1"
+      },
+      "priority_score": 41,
+      "korean_title": "4DCodeBench: 동적 장면의 역 그래픽을 위한 에이전트 벤치마킹"
+    },
+    "2609_26425v3": {
+      "id": "2609_26425v3",
+      "filename": "post_2609_26425v3.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-05T21:46:16.073224+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-05T21:46:16.073225+00:00",
+      "paper": {
+        "title": "QuantWM: Temporally Consistent 2-Bit KV Cache Quantization for Video World Models",
+        "summary": "Video world models achieve long-range temporal consistency by storing KV cache during generation, but the growing cache makes KV cache memory a major deployment bottleneck, which motivates low-bit quantization study for efficiency. Existing 2-bit KV cache quantization methods can achieve nearly lossless performance on VBench, however, when applied to video world models, we find they still cause severe temporal flickering and visual degradation. Meanwhile, deeper investigates show that Key quantization produces smaller reconstruction errors than Value, but surprisingly leads to larger output degradation. We trace this discrepancy to attention in video world models: Key perturbations can change the attention logits, and shift the temporal-spatial tokens selected by Queries. These observations motivate us to preserve attention logits and temporal-spatial token selection during KV cache quantization. To address this issue, we present QuantWM, a training-free 2-bit KV cache quantization framework for video world models. QuantWM introduces two complementary techniques to mitigate the attention shifts. Firstly, quantization-sensitivity-aware clustering (QSAC) jointly considers historical Query sensitivity and residual ranges to select INT2-friendly Key centroids, which reduces quantization errors in channels that are more critical to attention. In addition, principal-subspace attention compensation (PSAC) restores the remaining Key errors along the dominant Query subspace using low-rank projections, which provides a direct and efficient correction to stabilize attention logits. Experiments on LingBot-World-v2, HY-World 1.5, Matrix-Game-2, Longcat-Video and Causal-Forcing demonstrate that QuantWM significantly improves visual quality and temporal consistency, while outperforming existing methods across benchmarks with up to 6.20 KV cache memory compression and limited additional overhead.",
+        "published": "2026-09-22T13:50:54Z",
+        "authors": [
+          "Jiaqi Zhao",
+          "Xiaobin Hu",
+          "Bo Yin",
+          "Junpeng Jiang",
+          "Miao Zhang",
+          "Shuicheng Yan"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.26425v3"
+      },
+      "priority_score": 30
+    },
+    "2609_32046v1": {
+      "id": "2609_32046v1",
+      "filename": "post_2609_32046v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-05T21:46:16.073230+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-05T21:46:16.073232+00:00",
+      "paper": {
+        "title": "Receiver-Conditioned Latent Communication gives 94% CacheBack",
+        "summary": "Multi-agent systems distribute large contexts across agents that communicate to solve a task. Text messages are compact but require decoding and may omit evidence the receiving agent needs. Recent latent communication instead transfers KV caches. This avoids text generation and can improve accuracy and latency. However, a full KV cache grows linearly with both the context an individual agent processes, and the number of agents that coordinate together. This raises memory and context costs, often far exceeding available GPU resources and context window sizes. Our key observation is that agents need only send what the receiving agent requires for its local task -- which we call receiver-conditioned communication. The receiver agent passes the sender a small description of its information needs, which serves to filter and compress the sender agent's KV cache. CacheBack is a simple, robust, training-free instance of receiver conditioning based on the sender's attention weights. On FanOutQA, CacheBack with Qwen 3 removes 75% of the state the agent would otherwise receive, improving accuracy by 14.7 percentage points and reducing median task-completion latency by 3.2x relative to text communication. We show comparable improvements across model families that span dense Transformers, Mamba-attention hybrids, and sliding-window attention.",
+        "published": "2026-09-25T22:20:08Z",
+        "authors": [
+          "Maximillian Rossi",
+          "Prajwal Raghunath",
+          "Haoqing Xuan",
+          "Yusen Zhang",
+          "Eugene Wu"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.32046v1"
+      },
+      "priority_score": 26
     }
   },
   "last_run": {
-    "started_at": "2026-10-05T13:19:32.016423+00:00",
+    "started_at": "2026-10-05T21:46:16.077898+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -47611,25 +47818,25 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 21889,
-      "output_tokens": 5880,
+      "prompt_tokens": 23021,
+      "output_tokens": 5834,
       "thought_tokens": 0,
-      "total_tokens": 27769,
-      "estimated_usd": 0.01429225
+      "total_tokens": 28855,
+      "estimated_usd": 0.01450625
     },
-    "finished_at": "2026-10-05T13:20:14.139160+00:00"
+    "finished_at": "2026-10-05T21:47:06.032384+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 3092,
-    "prompt_tokens": 7785426,
-    "output_tokens": 2277051,
+    "requests": 3100,
+    "prompt_tokens": 7808447,
+    "output_tokens": 2282885,
     "thought_tokens": 0,
-    "total_tokens": 10062477,
-    "estimated_usd": 5.361933
+    "total_tokens": 10091332,
+    "estimated_usd": 5.37643925
   },
   "last_publication_run": {
-    "started_at": "2026-10-05T13:19:32.016423+00:00",
+    "started_at": "2026-10-05T21:46:16.077898+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -47640,17 +47847,17 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 21889,
-      "output_tokens": 5880,
+      "prompt_tokens": 23021,
+      "output_tokens": 5834,
       "thought_tokens": 0,
-      "total_tokens": 27769,
-      "estimated_usd": 0.01429225
+      "total_tokens": 28855,
+      "estimated_usd": 0.01450625
     },
-    "finished_at": "2026-10-05T13:20:14.139160+00:00"
+    "finished_at": "2026-10-05T21:47:06.032384+00:00"
   },
   "daily_usage": {
     "date": "2026-10-05",
-    "estimated_usd": 0.02816175,
-    "publications": 8
+    "estimated_usd": 0.042668,
+    "publications": 12
   }
 }
