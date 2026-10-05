@@ -1,0 +1,73 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>텍스트 그래디언트를 통한 거래 전략 최적화 | ArXiv Translator AI</title><meta name="description" content="텍스트 그래디언트를 통한 거래 전략 최적화"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2610_03128v1"><meta property="og:type" content="article"><meta property="og:title" content="텍스트 그래디언트를 통한 거래 전략 최적화"><meta property="og:description" content="텍스트 그래디언트를 통한 거래 전략 최적화"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2610_03128v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="텍스트 그래디언트를 통한 거래 전략 최적화"><meta name="twitter:description" content="텍스트 그래디언트를 통한 거래 전략 최적화"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2610_03128v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "텍스트 그래디언트를 통한 거래 전략 최적화", "description": "텍스트 그래디언트를 통한 거래 전략 최적화", "datePublished": "2026-10-02", "url": "https://arxiv-ai-blog.vercel.app/papers/2610_03128v1", "author": [{"@type": "Person", "name": "Chaoqun Yang"}, {"@type": "Person", "name": "Qian Wang"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2610_03128v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2610_03128v1"});gtag('event', 'paper_view', {"paper_id": "2610_03128v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>텍스트 그래디언트를 통한 거래 전략 최적화</h1><p>텍스트 그래디언트를 통한 거래 전략 최적화</p><pre>텍스트 그래디언트를 통한 거래 전략 최적화
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Trading Strategy Optimization via Textual Gradient
+&gt; - **저자:** Chaoqun Yang, Qian Wang, Fengbin Zhu, Xinyu Lin, Bingsheng He, Roger Zimmermann, Tat-Seng Chua
+&gt; - **발행일:** 2026-10-02
+&gt; - **PDF 링크:** [Trading Strategy Optimization via Textual Gradient](https://arxiv.org/pdf/2610.03128v1)
+
+
+✨ 3줄 핵심 요약
+- **TradeGrad**는 대규모 언어 모델(LLM)을 활용해 과거 데이터를 기반으로 견고한 거래 전략을 자동 설계하는 최적화 프레임워크입니다.
+- 기존의 근시안적 최적화 문제를 해결하기 위해 축적된 경험을 활용하며, 특정 기간에만 성능이 치우치지 않도록 &#x27;교차 기간 견고성 목표(CPRO)&#x27;를 도입했습니다.
+- 실험 결과, 중국 및 미국 시장에서 기존 방식 대비 우수한 성과를 거두었으며, 중국 CSI 300 벤치마크 대비 높은 샤프 지수 등을 기록했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+금융 거래 전략을 짜는 것은 수많은 코드 조합을 찾는 &#x27;블랙박스 프로그램 최적화&#x27; 과정과 같습니다. 기존 AI 모델들은 단순히 과거에 수익이 좋았던 전략만 찾으려다 보니, 시장 상황이 바뀌면 금방 실패하는 문제가 있었습니다. 
+
+**TradeGrad**는 이를 극복하기 위해 두 가지 전략을 사용합니다. 첫째, 과거의 성공과 실패 경험을 기록하여 LLM이 더 나은 방향으로 전략을 수정하게 합니다(텍스트 그래디언트). 둘째, 특정 기간에만 반짝 성공하는 전략을 걸러내기 위해, 시장 상황이 좋지 않았던 기간의 성적까지 고려하는 **CPRO(교차 기간 견고성 목표)**를 설계했습니다. 이를 통해 미래 시장에서도 꾸준히 작동할 수 있는 &#x27;튼튼한&#x27; 거래 전략을 찾아냅니다.
+
+🎯 배경 및 문제점
+- **근시안적 최적화:** 텍스트 그래디언트를 이용한 기존 방식은 이전의 평가 경험을 충분히 활용하지 못해 최적화 과정이 단기적이고 제한적입니다.
+- **시간적 견고성 부족:** 과거 데이터 전체를 대상으로 한 백테스트는 특정 우호적인 시장 상황에서만 성과가 좋은 전략을 선택하게 만들어, 시장 변화에 취약하게 만듭니다.
+- **자동화의 필요성:** 숙련된 연구자의 직관에 의존하던 기존 방식에서 벗어나, LLM을 활용한 자동화된 전략 설계 체계가 요구되고 있습니다.
+
+💡 핵심 기술 및 아키텍처
+- **경험 기반 텍스트 그래디언트:** 축적된 최적화 경험을 바탕으로 전략 수정 방향을 제시하며, &#x27;다중 스케일 수정&#x27;을 통해 전체 구조 변경(대규모) 혹은 부분 개선(소규모)을 수행합니다.
+- **교차 기간 견고성 목표(CPRO):** 
+    - 데이터를 여러 구간으로 나누어 평가합니다.
+    - 단순히 평균 수익률을 보는 것이 아니라, 성적이 가장 낮았던 하위 30% 구간의 성과를 최적화하여 전략의 하방 경직성과 신뢰도를 높입니다.
+    - 거래 빈도 제한 등을 통해 과도한 거래나 부실한 전략을 필터링합니다.
+
+📊 실험 결과 분석
+- **시장 범위:** 중국 A주 및 미국 주식 시장(2018~2025년 데이터) 대상.
+- **성과:** 4가지 테스트 설정 모두에서 표본 내(In-sample) 및 표본 외(Out-of-sample) 성능 모두 가장 우수한 결과를 보였습니다.
+- **구체적 수치:** 중국 시장의 교차 단면 전략은 연 수익률 27.99%, 최대 낙폭(MDD) 12.19%, 샤프 지수 1.63을 기록했습니다. 이는 CSI 300 벤치마크 대비 약 68% 높은 샤프 지수입니다.
+- **검증:** 제안된 구성 요소들이 최적화 전 과정에 걸쳐 성능을 지속적으로 향상시킴을 확인했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+- **금융 자동화:** 고도의 전문 지식이 필요한 양적 투자 전략 설계를 자동화하여 연구 효율성을 극대화할 수 있습니다.
+- **강건한 알고리즘:** 단순히 과거 수익률만 쫓는 모델이 아닌, 시장의 불확실한 환경 변화에도 견딜 수 있는 금융 AI 개발의 표준을 제시합니다.
+- **범용성:** 자산군을 확장하거나 고빈도 매매 환경으로 적용 범위를 넓힐 수 있는 잠재력을 가졌으며, 관련 코드는 오픈소스로 공개되어 있습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2610.03128 Trading Strategy Optimization via Textual Gradient](https://arxiv.org/abs/2610.03128)
+&gt; - [TradeGrad: Optimizing Trading Strategies with Textual ...](https://book.st-hakky.com/en/news/text-gradient-trading-strategy-optimization)
+&gt; - [GitHub - transcend-0/TradeGrad](https://github.com/transcend-0/TradeGrad)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;CPRO 개념 자체는 흥미로우나, 하위 30% 성과를 최적화한다고 해서 그게 곧 &#x27;견고성&#x27;으로 직결된다고 단정하기엔 어폐가 있습니다. 금융 시계열 데이터의 비정상성(Non-stationarity)을 LLM의 텍스트 그래디언트만으로 완전히 통제할 수 있다고 보십니까? 실험 결과가 다소 낙관적인데, Overfitting에 대한 좀 더 엄밀한 통계적 검증이 필요해 보입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에선 &#x27;백테스트의 함정&#x27;이 제일 무섭죠. 그런데 이 논문은 적어도 LLM의 추론 비용을 감당할 수 있는 환경이라면, 퀀트 전략의 프로토타이핑 속도를 획기적으로 줄여줄 것 같습니다. 특히 하위 구간 최적화는 리스크 관리 관점에서 확실히 유의미한 시도네요. 다만, 실제 HFT 환경에서 LLM의 추론 레이턴시를 어떻게 극복할지가 관건이겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;선배님들, 너무 진지하게 분석하시는 거 아니에요? ㅋㅋ 일단 GitHub 스타 찍고 바로 돌려봤는데, 프롬프트 엔지니어링으로 텍스트 그래디언트 뽑아내는 거 자체가 힙하고 재밌는데요? 어차피 금융 시장은 알파를 찾는 싸움인데, LLM이 과거 데이터 분석해서 전략 깎아주는 툴이 나왔다는 것만으로도 학계는 뒤집어질 듯요. 내일 랩 세미나 주제로 딱입니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
