@@ -1,0 +1,61 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CLIFT: 웹 에이전트 학습 및 추론 시간 확장을 위한 등각 자기 검증 | ArXiv Translator AI</title><meta name="description" content="CLIFT: 웹 에이전트 학습 및 추론 시간 확장을 위한 등각 자기 검증"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2610_06829v1"><meta property="og:type" content="article"><meta property="og:title" content="CLIFT: 웹 에이전트 학습 및 추론 시간 확장을 위한 등각 자기 검증"><meta property="og:description" content="CLIFT: 웹 에이전트 학습 및 추론 시간 확장을 위한 등각 자기 검증"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2610_06829v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="CLIFT: 웹 에이전트 학습 및 추론 시간 확장을 위한 등각 자기 검증"><meta name="twitter:description" content="CLIFT: 웹 에이전트 학습 및 추론 시간 확장을 위한 등각 자기 검증"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2610_06829v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "CLIFT: 웹 에이전트 학습 및 추론 시간 확장을 위한 등각 자기 검증", "description": "CLIFT: 웹 에이전트 학습 및 추론 시간 확장을 위한 등각 자기 검증", "datePublished": "2026-10-05", "url": "https://arxiv-ai-blog.vercel.app/papers/2610_06829v1", "author": [{"@type": "Person", "name": "Yifan Zhang"}, {"@type": "Person", "name": "Yutong Dai"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2610_06829v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2610_06829v1"});gtag('event', 'paper_view', {"paper_id": "2610_06829v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>CLIFT: 웹 에이전트 학습 및 추론 시간 확장을 위한 등각 자기 검증</h1><p>CLIFT: 웹 에이전트 학습 및 추론 시간 확장을 위한 등각 자기 검증</p><pre>CLIFT: 웹 에이전트 학습 및 추론 시간 확장을 위한 등각 자기 검증
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** CLIFT: Conformal Self-Verification for Web Agent Training and Test-Time Scaling
+&gt; - **저자:** Yifan Zhang, Yutong Dai, Viraj Prabhu, Zhiyuan Hu, Ran Xu, Zeyuan Chen
+&gt; - **발행일:** 2026-10-05
+&gt; - **PDF 링크:** [CLIFT: Conformal Self-Verification for Web Agent Training and Test-Time Scaling](https://arxiv.org/pdf/2610.06829v1)
+
+
+✨ 3줄 핵심 요약
+* **재사용 가능한 검증:** 값비싼 LLM 판단 결과를 학습 단계에서 &#x27;인증된 질문 은행&#x27;으로 변환하여, 에이전트가 스스로를 검증할 수 있는 재사용 가능한 지식으로 만듭니다.
+* **평가자 없는 확장:** 학습된 검증 은행을 추론 단계(Test-time)에 적용하여, 외부 평가자 도움 없이도 다수의 경로 중 최적의 결과를 선택하는 &#x27;등각 궤적 선택(CTS)&#x27;을 수행합니다.
+* **성능 및 호환성:** 오픈소스 모델(Gemma-4) 학습뿐만 아니라 폐쇄형 모델(GPT-5.5)로의 지식 전이 및 실시간 웹 환경(OM2W)에서도 상태 최첨단 성능을 달성했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+웹 에이전트를 강화학습으로 훈련시킬 때, &#x27;성공/실패&#x27;라는 단순 결과만으로는 구체적인 개선 방향을 알기 어렵습니다. 그렇다고 매번 고성능 AI(LLM)에게 평가를 맡기기엔 비용이 너무 비싸고 실전 배포 시에는 사용이 불가능합니다. CLIFT는 AI가 학습 중에 받았던 고성능 평가자의 피드백을 &#x27;스스로 확인하는 질문지(Bank)&#x27; 형태로 저장합니다. 이렇게 만들어진 질문지는 학습 중에는 보상 체계를 촘촘하게 만들어주고, 추론 시에는 외부 평가자 없이도 에이전트가 스스로 자신의 행동을 검증하고 더 나은 경로를 선택할 수 있게 돕습니다.
+
+🎯 배경 및 문제점
+* **희소한 보상 신호:** 이진(Binary) 성공 여부만으로는 에이전트의 구체적인 행동 개선(Credit assignment)이 어렵습니다.
+* **평가 비용 및 가용성:** 최첨단 LLM 평가자는 학습 비용이 너무 높으며, 배포 후 실제 환경에서는 사용이 제한적인 경우가 많습니다.
+* **데이터 편향:** 현재의 많은 웹 에이전트 벤치마크는 특정 환경에 의존적이며, 평가 방식이 에이전트 자체의 성능보다 평가자의 엄격함에 좌우되는 문제가 있습니다.
+
+💡 핵심 기술 및 아키텍처
+* **등각 자기 검증(Conformal Self-Verification):** &#x27;Compositional Conformal Certifier&#x27;를 통해 URL 기반 증거가 학습 시점의 판단 결과와 일치하는 질문들만을 필터링하고 신뢰 가중치를 부여합니다.
+* **등각 궤적 선택(Conformal Trajectory Selection, CTS):** 학습된 질문 은행을 추론 단계에서 재사용합니다. 에이전트가 여러 번 시도한 결과물 중 보수적인 다수결 규칙(Majority-vote rule)을 적용하여 가장 신뢰도 높은 경로를 선택합니다.
+* **평가 피드백의 자산화:** 단순한 보상 수치가 아닌, &#x27;URL 맥락&#x27;과 &#x27;신뢰 가중치&#x27;가 포함된 구조화된 데이터를 생성하여 모델 외부에서도 이를 검증하고 재사용할 수 있게 설계했습니다.
+
+📊 실험 결과 분석
+* **WebArena Infinity (WAI):** 오픈소스 모델(Gemma-4 31B) 기반에서 기존 vanilla GRPO 방식 대비 우수한 성능을 입증하며 오픈소스 웹 에이전트 중 최첨단 성능을 기록했습니다. (수치: 상세 내용은 표 3 참조)
+* **VisualWebArena (VWA):** 오픈 모델 학습 시 구축한 질문 은행을 GPT-5.5에 적용했을 때도 성능 향상이 확인되어, 지식의 범용적 전이 능력을 입증했습니다.
+* **Online Mind2Web (OM2W):** 별도의 추가 학습 없이 질문 은행을 번역 및 재보정하여 적용하는 것만으로 실시간 웹 에이전트 성능이 향상되었습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **효율적인 모델 학습:** 한 번의 고비용 평가로 얻은 지식을 재사용 가능한 자산으로 전환하여, 향후 학습 비용을 대폭 절감할 수 있습니다.
+* **배포 환경의 유연성:** 외부 API 평가자 없이 에이전트가 자체적으로 행동을 검증할 수 있어, 실제 웹 환경이나 보안이 중요한 폐쇄망 환경에서도 안정적인 서비스가 가능합니다.
+* **모델 업그레이드의 연속성:** 특정 모델에 종속되지 않고 더 뛰어난 평가자가 나올 때마다 검증 질문 은행을 계속 보강할 수 있어, 기술의 지속 가능한 발전이 가능해졌습니다.
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;등각 예측(Conformal Prediction)을 웹 에이전트의 자기 검증 루프에 도입한 아이디어 자체는 흥미롭군요. 하지만 &#x27;인증된 질문 은행&#x27;의 신뢰 가중치가 과연 동적인 웹 환경의 분포 변화(Distribution Shift)를 얼마나 강건하게 견뎌낼 수 있을지 의문입니다. 특히 데이터 오염이 발생했을 때 이 검증기가 오히려 잘못된 확신을 줄 위험은 고려했나요?&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 일리가 있지만, 실무자 입장에선 &#x27;외부 평가자 없이 추론 비용 절감&#x27;이 된다는 것만으로도 일단 박수 칠 일입니다. 매번 GPT-5.5 API 태우느라 녹아내리는 비용 생각하면, 이 질문 은행 방식은 운영 측면에서 엄청난 자산이죠. 다만, 이 질문 은행을 업데이트(Retention)할 때 발생하는 파이프라인 복잡도가 배포 시점에 병목이 되지 않을지가 관건이겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;아니 교수님, 엔지니어님, 핵심은 &#x27;지식의 자산화&#x27;잖아요! 이제 에이전트 성능 올리려고 무지성으로 데이터만 때려 넣는 시대는 끝났습니다. 특히 오픈소스 모델(Gemma-4)로 폐쇄형 모델의 지능을 증류(Distillation)해서 질문 은행으로 박제해두는 방식은 진짜 천재적인 것 같아요. 당장 다음 주부터 저희 랩 세미나 주제는 이걸로 갑니다. 이거야말로 &#x27;LLM-as-a-Judge&#x27;의 종착역 아닌가요?&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
