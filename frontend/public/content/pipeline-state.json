@@ -47388,11 +47388,11 @@
     "2610_00531v1": {
       "id": "2610_00531v1",
       "filename": "post_2610_00531v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-10-05T13:19:32.012371+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-05T13:19:32.012373+00:00",
+      "updated_at": "2026-10-06T19:57:20.145294+00:00",
       "paper": {
         "title": "Science or Slop?: Benchmarking and Mitigating Scientific Slop in AI-Generated Papers",
         "summary": "AI-generated content, often called AI slop, is increasingly common everywhere, particularly in academia. Slop in AI-generated scientific papers, however, has more complex patterns that cannot be easily detected by existing token-based AI detectors. Each part of such a paper looks plausible while the scientific reasoning that connects the parts breaks down, which can mislead how readers assess the work. We benchmark these failures as scientific slop through six measures across Structure, Argument, and Artifacts. We construct SciSlopBench with 390 AI-generated papers, mostly in computer science but spanning the life, social, and natural sciences, each paired with a human-written paper matched by research problem and contribution type. Our measures identify the AI paper in each pair with 85.9% accuracy, compared with 68.7% for Binoculars. Higher scientific slop accompanies lower ICLR ratings and distinguishes rejected from accepted papers above chance in every year from 2017 to 2025. Reducing these patterns, however, is not as simple as directly optimizing the measures. We therefore propose SciSlopHarness, a harness-level framework that guides a fixed LLM to revise slop only where the experiment records support the change. While standard revisions leave residual slop and direct slop-aware prompting triggers reward hacking, SciSlopHarness reduces the remaining AI-human gap by 63% over the strongest revision baseline without requiring human reference targets. Overall, we demonstrate that AI-generated scientific papers leave fundamental traces in their global reasoning, and that responsible mitigation demands strict evidentiary grounding rather than mere prose refinement.",
@@ -47406,7 +47406,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2610.00531v1"
       },
-      "priority_score": 40
+      "priority_score": 40,
+      "korean_title": "과학인가, 쓰레기인가?: AI 생성 논문의 과학적 슬롭(Slop) 벤치마킹 및 완화"
     },
     "2610_02486v1": {
       "id": "2610_02486v1",
@@ -47946,11 +47947,11 @@
     "2610_06830v1": {
       "id": "2610_06830v1",
       "filename": "post_2610_06830v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-10-06T04:22:13.821036+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-06T04:22:13.821037+00:00",
+      "updated_at": "2026-10-06T19:56:57.485042+00:00",
       "paper": {
         "title": "MemPilot: Orchestrating On-Demand Multimodal Memory Curation for LLM Agents",
         "summary": "Memory has become integral to the LLM agent ecosystem, supporting information retention and reuse across interactions. However, most existing agent memory systems construct memory in a query-agnostic manner, which can incur unnecessary preprocessing cost and discard details that later prove essential. Recent studies have begun shifting memory processing toward runtime adaptation, but typically specialize in particular operations or fixed processing schemes, leaving flexible control over performance, cost, and latency largely underexplored. To address this challenge, we present \\textbf{MemPilot}, a flexible framework that orchestrates on-demand memory curation under different performance--cost--latency preferences. Specifically, we optimize a multi-step LLM policy via reinforcement learning to iteratively choose between retrieving from query-agnostic memory and delegating query-specific curation of raw multimodal history to heterogeneous LLMs and VLMs. The policy jointly controls evidence amount, curation instructions, model selection, and visual access, enabling fine-grained allocation of runtime computation. To optimize this policy under competing objectives, we adapt objective-wise advantage decoupling by separately estimating each objective's advantage before aggregation. Moreover, we introduce prefix-based marginal utility estimation for fine-grained credit assignment across multi-step rollouts. Experiments on five multimodal agent-memory benchmarks demonstrate favorable performance--cost--latency trade-offs across optimization preferences, with preference sweeps yielding broader frontiers than existing trade-off-aware baselines.",
@@ -47968,7 +47969,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2610.06830v1"
       },
-      "priority_score": 40
+      "priority_score": 40,
+      "korean_title": "MemPilot: LLM 에이전트를 위한 주문형 멀티모달 기억 큐레이션 최적화"
     },
     "2610_06829v1": {
       "id": "2610_06829v1",
@@ -48090,11 +48092,11 @@
     "2610_06804v1": {
       "id": "2610_06804v1",
       "filename": "post_2610_06804v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-10-06T04:22:13.821076+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-06T04:22:13.821078+00:00",
+      "updated_at": "2026-10-06T19:57:08.503397+00:00",
       "paper": {
         "title": "Sharpen Without Search: On-Policy Distillation of Sequence-Level Power Distribution",
         "summary": "A language model can give a correct answer more probability than any single incorrect answer and still usually sample an incorrect one, because the incorrect answers together hold more probability. The power distribution raises each complete answer's probability to a power above one and renormalizes, shifting probability toward answers the model finds most likely (sharpening). Sampling from it improves reasoning without changing parameters, but needs many scored candidates per query. We show that a model can instead be trained to produce such answers in one generation. On-policy power distillation (OPPD) runs a sequential Monte Carlo sampler in which the model being trained generates candidates and a frozen teacher's power distribution weights them; the same probabilities weight each answer in a maximum-likelihood update. Training raises single-generation accuracy by up to 23.0 points on MATH500 and 27.3 on GSM8K over the untrained model at the same temperature, and one generation scores 2.4 and 3.5 points above published power sampling with 64 candidates, recovering 94 percent of the gain that 16 candidates give the untrained model. For context, against GRPO trained with verified rewards from the same checkpoint and budget, OPPD scores 3.8, 4.0 and 5.4 points higher on MATH500, GSM8K and AIME using no reference answers; the two are complementary, and OPPD applied after GRPO adds up to 9.3 points. Trained only on mathematics, OPPD raises HumanEval accuracy by up to 5.3 points. One loss coefficient moves the sharpening exponent the model absorbs between 1.19 and 2.02, against 1.14 for ordinary on-policy distillation, and it rises mostly on the model's own answers. Gains hold across model families and sizes, including a model already trained with verified rewards, where lowering the temperature gives nothing and OPPD adds 4.4 points on MATH500. Code: https://github.com/ArminAzizi98/OPPD.",
@@ -48110,7 +48112,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2610.06804v1"
       },
-      "priority_score": 40
+      "priority_score": 40,
+      "korean_title": "검색 없는 샤프닝: 시퀀스 수준의 전력 분포에 대한 온-정책 증류"
     },
     "2610_06801v1": {
       "id": "2610_06801v1",
@@ -48532,7 +48535,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-06T12:35:45.363313+00:00",
       "last_error": null,
-      "updated_at": "2026-10-06T12:35:45.363315+00:00",
+      "updated_at": "2026-10-06T19:56:33.662723+00:00",
       "paper": {
         "title": "How to Loop MoE: Flatten the Experts, Untie the Attention",
         "summary": "Looped Transformers reuse one block of layers several times: by spending extra computation they push a model of fixed size further, and so use its parameters more fully; while sparse mixture-of-experts (MoE) models activate only a few of many experts for each token. Looped MoE bridges these two design philosophies and gives MoE models new potential for better expert usage, but it raises a question: how to loop a MoE? We answer it with Foil. With the expert parameters and the expert compute per token held fixed, Foil (1) flattens the experts, halving the expert layers, doubling the experts per layer and doubling the passes, so that every routing decision chooses from a larger pool, and (2) unties the attention, giving each pass its own attention parameters while the experts and routers stay shared. Experiments show that Foil clearly outperforms the unflattened looped baseline: at 20B tokens every Foil model has lower pretraining loss than the baseline; at 100B tokens the loss improves monotonically with the degree of flattening, the most flattened Foil ending 0.012 nat below the baseline at equal parameters and compute, with downstream accuracy on par or better; untying the attention also yields more balanced and more confident routing at equal shape. Our ablations analyse why Foil works and turn the findings into design guidance for looped MoE: the returns of looping and of widening the expert layers amplify each other, routing confidence tracks healthy expert use better than load balance, and a sparse looped MoE should therefore use more experts per layer and more passes. Code and configurations are available at https://github.com/SR-A-W/how-to-loop-moe.",
@@ -48690,7 +48693,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-06T12:36:15.157741+00:00",
+      "updated_at": "2026-10-06T19:56:33.662753+00:00",
       "paper": {
         "title": "What Matters for Latent Reasoning with Flow Matching",
         "summary": "Latent reasoning lets a large language model (LLM) think in a continuous space and verbalize only the answer. We argue that an effective latent thought must meet five requirements: it should be useful, helping produce the correct answer rather than merely changing it, diverse, so that resampling yields different reasoning trajectories, explainable, so that a decoded chain of thought (CoT) reflects reasoning the answer actually follows, refinable with more inference compute, and efficient, costing less than an explicit CoT at comparable accuracy. Current methods rarely meet these requirements: they learn shortcuts from the question, distill the explicit CoT into their weights, or imitate it one token at a time. We focus on flow matching in a learned latent space, the family we argue is best placed to meet them, and identify the training choices that make it work. The result is Flow-based Latent Reasoning (FLaRe), a simple recipe covering what the latent space encodes and how to shape it, where to train the flow, how to read out the answer, and a final stage of training on the model's own verified thoughts. A probe for each requirement shows that FLaRe improves on prior latent methods in all five. It also compares favorably with them on arithmetic benchmarks, while reaching 97% of the accuracy of explicit CoT at a quarter of its latency.",
@@ -48730,10 +48733,191 @@
         "pdf_link": "https://arxiv.org/pdf/2610.04047v1"
       },
       "priority_score": 19
+    },
+    "2609_36684v1": {
+      "id": "2609_36684v1",
+      "filename": "post_2609_36684v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-06T19:56:33.662700+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-06T19:56:33.662715+00:00",
+      "paper": {
+        "title": "ProgressCompass: Embodied Progress Reward Models Are Lost Without the Right Context",
+        "summary": "Embodied agents now take on ever longer tasks. For long tasks, knowing only whether a task finally succeeds or fails says little; the steps along the way matter. Progress Reward Models (PRMs) score how far a task has come at every step, and serve as dense rewards, verifiers and monitors. Yet in long tasks the current frame alone often cannot tell how far the task has come, because progress depends on what happened before. We call this problem context-dependent progress estimation. Existing benchmarks on progress estimation mostly focus on short tasks whose progress can be read from the current observation, and whether PRMs can estimate progress when context is needed remains underexplored. We therefore build ContextProgress-Bench, with 24 manipulation tasks for 120 episodes. The benchmark covers three settings: (i) State Recall, where information needed for progress appeared earlier but is not in the current frame; (ii) Sequence Tracking, where steps follow a fixed order, so progress requires knowing which steps are done and which comes next; and (iii) Recurrence Disambiguation, where look-alike frames sit at very different progress. We then run a paired diagnosis: each PRM keeps the same input format in both runs, and in one run its instruction integrates the right context. Even PRMs that read the entire history get lost in estimating progress, yet with the right context the same five models cut their progress error by 77-82%. Embodied PRMs are thus not incapable of progress estimation, but lost without the right context. We therefore propose ProgressCompass, an autonomous agentic loop that reorients an existing PRM and uses current general-purpose VLMs to supply the context the PRM needs. Wrapped in the loop, the same frozen PRM cuts its progress error by 63% and raises its rank agreement by 76%. With such a compass, PRMs estimate progress far better on longer, more complex tasks.",
+        "published": "2026-09-29T04:27:02Z",
+        "authors": [
+          "Jianshu Zhang",
+          "Keliang Wu",
+          "Chengxuan Qian",
+          "Xiyuan Yang",
+          "Ce Zhang",
+          "Ariel Tian",
+          "Anbang Liu",
+          "Haoran Lu",
+          "Han Liu"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.36684v1"
+      },
+      "priority_score": 40
+    },
+    "2610_01789v1": {
+      "id": "2610_01789v1",
+      "filename": "post_2610_01789v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-06T19:56:33.662730+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-06T19:56:33.662733+00:00",
+      "paper": {
+        "title": "iADD: Improving Alignment and Diversity in Diffusion Policy Optimization",
+        "summary": "Reinforcement learning based post training of diffusion models, such as Denoising Diffusion Policy Optimization (DDPO), optimizes a reverse diffusion process under a reward function. However, current approaches to reward optimizations do so at the cost of diversity and quality. In this paper, we provide better tradeoffs through careful theoretical considerations and method design. We analyze the theoretical framework and mathematically demonstrate that \\emph{only-latter timestep} updates of diffusion model may be harmful for diversity contrary to the conclusions presented in a previous work. Additionally, we propose an incremental Feynman-Kac training based on strong theoretical foundations in order to achieve the best-yet alignment-diversity tradeoffs. We perform extensive experiments and compare our method against related diffusion policy optimization approaches in three different tasks and also provide strong ablations for each component, thus validating strong performance gains in both alignment and diversity.",
+        "published": "2026-10-01T14:35:26Z",
+        "authors": [
+          "Ashok Prasad Neupane",
+          "Saugat Adhikari",
+          "Pramish Paudel",
+          "Ajad Chhatkuli",
+          "Danda Pani Paudel"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.01789v1"
+      },
+      "priority_score": 12
+    },
+    "2610_03978v1": {
+      "id": "2610_03978v1",
+      "filename": "post_2610_03978v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-06T19:56:33.662739+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-06T19:56:33.662740+00:00",
+      "paper": {
+        "title": "Learning Latent Protein Languages for Autoregressive Generation",
+        "summary": "Autoregressive transformers remain comparatively weak for protein sequence and structure generation. We study the role of target representation: amino acid tokens encode residue identities without explicit contextual semantics, while backbone coordinates require a discrete representation in our framework. We introduce two learned latent protein languages. Protein Latent Language (PLL) maps sequences to a 4,096-state contextual alphabet built on a frozen ESM-2 encoder, with one token per residue. Structure Latent Language (SLL) adapts GCP-VQVAE Lite with auxiliary sequence and confidence supervision while retaining decoding to backbone coordinates. We separately pretrain autoregressive transformer models on PLL and SLL tokens using next-token prediction, yielding PLLM and SLLM. Under matched downstream sequence training, PLLM has a fitted compute-scaling exponent of 0.038 versus 0.020 for the amino acid autoregressive model. In unconditional sequence generation, PLLM reduces the fraction of samples below a heuristic 1.5-bit residue-composition entropy threshold by 54% relative to the amino acid model across sampling temperatures. For sequence-to-structure prediction, replacing the original GCP-VQVAE Lite tokenizer with SLL reduces best validation perplexity by 34% under matched training. For long proteins, latent-token sampling is approximately 1,000 times faster than MSA-based AlphaFold2 in our measurements. In backbone generation, SLLM compares favorably with other generative models on diversity and novelty. We also observe early signs that using SLLM's internal token confidence for inference-time sampling can improve sequence-to-structure prediction quality beyond a single decoded sample. These results position learned latent protein languages as a promising substrate for autoregressive transformer scaling and inference-time sampling in protein generation.",
+        "published": "2026-10-02T19:44:35Z",
+        "authors": [
+          "Mahdi Pourmirzaei",
+          "Farzaneh Esmaili",
+          "Amir Ziashahabi",
+          "Mohammadreza Pourmirzaei",
+          "Dong Xu"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.03978v1"
+      },
+      "priority_score": 30
+    },
+    "2609_32510v1": {
+      "id": "2609_32510v1",
+      "filename": "post_2609_32510v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-06T19:56:33.662746+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-06T19:56:33.662748+00:00",
+      "paper": {
+        "title": "GeoCR: Learning a Generalist Cloud Removal Prior from Heterogeneous Observations",
+        "summary": "Cloud removal methods are typically specialized to individual datasets and input configurations, limiting reuse across sensors, spectral bands, and observation settings. We introduce GeoCR, a generalist model that unifies RGB-only-based CR and multispectral-based CR from single- or multi-temporal cloudy observations, with optional SAR guidance, within a single network. To accommodate different spectral and sensing domains, compact input and output stems extend a pretrained RGB autoencoder while keeping its encoder and decoder trunks frozen. This shared latent interface enables a single flow transformer to jointly model clean RGB and non-RGB latents, conditioned on separate cloudy-observation streams and optional SAR tokens. Through joint pretraining on the training splits of ten datasets comprising 883,331 cloud-free target images, GeoCR learns a shared cloud removal prior across these heterogeneous configurations. The same pretrained checkpoint supports direct inference without dataset-specific fine-tuning and efficient adaptation through low-rank adaptation (LoRA). We evaluate GeoCR against general image restoration and cloud removal methods on test splits of the contributing datasets under full-band and RGB-only settings. GeoCR achieves the best FID and DISTS on full-band SEN12MS-CR and Sen2_MTC_New and RGB-only CUHK-CR2, outperforming existing models and demonstrating the effectiveness of a reusable generative model across diverse settings.",
+        "published": "2026-09-26T11:56:41Z",
+        "authors": [
+          "Jeonghyeok Do",
+          "Munchurl Kim"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.32510v1"
+      },
+      "priority_score": 28
+    },
+    "2610_05790v1": {
+      "id": "2610_05790v1",
+      "filename": "post_2610_05790v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-10-06T19:56:45.696729+00:00",
+      "paper": {
+        "title": "FairRSFM: A Biome-Aware Benchmark and Debiasing Framework for Remote Sensing Foundation Models",
+        "summary": "Remote sensing foundation models (RSFMs) are commonly evaluated using aggregate metrics, which can hide systematic performance disparities across ecological regions. We introduce FairRSFM, a biome-aware benchmark for evaluating ecological group robustness in RSFMs. FairRSFM maps georeferenced samples from 14 terrestrial biome classes into six ecologically meaningful macro-groups and evaluates models under a unified frozen-backbone evaluation protocol. The benchmark covers four downstream datasets: m-EuroSAT, m-BigEarthNet, m-SA-Crop-Type, and MMEarth20K with Dynamic World label maps. Using Prithvi-EO-2.0, SatMAE, and DOFA across three random seeds, we show that aggregate performance consistently masks biome-dependent disparities across architectures and tasks. For example, Prithvi-EO-2.0 reaches 90.98% overall macro-F1 on m-EuroSAT but a mean worst-group score of only 83.72%, while m-SA-Crop-Type drops from 27.30% overall mIoU to 18.47% in the Xeric and Mineralogical group. We further evaluate Biome-Orthogonal Linear Probing (BOLP), Dynamic Biome Reweighting (DBR), and GroupDRO as complementary mitigation baselines. Their effectiveness is model- and task-dependent; for example, BOLP improves Prithvi-EO-2.0 worst-group F1@opt on m-BigEarthNet from 46.12% to 50.27% without updating the RSFM backbone. FairRSFM provides a reusable protocol for diagnosing and mitigating ecological robustness gaps in remote sensing foundation models. Code and datasets are available at: https://github.com/aminurhossain/FairRSFM.",
+        "published": "2026-10-05T04:37:06Z",
+        "authors": [
+          "Md Aminur Hossain",
+          "Omkumar Vaghasiya",
+          "Rajeev Ranjan Dwivedi",
+          "Vinod Kurmi",
+          "Biplab Banerjee"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.05790v1"
+      },
+      "priority_score": 49,
+      "korean_title": "FairRSFM: 원격 탐사 파운데이션 모델을 위한 생태계 인식 벤치마크 및 편향 완화 프레임워크"
+    },
+    "2610_03252v1": {
+      "id": "2610_03252v1",
+      "filename": "post_2610_03252v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-06T19:56:33.662765+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-06T19:56:33.662767+00:00",
+      "paper": {
+        "title": "COSMI: COmpositional Synthesis of Multi-object Interactions",
+        "summary": "Generative models of human-object interaction are bounded by the data that exists: everyday activities involve several objects, but most captured datasets record one at a time, as multi-object capture is combinatorially expensive. Our observation is that interactions are local, so single-object captures already contain the parts of multi-object activities. We compose them: contact-consistent clips of single interactions, mirrored to balance the hands, transfer between bodies, and a language model and geometric checks admit only the pairings that are plausible, semantically and physically. Therefore, the dataset grows combinatorially with the clips rather than recording time. The COSMI dataset holds 222k sequences and 275 hours with up to five objects, nearly thirty times the largest multi-object capture, and can be extended by adding datasets or even hand-object recordings. On this data we train the COSMI method, a text-to-interaction diffusion transformer that follows how the data is built: weight-shared object slots generate a variable number of objects, predicted relative to the body parts that move them. On a benchmark with an unseen object and unseen interaction combinations, models trained on the dataset generalize to the unseen combinations. COSMI outperforms baselines in text alignment and contact accuracy, where its margin is largest on the unseen object. Code, models, and the dataset pipeline will be released on the project page: https://ptrvilya.github.io/cosmi.",
+        "published": "2026-10-02T12:59:59Z",
+        "authors": [
+          "Daniel Eskandar",
+          "Ilya A. Petrov",
+          "Gerard Pons-Moll"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.03252v1"
+      },
+      "priority_score": 38
+    },
+    "2610_06545v1": {
+      "id": "2610_06545v1",
+      "filename": "post_2610_06545v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-06T19:56:33.662772+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-06T19:56:33.662774+00:00",
+      "paper": {
+        "title": "Empirical Variational Autoencoder",
+        "summary": "We present Empirical Variational Autoencoder, a general generative framework for continuous-valued (i.e., non-vector-quantized) sequences. EVA is based on the evidence lower bound of the Variational Autoencoder (VAE) but learns autoregressive latent priors empirically from training data, which can be implemented only by an additional single linear layer on top of VAEs. By replacing the conventional standard-Gaussian constraint with the self-predicted priors, EVA significantly alleviates the latent distribution gap between prior and posterior which is typically observed in conventional VAEs, and leads to high-fidelity ancestral sampling for sequential data generation. Extensive experiments on image and sound synthesis demonstrate that EVA achieves competitive generation quality with autoregressive diffusion baselines despite its much faster inference time.",
+        "published": "2026-10-05T15:39:44Z",
+        "authors": [
+          "Kaede Shiohara"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.06545v1"
+      },
+      "priority_score": 20
+    },
+    "2610_06425v1": {
+      "id": "2610_06425v1",
+      "filename": "post_2610_06425v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-06T19:56:33.662779+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-06T19:56:33.662781+00:00",
+      "paper": {
+        "title": "SoK: Semantic Decision Engines in Network Control Loops",
+        "summary": "A semantic decision engine such as Jev can return a valid answer and still miss a network deadline, select an infeasible action or leave the service unverified. We systematize 139 paper families by decision interface, execution path and check ownership. Fifty families claim that their engine fits a control loop or time budget, but only four support the claim with matched measurement. Across all 139, four report deadline attainment. The gap concentrates where the decision has no deterministic computation step. Those 72 families make 22 of the claims, none supported, and name a coverage owner in only two. Bounded tests under one event model show that each gap can reverse an admission verdict. A decision that meets a 10 s budget for every isolated request meets it for none once decisions queue ahead of replayed execution times. The same engine passes one coverage check and fails another. We derive a minimum reporting record, design rules and a research agenda for admitting decision engines to control loops.",
+        "published": "2026-10-05T14:37:03Z",
+        "authors": [
+          "Delong Li",
+          "Chen Li",
+          "Xu Wang",
+          "Haochen Gong",
+          "Rui Lang",
+          "Guangsheng Yu"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.06425v1"
+      },
+      "priority_score": 12
     }
   },
   "last_run": {
-    "started_at": "2026-10-06T12:35:45.368505+00:00",
+    "started_at": "2026-10-06T19:56:33.668344+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -48744,25 +48928,25 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 20760,
-      "output_tokens": 5874,
+      "prompt_tokens": 20794,
+      "output_tokens": 6068,
       "thought_tokens": 0,
-      "total_tokens": 26634,
-      "estimated_usd": 0.014001
+      "total_tokens": 26862,
+      "estimated_usd": 0.0143005
     },
-    "finished_at": "2026-10-06T12:36:26.630369+00:00"
+    "finished_at": "2026-10-06T19:57:21.398188+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 3116,
-    "prompt_tokens": 7848887,
-    "output_tokens": 2294525,
+    "requests": 3124,
+    "prompt_tokens": 7869681,
+    "output_tokens": 2300593,
     "thought_tokens": 0,
-    "total_tokens": 10143412,
-    "estimated_usd": 5.40400925
+    "total_tokens": 10170274,
+    "estimated_usd": 5.41830975
   },
   "last_publication_run": {
-    "started_at": "2026-10-06T12:35:45.368505+00:00",
+    "started_at": "2026-10-06T19:56:33.668344+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -48773,17 +48957,17 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 20760,
-      "output_tokens": 5874,
+      "prompt_tokens": 20794,
+      "output_tokens": 6068,
       "thought_tokens": 0,
-      "total_tokens": 26634,
-      "estimated_usd": 0.014001
+      "total_tokens": 26862,
+      "estimated_usd": 0.0143005
     },
-    "finished_at": "2026-10-06T12:36:26.630369+00:00"
+    "finished_at": "2026-10-06T19:57:21.398188+00:00"
   },
   "daily_usage": {
     "date": "2026-10-06",
-    "estimated_usd": 0.02757,
-    "publications": 8
+    "estimated_usd": 0.0418705,
+    "publications": 12
   }
 }
