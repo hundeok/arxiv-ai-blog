@@ -1,0 +1,70 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>하네스 인식 증류를 통한 소형 언어 모델 에이전트 학습 | ArXiv Translator AI</title><meta name="description" content="하네스 인식 증류를 통한 소형 언어 모델 에이전트 학습"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2610_02858v1"><meta property="og:type" content="article"><meta property="og:title" content="하네스 인식 증류를 통한 소형 언어 모델 에이전트 학습"><meta property="og:description" content="하네스 인식 증류를 통한 소형 언어 모델 에이전트 학습"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2610_02858v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="하네스 인식 증류를 통한 소형 언어 모델 에이전트 학습"><meta name="twitter:description" content="하네스 인식 증류를 통한 소형 언어 모델 에이전트 학습"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2610_02858v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "하네스 인식 증류를 통한 소형 언어 모델 에이전트 학습", "description": "하네스 인식 증류를 통한 소형 언어 모델 에이전트 학습", "datePublished": "2026-10-02", "url": "https://arxiv-ai-blog.vercel.app/papers/2610_02858v1", "author": [{"@type": "Person", "name": "Moonseok Choi"}, {"@type": "Person", "name": "Taehong Moon"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2610_02858v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2610_02858v1"});gtag('event', 'paper_view', {"paper_id": "2610_02858v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>하네스 인식 증류를 통한 소형 언어 모델 에이전트 학습</h1><p>하네스 인식 증류를 통한 소형 언어 모델 에이전트 학습</p><pre>하네스 인식 증류를 통한 소형 언어 모델 에이전트 학습
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Harness-Aware Distillation for Small Language Model Agents
+&gt; - **저자:** Moonseok Choi, Taehong Moon, Giung Nam, Juho Lee
+&gt; - **발행일:** 2026-10-02
+&gt; - **PDF 링크:** [Harness-Aware Distillation for Small Language Model Agents](https://arxiv.org/pdf/2610.02858v1)
+
+
+✨ 3줄 핵심 요약
+* 언어 모델 에이전트가 사용하는 외부 제어 환경(하네스)의 정보를 활용하여, 모델이 하네스가 제공하지 못하는 고유한 판단 능력을 학습하도록 돕는 &#x27;하네스 인식 증류(HAD)&#x27; 기법을 제안함.
+* 교사의 행동을 단순히 모방하는 대신, 하네스 정보 유무에 따른 행동 차이를 비교하고 하네스 기록과 충돌하는 잘못된 행동을 필터링하여 효율적으로 학습함.
+* 여러 벤치마크 실험 결과, HAD는 기존 온-폴리시 증류(OPD) 방식보다 에이전트의 불필요한 반복 루프를 줄이고 오류 복구 능력을 향상시킴.
+
+📖 쉽게 풀어쓴 1분 핵심
+언어 모델 에이전트는 흔히 &#x27;하네스&#x27;라고 불리는 외부 소프트웨어와 함께 작동합니다. 하네스는 환경 상태를 추적하거나 도구 사용을 돕는 등 모델의 일을 덜어주는 역할을 합니다. 기존의 모델 학습(증류) 방식은 교사 모델의 행동 전체를 무작정 따라 하게 만드는데, 이때 하네스가 이미 잘해주고 있는 부분까지 중복해서 배우느라 정작 모델 스스로 판단해야 할 핵심 능력은 제대로 배우지 못하는 문제가 발생합니다.
+
+&#x27;하네스 인식 증류(HAD)&#x27;는 이를 해결하기 위해 하네스가 해줄 수 있는 일과 교사 모델이 추가로 해줘야 하는 일을 구분합니다. 교사가 하네스 정보를 보고 내린 결정과 그렇지 않았을 때의 결정을 비교하고, 하네스 기록에 어긋나는 부적절한 행동은 학습 대상에서 제외함으로써, 소형 모델이 더 똑똑하고 효율적으로 에이전트 역할을 수행하게 만듭니다.
+
+🎯 배경 및 문제점
+* **하네스의 역할:** 에이전트 배포 시 하네스는 문맥 관리, 도구 호출, 피드백 제공 등을 담당하며 성능에 큰 영향을 미침.
+* **기존 증류(OPD)의 한계:** 표준 온-폴리시 증류는 하네스 정보를 입력의 일부로만 취급하여 교사의 출력을 단순 모방함. 이 경우 모델은 하네스가 이미 제공하는 정보에 과도하게 의존하거나, 교사의 오류까지 그대로 답습하는 경향이 있음.
+* **학습 불균형:** 하네스가 제공하는 환경 상태와 모델이 학습해야 할 행동 전략이 혼재되어, 소형 모델이 교사의 실질적인 판단력을 효과적으로 흡수하지 못함.
+
+💡 핵심 기술 및 아키텍처
+* **대조적 행동 선호도(Action Preference):** 동일한 상태에서 하네스 정보가 있을 때와 없을 때 교사가 내리는 결정을 대조하여, 모델이 하네스 정보에 기반한 판단 능력을 더 명확히 학습하게 함.
+* **유효성 검사(Validity Check):** 하네스 기록과 논리적으로 충돌하는(예: 존재하지 않는 도구 사용 등) 교사의 행동은 학습 데이터에서 즉시 배제하여 모델이 비효율적인 행동을 배우지 않도록 방지함.
+* **적응형 손실 함수 조정:** 증류 손실과 선호도 손실을 적절히 균형 있게 배분하여, 모델이 새로운 정보를 배우는 과정과 기존 능력을 보존하는 과정이 조화를 이루도록 설계함.
+
+📊 실험 결과 분석
+* **성능 우위:** 여러 장기 에이전트 벤치마크에서 기존 OPD 베이스라인보다 더 높은 성공률을 기록함.
+* **하네스 활용도:** Gemma 모델 기반 실험에서 HAD를 적용했을 때 교사 모델(75.9%)보다 높은 77.9%의 하네스 활용도를 보임. 반면 기존 OPD 방식들은 학생 모델보다 낮은 활용도를 보이는 등 하네스를 제대로 활용하지 못함.
+* **오류 복구:** 실험 데이터 분석 결과, HAD는 오류 발생 시 이를 인지하고 수정하는 능력이 더 뛰어났으며, 불필요한 행동 루프에 빠지는 횟수가 현저히 줄어듦.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **효율적인 모델 경량화:** 고비용의 대형 언어 모델 에이전트를 저비용의 소형 모델로 성공적으로 이식하여 실무 도입의 경제성을 높임.
+* **강건한 에이전트 개발:** 하네스 정보를 더 유연하게 활용함으로써 웹 쇼핑, 과학 실험 등 복잡한 환경에서의 에이전트 신뢰성을 향상시킴.
+* **적용 사례:** 하네스 환경이 고정되어 있는 실제 서비스 배포 환경에서, 하네스 정보를 기반으로 한 자율적 판단이 필요한 서비스형 에이전트 개발에 즉각적으로 활용 가능함. 본 연구는 추가적인 보상(Reward)이나 성공 라벨링 없이도 학습이 가능하다는 실무적 이점을 가짐.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Harness-Aware Distillation for Small Language Model Agents](https://arxiv.org/abs/2610.02858)
+&gt; - [Harness-Aware Distillation for Small Language Model Agents](https://arxiv.deeppaper.ai/papers/2610.02858v1)
+&gt; - [Harness-Aware Distillation for Small Language Model Agents](https://mlinfo.vercel.app/article/arxiv-2610.02858)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문의 핵심인 &#x27;하네스 인식&#x27; 아이디어 자체는 실용적이나, 결국 대조적 행동 선호도 학습이 얼마나 일반화된 환경에서 견고하게 작동할지가 의문이군요. 특히 하네스가 제공하는 정보의 노이즈가 클 때 모델이 이를 어떻게 필터링할지에 대한 수학적 엄밀함이 부족해 보입니다. 실험 결과만으로 성급한 일반화는 금물입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님, 현업에서는 그 &#x27;수학적 엄밀함&#x27;보다 당장 비용 절감이 급합니다. 기존 OPD로 돌리면 매번 헛발질하던 작은 모델들이, 이 방식으로 하네스 정보만 잘 솎아내서 오류 복구율을 높였다는 것 자체가 대박이죠. 특히 추가 라벨링 없이 학습 가능하다는 건 파이프라인에 바로 태울 수 있다는 소리라 당장 이번 스프린트에 적용해볼 생각입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;이미 우리 랩에서도 이번 주 세미나 주제로 잡혔습니다! 하네스 의존도를 줄이고 모델의 고유 판단력을 높이는 접근법이 너무 신선하네요. OPD의 한계를 &#x27;대조적 학습&#x27;으로 푼 건 정말 영리한 한 수 같습니다. 교수님 말씀대로 노이즈 문제는 있겠지만, 일단 이 방식으로 에이전트 성능 벤치마크 다 갈아치울 것 같아요. 벌써 논문 인용할 생각에 설렙니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
