@@ -47649,11 +47649,11 @@
     "2609_36887v1": {
       "id": "2609_36887v1",
       "filename": "post_2609_36887v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-10-05T21:46:16.073191+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-05T21:46:16.073193+00:00",
+      "updated_at": "2026-10-07T00:18:47.210039+00:00",
       "paper": {
         "title": "WEFT: Scaling Tool-Use Post-Training for General-Purpose Agents",
         "summary": "Recent efforts to scale tool-use post-training have largely centered on the synthesis of executable environments, which constitute only one component of a broader agentic interaction system comprising the environment, task, agent harness, and evaluator. Scaling environments in isolation, however, does not guarantee commensurate gains in model performance, because reliable learning signals depend on coherent interactions among all components of the agentic interaction system. To address this problem, we introduce WEFT (Whole-system Evolution For Tool-use Post-training), which couples scalable agentic interaction system construction, execution-driven self-evolution, and stable post-training. WEFT scales agentic interaction system construction across environment breadth, task complexity, and interaction diversity. Execution-driven self-evolution iteratively uses execution traces and state evidence to attribute failures and revise the responsible components, with fresh rollouts evaluating the changes and providing evidence for subsequent evolution rounds. For stable post-training at scale, WEFT addresses both optimization and execution reliability: prefix-preserving sampling retains verified progress and atomic-turn credit assignment localizes learning signals, while MegaMCP maintains isolated, recoverable state across concurrent rollouts over shared tool services. Extensive experiments across various models and benchmarks demonstrate the effectiveness of WEFT for tool-use post-training. WEFT-8B and WEFT-14B outperform all evaluated matched-size environment-scaling baselines on BFCL V4, $τ^2$-Bench, and Claw-Eval. In particular, WEFT-14B improves over Agent-World-14B by 6.41, 2.23, and 12.27 percentage points. WEFT-35B-A3B further extends these gains to more challenging long-horizon workflow benchmarks, including Toolathlon-Verified and AutomationBench.",
@@ -47682,7 +47682,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2609.36887v1"
       },
-      "priority_score": 40
+      "priority_score": 40,
+      "korean_title": "WEFT: 범용 에이전트를 위한 도구 사용 사후 학습의 확장"
     },
     "2609_38325v1": {
       "id": "2609_38325v1",
@@ -48423,11 +48424,11 @@
     "2610_06643v1": {
       "id": "2610_06643v1",
       "filename": "post_2610_06643v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-10-06T04:22:13.821194+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-06T04:22:13.821196+00:00",
+      "updated_at": "2026-10-07T00:19:11.012092+00:00",
       "paper": {
         "title": "AffordCraft: Scalable Construction of Task-Ready Simulation Assets from Single Images",
         "summary": "Robot learning in simulation depends on the objects the simulator offers. Many tasks need objects with separate parts, joints that allow the required motion, and physical properties that remain valid under contact. Existing methods recover this structure anew for every image: generative models predict parts and joints that mostly fail to settle or move in simulation, and general-purpose agents need a long session of model calls for each photograph. AffordCraft builds such an asset from a single RGB image and a task instruction by retrieval instead of generation: it locates the object and the part to operate, selects a matching entry from a library of articulated assets, and fits it to the image while keeping its parts and joints intact. Without any box or mask marking the object, AffordCraft produces a physically valid asset for 1,703 of 2,000 photographs from 31 categories. Five generative methods pass on at most 45% of the same photographs and, at the median, need 10 to 78 times our GPU time per valid asset. On 50 cluttered images, 162 of 237 annotated objects pass the same physical test after automatic detection. Growing the library from 141 to 11,372 entries needs no change to the method and raises category coverage from 46% to 100% and the share of selections with the requested label from 18% to 51%. We also build manipulation tasks from the constructed assets, both with single objects and in composed scenes; policies trained on scripted demonstrations complete both kinds of tasks from initial states unseen in training.",
@@ -48440,7 +48441,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2610.06643v1"
       },
-      "priority_score": 39
+      "priority_score": 39,
+      "korean_title": "AffordCraft: 단일 이미지로부터 작업 수행이 가능한 시뮬레이션 자산의 확장 가능한 구축"
     },
     "2610_06636v1": {
       "id": "2610_06636v1",
@@ -48535,7 +48537,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-06T12:35:45.363313+00:00",
       "last_error": null,
-      "updated_at": "2026-10-06T19:56:33.662723+00:00",
+      "updated_at": "2026-10-07T00:18:21.303011+00:00",
       "paper": {
         "title": "How to Loop MoE: Flatten the Experts, Untie the Attention",
         "summary": "Looped Transformers reuse one block of layers several times: by spending extra computation they push a model of fixed size further, and so use its parameters more fully; while sparse mixture-of-experts (MoE) models activate only a few of many experts for each token. Looped MoE bridges these two design philosophies and gives MoE models new potential for better expert usage, but it raises a question: how to loop a MoE? We answer it with Foil. With the expert parameters and the expert compute per token held fixed, Foil (1) flattens the experts, halving the expert layers, doubling the experts per layer and doubling the passes, so that every routing decision chooses from a larger pool, and (2) unties the attention, giving each pass its own attention parameters while the experts and routers stay shared. Experiments show that Foil clearly outperforms the unflattened looped baseline: at 20B tokens every Foil model has lower pretraining loss than the baseline; at 100B tokens the loss improves monotonically with the degree of flattening, the most flattened Foil ending 0.012 nat below the baseline at equal parameters and compute, with downstream accuracy on par or better; untying the attention also yields more balanced and more confident routing at equal shape. Our ablations analyse why Foil works and turn the findings into design guidance for looped MoE: the returns of looping and of widening the expert layers amplify each other, routing confidence tracks healthy expert use better than load balance, and a sparse looped MoE should therefore use more experts per layer and more passes. Code and configurations are available at https://github.com/SR-A-W/how-to-loop-moe.",
@@ -48558,11 +48560,11 @@
     "2609_39490v1": {
       "id": "2609_39490v1",
       "filename": "post_2609_39490v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-10-06T12:35:45.363322+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-06T12:35:45.363324+00:00",
+      "updated_at": "2026-10-07T00:18:34.342842+00:00",
       "paper": {
         "title": "OmniReasoning: Pushing the Limits of Audio-Visual Joint Reasoning",
         "summary": "Recent advances have enabled unified omni-modal models in understanding audio, vision, and language. However, existing benchmarks, training data, and learning methods largely treat the modalities independently, leaving the capability of audio-visual joint reasoning poorly evaluated and insufficiently elicited. We address this gap with a benchmark, data engine, and learning method. First, we introduce OmniReasoningBench, a benchmark where both audio and visual evidence are indispensable. It comprises 1,150 multiple-choice and open-ended questions across two tasks, reasoning over video and reasoning beyond video. Second, we develop a data engine OmniQA. It automatically constructs evidence-grounded QA pairs that explicitly necessitate audio-visual joint reasoning, together with time-stamped clue chains that guide the annotation of thinking process. Besides our benchmark, this engine produces training data OmniReasoning-SFT-112K and OmniReasoning-RL-19K. Finally, we propose an on-policy self-distillation method Modality-Factored Self-Distillation (MFSD). It evaluates each sampled response under modality-specific clue contexts, disentangling the contributions of individual clues and their cross-modal interactions for token-level credit assignment. With our training data and learning method, our model OmniReasoning-30B-A3B achieves 50.0% on OmniVideoBench and 42.5% on OmniReasoningBench, improving the base model Qwen3-Omni-30B-A3B-Thinking by 12.8 and 9.3 percentage points, respectively. Moreover, it delivers substantial gains on general and long-video benchmarks, including Video-MME-v2. We hope our work offers a solid step for facilitating future research in omni-modal joint reasoning.",
@@ -48585,7 +48587,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2609.39490v1"
       },
-      "priority_score": 40
+      "priority_score": 40,
+      "korean_title": "옴니리즈닝: 시청각 통합 추론의 한계 돌파"
     },
     "2605_21318v2": {
       "id": "2605_21318v2",
@@ -48737,11 +48740,11 @@
     "2609_36684v1": {
       "id": "2609_36684v1",
       "filename": "post_2609_36684v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-10-06T19:56:33.662700+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-06T19:56:33.662715+00:00",
+      "updated_at": "2026-10-07T00:18:59.775725+00:00",
       "paper": {
         "title": "ProgressCompass: Embodied Progress Reward Models Are Lost Without the Right Context",
         "summary": "Embodied agents now take on ever longer tasks. For long tasks, knowing only whether a task finally succeeds or fails says little; the steps along the way matter. Progress Reward Models (PRMs) score how far a task has come at every step, and serve as dense rewards, verifiers and monitors. Yet in long tasks the current frame alone often cannot tell how far the task has come, because progress depends on what happened before. We call this problem context-dependent progress estimation. Existing benchmarks on progress estimation mostly focus on short tasks whose progress can be read from the current observation, and whether PRMs can estimate progress when context is needed remains underexplored. We therefore build ContextProgress-Bench, with 24 manipulation tasks for 120 episodes. The benchmark covers three settings: (i) State Recall, where information needed for progress appeared earlier but is not in the current frame; (ii) Sequence Tracking, where steps follow a fixed order, so progress requires knowing which steps are done and which comes next; and (iii) Recurrence Disambiguation, where look-alike frames sit at very different progress. We then run a paired diagnosis: each PRM keeps the same input format in both runs, and in one run its instruction integrates the right context. Even PRMs that read the entire history get lost in estimating progress, yet with the right context the same five models cut their progress error by 77-82%. Embodied PRMs are thus not incapable of progress estimation, but lost without the right context. We therefore propose ProgressCompass, an autonomous agentic loop that reorients an existing PRM and uses current general-purpose VLMs to supply the context the PRM needs. Wrapped in the loop, the same frozen PRM cuts its progress error by 63% and raises its rank agreement by 76%. With such a compass, PRMs estimate progress far better on longer, more complex tasks.",
@@ -48759,7 +48762,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2609.36684v1"
       },
-      "priority_score": 40
+      "priority_score": 40,
+      "korean_title": "ProgressCompass: 신체화된 진행률 보상 모델은 올바른 맥락 없이는 길을 잃는다"
     },
     "2610_01789v1": {
       "id": "2610_01789v1",
@@ -48768,7 +48772,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-06T19:56:33.662730+00:00",
       "last_error": null,
-      "updated_at": "2026-10-06T19:56:33.662733+00:00",
+      "updated_at": "2026-10-07T00:18:21.303017+00:00",
       "paper": {
         "title": "iADD: Improving Alignment and Diversity in Diffusion Policy Optimization",
         "summary": "Reinforcement learning based post training of diffusion models, such as Denoising Diffusion Policy Optimization (DDPO), optimizes a reverse diffusion process under a reward function. However, current approaches to reward optimizations do so at the cost of diversity and quality. In this paper, we provide better tradeoffs through careful theoretical considerations and method design. We analyze the theoretical framework and mathematically demonstrate that \\emph{only-latter timestep} updates of diffusion model may be harmful for diversity contrary to the conclusions presented in a previous work. Additionally, we propose an incremental Feynman-Kac training based on strong theoretical foundations in order to achieve the best-yet alignment-diversity tradeoffs. We perform extensive experiments and compare our method against related diffusion policy optimization approaches in three different tasks and also provide strong ablations for each component, thus validating strong performance gains in both alignment and diversity.",
@@ -48791,7 +48795,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-06T19:56:33.662739+00:00",
       "last_error": null,
-      "updated_at": "2026-10-06T19:56:33.662740+00:00",
+      "updated_at": "2026-10-07T00:18:21.303032+00:00",
       "paper": {
         "title": "Learning Latent Protein Languages for Autoregressive Generation",
         "summary": "Autoregressive transformers remain comparatively weak for protein sequence and structure generation. We study the role of target representation: amino acid tokens encode residue identities without explicit contextual semantics, while backbone coordinates require a discrete representation in our framework. We introduce two learned latent protein languages. Protein Latent Language (PLL) maps sequences to a 4,096-state contextual alphabet built on a frozen ESM-2 encoder, with one token per residue. Structure Latent Language (SLL) adapts GCP-VQVAE Lite with auxiliary sequence and confidence supervision while retaining decoding to backbone coordinates. We separately pretrain autoregressive transformer models on PLL and SLL tokens using next-token prediction, yielding PLLM and SLLM. Under matched downstream sequence training, PLLM has a fitted compute-scaling exponent of 0.038 versus 0.020 for the amino acid autoregressive model. In unconditional sequence generation, PLLM reduces the fraction of samples below a heuristic 1.5-bit residue-composition entropy threshold by 54% relative to the amino acid model across sampling temperatures. For sequence-to-structure prediction, replacing the original GCP-VQVAE Lite tokenizer with SLL reduces best validation perplexity by 34% under matched training. For long proteins, latent-token sampling is approximately 1,000 times faster than MSA-based AlphaFold2 in our measurements. In backbone generation, SLLM compares favorably with other generative models on diversity and novelty. We also observe early signs that using SLLM's internal token confidence for inference-time sampling can improve sequence-to-structure prediction quality beyond a single decoded sample. These results position learned latent protein languages as a promising substrate for autoregressive transformer scaling and inference-time sampling in protein generation.",
@@ -48814,7 +48818,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-06T19:56:33.662746+00:00",
       "last_error": null,
-      "updated_at": "2026-10-06T19:56:33.662748+00:00",
+      "updated_at": "2026-10-07T00:18:21.303036+00:00",
       "paper": {
         "title": "GeoCR: Learning a Generalist Cloud Removal Prior from Heterogeneous Observations",
         "summary": "Cloud removal methods are typically specialized to individual datasets and input configurations, limiting reuse across sensors, spectral bands, and observation settings. We introduce GeoCR, a generalist model that unifies RGB-only-based CR and multispectral-based CR from single- or multi-temporal cloudy observations, with optional SAR guidance, within a single network. To accommodate different spectral and sensing domains, compact input and output stems extend a pretrained RGB autoencoder while keeping its encoder and decoder trunks frozen. This shared latent interface enables a single flow transformer to jointly model clean RGB and non-RGB latents, conditioned on separate cloudy-observation streams and optional SAR tokens. Through joint pretraining on the training splits of ten datasets comprising 883,331 cloud-free target images, GeoCR learns a shared cloud removal prior across these heterogeneous configurations. The same pretrained checkpoint supports direct inference without dataset-specific fine-tuning and efficient adaptation through low-rank adaptation (LoRA). We evaluate GeoCR against general image restoration and cloud removal methods on test splits of the contributing datasets under full-band and RGB-only settings. GeoCR achieves the best FID and DISTS on full-band SEN12MS-CR and Sen2_MTC_New and RGB-only CUHK-CR2, outperforming existing models and demonstrating the effectiveness of a reusable generative model across diverse settings.",
@@ -48834,7 +48838,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-06T19:56:45.696729+00:00",
+      "updated_at": "2026-10-07T00:18:21.303041+00:00",
       "paper": {
         "title": "FairRSFM: A Biome-Aware Benchmark and Debiasing Framework for Remote Sensing Foundation Models",
         "summary": "Remote sensing foundation models (RSFMs) are commonly evaluated using aggregate metrics, which can hide systematic performance disparities across ecological regions. We introduce FairRSFM, a biome-aware benchmark for evaluating ecological group robustness in RSFMs. FairRSFM maps georeferenced samples from 14 terrestrial biome classes into six ecologically meaningful macro-groups and evaluates models under a unified frozen-backbone evaluation protocol. The benchmark covers four downstream datasets: m-EuroSAT, m-BigEarthNet, m-SA-Crop-Type, and MMEarth20K with Dynamic World label maps. Using Prithvi-EO-2.0, SatMAE, and DOFA across three random seeds, we show that aggregate performance consistently masks biome-dependent disparities across architectures and tasks. For example, Prithvi-EO-2.0 reaches 90.98% overall macro-F1 on m-EuroSAT but a mean worst-group score of only 83.72%, while m-SA-Crop-Type drops from 27.30% overall mIoU to 18.47% in the Xeric and Mineralogical group. We further evaluate Biome-Orthogonal Linear Probing (BOLP), Dynamic Biome Reweighting (DBR), and GroupDRO as complementary mitigation baselines. Their effectiveness is model- and task-dependent; for example, BOLP improves Prithvi-EO-2.0 worst-group F1@opt on m-BigEarthNet from 46.12% to 50.27% without updating the RSFM backbone. FairRSFM provides a reusable protocol for diagnosing and mitigating ecological robustness gaps in remote sensing foundation models. Code and datasets are available at: https://github.com/aminurhossain/FairRSFM.",
@@ -48858,7 +48862,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-06T19:56:33.662765+00:00",
       "last_error": null,
-      "updated_at": "2026-10-06T19:56:33.662767+00:00",
+      "updated_at": "2026-10-07T00:18:21.303045+00:00",
       "paper": {
         "title": "COSMI: COmpositional Synthesis of Multi-object Interactions",
         "summary": "Generative models of human-object interaction are bounded by the data that exists: everyday activities involve several objects, but most captured datasets record one at a time, as multi-object capture is combinatorially expensive. Our observation is that interactions are local, so single-object captures already contain the parts of multi-object activities. We compose them: contact-consistent clips of single interactions, mirrored to balance the hands, transfer between bodies, and a language model and geometric checks admit only the pairings that are plausible, semantically and physically. Therefore, the dataset grows combinatorially with the clips rather than recording time. The COSMI dataset holds 222k sequences and 275 hours with up to five objects, nearly thirty times the largest multi-object capture, and can be extended by adding datasets or even hand-object recordings. On this data we train the COSMI method, a text-to-interaction diffusion transformer that follows how the data is built: weight-shared object slots generate a variable number of objects, predicted relative to the body parts that move them. On a benchmark with an unseen object and unseen interaction combinations, models trained on the dataset generalize to the unseen combinations. COSMI outperforms baselines in text alignment and contact accuracy, where its margin is largest on the unseen object. Code, models, and the dataset pipeline will be released on the project page: https://ptrvilya.github.io/cosmi.",
@@ -48879,7 +48883,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-06T19:56:33.662772+00:00",
       "last_error": null,
-      "updated_at": "2026-10-06T19:56:33.662774+00:00",
+      "updated_at": "2026-10-07T00:18:21.303049+00:00",
       "paper": {
         "title": "Empirical Variational Autoencoder",
         "summary": "We present Empirical Variational Autoencoder, a general generative framework for continuous-valued (i.e., non-vector-quantized) sequences. EVA is based on the evidence lower bound of the Variational Autoencoder (VAE) but learns autoregressive latent priors empirically from training data, which can be implemented only by an additional single linear layer on top of VAEs. By replacing the conventional standard-Gaussian constraint with the self-predicted priors, EVA significantly alleviates the latent distribution gap between prior and posterior which is typically observed in conventional VAEs, and leads to high-fidelity ancestral sampling for sequential data generation. Extensive experiments on image and sound synthesis demonstrate that EVA achieves competitive generation quality with autoregressive diffusion baselines despite its much faster inference time.",
@@ -48898,7 +48902,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-06T19:56:33.662779+00:00",
       "last_error": null,
-      "updated_at": "2026-10-06T19:56:33.662781+00:00",
+      "updated_at": "2026-10-07T00:18:21.303053+00:00",
       "paper": {
         "title": "SoK: Semantic Decision Engines in Network Control Loops",
         "summary": "A semantic decision engine such as Jev can return a valid answer and still miss a network deadline, select an infeasible action or leave the service unverified. We systematize 139 paper families by decision interface, execution path and check ownership. Fifty families claim that their engine fits a control loop or time budget, but only four support the claim with matched measurement. Across all 139, four report deadline attainment. The gap concentrates where the decision has no deterministic computation step. Those 72 families make 22 of the claims, none supported, and name a coverage owner in only two. Bounded tests under one event model show that each gap can reverse an admission verdict. A decision that meets a 10 s budget for every isolated request meets it for none once decisions queue ahead of replayed execution times. The same engine passes one coverage check and fails another. We derive a minimum reporting record, design rules and a research agenda for admitting decision engines to control loops.",
@@ -48914,10 +48918,30 @@
         "pdf_link": "https://arxiv.org/pdf/2610.06425v1"
       },
       "priority_score": 12
+    },
+    "2610_04631v1": {
+      "id": "2610_04631v1",
+      "filename": "post_2610_04631v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-07T00:18:21.303024+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-07T00:18:21.303026+00:00",
+      "paper": {
+        "title": "The Numerical Linear Algebra of Large Language Models",
+        "summary": "Numerical Linear Algebra (NLA) has consistently played a vital role in advancing science by providing tools to solve fundamental problems encountered in scientific and engineering applications. Over the decades, it has continually evolved to meet the demands driven by successive waves of scientific discovery. For instance, during the 1950s and 1960s, substantial efforts were devoted to developing methods for solving eigenvalue problems that emerged from the rapidly growing field of aerodynamics. This led to the discovery of the LR and QR algorithms. Later the attention turned to the solution of sparse linear systems that were common in applications like computational aerodynamics. Today we are experiencing yet another wave of major scientific advancement and NLA is once more at the heart of its development. This Machine Learning (ML) wave is proving to be utterly disruptive in science and engineering. Many tools in ML particularly Large Language Models (LLMs) are grounded in matrix and tensor methods. As we are approaching Artificial General Intelligence (AGI), it is clear that matrix methods will be called to play an even more significant role. For the numerical linear practitioner the speed of the current change makes it particularly challenging to adapt.   This is a survey article that centers on machine learning techniques, with a particular focus on large language models. It has two main objectives. The first is to clarify the core concepts behind Large Language Models in a manner accessible to specialists in numerical methods. The second is to examine the key Numerical Linear Algebra concepts employed by LLM techniques, while also highlighting several significant recent contributions of NLA to the field.",
+        "published": "2026-10-03T16:16:36Z",
+        "authors": [
+          "Abdelkader Baggag",
+          "Yousef Saad"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.04631v1"
+      },
+      "priority_score": 20
     }
   },
   "last_run": {
-    "started_at": "2026-10-06T19:56:33.668344+00:00",
+    "started_at": "2026-10-07T00:18:21.308602+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -48928,25 +48952,25 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 20794,
-      "output_tokens": 6068,
+      "prompt_tokens": 20897,
+      "output_tokens": 6004,
       "thought_tokens": 0,
-      "total_tokens": 26862,
-      "estimated_usd": 0.0143005
+      "total_tokens": 26901,
+      "estimated_usd": 0.01423025
     },
-    "finished_at": "2026-10-06T19:57:21.398188+00:00"
+    "finished_at": "2026-10-07T00:19:12.249172+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 3124,
-    "prompt_tokens": 7869681,
-    "output_tokens": 2300593,
+    "requests": 3132,
+    "prompt_tokens": 7890578,
+    "output_tokens": 2306597,
     "thought_tokens": 0,
-    "total_tokens": 10170274,
-    "estimated_usd": 5.41830975
+    "total_tokens": 10197175,
+    "estimated_usd": 5.43254
   },
   "last_publication_run": {
-    "started_at": "2026-10-06T19:56:33.668344+00:00",
+    "started_at": "2026-10-07T00:18:21.308602+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -48957,17 +48981,17 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 20794,
-      "output_tokens": 6068,
+      "prompt_tokens": 20897,
+      "output_tokens": 6004,
       "thought_tokens": 0,
-      "total_tokens": 26862,
-      "estimated_usd": 0.0143005
+      "total_tokens": 26901,
+      "estimated_usd": 0.01423025
     },
-    "finished_at": "2026-10-06T19:57:21.398188+00:00"
+    "finished_at": "2026-10-07T00:19:12.249172+00:00"
   },
   "daily_usage": {
-    "date": "2026-10-06",
-    "estimated_usd": 0.0418705,
-    "publications": 12
+    "date": "2026-10-07",
+    "estimated_usd": 0.01423025,
+    "publications": 4
   }
 }
