@@ -49389,7 +49389,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-08T09:50:10.027826+00:00",
+      "updated_at": "2026-10-08T18:18:04.145559+00:00",
       "paper": {
         "title": "Internalizing Agent Experience into Diffusion Model Weights via On-Policy Context Distillation",
         "summary": "Wrapping an image generation model in an agentic harness can effectively boost Text-to-Image task performance: the harness can leverage memory, skills, workflow orchestration, result verification, and iterative refinement to continually construct and revise prompts, thereby eliciting better images. These gains, however, remain external to the diffusion model and are realized only while the full harness runs. We propose Diffusion On-Policy Context Distillation (D-OPCD), which treats the agent-improved prompt as privileged context and distills the knowledge encoded in the agent harness into the weights of the diffusion model, so that the model retains part of the harness's benefit when conditioned on the original query alone. Using a Text-to-Image agent equipped with our proposed Auto Skill Evolver (ASE), we show that D-OPCD can internalize harness capabilities into the generator's weights, raising the average direct-generation score from 60.52 to 65.09 across four benchmarks. With this knowledge absorbed into the weights, the harness can shed its saturated skills and resume evolving: a second ASE round on the updated generator improves on a skill-free harness by additional 1.83 points, pointing toward text-to-image systems in which harness and model keep improving each other through continual co-evolution.",
@@ -49409,11 +49409,11 @@
     "2610_10388v1": {
       "id": "2610_10388v1",
       "filename": "post_2610_10388v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-10-08T09:49:29.386075+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-08T09:49:29.386076+00:00",
+      "updated_at": "2026-10-08T18:18:40.111773+00:00",
       "paper": {
         "title": "RoboQuest: Generalist Physical Agents that Search, Inspect and Test",
         "summary": "Recent advances in multimodal foundation models have made them capable generalist physical agents for a range of manipulation tasks. However, successful operation in an unfamiliar environment may require an agent to seek task-relevant information through interaction when it is absent from the observations: it may need to determine where a relevant object is, inspect an unobserved property, or discover the effect of an unfamiliar tool. We thus introduce RoboQuest, a benchmark for goal-directed embodied exploration, where agents must actively acquire task-relevant information through physical interaction, use the resulting evidence to adapt subsequent actions, and autonomously decide when to commit to task completion. RoboQuest comprises ten mobile manipulation tasks centered on three forms of uncertainty: search, manipulation-based inspection, and interactive testing. We evaluate five frontier multimodal agents through a common visuomotor interface, as well as a $π_{0.5}$ policy fine-tuned on the full-episode demonstrations we release. The best agent succeeds in only 23\\% of the episodes, and the fine-tuned policy almost never succeeds. Isolated tests of the execution skills the tasks are built from, with the hidden information supplied, show that the agents can carry out most of the required actions, and our failure analysis attributes only a minority of the failures to execution. Our failure analysis further finds that the agents often stop exploring too early as they make decisions before observing the required evidence for task completion. We also find that agents rarely prevent or repair the disturbances caused by their exploration. Moreover, learning by trial and error remains difficult for most models.",
@@ -49426,16 +49426,17 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2610.10388v1"
       },
-      "priority_score": 40
+      "priority_score": 40,
+      "korean_title": "로보퀘스트: 탐색, 검사, 시험을 수행하는 범용 물리 에이전트"
     },
     "2610_09228v1": {
       "id": "2610_09228v1",
       "filename": "post_2610_09228v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-10-08T09:49:29.386081+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-08T09:49:29.386083+00:00",
+      "updated_at": "2026-10-08T18:18:50.996217+00:00",
       "paper": {
         "title": "Co-Evolving Robot Orchestrators and Policies through Deployment",
         "summary": "Vision-language-action (VLA) policies trained on large datasets are capable within their training domains, yet they still fail to generalize to the variety of situations a robot meets in real-world deployment. Agentic robot systems complement the policy with a vision-language model (VLM) orchestrator that learns when to call the policy, how to instruct it, and when to use scripted skills instead. However, because the harness is built around a frozen policy that has limited language steerability, the orchestrator can avoid the policy's failures but never overcome them. The policy becomes the bottleneck of the whole system. Fine-tuning the policy can remove this bottleneck, but updating it alone decouples it from an orchestrator tuned to its old behavior. We propose Robo-COP, in which the orchestrator and policy co-evolve during deployment. Robo-COP curates skill demonstrations from its own executions, fine-tunes the policy when this data can address recurring failures, and adopts each new policy only after it improves the skills it was trained for. Across ten simulated RoboLab tasks, Robo-COP raises mean held-out success from 64.8% to 73.8% over the same harness with a frozen policy, while fine-tuning on a fixed schedule without verification reaches only 65.8%. On three real-world tasks, Robo-COP raises held-out success from 38.3% to 50.0%. Robo-COP turns deployment into a self-improving flywheel in which robots learn by doing, with each improvement in execution producing better data for the next round of learning. Videos and code are available at https://robo-cop.pages.dev/.",
@@ -49451,7 +49452,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2610.09228v1"
       },
-      "priority_score": 40
+      "priority_score": 40,
+      "korean_title": "배치 배포를 통한 로봇 오케스트레이터와 정책의 공동 진화"
     },
     "2610_06293v1": {
       "id": "2610_06293v1",
@@ -49514,7 +49516,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-08T09:49:48.725376+00:00",
+      "updated_at": "2026-10-08T18:18:04.145575+00:00",
       "paper": {
         "title": "SkillForge: Co-Evolving Skills and Agents via Dynamic Skill Lifecycles",
         "summary": "Memory-augmented reinforcement learning strengthens LLM agents' ability to solve complex long-horizon tasks. Skills are one such form of memory, pairing instructions with an applicability condition over task types. However, retaining every skill indiscriminately as the policy improves lets obsolete or harmful entries accumulate and mislead the agent. We propose SkillForge, an agentic RL method that compiles and evolves the skill library through a fitness-driven skill lifecycle of trial, active, stable, and retired states, so that the skills and the model co-evolve throughout training. A pre-RL evaluation phase first uses the base model's own rollouts to pre-retire low-fitness skills, yielding a filtered library that then seeds supervised fine-tuning. Reinforcement learning takes over from this checkpoint, and at each iteration selective retirement, stabilization, and LLM-guided mutation continue to forge the skill library alongside policy optimization. Across multiple interactive agent benchmarks, SkillForge achieves the highest aggregate success rate, delivering up to 7.8% relative improvement over the strongest baseline while keeping the skill library compact throughout training. We introduce SkillFurnace, a dataset of 5k+ annotated records bundling retirement-filtered SFT trajectories, evolved skill libraries with fitness annotations, and retirement events with human-annotated failure categories to support research on skill quality and lifecycle management.",
@@ -49541,7 +49543,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-08T09:49:29.386102+00:00",
       "last_error": null,
-      "updated_at": "2026-10-08T09:49:29.386104+00:00",
+      "updated_at": "2026-10-08T18:18:04.145578+00:00",
       "paper": {
         "title": "PhysEvo: Astra Can Act, Let It",
         "summary": "Astra can act, yet reliable manipulation depends on the system through which it observes and controls the world. We introduce PhysEvo, a framework for physical recursive self-improvement (RSI) around a single frozen model. A task agent executes robot tasks; a meta-agent uses the resulting trajectories to diagnose failures, revise tools and skills, and test corrections. The meta-agent can also improve its own diagnostic tools, so retained revisions support both later action and later self-improvement. This process develops joint-level control, evidence-seeking observation, and reusable manipulation skills without model-weight updates or a separately trained action policy. Across 42 RoboDojo tasks, held-out-layout evaluation of retained task-specific deployment versions yields a five-dimension average score of 68.14/100 and 62.00% success, compared with 47.17% for RoboDawn's one-shot Astra agent, the strongest published reference in our comparison. On eight manipulation tasks challenging direct Astra, PhysEvo achieves 55.00% success, compared with 1.25% for the direct-Astra reference. Deploying the simulation-evolved harness on AgileX PiPER and continuing skill revision yields 90.60/100 average score and 84.00% success across 25 trials on five real-world tasks. PhysEvo turns the consequences of action into persistent, testable changes to how a frozen model acts and improves.",
@@ -49565,7 +49567,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-08T09:49:59.805653+00:00",
+      "updated_at": "2026-10-08T18:18:04.145581+00:00",
       "paper": {
         "title": "From Pareto to Preference: Personalized Test-Time Scaling via Amortized Agentic Policy Discovery",
         "summary": "Test-time scaling (TTS) improves the reasoning capabilities of large language models by allocating additional inference computation. Existing approaches to improving TTS efficiency largely optimize accuracy against one resource dimension at a time, advancing either the accuracy--cost or accuracy--latency Pareto frontier. Yet user requirements are multidimensional: users may specify accuracy, latency, and inference-cost requirements jointly, and different requirements can favor different controllers. We formulate Personalized Test-Time Scaling as discovering executable controllers that maximize the joint satisfaction rate of user-specific requirements. To reduce the overhead of repeated policy discovery for new user profiles, we propose PersonTTS, an amortized agentic policy-discovery framework that reuses prior search experience through requirement-matched controller initialization and source-distilled procedural guidance, while retaining target-profile evaluation for every candidate. Experiments on AIME and HMMT show that PersonTTS substantially outperforms strong TTS baselines in joint requirement satisfaction on unseen user profiles and held-out problems. Under the same candidate-evaluation budget, cross-user experience reuse further improves policy quality while substantially reducing discovery-agent time and cost.",
@@ -49596,7 +49598,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-08T09:49:29.386113+00:00",
       "last_error": null,
-      "updated_at": "2026-10-08T09:49:29.386114+00:00",
+      "updated_at": "2026-10-08T18:18:04.145587+00:00",
       "paper": {
         "title": "Task-Sufficient Contraction: Source Selection for Machine Information Interfaces",
         "summary": "A declared task can sometimes certify a reduced source before a downstream encoder, codebook, rate, distortion target, or optimizer is chosen. This paper studies when one such reduction preserves the complete downstream problem family, a property termed Task-Sufficient Contraction. The reduced source is fixed by the task before the later operating point is selected. An exact contraction allows the later problem to be solved on that source with the same result as if the full source had been retained.   For a machine with a fixed set of possible actions and a fixed loss, the paper identifies a consumer-specific source by merging states only when every available action has the same regret in both. For finite action sets, replacing the richer source by this reduced source preserves the complete one-step rate-regret curve, even though the reduction is fixed before the distortion target is chosen. A second result gives an exact characterization for quadratic loss on affine feasible-action sets: the canonical reduced source is the projection onto the directions in which feasible actions can differ. Under a fixed energy budget, this becomes centered load, while retaining only the optimal water-filled action is too coarse. Earlier Information Bottleneck, semantic rate-distortion, and goal-oriented quantization results are then used to distinguish exact, architecture-conditioned, approximate, failed, and corrected contractions. The framework suggests a way for heterogeneous machines to exchange what a receiving task needs without first aligning their full internal representations.",
@@ -49630,10 +49632,105 @@
         "pdf_link": "https://arxiv.org/pdf/2610.10539v1"
       },
       "priority_score": 13
+    },
+    "2605_09742v2": {
+      "id": "2605_09742v2",
+      "filename": "post_2605_09742v2.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-08T18:18:04.145537+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-08T18:18:04.145553+00:00",
+      "paper": {
+        "title": "TIDES: Implicit Time-Awareness in Selective State Space Models",
+        "summary": "Selective state space models (SSMs), such as Mamba, achieve strong per-token expressivity by making the time discretization step $\\TildeΔ$ a learned function of the input. However, in doing so, $\\TildeΔ$ no longer equals the physical time gap $Δ$ between consecutive observations, limiting the ability of these models to handle irregular time series. Continuous time SSMs, such as S5, keep $\\TildeΔ\\equivΔ$ and therefore handle irregular timestamps natively, but their dynamics remain linear time invariant (LTI), limiting per token expressivity. We propose \\textbf{TIDES}, a selective SSM variant that reconciles selective and continuous architectures by moving input dependence off the step size and onto the diagonal state matrix. As a result, $\\TildeΔ\\equivΔ$ as in S5, allowing the model to handle irregular timestamps natively without sacrificing the per-token expressivity that makes selective SSMs effective. We show this on a novel \\emph{Fading Flash} experimental benchmark, a compact controlled diagnostic for sequence models that jointly tests input dependence and extrapolation to out-of-distribution $Δ$ values, and isolates the distinct failure modes of current state-of-the-art architectures that TIDES avoids by construction. On large-scale benchmarks, TIDES sets the new best average rank on UEA time series classification and the Physiome ODE regression benchmark, and matches or exceeds the reference baseline model on 6 of 8 natively irregular datasets from astronomy, agriculture, neuromorphic sensing, and climate events. Code available at: \\url{https://github.com/TaylanSoydan/TIDES}.",
+        "published": "2026-05-10T20:34:06Z",
+        "authors": [
+          "Taylan Soydan",
+          "Miguel A. Bessa",
+          "Dirk Mohr",
+          "Rui Barreira"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2605.09742v2"
+      },
+      "priority_score": 40
+    },
+    "2610_09683v1": {
+      "id": "2610_09683v1",
+      "filename": "post_2610_09683v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-10-08T18:18:15.682617+00:00",
+      "paper": {
+        "title": "System Switch: When Should a Fast Decision Model Stop and Think?",
+        "summary": "Dual-process agents pair a fast policy with a slow deliberative model. In real-time settings the slow model usually runs continuously; in turn-based agents and robot planners it is invoked on events such as uncertainty or a detected failure. We study a fast learned actor that takes every decision and hands control to a reasoning vision-language model only when a gate opens, while the game keeps running. We use closed-loop Doom and the new open \"System One\" typed-decision models, served through a common llama.cpp interface. On 900 held-out questions, (i) zero-shot decision models from 0.15B to 9B parameters choose to collect items 1.6-1.8 times more often than chance among their errors, in any option order, although the order changes some models' accuracy; (ii) accuracy, calibration and sensitivity (how well confidence separates right from wrong answers) are distinct: models of similar accuracy differ widely in AUROC, and the confidence of the most sensitive one tracks which kinds of situation it fails, not which answers are wrong; (iii) offline, deferring the least confident 30% of decisions to a reasoning model gains over random deferral in proportion to the actor's AUROC (rank correlation 0.87); with actor and rate chosen on held-out games the gain is +0.13 [0.08, 0.18] with doomLaya's option order and +0.08 [0.02, 0.14] with shuffled options, and reasoning carries about half of it; (iv) in closed loop (33 games, three seeds) no variant reaches the exit. Committing to plans, the reasoner's or a fixed explore rule's, opens more doors and makes an actor that stands still play; with the rule the agent dies more often. Told that some doors need keys, the reasoner takes ordinary doors for locked ones, which the state cannot tell apart; without that knowledge it goes back to collecting. We release code, prompts, data and logs.",
+        "published": "2026-10-07T08:44:47Z",
+        "authors": [
+          "Gian Luca Bailo"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.09683v1"
+      },
+      "priority_score": 50,
+      "korean_title": "시스템 스위치: 빠른 의사결정 모델은 언제 멈추고 생각해야 하는가?"
+    },
+    "2610_04722v1": {
+      "id": "2610_04722v1",
+      "filename": "post_2610_04722v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-08T18:18:04.145571+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-08T18:18:04.145572+00:00",
+      "paper": {
+        "title": "NAMVIS: Next-Scale Autoregressive Multi-View Image Synthesis",
+        "summary": "Sparse-view novel view synthesis is a central problem in 3D content creation, but diffusion-based approaches remain limited by iterative denoising, making multi-view generation expensive at inference time. We introduce NAMVIS, a diffusion-free framework that reformulates multi-view image synthesis as geometry-conditioned next-scale autoregression. Instead of generating target views through repeated denoising, NAMVIS predicts discrete visual tokens through a small number of coarse-to-fine scale steps, while sampling all tokens within each scale and across target views in parallel. To anchor this generation process to explicit camera geometry, we propose Multi-scale Projective Pose Encoding, which injects source and target camera transformations into both target-view self-attention and source-to-target cross-attention at every resolution. NAMVIS further combines global conditioning with dense geometry-aware cross-attention, enabling the model to preserve source-view appearance while maintaining target-view consistency. Across Objaverse, GSO, and OmniObject3D, NAMVIS outperforms diffusion-based baselines in PSNR, SSIM, and LPIPS, while running over 3 times faster than the evaluated diffusion baselines under the same evaluation setting. These results suggest that geometry-conditioned next-scale autoregression is a promising and efficient alternative to diffusion for sparse-view multi-view synthesis. Additional qualitative results, videos, and resources are available at https://corl-team.github.io/namvis/",
+        "published": "2026-10-03T19:22:02Z",
+        "authors": [
+          "Ramil Khafizov",
+          "Ilya Statsenko",
+          "Ruslan Rakhimov",
+          "Artem Komarichev",
+          "Peter Wonka",
+          "Evgeny Burnaev"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.04722v1"
+      },
+      "priority_score": 29
+    },
+    "2610_09484v1": {
+      "id": "2610_09484v1",
+      "filename": "post_2610_09484v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-10-08T18:18:28.474262+00:00",
+      "paper": {
+        "title": "MIMESIS: Learning User Simulators as Training Environments for Interactive Agents",
+        "summary": "Training and evaluating interactive language agents typically requires rich user interactions, yet collecting human feedback is expensive and difficult to scale. Simulated users offer a scalable alternative, but they must both resemble real user behavior and provide useful learning experiences for agents. In contrast, most agent-training frameworks rely on off-the-shelf assistant LLMs, whose helpfulness can make them overly cooperative, explicit, and behaviorally homogeneous compared with real users. We introduce MIMESIS, a purpose-built user simulator trained on human conversations with explicit reasoning supervision and 13 realistic behavioral patterns derived from real user interactions. Empirically, our 9B model achieves a SOUL-Index of 65.7, surpassing the strongest frontier model. Compared with Claude-Opus-5, the strongest baseline on RealUserSim and SimulatorArena, MIMESIS improves behavioral fidelity by 13.4 points and reduces Turing distance by 3.6 points, respectively. We then freeze the simulator and train an agent by interacting with the frozen simulator using multi-turn reinforcement learning. Across eight environments, training with MIMESIS yields better agent performance than training with GPT-5.5 under all nine unseen user simulators, demonstrating stronger generalization to new user simulators. Moreover, we propose Coached On-Policy Self-Distillation (CSD), which leverages simulator-generated private reasoning traces and subsequent utterances as feedback on how well the agent addresses user needs. A coach converts this information into concise coaching notes that describe how the agent can better anticipate user needs and adapt its behavior over the course of an interaction. CSD turns this feedback into dense, token-level supervision beyond sparse task rewards, yielding further gains across all nine evaluation user models.",
+        "published": "2026-10-07T05:37:09Z",
+        "authors": [
+          "Hoang Phan",
+          "Dat Huynh",
+          "Andrey Zhmoginov",
+          "Qi Zeng",
+          "Wancen Mu",
+          "Yue Cao",
+          "Shengjie Bi",
+          "Yun He",
+          "Changdae Oh",
+          "Deren Lei"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.09484v1"
+      },
+      "priority_score": 50,
+      "korean_title": "MIMESIS: 대화형 에이전트 훈련을 위한 사용자 시뮬레이터 학습"
     }
   },
   "last_run": {
-    "started_at": "2026-10-08T09:49:29.390651+00:00",
+    "started_at": "2026-10-08T18:18:04.149608+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -49644,25 +49741,25 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 20483,
-      "output_tokens": 5703,
+      "prompt_tokens": 20696,
+      "output_tokens": 5722,
       "thought_tokens": 0,
-      "total_tokens": 26186,
-      "estimated_usd": 0.01367525
+      "total_tokens": 26418,
+      "estimated_usd": 0.013757
     },
-    "finished_at": "2026-10-08T09:50:11.117944+00:00"
+    "finished_at": "2026-10-08T18:18:51.831335+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 3164,
-    "prompt_tokens": 7981991,
-    "output_tokens": 2330168,
+    "requests": 3172,
+    "prompt_tokens": 8002687,
+    "output_tokens": 2335890,
     "thought_tokens": 0,
-    "total_tokens": 10312159,
-    "estimated_usd": 5.49074975
+    "total_tokens": 10338577,
+    "estimated_usd": 5.50450675
   },
   "last_publication_run": {
-    "started_at": "2026-10-08T09:49:29.390651+00:00",
+    "started_at": "2026-10-08T18:18:04.149608+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -49673,17 +49770,17 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 20483,
-      "output_tokens": 5703,
+      "prompt_tokens": 20696,
+      "output_tokens": 5722,
       "thought_tokens": 0,
-      "total_tokens": 26186,
-      "estimated_usd": 0.01367525
+      "total_tokens": 26418,
+      "estimated_usd": 0.013757
     },
-    "finished_at": "2026-10-08T09:50:11.117944+00:00"
+    "finished_at": "2026-10-08T18:18:51.831335+00:00"
   },
   "daily_usage": {
     "date": "2026-10-08",
-    "estimated_usd": 0.027912,
-    "publications": 8
+    "estimated_usd": 0.041669,
+    "publications": 12
   }
 }
