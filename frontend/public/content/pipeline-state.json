@@ -49381,10 +49381,259 @@
         "pdf_link": "https://arxiv.org/pdf/2609.40127v1"
       },
       "priority_score": 30
+    },
+    "2610_07250v1": {
+      "id": "2610_07250v1",
+      "filename": "post_2610_07250v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-10-08T09:50:10.027826+00:00",
+      "paper": {
+        "title": "Internalizing Agent Experience into Diffusion Model Weights via On-Policy Context Distillation",
+        "summary": "Wrapping an image generation model in an agentic harness can effectively boost Text-to-Image task performance: the harness can leverage memory, skills, workflow orchestration, result verification, and iterative refinement to continually construct and revise prompts, thereby eliciting better images. These gains, however, remain external to the diffusion model and are realized only while the full harness runs. We propose Diffusion On-Policy Context Distillation (D-OPCD), which treats the agent-improved prompt as privileged context and distills the knowledge encoded in the agent harness into the weights of the diffusion model, so that the model retains part of the harness's benefit when conditioned on the original query alone. Using a Text-to-Image agent equipped with our proposed Auto Skill Evolver (ASE), we show that D-OPCD can internalize harness capabilities into the generator's weights, raising the average direct-generation score from 60.52 to 65.09 across four benchmarks. With this knowledge absorbed into the weights, the harness can shed its saturated skills and resume evolving: a second ASE round on the updated generator improves on a skill-free harness by additional 1.83 points, pointing toward text-to-image systems in which harness and model keep improving each other through continual co-evolution.",
+        "published": "2026-10-05T18:50:09Z",
+        "authors": [
+          "Wenxuan Wang",
+          "Zekai Liu",
+          "Weinan Zhang",
+          "Yu Cheng",
+          "Yang Yang"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.07250v1"
+      },
+      "priority_score": 46,
+      "korean_title": "확산 모델 가중치 내로의 에이전트 경험 내재화: 온-정책 문맥 증류를 통한 접근"
+    },
+    "2610_10388v1": {
+      "id": "2610_10388v1",
+      "filename": "post_2610_10388v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-08T09:49:29.386075+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-08T09:49:29.386076+00:00",
+      "paper": {
+        "title": "RoboQuest: Generalist Physical Agents that Search, Inspect and Test",
+        "summary": "Recent advances in multimodal foundation models have made them capable generalist physical agents for a range of manipulation tasks. However, successful operation in an unfamiliar environment may require an agent to seek task-relevant information through interaction when it is absent from the observations: it may need to determine where a relevant object is, inspect an unobserved property, or discover the effect of an unfamiliar tool. We thus introduce RoboQuest, a benchmark for goal-directed embodied exploration, where agents must actively acquire task-relevant information through physical interaction, use the resulting evidence to adapt subsequent actions, and autonomously decide when to commit to task completion. RoboQuest comprises ten mobile manipulation tasks centered on three forms of uncertainty: search, manipulation-based inspection, and interactive testing. We evaluate five frontier multimodal agents through a common visuomotor interface, as well as a $π_{0.5}$ policy fine-tuned on the full-episode demonstrations we release. The best agent succeeds in only 23\\% of the episodes, and the fine-tuned policy almost never succeeds. Isolated tests of the execution skills the tasks are built from, with the hidden information supplied, show that the agents can carry out most of the required actions, and our failure analysis attributes only a minority of the failures to execution. Our failure analysis further finds that the agents often stop exploring too early as they make decisions before observing the required evidence for task completion. We also find that agents rarely prevent or repair the disturbances caused by their exploration. Moreover, learning by trial and error remains difficult for most models.",
+        "published": "2026-10-07T16:46:45Z",
+        "authors": [
+          "Liu Renhang",
+          "Navonil Majumder",
+          "Tej Deep Pala",
+          "Soujanya Poria"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.10388v1"
+      },
+      "priority_score": 40
+    },
+    "2610_09228v1": {
+      "id": "2610_09228v1",
+      "filename": "post_2610_09228v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-08T09:49:29.386081+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-08T09:49:29.386083+00:00",
+      "paper": {
+        "title": "Co-Evolving Robot Orchestrators and Policies through Deployment",
+        "summary": "Vision-language-action (VLA) policies trained on large datasets are capable within their training domains, yet they still fail to generalize to the variety of situations a robot meets in real-world deployment. Agentic robot systems complement the policy with a vision-language model (VLM) orchestrator that learns when to call the policy, how to instruct it, and when to use scripted skills instead. However, because the harness is built around a frozen policy that has limited language steerability, the orchestrator can avoid the policy's failures but never overcome them. The policy becomes the bottleneck of the whole system. Fine-tuning the policy can remove this bottleneck, but updating it alone decouples it from an orchestrator tuned to its old behavior. We propose Robo-COP, in which the orchestrator and policy co-evolve during deployment. Robo-COP curates skill demonstrations from its own executions, fine-tunes the policy when this data can address recurring failures, and adopts each new policy only after it improves the skills it was trained for. Across ten simulated RoboLab tasks, Robo-COP raises mean held-out success from 64.8% to 73.8% over the same harness with a frozen policy, while fine-tuning on a fixed schedule without verification reaches only 65.8%. On three real-world tasks, Robo-COP raises held-out success from 38.3% to 50.0%. Robo-COP turns deployment into a self-improving flywheel in which robots learn by doing, with each improvement in execution producing better data for the next round of learning. Videos and code are available at https://robo-cop.pages.dev/.",
+        "published": "2026-10-06T23:44:35Z",
+        "authors": [
+          "Xilun Zhang",
+          "Maggie Wang",
+          "Erik Bauer",
+          "Hong-Xing Yu",
+          "Huang Huang",
+          "Jiajun Wu",
+          "Marco Pavone"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.09228v1"
+      },
+      "priority_score": 40
+    },
+    "2610_06293v1": {
+      "id": "2610_06293v1",
+      "filename": "post_2610_06293v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-10-08T09:49:40.192645+00:00",
+      "paper": {
+        "title": "VepAgent: Bridging Causal-Transition via Tool-Augmented Reinforcement Learning for Video Event Prediction",
+        "summary": "Multimodal Large Language Models (MLLMs) have demonstrated remarkable potential in video understanding, yet their reliance on retrospective summarization and text-centric priors often limits their ability to bridge unobserved causal transitions when applied to Video Event Prediction (VEP). To address this, we propose VepAgent, an agentic framework that integrates causal-transition reasoning with tool-augmented reinforcement learning (RL) for robust VEP. Unlike prior methods that passively project future trajectories from historical dependencies, our approach explicitly models the logical progression from terminal observed states to future events. Specifically, we first construct futurebench-4K, a high-quality chain-of-thought dataset for supervised fine-tuning (SFT) that effectively bridges the causal-logic gap by structuring the deduction of unobserved intermediate states. Subsequently, we develop a diagnostic tool library integrating state tracking, frame retrieval, and region magnification, enabling the agent to dynamically augment reasoning with external tools to recover missing spatio-temporal evidence and resolve visual ambiguities during inference. Moreover, we propose a composite reward mechanism that jointly optimizes prediction accuracy, causal coherence, and reliable prior, compelling the agent to rely on genuine visual grounding rather than superficial textual similarities. Extensive evaluations on FutureBench and NEPBench datasets demonstrate that our method achieves state-of-the-art performance, significantly outperforming larger MLLMs and validating the empirical effectiveness of our agentic, future-oriented reasoning paradigm.",
+        "published": "2026-10-05T13:19:10Z",
+        "authors": [
+          "Qiutong Chen",
+          "Yuchan Guo",
+          "Zhenlong Yuan",
+          "Haobo Yang",
+          "Fangfang Lin",
+          "Xinyi Long",
+          "Yin Wang",
+          "Zijian Song",
+          "Rui Lan",
+          "Shi Qiu",
+          "Boyuan Pan",
+          "Yang Luo",
+          "Yuyin Zhou"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.06293v1"
+      },
+      "priority_score": 60,
+      "korean_title": "VepAgent: 도구 증강 강화 학습을 통한 비디오 이벤트 예측의 인과적 전환 연결"
+    },
+    "2610_07874v1": {
+      "id": "2610_07874v1",
+      "filename": "post_2610_07874v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-08T09:49:29.386092+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-08T09:49:29.386093+00:00",
+      "paper": {
+        "title": "On-Policy Distillation with Negative-Policy Rollouts",
+        "summary": "On-policy distillation (OPD) has been widely studied as a post-training method in which a student model obtains token-level supervision from a stronger teacher on its own rollouts. Recent studies have improved OPD through alternative distillation reward formulations and teacher configurations, while the objective of distillation remains centered on mimicking the teacher. However, when a stronger teacher has limited distributional overlap with the student, such positive guidance can provide insufficient learning signals. In this work, we introduce Negative-Policy OPD (NP-OPD), which complements teacher supervision with rollouts from a lower-performing, lower-capability negative policy that serves as a negative reference for the student. Rather than modifying the distillation reward formulation, NP-OPD introduces the negative policy at the rollout stage, continuously supplying tokens preferred by the negative policy over the teacher so that they remain exposed to teacher supervision throughout training. This provides an explicit negative signal through negative-policy rollouts while preserving the positive teacher supervision used in OPD. Through extensive experiments, we show that NP-OPD improves OPD across model scales, generation modes, reasoning domains, and different OPD variants. Furthermore, our analyses show that NP-OPD effectively suppresses tokens preferred by the negative policy over the teacher and moves the student away from the negative policy. These results support our design of introducing negative signals through negative-policy rollouts and provide new insight into the role of the rollout policy in OPD. Code will be available at https://github.com/naver-ai/np-opd.",
+        "published": "2026-10-06T07:25:03Z",
+        "authors": [
+          "Jaehui Hwang",
+          "Dongyoon Han",
+          "Sangdoo Yun",
+          "Byeongho Heo"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.07874v1"
+      },
+      "priority_score": 40
+    },
+    "2610_09832v1": {
+      "id": "2610_09832v1",
+      "filename": "post_2610_09832v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-10-08T09:49:48.725376+00:00",
+      "paper": {
+        "title": "SkillForge: Co-Evolving Skills and Agents via Dynamic Skill Lifecycles",
+        "summary": "Memory-augmented reinforcement learning strengthens LLM agents' ability to solve complex long-horizon tasks. Skills are one such form of memory, pairing instructions with an applicability condition over task types. However, retaining every skill indiscriminately as the policy improves lets obsolete or harmful entries accumulate and mislead the agent. We propose SkillForge, an agentic RL method that compiles and evolves the skill library through a fitness-driven skill lifecycle of trial, active, stable, and retired states, so that the skills and the model co-evolve throughout training. A pre-RL evaluation phase first uses the base model's own rollouts to pre-retire low-fitness skills, yielding a filtered library that then seeds supervised fine-tuning. Reinforcement learning takes over from this checkpoint, and at each iteration selective retirement, stabilization, and LLM-guided mutation continue to forge the skill library alongside policy optimization. Across multiple interactive agent benchmarks, SkillForge achieves the highest aggregate success rate, delivering up to 7.8% relative improvement over the strongest baseline while keeping the skill library compact throughout training. We introduce SkillFurnace, a dataset of 5k+ annotated records bundling retirement-filtered SFT trajectories, evolved skill libraries with fitness annotations, and retirement events with human-annotated failure categories to support research on skill quality and lifecycle management.",
+        "published": "2026-10-07T10:52:15Z",
+        "authors": [
+          "Yuyao Ge",
+          "Yiwei Wang",
+          "Yuchen He",
+          "Baolong Bi",
+          "Lingrui Mei",
+          "Jiayu Yao",
+          "Lizhe Chen",
+          "Shenghua Liu"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.09832v1"
+      },
+      "priority_score": 48,
+      "korean_title": "SkillForge: 동적 기술 수명 주기를 통한 기술 및 에이전트의 공동 진화"
+    },
+    "2610_08995v1": {
+      "id": "2610_08995v1",
+      "filename": "post_2610_08995v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-08T09:49:29.386102+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-08T09:49:29.386104+00:00",
+      "paper": {
+        "title": "PhysEvo: Astra Can Act, Let It",
+        "summary": "Astra can act, yet reliable manipulation depends on the system through which it observes and controls the world. We introduce PhysEvo, a framework for physical recursive self-improvement (RSI) around a single frozen model. A task agent executes robot tasks; a meta-agent uses the resulting trajectories to diagnose failures, revise tools and skills, and test corrections. The meta-agent can also improve its own diagnostic tools, so retained revisions support both later action and later self-improvement. This process develops joint-level control, evidence-seeking observation, and reusable manipulation skills without model-weight updates or a separately trained action policy. Across 42 RoboDojo tasks, held-out-layout evaluation of retained task-specific deployment versions yields a five-dimension average score of 68.14/100 and 62.00% success, compared with 47.17% for RoboDawn's one-shot Astra agent, the strongest published reference in our comparison. On eight manipulation tasks challenging direct Astra, PhysEvo achieves 55.00% success, compared with 1.25% for the direct-Astra reference. Deploying the simulation-evolved harness on AgileX PiPER and continuing skill revision yields 90.60/100 average score and 84.00% success across 25 trials on five real-world tasks. PhysEvo turns the consequences of action into persistent, testable changes to how a frozen model acts and improves.",
+        "published": "2026-10-06T18:54:15Z",
+        "authors": [
+          "Wenqing Tian",
+          "Zeyu Zhang",
+          "Zhaocheng Liu",
+          "Fengwei Liu",
+          "Qiang Liu",
+          "Liang Wang"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.08995v1"
+      },
+      "priority_score": 37
+    },
+    "2610_09684v1": {
+      "id": "2610_09684v1",
+      "filename": "post_2610_09684v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-10-08T09:49:59.805653+00:00",
+      "paper": {
+        "title": "From Pareto to Preference: Personalized Test-Time Scaling via Amortized Agentic Policy Discovery",
+        "summary": "Test-time scaling (TTS) improves the reasoning capabilities of large language models by allocating additional inference computation. Existing approaches to improving TTS efficiency largely optimize accuracy against one resource dimension at a time, advancing either the accuracy--cost or accuracy--latency Pareto frontier. Yet user requirements are multidimensional: users may specify accuracy, latency, and inference-cost requirements jointly, and different requirements can favor different controllers. We formulate Personalized Test-Time Scaling as discovering executable controllers that maximize the joint satisfaction rate of user-specific requirements. To reduce the overhead of repeated policy discovery for new user profiles, we propose PersonTTS, an amortized agentic policy-discovery framework that reuses prior search experience through requirement-matched controller initialization and source-distilled procedural guidance, while retaining target-profile evaluation for every candidate. Experiments on AIME and HMMT show that PersonTTS substantially outperforms strong TTS baselines in joint requirement satisfaction on unseen user profiles and held-out problems. Under the same candidate-evaluation budget, cross-user experience reuse further improves policy quality while substantially reducing discovery-agent time and cost.",
+        "published": "2026-10-07T08:46:56Z",
+        "authors": [
+          "Xinglin Wang",
+          "Zishen Liu",
+          "Tong Zheng",
+          "Shaoxiong Feng",
+          "Peiwen Yuan",
+          "Yiwei Li",
+          "Jiayi Shi",
+          "Yueqi Zhang",
+          "Chuyi Tan",
+          "Ji Zhang",
+          "Boyuan Pan",
+          "Kan Li"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.09684v1"
+      },
+      "priority_score": 46,
+      "korean_title": "파레토에서 선호도로: 상각된 에이전트 정책 발견을 통한 개인화된 테스트 타임 스케일링"
+    },
+    "2610_08884v1": {
+      "id": "2610_08884v1",
+      "filename": "post_2610_08884v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-08T09:49:29.386113+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-08T09:49:29.386114+00:00",
+      "paper": {
+        "title": "Task-Sufficient Contraction: Source Selection for Machine Information Interfaces",
+        "summary": "A declared task can sometimes certify a reduced source before a downstream encoder, codebook, rate, distortion target, or optimizer is chosen. This paper studies when one such reduction preserves the complete downstream problem family, a property termed Task-Sufficient Contraction. The reduced source is fixed by the task before the later operating point is selected. An exact contraction allows the later problem to be solved on that source with the same result as if the full source had been retained.   For a machine with a fixed set of possible actions and a fixed loss, the paper identifies a consumer-specific source by merging states only when every available action has the same regret in both. For finite action sets, replacing the richer source by this reduced source preserves the complete one-step rate-regret curve, even though the reduction is fixed before the distortion target is chosen. A second result gives an exact characterization for quadratic loss on affine feasible-action sets: the canonical reduced source is the projection onto the directions in which feasible actions can differ. Under a fixed energy budget, this becomes centered load, while retaining only the optimal water-filled action is too coarse. Earlier Information Bottleneck, semantic rate-distortion, and goal-oriented quantization results are then used to distinguish exact, architecture-conditioned, approximate, failed, and corrected contractions. The framework suggests a way for heterogeneous machines to exchange what a receiving task needs without first aligning their full internal representations.",
+        "published": "2026-10-06T12:30:08Z",
+        "authors": [
+          "Joss Armstrong"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.08884v1"
+      },
+      "priority_score": 29
+    },
+    "2610_10539v1": {
+      "id": "2610_10539v1",
+      "filename": "post_2610_10539v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-08T09:49:29.386118+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-08T09:49:29.386119+00:00",
+      "paper": {
+        "title": "Tetris3D: 3D Scene Generation With Objects That Fit Together",
+        "summary": "We propose Tetris3D, a generative framework for single-image 3D scene reconstruction that recovers objects which are physically and geometrically coherent as a scene. Existing methods often generate objects independently or couple them implicitly, providing limited guidance for ensuring fine-grained spatial compatibility between neighboring objects that interact with one another. To address this, we explicitly condition the generation of each object on the geometry of surrounding objects and their physical relationships, guiding its shape and pose to remain geometrically and physically plausible within the scene. Moreover, we introduce ComOb, a physics simulation-based dataset of 1.2M scenes featuring physical interactions across diverse object categories, with per-object meshes and pairwise physical relation annotations. Comprehensive experiments on synthetic and realworld scenes show that Tetris3D recovers coherent object shapes and poses even when interacting regions are occluded, and achieves state-of-the-art performance in both generation quality and physical stability.",
+        "published": "2026-10-07T17:59:48Z",
+        "authors": [
+          "Jaeyeong Kim",
+          "Jinhyuk Jang",
+          "Jongmin Lee",
+          "Kyehong Park",
+          "Seungryong Kim"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.10539v1"
+      },
+      "priority_score": 13
     }
   },
   "last_run": {
-    "started_at": "2026-10-08T00:39:44.850678+00:00",
+    "started_at": "2026-10-08T09:49:29.390651+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -49395,25 +49644,25 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 20755,
-      "output_tokens": 6032,
+      "prompt_tokens": 20483,
+      "output_tokens": 5703,
       "thought_tokens": 0,
-      "total_tokens": 26787,
-      "estimated_usd": 0.01423675
+      "total_tokens": 26186,
+      "estimated_usd": 0.01367525
     },
-    "finished_at": "2026-10-08T00:40:31.445335+00:00"
+    "finished_at": "2026-10-08T09:50:11.117944+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 3156,
-    "prompt_tokens": 7961508,
-    "output_tokens": 2324465,
+    "requests": 3164,
+    "prompt_tokens": 7981991,
+    "output_tokens": 2330168,
     "thought_tokens": 0,
-    "total_tokens": 10285973,
-    "estimated_usd": 5.4770745
+    "total_tokens": 10312159,
+    "estimated_usd": 5.49074975
   },
   "last_publication_run": {
-    "started_at": "2026-10-08T00:39:44.850678+00:00",
+    "started_at": "2026-10-08T09:49:29.390651+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -49424,17 +49673,17 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 20755,
-      "output_tokens": 6032,
+      "prompt_tokens": 20483,
+      "output_tokens": 5703,
       "thought_tokens": 0,
-      "total_tokens": 26787,
-      "estimated_usd": 0.01423675
+      "total_tokens": 26186,
+      "estimated_usd": 0.01367525
     },
-    "finished_at": "2026-10-08T00:40:31.445335+00:00"
+    "finished_at": "2026-10-08T09:50:11.117944+00:00"
   },
   "daily_usage": {
     "date": "2026-10-08",
-    "estimated_usd": 0.01423675,
-    "publications": 4
+    "estimated_usd": 0.027912,
+    "publications": 8
   }
 }

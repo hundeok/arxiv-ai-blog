@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>VepAgent: 도구 증강 강화 학습을 통한 비디오 이벤트 예측의 인과적 전환 연결 | ArXiv Translator AI</title><meta name="description" content="VepAgent: 도구 증강 강화 학습을 통한 비디오 이벤트 예측의 인과적 전환 연결"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2610_06293v1"><meta property="og:type" content="article"><meta property="og:title" content="VepAgent: 도구 증강 강화 학습을 통한 비디오 이벤트 예측의 인과적 전환 연결"><meta property="og:description" content="VepAgent: 도구 증강 강화 학습을 통한 비디오 이벤트 예측의 인과적 전환 연결"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2610_06293v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="VepAgent: 도구 증강 강화 학습을 통한 비디오 이벤트 예측의 인과적 전환 연결"><meta name="twitter:description" content="VepAgent: 도구 증강 강화 학습을 통한 비디오 이벤트 예측의 인과적 전환 연결"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2610_06293v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "VepAgent: 도구 증강 강화 학습을 통한 비디오 이벤트 예측의 인과적 전환 연결", "description": "VepAgent: 도구 증강 강화 학습을 통한 비디오 이벤트 예측의 인과적 전환 연결", "datePublished": "2026-10-05", "url": "https://arxiv-ai-blog.vercel.app/papers/2610_06293v1", "author": [{"@type": "Person", "name": "Qiutong Chen"}, {"@type": "Person", "name": "Yuchan Guo"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2610_06293v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2610_06293v1"});gtag('event', 'paper_view', {"paper_id": "2610_06293v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>VepAgent: 도구 증강 강화 학습을 통한 비디오 이벤트 예측의 인과적 전환 연결</h1><p>VepAgent: 도구 증강 강화 학습을 통한 비디오 이벤트 예측의 인과적 전환 연결</p><pre>VepAgent: 도구 증강 강화 학습을 통한 비디오 이벤트 예측의 인과적 전환 연결
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** VepAgent: Bridging Causal-Transition via Tool-Augmented Reinforcement Learning for Video Event Prediction
+&gt; - **저자:** Qiutong Chen, Yuchan Guo, Zhenlong Yuan, Haobo Yang, Fangfang Lin, Xinyi Long, Yin Wang, Zijian Song, Rui Lan, Shi Qiu, Boyuan Pan, Yang Luo, Yuyin Zhou
+&gt; - **발행일:** 2026-10-05
+&gt; - **PDF 링크:** [VepAgent: Bridging Causal-Transition via Tool-Augmented Reinforcement Learning for Video Event Prediction](https://arxiv.org/pdf/2610.06293v1)
+
+
+✨ 3줄 핵심 요약
+* **한계 극복:** 기존 다중 모달 모델의 수동적인 미래 예측 방식에서 벗어나, 관찰된 상태에서 미래로 이어지는 논리적 인과 과정을 명시적으로 모델링합니다.
+* **도구 활용:** 상태 추적, 프레임 검색, 영역 확대 등 진단 도구 라이브러리를 구축하여, 부족한 시공간적 증거를 복구하고 시각적 모호성을 해결합니다.
+* **성능 입증:** 미래 예측 특화 데이터셋(FutureBench, NEPBench)에서 기존 대규모 다중 모달 모델(MLLM)을 상회하는 최첨단 성능을 달성했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+비디오 이벤트 예측(VEP)은 영상의 앞부분을 보고 다음에 무슨 일이 일어날지 맞히는 기술입니다. 기존 AI 모델들은 단순히 언어적 확률에 의존해 미래를 &#x27;추측&#x27;하는 경향이 있어, 실제 영상 속 세밀한 동작을 놓치곤 했습니다. **VepAgent**는 스스로 문제를 풀다가 모르는 부분이 나오면 &#x27;도구&#x27;를 사용합니다. 예를 들어, 너무 빨리 지나가서 안 보이는 장면은 &#x27;프레임 검색&#x27;으로 다시 보고, 사물의 미세한 변화는 &#x27;영역 확대&#x27;를 통해 확인합니다. 이를 통해 단순히 그럴듯한 이야기를 지어내는 것이 아니라, 확실한 근거에 기반하여 미래를 정확하게 예측합니다.
+
+🎯 배경 및 문제점
+* **기존의 한계:** 최근의 다중 모달 대형 언어 모델(MLLM)은 영상 이해에 강점이 있지만, 과거 정보에 의존하거나 텍스트 기반의 통계적 편향에 갇혀 실제 영상 속 사건들 사이의 인과 관계를 파악하지 못하는 경우가 많습니다.
+* **VEP의 난제:** 비디오 이벤트 예측은 단순한 요약이 아니라, 불완전한 시각적 증거 속에서 &#x27;관찰된 현실&#x27;과 &#x27;아직 일어나지 않은 미래&#x27; 사이의 논리적 간극을 연결하는 고도의 인과적 추론 능력을 요구합니다.
+
+💡 핵심 기술 및 아키텍처
+* **FutureBench-4K:** 인과적 논리 격차를 해소하기 위해 중간 상태 추론을 체계화한 고품질 사고 연쇄(Chain-of-Thought) 학습 데이터셋입니다.
+* **도구 증강 프레임워크:** 
+    * **집중 증거 검색(FRE):** 듬성듬성한 프레임 사이의 찰나의 동작을 포착합니다.
+    * **영역 집중 확대(RFM):** 손과 사물의 접촉 등 미세한 상태 변화를 정밀하게 확인합니다.
+    * **시각 상세 추출(VDE):** 시각적 세부 정보를 텍스트로 변환하여 모델이 실제 시각 정보에 근거해 추론하도록 유도합니다.
+* **복합 보상 메커니즘:** 단순 텍스트 유사도가 아닌, 예측 정확도, 인과적 일관성, 실제 시각적 근거를 종합적으로 강화 학습합니다.
+
+📊 실험 결과 분석
+* **성과:** FutureBench 및 NEPBench 데이터셋을 활용한 평가 결과, VepAgent는 기존의 더 큰 규모를 가진 MLLM들을 능가하는 성능을 보였습니다.
+* **증명:** 모델이 표면적인 언어적 유사성에 의존하지 않고, 도구 사용을 통해 확보한 실제 시각적 증거를 바탕으로 미래를 예측하는 &#x27;미래 지향적 추론 패러다임&#x27;의 실질적인 효과를 입증했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **적용 분야:** 능동적 로봇 공학(Proactive Robotics), 자율 주행 차량, 지능형 보안 감시 시스템 등 미래 사건의 예측이 필수적인 차세대 기술 분야에 즉각적으로 활용될 수 있습니다.
+* **기대 효과:** 영상 속에서 발생하는 사건의 맥락을 정확히 이해함으로써 AI가 상황에 맞춰 능동적으로 대응할 수 있게 하며, 특히 인간과 기계가 상호작용하는 환경에서 사고를 방지하고 효율성을 극대화하는 데 기여합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Paper page - VepAgent: Bridging Causal-Transition via Tool-Augmented ...](https://huggingface.co/papers/2610.06293)
+&gt; - [VepAgent: Bridging Causal-Transition via Tool-Augmented Reinforcement ...](https://www.catalyzex.com/paper/vepagent-bridging-causal-transition-via-tool)
+&gt; - [Computer Vision and Pattern Recognition - arXiv.org](https://arxiv.org/list/cs.CV/recent?skip=200)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;인과적 전이(Causal-Transition)를 명시적으로 모델링하겠다는 시도는 고무적이나, 결국 도구 호출(Tool-use) 단계에서 발생하는 오버헤드와 시각적 증거 복구의 지연 시간을 어떻게 해결할 것인지 의문이군요. 강화 학습 보상 함수 설계가 단순히 벤치마크 점수 올리기에 최적화된 것은 아닌지, 논문의 일반화 가능성에 대해 더 엄밀한 검증이 필요해 보입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에선 &#x27;프레임 검색&#x27;이나 &#x27;영역 확대&#x27;를 위해 매번 도구 호출을 반복하면 인퍼런스 타임이 튀어서 서비스 적용이 힘들 것 같습니다. 다만, 자율주행 같이 초 단위 반응이 중요한 도메인에서 이런 인과적 추론 구조를 경량화해서 태울 수만 있다면, 단순 확률 예측 모델들보다는 훨씬 신뢰성 있는 안전 장치가 될 것 같네요. 일단 프로덕션 환경에서 레이턴시 얼마나 나오는지부터 찍어봐야 할 듯.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;다들 너무 비판적이시네! MLLM이 그냥 &#x27;환각&#x27;으로 미래 지어낼 때, 얘네는 진짜로 &#x27;증거&#x27;를 찾으러 간다는 점이 핵심 아니겠어요? FutureBench-4K 데이터셋도 잘 뽑힌 것 같은데, 이거 이용해서 우리 랩 모델 파인튜닝 돌려봐야겠습니다. 일단 SOTA 찍었다는 것만으로도 당분간 VEP 분야는 VepAgent가 다 해먹을 듯!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

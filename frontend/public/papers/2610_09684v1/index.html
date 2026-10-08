@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>파레토에서 선호도로: 상각된 에이전트 정책 발견을 통한 개인화된 테스트 타임 스케일링 | ArXiv Translator AI</title><meta name="description" content="파레토에서 선호도로: 상각된 에이전트 정책 발견을 통한 개인화된 테스트 타임 스케일링"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2610_09684v1"><meta property="og:type" content="article"><meta property="og:title" content="파레토에서 선호도로: 상각된 에이전트 정책 발견을 통한 개인화된 테스트 타임 스케일링"><meta property="og:description" content="파레토에서 선호도로: 상각된 에이전트 정책 발견을 통한 개인화된 테스트 타임 스케일링"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2610_09684v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="파레토에서 선호도로: 상각된 에이전트 정책 발견을 통한 개인화된 테스트 타임 스케일링"><meta name="twitter:description" content="파레토에서 선호도로: 상각된 에이전트 정책 발견을 통한 개인화된 테스트 타임 스케일링"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2610_09684v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "파레토에서 선호도로: 상각된 에이전트 정책 발견을 통한 개인화된 테스트 타임 스케일링", "description": "파레토에서 선호도로: 상각된 에이전트 정책 발견을 통한 개인화된 테스트 타임 스케일링", "datePublished": "2026-10-07", "url": "https://arxiv-ai-blog.vercel.app/papers/2610_09684v1", "author": [{"@type": "Person", "name": "Xinglin Wang"}, {"@type": "Person", "name": "Zishen Liu"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2610_09684v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2610_09684v1"});gtag('event', 'paper_view', {"paper_id": "2610_09684v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>파레토에서 선호도로: 상각된 에이전트 정책 발견을 통한 개인화된 테스트 타임 스케일링</h1><p>파레토에서 선호도로: 상각된 에이전트 정책 발견을 통한 개인화된 테스트 타임 스케일링</p><pre>파레토에서 선호도로: 상각된 에이전트 정책 발견을 통한 개인화된 테스트 타임 스케일링
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** From Pareto to Preference: Personalized Test-Time Scaling via Amortized Agentic Policy Discovery
+&gt; - **저자:** Xinglin Wang, Zishen Liu, Tong Zheng, Shaoxiong Feng, Peiwen Yuan, Yiwei Li, Jiayi Shi, Yueqi Zhang, Chuyi Tan, Ji Zhang, Boyuan Pan, Kan Li
+&gt; - **발행일:** 2026-10-07
+&gt; - **PDF 링크:** [From Pareto to Preference: Personalized Test-Time Scaling via Amortized Agentic Policy Discovery](https://arxiv.org/pdf/2610.09684v1)
+
+
+✨ 3줄 핵심 요약
+*   **다차원 요구사항 대응:** 기존의 단일 자원 최적화 방식을 넘어, 사용자가 요구하는 정확도·지연 시간·비용을 동시에 만족하는 개인화된 테스트 타임 스케일링(TTS)을 구현합니다.
+*   **상각된 정책 발견:** &#x27;PersonTTS&#x27; 프레임워크를 통해 이전 사용자들의 경험을 재사용함으로써, 새로운 사용자를 위한 최적의 정책을 탐색하는 시간과 비용을 획기적으로 줄였습니다.
+*   **검증된 성능:** AIME 및 HMMT 데이터셋 실험 결과, PersonTTS는 미학습 사용자 프로필과 문제에 대해서도 기존 TTS 기법들보다 월등한 요구사항 만족도를 보였습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+대형 언어 모델(LLM)은 추론 과정에서 추가적인 연산을 수행해 성능을 높이는 &#x27;테스트 타임 스케일링(TTS)&#x27;을 사용합니다. 하지만 지금까지는 단순히 &quot;정확도 vs 비용&quot; 혹은 &quot;정확도 vs 속도&quot; 중 하나만 최적화하는 데 그쳤습니다. 실제 사용자는 &quot;정확도는 높으면서 비용과 속도는 일정 수준 이하여야 한다&quot;와 같은 복합적인 요구사항을 가집니다. **PersonTTS**는 이 문제를 해결하기 위해 이전 사용자들의 검색 경험을 재사용(상각)하여, 새로운 사용자의 까다로운 요구조건을 맞추는 최적의 정책을 빠르게 찾아내는 지능형 에이전트 시스템입니다.
+
+🎯 배경 및 문제점
+*   **파레토 한계:** 기존 TTS 연구는 정확도-비용 또는 정확도-지연 시간이라는 단일 차원의 파레토 프론티어(Pareto frontier) 최적화에 집중했습니다.
+*   **사용자 요구의 복합성:** 실무 환경에서는 정확도, 지연 시간, 추론 비용을 동시에 만족해야 하는 경우가 많지만, 기존 방식은 이러한 다차원 제약을 충분히 반영하지 못합니다.
+*   **탐색 비용:** 새로운 사용자 프로필마다 매번 정책을 처음부터 새로 발견하는 과정은 계산 자원과 시간 측면에서 비효율적입니다.
+
+💡 핵심 기술 및 아키텍처
+*   **상각된 에이전트 정책 발견(Amortized Agentic Policy Discovery):** 이전 탐색 경험을 재사용하여 새로운 사용자의 프로필에 맞춘 컨트롤러를 초기화합니다.
+*   **조건부 정책 설계:** 원본 데이터에서 추출한 절차적 지침을 활용하며, 각 후보 정책에 대해 타겟 프로필 기반의 평가를 수행하여 개인화된 만족도를 극대화합니다.
+*   **제약 기반 최적화:** 정확도, 지연 시간, 비용이라는 세 가지 조건을 동시에 만족하는 &#x27;합산 만족도(Joint Satisfaction Rate)&#x27;를 핵심 지표로 설정하여 최적의 정책을 도출합니다.
+
+📊 실험 결과 분석
+*   **성능 우위:** AIME 및 HMMT 벤치마크 테스트 결과, PersonTTS는 기존의 강력한 TTS 기준 모델들보다 요구사항 만족도(JSR) 측면에서 상당한 성능 향상을 보였습니다.
+*   **효율성:** 동일한 후보 평가 예산 내에서, 사용자 간 경험 재사용을 통해 정책의 품질을 개선함과 동시에 정책 발견을 수행하는 에이전트의 시간과 비용을 실질적으로 절감했습니다.
+*   *참고: 논문 발췌문에는 구체적인 수치 데이터가 명시되어 있지 않습니다.*
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+*   **맞춤형 AI 최적화:** 고성능이 필요한 사용자와 저비용/고속이 필요한 사용자가 동일한 모델을 사용하더라도, 개인의 필요에 따라 최적화된 추론 환경을 제공할 수 있습니다.
+*   **비용 절감:** 에이전트 정책 발견 과정을 상각화함으로써, LLM 서비스 기업은 새로운 사용자가 늘어나더라도 개인화 정책 수립에 드는 운영 비용을 최소화할 수 있습니다.
+*   **범용성:** 수학적 추론과 같은 복잡한 문제 해결 환경에서 정확도와 자원 효율성을 동시에 잡아야 하는 다양한 실무 분야(API 서비스, 온디바이스 AI 등)에 즉각적인 적용이 가능합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2610.09684 From Pareto to Preference: Personalized Test-Time Scaling ...](https://arxiv.org/abs/2610.09684)
+&gt; - [From Pareto to Preference: Personalized Test-Time Scaling via...](https://openreview.net/forum?id=1Kxk30PvqF)
+&gt; - [Paper page - From Pareto to Preference: Personalized Test-Time Scaling ...](https://huggingface.co/papers/2610.09684)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;상각된 에이전트 정책 발견이라는 개념 자체는 메타 러닝 관점에서 흥미롭지만, &#x27;개인화된&#x27; 정책이 과연 분포 외 데이터(OOD)에서도 안정적인 수렴을 보일지 의문입니다. 특히 다양한 사용자 프로필 간의 전이 학습 과정에서 발생하는 부정적 전이(negative transfer)를 어떻게 제어했는지에 대한 이론적 근거가 논문에 명확히 제시되지 않았군요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 맞지만, 실무 입장에선 &#x27;Joint Satisfaction Rate&#x27;를 지표로 삼은 것만으로도 일단 박수 칠 일입니다. 매번 서빙 레이어에서 파레토 최적화 돌리다가 인프라 비용 터지는 거 보면, 이전 경험 재사용해서 콜드 스타트 시간 줄이는 게 훨씬 현실적인 엔지니어링 해법이죠. 다만, 서빙 환경에서 정책 동적 로딩할 때 생기는 Latency 오버헤드는 어떻게 해결하려나요?&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;선배님들, 너무 진지하신 거 아니에요? 이번 PersonTTS는 그냥 &#x27;LLM의 개인화된 튜닝&#x27;을 테스트 타임으로 가져온 킬러 앱이라구요! 특히 AIME/HMMT 같은 하드한 벤치에서 성능 잡으면서 비용까지 챙겼다는 건, 이제 모델 크기 경쟁보다 &#x27;어떻게 똑똑하게 추론시킬까&#x27;가 메인 게임이 됐다는 방증이죠. 당장 내일 세미나 발표 자료에 이거 넣어야겠어요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
