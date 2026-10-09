@@ -1,0 +1,65 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>냉동 모델, 진화하는 전문성: 다중 모달 의료 AI를 위한 배포 경험 기반의 모델 불가지론적 학습 | ArXiv Translator AI</title><meta name="description" content="냉동 모델, 진화하는 전문성: 다중 모달 의료 AI를 위한 배포 경험 기반의 모델 불가지론적 학습"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2610_09146v1"><meta property="og:type" content="article"><meta property="og:title" content="냉동 모델, 진화하는 전문성: 다중 모달 의료 AI를 위한 배포 경험 기반의 모델 불가지론적 학습"><meta property="og:description" content="냉동 모델, 진화하는 전문성: 다중 모달 의료 AI를 위한 배포 경험 기반의 모델 불가지론적 학습"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2610_09146v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="냉동 모델, 진화하는 전문성: 다중 모달 의료 AI를 위한 배포 경험 기반의 모델 불가지론적 학습"><meta name="twitter:description" content="냉동 모델, 진화하는 전문성: 다중 모달 의료 AI를 위한 배포 경험 기반의 모델 불가지론적 학습"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2610_09146v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "냉동 모델, 진화하는 전문성: 다중 모달 의료 AI를 위한 배포 경험 기반의 모델 불가지론적 학습", "description": "냉동 모델, 진화하는 전문성: 다중 모달 의료 AI를 위한 배포 경험 기반의 모델 불가지론적 학습", "datePublished": "2026-10-06", "url": "https://arxiv-ai-blog.vercel.app/papers/2610_09146v1", "author": [{"@type": "Person", "name": "Yexiao He"}, {"@type": "Person", "name": "Yucheng Tang"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2610_09146v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2610_09146v1"});gtag('event', 'paper_view', {"paper_id": "2610_09146v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>냉동 모델, 진화하는 전문성: 다중 모달 의료 AI를 위한 배포 경험 기반의 모델 불가지론적 학습</h1><p>냉동 모델, 진화하는 전문성: 다중 모달 의료 AI를 위한 배포 경험 기반의 모델 불가지론적 학습</p><pre>냉동 모델, 진화하는 전문성: 다중 모달 의료 AI를 위한 배포 경험 기반의 모델 불가지론적 학습
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Frozen Models, Evolving Expertise: Model-Agnostic Learning from Deployment Experience for Multimodal Medical AI
+&gt; - **저자:** Yexiao He, Yucheng Tang, Pengfei Guo, Yufan He, Andriy Myronenko, Can Zhao, Ang Li, Daguang Xu, Dong Yang
+&gt; - **발행일:** 2026-10-06
+&gt; - **PDF 링크:** [Frozen Models, Evolving Expertise: Model-Agnostic Learning from Deployment Experience for Multimodal Medical AI](https://arxiv.org/pdf/2610.09146v1)
+
+
+✨ 3줄 핵심 요약
+*   배포 후 고정(frozen)되는 LLM 및 VLM의 한계를 극복하기 위해, 외부 전문 지식을 활용하여 모델을 재학습 없이 업데이트하는 프레임워크를 제안합니다.
+*   추론 가이드(Skill), 사실 저장소(Knowledge Memory), 시각적 사례 기반(MMKB)의 세 가지 외부 지식 요소를 결합해 모델의 성능을 향상합니다.
+*   6개 벤치마크 테스트 결과, 의료 분야를 포함한 다양한 태스크에서 기본 모델 대비 최대 34.2%의 성능 향상을 기록했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+의료 AI는 배포 후 고정된 상태로 남는 경우가 많아, 최신 의학 지침이나 새로운 치료법이 나와도 스스로 학습하지 못합니다. 모델을 다시 학습(fine-tuning)하려면 모델의 가중치에 접근해야 하는데, 이는 상용 모델에서는 불가능한 경우가 많습니다. 본 논문은 모델을 직접 수정하지 않고도 &#x27;외부 지식 창고&#x27;를 활용하여 모델이 마치 학습하는 것처럼 행동하게 만드는 기술을 선보입니다. 마치 숙련된 의사가 과거의 진료 경험과 의학 교과서를 참고하듯, AI도 과거 사례와 신뢰할 수 있는 정보를 조회하여 실시간으로 정확한 판단을 내립니다.
+
+🎯 배경 및 문제점
+*   **고정된 지식:** 배포된 LLM/VLM은 매개변수가 고정되어 있어 배포 후 얻는 새로운 경험을 지식으로 통합하지 못합니다.
+*   **의료 현장의 특수성:** 의학은 최신 근거와 가이드라인이 계속 업데이트되어야 하는 분야이나, 기존 모델은 이를 반영하지 못해 동일한 실수를 반복할 위험이 있습니다.
+*   **재학습의 한계:** 모델을 재학습하는 것은 비용이 많이 들고, 폐쇄형(closed-source) 모델의 경우 가중치 접근 자체가 불가능합니다.
+*   **과적합 문제:** 기존의 매개변수 없는(parameter-free) 학습 방법들은 특정 검증 데이터셋에 과적합되어 새로운 상황으로의 일반화 성능이 저하되는 문제가 있습니다.
+
+💡 핵심 기술 및 아키텍처
+제안하는 프레임워크는 배포 경험을 세 가지 형태로 저장하여 모델의 추론을 돕습니다.
+1.  **기술(Skill):** 논리적인 추론 과정과 도구 사용법을 가이드합니다.
+2.  **지식 메모리(Knowledge Memory):** 이전 사례나 신뢰할 수 있는 외부 증거를 바탕으로 사실 정보를 저장합니다.
+3.  **다중 모달 지식 베이스(MMKB):** 시각적 예시를 저장하여 현재의 의료 영상과 유사한 사례를 연결해 줍니다.
+*   **검증 전략:** 고정된 검증셋에 의존하지 않고, 새로운 업데이트가 기존 사례의 성능을 떨어뜨리지 않는 경우에만 지식을 갱신하여 일반화 성능을 유지합니다.
+
+📊 실험 결과 분석
+*   **성능 향상:** 의료 태스크에서 기본 모델 대비 최대 34.2%의 성능 향상을 보였습니다.
+*   **범용성:** 임상 진단, 의료 워크플로우, 의료/비의료적 시각적 추론 등 6개 벤치마크에서 효과가 검증되었습니다.
+*   **이식성 및 확장성:** 4개의 오픈/폐쇄형 모델에 적용 가능하며, 별도의 추가 최적화 없이도 다른 모델로 지식 이전이 가능합니다.
+*   **도메인 확장:** 의료 분야뿐만 아니라 비의료 도메인에서도 작동함을 확인했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+*   **지속적 학습:** 병원에서 실제로 AI를 활용하며 발생하는 경험을 즉각적으로 지식화하여, 시간이 지날수록 더 똑똑해지는 의료 보조 시스템 구축이 가능해집니다.
+*   **폐쇄형 모델의 효율적 활용:** 가중치를 수정할 수 없는 고성능 상용 AI 모델(LLM/VLM)을 의료 환경에 맞춰 커스터마이징하는 실용적인 대안을 제시합니다.
+*   **임상 현장 적용:** 최신 의학 지침이 발표되었을 때, 모델 전체를 재학습하지 않고도 즉시 해당 지식을 &#x27;메모리&#x27;에 추가하여 환자 진단 가이드라인으로 활용할 수 있습니다.
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문의 아이디어 자체는 실용적이나, &#x27;검증 전략&#x27;에서의 성능 저하 방지 로직이 너무 휴리스틱에 의존하는 거 아닌가? 실제 임상 환경에서 RAG 기반의 지식 검색이 hallucination을 완벽히 제어하지 못하면 의료 사고로 직결될 텐데, 이에 대한 견고성 증명이 부족해 보이네.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 맞지만, 현업 입장에서는 API만 제공하는 폐쇄형 모델을 써야 할 때 이만한 대안이 없습니다. 매번 파인튜닝 비용 태우는 것보다 MMKB로 히스토리 관리하는 게 훨씬 운영 효율적이에요. 다만 실무 적용 시 지식 베이스의 캐시 업데이트 시점과 검색 Latency를 어떻게 잡을지가 관건이겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;다들 너무 무겁게 보시는 거 아니에요? ㅋㅋ 일단 모델 안 건드리고도 34.2% 찍었다는 거 자체가 엄청난 건데! &#x27;Frozen Model&#x27;의 한계를 외부 지식으로 뚫어버리는 이런 방식이 요즘 RAG 2.0 흐름의 핵심 아닙니까? 당장 저도 제 프로젝트에 MMKB 구조 바로 이식해 보러 갑니다.&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
