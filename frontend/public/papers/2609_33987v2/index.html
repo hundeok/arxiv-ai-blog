@@ -1,0 +1,69 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Opera: 장기 호흡 코딩 에이전트를 위한 언어적 비평가 프레임워크 | ArXiv Translator AI</title><meta name="description" content="Opera: 장기 호흡 코딩 에이전트를 위한 언어적 비평가 프레임워크"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_33987v2"><meta property="og:type" content="article"><meta property="og:title" content="Opera: 장기 호흡 코딩 에이전트를 위한 언어적 비평가 프레임워크"><meta property="og:description" content="Opera: 장기 호흡 코딩 에이전트를 위한 언어적 비평가 프레임워크"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_33987v2"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Opera: 장기 호흡 코딩 에이전트를 위한 언어적 비평가 프레임워크"><meta name="twitter:description" content="Opera: 장기 호흡 코딩 에이전트를 위한 언어적 비평가 프레임워크"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_33987v2");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Opera: 장기 호흡 코딩 에이전트를 위한 언어적 비평가 프레임워크", "description": "Opera: 장기 호흡 코딩 에이전트를 위한 언어적 비평가 프레임워크", "datePublished": "2026-09-27", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_33987v2", "author": [{"@type": "Person", "name": "Kai Mei"}, {"@type": "Person", "name": "Zhiyuan Hu"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_33987v2", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_33987v2"});gtag('event', 'paper_view', {"paper_id": "2609_33987v2", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>Opera: 장기 호흡 코딩 에이전트를 위한 언어적 비평가 프레임워크</h1><p>Opera: 장기 호흡 코딩 에이전트를 위한 언어적 비평가 프레임워크</p><pre>Opera: 장기 호흡 코딩 에이전트를 위한 언어적 비평가 프레임워크
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Opera: A Verbal Critic Framework for Long-horizon Coding Agents
+&gt; - **저자:** Kai Mei, Zhiyuan Hu, Yutong Dai, Juntao Tan, Yifan Zhang, Dingjie Song, Dimitris N. Metaxas, Silvio Savarese, Ran Xu, Zeyuan Chen
+&gt; - **발행일:** 2026-09-27
+&gt; - **PDF 링크:** [Opera: A Verbal Critic Framework for Long-horizon Coding Agents](https://arxiv.org/pdf/2609.33987v2)
+
+
+✨ 3줄 핵심 요약
+* **지속적 피드백 관리**: Opera는 에이전트의 수정 사항을 단순 조언이 아닌 &#x27;지속적인 기록&#x27;으로 관리하며, 문제가 해결될 때까지 추적합니다.
+* **성능 대폭 향상**: Terminal-Bench 2.1, SWE-Bench Pro 하위 집합, DeepSWE v1.1 등 3개 벤치마크에서 기존 에이전트 대비 해결률을 최대 15.0%p까지 높였습니다.
+* **학습 데이터 생성**: Opera가 생성한 수정 과정 데이터로 모델을 미세 조정(Fine-tuning)하면, 추론 시 비평가 없이도 해결률이 10.2%p 향상되는 효과를 보였습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+코딩 에이전트는 복잡한 소프트웨어 작업을 수행할 때 실수를 반복하거나, 문제가 해결되지 않았는데도 작업을 마쳤다고 오판하는 경우가 많습니다. &#x27;Opera&#x27;는 마치 꼼꼼한 코드 리뷰어처럼 에이전트의 행동을 감시합니다. 단순히 &quot;틀렸어&quot;라고 말하는 대신, 무엇이 문제인지 진단하고 올바른 방향을 제시하며, 에이전트가 그 지시를 실제로 따르고 문제를 완전히 해결했는지 끝까지 확인합니다. 이 과정은 에이전트의 내부 구조를 수정할 필요 없이 외부에서 붙여 쓸 수 있어 활용도가 높습니다.
+
+🎯 배경 및 문제점
+기존 코딩 에이전트의 피드백 방식에는 세 가지 주요 한계가 존재합니다.
+1. **개입 시점의 모호성**: 정기적인 피드백은 너무 늦거나 불필요할 때가 많습니다.
+2. **피드백의 신뢰성**: LLM이 불완전한 증거를 바탕으로 잘못된 진단을 내리면 오히려 에이전트의 작업을 방해할 수 있습니다.
+3. **사후 추적 부재**: 에이전트가 제안을 따랐더라도, 실제로 근본적인 문제가 해결되었는지는 확인하기 어렵습니다.
+
+💡 핵심 기술 및 아키텍처
+Opera는 다음의 메커니즘을 통해 위 문제들을 해결합니다.
+* **지속적 기록(Persistent Note)**: 문제를 발견하면 기록을 생성하고, 증거가 문제 해결을 뒷받침할 때까지 이 기록을 유지합니다.
+* **트리거 시스템**: 주기적 확인과 특정 이벤트 발생 시에만 리뷰를 수행하여 효율성을 높입니다.
+* **운영자 비평가(Operator Critic)**: 각 이슈를 구체적인 증거, 수정 방향, 해결 기준과 연결하며, 전달 전 반드시 피드백의 타당성을 검사(Audit)합니다.
+* **플러그인 방식**: 에이전트의 가중치를 수정하지 않고, 실행 흔적과 자연어 피드백만을 사용하여 기존 프레임워크와 결합합니다.
+
+📊 실험 결과 분석
+* **해결률 개선**: 4가지 정책 모델을 대상으로 실험한 결과, Opera 도입 시 벤치마크별로 최대 12.4%(Terminal-Bench 2.1), 15.0%(SWE-Bench Pro 하위 집합), 8.9%(DeepSWE v1.1)까지 해결률이 향상되었습니다.
+* **자기 비평 및 일반화**: 에이전트가 스스로를 비평하는 경우에도 Opera는 성능 향상을 견인했습니다.
+* **학습 활용**: Opera가 생성한 롤아웃 데이터를 활용해 Qwen3.5-9B를 미세 조정하자, 추론 단계에서 별도의 비평가 없이도 해결률이 10.2%p 상승했으며, 서로 다른 실행 환경(Openhands에서 Terminus-2로 전환)에서도 안정적인 성능을 유지했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+Opera는 AI 코딩 에이전트가 단순한 코드 생성을 넘어, 스스로 오류를 수정하고 복잡한 시스템 수준의 작업을 끝까지 완수하도록 돕습니다. 특히 실무 환경에서 AI가 작업을 마쳤다고 보고하기 전, 요구사항 충족 여부를 최종 검증하는 &#x27;완성도 보장&#x27; 단계에서 강력한 성능을 발휘합니다. 또한, Opera를 통해 생성된 양질의 데이터는 더 효율적이고 정확한 코딩 모델을 학습시키는 데 기여할 수 있습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Opera: A Verbal Critic Framework for Long-horizon Coding Agents](https://arxiv.org/abs/2609.33987)
+&gt; - [Opera: A Verbal Critic Framework for Long-horizon Coding Agents](https://arxiv.deeppaper.ai/papers/2609.33987v1)
+&gt; - [Opera: A Verbal Critic Framework for Long-horizon Coding Agents](https://www.catalyzex.com/paper/opera-a-verbal-critic-framework-for-long)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;Opera의 &#x27;지속적 기록(Persistent Note)&#x27; 메커니즘은 흥미롭지만, 결국 프롬프트 엔지니어링의 연장선 아닌가요? 문맥 창(Context Window)이 길어질수록 비평가 에이전트가 생성하는 토큰 비용과 지연 시간(Latency) 문제를 어떻게 해결할지 의문입니다. 특히 실시간 시스템에서 이런 오버헤드를 감당할 수 있을지 논문에서 더 엄밀한 실증이 필요해 보이네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 비용이 문제긴 하죠. 그런데 현업 입장에서 보면, 에이전트가 헛다리 짚고 삽질하는 시간과 클라우드 비용을 생각하면 15%p 성능 향상은 엄청난 ROI입니다. 특히 모델 가중치 수정 없이 플러그인처럼 붙일 수 있다는 게 핵심이네요. 기존 파이프라인에 그대로 이식해서 바로 테스트해 볼 생각입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;다들 성능이랑 비용만 보시는데, 저는 Opera가 만든 &#x27;학습 데이터&#x27;가 진짜 물건이라고 봅니다. 비평가 없이 미세 조정만으로 10.2%p 올린 건, 이제 에이전트가 단순히 코드를 짜는 게 아니라 &#x27;디버깅 철학&#x27; 자체를 내재화하기 시작했다는 뜻이거든요. 이거 당장 다음 학기 프로젝트에 적용해서 SOTA 찍어보겠습니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

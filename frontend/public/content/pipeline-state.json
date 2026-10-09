@@ -49540,11 +49540,11 @@
     "2610_08995v1": {
       "id": "2610_08995v1",
       "filename": "post_2610_08995v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-10-08T09:49:29.386102+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-08T18:18:04.145578+00:00",
+      "updated_at": "2026-10-09T22:08:20.390590+00:00",
       "paper": {
         "title": "PhysEvo: Astra Can Act, Let It",
         "summary": "Astra can act, yet reliable manipulation depends on the system through which it observes and controls the world. We introduce PhysEvo, a framework for physical recursive self-improvement (RSI) around a single frozen model. A task agent executes robot tasks; a meta-agent uses the resulting trajectories to diagnose failures, revise tools and skills, and test corrections. The meta-agent can also improve its own diagnostic tools, so retained revisions support both later action and later self-improvement. This process develops joint-level control, evidence-seeking observation, and reusable manipulation skills without model-weight updates or a separately trained action policy. Across 42 RoboDojo tasks, held-out-layout evaluation of retained task-specific deployment versions yields a five-dimension average score of 68.14/100 and 62.00% success, compared with 47.17% for RoboDawn's one-shot Astra agent, the strongest published reference in our comparison. On eight manipulation tasks challenging direct Astra, PhysEvo achieves 55.00% success, compared with 1.25% for the direct-Astra reference. Deploying the simulation-evolved harness on AgileX PiPER and continuing skill revision yields 90.60/100 average score and 84.00% success across 25 trials on five real-world tasks. PhysEvo turns the consequences of action into persistent, testable changes to how a frozen model acts and improves.",
@@ -49559,7 +49559,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2610.08995v1"
       },
-      "priority_score": 37
+      "priority_score": 37,
+      "korean_title": "PhysEvo: 아스트라(Astra)는 행동할 수 있다, 이제 그 능력을 발휘하게 하라"
     },
     "2610_09684v1": {
       "id": "2610_09684v1",
@@ -49911,7 +49912,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-09T17:51:15.225248+00:00",
+      "updated_at": "2026-10-09T22:07:19.012297+00:00",
       "paper": {
         "title": "U-Space: Uncovering When and Why Uncertainty Arises in Language Models",
         "summary": "Large language models are informing decisions with ever-higher stakes. As the consequences of their errors grow, a central question becomes harder to ignore: how much can we trust an individual answer? Yet recognizing when to defer remains difficult because language models can present incorrect conclusions with fluent explanations and an authoritative tone. Uncertainty quantification seeks to address this disconnect by estimating the reliability of individual predictions. However, many existing methods require repeated generations or separately trained components, and their scalar estimates do not reveal where uncertainty arises or how it evolves during reasoning. Recent work has also shown that generation length can be strongly associated with uncertainty estimates and correctness, raising the question of how much of an estimator's predictive power comes from uncertainty-specific information rather than output length alone. Mechanistic interpretability offers a way to address these limitations by connecting human-interpretable concepts to intermediate model states. Building on this capability, we introduce the U-Space, a low-dimensional subspace that makes a model's evolving uncertainty measurable and interpretable. We identify semantic anchors for doubt and certainty, map their unembedding directions back into the residual space, and combine their contrasts into an orthogonal basis. The U-Lens projects each token state onto these basis vectors, yielding an interpretable token-level uncertainty map that can be inspected directly or aggregated into a scalar uncertainty score. Our approach requires no correctness labels, repeated generations, or training. Across reasoning benchmarks, its confidence score outperforms established baselines under both standard and length-controlled evaluation and transfers more reliably than supervised estimators. Code: https://github.com/s2labres/U-Space.",
@@ -49937,7 +49938,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-09T17:51:15.225257+00:00",
+      "updated_at": "2026-10-09T22:07:19.012308+00:00",
       "paper": {
         "title": "CARE: Certifying Acceleration for Vision-Language-Action Inference",
         "summary": "While vision-language-action (VLA) models have advanced rapidly, running them at every control step remains expensive. Prior work accelerates VLA inference using techniques like action chunking and visual-token pruning, typically evaluating based on latency and average task success. However, acceleration may discard information and break tasks the original policy would solve, a risk hidden by average metrics. Measuring these failures is challenging because action deviations compound over closed-loop trajectories, meaning task failure is only observable across full episodes. We therefore define an acceleration-induced failure via paired rollouts from identical initial conditions, tracking when the reference succeeds but the accelerated policy fails. To manage this, we introduce CARE, an approach for certified accelerator selection. CARE uses paired rollouts on a calibration set to provide finite-sample guarantees that acceleration-induced failure risk stays below a user-specified budget. It deploys the fastest certified candidate, falling back to the reference if none qualify. By relying only on terminal outcomes and measured compute, CARE applies unchanged across diverse acceleration mechanisms, while sequential testing and failure-triggered reference rollouts keep certification affordable. On four LIBERO suites with OpenVLA-OFT, CARE certifies $9.0$--$10.8\\times$ speedups while guaranteeing (at $95\\%$ confidence) that at least $85.8\\%$ of reference-solved episodes are preserved. Under tight budgets, selectors without guarantees exceed the budget in up to $75\\%$ of trials, whereas CARE stays within budget and its sequential form uses $78.9\\%$ fewer rollouts than exhaustive evaluation. CARE further generalizes to flow-step reduction for $π_{0.5}$, and to Qwen3.5-9B and Llama-3.1-8B agents in Crafter.",
@@ -49960,7 +49961,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-09T17:51:15.225260+00:00",
+      "updated_at": "2026-10-09T22:07:19.012313+00:00",
       "paper": {
         "title": "MARGIN: Runtime Confidence Calibration for Multi-Agent Foundation Model Coordination",
         "summary": "When a coordinator compares answers from heterogeneous foundation models, self-reported confidence may have different meanings across responders and changing workloads. This paper presents MARGIN (Multi-Agent Runtime Grading via Incremental Normalisation), a runtime calibration method that learns model-specific confidence corrections from observed answer outcomes without retraining the models or requiring a held-out calibration set. MARGIN tracks recent accuracy and stated confidence within confidence bands, uses their ratio to correct reported confidence, and blends sparse-band corrections toward a model-level estimate. The corrected scores weight candidate answers in a collective decision. Evaluation covers code generation, question answering, and mathematics, using an 18-model pool and a nine-model subset for distribution-shift experiments. On BigCodeBench, model-mean confidence is negatively related to accuracy; among correct/incorrect response pairs, choosing the more confident responder performs below chance. Against five online calibration baselines receiving identical feedback and retaining their learned state across each transition, MARGIN achieves lower post-shift expected calibration error than all five in two code-generation transitions and than four in a question-answering transition; the remaining question-answering comparison is inconclusive. In separate code-generation coordination experiments, calibration improves the ranking of correct responses and increases answer-selection accuracy by 4.3 and 14.0 percentage points on two of three benchmarks relative to uncalibrated confidence weighting. These results support model-specific runtime calibration for coordination under changing workloads when correctness feedback is available for the participating responders.",
@@ -50078,7 +50079,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-09T17:51:23.884764+00:00",
+      "updated_at": "2026-10-09T22:07:19.012276+00:00",
       "paper": {
         "title": "Incremental Open-Ended Deep Research with Structured Harness",
         "summary": "Existing Open-Ended Deep Research (OEDR) systems primarily generate reports from scratch, making them inefficient for scenarios where research reports need to be continuously maintained as new information emerges. We introduce \\textbf{Incremental Open-Ended Deep Research (Incremental-OEDR)}, a research setting that treats a report as an evolving research state and incrementally updates it by preserving valid knowledge, revising outdated or incomplete content, and incorporating newly available information. To support this setting, we propose \\textbf{Structured Harness}, which represents reports as structured collections of outlines, sections, and supporting evidence, and provides structured retrieval, a persistent structured evidence pool, and structured generation for selective report updating and evidence reuse. We further establish a temporal evaluation framework spanning ten years, with \\emph{Single-Step Task} and \\emph{Long-Chain Task} to evaluate incremental updates over both individual transitions and long-term update chains. Extensive Experiments on DeepResearch Bench and DeepConsult under both the Open-source Configuration (OC) and Proprietary Configuration (PC) show that Incremental-OEDR maintains competitive report quality while substantially improving report continuity and reducing research costs. As shown in Figure~\\ref{fig:profile}, it achieves up to 0.51 higher content-level ROUGE-L F1, 0.63 higher outline-level EM F1, 33\\% lower token consumption, and 61\\% fewer search calls than OEDR on DeepResearch Bench. For more details, please refer to our project page: https://ioedr-project.github.io/.",
@@ -50099,7 +50100,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-09T17:51:34.121390+00:00",
+      "updated_at": "2026-10-09T22:07:19.012303+00:00",
       "paper": {
         "title": "Frozen Models, Evolving Expertise: Model-Agnostic Learning from Deployment Experience for Multimodal Medical AI",
         "summary": "Large language models (LLMs) and vision-language models (VLMs) are usually frozen after deployment, so they do not learn from the cases they solve. This is especially concerning in medicine, where new clinical evidence, updated guidelines, and new therapies can change established practice. Fine-tuning can update the model, but it requires access to model weights and additional training. Parameter-free methods avoid training, but they may overfit a fixed validation set, lack reliable domain knowledge, or lose visual details by saving experience only as text. To address these limitations, we present a model-agnostic framework that allows frozen LLMs and VLMs to learn from deployment experience through three forms of external expertise: a Skill that guides reasoning and tool use, a Knowledge Memory that stores reliable facts supported by earlier cases or trusted external evidence, and a Multimodal Knowledge Base that keeps visual examples and guides the model to relate each retrieved case to the current image. Instead of relying on a fixed validation set, a validation strategy keeps an update only if it helps on new cases without degrading performance on earlier ones. Across six benchmarks covering clinical diagnosis, clinical workflows, medical reasoning, and medical and non-medical visual reasoning, and with four open-weight and closed-source base models, our framework improves performance during online deployment by up to 34.2% over the base model on medical tasks, generalizes to unseen cases, transfers to other models without further optimization, and works in non-medical domains.",
@@ -50123,11 +50124,11 @@
     "2609_35855v1": {
       "id": "2609_35855v1",
       "filename": "post_2609_35855v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-10-09T17:51:15.225263+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-09T17:51:15.225264+00:00",
+      "updated_at": "2026-10-09T22:08:01.816212+00:00",
       "paper": {
         "title": "Mara Chain: Rethinking Failure as a Stepping Stone for AI System Auto-Evolution",
         "summary": "Optimizing deployed AI systems increasingly amounts to editing prompts, skills, harnesses, and code rather than model weights. Existing approaches commonly optimize these artifacts through propose-evaluate-select procedures, where candidate configurations are evaluated and only those meeting an acceptance criterion are selected. Yet our analysis shows that discarded candidates often contain information critical for subsequent optimization. Discarding them causes later proposals to revisit the same failure modes. We introduce Mara Chain, a refinement procedure that turns rejected candidates into stepping stones. Rather than discarding a rejected candidate, Mara Chain retains and iteratively refines it using evidence accumulated across preceding attempts. The procedure limits each refinement chain to a fixed depth and applies Pareto-filtered Top-N selection to bound the candidate pool. Across AppWorld skill optimization, TerminalBench 2.1 harness optimization, and MuSiQue retrieval-pipeline optimization, Mara Chain delivers greater task-performance gains with fewer rollouts. It outperforms GEPA, ACE, and SkillOpt-Lite by up to 20.5% in relative performance on AppWorld, reaching the target score with 65.5% fewer rollouts than GEPA. It improves the pass rate by 20.2 and 22.5 percentage points over AHE and Meta-Harness on TerminalBench 2.1, respectively, and improves MuSiQue test nDCG@10 and Recall@10 by 0.104 and 0.131 over a hand-written retrieval pipeline.",
@@ -50142,7 +50143,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2609.35855v1"
       },
-      "priority_score": 38
+      "priority_score": 38,
+      "korean_title": "마라 체인: AI 시스템 자동 진화를 위한 실패의 재해석"
     },
     "2610_06496v1": {
       "id": "2610_06496v1",
@@ -50151,7 +50153,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-09T17:51:15.225267+00:00",
       "last_error": null,
-      "updated_at": "2026-10-09T17:51:15.225268+00:00",
+      "updated_at": "2026-10-09T22:07:19.012321+00:00",
       "paper": {
         "title": "You Changed Your Mind, The Model Didn't: Demystifying Intent in Multi-Turn Dialogue",
         "summary": "When a large language model handles a multi-turn task and a user proposes a change but ultimately rejects it, the model should continue as if nothing changed. We find a surprising failure: merely mentioning a rejected change can derail task execution, even when the user's final intent remains unchanged. To systematically study language model behavior under evolving user intent, we introduce Intent-Eval, a controlled benchmark spanning tool actions, code, databases, and mathematics. Across diverse tasks, models are vulnerable to both rejected proposals and superseded requirements, consistent with mentioned-as-in-effect confusion: conversational content is treated as active requirements even after it has been rejected or replaced. Accuracy degradation can deepen or persist as interaction continues, highlighting the need to distinguish what has been mentioned from what remains in effect. Building on this insight, we propose Intent-OPSD, a decision-conditioned on-policy self-distillation framework with Teacher and Student initialized from the same model. The frozen Teacher provides active-intent supervision from the complete task matching the user's decision, training the Student on the full dialogue to follow active requirements reflecting user intent.",
@@ -50173,11 +50175,11 @@
     "2606_03335v3": {
       "id": "2606_03335v3",
       "filename": "post_2606_03335v3.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-10-09T17:51:15.225280+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-09T17:51:15.225281+00:00",
+      "updated_at": "2026-10-09T22:07:46.801700+00:00",
       "paper": {
         "title": "A GPU-Parallel Framework for Heterogeneous Multi-Task Reinforcement Learning",
         "summary": "GPU-parallel simulation provides abundant robot interaction, but existing benchmarks rarely combine this scale with heterogeneous manipulation tasks and standardized multi-task RL evaluation. We introduce Hebero (Heterogeneous Benchmark for Robot Learning), a GPU-parallel Isaac Lab benchmark that enables efficient joint training and evaluation of a single policy across all 40 heterogeneous tasks. Scaling experiments show that increasing parallel replicas per task improves success under a fixed wall-clock budget. To support learning with sparse rewards and limited demonstrations, we propose Demonstration-Guided Policy Optimization (DGPO), which reuses demonstrations for dense tracking rewards and asymmetric value learning. Its shared stack supports controlled comparisons of learner-specific demonstration interfaces within PPO. Within DGPO framework, we introduce IW-ABC, which uses a lightweight per-task learning progress signal to coordinate adaptive behavior cloning (ABC), relaxing demonstration guidance with task progress, and importance weighting (IW), emphasizing lagging tasks in PPO updates. With 50 demonstrations per task, IW-ABC achieves 90.1% state-input mean success, outperforming the strongest baseline FAMO-ABC by 7.8 percentage points. Its visual counterpart reaches 93.5% mean success. Real-world experiments further demonstrate that a single multi-task policy trained in simulation can successfully perform four tasks on a physical Piper robot. The project page is available at https://hebero-rl.github.io/.",
@@ -50196,7 +50198,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2606.03335v3"
       },
-      "priority_score": 39
+      "priority_score": 39,
+      "korean_title": "이종 멀티태스크 강화학습을 위한 GPU 병렬 프레임워크"
     },
     "2610_09059v1": {
       "id": "2610_09059v1",
@@ -50205,7 +50208,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-09T17:51:15.225284+00:00",
       "last_error": null,
-      "updated_at": "2026-10-09T17:51:15.225285+00:00",
+      "updated_at": "2026-10-09T22:07:19.012330+00:00",
       "paper": {
         "title": "EDiS: Edge Disjoint Subgraph Sparsification Framework for Graph Neural Networks",
         "summary": "Sparse GNN training reduces computation, but deciding which edges to keep can be costly. Reusing one sparse graph is cheap, but locks training to a fixed topology, while varying it across epochs can require repeated sampling or recomputation. We introduce EDiS (Edge-Disjoint Subgraph sparsification framework), which separates one-time structural extraction from per-epoch graph composition. EDiS decomposes the graph once into cacheable edge-disjoint subgraphs, then recombines them into graphs with edge-budget constraints across epochs and retention ratios without re-extracting structure. Our default construction uses feature-based scores and successive maximum score covering forests, while the same composition mechanism also supports alternative edge selection rules. We provide a combinatorial analysis of the per-epoch sampler, the composition step that draws a training graph from the cached decomposition. We show that, under the default covering-forest selector, the stored decomposition deterministically preserves high-score cut edges, and we derive a selector-agnostic conditional bound on high-score cut survival in composed training graphs. Across 19 homophilic, heterophilic, and large-scale node classification benchmarks against 17 baselines under the same edge budget, EDiS achieves the highest mean benchmark score (accuracy/ROC-AUC) and the lowest average rank and gap-to-best among ranked methods. Ablations show the clearest benefits of structural decomposition and epoch variation at tight edge budgets.",
@@ -50249,10 +50252,39 @@
         "pdf_link": "https://arxiv.org/pdf/2610.10549v1"
       },
       "priority_score": 30
+    },
+    "2609_33987v2": {
+      "id": "2609_33987v2",
+      "filename": "post_2609_33987v2.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-10-09T22:07:33.921678+00:00",
+      "paper": {
+        "title": "Opera: A Verbal Critic Framework for Long-horizon Coding Agents",
+        "summary": "Long-horizon coding agents need timely corrections, yet feedback can be ineffective or even harmful when it misjudges ongoing work or fails to address the underlying problem. Existing critics focus on evaluating trajectories and generating feedback, but rarely track what happens after feedback is delivered. We present Opera, a verbal critic framework that treats each correction as a persistent note, followed until the diagnosed problem is resolved. Opera decides when to review through periodic and event-driven triggers, diagnoses issues with typed operators, audits feedback against visible evidence before delivery, and tracks the agent's subsequent actions to distinguish mere compliance from actual resolution. As a test-time critic, Opera improves the resolve rate of non-critic agents by up to 12.4, 15.0, and 8.9 percentage points on Terminal-Bench 2.1, a SWE-Bench Pro subset, and DeepSWE v1.1, respectively, across four policy models, and achieves the highest mean resolve rate among competitive critic baselines on all three benchmarks, and also improves policy models when the policy critiques itself. Beyond inference, Opera-guided rollouts provide approximately on-policy training data: fine-tuning Qwen3.5-9B on them improves its resolve rate on held-out SWE-Bench Pro repositories by 10.2 percentage points without a critic at inference time, matching fine-tuning on rollouts from a stronger model, while preserving its performance when switching harness, i.e., from Openhands to Terminus-2, which the latter substantially degrades. Our code is available at: https://github.com/dongyuanjushi/Opera.",
+        "published": "2026-09-27T22:42:57Z",
+        "authors": [
+          "Kai Mei",
+          "Zhiyuan Hu",
+          "Yutong Dai",
+          "Juntao Tan",
+          "Yifan Zhang",
+          "Dingjie Song",
+          "Dimitris N. Metaxas",
+          "Silvio Savarese",
+          "Ran Xu",
+          "Zeyuan Chen"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.33987v2"
+      },
+      "priority_score": 50,
+      "korean_title": "Opera: 장기 호흡 코딩 에이전트를 위한 언어적 비평가 프레임워크"
     }
   },
   "last_run": {
-    "started_at": "2026-10-09T17:51:15.229415+00:00",
+    "started_at": "2026-10-09T22:07:19.018152+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -50263,25 +50295,25 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 18849,
-      "output_tokens": 5693,
+      "prompt_tokens": 21185,
+      "output_tokens": 5846,
       "thought_tokens": 0,
-      "total_tokens": 24542,
-      "estimated_usd": 0.01325175
+      "total_tokens": 27031,
+      "estimated_usd": 0.01406525
     },
-    "finished_at": "2026-10-09T17:51:57.979033+00:00"
+    "finished_at": "2026-10-09T22:08:21.708562+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 3196,
-    "prompt_tokens": 8061760,
-    "output_tokens": 2353490,
+    "requests": 3204,
+    "prompt_tokens": 8082945,
+    "output_tokens": 2359336,
     "thought_tokens": 0,
-    "total_tokens": 10415250,
-    "estimated_usd": 5.545675
+    "total_tokens": 10442281,
+    "estimated_usd": 5.55974025
   },
   "last_publication_run": {
-    "started_at": "2026-10-09T17:51:15.229415+00:00",
+    "started_at": "2026-10-09T22:07:19.018152+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -50292,17 +50324,17 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 18849,
-      "output_tokens": 5693,
+      "prompt_tokens": 21185,
+      "output_tokens": 5846,
       "thought_tokens": 0,
-      "total_tokens": 24542,
-      "estimated_usd": 0.01325175
+      "total_tokens": 27031,
+      "estimated_usd": 0.01406525
     },
-    "finished_at": "2026-10-09T17:51:57.979033+00:00"
+    "finished_at": "2026-10-09T22:08:21.708562+00:00"
   },
   "daily_usage": {
     "date": "2026-10-09",
-    "estimated_usd": 0.04116825,
-    "publications": 12
+    "estimated_usd": 0.0552335,
+    "publications": 16
   }
 }
