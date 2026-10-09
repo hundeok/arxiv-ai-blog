@@ -49490,11 +49490,11 @@
     "2610_07874v1": {
       "id": "2610_07874v1",
       "filename": "post_2610_07874v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-10-08T09:49:29.386092+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-08T09:49:29.386093+00:00",
+      "updated_at": "2026-10-09T00:55:51.802718+00:00",
       "paper": {
         "title": "On-Policy Distillation with Negative-Policy Rollouts",
         "summary": "On-policy distillation (OPD) has been widely studied as a post-training method in which a student model obtains token-level supervision from a stronger teacher on its own rollouts. Recent studies have improved OPD through alternative distillation reward formulations and teacher configurations, while the objective of distillation remains centered on mimicking the teacher. However, when a stronger teacher has limited distributional overlap with the student, such positive guidance can provide insufficient learning signals. In this work, we introduce Negative-Policy OPD (NP-OPD), which complements teacher supervision with rollouts from a lower-performing, lower-capability negative policy that serves as a negative reference for the student. Rather than modifying the distillation reward formulation, NP-OPD introduces the negative policy at the rollout stage, continuously supplying tokens preferred by the negative policy over the teacher so that they remain exposed to teacher supervision throughout training. This provides an explicit negative signal through negative-policy rollouts while preserving the positive teacher supervision used in OPD. Through extensive experiments, we show that NP-OPD improves OPD across model scales, generation modes, reasoning domains, and different OPD variants. Furthermore, our analyses show that NP-OPD effectively suppresses tokens preferred by the negative policy over the teacher and moves the student away from the negative policy. These results support our design of introducing negative signals through negative-policy rollouts and provide new insight into the role of the rollout policy in OPD. Code will be available at https://github.com/naver-ai/np-opd.",
@@ -49507,7 +49507,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2610.07874v1"
       },
-      "priority_score": 40
+      "priority_score": 40,
+      "korean_title": "부정 정책 롤아웃을 활용한 온-폴리시 증류"
     },
     "2610_09832v1": {
       "id": "2610_09832v1",
@@ -49598,7 +49599,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-08T09:49:29.386113+00:00",
       "last_error": null,
-      "updated_at": "2026-10-08T18:18:04.145587+00:00",
+      "updated_at": "2026-10-09T00:55:22.391827+00:00",
       "paper": {
         "title": "Task-Sufficient Contraction: Source Selection for Machine Information Interfaces",
         "summary": "A declared task can sometimes certify a reduced source before a downstream encoder, codebook, rate, distortion target, or optimizer is chosen. This paper studies when one such reduction preserves the complete downstream problem family, a property termed Task-Sufficient Contraction. The reduced source is fixed by the task before the later operating point is selected. An exact contraction allows the later problem to be solved on that source with the same result as if the full source had been retained.   For a machine with a fixed set of possible actions and a fixed loss, the paper identifies a consumer-specific source by merging states only when every available action has the same regret in both. For finite action sets, replacing the richer source by this reduced source preserves the complete one-step rate-regret curve, even though the reduction is fixed before the distortion target is chosen. A second result gives an exact characterization for quadratic loss on affine feasible-action sets: the canonical reduced source is the projection onto the directions in which feasible actions can differ. Under a fixed energy budget, this becomes centered load, while retaining only the optimal water-filled action is too coarse. Earlier Information Bottleneck, semantic rate-distortion, and goal-oriented quantization results are then used to distinguish exact, architecture-conditioned, approximate, failed, and corrected contractions. The framework suggests a way for heterogeneous machines to exchange what a receiving task needs without first aligning their full internal representations.",
@@ -49640,7 +49641,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-08T18:18:04.145537+00:00",
       "last_error": null,
-      "updated_at": "2026-10-08T18:18:04.145553+00:00",
+      "updated_at": "2026-10-09T00:55:22.391791+00:00",
       "paper": {
         "title": "TIDES: Implicit Time-Awareness in Selective State Space Models",
         "summary": "Selective state space models (SSMs), such as Mamba, achieve strong per-token expressivity by making the time discretization step $\\TildeΔ$ a learned function of the input. However, in doing so, $\\TildeΔ$ no longer equals the physical time gap $Δ$ between consecutive observations, limiting the ability of these models to handle irregular time series. Continuous time SSMs, such as S5, keep $\\TildeΔ\\equivΔ$ and therefore handle irregular timestamps natively, but their dynamics remain linear time invariant (LTI), limiting per token expressivity. We propose \\textbf{TIDES}, a selective SSM variant that reconciles selective and continuous architectures by moving input dependence off the step size and onto the diagonal state matrix. As a result, $\\TildeΔ\\equivΔ$ as in S5, allowing the model to handle irregular timestamps natively without sacrificing the per-token expressivity that makes selective SSMs effective. We show this on a novel \\emph{Fading Flash} experimental benchmark, a compact controlled diagnostic for sequence models that jointly tests input dependence and extrapolation to out-of-distribution $Δ$ values, and isolates the distinct failure modes of current state-of-the-art architectures that TIDES avoids by construction. On large-scale benchmarks, TIDES sets the new best average rank on UEA time series classification and the Physiome ODE regression benchmark, and matches or exceeds the reference baseline model on 6 of 8 natively irregular datasets from astronomy, agriculture, neuromorphic sensing, and climate events. Code available at: \\url{https://github.com/TaylanSoydan/TIDES}.",
@@ -49662,7 +49663,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-08T18:18:15.682617+00:00",
+      "updated_at": "2026-10-09T00:55:22.391805+00:00",
       "paper": {
         "title": "System Switch: When Should a Fast Decision Model Stop and Think?",
         "summary": "Dual-process agents pair a fast policy with a slow deliberative model. In real-time settings the slow model usually runs continuously; in turn-based agents and robot planners it is invoked on events such as uncertainty or a detected failure. We study a fast learned actor that takes every decision and hands control to a reasoning vision-language model only when a gate opens, while the game keeps running. We use closed-loop Doom and the new open \"System One\" typed-decision models, served through a common llama.cpp interface. On 900 held-out questions, (i) zero-shot decision models from 0.15B to 9B parameters choose to collect items 1.6-1.8 times more often than chance among their errors, in any option order, although the order changes some models' accuracy; (ii) accuracy, calibration and sensitivity (how well confidence separates right from wrong answers) are distinct: models of similar accuracy differ widely in AUROC, and the confidence of the most sensitive one tracks which kinds of situation it fails, not which answers are wrong; (iii) offline, deferring the least confident 30% of decisions to a reasoning model gains over random deferral in proportion to the actor's AUROC (rank correlation 0.87); with actor and rate chosen on held-out games the gain is +0.13 [0.08, 0.18] with doomLaya's option order and +0.08 [0.02, 0.14] with shuffled options, and reasoning carries about half of it; (iv) in closed loop (33 games, three seeds) no variant reaches the exit. Committing to plans, the reasoner's or a fixed explore rule's, opens more doors and makes an actor that stands still play; with the rule the agent dies more often. Told that some doors need keys, the reasoner takes ordinary doors for locked ones, which the state cannot tell apart; without that knowledge it goes back to collecting. We release code, prompts, data and logs.",
@@ -49682,7 +49683,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-08T18:18:04.145571+00:00",
       "last_error": null,
-      "updated_at": "2026-10-08T18:18:04.145572+00:00",
+      "updated_at": "2026-10-09T00:55:22.391810+00:00",
       "paper": {
         "title": "NAMVIS: Next-Scale Autoregressive Multi-View Image Synthesis",
         "summary": "Sparse-view novel view synthesis is a central problem in 3D content creation, but diffusion-based approaches remain limited by iterative denoising, making multi-view generation expensive at inference time. We introduce NAMVIS, a diffusion-free framework that reformulates multi-view image synthesis as geometry-conditioned next-scale autoregression. Instead of generating target views through repeated denoising, NAMVIS predicts discrete visual tokens through a small number of coarse-to-fine scale steps, while sampling all tokens within each scale and across target views in parallel. To anchor this generation process to explicit camera geometry, we propose Multi-scale Projective Pose Encoding, which injects source and target camera transformations into both target-view self-attention and source-to-target cross-attention at every resolution. NAMVIS further combines global conditioning with dense geometry-aware cross-attention, enabling the model to preserve source-view appearance while maintaining target-view consistency. Across Objaverse, GSO, and OmniObject3D, NAMVIS outperforms diffusion-based baselines in PSNR, SSIM, and LPIPS, while running over 3 times faster than the evaluated diffusion baselines under the same evaluation setting. These results suggest that geometry-conditioned next-scale autoregression is a promising and efficient alternative to diffusion for sparse-view multi-view synthesis. Additional qualitative results, videos, and resources are available at https://corl-team.github.io/namvis/",
@@ -49706,7 +49707,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-08T18:18:28.474262+00:00",
+      "updated_at": "2026-10-09T00:55:22.391822+00:00",
       "paper": {
         "title": "MIMESIS: Learning User Simulators as Training Environments for Interactive Agents",
         "summary": "Training and evaluating interactive language agents typically requires rich user interactions, yet collecting human feedback is expensive and difficult to scale. Simulated users offer a scalable alternative, but they must both resemble real user behavior and provide useful learning experiences for agents. In contrast, most agent-training frameworks rely on off-the-shelf assistant LLMs, whose helpfulness can make them overly cooperative, explicit, and behaviorally homogeneous compared with real users. We introduce MIMESIS, a purpose-built user simulator trained on human conversations with explicit reasoning supervision and 13 realistic behavioral patterns derived from real user interactions. Empirically, our 9B model achieves a SOUL-Index of 65.7, surpassing the strongest frontier model. Compared with Claude-Opus-5, the strongest baseline on RealUserSim and SimulatorArena, MIMESIS improves behavioral fidelity by 13.4 points and reduces Turing distance by 3.6 points, respectively. We then freeze the simulator and train an agent by interacting with the frozen simulator using multi-turn reinforcement learning. Across eight environments, training with MIMESIS yields better agent performance than training with GPT-5.5 under all nine unseen user simulators, demonstrating stronger generalization to new user simulators. Moreover, we propose Coached On-Policy Self-Distillation (CSD), which leverages simulator-generated private reasoning traces and subsequent utterances as feedback on how well the agent addresses user needs. A coach converts this information into concise coaching notes that describe how the agent can better anticipate user needs and adapt its behavior over the course of an interaction. CSD turns this feedback into dense, token-level supervision beyond sparse task rewards, yielding further gains across all nine evaluation user models.",
@@ -49727,10 +49728,136 @@
       },
       "priority_score": 50,
       "korean_title": "MIMESIS: 대화형 에이전트 훈련을 위한 사용자 시뮬레이터 학습"
+    },
+    "2609_38562v1": {
+      "id": "2609_38562v1",
+      "filename": "post_2609_38562v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-09T00:55:22.391749+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-09T00:55:22.391767+00:00",
+      "paper": {
+        "title": "LongTake: Learning to Sustain Dynamics in Long-Horizon Video Generation",
+        "summary": "World models, game simulators, and long-take video creation require coherent scene evolution and sustained dynamics over extended durations. Autoregressive (AR) video diffusion provides a natural framework for long-horizon generation, yet extended rollouts often become near-static or lose visual quality. We hypothesize that these failures reflect the limited guidance provided by short-video supervision on how ongoing scene dynamics develops over longer durations. This motivates us to introduce LongTake, a two-stage training pipeline built around Long-Horizon Teacher Forcing (TF) on curated real long videos. Long-Horizon TF trains the AR model to predict later frames conditioned on long ground-truth video prefixes, extending direct supervision beyond the short training horizon. This supervision is designed to help the model sustain dynamics and preserve visual quality during long-horizon generation. Our central finding is that this training stage strengthens direct initialization for distribution matching distillation (DMD) under student self-rollout, without the intermediate few-step distillation stage used in standard pipelines. Under the same five-second DMD training setup, our initialization yields substantially higher dynamic degree than short horizon TF initialization on 30-second rollouts at comparable aesthetic quality, and surpasses the evaluated baselines in both measures. Hybrid DMD further reuses this teacher to extend supervision to later frames of the self-rollout while retaining bidirectional joint supervision over the initial window. On long-horizon self-rollouts, LongTake lies on the Pareto front of dynamic degree and aesthetic quality, and Hybrid DMD attains the highest dynamic degree among evaluated methods at both 30s and 60s.",
+        "published": "2026-09-29T21:23:10Z",
+        "authors": [
+          "Byoungwoo Park",
+          "Jaemoo Choi",
+          "Juho Lee",
+          "Yongxin Chen"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.38562v1"
+      },
+      "priority_score": 20
+    },
+    "2609_30541v1": {
+      "id": "2609_30541v1",
+      "filename": "post_2609_30541v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-09T00:55:22.391776+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-09T00:55:22.391778+00:00",
+      "paper": {
+        "title": "AutoResearch at Production Scale: Failure Modes and a Multi-Agent Framework",
+        "summary": "Optimizing embedding systems for production recommendation pipelines demands systematic exploration that consumes disproportionate engineering effort at scale. We apply Andrej Karpathy's AutoResearch paradigm -- a large language model that iteratively edits a training script and retains modifications that improve a held-out scalar metric -- to automate this exploration. We report on twelve weeks of running this paradigm at production scale, where iterations consume hours of multi-GPU compute, evaluation involves competing criteria, and campaigns span weeks across many training jobs. Across two independently developed representation-learning systems for a book recommendation pipeline, we ran 220+ experiments and observed five recurring failure modes absent from the original setting: infrastructure fragility, agent memory decay, search-direction stagnation, iteration-cost asymmetry, and metric fixation. We contribute a three-principle scaffolding design -- prevent, persist, redirect -- that maps each failure mode to a structural remedy and whose instantiation scales with iteration cost. The framework produced a 1.82x Recall@6 lift and a 2.1x coherence lift over hand-tuned baselines, and the agent autonomously designed a text-only fallback that expanded catalog coverage by 5.8x. The two systems span nearly three orders of magnitude in per-iteration cost yet exhibit the same failure modes, suggesting these are structural properties of production-scale autonomous research rather than artifacts of either application.",
+        "published": "2026-09-24T20:49:53Z",
+        "authors": [
+          "Aparajith Chandran",
+          "Juwon Kim",
+          "Saurav Jha",
+          "Pablo Castells",
+          "Florian Hottier"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.30541v1"
+      },
+      "priority_score": 39
+    },
+    "2610_05003v1": {
+      "id": "2610_05003v1",
+      "filename": "post_2610_05003v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-10-09T00:55:32.564301+00:00",
+      "paper": {
+        "title": "How corner is a corner case? Percentile control for highway scenario generation",
+        "summary": "Generating corner-case scenarios with appropriate adversity in a simulation environment is critical for testing an autonomous vehicle (AV) software stack's safety performance before deployment. Existing autonomous-driving scenario generators can enforce specific behavior, adversity, or feasibility conditions, but they provide limited control over how extreme a generated scenario is relative to plausible futures in the same traffic context. This study represents the adversity of a generated scenario as its percentile in the conditional distribution of future risk given the observed history. This view supports calibrated answers to two questions: how \"corner\" a generated corner-case scenario is and how its \"cornerness\" can be fine-tuned.   To this end, we formulate history-conditioned risk-percentile requests and learn a reference risk distribution that maps each requested percentile to a physical risk target. We then use a percentile-conditioned joint diffusion model with sampling-time risk guidance to generate multi-agent futures, together with a reference-based criterion for evaluating percentile realization.   Experiments use the minimum post-encroachment time (PET) between the ego and its surrounding vehicles as the risk surrogate on highD. On the primary evaluation set, our method realizes 1,422 of 1,440 requests within a 0.05 percentile tolerance (98.75%), with mean percentile error 0.00673 and PET-target error 0.00991 seconds. The resulting interface connects context-relative risk specification, physical realization, and evaluation through a common risk scale. Project website and videos of generated scenarios are available at https://hhj233.github.io/CornerPercentile/.",
+        "published": "2026-10-04T06:52:18Z",
+        "authors": [
+          "Jiaxi Liu",
+          "Hang Zhou",
+          "Hangyu Li",
+          "Yifan Wang",
+          "Keke Long",
+          "Chengyuan Ma",
+          "Bin Ran",
+          "Xiaopeng Li"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.05003v1"
+      },
+      "priority_score": 50,
+      "korean_title": "고속도로 시나리오 생성을 위한 코너 케이스의 백분위수 제어"
+    },
+    "2610_08077v1": {
+      "id": "2610_08077v1",
+      "filename": "post_2610_08077v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-10-09T00:55:42.516441+00:00",
+      "paper": {
+        "title": "Self-Retrospection Distillation: Turning Post-hoc Experiences into Prior Foresight",
+        "summary": "Reinforcement learning with verifiable rewards (RLVR) turns agent experience into learning signals primarily through scalar outcome rewards after interaction. For group-relative objectives, however, this signal vanishes when all rollouts receive the same reward, even though their trajectories may reveal useful information about what the task requires and how the agent fails. We ask a complementary question: can hindsight teach an agent what it could have anticipated before acting? We introduce prospective learning, which uses post-hoc experience to supervise foresight predictions from the pre-interaction view, and instantiate it with Self-Retrospection Distillation (SRD). Intuitively, a completed trajectory reveals knowledge that would have been useful and pitfalls that should be avoided; SRD distills this privileged hindsight into trajectory-blind foresight of the same policy. Foresight serves only as a training target and need not be explicitly generated at inference time. Across 10 tool-integrated reasoning and long-horizon agentic tasks, SRD complements RLVR and self-distillation baselines with gains of up to $24.2$ pp. Its advantage is especially pronounced when reward contrast is scarce: when $37$--$98\\%$ of rollout groups are reward-uniform across model scales, yet SRD can still exploit learning signal from sampled trajectories. In the 2B setting, where $98\\%$ of groups are all-failure, the RLVR training ends up at $0.0\\%$ success, while adding SRD reaches $60.6\\%$ under the same rollout budget. Our results suggest that post-hoc agent experience is useful not only for evaluating or improving behavior, but also for shaping predictive representations before available interaction.",
+        "published": "2026-10-06T10:06:47Z",
+        "authors": [
+          "Haoxiang Zhang",
+          "Qinglin Chen",
+          "Hiroaki Hayashi",
+          "Zhuofeng Li",
+          "Siming Zhang",
+          "Jiaxin Zhang",
+          "Jixuan Chen",
+          "Fang Wu",
+          "Pan Lu",
+          "Silvio Savarese",
+          "Julian McAuley",
+          "Chien-Sheng Wu"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.08077v1"
+      },
+      "priority_score": 40,
+      "korean_title": "자기 성찰적 증류: 사후 경험을 사전 예측으로 전환하기"
+    },
+    "2610_02396v1": {
+      "id": "2610_02396v1",
+      "filename": "post_2610_02396v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-10-09T00:56:02.073909+00:00",
+      "paper": {
+        "title": "Inherit-MAS: Test-Time Evolution of Multi-Agent Systems through Workflow and Execution Inheritance",
+        "summary": "Multi-agent systems (MAS) built from large language models coordinate specialized agents to tackle complex tasks, but effective workflows are difficult to design in advance. Test-time evolution refines workflows using execution feedback, yet broad revisions can disturb useful components, while re-executing unchanged requests can incur redundant computation. Inspired by the interplay of inheritance and selection in biological evolution, we introduce Inherit-MAS, which makes inheritance explicit at the workflow and execution levels. A meta-model first synthesizes a workflow of worker agents with declared roles, communication inputs, and tool permissions, and a separately prompted judge scores each executed candidate and diagnoses its deficiencies. In ordinary refinement rounds, \\emph{workflow inheritance} starts from the latest completed candidate, may discard removable nodes judged unhelpful, and applies a validated edit to address the diagnosed deficiency. When the new candidate executes, \\emph{execution inheritance} inherits eligible stored results only if the complete resolved request and execution context match, avoiding redundant model and tool calls. With GPT-4o-mini workers, Inherit-MAS achieves 55.4\\% completion on WorkBench and 49.7\\% joint F1 on HotpotQA FullWiki, outperforming EvoAgent, EvoMAS, and TacoMAS. With Qwen3-32B workers, it also exceeds these evolving-MAS baselines on both benchmarks. Compared with rerunning the same controller with execution inheritance disabled, execution inheritance reduces worker-token usage by 29.1\\% on WorkBench and 34.6\\% on HotpotQA, and total token usage by 5.3\\% and 18.1\\%.",
+        "published": "2026-10-01T19:23:32Z",
+        "authors": [
+          "Songtao Wei",
+          "Yi Li",
+          "Zhichun Guo",
+          "Bingzhe Li"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.02396v1"
+      },
+      "priority_score": 40,
+      "korean_title": "상속 기반 다중 에이전트 시스템: 워크플로우 및 실행 상속을 통한 테스트 타임 진화"
     }
   },
   "last_run": {
-    "started_at": "2026-10-08T18:18:04.149608+00:00",
+    "started_at": "2026-10-09T00:55:22.397357+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -49741,25 +49868,25 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 20696,
-      "output_tokens": 5722,
+      "prompt_tokens": 20499,
+      "output_tokens": 5791,
       "thought_tokens": 0,
-      "total_tokens": 26418,
-      "estimated_usd": 0.013757
+      "total_tokens": 26290,
+      "estimated_usd": 0.01381125
     },
-    "finished_at": "2026-10-08T18:18:51.831335+00:00"
+    "finished_at": "2026-10-09T00:56:03.415951+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 3172,
-    "prompt_tokens": 8002687,
-    "output_tokens": 2335890,
+    "requests": 3180,
+    "prompt_tokens": 8023186,
+    "output_tokens": 2341681,
     "thought_tokens": 0,
-    "total_tokens": 10338577,
-    "estimated_usd": 5.50450675
+    "total_tokens": 10364867,
+    "estimated_usd": 5.518318
   },
   "last_publication_run": {
-    "started_at": "2026-10-08T18:18:04.149608+00:00",
+    "started_at": "2026-10-09T00:55:22.397357+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -49770,17 +49897,17 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 20696,
-      "output_tokens": 5722,
+      "prompt_tokens": 20499,
+      "output_tokens": 5791,
       "thought_tokens": 0,
-      "total_tokens": 26418,
-      "estimated_usd": 0.013757
+      "total_tokens": 26290,
+      "estimated_usd": 0.01381125
     },
-    "finished_at": "2026-10-08T18:18:51.831335+00:00"
+    "finished_at": "2026-10-09T00:56:03.415951+00:00"
   },
   "daily_usage": {
-    "date": "2026-10-08",
-    "estimated_usd": 0.041669,
-    "publications": 12
+    "date": "2026-10-09",
+    "estimated_usd": 0.01381125,
+    "publications": 4
   }
 }
