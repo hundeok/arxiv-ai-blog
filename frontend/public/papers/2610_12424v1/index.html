@@ -1,0 +1,67 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>로봇의 안정적이고 효율적이며 재사용 가능한 자기 진화: RoboRSI | ArXiv Translator AI</title><meta name="description" content="로봇의 안정적이고 효율적이며 재사용 가능한 자기 진화: RoboRSI"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2610_12424v1"><meta property="og:type" content="article"><meta property="og:title" content="로봇의 안정적이고 효율적이며 재사용 가능한 자기 진화: RoboRSI"><meta property="og:description" content="로봇의 안정적이고 효율적이며 재사용 가능한 자기 진화: RoboRSI"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2610_12424v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="로봇의 안정적이고 효율적이며 재사용 가능한 자기 진화: RoboRSI"><meta name="twitter:description" content="로봇의 안정적이고 효율적이며 재사용 가능한 자기 진화: RoboRSI"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2610_12424v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "로봇의 안정적이고 효율적이며 재사용 가능한 자기 진화: RoboRSI", "description": "로봇의 안정적이고 효율적이며 재사용 가능한 자기 진화: RoboRSI", "datePublished": "2026-10-08", "url": "https://arxiv-ai-blog.vercel.app/papers/2610_12424v1", "author": [{"@type": "Person", "name": "Zimo Wen"}, {"@type": "Person", "name": "Yijin Chen"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2610_12424v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2610_12424v1"});gtag('event', 'paper_view', {"paper_id": "2610_12424v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>로봇의 안정적이고 효율적이며 재사용 가능한 자기 진화: RoboRSI</h1><p>로봇의 안정적이고 효율적이며 재사용 가능한 자기 진화: RoboRSI</p><pre>로봇의 안정적이고 효율적이며 재사용 가능한 자기 진화: RoboRSI
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** RoboRSI: Stable, efficient, and reusable robot self-evolution in complex real-world environments
+&gt; - **저자:** Zimo Wen, Yijin Chen, Yuxuan Cao, Wendi Chen, Yanwen Zou, Wenye Yu, Fuhang Kuang, Han Xue, Jun Lv, Chuan Wen, Cewu Lu
+&gt; - **발행일:** 2026-10-08
+&gt; - **PDF 링크:** [RoboRSI: Stable, efficient, and reusable robot self-evolution in complex real-world environments](https://arxiv.org/pdf/2610.12424v1)
+
+
+✨ 3줄 핵심 요약
+- **구조적 개선:** &#x27;하향식 기술 정교화(TSR)&#x27;를 통해 복잡한 작업을 세분화하고, 각 단계별로 문제의 원인을 추적하여 독립적으로 수정합니다.
+- **협업 에이전트:** 관리자, 기획자, 엔지니어, 검토자로 구성된 다중 에이전트 시스템이 로봇의 실행, 진단, 신규 기술 배포를 자동화합니다.
+- **성능 검증:** 실제 환경에서의 가사 청소 작업 수행은 물론, 시뮬레이션 환경(LIBERO 등)에서 기존 방식 대비 최대 11.0% 높은 성공률을 기록했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+로봇이 사람처럼 경험을 통해 스스로 배우려면, 단순히 시행착오를 겪는 것을 넘어 무엇이 문제인지 정확히 파악하고 고쳐야 합니다. **RoboRSI**는 로봇의 업무를 &#x27;기본 기술&#x27;, &#x27;단위 기술&#x27;, &#x27;복합 기술&#x27;로 계층화하여 관리합니다. 로봇이 실수를 하면 전체 코드를 갈아엎는 대신, 문제가 발생한 특정 기술 계층만 진단하고 수정합니다. 이렇게 검증된 기술은 도서관의 책처럼 쌓여 이후의 작업에 다시 활용되므로, 로봇은 시간이 지날수록 더 복잡하고 다양한 업무를 더 효율적으로 처리하게 됩니다.
+
+🎯 배경 및 문제점
+기존의 코드 기반 로봇 에이전트는 피드백을 통해 프로그램을 수정할 수 있지만, 학습된 경험을 체계적으로 구조화하는 데 어려움을 겪어왔습니다. 특히 수정 사항이 어떤 기술에서 비롯되었는지 명확히 파악하고, 검증된 기술만을 재사용하는 구조를 만드는 것이 로봇 자가 학습의 핵심 과제였습니다.
+
+💡 핵심 기술 및 아키텍처
+- **하향식 기술 정교화(TSR):** 작업을 의미 있는 단위로 분해하고, 입력과 출력의 계약(contract)을 명시하여 각 책임 범위를 명확히 합니다.
+- **다중 에이전트 시스템:**
+    - **관리자(Manager):** 수정 사항의 승인 및 배포를 담당합니다.
+    - **기획자(Planner):** 작업과 관측 내용을 바탕으로 실행 계획을 세웁니다.
+    - **엔지니어(Engineer):** 도구 인터페이스를 통해 계획을 실행하고 누락된 기술을 구현합니다.
+    - **검토자(Reviewer):** 실행 결과를 분석하고, 실패 시 원인을 파악하여 특정 계층에 대한 수정 패치를 작성합니다.
+
+📊 실험 결과 분석
+- **실제 환경:** 이동형 조작 로봇(Mobile Manipulator)을 활용해 104회의 개발 과정을 거치며 가사 청소 업무를 수행했습니다.
+- **시뮬레이션:** LIBERO, LIBERO-PRO, LIBERO-Plus 및 RoboTwin 환경에서 테스트한 결과, 가장 강력한 기존 기술 대비 **2.7%에서 11.0%** 향상된 성공률을 달성했습니다.
+- **수치 언급:** 보고서 내 수치에 따르면, 훈련된 ACT 정책에서 &#x27;청크 상대적(chunk-relative) 조인트 타겟&#x27;을 사용했을 때 절대적 타겟 대비 엔드 이펙터의 정밀도가 향상되었음을 확인했습니다. (기타 구체적인 성능 수치는 논문 발췌에 포함된 부분에 한함)
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+RoboRSI는 로봇이 사람의 개입을 최소화하면서도 스스로 경험을 축적하여 기술을 고도화할 수 있는 토대를 마련했습니다. 가사 도우미와 같은 복잡한 실생활 환경에서 로봇이 반복적인 시행착오를 거치며 스스로 &#x27;청소 노하우&#x27;를 정립하는 사례를 제시하였으며, 향후 다양한 로봇 플랫폼 간에 학습된 기술을 공유하고 이전하는 연구의 초석이 될 것으로 기대됩니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2610.12424 RoboRSI: Stable, efficient, and reusable robot self ...](https://arxiv.org/abs/2610.12424)
+&gt; - [RoboRSI: Stable, efficient, and reusable robot self-evolution in...](https://openreview.net/forum?id=dahchK6UBy)
+&gt; - [RoboRSI | NOEMATRIX LAB](https://lab.noematrix.ai/blog/2-roborsi/)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;TSR을 통한 하향식 계층화는 이론적으로 매우 우아해 보이지만, 현실의 노이즈가 섞인 환경에서도 &#x27;계약(Contract)&#x27;이 유효하게 유지될지가 의문이군요. 실패 원인을 특정 계층으로 격리하는 과정에서 발생하는 오판이 전체 시스템의 기술 부채로 쌓이지 않도록 보장할 수 있나요?&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에선 그 &#x27;오판&#x27;이 제일 무섭죠. 코드 갈아엎는 것보다 낫긴 한데, 다중 에이전트가 로깅하고 검증하는 오버헤드만 해도 로봇 배터리 녹아내릴 것 같습니다. 솔직히 시뮬레이션 11% 성능 향상보다, 이걸 현장 배포했을 때 유지보수 비용이 얼마나 줄어드는지가 관건이겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;두 분 다 너무 회의적이신 거 아니에요? ㅋㅋ 로봇이 스스로 &#x27;청소 노하우&#x27;를 라이브러리처럼 쌓아간다는 컨셉 자체가 이미 폼 미쳤는데! 에이전트 간의 티키타카로 코드 패치까지 자동화한다니, 이거 당장 제 다음 논문 베이스라인으로 잡아야겠어요. 저도 이제 &#x27;나만의 로봇&#x27; 키우기 가능인가요?&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
