@@ -49912,7 +49912,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-09T22:07:19.012297+00:00",
+      "updated_at": "2026-10-10T11:44:45.515284+00:00",
       "paper": {
         "title": "U-Space: Uncovering When and Why Uncertainty Arises in Language Models",
         "summary": "Large language models are informing decisions with ever-higher stakes. As the consequences of their errors grow, a central question becomes harder to ignore: how much can we trust an individual answer? Yet recognizing when to defer remains difficult because language models can present incorrect conclusions with fluent explanations and an authoritative tone. Uncertainty quantification seeks to address this disconnect by estimating the reliability of individual predictions. However, many existing methods require repeated generations or separately trained components, and their scalar estimates do not reveal where uncertainty arises or how it evolves during reasoning. Recent work has also shown that generation length can be strongly associated with uncertainty estimates and correctness, raising the question of how much of an estimator's predictive power comes from uncertainty-specific information rather than output length alone. Mechanistic interpretability offers a way to address these limitations by connecting human-interpretable concepts to intermediate model states. Building on this capability, we introduce the U-Space, a low-dimensional subspace that makes a model's evolving uncertainty measurable and interpretable. We identify semantic anchors for doubt and certainty, map their unembedding directions back into the residual space, and combine their contrasts into an orthogonal basis. The U-Lens projects each token state onto these basis vectors, yielding an interpretable token-level uncertainty map that can be inspected directly or aggregated into a scalar uncertainty score. Our approach requires no correctness labels, repeated generations, or training. Across reasoning benchmarks, its confidence score outperforms established baselines under both standard and length-controlled evaluation and transfers more reliably than supervised estimators. Code: https://github.com/s2labres/U-Space.",
@@ -49938,7 +49938,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-09T22:07:19.012308+00:00",
+      "updated_at": "2026-10-10T11:44:45.515307+00:00",
       "paper": {
         "title": "CARE: Certifying Acceleration for Vision-Language-Action Inference",
         "summary": "While vision-language-action (VLA) models have advanced rapidly, running them at every control step remains expensive. Prior work accelerates VLA inference using techniques like action chunking and visual-token pruning, typically evaluating based on latency and average task success. However, acceleration may discard information and break tasks the original policy would solve, a risk hidden by average metrics. Measuring these failures is challenging because action deviations compound over closed-loop trajectories, meaning task failure is only observable across full episodes. We therefore define an acceleration-induced failure via paired rollouts from identical initial conditions, tracking when the reference succeeds but the accelerated policy fails. To manage this, we introduce CARE, an approach for certified accelerator selection. CARE uses paired rollouts on a calibration set to provide finite-sample guarantees that acceleration-induced failure risk stays below a user-specified budget. It deploys the fastest certified candidate, falling back to the reference if none qualify. By relying only on terminal outcomes and measured compute, CARE applies unchanged across diverse acceleration mechanisms, while sequential testing and failure-triggered reference rollouts keep certification affordable. On four LIBERO suites with OpenVLA-OFT, CARE certifies $9.0$--$10.8\\times$ speedups while guaranteeing (at $95\\%$ confidence) that at least $85.8\\%$ of reference-solved episodes are preserved. Under tight budgets, selectors without guarantees exceed the budget in up to $75\\%$ of trials, whereas CARE stays within budget and its sequential form uses $78.9\\%$ fewer rollouts than exhaustive evaluation. CARE further generalizes to flow-step reduction for $π_{0.5}$, and to Qwen3.5-9B and Llama-3.1-8B agents in Crafter.",
@@ -50079,7 +50079,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-09T22:07:19.012276+00:00",
+      "updated_at": "2026-10-10T11:44:45.515310+00:00",
       "paper": {
         "title": "Incremental Open-Ended Deep Research with Structured Harness",
         "summary": "Existing Open-Ended Deep Research (OEDR) systems primarily generate reports from scratch, making them inefficient for scenarios where research reports need to be continuously maintained as new information emerges. We introduce \\textbf{Incremental Open-Ended Deep Research (Incremental-OEDR)}, a research setting that treats a report as an evolving research state and incrementally updates it by preserving valid knowledge, revising outdated or incomplete content, and incorporating newly available information. To support this setting, we propose \\textbf{Structured Harness}, which represents reports as structured collections of outlines, sections, and supporting evidence, and provides structured retrieval, a persistent structured evidence pool, and structured generation for selective report updating and evidence reuse. We further establish a temporal evaluation framework spanning ten years, with \\emph{Single-Step Task} and \\emph{Long-Chain Task} to evaluate incremental updates over both individual transitions and long-term update chains. Extensive Experiments on DeepResearch Bench and DeepConsult under both the Open-source Configuration (OC) and Proprietary Configuration (PC) show that Incremental-OEDR maintains competitive report quality while substantially improving report continuity and reducing research costs. As shown in Figure~\\ref{fig:profile}, it achieves up to 0.51 higher content-level ROUGE-L F1, 0.63 higher outline-level EM F1, 33\\% lower token consumption, and 61\\% fewer search calls than OEDR on DeepResearch Bench. For more details, please refer to our project page: https://ioedr-project.github.io/.",
@@ -50100,7 +50100,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-09T22:07:19.012303+00:00",
+      "updated_at": "2026-10-10T11:44:45.515302+00:00",
       "paper": {
         "title": "Frozen Models, Evolving Expertise: Model-Agnostic Learning from Deployment Experience for Multimodal Medical AI",
         "summary": "Large language models (LLMs) and vision-language models (VLMs) are usually frozen after deployment, so they do not learn from the cases they solve. This is especially concerning in medicine, where new clinical evidence, updated guidelines, and new therapies can change established practice. Fine-tuning can update the model, but it requires access to model weights and additional training. Parameter-free methods avoid training, but they may overfit a fixed validation set, lack reliable domain knowledge, or lose visual details by saving experience only as text. To address these limitations, we present a model-agnostic framework that allows frozen LLMs and VLMs to learn from deployment experience through three forms of external expertise: a Skill that guides reasoning and tool use, a Knowledge Memory that stores reliable facts supported by earlier cases or trusted external evidence, and a Multimodal Knowledge Base that keeps visual examples and guides the model to relate each retrieved case to the current image. Instead of relying on a fixed validation set, a validation strategy keeps an update only if it helps on new cases without degrading performance on earlier ones. Across six benchmarks covering clinical diagnosis, clinical workflows, medical reasoning, and medical and non-medical visual reasoning, and with four open-weight and closed-source base models, our framework improves performance during online deployment by up to 34.2% over the base model on medical tasks, generalizes to unseen cases, transfers to other models without further optimization, and works in non-medical domains.",
@@ -50128,7 +50128,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-09T22:08:01.816212+00:00",
+      "updated_at": "2026-10-10T11:44:45.515315+00:00",
       "paper": {
         "title": "Mara Chain: Rethinking Failure as a Stepping Stone for AI System Auto-Evolution",
         "summary": "Optimizing deployed AI systems increasingly amounts to editing prompts, skills, harnesses, and code rather than model weights. Existing approaches commonly optimize these artifacts through propose-evaluate-select procedures, where candidate configurations are evaluated and only those meeting an acceptance criterion are selected. Yet our analysis shows that discarded candidates often contain information critical for subsequent optimization. Discarding them causes later proposals to revisit the same failure modes. We introduce Mara Chain, a refinement procedure that turns rejected candidates into stepping stones. Rather than discarding a rejected candidate, Mara Chain retains and iteratively refines it using evidence accumulated across preceding attempts. The procedure limits each refinement chain to a fixed depth and applies Pareto-filtered Top-N selection to bound the candidate pool. Across AppWorld skill optimization, TerminalBench 2.1 harness optimization, and MuSiQue retrieval-pipeline optimization, Mara Chain delivers greater task-performance gains with fewer rollouts. It outperforms GEPA, ACE, and SkillOpt-Lite by up to 20.5% in relative performance on AppWorld, reaching the target score with 65.5% fewer rollouts than GEPA. It improves the pass rate by 20.2 and 22.5 percentage points over AHE and Meta-Harness on TerminalBench 2.1, respectively, and improves MuSiQue test nDCG@10 and Recall@10 by 0.104 and 0.131 over a hand-written retrieval pipeline.",
@@ -50153,7 +50153,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-09T17:51:15.225267+00:00",
       "last_error": null,
-      "updated_at": "2026-10-09T22:07:19.012321+00:00",
+      "updated_at": "2026-10-10T11:44:45.515318+00:00",
       "paper": {
         "title": "You Changed Your Mind, The Model Didn't: Demystifying Intent in Multi-Turn Dialogue",
         "summary": "When a large language model handles a multi-turn task and a user proposes a change but ultimately rejects it, the model should continue as if nothing changed. We find a surprising failure: merely mentioning a rejected change can derail task execution, even when the user's final intent remains unchanged. To systematically study language model behavior under evolving user intent, we introduce Intent-Eval, a controlled benchmark spanning tool actions, code, databases, and mathematics. Across diverse tasks, models are vulnerable to both rejected proposals and superseded requirements, consistent with mentioned-as-in-effect confusion: conversational content is treated as active requirements even after it has been rejected or replaced. Accuracy degradation can deepen or persist as interaction continues, highlighting the need to distinguish what has been mentioned from what remains in effect. Building on this insight, we propose Intent-OPSD, a decision-conditioned on-policy self-distillation framework with Teacher and Student initialized from the same model. The frozen Teacher provides active-intent supervision from the complete task matching the user's decision, training the Student on the full dialogue to follow active requirements reflecting user intent.",
@@ -50179,7 +50179,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-09T22:07:46.801700+00:00",
+      "updated_at": "2026-10-10T11:44:45.515329+00:00",
       "paper": {
         "title": "A GPU-Parallel Framework for Heterogeneous Multi-Task Reinforcement Learning",
         "summary": "GPU-parallel simulation provides abundant robot interaction, but existing benchmarks rarely combine this scale with heterogeneous manipulation tasks and standardized multi-task RL evaluation. We introduce Hebero (Heterogeneous Benchmark for Robot Learning), a GPU-parallel Isaac Lab benchmark that enables efficient joint training and evaluation of a single policy across all 40 heterogeneous tasks. Scaling experiments show that increasing parallel replicas per task improves success under a fixed wall-clock budget. To support learning with sparse rewards and limited demonstrations, we propose Demonstration-Guided Policy Optimization (DGPO), which reuses demonstrations for dense tracking rewards and asymmetric value learning. Its shared stack supports controlled comparisons of learner-specific demonstration interfaces within PPO. Within DGPO framework, we introduce IW-ABC, which uses a lightweight per-task learning progress signal to coordinate adaptive behavior cloning (ABC), relaxing demonstration guidance with task progress, and importance weighting (IW), emphasizing lagging tasks in PPO updates. With 50 demonstrations per task, IW-ABC achieves 90.1% state-input mean success, outperforming the strongest baseline FAMO-ABC by 7.8 percentage points. Its visual counterpart reaches 93.5% mean success. Real-world experiments further demonstrate that a single multi-task policy trained in simulation can successfully perform four tasks on a physical Piper robot. The project page is available at https://hebero-rl.github.io/.",
@@ -50208,7 +50208,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-09T17:51:15.225284+00:00",
       "last_error": null,
-      "updated_at": "2026-10-09T22:07:19.012330+00:00",
+      "updated_at": "2026-10-10T11:44:45.515332+00:00",
       "paper": {
         "title": "EDiS: Edge Disjoint Subgraph Sparsification Framework for Graph Neural Networks",
         "summary": "Sparse GNN training reduces computation, but deciding which edges to keep can be costly. Reusing one sparse graph is cheap, but locks training to a fixed topology, while varying it across epochs can require repeated sampling or recomputation. We introduce EDiS (Edge-Disjoint Subgraph sparsification framework), which separates one-time structural extraction from per-epoch graph composition. EDiS decomposes the graph once into cacheable edge-disjoint subgraphs, then recombines them into graphs with edge-budget constraints across epochs and retention ratios without re-extracting structure. Our default construction uses feature-based scores and successive maximum score covering forests, while the same composition mechanism also supports alternative edge selection rules. We provide a combinatorial analysis of the per-epoch sampler, the composition step that draws a training graph from the cached decomposition. We show that, under the default covering-forest selector, the stored decomposition deterministically preserves high-score cut edges, and we derive a selector-agnostic conditional bound on high-score cut survival in composed training graphs. Across 19 homophilic, heterophilic, and large-scale node classification benchmarks against 17 baselines under the same edge budget, EDiS achieves the highest mean benchmark score (accuracy/ROC-AUC) and the lowest average rank and gap-to-best among ranked methods. Ablations show the clearest benefits of structural decomposition and epoch variation at tight edge budgets.",
@@ -50260,7 +50260,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-09T22:07:33.921678+00:00",
+      "updated_at": "2026-10-10T11:44:45.515336+00:00",
       "paper": {
         "title": "Opera: A Verbal Critic Framework for Long-horizon Coding Agents",
         "summary": "Long-horizon coding agents need timely corrections, yet feedback can be ineffective or even harmful when it misjudges ongoing work or fails to address the underlying problem. Existing critics focus on evaluating trajectories and generating feedback, but rarely track what happens after feedback is delivered. We present Opera, a verbal critic framework that treats each correction as a persistent note, followed until the diagnosed problem is resolved. Opera decides when to review through periodic and event-driven triggers, diagnoses issues with typed operators, audits feedback against visible evidence before delivery, and tracks the agent's subsequent actions to distinguish mere compliance from actual resolution. As a test-time critic, Opera improves the resolve rate of non-critic agents by up to 12.4, 15.0, and 8.9 percentage points on Terminal-Bench 2.1, a SWE-Bench Pro subset, and DeepSWE v1.1, respectively, across four policy models, and achieves the highest mean resolve rate among competitive critic baselines on all three benchmarks, and also improves policy models when the policy critiques itself. Beyond inference, Opera-guided rollouts provide approximately on-policy training data: fine-tuning Qwen3.5-9B on them improves its resolve rate on held-out SWE-Bench Pro repositories by 10.2 percentage points without a critic at inference time, matching fine-tuning on rollouts from a stronger model, while preserving its performance when switching harness, i.e., from Openhands to Terminus-2, which the latter substantially degrades. Our code is available at: https://github.com/dongyuanjushi/Opera.",
@@ -50467,11 +50467,11 @@
     "2610_12410v1": {
       "id": "2610_12410v1",
       "filename": "post_2610_12410v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-10-10T03:52:20.484112+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-10T03:52:20.484113+00:00",
+      "updated_at": "2026-10-10T11:44:55.963651+00:00",
       "paper": {
         "title": "Predicting Alignment Generalization with Value Representations",
         "summary": "LLM developers post-train their models to exhibit prosocial values and behavioral traits, which are enumerated in an alignment target. However, while recent post-training developments have yielded models that score highly on alignment evaluations, training models on sets of narrow behaviors still influences their behavior across unseen contexts and environments in unexpected ways. In this paper, we establish the task of alignment generalization prediction, i.e., predicting how fine-tuning a model to follow a given value changes its behavior across a wide range of held-out values. We conduct a large-scale analysis of alignment generalization effects across 66 values found in modern alignment targets, and benchmark representational techniques on the alignment generalization prediction task. We find that representations based on model activations when applying values in context significantly outperform methods based on textual descriptions of the values. Specifically, the best activations-based methods achieve correlations of 0.45 with our generalization matrix, compared with 0.05 from description-based baselines. We then show the applicability of representations that predict alignment generalization toward downstream tasks by using them to measure how similar the values in a multi-value alignment target are, which we find is significantly correlated with model robustness. Finally, we show initial evidence towards a shared, model-independent value space, which we use to develop the first taxonomy of LLM values grounded in empirical generalization dynamics. Our work demonstrates the importance of studying value generalization in LLMs and its application toward the more empirical design and training of model behavior.",
@@ -50486,16 +50486,17 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2610.12410v1"
       },
-      "priority_score": 40
+      "priority_score": 40,
+      "korean_title": "가치 표현을 활용한 정렬 일반화 예측"
     },
     "2610_12409v1": {
       "id": "2610_12409v1",
       "filename": "post_2610_12409v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-10-10T03:52:20.484117+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-10T03:52:20.484118+00:00",
+      "updated_at": "2026-10-10T11:45:04.107935+00:00",
       "paper": {
         "title": "Searching for \"Harmful Refusal\": A Psychometric Audit of an AI Safety Benchmark",
         "summary": "Safety benchmarks typically report one overall score for a suite of datasets, each of which may target one or more safety-related attributes, so models with similar overall scores can have very different attribute profiles. Comparing models is more tractable at the level of individual attributes, yet it is often unclear whether even a single dataset's scores isolate any single attribute. One plausible candidate for such an attribute is harmful refusal, a model's tendency to refuse dangerous or policy-violating prompts. We examine whether it constitutes a single, measurable attribute in HELM Safety. Using a construct validity framework that stipulates that an attribute must exist before a test can measure it, we start with HELM Safety's four datasets that might plausibly target harmful refusal, but find that three are saturated. We subject the remaining dataset, HarmBench, to two psychometric tests to determine if a single attribute like harmful refusal could stand behind its score. First, multidimensional item response theory modeling strongly suggests that HarmBench does not measure a singular attribute. Second, a differential item functioning analysis finds items where models from different developers with the same refusal ability score differently. These flags largely disappear under scope-specific matching, a pattern consistent with aggregation effects but not sufficient to rule out domain-specific developer differences. Zooming out, HarmBench collapses distinct harm behaviors into one score, and the overall HELM safety aggregate further collapses HarmBench and scores from other datasets into a single top-line number. Any safety score that averages over datasets and items can hide saturation and conflate behaviors this way. We argue that a score should earn its single-attribute reading before models are compared with it.",
@@ -50512,7 +50513,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2610.12409v1"
       },
-      "priority_score": 40
+      "priority_score": 40,
+      "korean_title": "\"유해한 거절\" 탐색: AI 안전 벤치마크에 대한 심리측정학적 감사"
     },
     "2610_12407v1": {
       "id": "2610_12407v1",
@@ -50870,11 +50872,11 @@
     "2610_12333v1": {
       "id": "2610_12333v1",
       "filename": "post_2610_12333v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-10-10T03:52:20.484181+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-10T03:52:20.484182+00:00",
+      "updated_at": "2026-10-10T11:45:13.869984+00:00",
       "paper": {
         "title": "RiCo: Neural Simulation of Rigid-Body Interactions via Local Contact Reasoning",
         "summary": "Accurate simulation of rigid-body interactions is essential for predictive physical world models. Despite recent progress in modeling object dynamics, capturing how local contacts between surfaces shape object motion remains challenging. While end-to-end world models predict interactions across entire scenes or objects, in practice, rigid-body contact is inherently local, and only nearby surfaces can directly exchange contact forces. Motivated by this observation, we introduce Rigid-body Contact Reasoning (RiCo), which represents interactions between objects through sparse neighborhoods of contact surface points. RiCo combines each point's state with the relative geometry, motion, and physical properties of nearby surfaces, then reasons across the object's points to determine how these local contacts jointly affect its motion. By confining cross-object reasoning to nearby surfaces while propagating contact information within each rigid body, RiCo retains fine-grained interaction details without the cost of modeling every pair of scene points. Such properties enable RiCo a higher accuracy and contact fidelity. Experiments on MOVi-benchmark demonstrate that RiCo reduces 100-frame position and orientation errors by 31-35% and approximately 38%, respectively, compared with baselines. Moreover, RiCo achieves high contact fidelity, with ground-truth-relative penetration-time and mean-depth differences of 11.0% and 2.22 mm, respectively. RiCo further generalizes zero-shot from small-scale training scenarios to scenes containing 270 objects. Our real-world multi-ball collision experiments further provide preliminary evidence of sim-to-real transfer.",
@@ -50890,7 +50892,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2610.12333v1"
       },
-      "priority_score": 40
+      "priority_score": 40,
+      "korean_title": "RiCo: 국소 접촉 추론을 통한 강체 상호작용의 신경망 시뮬레이션"
     },
     "2610_12332v1": {
       "id": "2610_12332v1",
@@ -50977,11 +50980,11 @@
     "2610_12304v1": {
       "id": "2610_12304v1",
       "filename": "post_2610_12304v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-10-10T03:52:20.484203+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-10T03:52:20.484204+00:00",
+      "updated_at": "2026-10-10T11:45:23.408203+00:00",
       "paper": {
         "title": "Looking Inside LLMs: Small-World Connectivity as a Signature of Reasoning Performance",
         "summary": "Understanding large language model (LLM) reasoning requires looking beyond behavioral performance to examine how reasoning ability is reflected in internal organization. Inspired by neuroscience findings linking higher intelligence to stronger small-world organization in functional brain networks, we investigate small-world connectivity as a structural signature of LLM reasoning. We construct functional graphs from attention-head activation similarities and find that a higher small-world index (SWI), capturing local clustering and short global paths, consistently correlates with better fluid reasoning performance across models and training checkpoints. Since local clustering is central to small-world organization, we further examine how heads important for model performance connect within and across communities. We find that these heads tend to have a larger share of connection weight within their own communities (high core scores) and a more concentrated weight distribution across communities (low bridge scores). These observations motivate the hypothesis that high core and low bridge scores serve as structural indicators of head importance for reasoning capability. We validate this hypothesis through pruning, introducing Small-World Allocation (SWA), a hierarchical sparsity allocation method guided by these scores. Across six LLMs, SWA better preserves small-world organization and model performance than competing allocation strategies, reducing WikiText perplexity by up to 20%. Together, these findings identify small-world functional connectivity as a measurable signature of LLM reasoning performance, offering a structural perspective that complements behavioral evaluation.",
@@ -51000,7 +51003,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2610.12304v1"
       },
-      "priority_score": 40
+      "priority_score": 40,
+      "korean_title": "LLM 들여다보기: 추론 성능의 징표로서의 소규모 세상 연결성"
     },
     "2610_12303v1": {
       "id": "2610_12303v1",
@@ -51026,11 +51030,30 @@
         "pdf_link": "https://arxiv.org/pdf/2610.12303v1"
       },
       "priority_score": 36
+    },
+    "2610_09280v1": {
+      "id": "2610_09280v1",
+      "filename": "post_2610_09280v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-10T11:44:45.515323+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-10T11:44:45.515325+00:00",
+      "paper": {
+        "title": "Evaluating the Transfer of Co-Evolved Communication from 2D to 3D Simulation",
+        "summary": "This work examines the transfer of a co-evolved communication mechanism between two robotic agents from a discrete two-dimensional (2D) simulator to a three-dimensional simulator with real physics (3D). The study focuses on whether a communication mechanism co-evolved in a 2D environment retains its functional role after transfer to a 3D physics-based simulator. To support this analysis, the effects of the episode time budget, the social cue, and the asymmetry between the two co-evolved roles were examined. The results indicate that the success rate increased approximately linearly with the evaluated time budgets, with no evidence of a plateau between 2,000 and 6,000 physics steps, suggesting that evaluations based on shorter episodes may underestimate the performance of the trained controllers. In both simulators, the social cue functioned primarily as a jam- assistance mechanism rather than as a navigation guide, although with a more pronounced effect in 2D. Analysis of eight independent evolutionary runs revealed a consistent direction of asymmetry, although its magnitude varied across runs. Controlling the processing order between agents allowed us to rule out an artifact of the physics engine. Finally, the results are discussed in terms of the factors that may contribute to the remaining performance gap observed after transfer.",
+        "published": "2026-10-07T01:28:11Z",
+        "authors": [
+          "Fernando Montes-Gonzalez"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.09280v1"
+      },
+      "priority_score": 36
     }
   },
   "last_run": {
-    "started_at": "2026-10-10T03:52:20.488608+00:00",
-    "discovered": 30,
+    "started_at": "2026-10-10T11:44:45.520113+00:00",
+    "discovered": 10,
     "selected": 4,
     "generated": 4,
     "failed": 0,
@@ -51040,26 +51063,26 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 18752,
-      "output_tokens": 6126,
+      "prompt_tokens": 18144,
+      "output_tokens": 5707,
       "thought_tokens": 0,
-      "total_tokens": 24878,
-      "estimated_usd": 0.013877
+      "total_tokens": 23851,
+      "estimated_usd": 0.0130965
     },
-    "finished_at": "2026-10-10T03:53:02.185684+00:00"
+    "finished_at": "2026-10-10T11:45:24.538784+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 3212,
-    "prompt_tokens": 8101697,
-    "output_tokens": 2365462,
+    "requests": 3220,
+    "prompt_tokens": 8119841,
+    "output_tokens": 2371169,
     "thought_tokens": 0,
-    "total_tokens": 10467159,
-    "estimated_usd": 5.57361725
+    "total_tokens": 10491010,
+    "estimated_usd": 5.58671375
   },
   "last_publication_run": {
-    "started_at": "2026-10-10T03:52:20.488608+00:00",
-    "discovered": 30,
+    "started_at": "2026-10-10T11:44:45.520113+00:00",
+    "discovered": 10,
     "selected": 4,
     "generated": 4,
     "failed": 0,
@@ -51069,17 +51092,17 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 18752,
-      "output_tokens": 6126,
+      "prompt_tokens": 18144,
+      "output_tokens": 5707,
       "thought_tokens": 0,
-      "total_tokens": 24878,
-      "estimated_usd": 0.013877
+      "total_tokens": 23851,
+      "estimated_usd": 0.0130965
     },
-    "finished_at": "2026-10-10T03:53:02.185684+00:00"
+    "finished_at": "2026-10-10T11:45:24.538784+00:00"
   },
   "daily_usage": {
     "date": "2026-10-10",
-    "estimated_usd": 0.013877,
-    "publications": 4
+    "estimated_usd": 0.0269735,
+    "publications": 8
   }
 }

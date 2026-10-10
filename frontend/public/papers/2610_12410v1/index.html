@@ -1,0 +1,64 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>가치 표현을 활용한 정렬 일반화 예측 | ArXiv Translator AI</title><meta name="description" content="가치 표현을 활용한 정렬 일반화 예측"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2610_12410v1"><meta property="og:type" content="article"><meta property="og:title" content="가치 표현을 활용한 정렬 일반화 예측"><meta property="og:description" content="가치 표현을 활용한 정렬 일반화 예측"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2610_12410v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="가치 표현을 활용한 정렬 일반화 예측"><meta name="twitter:description" content="가치 표현을 활용한 정렬 일반화 예측"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2610_12410v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "가치 표현을 활용한 정렬 일반화 예측", "description": "가치 표현을 활용한 정렬 일반화 예측", "datePublished": "2026-10-08", "url": "https://arxiv-ai-blog.vercel.app/papers/2610_12410v1", "author": [{"@type": "Person", "name": "Andy Liu"}, {"@type": "Person", "name": "Mehar Bhatia"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2610_12410v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2610_12410v1"});gtag('event', 'paper_view', {"paper_id": "2610_12410v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>가치 표현을 활용한 정렬 일반화 예측</h1><p>가치 표현을 활용한 정렬 일반화 예측</p><pre>가치 표현을 활용한 정렬 일반화 예측
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Predicting Alignment Generalization with Value Representations
+&gt; - **저자:** Andy Liu, Mehar Bhatia, Karolina Stanczak, Mona Diab, Vered Shwartz, Daniel Fried
+&gt; - **발행일:** 2026-10-08
+&gt; - **PDF 링크:** [Predicting Alignment Generalization with Value Representations](https://arxiv.org/pdf/2610.12410v1)
+
+
+✨ 3줄 핵심 요약
+* 거대언어모델(LLM)을 특정 가치로 조정(Fine-tuning)했을 때, 학습하지 않은 다른 가치들까지 어떻게 변하는지 예측하는 &#x27;정렬 일반화 예측&#x27; 과제를 제안함.
+* 텍스트 기반 설명보다 모델 내부 활성화(Activation)를 활용한 표현 방식이 정렬 일반화를 예측하는 데 훨씬 효과적임을 입증함(상관계수 $\rho=0.45$ vs $0.05$).
+* 모델과 무관하게 공유되는 가치 공간의 증거를 발견하고, 실증적 데이터에 기반한 LLM 가치 분류 체계(ValueMap)를 구축함.
+
+📖 쉽게 풀어쓴 1분 핵심
+AI 모델에게 &#x27;정직함&#x27;이나 &#x27;친절함&#x27; 같은 가치를 학습시킬 때, 개발자들은 의도하지 않은 부작용(예: 너무 친절해져서 음모론을 옹호함)을 겪곤 합니다. 이 연구는 모델을 하나의 가치로 훈련했을 때 다른 가치들에 어떤 영향을 미치는지 미리 예측하는 방법을 연구했습니다. 단순히 가치를 글로 설명하는 것보다, 모델이 실제로 작동할 때 발생하는 내부 데이터(활성화 값)를 분석하는 것이 일반화 과정을 훨씬 더 정확하게 예측할 수 있음을 보여주었습니다. 이를 통해 AI가 어떤 가치를 가질 때 어떤 행동을 할지 더 과학적으로 설계할 수 있는 기반을 마련했습니다.
+
+🎯 배경 및 문제점
+현재 LLM 개발자들은 &#x27;OpenAI Model Spec&#x27;이나 &#x27;Anthropic Constitution&#x27;과 같은 정렬 목표(Alignment target)를 설정하고 모델을 훈련합니다. 그러나 좁은 범위의 행동을 학습시켜도 예상치 못한 방식으로 일반화가 일어나는 문제가 있습니다. 특히 공익적인 가치가 때로는 유해한 행동과 연결되어 부작용을 일으키기도 합니다. 하지만 현재까지는 가치들 사이의 상호작용에 대한 이해가 부족하여, 원하는 가치를 모델에 안정적으로 적용하는 데 한계가 있었습니다.
+
+💡 핵심 기술 및 아키텍처
+* **정렬 일반화 예측 과제:** 모델을 하나의 가치로 튜닝했을 때, 학습되지 않은 다른 66개의 가치들에서 나타나는 변화를 예측합니다.
+* **활성화 기반 표현:** 모델이 문맥 안에서 가치를 적용할 때 나타나는 활성화 값을 추출하여 가치를 표현합니다. 이는 단순 텍스트 설명 방식보다 높은 예측 성능을 보였습니다.
+* **ValueMap 구축:** 다양한 모델(Olmo-3.1-32B, Qwen-3-8B 등)을 대상으로 실험한 결과, 모델 종류와 관계없이 공유되는 가치 내부 구조를 발견하여 이를 시각화하고 분류했습니다.
+
+📊 실험 결과 분석
+* **예측 성능:** 활성화 기반 방식은 정렬 일반화 행렬과 $\rho=0.45$의 상관관계를 보인 반면, 텍스트 기반 베이스라인은 $\rho=0.05$에 그쳤습니다.
+* **모델 간 일관성:** 서로 다른 모델(Olmo-32B와 Qwen-8B)에서 산출한 가치 표현 구조를 비교한 결과, Mantel $\rho=0.82$로 매우 높은 상관관계를 보였습니다. 이는 모델이 달라도 가치를 인식하는 내부 기하학적 구조가 유사함을 시사합니다.
+* **분류 체계 비교:** 기존 분류 체계(Values in the Wild)와 본 연구의 ValueMap을 비교했을 때, 조정된 랜드 지수(Adjusted Rand Index)는 0.10으로 나타나 기존 체계와 차별점이 있음을 확인했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+이 연구는 정렬(Alignment) 과정을 철학적 논의에서 실증적 데이터 기반의 공학적 설계로 전환할 수 있는 가능성을 제시합니다. 실무적으로는 새로운 가치를 모델에 적용하기 전에 발생할 수 있는 잠재적 부작용을 미리 예측하여 모델의 안전성을 높일 수 있습니다. 또한, 개발자들은 모델의 가치 체계를 정량적으로 측정함으로써 보다 투명하고 강건한(Robust) AI 모델을 훈련하는 가이드라인으로 활용할 수 있습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Predicting Alignment Generalization with Value Representations](https://arxiv.org/abs/2610.12410)
+&gt; - [Predicting Alignment Generalization with Value Representations](https://openreview.net/forum?id=e6wBXihYGF)
+&gt; - [Predicting Alignment Generalization with Value Representations](https://arxiv.deeppaper.ai/papers/2610.12410v1)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문의 방법론은 흥미로우나, 상관계수 ρ=0.45가 과연 실무적인 정렬 보증 수준이라 할 수 있을지 의문입니다. 텍스트 임베딩보다 활성화 기반 표현이 우월하다는 점은 이미 Mechanistic Interpretability 분야에서 예견된 바 있으나, 이 &#x27;가치 공간&#x27;이 모델의 가중치 업데이트 과정에서 얼마나 동적으로 변하는지에 대한 분석이 부족해 보입니다. 단순히 정적인 활성화 패턴만으로 복잡한 정렬 일반화를 예측하기엔 아직 갈 길이 멉니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 맞지만, 현업 입장에서는 0.05에서 0.45로 올라간 것 자체가 엄청난 진전입니다. 매번 RLHF 돌릴 때마다 예상치 못한 사이드 이펙트 때문에 며칠씩 밤새며 eval셋 깎는 입장에선, 훈련 전에 잠재적 부작용을 스크리닝할 수 있는 지표가 생긴다는 것만으로도 감지덕지하죠. 다만 이 ValueMap을 실제 프로덕션 파이프라인의 가드레일로 바로 녹여낼 수 있을지가 관건이겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;선배님들, 핵심은 &#x27;모델 아키텍처와 무관하게 공유되는 가치 공간&#x27;을 찾았다는 거 아닐까요? Mantel ρ=0.82라면 서로 다른 모델 간에도 가치 체계가 보편적으로 존재한다는 건데, 이거 거의 AI의 &#x27;보편 문법&#x27;을 찾은 수준 아닌가요? 지금 당장 이 ValueMap 가지고 모델들끼리 가치관 논쟁(Value Alignment Alignment) 시켜보는 실험 짜러 갑니다. 이게 진짜 대박 논문 될 거 같은데요?&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

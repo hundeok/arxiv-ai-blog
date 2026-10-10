@@ -1,0 +1,66 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>RiCo: 국소 접촉 추론을 통한 강체 상호작용의 신경망 시뮬레이션 | ArXiv Translator AI</title><meta name="description" content="RiCo: 국소 접촉 추론을 통한 강체 상호작용의 신경망 시뮬레이션"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2610_12333v1"><meta property="og:type" content="article"><meta property="og:title" content="RiCo: 국소 접촉 추론을 통한 강체 상호작용의 신경망 시뮬레이션"><meta property="og:description" content="RiCo: 국소 접촉 추론을 통한 강체 상호작용의 신경망 시뮬레이션"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2610_12333v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="RiCo: 국소 접촉 추론을 통한 강체 상호작용의 신경망 시뮬레이션"><meta name="twitter:description" content="RiCo: 국소 접촉 추론을 통한 강체 상호작용의 신경망 시뮬레이션"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2610_12333v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "RiCo: 국소 접촉 추론을 통한 강체 상호작용의 신경망 시뮬레이션", "description": "RiCo: 국소 접촉 추론을 통한 강체 상호작용의 신경망 시뮬레이션", "datePublished": "2026-10-08", "url": "https://arxiv-ai-blog.vercel.app/papers/2610_12333v1", "author": [{"@type": "Person", "name": "Ruixiang Ouyang"}, {"@type": "Person", "name": "Guanren Qiao"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2610_12333v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2610_12333v1"});gtag('event', 'paper_view', {"paper_id": "2610_12333v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>RiCo: 국소 접촉 추론을 통한 강체 상호작용의 신경망 시뮬레이션</h1><p>RiCo: 국소 접촉 추론을 통한 강체 상호작용의 신경망 시뮬레이션</p><pre>RiCo: 국소 접촉 추론을 통한 강체 상호작용의 신경망 시뮬레이션
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** RiCo: Neural Simulation of Rigid-Body Interactions via Local Contact Reasoning
+&gt; - **저자:** Ruixiang Ouyang, Guanren Qiao, Fansen Meng, Yueci Deng, Ruixing Jin, Kui Jia, Guiliang Liu
+&gt; - **발행일:** 2026-10-08
+&gt; - **PDF 링크:** [RiCo: Neural Simulation of Rigid-Body Interactions via Local Contact Reasoning](https://arxiv.org/pdf/2610.12333v1)
+
+
+✨ 3줄 핵심 요약
+* **국소 접촉 추론**: 전체 장면을 계산하는 대신 물체 표면의 국소적 접촉 지점만을 파악하여 강체 상호작용을 모델링합니다.
+* **효율성과 정확성**: 밀집된 점 간의 상호작용 계산 비용을 줄이면서도 물리적 접촉의 세밀한 세부 정보를 유지합니다.
+* **확장성 및 범용성**: 소규모 데이터로 학습하여 270개 객체의 복잡한 장면까지 일반화하며, 실세계 충돌 상황으로도 전이 가능합니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+강체(딱딱한 물체)가 서로 부딪히는 물리적 현상을 정확히 예측하는 것은 AI 모델링의 난제입니다. 기존 방식은 장면 전체를 한꺼번에 계산하려다 보니 비용이 많이 들고 속도가 느렸습니다. &#x27;RiCo&#x27;는 핵심에 집중합니다. 모든 점을 볼 필요 없이, 서로 닿아 있는 &#x27;국소적 접촉 부위&#x27;의 정보만 가져와서 이를 바탕으로 물체의 다음 움직임을 예측합니다. 덕분에 복잡한 환경에서도 더 빠르고 정확하게 물리 현상을 시뮬레이션할 수 있습니다.
+
+🎯 배경 및 문제점
+기존의 비디오 생성 모델은 물리적 복잡성을 완벽히 포착하기 어렵습니다. 특히 강체 간의 충돌은 속도가 급격히 변하는 불연속적인 움직임을 발생시키는데, 이를 모델링하기 위해 전체 장면의 모든 점 간 상호작용을 계산하는 것은 연산 비용 면에서 비효율적입니다. 따라서 물리적 상호작용의 세밀한 부분(접촉 정보)을 효율적으로 보존하면서도 연산 부담을 줄이는 새로운 모델링 방식이 필요했습니다.
+
+💡 핵심 기술 및 아키텍처
+* **희소 국소 접촉 추론(Sparse Local Contact Reasoning)**: 객체 전체를 계산하는 대신, 접촉이 발생하는 주변 표면 점들의 정보를 파악하여 상호작용을 처리합니다.
+* **객체 내부 포인트 트랜스포머**: 개별 물체 내에서는 모든 표면 점들이 자신의 접촉 정보를 공유하도록 하여 물체의 전체적인 움직임에 반영합니다.
+* **앵커 기반 움직임 예측**: &#x27;앵커(Anchor)&#x27;라 불리는 핵심 지점들의 움직임을 예측하고, 이를 바탕으로 전체 강체의 회전과 이동(Kabsch 알고리즘)을 재구성하여 물체의 강체 특성을 유지합니다.
+
+📊 실험 결과 분석
+* **정확도**: MOVi 벤치마크 테스트에서 기존 모델 대비 100프레임 기준 위치 오차를 31~35%, 방향 오차를 약 38% 감소시켰습니다.
+* **접촉 정밀도**: 지면 진실(Ground-truth) 대비 침투 시간 오차는 11.0%, 평균 깊이 오차는 2.22mm 수준으로 높은 정밀도를 보였습니다.
+* **확장성**: 3~10개의 객체로 학습한 모델을 270개의 객체가 포함된 대규모 환경에 적용하는 &#x27;제로샷(Zero-shot)&#x27; 일반화에 성공했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **물리 시뮬레이션 개선**: 로봇 공학 등 물리적 환경을 다루는 AI 분야에서 더 현실적이고 빠르게 물리 법칙을 예측하는 기반을 마련했습니다.
+* **실세계 전이(Sim-to-Real)**: 시뮬레이션 환경에서 학습한 모델을 실제 당구대 환경의 다중 공 충돌 실험에 적용하여, 시뮬레이션에서 학습한 접촉 역학이 실제 물리 세계로 전이될 수 있음을 증명했습니다.
+* **한계**: 현재는 수동적인 강체 역학에 집중하고 있으며, 형태가 변하는 변형체(deformable objects)나 스스로 움직이는 동력 시스템은 향후 과제로 남겨두었습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [RiCo: Neural Simulation of Rigid-Body Interactions via Local ...](https://arxiv.deeppaper.ai/papers/2610.12333v1)
+&gt; - [RiCo: Neural Simulation of Rigid-Body Interactions via Local ...](https://papers.cool/arxiv/2610.12333)
+&gt; - [RiCo: Neural Simulation of Rigid-Body Interactions via Local ...](https://www.one9founders.com/research/2610.12333)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;접촉(Contact) 지점만 국소적으로 추론하여 연산 효율을 높인 접근 자체는 인정하지만, 강체(Rigid-body)의 동역학을 Kabsch 알고리즘으로 단순 치환한 점이 마음에 걸리는군요. 복잡한 마찰이나 에너지 손실이 발생하는 다중 접촉 상황에서도 과연 물리적 정합성을 유지할 수 있을지 의문입니다. 단순 위치 오차 감소가 곧 실제 물리 법칙의 정밀한 근사는 아닐 텐데요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 일리가 있지만, 실무 입장에서는 270개 객체를 제로샷으로 돌리면서 이 정도 오차를 뽑아낸 것만으로도 일단 &#x27;합격&#x27;입니다. 기존 물리 엔진 돌리다 보면 병목 현상 때문에 모델이 뻗기 일쑤인데, 앵커 기반으로 연산량 줄인 건 진짜 현장을 아는 구조네요. 다만, 이걸 실제 로봇 제어 루프에 태우려면 Inference Latency를 얼마나 더 깎을 수 있을지가 관건이겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 다들 진지하시네! 저는 이거 비디오 생성 모델이랑 결합하면 대박 날 것 같아요. 기존 SORA 같은 모델들 물리 법칙 무시하고 물체 뭉개지는 거 보면 답답했는데, RiCo의 국소 접촉 추론을 세계 모델(World Model) 백본으로 쓰면 물리적 일관성 바로 해결되는 거 아닌가요? 변형체 대응 안 된다고 적혀있긴 한데, 누가 빨리 이거 확장해서 &#x27;Deformable RiCo&#x27; 내주면 바로 베이스라인으로 박고 논문 쓰러 갑니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
