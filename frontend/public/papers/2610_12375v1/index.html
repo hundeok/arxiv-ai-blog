@@ -1,0 +1,66 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>OnTrack: 스트리밍 구조 인식 최적 운송을 통한 LLM 에이전트 경로의 실시간 모니터링 및 개입 | ArXiv Translator AI</title><meta name="description" content="OnTrack: 스트리밍 구조 인식 최적 운송을 통한 LLM 에이전트 경로의 실시간 모니터링 및 개입"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2610_12375v1"><meta property="og:type" content="article"><meta property="og:title" content="OnTrack: 스트리밍 구조 인식 최적 운송을 통한 LLM 에이전트 경로의 실시간 모니터링 및 개입"><meta property="og:description" content="OnTrack: 스트리밍 구조 인식 최적 운송을 통한 LLM 에이전트 경로의 실시간 모니터링 및 개입"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2610_12375v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="OnTrack: 스트리밍 구조 인식 최적 운송을 통한 LLM 에이전트 경로의 실시간 모니터링 및 개입"><meta name="twitter:description" content="OnTrack: 스트리밍 구조 인식 최적 운송을 통한 LLM 에이전트 경로의 실시간 모니터링 및 개입"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2610_12375v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "OnTrack: 스트리밍 구조 인식 최적 운송을 통한 LLM 에이전트 경로의 실시간 모니터링 및 개입", "description": "OnTrack: 스트리밍 구조 인식 최적 운송을 통한 LLM 에이전트 경로의 실시간 모니터링 및 개입", "datePublished": "2026-10-08", "url": "https://arxiv-ai-blog.vercel.app/papers/2610_12375v1", "author": [{"@type": "Person", "name": "Babak Barazandeh"}, {"@type": "Person", "name": "Connor Swanson"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2610_12375v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2610_12375v1"});gtag('event', 'paper_view', {"paper_id": "2610_12375v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>OnTrack: 스트리밍 구조 인식 최적 운송을 통한 LLM 에이전트 경로의 실시간 모니터링 및 개입</h1><p>OnTrack: 스트리밍 구조 인식 최적 운송을 통한 LLM 에이전트 경로의 실시간 모니터링 및 개입</p><pre>OnTrack: 스트리밍 구조 인식 최적 운송을 통한 LLM 에이전트 경로의 실시간 모니터링 및 개입
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** OnTrack: Real-Time Monitoring and Intervention in LLM Agent Trajectories via Streaming Structure-Aware Optimal Transport
+&gt; - **저자:** Babak Barazandeh, Connor Swanson, Chinmay Kulkarni, Nikhil Mungel
+&gt; - **발행일:** 2026-10-08
+&gt; - **PDF 링크:** [OnTrack: Real-Time Monitoring and Intervention in LLM Agent Trajectories via Streaming Structure-Aware Optimal Transport](https://arxiv.org/pdf/2610.12375v1)
+
+
+✨ 3줄 핵심 요약
+* **실시간 모니터링:** OnTrack은 LLM 에이전트의 작업 실행 과정을 스트리밍 방식으로 분석하여, 오류나 비효율적인 경로를 실시간으로 감지하고 차단합니다.
+* **구조적 분석:** 단순 내용 유사도가 아닌, 작업 단계 간의 종속성과 구조를 최적 운송(Optimal Transport) 이론으로 분석하여 루프나 정체 등 문제를 정확히 식별합니다.
+* **비용 절감 및 안전:** 실패가 예상되는 에이전트 경로를 미리 차단함으로써 컴퓨팅 자원의 약 18%를 절약하고, 차단된 시도의 83%가 실제로 실패로 향하고 있었음을 확인했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+AI 에이전트가 스스로 판단하여 업무를 수행하다 보면, 무한 루프에 빠지거나 잘못된 도구를 사용하여 시간과 비용을 낭비하는 경우가 많습니다. 기존의 모니터링 방식은 작업이 다 끝난 뒤에야 오류를 파악하거나, 또 다른 AI를 감시자로 써서 비용과 지연 문제가 발생했습니다. **OnTrack**은 에이전트의 작업 단계를 실시간으로 관찰하며, 과거 성공 사례의 &#x27;구조&#x27;와 현재 진행 상황을 비교합니다. 마치 지도 앱이 경로를 벗어나면 바로 알려주듯, 에이전트가 위험하거나 비효율적인 방향으로 가면 즉시 개입하여 자원을 아끼고 사고를 방지합니다.
+
+🎯 배경 및 문제점
+* **자율성으로 인한 리스크:** 에이전트의 자율적 행동은 할루시네이션(환각), 도구 호출 오류, 무한 루프 등을 유발하여 비용을 낭비하거나 시스템 보안 문제를 야기합니다.
+* **기존 방식의 한계:** 
+    * 사후 평가(Post-hoc): 문제가 발생한 후에는 이미 비용이 소모되고 피해가 확정됨.
+    * 온라인 감시자(Safeguard Agent): 추가적인 LLM 호출로 인해 비용이 증가하고 지연 시간이 발생함.
+    * 블랙박스 모델: 개별 단계를 점수화하는 모델은 내부 작동 원리를 알기 어려움.
+
+💡 핵심 기술 및 아키텍처
+* **스트리밍 구조 인식 최적 운송:** 에이전트의 작업 단계와 의존 관계를 실시간으로 모델링하여 과거 성공 기록과 비교합니다.
+* **3단계 참조 체계:** 
+    * 성공적인 과거 기록이 있는 경우(Full reference)부터, 도구 정의(Schema)만 있는 경우, 사전 정보가 전혀 없는 경우 등 데이터 가용성에 따라 모니터링 수준을 조정합니다.
+* **신속한 판단:** 알고리즘의 복잡도가 낮아 단계당 약 1밀리초의 시간만 소요되어 실시간 처리가 가능합니다.
+* **차단 정책:** 비가역적인 위험한 행동은 즉시 차단하고, 그 외에는 단계적으로 개입하는 유연한 대응 체계를 갖췄습니다.
+
+📊 실험 결과 분석
+* **성능 지표:** SWE-bench 데이터를 바탕으로 초기 8단계 수행 결과를 분석한 결과, 기존 내용 기반 유사도 접근 방식보다 AUROC 기준 +0.057 향상된 성능을 보였습니다.
+* **비용 효율성:** 에이전트 중단 정책을 통해 전체 컴퓨팅 자원의 약 18%(17~18%)를 절감했습니다.
+* **정확도:** 차단된 에이전트 경로의 83%가 실제로 실패로 이어질 경로였음을 입증했습니다.
+* **한계점:** 균일한 작업 템플릿(SWE-agent)에서는 구조적 분석의 효과가 일부 제한될 수 있으며, 모든 종류의 할루시네이션이나 인과 관계 역전을 완벽하게 감지한다고 주장하지는 않습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **실시간 가드레일:** IT 시스템 관리, 여행 예약, 주식 거래 등 에이전트의 실수가 치명적인 산업 분야에서 즉각적인 방어벽 역할을 합니다.
+* **비용 최적화:** 대규모 모델을 사용하는 에이전트 서비스에서 불필요한 연산 낭비를 획기적으로 줄여 상용 서비스의 수익성을 개선할 수 있습니다.
+* **투명한 제어:** 단순히 작업을 중단하는 것이 아니라, 오류의 이유를 제공하고 점진적으로 대응하므로 개발자가 에이전트의 행동을 더 잘 이해하고 관리할 수 있게 돕습니다.
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;최적 운송(Optimal Transport)을 스트리밍 데이터에 적용해 실시간 모니터링을 시도한 점은 학술적으로 흥미롭군요. 다만, &#x27;구조적 분석&#x27;이 단순 도구 호출 패턴 매칭을 넘어 에이전트의 추론 경로상의 논리적 비약을 얼마나 견고하게 잡아낼 수 있을지는 의문입니다. 특히 복잡한 제어 흐름이 얽힌 환경에서도 이 이론적 토대가 과연 일반화될 수 있을지, 실험 결과의 18% 비용 절감이 과적합된 케이스는 아닌지 면밀히 검증해 봐야 할 대목입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 일반화가 관건이겠지만, 실무 입장에서는 일단 &#x27;latency 1ms&#x27;라는 수치가 너무 매력적입니다. 기존의 가드레일 모델들이 추론 비용 때문에 배보다 배꼽이 더 컸던 걸 생각하면, 이 정도 오버헤드로 실패 경로의 83%를 쳐낼 수 있다면 당장 프로덕션에 올려보고 싶네요. 물론 SWE-bench 같은 정형화된 데이터셋 말고, 실제 우리 서비스의 파편화된 유저 로그에서도 이 성능이 나올지는 PoC를 돌려봐야 알겠지만요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;다들 너무 진지하신 거 아닌가요? ㅋㅋ 전 이거 보면서 에이전트 오케스트레이션의 &#x27;실시간 방역&#x27; 기술이 드디어 나왔다는 생각부터 들던데요. 지금까지 에이전트들이 삽질하는 거 뻔히 보면서도 끝날 때까지 멍하니 토큰 녹는 거 지켜봐야 했던 상황을 생각하면, OnTrack은 진짜 게임 체인저예요. 벌써부터 이거 응용해서 &#x27;에이전트 자율성 제어기&#x27; 오픈소스 프로젝트 시작할 사람들 많을 듯합니다. 얼른 깃허브에 코드 올라왔으면 좋겠네요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
