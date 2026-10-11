@@ -1,0 +1,59 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>이전 문제의 계산 과정이 거대언어모델(LLM)의 새로운 문제 해결에 도움이 될 수 있는가? | ArXiv Translator AI</title><meta name="description" content="이전 문제의 계산 과정이 거대언어모델(LLM)의 새로운 문제 해결에 도움이 될 수 있는가?"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_39394v1"><meta property="og:type" content="article"><meta property="og:title" content="이전 문제의 계산 과정이 거대언어모델(LLM)의 새로운 문제 해결에 도움이 될 수 있는가?"><meta property="og:description" content="이전 문제의 계산 과정이 거대언어모델(LLM)의 새로운 문제 해결에 도움이 될 수 있는가?"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_39394v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="이전 문제의 계산 과정이 거대언어모델(LLM)의 새로운 문제 해결에 도움이 될 수 있는가?"><meta name="twitter:description" content="이전 문제의 계산 과정이 거대언어모델(LLM)의 새로운 문제 해결에 도움이 될 수 있는가?"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_39394v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "이전 문제의 계산 과정이 거대언어모델(LLM)의 새로운 문제 해결에 도움이 될 수 있는가?", "description": "이전 문제의 계산 과정이 거대언어모델(LLM)의 새로운 문제 해결에 도움이 될 수 있는가?", "datePublished": "2026-09-30", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_39394v1", "author": [{"@type": "Person", "name": "Jipei He"}, {"@type": "Person", "name": "Wenhui Tan"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_39394v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_39394v1"});gtag('event', 'paper_view', {"paper_id": "2609_39394v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>이전 문제의 계산 과정이 거대언어모델(LLM)의 새로운 문제 해결에 도움이 될 수 있는가?</h1><p>이전 문제의 계산 과정이 거대언어모델(LLM)의 새로운 문제 해결에 도움이 될 수 있는가?</p><pre>이전 문제의 계산 과정이 거대언어모델(LLM)의 새로운 문제 해결에 도움이 될 수 있는가?
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Can Computation from Earlier Problems Help LLMs Solve New Ones?
+&gt; - **저자:** Jipei He, Wenhui Tan, Xiaoyi Yu, Enver Sangineto, Fiorenzo Parascandolo, Rita Cucchiara, Ruihua Song
+&gt; - **발행일:** 2026-09-30
+&gt; - **PDF 링크:** [Can Computation from Earlier Problems Help LLMs Solve New Ones?](https://arxiv.org/pdf/2609.39394v1)
+
+
+✨ 3줄 핵심 요약
+* LLM이 이전 대화의 맥락(기록)을 유지할 때, 성능이 향상되기도 하고 오히려 저하되기도 하는 등 불안정한 모습을 보입니다.
+* 이를 개선하기 위해 이전 응답의 키와 값을 고정된 저장소에 보관하고 적절히 활용하는 ‘STAIR’ 기술을 제안합니다.
+* STAIR를 적용하면 기본 모델을 유지한 채 소수의 파라미터만 학습시켜 후속 문제 해결 정확도를 크게 높일 수 있습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+사람은 앞서 했던 경험을 바탕으로 새로운 문제를 더 잘 해결하기도 합니다. LLM도 대화 맥락 속에 이전 문제의 답이 남아있지만, 이것이 항상 도움이 되는 것은 아닙니다. 때로는 이전 대화가 오히려 모델의 추론을 방해합니다. 연구진은 모델이 이전 대화의 &#x27;어떤 부분&#x27;을 중요하게 여기고 &#x27;어떤 부분&#x27;을 무시해야 하는지 학습하는 STAIR라는 기술을 개발했습니다. 이 기술은 거대한 모델을 다시 훈련할 필요 없이, 아주 적은 양의 데이터만 학습시켜 LLM의 문맥 이해 및 문제 해결 능력을 최적화합니다.
+
+🎯 배경 및 문제점
+LLM은 한 세션 내에서 여러 문제를 연속적으로 해결합니다. 이때 이전 대화 내용은 모델에게 고스란히 노출되는데, 기존 모델들은 이 기록을 처리하는 과정에서 일관된 성능을 내지 못합니다. 실험 결과, 어떤 태스크에서는 과거 기록이 정확도를 높이지만, 다른 태스크에서는 오히려 정확도를 떨어뜨리는 현상이 발견되었습니다. 연구진은 이전 문제 해결 과정에서 생성된 &#x27;내부 연산 기록&#x27;이 과연 새로운 문제 해결에 긍정적인 영향을 미칠 수 있는지 확인하고자 했습니다.
+
+💡 핵심 기술 및 아키텍처
+제안된 **STAIR(Stale-Token Attention for Inter-query Reuse)**는 이전 응답에서 생성된 토큰의 키(Key)와 값(Value)을 고정된 저장소(Fixed Bank)에 따로 보관합니다. 
+* **작동 원리:** 새로운 질문이 입력될 때, 모델은 이 저장소에 저장된 과거 기록을 참조합니다. 
+* **학습 방식:** 기본 모델의 파라미터는 전혀 수정하지 않고 고정(Frozen)하며, 오직 12,288개의 파라미터만을 학습시켜 현재의 질문에 필요한 과거 정보만을 선별적으로 활용하도록 유도합니다.
+
+📊 실험 결과 분석
+* **성능 변화:** Qwen 모델 기반 4개 벤치마크 테스트에서 STAIR 적용 시 후속 문제 해결 정확도가 이전 모델 대비 평균 최대 11.67% 포인트 향상되었습니다. 
+* **불안정성 해소:** 기존 모델(Native)에서는 문제 유형과 모델 설정에 따라 성능이 하락하기도 했으나, STAIR는 이를 효과적으로 제어하여 전반적인 정확도 향상을 이끌어냈습니다.
+* (참고: 위 11.67% 수치 외의 구체적인 성능 향상 폭은 각 벤치마크 모델마다 상이하며, 논문 내 표 D.1~D.4에 세부 수치가 제시되어 있습니다.)
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **효율적인 추론:** 대화형 AI 서비스에서 사용자의 과거 질문을 무분별하게 참조하여 생기는 오류를 줄이고, 맥락 파악 능력을 비약적으로 높일 수 있습니다.
+* **낮은 비용:** 거대한 모델 전체를 튜닝하지 않고도 12,288개라는 극히 적은 파라미터만 학습하면 되므로, 실무 현장에서 추가적인 컴퓨팅 자원 부담 없이 즉시 적용 가능한 실용적인 기술입니다.
+* **확장성:** 복잡한 다단계 추론이나 연속적인 문제 해결이 필요한 업무 환경에서 LLM의 신뢰도를 높이는 데 크게 기여할 것입니다.
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;STAIR에서 제안한 고정된 KV 저장소 방식은 흥미롭지만, 정보의 &#x27;유통기한&#x27;에 대한 이론적 근거가 부족해 보입니다. 12,288개의 파라미터만으로 과연 복잡한 문맥의 가중치를 정교하게 통제할 수 있을까요? 단순히 선별적 참조를 넘어, 데이터가 누적될 때 발생하는 메모리 오염(Memory Corruption) 문제를 어떻게 완벽히 방어할 것인지에 대한 추가 실험이 필요해 보입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 일리가 있지만, 실무자 입장에서는 11.67%의 성능 향상을 모델 전체 파인튜닝 없이 달성했다는 점 자체가 엄청난 메리트입니다. 특히 대규모 서비스에서 추론 비용 최적화가 화두인데, 고정된 저장소(Fixed Bank) 방식은 서빙 아키텍처에 붙이기도 훨씬 수월하겠네요. 당장 프로덕션 환경에 레이턴시 테스트부터 돌려봐야겠습니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;선배님, 서빙 최적화 고민하실 때 모델의 &#x27;망각&#x27; 문제도 꼭 체크해 보세요! STAIR가 과거 정보를 잘 살리는 건 좋은데, 이게 오히려 새로운 토큰에 대한 모델의 유연성을 저해할 수도 있지 않을까요? 개인적으로는 이 논문 구현해서 내일 당장 SOTA 벤치마크 다시 돌려볼 생각입니다. 12,288개 파라미터면 제 개인 GPU로도 충분히 학습하겠네요. 이게 진정한 &#x27;가성비&#x27; 연구 아닙니까!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

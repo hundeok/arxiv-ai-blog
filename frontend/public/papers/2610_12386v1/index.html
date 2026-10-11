@@ -1,0 +1,58 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ARC: 로봇 기초 모델을 위한 추론 레시피 | ArXiv Translator AI</title><meta name="description" content="ARC: 로봇 기초 모델을 위한 추론 레시피"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2610_12386v1"><meta property="og:type" content="article"><meta property="og:title" content="ARC: 로봇 기초 모델을 위한 추론 레시피"><meta property="og:description" content="ARC: 로봇 기초 모델을 위한 추론 레시피"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2610_12386v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="ARC: 로봇 기초 모델을 위한 추론 레시피"><meta name="twitter:description" content="ARC: 로봇 기초 모델을 위한 추론 레시피"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2610_12386v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "ARC: 로봇 기초 모델을 위한 추론 레시피", "description": "ARC: 로봇 기초 모델을 위한 추론 레시피", "datePublished": "2026-10-08", "url": "https://arxiv-ai-blog.vercel.app/papers/2610_12386v1", "author": [{"@type": "Person", "name": "Gokul Puthumanaillam"}, {"@type": "Person", "name": "Tao Sun"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2610_12386v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2610_12386v1"});gtag('event', 'paper_view', {"paper_id": "2610_12386v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>ARC: 로봇 기초 모델을 위한 추론 레시피</h1><p>ARC: 로봇 기초 모델을 위한 추론 레시피</p><pre>ARC: 로봇 기초 모델을 위한 추론 레시피
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** ARC: A Reasoning Recipe for Robot Foundation Models
+&gt; - **저자:** Gokul Puthumanaillam, Tao Sun, Elie Aljalbout, Moritz Reuss, Zhaoshuo Li, Fabio Ramos, Ankit Goyal, Jenai Xuning Yang
+&gt; - **발행일:** 2026-10-08
+&gt; - **PDF 링크:** [ARC: A Reasoning Recipe for Robot Foundation Models](https://arxiv.org/pdf/2610.12386v1)
+
+
+✨ 3줄 핵심 요약
+* **새로운 접근법:** 로봇 기초 모델(RFM)의 성능 향상을 위해 모델 크기나 데이터를 늘리는 대신, &#x27;추론 레시피(ARC)&#x27;를 통해 기존 모델의 제로샷 성능을 획기적으로 개선함.
+* **자동화된 추론 데이터:** 기존 로봇 시연 데이터에 행동과 인과관계를 연결하는 추론 흔적(Trace)을 자동으로 생성하여 학습 데이터(Arc-Trace-DROID)를 구축함.
+* **검증된 성능:** 별도의 추가 로봇 실습 없이 π0.5 등 최신 모델을 미세 조정하여 RoboLab-120 등의 벤치마크에서 최고 성능을 달성함.
+
+📖 쉽게 풀어쓴 1분 핵심
+로봇에게 &quot;물건을 옮겨라&quot;라고 명령할 때, 로봇은 단순히 동작을 흉내 내는 것을 넘어 그 동작을 왜 하는지(인과관계) 이해해야 합니다. ARC는 기존 로봇 학습 데이터에 &quot;지금 이 동작을 왜 하는지, 어떤 결과를 기대하는지&quot;에 대한 설명을 덧붙이는 방식입니다. 연구진은 강력한 거대언어모델(GPT-5.5 등)을 활용해 기존 데이터셋(DROID)에 이러한 &#x27;추론 지침&#x27;을 자동으로 달았습니다. 이 정보를 학습한 로봇은 처음 보는 상황(제로샷)에서도 훨씬 더 정확하고 똑똑하게 움직일 수 있게 됩니다.
+
+🎯 배경 및 문제점
+기존의 로봇 기초 모델(RFM) 연구는 더 큰 모델을 만들고, 더 많은 로봇 데이터를 수집하며, 엄청난 비용을 들여 학습시키는 방향으로만 치중되어 왔습니다. 이러한 자원 집약적 방식은 효율성이 낮으며, 로봇이 왜 특정 행동을 수행해야 하는지에 대한 &#x27;인지적 근거&#x27;가 부족하다는 한계가 있었습니다.
+
+💡 핵심 기술 및 아키텍처
+ARC는 세 가지 핵심 요소로 구성됩니다.
+1. **행동 기반 추론 흔적(Reasoning Trace):** 로봇의 다음 행동이 왜 적절한지, 어떤 물리적 효과를 의도하는지 설명하는 인과적 구조를 포함합니다.
+2. **자동 라벨링 파이프라인:** 기존 데이터셋(DROID)에서 비디오와 명령어를 분석해 추론 흔적을 자동으로 생성(Arc-Trace-DROID 구축)합니다.
+3. **적응형 학습 전략:** 기존의 시각-언어-행동 모델(VLA) 및 범용 행동 모델(WAM)이 이 추론 흔적을 활용해 제어 성능을 높이도록 미세 조정하는 기술을 적용했습니다.
+
+📊 실험 결과 분석
+* **벤치마크:** RoboLab-Reasoning-50 벤치마크에서 최대 50%p의 성능 향상을 기록했습니다.
+* **실제 로봇 실험:** 실제 로봇 환경에서 π0.5 모델에 적용했을 때, 작업 성공률이 82.2%p 개선되었습니다.
+* **특이사항:** 추가적인 로봇 실습 데이터나 거대 규모의 기초 학습 없이도 최고 수준의 성과를 달성했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+이 기술은 데이터 수집의 병목 현상을 해결함으로써, 값비싼 로봇 데이터를 대량으로 새로 수집하지 않고도 기존 모델의 지능을 높일 수 있는 길을 열었습니다. 특히 추론 능력이 중요한 복잡한 로봇 작업 현장에서 모델의 판단력을 높여, 다양한 환경 변화나 명령 변화에 로봇이 더 유연하고 견고하게 대응할 수 있도록 돕습니다. 연구에서 언급된 벤치마크 개선 성과를 통해, 제조 및 서비스 로봇의 범용적 활용 가능성이 한층 높아졌습니다.
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;데이터의 양으로 승부 보던 시대는 끝났다는 신호탄이군요. ARC의 핵심은 결국 &#x27;Implicit한 시연&#x27;을 &#x27;Explicit한 인과관계&#x27;로 치환한 것인데, 이를 LLM의 추론 능력을 빌려 자동화했다는 점은 훌륭합니다. 다만, LLM이 생성한 추론 흔적(Trace)에 존재하는 할루시네이션이 로봇의 물리적 제어에 미칠 잠재적 위험성을 어떻게 검증했는지가 논문에 명확하지 않네요. 학계에서는 여전히 이 인과관계의 정합성을 어떻게 보장할지가 관건입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 맞지만, 현업 입장에서는 &#x27;추가 로봇 실습 없이 기존 데이터만으로&#x27; 성능을 50%p 올렸다는 게 미친 포인트입니다. 우리 같은 엔지니어들은 데이터 수집하느라 로봇 돌리고 시간 낭비하는 게 제일 고통스럽거든요. 특히 π0.5 같은 SOTA 모델을 그대로 활용해서 미세 조정만으로 제로샷 성능을 뽑아낸 건 정말 실용적인 접근입니다. 당장 우리 팀 파이프라인에 Arc-Trace-DROID 로직을 이식해보고 싶네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;선배님, 이미 저희 랩에서는 관련 레포지토리 클론해서 돌려보고 있습니다! 단순한 VLA를 넘어 &#x27;인과적 추론&#x27;을 학습한다는 게 정말 힙하지 않나요? 교수님께서 우려하시는 할루시네이션 문제도 사실은 강화학습이나 피드백 루프를 태우면 충분히 보완 가능할 것 같아요. 이제 모델 사이즈 키우는 건 구시대의 유물이 된 것 같아서 속이 다 시원합니다. 다들 내일 세미나 때 이 논문으로 토론하시죠!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
