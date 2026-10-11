@@ -1,0 +1,70 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>하나의 도표, 모든 캔버스: 에이전트 파이프라인을 통한 편집 가능한 순서도 레이아웃 재구성 | ArXiv Translator AI</title><meta name="description" content="하나의 도표, 모든 캔버스: 에이전트 파이프라인을 통한 편집 가능한 순서도 레이아웃 재구성"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2610_06852v1"><meta property="og:type" content="article"><meta property="og:title" content="하나의 도표, 모든 캔버스: 에이전트 파이프라인을 통한 편집 가능한 순서도 레이아웃 재구성"><meta property="og:description" content="하나의 도표, 모든 캔버스: 에이전트 파이프라인을 통한 편집 가능한 순서도 레이아웃 재구성"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2610_06852v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="하나의 도표, 모든 캔버스: 에이전트 파이프라인을 통한 편집 가능한 순서도 레이아웃 재구성"><meta name="twitter:description" content="하나의 도표, 모든 캔버스: 에이전트 파이프라인을 통한 편집 가능한 순서도 레이아웃 재구성"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2610_06852v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "하나의 도표, 모든 캔버스: 에이전트 파이프라인을 통한 편집 가능한 순서도 레이아웃 재구성", "description": "하나의 도표, 모든 캔버스: 에이전트 파이프라인을 통한 편집 가능한 순서도 레이아웃 재구성", "datePublished": "2026-10-05", "url": "https://arxiv-ai-blog.vercel.app/papers/2610_06852v1", "author": [{"@type": "Person", "name": "Shih-Chen Tseng"}, {"@type": "Person", "name": "Chih-Hsuan Chen"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2610_06852v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2610_06852v1"});gtag('event', 'paper_view', {"paper_id": "2610_06852v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>하나의 도표, 모든 캔버스: 에이전트 파이프라인을 통한 편집 가능한 순서도 레이아웃 재구성</h1><p>하나의 도표, 모든 캔버스: 에이전트 파이프라인을 통한 편집 가능한 순서도 레이아웃 재구성</p><pre>하나의 도표, 모든 캔버스: 에이전트 파이프라인을 통한 편집 가능한 순서도 레이아웃 재구성
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** One Figure, Every Canvas: Editable Flowchart Relayout via Agentic Pipeline
+&gt; - **저자:** Shih-Chen Tseng, Chih-Hsuan Chen, Ryan Yang, Hsi-An Chen, Chun-Wei Tuan Mu, Yu-Lun Liu
+&gt; - **발행일:** 2026-10-05
+&gt; - **PDF 링크:** [One Figure, Every Canvas: Editable Flowchart Relayout via Agentic Pipeline](https://arxiv.org/pdf/2610.06852v1)
+
+
+✨ 3줄 핵심 요약
+*   본 연구는 논문, 슬라이드, 소셜 미디어 등 다양한 화면 비율(Aspect ratio)에 맞춰 순서도(Flowchart)의 구조를 유지하며 자동으로 재배치하는 기술을 제안합니다.
+*   기존 방식들의 문제인 텍스트 왜곡, 환각 현상, 연결선 오류를 해결하기 위해 &#x27;파싱-스타일-레이아웃&#x27;의 3단계 에이전트 파이프라인을 도입했습니다.
+*   최종 결과물을 `draw.io`에서 직접 수정 가능한 XML 형식으로 제공하여 실무 활용성을 높였습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+연구 논문에 들어가는 도표는 논문용(세로형), 슬라이드용(가로형) 등 다양한 곳에 쓰여야 합니다. 기존 인공지능 모델들은 이를 단순히 늘리거나(왜곡), 아예 새로 그려 내용을 바꾸거나(환각), 연결선을 잘못 배치하는 등의 문제를 보였습니다. 이 연구는 도표를 구성하는 요소와 연결 구조를 정확히 파악하여, 화면 비율이 바뀌어도 구조를 완벽하게 유지한 채 레이아웃만 새로 짜는 기술을 개발했습니다. 특히 결과물이 단순 이미지가 아니라 `draw.io` 파일로 출력되어, 사용자가 생성 후에도 자유롭게 내용을 수정할 수 있다는 점이 큰 특징입니다.
+
+🎯 배경 및 문제점
+순서도는 기계 학습 논문에서 핵심적인 역할을 하지만, 다양한 매체 환경에 대응하기 어렵습니다.
+*   **이미지 기반 모델:** 픽셀을 단순히 늘려 도표가 왜곡되거나, 극단적인 화면 비율을 지원하지 못합니다.
+*   **텍스트-이미지 에이전트:** 도표를 새로 합성하는 과정에서 원래 있던 블록을 누락하거나 존재하지 않는 내용을 추가하는 &#x27;환각(Hallucination)&#x27; 문제가 발생합니다.
+*   **파싱 후 렌더링 시스템:** 구조를 해석하더라도 연결선이 잘못 경로 지정되어 도표의 논리적 흐름이 끊기는 오류가 발생합니다.
+
+💡 핵심 기술 및 아키텍처
+본 모델은 &#x27;Parse(구문 분석)&#x27;, &#x27;Style(스타일 적용)&#x27;, &#x27;Layout(레이아웃 구성)&#x27;의 3단계 에이전트 파이프라인으로 작동합니다.
+*   **에이전트와 비평가(Critic) 구조:** 각 단계마다 메인 에이전트와 비평가가 쌍을 이룹니다. 비평가는 결정론적 제약 조건 검사와 VLM(Vision Language Model)의 시각적 피드백을 결합하여 연결선이 끊기지 않도록 실시간으로 검사합니다.
+*   **편집 가능한 출력:** 최종 결과물은 비트맵 이미지가 아닌, `mxGraph XML` 형식으로 출력되어 `draw.io` 등에서 즉시 편집이 가능합니다.
+
+📊 실험 결과 분석
+100개의 순서도를 대상으로 5가지 화면 비율에서 테스트한 결과입니다.
+*   **내용 충실도(Content Fidelity):** 제안 모델은 68.6%를 기록하여 기존 연구들(11.2~41.4%) 대비 압도적인 성능을 보였습니다.
+*   **구조적 복잡성 대응:** 도표의 노드와 엣지 수가 늘어나는 복잡한 환경(Easy, Medium, Hard)에서도 모든 단계에서 가장 높은 성능을 유지했습니다.
+*   **반복 횟수:** 구조가 복잡해질수록 레이아웃 단계를 조정하기 위한 반복 횟수가 증가하며, 이는 복잡한 순서도일수록 정교한 공간 재배치가 필요함을 시사합니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+*   **연구 효율성 증대:** 논문 작성자들은 한 번 만든 도표를 슬라이드, 포스터, 모바일용 이미지로 일일이 다시 그릴 필요 없이 자동으로 변환하여 시간을 크게 절약할 수 있습니다.
+*   **실무 호환성:** 출력물이 `draw.io` 포맷이므로, 자동 생성된 초안을 토대로 연구자가 즉시 세부 수정을 가할 수 있어 실무 워크플로우에 최적화되어 있습니다.
+*   **한계점:** 현재는 `Gemini 3.1 Pro` 같은 클라우드 기반의 대형 모델 의존도가 높고, XML 기반 재구성 과정에서 글꼴이나 아이콘 등 미세한 시각적 스타일 차이가 발생할 수 있다는 점을 언급하고 있습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [One Figure, Every Canvas: Editable Flowchart Relayout via Agentic Pipeline](https://arxiv.org/abs/2610.06852)
+&gt; - [One Figure, Every Canvas:Editable Flowchart Relayout via Agentic Pipeline](https://arxiv.org/html/2610.06852)
+&gt; - [One Figure, Every Canvas: Editable Flowchart Relayout via Agentic Pipeline](https://www.alphaxiv.org/abs/2610.06852)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문 피겨 작업에 매번 수 시간씩 쏟는 학생들을 보면 안타까웠는데, 구조적 무결성을 보존하며 리레이아웃을 수행한다는 점은 높게 평가함. 다만 3단계 에이전트 파이프라인에서 발생하는 latency와 클라우드 모델 의존성은 대규모 논문 작업 시 비용 효율성을 따져봐야 할 문제야. 특히 XML 렌더링 과정에서 발생하는 스타일 일관성 결여는 학술적 엄밀함을 해칠 수 있어 보이는데, 이 부분에 대한 정량적 지표가 더 필요하겠군.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 latency가 좀 걸리긴 하겠지만, 실무 입장에서는 &#x27;draw.io&#x27; 파일로 떨궈준다는 것만으로도 게임 끝입니다. 어차피 모델이 100% 완벽하게 그리는 건 불가능해요. 사람이 들어가서 마지막 10%를 수정할 수 있는 &#x27;Editable&#x27;한 포맷을 제공했다는 게 이 논문의 진짜 핵심이자 프로덕트 관점에서의 승부수네요. 당장 우리 팀 위키에 파이프라인 도입 검토 들어갑니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 이건 진짜 당장 써야 합니다! 매번 랩미팅 때마다 논문용 도표를 발표 슬라이드 비율에 맞추느라 밤새워 다시 그리던 거 생각하면 눈물이 앞을 가리네요... 68.6%라는 수치가 기존 연구들 압살하는 거 보면 VLM 비평가 모델을 쓴 게 신의 한 수인 듯? 당장 깃허브 레포 열렸는지 확인하러 갑니다. 이거 다음 논문 Figure 1은 이걸로 뽑아야지!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

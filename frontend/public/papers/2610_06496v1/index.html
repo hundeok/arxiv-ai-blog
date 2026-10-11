@@ -1,0 +1,62 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>당신의 마음은 변했지만, 모델은 변하지 않았다: 다중 턴 대화에서의 의도 규명 | ArXiv Translator AI</title><meta name="description" content="당신의 마음은 변했지만, 모델은 변하지 않았다: 다중 턴 대화에서의 의도 규명"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2610_06496v1"><meta property="og:type" content="article"><meta property="og:title" content="당신의 마음은 변했지만, 모델은 변하지 않았다: 다중 턴 대화에서의 의도 규명"><meta property="og:description" content="당신의 마음은 변했지만, 모델은 변하지 않았다: 다중 턴 대화에서의 의도 규명"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2610_06496v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="당신의 마음은 변했지만, 모델은 변하지 않았다: 다중 턴 대화에서의 의도 규명"><meta name="twitter:description" content="당신의 마음은 변했지만, 모델은 변하지 않았다: 다중 턴 대화에서의 의도 규명"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2610_06496v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "당신의 마음은 변했지만, 모델은 변하지 않았다: 다중 턴 대화에서의 의도 규명", "description": "당신의 마음은 변했지만, 모델은 변하지 않았다: 다중 턴 대화에서의 의도 규명", "datePublished": "2026-10-05", "url": "https://arxiv-ai-blog.vercel.app/papers/2610_06496v1", "author": [{"@type": "Person", "name": "Junle Chen"}, {"@type": "Person", "name": "Wei Chen"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2610_06496v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2610_06496v1"});gtag('event', 'paper_view', {"paper_id": "2610_06496v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>당신의 마음은 변했지만, 모델은 변하지 않았다: 다중 턴 대화에서의 의도 규명</h1><p>당신의 마음은 변했지만, 모델은 변하지 않았다: 다중 턴 대화에서의 의도 규명</p><pre>당신의 마음은 변했지만, 모델은 변하지 않았다: 다중 턴 대화에서의 의도 규명
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** You Changed Your Mind, The Model Didn&#x27;t: Demystifying Intent in Multi-Turn Dialogue
+&gt; - **저자:** Junle Chen, Wei Chen, Zhengjun Huang, Zhoujin Tian, Yuxuan Liu, Kai Wang, Rui Chen, Xiaofang Zhou
+&gt; - **발행일:** 2026-10-05
+&gt; - **PDF 링크:** [You Changed Your Mind, The Model Didn&#x27;t: Demystifying Intent in Multi-Turn Dialogue](https://arxiv.org/pdf/2610.06496v1)
+
+
+✨ 3줄 핵심 요약
+*   거대 언어 모델(LLM)은 사용자가 제안을 거절하여 의도가 변하지 않았음에도 불구하고, 대화 중에 언급된 &#x27;거절된 변경 사항&#x27;을 실제 요구사항으로 오해하여 오류를 범합니다.
+*   연구진은 이를 체계적으로 분석하기 위해 도구 사용, 코드, 데이터베이스, 수학 분야를 포괄하는 벤치마크 &#x27;Intent-Eval&#x27;을 도입했습니다.
+*   사용자의 유효한 의도를 정확히 추적하여 모델을 학습시키는 &#x27;Intent-OPSD&#x27; 프레임워크를 제안하여 모델의 성능 저하를 개선했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+사용자가 대화 도중 &quot;이거 해볼까?&quot;라고 제안했다가 곧바로 &quot;아니, 그냥 원래대로 해&quot;라고 거절하는 상황을 가정해 봅시다. 이상적인 AI라면 이 제안을 무시해야 하지만, 현재의 LLM들은 거절된 내용조차 대화에 포함되었다는 이유만으로 중요한 요구사항으로 착각합니다. 본 논문은 모델이 &#x27;대화 중에 언급된 내용&#x27;과 &#x27;현재까지 유효한 요구사항&#x27;을 구분하지 못하는 문제를 지적합니다. 연구진은 이러한 혼란을 정량적으로 측정하고, 현재 의도를 정확히 반영하도록 모델을 지도하는 새로운 학습 방식을 통해 성능을 향상했습니다.
+
+🎯 배경 및 문제점
+대화가 길어질수록 모델은 이전의 맥락을 놓치거나, 더 이상 유효하지 않은 정보에 얽매이는 현상을 보입니다. 본 논문은 이를 &#x27;언급된 내용을 실행 중인 요구사항으로 혼동하는 문제&#x27;로 규정하며, 다음과 같은 세 가지 성능 저하 패턴을 발견했습니다.
+*   **분산된 정보 공개:** 과제가 여러 턴으로 나뉘어 제시될 때 정확도가 감소합니다.
+*   **대화 오버헤드:** 단순한 부연 설명이 추가되는 것만으로도 모델의 정확도가 떨어집니다.
+*   **결정 유도 혼란:** 제안 사항이 수락되든 거절되든, 변경 논의 자체가 모델의 의도 파악을 방해합니다.
+
+💡 핵심 기술 및 아키텍처
+연구진은 **Intent-OPSD**(결정 조건부 온-폴리시 자기 증류, Decision-conditioned On-Policy Self-Distillation)를 제안합니다.
+*   **구조:** 동일한 모델에서 초기화된 &#x27;교사(Teacher)&#x27;와 &#x27;학생(Student)&#x27;으로 구성됩니다.
+*   **학습 방식:** 동결된 교사 모델은 사용자의 최종 결정을 반영한 &#x27;완전한 과제&#x27;를 바탕으로 적극적인 의도 감독(Active-intent supervision) 정보를 제공합니다. 학생 모델은 이 정보를 바탕으로 전체 대화 과정을 학습하여, 대화 흐름 속에서 유효한 요구사항만을 따르도록 훈련됩니다.
+
+📊 실험 결과 분석
+414개의 과제와 3,312개의 평가 인스턴스로 구성된 Intent-Eval 벤치마크 결과입니다.
+*   **성능 저하:** 다중 턴 대화는 단일 턴 대비 평균 정확도가 상당폭 하락하며, 특히 제안된 변경 사항이 거절된 경우(Retained) 모델의 혼란이 컸습니다.
+*   **Intent-OPSD 효과:** 실험 결과, Intent-OPSD는 모든 테스트 깊이에서 기본 모델(Base)보다 높은 정확도를 보였습니다. 특히 단일 턴 대비 다중 턴에서 발생하는 정확도 하락폭을 유의미하게 개선했습니다.
+*   **한계:** 다만, 거절된 변경 사항을 처리하는 문제는 여전히 까다로운 과제로 남아있으며, 추가적인 방법론 개발이 필요함을 언급했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+*   **대화형 에이전트의 신뢰성 향상:** 비즈니스 상담, 코딩 보조, 복잡한 데이터 분석 등 사용자의 수정 제안이 잦은 대화형 AI 서비스에서 훨씬 정교한 업무 처리가 가능해집니다.
+*   **실무적 고려사항:** 현재의 방식은 벤치마크를 위해 명시적으로 과제를 부여했지만, 실제 서비스에 적용하려면 자연스러운 대화 속에서 &#x27;유효한 요구사항&#x27;을 자동으로 추출하고 갱신하는 고도의 전처리 기술이 병행되어야 합니다.
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;이 논문에서 지적한 &#x27;거절된 의도의 오염(Distraction by Rejected Intent)&#x27;은 LLM의 근본적인 Attention 메커니즘 한계와 맞닿아 있네. 단순히 Intent-OPSD로 학생 모델을 훈련시키는 건 미봉책일 뿐이야. 모델이 문맥상 &#x27;상태 변화&#x27;를 추적하는 별도의 State Tracking Layer를 가지지 않는 한, 결국 토큰 시퀀스의 복잡도가 올라가면 다시 무너질걸세.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 일리가 있지만, 당장 프로덕션 돌리는 입장에선 논문에서 제안한 Self-Distillation 구조가 꽤 실용적입니다. 실무에서 기획자들이 &#x27;아, 이거 처음에 말한 거 빼주세요&#x27;라고 할 때마다 모델이 환각 일으키는 거 잡느라 고생인데, Intent-Eval 벤치마크라도 표준화되면 데이터셋 정제할 때 확실히 가이드라인이 생길 것 같네요. 다만, 실시간 추론 시 오버헤드는 어떻게 감당할지가 관건이겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;다들 너무 진지하신 거 아닌가요? ㅋㅋㅋ 요즘 멀티모달 에이전트 붐인데, 복잡한 턴마다 의도 뒤바뀌는 거 뻔히 알면서도 다들 쉬쉬했잖아요. Intent-OPSD가 완전한 해결책은 아니더라도, 이 논문 덕분에 &#x27;대화의 맥락 유지&#x27;가 올해 SOTA 경쟁의 새로운 핫키워드가 될 것 같아요. 당장 다음 주 세미나 때 이거 발표해서 교수님께 칭찬받아야지!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
