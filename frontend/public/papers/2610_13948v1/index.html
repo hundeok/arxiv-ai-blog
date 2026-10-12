@@ -1,0 +1,63 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>언어 모델은 위키피디아 게임을 할 수 있을까? | ArXiv Translator AI</title><meta name="description" content="언어 모델은 위키피디아 게임을 할 수 있을까?"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2610_13948v1"><meta property="og:type" content="article"><meta property="og:title" content="언어 모델은 위키피디아 게임을 할 수 있을까?"><meta property="og:description" content="언어 모델은 위키피디아 게임을 할 수 있을까?"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2610_13948v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="언어 모델은 위키피디아 게임을 할 수 있을까?"><meta name="twitter:description" content="언어 모델은 위키피디아 게임을 할 수 있을까?"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2610_13948v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "언어 모델은 위키피디아 게임을 할 수 있을까?", "description": "언어 모델은 위키피디아 게임을 할 수 있을까?", "datePublished": "2026-10-09", "url": "https://arxiv-ai-blog.vercel.app/papers/2610_13948v1", "author": [{"@type": "Person", "name": "Alexander Hickey"}, {"@type": "Person", "name": "Joanna Knight"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2610_13948v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2610_13948v1"});gtag('event', 'paper_view', {"paper_id": "2610_13948v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>언어 모델은 위키피디아 게임을 할 수 있을까?</h1><p>언어 모델은 위키피디아 게임을 할 수 있을까?</p><pre>언어 모델은 위키피디아 게임을 할 수 있을까?
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Can Language Models Play the Wikipedia Game?
+&gt; - **저자:** Alexander Hickey, Joanna Knight, James Bishop
+&gt; - **발행일:** 2026-10-09
+&gt; - **PDF 링크:** [Can Language Models Play the Wikipedia Game?](https://arxiv.org/pdf/2610.13948v1)
+
+
+✨ 3줄 핵심 요약
+* 위키피디아 게임(링크를 따라 특정 문서에 도달하는 과제)을 통해 언어 모델의 정보 탐색 및 추론 능력을 검증했습니다.
+* GPT-o3 mini, GPT-4o 등 최상위 모델들은 인간과 대등한 수준의 수행 능력을 보였으나, 인간을 유의미하게 능가하지는 못했습니다.
+* 모델의 성능은 언어와 주제에 따라 차이를 보였으며, 단순히 학습된 데이터의 암기가 아닌 의미론적 이해가 탐색에 중요함을 확인했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+&#x27;위키피디아 게임&#x27;은 시작 문서에서 클릭 가능한 링크만을 활용해 목표 문서로 이동하는 게임입니다. 이는 단순히 텍스트를 읽는 것을 넘어, 다음에 어떤 링크를 클릭해야 목표에 가까워질지 판단하는 &#x27;지능적인 길 찾기&#x27; 능력을 요구합니다. 연구진은 대규모 언어 모델(LLM)과 임베딩 모델이 방대한 위키피디아와 학술 데이터베이스(OpenAlex) 내에서 얼마나 효율적으로 경로를 찾는지 인간 및 전통적인 통계 방식(TF-IDF)과 비교했습니다. 실험 결과, 최신 LLM들은 상당히 뛰어난 성과를 냈으나 인간의 탐색 능력을 완전히 넘어서지는 못했습니다.
+
+🎯 배경 및 문제점
+기존의 정보 탐색 연구들은 대부분 API를 활용하거나 매우 제한적인 데이터셋을 사용하여 모델의 실제 복잡한 탐색 능력을 평가하는 데 한계가 있었습니다. 연구진은 모델이 복잡한 비정형 데이터 저장소에서 어떻게 개념 간의 의미를 연결하며 정보를 찾아가는지 평가하기 위해, 외부 API 의존 없이 자체 구축한 대규모 로컬 그래프 환경에서 모델의 탐색 역량을 테스트하고자 했습니다.
+
+💡 핵심 기술 및 아키텍처
+* **그래프 구축:** 위키피디아의 수백만 개 문서와 OpenAlex의 방대한 학술 데이터를 노드(문서)와 엣지(하이퍼링크/참조)로 구성하여 항해 가능한 거대 그래프 환경을 직접 구축했습니다.
+* **비교 평가:** 생성형 LLM(GPT-4o, DeepSeek-R1 등)과 문장 임베딩 모델, 그리고 인간과 TF-IDF 기반 모델을 비교군으로 설정했습니다.
+* **평가 방식:** 언어 모델이 특정 목표를 향해 링크를 선택하며 나아가는 전략적 탐색 능력을 정량적으로 측정했습니다.
+
+📊 실험 결과 분석
+* **모델 성능:** GPT-o3 mini, GPT-4o, QwQ:32B, DeepSeek-R1:70B와 같은 모델들이 가장 우수한 성능을 보였으며, 인간과 비교할 만한 수준의 성공률을 기록했습니다.
+* **학습 데이터 영향:** 2024년 이후 발행된 문서들로 테스트했을 때, 모델의 성능 하락 폭이 오히려 TF-IDF 모델보다 작게 나타나, 모델이 단순히 학습 데이터를 암기한 것이 아니라 의미론적인 접근을 통해 탐색하고 있음을 시사했습니다.
+* **언어/주제별 차이:** 모델별 순위와 성능은 언어(5개)와 학술 분야(생물, 의학, 물리학 등)에 따라 일관적이지 않고 변동성을 보였습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+본 연구는 모델이 방대한 지식 기반을 어떻게 탐색하는지 보여줌으로써, 데이터 파이프라인에 AI를 통합하려는 실무자들에게 귀중한 지표를 제공합니다. 특히 단순히 정보를 검색하는 것을 넘어, 복잡한 문서 간의 관계를 파악하고 논리적인 경로를 찾아야 하는 &#x27;지능형 자동화 시스템&#x27; 개발에 기여할 것으로 기대됩니다. 다만, 모든 분야에서 인간을 능가하지는 못했으므로 복잡한 전문 영역 탐색 시에는 여전히 신중한 접근이 필요합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Can Language Models Play the Wikipedia Game? · ArXivSignals](https://arxivsignals.io/papers/2610.13948)
+&gt; - [Can Language Models Play the Wikipedia Game? - papers.cool](https://papers.cool/arxiv/2610.13948)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문을 읽어보니 이들이 구축한 &#x27;로컬 그래프 환경&#x27;에서의 실험은 흥미롭지만, 과연 이것이 진정한 의미의 &#x27;추론&#x27;을 증명하는지 의문입니다. 단순히 임베딩 공간 내의 근접성(proximity)을 따라가는 것인지, 아니면 정말로 개념적 위계를 이해하고 경로를 최적화하는지 구분이 모호해요. 인간을 능가하지 못한 지점은 명확해 보입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무적으로는 &#x27;Search-based Agent&#x27;의 한계점이 명확히 보이네요. 특히 언어와 도메인에 따라 성능 편차가 크다는 건, 실제 프로덕션 환경에서 RAG 파이프라인으로 돌릴 때 엣지 케이스 대응이 안 된다는 뜻이거든요. 그래도 2024년 이후 데이터에서 TF-IDF보다 견고했다는 건, 모델이 단순히 암기한 게 아니라 의미론적 &#x27;항해(navigation)&#x27;를 할 수 있다는 희망적인 신호로 보입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;에이, 다들 너무 엄격하신 거 아니에요? ㅋㅋㅋ 저는 이 논문 보고 바로 GPT-o3 mini로 위키피디아 게임 봇 만들어볼 생각에 설렜는데요. 인간을 아직 못 넘었다는 건 역설적으로 &#x27;인간의 직관&#x27;이 필요한 영역이 남아있다는 거잖아요. 멀티모달이나 강화학습(RL)을 더 얹으면 조만간 인간 수준을 완전히 따돌릴 것 같은데, 이걸 논문으로 증명했다는 것 자체가 대박인 거죠!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
