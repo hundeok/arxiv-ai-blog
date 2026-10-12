@@ -1,0 +1,65 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>다중 에이전트 시스템을 위한 정신 모델 | ArXiv Translator AI</title><meta name="description" content="다중 에이전트 시스템을 위한 정신 모델"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2610_12453v1"><meta property="og:type" content="article"><meta property="og:title" content="다중 에이전트 시스템을 위한 정신 모델"><meta property="og:description" content="다중 에이전트 시스템을 위한 정신 모델"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2610_12453v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="다중 에이전트 시스템을 위한 정신 모델"><meta name="twitter:description" content="다중 에이전트 시스템을 위한 정신 모델"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2610_12453v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "다중 에이전트 시스템을 위한 정신 모델", "description": "다중 에이전트 시스템을 위한 정신 모델", "datePublished": "2026-10-08", "url": "https://arxiv-ai-blog.vercel.app/papers/2610_12453v1", "author": [{"@type": "Person", "name": "Hanan Gani"}, {"@type": "Person", "name": "Lulu Shao"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2610_12453v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2610_12453v1"});gtag('event', 'paper_view', {"paper_id": "2610_12453v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>다중 에이전트 시스템을 위한 정신 모델</h1><p>다중 에이전트 시스템을 위한 정신 모델</p><pre>다중 에이전트 시스템을 위한 정신 모델
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Mental-Models for Multi-Agent Systems
+&gt; - **저자:** Hanan Gani, Lulu Shao, Manmohan Chandraker
+&gt; - **발행일:** 2026-10-08
+&gt; - **PDF 링크:** [Mental-Models for Multi-Agent Systems](https://arxiv.org/pdf/2610.12453v1)
+
+
+✨ 3줄 핵심 요약
+* 타 에이전트의 숨겨진 의도와 신념을 추론하는 &#x27;정신 모델 기반 에이전트&#x27; 프레임워크를 제안합니다.
+* 재귀적 이론(Theory-of-Mind) 표현과 신념 기반 보상 모델을 결합하여 에이전트의 의사결정 능력을 향상합니다.
+* 언어 및 다중 모달 환경 모두에서 기존 모델 대비 상호작용 품질과 추론 성능을 일관되게 개선했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+사람은 타인과 협력할 때 상대방이 무엇을 생각하고 의도하는지 짐작하며 행동합니다. 연구진은 AI 에이전트에게도 이러한 &#x27;마음 읽기(Theory of Mind)&#x27; 능력을 부여했습니다. 이 모델은 상대방의 과거 행동 이력을 관찰하여 그 내면에 있는 신념과 의도를 잠재 상태(latent state)로 추론합니다. 이를 바탕으로 AI는 상대방의 반응을 미리 예측하고 최선의 행동을 선택함으로써, 복잡한 환경에서 더 효과적으로 협력하거나 대응할 수 있게 됩니다.
+
+🎯 배경 및 문제점
+현대 AI 에이전트는 언어와 멀티모달 신호를 통해 다양한 환경에서 상호작용하지만, 여전히 타 에이전트의 지식, 의도, 미래 행동을 파악하는 데 어려움을 겪습니다. 특히 타인의 정보가 부분적으로만 관찰되는 환경(partial observability)에서, 기존 시스템은 프롬프트 설계나 단순 메모리에 의존할 뿐, 작업 전반에 재사용 가능한 명시적인 상대방 상태 표현을 학습하지 못한다는 한계가 있었습니다.
+
+💡 핵심 기술 및 아키텍처
+* **재귀적 이론(Recursive Theory-of-Mind):** 1차 및 2차 잠재 상태를 계층적으로 구조화하여 상대방의 생각과 의도를 재귀적으로 추론합니다.
+* **신념 기반 보상 모델(Belief-conditioned Reward Model):** 추론된 상대방의 상태를 바탕으로 후보 행동들의 가치를 평가하는 보상 모델을 학습합니다.
+* **정신 상태 감독(Mental-state Supervision):** 텍스트 기반의 정신 상태 데이터를 활용해 잠재 공간이 해석 가능한 사회적 구조를 학습하도록 강제합니다.
+* **손실 함수 설계:** 잠재 상태 재구성, 선호도 순위 학습, 그리고 KL 발산 정규화를 통해 모델이 안정적으로 타인의 정신 모델을 추상화하도록 설계했습니다.
+
+📊 실험 결과 분석
+* **상호작용 성능:** 명시적인 정신 상태 모델링은 기본 에이전트 시스템 대비 상호작용 품질과 이론(ToM) 성능을 일관되게 향상했습니다.
+* **아블레이션 연구:** 정신 상태 재구성이나 근거(Rationale) 기반 학습을 제거할 경우, 보상 회귀 상관관계가 각각 29%와 26% 감소하여 해당 모듈의 중요성을 입증했습니다.
+* **부정적 데이터 활용:** 하드 네거티브(hard-negative) 데이터를 통한 학습 제거 시, 보상 회귀 상관관계는 7% 하락하는 데 그쳤으나, 선호도 정확도는 100%에서 81%로 크게 낮아져 차별적 신호 제공 능력을 확인했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+이 기술은 자율주행, 로봇 협업, 다중 사용자 인터페이스 등 타 에이전트와의 지속적인 상호작용이 필수적인 분야에서 핵심적인 역할을 할 것으로 기대됩니다. 특히 사람과 AI가 복합적으로 얽힌 환경에서 AI가 인간의 의도를 더 정확히 파악하여 오해를 줄이고, 협동 효율성을 높이는 가이드 역할을 할 수 있습니다. 본 연구의 코드는 오픈소스로 공개되어 누구나 범용 다중 에이전트 시스템 개발에 활용할 수 있습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2610.12453 Mental-Models for Multi-Agent Systems - arXiv.org](https://arxiv.org/abs/2610.12453)
+&gt; - [Mental-Models for Multi-Agent Systems - arXiv.org](https://arxiv.org/pdf/2610.12453)
+&gt; - [Paper page - Mental-Models for Multi-Agent Systems](https://huggingface.co/papers/2610.12453)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;ToM(Theory-of-Mind)을 재귀적으로 모델링하려는 시도 자체는 고전적인 게임 이론의 연장선상에 있군요. 다만, 잠재 상태(latent state)로 추론된 정신 상태가 실제 환경의 복잡성을 얼마나 일반화할 수 있을지가 의문입니다. 특히 &#x27;정신 상태 감독&#x27; 과정에서 주관적인 텍스트 데이터를 어떻게 객관적 지표로 정규화했는지 방법론적 엄밀함이 부족해 보입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에선 &#x27;정규화&#x27; 이전에 인프라 비용이 문제입니다. 재귀적 추론을 매 스텝마다 돌리면 Latency가 치명적일 텐데, 아블레이션 결과에서 성능 향상 폭이 비즈니스 임팩트를 정당화할 만큼 드라마틱한가요? 당장 서비스에 붙이기엔 추론 비용 대비 효율이 너무 낮아 보입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;선배님, 이건 성능 문제가 아니라 &#x27;에이전트가 상대의 의도를 읽는다&#x27;는 컨셉 자체가 대박인 거예요! 랩미팅 때 이 논문 들고 갔더니 교수님 눈이 반짝이시던데요? 재귀적 ToM 아키텍처는 이제 LLM 멀티 에이전트 시스템의 표준이 될 게 뻔합니다. 당장 코드 뜯어보고 우리 프로젝트에 이식해볼 생각입니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

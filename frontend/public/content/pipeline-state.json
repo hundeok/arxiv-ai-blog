@@ -51121,11 +51121,11 @@
     "2610_13909v1": {
       "id": "2610_13909v1",
       "filename": "post_2610_13909v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-10-12T03:49:40.560246+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-12T03:49:40.560247+00:00",
+      "updated_at": "2026-10-12T22:21:40.475021+00:00",
       "paper": {
         "title": "Revisiting Tabular Deep Regression: Objectives and the Limits of Global Early Stopping",
         "summary": "While deep learning models for tabular data have recently received significant research attention, the choice of objective functions for regression tasks remains an understudied degree of freedom. Several lines of research offer alternatives to the standard Mean Squared Error (MSE), but differences in datasets, backbones, and evaluation protocols make their practical benefits difficult to compare. In this work, we address this gap by performing a systematic re-evaluation of regression objectives across a broad collection of established tabular datasets and multiple neural backbones. Our comparison reveals that many proposed objectives provide limited or inconsistent gains over a properly tuned MSE baseline, while quantile loss yields consistent aggregate improvements over MSE across the tested backbones. We then identify a limitation that remains even with this strong objective: regions with different levels of target noise can reach their best predictive performance at different training epochs. Consequently, a single global early-stopping checkpoint can impose a compromise between uncertainty regions, even when the objective can represent heteroskedastic target distributions. Motivated by this limitation, we introduce a heteroskedasticity-aware extension of quantile loss that uses input-dependent label smoothing as a potential remedy and improves over quantile loss on several backbones. Overall, our results provide a modern empirical picture of regression objectives for tabular deep learning and highlight how differences in optimal stopping times across uncertainty regions can limit the effectiveness of global early stopping. The code is available at https://github.com/yandex-research/tabular-regression.",
@@ -51140,7 +51140,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2610.13909v1"
       },
-      "priority_score": 40
+      "priority_score": 40,
+      "korean_title": "정형 데이터 심층 회귀 재검토: 목적 함수와 전역 조기 종료의 한계"
     },
     "2610_13895v1": {
       "id": "2610_13895v1",
@@ -51805,7 +51806,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-12T14:09:22.295764+00:00",
       "last_error": null,
-      "updated_at": "2026-10-12T14:09:22.295766+00:00",
+      "updated_at": "2026-10-12T22:21:03.105441+00:00",
       "paper": {
         "title": "Dex-One2Many: Learning Dexterous Manipulation from a Single Human Demonstration",
         "summary": "While learning dexterous manipulation from a single human video offers a promising alternative to costly robot demonstrations, many recent methods predominantly imitate demonstrated motions. Such strict motion matching often limits generalization to initial object poses, goal poses, and grasps not shown in the video. Alternatively, discovering a policy via reinforcement learning (RL) allows for broad generalization, but without prior guidance, it struggles with high-dimensional exploration in complex, multi-stage tasks. To address these coupled generalization and exploration challenges, we present Dex-One2Many, a real-to-sim-to-real framework that learns a generalizable dexterous manipulation policy from a single human video. Our key insight is to abstract the video into sequential scene graphs that guide RL, enabling efficient exploration while preserving broad generalizability. The graphs serve as generative constraints for sampling diverse reset states and provide dense rewards for each stage. Because the graphs constrain relations rather than exact poses, these reset states cover object poses and grasps beyond the video, while initializing each stage from them with dense rewards keeps exploration short and guided. Trained entirely in simulation, Dex-One2Many transfers zero-shot to a real multi-fingered hand. Across five tool-use and manipulation tasks, Dex-One2Many exceeds baselines by 6.5% in seen configurations, while its robust generalization widens this gap to 71% in unseen scenarios.",
@@ -51859,7 +51860,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-12T14:09:47.639499+00:00",
+      "updated_at": "2026-10-12T22:21:03.105451+00:00",
       "paper": {
         "title": "Universal Textual Teaching for LLMs",
         "summary": "Knowledge distillation (KD) transfers knowledge from stronger Teacher models to weaker Student models, but most methods require training the Student parameters, thereby binding the distilled knowledge to a specific architecture and checkpoint. This implicit representation is difficult to interpret or reuse across models and limits KD for API-only or costly-to-train models. This paper studies knowledge transfer for large language models (LLMs). We introduce Universal Textual Teaching (UTT), a parameter-update-free framework that distills observed Teacher-Student knowledge gaps into a textual, interpretable, and reusable natural-language artifact called Primer. Specifically, UTT first identifies representative gap cases through paired evaluations, and iteratively updates the Primer via multi-role interactions: the Student attempts each task, the Prompter turns evaluation feedback into a teaching instruction, the Teacher provides a targeted demonstration, and the Synthesizer consolidates validated lessons. Empirically, on the challenging math (Omni-MATH-2) and code generation (KernelBench) tasks, extensive results confirm the effectiveness of the method: UTT remarkably raises the Student's accuracy from 9.4% to 48.6% and Fast1 accuracy from 9% to 35% on KernelBench, while increasing mathematical reasoning accuracy from 27.6% to 51.7%. UTT also performs better than representative prompt engineering and parameter-based KD methods. Of note, UTT is shown to be generalizable across different Teachers and Students: a Primer synthesized for one Teacher-Student pair can generalize to other Students that do not participate in the synthesis.",
@@ -51880,7 +51881,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-12T14:09:22.295782+00:00",
       "last_error": null,
-      "updated_at": "2026-10-12T14:09:22.295783+00:00",
+      "updated_at": "2026-10-12T22:21:03.105463+00:00",
       "paper": {
         "title": "When to Rethink: Learning Multi-Perspective Self-Verification for Vision-Language Models",
         "summary": "Vision-language models (VLMs) have achieved strong performance in multimodal reasoning, yet they remain prone to generating plausible but incorrect answers. Self-verification offers a practical way to improve answer reliability without relying on external judges, but existing methods typically depend on a single verification criterion or fixed prompt, resulting in incomplete and unstable reliability estimates. We first systematically analyze how verifier capability and prompt design affect verification performance. Our findings show that stronger verifiers provide more reliable judgments, while verification performance is highly sensitive to prompt choice, with no single prompt consistently dominating across tasks. Guided by these findings, we propose \\texttt{MOTIVE}, a \\textbf{M}ulti-View Self-Verificati\\textbf{O}n wi\\textbf{T}h Rel\\textbf{I}ability-Guided Selecti\\textbf{VE} Rethinking framework for reliable multimodal reasoning. \\texttt{MOTIVE} evaluates each candidate answer from complementary verification perspectives and learns a correctness-aligned reliability score through correctness-grounded multi-view verification learning. During inference, this score governs an accept-or-rethink decision, allowing reliable answers to be returned directly while uncertain ones trigger history-guided rethinking. Extensive experiments across diverse multimodal benchmarks and VLM backbones demonstrate that \\texttt{MOTIVE} consistently outperforms strong self-verification and self-correction baselines. Further results show that reliable verification improves accept-or-rethink decisions and reduces unnecessary reasoning turns, enabling more reliable and efficient self-verification without an external judge.",
@@ -51998,10 +51999,217 @@
         "pdf_link": "https://arxiv.org/pdf/2610.12572v1"
       },
       "priority_score": 18
+    },
+    "2609_39635v1": {
+      "id": "2609_39635v1",
+      "filename": "post_2609_39635v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-12T22:21:03.105419+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-12T22:21:03.105436+00:00",
+      "paper": {
+        "title": "SAGE: Salient Factor Discovery and Generation with Visual Foundation Representations",
+        "summary": "Given a target dataset, such as faces with eyeglasses, and a background dataset, such as faces without, contrastive analysis separates \\textit{salient} factors specific to the target from \\textit{common} content shared by both. We aim for salient representations that capture target-specific detail in each image, such as the shape, color, and position of the glasses, so that they reveal subtypes without subtype labels and guide the generation of new examples of a discovered subtype, even one with no name or text description. We introduce SAGE, which learns both factors directly in the high-dimensional spatial latent of a frozen representation autoencoder and conditions a diffusion transformer on the learned salient representation of a reference image. On Digits-ImageNet and FFHQ eyeglasses, SAGE combines high-fidelity \\textit{reconstruction} (rFID below $2$) with unsupervised \\textit{subtype discovery}, recovering the digits better than baselines (probe accuracy $0.950$ vs.\\ at most $0.281$) and revealing eyewear types, finer sunglasses styles, and mislabeled images; salient-conditioned \\textit{generation} raises Digits-ImageNet subtype accuracy over the unfactorized latent ($90.5\\%$ vs.\\ $27.7\\%$) and diversity on both datasets. On retinal OCT, SAGE's salient space separates three diseases using only normal/disease labels.",
+        "published": "2026-09-30T12:41:46Z",
+        "authors": [
+          "Shuang Liang",
+          "Lejun Liao",
+          "Shiyuan Zhang",
+          "Max C. Zhang",
+          "Xiaolong Luo",
+          "Han Wang",
+          "Stefano Anzellotti",
+          "Yuan Yuan"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.39635v1"
+      },
+      "priority_score": 26
+    },
+    "2610_12307v1": {
+      "id": "2610_12307v1",
+      "filename": "post_2610_12307v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-12T22:21:03.105446+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-12T22:21:03.105447+00:00",
+      "paper": {
+        "title": "BudgetPix: Compute-Adaptive Tokenization for Pixel-Space Image Diffusion",
+        "summary": "Most image generation models rely on uniform tokenization, allocating the exact same computational budget to equally-sized image patches. This static paradigm cannot adapt to different resource constraints at inference time, and yields suboptimal quality-cost tradeoff by devoting the same effort to both plain backgrounds and intricate details. We propose BudgetPix, an adaptive tokenization framework that dynamically allocates compute based on visual complexity and spatial layout, enabling flexible computational budgeting at inference time. BudgetPix comprises three key components: (1) an adaptive encoder that maps a fixed-size image to a variable-length token sequence using an entropy-guided quadtree alongside a multi-scale patch embedder; (2) a scale-aware decoder reconstructs fixed-resolution images from multi-scale token sets; and (3) a flexible training and sampling schedule that enables pixel-space denoisers to operate across variable token counts. BudgetPix seamlessly integrates with existing pixel-space diffusion architectures, enabling a single checkpoint to be operated at a wide range of compute budgets. Evaluated on text-to-image generation, BudgetPix matches the fidelity of MiniT2I-L at $512^2$ and PixelDiT at $1024^2$ using just 25% of the original compute budget. In class-conditional generation using a MeanFlow backbone, BudgetPix requires merely 60% of the full compute budget to produce images with near-zero quality degradation, observing a marginal 0.8-point increase in FID. Comprehensive assessments by human and VLM judges confirm that BudgetPix establishes a significantly improved quality-efficiency tradeoff over prior budget-adaptive baselines. More details are available at our project page: https://karaozgur.com/BudgetPix",
+        "published": "2026-10-08T16:54:40Z",
+        "authors": [
+          "Ozgur Kara",
+          "Yujia Chen",
+          "Daniel Watson",
+          "David Forsyth",
+          "James Matthew Rehg",
+          "Wen-Sheng Chu",
+          "Du Tran"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.12307v1"
+      },
+      "priority_score": 30
+    },
+    "2610_08966v2": {
+      "id": "2610_08966v2",
+      "filename": "post_2610_08966v2.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-10-12T22:21:30.529435+00:00",
+      "paper": {
+        "title": "Humanity's Sixth Sense: Benchmarking Intuitive Visual Reasoning in Multimodal Models",
+        "summary": "Humans perceive far more in a scene than what is explicitly depicted: a single glance captures past causes and future trajectories; a quick peek determines if a vehicle can fit between two parked cars; a few seconds of video reveals who holds authority in a room; and a fleeting clip highlights subtle abstract patterns like unwritten rules or hidden labels. This capacity reflects a form of humanity's sixth sense: an intuitive reasoning mechanism that recovers implicit information beyond raw sensory perception. Crucially, this rapid, zero-shot visual intuition underpins everyday navigation and social interaction, making it a vital capability for Multimodal Large Language Models (MLLMs) deployed alongside people. Existing visual benchmarks, however, target either deliberate expert-level analysis in academic and mathematical domains or low-level perception, leaving the intuitive reasoning that people perform largely untested. To bridge this gap, we introduce Humanity's Sixth Sense (HSS), a benchmark for intuitive visual reasoning. HSS spans diverse image and video inputs, organizes items under a structured taxonomy, and pairs each with human-written prompts probing the implicit temporal, spatial, social, and abstract structure that people infer at a glance. Frontier MLLMs fall short of human performance: participants reach 93.1% accuracy, while the strongest model, GPT-6-astra, reaches only 53.6% even at maximum reasoning effort. Despite excelling in many complex tasks that require advanced perception and knowledge, current models still struggle significantly on these visual tasks that are intuitive for humans. We further explore agentic setup that apply dynamic visual manipulation to HSS, which narrows but does not close the gap. HSS establishes intuitive visual reasoning as a measurable axis and directs attention to a capability that scaling on current benchmarks has so far left behind.",
+        "published": "2026-10-06T18:31:35Z",
+        "authors": [
+          "Xingang Guo",
+          "Jing Gu",
+          "Brian Jang",
+          "Renxiong Wang",
+          "Utkarsh Tyagi",
+          "Daniel Quigley",
+          "Steven Li",
+          "David Yan",
+          "Daniel Yue Zhang",
+          "Darvin Yi",
+          "Forrest Huang",
+          "HiJae Kim",
+          "Tianyi Zhang",
+          "Jared Lichtarge",
+          "Jihua Huang",
+          "Le Xue",
+          "Manan Tomar",
+          "Qiuyi Richard Zhang",
+          "Ruofei Yu",
+          "Seth Neel",
+          "Yaning Hu",
+          "Marcella Valentine",
+          "Xinzhe Jiang",
+          "Daniel Evans",
+          "Chenguang Wang",
+          "Dustin Tran",
+          "Tong Zhao",
+          "Yinfei Yang",
+          "Yunzhong He"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.08966v2"
+      },
+      "priority_score": 50,
+      "korean_title": "인류의 제6감: 멀티모달 모델의 직관적 시각 추론 벤치마킹"
+    },
+    "2610_12602v1": {
+      "id": "2610_12602v1",
+      "filename": "post_2610_12602v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-12T22:21:03.105459+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-12T22:21:03.105460+00:00",
+      "paper": {
+        "title": "Self-Preservation in Language Models",
+        "summary": "Continual learning (CL) seeks to adapt pretrained models while preserving prior capabilities. Yet the tasks supplied for preservation cover only part of what a model knows, while forgetting can extend beyond them. Recent work shows that language models can supplement this limited evidence by generating useful replay without access to their original training data. This raises a question about self-preservation: can a model help choose preservation targets that protect its own capabilities more broadly? To study this question, we organize task descriptions and their examples into Task Banks, whose entries can be selected and combined to guide replay generation by a frozen model. Continual instruction tuning with Qwen models of varying sizes yields three findings. First, the new task and learning rate shape which prior capabilities degrade, while tracking previously correct answers reveals losses that average accuracy can conceal. Second, generated replay reduces forgetting on tasks outside the bank. Combining partial banks strengthens this protection, improving mean retention of previously correct answers over either bank alone across the tested sizes. Third, the model can also help choose replay targets: selection informed by the new task improves mean held-out retention over random selection at 4B, with similar new-task gains, although smaller models show no corresponding advantage. Under a fixed example budget, however, replacing new-task examples with replay improves preservation at the cost of smaller new-task gains. Together, these findings show that models can support broader self-preservation by generating replay data and, in some settings, choosing which tasks to replay.",
+        "published": "2026-10-08T18:24:02Z",
+        "authors": [
+          "Dongkyu Cho",
+          "Rumi Chunara",
+          "Ali Behrouz"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.12602v1"
+      },
+      "priority_score": 20
+    },
+    "2610_10512v1": {
+      "id": "2610_10512v1",
+      "filename": "post_2610_10512v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-12T22:21:03.105467+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-12T22:21:03.105468+00:00",
+      "paper": {
+        "title": "Video-Conditioned Generative Joint 2D-3D Hand Motion Recovery",
+        "summary": "Recovering faithful 3D hand motion from video remains challenging due to frequent occlusions and incomplete visual observations, which make frame-wise pose estimates unreliable and temporally inconsistent. To address this problem, we propose JoHan, a unified generative framework that recovers hand motion directly from video sequences without relying on intermediate per-frame pose predictions. Trained from scratch, our model jointly generates aligned 2D and 3D local hand pose sequences by learning their temporal dynamics and cross-representation correspondence. The generated 2D trajectories exploit direct spatial and temporal cues from the 2D images to guide the following generative 3D motion reconstruction, while the learned motion prior promotes temporal consistency. Their learned 2D-3D correspondence further enables recovery of the hand's global position and orientation relative to the camera. Extensive experiments on challenging benchmarks demonstrate significantly improved accuracy and speed in local hand-pose and camera-space reconstruction. Notably, our method captures much better hand-motion dynamics, producing significantly smoother motion than previous methods while maintaining high per-frame pose accuracy.",
+        "published": "2026-10-07T17:52:23Z",
+        "authors": [
+          "Chen Xu",
+          "Yunqi Li",
+          "Binbin Huang",
+          "Brent Yi",
+          "Shenghua Gao",
+          "Yi Ma"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.10512v1"
+      },
+      "priority_score": 25
+    },
+    "2610_11069v1": {
+      "id": "2610_11069v1",
+      "filename": "post_2610_11069v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-10-12T22:21:20.321929+00:00",
+      "paper": {
+        "title": "Clinician use of language models diverges from how the models are evaluated",
+        "summary": "Large language model (LLM) assistants are being deployed to clinicians across health systems, and judgments about their readiness rest largely on benchmark scores, most of them derived from examination questions or curated cases. A benchmark predicts performance in deployment only to the extent that its items resemble real use, yet whether benchmarks reflect the work these systems receive has rarely been measured. Here we analyze 127,833 queries sent by 6,342 physicians, advanced practice providers and nurses in 35 specialties to an institutional assistant during an eight-month roll-out. We characterize each query with RCQ-Map, a clinician-validated framework grounded in taxonomies of clinical questions and of LLM evaluation, which records its task, intent, answerability, missing information and potential harm. Documentation and administration (36.2%) and knowledge retrieval (28.9%) made up nearly two-thirds of use, and diagnosis 3.7%; more than a third of queries could not be answered well as posed. Applying RCQ-Map to 58 public benchmarks drawn from major evaluation suites and frontier model reports, which we assemble into the Clinical AI Benchmark Atlas, showed that the median benchmark contained no documentation requests and shared 31% of the task mix of real use, less than an even spread across task categories would. Benchmarks in suites designed to resemble clinical practice were individually no closer to real use than those used in frontier model reports. Benchmark scores therefore say little about how clinical AI performs on most of the work it is actually given, and evaluation should be matched to real clinical use.",
+        "published": "2026-10-08T01:29:04Z",
+        "authors": [
+          "Krithik Vishwanath",
+          "Haitong Lin",
+          "Anton Alyakin",
+          "Jin Vivian Lee",
+          "D. Brock Hewitt",
+          "Jie J. Yao",
+          "William Robert Small",
+          "Hammad A. Khan",
+          "Cordelia Orillac",
+          "Aakaash Varma",
+          "Brandon Ye",
+          "Daniel Alexander Alber",
+          "Gustavo Stolovitzky",
+          "Batia Wiesenfeld",
+          "Oded Nov",
+          "Wei Wu",
+          "Kang Zhang",
+          "Yindalon Aphinyanaphongs",
+          "Tim Requarth",
+          "Eric Karl Oermann",
+          "The International Digital Twin Consortium in Healthcare",
+          " Medicine"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.11069v1"
+      },
+      "priority_score": 50,
+      "korean_title": "임상의의 언어 모델 사용 방식과 모델 평가 방식 간의 괴리"
+    },
+    "2610_12453v1": {
+      "id": "2610_12453v1",
+      "filename": "post_2610_12453v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-10-12T22:21:10.679806+00:00",
+      "paper": {
+        "title": "Mental-Models for Multi-Agent Systems",
+        "summary": "Large foundation models have accelerated progress toward general-purpose agents that interact with humans and other agents through language and multimodal signals. However, robust multi-agent decision-making requires reasoning about what other agents know, intend, and are likely to do under partial observability. Current agentic systems often operate through prompt design, memory, or end-to-end behavioral shaping, but typically do not learn an explicit partner-state representation that can be reused as a decision variable across tasks. We introduce \\emph{mental-model-enabled agents}, a framework that equips an agent with a latent mental model of its counterpart, allowing it to infer hidden beliefs, intentions, and likely reactions from the observed history and use these inferences to guide action selection. Our method learns an amortized recursive Theory-of-Mind representation, with first- and second-order mental-state structure, jointly with a belief-conditioned reward model that evaluates candidate actions relative to the inferred partner state. A policy is then learned under this belief-aware signal, yielding an agent that can act independently at inference time while retaining the benefits of explicit partner modeling. We evaluate the same framework on both language-only and multimodal benchmarks. Across these settings, explicit mental-state modeling consistently improves interaction quality and Theory-of-Mind performance over base agentic systems, showing that structured partner modeling is a useful inductive bias for general multi-agent systems. Our code is publicly available at https://github.com/hananshafi/Mental-Models",
+        "published": "2026-10-08T17:59:01Z",
+        "authors": [
+          "Hanan Gani",
+          "Lulu Shao",
+          "Manmohan Chandraker"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.12453v1"
+      },
+      "priority_score": 60,
+      "korean_title": "다중 에이전트 시스템을 위한 정신 모델"
     }
   },
   "last_run": {
-    "started_at": "2026-10-12T14:09:22.301198+00:00",
+    "started_at": "2026-10-12T22:21:03.110135+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -52012,25 +52220,25 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 21980,
-      "output_tokens": 5915,
+      "prompt_tokens": 23018,
+      "output_tokens": 5700,
       "thought_tokens": 0,
-      "total_tokens": 27895,
-      "estimated_usd": 0.0143675
+      "total_tokens": 28718,
+      "estimated_usd": 0.0143045
     },
-    "finished_at": "2026-10-12T14:10:12.938154+00:00"
+    "finished_at": "2026-10-12T22:21:41.426218+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 3284,
-    "prompt_tokens": 8281684,
-    "output_tokens": 2417900,
+    "requests": 3292,
+    "prompt_tokens": 8304702,
+    "output_tokens": 2423600,
     "thought_tokens": 0,
-    "total_tokens": 10699584,
-    "estimated_usd": 5.697271
+    "total_tokens": 10728302,
+    "estimated_usd": 5.7115755
   },
   "last_publication_run": {
-    "started_at": "2026-10-12T14:09:22.301198+00:00",
+    "started_at": "2026-10-12T22:21:03.110135+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -52041,17 +52249,17 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 21980,
-      "output_tokens": 5915,
+      "prompt_tokens": 23018,
+      "output_tokens": 5700,
       "thought_tokens": 0,
-      "total_tokens": 27895,
-      "estimated_usd": 0.0143675
+      "total_tokens": 28718,
+      "estimated_usd": 0.0143045
     },
-    "finished_at": "2026-10-12T14:10:12.938154+00:00"
+    "finished_at": "2026-10-12T22:21:41.426218+00:00"
   },
   "daily_usage": {
     "date": "2026-10-12",
-    "estimated_usd": 0.0276435,
-    "publications": 8
+    "estimated_usd": 0.041948,
+    "publications": 12
   }
 }

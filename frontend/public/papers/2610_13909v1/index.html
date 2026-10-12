@@ -1,0 +1,58 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>정형 데이터 심층 회귀 재검토: 목적 함수와 전역 조기 종료의 한계 | ArXiv Translator AI</title><meta name="description" content="정형 데이터 심층 회귀 재검토: 목적 함수와 전역 조기 종료의 한계"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2610_13909v1"><meta property="og:type" content="article"><meta property="og:title" content="정형 데이터 심층 회귀 재검토: 목적 함수와 전역 조기 종료의 한계"><meta property="og:description" content="정형 데이터 심층 회귀 재검토: 목적 함수와 전역 조기 종료의 한계"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2610_13909v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="정형 데이터 심층 회귀 재검토: 목적 함수와 전역 조기 종료의 한계"><meta name="twitter:description" content="정형 데이터 심층 회귀 재검토: 목적 함수와 전역 조기 종료의 한계"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2610_13909v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "정형 데이터 심층 회귀 재검토: 목적 함수와 전역 조기 종료의 한계", "description": "정형 데이터 심층 회귀 재검토: 목적 함수와 전역 조기 종료의 한계", "datePublished": "2026-10-09", "url": "https://arxiv-ai-blog.vercel.app/papers/2610_13909v1", "author": [{"@type": "Person", "name": "Danil Rudenko"}, {"@type": "Person", "name": "Georgii Bulgakov"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2610_13909v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2610_13909v1"});gtag('event', 'paper_view', {"paper_id": "2610_13909v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>정형 데이터 심층 회귀 재검토: 목적 함수와 전역 조기 종료의 한계</h1><p>정형 데이터 심층 회귀 재검토: 목적 함수와 전역 조기 종료의 한계</p><pre>정형 데이터 심층 회귀 재검토: 목적 함수와 전역 조기 종료의 한계
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Revisiting Tabular Deep Regression: Objectives and the Limits of Global Early Stopping
+&gt; - **저자:** Danil Rudenko, Georgii Bulgakov, Nikolay Kartashev, Ivan Rubachev, Daniil Krasylnikov, Artem Babenko
+&gt; - **발행일:** 2026-10-09
+&gt; - **PDF 링크:** [Revisiting Tabular Deep Regression: Objectives and the Limits of Global Early Stopping](https://arxiv.org/pdf/2610.13909v1)
+
+
+✨ 3줄 핵심 요약
+* 정형 데이터 회귀 작업에서 기존의 평균 제곱 오차(MSE)를 대체할 만한 더 나은 목적 함수들을 41개 데이터셋으로 체계적으로 재평가했습니다.
+* 많은 제안 기법들이 MSE보다 일관된 성능 향상을 보이지 못했으나, &#x27;분위수 손실(Quantile Loss)&#x27;이 전반적으로 우수한 성과를 나타냈습니다.
+* 데이터 내 불확실성 영역마다 최적 학습 시점이 다르다는 점을 밝혀냈으며, 이를 보완하는 &#x27;적응형 분위수 회귀(AdaQR)&#x27;를 제안했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+정형 데이터(표 형태의 데이터)를 다루는 딥러닝 모델에서 회귀 분석을 할 때, 전통적으로 가장 많이 쓰이는 방식은 &#x27;평균 제곱 오차(MSE)&#x27;입니다. 연구진은 최근 제안된 수많은 복잡한 목적 함수들이 실제 실무에서도 정말 더 뛰어난지 검증했습니다. 그 결과, 대부분은 MSE보다 크게 낫지 않았지만 &#x27;분위수 손실&#x27;은 효과적이었습니다. 나아가, 데이터마다 노이즈(불확실성) 수준이 달라 학습 속도가 다른데, 이를 하나의 기준(전역 조기 종료)으로 멈추는 것은 비효율적임을 확인했습니다. 연구진은 이 문제를 해결하기 위해 입력값에 따라 유연하게 대응하는 &#x27;적응형 분위수 회귀(AdaQR)&#x27; 기술을 도입했습니다.
+
+🎯 배경 및 문제점
+딥러닝 기반의 정형 데이터 분석이 활발해지고 있지만, 정작 어떤 &#x27;목적 함수(Objective function)&#x27;를 사용해야 성능을 최적화할 수 있는지에 대한 체계적인 비교 연구는 부족했습니다. 기존 연구들은 서로 다른 데이터셋과 모델 환경에서 진행되어 결과 비교가 어려웠습니다. 또한, 정형 데이터에는 데이터마다 노이즈 수준이 다른 &#x27;이분산성(Heteroskedasticity)&#x27;이 흔한데, 학습 시점에 모델 전체를 동시에 멈추는 &#x27;전역 조기 종료(Global Early Stopping)&#x27;는 이러한 불확실성 영역 간의 균형을 제대로 맞추지 못한다는 한계가 있었습니다.
+
+💡 핵심 기술 및 아키텍처
+* **재평가 체계**: 41개의 정형 데이터셋과 다양한 신경망 아키텍처를 활용하여 기존 및 현대적인 회귀 목적 함수들의 성능을 비교했습니다.
+* **분위수 손실(Quantile Loss) 활용**: 타겟의 조건부 분위수를 예측하는 기법이 다양한 환경에서 안정적인 성능을 보임을 확인했습니다.
+* **AdaQR (Adaptive Quantile Regression)**: 데이터의 이분산성을 해결하기 위해 분위수 손실에 &#x27;입력값 기반 레이블 스무딩(Input-dependent label smoothing)&#x27;을 결합했습니다. 이는 데이터마다 다른 노이즈 특성을 학습 단계에서 반영하여, 모델이 특정 데이터 영역에 치우치지 않게 돕습니다.
+
+📊 실험 결과 분석
+* 비교 결과, 대다수 제안 목적 함수들은 세밀하게 튜닝된 MSE 대비 제한적이거나 일관되지 않은 성능 향상을 보였습니다.
+* 분위수 손실은 여러 신경망 구조에서 MSE보다 일관되게 높은 예측력을 보였습니다.
+* 합성 데이터 및 실제 데이터 실험 결과, 서로 다른 데이터 영역은 학습 과정에서 최적 성능에 도달하는 시점이 서로 다르다는 점을 입증했습니다.
+* AdaQR은 노이즈가 변화하는 환경에서 기존 분위수 손실보다 향상된 예측 성능을 보였습니다. (상세한 수치는 논문 내 표 34, 35에 기재된 대로 모델별, 데이터셋별 성능 차이를 통해 확인 가능합니다.)
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+이번 연구는 정형 데이터를 활용한 금융, 제조, 물류 등의 실무 현장에서 딥러닝 모델을 회귀 분석에 적용할 때 중요한 길잡이가 될 것입니다. 단순히 유행하는 목적 함수를 쓰는 대신, 검증된 &#x27;분위수 손실&#x27;과 &#x27;적응형 방식(AdaQR)&#x27;을 도입함으로써 모델의 예측 안정성을 높일 수 있습니다. 특히 데이터 노이즈 수준이 불균일한 비즈니스 상황에서 고정된 학습 종료 시점이 아닌, 데이터 특성을 반영한 유연한 학습 설계를 가능하게 하여 실무 모델의 예측 오차를 줄이는 데 기여할 것으로 기대됩니다.
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;41개 데이터셋에 걸친 체계적인 재평가는 높게 평가합니다만, 결국 &#x27;분위수 손실&#x27;의 우위가 이미 알려진 사실을 다시 확인한 수준에 그치는 것은 아닌지요? AdaQR이 이론적으로 흥미롭긴 하나, 실무에서 하이퍼파라미터 튜닝 복잡도를 고려하면 얼마나 실효성이 있을지 의문이 드는군요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님, 현업 입장에선 &#x27;MSE가 깡패&#x27;라는 고정관념에서 벗어나게 해준 것만으로도 가치가 큽니다. 특히 조기 종료 시점이 데이터마다 다르다는 점은 제가 매번 파이프라인 돌릴 때마다 겪던 고충이었거든요. AdaQR 구현 비용 대비 성능 이득만 확실하다면 당장 프로덕션에 태워볼 만한 가치가 있습니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;두 분 다 보수적이시네요! ㅋㅋㅋ 이번 논문은 그냥 &#x27;회귀의 새로운 표준&#x27;을 제시했다고 봅니다. GBDT가 꽉 잡고 있는 정형 데이터 분야에서 딥러닝이 다시 반격할 명분을 줬잖아요. AdaQR 코드 공개되면 당장 제 모델에 붙여서 SOTA 찍어보겠습니다. 이게 진짜 딥러닝의 맛이죠!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
