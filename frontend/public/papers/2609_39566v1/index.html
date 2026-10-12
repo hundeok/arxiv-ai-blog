@@ -1,0 +1,70 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>증거 수집에서 도출까지: 종단적 의학적 추론을 위한 에이전트 학습 | ArXiv Translator AI</title><meta name="description" content="증거 수집에서 도출까지: 종단적 의학적 추론을 위한 에이전트 학습"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2609_39566v1"><meta property="og:type" content="article"><meta property="og:title" content="증거 수집에서 도출까지: 종단적 의학적 추론을 위한 에이전트 학습"><meta property="og:description" content="증거 수집에서 도출까지: 종단적 의학적 추론을 위한 에이전트 학습"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2609_39566v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="증거 수집에서 도출까지: 종단적 의학적 추론을 위한 에이전트 학습"><meta name="twitter:description" content="증거 수집에서 도출까지: 종단적 의학적 추론을 위한 에이전트 학습"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2609_39566v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "증거 수집에서 도출까지: 종단적 의학적 추론을 위한 에이전트 학습", "description": "증거 수집에서 도출까지: 종단적 의학적 추론을 위한 에이전트 학습", "datePublished": "2026-09-30", "url": "https://arxiv-ai-blog.vercel.app/papers/2609_39566v1", "author": [{"@type": "Person", "name": "Minye Shao"}, {"@type": "Person", "name": "Chaohui Yu"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2609_39566v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2609_39566v1"});gtag('event', 'paper_view', {"paper_id": "2609_39566v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>증거 수집에서 도출까지: 종단적 의학적 추론을 위한 에이전트 학습</h1><p>증거 수집에서 도출까지: 종단적 의학적 추론을 위한 에이전트 학습</p><pre>증거 수집에서 도출까지: 종단적 의학적 추론을 위한 에이전트 학습
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** From Given to Gathered Evidence: Agentic Learning for Longitudinal Medical Reasoning
+&gt; - **저자:** Minye Shao, Chaohui Yu, Yixuan Wu, Fan Wang, Ling Shao, Yang Long
+&gt; - **발행일:** 2026-09-30
+&gt; - **PDF 링크:** [From Given to Gathered Evidence: Agentic Learning for Longitudinal Medical Reasoning](https://arxiv.org/pdf/2609.39566v1)
+
+
+✨ 3줄 핵심 요약
+*   **CASE(Clinical Agents for Seeking Evidence)** 프레임워크는 방대한 환자 기록과 다중 시점의 MRI 영상에서 스스로 필요한 정보를 탐색하고 추론하는 임상 에이전트를 제안합니다.
+*   기존의 고정된 증거 기반 평가를 넘어, 에이전트가 스스로 증거를 수집하는 과정을 학습하도록 유도하는 &#x27;에이전트 강화 학습&#x27;과 &#x27;감독 미세 조정&#x27;을 결합했습니다.
+*   영국 바이오뱅크(UK Biobank) 데이터를 기반으로 한 실험에서, Qwen3-VL-8B 기반의 CASE 에이전트는 GPT-5.4와 Claude Opus 4.8 대비 각각 16% 및 10% 향상된 정확도를 보였습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+의료 AI는 지금까지 이미 정해진 정보(검사 결과지 등)를 보고 결론을 내리는 방식 위주로 발전했습니다. 하지만 실제 의사는 환자의 과거 기록, 여러 번의 촬영 영상 등 흩어진 정보 중 무엇을 먼저 봐야 할지 스스로 판단해야 합니다. 이 논문은 의사처럼 **&#x27;스스로 질문에 답하기 위해 어떤 검사를 할지 결정하고 정보를 찾는&#x27;** 인공지능 모델인 CASE를 개발했습니다. 이 모델은 단순히 정보를 외우는 것이 아니라, 스스로 증거를 수집하고 추론하는 능력을 학습하여 기존 최고 수준의 모델보다 더 높은 정확도로 진단적 질문에 답변합니다.
+
+🎯 배경 및 문제점
+*   **제한적인 평가 환경:** 기존 의료 벤치마크는 사전에 선택된 증거만 제공하여 추론 능력을 평가하는 &#x27;고정된 환경&#x27;에 국한됩니다.
+*   **종단적 정보 활용의 어려움:** 실제 의료 현장에서는 장기간에 걸친 임상 기록, 다양한 시점의 MRI 영상 등 산재한 데이터를 종합해야 하지만, 이를 스스로 탐색하고 결정하는 능력이 부족합니다.
+*   **모방 학습의 한계:** 정해진 경로만 따라가는 모방 학습은 모델이 새로운 상황에서 스스로 판단을 내리거나 다양한 증거 조합을 추론하는 데 한계가 있습니다.
+
+💡 핵심 기술 및 아키텍처
+*   **CASE 프레임워크:** 역할별 임상 에이전트, 도구 활용 장치, 그리고 시각-언어 모델을 위한 에이전트 학습 구조로 구성됩니다.
+*   **학습 전략:** 
+    *   **감독 미세 조정(SFT):** 14,734개의 정교한 모델 상호작용 궤적을 통해 증거 수집 워크플로우를 학습합니다.
+    *   **에이전트 강화 학습:** 모델이 스스로 환경과 상호작용하며 학습합니다.
+    *   **OPSD(Privileged on-policy self-distillation):** 정답 정보를 활용한 피드백을 통해 도구 사용의 순서를 강제하지 않으면서도 추론의 논리성을 스스로 정교화합니다.
+*   **평가 데이터셋:** 4,739명의 환자, 50,401개의 임상 질문으로 구성된 UK Biobank 기반의 종단적 다중 모달 벤치마크를 구축했습니다.
+
+📊 실험 결과 분석
+*   **성과:** CASE 에이전트는 GPT-5.4 및 Claude Opus 4.8과 동일한 평가 조건에서 각각 16%와 10%의 상대적 정확도 향상을 달성했습니다.
+*   **학습 효과:** 단순히 질문에 대한 답변만 모방하는 수준을 넘어, 증거에 기반하여 스스로 조사 방침을 결정하고 수행하는 능력이 강화되었음을 확인했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+*   **임상 의사 결정 지원:** 의료진이 환자의 과거 기록과 영상 데이터를 통합적으로 분석하는 과정을 자동화하여 진단 정확도를 높일 수 있습니다.
+*   **지능형 의료 시스템:** 방대한 데이터 속에서 필요한 검사와 정보를 스스로 찾아내는 능력을 통해, 불필요한 검사를 줄이고 효율적인 환자 관리 계획을 수립하는 데 기여할 수 있습니다.
+*   **확장성:** 본 연구에서 제안된 &#x27;증거를 스스로 찾는 에이전트&#x27; 모델은 의료 분야뿐만 아니라 법률, 복합 분석 등 정보 탐색이 중요한 다양한 전문 분야에 적용될 잠재력이 있습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [From Given to Gathered Evidence: Agentic Learning for Longitudinal ...](https://papers.cool/arxiv/2609.39566)
+&gt; - [Title:From Given to Gathered Evidence: Agentic Learning for ...](https://www.catalyzex.com/paper/from-given-to-gathered-evidence-agentic)
+&gt; - [From Given to Gathered Evidence: Agentic Learning for Longitudinal ...](https://www.aimedicalcompendium.com/article.cfm?id=248876)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;CASE 프레임워크의 OPSD 방식은 흥미롭지만, 임상 현장에서 에이전트가 &#x27;스스로 증거를 수집&#x27;한다는 것은 통제 불가능한 환각(Hallucination)의 위험을 증폭시킬 수 있습니다. 특히 의료 데이터의 복잡성을 고려할 때, 에이전트가 탐색 과정을 어떻게 결정하는지에 대한 &#x27;설명 가능성(Explainability)&#x27;이 여전히 논문에서 충분히 다뤄지지 않았네요. 정확도 16% 향상이 매력적이긴 하나, 정성적 오류 분석이 더 필요해 보입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 맞지만, 실무자 입장에선 GPT-5.4 같은 거대 모델을 직접 서빙하는 비용과 리스크를 생각하면 Qwen3-VL-8B 기반의 경량화된 에이전트가 이 정도 퍼포먼스를 낸다는 점에 박수를 칩니다. 특히 1.4만 개의 정교한 궤적 데이터셋을 SFT에 활용했다는 건, 결국 &#x27;데이터의 질&#x27;이 모델 크기를 압도했다는 증거죠. 다만, 실제 병원 내부망의 파편화된 EMR과 연동할 때의 latency 문제를 어떻게 해결할지가 관건이겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 다들 진지하시네요! 저는 일단 &#x27;의료판 자율 에이전트&#x27;가 드디어 정량적으로 SOTA를 찍었다는 게 너무 뽕 차오릅니다. 단순히 LLM에 프롬프트 좀 섞은 게 아니라 에이전트 강화 학습으로 워크플로우 자체를 최적화했다는 점이 핵심이죠. 이거 지금 당장 랩 세미나 발제 자료로 써야겠어요. 16% 향상이면 이건 그냥 논문 한 편 뚝딱 끝날 수준인데, 누가 코드 먼저 오픈하나 눈치 싸움 시작될 듯?&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

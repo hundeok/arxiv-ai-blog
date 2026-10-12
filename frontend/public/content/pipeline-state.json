@@ -51683,11 +51683,11 @@
     "2610_13672v1": {
       "id": "2610_13672v1",
       "filename": "post_2610_13672v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-10-12T03:49:40.560339+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-12T03:49:40.560340+00:00",
+      "updated_at": "2026-10-12T14:10:11.794403+00:00",
       "paper": {
         "title": "Inject a Turn, Not a Token: Learning Where to Redirect LLM Reasoning for Self-Correction",
         "summary": "Large language models struggle to reliably identify and correct errors in their own reasoning. Unlike prior training-based approaches that fine-tune an LLM to generate revisions or feedback, we learn where to intervene in failed rollouts and determine how to redirect them. To choose where to intervene, we train a 130K-parameter MLP head on a frozen encoder using only final-answer correctness. For redirection, we find that under a fixed generation budget, the tested inline injections fail to reliably redirect reasoning, whereas presenting the same instruction in a new user turn changes the model's course. The resulting correction framework, UPTURN (User-Prompt TURN injection at a learned position), requires no LLM fine-tuning: it retains a selected prefix, injects an instruction as a new user turn, and regenerates the suffix. Across four reasoners and six math benchmarks, UPTURN improves average accuracy in every setting over a 32-rollout baseline. It outperforms self-correction and reflection-token injection baselines under matched correction budgets, transfers across reasoners and to GPQA-Diamond without retraining, and complements GRPO and self-correction methods.",
@@ -51700,7 +51700,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2610.13672v1"
       },
-      "priority_score": 44
+      "priority_score": 44,
+      "korean_title": "턴 주입, 토큰 주입이 아닌 방식: LLM의 자가 수정을 위한 추론 경로 재설정 학습"
     },
     "2610_13669v1": {
       "id": "2610_13669v1",
@@ -51746,11 +51747,262 @@
         "pdf_link": "https://arxiv.org/pdf/2610.13663v1"
       },
       "priority_score": 40
+    },
+    "2610_00898v1": {
+      "id": "2610_00898v1",
+      "filename": "post_2610_00898v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-10-12T14:09:58.735777+00:00",
+      "paper": {
+        "title": "When Do Biological Reasoning Models Use Their Biological Inputs?",
+        "summary": "Biological reasoning models use post-training to connect LLMs to biological foundation model representations and biological text. Their benchmark accuracy is taken as evidence that LLMs reason over these inputs. We test this assumption in six biological reasoning models across DNA, protein, and single-cell tasks. We perturb one biological input while holding the query and other inputs fixed, construct evidence conflicts that pair the foundation model representation of one genome, protein, or cell with the text of another, fit linear probes to the representations the language model receives, and analyze reasoning traces against the biological inputs. Evo2 and ESM3 contribute little to BioReason and BioReason-Pro performance on the evaluated tasks. Shuffling the DNA sequence barely changes BioReason disease prediction accuracy, and in evidence conflicts the two models follow the text in 97.9% and 99.7% of cases. Linear probes trained on the Evo2 and ESM3 representations predict the task targets, so these foundation models encode information relevant to the task, but provide limited overall performance improvement to BioReason and BioReason-Pro. In contrast, foundation model inputs contribute to ChatNT, Prot2Text-V2, and CellWhisperer performance, and differentially expressed genes in the gene sentence contribute to Cell2Sentence-Scale performance. Across SFT and RL checkpoints of BioReason-Pro and 42 BioReason checkpoints, increases in accuracy do not imply greater performance contributions from biological inputs. BioReason traces misstate nucleotide changes, while BioReason-Pro traces describe functions omitted from final predictions under evidence conflicts. We find that current post-training strategies do not ensure that foundation model representations contribute to task performance.",
+        "published": "2026-10-01T01:27:31Z",
+        "authors": [
+          "Ada Fang",
+          "Nikitha Thoduguli",
+          "Lukas Fesser",
+          "Hanlin Zhang",
+          "Sham M. Kakade",
+          "Marinka Zitnik"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.00898v1"
+      },
+      "priority_score": 50,
+      "korean_title": "생물학적 추론 모델은 언제 생물학적 입력을 사용하는가?"
+    },
+    "2609_39566v1": {
+      "id": "2609_39566v1",
+      "filename": "post_2609_39566v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-10-12T14:09:37.591404+00:00",
+      "paper": {
+        "title": "From Given to Gathered Evidence: Agentic Learning for Longitudinal Medical Reasoning",
+        "summary": "Foundation models can serve as clinical agents through tool-use harnesses. However, conventional medical benchmarks assess reasoning over preselected evidence rather than the ability to seek it across clinical records and longitudinal imaging. We propose CASE: a series of role-specific Clinical Agents for Seeking Evidence, together with a tool-use harness and an agentic post-training framework for compact vision-language policy models. We further introduce a longitudinal multimodal benchmark built on UK Biobank, comprising 50,401 clinical questions derived from real-world ICD-10-coded diagnoses of 4,739 participants. Each question links to a patient-specific environment containing clinical context and multi-sequence MRI from baseline and follow-up visits, where agents autonomously select which visits, organs, modalities, slices, and specialist tools to inspect and compare. Supervised fine-tuning transfers evidence-seeking workflows from 14,734 frontier-model interaction trajectories, followed by agentic reinforcement learning on the learner's own environment interactions. Privileged on-policy self-distillation and rubric-based LLM feedback refine evidence-to-conclusion reasoning without prescribing tool sequences. Experiments show that CASE moves beyond question-answer imitation toward transferable investigation policies, strengthening evidence-grounded longitudinal reasoning. Under matched evaluation conditions, our Qwen3-VL-8B based agent achieves over 16% and 10% relative improvements in answer accuracy over GPT-5.4 and Claude Opus 4.8. Code will be available at https://github.com/VinyehShaw/CASE.",
+        "published": "2026-09-30T12:01:45Z",
+        "authors": [
+          "Minye Shao",
+          "Chaohui Yu",
+          "Yixuan Wu",
+          "Fan Wang",
+          "Ling Shao",
+          "Yang Long"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.39566v1"
+      },
+      "priority_score": 70,
+      "korean_title": "증거 수집에서 도출까지: 종단적 의학적 추론을 위한 에이전트 학습"
+    },
+    "2610_12470v1": {
+      "id": "2610_12470v1",
+      "filename": "post_2610_12470v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-12T14:09:22.295764+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-12T14:09:22.295766+00:00",
+      "paper": {
+        "title": "Dex-One2Many: Learning Dexterous Manipulation from a Single Human Demonstration",
+        "summary": "While learning dexterous manipulation from a single human video offers a promising alternative to costly robot demonstrations, many recent methods predominantly imitate demonstrated motions. Such strict motion matching often limits generalization to initial object poses, goal poses, and grasps not shown in the video. Alternatively, discovering a policy via reinforcement learning (RL) allows for broad generalization, but without prior guidance, it struggles with high-dimensional exploration in complex, multi-stage tasks. To address these coupled generalization and exploration challenges, we present Dex-One2Many, a real-to-sim-to-real framework that learns a generalizable dexterous manipulation policy from a single human video. Our key insight is to abstract the video into sequential scene graphs that guide RL, enabling efficient exploration while preserving broad generalizability. The graphs serve as generative constraints for sampling diverse reset states and provide dense rewards for each stage. Because the graphs constrain relations rather than exact poses, these reset states cover object poses and grasps beyond the video, while initializing each stage from them with dense rewards keeps exploration short and guided. Trained entirely in simulation, Dex-One2Many transfers zero-shot to a real multi-fingered hand. Across five tool-use and manipulation tasks, Dex-One2Many exceeds baselines by 6.5% in seen configurations, while its robust generalization widens this gap to 71% in unseen scenarios.",
+        "published": "2026-10-08T17:59:58Z",
+        "authors": [
+          "Jusuk Lee",
+          "Sungha Kim",
+          "Yeonsoo Park",
+          "Jonguk Cheon",
+          "Yoonkyo Jung",
+          "Yongjun You",
+          "H. Jin Kim",
+          "Jia-Bin Huang",
+          "Furong Huang",
+          "Youngseok Jang",
+          "Seungjae Lee"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.12470v1"
+      },
+      "priority_score": 18
+    },
+    "2610_12668v1": {
+      "id": "2610_12668v1",
+      "filename": "post_2610_12668v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-12T14:09:22.295770+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-12T14:09:22.295771+00:00",
+      "paper": {
+        "title": "Recurrent Harness for Agentic Continual Learning",
+        "summary": "Language model agents increasingly operate over long interaction streams, requiring online adaptation to distribution shifts through continual learning. However, existing agent harnesses typically either evolve their states only through forward information flow or rely on additional replay or validation data for harness optimization. To address this, we propose ReHarness, a recurrent harness framework for agentic continual learning that complements forward read and write with backward revision under a strictly online streaming protocol. We ask what information could have been captured differently in the harness state to better inform the current instance in the stream. Specifically, after each instance, we leverage the resulting trajectory as feedback to revise the reflections retrieved for that instance, thereby propagating feedback backward through the textual harness state. Across three continual learning benchmarks and three language model backbones, ReHarness consistently outperforms strong raw-context baselines, memory- and reflection-based methods, and prompt optimization approaches. Further analysis shows that ReHarness produces source-grounded and meaningful revisions, corrects overgeneralized or outdated experience under distribution shifts, and improves both stability and plasticity during continual learning.",
+        "published": "2026-10-08T19:44:43Z",
+        "authors": [
+          "Yuxin Xiao",
+          "Zhiyun Lu",
+          "Jianyu Wang",
+          "Yangtian Zhang",
+          "Yang Song",
+          "Qifan Wang",
+          "Bailin Wang"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.12668v1"
+      },
+      "priority_score": 36
+    },
+    "2610_12114v1": {
+      "id": "2610_12114v1",
+      "filename": "post_2610_12114v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-10-12T14:09:47.639499+00:00",
+      "paper": {
+        "title": "Universal Textual Teaching for LLMs",
+        "summary": "Knowledge distillation (KD) transfers knowledge from stronger Teacher models to weaker Student models, but most methods require training the Student parameters, thereby binding the distilled knowledge to a specific architecture and checkpoint. This implicit representation is difficult to interpret or reuse across models and limits KD for API-only or costly-to-train models. This paper studies knowledge transfer for large language models (LLMs). We introduce Universal Textual Teaching (UTT), a parameter-update-free framework that distills observed Teacher-Student knowledge gaps into a textual, interpretable, and reusable natural-language artifact called Primer. Specifically, UTT first identifies representative gap cases through paired evaluations, and iteratively updates the Primer via multi-role interactions: the Student attempts each task, the Prompter turns evaluation feedback into a teaching instruction, the Teacher provides a targeted demonstration, and the Synthesizer consolidates validated lessons. Empirically, on the challenging math (Omni-MATH-2) and code generation (KernelBench) tasks, extensive results confirm the effectiveness of the method: UTT remarkably raises the Student's accuracy from 9.4% to 48.6% and Fast1 accuracy from 9% to 35% on KernelBench, while increasing mathematical reasoning accuracy from 27.6% to 51.7%. UTT also performs better than representative prompt engineering and parameter-based KD methods. Of note, UTT is shown to be generalizable across different Teachers and Students: a Primer synthesized for one Teacher-Student pair can generalize to other Students that do not participate in the synthesis.",
+        "published": "2026-10-08T15:11:16Z",
+        "authors": [
+          "Zhanyi Lu",
+          "Huan Wang"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.12114v1"
+      },
+      "priority_score": 50,
+      "korean_title": "거대 언어 모델을 위한 보편적 텍스트 기반 학습"
+    },
+    "2610_07018v1": {
+      "id": "2610_07018v1",
+      "filename": "post_2610_07018v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-12T14:09:22.295782+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-12T14:09:22.295783+00:00",
+      "paper": {
+        "title": "When to Rethink: Learning Multi-Perspective Self-Verification for Vision-Language Models",
+        "summary": "Vision-language models (VLMs) have achieved strong performance in multimodal reasoning, yet they remain prone to generating plausible but incorrect answers. Self-verification offers a practical way to improve answer reliability without relying on external judges, but existing methods typically depend on a single verification criterion or fixed prompt, resulting in incomplete and unstable reliability estimates. We first systematically analyze how verifier capability and prompt design affect verification performance. Our findings show that stronger verifiers provide more reliable judgments, while verification performance is highly sensitive to prompt choice, with no single prompt consistently dominating across tasks. Guided by these findings, we propose \\texttt{MOTIVE}, a \\textbf{M}ulti-View Self-Verificati\\textbf{O}n wi\\textbf{T}h Rel\\textbf{I}ability-Guided Selecti\\textbf{VE} Rethinking framework for reliable multimodal reasoning. \\texttt{MOTIVE} evaluates each candidate answer from complementary verification perspectives and learns a correctness-aligned reliability score through correctness-grounded multi-view verification learning. During inference, this score governs an accept-or-rethink decision, allowing reliable answers to be returned directly while uncertain ones trigger history-guided rethinking. Extensive experiments across diverse multimodal benchmarks and VLM backbones demonstrate that \\texttt{MOTIVE} consistently outperforms strong self-verification and self-correction baselines. Further results show that reliable verification improves accept-or-rethink decisions and reduces unnecessary reasoning turns, enabling more reliable and efficient self-verification without an external judge.",
+        "published": "2026-10-04T15:08:07Z",
+        "authors": [
+          "Ziquan Zhu",
+          "Hanruo Zhu",
+          "Si-Yuan Lu",
+          "Morris Yu-Chao Huang",
+          "Yicheng Lin",
+          "Wei Han",
+          "Tianlong Chen",
+          "Mingyuan Wu",
+          "Hanchao Yu",
+          "Gaojie Jin",
+          "Lu Liu",
+          "Bo Sun",
+          "Tianjin Huang"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.07018v1"
+      },
+      "priority_score": 40
+    },
+    "2610_13316v1": {
+      "id": "2610_13316v1",
+      "filename": "post_2610_13316v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-12T14:09:22.295787+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-12T14:09:22.295789+00:00",
+      "paper": {
+        "title": "ThinkDrag: Semantic Drag-Based Image Editing with Visual Reasoning",
+        "summary": "Drag-based image editing provides an intuitive interface for spatially controlled image manipulation by allowing users to specify handle and target points. Existing methods have made substantial progress through optimization-based, one-step, and feed-forward formulations, but they often interpret drag instructions as geometric displacements. This limits their effectiveness when the desired edit depends on interpreting image content and inferring a plausible semantic transformation from sparse point constraints. We introduce ThinkDrag, a unified multimodal framework for drag-based image editing with visual reasoning. ThinkDrag is trained to associate point constraints with meaningful object- and scene-level transformations, and can optionally produce an explicit reasoning trace that interprets the intended edit before image generation. This reasoning trace improves interpretability, particularly for ambiguous drags. Drag Endpoint Markers, motivated by an analysis of cross-image attention, provide an explicit correspondence signal that grounds each drag in image space. To support this framework, we construct a supervised dataset of semantic drag transformations paired with reasoning traces and introduce DragBench++, a benchmark targeting challenging drag-based editing scenarios with reference edit solutions. Experiments show that ThinkDrag achieves state-of-the-art performance, improving generation quality and plausibility while maintaining competitive point-following precision.",
+        "published": "2026-10-09T09:58:10Z",
+        "authors": [
+          "Armando Fortes",
+          "Tianyi Wei",
+          "Chindanai Trakantannarong",
+          "Shangchen Zhou",
+          "Xingang Pan"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.13316v1"
+      },
+      "priority_score": 38
+    },
+    "2610_13181v1": {
+      "id": "2610_13181v1",
+      "filename": "post_2610_13181v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-12T14:09:22.295793+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-12T14:09:22.295794+00:00",
+      "paper": {
+        "title": "MixTok: Adaptive Visual Tokenization with Global 1D Tokens and Sparse 2D Refinement",
+        "summary": "Efficient visual tokenization requires balancing representation compactness with the preservation of fine-grained image content. Conventional grid-based tokenizers allocate tokens uniformly across spatial locations despite non-uniform visual complexity, whereas compact 1D tokenizers aggregate global information but can struggle to preserve local details. We introduce MixTok, a hybrid visual tokenizer that combines a compact 1D global representation with sparse 2D tokens for local refinement. A content-adaptive router ranks candidate locations by refinement priority and determines the number of 2D tokens for each image under a target average token budget. At the highest-scoring locations, 2D token features replace the spatial features recovered from the 1D representation, and a shared decoder reconstructs the image from the resulting mixed features. On ImageNet 256 x 256, MixTok achieves highly competitive reconstruction and generation performance, with an rFID of 1.195 and a gFID of 1.95 at respective average budgets of approximately 128 and 131 content tokens per image.",
+        "published": "2026-10-09T08:07:38Z",
+        "authors": [
+          "Chenge Li",
+          "Yefei He",
+          "Xinyu Liu",
+          "Feng Chen",
+          "Hong Zhou",
+          "Bohan Zhuang"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.13181v1"
+      },
+      "priority_score": 23
+    },
+    "2610_13171v1": {
+      "id": "2610_13171v1",
+      "filename": "post_2610_13171v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-12T14:09:22.295799+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-12T14:09:22.295800+00:00",
+      "paper": {
+        "title": "PreSTO: Predictive Subtree Prefetching for Fast LLM Power Sampling",
+        "summary": "Power sampling improves large language model (LLM) reasoning at test time by sampling from a sharpened version of the base model's distribution. Its sampler, PowerMH, is slow because its Metropolis--Hastings (MH) updates are sequential: each accept/reject decision sets the state from which the next proposal is generated. Prior work reduces this cost by changing the sampler or the model (e.g., sequential Monte Carlo, approximate lookahead, distillation). We propose Predictive SubTree Prefetching (PreSTO), which accelerates PowerMH by prefetching future proposals and provably leaves its MH transition kernel unchanged. PreSTO views future MH outcomes as a tree of accept/reject decisions: in each model call, it generates the proposals of a \\textit{prefetched subtree} of this tree in one batch, then follows the realized path with the original MH acceptance rule. We also observe that MH reaches only a sparse, nearly unary part of each prefetched subtree, we further design a \\textit{predictive traversal rule} that chooses the subtree to maximize the predicted number of completed transitions. Across seven datasets and five base LLMs, PreSTO achieves median speedups of $1.71\\times$, $1.91\\times$, and $2.33\\times$ on PowerMH and its follow-ups EntropyCut and MultiTryMH, respectively; on the first two, it makes a median of $3.9\\times$ fewer model calls, each only $2.1\\times$ longer. On LCB V6 with Qwen3.5-9B, the predictive traversal rule is a further $1.25\\times$--$1.37\\times$ faster than the default breadth-first traversal.",
+        "published": "2026-10-09T07:58:06Z",
+        "authors": [
+          "Nan Jiang",
+          "Panagiotis Theodoropoulos",
+          "Wei Deng"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.13171v1"
+      },
+      "priority_score": 29
+    },
+    "2610_12572v1": {
+      "id": "2610_12572v1",
+      "filename": "post_2610_12572v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-12T14:09:22.295804+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-12T14:09:22.295805+00:00",
+      "paper": {
+        "title": "DiffusionART: Efficient, Stable and Scalable Reinforcement of Diffusion Models",
+        "summary": "Online reinforcement learning (RL) fine-tunes diffusion models with black-box rewards, but reverse-process methods such as Flow-GRPO are limited in efficiency by poor credit assignment, while forward-process methods such as DiffusionNFT are efficient yet unstable without carefully tuned exponential-moving-average (EMA) off-policy training. We show that NFT-style objectives contain a hidden forward--reverse consistency force that joint positive--negative training cancels only partially, and that EMA stabilizes training through restoration rather than off-policy rollouts. We introduce DiffusionART (Diffusion Reinforcement with Aggregation-First Reward Tilting), which aggregates each prompt's rewards into a shared reward-improving direction for reverse-process states, removing the consistency force by construction, and adds a trust-region-masked second update for drift-adaptive restoration without EMA tuning. It requires no differentiable reward model, remains effective with fewer samples per prompt, and supports pairwise reward models (DiffusionART-Pairwise). Across image and video generation, DiffusionART trains efficiently and stably without per-task tuning. In particular, on HunyuanVideo-13B with equally weighted visual and motion quality rewards, DiffusionART reaches the late-stage mean reward levels of DiffusionNFT and Flow-GRPO-Fast with 12.02 and 11.72 times fewer GPU hours, respectively, while achieving 28.8% and 53.0% higher mean training rewards.",
+        "published": "2026-10-08T18:01:44Z",
+        "authors": [
+          "Zhenglin Wan",
+          "Jiayu Chen",
+          "Zhengfeiyang Zhang",
+          "Pengfei Zhou",
+          "Wangbo Zhao",
+          "Fangyuan Kong",
+          "Pengfei Wan",
+          "Kun Gai",
+          "Yang You"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.12572v1"
+      },
+      "priority_score": 18
     }
   },
   "last_run": {
-    "started_at": "2026-10-12T03:49:40.564448+00:00",
-    "discovered": 30,
+    "started_at": "2026-10-12T14:09:22.301198+00:00",
+    "discovered": 10,
     "selected": 4,
     "generated": 4,
     "failed": 0,
@@ -51760,26 +52012,26 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 18808,
-      "output_tokens": 5716,
+      "prompt_tokens": 21980,
+      "output_tokens": 5915,
       "thought_tokens": 0,
-      "total_tokens": 24524,
-      "estimated_usd": 0.013276
+      "total_tokens": 27895,
+      "estimated_usd": 0.0143675
     },
-    "finished_at": "2026-10-12T03:50:33.728701+00:00"
+    "finished_at": "2026-10-12T14:10:12.938154+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 3276,
-    "prompt_tokens": 8259704,
-    "output_tokens": 2411985,
+    "requests": 3284,
+    "prompt_tokens": 8281684,
+    "output_tokens": 2417900,
     "thought_tokens": 0,
-    "total_tokens": 10671689,
-    "estimated_usd": 5.6829035
+    "total_tokens": 10699584,
+    "estimated_usd": 5.697271
   },
   "last_publication_run": {
-    "started_at": "2026-10-12T03:49:40.564448+00:00",
-    "discovered": 30,
+    "started_at": "2026-10-12T14:09:22.301198+00:00",
+    "discovered": 10,
     "selected": 4,
     "generated": 4,
     "failed": 0,
@@ -51789,17 +52041,17 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 18808,
-      "output_tokens": 5716,
+      "prompt_tokens": 21980,
+      "output_tokens": 5915,
       "thought_tokens": 0,
-      "total_tokens": 24524,
-      "estimated_usd": 0.013276
+      "total_tokens": 27895,
+      "estimated_usd": 0.0143675
     },
-    "finished_at": "2026-10-12T03:50:33.728701+00:00"
+    "finished_at": "2026-10-12T14:10:12.938154+00:00"
   },
   "daily_usage": {
     "date": "2026-10-12",
-    "estimated_usd": 0.013276,
-    "publications": 4
+    "estimated_usd": 0.0276435,
+    "publications": 8
   }
 }
