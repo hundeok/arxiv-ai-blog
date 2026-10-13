@@ -51236,7 +51236,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-13T05:00:48.853479+00:00",
+      "updated_at": "2026-10-13T13:21:05.204550+00:00",
       "paper": {
         "title": "SpatialASM: Internalizing Active Mentalization for Spatial Reasoning",
         "summary": "When solving complex spatial reasoning tasks, ordinary humans naturally revisit the scenes from task-relevant viewpoints and mentally reconstruct the spatial layouts from those viewpoints. But can Large Vision-Language Models (LVLMs) proactively think in the same way? We term this ability Active Spatial Mentalization (ASM), an intrinsic component of visual intelligence that remains substantially underdeveloped in current LVLMs. To bridge this gap, we introduce SpatialASM, a scalable framework to internalize ASM into LVLMs through training-time spatial simulation. SpatialASM employs an allocentric novel-view generator to ground hypothetical viewpoints in visual evidence and produces two complementary forms of supervision: i) explicit ASM trajectories that teach LVLMs when and how to adaptively invoke view planning and imagination during spatial reasoning, and ii) automatically-constructed perspective-taking tasks that further strengthens viewpoint-conditioned scene imagination. On seven benchmarks spanning relatively perception-oriented spatial understanding to more challenging tasks requiring multi-image, cross-view and viewpoint-transformation reasoning, SpatialASM yields performance gain on LVLMs of four LVLM backbones in spatial reasoning while retaining their original general vision capabilities. The experimental results demonstrate that our approach improves average accuracy across the seven spatial benchmarks. And the synthesis of ASM trajectories provides a scalable pathway to alleviate the scarcity of spatial Chain-of-Thought (CoT) supervision for eliciting active viewpoint exploration and mental scene simulation.",
@@ -51286,11 +51286,11 @@
     "2610_13823v1": {
       "id": "2610_13823v1",
       "filename": "post_2610_13823v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-10-12T03:49:40.560275+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-13T05:00:38.028667+00:00",
+      "updated_at": "2026-10-13T13:21:15.909969+00:00",
       "paper": {
         "title": "Same Query, Different Answer: Run-to-Run Variance in Semantic Query Processing",
         "summary": "Semantic query engines ask a large language model (LLM) to judge individual rows, and benchmarks compare these engines on the quality of a few executions at temperature 0. We measure how much another execution changes. We re-execute the text and tabular workloads of SemBench, LRO-Bench, and UDA-Bench through their own harnesses, log every one of 1.2 million model calls, and reanalyze SemBench's published executions. At temperature 0, between 0.07% and 10.2% of rows change their operator output over five executions, depending on the model, and up to 24.0% on one task. Plans amplify these changes exponentially in the number of rows an answer exposes, as a possible-worlds model predicts: on UDA-Bench, a few percent of extracted values change, but about two thirds of the answers do. In SemBench's published results, 21% of text results change quality between executions, including on engines whose plans are deterministic. Several per-query system comparisons, and 16 of 28 tests of LRO-Bench's implementation recommendations, are not settled by the executions the benchmarks run. Changing rows are rows on which models disagree with each other; identical requests within one execution disagree as often as across executions; and one execution's decision margin or reasoning length predicts which rows change. Voting reduces the variance but does not remove it, and a calibrated cascade keeps its guarantee while the rows it returns change. We derive reporting rules for benchmarks and design rules for engines.",
@@ -51301,7 +51301,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2610.13823v1"
       },
-      "priority_score": 38
+      "priority_score": 38,
+      "korean_title": "같은 질문, 다른 대답: 의미론적 질의 처리에서의 실행 간 변동성"
     },
     "2610_13806v1": {
       "id": "2610_13806v1",
@@ -51580,11 +51581,11 @@
     "2610_13708v1": {
       "id": "2610_13708v1",
       "filename": "post_2610_13708v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-10-12T03:49:40.560321+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-13T05:00:38.028718+00:00",
+      "updated_at": "2026-10-13T13:21:35.199930+00:00",
       "paper": {
         "title": "Adaptive DHiSparse: Speculative Decoding over a Load-Adaptive KV Hierarchy",
         "summary": "Long-context serving runs out of KV memory before the hardware reaches its useful throughput. HiSparse stores history in host memory and fetches only the selected entries, but it uses one cache budget at every load and does not handle draft-model speculative decoding such as DSpark and DFlash2. We present Adaptive DHiSparse, which supports speculative decoding over hierarchical sparse KV and adapts residency to load. It protects the required working set, retains additional history while GPU memory is spare, and recovers the rest through exact fused retrieval. DSpark and DFlash2 keep their proposal and acceptance rules: queries share missing-row retrieval, draft KV uses a window-bounded ring, and verification staging is reused across layer groups. At 100K context and concurrency 128, GLM-5.3 with DFlash2 delivers 793 output tokens/s per decode GPU, 1.45$\\times$ HiSparse and 1.27$\\times$ non-speculative adaptive serving. Held to the same latency bounds as HiSparse, it sustains up to 4$\\times$ the concurrency and 2.3 to 3.7$\\times$ the output, depending on the per-token bound. On DeepSeek-V4.1-Flash at 500K context and concurrency 512, Adaptive DHiSparse with DSpark delivers 1.85$\\times$ the output of resident serving with DSpark. In a load step, optional residency reduces host fetches from 14.2% to 1.4% of selected rows at low load and releases memory under pressure.",
@@ -51595,7 +51596,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2610.13708v1"
       },
-      "priority_score": 37
+      "priority_score": 37,
+      "korean_title": "적응형 DHiSparse: 부하 적응형 KV 계층 구조를 활용한 추측적 디코딩"
     },
     "2610_13703v1": {
       "id": "2610_13703v1",
@@ -51834,11 +51836,11 @@
     "2610_12668v1": {
       "id": "2610_12668v1",
       "filename": "post_2610_12668v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-10-12T14:09:22.295770+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-12T14:09:22.295771+00:00",
+      "updated_at": "2026-10-13T13:21:45.691088+00:00",
       "paper": {
         "title": "Recurrent Harness for Agentic Continual Learning",
         "summary": "Language model agents increasingly operate over long interaction streams, requiring online adaptation to distribution shifts through continual learning. However, existing agent harnesses typically either evolve their states only through forward information flow or rely on additional replay or validation data for harness optimization. To address this, we propose ReHarness, a recurrent harness framework for agentic continual learning that complements forward read and write with backward revision under a strictly online streaming protocol. We ask what information could have been captured differently in the harness state to better inform the current instance in the stream. Specifically, after each instance, we leverage the resulting trajectory as feedback to revise the reflections retrieved for that instance, thereby propagating feedback backward through the textual harness state. Across three continual learning benchmarks and three language model backbones, ReHarness consistently outperforms strong raw-context baselines, memory- and reflection-based methods, and prompt optimization approaches. Further analysis shows that ReHarness produces source-grounded and meaningful revisions, corrects overgeneralized or outdated experience under distribution shifts, and improves both stability and plasticity during continual learning.",
@@ -51854,7 +51856,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2610.12668v1"
       },
-      "priority_score": 36
+      "priority_score": 36,
+      "korean_title": "에이전트형 지속 학습을 위한 순환형 하니스"
     },
     "2610_12114v1": {
       "id": "2610_12114v1",
@@ -51884,7 +51887,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-13T05:01:17.699721+00:00",
+      "updated_at": "2026-10-13T13:21:05.204570+00:00",
       "paper": {
         "title": "When to Rethink: Learning Multi-Perspective Self-Verification for Vision-Language Models",
         "summary": "Vision-language models (VLMs) have achieved strong performance in multimodal reasoning, yet they remain prone to generating plausible but incorrect answers. Self-verification offers a practical way to improve answer reliability without relying on external judges, but existing methods typically depend on a single verification criterion or fixed prompt, resulting in incomplete and unstable reliability estimates. We first systematically analyze how verifier capability and prompt design affect verification performance. Our findings show that stronger verifiers provide more reliable judgments, while verification performance is highly sensitive to prompt choice, with no single prompt consistently dominating across tasks. Guided by these findings, we propose \\texttt{MOTIVE}, a \\textbf{M}ulti-View Self-Verificati\\textbf{O}n wi\\textbf{T}h Rel\\textbf{I}ability-Guided Selecti\\textbf{VE} Rethinking framework for reliable multimodal reasoning. \\texttt{MOTIVE} evaluates each candidate answer from complementary verification perspectives and learns a correctness-aligned reliability score through correctness-grounded multi-view verification learning. During inference, this score governs an accept-or-rethink decision, allowing reliable answers to be returned directly while uncertain ones trigger history-guided rethinking. Extensive experiments across diverse multimodal benchmarks and VLM backbones demonstrate that \\texttt{MOTIVE} consistently outperforms strong self-verification and self-correction baselines. Further results show that reliable verification improves accept-or-rethink decisions and reduces unnecessary reasoning turns, enabling more reliable and efficient self-verification without an external judge.",
@@ -51912,11 +51915,11 @@
     "2610_13316v1": {
       "id": "2610_13316v1",
       "filename": "post_2610_13316v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-10-12T14:09:22.295787+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-12T14:09:22.295789+00:00",
+      "updated_at": "2026-10-13T13:21:24.851149+00:00",
       "paper": {
         "title": "ThinkDrag: Semantic Drag-Based Image Editing with Visual Reasoning",
         "summary": "Drag-based image editing provides an intuitive interface for spatially controlled image manipulation by allowing users to specify handle and target points. Existing methods have made substantial progress through optimization-based, one-step, and feed-forward formulations, but they often interpret drag instructions as geometric displacements. This limits their effectiveness when the desired edit depends on interpreting image content and inferring a plausible semantic transformation from sparse point constraints. We introduce ThinkDrag, a unified multimodal framework for drag-based image editing with visual reasoning. ThinkDrag is trained to associate point constraints with meaningful object- and scene-level transformations, and can optionally produce an explicit reasoning trace that interprets the intended edit before image generation. This reasoning trace improves interpretability, particularly for ambiguous drags. Drag Endpoint Markers, motivated by an analysis of cross-image attention, provide an explicit correspondence signal that grounds each drag in image space. To support this framework, we construct a supervised dataset of semantic drag transformations paired with reasoning traces and introduce DragBench++, a benchmark targeting challenging drag-based editing scenarios with reference edit solutions. Experiments show that ThinkDrag achieves state-of-the-art performance, improving generation quality and plausibility while maintaining competitive point-following precision.",
@@ -51930,7 +51933,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2610.13316v1"
       },
-      "priority_score": 38
+      "priority_score": 38,
+      "korean_title": "ThinkDrag: 시각적 추론을 통한 의미론적 드래그 기반 이미지 편집"
     },
     "2610_13181v1": {
       "id": "2610_13181v1",
@@ -52011,7 +52015,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-12T22:21:03.105419+00:00",
       "last_error": null,
-      "updated_at": "2026-10-12T22:21:03.105436+00:00",
+      "updated_at": "2026-10-13T13:21:05.204494+00:00",
       "paper": {
         "title": "SAGE: Salient Factor Discovery and Generation with Visual Foundation Representations",
         "summary": "Given a target dataset, such as faces with eyeglasses, and a background dataset, such as faces without, contrastive analysis separates \\textit{salient} factors specific to the target from \\textit{common} content shared by both. We aim for salient representations that capture target-specific detail in each image, such as the shape, color, and position of the glasses, so that they reveal subtypes without subtype labels and guide the generation of new examples of a discovered subtype, even one with no name or text description. We introduce SAGE, which learns both factors directly in the high-dimensional spatial latent of a frozen representation autoencoder and conditions a diffusion transformer on the learned salient representation of a reference image. On Digits-ImageNet and FFHQ eyeglasses, SAGE combines high-fidelity \\textit{reconstruction} (rFID below $2$) with unsupervised \\textit{subtype discovery}, recovering the digits better than baselines (probe accuracy $0.950$ vs.\\ at most $0.281$) and revealing eyewear types, finer sunglasses styles, and mislabeled images; salient-conditioned \\textit{generation} raises Digits-ImageNet subtype accuracy over the unfactorized latent ($90.5\\%$ vs.\\ $27.7\\%$) and diversity on both datasets. On retinal OCT, SAGE's salient space separates three diseases using only normal/disease labels.",
@@ -52037,7 +52041,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-12T22:21:03.105446+00:00",
       "last_error": null,
-      "updated_at": "2026-10-12T22:21:03.105447+00:00",
+      "updated_at": "2026-10-13T13:21:05.204516+00:00",
       "paper": {
         "title": "BudgetPix: Compute-Adaptive Tokenization for Pixel-Space Image Diffusion",
         "summary": "Most image generation models rely on uniform tokenization, allocating the exact same computational budget to equally-sized image patches. This static paradigm cannot adapt to different resource constraints at inference time, and yields suboptimal quality-cost tradeoff by devoting the same effort to both plain backgrounds and intricate details. We propose BudgetPix, an adaptive tokenization framework that dynamically allocates compute based on visual complexity and spatial layout, enabling flexible computational budgeting at inference time. BudgetPix comprises three key components: (1) an adaptive encoder that maps a fixed-size image to a variable-length token sequence using an entropy-guided quadtree alongside a multi-scale patch embedder; (2) a scale-aware decoder reconstructs fixed-resolution images from multi-scale token sets; and (3) a flexible training and sampling schedule that enables pixel-space denoisers to operate across variable token counts. BudgetPix seamlessly integrates with existing pixel-space diffusion architectures, enabling a single checkpoint to be operated at a wide range of compute budgets. Evaluated on text-to-image generation, BudgetPix matches the fidelity of MiniT2I-L at $512^2$ and PixelDiT at $1024^2$ using just 25% of the original compute budget. In class-conditional generation using a MeanFlow backbone, BudgetPix requires merely 60% of the full compute budget to produce images with near-zero quality degradation, observing a marginal 0.8-point increase in FID. Comprehensive assessments by human and VLM judges confirm that BudgetPix establishes a significantly improved quality-efficiency tradeoff over prior budget-adaptive baselines. More details are available at our project page: https://karaozgur.com/BudgetPix",
@@ -52062,7 +52066,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-12T22:21:30.529435+00:00",
+      "updated_at": "2026-10-13T13:21:05.204525+00:00",
       "paper": {
         "title": "Humanity's Sixth Sense: Benchmarking Intuitive Visual Reasoning in Multimodal Models",
         "summary": "Humans perceive far more in a scene than what is explicitly depicted: a single glance captures past causes and future trajectories; a quick peek determines if a vehicle can fit between two parked cars; a few seconds of video reveals who holds authority in a room; and a fleeting clip highlights subtle abstract patterns like unwritten rules or hidden labels. This capacity reflects a form of humanity's sixth sense: an intuitive reasoning mechanism that recovers implicit information beyond raw sensory perception. Crucially, this rapid, zero-shot visual intuition underpins everyday navigation and social interaction, making it a vital capability for Multimodal Large Language Models (MLLMs) deployed alongside people. Existing visual benchmarks, however, target either deliberate expert-level analysis in academic and mathematical domains or low-level perception, leaving the intuitive reasoning that people perform largely untested. To bridge this gap, we introduce Humanity's Sixth Sense (HSS), a benchmark for intuitive visual reasoning. HSS spans diverse image and video inputs, organizes items under a structured taxonomy, and pairs each with human-written prompts probing the implicit temporal, spatial, social, and abstract structure that people infer at a glance. Frontier MLLMs fall short of human performance: participants reach 93.1% accuracy, while the strongest model, GPT-6-astra, reaches only 53.6% even at maximum reasoning effort. Despite excelling in many complex tasks that require advanced perception and knowledge, current models still struggle significantly on these visual tasks that are intuitive for humans. We further explore agentic setup that apply dynamic visual manipulation to HSS, which narrows but does not close the gap. HSS establishes intuitive visual reasoning as a measurable axis and directs attention to a capability that scaling on current benchmarks has so far left behind.",
@@ -52110,7 +52114,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-12T22:21:03.105459+00:00",
       "last_error": null,
-      "updated_at": "2026-10-12T22:21:03.105460+00:00",
+      "updated_at": "2026-10-13T13:21:05.204521+00:00",
       "paper": {
         "title": "Self-Preservation in Language Models",
         "summary": "Continual learning (CL) seeks to adapt pretrained models while preserving prior capabilities. Yet the tasks supplied for preservation cover only part of what a model knows, while forgetting can extend beyond them. Recent work shows that language models can supplement this limited evidence by generating useful replay without access to their original training data. This raises a question about self-preservation: can a model help choose preservation targets that protect its own capabilities more broadly? To study this question, we organize task descriptions and their examples into Task Banks, whose entries can be selected and combined to guide replay generation by a frozen model. Continual instruction tuning with Qwen models of varying sizes yields three findings. First, the new task and learning rate shape which prior capabilities degrade, while tracking previously correct answers reveals losses that average accuracy can conceal. Second, generated replay reduces forgetting on tasks outside the bank. Combining partial banks strengthens this protection, improving mean retention of previously correct answers over either bank alone across the tested sizes. Third, the model can also help choose replay targets: selection informed by the new task improves mean held-out retention over random selection at 4B, with similar new-task gains, although smaller models show no corresponding advantage. Under a fixed example budget, however, replacing new-task examples with replay improves preservation at the cost of smaller new-task gains. Together, these findings show that models can support broader self-preservation by generating replay data and, in some settings, choosing which tasks to replay.",
@@ -52131,7 +52135,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-12T22:21:03.105467+00:00",
       "last_error": null,
-      "updated_at": "2026-10-12T22:21:03.105468+00:00",
+      "updated_at": "2026-10-13T13:21:05.204574+00:00",
       "paper": {
         "title": "Video-Conditioned Generative Joint 2D-3D Hand Motion Recovery",
         "summary": "Recovering faithful 3D hand motion from video remains challenging due to frequent occlusions and incomplete visual observations, which make frame-wise pose estimates unreliable and temporally inconsistent. To address this problem, we propose JoHan, a unified generative framework that recovers hand motion directly from video sequences without relying on intermediate per-frame pose predictions. Trained from scratch, our model jointly generates aligned 2D and 3D local hand pose sequences by learning their temporal dynamics and cross-representation correspondence. The generated 2D trajectories exploit direct spatial and temporal cues from the 2D images to guide the following generative 3D motion reconstruction, while the learned motion prior promotes temporal consistency. Their learned 2D-3D correspondence further enables recovery of the hand's global position and orientation relative to the camera. Extensive experiments on challenging benchmarks demonstrate significantly improved accuracy and speed in local hand-pose and camera-space reconstruction. Notably, our method captures much better hand-motion dynamics, producing significantly smoother motion than previous methods while maintaining high per-frame pose accuracy.",
@@ -52155,7 +52159,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-12T22:21:20.321929+00:00",
+      "updated_at": "2026-10-13T13:21:05.204577+00:00",
       "paper": {
         "title": "Clinician use of language models diverges from how the models are evaluated",
         "summary": "Large language model (LLM) assistants are being deployed to clinicians across health systems, and judgments about their readiness rest largely on benchmark scores, most of them derived from examination questions or curated cases. A benchmark predicts performance in deployment only to the extent that its items resemble real use, yet whether benchmarks reflect the work these systems receive has rarely been measured. Here we analyze 127,833 queries sent by 6,342 physicians, advanced practice providers and nurses in 35 specialties to an institutional assistant during an eight-month roll-out. We characterize each query with RCQ-Map, a clinician-validated framework grounded in taxonomies of clinical questions and of LLM evaluation, which records its task, intent, answerability, missing information and potential harm. Documentation and administration (36.2%) and knowledge retrieval (28.9%) made up nearly two-thirds of use, and diagnosis 3.7%; more than a third of queries could not be answered well as posed. Applying RCQ-Map to 58 public benchmarks drawn from major evaluation suites and frontier model reports, which we assemble into the Clinical AI Benchmark Atlas, showed that the median benchmark contained no documentation requests and shared 31% of the task mix of real use, less than an even spread across task categories would. Benchmarks in suites designed to resemble clinical practice were individually no closer to real use than those used in frontier model reports. Benchmark scores therefore say little about how clinical AI performs on most of the work it is actually given, and evaluation should be matched to real clinical use.",
@@ -52210,11 +52214,61 @@
       },
       "priority_score": 60,
       "korean_title": "다중 에이전트 시스템을 위한 정신 모델"
+    },
+    "2609_33304v1": {
+      "id": "2609_33304v1",
+      "filename": "post_2609_33304v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-13T13:21:05.204558+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-13T13:21:05.204559+00:00",
+      "paper": {
+        "title": "Relevance Does Not Imply Applicability: Experience Activation for Personal GUI Agents",
+        "summary": "Personal Graphical User Interface (GUI) agents rely on interaction history to infer what a user wants from ambiguous instructions and to anticipate recurring routines. Existing approaches retrieve task-relevant history and append it to the policy's context, implicitly assuming that experience relevant to a task remains useful for each decision within it. We find that this help is largely spent at the first decision: retrieved history strongly improves the opening step of an episode, yet provides little sustained benefit over the remaining 90\\% of steps, and offers weak guidance on whether a proactive suggestion is warranted. A relevant record may tell the agent where to begin, but not which past action applies to the current screen or whether a routine is due now. The underlying issue is that relevance does not imply applicability}: relevance is determined at the task level, whereas applicability depends on the situation at decision time. We therefore recast personalization as experience activation and introduce ExpActivator, a training-free framework that activates only the experience applicable to the current situation. During execution, ExpActivator matches each new screen to historical states in the frozen GUI backbone's latent space and supplies the corresponding action as a reference. Before execution, it activates a recurring intent only when the current time and scenario provide sufficient support, and otherwise abstains. Across four GUI backbones, ExpActivator improves within-trajectory step success by 28\\% on average, achieves the best personalized execution on every backbone while using about one-fifth as many history tokens, and reaches approximately 2.3$\\times$ the Matthews correlation coefficient of the strongest proactive baseline. Experience pays where it is activated, not where it is appended.",
+        "published": "2026-09-27T07:15:57Z",
+        "authors": [
+          "Fuyao Zhang",
+          "Xuan Wang",
+          "Zherui Li",
+          "Jiaming Zhang",
+          "Longtao Huang",
+          "Wei Yang Bryan Lim"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.33304v1"
+      },
+      "priority_score": 30
+    },
+    "2610_03308v1": {
+      "id": "2610_03308v1",
+      "filename": "post_2610_03308v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-13T13:21:05.204564+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-13T13:21:05.204565+00:00",
+      "paper": {
+        "title": "T3lescope: Arbitrary-Resolution High-Fidelity Generative Surface Reconstruction from Images",
+        "summary": "We reconstruct high-fidelity 3D scene meshes from posed multi-view images without per-scene optimization, across scales ranging from single objects to large outdoor scenes. Per-scene optimization methods lack the learned 3D prior needed when observations are sparse or surfaces are glossy or transparent. Existing generative methods leverage such priors to complete geometry in sparsely observed regions, but typically operate at a fixed resolution over a limited spatial extent, trading spatial coverage against detail. Reconstructing a large scene therefore often requires partitioning it into independently processed overlapping local regions, making it difficult to maintain global geometric consistency. To address these issues, we propose T3lescope, which applies a single fixed-resolution generator across scene scales in an inference-time coarse-to-fine cascade. A coarse level establishes the scene layout, and finer levels perturb and denoise geometry inherited from the coarser level within progressively finer spatial cells to recover surface detail. The model is trained on individual cells at multiple scales and shares its weights across all levels, so no hierarchy is fixed during training, and the number of levels, cell scales, and cell locations are determined at inference time. On indoor, outdoor, and city-scale scenes, T3lescope outperforms feed-forward and generative baselines, matches or surpasses per-scene optimization, and recovers fine structures as well as glossy and transparent surfaces. These results show that our method generalizes across diverse scenes, view counts, and image resolutions. Project page: https://pfnet-research.github.io/t3lescope/",
+        "published": "2026-10-02T13:46:17Z",
+        "authors": [
+          "Atsuhiro Noguchi",
+          "Tianhan Xu",
+          "Yiming Liang",
+          "Yuta Kikuchi",
+          "Masahiro Ishiyama",
+          "Shintaro Takagi",
+          "Hitoshi Murai",
+          "Eiichi Matsumoto"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.03308v1"
+      },
+      "priority_score": 20
     }
   },
   "last_run": {
-    "started_at": "2026-10-13T05:00:38.034399+00:00",
-    "discovered": 30,
+    "started_at": "2026-10-13T13:21:05.209877+00:00",
+    "discovered": 10,
     "selected": 4,
     "generated": 4,
     "failed": 0,
@@ -52224,26 +52278,26 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 19917,
-      "output_tokens": 5751,
+      "prompt_tokens": 19649,
+      "output_tokens": 5947,
       "thought_tokens": 0,
-      "total_tokens": 25668,
-      "estimated_usd": 0.01360575
+      "total_tokens": 25596,
+      "estimated_usd": 0.01383275
     },
-    "finished_at": "2026-10-13T05:01:19.070872+00:00"
+    "finished_at": "2026-10-13T13:21:46.898666+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 3300,
-    "prompt_tokens": 8324619,
-    "output_tokens": 2429351,
+    "requests": 3308,
+    "prompt_tokens": 8344268,
+    "output_tokens": 2435298,
     "thought_tokens": 0,
-    "total_tokens": 10753970,
-    "estimated_usd": 5.72518125
+    "total_tokens": 10779566,
+    "estimated_usd": 5.739014
   },
   "last_publication_run": {
-    "started_at": "2026-10-13T05:00:38.034399+00:00",
-    "discovered": 30,
+    "started_at": "2026-10-13T13:21:05.209877+00:00",
+    "discovered": 10,
     "selected": 4,
     "generated": 4,
     "failed": 0,
@@ -52253,17 +52307,17 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 19917,
-      "output_tokens": 5751,
+      "prompt_tokens": 19649,
+      "output_tokens": 5947,
       "thought_tokens": 0,
-      "total_tokens": 25668,
-      "estimated_usd": 0.01360575
+      "total_tokens": 25596,
+      "estimated_usd": 0.01383275
     },
-    "finished_at": "2026-10-13T05:01:19.070872+00:00"
+    "finished_at": "2026-10-13T13:21:46.898666+00:00"
   },
   "daily_usage": {
     "date": "2026-10-13",
-    "estimated_usd": 0.01360575,
-    "publications": 4
+    "estimated_usd": 0.0274385,
+    "publications": 8
   }
 }

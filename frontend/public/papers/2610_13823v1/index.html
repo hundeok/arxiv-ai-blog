@@ -1,0 +1,67 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>같은 질문, 다른 대답: 의미론적 질의 처리에서의 실행 간 변동성 | ArXiv Translator AI</title><meta name="description" content="같은 질문, 다른 대답: 의미론적 질의 처리에서의 실행 간 변동성"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2610_13823v1"><meta property="og:type" content="article"><meta property="og:title" content="같은 질문, 다른 대답: 의미론적 질의 처리에서의 실행 간 변동성"><meta property="og:description" content="같은 질문, 다른 대답: 의미론적 질의 처리에서의 실행 간 변동성"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2610_13823v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="같은 질문, 다른 대답: 의미론적 질의 처리에서의 실행 간 변동성"><meta name="twitter:description" content="같은 질문, 다른 대답: 의미론적 질의 처리에서의 실행 간 변동성"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2610_13823v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "같은 질문, 다른 대답: 의미론적 질의 처리에서의 실행 간 변동성", "description": "같은 질문, 다른 대답: 의미론적 질의 처리에서의 실행 간 변동성", "datePublished": "2026-10-09", "url": "https://arxiv-ai-blog.vercel.app/papers/2610_13823v1", "author": [{"@type": "Person", "name": "Oktie Hassanzadeh"}, {"@type": "Person", "name": "Dharmashankar Subramanian"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2610_13823v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2610_13823v1"});gtag('event', 'paper_view', {"paper_id": "2610_13823v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>같은 질문, 다른 대답: 의미론적 질의 처리에서의 실행 간 변동성</h1><p>같은 질문, 다른 대답: 의미론적 질의 처리에서의 실행 간 변동성</p><pre>같은 질문, 다른 대답: 의미론적 질의 처리에서의 실행 간 변동성
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Same Query, Different Answer: Run-to-Run Variance in Semantic Query Processing
+&gt; - **저자:** Oktie Hassanzadeh, Dharmashankar Subramanian
+&gt; - **발행일:** 2026-10-09
+&gt; - **PDF 링크:** [Same Query, Different Answer: Run-to-Run Variance in Semantic Query Processing](https://arxiv.org/pdf/2610.13823v1)
+
+
+✨ 3줄 핵심 요약
+*   거대언어모델(LLM)을 활용한 의미론적 질의 엔진은 온도(temperature)를 0으로 설정해도 실행할 때마다 결과가 달라지는 비결정적 특성을 보입니다.
+*   개별 항목의 미세한 결과 변화는 질의 계획(Query Plan)을 거치며 지수적으로 증폭되어 최종 답변의 불일치를 초래합니다.
+*   이러한 변동성으로 인해 기존 벤치마크 결과의 신뢰성에 문제가 생기며, 이를 해결하기 위한 새로운 벤치마크 보고 규칙과 엔진 설계 가이드라인이 필요합니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+많은 인공지능 기반 데이터베이스 시스템은 &#x27;온도 0&#x27; 설정을 통해 답변이 항상 똑같을 것이라 가정합니다. 하지만 연구 결과, LLM 기반의 의미론적 연산(필터링, 요약 등)은 매 실행마다 0.07%에서 최대 24%까지 결과값이 바뀝니다. 특히 여러 데이터를 종합해 답변을 내놓는 복잡한 질의에서는 이러한 미세한 변화들이 모여 최종 답변의 약 2/3가 바뀌는 결과를 낳기도 합니다. 즉, 같은 질문을 던져도 시스템이 항상 같은 답변을 보장하지 못한다는 뜻입니다.
+
+🎯 배경 및 문제점
+의미론적 질의 엔진은 LLM을 사용해 데이터의 의미를 파악하고 분류하거나 요약합니다. 현재의 벤치마크들은 특정 시스템의 품질을 평가할 때 단 몇 번의 실행 결과만을 토대로 합니다. 그러나 연구자들은 LLM 기반 엔진이 비결정적(nondeterministic)일 수 있다는 점에 주목했습니다. 모델의 배포 방식, 하드웨어 사양 등에 따라 결과가 달라질 수 있는데, 이를 간과하면 시스템의 품질이나 성능 비교 자체가 무의미해질 수 있습니다.
+
+💡 핵심 기술 및 아키텍처
+본 연구는 `SemBench`, `LRO-Bench`, `UDA-Bench` 등 주요 벤치마크의 120만 개 모델 호출 로그를 재분석했습니다.
+*   **변동성 측정**: 단일 항목에서의 출력 변화율(Flip rate)을 측정.
+*   **확률 모델**: 답변이 노출하는 항목 수와 변화율 사이의 관계를 &#x27;가능한 세계(possible-worlds)&#x27; 모델로 예측.
+*   **시스템 평가**: 랭킹, 집계(Aggregation), `LIMIT` 연산이 이러한 변동성을 어떻게 흡수하거나 증폭시키는지 분석.
+
+📊 실험 결과 분석
+*   **변동성**: 온도 0에서도 5회 실행 시 약 0.07%~10.2%의 행(row)에서 결과값이 변동하며, 특정 작업에서는 최대 24.0%까지 변화했습니다.
+*   **증폭 효과**: 개별 행의 답변 변화는 질의 계획을 거치며 지수적으로 증폭됩니다. 예를 들어, UDA-Bench에서는 추출된 값의 변화는 몇 퍼센트에 불과하지만, 전체 답변의 약 2/3가 영향을 받았습니다.
+*   **비결정성**: SemBench에서 게시된 결과 중 21%가 재실행 시 품질 점수가 바뀌었습니다. 결정론적이라고 알려진 엔진에서도 이러한 변화가 관찰되었습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+*   **벤치마크 지침**: 향후 벤치마크는 단일 실행이 아닌 결과의 분포, 답변 재현율, 실패율 등을 종합적으로 보고해야 합니다.
+*   **엔진 설계**: 개발자는 의미론적 질의 결과를 저장할 때 해당 연산의 &#x27;결정 마진&#x27;이나 &#x27;추론 길이&#x27;를 함께 기록해야 합니다.
+*   **실무적 조언**: 답변을 재현해야 할 경우, 모델을 재호출하는 대신 이전에 기록된 연산 결과를 재사용하는 것이 권장됩니다. 투표(Voting) 방식은 변동성을 줄일 수는 있으나 완벽히 제거하지는 못하므로, 중요한 항목에 자원을 집중하는 전략이 필요합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Same Query, Different Answer: Run-to-Run Variance in Semantic ...](https://arxiv.org/html/2610.13823)
+&gt; - [GitHub - semviews/sqp-variance-study: Same Query, Different ...](https://github.com/semviews/sqp-variance-study)
+&gt; - [Same Query, Different Answer: Run-to-Run Variance in Semantic ...](https://agentic-design.ai/zh/news-hub/same-query-different-answer-run-run-variance-semantic-query-processing-fcb104)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;이 논문은 그동안 학계가 비결정성(nondeterminism)을 얼마나 안일하게 취급해왔는지 적나라하게 보여주네요. 특히 온도 0에서도 결과가 튄다는 건, 우리가 믿고 인용하던 수많은 벤치마크 점수가 사실상 &#x27;확률적 운빨&#x27;에 불과했다는 뜻입니다. 재현성 없는 실험 결과가 과연 과학인가요? 당장 모든 벤치마크 보고 체계를 표준편차와 신뢰구간을 포함하는 방식으로 전면 수정해야 합니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 맞지만, 현장에서는 당장 내일 나갈 프로덕션이 문제예요. 실무에서 LLM을 DB 엔진에 태우는 순간, &#x27;일관성&#x27;이 깨진다는 건 알고 있었지만 이렇게 증폭되는 줄은 몰랐네요. 특히 LIMIT이나 집계 연산에서 2/3가 바뀐다는 건 서비스 장애나 다름없는데... 이제 모든 추론 결과를 캐싱하고, 재현 불가능한 연산은 아예 로직에서 배제하는 방향으로 설계 가이드를 다시 짜야겠습니다. 이거 엔지니어링 비용 엄청나겠는데요?&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 120만 개 로그 재분석이라니 저자들 정말 고생했네요! 이게 결국 AI 에이전트 시스템에서 &#x27;신뢰성&#x27;이 왜 중요한지 보여주는 핵심 근거가 될 것 같아요. 다들 RAG 시스템 고도화에만 매몰되어 있는데, 사실 이런 기초적인 연산 불확실성을 해결하는 게 &#x27;SOTA&#x27; 한 줄 올리는 것보다 훨씬 중요하지 않을까요? 오늘 세미나 주제는 이걸로 정했습니다. 교수님, 혹시 실험 재현할 때 클러스터 비용 좀 더 지원해주실 수 있나요?&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
