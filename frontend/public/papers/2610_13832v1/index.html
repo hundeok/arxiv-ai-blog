@@ -1,0 +1,71 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SpatialASM: 공간 추론을 위한 능동적 정신화 내재화 | ArXiv Translator AI</title><meta name="description" content="SpatialASM: 공간 추론을 위한 능동적 정신화 내재화"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2610_13832v1"><meta property="og:type" content="article"><meta property="og:title" content="SpatialASM: 공간 추론을 위한 능동적 정신화 내재화"><meta property="og:description" content="SpatialASM: 공간 추론을 위한 능동적 정신화 내재화"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2610_13832v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="SpatialASM: 공간 추론을 위한 능동적 정신화 내재화"><meta name="twitter:description" content="SpatialASM: 공간 추론을 위한 능동적 정신화 내재화"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2610_13832v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "SpatialASM: 공간 추론을 위한 능동적 정신화 내재화", "description": "SpatialASM: 공간 추론을 위한 능동적 정신화 내재화", "datePublished": "2026-10-09", "url": "https://arxiv-ai-blog.vercel.app/papers/2610_13832v1", "author": [{"@type": "Person", "name": "Yuhong Liu"}, {"@type": "Person", "name": "Shenxi Wu"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2610_13832v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2610_13832v1"});gtag('event', 'paper_view', {"paper_id": "2610_13832v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>SpatialASM: 공간 추론을 위한 능동적 정신화 내재화</h1><p>SpatialASM: 공간 추론을 위한 능동적 정신화 내재화</p><pre>SpatialASM: 공간 추론을 위한 능동적 정신화 내재화
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** SpatialASM: Internalizing Active Mentalization for Spatial Reasoning
+&gt; - **저자:** Yuhong Liu, Shenxi Wu, Junyi Chi, Beichen Zhang, Xuanlang Dai, Jiaqi Wang, Yuhang Zang, Dahua Lin
+&gt; - **발행일:** 2026-10-09
+&gt; - **PDF 링크:** [SpatialASM: Internalizing Active Mentalization for Spatial Reasoning](https://arxiv.org/pdf/2610.13832v1)
+
+
+✨ 3줄 핵심 요약
+* **능동적 공간 정신화(ASM)**: 대형 시각-언어 모델(LVLM)이 스스로 유용한 시점을 계획하고 해당 관점에서의 장면을 머릿속으로 상상해 공간 문제를 해결하는 능력을 의미합니다.
+* **SpatialASM 프레임워크**: 3D 공간 시뮬레이션을 통해 모델에게 관점 계획 및 시각적 상상력 훈련을 시켜 ASM 능력을 내재화하는 확장 가능한 학습 프레임워크입니다.
+* **성능 향상**: 7개 공간 추론 벤치마크에서 기존 모델 대비 향상된 정확도를 기록했으며, 공간적 사고의 사슬(Chain-of-Thought) 데이터를 생성하는 효과적인 경로를 제시했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+사람은 복잡한 공간을 이해할 때, 머릿속으로 위치를 옮겨 다니며 &quot;저기서 보면 어떻게 보일까?&quot;를 상상합니다. 기존의 시각-언어 모델들은 주어진 사진 속 관계만 수동적으로 읽어낼 뿐, 이런 &#x27;공간 상상력&#x27;이 부족했습니다. **SpatialASM**은 모델이 문제 해결에 필요한 시점을 스스로 결정하고, 그 위치에서 보이는 장면을 가상으로 시뮬레이션하도록 훈련하는 기술입니다. 이를 통해 모델은 단편적인 정보를 넘어, 3차원 공간 전체를 유기적으로 이해하는 능력을 갖추게 됩니다.
+
+🎯 배경 및 문제점
+* **기존 LVLM의 한계**: 관점 변환, 다중 시점 비교, 관찰되지 않은 영역 추론 등 복잡한 공간 문제 해결에 취약합니다.
+* **데이터 부족**: 현재의 데이터셋은 정답만 제공할 뿐, 정보를 얻기 위해 어떤 관점을 선택하고 어떻게 상상해야 하는지에 대한 &#x27;추론 과정(CoT)&#x27;이 결여되어 있습니다.
+* **직접 학습의 어려움**: 모델에게 스스로 추론 경로를 생성하게 하면 엉뚱한 시점을 계획하거나 장면을 환각(Hallucination)하는 문제가 발생합니다.
+
+💡 핵심 기술 및 아키텍처
+* **시점 계획(View Planning)**: 질문과 관찰 정보를 바탕으로 문제를 해결하는 데 결정적인 증거를 제공할 최적의 시점을 선택합니다.
+* **시점 상상(View Imagination)**: 선택된 시점에서 장면이 어떻게 보일지 3D로 머릿속에 재구성합니다.
+* **SpatialASM 프레임워크**:
+    1. **명시적 ASM 궤적**: 모델이 언제, 어떻게 관점을 탐색하고 상상할지 보여주는 학습 데이터를 제공합니다.
+    2. **관점 수용(Perspective-taking) 작업**: 시점 기반 장면 상상을 강화하는 자동 생성된 과제를 수행합니다.
+
+📊 실험 결과 분석
+* **범위**: 인식 중심의 공간 이해부터 다중 이미지 및 시점 변환이 필요한 고난도 작업까지 총 7개의 벤치마크에서 평가되었습니다.
+* **결과**: 4개의 LVLM 백본 모델 모두에서 공간 추론 성능 향상이 확인되었습니다.
+* **일반 능력 보존**: 기존 모델이 가지고 있던 일반적인 시각 인식 능력은 그대로 유지하면서 공간 추론 능력만 강화하는 데 성공했습니다.
+* **참고**: 원문 발췌에는 구체적인 수치(정확도 향상 폭 등)가 명시되어 있지 않습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **자율주행 및 로봇 공학**: 사각지대를 예측하고 로봇이 보지 못한 영역을 추론해야 하는 내비게이션 및 물체 조작 분야의 정밀도를 높일 수 있습니다.
+* **공간 지능의 진화**: 정적인 데이터 학습을 넘어, 스스로 가상 시점을 계획하고 시뮬레이션하는 &#x27;능동적 지능&#x27;으로의 발전을 이끌어, 더욱 현실적인 공간 인식이 가능해집니다.
+* **데이터 확장**: 수동으로 만들기 어려운 공간 추론 과정 데이터를 자동으로 생성할 수 있어, 모델 학습 효율을 비약적으로 높일 수 있는 확장 가능한 경로를 제공합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Paper page - SpatialASM: Internalizing Active Mentalization ...](https://huggingface.co/papers/2610.13832)
+&gt; - [SpatialASM: Internalizing Active Mentalization for Spatial ...](https://papers.cool/arxiv/2610.13832)
+&gt; - [SpatialASM: Internalizing Active Mentalization for Spatial ...](https://paperium.net/article/contact-us/25423/spatialasm-internalizing-active-mentalization-for-spatial-reasoning)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;이 논문의 핵심은 &#x27;능동적 정신화&#x27;를 모델 내부의 내재적 프로세스로 격상시켰다는 점인데, 과연 이게 실시간 추론 시점에서도 hallucination 없이 일관된 기하학적 정합성을 유지할 수 있을지가 의문입니다. 시점 계획(View Planning) 단계에서 최적의 시점을 선택하는 로직이 단순한 heuristic인지, 아니면 실제 3D 공간의 정보 엔트로피를 최소화하는 방향으로 설계된 것인지 추가 검증이 필요해 보이네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무 적용이 관건이죠. 3D 시뮬레이션 기반 학습은 모델 사이즈가 커질수록 추론 레이턴시가 기하급수적으로 뛸 텐데, 자율주행이나 로봇 제어 같은 edge 환경에서 이걸 어떻게 경량화해서 서빙할지가 숙제겠네요. 특히 &#x27;시점 상상&#x27; 과정에서 발생하는 연산 비용을 어떻게 최적화했는지, 실제 프로덕션 환경에서 돌려본 벤치마크 데이터가 더 나와야 할 것 같습니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;아니 다들 너무 진지하신 거 아니에요? ㅋㅋ 일단 &#x27;모델이 스스로 생각하고 관점을 바꾼다&#x27;는 것 자체가 폼 미쳤는데! CoT 데이터 자동 생성까지 가능하면, 기존 정적 데이터셋 의존하던 모델들 다 셧다운 각 아닌가요? 오늘 당장 코드 뜯어보고 우리 랩 세미나 발제 준비해야겠네요. 이거 조만간 SOTA 싹 다 갈아치울 것 같은 예감이 듭니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
