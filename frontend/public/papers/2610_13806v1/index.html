@@ -1,0 +1,71 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>산업용 추천 시스템에서의 특성 평가 및 폐기를 위한 운영 프레임워크: FORTE | ArXiv Translator AI</title><meta name="description" content="산업용 추천 시스템에서의 특성 평가 및 폐기를 위한 운영 프레임워크: FORTE"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2610_13806v1"><meta property="og:type" content="article"><meta property="og:title" content="산업용 추천 시스템에서의 특성 평가 및 폐기를 위한 운영 프레임워크: FORTE"><meta property="og:description" content="산업용 추천 시스템에서의 특성 평가 및 폐기를 위한 운영 프레임워크: FORTE"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2610_13806v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="산업용 추천 시스템에서의 특성 평가 및 폐기를 위한 운영 프레임워크: FORTE"><meta name="twitter:description" content="산업용 추천 시스템에서의 특성 평가 및 폐기를 위한 운영 프레임워크: FORTE"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2610_13806v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "산업용 추천 시스템에서의 특성 평가 및 폐기를 위한 운영 프레임워크: FORTE", "description": "산업용 추천 시스템에서의 특성 평가 및 폐기를 위한 운영 프레임워크: FORTE", "datePublished": "2026-10-09", "url": "https://arxiv-ai-blog.vercel.app/papers/2610_13806v1", "author": [{"@type": "Person", "name": "Vishnu Arun"}, {"@type": "Person", "name": "Adam Obeng"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2610_13806v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2610_13806v1"});gtag('event', 'paper_view', {"paper_id": "2610_13806v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>산업용 추천 시스템에서의 특성 평가 및 폐기를 위한 운영 프레임워크: FORTE</h1><p>산업용 추천 시스템에서의 특성 평가 및 폐기를 위한 운영 프레임워크: FORTE</p><pre>산업용 추천 시스템에서의 특성 평가 및 폐기를 위한 운영 프레임워크: FORTE
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** FORTE: A Production Framework for Feature Evaluation and Deprecation in Industrial Recommender Systems
+&gt; - **저자:** Vishnu Arun, Adam Obeng, Tianyou Wang, Zilin Ren, Mukuntha Narayanan Sundararaman, Han Wang, Shivin Thukral, Zhixiang Wang, Saurabh Vishwas Joshi, Darren Reger
+&gt; - **발행일:** 2026-10-09
+&gt; - **PDF 링크:** [FORTE: A Production Framework for Feature Evaluation and Deprecation in Industrial Recommender Systems](https://arxiv.org/pdf/2610.13806v1)
+
+
+✨ 3줄 핵심 요약
+- **비대칭성 해결:** 추천 시스템은 새로운 특성 추가는 쉽지만, 기존 특성 제거는 모델 성능 저하 우려로 인해 매우 어렵습니다.
+- **FORTE 도입:** 특성의 중요도를 매일 평가하고, 그룹화된 섭동(perturbation)을 통해 상호작용을 고려하며, 모델 계보를 추적하여 안전한 특성 제거를 지원합니다.
+- **성능 및 비용 개선:** 대규모 모델 적용 결과, 파라미터 수와 모델 크기를 줄이고 서빙 처리량을 향상시켜 운영 비용을 절감했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+추천 시스템을 운영하다 보면 수많은 &#x27;특성(feature)&#x27;이 모델에 추가되지만, 막상 쓸모없어진 특성을 제거하는 것은 매우 까다롭습니다. 어떤 모델에 어떤 영향을 미치는지, 다른 특성과 어떻게 상호작용하는지 알기 어렵기 때문입니다. FORTE는 특성의 중요도를 매일 자동으로 평가하고, 제거 후보군을 선별하며, 실제 제거 전 온라인 테스트를 거쳐 안전성을 검증합니다. 이를 통해 기업은 더 가볍고 효율적인 모델을 유지할 수 있습니다.
+
+🎯 배경 및 문제점
+- **특성 수명 주기 비대칭성:** 새로운 특성은 성능 향상만 입증하면 추가되지만, 제거 시에는 어떠한 지표도 퇴보해서는 안 된다는 더 엄격한 기준이 적용됩니다.
+- **제거의 난제:** 특성 간의 복잡한 상호작용, 데이터 드리프트, A/B 테스트 공간 부족, 여러 모델이 공유하는 특성 구조 등으로 인해 불필요한 특성을 삭제하는 우선순위를 정하기 어렵습니다.
+
+💡 핵심 기술 및 아키텍처
+- **효율적 섭동 구현:** 매일 특성 중요도를 평가하기 위한 효율적인 섭동(perturbation) 기법을 사용합니다.
+- **그룹화된 섭동 (Grouped Perturbation):** 단순히 개별 특성을 보는 것이 아니라, 중요도가 낮다고 판단된 후보군들을 그룹으로 묶어 평가함으로써 특성 간 상호작용을 고려합니다.
+- **계보 추적 (Lineage Tracing):** 해당 특성을 사용하는 하위 모델들을 모두 파악하여, 학습 데이터셋에서 특성을 제거할 때의 이점을 극대화합니다.
+- **오프라인 게이트:** 온라인 A/B 테스트 전 오프라인 환경에서 충분한 검증을 거쳐 위험을 차단합니다.
+
+📊 실험 결과 분석
+*주: 모델별 구체적인 성능 수치는 발췌문에 명시된 사례를 기준으로 합니다.*
+- **검색 관련성 모델:** 32, 48, 59개 특성으로 구성된 후보군을 평가하여 48개 특성(전체 특성의 43.2%)을 제거하는 데 성공했습니다.
+- **대규모 랭킹 모델:** 8개의 후보군을 성공적으로 제거하여 다음과 같은 성과를 보였습니다.
+    - 학습 가능한 파라미터 수 29.9% 감소
+    - 서빙 처리량 19.8%~25.5% 향상
+    - 연간 학습 비용 수십만 달러 절감
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+- **운영 효율화:** 모델 경량화를 통해 컴퓨팅 자원과 저장 공간을 절약할 수 있습니다.
+- **실무 적용:** Pinterest와 같은 대규모 시스템에서 모델의 성능을 유지하면서도 불필요한 복잡성을 제거하는 표준화된 워크플로우를 제공합니다.
+- **주의사항:** 특성 제거가 집계 지표상으로는 중립적일지라도, 특정 소수 집단에 미치는 영향(분포적 피해)을 간과할 수 있으므로 지리적, 언어적 파편화에 따른 모니터링이 병행되어야 합니다. 또한, 환경적 이점(에너지 절감 등)을 기대할 수는 있으나, 본 연구에서 에너지 관련 정량적 수치를 직접 측정하지는 않았습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [FORTE: A Production Framework for Feature Evaluation and Deprecation in ...](https://arxiv.org/html/2610.13806v1)
+&gt; - [FORTE: A Production Framework for Feature Evaluation and Deprecation in ...](https://www.catalyzex.com/paper/forte-a-production-framework-for-feature)
+&gt; - [FORTE: A Production Framework for Feature Evaluation and Deprecation in ...](https://www.one9founders.com/research/2610.13806)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문 자체는 실용적이지만, 그룹화된 섭동(Grouped Perturbation)을 통해 상호작용을 고려한다는 지점이 이론적으로 얼마나 견고한지 의문입니다. 특히 대규모 시스템에서 특성 간의 비선형적 상호작용을 매일 정적으로 평가하는 방식이, 급변하는 데이터 분포(Data Drift) 상황에서 과연 안정적인 일반화 성능을 보장할 수 있을까요? &#x27;분포적 피해&#x27;에 대한 언급은 좋으나, 방법론적으로는 여전히 실험주의적 접근에 머물러 있는 것 같아 아쉽군요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님, 현업에서는 &#x27;견고한 이론&#x27;보다 &#x27;안전하게 퇴사(제거)시키는 프로세스&#x27;가 훨씬 절실합니다. 매번 모델 성능 지표 소수점 단위로 깎일까 봐 썩은 피처(Dead Feature)를 1년 넘게 들고 가는 기술 부채가 얼마나 심각한지 아시잖습니까? 특히 서빙 처리량 25% 향상은 수치만 봐도 가슴이 웅장해지네요. 인프라 비용 절감 레포트 쓰기 딱 좋은 아키텍처라 바로 프로덕션에 적용해보고 싶습니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;아, 다들 진지하시네ㅋㅋ 저는 이거 보고 바로 깃헙 스타 찍었습니다. 사실 딥러닝 모델 커지는 것만 집중하지, 이렇게 &#x27;모델 비우기&#x27;를 표준화한 프레임워크는 드물잖아요? 핀터레스트가 썼다니까 신뢰도 급상승인데, 이거 기반으로 피처 중요도 시각화 대시보드 만들어서 다음 학회 낼 때 &#x27;피처 다이어트&#x27; 프레임워크라고 포장하면 꽤 힙할 것 같은데요? 교수님, 저 이거 랩 세미나 발제 자료로 써도 될까요?&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
