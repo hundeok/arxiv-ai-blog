@@ -52358,7 +52358,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-14T08:18:13.627196+00:00",
       "last_error": null,
-      "updated_at": "2026-10-14T08:18:13.627199+00:00",
+      "updated_at": "2026-10-14T14:15:44.180754+00:00",
       "paper": {
         "title": "LightVAE: Towards Compact and Efficient Video Autoencoders",
         "summary": "Latent diffusion models enable high-quality video generation, but video VAE encoding and decoding remain computationally expensive. Existing methods use stage-specific lightweight operators, yet either constrain spatial and temporal computation jointly or remove temporal computation altogether, without distinguishing their compression sensitivities in pretrained Conv3D. To address these limitations, we present LightVAE, a compression framework that exploits redundancy in temporal modeling and network depth. LightVAE exactly reparameterizes eligible causal Conv3D layers into an aggregate spatial response and a difference-driven temporal correction. Based on their distinct compression sensitivities, temporal low-rank compression (TLR) keeps the aggregate spatial kernel dense and applies layer-specific low-rank approximation only to the temporal correction. An algebraically equivalent folded implementation converts the arithmetic savings into practical acceleration. LightVAE further uses width-preserving block pruning to reduce depth and probe-guided feature alignment, guided by feedback from a frozen teacher suffix, to recover quality after compression. The framework also extends to video encoders. Across three video VAE backbones and two GPU platforms, LightVAE consistently accelerates decoding. For the Wan VAE family, it achieves up to $2.24\\times$ and $1.11\\times$ the decoding throughput of state-of-the-art efficient VAE decoders on NVIDIA H100 and RTX~5090, respectively, with higher DAVIS PSNR and lower LPIPS. On MiniMax-H3, it achieves up to $2.97\\times$ the original decoding throughput while retaining 99.51\\% of the original model's overall VBench-2.0 score. Our code is available at https://github.com/ModelTC/LightVAE.",
@@ -52421,7 +52421,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-14T08:18:13.627211+00:00",
       "last_error": null,
-      "updated_at": "2026-10-14T08:18:13.627213+00:00",
+      "updated_at": "2026-10-14T14:15:44.180791+00:00",
       "paper": {
         "title": "WorldRecon: Generative Multi-View Mesh Reconstruction for Large-Scale 3D World",
         "summary": "Reconstructing complete, high-quality meshes of large-scale scenes from unposed multi-view images requires faithful geometric grounding while plausibly completing surfaces that are unobserved or only sparsely captured. We present WorldRecon, a generative multi-view reconstruction framework for recovering complete, large-scale 3D scene meshes from unposed RGB images. WorldRecon uses a coarse, noisy global point cloud and camera poses estimated from the input images by a reconstruction model as a global scaffold for whole-scene generation and partitions it into overlapping spatial blocks. To robustly leverage these imperfect geometric priors, we equip the native 3D generative model TRELLIS.2 with a dedicated reconstruction-based conditioning architecture that generates each block from its local point-cloud crop and block-relevant image observations, producing sparse structure, detailed geometry, and PBR materials. To maintain scene-level coherence, we introduce neighbour-aware latent inpainting and a causal world-generation procedure that propagates structural, geometric, and material context across overlapping blocks. Together, these designs scale multi-view generative reconstruction to large-scale scenes, yielding coherent, unified meshes. Extensive experiments demonstrate that WorldRecon achieves state-of-the-art reconstruction performance, reducing Chamfer distance by 14.9% and 43.1% while improving F-score by 17.3% and 12.0% over the strongest baselines on synthetic and real-world indoor scenes, respectively, thereby demonstrating faithful and complete generative reconstruction as well as strong sim-to-real generalization. Project page: https://kszpxxzmc.github.io/WorldRecon-website/.",
@@ -52440,11 +52440,11 @@
     "2610_18272v1": {
       "id": "2610_18272v1",
       "filename": "post_2610_18272v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-10-14T08:18:13.627217+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-14T08:18:13.627219+00:00",
+      "updated_at": "2026-10-14T14:16:20.689018+00:00",
       "paper": {
         "title": "JevGPT: Thinking Fast and Slow in Autonomous Research",
         "summary": "Autonomous research agents must acquire and reason over evidence within a limited budget. Yet relevant sources can remain uninspected or unused, leaving a gap between retrieval coverage and the evidence that informs research. The challenge is to align fast local judgments with changing evidence needs and feed their findings back into research decisions. We introduce JevGPT, a dual-system architecture for autonomous research that couples fast evidence processing with deliberative research planning. System Two sets evidence objectives and integrates findings, while System One locates support, assesses relevance, and guides further inspection. Independent source judgments run in parallel; selected original passages inform the next research step. Experiments on fixed-corpus question answering and document ranking show that JevGPT achieves leading task performance, with faster completion and lower cost than comparably effective research agents. Evidence analysis shows broader source inspection and greater coverage of supporting documents in the research loop, highlighting efficient evidence processing as a route to more capable autonomous research.",
@@ -52465,7 +52465,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2610.18272v1"
       },
-      "priority_score": 34
+      "priority_score": 34,
+      "korean_title": "JevGPT: 자율 연구를 위한 빠르고 느린 사고 방식"
     },
     "2610_15765v1": {
       "id": "2610_15765v1",
@@ -52525,7 +52526,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-14T08:18:13.627236+00:00",
       "last_error": null,
-      "updated_at": "2026-10-14T08:18:13.627238+00:00",
+      "updated_at": "2026-10-14T14:15:44.180810+00:00",
       "paper": {
         "title": "4LC: 4D Latent Cache for Efficient Conditioning in Dynamic World Modeling",
         "summary": "For video generation in dynamic world modeling, observed static and dynamic content should be efficiently reused to provide conditions for repeated generation at different times and viewpoints. We introduce 4LC, a 4D latent cache with composite visual representations and a flexible spatiotemporal access interface. As a latent cache, 4LC directly reuses visual representations of static and dynamic content to provide generation conditions, avoiding per-request RGB rendering and re-encoding. As a composite cache, 4LC binds visual representations from multiple visual encoders (e.g., VAE, DINO, V-JEPA, VGGT) to shared geometry and motion, allowing the composite representations to describe the dynamic world with rich information. Besides, we design a flexible spatiotemporal interface, which directly reads the cache at independently specified times and viewpoints and combines readouts across observations, providing a common conditioning format for diverse downstream tasks. Building on 4LC, we develop 4LC-Video to address multiple video generation tasks through different configurations of source observations, spatiotemporal requests, and historical reuse, including camera control, temporal control, novel-view synthesis, scene revisits, and long-term generation. Our experiments show more efficient condition acquisition, effective spatiotemporal controllability, and scene consistency across tasks using a single 4LC-Video model without task-specific fine-tuning.",
@@ -52587,10 +52588,198 @@
       },
       "priority_score": 59,
       "korean_title": "DoubtLess: 효율적인 추론을 위한 학습 불필요 대비 디코딩"
+    },
+    "2610_16172v1": {
+      "id": "2610_16172v1",
+      "filename": "post_2610_16172v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-10-14T14:16:12.268345+00:00",
+      "paper": {
+        "title": "EventLens: Event-Structure Reinforcement Learning for Video Understanding",
+        "summary": "Recent multimodal large language models (MLLMs) achieve strong results on video question answering, yet often fail to recover the temporal structure that makes a video coherent. They may merge neighboring events, miss single-event progression, or infer implausible relations across events. We study structured temporal understanding as the ability to recover event structure from visual evidence, including event boundaries, single-event progression, and multi-event relations. We argue that this gap arises from a mismatch between current post-training objectives and temporal reasoning, where caption-style supervision allows models to rely on language shortcuts rather than visual temporal grounding. To address this, we propose EventLens, a vision-centric reinforcement learning framework that learns video understanding through event-structure recovery. Instead of reconstructing captions, EventLens trains models to recover temporal structure under controlled perturbations, such as altered temporal granularity, reversed progression, and shuffled event order. We instantiate this framework with a three-level temporal ontology and derive three verifiable task families: event segmentation, progression discrimination, and multi-event relation reasoning. These tasks admit deterministic rewards, enabling task-specialized GRPO training without human preference labels or learned reward models. We further introduce multi-teacher on-policy distillation (MT-OPD) to consolidate specialized policies into a unified model. Experiments on Qwen3-VL backbones show consistent improvements on temporal grounding and event-sensitive reasoning benchmarks, while preserving general video-QA performance. Learning curves further demonstrate that EventLens achieves comparable downstream transfer with significantly reduced training cost compared to direct mixed RL optimization.",
+        "published": "2026-10-12T04:46:04Z",
+        "authors": [
+          "Guowen Zhang",
+          "Boshen Xu",
+          "Zihao Yue",
+          "Ziheng Wang",
+          "Xiaokun Liu",
+          "Xin Tao",
+          "Wenyu Qin",
+          "Pengfei Wan",
+          "Qin Jin"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.16172v1"
+      },
+      "priority_score": 40,
+      "korean_title": "EventLens: 비디오 이해를 위한 이벤트 구조 강화 학습"
+    },
+    "2610_18092v1": {
+      "id": "2610_18092v1",
+      "filename": "post_2610_18092v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-10-14T14:15:54.553208+00:00",
+      "paper": {
+        "title": "LifeSearch: Benchmarking Deep Research Agents for Real-World Life and Productivity",
+        "summary": "Deep research (DR) agents address open-ended information needs through multi-step reasoning, long-horizon web search, and evidence synthesis. However, existing benchmarks primarily focus on academic research or synthetic tasks, leaving DR agents' capabilities in real-world life and professional productivity settings insufficiently evaluated. To bridge this gap, we introduce LifeSearch, a challenging benchmark comprising 203 Chinese and English tasks derived from real-user query seeds across 7 concrete life and productivity domains. With more than 4,500 hours of human annotation, we construct over 4,000 expert-written, fine-grained rubrics, covering both report-content criteria for coverage and accuracy and concrete criteria specifying values, units, dates, and URLs. We conduct extensive experiments on 12 advanced DR agents under a unified evaluation harness, systematically analyzing their performance patterns and failure modes. We find that even the best-performing frontier agent, GPT-5.6 Sol, achieves a score of only 63.4%, leaving substantial room for improvement on realistic life and professional DR tasks. We select the grading configuration by comparing candidate LLM judges against human rubric labels, and a human ranking study shows strong alignment between aggregate benchmark scores and human judgments (Spearman's $ρ= 0.89$, Kendall's $τ= 0.81$). LifeSearch provides a rigorous evaluation framework and foundation for advancing DR agents toward real-world life and productivity.",
+        "published": "2026-10-13T10:12:26Z",
+        "authors": [
+          "Yibo Wang",
+          "Senjie Jin",
+          "Yansong Ning",
+          "Xinbing Liang",
+          "Haotian Luo",
+          "Jiazheng Zhang",
+          "Yuxuan He",
+          "Will Wu",
+          " Clarenceai"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.18092v1"
+      },
+      "priority_score": 58,
+      "korean_title": "라이프서치: 실생활 및 생산성 분야의 심층 연구 에이전트 벤치마크"
+    },
+    "2610_12412v1": {
+      "id": "2610_12412v1",
+      "filename": "post_2610_12412v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-14T14:15:44.180797+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-14T14:15:44.180799+00:00",
+      "paper": {
+        "title": "WorldCast: Distributed Multiplayer World Models",
+        "summary": "Multiplayer world models must generate independently controlled views with consistent representations of both players and their shared environment. Most existing approaches coordinate multiple players through joint multi-view generation, whose cost grows with each additional player. We present WorldCast, a distributed multiplayer world model in which each player runs a local client comprising a video generator and a state model. Using recorded player positions and map geometry during training, the state model estimates the player's position from generated video and control inputs. Clients exchange player states and project them into camera-aligned player state fields that guide where and how other players are rendered. Shared scene state enables clients to reuse one another's generated observations to maintain consistent scene appearance across views. Experiments on Counter-Strike 2 demonstrate WorldCast's consistency, real-time performance, and distributed scalability. The camera-aligned player state field improves player rendering rates by over an order of magnitude over joint-generation methods, while shared scene state improves visual consistency over whole rounds. Each client runs in real time and exchanges only player and scene states, enabling scalable multiplayer generation without a centralized computational bottleneck. Image quality remains stable over hour-long rollouts.",
+        "published": "2026-10-08T17:49:44Z",
+        "authors": [
+          "Ziyang Ye",
+          "Junchao Huang",
+          "Evelyn Zhang",
+          "Zhihao Xie",
+          "Ruicheng Zhang",
+          "Boyao Han",
+          "Litao Ban",
+          "Ziye Wang",
+          "Xinting Hu",
+          "Shaoshuai Shi",
+          "Zhuotao Tian",
+          "Li Jiang"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.12412v1"
+      },
+      "priority_score": 17
+    },
+    "2610_15965v1": {
+      "id": "2610_15965v1",
+      "filename": "post_2610_15965v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-14T14:15:44.180804+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-14T14:15:44.180806+00:00",
+      "paper": {
+        "title": "Scaling Repeated-Data Pretraining: Batch Size, Regularization, and GPU-Time Tradeoffs",
+        "summary": "We study pretraining when compute is abundant but unique training data are finite, requiring repeated training on the same data. We first revisit infinite-compute pretraining (Kim et al. 2026) and show that its frontier depends critically on choices previously fixed or studied only in isolation. In particular, optimizing batch size together with epoch counts reveals a U-shaped relationship between validation loss and batch size, favoring smaller batches than typical pretraining, likely because small-batch gradient noise provides implicit regularization. We further find that training recipes, previously optimized under a single-pass assumption, can be tuned, e.g., repacking documents into new sequences every epoch, weight tying, and positive embedding weight decay.   We then relax the infinite-compute assumption. In particular, smaller-than-typical batch sizes can require prohibitively long sequential training, motivating to treat GPUs and time as separate resources. Tighter deadlines favor larger batches, and latency-oriented parallelism can trade additional GPUs for shorter training. Nevertheless, even under a fixed time budget, a smaller batch with fewer GPUs can achieve lower validation loss than a larger batch with more GPUs, challenging the common practice of increasing data parallelism to maximize GPU utilization under a deadline. Together, our results identify underexplored factors in repeated-data training and provide concrete guidance on how training recipes and resource allocation should change from single-pass pretraining.",
+        "published": "2026-10-11T22:42:39Z",
+        "authors": [
+          "Sewon Min"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.15965v1"
+      },
+      "priority_score": 19
+    },
+    "2610_18352v1": {
+      "id": "2610_18352v1",
+      "filename": "post_2610_18352v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-10-14T14:16:02.704458+00:00",
+      "paper": {
+        "title": "Let the Mind Conceive, Let the Hand Achieve: Following Multimodal Instructions for Long-Horizon Robotic Manipulation",
+        "summary": "A robot following a multi-step instruction needs to act on the right objects in the right order, even as the scene changes. It must also maintain awareness of task progress and determine when to advance. To address these challenges, we introduce Orchestra, an agent harness that separates task planning and execution management from action generation. Orchestra decomposes a complete multimodal instruction into ordered subtasks, tracks completed steps, and updates the locations of relevant objects and destinations during execution. It maintains a shared context containing the active subtask, spatial grounding, and recent observations. An action policy uses this context to generate actions, while a separately trained progress evaluator estimates when to advance to the next subtask. To evaluate whether robots trained on atomic instructions and short trajectories can execute longer subtask sequences, we introduce a benchmark named RMBench-Compose. Orchestra achieves a mean success rate of $68.22\\%$ across nine RMBench tasks, outperforming Mem-0 by $26.22$ percentage points. On RMBench-Compose, it achieves an Average Success Length (ASL) of $7.35$ subtasks, $2.46$ times that of HarnessVLA. Across four real-world multi-step tasks, it improves mean ASL by $25.0\\%$ over Orchestra using the base $π_{0.5}$ policy. These results show that Orchestra helps robots carry out longer sequences of subtasks while preserving the requested subtask order and acting on the specified objects. Our code and project page are available at https://youpengwen.github.io/Orchestra.",
+        "published": "2026-10-13T13:20:59Z",
+        "authors": [
+          "Youpeng Wen",
+          "Gang Wang",
+          "Tianyu Huang",
+          "Weiwei Zhang",
+          "Zhijian Huang",
+          "Wei Chen",
+          "Xieyuanli Chen",
+          "Yunhui Liu"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.18352v1"
+      },
+      "priority_score": 49,
+      "korean_title": "마음이 구상하고 손이 실현하게 하라: 장기 로봇 조작을 위한 다중 모달 명령 수행"
+    },
+    "2610_18774v1": {
+      "id": "2610_18774v1",
+      "filename": "post_2610_18774v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-14T14:15:44.180823+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-14T14:15:44.180825+00:00",
+      "paper": {
+        "title": "GreenWAM: A World Foundation Model for Robotics",
+        "summary": "A robot needs a world model that predicts how its actions will change the scene and a policy that chooses those actions. Models are usually built and evaluated for only one of these roles, and every robot records its actions in its own format. We ask whether one robot world model can serve both roles across different bodies, and what makes this work. We present GreenWAM, a world foundation model for robotics, together with the recipe that produces it: (1) a shared anatomical action space that describes 20 robot families, from bimanual arms to dexterous humanoids, in common joint coordinates; (2) joint training on these families in visual, action-conditioned and world-action modes; and (3) policies that split an action expert off the generator. As a world model, GreenWAM attains top-tier trajectory, depth and 3D accuracy on WorldArena 1.0, ahead of every world-action model and video generator in our comparison. As a policy, it scores among the top entries of the RoboTwin 2.0 leaderboard, reaches the highest zero-shot LIBERO-plus success among the compared methods and is competitive with dedicated vision-language-action and world-action policies on CALVIN and LIBERO. We further adapt GreenWAM to a real humanoid, where it succeeds more often than policies adapted from $π_{0.5}$ and from Cosmos 3 Edge, and distill it into a single-step policy for real-time control. Controlled experiments yield three findings: robot specialization improves world prediction and control together; an action expert helps when split off at the start of adaptation; and keeping world-model modes during policy adaptation preserves robustness to scene changes.",
+        "published": "2026-10-13T17:31:29Z",
+        "authors": [
+          "Gennady Sidorov",
+          "Valerii Kornilov",
+          "Denis Grankin",
+          "Polina Fedotova",
+          "Aleksey Postnikov"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.18774v1"
+      },
+      "priority_score": 20
+    },
+    "2610_16985v1": {
+      "id": "2610_16985v1",
+      "filename": "post_2610_16985v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-14T14:15:44.180829+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-14T14:15:44.180831+00:00",
+      "paper": {
+        "title": "AUGUstus: Autonomous Driving VLA Model with Unified Generation and Understanding",
+        "summary": "Vision-language-action (VLA) models show strong potential for end-to-end autonomous driving by leveraging world knowledge and understanding to excel in long-tail scenarios. However, current VLAs have two limitations: 1) Degeneration into vision-action (VA) models. For low latency, regression/flow-based methods directly generate actions but underuse VLM understanding, causing unsafe, unexplainable actions. 2) Autoregressive high latency. Autoregressive methods sequentially generate chain-of-thought (CoT) and action tokens, fully leveraging VLM understanding, but high latency hinders deployment. To enable low-latency deployment while using CoT to assist action generation, we propose AUGUstus, an Autonomous-driving VLA model with Unified Generation and Understanding. We unify diffusion-based action generation and autoregressive CoT understanding in one model, where understanding only serves generation. Joint CoT supervision preserves VLM spatial understanding in shared representation for safer, more accurate trajectories. AUGUstus-mode orders action generation before CoT, so CoT supervises reliable actions during training while inference needs only action output, enabling low latency. AUGUstus-GRPO, a unified GRPO algorithm, jointly optimizes action and CoT, improving action performance. Experiments show AUGUstus achieves 94.6 PDMS on NAVSIMv1 and 90.7 EPDMS on NAVSIMv2, SOTA planning without scorer module. On nuScenes, it achieves average L2 error 0.27 m and average collision rate 0.05%, best among compared methods. To validate AUGUstus practicality, we train on in-house data with 512 NVIDIA H800 GPUs for ~2 days, evaluate on an internal 1,000 km dataset, and preliminarily deploy on a real vehicle, achieving 12 Hz operation. Project page: https://augustus-ad.github.io",
+        "published": "2026-10-12T15:42:09Z",
+        "authors": [
+          "Yuqi Ye",
+          "Caigao Jiang",
+          "Zhuonan Wang",
+          "Congyuan Pei",
+          "Chao Qu",
+          "Changhao Peng",
+          "Junhong Lin",
+          "Qize Yu",
+          "Zetian Song",
+          "Guangzhao Fu",
+          "Chongruo Wu",
+          "Shiyu Huang",
+          "Shuchang Zhou",
+          "Honggou Yang",
+          "Wei Gao"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.16985v1"
+      },
+      "priority_score": 20
     }
   },
   "last_run": {
-    "started_at": "2026-10-14T08:18:13.632824+00:00",
+    "started_at": "2026-10-14T14:15:44.186531+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -52601,25 +52790,25 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 20715,
-      "output_tokens": 5881,
+      "prompt_tokens": 19554,
+      "output_tokens": 5677,
       "thought_tokens": 0,
-      "total_tokens": 26596,
-      "estimated_usd": 0.01400025
+      "total_tokens": 25231,
+      "estimated_usd": 0.013404
     },
-    "finished_at": "2026-10-14T08:19:07.602588+00:00"
+    "finished_at": "2026-10-14T14:16:22.170897+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 3332,
-    "prompt_tokens": 8406710,
-    "output_tokens": 2453340,
+    "requests": 3340,
+    "prompt_tokens": 8426264,
+    "output_tokens": 2459017,
     "thought_tokens": 0,
-    "total_tokens": 10860050,
-    "estimated_usd": 5.7816875
+    "total_tokens": 10885281,
+    "estimated_usd": 5.7950915
   },
   "last_publication_run": {
-    "started_at": "2026-10-14T08:18:13.632824+00:00",
+    "started_at": "2026-10-14T14:15:44.186531+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -52630,17 +52819,17 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 20715,
-      "output_tokens": 5881,
+      "prompt_tokens": 19554,
+      "output_tokens": 5677,
       "thought_tokens": 0,
-      "total_tokens": 26596,
-      "estimated_usd": 0.01400025
+      "total_tokens": 25231,
+      "estimated_usd": 0.013404
     },
-    "finished_at": "2026-10-14T08:19:07.602588+00:00"
+    "finished_at": "2026-10-14T14:16:22.170897+00:00"
   },
   "daily_usage": {
     "date": "2026-10-14",
-    "estimated_usd": 0.0285985,
-    "publications": 8
+    "estimated_usd": 0.0420025,
+    "publications": 12
   }
 }
