@@ -1,0 +1,75 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>단어에서 세계로: 상호작용 가능한 물리 환경에서의 대규모 언어 모델 벤치마킹 | ArXiv Translator AI</title><meta name="description" content="단어에서 세계로: 상호작용 가능한 물리 환경에서의 대규모 언어 모델 벤치마킹"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2610_15228v1"><meta property="og:type" content="article"><meta property="og:title" content="단어에서 세계로: 상호작용 가능한 물리 환경에서의 대규모 언어 모델 벤치마킹"><meta property="og:description" content="단어에서 세계로: 상호작용 가능한 물리 환경에서의 대규모 언어 모델 벤치마킹"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2610_15228v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="단어에서 세계로: 상호작용 가능한 물리 환경에서의 대규모 언어 모델 벤치마킹"><meta name="twitter:description" content="단어에서 세계로: 상호작용 가능한 물리 환경에서의 대규모 언어 모델 벤치마킹"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2610_15228v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "단어에서 세계로: 상호작용 가능한 물리 환경에서의 대규모 언어 모델 벤치마킹", "description": "단어에서 세계로: 상호작용 가능한 물리 환경에서의 대규모 언어 모델 벤치마킹", "datePublished": "2026-10-10", "url": "https://arxiv-ai-blog.vercel.app/papers/2610_15228v1", "author": [{"@type": "Person", "name": "Xinnan Dai"}, {"@type": "Person", "name": "Kaiqi Yang"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2610_15228v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2610_15228v1"});gtag('event', 'paper_view', {"paper_id": "2610_15228v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>단어에서 세계로: 상호작용 가능한 물리 환경에서의 대규모 언어 모델 벤치마킹</h1><p>단어에서 세계로: 상호작용 가능한 물리 환경에서의 대규모 언어 모델 벤치마킹</p><pre>단어에서 세계로: 상호작용 가능한 물리 환경에서의 대규모 언어 모델 벤치마킹
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Words to World: Benchmarking LLMs in Interactive Physical Environments
+&gt; - **저자:** Xinnan Dai, Kaiqi Yang, Yaxin Li, Cheng Luo, Wanli Li, Mingqing Xiao, Xinyang Jiang, Daoan Zhang, Kaitao Song, Fengze Liu, Zefan Cai, Caihua Shan
+&gt; - **발행일:** 2026-10-10
+&gt; - **PDF 링크:** [Words to World: Benchmarking LLMs in Interactive Physical Environments](https://arxiv.org/pdf/2610.15228v1)
+
+
+✨ 3줄 핵심 요약
+- LLM이 물리적 세계를 얼마나 효과적으로 제어하고 상호작용하는지 평가하는 새로운 벤치마크 &#x27;W2W-Bench&#x27;를 제안합니다.
+- 로봇 팔, 카메라, 센서가 포함된 폐쇄 루프 시스템에서 LLM이 도구 선택, 공간 추론, 피드백 기반 수정을 수행하는 능력을 측정합니다.
+- 실험 결과, LLM은 상태 변화 환각, 예상치 못한 상황에서의 복구 능력 부족, 장기 계획의 불안정성 등 물리 환경에서의 한계를 보였습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+대규모 언어 모델(LLM)은 이제 단순히 글을 쓰는 것을 넘어, 도구를 사용하고 실제 기기를 조작하는 단계에 이르렀습니다. 하지만 기존 평가는 정적인 텍스트나 가상 환경에 치중되어 있어, 예측 불가능하고 복잡한 &#x27;현실 물리 환경&#x27;에서의 진짜 성능을 측정하기 어려웠습니다. 이 논문은 LLM이 로봇 팔 같은 실제 장비를 얼마나 잘 다루는지 평가합니다. 모델이 명령을 내리고, 물리적인 결과를 카메라와 센서로 확인한 뒤, 상황에 맞춰 다음 계획을 수정하는 &#x27;피드백 루프&#x27; 능력을 중점적으로 테스트합니다.
+
+🎯 배경 및 문제점
+디지털 환경에서의 성공이 물리적 환경으로 그대로 이어지지는 않습니다. 단순히 도구를 호출할 수 있다고 해서 그 결과가 성공적임을 보장하지 않기 때문입니다. 현재의 모델들은 다음과 같은 문제에 직면해 있습니다.
+- **실시간 피드백 처리 부족:** 기기에서 얻은 데이터를 정확히 해석하고 자신의 계획에 반영하는 능력 미흡.
+- **물리적 환경의 불확실성:** 정적인 데이터와 달리 실물은 예기치 못한 결과가 발생하며, 이를 복구하는 능력이 중요함.
+- **통합적 평가 기준 부재:** 언어적 추론과 물리적 실행을 결합한 폐쇄 루프 시스템을 체계적으로 검증할 지표가 부족함.
+
+💡 핵심 기술 및 아키텍처
+제안된 벤치마크는 4가지 핵심 차원을 기준으로 모델을 평가합니다:
+1. **3D 공간 이해:** 물리적 공간 구조 파악 능력.
+2. **시간적 이해:** 작업 순서 및 상태 변화의 흐름 파악.
+3. **고수준 계획:** 최종 목표 달성을 위한 전략 수립.
+4. **저수준 실행:** 실제 기기 제어 명령 생성 및 피드백 기반 수정.
+
+이 시스템은 모델이 환경으로부터 물리적 피드백을 받아 상태 추정치를 업데이트하고, 계획을 수정하며 실행 오류를 바로잡는 전체 과정을 평가합니다.
+
+📊 실험 결과 분석
+대표적인 LLM들을 대상으로 실험한 결과, 다음과 같은 주요 실패 패턴이 발견되었습니다:
+- **상태 변화 환각:** 실제 물리적 상태가 변하지 않았음에도 변했다고 잘못 인지하는 현상.
+- **복구 능력 저하:** 예상치 못한 결과가 발생했을 때 이를 해결하고 계획을 재수정하는 데 어려움을 겪음.
+- **장기 계획의 불안정성:** 작업이 길어질수록 계획이 틀어지고 불안정한 상태를 보임.
+*(주: 본 발췌문에는 구체적인 모델명별 실험 수치나 점수는 기재되어 있지 않으며, 현상 중심의 분석 결과만 포함되어 있습니다.)*
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+- **AI 에이전트의 실용성 검증:** LLM 기반 에이전트가 실험실 자동화, 로봇 제어, 스마트 홈 관리 등 현실 세계에 실질적으로 투입될 수 있는 토대를 마련합니다.
+- **기술 개발 가이드라인:** 도구 호출을 넘어 &#x27;현실 결과 검증&#x27;의 중요성을 강조함으로써, 더 안전하고 신뢰할 수 있는 물리 지능형 AI 설계 방향을 제시합니다.
+- **연구 표준 제시:** 생물학 실험실 자동화나 복잡한 조립 작업과 같은 구체적인 물리적 작업군에서의 성능을 표준화하여 평가할 수 있게 합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Words to World: Benchmarking LLMs in Interactive Physical Environments](https://arxiv.org/abs/2610.15228)
+&gt; - [Words to World: Benchmarking LLMs in Interactive Physical Environments](https://openreview.net/forum?id=cgRogI62Gr)
+&gt; - [Words to World: Benchmarking LLMs in Interactive Physical Environments](https://arxivsignals.io/papers/2610.15228)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;W2W-Bench가 제안한 &#x27;폐쇄 루프 시스템&#x27;에서의 검증 방식은 시의적절하나, 실무적 관점에서 &#x27;상태 변화 환각&#x27; 문제는 근본적인 모델 구조의 한계라 봅니다. 단순 확률적 토큰 예측이 어떻게 물리적 인과관계를 완벽히 투영할 수 있겠습니까? 비전-언어 모델(VLM)과 물리 엔진의 결합이 선행되지 않는 한, 이 벤치마크 점수가 실제 로봇 제어의 신뢰도를 보장하긴 어렵겠군요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로입니다. 현업에서는 LLM이 &#x27;계획&#x27;은 그럴듯하게 짜는데, 실제 현장에서 센서 노이즈 하나만 튀어도 에러 핸들링이 안 돼서 멈춰버리는 게 태반이거든요. 특히 장기 계획에서의 불안정성은 프로덕션 환경에서 치명적인데, 이 논문이 제시한 복구 능력 평가 항목은 실무자들이 모델 선택할 때 아주 유용한 잣대가 될 것 같네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 선배님들 의견 다 맞아요! 하지만 지금 학계 트렌드는 이 &#x27;환각&#x27;조차도 강화학습(RL)이나 실시간 피드백 루프를 통해 Fine-tuning으로 해결하려는 움직임이 크거든요. W2W-Bench 나오자마자 제 랩실에서도 바로 베이스라인 돌려보고 있는데, 진짜 물리 환경이랑 텍스트 사이의 괴리가 생각보다 훨씬 커서 놀랐습니다. 이거 뚫으면 바로 ICLR 메인 타겟인데, 빨리 연구 결과 내서 논문 하나 더 뽑아야겠네요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

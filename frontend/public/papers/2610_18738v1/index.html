@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>근접 KL 규제를 통한 오프라인 강화학습에서의 토큰 단위 중요도 샘플링 활성화 | ArXiv Translator AI</title><meta name="description" content="근접 KL 규제를 통한 오프라인 강화학습에서의 토큰 단위 중요도 샘플링 활성화"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2610_18738v1"><meta property="og:type" content="article"><meta property="og:title" content="근접 KL 규제를 통한 오프라인 강화학습에서의 토큰 단위 중요도 샘플링 활성화"><meta property="og:description" content="근접 KL 규제를 통한 오프라인 강화학습에서의 토큰 단위 중요도 샘플링 활성화"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2610_18738v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="근접 KL 규제를 통한 오프라인 강화학습에서의 토큰 단위 중요도 샘플링 활성화"><meta name="twitter:description" content="근접 KL 규제를 통한 오프라인 강화학습에서의 토큰 단위 중요도 샘플링 활성화"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2610_18738v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "근접 KL 규제를 통한 오프라인 강화학습에서의 토큰 단위 중요도 샘플링 활성화", "description": "근접 KL 규제를 통한 오프라인 강화학습에서의 토큰 단위 중요도 샘플링 활성화", "datePublished": "2026-10-13", "url": "https://arxiv-ai-blog.vercel.app/papers/2610_18738v1", "author": [{"@type": "Person", "name": "Hao Bai"}, {"@type": "Person", "name": "Jiarui Yao"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2610_18738v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2610_18738v1"});gtag('event', 'paper_view', {"paper_id": "2610_18738v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>근접 KL 규제를 통한 오프라인 강화학습에서의 토큰 단위 중요도 샘플링 활성화</h1><p>근접 KL 규제를 통한 오프라인 강화학습에서의 토큰 단위 중요도 샘플링 활성화</p><pre>근접 KL 규제를 통한 오프라인 강화학습에서의 토큰 단위 중요도 샘플링 활성화
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Enabling Token-wise Importance Sampling in Off-Policy RLVR with Proximal KL Regularization
+&gt; - **저자:** Hao Bai, Jiarui Yao, Tong Zhang
+&gt; - **발행일:** 2026-10-13
+&gt; - **PDF 링크:** [Enabling Token-wise Importance Sampling in Off-Policy RLVR with Proximal KL Regularization](https://arxiv.org/pdf/2610.18738v1)
+
+
+✨ 3줄 핵심 요약
+- 오프라인 강화학습(RLVR)에서 발생하는 정책 불일치 문제를 해결하기 위해 &#x27;Proximal KL&#x27; 기법을 제안했습니다.
+- 토큰 단위 중요도 샘플링을 활용하면서도, 기존 PPO 클리핑 대신 미래 KL 신뢰도를 반영하여 안정적이고 정확한 최적화를 달성합니다.
+- 8개의 수학 벤치마크 실험 결과, 기존 GRPO 대비 마이크로 평균 정확도가 최대 2.58% 향상되었습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+강화학습 모델(LLM 등)을 학습시킬 때, 모델이 생성한 데이터(응답)를 재사용하면 &#x27;오프라인 불일치&#x27; 현상이 발생합니다. 보통 이를 보정하기 위해 토큰마다 중요도를 곱하는데, 이는 학습을 불안정하게 만드는 경향이 있습니다. 본 연구는 &#x27;Proximal KL&#x27;이라는 새로운 방식을 통해 이 문제를 해결했습니다. 학습 과정에서 기준 정책을 고정하고 미래의 KL 발산 값을 반영함으로써, 별도의 복잡한 비평가(Critic) 모델 없이도 더 정확하고 빠르게 학습을 수렴시켰습니다.
+
+🎯 배경 및 문제점
+- **RLVR의 오프라인 데이터 문제:** 비동기식 생성이나 과거 정책으로 생성된 응답을 재사용할 때 학습 정책과 생성 정책 간의 불일치가 발생합니다.
+- **토큰 단위 중요도의 한계:** 응답 전체의 중요도를 곱하는 방식은 긴 문장에서 분산이 너무 커지고, 토큰 단위로 보정하는 방식은 편향(Bias)이 발생하기 쉽습니다.
+- **기존 방식의 불안정성:** 기존의 PPO 클리핑이나 GRPO 방식은 학습 도중 성능이 급락(Training collapse)하는 현상이 관찰되기도 합니다.
+
+💡 핵심 기술 및 아키텍처
+- **Proximal KL:** 근접 참조 정책(Proximal reference)을 최적화 과정에서 고정하고, 학습 정책과의 차이를 KL 발산으로 규제합니다.
+- **미래 KL 신뢰도(Future KL Credit):** 일반적인 PPO의 클리핑 방식 대신, 미래의 KL 정보를 반영하여 토큰 단위의 보정을 수행함으로써 기울기(Gradient)의 정확도를 높입니다.
+- **독립적 설계:** 별도의 가치 함수(Critic)를 학습시킬 필요 없이 정책만을 최적화하며, 샘플링 정책과 참조 정책을 분리하여 효율성을 극대화했습니다.
+
+📊 실험 결과 분석
+- **성능 향상:** Qwen3-1.7B 및 4B 모델을 사용하여 8개의 수학 벤치마크에서 검증한 결과, GRPO 대비 마이크로 평균 정확도가 최대 2.58% 상승했습니다.
+- **학습 안정성:** 정기적으로 정책을 갱신하는 환경에서 PG나 CISPO 방식에서 나타나는 성능 급락 현상을 피하고, 더 적은 업데이트 횟수로 더 높은 정확도에 도달했습니다.
+- **어블레이션 연구:** 토큰 단위 보정이 문장 단위 보정이나 보정 없는 방식보다 우수함을 확인했습니다. 또한, 미래 비용 범위(Future cost horizon)를 적절히 설정할수록 성능이 개선되었습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+- **효율적인 모델 학습:** 검증 가능한 보상(Verifiable rewards)이 있는 수학, 코딩 등 복잡한 추론 작업에서 LLM의 성능을 더욱 효율적으로 높일 수 있습니다.
+- **학습 자원 절감:** 응답 재사용(Response reuse)을 안정화함으로써, 학습 데이터를 다시 생성할 필요 없이 기존 데이터를 활용하여 모델의 업데이트 효율을 높일 수 있습니다.
+- **실무 적용:** 모델 학습 시 데이터 재사용이 빈번한 대규모 학습 파이프라인에서 훈련 안정성을 보장하고 하이퍼파라미터 민감도를 줄이는 강력한 도구로 활용될 수 있습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Enabling Token-wise Importance Sampling in Off-Policy RLVR with ...](https://huggingface.co/papers/2610.18738)
+&gt; - [Fugu-MT 論文翻訳 (概要): Enabling Token-wise Importance Sampling in Off ...](https://fugumt.com/fugumt/paper_check/2610.18738v1)
+&gt; - [Recent AI research papers | Papers with Code](https://paperswithcode.co/papers/recent)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;이 논문에서 제안한 &#x27;Proximal KL&#x27;은 이론적으로는 깔끔해 보이나, 결국 미래 KL 신뢰도 추정 과정에서 발생하는 편향(Bias)을 어떻게 완벽히 제어할 것인지에 대한 수학적 엄밀함이 부족합니다. 특히 토큰 단위 중요도 샘플링 시 발생하는 분산 문제 해결책이 단순히 KL 규제로만 충분한지 의문이 드는군요. GRPO 대비 2.58% 향상이 과연 아키텍처의 혁신인지, 단순히 하이퍼파라미터 튜닝의 결과인지 추가 검증이 필요합니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 일리가 있지만, 실무자 입장에서 &#x27;Critic 모델 없이 정책만 최적화&#x27;한다는 건 축복입니다. 대규모 학습 파이프라인에서 Critic 모델 하나 더 띄우는 게 얼마나 리소스 낭비인지 아시잖아요. 특히 GRPO 돌릴 때마다 터지는 Training collapse 때문에 밤새는 게 일상인데, 이 방식이 안정성만 확실히 담보해준다면 현업 도입 가치는 충분합니다. 당장 다음 스프린트 때 프로토타입 테스트 해봐야겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;두 분 다 너무 진지하신 거 아닌가요? 지금 학계는 &#x27;어떻게 하면 데이터를 덜 만들고 기존 데이터로 쥐어짜느냐&#x27;가 핵심인데, 이 논문은 딱 그 트렌드를 저격했네요! 미래 KL 신뢰도 개념이라니, 아이디어 정말 힙하지 않나요? 2.58% 향상이면 벤치마크 킬러로 쓰기 딱 좋겠어요. 오늘 당장 논문 구현된 거 있는지 GitHub 뒤져보고 내일 세미나 때 발표 자료로 써먹어야겠습니다. 다들 뒤처지지 마세요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

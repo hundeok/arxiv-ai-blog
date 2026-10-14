@@ -52354,11 +52354,11 @@
     "2610_14726v1": {
       "id": "2610_14726v1",
       "filename": "post_2610_14726v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-10-14T08:18:13.627196+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-14T14:15:44.180754+00:00",
+      "updated_at": "2026-10-14T19:07:52.293469+00:00",
       "paper": {
         "title": "LightVAE: Towards Compact and Efficient Video Autoencoders",
         "summary": "Latent diffusion models enable high-quality video generation, but video VAE encoding and decoding remain computationally expensive. Existing methods use stage-specific lightweight operators, yet either constrain spatial and temporal computation jointly or remove temporal computation altogether, without distinguishing their compression sensitivities in pretrained Conv3D. To address these limitations, we present LightVAE, a compression framework that exploits redundancy in temporal modeling and network depth. LightVAE exactly reparameterizes eligible causal Conv3D layers into an aggregate spatial response and a difference-driven temporal correction. Based on their distinct compression sensitivities, temporal low-rank compression (TLR) keeps the aggregate spatial kernel dense and applies layer-specific low-rank approximation only to the temporal correction. An algebraically equivalent folded implementation converts the arithmetic savings into practical acceleration. LightVAE further uses width-preserving block pruning to reduce depth and probe-guided feature alignment, guided by feedback from a frozen teacher suffix, to recover quality after compression. The framework also extends to video encoders. Across three video VAE backbones and two GPU platforms, LightVAE consistently accelerates decoding. For the Wan VAE family, it achieves up to $2.24\\times$ and $1.11\\times$ the decoding throughput of state-of-the-art efficient VAE decoders on NVIDIA H100 and RTX~5090, respectively, with higher DAVIS PSNR and lower LPIPS. On MiniMax-H3, it achieves up to $2.97\\times$ the original decoding throughput while retaining 99.51\\% of the original model's overall VBench-2.0 score. Our code is available at https://github.com/ModelTC/LightVAE.",
@@ -52375,7 +52375,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2610.14726v1"
       },
-      "priority_score": 30
+      "priority_score": 30,
+      "korean_title": "LightVAE: 비디오 오토인코더를 위한 경량화 및 효율화 연구"
     },
     "2610_18615v1": {
       "id": "2610_18615v1",
@@ -52596,7 +52597,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-14T14:16:12.268345+00:00",
+      "updated_at": "2026-10-14T19:07:06.521809+00:00",
       "paper": {
         "title": "EventLens: Event-Structure Reinforcement Learning for Video Understanding",
         "summary": "Recent multimodal large language models (MLLMs) achieve strong results on video question answering, yet often fail to recover the temporal structure that makes a video coherent. They may merge neighboring events, miss single-event progression, or infer implausible relations across events. We study structured temporal understanding as the ability to recover event structure from visual evidence, including event boundaries, single-event progression, and multi-event relations. We argue that this gap arises from a mismatch between current post-training objectives and temporal reasoning, where caption-style supervision allows models to rely on language shortcuts rather than visual temporal grounding. To address this, we propose EventLens, a vision-centric reinforcement learning framework that learns video understanding through event-structure recovery. Instead of reconstructing captions, EventLens trains models to recover temporal structure under controlled perturbations, such as altered temporal granularity, reversed progression, and shuffled event order. We instantiate this framework with a three-level temporal ontology and derive three verifiable task families: event segmentation, progression discrimination, and multi-event relation reasoning. These tasks admit deterministic rewards, enabling task-specialized GRPO training without human preference labels or learned reward models. We further introduce multi-teacher on-policy distillation (MT-OPD) to consolidate specialized policies into a unified model. Experiments on Qwen3-VL backbones show consistent improvements on temporal grounding and event-sensitive reasoning benchmarks, while preserving general video-QA performance. Learning curves further demonstrate that EventLens achieves comparable downstream transfer with significantly reduced training cost compared to direct mixed RL optimization.",
@@ -52624,7 +52625,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-14T14:15:54.553208+00:00",
+      "updated_at": "2026-10-14T19:07:06.521815+00:00",
       "paper": {
         "title": "LifeSearch: Benchmarking Deep Research Agents for Real-World Life and Productivity",
         "summary": "Deep research (DR) agents address open-ended information needs through multi-step reasoning, long-horizon web search, and evidence synthesis. However, existing benchmarks primarily focus on academic research or synthetic tasks, leaving DR agents' capabilities in real-world life and professional productivity settings insufficiently evaluated. To bridge this gap, we introduce LifeSearch, a challenging benchmark comprising 203 Chinese and English tasks derived from real-user query seeds across 7 concrete life and productivity domains. With more than 4,500 hours of human annotation, we construct over 4,000 expert-written, fine-grained rubrics, covering both report-content criteria for coverage and accuracy and concrete criteria specifying values, units, dates, and URLs. We conduct extensive experiments on 12 advanced DR agents under a unified evaluation harness, systematically analyzing their performance patterns and failure modes. We find that even the best-performing frontier agent, GPT-5.6 Sol, achieves a score of only 63.4%, leaving substantial room for improvement on realistic life and professional DR tasks. We select the grading configuration by comparing candidate LLM judges against human rubric labels, and a human ranking study shows strong alignment between aggregate benchmark scores and human judgments (Spearman's $ρ= 0.89$, Kendall's $τ= 0.81$). LifeSearch provides a rigorous evaluation framework and foundation for advancing DR agents toward real-world life and productivity.",
@@ -52652,7 +52653,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-14T14:15:44.180797+00:00",
       "last_error": null,
-      "updated_at": "2026-10-14T14:15:44.180799+00:00",
+      "updated_at": "2026-10-14T19:07:06.521834+00:00",
       "paper": {
         "title": "WorldCast: Distributed Multiplayer World Models",
         "summary": "Multiplayer world models must generate independently controlled views with consistent representations of both players and their shared environment. Most existing approaches coordinate multiple players through joint multi-view generation, whose cost grows with each additional player. We present WorldCast, a distributed multiplayer world model in which each player runs a local client comprising a video generator and a state model. Using recorded player positions and map geometry during training, the state model estimates the player's position from generated video and control inputs. Clients exchange player states and project them into camera-aligned player state fields that guide where and how other players are rendered. Shared scene state enables clients to reuse one another's generated observations to maintain consistent scene appearance across views. Experiments on Counter-Strike 2 demonstrate WorldCast's consistency, real-time performance, and distributed scalability. The camera-aligned player state field improves player rendering rates by over an order of magnitude over joint-generation methods, while shared scene state improves visual consistency over whole rounds. Each client runs in real time and exchanges only player and scene states, enabling scalable multiplayer generation without a centralized computational bottleneck. Image quality remains stable over hour-long rollouts.",
@@ -52682,7 +52683,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-14T14:15:44.180804+00:00",
       "last_error": null,
-      "updated_at": "2026-10-14T14:15:44.180806+00:00",
+      "updated_at": "2026-10-14T19:07:06.521851+00:00",
       "paper": {
         "title": "Scaling Repeated-Data Pretraining: Batch Size, Regularization, and GPU-Time Tradeoffs",
         "summary": "We study pretraining when compute is abundant but unique training data are finite, requiring repeated training on the same data. We first revisit infinite-compute pretraining (Kim et al. 2026) and show that its frontier depends critically on choices previously fixed or studied only in isolation. In particular, optimizing batch size together with epoch counts reveals a U-shaped relationship between validation loss and batch size, favoring smaller batches than typical pretraining, likely because small-batch gradient noise provides implicit regularization. We further find that training recipes, previously optimized under a single-pass assumption, can be tuned, e.g., repacking documents into new sequences every epoch, weight tying, and positive embedding weight decay.   We then relax the infinite-compute assumption. In particular, smaller-than-typical batch sizes can require prohibitively long sequential training, motivating to treat GPUs and time as separate resources. Tighter deadlines favor larger batches, and latency-oriented parallelism can trade additional GPUs for shorter training. Nevertheless, even under a fixed time budget, a smaller batch with fewer GPUs can achieve lower validation loss than a larger batch with more GPUs, challenging the common practice of increasing data parallelism to maximize GPU utilization under a deadline. Together, our results identify underexplored factors in repeated-data training and provide concrete guidance on how training recipes and resource allocation should change from single-pass pretraining.",
@@ -52701,7 +52702,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-14T14:16:02.704458+00:00",
+      "updated_at": "2026-10-14T19:07:06.521838+00:00",
       "paper": {
         "title": "Let the Mind Conceive, Let the Hand Achieve: Following Multimodal Instructions for Long-Horizon Robotic Manipulation",
         "summary": "A robot following a multi-step instruction needs to act on the right objects in the right order, even as the scene changes. It must also maintain awareness of task progress and determine when to advance. To address these challenges, we introduce Orchestra, an agent harness that separates task planning and execution management from action generation. Orchestra decomposes a complete multimodal instruction into ordered subtasks, tracks completed steps, and updates the locations of relevant objects and destinations during execution. It maintains a shared context containing the active subtask, spatial grounding, and recent observations. An action policy uses this context to generate actions, while a separately trained progress evaluator estimates when to advance to the next subtask. To evaluate whether robots trained on atomic instructions and short trajectories can execute longer subtask sequences, we introduce a benchmark named RMBench-Compose. Orchestra achieves a mean success rate of $68.22\\%$ across nine RMBench tasks, outperforming Mem-0 by $26.22$ percentage points. On RMBench-Compose, it achieves an Average Success Length (ASL) of $7.35$ subtasks, $2.46$ times that of HarnessVLA. Across four real-world multi-step tasks, it improves mean ASL by $25.0\\%$ over Orchestra using the base $π_{0.5}$ policy. These results show that Orchestra helps robots carry out longer sequences of subtasks while preserving the requested subtask order and acting on the specified objects. Our code and project page are available at https://youpengwen.github.io/Orchestra.",
@@ -52728,7 +52729,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-14T14:15:44.180823+00:00",
       "last_error": null,
-      "updated_at": "2026-10-14T14:15:44.180825+00:00",
+      "updated_at": "2026-10-14T19:07:06.521820+00:00",
       "paper": {
         "title": "GreenWAM: A World Foundation Model for Robotics",
         "summary": "A robot needs a world model that predicts how its actions will change the scene and a policy that chooses those actions. Models are usually built and evaluated for only one of these roles, and every robot records its actions in its own format. We ask whether one robot world model can serve both roles across different bodies, and what makes this work. We present GreenWAM, a world foundation model for robotics, together with the recipe that produces it: (1) a shared anatomical action space that describes 20 robot families, from bimanual arms to dexterous humanoids, in common joint coordinates; (2) joint training on these families in visual, action-conditioned and world-action modes; and (3) policies that split an action expert off the generator. As a world model, GreenWAM attains top-tier trajectory, depth and 3D accuracy on WorldArena 1.0, ahead of every world-action model and video generator in our comparison. As a policy, it scores among the top entries of the RoboTwin 2.0 leaderboard, reaches the highest zero-shot LIBERO-plus success among the compared methods and is competitive with dedicated vision-language-action and world-action policies on CALVIN and LIBERO. We further adapt GreenWAM to a real humanoid, where it succeeds more often than policies adapted from $π_{0.5}$ and from Cosmos 3 Edge, and distill it into a single-step policy for real-time control. Controlled experiments yield three findings: robot specialization improves world prediction and control together; an action expert helps when split off at the start of adaptation; and keeping world-model modes during policy adaptation preserves robustness to scene changes.",
@@ -52776,10 +52777,104 @@
         "pdf_link": "https://arxiv.org/pdf/2610.16985v1"
       },
       "priority_score": 20
+    },
+    "2610_15228v1": {
+      "id": "2610_15228v1",
+      "filename": "post_2610_15228v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-10-14T19:07:30.315977+00:00",
+      "paper": {
+        "title": "Words to World: Benchmarking LLMs in Interactive Physical Environments",
+        "summary": "Words are increasingly becoming an interface for action: large language models (LLMs) can now invoke tools, operate devices, and make decisions that affect the physical world. However, current benchmarks largely evaluate LLMs through static text responses, offline tool calls, or simulated tasks, leaving open the question of how well they can act in real physical environments. We present a benchmark for measuring LLMs in closed-loop physical interaction, where models control a harness system connected to real-world components including robotic arms, cameras, and sensors. In each task, the model must issue instructions, receive physical feedback from the environment, interpret the resulting state, and adapt its next action accordingly. This setting evaluates capabilities beyond language understanding, including grounded perception, action planning, tool selection, spatial reasoning, feedback-driven correction, and robustness to execution uncertainty. Through experiments with representative LLMs, we characterize their ability to translate linguistic reasoning into physical actions and identify common failure modes such as hallucinated state changes, poor recovery from unexpected outcomes, and unstable long-horizon plans. Our benchmark aims to provide a systematic foundation for evaluating LLMs as interactive agents that connect words, tools, and the physical world.",
+        "published": "2026-10-10T23:40:54Z",
+        "authors": [
+          "Xinnan Dai",
+          "Kaiqi Yang",
+          "Yaxin Li",
+          "Cheng Luo",
+          "Wanli Li",
+          "Mingqing Xiao",
+          "Xinyang Jiang",
+          "Daoan Zhang",
+          "Kaitao Song",
+          "Fengze Liu",
+          "Zefan Cai",
+          "Caihua Shan"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.15228v1"
+      },
+      "priority_score": 47,
+      "korean_title": "단어에서 세계로: 상호작용 가능한 물리 환경에서의 대규모 언어 모델 벤치마킹"
+    },
+    "2610_18738v1": {
+      "id": "2610_18738v1",
+      "filename": "post_2610_18738v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-10-14T19:07:42.169356+00:00",
+      "paper": {
+        "title": "Enabling Token-wise Importance Sampling in Off-Policy RLVR with Proximal KL Regularization",
+        "summary": "Off-policy data in reinforcement learning with verifiable rewards (RLVR) can arise from asynchronous generation, rollout-training mismatch, and response reuse. Token-wise importance weighting avoids multiplying likelihood ratios across a response but generally biases policy gradients. We prove that, under coverage and local expressiveness conditions, full future KL credit makes the exact proximal optimizer the update's unique stationary policy, even for mixtures of older policies, without full-response weights or a fitted critic. We further establish convergence of continuous-time tabular population updates under persistent coverage and time-varying behavior policies, and a finite-sample reward guarantee for linear logistic models under additional assumptions. These results motivate Proximal KL, a practical off-policy RLVR method that separates the proximal reference from the sampling policy and replaces PPO clipping with bounded future KL credit. Across all seven matched off-policy comparisons on Qwen3-1.7B and Qwen3-4B, spanning two learning rates, response reuse, and rollout staleness, Proximal KL outperforms GRPO in micro-averaged accuracy over eight math benchmarks by up to 2.58%. A separate on-policy comparison yields comparable aggregate accuracy. In periodic-refresh experiments, Proximal KL avoids the collapses observed in PG and CISPO, exceeds GRPO's training accuracy, and reaches higher accuracy in fewer policy updates. Ablations show that token-wise correction outperforms sequence-level and unweighted controls. With token-wise correction retained, future KL feedback reduces sensitivity to the tested baseline perturbation relative to PPO clipping. A finite future horizon improves AIME24 mean@16 and pass@16 over the full tail, while fixed-policy measurements show that truncation reduces correction variance over the tested horizons.",
+        "published": "2026-10-13T17:09:23Z",
+        "authors": [
+          "Hao Bai",
+          "Jiarui Yao",
+          "Tong Zhang"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.18738v1"
+      },
+      "priority_score": 30,
+      "korean_title": "근접 KL 규제를 통한 오프라인 강화학습에서의 토큰 단위 중요도 샘플링 활성화"
+    },
+    "2607_08809v2": {
+      "id": "2607_08809v2",
+      "filename": "post_2607_08809v2.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-14T19:07:06.521845+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-14T19:07:06.521846+00:00",
+      "paper": {
+        "title": "Privacy-Preserving Intent Fulfilment and Assurance for 6G RAN",
+        "summary": "Intent-based network management automates 6G service lifecycles, but existing fulfilment and assurance approaches require traffic inspection, per-flow tracking, or vendor-internal telemetry. These requirements conflict with privacy constraints in multi-tenant networks and vendor opacity in O-RAN deployments. We present an architecture that provisions resources from declared intent categories without traffic inspection and verifies fulfilment using only cell-level standardised PM counters at the O1 interface. A data-processing inequality bounds resource-allocation leakage about traffic content by $\\log_2 K$ bits for $K$ categories. Intent-traffic unlinkability and node-opaque verification hold by construction. If verification requires at least $q$ cells per category among $M$ cells, the ceiling becomes $\\log_2 \\lfloor M/q \\rfloor$ bits. This bound covers the category/resource channel, not total inference from PM counters. When individual records add state-independent noise to the category aggregate, the category-mean verifier is at least as powerful as any per-agent verifier. We map the architecture to the 3GPP intent lifecycle and O-RAN Non-RT RIC. On production PM data from four operator networks, the category-mean score has higher AUC on three networks and comparable AUC on the fourth under category-wide replacement, while per-cell screening suits sparse faults. These injection-based experiments do not establish the theorem's observation premise. Within-period cell co-movement limits a category mean to the evidence of 6 to 14 independent cells, and category-level verifiers need per-category calibration.",
+        "published": "2026-07-09T17:13:18Z",
+        "authors": [
+          "Joss Armstrong"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2607.08809v2"
+      },
+      "priority_score": 30
+    },
+    "2610_18579v1": {
+      "id": "2610_18579v1",
+      "filename": "post_2610_18579v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-10-14T19:07:18.841758+00:00",
+      "paper": {
+        "title": "Reading Right, Acting Wrong: Diagnosing Decision Failures of System One Models in Agent Loops",
+        "summary": "System One models choose an agent's next action by scoring a supplied set of options in a single pass. This makes them fast and cheap, but when they choose wrongly there is nothing to inspect: did the model misread what the agent has seen, or read it correctly and still act wrongly? We answer behaviorally. On a frozen benchmark of agent decision states from simulated environments, customer-service policies, tool use, web navigation and coding, we pair every next-action question with factual probes about the same state, each answered independently. Across seventeen fast systems and a reasoning model, the answer is consistent: most wrong actions follow correct reading, and the more accurate a system, the more of its errors take this form. These errors are not noise; they gather on the same states across systems of every kind. Where the probed facts provably determine the action, models that read every fact still fail to combine them, and their own answers, composed by code, repair the failure. On real states, what is missing is often not a fact but the next sub-goal.",
+        "published": "2026-10-13T15:43:30Z",
+        "authors": [
+          "Yubo Li",
+          "Ramayya Krishnan",
+          "Rema Padman"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.18579v1"
+      },
+      "priority_score": 53,
+      "korean_title": "올바르게 읽고 잘못 행동하기: 에이전트 루프에서 시스템 1 모델의 의사결정 실패 진단"
     }
   },
   "last_run": {
-    "started_at": "2026-10-14T14:15:44.186531+00:00",
+    "started_at": "2026-10-14T19:07:06.527942+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -52790,25 +52885,25 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 19554,
-      "output_tokens": 5677,
+      "prompt_tokens": 20062,
+      "output_tokens": 5941,
       "thought_tokens": 0,
-      "total_tokens": 25231,
-      "estimated_usd": 0.013404
+      "total_tokens": 26003,
+      "estimated_usd": 0.013927
     },
-    "finished_at": "2026-10-14T14:16:22.170897+00:00"
+    "finished_at": "2026-10-14T19:07:53.453718+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 3340,
-    "prompt_tokens": 8426264,
-    "output_tokens": 2459017,
+    "requests": 3348,
+    "prompt_tokens": 8446326,
+    "output_tokens": 2464958,
     "thought_tokens": 0,
-    "total_tokens": 10885281,
-    "estimated_usd": 5.7950915
+    "total_tokens": 10911284,
+    "estimated_usd": 5.8090185
   },
   "last_publication_run": {
-    "started_at": "2026-10-14T14:15:44.186531+00:00",
+    "started_at": "2026-10-14T19:07:06.527942+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -52819,17 +52914,17 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 19554,
-      "output_tokens": 5677,
+      "prompt_tokens": 20062,
+      "output_tokens": 5941,
       "thought_tokens": 0,
-      "total_tokens": 25231,
-      "estimated_usd": 0.013404
+      "total_tokens": 26003,
+      "estimated_usd": 0.013927
     },
-    "finished_at": "2026-10-14T14:16:22.170897+00:00"
+    "finished_at": "2026-10-14T19:07:53.453718+00:00"
   },
   "daily_usage": {
     "date": "2026-10-14",
-    "estimated_usd": 0.0420025,
-    "publications": 12
+    "estimated_usd": 0.0559295,
+    "publications": 16
   }
 }
