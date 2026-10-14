@@ -1,0 +1,62 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Open-o3-Video-v2: 검증 가능한 시공간 증거를 통한 탐색, 접지 및 추론 | ArXiv Translator AI</title><meta name="description" content="Open-o3-Video-v2: 검증 가능한 시공간 증거를 통한 탐색, 접지 및 추론"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2610_17656v1"><meta property="og:type" content="article"><meta property="og:title" content="Open-o3-Video-v2: 검증 가능한 시공간 증거를 통한 탐색, 접지 및 추론"><meta property="og:description" content="Open-o3-Video-v2: 검증 가능한 시공간 증거를 통한 탐색, 접지 및 추론"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2610_17656v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Open-o3-Video-v2: 검증 가능한 시공간 증거를 통한 탐색, 접지 및 추론"><meta name="twitter:description" content="Open-o3-Video-v2: 검증 가능한 시공간 증거를 통한 탐색, 접지 및 추론"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2610_17656v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Open-o3-Video-v2: 검증 가능한 시공간 증거를 통한 탐색, 접지 및 추론", "description": "Open-o3-Video-v2: 검증 가능한 시공간 증거를 통한 탐색, 접지 및 추론", "datePublished": "2026-10-13", "url": "https://arxiv-ai-blog.vercel.app/papers/2610_17656v1", "author": [{"@type": "Person", "name": "Jiahao Meng"}, {"@type": "Person", "name": "Zhongyuan Bao"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2610_17656v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2610_17656v1"});gtag('event', 'paper_view', {"paper_id": "2610_17656v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>Open-o3-Video-v2: 검증 가능한 시공간 증거를 통한 탐색, 접지 및 추론</h1><p>Open-o3-Video-v2: 검증 가능한 시공간 증거를 통한 탐색, 접지 및 추론</p><pre>Open-o3-Video-v2: 검증 가능한 시공간 증거를 통한 탐색, 접지 및 추론
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Open-o3-Video-v2: Seek, Ground, and Reason with Verifiable Spatio-Temporal Evidence
+&gt; - **저자:** Jiahao Meng, Zhongyuan Bao, Yue Tan, Haiquan Wen, Renrui Zhang, Anna Wang, Jason Li, Yanwei Fu, Yunhai Tong, Ming-Hsuan Yang
+&gt; - **발행일:** 2026-10-13
+&gt; - **PDF 링크:** [Open-o3-Video-v2: Seek, Ground, and Reason with Verifiable Spatio-Temporal Evidence](https://arxiv.org/pdf/2610.17656v1)
+
+
+✨ 3줄 핵심 요약
+* **에이전트 기반 추론**: 비디오 추론을 부족한 정보를 능동적으로 탐색하고 시공간적 증거(타임스탬프, 객체 바운딩 박스)를 기록하는 에이전트 프로세스로 재정의했습니다.
+* **새로운 학습 기법**: 도구 사용의 효율성을 높이고 불필요한 검색을 방지하는 &#x27;Clue-Seek GRPO&#x27; 알고리즘과 전용 데이터셋(STGR-v2)을 도입했습니다.
+* **성능 향상**: V-STaR 벤치마크에서 기존 Qwen3-VL-4B 모델 대비 mAM 8.5%, mLGM 12.6% 향상된 성능을 기록했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+기존 비디오 추론 모델은 처음 입력된 영상의 일부 정보에만 의존하여 복잡한 상황을 해석하는 데 한계가 있었습니다. **Open-o3-Video-v2**는 스스로 필요한 정보를 능동적으로 찾아 나가는 에이전트처럼 작동합니다. 질문에 답하기 위해 어떤 영상 구간이 필요한지 결정하고, 구체적인 객체(인물, 사물)의 위치와 시간을 정확히 찾아내어 그 증거를 바탕으로 논리적인 결론을 내립니다. 마치 수사관이 영상을 반복적으로 돌려보며 증거를 수집하고 이를 정리해 범인을 지목하는 것과 같은 방식입니다.
+
+🎯 배경 및 문제점
+영상 내의 빠른 움직임, 잦은 장면 전환, 그리고 짧게 등장하는 결정적 단서 때문에 기존 모델들은 다음과 같은 어려움을 겪었습니다.
+* **불충분한 시공간적 추론**: 긴 영상이나 복잡한 장면에서 필요한 시각적 정보를 정확히 찾아내어 추론의 근거로 활용하기 어렵습니다.
+* **검증 부족**: 모델이 내놓은 답이 어떤 시각적 증거에 기반했는지 투명하게 드러내지 못하는 경우가 많습니다.
+* **비효율적 검색**: 불필요하거나 중복된 정보 검색은 오히려 모델의 추론 품질을 저해합니다.
+
+💡 핵심 기술 및 아키텍처
+* **에이전트 기반 증거 확보**: 모델이 추론 중간에 부족한 정보를 식별하고, 특정 시간(타임스탬프)과 객체 영역(바운딩 박스)을 구체적으로 추적하여 그 증거를 사고 과정(Trajectory)에 명시적으로 기록합니다.
+* **Clue-Seek GRPO (CS-GRPO)**: 강화학습을 통해 도구 호출이 추론에 미치는 이득을 평가합니다. 정보 제공에 기여도가 높은 검색은 보상하고, 과도하거나 불필요한 중복 검색은 페널티를 주어 효율적인 추론 경로를 학습시킵니다.
+* **전용 데이터셋 구축**: 5만 2천 개의 에이전트 기반 추론 데이터(STGR-v2-CoT-135K)와 강화학습을 위한 1만 3천 개의 데이터(STGR-v2-RL-13K)를 구축했습니다.
+
+📊 실험 결과 분석
+* **성능 지표**: V-STaR 벤치마크에서 4B 파라미터 모델 기준으로 **mAM(Mean Answer Match) 40.4%**, **mLGM(Mean Localized Grounding Match) 56.3%**를 달성했습니다.
+* **비교 분석**: 기존 백본 모델인 Qwen3-VL-4B와 비교했을 때, mAM은 8.5%, mLGM은 12.6% 향상되었습니다. 
+* **범용성**: 일반 비디오 이해, 장시간 영상 추론, 시간적 접지(Temporal Grounding) 등 다양한 분야에서 일관된 성능 향상을 보였습니다.
+* **한계점**: 논문에 제시된 실패 사례 분석에 따르면, 여전히 지식 부족, 복잡한 장면에서의 객체 식별 오류, 잘못된 이벤트 선택 문제가 발생할 수 있음이 확인되었습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **투명한 AI**: 모델이 답변의 근거를 시각적 정보와 시간 정보로 직접 제시함으로써 AI 추론 과정의 신뢰성을 크게 높였습니다.
+* **실무 적용**: 영상 감시 시스템에서의 이상 행동 탐지, 뉴스 영상 자동 요약 및 팩트 체크, 긴 교육용 영상에서의 특정 정보 검색 등 정밀한 비디오 분석이 필요한 산업 분야에 폭넓게 활용될 수 있습니다.
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;이 논문에서 제안한 &#x27;Clue-Seek GRPO&#x27;는 흥미롭지만, 결국 강화학습 보상 설계가 핵심이겠군요. 과도한 검색에 페널티를 준다고 했는데, 보상 함수의 하이퍼파라미터 튜닝이 매우 까다로울 겁니다. 과연 도메인이 바뀌어도 이 보상 체계가 범용적으로 견고하게 작동할지 의문이 드는군요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로입니다. 4B 모델에서 12% 향상은 고무적이지만, 현업에서는 추론 시 도구 호출에 따른 Latency가 더 큰 문제입니다. 에이전트가 매번 증거를 &#x27;탐색&#x27;하고 &#x27;확인&#x27;하는 루프를 돌리면 실시간 영상 분석 서비스에 붙이기는 너무 무거워요. 이걸 서빙하려면 결국 모델을 또 경량화해야 할 텐데 성능 저하가 뻔히 보입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;선배님들, 너무 부정적으로만 보지 마세요! 요즘 같은 시대에 V-STaR 벤치마크에서 8.5% 뛴 거면 엄청난 건데요. 특히 &#x27;CoT&#x27;에 시공간적 Grounding을 직접 박아 넣어서 투명성을 확보했다는 게 대박인 것 같아요. 이거 당장 다음 학회 논문에 인용해서 저희 모델에도 접목해 봐야겠어요. 지금 당장 구현 시작합니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

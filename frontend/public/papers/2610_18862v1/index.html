@@ -1,0 +1,72 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DoubtLess: 효율적인 추론을 위한 학습 불필요 대비 디코딩 | ArXiv Translator AI</title><meta name="description" content="DoubtLess: 효율적인 추론을 위한 학습 불필요 대비 디코딩"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2610_18862v1"><meta property="og:type" content="article"><meta property="og:title" content="DoubtLess: 효율적인 추론을 위한 학습 불필요 대비 디코딩"><meta property="og:description" content="DoubtLess: 효율적인 추론을 위한 학습 불필요 대비 디코딩"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2610_18862v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="DoubtLess: 효율적인 추론을 위한 학습 불필요 대비 디코딩"><meta name="twitter:description" content="DoubtLess: 효율적인 추론을 위한 학습 불필요 대비 디코딩"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2610_18862v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "DoubtLess: 효율적인 추론을 위한 학습 불필요 대비 디코딩", "description": "DoubtLess: 효율적인 추론을 위한 학습 불필요 대비 디코딩", "datePublished": "2026-10-13", "url": "https://arxiv-ai-blog.vercel.app/papers/2610_18862v1", "author": [{"@type": "Person", "name": "Minghao Luo"}, {"@type": "Person", "name": "Liang Chen"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2610_18862v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2610_18862v1"});gtag('event', 'paper_view', {"paper_id": "2610_18862v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>DoubtLess: 효율적인 추론을 위한 학습 불필요 대비 디코딩</h1><p>DoubtLess: 효율적인 추론을 위한 학습 불필요 대비 디코딩</p><pre>DoubtLess: 효율적인 추론을 위한 학습 불필요 대비 디코딩
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** DoubtLess: Training-Free Contrastive Decoding for Efficient Reasoning
+&gt; - **저자:** Minghao Luo, Liang Chen
+&gt; - **발행일:** 2026-10-13
+&gt; - **PDF 링크:** [DoubtLess: Training-Free Contrastive Decoding for Efficient Reasoning](https://arxiv.org/pdf/2610.18862v1)
+
+
+✨ 3줄 핵심 요약
+* **DoubtLess**는 별도의 모델 재학습 없이, 소형 모델이 대형 모델의 사고 과정(CoT)을 간결하게 유도하는 디코딩 기법입니다.
+* 소형 모델이 &#x27;간결한 사고&#x27;와 &#x27;장황한 사고&#x27;를 비교하여 그 차이를 대형 모델의 로짓(logit)에 반영함으로써 불필요한 중복 검증을 줄입니다.
+* 7개의 벤치마크 테스트에서 Qwen3-32B 모델의 추론 길이를 31% 단축하면서도 정확도는 기존 수준을 유지했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+대형 언어 모델은 문제를 풀 때 &#x27;생각의 사슬(CoT)&#x27;을 길게 작성합니다. 문제는 정답을 찾은 뒤에도 모델이 스스로를 계속 검증하며 불필요한 토큰을 낭비한다는 점입니다. **DoubtLess**는 이 과정을 교정하기 위해 더 작은 모델을 &#x27;감독관&#x27;으로 활용합니다. 이 작은 모델은 대형 모델이 답변을 낼 때 &quot;최대한 짧게 답해라&quot;와 &quot;매우 상세하게 답해라&quot;라는 두 가지 지시를 동시에 처리하며, 이 둘의 차이를 이용해 대형 모델이 불필요한 반복 과정을 건너뛰도록 유도합니다. 이를 통해 모델의 성능은 지키면서 추론 효율성만 높였습니다.
+
+🎯 배경 및 문제점
+* **토큰 낭비:** 현재의 추론 모델들은 정답을 이미 찾은 후에도 이를 다시 유도하거나 검증하는 데 많은 토큰을 사용합니다.
+* **기존 방법의 한계:** 
+    * **학습 기반 기법:** 모델의 가중치를 매번 재조정해야 하므로 비용이 큽니다.
+    * **인플런스 타임 기법:** 프롬프트 제어, 특정 단어 금지, 혹은 강제 종료 등의 방식은 모델의 추론 정확도를 떨어뜨리는 경우가 많습니다.
+
+💡 핵심 기술 및 아키텍처
+* **대비 디코딩(Contrastive Decoding):** 소형 모델을 사용하여 &#x27;간결한 사고(Brief thinker)&#x27;와 &#x27;장황한 사고(Verbose thinker)&#x27;를 각각 생성합니다.
+* **로짓 조절:** 두 사고 방식 사이의 로짓 벡터 차이를 계산하여 가중치(strength)를 곱한 뒤, 대형 모델의 각 추론 단계 로짓에 반영합니다.
+* **학습 불필요:** 모델의 가중치를 바꾸지 않고 추론 단계에서 실시간으로 개입하는 방식을 취합니다. 
+* **구현:** 대형 모델의 로짓 분포 내에서만 토큰이 선택되도록 마스킹 처리하여 안정성을 확보했습니다.
+
+📊 실험 결과 분석
+* **효율성:** 7개의 수학, 과학, 프로그래밍 벤치마크에서 Qwen3-32B의 추론 길이를 31% 단축했습니다.
+* **성능 유지:** 추론 길이는 줄었지만 모든 벤치마크에서 정확도는 변하지 않았습니다.
+* **자체 디버깅:** 코딩 에이전트 환경에서 추론 토큰 수를 20% 줄이면서도 작업 수행 성능을 유지했습니다.
+* **일반화:** 다른 모델 제품군에 적용해도 정확도 손실 없이 효율성이 개선됨을 확인했습니다.
+* **행동 분석:** 제거된 토큰의 65~89%가 정답이 나온 이후의 반복적인 검증 단계에서 발생했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **비용 절감:** 추론 과정에서 생성되는 토큰 수를 대폭 줄여 API 사용료나 서버 연산 비용을 획기적으로 낮출 수 있습니다.
+* **속도 개선:** 생성 토큰 수가 줄어듦에 따라 최종 답변 도출까지 걸리는 대기 시간(Latency)이 단축됩니다.
+* **실무 적용:** 모델을 다시 학습시킬 필요 없이 기존 배포된 대형 모델 위에 바로 적용 가능하므로, 효율적인 AI 시스템 운영이 필요한 기업 현장에서 즉각적인 도입이 가능합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [DoubtLess: Training-Free Contrastive Decoding for Efficient ...Machine Learning - arXiv.orgDaily Papers - Hugging FaceLibrary of research papers — Explore open researchAI 에이전트 효율화 연구 집중 · Anthropic AI 봇넷 경고 외 8건 | AI...今日热榜每日早晚报 ‧ 今日热榜](https://www.youtube.com/watch?v=Gke4uR9eDQA)
+&gt; - [Machine Learning - arXiv.org](https://arxiv.org/list/cs.LG/recent?skip=482)
+&gt; - [Daily Papers - Hugging Face](https://huggingface.co/papers/date/2026-10-14)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문을 훑어보니 Contrastive Decoding을 활용해 추론 효율을 높인 시도는 가상합니다만, 로짓 제어 과정에서 모델 간 분포 불일치(Distribution Mismatch)를 어떻게 완벽히 보정했는지 의문이 드는군요. 특히 &#x27;간결한 사고&#x27;와 &#x27;장황한 사고&#x27;를 유도하는 프롬프트만으로 모델의 내재적 확률 분포를 얼마나 신뢰할 수 있을지, 일반화 가능성에 대해 더 엄밀한 증명이 필요해 보입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 일리가 있지만, 실무자 입장에선 성능 유지하면서 추론 토큰 31% 절감이면 당장 프로덕션에 올려볼 만한 수준입니다. 가중치 수정 없이 인퍼런스 타임에 바로 적용 가능하다는 게 핵심이죠. 다만 소형 모델을 &#x27;감독관&#x27;으로 돌리는 데서 오는 오버헤드가 실제 레이턴시 단축 효과를 얼마나 깎아먹을지 벤치마크가 궁금하네요. 병렬 처리 최적화가 관건일 듯합니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;선배님들, 그거 아세요? 이거 단순히 비용 절감 문제가 아니라, 최근 유행하는 &#x27;생각하는 AI&#x27;들의 고질적인 &#x27;자기 복제적 잡담&#x27;을 깔끔하게 쳐낸다는 점에서 혁신적입니다. 지금 깃허브 오픈소스 커뮤니티에 벌써 Qwen3 말고 다른 모델에 포팅하려는 시도가 올라오고 있어요! 논문 이론적 한계는 차치하고, 일단 돌려보고 성능 나오면 무조건 SOTA 갱신 각입니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
