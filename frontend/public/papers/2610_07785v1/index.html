@@ -1,0 +1,69 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Attacca: 상태 연속성 하의 장기 과제 수행을 위한 목표 지향적 제어 | ArXiv Translator AI</title><meta name="description" content="Attacca: 상태 연속성 하의 장기 과제 수행을 위한 목표 지향적 제어"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2610_07785v1"><meta property="og:type" content="article"><meta property="og:title" content="Attacca: 상태 연속성 하의 장기 과제 수행을 위한 목표 지향적 제어"><meta property="og:description" content="Attacca: 상태 연속성 하의 장기 과제 수행을 위한 목표 지향적 제어"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2610_07785v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Attacca: 상태 연속성 하의 장기 과제 수행을 위한 목표 지향적 제어"><meta name="twitter:description" content="Attacca: 상태 연속성 하의 장기 과제 수행을 위한 목표 지향적 제어"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2610_07785v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Attacca: 상태 연속성 하의 장기 과제 수행을 위한 목표 지향적 제어", "description": "Attacca: 상태 연속성 하의 장기 과제 수행을 위한 목표 지향적 제어", "datePublished": "2026-10-06", "url": "https://arxiv-ai-blog.vercel.app/papers/2610_07785v1", "author": [{"@type": "Person", "name": "Gyusik Seo"}, {"@type": "Person", "name": "Jaehong Yoon"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2610_07785v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2610_07785v1"});gtag('event', 'paper_view', {"paper_id": "2610_07785v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>Attacca: 상태 연속성 하의 장기 과제 수행을 위한 목표 지향적 제어</h1><p>Attacca: 상태 연속성 하의 장기 과제 수행을 위한 목표 지향적 제어</p><pre>Attacca: 상태 연속성 하의 장기 과제 수행을 위한 목표 지향적 제어
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Attacca: Goal-Directed Control under State Continuity for Long-Horizon Embodied Agents
+&gt; - **저자:** Gyusik Seo, Jaehong Yoon
+&gt; - **발행일:** 2026-10-06
+&gt; - **PDF 링크:** [Attacca: Goal-Directed Control under State Continuity for Long-Horizon Embodied Agents](https://arxiv.org/pdf/2610.07785v1)
+
+
+✨ 3줄 핵심 요약
+* **기술적 난제 해결:** 기존 로봇 에이전트는 이전 작업 이후 상태가 변화하거나 목표가 시야 밖에 있을 때 다음 작업을 수행하기 어렵다는 &#x27;기술 핸드오프 간극(Skill hand-off gap)&#x27; 문제를 겪습니다.
+* **새로운 접근 방식:** &#x27;Attacca&#x27;는 목표 이미지를 환경과 분리하여 학습하고, 대상 마스크 예측과 행동 단계(탐색, 접근, 상호작용) 구분을 통해 상태 변화에 강건한 제어 정책을 구현합니다.
+* **압도적 성능 입증:** 마인크래프트 환경에서 기존 최상위 모델 대비 1.7~2.4배 향상된 성공률을 보였으며, 장기 과제 수행에서는 최대 7배의 개선을 달성했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+로봇이 복잡한 일을 할 때, 첫 번째 일을 끝낸 뒤의 환경은 이전과 완전히 달라집니다. 기존 인공지능은 목표물이 눈앞에 없거나 주변 상황이 바뀌면 무엇을 해야 할지 길을 잃곤 했습니다. &#x27;Attacca&#x27;는 로봇이 마치 사람이 하듯, 목표물의 이미지만 보고 &quot;지금은 일단 찾아야 해(Search)&quot;, &quot;가까이 가야 해(Approach)&quot;, &quot;이제 물건을 써야 해(Interact)&quot;와 같이 단계별로 행동을 조정하게 만듭니다. 이를 통해 환경이 계속 바뀌는 긴 작업 속에서도 중단 없이 임무를 완수할 수 있게 설계되었습니다.
+
+🎯 배경 및 문제점
+로봇이나 에이전트가 긴 호흡의 작업을 수행할 때, 각 작업은 이전 작업이 남긴 환경 상태에서 시작됩니다. 하지만 기존의 시각 기반 목표 지향 정책은 목표물이 이미 시야 내에 있는 단기적 상황에 최적화되어 있어, 다음과 같은 한계가 존재합니다.
+* **상태 연속성 부재:** 이전 작업으로 인해 에이전트의 위치나 방향이 바뀌고 환경이 수정되면, 목표물을 즉각 인식하지 못해 작업이 중단됩니다.
+* **기술 핸드오프 간극:** 복잡한 목표를 수행하는 과정에서 특정 작업 간의 전환이 매끄럽지 않아 전체적인 임무 완수율이 낮아지는 현상이 발생합니다.
+
+💡 핵심 기술 및 아키텍처
+* **상황 분리형 목표 샘플링(Context-decoupled goal sampling):** 학습 데이터의 목표 이미지를 실행 환경과 분리하여, 특정 장면에 종속되지 않고 목표 자체의 특징을 학습하도록 유도합니다.
+* **타겟 마스크 예측 헤드:** 현재 관측 화면에서 목표물을 찾아내기 위한 보조 감독 학습을 수행하여, 단순히 행동을 모방하는 것을 넘어 시각적 기반을 강화합니다.
+* **행동 단계 조건화(Behavioral-phase conditioning):** 정책이 현재 자신의 상태를 탐색(Search), 접근(Approach), 상호작용(Interact) 단계로 구분하여 그에 맞는 제어를 수행하도록 가르칩니다.
+
+📊 실험 결과 분석
+마인크래프트 환경에서 다양한 단기 및 장기 과제를 통해 검증하였습니다.
+* **성공률:** 클린 성공률(clean success) 기준 39.0~47.5%를 기록하여, 기존 최상위 모델 대비 1.7~2.4배 높은 성능을 보였습니다.
+* **장기 과제 수행:** 연쇄적인 작업을 수행하는 장기 과제에서 54%, 30%, 28%의 완료율을 기록하며, 베이스라인 대비 최대 7배의 개선 성과를 달성했습니다.
+* **비교 분석:** 기존 모델(ROCKET-2 등)은 목표물이 시야 밖에 있거나 환경이 다를 경우 성공률이 급락했으나, Attacca는 모든 설정에서 안정적인 성능을 유지했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **범용 에이전트 개발:** 가정용 로봇이나 자율 시스템이 고정된 환경을 넘어, 변화무쌍한 실제 환경에서 연속적인 복잡 과제를 수행할 수 있는 기반을 마련했습니다.
+* **실무적 확장:** 이 기술은 추후 로봇 조작, 내비게이션 등 다양한 구현 영역으로 확장될 잠재력이 있으며, 상위 계획 시스템(Planner)과 결합하여 언어 기반의 지시를 실제 시각적 목표 이미지로 변환하여 실행하는 시스템으로 발전할 수 있습니다.
+* **제한 사항:** 본 논문에서는 마인크래프트 환경 내에서 기술을 검증하였으며, 로봇 제어 등 물리적 도메인으로의 적용은 향후 과제로 남겨두었습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2610.07785 Attacca: Goal-Directed Control under State ...](https://arxiv.org/abs/2610.07785)
+&gt; - [Attacca: Goal-Directed Control under State Continuity for ...](https://arxiv.org/html/2610.07785v1)
+&gt; - [Paper page - Attacca: Goal-Directed Control under State ...](https://huggingface.co/papers/2610.07785)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;상태 연속성(State Continuity) 문제를 타겟 마스크 예측과 행동 단계 조건화로 푼 접근 방식 자체는 흥미롭지만, 마인크래프트라는 시뮬레이션 환경에 과도하게 오버피팅된 결과는 아닌지 우려되네요. &#x27;실제 물리 도메인&#x27;으로 넘어갔을 때의 노이즈와 지연 시간(latency)을 과연 이 아키텍처가 버텨낼 수 있을까요? 논문만 보면 성능 개선폭은 고무적이나, 실무적 강건성에 대한 증명이 더 필요해 보입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실물 로봇으로 가면 센서 퓨전이랑 제어 루프 주기가 관건이겠죠. 하지만 실무자 입장에서 &#x27;기술 핸드오프 간극&#x27;을 이렇게 명확히 정의하고 행동 단계를 세분화한 건 굉장히 실용적인 접근입니다. 현업에서는 강화학습 모델이 중간에 멍 때리는 경우가 허다한데, 탐색-접근-상호작용으로 로직을 쪼갠 건 디버깅이나 모니터링 관점에서도 훨씬 낫겠네요. 다만, 이걸 프로덕션 환경에서 돌리려면 추론 비용(Inference cost)이 좀 걱정되긴 합니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;선배님들, 일단 결과 수치만 보세요! 장기 과제 7배 개선이면 이건 &#x27;게임 체인저&#x27; 아닌가요? 요즘 VLA(Vision-Language-Action) 모델들 쏟아지는데, Attacca처럼 목표 이미지를 맥락에서 분리하는 방식이 지금 트렌드랑 딱 맞아요. 저도 바로 깃허브 클론해서 제 실험 환경에 돌려보려고요. 마인크래프트면 어때요, 일단 터지는 거 보여주면 그게 곧 SOTA죠! 랩실에서 당장 세미나 주제로 잡아도 될 듯!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
