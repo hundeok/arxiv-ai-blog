@@ -1,0 +1,63 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>가치 증강 자기 증류 정책 최적화: VASPO | ArXiv Translator AI</title><meta name="description" content="가치 증강 자기 증류 정책 최적화: VASPO"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2610_20516v1"><meta property="og:type" content="article"><meta property="og:title" content="가치 증강 자기 증류 정책 최적화: VASPO"><meta property="og:description" content="가치 증강 자기 증류 정책 최적화: VASPO"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2610_20516v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="가치 증강 자기 증류 정책 최적화: VASPO"><meta name="twitter:description" content="가치 증강 자기 증류 정책 최적화: VASPO"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2610_20516v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "가치 증강 자기 증류 정책 최적화: VASPO", "description": "가치 증강 자기 증류 정책 최적화: VASPO", "datePublished": "2026-10-14", "url": "https://arxiv-ai-blog.vercel.app/papers/2610_20516v1", "author": [{"@type": "Person", "name": "Fei Wu"}, {"@type": "Person", "name": "Zhenrong Zhang"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2610_20516v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2610_20516v1"});gtag('event', 'paper_view', {"paper_id": "2610_20516v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>가치 증강 자기 증류 정책 최적화: VASPO</h1><p>가치 증강 자기 증류 정책 최적화: VASPO</p><pre>가치 증강 자기 증류 정책 최적화: VASPO
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** VASPO: Self-Distillation with Privileged Value Estimation
+&gt; - **저자:** Fei Wu, Zhenrong Zhang, Jianshu Zhang, Jun Du
+&gt; - **발행일:** 2026-10-14
+&gt; - **PDF 링크:** [VASPO: Self-Distillation with Privileged Value Estimation](https://arxiv.org/pdf/2610.20516v1)
+
+
+✨ 3줄 핵심 요약
+*   **VASPO**는 추론 모델의 학습 시, &#x27;자기 교사(Self-teacher)&#x27;의 토큰 가이드와 &#x27;비평가(Critic)&#x27;의 가치 예측을 결합하여 학습 효율을 높이는 새로운 방법론입니다.
+*   기존 자기 증류 방식이 가진 국소적 편향 문제를 해결하기 위해, 동일한 특권 정보(privileged information)를 활용하여 정교한 토큰 단위 보상과 가치 추정치를 산출합니다.
+*   수학적 추론 벤치마크 테스트에서 기존 PPO 대비 Qwen3-4B 모델은 2.59%p, OLMo3-7B 모델은 1.81%p의 평균 정확도 향상을 달성했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+대규모 언어 모델이 수학 문제를 풀 때, 단순히 &#x27;정답 여부&#x27;만으로 학습하면 과정 중 어떤 토큰이 정답에 기여했는지 알기 어렵습니다. 기존 방식들은 &#x27;자기 교사&#x27;라는 선생님 모델의 조언을 참고하지만, 이 조언이 문제의 핵심보다는 스타일 위주로 치우치거나 실제 성공 가능성과 거리가 멀 수 있다는 한계가 있었습니다. 
+
+**VASPO(Value-Augmented Self-Distillation Policy Optimization)**는 이를 해결하기 위해 비평가 모델이 실제 정답으로 가는 길을 더 잘 예측하도록 돕고, 자기 교사의 조언이 유용할 때만 선택적으로 반영합니다. 즉, 학습 과정의 시작부터 끝까지 모델이 무엇을 해야 할지 더 똑똑하게 안내하는 새로운 학습 체계입니다.
+
+🎯 배경 및 문제점
+*   **결과 기반 보상의 한계:** 기존 강화학습(RLVR)은 최종 결과물에만 보상을 부여하므로, 그 과정에 있는 중간 토큰들이 정답에 얼마나 기여했는지 파악하기 어렵습니다.
+*   **자기 증류의 편향:** 자기 증류(On-policy self-distillation)를 통한 토큰 수준의 학습은 특권 정보를 활용하지만, 모델이 실제 정답에 도달할지 여부보다는 스타일이나 국소적인 토큰 선호도에 치우치는 문제가 있습니다.
+*   **정보 활용의 불일치:** 기존 모델들은 특권 정보를 교사 모델에만 사용하거나 GRPO 같은 방식에 결합해 왔으나, PPO 학습 환경에서 학생 모델의 미래 수익을 정교하게 예측하는 데 활용하는 연구는 부족했습니다.
+
+💡 핵심 기술 및 아키텍처
+*   **상호 보완적인 위치 역학(Positional Dynamics):** 연구진은 비평가의 예측 정확도가 답변의 후반부로 갈수록 높아지고, 자기 교사의 지도는 초기에 강력하며 중반에 떨어졌다가 마지막에 다시 상승하는 패턴을 발견했습니다.
+*   **가치 증강 통합:** VASPO는 이러한 특징을 활용하여 비평가와 자기 교사가 동일한 특권 정보를 사용하여 학생 모델의 접두사(prefix)를 평가하게 합니다.
+*   **정책 최적화:** 비평가는 예측된 연속 수익을 통해 토큰 단위의 PPO 이득(advantage)을 계산하며, 자기 교사는 제한된 확률 비율을 통해 긍정적인 이득을 선별적으로 조절합니다.
+
+📊 실험 결과 분석
+*   **성능 향상:** 6개의 수학적 추론 벤치마크에서 기존 PPO 기법보다 우수한 성능을 보였습니다. (Qwen3-4B 모델 2.59%p, OLMo3-7B 모델 1.81%p 정확도 개선).
+*   **Knights and Knaves 벤치마크:** 평가된 방법들 중 가장 높은 평균 정확도를 기록했습니다.
+*   **비평가 진단:** 연구진은 Brier score와 EV(Explained Variance) 지표 등을 통해 가치 예측의 정확도와 보정 성능을 분석했으며, 생성된 응답의 길이와 정답 여부에 따라 비평가의 이득이 달라짐을 확인했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+*   **추론 모델의 고도화:** 복잡한 논리적 사고와 수학적 추론이 필요한 영역에서 언어 모델의 학습 신뢰도를 높여, 더욱 정확한 답변을 생성하는 모델 개발이 가능해집니다.
+*   **효율적인 RLHF:** 모델이 학습 과정에서 무엇을 개선해야 할지 더 밀도 높은 피드백을 받을 수 있게 하여, 데이터 라벨링 비용이나 학습 시간을 최적화하는 데 기여할 수 있습니다.
+*   **오픈 소스 기여:** 연구진은 연구에 사용된 코드를 오픈 소스(https://github.com/cii030/VASPO)로 공개하여 실무 연구자들이 자기 증류와 PPO 결합 방식을 실제 제품이나 서비스에 적용할 수 있는 기반을 제공했습니다.
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문 제목 보고 또 단순한 변형인가 싶었는데, 토큰 단위의 보상과 비평가의 가치 추정을 &#x27;위치 역학&#x27; 관점에서 결합한 건 꽤 흥미롭군. 특히 자기 교사의 지도가 초기와 후기에 효과적이라는 가설을 정량적으로 증명한 부분은 후속 연구들이 깊게 파고들 가치가 있어 보인다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 이론은 깔끔한데, 실무 입장에서는 저 &#x27;특권 정보(privileged information)&#x27;를 학습 파이프라인에 어떻게 녹여낼지가 관건이겠네요. 매번 PPO 돌릴 때마다 저런 수준의 정교한 Critic을 유지하는 게 오버헤드가 만만치 않을 텐데, 추론 효율성 대 가성비가 맞을지 실험 코드를 좀 뜯어봐야겠습니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;선배님, 오버헤드 걱정하시기엔 이미 깃허브 스타 찍히는 속도가 장난 아닌데요? ㅋㅋ GRPO 넘어서 PPO로 다시 돌아오는 흐름도 재밌고, 무엇보다 수학 벤치마크 2%p 향상이면 요즘 같은 정체기에 엄청난 건데... 일단 내일 세미나 발표는 이거로 정했습니다. 다들 VASPO 코드부터 클론하세요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

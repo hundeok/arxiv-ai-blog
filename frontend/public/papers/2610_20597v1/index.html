@@ -1,0 +1,63 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>언어 에이전트를 위한 행동 및 예측의 상호 진화 | ArXiv Translator AI</title><meta name="description" content="언어 에이전트를 위한 행동 및 예측의 상호 진화"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2610_20597v1"><meta property="og:type" content="article"><meta property="og:title" content="언어 에이전트를 위한 행동 및 예측의 상호 진화"><meta property="og:description" content="언어 에이전트를 위한 행동 및 예측의 상호 진화"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2610_20597v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="언어 에이전트를 위한 행동 및 예측의 상호 진화"><meta name="twitter:description" content="언어 에이전트를 위한 행동 및 예측의 상호 진화"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2610_20597v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "언어 에이전트를 위한 행동 및 예측의 상호 진화", "description": "언어 에이전트를 위한 행동 및 예측의 상호 진화", "datePublished": "2026-10-14", "url": "https://arxiv-ai-blog.vercel.app/papers/2610_20597v1", "author": [{"@type": "Person", "name": "Haofei Yu"}, {"@type": "Person", "name": "Yixing Chen"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2610_20597v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2610_20597v1"});gtag('event', 'paper_view', {"paper_id": "2610_20597v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>언어 에이전트를 위한 행동 및 예측의 상호 진화</h1><p>언어 에이전트를 위한 행동 및 예측의 상호 진화</p><pre>언어 에이전트를 위한 행동 및 예측의 상호 진화
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Co-Evolving Acting and Forecasting for Language Agents
+&gt; - **저자:** Haofei Yu, Yixing Chen, Yining Zhao, Xuyan Ye, Yuxiang Liu, Zhigang Hua, Yan Xie, Shuang Yang, Jiaxuan You
+&gt; - **발행일:** 2026-10-14
+&gt; - **PDF 링크:** [Co-Evolving Acting and Forecasting for Language Agents](https://arxiv.org/pdf/2610.20597v1)
+
+
+✨ 3줄 핵심 요약
+* 기존의 언어 에이전트 강화학습은 마지막에 얻는 스칼라 보상에만 의존하여 중간 단계의 학습 신호를 놓치는 병목 현상이 있었습니다.
+* 본 논문은 &#x27;COPE&#x27; 기법을 제안하여 에이전트가 성공적인 경로에서 미래의 행동 순서를 미리 예측하도록 학습시켜, 행동(Acting)과 예측(Forecasting)이 함께 진화하게 합니다.
+* 별도의 추가 모델이나 추론 비용 없이 단일 정책 모델만으로 기존 RL 방식 대비 높은 샘플 효율성과 성능 향상을 달성했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+보통 AI 에이전트를 학습시킬 때는 &quot;최종적으로 성공했는가?&quot;라는 결과만 알려줍니다. 하지만 에이전트가 그 결과를 내기까지 거친 수많은 중간 과정은 학습에 활용되지 못하고 버려지곤 했습니다. 연구진은 이를 해결하기 위해 에이전트에게 &quot;다음번에 이 상황이 오면 어떤 행동을 할 것인지 미리 예측해봐&quot;라고 훈련시키는 **COPE** 방식을 도입했습니다. 에이전트는 성공 사례를 통해 자신의 행동을 되돌아보고 미래를 예측하는 훈련을 동시에 수행하며, 이 과정에서 더 똑똑해집니다. 무엇보다 이 방식은 학습 때만 사용될 뿐, 실제 사용할 때는 추가적인 계산 부담이 전혀 없다는 장점이 있습니다.
+
+🎯 배경 및 문제점
+* **학습의 비효율성:** 언어 에이전트는 복잡하고 긴 과정을 거쳐 작업을 수행하는데, 기존 강화학습(RL)은 최종 스칼라 보상만으로 학습하여 중간 단계의 유용한 정보를 거의 활용하지 못합니다.
+* **기존 보조 타겟의 한계:**
+    * **값 타겟(Value targets):** 단계별 성공 확률을 추정하지만, 최종 보상이라는 하나의 신호에서 파생되어 정보가 제한적입니다.
+    * **관찰 타겟(Observation targets):** 환경의 다음 상태를 맞추는 방식인데, 로그나 웹 페이지 같은 데이터는 노이즈가 많고 단기적 예측에 그치는 경향이 있습니다.
+
+💡 핵심 기술 및 아키텍처
+* **COPE (CO-evolving acting and forecasting):** 기존의 행동 학습 외에 &#x27;다단계 행동 타겟(multi-step action targets)&#x27;을 추가합니다.
+* **시간적 앙상블(Temporal ensemble):** 성공한 에피소드의 기록을 바탕으로 에이전트가 자신의 행동 순서를 예측하도록 합니다. 정책 모델은 이 예측을 학습하면서 &#x27;행동하는 능력&#x27;과 &#x27;미래를 내다보는 능력&#x27;을 동시에 개선합니다.
+* **추론 오버헤드 없음:** 학습 과정에서만 예측 능력을 다듬고, 실제 환경에 적용될 때는 추가 모델 없이 기존처럼 한 단계씩 행동하므로 성능 저하나 비용 증가가 발생하지 않습니다.
+
+📊 실험 결과 분석
+* **성능 및 효율성:**
+    * 5개의 벤치마크(ALFWorld, ScienceWorld, WebShop, τ 2-bench, AppWorld)에서 기존 GRPO 및 RL 베이스라인보다 우수한 성능을 보였습니다.
+    * **샘플 효율성:** ScienceWorld 환경에서 기존 방식 대비 최대 1.9배(ECHO 대비), 2.0배(GRPO 대비) 높은 효율성을 달성했습니다.
+* **구조적 이점:** 별도의 모델이나 사전 훈련 과정 없이 단일 정책 백본(Backbone)만으로 이러한 성능 향상을 입증했습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **복잡한 작업 수행:** 웹 탐색, 코드 작성, 과학적 발견과 같이 긴 과정이 필요한 작업에서 에이전트의 학습 속도를 획기적으로 높일 수 있습니다.
+* **비용 절감:** 에이전트 학습에 필요한 데이터 양을 줄이면서도 성능은 극대화할 수 있어, 리소스가 제한된 환경에서 고성능 AI 에이전트를 구축하는 데 기여할 것으로 기대됩니다.
+* **실무적 유연성:** 인프라 변경 없이 기존의 강화학습 파이프라인에 보조적인 학습 타겟만 추가하는 방식으로 즉시 도입이 가능합니다.
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문의 논리는 간결하나, &#x27;미래 행동 예측&#x27;이 단순히 성공한 경로의 암기(Memorization)로 흐르지 않을지 우려되는군요. 분포 외 데이터(OOD) 상황에서 정책이 얼마나 견고할지, 보상 함수가 희소한 환경에서의 일반화 성능에 대한 엄밀한 검증이 더 필요해 보입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀도 일리가 있지만, 실무자 입장에선 &#x27;추론 오버헤드 0&#x27;이라는 점이 미쳤네요. 배포 단계에서 모델 아키텍처 건드릴 필요 없이 학습 파이프라인에 보조 로스(Auxiliary Loss) 하나 추가해서 2배 효율을 뽑는다? 이건 프로덕션에서 당장 도입 안 할 이유가 없죠. 당장 우리 팀 로드맵에 넣어봅니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;다들 너무 진지하신 거 아닌가요? ㅋㅋ 지금 이게 중요한 게 아니라, COPE 방식이면 에이전트가 자아 성찰(?)하듯이 미래를 예측하면서 학습한다는 건데, 이거 거의 시스템 2 사고를 흉내 내는 거잖아요. 당장 깃헙 코드 뜯어보고 내일 세미나에서 발표해야겠네요. 올해 에이전트 관련 논문 중 제일 깔끔한 듯!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
