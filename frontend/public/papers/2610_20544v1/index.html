@@ -1,0 +1,67 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>합성곱 신경망을 이용한 감자 잎 질병 탐지 | ArXiv Translator AI</title><meta name="description" content="합성곱 신경망을 이용한 감자 잎 질병 탐지"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2610_20544v1"><meta property="og:type" content="article"><meta property="og:title" content="합성곱 신경망을 이용한 감자 잎 질병 탐지"><meta property="og:description" content="합성곱 신경망을 이용한 감자 잎 질병 탐지"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2610_20544v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="합성곱 신경망을 이용한 감자 잎 질병 탐지"><meta name="twitter:description" content="합성곱 신경망을 이용한 감자 잎 질병 탐지"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2610_20544v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "합성곱 신경망을 이용한 감자 잎 질병 탐지", "description": "합성곱 신경망을 이용한 감자 잎 질병 탐지", "datePublished": "2026-10-14", "url": "https://arxiv-ai-blog.vercel.app/papers/2610_20544v1", "author": [{"@type": "Person", "name": "Haimanot Bitew Alemayehu"}, {"@type": "Person", "name": "Simachew Melaku Ayalew"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2610_20544v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2610_20544v1"});gtag('event', 'paper_view', {"paper_id": "2610_20544v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>합성곱 신경망을 이용한 감자 잎 질병 탐지</h1><p>합성곱 신경망을 이용한 감자 잎 질병 탐지</p><pre>합성곱 신경망을 이용한 감자 잎 질병 탐지
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** Detection of Potato Plant Leaf Diseases using Convolutional Neural Networks
+&gt; - **저자:** Haimanot Bitew Alemayehu, Simachew Melaku Ayalew, Chilotie Desalew Mengesha, Ayisheshim Almaw Bogale, Anteneh Birhan Yenew, Abrham Tegegne Bogale
+&gt; - **발행일:** 2026-10-14
+&gt; - **PDF 링크:** [Detection of Potato Plant Leaf Diseases using Convolutional Neural Networks](https://arxiv.org/pdf/2610.20544v1)
+
+
+✨ 3줄 핵심 요약
+- 감자 잎의 건강 상태, 조기 마름병, 후기 마름병을 분류하는 경량화된 합성곱 신경망(CNN) 모델을 개발함.
+- 제안 모델은 1.70MB의 작은 크기로 설계되어, 비교 모델인 VGG16 및 MobileNetV2 대비 학습 속도가 빠름.
+- PlantVillage 데이터셋에서 98.66%의 테스트 정확도를 보였으며, 에티오피아 현장에서 수집한 데이터셋에서는 90.28%의 정확도를 달성함.
+
+📖 쉽게 풀어쓴 1분 핵심
+에티오피아의 주요 식량 작물인 감자는 조기·후기 마름병으로 인한 피해가 크지만, 농민들은 육안에 의존하거나 접근성이 낮은 연구실 진단에 의존해 왔습니다. 연구팀은 스마트폰으로 촬영한 잎 사진만으로 질병을 판별할 수 있는 가볍고 빠른 인공지능 모델을 개발했습니다. 이 모델은 연구실 환경뿐만 아니라 실제 농장 환경에서도 높은 정확도를 보여, 향후 농민들이 현장에서 손쉽게 병해를 예방하고 관리하는 데 도움을 줄 수 있습니다.
+
+🎯 배경 및 문제점
+- **진단 어려움:** 기존 질병 진단 방식은 시간이 오래 걸리거나 전문가가 필요하여 농민들의 접근성이 떨어짐.
+- **증상 유사성:** 조기 마름병과 후기 마름병은 증상이 매우 유사하여 육안으로 구별하기가 매우 어려움.
+- **데이터 환경의 차이:** 기존의 많은 연구가 통제된 환경의 이미지(균일한 배경/조명)를 사용해 실제 현장의 복잡한 조건(다양한 조명, 배경, 잎의 각도 등)에서 성능이 저하되는 문제가 있음.
+
+💡 핵심 기술 및 아키텍처
+- **경량 모델 설계:** 약 446,787개의 학습 가능한 파라미터와 1.70MB의 모델 크기로 구현하여 계산 효율성을 극대화함.
+- **데이터 증강:** 모델의 일반화 성능을 높이기 위해 회전, 수평 반전, 줌, 밝기 변화 등을 활용하여 학습 데이터를 다양화함.
+- **비교 분석:** 성능과 계산 효율성 측면에서 VGG16, MobileNetV2와 같은 기존 모델들과 정량적인 비교를 수행함.
+
+📊 실험 결과 분석
+- **성능 지표:** PlantVillage 데이터셋에서 99.04% 학습 정확도, 98.21% 검증 정확도, 98.66% 테스트 정확도를 기록함. 에티오피아 Banja 구역에서 직접 수집한 필드 데이터셋에서는 90.28%의 정확도를 보임.
+- **계산 효율성:** 제안 모델의 에포크당 평균 학습 시간은 5.58초로, VGG16(9.96초) 및 MobileNetV2(7.68초)보다 우수한 속도를 기록함.
+- **일반화:** 실험 결과는 통제된 데이터셋에서의 성과가 실제 현장 데이터의 성능을 보장하지 않음을 보여주며, 실무 적용을 위한 현장 테스트의 중요성을 입증함.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+- **정밀 농업 기여:** 자원이 제한된 환경에서도 농민들이 스마트폰을 활용해 질병을 빠르게 진단하여 생산성 손실을 줄일 수 있음.
+- **향후 과제:** 질병 종류 확대(박테리아성 시들음병 등), 현지 언어(암하라어 등)를 지원하는 모바일 앱 개발, 기상 정보와 연계한 조기 경보 시스템 구축 등이 향후 연구 방향으로 제시됨.
+- **실무 권고:** 본 모델은 예비 진단을 위한 보조 수단이며, 실제 치료 결정은 전문가의 확인을 병행할 것을 권장함.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Detection of Potato Plant Leaf Diseases using Convolutional Neural Networks](https://arxiv.deeppaper.ai/papers/2610.20544v1)
+&gt; - [Detection of Potato Plant Leaf Diseases using Convolutional Neural Networks](https://arxiv.org/abs/2610.20544)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;PlantVillage 데이터셋 기반의 98% 정확도는 이제 학계에서 크게 놀랄만한 수치는 아닙니다. 오히려 현장 데이터셋에서 90.28%로 급락하는 &#x27;Domain Shift&#x27; 문제를 더 심도 있게 다뤘어야 합니다. 1.7MB라는 경량화는 훌륭하나, 왜 성능 하락이 발생했는지에 대한 Feature Map 분석이나 Grad-CAM 시각화가 부족해 보이네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님, 현업에서는 90%만 넘어도 &#x27;감지덕지&#x27;입니다. VGG16 같은 무거운 모델보다 1.7MB짜리 모델이 추론 속도 면에서 압도적인데, 에티오피아 농가 환경을 고려하면 이 정도면 충분히 프로덕션 레벨입니다. 다만 모델 서빙 시 배터리 효율과 온디바이스 추론 시의 Quantization 이슈는 어떻게 해결했는지 궁금하군요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;두 분 다 너무 진지하신 거 아닌가요? 요즘 같은 때에 CNN으로 승부 보는 게 오히려 힙해 보일 정도예요! 근데 솔직히 요즘은 그냥 ViT나 경량화된 퓨전 모델 돌리는 게 대세인데, 이 팀은 실사용을 목표로 확실히 &#x27;가성비&#x27;에 올인했네요. 현지 언어 지원 앱까지 만든다니 에티오피아 버전 &#x27;농업계의 유니콘&#x27; 탄생인가요? 당장 GitHub Star 찍으러 갑니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
