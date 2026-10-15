@@ -53301,11 +53301,11 @@
     "2610_20518v1": {
       "id": "2610_20518v1",
       "filename": "post_2610_20518v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-10-15T02:47:32.030350+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-15T02:47:32.030351+00:00",
+      "updated_at": "2026-10-15T23:30:33.298144+00:00",
       "paper": {
         "title": "The Wealth of Agents: Scaling Agentic AI Across Developers",
         "summary": "Today's agentic systems are typically designed, built, and deployed by single developers with full control over all participating agents. While this simplifies development, it limits the potential scale of agentic systems. We study multi-developer agentic systems (MDAs) which enable developers to collaboratively build agentic systems to push frontier capability beyond what any individual developer could achieve alone. We construct empirical and theoretical models of developers to compare MDAs with single-developer agentic systems (SDAs). On GAIA, a general assistant benchmark, a population of specialized developers whose individual agents do not exceed 35% accuracy reaches 70% when their agents are combined in an MDA. This MDA performs 12 percentage points above the median general-purpose SDA built with several times each specialist's development budget. Our theoretical models show how MDAs can incentivize specialization and encourage more efficient use of aggregated developer resources. Put together, our results make a preliminary case for MDAs as a new scaling axis by enabling developers with diverse capabilities and resources to advance agentic AI collaboratively.",
@@ -53318,7 +53318,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2610.20518v1"
       },
-      "priority_score": 34
+      "priority_score": 34,
+      "korean_title": "에이전트의 부: 개발자 간 에이전트형 AI 확장"
     },
     "2610_20516v1": {
       "id": "2610_20516v1",
@@ -53871,7 +53872,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-15T13:50:46.699232+00:00",
       "last_error": null,
-      "updated_at": "2026-10-15T18:49:41.315924+00:00",
+      "updated_at": "2026-10-15T23:29:55.117037+00:00",
       "paper": {
         "title": "StreamErase: Towards Ultra-Fast Streaming Video Erasing",
         "summary": "Current video object removal methods suffer from prohibitive latency (minutes per video) and non-causal processing that prevents real-time interaction. We present StreamErase, enabling sub-second latency with up to 26 FPS streaming generation on a single GPU. Our approach first augments a text-to-video model with mask input to generate high-quality videos that erase target objects and synthesize coherent backgrounds, but does not perform inference on the fly. As such, we progressively transfer the erasing capability from a powerful bidirectional foundation model to an efficient unidirectional streaming eraser, enabling long-horizon erasing without sacrificing visual fidelity. Several key challenges arise when generating videos over long, potentially infinite horizons: (1) bridging the domain gap from training on finite length and extrapolating to long horizons, (2) sustaining high quality by preventing error accumulation, and (3) maintaining fast inference, without increasing computational cost as the context grows. To address these challenges, we carefully designed sliding-window causal attention with attention sinks. By incorporating self-rollout with attention sinks and KV cache rolling during training, we simulate inference-time extrapolations with a fixed context window, enabling constant-speed generation of arbitrarily long videos. Finally, we establish a dedicated benchmark, LongErase, for streaming long-video object removal. Our model achieves strong performance compared to existing video object erasing models and generalizes well to real-world video scenarios, uniquely enabling infinite-length streaming. With StreamErase, users can input a mask and see the erasing results unfold in real-time, delivering a truly interactive experience.",
@@ -53896,7 +53897,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-15T13:50:46.699254+00:00",
       "last_error": null,
-      "updated_at": "2026-10-15T18:49:41.315951+00:00",
+      "updated_at": "2026-10-15T23:29:55.117076+00:00",
       "paper": {
         "title": "Rethinking LLM-Guided Visual Question Answering: Does Deeper Knowledge Integration Really Help?",
         "summary": "Knowledge-based Visual Question Answering (VQA) requires reasoning that extends beyond visible image content, demanding external commonsense and factual knowledge. While recent work leverages Large Language Models (LLMs) as knowledge sources, the question of how deeply such guidance should be integrated into a vision language architecture remains underexplored. In this work, we generate structured reasoning guidance, visual focus concepts, distractor elements and external knowledge using Llama~3.3~70B and systematically compare two integration strategies within a unified frozen ViT + FLAN-T5 framework on the OK-VQA benchmark: decision level late fusion and attention-matrix injection. Contrary to the prevailing assumption that deeper integration is superior, we find that shallow late fusion achieves the strongest results (39.4% exact match, +10.0 over the no guidance baseline), outperforming deep attention modification (31.8%) under data scarce fine-tuning. We further contribute an LLM based augmentation pipeline that expands training data more than tenfold via question paraphrasing. Our findings indicate that integration depth must be matched to the data regime.",
@@ -53919,7 +53920,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-15T13:50:46.699261+00:00",
       "last_error": null,
-      "updated_at": "2026-10-15T18:49:41.315954+00:00",
+      "updated_at": "2026-10-15T23:29:55.117080+00:00",
       "paper": {
         "title": "The Thinking Leakage in Reinforcement Learning for LLMs",
         "summary": "Hybrid reasoning models such as the Qwen3 series switch between a THINK mode and a NO-THINK mode through a few chat-template tokens. A popular recipe trains such models with reinforcement learning in NO-THINK mode and reports improved reasoning performance. We provide evidence that much of this gain can be explained by thinking leakage: the gain comes largely from partially reactivating the reasoning abilities of the original model's THINK mode instead of learning enhanced reasoning behavior. We train Qwen3-1.7B, 4B, and 8B with GRPO in NO-THINK mode. As accuracy improves, responses become longer and more reflective, are increasingly judged by the original model to resemble its own thinking, and the model's internal activations shift toward its THINK mode. We then investigate at the level of weights, activations, and attention heads: scaling the RL update further elicits THINK-mode behavior and approaches THINK-mode accuracy but does not exceed it; in Qwen3-8B, replacing a low-dimensional THINK-related activation subspace of the RL-trained model with its original-model value removes most of the RL gain, and the reverse exchange transfers a considerable fraction of the gain to the original model; and the RL-induced shift passes through the attention heads that read the empty think block. We further identify a possible mechanism in the GRPO training signal: responses favored by the advantage-weighted update are more THINK-like, and a gradient step computed from this signal moves the model toward its THINK state. Thus, gains in NO-THINK mode can largely reflect reactivation of reasoning abilities already present in the original model.",
@@ -54014,7 +54015,7 @@
       "attempts": 0,
       "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-15T18:49:52.252475+00:00",
+      "updated_at": "2026-10-15T23:29:55.117056+00:00",
       "paper": {
         "title": "APEX-Harm: Evaluating Agent Safety in Shared Professional Workspaces",
         "summary": "Professional agents increasingly work through command-line interfaces and multiple tools over shared workspaces containing files, messages, and business applications. These environments create safety risks that are difficult to capture with attacks placed at a single, known read location. We introduce APEX-Harm, a benchmark for evaluating prompt and script injection against long-horizon agents performing finance, consulting, and legal tasks in large workspaces. Each task contains 115 to 328 files, together with email, calendar, chat, document, spreadsheet, PDF, and code-execution tools exposed through MCP servers. The benchmark includes six attack categories covering static and dynamic injections, task-specific script replacement, and attacker-provided generic scripts, and evaluates attack success, exposure, and task performance. We evaluate 12 frontier models on 180 task instances per model. Opus 5 and Sonnet 5 have the lowest overall attack success rates (8% and 20%), while task-specific script replacement and attacker-provided generic script attacks remain substantially more effective, averaging 81-84% and 73% attack success, respectively. Gemini 3.8 Flash achieves the highest mean task score (0.877) while still exhibiting a 33% attack success rate. These results show that completing the requested task is not sufficient evidence of safe behavior: an agent can produce a correct deliverable while also performing an unauthorized action in the workspace.",
@@ -54038,7 +54039,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-15T18:49:41.315959+00:00",
       "last_error": null,
-      "updated_at": "2026-10-15T18:49:41.315960+00:00",
+      "updated_at": "2026-10-15T23:29:55.117098+00:00",
       "paper": {
         "title": "From Failures to Learnable Worlds: Policy-Conditioned Environment Generation for Navigation Agents",
         "summary": "Simulated environments enable scalable training data generation for embodied agents, but more data does not necessarily provide what a particular agent needs to learn. Existing environment-generation pipelines largely optimize generic properties such as realism, diversity, or task coverage, while different pretrained policies can fail for different environmental reasons. We therefore introduce WEDGE, a framework for weakness-guided navigation learning in which the failure modes of a pretrained agent guide the generation of training environments at each adaptation round. Given a pretrained policy, WEDGE uses an LLM to propose executable weakness features from contrasting successful and failed rollouts, automatically validates them on the diagnostic set, and selects the strongest validated weakness based on its success-rate gap. The validated weaknesses are then mapped to the environmental factors that control them. WEDGE varies these factors to construct environments in the difficulty regimes where the policy struggles, producing targeted training experience for adaptation. Across three navigation agents with different adaptation mechanisms, we find that policies exhibit distinct weakness profiles and benefit from different training environments. Weakness-conditioned adaptation consistently outperforms matched random and hard-example alternatives on ProcTHOR, while the resulting gains for Uni-NaVid and Gemini also extend to HM3D after ProcTHOR adaptation. Iterative re-diagnosis further shows that dominant weaknesses can persist or shift as the policy improves, providing updated guidance for subsequent environment construction. Together, these results show that policy failures are not only diagnostic signals, but actionable guidance for constructing training environments that target a policy's current weaknesses.",
@@ -54128,10 +54129,128 @@
         "pdf_link": "https://arxiv.org/pdf/2610.15112v1"
       },
       "priority_score": 17
+    },
+    "2610_17242v1": {
+      "id": "2610_17242v1",
+      "filename": "post_2610_17242v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-10-15T23:30:23.877720+00:00",
+      "paper": {
+        "title": "When Left Is Right? Camera-Motion Understanding beyond Screen",
+        "summary": "Can a vision-language model tell left from right? Modern VLMs solve visual puzzles and follow hour-long videos, yet when asked whether the camera moved left or right, most do no better than a coin flip. Adding camera-motion data or geometric representations has been tried, separately, and neither closes the gap. We argue that camera-motion understanding needs two conditions at once: the representation must couple off-screen camera motion with on-screen flow dynamics, and it must be interpreted by the language model rather than trained as a standalone pose or depth estimator. We propose CameraVLM, which pairs a motion-state representation with state-language alignment. Camera tokens capture how the camera moves off screen, flow tokens capture how the subject and background move on screen, and a two-stage training strategy keeps language in the loop so that both are learned together with camera-motion semantics. With only 9B parameters, CameraVLM outperforms all open-source and camera-motion-specific models by a wide margin across three benchmarks and more than 20 baselines, and matches or surpasses GPT-6 Astra as well as human viewers in a 48-participant study. Project page: https://3dagentworld.github.io/CameraVLM/",
+        "published": "2026-10-12T18:09:24Z",
+        "authors": [
+          "Chong Cheng",
+          "Ran Zhang",
+          "Xinyuan Li",
+          "Alan Zhao",
+          "Hao Wang",
+          "Xi Wang"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.17242v1"
+      },
+      "priority_score": 35,
+      "korean_title": "왼쪽이 오른쪽일 때: 화면 너머의 카메라 움직임 이해하기"
+    },
+    "2610_19121v1": {
+      "id": "2610_19121v1",
+      "filename": "post_2610_19121v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-10-15T23:30:04.866357+00:00",
+      "paper": {
+        "title": "Unlocking Structured Pruning for Reasoning Language Models via Attention-Preserving MLP Trimming",
+        "summary": "Structured pruning reduces LLM inference costs by removing model components to produce smaller dense models. However, existing methods can cause reasoning performance to collapse on long-form reasoning tasks such as AIME. We propose \\textit{LayerTrim}, a training-free structured pruning method that identifies redundant decoder layers and selectively trims their MLP features while preserving attention and decoder depth. LayerTrim is the first training-free structured pruning method designed to preserve long-form reasoning without gradients or recovery training. Across three reasoning language models and five benchmarks, LayerTrim outperforms existing structured pruning methods in most evaluated settings, improving average accuracy by up to 21.4 percentage points over RESP. On \\texttt{Qwen3-14B}, LayerTrim achieves 1.24$\\times$ faster prefill and 19.7\\% lower peak GPU memory than the dense model, while better preserving reasoning ability. It also achieves the shortest average generation length among evaluated pruned models, while retaining the highest average accuracy. These results demonstrate that LayerTrim improves reasoning efficiency through both structural compression and reduced token generation.",
+        "published": "2026-10-13T19:55:33Z",
+        "authors": [
+          "Woosang Lim",
+          "Haneul Yoo",
+          "Vincent-Daniel Yun",
+          "Sungjoo Yoo"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.19121v1"
+      },
+      "priority_score": 45,
+      "korean_title": "추론 언어 모델을 위한 주의력 보존 MLP 가지치기 기반 구조적 가지치기 기법"
+    },
+    "2610_18755v1": {
+      "id": "2610_18755v1",
+      "filename": "post_2610_18755v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-10-15T23:30:14.363418+00:00",
+      "paper": {
+        "title": "PreciseCoder: Faithful and Generalizable Debugging Beyond Unit-Test Rewards",
+        "summary": "Reinforcement learning (RL) from unit tests is the common recipe for post-training code models, but a unit test only asks whether the final program passes. We analyze what this unit-test-only reward teaches a model during debugging and find that, while it raises pass rates, it also teaches the model to edit more and to hallucinate bugs in code that is already correct. We introduce PreciseCoder, a training algorithm that augments the unit-test reward with a signal for semantically verified, localized edits, which correlates with smaller edits and higher pass rates. On 4B, 9B, and 27B models, PreciseCoder reduces the average number of edit lines from 7-15to 3 at a pass rate on par with unit-test-only training. Trained only on single-line bugs, PreciseCoder can generalize to repository-level program repair, where it resolves more issues with smaller patches. Its precision also transfers from weaker to stronger models: given the reasoning trace of a 9B PreciseCoder model, frontier models such as GPT-5.6 Sol and Qwen3.8-Max gain 4.6-12.4 points in edit precision with no additional training. Linguistic analysis of the thinking traces shows that our reward encourages the model to reason about individual lines, name the buggy ones, and form consistent bug hypotheses.",
+        "published": "2026-10-13T17:19:10Z",
+        "authors": [
+          "Yunkai Zhan",
+          "Miaosen Chai",
+          "Shangshang Wang",
+          "Jike Zhong",
+          "Yuqing Yang",
+          "Deqing Fu",
+          "Serina Chang",
+          "Wang Bill Zhu"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.18755v1"
+      },
+      "priority_score": 35,
+      "korean_title": "PreciseCoder: 단위 테스트 보상을 넘어선 충실하고 일반화 가능한 디버깅"
+    },
+    "2610_18762v1": {
+      "id": "2610_18762v1",
+      "filename": "post_2610_18762v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-15T23:29:55.117103+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-15T23:29:55.117105+00:00",
+      "paper": {
+        "title": "Looking Complete Is Not Being Grounded: Evaluating LLM Sitreps Against Human-Authored Situation Reports",
+        "summary": "Evaluation for automatic crisis reporting should measure what practitioners need, not what is convenient to compare. Through LLM-assisted, author-approved content analysis, we derive a 15-slot information schema from professional humanitarian situation reports using qualitative content analysis, then evaluate 121 human and 261 LLM-generated reports across five disasters and three hazard types. Under google/gemini-3.7-flash on Cyclone Idai, the best machine arm is nominally above the empirical human ceiling (0.827 vs. 0.821), but the difference is statistically indistinguishable from zero (95\\% bootstrap CI $[-.049,.059]$; permutation $p=.852$), and the ordering does not replicate under openai/gpt-5.6-luna. On a blind 100-item Idai sample, the author agrees with the Gemini judge at 0.910 accuracy and unweighted Cohen's $κ=.799$. All four judges clear the plan's raw-agreement criterion of .7; only Gemini reaches .7 on chance-corrected $κ$. Across the three primary events, machine reports reproduce 5.4-11.0% of same-day official figures. Across those same events, raw exact-number matching links 14.3-19.6% of official figures and 85.4-90.1% of machine figures to the social stream; manual audit confirms 45/50 declared absences, 4/25 official matches, and 24/25 machine matches semantically. The issuing-provenance gap is positive in all 12 observed event-judge cells: report date, organisation, series, and authority were not supplied at professional-report coverage in any cell. On the three primary events, ROUGE-L is uninformative, BERTScore is negatively associated with completeness after multiplicity correction, and a generic LLM judge changes sign.",
+        "published": "2026-10-13T17:23:19Z",
+        "authors": [
+          "Sachin Kumar"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.18762v1"
+      },
+      "priority_score": 30
+    },
+    "2610_20526v1": {
+      "id": "2610_20526v1",
+      "filename": "post_2610_20526v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-15T23:29:55.117110+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-15T23:29:55.117112+00:00",
+      "paper": {
+        "title": "Lluna: Collaborative Unimodal Models for Missing-Modality Inference",
+        "summary": "Pretrained unimodal models offer a flexible route to multimodal prediction through collaboration, but this collaboration can become less accurate than a surviving unimodal model when modalities are missing. We study this setting using fixed surviving-model anchors and find that collaborative gains can weaken or reverse as inputs disappear, even when the anchor's own input is unchanged. Our diagnostics further reveal reduced recovery of modality-specific information after aggregation and state-dependent collaborative representations. We propose Lluna, which combines a direct private prediction path from adapted unimodal features with a common graph-based collaboration branch that provides a residual correction. Progressive Collaboration Consistency organizes richer-to-poorer guidance along single-modality removals, aligning normalized common representations while task supervision adapts predictions to the available evidence. Across eight datasets spanning affective computing, scene understanding, and medical prediction, Lluna achieves the best evaluated average performance over non-full input states, improving Mean-Missing by 4.26\\% on average relative to the strongest evaluated baseline. The fixed-anchor diagnostic also shows positive gains in mean collaboration under minimal inputs on all eight tasks. Code is available at https://github.com/AIFrontierLab/Lluna.",
+        "published": "2026-10-14T17:25:04Z",
+        "authors": [
+          "Haoyue Bai",
+          "Yinyi Luo",
+          "Heqing Huang",
+          "Xiaoyuan Yi",
+          "James Evans",
+          "Jindong Wang"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.20526v1"
+      },
+      "priority_score": 27
     }
   },
   "last_run": {
-    "started_at": "2026-10-15T18:49:41.321163+00:00",
+    "started_at": "2026-10-15T23:29:55.123279+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -54142,25 +54261,25 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 21009,
-      "output_tokens": 5943,
+      "prompt_tokens": 21280,
+      "output_tokens": 5855,
       "thought_tokens": 0,
-      "total_tokens": 26952,
-      "estimated_usd": 0.01416675
+      "total_tokens": 27135,
+      "estimated_usd": 0.0141025
     },
-    "finished_at": "2026-10-15T18:50:25.454384+00:00"
+    "finished_at": "2026-10-15T23:30:34.734607+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 3388,
-    "prompt_tokens": 8552121,
-    "output_tokens": 2494179,
+    "requests": 3396,
+    "prompt_tokens": 8573401,
+    "output_tokens": 2500034,
     "thought_tokens": 0,
-    "total_tokens": 11046300,
-    "estimated_usd": 5.87929875
+    "total_tokens": 11073435,
+    "estimated_usd": 5.89340125
   },
   "last_publication_run": {
-    "started_at": "2026-10-15T18:49:41.321163+00:00",
+    "started_at": "2026-10-15T23:29:55.123279+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 4,
@@ -54171,17 +54290,17 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 21009,
-      "output_tokens": 5943,
+      "prompt_tokens": 21280,
+      "output_tokens": 5855,
       "thought_tokens": 0,
-      "total_tokens": 26952,
-      "estimated_usd": 0.01416675
+      "total_tokens": 27135,
+      "estimated_usd": 0.0141025
     },
-    "finished_at": "2026-10-15T18:50:25.454384+00:00"
+    "finished_at": "2026-10-15T23:30:34.734607+00:00"
   },
   "daily_usage": {
     "date": "2026-10-15",
-    "estimated_usd": 0.05676475,
-    "publications": 16
+    "estimated_usd": 0.07086725,
+    "publications": 20
   }
 }
