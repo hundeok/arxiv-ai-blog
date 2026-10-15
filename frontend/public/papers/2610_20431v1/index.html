@@ -1,0 +1,67 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SwarmRSI: 진화하는 과학 에이전트 군단을 통한 재귀적 자기 개선 | ArXiv Translator AI</title><meta name="description" content="SwarmRSI: 진화하는 과학 에이전트 군단을 통한 재귀적 자기 개선"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2610_20431v1"><meta property="og:type" content="article"><meta property="og:title" content="SwarmRSI: 진화하는 과학 에이전트 군단을 통한 재귀적 자기 개선"><meta property="og:description" content="SwarmRSI: 진화하는 과학 에이전트 군단을 통한 재귀적 자기 개선"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2610_20431v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="SwarmRSI: 진화하는 과학 에이전트 군단을 통한 재귀적 자기 개선"><meta name="twitter:description" content="SwarmRSI: 진화하는 과학 에이전트 군단을 통한 재귀적 자기 개선"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2610_20431v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "SwarmRSI: 진화하는 과학 에이전트 군단을 통한 재귀적 자기 개선", "description": "SwarmRSI: 진화하는 과학 에이전트 군단을 통한 재귀적 자기 개선", "datePublished": "2026-10-14", "url": "https://arxiv-ai-blog.vercel.app/papers/2610_20431v1", "author": [{"@type": "Person", "name": "Qianru Meng"}, {"@type": "Person", "name": "Xi Zhang"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2610_20431v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2610_20431v1"});gtag('event', 'paper_view', {"paper_id": "2610_20431v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>SwarmRSI: 진화하는 과학 에이전트 군단을 통한 재귀적 자기 개선</h1><p>SwarmRSI: 진화하는 과학 에이전트 군단을 통한 재귀적 자기 개선</p><pre>SwarmRSI: 진화하는 과학 에이전트 군단을 통한 재귀적 자기 개선
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** SwarmRSI: Recursive Self-Improvement through Evolving Scientific Agent Swarm
+&gt; - **저자:** Qianru Meng, Xi Zhang, Konstantinos Papakostas, Congfeng Cao, Wenxiang Hu, Tianyi Lu, Xiao Zhang, Lun Zhou, Zaiqiao Meng, Zhaochun Ren, Xiaohui Yan, Yougang Lyu
+&gt; - **발행일:** 2026-10-14
+&gt; - **PDF 링크:** [SwarmRSI: Recursive Self-Improvement through Evolving Scientific Agent Swarm](https://arxiv.org/pdf/2610.20431v1)
+
+
+✨ 3줄 핵심 요약
+*   **SwarmRSI**는 가설, 코드, 실험 데이터를 공유하고 진화시키는 에이전트 군단 프레임워크로, 과학 연구의 재귀적 자기 개선(RSI)을 구현합니다.
+*   피드백 기반 돌연변이와 상호보완적 재결합 기술을 통해 개별 에이전트가 실패한 연구에서 유용한 요소를 추출하고 연구 방향을 최적화합니다.
+*   OpenProblems, NatureBench 등에서 최첨단(SOTA) 성능을 기록했으며, 실제 생물학 연구 분석에 활용된 사례가 있습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+과학 연구에서 &#x27;실패한 실험&#x27;은 종종 무용지물로 버려지거나, 성공한 실험 속의 유용한 아이디어가 다른 연구자에게 전달되지 못하는 문제가 있습니다. **SwarmRSI**는 이를 해결하기 위해 에이전트들이 연구 과정(가설, 프로그램, 결과)을 공유하는 &#x27;지식 공유 그래프&#x27;를 운영합니다. 한 에이전트가 실패했을 때, 다른 에이전트가 그 실패 원인을 분석해 가설을 수정하거나, 서로 다른 연구의 유용한 조각들을 합쳐 새로운 발견을 이끌어냅니다. 마치 공동 연구팀이 수많은 시행착오를 공유하며 진화하듯, AI 에이전트 군단이 서로의 경험을 밑거름 삼아 연구 수준을 높이는 방식입니다.
+
+🎯 배경 및 문제점
+기존의 에이전트 기반 과학 연구에는 두 가지 구조적 한계가 존재했습니다.
+1.  **실패 원인 파악의 어려움:** 실험 결과가 좋지 않을 때, 가설이 틀린 것인지 구현된 코드의 문제인지 구분하기 어렵습니다.
+2.  **지식의 단절:** 전체적인 성과가 낮은 프로그램이라 할지라도, 그 안에는 다른 연구에 필수적인 유용한 구성 요소가 포함되어 있을 수 있으나, 보통 이런 데이터는 버려지기 일쑤입니다.
+
+💡 핵심 기술 및 아키텍처
+*   **피드백 유도형 군단 돌연변이(Feedback-Guided Swarm Mutation):** 타 에이전트의 피드백을 활용하여 가설이나 코드를 수정할지 결정합니다.
+*   **상호보완적 군단 재결합(Complementary Swarm Recombination):** 여러 에이전트의 프로그램을 조합하여 각자가 가진 장점을 합치고 새로운 가설을 검증합니다.
+*   **재귀적 군단 진화(Recursive Swarm Evolution):** 모든 연구 결과물을 공유 그래프에 저장하며, 이 그래프가 각 에이전트의 다음 연구 방향과 업데이트를 가이드합니다.
+
+📊 실험 결과 분석
+*   **OpenProblems:** Gemini 3.1 Pro Preview 모델 사용 시 평균 점수 76.2점을 기록했습니다.
+*   **NatureBench:** 전체 90개 작업에서 최고 성능(SOTA) 달성 비율이 가장 높았으며, 최종 프로그램의 약 77%가 피드백 기반의 수정이나 재결합을 통해 생성되었습니다.
+*   **MLE-Bench Lite:** 동일한 기반 모델을 사용한 기존의 가설 및 코드 진화 에이전트들보다 우수한 성능(전체 작업의 81.8%에서 메달 획득)을 보였습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+*   **실제 과학 연구 기여:** 생물학자들이 이 프레임워크가 생성한 두 가지 프로그램을 재현하여 실제 장 및 비장 면역 관련 분석에 사용했습니다.
+*   **주의사항:** 본 기술은 실행 가능한 피드백이 존재하는 환경에서만 유효하며, 생성된 코드나 과학적 해석은 실제 활용 전 반드시 인간 전문가의 독립적인 검증이 필요합니다. 또한, 실제 배포 시에는 보안 및 과학적 정확성을 위해 코드 실행 권한과 데이터 접근 범위를 엄격히 제한해야 합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Paper page - SwarmRSI: Recursive Self-Improvement through Evolving ...](https://huggingface.co/papers/2610.20431)
+&gt; - [Daily Papers - Hugging Face](https://huggingface.co/papers/date/2026-10-15)
+&gt; - [Science Cast](https://phys.sciencecast.org/casts/c8fmnko1ytu6)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문의 아이디어 자체는 &#x27;지식 공유 그래프&#x27;를 통한 진화 전략으로 흥미롭지만, 재귀적 자기 개선(RSI) 과정에서 발생하는 환각의 누적 문제를 어떻게 통제했는지 의문이군요. 특히 생물학적 데이터 분석처럼 엄밀함이 요구되는 영역에서, 에이전트들이 서로의 오류를 강화(Reinforcement)하는 루프에 빠질 위험은 없는지 검증 데이터가 더 필요해 보입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에선 그 &#x27;오류 강화&#x27;가 가장 무섭죠. 코드 실행 환경(Sandbox) 격리랑 보안 정책을 아무리 빡세게 걸어도, 에이전트 군단이 서로 피드백 주고받으면서 최적화된 코드가 사실은 특정 벤치마크 데이터셋에 오버피팅된 &#x27;꼼수 코드&#x27;일 가능성을 배제할 수 없습니다. SOTA 점수도 중요하지만, 실제 파이프라인에 태웠을 때 로그 트래킹이 얼마나 용이한지가 도입의 관건이겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;두 분 다 너무 회의적이신 거 아니에요? ㅋㅋㅋ NatureBench에서 90개 작업 SOTA 찍은 건 일단 리스펙해야죠. 실패한 실험 데이터에서 유용한 조각만 추출해서 재결합한다는 게 진짜 &#x27;AI판 유전자 알고리즘&#x27; 같아서 소름 돋았거든요. 당장 제 실험실 서버에 이 프레임워크 올려서 제 논문 가설 검증부터 시켜볼 생각입니다. 77%가 재결합으로 생성됐다면, 사실상 인간 연구자들은 &#x27;심사위원&#x27; 역할만 하면 되는 세상이 오고 있는 거 아닌가요?&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
