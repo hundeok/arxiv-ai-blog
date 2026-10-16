@@ -53351,7 +53351,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-15T02:47:32.030362+00:00",
       "last_error": null,
-      "updated_at": "2026-10-15T02:47:32.030364+00:00",
+      "updated_at": "2026-10-16T07:47:56.533395+00:00",
       "paper": {
         "title": "VascuSR: Iterative Anatomy-Aware Diffusion for CT Super-Resolution",
         "summary": "Generative super-resolution (SR) can recover sharp detail in computed tomography (CT) images from severely downsampled observations, but the missing high-frequency content is not uniquely determined by the low-resolution input. Consequently, visually plausible reconstructions may contain anatomically unsupported vascular detail, such as missing, spurious, or incorrectly connected vessels. To overcome this challenge, we introduce VascuSR, an iterative anatomy-aware diffusion framework that combines image reconstruction with explicit 3D vascular guidance. First, to provide richer anatomical guidance, we use an explicit 3D vascular representation that captures structural information beyond individual slices. This representation also simplifies vascular refinement by allowing a lightweight 3D generative refiner to focus on vascular structure rather than complex CT appearance. Second, to guide slice-wise SR, a lightweight anatomy controller injects the refined structure into the diffusion decoder, while iterative feedback updates this guidance from each new SR volume. On re-annotated MSD Task08 and HVM datasets, VascuSR outperforms interpolation and learning-based SR baselines in segmentation accuracy (Dice and clDice) and 3D vascular structure (connectivity and mean centerline distance), while maintaining image quality comparable to its SR backbone. Compared with learning-based baselines, VascuSR reduces class-averaged connected-component counts by over 20% on both datasets and mean centerline distance by over 10% on MSD.",
@@ -54949,11 +54949,11 @@
     "2610_21477v1": {
       "id": "2610_21477v1",
       "filename": "post_2610_21477v1.md",
-      "status": "pending",
+      "status": "published",
       "attempts": 0,
-      "next_retry_at": "2026-10-16T02:44:02.940039+00:00",
+      "next_retry_at": null,
       "last_error": null,
-      "updated_at": "2026-10-16T02:44:02.940041+00:00",
+      "updated_at": "2026-10-16T07:48:32.385523+00:00",
       "paper": {
         "title": "Tool-Augmented Large Language Models for Reliable Medical Calculation from Patient Notes",
         "summary": "Medical calculators translate raw patient observations into clinically actionable values and scores. However, applying these calculators directly to free-form patient notes requires precise variable extraction combined with the exact execution of complex formulas, scoring rules, and output conventions. Relying solely on direct large language model (LLM) prompting is unreliable in this context, as rule recall, parameter extraction, arithmetic reasoning, and formatting become entangled within a single generative step. To address these limitations, we propose a tool-augmented LLM framework for reliable medical calculation from patient notes. The framework retrieves and structures calculator specifications, generates reusable executable tools, and uses a constrained extractor to map each patient note to calculator-ready inputs. The tools then perform deterministic calculation, separating clinical language understanding from rule execution and arithmetic. Evaluated on the MedCalc-Bench dataset, our method achieves 86.73% final-answer accuracy, outperforming the one-shot prompting and supervised fine tuning-only baselines by 24.0 and 17.27 percentage points. Ablation and error analyses show that these performance gains are primarily driven by rule-grounded tool synthesis and schema-constrained extraction, whereas remaining failures are concentrated in clinical-semantic extraction and benchmark-specific output contracts. By grounding calculator logic in executable tools, the proposed approach alleviates arithmetic hallucinations and improves the computational reliability of the final clinical outputs.",
@@ -54969,12 +54969,269 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2610.21477v1"
       },
-      "priority_score": 40
+      "priority_score": 40,
+      "korean_title": "환자 기록 기반의 신뢰할 수 있는 의학적 계산을 위한 도구 증강 거대언어모델"
+    },
+    "2610_06598v1": {
+      "id": "2610_06598v1",
+      "filename": "post_2610_06598v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-16T07:47:56.533378+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-16T07:47:56.533387+00:00",
+      "paper": {
+        "title": "SimForcing: Distilling Simulation Motion Priors into Real-Domain Robot World Models",
+        "summary": "Action-conditioned robot world models must respond precisely to robot trajectories while preserving realistic visual dynamics, yet learning both from heterogeneous robot videos remains challenging. Simulation offers structured motion supervision, but appearance differences hinder direct transfer, and inaccurate simulation predictions can misguide real-video generation. We present SimForcing, a simulation-guided framework that uses simulation both as a source of transferable motion knowledge and as a controllable reference for prediction. First, we transfer motion knowledge from a simulation teacher through latent-motion distillation, aligning temporal changes in latent space to internalize motion priors while mitigating the influence of appearance differences. Second, we introduce multi-block simulation conditioning with condition dropout to exploit predicted simulation trajectories without relying excessively on their accuracy. Our simulation-conditioning classifier-free guidance scheme unifies these two ideas by balancing predictions based on internalized motion knowledge with those additionally guided by simulation latents. The jointly trained student generates both simulation conditions and real-domain videos, requiring no additional world model at inference. On Bridge, SimForcing achieves the best PSNR, SSIM, LPIPS, and FVD among the compared methods without external embodied pretraining. Evaluation on InternData-A1 further supports its applicability across robot datasets. Moreover, using our trained world model to initialize a vision-language-action model improves LIBERO success, suggesting its utility for downstream policy learning. \\url{https://github.com/Wang-Xiaodong1899/SimForcing}",
+        "published": "2026-10-05T16:08:01Z",
+        "authors": [
+          "Xiaodong Wang",
+          "Tianle Li",
+          "Chuanxin Song",
+          "Junliang Xie",
+          "Zhanmi Zhong",
+          "Suiying Wu",
+          "Peixi Peng"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.06598v1"
+      },
+      "priority_score": 30
+    },
+    "2610_17665v2": {
+      "id": "2610_17665v2",
+      "filename": "post_2610_17665v2.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-16T07:47:56.533401+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-16T07:47:56.533403+00:00",
+      "paper": {
+        "title": "RoTA-Bench: Evaluating 3D Spatial Reasoning through Interactive Projection Alignment",
+        "summary": "Can vision-language models turn 2D observations into 3D understanding that supports precise action? This requires inferring object geometry, anticipating the effects of rotation, and refining actions through visual feedback. We introduce RoTA-Bench to evaluate these abilities through interactive 3D-to-2D projection alignment. Given a target silhouette, a model observes a rotated object and chooses successive rotations to recover the target projection within a limited action budget. Our automated pipeline constructs silhouette-preserving 3D objects from 2D icons and uses reversible initialization to guarantee solvability, yielding 674 tasks and a stratified 100-task test set. Empirically, we find that (i) a substantial human-model gap persists: GPT-5.6-Sol succeeds on only 17% of tasks, whereas 20 undergraduate participants collectively complete the test set four times with a 100% success rate; (ii) image-space and pose-space progress can diverge: at matched states, the model more often improves silhouette overlap while worsening pose alignment than humans (19.4% vs. 10.9%); and (iii) fine-grained control is sensitive to interaction history: removing it leaves 96.8% of the model's actions at a coarse 30-degree step size and sharply reduces observed task success. These findings highlight the challenge of converting visual evidence into precise 3D control, beyond recognizing or matching individual images.",
+        "published": "2026-10-13T03:46:48Z",
+        "authors": [
+          "Qingchuan Ma",
+          "Yuexiao Ma",
+          "Xiang Meng",
+          "Yixuan Zou",
+          "Tianyu Xie",
+          "Wang Chen",
+          "Yuhui Zeng",
+          "Yuhang Wu",
+          "Xiawu Zheng",
+          "Rongrong Ji"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.17665v2"
+      },
+      "priority_score": 27
+    },
+    "2610_22362v1": {
+      "id": "2610_22362v1",
+      "filename": "post_2610_22362v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-16T07:47:56.533409+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-16T07:47:56.533411+00:00",
+      "paper": {
+        "title": "CoDA: Co-Evolution of Data Engines and Action Policies",
+        "summary": "Generative simulation can automate robot environment construction, but physically valid environments are not necessarily useful for training. The challenge is to identify environments that address a policy's failures and supervision that helps it overcome them. We introduce CoDA, a framework in which a simulation data engine and an action policy co-evolve through a shared heterogeneous memory of environment construction, policy failures, and learning progress. The memory compiles validated diagnoses from a vision-language critic into generation programs that recreate difficulties and training programs that help the policy overcome them. We further propose Text2potential to convert these diagnoses into staged potentials for action-chunk value learning, providing dense supervision for policy updates while preserving the task's optimal policy under standard shaping assumptions. Measured learning progress guides further generation and program refinement. Across four manipulation task families, CoDA improves out-of-distribution success from 5.3% after supervised fine-tuning to 27.6%, exceeding the strongest closed-loop baseline by 9.5 percentage points with the same generation budget. On LIBERO-Pro, 15 rounds of generation and training raise success from 25% to 84% under position perturbations and from 1% to 76% under instruction perturbations.",
+        "published": "2026-10-15T17:59:02Z",
+        "authors": [
+          "Tianjiao Yu",
+          "Zhilin Ou",
+          "Yifan Shen",
+          "Xinzhuo Li",
+          "Yuanzhe Liu",
+          "Onkar Kishor Susladkar",
+          "Fan Wang",
+          "Ismini Lourentzou"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.22362v1"
+      },
+      "priority_score": 17
+    },
+    "2610_22344v1": {
+      "id": "2610_22344v1",
+      "filename": "post_2610_22344v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-16T07:47:56.533434+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-16T07:47:56.533436+00:00",
+      "paper": {
+        "title": "MLExpert: Towards a Generalist Agentic Model for Autonomous Machine Learning Engineering",
+        "summary": "Large language models (LLMs) are expanding from assisting scientific research and engineering to autonomously developing and improving AI systems, advancing AI for AI (AI4AI) as a pathway toward recursive self-improvement (RSI). Workflow-driven machine learning engineering (MLE) systems provide a practical path toward this pursuit through complex orchestration that manages long-horizon experimentation, while recent MLE systems adopt model-directed interaction, allowing models to autonomously organize experiments and adapt optimization strategies based on execution feedback. However, feedback from each experiment reflects several preceding decisions, and a long MLE run contains many such costly experiments. Training must therefore select useful supervision from long interaction trajectories and learn from intermediate outcomes. We propose a post-training method for autonomous long-horizon MLE optimization and apply it to train MLExpert, a 35B Mixture-of-Experts agentic model. We design the Kaggle-MLE Factory to construct executable tasks and an interaction harness for model-directed experimentation. Hierarchical agentic SFT transfers general tool-use and coding capabilities to MLE through outcome-guided supervision. Windowed Interaction RL (WIRL) treats the multi-turn decisions between successive experiment results as an execution window and assigns it a shared outcome-based reward. Asynchronous collection and policy correction support policy updates before the trajectory ends. On MLE-Bench Lite, MLExpert improves the average medal rate of the base model from 37.9% to 72.7%, achieving performance comparable to larger frontier models such as Kimi-K3 and GLM-5.3. Further experiments show that MLExpert improves performance on NatureBench Lite, agent scaffold optimization, and algorithm optimization, suggesting that the learned optimization capability generalizes to other tasks.",
+        "published": "2026-10-15T17:56:32Z",
+        "authors": [
+          "Shangheng Du",
+          "Jinxin Shi",
+          "Shuaiyu Zhang",
+          "Yiming Wu",
+          "Junpeng Zhao",
+          "Shiyang Feng",
+          "Xin Li",
+          "Liang He",
+          "Xiangchao Yan",
+          "Bo Zhang"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.22344v1"
+      },
+      "priority_score": 30
+    },
+    "2610_22200v1": {
+      "id": "2610_22200v1",
+      "filename": "post_2610_22200v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-10-16T07:48:07.465870+00:00",
+      "paper": {
+        "title": "OpenGCUA: Toward a Fully Open Stack for Generalist Computer Use",
+        "summary": "Computer use has reached a turning point: the focus is expanding from GUI-only interaction to systems that complete tasks on users' computers through visual and programmatic interfaces. We define a generalist computer-use agent (GCUA) as a system in which the model chooses how to observe, act, and organize its work across visual and programmatic interfaces. Yet frontier implementations, such as GPT-6 Astra's computer-use system, remain largely closed, limiting systematic study of their design. We introduce Open Generalist CUA (OpenGCUA), an ongoing project to develop and open the full stack for GCUAs with the community. This report presents the first release of OpenGCUA. Code execution is a key feature of our agent design: it lets intermediate results determine subsequent operations and enables models to apply their existing programming capabilities directly to computer interaction. We also propose harness-to-model decision transfer, moving selected observations and task-state decisions from fixed harness rules to the model. On OSWorld-v2, our full configuration improves task scores across all eight evaluated models, including GPT-6 Astra and Claude Opus 5, raising mean partial score by +19.6 points and reducing reported steps per task by an average of 53.0% relative to batched GUI-only execution. We release our implementation and prompts, evaluation trajectories from all eight models, and preliminary versions of a real-device harness and a cross-device SDK. The harness addresses real-device challenges not fully captured by benchmarks, while the SDK provides a common programming interface across computers, mobiles and browsers. Across four real macOS tasks under our real-device harness, selected Qwen3.8-Max runs use 19.4 times as many reported reasoning tokens as GPT-6 Astra, highlighting substantial differences between models in real-device execution efficiency.",
+        "published": "2026-10-15T16:51:35Z",
+        "authors": [
+          "Hanzhang Zhou",
+          "Long Li",
+          "Quyu Kong",
+          "Lei Wang",
+          "Panrong Tong",
+          "Long Chen",
+          "Tianyu Xia",
+          "Gongjie Zhang",
+          "Xu Zhang",
+          "Chen Liu",
+          "Jianan Zhang",
+          "Chenglin Cai",
+          "Zhengwen Zeng",
+          "Steven Hoi",
+          "Yue Wang"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.22200v1"
+      },
+      "priority_score": 70,
+      "korean_title": "오픈GCUA: 범용 컴퓨터 사용을 위한 완전 개방형 스택을 향하여"
+    },
+    "2610_22174v1": {
+      "id": "2610_22174v1",
+      "filename": "post_2610_22174v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-16T07:47:56.533447+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-16T07:47:56.533449+00:00",
+      "paper": {
+        "title": "Mosaic: Multi-Session Agentic Reinforcement Learning",
+        "summary": "Most existing agentic reinforcement learning methods assume single-session trajectories, where interaction proceeds within one continuously accumulated context. However, agentic techniques such as context compaction and subagent forking may produce trajectories spanning multiple sessions, creating a mismatch between the single-session training assumption and inference-time execution. Therefore, we introduce Multi-Session Agentic Reinforcement Learning, a more general setting that supports an arbitrary number of sessions within a trajectory. Under this setting, a widely adopted method is to broadcast trajectory-level advantages to all sessions, but this does not distinguish contributions from various sessions or guide session allocation within trajectories. To address this issue, we propose Mosaic, a multi-session agentic RL method with critic-free hierarchical optimization. At the trajectory level, it incorporates session-usage signals into advantage estimation. At the session level, it shapes each session's advantage according to the estimated marginal contribution. Experiments on BrowseComp with Qwen3.5-4B show that Mosaic outperforms broadcasting in both context compaction and subagent forking scenarios while using fewer sessions on average. Further analyses show that our method achieves improvements in session utility and allocation, which we suggested is a promising target for future advances in multi-session agentic RL.",
+        "published": "2026-10-15T16:32:44Z",
+        "authors": [
+          "Yilong Xu",
+          "Minrui Xu",
+          "Xinyu Zhou",
+          "Xiang Long",
+          "Haochen Tan",
+          "Zhijiang Guo"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.22174v1"
+      },
+      "priority_score": 28
+    },
+    "2610_21910v1": {
+      "id": "2610_21910v1",
+      "filename": "post_2610_21910v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-10-16T07:48:23.255539+00:00",
+      "paper": {
+        "title": "CoWorld Reasoner: Agentic Multimodal Reasoning with the Evolving Video World Model-Driven Harness",
+        "summary": "As Vision-Language Models (VLMs) advance, they are increasingly expected to perform spatiotemporal reasoning over motion, actions, and view changes beyond what the input images show. Video World Models (VWMs) provide a natural unified engine for visual imagination by generating task-relevant visual content as additional evidence. However, existing approaches typically invoke a VWM through fixed pipelines centered on a predefined form of visual imagination, such as novel-view synthesis. To support flexible visual imagination for diverse reasoning tasks, we introduce CoWorld Reasoner, an agentic framework that uses a VWM as a unified visual reasoning engine. Its Video World Model-Driven Harness exposes multiple visual operations through tools and uses skills to guide the VLM in deciding whether to imagine, selecting an operation, constructing a generation request, and interpreting the resulting visual evidence. We further introduce VLM-VWM Harness Co-Evolution, which jointly revises tools, skills, and execution code based on execution feedback while keeping both model weights fixed. Across seven benchmarks spanning spatial intelligence, temporal and causal reasoning, and perceptual reasoning, CoWorld Reasoner outperforms direct reasoning with the same VLM. The strongest variant improves on all seven benchmarks, including relative accuracy gains of 11.8% on MMSI and 13.0% on ERQA, and outperforms all five evolving baselines using the same backbone across five benchmarks.",
+        "published": "2026-10-15T13:59:15Z",
+        "authors": [
+          "Dongjie Cheng",
+          "Ruifeng Yuan",
+          "Ran Wei",
+          "Ning Song",
+          "Yongqi Li",
+          "Wenjie Li"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.21910v1"
+      },
+      "priority_score": 58,
+      "korean_title": "CoWorld Reasoner: 진화하는 비디오 세계 모델 기반의 에이전트형 다중 모달 추론"
+    },
+    "2610_17670v1": {
+      "id": "2610_17670v1",
+      "filename": "post_2610_17670v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-16T07:47:56.533461+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-16T07:47:56.533462+00:00",
+      "paper": {
+        "title": "Cowork-Gym: Synthesizing Interactive Work Environments at Scale",
+        "summary": "Cowork agents navigate dependencies across tools and files while adapting to changing user requirements and edits to shared workspaces. Scaling such environments requires maintaining consistency among task objectives, executable resources, user behavior, and success criteria. We introduce Cowork-Gym, a framework that synthesizes Cowork environments through a build-execute-revise loop that uses execution evidence and review feedback to validate and repair generated environments. To capture realistic Cowork dynamics, a stateful user simulator responds to the agent's actions through dialogue and direct edits to the shared workspace. We synthesize 64.9K environments across 14 application scenarios and use them to post-train 9B, 27B, and 35B-A3B Qwen models with supervised fine-tuning, reinforcement learning, and on-policy distillation. Averaged across six agentic benchmarks, these models outperform their corresponding base checkpoints by 8.7, 6.4, and 4.1 points, respectively. Ours-27B ranks second overall among the evaluated models and achieves the highest average scores on PawBench and ClawEval, outperforming models with over 100B total parameters on both benchmarks.",
+        "published": "2026-10-13T03:56:58Z",
+        "authors": [
+          "Anni Zou",
+          "Cheng Chen",
+          "Jiaji Deng",
+          "Weikang Zhou",
+          "Xinji Mai",
+          "Yue Wu",
+          "Jianing Lin",
+          "Lipeng Xie",
+          "Lixiong Qin",
+          "Qingyue Zhao",
+          "Que Shen",
+          "Shuchang Tao",
+          "Xuchen Pan",
+          "Yaliang Li",
+          "Yunpeng Zhai",
+          "Yushuo Chen",
+          "Zhihai Wang",
+          "Zhuo Zhang",
+          "Zhaoyang Liu",
+          "Bolin Ding",
+          "Jingren Zhou"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.17670v1"
+      },
+      "priority_score": 34
+    },
+    "2610_18813v1": {
+      "id": "2610_18813v1",
+      "filename": "post_2610_18813v1.md",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-10-16T07:48:15.000741+00:00",
+      "paper": {
+        "title": "Self-Evolving Agent Harness",
+        "summary": "Harness self-evolution revises an agent's software scaffolding, including prompts, memory, workflows, and executable components, while keeping model weights fixed. We formalize a feedback-driven process in which accepted revisions persist across runs. The framework separates update targets from proposal and admission mechanisms. It distinguishes changes to interpreted state from revisions to tools and code, repository-level control logic, and plugin composition. We characterize search through evolutionary optimization and examine its reliability through continual PAC-learning. Under explicit assumptions, the analysis yields an expected generalization bound, a retention bound conditional on historical regression budgets, and a high-probability admission rule using fresh, independent validation data. We examine how persistent harness revisions affect knowledge sharing and organizational workflows, with implications for scientific reliability, physical safety, and institutional accountability. Cases from prior work illustrate model--harness co-design, distributed execution, and plugin reuse. Reliable deployment requires continual validation as task distributions and evaluators change, with independent safeguards for learning, runtime privileges, and consequential actions. We provide a comprehensive 66-page discussion of related work, theory, algorithms, evaluation, applications, and the broader impact of Harness RSI, together with continuously updated code and supplementary materials, at https://github.com/zgcagi/Harness-RSI.",
+        "published": "2026-10-13T17:48:49Z",
+        "authors": [
+          "Chuyang Wei",
+          "Haoxiang Guan",
+          "Minghang Zhu",
+          "Kexin Zhou",
+          "Jiyan He",
+          "Xiren Zhou",
+          "Huanhuan Chen",
+          "Yifei Shen"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.18813v1"
+      },
+      "priority_score": 59,
+      "korean_title": "자기 진화형 에이전트 하네스"
     }
   },
   "last_run": {
-    "started_at": "2026-10-16T02:44:02.946361+00:00",
-    "discovered": 30,
+    "started_at": "2026-10-16T07:47:56.539748+00:00",
+    "discovered": 10,
     "selected": 4,
     "generated": 4,
     "failed": 0,
@@ -54984,26 +55241,26 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 19229,
-      "output_tokens": 5763,
+      "prompt_tokens": 19742,
+      "output_tokens": 5947,
       "thought_tokens": 0,
-      "total_tokens": 24992,
-      "estimated_usd": 0.01345175
+      "total_tokens": 25689,
+      "estimated_usd": 0.013856
     },
-    "finished_at": "2026-10-16T02:44:44.739007+00:00"
+    "finished_at": "2026-10-16T07:48:33.798222+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 3404,
-    "prompt_tokens": 8592630,
-    "output_tokens": 2505797,
+    "requests": 3412,
+    "prompt_tokens": 8612372,
+    "output_tokens": 2511744,
     "thought_tokens": 0,
-    "total_tokens": 11098427,
-    "estimated_usd": 5.906853
+    "total_tokens": 11124116,
+    "estimated_usd": 5.920709
   },
   "last_publication_run": {
-    "started_at": "2026-10-16T02:44:02.946361+00:00",
-    "discovered": 30,
+    "started_at": "2026-10-16T07:47:56.539748+00:00",
+    "discovered": 10,
     "selected": 4,
     "generated": 4,
     "failed": 0,
@@ -55013,17 +55270,17 @@
     "usage": {
       "model": "gemini-3.1-flash-lite",
       "requests": 8,
-      "prompt_tokens": 19229,
-      "output_tokens": 5763,
+      "prompt_tokens": 19742,
+      "output_tokens": 5947,
       "thought_tokens": 0,
-      "total_tokens": 24992,
-      "estimated_usd": 0.01345175
+      "total_tokens": 25689,
+      "estimated_usd": 0.013856
     },
-    "finished_at": "2026-10-16T02:44:44.739007+00:00"
+    "finished_at": "2026-10-16T07:48:33.798222+00:00"
   },
   "daily_usage": {
     "date": "2026-10-16",
-    "estimated_usd": 0.01345175,
-    "publications": 4
+    "estimated_usd": 0.02730775,
+    "publications": 8
   }
 }

@@ -1,0 +1,68 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CoWorld Reasoner: 진화하는 비디오 세계 모델 기반의 에이전트형 다중 모달 추론 | ArXiv Translator AI</title><meta name="description" content="CoWorld Reasoner: 진화하는 비디오 세계 모델 기반의 에이전트형 다중 모달 추론"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2610_21910v1"><meta property="og:type" content="article"><meta property="og:title" content="CoWorld Reasoner: 진화하는 비디오 세계 모델 기반의 에이전트형 다중 모달 추론"><meta property="og:description" content="CoWorld Reasoner: 진화하는 비디오 세계 모델 기반의 에이전트형 다중 모달 추론"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2610_21910v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="CoWorld Reasoner: 진화하는 비디오 세계 모델 기반의 에이전트형 다중 모달 추론"><meta name="twitter:description" content="CoWorld Reasoner: 진화하는 비디오 세계 모델 기반의 에이전트형 다중 모달 추론"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2610_21910v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "CoWorld Reasoner: 진화하는 비디오 세계 모델 기반의 에이전트형 다중 모달 추론", "description": "CoWorld Reasoner: 진화하는 비디오 세계 모델 기반의 에이전트형 다중 모달 추론", "datePublished": "2026-10-15", "url": "https://arxiv-ai-blog.vercel.app/papers/2610_21910v1", "author": [{"@type": "Person", "name": "Dongjie Cheng"}, {"@type": "Person", "name": "Ruifeng Yuan"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2610_21910v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2610_21910v1"});gtag('event', 'paper_view', {"paper_id": "2610_21910v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>CoWorld Reasoner: 진화하는 비디오 세계 모델 기반의 에이전트형 다중 모달 추론</h1><p>CoWorld Reasoner: 진화하는 비디오 세계 모델 기반의 에이전트형 다중 모달 추론</p><pre>CoWorld Reasoner: 진화하는 비디오 세계 모델 기반의 에이전트형 다중 모달 추론
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** CoWorld Reasoner: Agentic Multimodal Reasoning with the Evolving Video World Model-Driven Harness
+&gt; - **저자:** Dongjie Cheng, Ruifeng Yuan, Ran Wei, Ning Song, Yongqi Li, Wenjie Li
+&gt; - **발행일:** 2026-10-15
+&gt; - **PDF 링크:** [CoWorld Reasoner: Agentic Multimodal Reasoning with the Evolving Video World Model-Driven Harness](https://arxiv.org/pdf/2610.21910v1)
+
+
+✨ 3줄 핵심 요약
+- 비디오 세계 모델(VWM)을 활용하여 시각적 상상을 수행하고, 이를 추론의 증거로 사용하는 에이전트 프레임워크입니다.
+- 도구, 기술, 실행 코드를 피드백에 따라 함께 개선하는 &#x27;VLM-VWM 공동 진화(Co-Evolution)&#x27; 기법을 도입했습니다.
+- 공간 지능, 인과관계 추론 등 7개 벤치마크에서 기존 모델 대비 우수한 성능을 입증했습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+보통의 인공지능 모델은 눈에 보이는 이미지 정보만으로 질문에 답하려 합니다. 하지만 &quot;물건을 치우면 어떻게 될까?&quot; 같은 복잡한 질문을 풀려면 보이지 않는 미래나 가상의 상황을 상상해야 합니다. **CoWorld Reasoner**는 비디오를 생성하는 모델(VWM)을 마치 &#x27;상상하는 도구&#x27;처럼 사용합니다. 이 모델은 직접 가상의 시나리오를 그려보고 그 결과를 분석함으로써, 단순한 이미지 해석을 넘어 움직임과 인과관계를 정확히 추론합니다. 특히, 스스로 도구 사용법과 기술을 계속 수정하며 성능을 높이는 시스템을 갖추고 있습니다.
+
+🎯 배경 및 문제점
+- **한계:** 기존 시각-언어 모델(VLM)은 입력된 이미지 내의 정보에만 의존하여, 움직임이나 시점 변화가 포함된 시공간 추론에 어려움을 겪습니다.
+- **기존 방식의 문제:** 비디오 세계 모델을 쓰더라도, 미리 정의된 방식(예: 새로운 시점 합성)으로만 고정적으로 사용되어 다양한 추론 상황에 유연하게 대응하지 못합니다.
+- **필요성:** 보이지 않는 전환이나 관계를 이해하기 위해, 상황에 맞는 시각적 상상을 생성하고 이를 증거로 활용하는 능력이 필수적입니다.
+
+💡 핵심 기술 및 아키텍처
+- **Video World Model-Driven Harness:** VWM을 다중 모달 추론 엔진으로 활용하며, 시점 변화, 보간(Interpolation), 연속성(Continuation), 개입(Intervention) 등 여러 시각적 작업을 도구로 제공합니다.
+- **에이전트 제어:** VLM이 상황을 판단하여 언제 상상이 필요한지 결정하고, 적절한 작업을 선택하며, 생성된 시각 증거를 해석하도록 가이드합니다.
+- **VLM-VWM 공동 진화(Co-Evolution):** 모델 가중치는 고정한 상태에서, 실행 피드백을 기반으로 도구와 기술, 실행 코드를 반복적으로 수정 및 개선합니다.
+
+📊 실험 결과 분석
+- **성능 향상:** 7개의 벤치마크(공간 지능, 시공간/인과 추론, 지각 추론 등) 전체에서 직접 추론 방식보다 높은 성능을 보였습니다.
+- **주요 수치:** MMSI 벤치마크에서 11.8%, ERQA에서 13.0%의 상대적 정확도 향상을 기록했습니다.
+- **비교 분석:** 동일한 백본 모델을 사용하는 5개의 진화형 베이스라인(HSI, ReasoningBank 등)과 비교했을 때, 모든 5개 벤치마크에서 더 뛰어난 결과를 보였습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+- **로봇 공학:** 물리적 공간에서 로봇이 물체를 옮기거나 경로를 변경할 때 발생할 결과를 시뮬레이션하여 더욱 안전하고 똑똑한 판단을 내리는 데 기여할 수 있습니다.
+- **멀티모달 AI 확장:** 단순한 이미지 묘사를 넘어 영상 속 사건의 인과관계를 파악하는 등, AI가 실제 세계의 물리 법칙을 이해하는 기술적 발판이 됩니다.
+- **실무 적용:** 제조, 물류, 자율 주행 등 예측 불가능한 물리적 환경에서 의사결정을 지원하는 시각 지능 시스템 구축에 활용될 수 있습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2610.21910 CoWorld Reasoner: Agentic Multimodal Reasoning ...](https://arxiv.org/abs/2610.21910)
+&gt; - [CoWorld Reasoner: Agentic Multimodal Reasoning with the ...](https://openreview.net/forum?id=EViO2ILjzr)
+&gt; - [Paper page - CoWorld Reasoner: Agentic Multimodal Reasoning ...](https://huggingface.co/papers/2610.21910)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;VLM과 VWM의 공동 진화라니 개념은 흥미롭지만, 결국 무거운 생성 모델을 추론 루프에 태우는 건데 inference latency는 어떻게 감당할 생각인가? &#x27;시각적 상상&#x27;이라는 미명 하에 매번 비디오를 생성하고 해석하는 비용이, 실제 도메인에서 얼마나 실용적일지 의문이 드는군. 논문의 벤치마크 성능 수치만큼 실제 물리 환경에서도 안정적인지 검증이 더 필요해 보임.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 실무에선 &#x27;inference 비용&#x27;이 곧 &#x27;돈&#x27;이라서 도입 장벽이 높죠. 하지만 논문에서 언급된 &#x27;도구와 실행 코드의 반복적 수정&#x27; 부분은 솔직히 좀 매력적입니다. 매번 모델을 파인튜닝할 필요 없이, 에이전트가 실행 피드백을 통해 툴 사용법을 최적화한다는 건데, 이걸 잘 튜닝하면 자율주행 시뮬레이션 같은 엣지 케이스 처리엔 꽤 유용하겠는데요? 다만, 비디오 생성 시 발생하는 환각(hallucination)이 추론 과정에 전이될 위험은 어떻게 필터링할지 구현이 관건이겠네요.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 다들 반응이 너무 냉소적인 거 아녜요? 이번 논문은 단순히 &#x27;비디오 생성&#x27;이 아니라 &#x27;추론을 위한 증거 생성&#x27;으로 패러다임을 바꿨다는 데 의의가 있다고요! 특히 MMSI 11.8% 향상은 그냥 지나칠 수치가 아닌데... 저도 지금 바로 코드 뜯어보고 있는데, VWM의 시공간 일관성만 확보된다면 이제 기존 VLM들이 쩔쩔매던 인과관계 추론 문제는 거의 해결된 거나 다름없지 않나요? 이번 주 저널 클럽에서 다룰 논문으로 완전 딱입니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
