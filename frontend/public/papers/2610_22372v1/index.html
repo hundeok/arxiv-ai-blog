@@ -1,0 +1,64 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>LIBERO-PeRM: 개인화된 로봇 조작을 위한 벤치마킹 | ArXiv Translator AI</title><meta name="description" content="LIBERO-PeRM: 개인화된 로봇 조작을 위한 벤치마킹"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2610_22372v1"><meta property="og:type" content="article"><meta property="og:title" content="LIBERO-PeRM: 개인화된 로봇 조작을 위한 벤치마킹"><meta property="og:description" content="LIBERO-PeRM: 개인화된 로봇 조작을 위한 벤치마킹"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2610_22372v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="LIBERO-PeRM: 개인화된 로봇 조작을 위한 벤치마킹"><meta name="twitter:description" content="LIBERO-PeRM: 개인화된 로봇 조작을 위한 벤치마킹"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2610_22372v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "LIBERO-PeRM: 개인화된 로봇 조작을 위한 벤치마킹", "description": "LIBERO-PeRM: 개인화된 로봇 조작을 위한 벤치마킹", "datePublished": "2026-10-15", "url": "https://arxiv-ai-blog.vercel.app/papers/2610_22372v1", "author": [{"@type": "Person", "name": "Zhixu Li"}, {"@type": "Person", "name": "Keqian Tang"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2610_22372v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2610_22372v1"});gtag('event', 'paper_view', {"paper_id": "2610_22372v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>LIBERO-PeRM: 개인화된 로봇 조작을 위한 벤치마킹</h1><p>LIBERO-PeRM: 개인화된 로봇 조작을 위한 벤치마킹</p><pre>LIBERO-PeRM: 개인화된 로봇 조작을 위한 벤치마킹
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** LIBERO-PeRM: Benchmarking Personalized Robotic Manipulation
+&gt; - **저자:** Zhixu Li, Keqian Tang, Litian Gong, Jingyu Yao, Wenqian Zhang, Tianze Xu, Zehao Wang, Yuping Wang, Junge Zhang, Jiachen Li
+&gt; - **발행일:** 2026-10-15
+&gt; - **PDF 링크:** [LIBERO-PeRM: Benchmarking Personalized Robotic Manipulation](https://arxiv.org/pdf/2610.22372v1)
+
+
+✨ 3줄 핵심 요약
+- 로봇이 사용자의 개별적인 습관이나 선호도를 반영하여 작업을 수행할 수 있도록 평가하는 벤치마크 &#x27;LIBERO-PeRM&#x27;을 제안함.
+- 312개의 작업 환경을 통해 제로샷 개인화, 선호도 학습, 일반화, 조합 및 갈등 해결 능력을 종합적으로 측정함.
+- 실험 결과, 현재의 비전-언어-행동(VLA) 모델들은 선호도 학습은 가능하나, 복합적인 선호도 추론이나 갈등 상황 해결에는 여전히 큰 어려움을 겪고 있음.
+
+📖 쉽게 풀어쓴 1분 핵심
+로봇이 단순히 &quot;사과를 접시에 담아라&quot;라는 명령을 수행하는 것을 넘어, &quot;사과를 집을 때는 손잡이를 잡아라&quot; 또는 &quot;특정 물체를 피해라&quot;와 같은 사용자의 세부적인 취향(선호도)까지 맞출 수 있어야 실생활에 도입될 수 있습니다. 이를 위해 연구진은 로봇이 개인의 선호도를 얼마나 잘 학습하고 적용하는지 테스트할 수 있는 표준화된 시험대인 &#x27;LIBERO-PeRM&#x27;을 개발했습니다. 이 벤치마크를 통해 로봇 모델들의 개인화 능력을 점검한 결과, 로봇은 단순한 선호도는 학습할 수 있지만, 여러 선호도가 충돌하거나 복잡하게 섞인 상황에서는 아직 실수를 자주 한다는 점을 확인했습니다.
+
+🎯 배경 및 문제점
+로봇 공학의 주된 목표는 일상적인 집안일을 수행하는 것입니다. 하지만 기존의 로봇 조작 연구들은 정해진 작업을 완료하는 데만 집중해 왔습니다. 사용자의 고유한 습관이나 제약 사항을 반영하는 &#x27;개인화(Personalization)&#x27;는 로봇의 실용성을 위해 필수적이지만, 이를 체계적으로 평가하고 학습시킬 수 있는 통제된 벤치마크 환경이 부족했습니다.
+
+💡 핵심 기술 및 아키텍처
+- **데이터 생성 파이프라인:** LIBERO 프레임워크를 기반으로, 사용자의 선호도가 포함된 시연 데이터와 그렇지 않은 데이터를 짝지어 자동 생성합니다.
+- **선호도 분류:** 운동 방식(Motion), 기술 선택(Skill), 사용자 프로필(User Profile)이라는 세 가지 카테고리로 선호도를 분류하여 시뮬레이션 환경에 적용했습니다.
+- **평가 체계:** 5가지 핵심 연구 질문(제로샷, 학습 능력, 학습 효율, 일반화, 조합 및 갈등)을 설정하고, 언어로 표현 가능한 선호도를 자동으로 측정할 수 있도록 구성했습니다.
+
+📊 실험 결과 분석
+- **제로샷 학습:** 현재의 VLA 모델들은 선호도 데이터가 없을 때 개인화된 행동을 하는 데 한계를 보임.
+- **학습 방식:** &#x27;SFT(지도 미세 조정)&#x27;를 통해 선호도 학습이 가능해짐. 혼합 학습(Mixed training)이 순차적 적응보다 기본 작업 수행 성능 유지와 문맥 이해에 더 효과적이었으나, 운동 방식 관련 선호도 학습 능력은 다소 저하됨.
+- **한계점:** 선호도 간의 조합(Composition)은 부분적으로 가능하지만, 이를 다시 분해(Decomposition)하거나 충돌하는 선호도 간의 갈등을 해결하는 능력은 매우 낮게 나타남.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+이 연구는 범용 로봇이 실험실을 벗어나 실제 가정 환경에 진입하기 위한 핵심 관문인 &#x27;사용자 맞춤형 서비스&#x27;의 기준을 제시했습니다. 연구진이 공개한 벤치마크 데이터셋은 향후 로봇이 사용자의 고유한 취향을 학습하고, 상황에 맞게 유연하게 대처하는 지능형 에이전트 개발의 표준 지표로 활용될 것으로 기대됩니다. 다만, 본 연구는 시뮬레이션 환경에 국한되어 있으며 실제 로봇 환경에서의 테스트는 향후 과제로 남아 있습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [LIBERO-PeRM: Benchmarking Personalized Robotic Manipulation](https://libero-perm.github.io/)
+&gt; - [LIBERO-PeRM: Benchmarking Personalized Robotic Manipulation](https://arxiv.org/pdf/2610.22372)
+&gt; - [LIBERO-PeRM: Benchmarking Personalized Robotic Manipulation](https://neurips.cc/virtual/2026/poster/139040)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;LIBERO-PeRM이 제안한 선호도 분류 체계는 훌륭하지만, 정작 중요한 &#x27;갈등 해결(Conflict Resolution)&#x27;에서 VLA 모델들이 처참하게 무너지는군요. 결국 시뮬레이션 환경 내의 데이터셋 편향을 학습한 것일 뿐, 논리적 추론이 결여되어 있다는 증거입니다. 실제 환경에서의 Sim-to-Real 간극은 어떻게 메울 셈입니까?&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 갈등 해결 능력이 떨어지는 건 실무 관점에서 치명적입니다. 사용자가 &#x27;컵을 잡을 땐 조심해&#x27;와 &#x27;빨리 가져와&#x27;라는 상충하는 요구를 동시에 하면 모델이 뻗어버릴 텐데, 이걸 SFT만으로 해결하려니 모델 크기만 커지죠. 데이터 파이프라인 자동화는 좋지만, 현장에서는 선호도 임베딩을 어떻게 경량화할지가 더 큰 숙제일 것 같습니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;그래도 일단 벤치마크가 나왔다는 게 어디인가요! 그동안 로봇 개인화는 뜬구름 잡는 소리였는데, 이제 LIBERO-PeRM으로 SOTA 찍는 모델이 곧 나올 것 같아요. RLHF를 여기에 접목해서 선호도 우선순위 보상 모델을 씌우면 갈등 해결도 의외로 빨리 풀리지 않을까요? 오늘부터 코드 뜯어봅니다!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
