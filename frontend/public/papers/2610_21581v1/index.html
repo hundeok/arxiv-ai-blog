@@ -1,0 +1,63 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ClaimScope: 라벨 없는 증인 검증을 통한 수학적 주장 감사 | ArXiv Translator AI</title><meta name="description" content="ClaimScope: 라벨 없는 증인 검증을 통한 수학적 주장 감사"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2610_21581v1"><meta property="og:type" content="article"><meta property="og:title" content="ClaimScope: 라벨 없는 증인 검증을 통한 수학적 주장 감사"><meta property="og:description" content="ClaimScope: 라벨 없는 증인 검증을 통한 수학적 주장 감사"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2610_21581v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="ClaimScope: 라벨 없는 증인 검증을 통한 수학적 주장 감사"><meta name="twitter:description" content="ClaimScope: 라벨 없는 증인 검증을 통한 수학적 주장 감사"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2610_21581v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "ClaimScope: 라벨 없는 증인 검증을 통한 수학적 주장 감사", "description": "ClaimScope: 라벨 없는 증인 검증을 통한 수학적 주장 감사", "datePublished": "2026-10-15", "url": "https://arxiv-ai-blog.vercel.app/papers/2610_21581v1", "author": [{"@type": "Person", "name": "Mushir Akhtar"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2610_21581v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2610_21581v1"});gtag('event', 'paper_view', {"paper_id": "2610_21581v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>ClaimScope: 라벨 없는 증인 검증을 통한 수학적 주장 감사</h1><p>ClaimScope: 라벨 없는 증인 검증을 통한 수학적 주장 감사</p><pre>ClaimScope: 라벨 없는 증인 검증을 통한 수학적 주장 감사
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** ClaimScope: Label-Blind Witness Verification for Mathematical Claim Auditing
+&gt; - **저자:** Mushir Akhtar
+&gt; - **발행일:** 2026-10-15
+&gt; - **PDF 링크:** [ClaimScope: Label-Blind Witness Verification for Mathematical Claim Auditing](https://arxiv.org/pdf/2610.21581v1)
+
+
+✨ 3줄 핵심 요약
+* **ClaimScope**는 수학적 주장의 타당성, 범위, 반례, 수정안을 체계적으로 감사(Audit)하기 위한 72개 과제 벤치마크입니다.
+* 검증기는 정답지 없이 모델이 제출한 반례를 검증하며, 피드백을 통해 모델의 구조적 오류 수정을 유도합니다.
+* 실험 결과, 모델의 수학적 추론 능력이 근본적으로 향상되기보다는, 구조적 반례를 교정하는 효과가 지배적인 것으로 나타났습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+수학 문제를 풀 때 단순히 &#x27;답이 맞다/틀리다&#x27;를 확인하는 것은 충분하지 않습니다. 올바른 유도 과정과 예외 상황에 대한 고려가 필요하기 때문입니다. 본 논문은 &#x27;ClaimScope&#x27;라는 시스템을 도입해, AI가 자신의 수학적 주장을 스스로 검증하게 합니다. 특히, 정답 정보를 직접 알려주지 않는 &#x27;라벨 블라인드(label-blind)&#x27; 방식으로 AI가 제출한 반례가 논리적으로 타당한지만 확인합니다. 연구 결과, AI는 이 피드백을 통해 자신의 반례 형식을 올바르게 수정하는 능력을 보였으나, 수학적 추론 실력 자체가 획기적으로 개선된 것은 아님을 확인했습니다.
+
+🎯 배경 및 문제점
+기존의 수학 벤치마크(MATH, GSM8K 등)는 최종 정답의 정확도에 집중하여, 주장의 타당성이나 유효 범위를 엄밀히 감사하는 데 한계가 있었습니다. 특히 수식의 일반화 과정에서 범위를 잘못 설정하거나, 특정 사례를 누락하는 등의 오류를 잡아내기 어렵습니다. 본 연구는 모델이 제출한 주장이 왜 틀렸는지, 올바른 반례와 수정안은 무엇인지 구조적으로 평가할 수 있는 체계를 마련하고자 했습니다.
+
+💡 핵심 기술 및 아키텍처
+* **구조적 감사:** 단순히 맞고 틀림만 판정하는 것이 아니라, 검증 대상(Scope), 반례(Counterexample), 수정안(Repair)을 JSON 형식으로 제출받아 평가합니다.
+* **라벨 블라인드 검증:** 검증기는 정답이나 수정안 정보를 사전에 참고하지 않습니다. 모델이 제출한 반례의 논리적 타당성만을 검토하여 피드백을 제공합니다.
+* **피드백 체계:** 검증기는 모델에게 &#x27;verified(검증됨)&#x27;, &#x27;rejected(거절됨)&#x27;, &#x27;not applicable&#x27; 등의 상태와 함께, 오류의 이유를 포함한 피드백을 전달하여 모델의 수정을 유도합니다.
+
+📊 실험 결과 분석
+* **모델 성능:** Qwen3-8B 모델을 대상으로 실험한 결과, 검증기의 피드백을 받았을 때 &#x27;안전한 완료(Safe completion)&#x27; 사례가 72개 중 25개로, 일반 피드백(20개)보다 개선되었습니다.
+* **구조적 교정 효과:** 성능 향상의 대부분은 논리적 추론 개선이 아니라, 반례의 형식이나 horizon/입력 길이 오류를 수정하는 &#x27;구조적 교정&#x27;에 기인했습니다. 
+* **한계:** 검증 피드백을 받아도 &#x27;판정 정확도(verdict accuracy)&#x27;는 47/72에서 46/72로 유의미한 변화가 없었으며, 규칙 기반의 단순 보정(schema-only correction)만으로도 같은 성능 수준(25개)에 도달할 수 있었습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+이 연구는 AI가 생성한 수학적 증명이나 알고리즘 주장을 사람이 사전에 검토하기 전, AI 스스로 구조적 결함을 식별하고 수정할 수 있는 토대를 제공합니다. 특히 복잡한 최적화 알고리즘이나 수치적 증명 작업에서 모델의 출력을 검증하는 도구로 활용될 수 있습니다. 다만, 연구진은 이번 결과가 AI의 일반적인 수학적 추론 능력이 향상되었다는 증거는 아니라고 선을 그었으며, 향후 더 복잡한 의미론적 수정 검증 및 대규모 데이터셋으로의 확장이 필요함을 시사했습니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [Deep Learning Monitor](https://deeplearn.org/)
+&gt; - [Mushir Akhtar - OpenReview](https://openreview.net/profile?id=~Mushir_Akhtar1)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;논문을 읽어보니 수학적 추론의 &#x27;본질&#x27;을 건드리기보다는, 그저 모델의 출력 포맷을 교정하는 &#x27;껍데기&#x27; 수준의 검증에 머물고 있군요. 라벨 블라인드라는 접근은 흥미로우나, 결국 논리적 도약(logical leap)을 잡아낼 능력이 없다면 이 벤치마크가 수학적 엄밀함을 보장한다고 말할 수 있을지 의문입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 모델 자체가 똑똑해진 건 아니지만, 실무 입장에서는 이게 &#x27;반자동 오류 검출기&#x27;로서의 가능성을 보여준다고 봐요. 매번 사람이 검수하기 힘든 복잡한 최적화 코드나 수식 뭉치를 JSON 스키마 기반으로라도 1차 필터링할 수 있다면, 파이프라인상 비용 절감 효과는 상당할 겁니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;두 분 다 맞는 말씀인데, 사실 핵심은 &#x27;수학적 추론 능력 향상&#x27;이라는 거창한 타이틀을 떼고 보면 아주 영리한 벤치마크라는 점 아닐까요? 데이터셋의 72개 과제라는 게 아직은 작지만, 이걸 기반으로 SFT(Supervised Fine-Tuning) 데이터셋을 잘 깎으면 나중에 구조적 오류만이라도 획기적으로 줄인 모델이 나올 것 같아 기대되네요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>

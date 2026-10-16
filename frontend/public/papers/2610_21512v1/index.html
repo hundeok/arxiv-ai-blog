@@ -1,0 +1,73 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>QREF: 쿼리 개선 및 증거 필터링을 통한 딥서치 에이전트의 추론과 검색 정렬 | ArXiv Translator AI</title><meta name="description" content="QREF: 쿼리 개선 및 증거 필터링을 통한 딥서치 에이전트의 추론과 검색 정렬"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2610_21512v1"><meta property="og:type" content="article"><meta property="og:title" content="QREF: 쿼리 개선 및 증거 필터링을 통한 딥서치 에이전트의 추론과 검색 정렬"><meta property="og:description" content="QREF: 쿼리 개선 및 증거 필터링을 통한 딥서치 에이전트의 추론과 검색 정렬"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2610_21512v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="QREF: 쿼리 개선 및 증거 필터링을 통한 딥서치 에이전트의 추론과 검색 정렬"><meta name="twitter:description" content="QREF: 쿼리 개선 및 증거 필터링을 통한 딥서치 에이전트의 추론과 검색 정렬"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2610_21512v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "QREF: 쿼리 개선 및 증거 필터링을 통한 딥서치 에이전트의 추론과 검색 정렬", "description": "QREF: 쿼리 개선 및 증거 필터링을 통한 딥서치 에이전트의 추론과 검색 정렬", "datePublished": "2026-10-15", "url": "https://arxiv-ai-blog.vercel.app/papers/2610_21512v1", "author": [{"@type": "Person", "name": "Yujia Chen"}, {"@type": "Person", "name": "Yuhui Wang"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2610_21512v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2610_21512v1"});gtag('event', 'paper_view', {"paper_id": "2610_21512v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>QREF: 쿼리 개선 및 증거 필터링을 통한 딥서치 에이전트의 추론과 검색 정렬</h1><p>QREF: 쿼리 개선 및 증거 필터링을 통한 딥서치 에이전트의 추론과 검색 정렬</p><pre>QREF: 쿼리 개선 및 증거 필터링을 통한 딥서치 에이전트의 추론과 검색 정렬
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** QREF: Improving DeepSearch Agents by Aligning Search with Reasoning via Query Refinement and Evidence Filtering
+&gt; - **저자:** Yujia Chen, Yuhui Wang, Junzhe Wang, Shihan Dou, Di Liang, Yujiong Shen, Yuhao Zhou, Zhiheng Xi, Ming Zhang, Senjie Jin, Jiayi Chen, Dingwei Zhu, Yajie Yang, Yuan Hua, Chenyao Lu, Tao Gui, Qi Zhang, Xuanjing Huang
+&gt; - **발행일:** 2026-10-15
+&gt; - **PDF 링크:** [QREF: Improving DeepSearch Agents by Aligning Search with Reasoning via Query Refinement and Evidence Filtering](https://arxiv.org/pdf/2610.21512v1)
+
+
+✨ 3줄 핵심 요약
+* **문제점:** 딥서치 에이전트가 생성하는 중간 검색 쿼리는 의도가 불분명하거나 중복되는 경우가 많아 검색 효율을 떨어뜨리고 노이즈를 축적함.
+* **해결책:** 쿼리를 정교하게 다듬는 &#x27;Query Refiner&#x27;와 관련 없는 정보를 제거하는 &#x27;Evidence Filter&#x27;로 구성된 플러그앤플레이 모듈 &#x27;QREF&#x27;를 개발함.
+* **성과:** 4개 벤치마크에서 성능 향상을 입증했으며, WebSailor에서 33.55%, TongyiDeepResearch에서 11.04%의 Pass@1 개선을 달성함.
+
+📖 쉽게 풀어쓴 1분 핵심
+인공지능 에이전트가 복잡한 문제를 풀 때 웹 검색을 활용하는데, 이때 AI가 검색창에 입력하는 문장(쿼리)이 너무 모호하거나 엉뚱하면 좋은 정보를 찾기 어렵습니다. 본 논문은 이 &#x27;검색 쿼리&#x27;의 품질을 높이는 데 집중했습니다. AI가 던진 질문을 다시 작성하여 구체적으로 바꾸고, 검색 결과 중 불필요한 정보는 골라내는 필터를 적용했습니다. 결과적으로 AI는 더 정확한 근거를 찾고, 효율적으로 문제를 해결하게 됩니다.
+
+🎯 배경 및 문제점
+* 딥서치 에이전트는 추론과 검색을 반복하며 정보를 수집하지만, 중간 단계의 쿼리 품질 관리에 대한 연구는 부족했음.
+* 300개의 에이전트 추론 과정을 분석한 결과, 세 가지 주요 실패 패턴이 발견됨:
+    1. **변별력 부족:** 검색 의도를 충분히 담지 못함.
+    2. **낮은 구체성:** 질문이 지나치게 포괄적임.
+    3. **중복성:** 검색 배치 내의 쿼리들이 서로 보완적이지 못함.
+* 분석 대상의 47.04% 배치에서 최소 한 가지 이상의 오류가 발생했으며, 실패하는 에이전트는 성공하는 에이전트보다 약 3배 많은 비효율적 쿼리를 생성함.
+
+💡 핵심 기술 및 아키텍처
+* **Query Refiner (쿼리 개선기):** LLM 기반 모듈로, 쿼리를 자체 완결적이고 구체적으로 수정함. 불필요한 중복을 제거하고 검색 엔진 친화적인 연산자를 적절히 활용함.
+* **Evidence Filter (증거 필터):** 검색 결과로 나온 문서 조각들이 현재 추론 목적과 일치하는지 평가하여 유효한 정보만 남기고 노이즈를 제거함.
+* **학습 전략:** 지도 학습(SFT)으로 초기화한 후, 실제 웹 환경에서의 상호작용을 통한 강화 학습(RL)으로 쿼리 개선기의 성능을 최적화함.
+
+📊 실험 결과 분석
+* **성능 향상:** QREF 적용 시, 기반 모델(Backbone) 수정 없이도 4개 벤치마크에서 전반적인 추론 성능이 향상됨.
+* **쿼리 품질:** 
+    * &#x27;낮은 쿼리 구체성&#x27; 오류가 95% 감소함.
+    * 비효율적 쿼리 비율이 크게 낮아짐.
+    * 쿼리 간 중복도(IoU)가 0.41에서 0.29로 감소하여 검색의 다양성이 확보됨.
+* **모듈 효과:** Query Refiner와 Evidence Filter를 동시에 사용했을 때 가장 좋은 성능을 보였으며, 둘은 상호 보완적인 역할을 함.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+* **에이전트 효율성 제고:** 검색 과정의 비효율성을 줄임으로써 AI 에이전트가 방대한 데이터를 더 빠르게 처리하고 정확한 결론에 도달하도록 도움.
+* **실무 적용:** 웹 기반 조사 시스템, 자동화된 연구 보조 도구, 지식 집약적 정보 검색 모델 등 검색 성능이 중요한 모든 AI 에이전트 기반 서비스에 즉시 적용 가능한(Plug-and-play) 구조를 제공함.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2604.07927 EigentSearch-Q+: Enhancing Deep Research Agents ...2605.24218 QUEST: Training Frontier Deep Research Agents ...GitHub - YunjiaXi/Awesome-Search-Agent-Papers(PDF) From Web Search towards Agentic Deep Research ...To Search or Not to Search: Aligning the Decision Boundary of ...From Web Search towards Agentic Deep Research: Incentivizing ...NeurIPS Poster Quest: Training Frontier Deep Research Agents ...](https://arxiv.org/abs/2604.07927)
+&gt; - [2605.24218 QUEST: Training Frontier Deep Research Agents ...](https://arxiv.org/abs/2605.24218)
+&gt; - [GitHub - YunjiaXi/Awesome-Search-Agent-Papers](https://github.com/YunjiaXi/Awesome-Search-Agent-Papers)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;방법론 자체는 깔끔하지만, 소위 말하는 &#x27;Plug-and-play&#x27; 모듈이 실제 복잡한 멀티홉 추론 과정에서 얼마나 일반화될지 의문이군요. 특히 Evidence Filter가 도메인 특화 데이터셋이 아닌 오픈 웹 환경에서 hallucination을 유발하지 않는다는 보장이 있습니까? 단순 통계적 필터링을 넘어선 의미론적 정합성 검증이 더 필요해 보입니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님, 현업에서는 일단 돌아가는 게 중요합니다. WebSailor 33% 성능 향상이면 인프라 비용 절감 효과가 엄청나거든요. 다만 저거 배포하면 추론 latency가 꽤 늘어날 텐데, Refiner랑 Filter 돌리는 오버헤드를 추론 시간 내에 어떻게 녹였는지가 핵심이겠네요. 실무 적용하려면 쿼리 개선 단계를 병렬화하거나 경량화 모델로 distilled 해야 할 듯합니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;와, 다들 반응이 너무 진지하신 거 아닌가요? 쿼리 품질 관리(Query Refinement)는 이제 에이전트의 &#x27;기본 소양&#x27;이 되는 느낌이에요. 어차피 모델 크기 키우는 건 한계가 왔으니, 이렇게 프로세스 최적화로 성능 뽑아내는 게 요즘 핫한 거 다들 아시잖아요? 특히 RL로 쿼리 개선기 튜닝했다는 점이 핵심인데, 이 구조 그대로 저희 랩 프로젝트에도 바로 이식해 보려고요!&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
