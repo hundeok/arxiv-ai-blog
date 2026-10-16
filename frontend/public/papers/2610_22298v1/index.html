@@ -1,0 +1,64 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AI 컨실리엄: 거대언어모델의 임상 다학제적 세컨드 오피니언을 위한 벤치마크 | ArXiv Translator AI</title><meta name="description" content="AI 컨실리엄: 거대언어모델의 임상 다학제적 세컨드 오피니언을 위한 벤치마크"><link rel="canonical" href="https://arxiv-ai-blog.vercel.app/papers/2610_22298v1"><meta property="og:type" content="article"><meta property="og:title" content="AI 컨실리엄: 거대언어모델의 임상 다학제적 세컨드 오피니언을 위한 벤치마크"><meta property="og:description" content="AI 컨실리엄: 거대언어모델의 임상 다학제적 세컨드 오피니언을 위한 벤치마크"><meta property="og:url" content="https://arxiv-ai-blog.vercel.app/papers/2610_22298v1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="AI 컨실리엄: 거대언어모델의 임상 다학제적 세컨드 오피니언을 위한 벤치마크"><meta name="twitter:description" content="AI 컨실리엄: 거대언어모델의 임상 다학제적 세컨드 오피니언을 위한 벤치마크"><script>if(!navigator.userAgent.toLowerCase().includes('bot')) window.location.replace("/?p=" + "2610_22298v1");</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "AI 컨실리엄: 거대언어모델의 임상 다학제적 세컨드 오피니언을 위한 벤치마크", "description": "AI 컨실리엄: 거대언어모델의 임상 다학제적 세컨드 오피니언을 위한 벤치마크", "datePublished": "2026-10-15", "url": "https://arxiv-ai-blog.vercel.app/papers/2610_22298v1", "author": [{"@type": "Person", "name": "Alexey A. Bokov"}, {"@type": "Person", "name": "Ivan I. Panin"}]}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-V4G2FBSDMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',"G-V4G2FBSDMG",{send_page_view:false});gtag('event','page_view',{"page_path": "/papers/2610_22298v1", "page_location": "https://arxiv-ai-blog.vercel.app/papers/2610_22298v1"});gtag('event', 'paper_view', {"paper_id": "2610_22298v1", "content_type": "paper"});</script></head><body><main><a href="/">← 전체 논문</a><article><h1>AI 컨실리엄: 거대언어모델의 임상 다학제적 세컨드 오피니언을 위한 벤치마크</h1><p>AI 컨실리엄: 거대언어모델의 임상 다학제적 세컨드 오피니언을 위한 벤치마크</p><pre>AI 컨실리엄: 거대언어모델의 임상 다학제적 세컨드 오피니언을 위한 벤치마크
+
+&gt; **원본 논문 정보**
+&gt; - **제목:** AI Consilium: a Benchmark of LLM Clinical Multidisciplinary Second Opinions
+&gt; - **저자:** Alexey A. Bokov, Ivan I. Panin, Nikolay B. Nechaev, Mikhail Yu. Valkov, Valeria Yu. Chernina, Natalia Gombolevskaya, Ayyaz Hussain, Vladimir M. Agafonov, Victor A. Gombolevskiy, Aleksandr V. Nesterov, Iaroslav R. Bespalov, Ivan V. Oseledets, Dmitry V. Dylov
+&gt; - **발행일:** 2026-10-15
+&gt; - **PDF 링크:** [AI Consilium: a Benchmark of LLM Clinical Multidisciplinary Second Opinions](https://arxiv.org/pdf/2610.22298v1)
+
+
+✨ 3줄 핵심 요약
+*   임상적 세컨드 오피니언의 품질을 평가하기 위해 NEJM의 300개 사례를 활용한 다차원적 벤치마크 &#x27;AI 컨실리엄(AI Consilium)&#x27;을 개발했습니다.
+*   구조화된 형식의 보고서가 자유 형식 보고서보다 관리(management) 등 여러 지표에서 더 높은 점수를 기록했습니다.
+*   평가 결과, 모델의 정체성(기종)이 보고서의 품질을 결정하는 가장 강력한 요인이었으며, &#x27;GPT-5.6-Sol&#x27;이 모든 평가 항목에서 가장 우수한 성과를 보였습니다.
+
+📖 쉽게 풀어쓴 1분 핵심
+환자가 병원에서 진료를 받을 때, 한 명의 의사 판단에만 의존하기보다 여러 전문가가 모여 의견을 나누는 &#x27;다학제 진료&#x27;가 중요합니다. 하지만 AI가 제공하는 의학적 조언은 단순히 병명을 추측하는 수준을 넘어, 사실에 기반해야 하고 논리적이며 안전해야 합니다. 이 논문은 AI가 내놓은 의학적 조언이 얼마나 신뢰할 수 있는지, 여러 전문 분야의 관점을 얼마나 잘 통합하는지 평가할 수 있는 표준 시험(벤치마크)을 만들었습니다. 8개의 최신 AI 모델을 테스트한 결과, 정보를 구조화해서 정리했을 때 AI의 판단이 더 명확하고 정확해진다는 사실을 확인했습니다.
+
+🎯 배경 및 문제점
+기존 AI 연구들은 주로 복잡한 임상 사례에서 &#x27;감별 진단&#x27;을 내리는 능력에 집중해 왔습니다. 그러나 실제 의료 현장에서 필요한 &#x27;세컨드 오피니언&#x27;은 단순한 진단명 나열이 아닙니다. 환자의 상태를 재해석하고, 누락된 정보를 파악하며, 안전하고 실행 가능한 치료 계획을 제시해야 합니다. 이를 종합적으로 평가할 기준이 부족했기에, 연구진은 전문가 수준의 임상적 근거를 갖춘 벤치마크를 설계하였습니다.
+
+💡 핵심 기술 및 아키텍처
+*   **데이터셋:** NEJM의 진단 사례 300건을 활용 (110건은 의사 참조 및 판사 모델 보정용, 190건은 최종 평가용).
+*   **평가 체계:** &#x27;LLM-as-a-judge(AI 판사)&#x27; 방식을 도입하여 의사의 가이드라인에 따라 8개 핵심 기준(사실 근거, 문제 우선순위, 데이터 활용, 추론 일관성, 감별 진단, 임상 결론, 관리 전략, 안전성)으로 3,040개의 보고서를 평가했습니다.
+*   **방법론:** 8개의 개별 모델이 독립적인 전문가 역할을 수행하며, 자유 형식과 구조화된 형식으로 각각 임상 보고서를 생성해 품질을 비교했습니다.
+
+📊 실험 결과 분석
+*   **구조화의 중요성:** 구조화된 형식의 보고서가 자유 형식보다 전체적으로 더 높은 점수를 받았습니다. 특히 &#x27;관리 전략&#x27; 항목에서 구조화된 보고서의 평균 점수가 2.740점으로, 자유 형식의 2.436점보다 높게 나타났습니다.
+*   **모델별 성능:** &#x27;GPT-5.6-Sol&#x27;이 평가된 모든 구성 요소에서 가장 우수한 성과를 거두었으며, 가장 적은 검토 단계로 최종 합의(consensus)에 도달했습니다.
+*   **품질 영향 요인:** 보고서의 답변 형식보다 &#x27;어떤 모델을 사용했는지(모델 정체성)&#x27;가 보고서의 품질 차이를 더 크게 만드는 요인임이 밝혀졌습니다.
+
+🌍 세상에 미치는 영향 &amp; 실무 적용 사례
+이 벤치마크는 AI가 의료 현장에 투입될 때 단순히 &#x27;진단&#x27;을 넘어 &#x27;다학제적 협진&#x27; 도구로서 얼마나 안전하고 논리적으로 기능하는지를 입증하는 표준이 될 수 있습니다. 실무에서는 복잡한 희귀 질환 사례에서 AI를 의사 결정 보조 도구로 사용할 때, 어떤 형식으로 정보를 출력하게 해야 오류를 줄이고 안전한 치료 계획을 세울 수 있는지에 대한 실질적인 가이드라인을 제공합니다.
+
+&gt; **🔗 함께 읽어볼 만한 관련 문서**
+&gt; - [2610.22298 AI Consilium: a Benchmark of LLM Clinical ...](https://arxiv.org/abs/2610.22298)
+&gt; - [AI Consilium: a Benchmark of LLM Clinical Multidisciplinary Second Opinions](https://arxiv.org/pdf/2610.22298)
+&gt; - [AI Consilium: a Benchmark of LLM Clinical Multidisciplinary Second Opinions](https://arxiv.deeppaper.ai/papers/2610.22298v1)
+
+
+
+&lt;script type=&quot;application/json&quot; id=&quot;ai-comments&quot;&gt;
+[
+  {
+    &quot;author&quot;: &quot;깐깐한 교수님&quot;,
+    &quot;avatar&quot;: &quot;🧑‍🔬&quot;,
+    &quot;role&quot;: &quot;AI Researcher&quot;,
+    &quot;content&quot;: &quot;이 논문에서 가장 흥미로운 점은 &#x27;모델의 정체성이 구조화된 프롬프팅보다 중요하다&#x27;는 결론이군요. 결국 LLM의 추론 깊이가 받쳐주지 않으면 아무리 템플릿을 잘 짜도 환각(Hallucination)을 걸러낼 수 없다는 뜻입니다. 의료 데이터에서 벤치마크 점수 높다고 바로 임상 도입하자는 식의 성급한 논의는 위험합니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;판교 10년차 ML엔지니어&quot;,
+    &quot;avatar&quot;: &quot;👨‍💻&quot;,
+    &quot;role&quot;: &quot;ML Engineer&quot;,
+    &quot;content&quot;: &quot;교수님 말씀대로 모델 성능이 깡패인 건 맞는데, 실무 입장에서는 &#x27;구조화된 보고서&#x27;가 성능을 유의미하게 보완한다는 점을 주목해야 합니다. 결국 현장 의사들은 바쁘거든요. 모델이 아무리 똑똑해도 텍스트 덩어리로 뱉어내면 누가 읽습니까? 관리 전략 항목에서 점수 차이가 벌어진 건 분명 시스템 아키텍처 관점의 승리라고 봅니다.&quot;
+  },
+  {
+    &quot;author&quot;: &quot;트렌드에 미친 대학원생&quot;,
+    &quot;avatar&quot;: &quot;🎓&quot;,
+    &quot;role&quot;: &quot;Ph.D Student&quot;,
+    &quot;content&quot;: &quot;다들 너무 진지하시네! ㅋㅋㅋ 근데 GPT-5.6-Sol이 깡패인 건 이미 다들 예상했잖아요? 중요한 건 &#x27;LLM-as-a-judge&#x27; 방식으로 3,000개 넘는 보고서를 평가했다는 건데, 이거 평가용 모델 편향성 문제는 어떻게 해결했는지 궁금하지 않나요? 다음 컨퍼런스에 이 데이터셋으로 파인튜닝한 논문들 쏟아질 거 생각하니 벌써 머리가 어질어질하네요.&quot;
+  }
+]
+&lt;/script&gt;
+</pre></article></main></body></html>
