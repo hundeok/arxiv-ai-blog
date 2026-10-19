@@ -56115,11 +56115,700 @@
         "pdf_link": "https://arxiv.org/pdf/2610.21185v1"
       },
       "priority_score": 20
+    },
+    "2610_23344v1": {
+      "id": "2610_23344v1",
+      "filename": "post_2610_23344v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-19T02:50:29.285740+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-19T02:50:29.285750+00:00",
+      "paper": {
+        "title": "Language Models Learn to Improve Language Models",
+        "summary": "Large language models (LLMs) are increasingly used to automate AI research, including language-model (LM) development, offering a potential path toward recursive self-improvement. However, turning experimental feedback into a learned ability to propose effective improvements across models faces two challenges. First, training such an ability with real feedback is expensive: reinforcement learning (RL) requires evaluating tens of thousands of proposals, each potentially requiring a full model-training run. Even at ten GPU-hours per run, reward collection alone would consume hundreds of thousands of GPU-hours, motivating a cheaper surrogate. Second, surrogate feedback can become unreliable as policy optimization favors overestimated proposals when the proposal distribution shifts. To address these challenges, we propose LM2LM, which trains LLMs with RL to generate effective LM improvement proposals. To provide scalable feedback, we use a research world model (RWM), a frozen LLM that predicts proposal gains from real experimental records provided in context, as the reward model for RL. To maintain feedback reliability, we periodically execute current-policy proposals ranked highly by the RWM and add their measured outcomes to its context. Across eight autoregressive and diffusion LM development environments, real-execution evaluations on held-out tasks show that LM2LM enables Qwen3.8-27B to outperform GPT-6-sol, even when GPT-6-sol is given 300 real experimental records in context, while requiring 33% lower data-generation cost. LM2LM also generalizes to a model family unseen during training.",
+        "published": "2026-10-16T11:51:00Z",
+        "authors": [
+          "Minhua Lin",
+          "Zijun Wang",
+          "Zewen Liu",
+          "Zhaotian Weng",
+          "Bing He",
+          "Zhan Shi",
+          "Benoit Dumoulin",
+          "Xiang Zhang",
+          "Suhang Wang",
+          "Hanqing Lu"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.23344v1"
+      },
+      "priority_score": 30
+    },
+    "2610_23342v1": {
+      "id": "2610_23342v1",
+      "filename": "post_2610_23342v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-19T02:50:29.285758+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-19T02:50:29.285760+00:00",
+      "paper": {
+        "title": "Robust Function Calling for LLM Agents Under Interface Drift",
+        "summary": "Tool-augmented language-model agents rely on interface text: tool descriptions, argument schemas, and the candidate tool list shown at inference time. These interfaces often change after deployment even when the underlying tool semantics remain fixed, creating a practical reliability problem for function-calling systems. We study this failure mode as interface drift and evaluate whether a lightweight, training-free repair layer can recover robustness without retraining the base model. Our method, SchemaShield-Lite, combines schema validation, candidate-set retry for missing tool names, and one-shot constrained repair. On Qwen3.5-9B, it raises DICE-300 accuracy from 0.717 to 0.813 and BFCL-200 accuracy from 0.580 to 0.805, recovering 19/22 and 33/45 drift-induced failures with no observed repair harms. Naive retry does not explain the gains. Ablations show that candidate-set drift, especially distractor tools, accounts for most observed damage, while description and schema edits alone are less harmful. The results position validation-and-repair as a practical robustness layer for deployed LLM-agent tool use.",
+        "published": "2026-10-16T11:49:37Z",
+        "authors": [
+          "Aniruddha Chattopadhyay",
+          "Kanishka Halder",
+          "Partha Sarathi Roy"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.23342v1"
+      },
+      "priority_score": 24
+    },
+    "2610_23317v1": {
+      "id": "2610_23317v1",
+      "filename": "post_2610_23317v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-19T02:50:29.285766+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-19T02:50:29.285768+00:00",
+      "paper": {
+        "title": "AgentOnto: Ontology-Guided LLM Agents for Enterprise Data Analytics",
+        "summary": "Enterprise data analysis requires agents to connect analytical requests with knowledge distributed across databases, business documents, and existing example tasks. Without an explicit representation of this knowledge, an agent may produce incorrect analytical results and cannot reliably incorporate feedback. We present AgentOnto, an ontology-guided LLM agent for enterprise data analytics. AgentOnto organizes heterogeneous enterprise knowledge into an ontology that directly guides analysis and incorporates confirmed feedback. Iterative Ontology Preparation further improves the ontology through self-generated analysis tasks. We evaluate AgentOnto on two public data sources. AgentOnto substantially outperforms representative methods, while module-level evaluations confirm the effectiveness of ontology construction, analysis, and updating. A real-world deployment further demonstrates its practical value in enterprise analytics. These results demonstrate that explicitly constructing, using, and updating enterprise knowledge supports reliable and adaptable data analysis.",
+        "published": "2026-10-16T11:22:38Z",
+        "authors": [
+          "Dayan Pan",
+          "Bincheng Zuo",
+          "Xiaojian Wang",
+          "Daogang Zhang",
+          "Jingyuan Wang"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.23317v1"
+      },
+      "priority_score": 33
+    },
+    "2610_23313v1": {
+      "id": "2610_23313v1",
+      "filename": "post_2610_23313v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-19T02:50:29.285773+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-19T02:50:29.285775+00:00",
+      "paper": {
+        "title": "From Memory Hits to Answerable Evidence: Query-Conditioned Memory Compilation for Long-Term Agent Memory",
+        "summary": "Long-term agent memory requires recovering answer-relevant evidence dispersed across turns and sessions. Existing systems increasingly use structured memories and adaptive retrieval, yet often pass retrieved or expanded units directly to the reader, coupling memory addressing with evidence presentation and leaving the final context redundant or incomplete. To address this gap, we propose MemCompile, a query-conditioned evidence compilation framework for long-term conversational memory. Given a query, the Address Plane locates relevant support through compact source-linked descriptors and capacity-aware Cells, while a normalization boundary resolves heterogeneous retrieval hits to stable SourcePacket identities. Its Evidence Plane then allocates a bounded evidence budget across complementary packets, admits limited additional support, and renders the retained claims associated with each selected packet into an answer-ready context. MemCompile achieves 80.52% Judge Accuracy on LoCoMo and extends the empirical quality-cost Pareto frontier to a higher-quality regime. Its strong performance on LongMemEval-S further suggests that the benefits of query-conditioned compilation generalize across long-term conversational-memory benchmarks.",
+        "published": "2026-10-16T11:15:29Z",
+        "authors": [
+          "Shangze Li",
+          "Yanyu Yao",
+          "Derong Xu",
+          "Zhi Zheng",
+          "Tong Xu"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.23313v1"
+      },
+      "priority_score": 45
+    },
+    "2610_23311v1": {
+      "id": "2610_23311v1",
+      "filename": "post_2610_23311v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-19T02:50:29.285780+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-19T02:50:29.285782+00:00",
+      "paper": {
+        "title": "Self-Reflective Chain-of-Thought (SRCoT): Evidence-Based Text Generation via a Closed-Loop Retrieve--Reflect--Revise Pipeline on Edge LLMs",
+        "summary": "Large language models (LLMs) can generate fluent outputs that lack source support or conflict with local operational constraints. We introduce Self-Reflective Chain-of-Thought (SRCoT), a modular architecture that organizes generation as a closed Retrieve--Reflect--Revise loop. SRCoT separates environment state, persistent knowledge, accumulated experience, and short-term memory into provenance-labeled stores. BM25 retrieval supplies local context; subsequent passes expose intermediate drafts, missing-information markers, follow-up queries, and optional claim--evidence mappings. These artifacts inform retrieval, revision, clarification, or abstention decisions. We examine the architecture through qualitative, trace-based case studies in two fully synthetic settings: emergency medical services and Munich-Sim, an emergency-operations simulation. Local prototype runs on an Apple M4-family laptop with 128 GB memory illustrate source-labeled documentation, explicit gap marking, and structured dispatch-style outputs. The traces also reveal provenance-assignment errors, incomplete evidence coverage, and unsafe assumptions that remain possible despite prompting constraints. These cases demonstrate report-level inspectability and local execution, not comparative superiority, hallucination reduction, clinical validity, or operational safety. The architecture separates retrieval and control from the model interface, but behavior across different models remains to be evaluated. SRCoT is a research proof of concept requiring human review, with its principal contribution lying in an inspectable control procedure rather than a new model.",
+        "published": "2026-10-16T11:14:52Z",
+        "authors": [
+          "Fabian Broszio",
+          "Michael Hoffmann",
+          "Adrian Paschke"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.23311v1"
+      },
+      "priority_score": 40
+    },
+    "2610_23307v1": {
+      "id": "2610_23307v1",
+      "filename": "post_2610_23307v1.md",
+      "status": "retry",
+      "attempts": 1,
+      "next_retry_at": "2026-10-19T03:20:31.265724+00:00",
+      "last_error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}",
+      "updated_at": "2026-10-19T02:50:31.265740+00:00",
+      "paper": {
+        "title": "MobileInject: Evaluating Reasoning-to-Action Security of MLLM-Based Mobile Agents under Cross-Modal Consistency Injection",
+        "summary": "Multimodal large language model (MLLM)-based mobile agents are rapidly evolving from conversational assistants into autonomous systems that perceive, reason over, and act on smartphone environments. This capability also exposes a new security risk: adversaries can embed malicious objectives in cross-application mobile content and steer agent behavior through indirect multimodal injection. Although prompt injection has been studied in desktop and web settings, its cross-modal properties in mobile ecosystems remain poorly understood, and existing security analyses are still limited. To close this gap, we introduce MobileInject, the first benchmark for evaluating mobile agents against multimodal injection attacks and reasoning-to-action security risks. MobileInject provides a high-fidelity interactive mobile evaluation framework covering 11 scenarios, 9 security-risk categories, and 108 executable risk instances. It further introduces Cross-Modal Consistency Injection to exploit corroboration across modalities, two enhanced attack methods, Multi-Role Collaborative Deception and Reasoning-Camouflage Injection, to intensify trust manipulation and reasoning hijacking, and a Reasoning Security Diagnosis Framework for fine-grained failure analysis. Systematic experiments show that mobile agents are broadly vulnerable to multimodal injection, and that many failures stem from reasoning hijacking at early stages. These findings establish MobileInject as a systematic cross-modal benchmark for studying and improving the security of mobile agents. Code release details are provided in the Appendix Open Science section.",
+        "published": "2026-10-16T11:10:30Z",
+        "authors": [
+          "Songping Wang",
+          "Peiyang Li",
+          "Yi Huang",
+          "Fengting Li",
+          "Xuhao Ran",
+          "Yueming Lyu",
+          "Chao Feng",
+          "Caifeng Shan"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.23307v1"
+      },
+      "priority_score": 70
+    },
+    "2610_23306v1": {
+      "id": "2610_23306v1",
+      "filename": "post_2610_23306v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-19T02:50:29.285794+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-19T02:50:29.285795+00:00",
+      "paper": {
+        "title": "SimOPD: Relational Knowledge Transfer for On-Policy Distillation",
+        "summary": "A key challenge in on-policy distillation (OPD) is extracting effective supervision from teacher knowledge. Supervision from token probabilities may underutilize internal knowledge, while direct hidden-state matching forces the student to shift to the teacher's feature space and complicates cross-architecture transfer. Inspired by contrastive learning's use of relationships between instances, we propose \\textbf{SimOPD} to transfer teacher internal knowledge through response similarities. Specifically, SimOPD uses paired memory banks of student-generated responses to extract supervision from the teacher's internal representations as similarity distributions. The student then matches these distributions within its own representation space, retaining representational freedom and removing the need for cross-model projection. Extensive experiments show that SimOPD improves the overall average over the strongest baselines by up to 2.6 and 3.1 percentage points in same- and cross-architecture settings.",
+        "published": "2026-10-16T11:10:21Z",
+        "authors": [
+          "Kai Tang",
+          "Xing Zheng",
+          "Haobo Wang",
+          "Guangcheng Zhu",
+          "Shenzhi Yang",
+          "Zhengqing Zang",
+          "Yingfan Ma",
+          "Bowen Song",
+          "Weiqiang Wang"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.23306v1"
+      },
+      "priority_score": 12
+    },
+    "2610_23304v1": {
+      "id": "2610_23304v1",
+      "filename": "post_2610_23304v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-19T02:50:29.285800+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-19T02:50:29.285802+00:00",
+      "paper": {
+        "title": "Designing for Imperfect Prompts: A Simulation-Based Evaluation of an LLM-Based Enterprise Data Assistant Using Knowledge Graphs",
+        "summary": "Enterprise data assistants using large language models (LLMs) promise democratized data access in organizations. Yet in our real-world deployment within the CFO unit's data lake at an industry partner, we observed that business users frequently pose imperfect prompts that include domain-specific vocabulary and lack schema references or structural information. This Design Science Research study examines automatic resolution using a semantic mediation layer. We design and evaluate two design variants: schema-based mediation via semantic similarity, and knowledge graph-based mediation leveraging an automatically constructed knowledge graph from the data lake. Our simulation-based evaluation using real-world data, supported by LLM-as-a-Judge assessments and human validation, shows that knowledge graph-based mediation outperforms the schema-based approach in Precision, Recall, F1, and preserving user intent. We propose a design principle for knowledge graph-based mediation, demonstrating that structured knowledge representation bridges user intent and database structure and guides the design of enterprise data assistants across skill levels.",
+        "published": "2026-10-16T11:07:04Z",
+        "authors": [
+          "Niklas Wagner",
+          "Alexander Mädche"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.23304v1"
+      },
+      "priority_score": 24
+    },
+    "2610_23299v1": {
+      "id": "2610_23299v1",
+      "filename": "post_2610_23299v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-19T02:50:29.285807+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-19T02:50:29.285808+00:00",
+      "paper": {
+        "title": "Optimist Deep Research: An Iterative, State-Centric Agent for Autonomous Literature Research",
+        "summary": "Most retrieval-augmented systems treat literature search as a single retrieval step followed by summarization. Real literature research works differently: the investigator's understanding of the question changes as they read, new subquestions appear, and evidence is weighed, not just collected. We present Optimist Deep Research, an open-source agent that runs literature research as an iterative evidence-acquisition process over an explicit, mutable research state. A research question is broken into a tree of subquestions, each served by search intents that are translated into source-specific queries over arXiv, OpenAlex, Crossref, PubMed, Semantic Scholar and the web. Results are merged into a canonical, provenance-preserving document registry through a conservative four-tier deduplication hierarchy. The registry is expanded by citation snowballing until a saturation criterion is met, and then screened, ranked and allocated to subquestions round-robin. Documents are read in parallel into a structured evidence store of claims with support, location, type and strength. A critic reviews the state along eight dimensions and returns research actions rather than a binary verdict: it can add, split, rephrase, deprioritize or close subquestions, so the research plan is an output of the investigation as well as an input. The final report is written section by section from the evidence store, and every citation resolves to a retrieved document. We describe the design, the deterministic machinery that keeps a language-model pipeline auditable, and a case study that read 28 of 237 retrieved documents in about three and a half minutes. We also report weaknesses the case study exposed.",
+        "published": "2026-10-16T11:04:43Z",
+        "authors": [
+          "Gihan Panapitiya"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.23299v1"
+      },
+      "priority_score": 40
+    },
+    "2610_23297v1": {
+      "id": "2610_23297v1",
+      "filename": "post_2610_23297v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-19T02:50:29.285813+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-19T02:50:29.285815+00:00",
+      "paper": {
+        "title": "FlashReFocus: Interactive Image Refocusing in Seconds",
+        "summary": "Single-image refocusing changes the focal plane and depth of field of a photograph after capture. It is inherently interactive: users try many focal points and blur strengths on one image, so each edit should be fast and change only the blur. Recent generative methods, however, rerun large diffusion models for every edit. We observe that the two sub-problems differ in kind: recovering the all-in-focus image is ill-posed and needs a generative prior, whereas rendering blur is largely determined by depth and the focal plane. We therefore propose FlashReFocus, which runs diffusion once per photograph and renders every edit with a lightweight network. To address the ill-posed restoration, a one-step diffusion deblurrer with a decoder refiner recovers fine detail efficiently while balancing fidelity and perceptual quality. For precise control, the renderer is conditioned on an explicit defocus map and uses defocus-bias attention, which lets pixels at similar defocus share information without interference from pixels at other depths; in-focus content stays unchanged, and editing the map yields tilt-shift and two focal planes. To further test generalization to unseen cameras, we collect 3CReal, a three-camera benchmark of 89 pairs. FlashReFocus achieves the best perceptual fidelity for zero-shot bokeh rendering on EBB! and 3CReal, refocuses 148.3x faster than GenRefocus, and takes about half a second per further edit, 462x faster.",
+        "published": "2026-10-16T11:04:18Z",
+        "authors": [
+          "Ching-Heng Cheng",
+          "Chia-Ming Lee",
+          "Ming-Ching Chang",
+          "Xin Li",
+          "Yu-Lun Liu",
+          "Chih-Chung Hsu"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.23297v1"
+      },
+      "priority_score": 38
+    },
+    "2610_23290v1": {
+      "id": "2610_23290v1",
+      "filename": "post_2610_23290v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-19T02:50:29.285820+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-19T02:50:29.285822+00:00",
+      "paper": {
+        "title": "CoTA++: Understanding the Repeat Curse in dMLLMs from an Information Flow Perspective",
+        "summary": "Diffusion-based multimodal large language models (dMLLMs) decode by iterative denoising with bidirectional attention, which precludes the standard autoregressive key--value cache. Practical deployments therefore rely on approximate caching that reuses intermediate states across denoising steps. Such caching, however, often makes a response repeat one token at adjacent positions in a run that breaks the sentence, a failure we term the \\emph{Repeat Curse}. Tracing the context-token information flow reveals three disruptions. Within a step, caching disperses the attention that anchors a position on nearby context tokens. Across steps, similarity-based refresh is not staleness-aware, so some positions are decoded against stale key--value states. Across layers, the deep-layer entropy of the context fails to converge where repetition arises. We accordingly propose CoTA++, a training-free, plug-and-play framework that counteracts each disruption where it originates: Context-Token Attention Re-anchoring re-forms the attention routing against the current context, Decode-Aware Refresh reserves part of the cache's refresh budget for the positions about to be committed, and Context-Token Entropy-Guided Voting discounts the confidence of a position by the deep-layer entropy of its context, which reorders the unmasking. The three components act at non-overlapping stages of a decoding step and compose freely with existing dMLLMs and caches. Across three dMLLMs and two caching backends, CoTA++ reduces the sample repetition rate of long responses from up to 99.6\\% to at most 17.0\\%, recovers most of the accuracy lost to caching on nine benchmarks, and keeps the speedup of caching at under 15\\% overhead, making approximate caching reliable for dMLLMs.",
+        "published": "2026-10-16T10:58:03Z",
+        "authors": [
+          "Qiyan Zhao",
+          "Xiaofeng Zhang",
+          "Xu-Yao Zhang",
+          "Shijie Han",
+          "Zhepeng Li",
+          "Shunzhi Zhu",
+          "Da-Han Wang"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.23290v1"
+      },
+      "priority_score": 40
+    },
+    "2610_23284v1": {
+      "id": "2610_23284v1",
+      "filename": "post_2610_23284v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-19T02:50:29.285827+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-19T02:50:29.285828+00:00",
+      "paper": {
+        "title": "Annotrace: A Workbench for Step-Level Annotation of Agent Traces",
+        "summary": "Every study of why LLM agents fail begins by labelling traces by hand, and every such study builds its own throwaway tool. Observability platforms record agent traces but offer no structured labelling; annotation tools label text but have no notion of a step, a delegation or a tool call, leaving it unclear what the smallest unit of execution to label should be. Annotrace reads six trace formats, including OpenTelemetry GenAI, LangSmith and Langfuse, and turns each run into an ordered, nested list of steps. The annotator writes their own labelling codebook; a frontier model proposes a starting set from a sample of their own traces, answers first, and is asked exactly the questions the human is asked, making annotation a joint human-AI process. Annotrace measures agreement between any two annotators, human or AI. On a multi-agent question-answering corpus it reproduces a previous manual effort's 235 annotation units exactly, and two models labelling the same traces agree 91% of the time at $κ= 0.82$.",
+        "published": "2026-10-16T10:55:26Z",
+        "authors": [
+          "Arun Josephraj Arokiaraj",
+          "Chenyi Huang",
+          "Sahan Bulathwela",
+          "Zekun Wu",
+          "Bin Wu"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.23284v1"
+      },
+      "priority_score": 32
+    },
+    "2610_23266v1": {
+      "id": "2610_23266v1",
+      "filename": "post_2610_23266v1.md",
+      "status": "retry",
+      "attempts": 1,
+      "next_retry_at": "2026-10-19T03:20:32.431082+00:00",
+      "last_error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}",
+      "updated_at": "2026-10-19T02:50:32.431094+00:00",
+      "paper": {
+        "title": "Beyond Marginal Influence: Interaction-Aware Memory Selection for LLM Agents",
+        "summary": "LLM-agent memory selection often uses retrieval rankings based on record relevance or individual influence. Such rankings cannot identify sufficient subsets under redundant or jointly necessary evidence. We study per-decision memory sufficiency: selecting a small subset that preserves full-memory behavior. To separate search error from model error, we introduce JointCoreBench, a benchmark with nine interaction families, six workflow domains, natural-language decisions, and exact sufficient-set oracles, and JointCore, a relevance cost-ordered group-deletion baseline that tests blocks before individual records. On 6,912 exact conditions, cost-ordered JointCore recovers a minimum-cost sufficient set in 100.0% of cases, reduces subset evaluations from 30.00 to 11.13 (62.9%), and achieves 87.8% active-memory savings. Across four 12B-70B model families and 432 tasks per model, its unweighted mean is 10.28 versus 16.00 model queries and 50.6% versus 43.1% minimum-cost recovery relative to cost aware singleton deletion. Both methods preserve full-memory behavior under the deterministic primary interface. Tests with physical deletion, UNKNOWN masks, PENDING sentinels, counterfactual values, and alternative labels identify interface dependent behavior. JointCore is an efficient benchmark baseline; the study does not establish deployment-ready memory compression.",
+        "published": "2026-10-16T10:37:47Z",
+        "authors": [
+          "BHVSP Subrahmanyam",
+          "Neeraj Choudhary"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.23266v1"
+      },
+      "priority_score": 57
+    },
+    "2610_23257v1": {
+      "id": "2610_23257v1",
+      "filename": "post_2610_23257v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-19T02:50:29.285841+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-19T02:50:29.285842+00:00",
+      "paper": {
+        "title": "Reasoning Models Can Control Their Chains of Thought When They Tell Themselves To",
+        "summary": "Chain-of-thought (CoT) controllability, the ability of reasoning models to control properties of their CoT, is consequential for both their usefulness and reliable oversight. Recent work evaluates this capability by measuring whether models follow CoT constraints given in the user prompt, and reports very low controllability across models. We argue that this low controllability may not reflect an inherent inability of reasoning models to control their CoT, but instead result from naively specifying constraints in the user prompt. To test this, we introduce Self-Instructed CoT Controllability: a complementary evaluation that places the constraint as a self-instruction inside the model's CoT and measures its ability to follow it. We show that, under self-instruction, models achieve significantly higher controllability than with standard user instructions. Even a generic reminder to follow the user's constraint substantially improves controllability. Moreover, effective self-instructions can be bootstrapped into the reasoning through a simple instruction in the user prompt, enabling improved control even without access to the reasoning channel. Finally, using self-instruction, we demonstrate in a realistic monitoring setup that CoT controllability can be leveraged for monitor evasion, posing a risk to CoT monitorability.",
+        "published": "2026-10-16T10:31:27Z",
+        "authors": [
+          "Uriel Dolev",
+          "Idan Schwartz",
+          "Yoav Goldberg"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.23257v1"
+      },
+      "priority_score": 36
+    },
+    "2610_23256v1": {
+      "id": "2610_23256v1",
+      "filename": "post_2610_23256v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-19T02:50:29.285847+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-19T02:50:29.285849+00:00",
+      "paper": {
+        "title": "Beyond Reward Scoring: Online Multi-Agent Preference Learning for Multimodal Response Generation",
+        "summary": "Multimodal preference alignment often follows a score-based RLHF pipeline: a reward model is first trained to learn human preferences, then used to score on-policy responses and optimize the response model's generation. This turns preference supervision into a scalar signal for generation: a model may learn to produce answers with higher preference scores, but is rarely trained explicitly to learn the reasons underlying human preferences. We therefore ask whether making preference understanding an internal capability of the response model can improve its generation. To investigate this question, we propose \\textbf{PrefMind}, an online dual-agent reinforcement learning framework with two trainable agents: a response Generator and a preference Critic. Given a pair of candidate responses, the agents analyze and discuss which response better aligns with human preference. Human labels supervise their judgments and corrections. For pairs on which both the Generator and revised Critic correctly identify the human-preferred response, the Generator produces an improved answer, and the Critic compares it against the original preferred response to provide a generation reward. Both agents are jointly updated from interactions sampled with their current policies. Through this process, \\textbf{PrefMind} trains the Generator to understand human preferences via explicit judgment and correction, and to translate this understanding into better responses. Experiments across three model scales show improvements in both standalone preference judgment and downstream response generation.",
+        "published": "2026-10-16T10:28:14Z",
+        "authors": [
+          "Ziyun Zou",
+          "Jiwoo Hong",
+          "Yifan Lu",
+          "Shao Tang",
+          "Weiyi Wu",
+          "Aman Gupta",
+          "Jin Tian",
+          "Imran Razzak"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.23256v1"
+      },
+      "priority_score": 29
+    },
+    "2610_23252v1": {
+      "id": "2610_23252v1",
+      "filename": "post_2610_23252v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-19T02:50:29.285853+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-19T02:50:29.285855+00:00",
+      "paper": {
+        "title": "Preventing Data Hallucinations in Agentic AI for Optical Network Troubleshooting",
+        "summary": "An agentic AI system for automated troubleshooting in optical communication networks is demonstrated that integrates data references into the agent architecture to prevent data hallucinations, improving the interpretability and trustworthiness of root-cause identification and reasoning.",
+        "published": "2026-10-16T10:25:35Z",
+        "authors": [
+          "Jeremias Dötterl",
+          "Martin Kuipers"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.23252v1"
+      },
+      "priority_score": 23
+    },
+    "2610_23245v1": {
+      "id": "2610_23245v1",
+      "filename": "post_2610_23245v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-19T02:50:29.285860+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-19T02:50:29.285861+00:00",
+      "paper": {
+        "title": "MGE-PO: Entropy-Aware Credit Assignment for Mathematical Reasoning",
+        "summary": "GRPO assigns the same group-relative advantage to equally rewarded responses within a question, leaving their generation uncertainty unused. We introduce MGE-PO, centered on four-quadrant (4Q) advantage shaping that combines verified correctness with rollout generation entropy. Correctness determines the sign of an additional correction, while entropy controls its magnitude: lower-entropy successes receive larger bonuses and higher-entropy failures receive larger penalties. An online entropy-based question curriculum supports this credit rule using cached rollout measurements. At the final checkpoint after eight training epochs on Qwen3-8B-Base, adding 4Q across three policy optimization settings yields absolute gains of 3.23-3.69% in six-benchmark macro avg@32 and 4.24-11.06% in macro pass@32. On Qwen2.5-7B-Base, the complete configuration raises four-benchmark macro avg@32 from 41.5% to 45.4%.",
+        "published": "2026-10-16T10:15:02Z",
+        "authors": [
+          "Jihao Huang",
+          "Guangjia Chai",
+          "Zhirui Chen",
+          "Lei Wang",
+          "Yao Liu",
+          "Liu Qi",
+          "Pengjie Ding",
+          "Xinyang Liu",
+          "Chengxun Jia",
+          "Ling Shao",
+          "Hongyu Chen",
+          "Junchen Wan"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.23245v1"
+      },
+      "priority_score": 31
+    },
+    "2610_23226v1": {
+      "id": "2610_23226v1",
+      "filename": "post_2610_23226v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-19T02:50:29.285866+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-19T02:50:29.285868+00:00",
+      "paper": {
+        "title": "Characterising and Analysing Retrieval-Augmented Generation Techniques",
+        "summary": "The advent of Large Language Models (LLMs) across many application domains has increased the need for Retrieval-Augmented Generation (RAG) to reduce hallucinations and improve LLM performance. Thus far, several RAG techniques with impressive features and capabilities have been proposed in the literature, making it a herculean task to select the most appropriate RAG techniques for specific problem scenarios. Thus, we propose a conceptual framework comprising main dimensions and sub-dimensions for characterising (defining \"what it is\") and analysing (defining \"how well it does\") existing RAG techniques. The conceptual framework was developed through a qualitative analysis of the attributes of RAG techniques reported in the literature. It can serve as a pre-empirical filtering mechanism for researchers and practitioners in selecting the highest-fit RAG candidates that meet specific user and task requirements before empirical benchmarking of RAG techniques, which can be computationally and financially expensive.",
+        "published": "2026-10-16T09:55:31Z",
+        "authors": [
+          "Emmanuel Igbekele",
+          "Olawande Daramola"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.23226v1"
+      },
+      "priority_score": 32
+    },
+    "2610_23222v1": {
+      "id": "2610_23222v1",
+      "filename": "post_2610_23222v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-19T02:50:29.285872+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-19T02:50:29.285874+00:00",
+      "paper": {
+        "title": "qGAMMA: A Framework for Optimal DNN Mapping on Multi-Precision Accelerators",
+        "summary": "This work describes qGAMMA, a flexible framework for exploring and optimizing the mapping of mixed-precision Deep Neural Network (DNN) models onto general-purpose spatial accelerators that support a range of fixed- and floating-point precisions. qGAMMA navigates the design space using a domain-specific genetic algorithm and an analytical performance model based on hardware synthesis results. The framework identifies the optimal mapping and accelerator configuration that minimizes target metrics. Extensive evaluations across DNN workloads show that qGAMMA offers valuable insights for designing mixed-precision applications, enabling better trade-offs between performance, energy efficiency, and resource utilization.",
+        "published": "2026-10-16T09:54:13Z",
+        "authors": [
+          "Leandro Fiorin",
+          "Luigi Altamura",
+          "Cristina Silvano"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.23222v1"
+      },
+      "priority_score": 19
+    },
+    "2610_23213v1": {
+      "id": "2610_23213v1",
+      "filename": "post_2610_23213v1.md",
+      "status": "retry",
+      "attempts": 1,
+      "next_retry_at": "2026-10-19T03:20:34.396500+00:00",
+      "last_error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}",
+      "updated_at": "2026-10-19T02:50:34.396514+00:00",
+      "paper": {
+        "title": "Not All Test-Time Compute Is Evidence: Model-Specific Bias in LLM Reasoning",
+        "summary": "Test-time scaling methods implicitly assume that additional computation from the same model provides independent evidence. We show that this assumption fails within a single reasoning model: errors are correlated across repeated samples, across reasoning depth, and in the model's own self-evaluation, so more compute from the same model is not more evidence. We introduce DIA (Disagreement-triggered Independent Arbitration), which treats disagreement between an intermediate-stage and the final-stage prediction as a per-question signal of reasoning instability and resolves it by asking a small panel of heterogeneous models to solve the question independently, without seeing either candidate, and aggregating their answers directly. Across seven benchmarks and two base models, DIA outperforms full chain-of-thought in 12 of 14 settings, including a 7.00% gain on MuSiQue, while activating on only $\\sim 17\\%$ of examples and using up to 47.2% fewer tokens than a multi-agent baseline. Ablations show that both independent solving and solver heterogeneity are necessary for these gains.",
+        "published": "2026-10-16T09:48:02Z",
+        "authors": [
+          "Ming Shen",
+          "Tianjun Yao"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.23213v1"
+      },
+      "priority_score": 53
+    },
+    "2610_23199v1": {
+      "id": "2610_23199v1",
+      "filename": "post_2610_23199v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-19T02:50:29.285886+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-19T02:50:29.285887+00:00",
+      "paper": {
+        "title": "Validating LLM-generated political networks with survey-reported partisan exposure",
+        "summary": "Large language models (LLMs) are increasingly used to simulate human behavior in social science research, including decisions, interactions, and social relationships. However, in network formation tasks, existing evaluations often focus on aggregate network properties, while networks with plausible structural properties may still fail to reproduce individuals' social and political environments. Here, we generate LLM-based political networks using personas sampled from the nationally representative ANES 2020--2022 Social Media Study and use respondents' survey-reported partisan exposure as an empirical benchmark for the political environments generated for the corresponding personas. We first characterize the structural properties and political assortativity of the generated networks, and then compare ego-level partisan exposure with the survey. We find that the structure and political assortativity of the generated networks vary across experimental configurations. More importantly, when comparing generated partisan exposure with the survey, some models generate stronger separation between Democratic and Republican egos than reported in the survey, with higher same-party and lower cross-party exposure, while others mainly underestimate Republican exposure across ego groups. Moreover, networks with similar political assortativity can still generate different partisan environments around the same personas, including among networks with plausible structural properties. Finally, generated networks show group-specific errors, under- or overestimating exposure to either Democrats or Republicans for specific social groups. These findings show that evaluating LLM-based social simulations only through aggregate outcomes can hide errors in the local environments through which those outcomes emerge, highlighting the importance of validation at both aggregate and individual levels.",
+        "published": "2026-10-16T09:38:11Z",
+        "authors": [
+          "Marco Tonin",
+          "Michele Tizzoni",
+          "Bruno Lepri",
+          "Luca Maria Aiello"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.23199v1"
+      },
+      "priority_score": 40
+    },
+    "2610_23196v1": {
+      "id": "2610_23196v1",
+      "filename": "post_2610_23196v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-19T02:50:29.285892+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-19T02:50:29.285893+00:00",
+      "paper": {
+        "title": "Framing Spatial Hearing within the Free Energy Principle: A Hierarchical Model of Perceptual Learning",
+        "summary": "Spatial hearing relies on dynamic internal representations to decode spatial information from ever-changing acoustic conditions. A fundamental example is sound localisation, where listeners infer the direction of an invisible sound. Bayesian inference provides a computational account of such a localisation process; however, modelling efforts are largely limited to static listening scenarios. Instead, the free energy principle (FEP) describes perception, learning, and action as joint minimisation of variational free energy (VFE), providing a principled framework to account for dynamic conditions. Here, we take a first step toward applying the FEP to spatial hearing. We characterise how listeners' beliefs evolve across trials, in which they estimated sound direction and received subsequent visual feedback on each trial. Listeners are described by a hierarchical generative model where visual feedback drives gradient descent on VFE, updating beliefs over three independent quantities: lateral and polar localisation precisions and hemifield disambiguation. The model captures individual learning trajectories and reveals components with different dynamics: lateral precision improves, as does hemifield disambiguation, consistent with increased sensitivity of the auditory pathway in decoding vertical direction. Notably, polar precision also increases, most for listeners with the lowest initial precision, suggesting that the observed vertical improvement is driven by both hemifield disambiguation and polar precision. This work establishes spatial hearing as a tractable domain for FEP and motivates future closed-loop experiments with full action-perception cycles.",
+        "published": "2026-10-16T09:32:44Z",
+        "authors": [
+          "Roberto Barumerli",
+          "Nils Meyer-Kahlen",
+          "Lorenzo Picinali"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.23196v1"
+      },
+      "priority_score": 30
+    },
+    "2610_23195v1": {
+      "id": "2610_23195v1",
+      "filename": "post_2610_23195v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-19T02:50:29.285898+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-19T02:50:29.285900+00:00",
+      "paper": {
+        "title": "FuzzInsight: Navigating the Efficiency-Effectiveness Trade-off in Coverage-Guided DNN Fuzzing",
+        "summary": "Collecting and labeling diverse test datasets for evaluating Deep Neural Networks (DNNs) is costly and time-consuming. This has motivated coverage-guided fuzzing techniques that generate defect-revealing corner cases from limited test data. However, their effectiveness depends heavily on configuration choices, particularly coverage criteria and seed-selection strategies. We present a configuration-oriented analysis and decision guidelines for scalable DNN fuzzing targeting two bottlenecks: inefficient seed utilization and the cost of coverage guidance. Our analysis shows that existing seed-selection strategies repeatedly prioritize a small subset of inputs, leaving many collected seeds unexplored. To address this issue, we propose Equalized Sampling, a constraint-based strategy that increases mean seed queue utilization to 77%, improving on prior approaches by 13 percentage points.   We further evaluate 84 fuzzing configurations on four benchmark datasets: MNIST, SVHN, GTSRB, and CIFAR-100. Results show that the non-structural criteria LSCD, LSC, and MDSC achieve coverage outcomes comparable to structural and alternative non-structural criteria while requiring substantially less computation. These criteria also promote broad behavioral exploration of the DNN under test, reducing the need to monitor multiple coverage metrics. Among them, LSCD provides a modest but consistent runtime advantage.   Finally, we show that retraining with generated corner cases improves generalization robustness by up to 77 percentage points on average without degrading performance on the original test distribution. Together, these findings provide a practical blueprint for selecting fuzzing configurations that balance efficiency, behavioral exploration, and model hardening.",
+        "published": "2026-10-16T09:32:22Z",
+        "authors": [
+          "Vivek Vekariya",
+          "Fathiyeh Faghih",
+          "Alexander Pretschner"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.23195v1"
+      },
+      "priority_score": 30
+    },
+    "2610_23194v1": {
+      "id": "2610_23194v1",
+      "filename": "post_2610_23194v1.md",
+      "status": "retry",
+      "attempts": 1,
+      "next_retry_at": "2026-10-19T03:20:37.402229+00:00",
+      "last_error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}",
+      "updated_at": "2026-10-19T02:50:37.402242+00:00",
+      "paper": {
+        "title": "OfficeTown: Generative Organizations for Evolving Agent Intelligence",
+        "summary": "AI agents increasingly use files and software tools to produce professional deliverables. Such work draws on materials, decisions, and feedback accumulated across assignments. We introduce OfficeTown, a generative simulation framework for professional organizations in which tasks and their context arise from continuing organizational work. From a natural-language description of an organization's purpose and activities, OfficeTown initializes an organization whose members coordinate work, delegate bounded assignments to assistant agents, and review their deliverables. Artifacts, decisions, and unresolved matters persist and shape subsequent work, while responsibilities and permissions determine what each member can see and do. We curate work requests, their context, and review feedback into executable resources for evaluation and learning. We construct OfficeTown Bench with 406 tasks and 4,836 evaluation criteria from 23 simulated organizations across eight professional domains, incorporating domain-expert feedback. Frontier-model evaluations reveal substantial remaining headroom. Supervised fine-tuning and on-policy distillation on OfficeTown data substantially improve Qwen3.5-9B on external professional-work benchmarks, including GDPval. Supplementary evaluations show that the principal--assistant harness achieves higher scores than the single- and multi-agent baselines tested. These results highlight the value of organizational simulation in generating work-grounded data and environments for the continued development of generalist agents.",
+        "published": "2026-10-16T09:32:16Z",
+        "authors": [
+          "Hongchen Wei",
+          "Daohong Ying",
+          "Zhi Hong",
+          "Aidan Wu",
+          "Bei Liu",
+          "Ruichun Ma",
+          "Yifan Yang",
+          "Qi Dai",
+          "Kai Qiu",
+          "Rui Xu",
+          "Dongdong Chen",
+          "Zhenzhong Chen",
+          "Chong Luo"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.23194v1"
+      },
+      "priority_score": 49
+    },
+    "2610_23190v1": {
+      "id": "2610_23190v1",
+      "filename": "post_2610_23190v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-19T02:50:29.285911+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-19T02:50:29.285912+00:00",
+      "paper": {
+        "title": "LangNCO: Compiling Natural-Language Constraints into Inference-Time Interventions for Neural Combinatorial Optimization",
+        "summary": "Neural combinatorial optimization (NCO) rapidly produces high-quality solutions for problem structures encountered during training, but operational requirements may change after deployment and be communicated in natural language. We propose LangNCO, a framework that compiles instance-specific requirements into structured inference-time interventions for a frozen NCO solver, without changing the pretrained policy's architecture, learned input representation, or parameters. A pretrained LLM serves as a replaceable semantic front end, translating each requirement into a schema-validated domain-specific language (DSL) rule set. A deterministic Rule Executor applies the rules as nonexpansive hard action masks. Because local masking prevents immediate violations but does not ensure that a complete feasible continuation remains reachable, Critical-Offset Decoding extracts rule-referenced critical nodes and reallocates part of a fixed rollout budget to multi-strength biased rollouts. Using controlled task-specific language to isolate solver adaptation from open-ended language robustness, we evaluate a CVRP policy on road closures, time windows, vehicle assignments, visit-order requirements, all pairwise combinations, and twelve additional constraint types. LangNCO achieves 100% feasibility on the four primary datasets with mean reference gaps of 1.63--3.26%, 97.33--100% feasibility when separately generated rules are composed for pairwise constraints, and 98.67% feasibility across the additional constraints. These results demonstrate modular post-training adaptation of a frozen NCO solver through inspectable language-derived rules, without retraining.",
+        "published": "2026-10-16T09:26:02Z",
+        "authors": [
+          "Hironori Ohigashi"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.23190v1"
+      },
+      "priority_score": 20
+    },
+    "2610_23185v1": {
+      "id": "2610_23185v1",
+      "filename": "post_2610_23185v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-19T02:50:29.285917+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-19T02:50:29.285919+00:00",
+      "paper": {
+        "title": "A Stronger Teacher Within: Strengthening MoE Models via On-Policy Bidirectional Distillation",
+        "summary": "Reinforcement Learning with Verifiable Rewards (RLVR) has substantially improved Mixture-of-Experts (MoE) LLMs, but its outcome-level rewards provide only sparse supervision. On-Policy Distillation offers dense token-level feedback, yet requires a stronger compatible teacher, while on-policy self-distillation relies on hand-designed privileged information. We observe that the MoE architecture itself offers a way to resolve this dilemma, as increasing the activation budget per token exposes latent expert capacity and yields a potentially stronger teacher within the model. However, naive expansion degrades performance because newly co-activated experts are not optimized to work together. We therefore propose MoEvolve, a bidirectional distillation framework following a recovery-then-improvement strategy: we first restore the activation-expanded high-$k$ model and further strengthen it by exploiting its additional active capacity, then reverse the direction of distillation to transfer the enhanced capabilities back into the original low-$k$ configuration, retaining its inference-time activation budget. Across diverse MoE models and benchmarks, MoEvolve improves the initial models by up to $22.2$ domain-average points and outperforms same-budget RLVR baselines by up to $6.5$ points. Notably, the final low-$k$ models often surpass their activation-expanded teachers.",
+        "published": "2026-10-16T09:23:22Z",
+        "authors": [
+          "Haoyu Chen",
+          "Jun Bai",
+          "Yang Liu",
+          "Jianfei Zhang",
+          "Wenge Rong"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.23185v1"
+      },
+      "priority_score": 27
+    },
+    "2610_23181v1": {
+      "id": "2610_23181v1",
+      "filename": "post_2610_23181v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-19T02:50:29.285924+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-19T02:50:29.285925+00:00",
+      "paper": {
+        "title": "Tree-Aware Posterior Distillation for Long-Horizon Agentic Reinforcement Learning",
+        "summary": "Reinforcement learning with verifiable rewards has become a scalable post-training paradigm for large language models. However, training agents over long-horizon interactions presents two challenges: using only terminal rewards makes turn-level credit assignment sparse and high-variance, while sequential mini-batch updates on a fixed rollout batch introduce policy staleness as the current policy drifts from the behavior policy. Existing approaches obtain denser credit via learned critics, process reward models, or on-policy distillation, but they rely on a value network, step-level annotations, or a stronger external teacher that increase training complexity. Meanwhile, importance sampling and clipping mitigate policy drift, but they do not specify a finite target that stops sequential updates from overshooting. In this work, we introduce TreeOPSD, a critic-free, tree-aware posterior self-distillation framework for long-horizon agentic reinforcement learning. Treating each interaction turn as a tree node, TreeOPSD branches alternative continuations from shared prefixes and recursively backs up terminal rewards into implicit turn-level credit. It then maps each credit to a closed-form, bounded teacher distribution parameterized by the likelihood ratio relative to the frozen behavior policy. Minimizing the divergence between this teacher and the student policy recovers the policy-gradient direction as the tangent at the behavior policy while bounding updates toward a finite target across sequential mini-batches. Empirically, TreeOPSD improves agentic capabilities across several competitive benchmarks and model scales, especially for long-horizon tasks, e.g., raising the average accuracy of Qwen3-30B-A3B-Thinking-2507 by 4.97 points over GRPO on the Deep Research setting.",
+        "published": "2026-10-16T09:17:26Z",
+        "authors": [
+          "Heming Zou",
+          "Qi Wang",
+          "Yixiu Mao",
+          "Yun Qu",
+          "Yuyi Guo",
+          "Zeyuan Liu",
+          "Chenglin Li",
+          "Weijie Liu",
+          "Saiyong Yang",
+          "Xiangyang Ji"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.23181v1"
+      },
+      "priority_score": 40
+    },
+    "2610_23167v1": {
+      "id": "2610_23167v1",
+      "filename": "post_2610_23167v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-19T02:50:29.285930+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-19T02:50:29.285932+00:00",
+      "paper": {
+        "title": "LongForge: Measuring and Improving Long-Context Instruction Data via Evidence-Assertion Reasoning Graphs",
+        "summary": "Existing quality control for long-context instruction-tuning data is a one-shot judgment inside the generation pipeline that leaves only a scalar, revealing neither which document parts an answer uses nor how many reasoning steps it writes down; the data can thus be neither audited nor controlled. We formalize data quality as a property of the alignment structure among document, question, and answer, and build LongForge, which pairs an analyzer that measures long-context data with a synthesizer that generates it. The analyzer reverse-reconstructs each sample into an evidence-assertion reasoning graph and programmatically computes four dimensions on it: breadth, depth, correctness, and completeness. Every reading traces back to specific evidence spans and reasoning steps, making data auditable. Measuring seven mainstream datasets reveals two previously unquantified defects: breadth barely grows with document length, and depth is generally low, the two being nearly orthogonal. The synthesizer then embeds the analyzer into generation, gating on correctness and completeness and deferring breadth and depth to a training-time mixture over measured values, which makes the training distribution controllable. On two backbones, its two mixtures, LongForge-1 and LongForge-N, outperform the strongest baseline by 2.2-4.7 points on average over six long-context benchmarks, and in a controlled comparison that holds the gate and the candidate pool fixed, raising breadth and depth alone is worth a further 1.16 points, making the structural distribution of training data a lever on downstream quality rather than only a description of it.",
+        "published": "2026-10-16T09:05:30Z",
+        "authors": [
+          "Ziyang Chen",
+          "Junlong Jia",
+          "Xing Wu",
+          "Tinghao Yu",
+          "Songlin Hu"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.23167v1"
+      },
+      "priority_score": 40
+    },
+    "2610_23166v1": {
+      "id": "2610_23166v1",
+      "filename": "post_2610_23166v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-19T02:50:29.285937+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-19T02:50:29.285938+00:00",
+      "paper": {
+        "title": "Explaining Chess and Go in Natural Language",
+        "summary": "Modern chess engines play far beyond human ability, often choosing moves whose underlying ideas are difficult for humans to understand. We propose an automatic metric for evaluating chess explanations, grounded in chess-engine evaluations. Evaluating state-of-the-art language models using this metric, we find that they perform surprisingly poorly, often relying on surface-level board observations rather than robust, transferable chess concepts. We then introduce BinProp, a training-free method that enables these same models to discover reusable chess concepts and use them to explain moves in natural language. BinProp improves explainability for every model tested, nearly tripling the average score compared with direct prompting. Beyond chess, the same method discovers useful concepts in Go, draughts, and shogi without additional tuning.",
+        "published": "2026-10-16T09:05:17Z",
+        "authors": [
+          "Ori Press",
+          "Alexander Golubev"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.23166v1"
+      },
+      "priority_score": 20
+    },
+    "2610_23161v1": {
+      "id": "2610_23161v1",
+      "filename": "post_2610_23161v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-19T02:50:29.285943+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-19T02:50:29.285945+00:00",
+      "paper": {
+        "title": "Algorithm Modelization: Transforming Optimization Algorithms into Evolvable Intelligence",
+        "summary": "Can algorithms be learned and evolved as models, rather than repeatedly redesigned as programs? We explore this question by introducing Algorithm Modelization, a new paradigm that turns iterative algorithms into trainable models. Its central idea is to regard algorithm execution trajectories as computational experience: by learning how algorithmic states evolve over iterations, a model can internalize the knowledge embodied in existing algorithms, reproduce their computational behaviors, and further evolve beyond them through training. As a first realization of this paradigm, we modelize iterative optimization as an autoregressive process, where preceding generations constitute the computational context for generating the next population. We develop a dimension-independent population-temporal architecture to capture both population interactions and iterative dynamics, together with an imitation-to-surpassing learning framework that first acquires algorithmic knowledge from heterogeneous teachers and then improves the resulting optimizer directly through optimization feedback. The modelized optimizer consequently goes beyond reproducing individual algorithms: it consolidates heterogeneous search knowledge into a single trainable model, achieves stronger optimization capability through subsequent improvement, and generalizes its acquired knowledge across problems and substantially larger unseen dimensions. More fundamentally, Algorithm Modelization makes algorithmic capability accumulable through learning, where new algorithms and problem-solving experience can become training resources for progressively improving the model. Our results establish a promising path from manually designed algorithms toward general algorithm models that learn, generalize, and evolve from computational experience.",
+        "published": "2026-10-16T08:59:42Z",
+        "authors": [
+          "Jian Yao",
+          "Zhiyao Zhang",
+          "Yichen Li",
+          "Xingyu Wu",
+          "Kay Chen Tan"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.23161v1"
+      },
+      "priority_score": 20
     }
   },
   "last_run": {
-    "started_at": "2026-10-18T22:42:16.533093+00:00",
-    "discovered": 10,
+    "started_at": "2026-10-19T02:50:29.292711+00:00",
+    "discovered": 30,
     "selected": 4,
     "generated": 0,
     "failed": 4,
@@ -56127,19 +56816,19 @@
     "health": "degraded",
     "failures": [
       {
-        "id": "2610_21514v1",
+        "id": "2610_23307v1",
         "error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}"
       },
       {
-        "id": "2610_20573v1",
+        "id": "2610_23266v1",
         "error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}"
       },
       {
-        "id": "2610_22344v1",
+        "id": "2610_23213v1",
         "error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}"
       },
       {
-        "id": "2610_22280v1",
+        "id": "2610_23194v1",
         "error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}"
       }
     ],
@@ -56152,7 +56841,7 @@
       "total_tokens": 0,
       "estimated_usd": 0.0
     },
-    "finished_at": "2026-10-18T22:42:24.757856+00:00"
+    "finished_at": "2026-10-19T02:50:38.833020+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
@@ -56164,8 +56853,8 @@
     "estimated_usd": 5.99040425
   },
   "last_publication_run": {
-    "started_at": "2026-10-18T22:42:16.533093+00:00",
-    "discovered": 10,
+    "started_at": "2026-10-19T02:50:29.292711+00:00",
+    "discovered": 30,
     "selected": 4,
     "generated": 0,
     "failed": 4,
@@ -56173,19 +56862,19 @@
     "health": "degraded",
     "failures": [
       {
-        "id": "2610_21514v1",
+        "id": "2610_23307v1",
         "error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}"
       },
       {
-        "id": "2610_20573v1",
+        "id": "2610_23266v1",
         "error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}"
       },
       {
-        "id": "2610_22344v1",
+        "id": "2610_23213v1",
         "error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}"
       },
       {
-        "id": "2610_22280v1",
+        "id": "2610_23194v1",
         "error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}"
       }
     ],
@@ -56198,10 +56887,10 @@
       "total_tokens": 0,
       "estimated_usd": 0.0
     },
-    "finished_at": "2026-10-18T22:42:24.757856+00:00"
+    "finished_at": "2026-10-19T02:50:38.833020+00:00"
   },
   "daily_usage": {
-    "date": "2026-10-18",
+    "date": "2026-10-19",
     "estimated_usd": 0.0,
     "publications": 0
   }
