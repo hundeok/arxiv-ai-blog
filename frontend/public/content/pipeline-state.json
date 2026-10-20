@@ -56882,10 +56882,10 @@
       "id": "2610_21082v1",
       "filename": "post_2610_21082v1.md",
       "status": "retry",
-      "attempts": 4,
-      "next_retry_at": "2026-10-20T07:00:45.197161+00:00",
+      "attempts": 5,
+      "next_retry_at": "2026-10-20T18:48:12.595083+00:00",
       "last_error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}",
-      "updated_at": "2026-10-20T03:00:45.197177+00:00",
+      "updated_at": "2026-10-20T10:48:12.595099+00:00",
       "paper": {
         "title": "Sci$Π$vot: Benchmarking Principal-Investigator Judgment at Pivotal Moments of Scientific AutoResearch Agents",
         "summary": "Large language model (LLM) agents can keep scientific experiments running for months with little human supervision, but reliable autonomous research also requires scientific judgment. Evaluating scientific judgment is difficult because research decisions are open-ended and depend on project context. We construct Sci$Π$vot, a 248-case benchmark of scientific judgment based on human corrections. The benchmark draws on records from six months of research in which senior researchers ran LLM agents on 26 projects across six scientific fields and repeatedly intervened to correct the agents' research judgments. In each case, an agent chooses between the original LLM plan and the human-corrected alternative, using only the project record available before the correction as context. We compare LLM and human performance and examine the effects of reasoning effort, access to the project record, and reconsideration. At medium reasoning effort with the project record, models systematically prefer the original LLM plan over the human-corrected alternative. Four of five frontier models perform below chance on the selected cases. The highest accuracy in the project condition across the tested models and reasoning effort settings is 63.5%, compared with 73.4% for fresh researchers. At medium effort, every model achieves lower accuracy with the project record than without it, and reconsideration does not consistently improve overall accuracy. Even with a human-corrected alternative available, frontier models struggle with the selected research decisions, while Sci$Π$vot supports systematic evaluation of scientific judgment for LLM agents.",
@@ -56958,11 +56958,11 @@
     "2610_22602v1": {
       "id": "2610_22602v1",
       "filename": "post_2610_22602v1.md",
-      "status": "pending",
-      "attempts": 0,
-      "next_retry_at": "2026-10-19T08:22:48.343718+00:00",
-      "last_error": null,
-      "updated_at": "2026-10-19T21:55:43.162278+00:00",
+      "status": "retry",
+      "attempts": 1,
+      "next_retry_at": "2026-10-20T11:18:17.724334+00:00",
+      "last_error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}",
+      "updated_at": "2026-10-20T10:48:17.724350+00:00",
       "paper": {
         "title": "Stuck on Shuffle: On Attribute-Object Binding in Vision-Language Models",
         "summary": "Retrieval is a fundamental task in multimodal systems: given an image or text query, the goal is to find the most relevant images or texts in a collection, often using a shared embedding space. Reliable retrieval requires these embeddings to capture not only which concepts are present, but also how they are composed. One key compositional challenge is attribute--object binding: encoding which attributes belong to which objects. Existing benchmarks provide a limited view of this capability, typically covering a subset of modality pairings, simple two-object swaps, or small attribute sets. Consequently, it remains unclear how robustly current models preserve attribute--object bindings across different modality pairings and more complex settings. We therefore introduce SABER, a controlled benchmark for evaluating attribute--object binding across all four image and text modality pairings, spanning diverse attribute types and scenes with up to ten objects. Evaluating models on SABER reveals substantial binding failures in both CLIP-style dual encoders and recent MLLM-based embedders. These findings motivate us to ask how binding can be improved efficiently. While multimodal supervision may be effective, collecting suitable images is difficult and costly. Text, on the other hand, is well suited to binding supervision: it is cheap to generate, supports a broader range of attributes and enables precisely controlled hard negatives. We thus finetune an MLLM-based embedder exclusively on synthetic attribute-binding text. Despite the absence of image supervision, the gains transfer to cross-modal and image--image retrieval while preserving general multimodal embedding performance. Our model achieves SOTA results on SABER while also improving on negation and instance-retrieval benchmarks, demonstrating broader benefits of our binding-focused supervision.",
@@ -57170,11 +57170,259 @@
         "pdf_link": "https://arxiv.org/pdf/2610.22448v1"
       },
       "priority_score": 30
+    },
+    "2610_09496v1": {
+      "id": "2610_09496v1",
+      "filename": "post_2610_09496v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-20T10:48:09.548984+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-20T10:48:09.548999+00:00",
+      "paper": {
+        "title": "Sparse Feature Policy Unlearning Mitigates State Hallucination in Vision-Language-Action Models",
+        "summary": "Vision-Language-Action (VLA) models have shown strong generalization in robotic manipulation by leveraging rich representations from pretrained vision-language models. However, their deployment in real-world environments remains limited by recurring unreliable behaviors. In this work, we study state hallucination, a recurring failure pattern in which a VLA continues acting as if an unrealized robot-object state had been achieved. Our analyses find that state hallucination coincides with weakened attention to task-relevant visual regions, and a mechanistic interpretation via sparse autoencoders reveals that hallucination-associated sparse features are activated when these failures occur. Based on this analysis, we propose SOUL (Sparse feature pOlicy UnLearning), which selectively unlearns policy knowledge associated with state hallucination behaviors, where sparse features identified from hallucination failures and successful behaviors serve as explicit forgetting and retention targets, respectively. Experiments across VLA architectures in simulated and real-world environments show that our method substantially reduces hallucinated failures and improves task success without substantially compromising the existing manipulation capabilities. These results suggest that interpretable feature analysis provides a practical basis for selectively modifying undesirable knowledge in robot policies.",
+        "published": "2026-10-07T05:52:02Z",
+        "authors": [
+          "Jiho Lee",
+          "Jeongeun Park",
+          "Heayoun Choi",
+          "Taekyung Kim",
+          "Eunwoo Kim"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.09496v1"
+      },
+      "priority_score": 27
+    },
+    "2610_24133v1": {
+      "id": "2610_24133v1",
+      "filename": "post_2610_24133v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-20T10:48:09.549006+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-20T10:48:09.549007+00:00",
+      "paper": {
+        "title": "A Conditional No-Hair Theorem for Transformers: How Language Models Forget Their Prompt",
+        "summary": "We ask how much an autoregressive transformer retains of its prompt after generating $t$ tokens. Consider two different prompts followed by the same continuation text, so that any difference in their hidden states comes from the prompt alone, and we find that the distance between their hidden states decays approximately as a power law $t^{-α}$, where $α=1$ is the rate at which a fixed prompt's share of uniform attention shrinks and smaller values mean longer memory. Trained models forget fast ($α\\approx0.55$--$0.7$), untrained ones slowly ($α\\approx0.2$--$0.5$). We prove that this offset is $O\\big(P(\\log t)^{L-1}/t\\big)$ for a prompt of length $P$ and depth $L$. The bound holds for finite-depth pre-LN softmax transformers with bounded attention logits, under one additional condition: the pre-norm activations stay away from zero. The mechanism is geometric: the prompt's direct influence is diluted as the context grows, and \\emph{relay} --- continuation tokens passing on what earlier tokens read from the prompt --- can only add logarithmic factors. This is what we call the \\emph{conditional no-hair theorem}: given the text generated so far, the prompt's influence on the next token vanishes as $t$ grows, so any property of the prompt that survives, such as its language, must be carried by the text itself. An exactly solvable linear relay model shows that the bound cannot be improved and reproduces the rise of the local exponent towards $1$ seen in untrained networks. Cancelling the dilution with a logit bias stops the decay early in training and reverses it after, so dilution is necessary for the forgetting we measure; untrained networks and the solvable model show it is also sufficient.",
+        "published": "2026-10-16T19:03:20Z",
+        "authors": [
+          "Shuyang Xiang"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.24133v1"
+      },
+      "priority_score": 20
+    },
+    "2610_23986v1": {
+      "id": "2610_23986v1",
+      "filename": "post_2610_23986v1.md",
+      "status": "retry",
+      "attempts": 1,
+      "next_retry_at": "2026-10-20T11:18:15.739962+00:00",
+      "last_error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}",
+      "updated_at": "2026-10-20T10:48:15.739977+00:00",
+      "paper": {
+        "title": "BlenderWorld: Benchmarking Visual Agents for 3D Creation from Real-World References",
+        "summary": "Recent advances in multimodal large language models (MLLMs) have enabled them to act as autonomous agents, creating and editing 3D models via code or direct software manipulation. In practical workflows, these models must infer object shapes, materials, spatial layouts, and lighting from diverse references while strictly following instructions to reconstruct, modify, or design 3D content. However, existing benchmarks provide limited coverage of such open-ended requests across real-world scenarios. To bridge this gap, we introduce BlenderWorld, the first comprehensive benchmark dedicated to evaluating frontier models on realistic 3D creation tasks. BlenderWorld comprises 223 tasks spanning architecture, products, natural environments, and scientific visualization, driven by text, image, video, and structured specification inputs. To rigorously assess these complex deliverables, we establish a unified evaluation protocol: we render the submitted Blender projects from multiple viewpoints and evaluate them against 2,651 task-specific binary rubrics alongside holistic visual quality scores. Benchmarking thirteen frontier models reveals that GPT-6-Astra achieves the highest overall fused score of 79.9, followed by Opus-5 (73.0) and GPT-5.6-Sol (67.7). Ultimately, our findings reveal a critical bottleneck: while current models can parse broad instructions, they still profoundly struggle with fine-grained 3D spatial coherence and accurate structural reproduction in Blender, leaving substantial headroom for future 3D-native agentics.",
+        "published": "2026-10-14T12:46:54Z",
+        "authors": [
+          "Xinyu Fang",
+          "Yuchi Wang",
+          "Weihao Yu",
+          "Rongyao Fang",
+          "Zhaohai Li",
+          "Zhixun Li",
+          "Tiancheng Gu",
+          "Xilin Wei",
+          "Yuhang Zang",
+          "Hongsheng Li",
+          "Dahua Lin",
+          "Guofeng Zhang",
+          "Shuai Bai",
+          "Zhibo Yang",
+          "Dayiheng Liu"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.23986v1"
+      },
+      "priority_score": 59
+    },
+    "2610_24791v1": {
+      "id": "2610_24791v1",
+      "filename": "post_2610_24791v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-20T10:48:09.549018+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-20T10:48:09.549019+00:00",
+      "paper": {
+        "title": "UniAVC: Unified Audio-Video Creation via Progressive Training and Asymmetric Scheduling",
+        "summary": "Unified audio-video creation requires a single model capable of text-conditioned joint synthesis, bidirectional cross-modal generation, and instruction-guided editing across both modalities. Existing methods rely heavily on paired corpora, which are scarce for joint generation and even rarer for editing. Consequently, they are spent learning single-branch generative and editing capabilities that abundant unimodal data could readily teach, rather than on the cross-modal coupling. Furthermore, prevailing systems apply a single shared noise schedule to both modalities, neglecting two critical limitations. First, due to the significant discrepancy in information density, video requires prolonged high noise to organize spatial and motion structure, whereas the sparser audio signal can settle earlier during the synthesis process, the dynamics a uniform schedule might compromise. Second, lockstep denoising leaves asymmetric workflows, such as conditioning on one modality to synthesize or edit another, untrained. We present UniAVC, which addresses both obstacles. It first trains each branch on unimodal dataset to full generative and editing competence, and subsequently dedicates paired data to exploit cross-modal correspondence. Modality-decoupled schedulers meanwhile warp the noise schedule independently from a shared timestep, while subtasks with one clean modality directly supervise asymmetric configurations. These settings respectively enable intent-aware editing, which preserves one modality intact while enlisting it to constrain the other, and post-inference self-refinement, which regenerates only an unsatisfactory branch against an accepted one. UniAVC thus spans multiple creation tasks from a single set of weights without task-specific adapters.",
+        "published": "2026-10-17T17:46:17Z",
+        "authors": [
+          "Kien T. Pham",
+          "Yuhao Liu",
+          "Chong Hou Choi",
+          "Zhenqi He",
+          "Yanghao Wang",
+          "Chenyang Lei",
+          "Rui Liu",
+          "Qifeng Chen",
+          "Long Chen"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.24791v1"
+      },
+      "priority_score": 20
+    },
+    "2609_22332v3": {
+      "id": "2609_22332v3",
+      "filename": "post_2609_22332v3.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-20T10:48:09.549023+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-20T10:48:09.549024+00:00",
+      "paper": {
+        "title": "AffordanceWAM: Affordance-Aware Joint World-Action Modeling for Robot Manipulation",
+        "summary": "Generalizable robot manipulation requires predicting how a scene will evolve, identifying where interactions are feasible, and determining how to act. Action-labeled robot videos directly supervise control but are costly and limited in diversity, whereas egocentric human videos capture diverse interactions but lack robot actions and differ in embodiment and appearance. We introduce AffordanceWAM, an affordance-aware generative World Action Model that represents object-centric spatiotemporal affordance through Scalar Affordance and Affordance Heatmap, within the generated future World. This representation grounds visual prediction in task-relevantant objects and interaction regions for action generation, and provides shared interaction targets across human and robot videos. Built on a pretrained video diffusion Transformer, AffordanceWAM uses separately parameterized World and Action Experts, coupled through Masked Joint Self-Attention, to jointly predict future RGB observations, Scalar Affordance fields, Affordance Heatmaps, and continuous robot actions under a unified flow-matching objective. Human videos supervise all three future-World streams, whereas robot trajectories additionally provide action supervision, enabling transfer without human action labels or retargeting. Experiments on RoboCasa, CALVIN ABC$\\rightarrow$D, and real-world manipulation demonstrate consistent gains over RGB-only and robot-data-only baselines. Under fixed robot supervision, RoboCasa performance improves monotonically as affordance-annotated human video scales. These results support affordance as an effective interface for both vision-language-action learning and human-to-robot transfer.",
+        "published": "2026-09-16T14:07:06Z",
+        "authors": [
+          "Jiadi You",
+          "Qize Yu",
+          "Yue Chen",
+          "Minghong Cai",
+          "Zhide Zhong",
+          "Yuran Wang",
+          "Bowen Ping",
+          "Jiaqi Liang",
+          "Zhenhao Shen",
+          "Haodong Yan",
+          "Yinchuan Li",
+          "Ruihai Wu",
+          "Xiaojuan Qi",
+          "Yingcong Chen"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2609.22332v3"
+      },
+      "priority_score": 20
+    },
+    "2610_26853v1": {
+      "id": "2610_26853v1",
+      "filename": "post_2610_26853v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-20T10:48:09.549029+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-20T10:48:09.549030+00:00",
+      "paper": {
+        "title": "InfiniDream: Open-Ended Photorealistic 3D Worlds Through Procedural Generation",
+        "summary": "Procedural generation plays a key role in synthetic data creation and game development, offering greater controllability, editability, and diversity than static mesh representations. However, VLM-based code generation often produces relatively simple 3D assets, while sophisticated photorealistic procedural systems require extensive manual development. Existing VLM-guided procedural methods remain largely constrained by predefined factories and APIs, limiting their ability to create novel asset types. We introduce InfiniDream, a VLM-driven framework for open-ended procedural 3D world generation. First, we propose Symbolically Constrained Asset Generation, which leverages existing procedural algorithms to create novel, photorealistic assets while preserving editability and seed-based diversity. Second, we develop an end-to-end text-to-world pipeline that combines semantic scene planning with Deterministic Frustum-Guided Grid Placement to construct large-scale 3D worlds with precise object placement, procedural population, and animation. Extensive evaluations on 100 object and 20 scene generation tasks demonstrate improvements across four perceptual metrics. Diversity analysis, ablation studies, and human preference evaluations further validate the effectiveness of our framework. Project page: https://yichuanh.github.io/infinidream-page/",
+        "published": "2026-10-19T17:59:51Z",
+        "authors": [
+          "Yi-Chuan Huang",
+          "Hao-Jen Chien",
+          "Zheng-Hui Huang",
+          "Yu-Lun Liu",
+          "Kaipeng Zhang",
+          "Zhixiang Wang"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.26853v1"
+      },
+      "priority_score": 36
+    },
+    "2610_26824v1": {
+      "id": "2610_26824v1",
+      "filename": "post_2610_26824v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-20T10:48:09.549034+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-20T10:48:09.549035+00:00",
+      "paper": {
+        "title": "SpecMRL: Redesign Matryoshka Representation Learning within Parametric Spectrum",
+        "summary": "Matryoshka Representation Learning (MRL) is designed to support flexible representation sizes by jointly optimizing nested prefixes. While effective, this design lacks an explicit constraint to ensure that the leading portion provides a suitable compact encoding. To address this, we propose SpecMRL, which reorganizes the feature space to enable more effective prefix readout. Specifically, we extend MRL with a parameter-derived spectral basis organized with feature importance. SpecMRL otherwise follows standard MRL, with prefix readout performed in the learned spectral space. Experiments on MTEB show that SpecMRL outperforms MRL at all evaluated reduced dimensions, with larger gains under more aggressive compression. These results suggest that the learned spectral basis better prioritizes informative directions, enabling more effective representation compression. Notably, SpecMRL extends the performance frontier of MRL, surpassing full-dimensional MRL with only half the embedding dimensions.",
+        "published": "2026-10-19T17:54:20Z",
+        "authors": [
+          "Zhongxin Chen",
+          "Songhao Wu",
+          "Heng Cui",
+          "Cong Li",
+          "Xiao Zhou",
+          "Rui Yan"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.26824v1"
+      },
+      "priority_score": 12
+    },
+    "2606_31876v3": {
+      "id": "2606_31876v3",
+      "filename": "post_2606_31876v3.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-20T10:48:09.549039+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-20T10:48:09.549040+00:00",
+      "paper": {
+        "title": "Harnessing Textual Refusal Directions for Multimodal Safety",
+        "summary": "Safety in Multimodal Large Language Models (MLLMs) depends on unsafe multimodal data for post-training alignment or activation steering. However, such data is hard to collect, must be gathered anew for each modality, and its collection and distribution raise ethical and legal concerns. In this work, we relax this constraint and investigate whether textual refusal directions, extracted directly from the LLM backbone, generalize across modalities (i.e., image, video). Preliminary findings confirm this ability, though effectiveness is conditioned by layer selection, steering strength, and cross-modal alignment, with the latter causing safe multimodal inputs to be spuriously steered toward refusal. Building on this, we introduce Modality-Agnostic Refusal Steering (MARS), a lightweight training-free approach that injects multimodal safety without the need for multimodal safety data. MARS corrects modality misalignment via activation centering, adaptively scales steering strength within a geometrically defined trust region, and selects the optimal intervention layer, operating at the first generated token. Evaluated on five SOTA MLLMs across safety, utility, and video jailbreak, MARS achieves consistent safety gains while preserving utility up to over-refusal. MARS reveals that safety-relevant structure is shared across modalities and that textual refusal directions are a powerful and underexplored foundation for multimodal alignment.",
+        "published": "2026-06-30T15:57:50Z",
+        "authors": [
+          "Moreno D'Incà",
+          "Nicu Sebe",
+          "Massimiliano Mancini"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2606.31876v3"
+      },
+      "priority_score": 28
+    },
+    "2610_25060v1": {
+      "id": "2610_25060v1",
+      "filename": "post_2610_25060v1.md",
+      "status": "retry",
+      "attempts": 1,
+      "next_retry_at": "2026-10-20T11:18:11.313829+00:00",
+      "last_error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}",
+      "updated_at": "2026-10-20T10:48:11.313844+00:00",
+      "paper": {
+        "title": "Policy Is Not Capability: Some Safety Benchmarks Measure Which Definition of \"Unsafe\" You Trained On",
+        "summary": "A guardrail classifier is reported as if unsafe were a property of text. It is not: it is a property of a policy, and the policy enters the model through its labels. We exploit an accident of an industrial deployment in which the same ~53k prompts were labelled twice, under two operational definitions (\"is this a request for harmful content?\" and \"would a moderator block this?\"), and used to train ten guardrail arms sharing architecture, codebase and optimiser family, at two model scales. First, the guardrail's own training corpus already contained the benchmarks: JailbreakBench-benign is 88% and OR-Bench-hard 82% present in the training pools, two over-refusal benchmarks, the kind a guardrail reports to argue it does not over-block. Everything below is decontaminated. Second, safety benchmarks stratify sharply by how much of their score is decided by the label definition rather than by the model: with architecture and optimiser fixed, the range across the ten arms is 0.99 on HarmBench-copyright and 0.043 on WildGuard-benign, a 23x spread. Third, a benchmark score can be moved across its entire range by 0.03% of the parameters. Across these arms HarmBench-copyright spans 0-100 and OR-Bench-hard over-refusal 3.4-56.4%, and the four arms whose last supervision signal carries a given policy occupy one extreme of both (exact rank p=0.005, or 0.04-0.14 at worst), at unchanged detection capability. For a distilled student the teacher's soft labels do this even when every hard label carries the other policy, so teacher provenance is an unrecorded confound in any released checkpoint. Fourth, validation accuracy on the one split that grades all twenty arms tracks agreement with the annotator's policy (rho=+0.74), not detection capability (rho=+0.34). We argue that guardrail evaluations should report contamination, a seed floor and the definition they were graded against as first-class variables.",
+        "published": "2026-10-18T07:02:22Z",
+        "authors": [
+          "Vahid Jebraeeli",
+          "Jonathon Romero",
+          "Yijin Wang",
+          "Adrian Chan",
+          "Jianbang Zhang"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.25060v1"
+      },
+      "priority_score": 60
+    },
+    "2610_25861v1": {
+      "id": "2610_25861v1",
+      "filename": "post_2610_25861v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-20T10:48:09.549049+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-20T10:48:09.549050+00:00",
+      "paper": {
+        "title": "ActionRoPE: action as coordinates for spatially consistent control in planar-camera game world models",
+        "summary": "Game world models have made rapid progress toward real-time interactive generation. Yet action control is still predominantly implemented as feature conditioning, leaving the model to learn from training data how each action should move the visual world. This formulation is poorly matched to a broad class of planar-camera worlds, such as top-down and isometric games. In these worlds, player motion induces a geometrically well-defined planar camera displacement. We observe that the key to spatially consistent control in such worlds is to represent the effect of each action directly in world coordinates. To this end, we introduce ActionRoPE, a parameter-free action interface that converts action-driven camera displacement into world-coordinate rotary positions. As a result, tokens corresponding to the same world location retain the same positional address across time. These world coordinates further expose a spatial asymmetry in generation: regions covered by the initial observation are geometrically known, while newly revealed regions remain to be synthesized. We therefore propose Coordinate-Conditioned Noise Scheduling (CNS), which assigns token-wise denoising schedules according to this known-new structure. It allows observed regions to stabilize earlier, while new content is generated with reference to them. Compared with four representative action-conditioning mechanisms, our approach follows the commanded motion more faithfully and reduces the revisit drift by 66% over the strongest baseline. The same interface transfers across video backbones from 1.3B to 33B parameters and to out-of-distribution scenes. Project Page: https://teawhite.cn/ActionRoPE/",
+        "published": "2026-10-19T06:16:50Z",
+        "authors": [
+          "Zhiyang Deng",
+          "Yuzhe Wu",
+          "Zijun Lin",
+          "Yeying Jin"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.25861v1"
+      },
+      "priority_score": 20
     }
   },
   "last_run": {
-    "started_at": "2026-10-20T03:00:41.293027+00:00",
-    "discovered": 0,
+    "started_at": "2026-10-20T10:48:09.555269+00:00",
+    "discovered": 10,
     "selected": 4,
     "generated": 0,
     "failed": 4,
@@ -57182,7 +57430,7 @@
     "health": "degraded",
     "failures": [
       {
-        "id": "2610_23307v1",
+        "id": "2610_25060v1",
         "error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}"
       },
       {
@@ -57190,11 +57438,11 @@
         "error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}"
       },
       {
-        "id": "2610_23266v1",
+        "id": "2610_23986v1",
         "error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}"
       },
       {
-        "id": "2610_23213v1",
+        "id": "2610_22602v1",
         "error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}"
       }
     ],
@@ -57207,7 +57455,7 @@
       "total_tokens": 0,
       "estimated_usd": 0.0
     },
-    "finished_at": "2026-10-20T03:00:49.913582+00:00"
+    "finished_at": "2026-10-20T10:48:18.765721+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
@@ -57219,8 +57467,8 @@
     "estimated_usd": 5.99040425
   },
   "last_publication_run": {
-    "started_at": "2026-10-20T03:00:41.293027+00:00",
-    "discovered": 0,
+    "started_at": "2026-10-20T10:48:09.555269+00:00",
+    "discovered": 10,
     "selected": 4,
     "generated": 0,
     "failed": 4,
@@ -57228,7 +57476,7 @@
     "health": "degraded",
     "failures": [
       {
-        "id": "2610_23307v1",
+        "id": "2610_25060v1",
         "error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}"
       },
       {
@@ -57236,11 +57484,11 @@
         "error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}"
       },
       {
-        "id": "2610_23266v1",
+        "id": "2610_23986v1",
         "error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}"
       },
       {
-        "id": "2610_23213v1",
+        "id": "2610_22602v1",
         "error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}"
       }
     ],
@@ -57253,7 +57501,7 @@
       "total_tokens": 0,
       "estimated_usd": 0.0
     },
-    "finished_at": "2026-10-20T03:00:49.913582+00:00"
+    "finished_at": "2026-10-20T10:48:18.765721+00:00"
   },
   "daily_usage": {
     "date": "2026-10-20",
