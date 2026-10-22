@@ -53244,7 +53244,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-15T02:47:32.030337+00:00",
       "last_error": null,
-      "updated_at": "2026-10-22T08:13:11.498412+00:00",
+      "updated_at": "2026-10-22T14:16:58.513923+00:00",
       "paper": {
         "title": "PrismaCoder: Pushing the Boundaries of Open Multimodal Code Intelligence through Decomposed Rubric Synthesis",
         "summary": "Multimodal code intelligence connects the symbolic world of programs with the visual world their execution creates. Interest in this capability is burgeoning, as models are increasingly asked to produce charts, webpages, animations, and semi-structured documents. Recently, proprietary models have pushed far ahead, producing interactive artifacts even from a text description or a screenshot alone. Yet their data and training remain closed, and open progress is held back by the quantity and quality of available data and by the pipelines and methods for producing it. Quality is the harder of the two, since a sample must be correct as a program, well built, and above all visually right once rendered. No existing signal covers all three. Execution often returns just a pass or fail, code similarity does not map to the visual output, and task-specific verifiers do not generalize. To push open progress further, we start from the data side with PrismaForge, a hierarchical data pipeline centered on a synthesized rubric that decomposes these factors into checkable criteria. The same rubric serves as both filter and reward: it curates the supervised corpus, then drives reinforcement learning on visual-coding tasks. Leveraging PrismaForge for data synthesis and filtering, we build PrismaCoder-2M, the most diverse open dataset for multimodal code intelligence and the largest to date. On the model side, we train PrismaCoder-9B and PrismaCoder-35B on this data and release both. They lead the open state of the art by a wide margin and rival leading proprietary systems. Our analyses further show that the proposed rubric-based pipeline improves multimodal coding performance across model backbones. We release our code and data at https://qiushisun.github.io/PrismaCoder-Home/.",
@@ -57216,11 +57216,11 @@
     "2610_23986v1": {
       "id": "2610_23986v1",
       "filename": "post_2610_23986v1.md",
-      "status": "retry",
-      "attempts": 6,
-      "next_retry_at": "2026-10-22T11:04:26.723618+00:00",
-      "last_error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}",
-      "updated_at": "2026-10-21T19:04:26.723635+00:00",
+      "status": "published",
+      "attempts": 0,
+      "next_retry_at": null,
+      "last_error": null,
+      "updated_at": "2026-10-22T14:17:09.503666+00:00",
       "paper": {
         "title": "BlenderWorld: Benchmarking Visual Agents for 3D Creation from Real-World References",
         "summary": "Recent advances in multimodal large language models (MLLMs) have enabled them to act as autonomous agents, creating and editing 3D models via code or direct software manipulation. In practical workflows, these models must infer object shapes, materials, spatial layouts, and lighting from diverse references while strictly following instructions to reconstruct, modify, or design 3D content. However, existing benchmarks provide limited coverage of such open-ended requests across real-world scenarios. To bridge this gap, we introduce BlenderWorld, the first comprehensive benchmark dedicated to evaluating frontier models on realistic 3D creation tasks. BlenderWorld comprises 223 tasks spanning architecture, products, natural environments, and scientific visualization, driven by text, image, video, and structured specification inputs. To rigorously assess these complex deliverables, we establish a unified evaluation protocol: we render the submitted Blender projects from multiple viewpoints and evaluate them against 2,651 task-specific binary rubrics alongside holistic visual quality scores. Benchmarking thirteen frontier models reveals that GPT-6-Astra achieves the highest overall fused score of 79.9, followed by Opus-5 (73.0) and GPT-5.6-Sol (67.7). Ultimately, our findings reveal a critical bottleneck: while current models can parse broad instructions, they still profoundly struggle with fine-grained 3D spatial coherence and accurate structural reproduction in Blender, leaving substantial headroom for future 3D-native agentics.",
@@ -57244,7 +57244,8 @@
         ],
         "pdf_link": "https://arxiv.org/pdf/2610.23986v1"
       },
-      "priority_score": 59
+      "priority_score": 59,
+      "korean_title": "BlenderWorld: 실세계 참조를 기반으로 한 3D 생성을 위한 시각적 에이전트 벤치마크"
     },
     "2610_24791v1": {
       "id": "2610_24791v1",
@@ -57378,10 +57379,10 @@
       "id": "2610_25060v1",
       "filename": "post_2610_25060v1.md",
       "status": "retry",
-      "attempts": 6,
-      "next_retry_at": "2026-10-22T11:04:24.580479+00:00",
+      "attempts": 7,
+      "next_retry_at": "2026-10-23T14:16:59.844895+00:00",
       "last_error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}",
-      "updated_at": "2026-10-21T19:04:24.580497+00:00",
+      "updated_at": "2026-10-22T14:16:59.844911+00:00",
       "paper": {
         "title": "Policy Is Not Capability: Some Safety Benchmarks Measure Which Definition of \"Unsafe\" You Trained On",
         "summary": "A guardrail classifier is reported as if unsafe were a property of text. It is not: it is a property of a policy, and the policy enters the model through its labels. We exploit an accident of an industrial deployment in which the same ~53k prompts were labelled twice, under two operational definitions (\"is this a request for harmful content?\" and \"would a moderator block this?\"), and used to train ten guardrail arms sharing architecture, codebase and optimiser family, at two model scales. First, the guardrail's own training corpus already contained the benchmarks: JailbreakBench-benign is 88% and OR-Bench-hard 82% present in the training pools, two over-refusal benchmarks, the kind a guardrail reports to argue it does not over-block. Everything below is decontaminated. Second, safety benchmarks stratify sharply by how much of their score is decided by the label definition rather than by the model: with architecture and optimiser fixed, the range across the ten arms is 0.99 on HarmBench-copyright and 0.043 on WildGuard-benign, a 23x spread. Third, a benchmark score can be moved across its entire range by 0.03% of the parameters. Across these arms HarmBench-copyright spans 0-100 and OR-Bench-hard over-refusal 3.4-56.4%, and the four arms whose last supervision signal carries a given policy occupy one extreme of both (exact rank p=0.005, or 0.04-0.14 at worst), at unchanged detection capability. For a distilled student the teacher's soft labels do this even when every hard label carries the other policy, so teacher provenance is an unrecorded confound in any released checkpoint. Fourth, validation accuracy on the one split that grades all twenty arms tracks agreement with the annotator's policy (rho=+0.74), not detection capability (rho=+0.34). We argue that guardrail evaluations should report contamination, a seed floor and the definition they were graded against as first-class variables.",
@@ -58114,10 +58115,10 @@
       "id": "2610_28560v1",
       "filename": "post_2610_28560v1.md",
       "status": "retry",
-      "attempts": 4,
-      "next_retry_at": "2026-10-22T12:13:16.561703+00:00",
+      "attempts": 5,
+      "next_retry_at": "2026-10-22T22:17:10.449423+00:00",
       "last_error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}",
-      "updated_at": "2026-10-22T08:13:16.561718+00:00",
+      "updated_at": "2026-10-22T14:17:10.449437+00:00",
       "paper": {
         "title": "Agentic Ensemble with Vision-Language Models for Visual Anomaly Detection",
         "summary": "Visual anomaly detection aims to detect abnormal objects, while anomaly samples are often scarce during model training. Assembling multiple pretrained detectors can help by leveraging their transferable image scores and anomaly maps. However, most existing ensemble methods apply fixed fusion rules over saved predictions which struggle when pretrained detectors clearly disagree due to different training objectives, priors, and visual representations. To this end, we design AnomalyAgent, a post-training fusion framework for accurate visual anomaly detection. AnomalyAgent aligns heterogeneous scores and maps, summarizes score- and region-level disagreement, and treats fusion as a finite action-selection problem. It implements two types of actions: 1) score actions that determine how to fuse image-level detector confidence via consensus, robust aggregation, detector weighting, or score-map consistency; 2) map actions that fuse dense anomaly responses via consensus, detector weighting, geometric aggregation, or disagreement correction. A constrained vision-language model (VLM) is introduced to inspect high-conflict samples and select valid score action and map action to produce the final prediction. We evaluate AnomalyAgent on MVTec AD and VisA as primary benchmarks, together with seven additional public anomaly benchmarks and Real-IAD for large-scale score-level evaluation. Across these benchmarks, AnomalyAgent consistently improves over equal-weight fusion and achieves the best mean image AUROC and pixel AP among the compared fusion methods on MVTec AD and VisA, while demonstrating robust transfer across additional anomaly domains.",
@@ -58309,10 +58310,10 @@
       "id": "2610_28522v1",
       "filename": "post_2610_28522v1.md",
       "status": "retry",
-      "attempts": 1,
-      "next_retry_at": "2026-10-22T03:23:49.467511+00:00",
+      "attempts": 2,
+      "next_retry_at": "2026-10-22T15:17:11.877610+00:00",
       "last_error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}",
-      "updated_at": "2026-10-22T02:53:49.467525+00:00",
+      "updated_at": "2026-10-22T14:17:11.877621+00:00",
       "paper": {
         "title": "DecisionPivot: A Diagnostic Benchmark for Decision Models in LLM Systems",
         "summary": "Decision models support routing, guardrails, and output verification in LLM systems. However, item accuracy alone cannot establish whether models make correct decisions across controlled variations or assign reliable confidence to their predictions. We introduce DecisionPivot, a diagnostic benchmark comprising 48 tasks and 40,033 items across seven decision roles. Its core track contains 7,800 items from 13 generated task families, organized into contrast groups with computed answers verified by independently implemented solvers. The complementary reference track contains 32,233 items from 35 public test sets, preserving their original evaluation metrics. We evaluate 40 decision models and 14 general models using documented, model-specific protocols, assessing item and contrast-group accuracy, probability ordering, calibration, and empirical selective coverage. Our results reveal substantial differences obscured by aggregate scores: two 27B models separated by only 2.6 points on the reference track achieve contrast-group accuracies of 70.1% and 44.2%. Across 2,400 binary contrast pairs, Perplexity Decider correctly ranks the positive member above the negative member in 92.3% of pairs but answers both members correctly in only 74.1%, exposing a gap between probability ordering and decision correctness. Models with similar item accuracy also differ in the reliability of their high-confidence predictions. On a separate 1,296-item subset, GLM-5.3 achieves 93.5\\% contrast-group accuracy at a higher reasoning setting, compared with 81.5% at its lowest effort. By linking errors to pivotal details and difficulty levels, DecisionPivot provides fine-grained diagnostics of decision failures that aggregate evaluation alone cannot reveal.",
@@ -59014,7 +59015,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-22T08:13:11.498390+00:00",
       "last_error": null,
-      "updated_at": "2026-10-22T08:13:11.498406+00:00",
+      "updated_at": "2026-10-22T14:16:58.513902+00:00",
       "paper": {
         "title": "Right Screen, Wrong Transition: World Models as Verifiers for GUI Agents",
         "summary": "A login screen that appears after a tap on Sign in is expected; the same screen after a tap on View order is an attack. For GUI agents, safety is therefore a property of the transition rather than of the screen, and a monitor that inspects only screens can be defeated by reusing a legitimate one. Judging a transition requires an expectation of what should have followed the action. Existing GUI world models provide one, but they output it as text, code, or images, so checking it against the observed screen requires a second model to judge the two. We argue that a world model meant for verification should instead predict in the space in which observations are encoded, and present LGWM, a decoder-free, action-conditioned world model that predicts the representation of the next screen directly, trained without semantic annotation on 1.85M real GUI transitions. Verification reduces to a vector comparison, and the same signal reveals whether a mismatch is harmful. We evaluate on RSWT-BENCH, a diagnostic where each credential screen appears under both a legitimate and a hijacked transition, so detectors that see only the screen are at chance by construction. The training-free score reaches 0.987 AUC at 17 ms per decision, on par with the strongest closed-source VLMs and about ten AUC points above generative GUI world models at over three orders of magnitude lower latency. The residual direction reaches 0.953 AUC at separating harmful from benign violations, where prompted VLMs are near chance. Further analyses show that the prediction is a usable future state rather than an anomaly score. World models have mostly served as simulators or planners; our results point to a third role, verification, for which predicting in representation space is the natural design.",
@@ -59038,7 +59039,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-22T08:13:11.498416+00:00",
       "last_error": null,
-      "updated_at": "2026-10-22T08:13:11.498417+00:00",
+      "updated_at": "2026-10-22T14:16:58.513932+00:00",
       "paper": {
         "title": "SpatialBrain: Spatial Intelligence Growing from Experience",
         "summary": "Spatial reasoning requires more than access to geometric tools: a reasoner must decide when direct observation is sufficient and when to reconstruct, measure, or change reference frames. We present SpatialBrain, a framework that retains experience about these decisions while keeping its vision-language backbone fixed. The key distinction is between evidence about a scene and experience about how to reason with that evidence. 3DFusionMemory fuses current-scene observations into queryable spatial relations. A Spatial Skill Library provides reusable tool procedures, and Spatial Cognition associates task conditions with experience about when and how to use memory and skills. Completed trajectories are abstracted into process records and consolidated between task blocks, allowing later decisions to draw on earlier execution without transferring scene coordinates or reference answers. Across five spatial-reasoning benchmarks, SpatialBrain improves on direct answers from the same backbone on four and ties on the fifth. Component comparisons, experience-coverage curves, and traced resource decisions characterize how the framework accumulates and uses these resources.",
@@ -59064,7 +59065,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-22T08:13:11.498421+00:00",
       "last_error": null,
-      "updated_at": "2026-10-22T08:13:11.498422+00:00",
+      "updated_at": "2026-10-22T14:16:58.513936+00:00",
       "paper": {
         "title": "From VLM Planners to Robotic Agents: Self-Evolving Harnesses for History-Dependent Manipulation",
         "summary": "Vision-language-action (VLA) models achieve strong performance across embodied manipulation tasks by unifying visual understanding, language conditioning, and action generation. However, long-horizon tasks can involve non-Markovian dependencies: successful decisions may require retaining task progress and past interaction outcomes, while partial observability and execution errors compound over time. Existing work has begun to address these challenges by augmenting foundation-model policies with memory and by introducing hierarchical architectures that separate high-level planning from low-level execution. We organize the high-level VLM as a robotic agent through an editable harness to maintain task context and improve planning through execution experience. We instantiate this approach as SERA (Self-Evolving Robotic Agent), with a fixed VLA executor providing low-level control. The harness maintains and updates task context using observations and execution feedback to guide subsequent planning. Self-evolution uses environment rollouts to propose and evaluate harness revisions, with the selected configuration fixed before held-out testing. On RoboMME, SERA achieves 51.38% overall success with autonomous selection, compared with 44.38% without self-evolution. Our exploration suggests that agentic planning is a promising direction for history-dependent robotic manipulation.",
@@ -59094,7 +59095,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-22T08:13:11.498425+00:00",
       "last_error": null,
-      "updated_at": "2026-10-22T08:13:11.498426+00:00",
+      "updated_at": "2026-10-22T14:16:58.513928+00:00",
       "paper": {
         "title": "Answering in the User's Variety: Calibrated Accommodation Pairs for Post-Training",
         "summary": "People adapt how they talk to the person in front of them. However, chat models tend to respond in Standard English regardless of the dialect used by the user. A uniform answer can hide whether training treats these users alike, and output audits cannot tell as well. We trace how each post-training stage, from supervised fine-tuning (SFT) to preference optimization (DPO) and reinforcement learning, changes a model's tendency to match the user, and read what each update prefers from two content-matched replies, one matching the user and one not. Across 10 open model lineages, post-training standardizes replies to every informal cue, yet after adjusting for how likely each reply already was, the DPO update still favours matching British and Australian spelling over AAE and Singlish on 10 lineages, and models still produce AAE features when asked. We then introduce calibrated accommodation pairs (CAP), preference data that reward matching users' dialect density while preserving Standard English for Standard-English users. On a fully open model, CAP raises convergence on features it was not trained on without a detectable increase in dialect for Standard-English users or a cost in instruction following. In contrast, one-sided pairs reach a similar gain only by overshooting the user and imposing dialect. Our findings show that uniform replies can hide selective updates and audits should read the update as well as the output. Code: https://github.com/kouzhizhuo/cap-accommodation.",
@@ -59119,7 +59120,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-22T08:13:11.498429+00:00",
       "last_error": null,
-      "updated_at": "2026-10-22T08:13:11.498430+00:00",
+      "updated_at": "2026-10-22T14:16:58.513950+00:00",
       "paper": {
         "title": "Scaling in Games: Continued Pre-Training For Embodied Agents In Diverse Virtual Worlds",
         "summary": "Scaling data, diversity and model capacity has improved embodied learning in physical environments, where diverse experiences remain grounded in shared physical laws. Whether these gains extend to virtual worlds with different visual styles, dynamics, controls, and objectives remains unclear. We investigate this question through a controlled study of continued pre-training (CPT) across three axes: data volume, diversity, and model size. Our 120 training configurations span four model sizes from 0.8B to 27B, six data budgets from 50 to 1,600 hours, and five mixtures ranging from Minecraft-only data to diverse multi-world corpora. We assess performance and generalization using three-level validation losses and gameplay benchmarks from in-corpus worlds to unseen worlds. Our results show: (1) more data improves in-corpus performance, diversity improves transfer to related worlds with limited gains in distant worlds, and model size improves data efficiency but generalizes worse to distant worlds under single-world training; (2) we observe an early interface phase with broad cross-world benefits and a later world phase with gains narrowed to in-corpus and related worlds, and fit an empirical scaling law relating validation loss to data volume, diversity and model size; and (3) our models are competitive with Minecraft specialists and frontier models in 3D worlds, and perform best in real-time settings. However, the limits of imitation and persistent gaps in distant worlds suggest that building generalist embodied agents requires richer training stages beyond continued pre-training.",
@@ -59148,7 +59149,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-22T08:13:11.498433+00:00",
       "last_error": null,
-      "updated_at": "2026-10-22T08:13:11.498434+00:00",
+      "updated_at": "2026-10-22T14:16:58.513947+00:00",
       "paper": {
         "title": "TraceForge: Distilling with Your Own Thinking",
         "summary": "Using an LLM to generate training data for another is among the most general ways to train one, and it remains common practice. Some frontier teams have closed that route for their own models: what comes back is an answer, or a short summary, without the detailed reasoning trace behind it. That is a little ironic: they were themselves built on distilling human knowledge, and distilling an open-source model is still entirely routine; the restriction applies to their own outputs alone. Recent work recovers the hidden reasoning by replaying encrypted blocks across models. It somehow works, but it breaks the providers' terms of service, so it is not something a product can be built on long-term.   We built the alternative. We take the context and the teacher's answer as input, and generate the reasoning trace ourselves, in the style of the student's own model family. Training is two-stage, supervised and then adversarial: a generator learns to regenerate the family's own reasoning traces from their context and answer, and a critic learns how real a reasoning trace looks. Applied to a teacher's answer, the generator writes one in the family's style. An independent judge rates how likely traces are to be genuine on a scale from 0 to 1: ours average 0.68, real traces 0.66, and traces selected by the critic from four candidates 0.82. These are authenticity scores, not correctness rates.   We test the idea on five benchmarks with everything else held fixed. On general tasks the five training corpora are about the same; on coding, the generated reasoning beats Fable 5's own thinking content. With the same 5,000 questions and the same teacher answers, HumanEval+ improves by 3.7 points and MBPP+ by 7.1 at the final checkpoint, and the MBPP+ lead holds at every checkpoint. We suspect that reasoning written in the student's family style is easier for it to learn from.",
@@ -59167,7 +59168,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-22T08:13:11.498437+00:00",
       "last_error": null,
-      "updated_at": "2026-10-22T08:13:11.498438+00:00",
+      "updated_at": "2026-10-22T14:16:58.513953+00:00",
       "paper": {
         "title": "DeLoop: Repeated Actions as Self-Supervision for Long-Horizon Agents",
         "summary": "Language-model agents that run long tasks often redo work they have already done: they re-issue a tool call they made earlier and get back exactly the same observation, a step that adds no new information. We identify this failure as a loop. Loops appear natively in Qwen, Llama, and Gemini agents and become far more common once the agent's history is compressed to fit its context window. To reduce these loops, we propose DeLoop, a self-supervised training method. DeLoop builds on a simple observation: the agent's own rollout can provide the supervision needed to learn from its loops. We use a looping action as a negative example and the first later non-looping action in the same rollout as a positive example. DeLoop learns from these pairs through direct preference optimization and does not require task rewards, gold answers, or LLM judges. On CodeGym under compression, DeLoop reduces the share of Qwen3-8B tasks containing loops from 57.3% to 6.1%. It also uses about one third as many steps per task, with similar task success. On Qwen3-32B, DeLoop reduces loops and steps while raising task success from 37.7% to 44.8%.",
@@ -59196,7 +59197,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-22T08:13:11.498442+00:00",
       "last_error": null,
-      "updated_at": "2026-10-22T08:13:11.498443+00:00",
+      "updated_at": "2026-10-22T14:16:58.513956+00:00",
       "paper": {
         "title": "Agent World Model in the Wild: Computer-Use Agent Environment Synthesis",
         "summary": "Agent learning is shifting from learning from human data toward learning through interaction with the world. However, scaling such learning directly in real-world computer systems is challenging and can introduce substantial security risks. We therefore propose Agent World Model in the Wild (WildAWM), a scalable pipeline for synthesizing controllable environments and tasks for training general computer-use agents (CUAs). Whereas existing approaches typically specialize in a single agent interaction interface, we construct executable environments that jointly support graphical user interfaces, model context protocol services, and command-line interfaces, allowing agents to flexibly combine visual interaction, tool use, and code execution. WildAWM is entirely powered by open-source models, demonstrating that high-quality computer-use environments can be generated without proprietary frontier models. Beyond environments, we address three recurring challenges in task synthesis: ensuring solvability, maintaining sufficient difficulty, and producing reliable verifiers, by introducing execution-based quality gates that combine heterogeneous agent rollouts, cross-judge consistency checks, and counterfactual probes of judgment robustness. The resulting pipeline synthesizes 341 long-horizon environment-task pairs that can require over 100 agent steps to solve and remain challenging even for frontier models, with GPT-6-Astra solving only 60% of them. We train two Qwen models of different sizes exclusively in these synthetic worlds. Both models achieve substantial gains across 8 out-of-distribution benchmarks spanning web, claw, and computer-use agents, demonstrating that learning in WildAWM's synthesized worlds generalizes broadly to unseen computer-use tasks. The code is publicly available at https://github.com/MSR-Orchard/WildAWM.",
@@ -59218,94 +59219,118 @@
         "pdf_link": "https://arxiv.org/pdf/2610.26828v1"
       },
       "priority_score": 50
+    },
+    "2610_28827v1": {
+      "id": "2610_28827v1",
+      "filename": "post_2610_28827v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-22T14:16:58.513942+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-22T14:16:58.513943+00:00",
+      "paper": {
+        "title": "WorldStream: Streaming Interactive 3D Worlds with Hierarchical Planning and Persistent State",
+        "summary": "We present WorldStream, an open-ended 3D world model with three simultaneous capabilities: it extends playable terrain beyond any pre-specified map, acts on open-ended language in the running world, and restores visited places with their edits. A hierarchical planner over a typed decision model emits structured decision state: Macro fixes settlement, ecology, transport, and hydrological structure across a group of tiles; Micro specializes that contract into tile semantics under measured terrain and accepted neighbor commitments. Deterministic local code compiles accepted plans into terrain, roads, settlements, vegetation, and entities. Streaming separates their reach: plans run ahead along the predicted corridor, compilation only where movement will soon need it, geometry behind the user released. One world record retains plans, seeds, object identities and mutable state, boundary commitments, and edits by attribute, revised as the user advances and edits; returning tiles recompile from it. The same record grounds interaction: the model acts on existing entities, including stateful NPCs that update as they act, edits the present region, or attaches intent to unplanned regions. Together they yield a world expanding under bounded budgets, connected across independently planned tiles, and interactive.",
+        "published": "2026-10-20T18:47:26Z",
+        "authors": [
+          "Xiaoxiao Ma",
+          "Weiyang Jin",
+          "Yanwen Ma",
+          "Haoran Li",
+          "Zhixiang Wei",
+          "Songchun Zhang",
+          "Yaowei Li",
+          "Junhao Zhuang",
+          "Zeyue Xue",
+          "Yuming Li",
+          "Zheming Fu",
+          "Haoyang Huang",
+          "Nan Duan",
+          "Feng Zhao"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.28827v1"
+      },
+      "priority_score": 26
     }
   },
   "last_run": {
-    "started_at": "2026-10-22T08:13:11.504715+00:00",
+    "started_at": "2026-10-22T14:16:58.520402+00:00",
     "discovered": 10,
     "selected": 4,
-    "generated": 0,
-    "failed": 4,
+    "generated": 1,
+    "failed": 3,
     "skipped": 0,
-    "health": "degraded",
+    "health": "warning",
     "failures": [
       {
-        "id": "2610_28611v1",
-        "error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}"
-      },
-      {
-        "id": "2610_23307v1",
-        "error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}"
-      },
-      {
-        "id": "2610_27435v1",
+        "id": "2610_25060v1",
         "error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}"
       },
       {
         "id": "2610_28560v1",
         "error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}"
+      },
+      {
+        "id": "2610_28522v1",
+        "error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}"
       }
     ],
     "usage": {
       "model": "gemini-3.1-flash-lite",
-      "requests": 0,
-      "prompt_tokens": 0,
-      "output_tokens": 0,
+      "requests": 1,
+      "prompt_tokens": 2221,
+      "output_tokens": 912,
       "thought_tokens": 0,
-      "total_tokens": 0,
-      "estimated_usd": 0.0
+      "total_tokens": 3133,
+      "estimated_usd": 0.00192325
     },
-    "finished_at": "2026-10-22T08:13:17.614716+00:00"
+    "finished_at": "2026-10-22T14:17:12.598473+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
-    "requests": 3452,
-    "prompt_tokens": 8715635,
-    "output_tokens": 2540997,
+    "requests": 3453,
+    "prompt_tokens": 8717856,
+    "output_tokens": 2541909,
     "thought_tokens": 0,
-    "total_tokens": 11256632,
-    "estimated_usd": 5.99040425
+    "total_tokens": 11259765,
+    "estimated_usd": 5.9923275
   },
   "last_publication_run": {
-    "started_at": "2026-10-22T08:13:11.504715+00:00",
+    "started_at": "2026-10-22T14:16:58.520402+00:00",
     "discovered": 10,
     "selected": 4,
-    "generated": 0,
-    "failed": 4,
+    "generated": 1,
+    "failed": 3,
     "skipped": 0,
-    "health": "degraded",
+    "health": "warning",
     "failures": [
       {
-        "id": "2610_28611v1",
-        "error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}"
-      },
-      {
-        "id": "2610_23307v1",
-        "error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}"
-      },
-      {
-        "id": "2610_27435v1",
+        "id": "2610_25060v1",
         "error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}"
       },
       {
         "id": "2610_28560v1",
         "error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}"
+      },
+      {
+        "id": "2610_28522v1",
+        "error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}"
       }
     ],
     "usage": {
       "model": "gemini-3.1-flash-lite",
-      "requests": 0,
-      "prompt_tokens": 0,
-      "output_tokens": 0,
+      "requests": 1,
+      "prompt_tokens": 2221,
+      "output_tokens": 912,
       "thought_tokens": 0,
-      "total_tokens": 0,
-      "estimated_usd": 0.0
+      "total_tokens": 3133,
+      "estimated_usd": 0.00192325
     },
-    "finished_at": "2026-10-22T08:13:17.614716+00:00"
+    "finished_at": "2026-10-22T14:17:12.598473+00:00"
   },
   "daily_usage": {
     "date": "2026-10-22",
-    "estimated_usd": 0.0,
-    "publications": 0
+    "estimated_usd": 0.00192325,
+    "publications": 1
   }
 }
