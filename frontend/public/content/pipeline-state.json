@@ -53244,7 +53244,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-15T02:47:32.030337+00:00",
       "last_error": null,
-      "updated_at": "2026-10-22T14:16:58.513923+00:00",
+      "updated_at": "2026-10-22T23:49:01.106301+00:00",
       "paper": {
         "title": "PrismaCoder: Pushing the Boundaries of Open Multimodal Code Intelligence through Decomposed Rubric Synthesis",
         "summary": "Multimodal code intelligence connects the symbolic world of programs with the visual world their execution creates. Interest in this capability is burgeoning, as models are increasingly asked to produce charts, webpages, animations, and semi-structured documents. Recently, proprietary models have pushed far ahead, producing interactive artifacts even from a text description or a screenshot alone. Yet their data and training remain closed, and open progress is held back by the quantity and quality of available data and by the pipelines and methods for producing it. Quality is the harder of the two, since a sample must be correct as a program, well built, and above all visually right once rendered. No existing signal covers all three. Execution often returns just a pass or fail, code similarity does not map to the visual output, and task-specific verifiers do not generalize. To push open progress further, we start from the data side with PrismaForge, a hierarchical data pipeline centered on a synthesized rubric that decomposes these factors into checkable criteria. The same rubric serves as both filter and reward: it curates the supervised corpus, then drives reinforcement learning on visual-coding tasks. Leveraging PrismaForge for data synthesis and filtering, we build PrismaCoder-2M, the most diverse open dataset for multimodal code intelligence and the largest to date. On the model side, we train PrismaCoder-9B and PrismaCoder-35B on this data and release both. They lead the open state of the art by a wide margin and rival leading proprietary systems. Our analyses further show that the proposed rubric-based pipeline improves multimodal coding performance across model backbones. We release our code and data at https://qiushisun.github.io/PrismaCoder-Home/.",
@@ -56123,7 +56123,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-19T02:50:29.285740+00:00",
       "last_error": null,
-      "updated_at": "2026-10-19T02:50:29.285750+00:00",
+      "updated_at": "2026-10-22T23:49:01.106352+00:00",
       "paper": {
         "title": "Language Models Learn to Improve Language Models",
         "summary": "Large language models (LLMs) are increasingly used to automate AI research, including language-model (LM) development, offering a potential path toward recursive self-improvement. However, turning experimental feedback into a learned ability to propose effective improvements across models faces two challenges. First, training such an ability with real feedback is expensive: reinforcement learning (RL) requires evaluating tens of thousands of proposals, each potentially requiring a full model-training run. Even at ten GPU-hours per run, reward collection alone would consume hundreds of thousands of GPU-hours, motivating a cheaper surrogate. Second, surrogate feedback can become unreliable as policy optimization favors overestimated proposals when the proposal distribution shifts. To address these challenges, we propose LM2LM, which trains LLMs with RL to generate effective LM improvement proposals. To provide scalable feedback, we use a research world model (RWM), a frozen LLM that predicts proposal gains from real experimental records provided in context, as the reward model for RL. To maintain feedback reliability, we periodically execute current-policy proposals ranked highly by the RWM and add their measured outcomes to its context. Across eight autoregressive and diffusion LM development environments, real-execution evaluations on held-out tasks show that LM2LM enables Qwen3.8-27B to outperform GPT-6-sol, even when GPT-6-sol is given 300 real experimental records in context, while requiring 33% lower data-generation cost. LM2LM also generalizes to a model family unseen during training.",
@@ -59015,7 +59015,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-22T08:13:11.498390+00:00",
       "last_error": null,
-      "updated_at": "2026-10-22T14:16:58.513902+00:00",
+      "updated_at": "2026-10-22T23:49:01.106275+00:00",
       "paper": {
         "title": "Right Screen, Wrong Transition: World Models as Verifiers for GUI Agents",
         "summary": "A login screen that appears after a tap on Sign in is expected; the same screen after a tap on View order is an attack. For GUI agents, safety is therefore a property of the transition rather than of the screen, and a monitor that inspects only screens can be defeated by reusing a legitimate one. Judging a transition requires an expectation of what should have followed the action. Existing GUI world models provide one, but they output it as text, code, or images, so checking it against the observed screen requires a second model to judge the two. We argue that a world model meant for verification should instead predict in the space in which observations are encoded, and present LGWM, a decoder-free, action-conditioned world model that predicts the representation of the next screen directly, trained without semantic annotation on 1.85M real GUI transitions. Verification reduces to a vector comparison, and the same signal reveals whether a mismatch is harmful. We evaluate on RSWT-BENCH, a diagnostic where each credential screen appears under both a legitimate and a hijacked transition, so detectors that see only the screen are at chance by construction. The training-free score reaches 0.987 AUC at 17 ms per decision, on par with the strongest closed-source VLMs and about ten AUC points above generative GUI world models at over three orders of magnitude lower latency. The residual direction reaches 0.953 AUC at separating harmful from benign violations, where prompted VLMs are near chance. Further analyses show that the prediction is a usable future state rather than an anomaly score. World models have mostly served as simulators or planners; our results point to a third role, verification, for which predicting in representation space is the natural design.",
@@ -59065,7 +59065,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-22T08:13:11.498421+00:00",
       "last_error": null,
-      "updated_at": "2026-10-22T14:16:58.513936+00:00",
+      "updated_at": "2026-10-22T23:49:01.106343+00:00",
       "paper": {
         "title": "From VLM Planners to Robotic Agents: Self-Evolving Harnesses for History-Dependent Manipulation",
         "summary": "Vision-language-action (VLA) models achieve strong performance across embodied manipulation tasks by unifying visual understanding, language conditioning, and action generation. However, long-horizon tasks can involve non-Markovian dependencies: successful decisions may require retaining task progress and past interaction outcomes, while partial observability and execution errors compound over time. Existing work has begun to address these challenges by augmenting foundation-model policies with memory and by introducing hierarchical architectures that separate high-level planning from low-level execution. We organize the high-level VLM as a robotic agent through an editable harness to maintain task context and improve planning through execution experience. We instantiate this approach as SERA (Self-Evolving Robotic Agent), with a fixed VLA executor providing low-level control. The harness maintains and updates task context using observations and execution feedback to guide subsequent planning. Self-evolution uses environment rollouts to propose and evaluate harness revisions, with the selected configuration fixed before held-out testing. On RoboMME, SERA achieves 51.38% overall success with autonomous selection, compared with 44.38% without self-evolution. Our exploration suggests that agentic planning is a promising direction for history-dependent robotic manipulation.",
@@ -59095,7 +59095,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-22T08:13:11.498425+00:00",
       "last_error": null,
-      "updated_at": "2026-10-22T14:16:58.513928+00:00",
+      "updated_at": "2026-10-22T23:49:01.106307+00:00",
       "paper": {
         "title": "Answering in the User's Variety: Calibrated Accommodation Pairs for Post-Training",
         "summary": "People adapt how they talk to the person in front of them. However, chat models tend to respond in Standard English regardless of the dialect used by the user. A uniform answer can hide whether training treats these users alike, and output audits cannot tell as well. We trace how each post-training stage, from supervised fine-tuning (SFT) to preference optimization (DPO) and reinforcement learning, changes a model's tendency to match the user, and read what each update prefers from two content-matched replies, one matching the user and one not. Across 10 open model lineages, post-training standardizes replies to every informal cue, yet after adjusting for how likely each reply already was, the DPO update still favours matching British and Australian spelling over AAE and Singlish on 10 lineages, and models still produce AAE features when asked. We then introduce calibrated accommodation pairs (CAP), preference data that reward matching users' dialect density while preserving Standard English for Standard-English users. On a fully open model, CAP raises convergence on features it was not trained on without a detectable increase in dialect for Standard-English users or a cost in instruction following. In contrast, one-sided pairs reach a similar gain only by overshooting the user and imposing dialect. Our findings show that uniform replies can hide selective updates and audits should read the update as well as the output. Code: https://github.com/kouzhizhuo/cap-accommodation.",
@@ -59227,7 +59227,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-22T14:16:58.513942+00:00",
       "last_error": null,
-      "updated_at": "2026-10-22T14:16:58.513943+00:00",
+      "updated_at": "2026-10-22T23:49:01.106348+00:00",
       "paper": {
         "title": "WorldStream: Streaming Interactive 3D Worlds with Hierarchical Planning and Persistent State",
         "summary": "We present WorldStream, an open-ended 3D world model with three simultaneous capabilities: it extends playable terrain beyond any pre-specified map, acts on open-ended language in the running world, and restores visited places with their edits. A hierarchical planner over a typed decision model emits structured decision state: Macro fixes settlement, ecology, transport, and hydrological structure across a group of tiles; Micro specializes that contract into tile semantics under measured terrain and accepted neighbor commitments. Deterministic local code compiles accepted plans into terrain, roads, settlements, vegetation, and entities. Streaming separates their reach: plans run ahead along the predicted corridor, compilation only where movement will soon need it, geometry behind the user released. One world record retains plans, seeds, object identities and mutable state, boundary commitments, and edits by attribute, revised as the user advances and edits; returning tiles recompile from it. The same record grounds interaction: the model acts on existing entities, including stateful NPCs that update as they act, edits the present region, or attaches intent to unplanned regions. Together they yield a world expanding under bounded budgets, connected across independently planned tiles, and interactive.",
@@ -59304,11 +59304,11 @@
     "2610_30116v1": {
       "id": "2610_30116v1",
       "filename": "post_2610_30116v1.md",
-      "status": "pending",
-      "attempts": 0,
-      "next_retry_at": "2026-10-22T19:01:01.295077+00:00",
-      "last_error": null,
-      "updated_at": "2026-10-22T19:01:01.295079+00:00",
+      "status": "retry",
+      "attempts": 1,
+      "next_retry_at": "2026-10-23T00:19:06.846679+00:00",
+      "last_error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}",
+      "updated_at": "2026-10-22T23:49:06.846698+00:00",
       "paper": {
         "title": "Environment Duels: A Microcosm of LLM Co-Evolution",
         "summary": "Through a tangle of real-world interactions, from synthetic training pipelines to data shared on the open web, frontier LLMs absorb what their predecessors and competitors create. How well does each model play its role in this ecosystem, as a creator and as a solver? We introduce Environment Duels, a dynamic agentic benchmark that evaluates both capabilities on interactive environments. Each model writes environments, each with a privileged hint, aiming for tasks that capable solvers fail without the hint and pass with it. Across nine frontier LLMs, solving and authoring prove to be distinct skills: the strongest solvers are not the strongest authors, while smaller models learn more from how others played and write the hardest environments and the most useful hints. Beyond the scores, the pairwise interactions form a microcosm of how models affect one another. Head-to-head outcomes are transitive and so yield a stable ranking; independent authors converge on the same designs; and in a reinforcement-learning study with Qwen3.8-27B, the learner's hint lift on an author's environments tracks how much training on those environments improves it on held-out reasoning and agentic benchmarks, whether the environments are its own or another model's. Each of these patterns has a counterpart in how models shape one another outside the duel. By staging these interactions under controlled conditions, Environment Duels offers a window onto how LLMs teach, challenge and learn from one another. Code is available at https://github.com/LLM-Duels/EnvDuels.",
@@ -59328,10 +59328,10 @@
       "id": "2610_30114v1",
       "filename": "post_2610_30114v1.md",
       "status": "retry",
-      "attempts": 1,
-      "next_retry_at": "2026-10-22T19:31:03.843916+00:00",
+      "attempts": 2,
+      "next_retry_at": "2026-10-23T00:49:03.913252+00:00",
       "last_error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}",
-      "updated_at": "2026-10-22T19:01:03.843932+00:00",
+      "updated_at": "2026-10-22T23:49:03.913271+00:00",
       "paper": {
         "title": "The End of Consensus Research?",
         "summary": "Consensus is a fundamental problem in distributed computing and at the core of state machine replication (SMR). Despite decades of active human research, discovering practical low-latency solutions to the problem is still open, as it requires combining protocol knowledge, correctness reasoning, implementation, and experimental evaluation. We report on how AI helped us discover A-greement, a new consensus protocol for geo-replicated state machines that significantly outperforms state-of-the-art solutions. Averaged across six deployments with 5 or 9 replicas, A-greement reduces the mean latency of a geo-distributed key-value store over the fastest baseline by 12.2% and 33.3% on write-heavy and read-heavy workloads, respectively, and matches the fastest baseline on read-only workloads. A-greement combines lease-authorized local reads, direct client learning for leader-ordered writes, and a fast fixed-quorum per-key write path, selected according to network topology and workload. At the heart of our discovery lies AI-greement, an agent harness for the \"autonomous\" discovery, implementation, experimentation, and verification of candidate protocols. AI-greement integrates (1) a concept-oriented protocol knowledge base, (2) a modular implementation skeleton, and (3) a Lean-based verification framework with reusable safety definitions, reference specifications, and proofs. AI-greement is of independent interest: its Lean formalization uncovers several previously unreported vulnerabilities in existing consensus protocols, and it provides guidelines on how domain-specific harnesses can turn general-purpose coding agents into effective tools for (distributed) computing research. Yet we argue that human consensus experts remain essential before, during, and after the search: agents reshape the researcher's role rather than end consensus research.",
@@ -59698,10 +59698,10 @@
       "id": "2610_30026v1",
       "filename": "post_2610_30026v1.md",
       "status": "retry",
-      "attempts": 1,
-      "next_retry_at": "2026-10-22T19:31:05.215015+00:00",
+      "attempts": 2,
+      "next_retry_at": "2026-10-23T00:49:05.616973+00:00",
       "last_error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}",
-      "updated_at": "2026-10-22T19:01:05.215031+00:00",
+      "updated_at": "2026-10-22T23:49:05.616992+00:00",
       "paper": {
         "title": "What the Author Wrote, What the Agent Reads: Silent Cue Loss in Enterprise Document Ingestion",
         "summary": "Enterprise agents act on documents. Before an agent can follow a policy, answer a compliance question or file a ticket, some ingestion layer must turn a Word file or PDF into tokens - and that layer is where an agent deployed in the wild silently loses information. We show that one layer is lost by every mainstream converter - the meaning an author encodes in how text looks - and that the loss makes agents confidently wrong rather than visibly incomplete. We build a task from 76 real policy documents: recover the requirements the author singled out, scored against the file's own OOXML properties by a deterministic matcher with no LLM judge. Formatting-blind ingestion collapses from micro F1 0.690 to 0.150 (docling) and 0.075 (plain text), a gap that replicates across six answering models from two vendors - five Claude models spanning the Opus, Sonnet and Haiku tiers, and OpenAI's GPT-5.6. An agent that cannot see the cue guesses, and docling's false-positive rate on requirements the author did not flag is four times ours. A span-level leave-one-out localises the loss to two cues - highlight (+0.302) and colour (+0.262), both Holm-adjusted p < 1e-4 - while bold, italic, monospace and strikethrough each sit within +/-0.003 of zero. The same asymmetry appears in PDF. Colour is also the cue no mainstream converter preserves and no parsing benchmark scores, and it is common: 32.8% of 6,460 documents carry a deliberate colour or highlight, 10.3% on an obligation. A pre-registered test shows that typing a cue for the agent adds +0.085 beyond merely preserving it (Holm-adjusted p = 0.049). We validate the labels against rendered page images through an independent modality (kappa = 0.72) and bound what wording alone can achieve (AUC 0.664). For agent builders the practical finding is that ingestion, not reasoning, is where this reliability is won or lost, and that the fix is cheap and measurable.",
@@ -59760,11 +59760,11 @@
     "2610_30016v1": {
       "id": "2610_30016v1",
       "filename": "post_2610_30016v1.md",
-      "status": "pending",
-      "attempts": 0,
-      "next_retry_at": "2026-10-22T19:01:01.295178+00:00",
-      "last_error": null,
-      "updated_at": "2026-10-22T19:01:01.295179+00:00",
+      "status": "retry",
+      "attempts": 1,
+      "next_retry_at": "2026-10-23T00:19:08.057023+00:00",
+      "last_error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}",
+      "updated_at": "2026-10-22T23:49:08.057042+00:00",
       "paper": {
         "title": "Code Comprehensor: Hierarchical Documentation and Cross-Modal Retrieval for Large Repositories",
         "summary": "Understanding large, complex, and rapidly evolving code bases remains a core challenge for software engineering at scale, hindering onboarding, maintenance, refactoring, and impact analysis. Providing this information to a Large-Language Model (LLM) is another hurdle, as the LLM must understand not only the required code method but also its associated methods in the grand scheme of the repository. We propose Code Comprehensor, a hybrid retrieval-reasoning framework combining (i) a code dependency callgraph, (ii) CodeScribe, which uses code-aware LLMs to generate hierarchical documentation across repository call graphs, and (iii) CodeContrast, a CLIP-style dual-encoder model trained on CodeScribe output to learn aligned text-code embeddings. CodeContrast enables fast, semantically precise retrieval of relevant code-context neighborhoods, which serve as grounded evidence for an MCP-based LLM orchestrator answering domain-specific queries. Evaluation on OpenCV and a proprietary 5M-LOC repository shows that CodeScribe-derived supervision significantly improves cross-modal retrieval in text-to-code accuracy over baseline approaches. Richer textual supervision (hierarchical documentation, parent/sibling context, and LLM-generated synthetic questions) consistently enhances performance across both repositories. LLM-as-a-judge evaluation using the popular RAGAS of the Code Comprehensor output yields above 90% faithfulness scores.",
@@ -60115,11 +60115,107 @@
         "pdf_link": "https://arxiv.org/pdf/2610.29961v1"
       },
       "priority_score": 14
+    },
+    "2610_28441v1": {
+      "id": "2610_28441v1",
+      "filename": "post_2610_28441v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-22T23:49:01.106314+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-22T23:49:01.106315+00:00",
+      "paper": {
+        "title": "Stratified Sparse Attention: Reducing the Sparse-to-Dense Gap at Extreme Sparsity",
+        "summary": "Large Language Model inference over long contexts is increasingly bottlenecked by the cost of attending to a growing Key-Value (KV) cache. Sparse attention reduces this cost by accessing only a fraction of the cache, but existing methods face a trade-off between deterministic retrieval, which captures high-scoring tokens but discards residual attention mass, and sampling, which improves coverage at the cost of higher variance. Hybrid methods combine top-$k$ retrieval with uniform sampling, yet still exhibit a substantial gap from dense attention at aggressive sparsity. We introduce \\emph{Stratified Sparse Attention (SSA)}, a unified framework combining deterministic retrieval with score-guided sampling. SSA deterministically attends to high-scoring tokens while sampling the residual using proxy attention scores and correcting for their inclusion probabilities, thereby recovering attention mass beyond the retrieval set. SSA encompasses top-$k$, top-$p$, and hybrid top-$k$+sampling as special cases. Across RULER, LongBench, LOFT, and AIME, and five models ranging from 3B to 27B parameters, SSA consistently improves over the baselines at matched sparsity. On RULER-HARD with Ministral-3-8B, SSA improves accuracy over the strongest practical baseline from 81.8\\% to 84.2\\% at 32K and from 63.8\\% to 69.3\\% at 128K under $50\\times$ attention sparsity, recovering 94\\% and 85\\% of dense-attention performance, respectively. With optimized CUDA kernels, SSA achieves up to $2.96\\times$ decode speedup over FlashInfer at 1M context, demonstrating that its accuracy gains translate into practical long-context inference acceleration. We open-source our code at https://github.com/skylight-org/SSA-Paper-Code.",
+        "published": "2026-10-20T16:02:12Z",
+        "authors": [
+          "Sahil Joshi",
+          "Prithvi Dixit",
+          "Aryan Katiyar",
+          "Agniva Chowdhury",
+          "Joseph E. Gonzalez",
+          "Anshumali Shrivastava",
+          "Aditya Desai",
+          "Kumar Krishna Agrawal"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.28441v1"
+      },
+      "priority_score": 40
+    },
+    "2610_27861v1": {
+      "id": "2610_27861v1",
+      "filename": "post_2610_27861v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-22T23:49:01.106322+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-22T23:49:01.106324+00:00",
+      "paper": {
+        "title": "RoboCasa-Shift: Stage-Aware Robustness Evaluation of Vision-Language-Action Policies in Long-Horizon Household Manipulation",
+        "summary": "Vision-language-action (VLA) robustness is commonly summarized by aggregate task success, which obscures how individual executions change under distribution shifts and where failures emerge in long-horizon tasks. We introduce \\textbf{RoboCasa-Shift}, a diagnostic robustness benchmark built on RoboCasa365 that combines controlled single-factor shifts, matched clean-perturbed rollouts in which each pair shares the same underlying settings and differs only in the target shift, and simulator-grounded stage-aware diagnostics. We evaluate GR00T N1.5 on four long-horizon tasks that pass a predefined clean-performance gate under four perturbation factors and three calibrated severity levels, including conditions that drive the evaluated policy to complete task failure, totaling 1,040 formal rollouts. Robustness responses vary substantially across factors and tasks, and increasing severity does not always produce monotonic degradation. For example, one camera condition yields $Δ\\mathrm{SR}=0$ despite 8 of 80 matched episodes changing outcome. Stage-aware analysis further shows that the same end-to-end degradation can correspond to different execution-depth profiles. Camera $L_2$ and Gaussian blur $L_1$ both yield $Δ\\mathrm{SR}=0.188$, yet their first-stage failure rates are 19.0\\% and 36.4\\%, respectively. Our findings suggest that VLA robustness should be viewed as a multi-dimensional property of execution rather than a single end-to-end performance measure, motivating evaluation protocols that jointly capture outcome degradation, paired outcome sensitivity, and failure progression. The code is publicly available at https://github.com/HaochengWang23/RoboCasa-Shift.",
+        "published": "2026-10-20T08:42:42Z",
+        "authors": [
+          "Haocheng Wang",
+          "Youquan Liu",
+          "Weiyu Guo",
+          "Aokai Zhang",
+          "Donghang Wu",
+          "Hongyu Liu",
+          "Sha Zhang",
+          "Weidong Yang",
+          "Ben Fei"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.27861v1"
+      },
+      "priority_score": 50
+    },
+    "2610_28940v1": {
+      "id": "2610_28940v1",
+      "filename": "post_2610_28940v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-22T23:49:01.106329+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-22T23:49:01.106331+00:00",
+      "paper": {
+        "title": "StyleStream 2.0: Fast and Controllable Streaming Voice Style Conversion",
+        "summary": "Voice style conversion (VSC) aims to transform a source utterance to match the timbre, accent, and emotion of a target voice while preserving linguistic content. StyleStream 1.0 introduced the first streamable zero-shot VSC system with state-of-the-art conversion quality, but remained limited in two ways: approximately 1s end-to-end latency on consumer hardware, and the lack of a text-based interface for designing or editing target voices. We present StyleStream 2.0, a fast and controllable streaming VSC framework that addresses these limitations. To reduce latency, we train a few-step pixel MeanFlow model and further fine-tune it with autoregressive feedback inspired by Self Forcing, improving robustness under streaming inference. This reduces end-to-end latency to 520~ms on a consumer GPU, a 2x speedup over StyleStream 1.0, while maintaining conversion quality. To enable controllable style manipulation, we remove the mel-spectrogram context and instead route target style information through a compact style embedding. In this embedding space, we train a unified text-conditioned flow matching model that supports both text-based voice design, which maps natural language prompts to voice styles, and instruction-based voice editing, which modifies a specific attribute of a source utterance while preserving the rest. Experiments show that StyleStream 2.0 achieves the strongest target style fidelity on VSC, voice design, and voice editing, while remaining competitive on intelligibility and non-edited attribute preservation.",
+        "published": "2026-10-20T21:34:02Z",
+        "authors": [
+          "Yisi Liu",
+          "Nicholas Lee",
+          "Gopala K. Anumanchipalli"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.28940v1"
+      },
+      "priority_score": 19
+    },
+    "2610_28905v1": {
+      "id": "2610_28905v1",
+      "filename": "post_2610_28905v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-22T23:49:01.106336+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-22T23:49:01.106338+00:00",
+      "paper": {
+        "title": "Hidden Messages Between Diffusion Language Model Agents: Causal Evidence for Latent Communication",
+        "summary": "Diffusion language models form answers through a sequence of revisable continuous states, but multi-agent systems usually discard those states and make agents communicate only after decoding text. We ask whether one independent diffusion trajectory can pass a compact hidden message into another and, crucially, whether the receiver uses what that message means. In Hidden Messages, a sender compresses its denoising state into four signed dense vectors; the receiver consumes them while retaining its own context, canvas, and trajectory. Removing a message tests whether the channel matters; replacing it with a message from another example tests whether its content matters. Across controlled tasks, derangement removes a +63.6-point advantage on Tiny-A2D and a +100.0-point advantage on Dream-7B, while targeted substitutions steer the receiver toward the substituted fact. On QASC with the two supporting facts split across agents, matched communication reaches 80.8%, but a wrong-example message lowers accuracy to 46.8%, a content effect of +34.0 points. The surprising result is temporal: one late transfer reaches 87.8%, exceeding four recurrent exchanges by +7.0 points. These experiments provide causal evidence for continuous hidden communication between diffusion-LM agents and show that when information is transferred can matter more than how many times agents exchange it.",
+        "published": "2026-10-20T20:31:16Z",
+        "authors": [
+          "Alan-Barsag Gazzaev",
+          "Alexey Gavrilov",
+          "Sergey Muravyov",
+          "Ilya Makarov"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.28905v1"
+      },
+      "priority_score": 27
     }
   },
   "last_run": {
-    "started_at": "2026-10-22T19:01:01.302428+00:00",
-    "discovered": 30,
+    "started_at": "2026-10-22T23:49:01.114481+00:00",
+    "discovered": 10,
     "selected": 4,
     "generated": 0,
     "failed": 4,
@@ -60135,11 +60231,11 @@
         "error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}"
       },
       {
-        "id": "2610_27435v1",
+        "id": "2610_30116v1",
         "error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}"
       },
       {
-        "id": "2610_21082v1",
+        "id": "2610_30016v1",
         "error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}"
       }
     ],
@@ -60152,7 +60248,7 @@
       "total_tokens": 0,
       "estimated_usd": 0.0
     },
-    "finished_at": "2026-10-22T19:01:09.297389+00:00"
+    "finished_at": "2026-10-22T23:49:09.267534+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
@@ -60164,8 +60260,8 @@
     "estimated_usd": 5.9923275
   },
   "last_publication_run": {
-    "started_at": "2026-10-22T19:01:01.302428+00:00",
-    "discovered": 30,
+    "started_at": "2026-10-22T23:49:01.114481+00:00",
+    "discovered": 10,
     "selected": 4,
     "generated": 0,
     "failed": 4,
@@ -60181,11 +60277,11 @@
         "error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}"
       },
       {
-        "id": "2610_27435v1",
+        "id": "2610_30116v1",
         "error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}"
       },
       {
-        "id": "2610_21082v1",
+        "id": "2610_30016v1",
         "error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}"
       }
     ],
@@ -60198,7 +60294,7 @@
       "total_tokens": 0,
       "estimated_usd": 0.0
     },
-    "finished_at": "2026-10-22T19:01:09.297389+00:00"
+    "finished_at": "2026-10-22T23:49:09.267534+00:00"
   },
   "daily_usage": {
     "date": "2026-10-22",
