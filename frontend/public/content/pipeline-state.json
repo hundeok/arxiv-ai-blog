@@ -59329,10 +59329,10 @@
       "id": "2610_30114v1",
       "filename": "post_2610_30114v1.md",
       "status": "retry",
-      "attempts": 8,
-      "next_retry_at": "2026-10-26T18:01:43.725926+00:00",
+      "attempts": 9,
+      "next_retry_at": "2026-10-27T22:10:58.645911+00:00",
       "last_error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}",
-      "updated_at": "2026-10-25T18:01:43.725943+00:00",
+      "updated_at": "2026-10-26T22:10:58.645925+00:00",
       "paper": {
         "title": "The End of Consensus Research?",
         "summary": "Consensus is a fundamental problem in distributed computing and at the core of state machine replication (SMR). Despite decades of active human research, discovering practical low-latency solutions to the problem is still open, as it requires combining protocol knowledge, correctness reasoning, implementation, and experimental evaluation. We report on how AI helped us discover A-greement, a new consensus protocol for geo-replicated state machines that significantly outperforms state-of-the-art solutions. Averaged across six deployments with 5 or 9 replicas, A-greement reduces the mean latency of a geo-distributed key-value store over the fastest baseline by 12.2% and 33.3% on write-heavy and read-heavy workloads, respectively, and matches the fastest baseline on read-only workloads. A-greement combines lease-authorized local reads, direct client learning for leader-ordered writes, and a fast fixed-quorum per-key write path, selected according to network topology and workload. At the heart of our discovery lies AI-greement, an agent harness for the \"autonomous\" discovery, implementation, experimentation, and verification of candidate protocols. AI-greement integrates (1) a concept-oriented protocol knowledge base, (2) a modular implementation skeleton, and (3) a Lean-based verification framework with reusable safety definitions, reference specifications, and proofs. AI-greement is of independent interest: its Lean formalization uncovers several previously unreported vulnerabilities in existing consensus protocols, and it provides guidelines on how domain-specific harnesses can turn general-purpose coding agents into effective tools for (distributed) computing research. Yet we argue that human consensus experts remain essential before, during, and after the search: agents reshape the researcher's role rather than end consensus research.",
@@ -59699,10 +59699,10 @@
       "id": "2610_30026v1",
       "filename": "post_2610_30026v1.md",
       "status": "retry",
-      "attempts": 8,
-      "next_retry_at": "2026-10-26T18:01:45.742334+00:00",
+      "attempts": 9,
+      "next_retry_at": "2026-10-27T22:11:00.466886+00:00",
       "last_error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}",
-      "updated_at": "2026-10-25T18:01:45.742351+00:00",
+      "updated_at": "2026-10-26T22:11:00.466901+00:00",
       "paper": {
         "title": "What the Author Wrote, What the Agent Reads: Silent Cue Loss in Enterprise Document Ingestion",
         "summary": "Enterprise agents act on documents. Before an agent can follow a policy, answer a compliance question or file a ticket, some ingestion layer must turn a Word file or PDF into tokens - and that layer is where an agent deployed in the wild silently loses information. We show that one layer is lost by every mainstream converter - the meaning an author encodes in how text looks - and that the loss makes agents confidently wrong rather than visibly incomplete. We build a task from 76 real policy documents: recover the requirements the author singled out, scored against the file's own OOXML properties by a deterministic matcher with no LLM judge. Formatting-blind ingestion collapses from micro F1 0.690 to 0.150 (docling) and 0.075 (plain text), a gap that replicates across six answering models from two vendors - five Claude models spanning the Opus, Sonnet and Haiku tiers, and OpenAI's GPT-5.6. An agent that cannot see the cue guesses, and docling's false-positive rate on requirements the author did not flag is four times ours. A span-level leave-one-out localises the loss to two cues - highlight (+0.302) and colour (+0.262), both Holm-adjusted p < 1e-4 - while bold, italic, monospace and strikethrough each sit within +/-0.003 of zero. The same asymmetry appears in PDF. Colour is also the cue no mainstream converter preserves and no parsing benchmark scores, and it is common: 32.8% of 6,460 documents carry a deliberate colour or highlight, 10.3% on an obligation. A pre-registered test shows that typing a cue for the agent adds +0.085 beyond merely preserving it (Holm-adjusted p = 0.049). We validate the labels against rendered page images through an independent modality (kappa = 0.72) and bound what wording alone can achieve (AUC 0.664). For agent builders the practical finding is that ingestion, not reasoning, is where this reliability is won or lost, and that the fix is cheap and measurable.",
@@ -59811,7 +59811,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-22T19:01:01.295188+00:00",
       "last_error": null,
-      "updated_at": "2026-10-26T15:43:23.114573+00:00",
+      "updated_at": "2026-10-26T22:10:55.236941+00:00",
       "paper": {
         "title": "Building Auditable AI Text Detectors with Sparse Autoencoders",
         "summary": "AI-generated text detectors are increasingly deployed in consequential settings---peer review, education, admissions, journalism, and content moderation---where their outputs directly affect individuals. Yet the strongest detectors are fine-tuned neural classifiers whose decisions are opaque, while transparent alternatives (stylometric and linguistic-feature classifiers) underperform them by wide margins. We present a pipeline that converts a fine-tuned neural detector into a classifier that operates on human-readable concepts. We accomplish this by training sparse autoencoders (SAEs) directly on a detector's residual stream, assigning auto-interpretation labels to each SAE feature, and retaining only features whose generated descriptions pass a global fidelity threshold. We then train a lightweight classifier on just the interpretable features. We find that our SAEs recover latent concepts that correspond to highly specific and predictive linguistic \"tells\" of AI-generated text. Classifiers built on these extracted features are not only highly interpretable but exhibit stronger performance on out-of-distribution texts than either neural or stylometric alternatives.",
@@ -60249,7 +60249,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-23T02:57:30.783528+00:00",
       "last_error": null,
-      "updated_at": "2026-10-26T15:43:23.114557+00:00",
+      "updated_at": "2026-10-26T22:10:55.236921+00:00",
       "paper": {
         "title": "Reading, Writing, Sharing, and Interacting with the World through Video",
         "summary": "Video foundation models have advanced rapidly in understanding and generating visual sequences, while video world models seek to capture the underlying dynamics of the world they depict. Despite their different objectives, both concern the relationship between video observations and an evolving world. This survey adopts world modeling as a unifying lens for examining these developments. Viewing an observed video as a partial, lossy, and temporally ordered projection of a latent temporal world, we organize the literature around four complementary operations: reading infers world properties from observed video; writing synthesizes video from specified or learned world conditions; sharing integrates understanding and generation through common modeling mechanisms; and interacting predicts and updates world states under actions and evolving observations. This perspective distinguishes temporal coherence in observed or generated sequences from consistency in the underlying world state. Across tasks, representations, models, datasets, and benchmarks, we trace a shift in emphasis from clip-level recognition and perceptual fidelity toward persistent state, controllable evolution, physical and causal validity, and evaluation grounded in interaction and downstream decisions, and we distill the open challenges that follow.",
@@ -61025,10 +61025,10 @@
       "id": "2610_32866v1",
       "filename": "post_2610_32866v1.md",
       "status": "retry",
-      "attempts": 2,
-      "next_retry_at": "2026-10-26T16:43:27.760514+00:00",
+      "attempts": 3,
+      "next_retry_at": "2026-10-27T00:11:02.434500+00:00",
       "last_error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}",
-      "updated_at": "2026-10-26T15:43:27.760533+00:00",
+      "updated_at": "2026-10-26T22:11:02.434518+00:00",
       "paper": {
         "title": "Interpretable sparse fine-tuning with TopKLoRA enables faithful circuit discovery",
         "summary": "Fine-tuning on datasets of unknown origin can create a backdoor in the trained model when the data includes poisoned examples. Difficult to localise and remove, backdoors can persist through safety training. While parameter-efficient fine-tuning methods capture the full parameter changes introduced during training, they are not easily interpretable. We present the full method of TopKLoRA, extending the preliminary proposal of Masiak et al. (2025), an interpretable-by-design LoRA variant in which only the $k$ largest adapter latents are active at each token. Unlike SAEs, TopKLoRA is trained purely on downstream loss, where optimisation pressure incentivises learning functionally causal latents. We demonstrate this sparse LoRA adapter in a sleeper-agent backdoor case study where we create model organisms by fine-tuning gemma-2-2b, Qwen2.5-1.5B, and Qwen2.5-7B on a poisoned instruction-following dataset. For each organism, we identify and ablate a circuit that is both necessary and sufficient to implement the backdoor. Furthermore, our new fine-tuning method produces sparse circuits that are up to an order of magnitude smaller than a dense LoRA baseline, allowing surgical ablation of the malicious capability without sacrificing instruction-following performance. Finally, we propose a technique to construct model organisms with localised circuits using TopKLoRA latents and gradient-routing, which we use to validate the findings of our circuit search algorithm. We consider these findings as a step toward interpretable-by-design architectures that provide faithful units of analysis without compromising model performance. We share our code: https://github.com/interpretable-finetuning/TopKLoRA.",
@@ -61264,10 +61264,10 @@
       "id": "2610_32755v1",
       "filename": "post_2610_32755v1.md",
       "status": "retry",
-      "attempts": 1,
-      "next_retry_at": "2026-10-26T03:14:46.171500+00:00",
+      "attempts": 2,
+      "next_retry_at": "2026-10-26T23:11:04.174499+00:00",
       "last_error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}",
-      "updated_at": "2026-10-26T02:44:46.171517+00:00",
+      "updated_at": "2026-10-26T22:11:04.174518+00:00",
       "paper": {
         "title": "Semantic Representation for Agentic Self-Play in Automated Laboratories",
         "summary": "Navigating complex, high-dimensional biological search spaces necessitates scalable physical and computational intelligence to explore beyond local optima through iterative self-play across ideation, experimentation, and automation. Translating experimental designs into reliable physical execution remains bottlenecked by static laboratory automation and unmodeled physical variability. To address this, we introduce VERified Infrastructure for Discovery Laboratories, or VERID, a foundational infrastructure designed to bridge the gap between the high-level reasoning of artificial intelligence (AI) agents and complex, error-prone physical realities of wet labs. VERID is a persistent, high-fidelity semantic digital twin of the laboratory workcell that provides four core services: queryable introspection for agentic reasoning, time-compressed simulation for protocol validation, comprehensive trace persistence for a complete scientific record, and a framework for safe execution.   We present three case studies using aqueous dye and deionized water mixtures to validate the optical and fluidic foundations of VERID. These studies demonstrate how VERID enables pre-emptive detection of critical errors in experimental protocols, stateful mid-run error recovery and post-hoc identification of subtle physical failures. The simulation functions as a discrete accounting engine, allowing agents to safely and inexpensively explore experimental designs in silico and refine experimental strategies through iterative self-play. VERID also captures structured multimodal experimental data for downstream analysis, knowledge mining and agent training. We argue that this semantic layer is an essential prerequisite for deploying autonomous agents in the biochemical and biomedical sciences, ensuring data integrity, operational safety, and paving the way for tackling previously intractable grand challenges in biology.",
@@ -61439,7 +61439,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-26T08:23:06.038613+00:00",
       "last_error": null,
-      "updated_at": "2026-10-26T15:43:23.114550+00:00",
+      "updated_at": "2026-10-26T22:10:55.236916+00:00",
       "paper": {
         "title": "Co-adaptive Rule Routing and Constraining for Structured Knowledge Retrieval",
         "summary": "Structured knowledge retrieval acquires task-relevant evidence from structured knowledge sources for downstream tasks. Existing methods rely on unconstrained retrieval or predefined query-rule supervision, such as author-paper rules for scientific discovery and anatomy-drug rules for precision medicine. Such supervision is rarely available in practice. We propose Co-Adaptive Rule Routing and Constraining Retrieval (CoRE), which jointly learns which reasoning rule to assign to each query and how to retrieve evidence under that rule, without predefined query-rule pairs. A routing agent selects a rule, and its corresponding retriever traverses the knowledge base and ranks evidence that satisfies the rule's constraints. Because routing and retrieval are interdependent, CoRE alternates between reinforcement learning for the routing policy and contrastive learning for the rule-constrained retriever. The selected rules provide supervision for retriever training, while retrieval performance rewards the routing policy. This closed-loop process enables both components to co-adapt without explicit query-rule supervision. Experiments on STaRK-QA datasets across scientific discovery, biomedical reasoning, and e-commerce knowledge management demonstrate CoRE's effectiveness. Ablations show the benefit of co-adapting the router and retriever. Generation-based routing transfers across datasets and benefits from multi-domain pretraining followed by target-specific fine-tuning. Analysis of rule usage across queries also informs automatic rule refinement and discovery.",
@@ -61469,7 +61469,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-26T08:23:06.038637+00:00",
       "last_error": null,
-      "updated_at": "2026-10-26T15:43:23.114529+00:00",
+      "updated_at": "2026-10-26T22:10:55.236893+00:00",
       "paper": {
         "title": "MultiAgent-OPD: End-to-End Training of Hierarchical Multi-Agent Systems with On-Policy Distillation",
         "summary": "In a hierarchical multi-agent system, a Leader assigns tasks and subagents carry them out. Jointly training the Leader and the subagents is difficult because a final answer gives only indirect feedback to the subagents. An LLM judge can score the performance of the subagents, but these scores depend on the judge's own assessment of the quality of subagents' responses. We present MultiAgent-OPD, which combines on-policy distillation with reinforcement learning to jointly train a shared-parameter Leader-Searcher-Answerer team end to end. We first train a Teacher in a Searcher-Answerer workflow using answer correctness. During team training, the frozen Teacher scores student-generated search and summary tokens to provide local process supervision for the Searchers, while the Leader learns from team success and the Answerer from candidate correctness. Across seven datasets, the trained system reaches 38.68% macro avg@4, exceeding Prompted Critic by 4.06 percentage points and C-MAS + RL, the trained cascaded multiagent system, by 2.61 percentage points. The team also solves more questions within four attempts.",
@@ -61681,7 +61681,7 @@
       "attempts": 0,
       "next_retry_at": "2026-10-26T15:43:23.114576+00:00",
       "last_error": null,
-      "updated_at": "2026-10-26T15:43:23.114577+00:00",
+      "updated_at": "2026-10-26T22:10:55.236946+00:00",
       "paper": {
         "title": "MMVistaReason: Toward Open-Data and Post-Training Recipes for Multimodal Reasoning",
         "summary": "Open multimodal reasoning models have benefited from large-scale reasoning supervision, yet reliable post-training remains challenging due to uneven data quality, inefficient supervision construction, imbalanced difficulty, and cross-domain interference. We introduce MMVistaReason (MVR), an open-data post-training recipe with three components: (1) broader capability coverage across complementary Analytical and Real-World reasoning groups, emphasizing structured reasoning versus visual perception and spatial grounding; (2) efficient SFT and RL data construction, standardizing heterogeneous open data through staged cleaning and annotation, combining difficulty-aware cascaded teacher distillation with answer-likelihood-based trajectory selection to construct MVR-SFT-528K, and applying scale-specific frontier filtering for MVR-RL-63K; and (3) specialize-then-integrate training, which trains complementary RL experts and consolidates their capabilities through multi-teacher on-policy distillation (MOPD). Our analyses reveal a capacity-dependent interaction between supervision difficulty, trajectory quality, and model capacity: smaller students benefit more from selected supervision, while larger students are robust to trajectory variation and mixed-domain interference. Mixed-domain RL introduces benchmark-level negative transfer, whereas MOPD provides consistent capability integration, with the preferred KL direction varying across model scales. Across 15 multimodal benchmarks, MVR-4B achieves an average score of 72.8, outperforming Qwen3.5-9B (Instruct) and MMFineReason-8B while using about 70% fewer samples than MMFineReason. Scaling to 9B improves the average to 74.4, surpassing Qwen3.5-35B-A3B (Instruct). Overall, MMVistaReason demonstrates that systematic open-data construction and capacity-aware post-training provide a practical and scalable path toward reliable multimodal reasoning.",
@@ -61720,10 +61720,140 @@
         "pdf_link": "https://arxiv.org/pdf/2609.16158v2"
       },
       "priority_score": 23
+    },
+    "2610_20117v1": {
+      "id": "2610_20117v1",
+      "filename": "post_2610_20117v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-26T22:10:55.236872+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-26T22:10:55.236885+00:00",
+      "paper": {
+        "title": "KANLab: TensorFlow Playground for Kolmogorov-Arnold Networks",
+        "summary": "KANLab is a browser-based visualization tool designed to interactively teach the core concepts of Kolmogorov-Arnold Networks (KAN), forked from the widely successful TensorFlow Playground. To maximize educational clarity, KANLab omits residual connections and learnable scaling parameters found in modern KAN implementations, ensuring that displayed B-spline activation curves directly correspond to their underlying trainable control points. Users can inspect and modify activation functions, initialization schemes and observe gradient descent correcting manual disruptions. Furthermore, user can explore phenomena such as activation variance, interactive pruning, and re\\-/training within a compact 2D machine learning setting. KANLab is open-source and available at https://kanlab.app/",
+        "published": "2026-10-14T12:43:48Z",
+        "authors": [
+          "Lukas Niehaus",
+          "Robin Rawiel",
+          "Ulf Krumnack"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.20117v1"
+      },
+      "priority_score": 9
+    },
+    "2610_27364v1": {
+      "id": "2610_27364v1",
+      "filename": "post_2610_27364v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-26T22:10:55.236901+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-26T22:10:55.236903+00:00",
+      "paper": {
+        "title": "Predictive Closure: A Set-Level Characterization of JEPA's Feature Selection",
+        "summary": "In joint-embedding predictive architectures (JEPA), an encoder and a predictor are trained together to produce a representation that minimizes the error in predicting the representation of the next observation. Because the representations of both the current and the next observation are learned, it is unclear which features they will include. Earlier characterizations describe the features JEPA selects in terms of their individual predictability, raising the concern that unpredictable features, like a traffic light, will not be encoded into the representation. However, the prediction error is also affected by the relationships between features, e.g., the light's color helps predict whether the traffic will stop. We propose the predictive closure characterization, which accounts for these relationships. Based on a reformulation of the JEPA training objective, we show that selection depends on properties of feature sets. This view agrees with earlier works when features evolve independently, but makes new predictions when they do not, for instance that a feature like the traffic light can still be retained. We test this characterization in controlled experiments, which show that unpredictable features can become better represented when they help predict other features, and that changing one feature's predictive relationships can affect how well others are represented. We also demonstrate implications for steering feature selection: targeting one feature with an auxiliary objective, or supplying it to the predictor as side information, can strengthen the representation of another feature whose future values it helps predict, so steering can be indirect.",
+        "published": "2026-10-19T22:43:59Z",
+        "authors": [
+          "Mosh Levy",
+          "Aly Lidayan",
+          "Yoav Goldberg"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.27364v1"
+      },
+      "priority_score": 30
+    },
+    "2610_19589v1": {
+      "id": "2610_19589v1",
+      "filename": "post_2610_19589v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-26T22:10:55.236909+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-26T22:10:55.236911+00:00",
+      "paper": {
+        "title": "JockeyBench: Evaluating LLM Agents on Horse-Racing Decision-Making",
+        "summary": "Repeated event forecasting requires extracting predictive signals from noisy evidence and evaluating their value across successive decisions. We introduce JockeyBench, a benchmark and evaluation protocol that studies this problem through historical Japanese horse racing. The protocol combines time-gated evidence, priced tools, paired frozen-program controls, and two workflows: executing an LLM-written predictor or acquiring evidence for a fresh per-race LLM forecast. Evaluation separates forecast quality, benchmark-specific net utility, and retrospective betting returns and risk under fixed decision rules. Across 28 model--scaffold configurations on 324 races, paired tests identify seven revision gains and two declines after multiple-testing correction. Yet every configuration has negative mean profit under capped-Kelly settlement. In a four-model comparison, the reusable-program workflow has higher mean betting profit and lower research fees, although both workflows lose on average. Further diagnostics reveal that mean probability bias reverses on selected bets and that profitable individual runs can depend on concentrated returns. These findings motivate evaluating predictive competence, adaptation, resource use, and decision value separately when assessing agents for repeated event forecasting.",
+        "published": "2026-10-14T04:59:45Z",
+        "authors": [
+          "Zhongwei Xie",
+          "Xingsu Li",
+          "Jingqiao Yu",
+          "Zihao Wang",
+          "Hong ChiTat",
+          "Zhaowei Wang",
+          "Weizhi Du",
+          "Yuxuan Liu",
+          "Huihao Jing",
+          "Jiaxin Bai",
+          "Yangqiu Song"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.19589v1"
+      },
+      "priority_score": 46
+    },
+    "2610_31779v1": {
+      "id": "2610_31779v1",
+      "filename": "post_2610_31779v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-26T22:10:55.236927+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-26T22:10:55.236929+00:00",
+      "paper": {
+        "title": "FLORA: An Open Model Suite for Scaling Robotics Data Engines",
+        "summary": "The life-cycle of robotics foundation models crucially depends on data labels. Outcome reward labels are needed for monitoring real-world deployments. Process reward labels are needed during RL post-training. Timestamped captions are needed for filtering and balancing pretraining data. We present Flora, an industrial-quality data engine used for training GR00T models, that simultaneously covers these capabilities. Flora achieves SOTA scores on the captioning benchmark WGO-Bench and reward benchmarks RoboReward and Robometer. On internal benchmarks it is competitive with GPT-6 Astra while beating other frontier models. The model is substantially cheaper than API-based alternatives, roughly 125 times cheaper than GPT-6 Astra. Florais battle tested at scale, labeling 200,000 hours of data per day across 512 GB300s. By open-sourcing our data engine, we enable researchers to scale custom robotics datasets and explore emerging applications such as physical auto-research and human-to-robot transfer.",
+        "published": "2026-10-22T18:16:17Z",
+        "authors": [
+          "Sicong Leng",
+          "Yunze Man",
+          "Zhiqi Li",
+          "Jing Wang",
+          "Yuhe Zhang",
+          "Ryan Punamiya",
+          "Siddharth Patki",
+          "Kaiyuan Zheng",
+          "Zi-ang Cao",
+          "Zhiding Yu",
+          "Sifei Liu",
+          "Danfei Xu",
+          "Ben Levin",
+          "Jan Kautz",
+          "Yuke Zhu",
+          "Johan Bjorck",
+          "Linxi \"Jim\" Fan"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.31779v1"
+      },
+      "priority_score": 22
+    },
+    "2610_31572v1": {
+      "id": "2610_31572v1",
+      "filename": "post_2610_31572v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-26T22:10:55.236934+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-26T22:10:55.236936+00:00",
+      "paper": {
+        "title": "On the Token Collapse Phenomenon in Textual Graph Soft Prompting",
+        "summary": "Recent methods for injecting graph structure into LLM prompts include graph soft prompting, in which a graph neural network (GNN) learns graph-specific tokens that capture relational information among entities in textual prompts. G-Retriever combines graph soft prompts with a verbalized description of the same graph to strengthen the textual prompt signal. We conduct an in-depth analysis of G-Retriever and uncover a pathological behavior we term token collapse. Across three benchmarks, three graph encoders, two LLM families, and both frozen and LoRA-adapted models, G-Retriever's graph tokens become almost indistinguishable across inputs. We provide evidence that the same failure is inherited by subsequent methods, even with multi-token pooling. Under the standard setup, swapping a token with the dataset mean, a token from another example, or one derived from a corrupted graph produces no resolved answer-level effect in accuracy. Moreover, a learned constant prompt that never accesses the graph matches or surpasses G-Retriever on all three benchmarks. These findings indicate that, rather than conveying graph content as intended, the collapsed token functions primarily as a generic soft prompt. We also examine conditions linked to this collapse and propose a two-stage procedure that yields non-collapsed tokens while maintaining competitive performance in most cases. However, token variability alone does not prove that the model uses graph information: via interventions and decoding probes, we show that depending on the configuration, a token can reflect the question, an answer prior, or graph-derived content that the LLM may or may not use. Overall, our results offer a practical approach to evaluating graph-token alignment rather than inferring it from task accuracy alone. Code to reproduce our experiments is available at https://github.com/difra100/Token_Collapse_KGQA.",
+        "published": "2026-10-22T17:13:03Z",
+        "authors": [
+          "Andrea Giuseppe Di Francesco",
+          "Rishabh Jain",
+          "Franco Maria Nardini",
+          "Nicola Tonellotto",
+          "Pietro Liò",
+          "Fabrizio Silvestri"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.31572v1"
+      },
+      "priority_score": 40
     }
   },
   "last_run": {
-    "started_at": "2026-10-26T15:43:23.121110+00:00",
+    "started_at": "2026-10-26T22:10:55.245731+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 0,
@@ -61732,19 +61862,19 @@
     "health": "degraded",
     "failures": [
       {
-        "id": "2610_23307v1",
+        "id": "2610_30114v1",
         "error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}"
       },
       {
-        "id": "2610_30016v1",
-        "error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}"
-      },
-      {
-        "id": "2610_30047v1",
+        "id": "2610_30026v1",
         "error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}"
       },
       {
         "id": "2610_32866v1",
+        "error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}"
+      },
+      {
+        "id": "2610_32755v1",
         "error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}"
       }
     ],
@@ -61757,7 +61887,7 @@
       "total_tokens": 0,
       "estimated_usd": 0.0
     },
-    "finished_at": "2026-10-26T15:43:28.482197+00:00"
+    "finished_at": "2026-10-26T22:11:05.446441+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
@@ -61769,7 +61899,7 @@
     "estimated_usd": 5.994651
   },
   "last_publication_run": {
-    "started_at": "2026-10-26T15:43:23.121110+00:00",
+    "started_at": "2026-10-26T22:10:55.245731+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 0,
@@ -61778,19 +61908,19 @@
     "health": "degraded",
     "failures": [
       {
-        "id": "2610_23307v1",
+        "id": "2610_30114v1",
         "error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}"
       },
       {
-        "id": "2610_30016v1",
-        "error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}"
-      },
-      {
-        "id": "2610_30047v1",
+        "id": "2610_30026v1",
         "error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}"
       },
       {
         "id": "2610_32866v1",
+        "error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}"
+      },
+      {
+        "id": "2610_32755v1",
         "error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}"
       }
     ],
@@ -61803,7 +61933,7 @@
       "total_tokens": 0,
       "estimated_usd": 0.0
     },
-    "finished_at": "2026-10-26T15:43:28.482197+00:00"
+    "finished_at": "2026-10-26T22:11:05.446441+00:00"
   },
   "daily_usage": {
     "date": "2026-10-26",
