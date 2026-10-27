@@ -56882,10 +56882,10 @@
       "id": "2610_21082v1",
       "filename": "post_2610_21082v1.md",
       "status": "retry",
-      "attempts": 11,
-      "next_retry_at": "2026-10-27T08:23:08.976793+00:00",
+      "attempts": 12,
+      "next_retry_at": "2026-10-28T11:25:24.663240+00:00",
       "last_error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}",
-      "updated_at": "2026-10-26T08:23:08.976811+00:00",
+      "updated_at": "2026-10-27T11:25:24.663255+00:00",
       "paper": {
         "title": "Sci$Π$vot: Benchmarking Principal-Investigator Judgment at Pivotal Moments of Scientific AutoResearch Agents",
         "summary": "Large language model (LLM) agents can keep scientific experiments running for months with little human supervision, but reliable autonomous research also requires scientific judgment. Evaluating scientific judgment is difficult because research decisions are open-ended and depend on project context. We construct Sci$Π$vot, a 248-case benchmark of scientific judgment based on human corrections. The benchmark draws on records from six months of research in which senior researchers ran LLM agents on 26 projects across six scientific fields and repeatedly intervened to correct the agents' research judgments. In each case, an agent chooses between the original LLM plan and the human-corrected alternative, using only the project record available before the correction as context. We compare LLM and human performance and examine the effects of reasoning effort, access to the project record, and reconsideration. At medium reasoning effort with the project record, models systematically prefer the original LLM plan over the human-corrected alternative. Four of five frontier models perform below chance on the selected cases. The highest accuracy in the project condition across the tested models and reasoning effort settings is 63.5%, compared with 73.4% for fresh researchers. At medium effort, every model achieves lower accuracy with the project record than without it, and reconsideration does not consistently improve overall accuracy. Even with a human-corrected alternative available, frontier models struggle with the selected research decisions, while Sci$Π$vot supports systematic evaluation of scientific judgment for LLM agents.",
@@ -57725,10 +57725,10 @@
       "id": "2610_28611v1",
       "filename": "post_2610_28611v1.md",
       "status": "retry",
-      "attempts": 10,
-      "next_retry_at": "2026-10-27T08:23:07.422063+00:00",
+      "attempts": 11,
+      "next_retry_at": "2026-10-28T11:25:19.273215+00:00",
       "last_error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}",
-      "updated_at": "2026-10-26T08:23:07.422080+00:00",
+      "updated_at": "2026-10-27T11:25:19.273231+00:00",
       "paper": {
         "title": "Semantic Observability for Autonomous Systems Diagnostics",
         "summary": "Modern distributed microservice deployments generate massive volumes of heterogeneous, multi-format observability logs across physically and logically partitioned infrastructure. Isolating root causes during cascading failures remains an arduous task for Site Reliability Engineers (SREs), bottlenecked by manual keyword filtering and disjointed temporal correlation across monitoring dashboards. We introduce Semantic Observability, an autonomous multi-agent framework that unifies disparate log streams into a dynamic, queryable Property Graph Database. By modeling physical infrastructure topologies, logical software dependencies, and chronological event sequences as attributed nodes and directed relations, it bridges the semantic gap inherent in flat, unstructured log repositories. Building on this unified substrate, we deploy a stateful multi-agent system orchestrated through Directed Cyclic Graphs (DCGs). The system autonomously navigates the topology, applying causal graph algorithms and temporal back-traversal to isolate the precise blast radius of anomalies. The pruned subgraph is then interpreted by a Large Language Model (LLM) reasoning engine to generate contextualized, code-level Root Cause Analyses (RCA) and actionable remediations. This paper establishes the foundational system architecture, formal relational ontology, and multi-agent control loops of Semantic Observability. We show conceptually how the framework eliminates ambient telemetry noise, reduces Mean Time to Resolution (MTTR), compresses LLM token consumption, and prevents structural hallucinations. We also specify an open-source validation framework on standard benchmarks (LogHub and Train-Ticket), laying the groundwork for a forthcoming companion paper on exhaustive quantitative evaluation and production benchmarking.",
@@ -61850,11 +61850,274 @@
         "pdf_link": "https://arxiv.org/pdf/2610.31572v1"
       },
       "priority_score": 40
+    },
+    "2610_33512v1": {
+      "id": "2610_33512v1",
+      "filename": "post_2610_33512v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-27T11:25:18.135092+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-27T11:25:18.135105+00:00",
+      "paper": {
+        "title": "Eat Your Precision: Precision Objective Mitigates Reward Hacking in Rubric-based RL",
+        "summary": "Rubric-based rewards enable effective reinforcement learning on non-verifiable tasks. However, because these rewards are typically defined as a weighted measure of rubric coverage, models are trained primarily to maximize a recall objective. As a result, RL-trained models produce responses that are more complete but also more verbose and contain more unnecessary or factually incorrect content, leading them to be less preferred than responses from the base model. To address this issue, we present the FORK reward, which jointly optimizes recall and a novel precision objective, which requires each unit of a model response to be both necessary and factually correct, as measured by rubric-driven necessity credits and a factual-correctness grader, respectively. Our experimental results show that FORK outperforms existing rubric-based RL methods and achieves Pareto-optimal performance that balances rubric coverage and overall response quality. Compared to the original recall-based reward, FORK substantially improves precision and reduces response length while achieving similar rubric coverage, which leads to significantly higher win rate compared to the base policy (e.g., from 10.6% to 68.0% on RubricHub-Medical and from 22.1% to 74.1% on HealthBench).",
+        "published": "2026-10-24T07:43:06Z",
+        "authors": [
+          "Hyun Ryu",
+          "Jong-Heon Kim",
+          "Yiqing Xie",
+          "Seungone Kim",
+          "Carolyn Rose",
+          "Eunho Yang"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.33512v1"
+      },
+      "priority_score": 15
+    },
+    "2610_33503v1": {
+      "id": "2610_33503v1",
+      "filename": "post_2610_33503v1.md",
+      "status": "retry",
+      "attempts": 1,
+      "next_retry_at": "2026-10-27T11:55:23.280561+00:00",
+      "last_error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}",
+      "updated_at": "2026-10-27T11:25:23.280578+00:00",
+      "paper": {
+        "title": "Novel or Not? PatEx-Gym: Agentic Prior-Art Search for Novelty Assessment in Patent Examination",
+        "summary": "Patent examination is a challenging real-world task that requires agents to discover sparse prior art, iteratively refine queries, inspect technical evidence, and produce novelty assessments documented in Office Actions (OAs) across heterogeneous scientific and technical domains. However, existing benchmarks largely focus on static and limited candidate sets, leaving the full search--reasoning--assessment process underexplored. We present PatEx-Gym, the first framework for developing and evaluating agents for patent examination, which integrates three components. First, PatEx-Bench provides 1K realistic examination tasks, two large-scale retrieval corpora containing over 1M patents and 52K scientific papers, and a harness runtime supporting iterative search, document visits, reasoning, and OA generation. Second, we introduce PASS, an annotation-free Prior-Art Agentic Search Trajectory Synthesis framework. Specifically, it exploits document visits as implicit relevance signals and evidence-acquisition anchors to model intra-turn query behavior, inter-turn search progression, and trajectory-level evidence and outcome quality, yielding PatEx-SynData. Third, we train PatEx-Agent at the 4B scale via supervised fine-tuning on the curated trajectories, establishing a lightweight baseline. Extensive experiments show that final decision accuracy alone does not fully reflect examination quality, while prior-art discovery remains difficult even for strong frontier models. Our PatEx-Agent achieves competitive performance against substantially larger general-purpose agents. These results show that training on PatEx-SynData enables a compact 4B model to serve as a competitive baseline for prior-art search and patent examination. We view patent examination as a demanding testbed for agentic search and deep research agents.",
+        "published": "2026-10-24T07:21:41Z",
+        "authors": [
+          "Qiyao Wang",
+          "Xinyi Chen",
+          "Hongbo Wang",
+          "Jiayuan Lu",
+          "Jianhang Li",
+          "Minghuan Tan",
+          "Yuan Lin",
+          "Min Yang"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.33503v1"
+      },
+      "priority_score": 60
+    },
+    "2610_35385v1": {
+      "id": "2610_35385v1",
+      "filename": "post_2610_35385v1.md",
+      "status": "retry",
+      "attempts": 1,
+      "next_retry_at": "2026-10-27T11:55:21.418644+00:00",
+      "last_error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}",
+      "updated_at": "2026-10-27T11:25:21.418659+00:00",
+      "paper": {
+        "title": "EmbodiedLab: Benchmarking Embodied Agents That Act to Know",
+        "summary": "Embodied agents are expected to accomplish real-world goals by deciding for themselves how and when to interact with their surroundings. For many such goals, changing the physical state of the world is the means rather than the end: the agent changes the state of a system through interaction, observes the feedback, and explores until it either achieves the goal itself (e.g., discovering physical laws) or learns what the goal requires; it acts to know. Manipulation benchmarks stop at acting to change, with the target state given; scientific discovery benchmarks evaluate knowing but replace physical experimentation with symbolic actions or numerical queries. We introduce EmbodiedLab, a benchmark in which a robot must act to know. Quantitative science experiments make this setting controllable: the parameters of the system are resampled for every instance, so the result cannot be known in advance, yet it can be scored exactly. Across 30 experiments in five disciplines on 14 apparatus platforms, the agent receives an objective and the apparatus, chooses its own procedure, and operates a physics-based simulated laboratory, reading the instruments through its cameras. Evaluation checks what the agent came to know, grounded in readings recorded during the episode, as well as the physical state the task requires; every experiment is verified to be solvable. We evaluate six frontier models in their developers' coding agents with native observation and control, with added perception and motion planning, and with manipulation skills distilled from the strongest agents. With native control, even the strongest agent succeeds less than half the time; for every agent, most failures arise in interacting with the apparatus, and manipulation skills help weaker agents more than perception and planning. The benchmark and its evaluation code are available at https://github.com/HexaFuture/EmbodiedLab.",
+        "published": "2026-10-26T13:06:33Z",
+        "authors": [
+          "Hongcheng Gao",
+          "Zelin Zheng",
+          "Alex Zhou",
+          "Jay Zhu",
+          "Shijia Ge",
+          "Yazhe Wang",
+          "Xiping Li",
+          "Jianshu Zeng",
+          "Di Wu",
+          "Xuan Shangguan",
+          "Yexing Wan",
+          "Lingyu He",
+          "Yongli Wang",
+          "Xiaohan Yu",
+          "Zhiqi Jia",
+          "Yue Liu",
+          "Bryan Hooi",
+          "Yinpeng Dong",
+          "Wentao Zhang",
+          "Sihang Wu",
+          "Xiao He"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.35385v1"
+      },
+      "priority_score": 60
+    },
+    "2610_31818v1": {
+      "id": "2610_31818v1",
+      "filename": "post_2610_31818v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-27T11:25:18.135128+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-27T11:25:18.135129+00:00",
+      "paper": {
+        "title": "Nested Sparsity for Scalable Pretraining and Continual Learning",
+        "summary": "Mixture-of-experts (MoE) transformers, the standard backbone for modern large-scale deep learning, employ conditional computation: only a sparse subset of model weights is used in each forward pass. In MoE transformers, this sparsity arises in the MoE operator, which generalizes the multi-layer perceptron in the classical transformer. In this work, we explore an alternative mechanism for conditional computation that analogously generalizes the attention operator. The sparsity induced by this mechanism naturally nests (i.e., hierarchically composes) with the sparsity induced by the MoE operator. We show that a transformer employing this nested sparsity mechanism, which we call Nestor, performs better than a conventional MoE transformer at equal compute and equal sparsity in language model pretraining. We also show that Nestor is well-suited for continual pretraining: it can be adapted to longer contexts more effectively than conventional MoEs, as well as adapt more efficiently to new domains while forgetting less on old domains. Furthermore, we demonstrate that these benefits persist as model size, dataset size, and context length grow. Our results demonstrate the potential of alternative conditional computation mechanisms for deep neural network architectures. Code and checkpoints are available on GitHub at https://github.com/Ma-Lab-Berkeley/Nestor .",
+        "published": "2026-10-22T18:56:07Z",
+        "authors": [
+          "Tianzhe Chu",
+          "Druv Pai",
+          "Yi Ma"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.31818v1"
+      },
+      "priority_score": 27
+    },
+    "2610_14018v2": {
+      "id": "2610_14018v2",
+      "filename": "post_2610_14018v2.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-27T11:25:18.135135+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-27T11:25:18.135136+00:00",
+      "paper": {
+        "title": "RoboHarness: A Simple Harness Outperforms VLA and World Action Models",
+        "summary": "The rise of large language models (LLMs) has opened a path toward generalist embodied AI, raising the question of how LLMs can act in the physical world. One straightforward approach is training the model to generate actions: collect robot-action data and video demonstration, refine LLM architecture with an action head, and train a vision-language-action (VLA) model at scale. However, we argue that coding agents have the potential to realize generalist embodied manipulation. All they need is a simple yet effective robot harness. We present RoboHarness: a robotic harness that gives LLM agents a visual-geometric control panel so that they can directly understand and invoke embodied tasks. With RoboHarness, Qwen3.8-Flash-Next outperforms state-of-the-art VLA models on BEHAVIOR Challenge 2025 tasks. The implementation is open source.",
+        "published": "2026-09-29T11:36:07Z",
+        "authors": [
+          "Bince Qu",
+          "Wei Chen",
+          "Bo Zhang"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.14018v2"
+      },
+      "priority_score": 20
+    },
+    "2610_33024v1": {
+      "id": "2610_33024v1",
+      "filename": "post_2610_33024v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-27T11:25:18.135141+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-27T11:25:18.135143+00:00",
+      "paper": {
+        "title": "Evolving to Match Capabilities: Improving Harness Self-Evolution via Skill Adaptation",
+        "summary": "Harness self-evolution offers a practical route for LLM agents to improve from execution experience without updating model parameters. Its effectiveness depends on whether models can successfully act on the guidance provided by their harnesses. However, we find that harness benefits are not uniform across model capabilities: skills that improve stronger models can provide little benefit or even degrade performance for weaker ones. Across seven models and three benchmarks, we identify 103 task-skill pairs where skills improve GPT-5.6-luna by 31.1 points but degrade Gemma-4-E4B by 8.8 points. In 86% of failed weak-model runs, the violated requirement is already stated in the skill. This motivates skill adaptation: reformulating existing skills to match the executor's capabilities and make their guidance easier to execute. To achieve this, we diagnose failures in tool execution, context management, instruction following, and verification, and distill these diagnoses into a fixed meta-skill that guides adaptation during harness self-evolution. Guided by the meta-skill, a capable external rewriter, Kimi-K3, adapts skills without execution evidence, improving the three weak executors by 5.1-14.1 points over the original skills. We then incorporate this adaptation into a five-round self-evolution loop, where each model revises its own skill from execution trajectories and verifier feedback. Across seven executors, from Gemma-4-E4B to Kimi-K2.5, the meta-skill consistently improves final scores by 2.0-5.1 points over the same loop without the meta-skill. Our findings provide practical design guidance for developing more effective harness self-evolution methods.",
+        "published": "2026-10-10T04:44:35Z",
+        "authors": [
+          "Zhihao Yang",
+          "Haojin Wang",
+          "Juncheng Wu",
+          "Kuan Zhang",
+          "Yukun Chen",
+          "Run Luo",
+          "Yaojie Lu",
+          "Yuyin Zhou",
+          "Lu Wang",
+          "Xianpei Han"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.33024v1"
+      },
+      "priority_score": 40
+    },
+    "2610_34238v1": {
+      "id": "2610_34238v1",
+      "filename": "post_2610_34238v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-27T11:25:18.135147+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-27T11:25:18.135149+00:00",
+      "paper": {
+        "title": "$Δτ$-Bench: Pushing Agents Toward a Moving Capability",
+        "summary": "In this paper, we introduce $Δτ$-Bench, an executable agent benchmark that models the structural evolution of large tool ecosystems. In $Δτ$-Bench, independently evolving services continually reshape how tasks can be accomplished: familiar tools may disappear or be replaced, while more efficient alternatives emerge amid overlapping functionality and noisy documentation. Against this moving capability frontier, we evaluate whether agents can proactively discover efficient tool-use paths and promptly revise their accumulated procedural knowledge, bringing together demands that existing benchmarks fail to examine. $Δτ$-Bench comprises 1,588 validated multi-turn tasks across 42 domains and six successive ecosystem states generated through capability-preserving transformations. Our evaluation shows that even the strongest evaluated model or harness achieves only 42.3% task success, while initial gains from existing skill-learning methods can not consistently translate into better adaptation as the ecosystem evolves. These findings motivate Steward, an ecosystem manager that jointly manages tools and procedural knowledge through incremental skill maintenance and dynamic provisioning during task execution. Experiments show that Steward sustains higher task success across ecosystem changes with lower skill-maintenance overhead, while improving both recovery from disrupted workflows and adoption of more efficient alternatives.",
+        "published": "2026-10-25T12:10:52Z",
+        "authors": [
+          "Shuofei Qiao",
+          "Xuanguang Pan",
+          "Yijun Chen",
+          "Wendi Feng",
+          "Bin Wu",
+          "Runnan Fang",
+          "Yuqi Zhu",
+          "Shumin Deng",
+          "Emine Yilmaz"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.34238v1"
+      },
+      "priority_score": 48
+    },
+    "2610_34415v1": {
+      "id": "2610_34415v1",
+      "filename": "post_2610_34415v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-27T11:25:18.135153+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-27T11:25:18.135155+00:00",
+      "paper": {
+        "title": "Spatial Audio Generation and Editing with Executable Plans and Self-Distilling Transfusion",
+        "summary": "Spatial audio authoring coordinates source decisions with soundfield synthesis. For editing, plans specify what to change and retain, while reference audio supplies further acoustic detail. We present AMBIT, a unified framework for native First-Order Ambisonics (FOA) generation and editing with three connected contributions. First, a shared Transfusion backbone couples autoregressive planning with rectified-flow rendering through executable ScenePlans that specify source content, activity, and 3D trajectories. For editing, the plan describes the full target scene, including retained sources; contrastive features ground the requested change, while full reference latents supply residual acoustic detail for preservation. Second, an FOA-aware continuous VAE combines shared-decoder omnidirectional recovery, asymmetric grouped KL, and spatial covariance matching to preserve content and inter-channel structure. Third, joint Transfusion on-policy self-distillation (OPSD) refines planning on student-generated prefixes and rendering at sampling states reached under student plans, with target-conditioned teachers supervising both modes of the shared student. Evaluations across speech, music, and sound show improved generation content and spatial quality, acoustic fidelity during instruction-guided editing, and unedited-source preservation over the compared baselines. Project page: https://wjm-george.github.io/AMBIT/",
+        "published": "2026-10-25T16:13:07Z",
+        "authors": [
+          "Kam Man Wu",
+          "Yu Zhang",
+          "Pengjun Fang",
+          "Mingfei Chen",
+          "Weijia Chen",
+          "Zeyue Tian",
+          "Qifeng Chen"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.34415v1"
+      },
+      "priority_score": 37
+    },
+    "2610_34634v1": {
+      "id": "2610_34634v1",
+      "filename": "post_2610_34634v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-27T11:25:18.135160+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-27T11:25:18.135161+00:00",
+      "paper": {
+        "title": "AgentProofBench: Benchmarking Reusable Verifiers for Web Agents",
+        "summary": "Reusable Web-agent verification requires a rule to follow changing requirements and support subsequent execution. We introduce AgentProofBench, which connects paired tests of a frozen acceptance rule to execution from identical saved openings. The resource spans 97 tasks, 79 families, and four Web services. Experiments with DeepSeek Flash/Pro establish two linked measurements. Across 48 families, complete-panel and decision-replay tests retain 82/96 Flash and 79/96 Pro source programs; paired reuse-rebuild BA intervals are [-5.47, 1.57] and [-10.16, 0.00] percentage points. Across 22 execution families, deployment-state panel correctness separates program assignments whose two saved openings are both delivered correctly: 32/33 assignments with error-free panels, versus 1/11 with panel errors. All reference-defined program-gate regressions and withheld deliveries occur in the latter group. Neutral continuation attains the highest correct delivery under the tested generic feedback, providing a concrete baseline for measuring the value added by a gate. Released instructions, states, programs, reference rules, and trajectories connect each test failure to its execution consequences. AgentProofBench makes reusable verification assessable at both the requirement and policy levels.",
+        "published": "2026-10-25T23:20:28Z",
+        "authors": [
+          "Jingjie Ning",
+          "Xueqi Li",
+          "Yi Lu",
+          "Yibo Kong"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.34634v1"
+      },
+      "priority_score": 36
+    },
+    "2610_35193v1": {
+      "id": "2610_35193v1",
+      "filename": "post_2610_35193v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-10-27T11:25:18.135166+00:00",
+      "last_error": null,
+      "updated_at": "2026-10-27T11:25:18.135168+00:00",
+      "paper": {
+        "title": "Trustworthy Recursive Self-Improvement in the Era of Large Models: Foundation, Risks, Evaluation and Open Challenges",
+        "summary": "AI systems built around large models increasingly use experience and feedback to make persistent changes to models, prompts, memories, tools, and workflows. Recursive self-improvement (RSI) extends this process to inductive biases and to the mechanisms that govern future updates, which can themselves be revised and reused across improvement cycles. Yet self-modification alone does not guarantee trustworthy improvement. Reported gains may reflect flawed evaluations, previously acquired capabilities may deteriorate, and compliance with behavioral constraints may weaken. Compromised artifacts or sensitive information may also persist in successor systems. Changes to improvement mechanisms may invalidate earlier verification results and make human oversight less effective. This survey presents an operational definition and process framework for RSI and organizes the requirements for trustworthy RSI into four interconnected themes: genuine and sustained improvement; behavioral constraints, alignment, and fairness; system security and privacy; and transparency and controllability. We examine these themes from three perspectives: Improvement Validity, Constraint Preservation, and Effective Oversight. This analysis covers improvement diagnosis, proposal generation, proposal evaluation, and update implementation (S1--S4), including the recursive application of these stages to improvement mechanisms (RI). We review risks, safeguards, and evaluation evidence for individual updates, effects inherited by successor systems, and revisions to improvement mechanisms, while distinguishing direct RSI findings from evidence in related systems. Finally, we examine evaluation settings, identify requirements for independent and longitudinal assessment, and discuss applications and open research problems.",
+        "published": "2026-10-26T10:46:03Z",
+        "authors": [
+          "Jiayue Pu",
+          "Ang Gao",
+          "Jinyi Bai",
+          "Qipeng Wang",
+          "Tongyu Wen",
+          "Jiahao Zhao",
+          "Keyu Qu",
+          "Junhao Zhang",
+          "Chenglei Shen",
+          "Zhongxiang Sun",
+          "Jun Xu",
+          "Xiao Zhang"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2610.35193v1"
+      },
+      "priority_score": 30
     }
   },
   "last_run": {
-    "started_at": "2026-10-27T03:19:13.565804+00:00",
-    "discovered": 0,
+    "started_at": "2026-10-27T11:25:18.143822+00:00",
+    "discovered": 10,
     "selected": 4,
     "generated": 0,
     "failed": 4,
@@ -61862,19 +62125,19 @@
     "health": "degraded",
     "failures": [
       {
-        "id": "2610_25060v1",
+        "id": "2610_28611v1",
         "error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}"
       },
       {
-        "id": "2610_30116v1",
+        "id": "2610_35385v1",
         "error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}"
       },
       {
-        "id": "2610_04184v2",
+        "id": "2610_33503v1",
         "error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}"
       },
       {
-        "id": "2610_30108v1",
+        "id": "2610_21082v1",
         "error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}"
       }
     ],
@@ -61887,7 +62150,7 @@
       "total_tokens": 0,
       "estimated_usd": 0.0
     },
-    "finished_at": "2026-10-27T03:19:23.709203+00:00"
+    "finished_at": "2026-10-27T11:25:25.915745+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
@@ -61899,8 +62162,8 @@
     "estimated_usd": 5.994651
   },
   "last_publication_run": {
-    "started_at": "2026-10-27T03:19:13.565804+00:00",
-    "discovered": 0,
+    "started_at": "2026-10-27T11:25:18.143822+00:00",
+    "discovered": 10,
     "selected": 4,
     "generated": 0,
     "failed": 4,
@@ -61908,19 +62171,19 @@
     "health": "degraded",
     "failures": [
       {
-        "id": "2610_25060v1",
+        "id": "2610_28611v1",
         "error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}"
       },
       {
-        "id": "2610_30116v1",
+        "id": "2610_35385v1",
         "error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}"
       },
       {
-        "id": "2610_04184v2",
+        "id": "2610_33503v1",
         "error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}"
       },
       {
-        "id": "2610_30108v1",
+        "id": "2610_21082v1",
         "error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}"
       }
     ],
@@ -61933,7 +62196,7 @@
       "total_tokens": 0,
       "estimated_usd": 0.0
     },
-    "finished_at": "2026-10-27T03:19:23.709203+00:00"
+    "finished_at": "2026-10-27T11:25:25.915745+00:00"
   },
   "daily_usage": {
     "date": "2026-10-27",
