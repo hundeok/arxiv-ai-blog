@@ -66264,10 +66264,10 @@
       "id": "2611_01970v1",
       "filename": "post_2611_01970v1.md",
       "status": "retry",
-      "attempts": 2,
-      "next_retry_at": "2026-11-03T14:27:28.500897+00:00",
+      "attempts": 3,
+      "next_retry_at": "2026-11-03T22:44:37.957371+00:00",
       "last_error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}",
-      "updated_at": "2026-11-03T13:27:28.500917+00:00",
+      "updated_at": "2026-11-03T20:44:37.957388+00:00",
       "paper": {
         "title": "Knowledge-Guided Floodwater Level Reasoning for Cloud-Edge Collaborative Monitoring",
         "summary": "Frequent urban floodwater poses a serious threat to the safety and efficiency of intelligent transportation systems. Existing vision-based methods for floodwater level detection face two main limitations. First, the lack of explicit reasoning leads to poor detection performance and little interpretability. Second, these methods struggle to generalize to the complex and varied real-world road scenes seen from different viewpoints. To address this, we reformulate the task as an explicit visual reasoning problem and propose HydroReasoner, a floodwater level reasoning framework designed for cloud-edge collaboration. HydroReasoner builds on Qwen2.5-VL and is trained with Group Relative Policy Optimization. To address the scarcity of reasoning process annotations, we build a floodwater domain knowledge graph HydroKG and design a novel KG path reward. Through deterministic graph traversal over HydroKG, this reward supervises the model's reasoning process at a fine granularity, which improves both reasoning and generalization. For edge deployment, we apply 4-bit quantization to the model, cutting GPU memory usage by 57% and inference latency by 43% while out-of-domain accuracy drops by only 0.2 percentage points. We also propose a confidence-based cloud-edge routing mechanism, which improves system safety and eases the computational load on the cloud. In addition, we build HydroLevel, a floodwater benchmark dataset of 3,000 images, for training and evaluating the model. Experimental results show that HydroReasoner achieves detection accuracy 4.0 and 13.6 percentage points higher than conventional vision baselines in the in-domain and out-of-domain evaluations respectively, with performance dropping by only 4.4 percentage points out of domain.",
@@ -66444,10 +66444,10 @@
       "id": "2611_01934v1",
       "filename": "post_2611_01934v1.md",
       "status": "retry",
-      "attempts": 2,
-      "next_retry_at": "2026-11-03T14:27:26.484254+00:00",
+      "attempts": 3,
+      "next_retry_at": "2026-11-03T22:44:33.140367+00:00",
       "last_error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}",
-      "updated_at": "2026-11-03T13:27:26.484274+00:00",
+      "updated_at": "2026-11-03T20:44:33.140385+00:00",
       "paper": {
         "title": "TriPhysBench: Evaluating Physical Intelligence for Embodied Agents",
         "summary": "Embodied agents need physical intelligence to understand their surroundings through physical perception, physical knowledge retrieval, and physical reasoning. These capabilities must work together to interpret events and make quantitative judgments. Existing benchmarks advance physical understanding and general-purpose tool use, yet the coordination of these capabilities in physical scenarios remains insufficiently characterized. Inspired by Popper's Three Worlds, we introduce TriPhysBench, a benchmark of 410 questions from 200 videos that brings physical perception, physical knowledge retrieval, and physical reasoning into a shared evaluation setting. Its measurement-grounded and knowledge-grounded subtasks impose complementary demands on obtaining observations and acquiring external specifications, then applying them to quantitative problems. Among six representative vision-language models, the best achieves an answer accuracy of only 50.38%, revealing limited performance on tasks that require these capabilities to work together. We further introduce TriPhys, a framework that learns a unified policy for physical perception, knowledge retrieval, and quantitative reasoning from complete tool-integrated trajectories. The policy uses intermediate reasoning to guide retrieval and computation, then incorporates tool feedback into subsequent physical inference. On 110 questions from videos excluded from training, TriPhys improves answer and solution scores across three Qwen configurations, with a 17.7% relative gain in answer accuracy for TriPhys-27B over its Qwen3.6-27B backbone. This work provides a benchmark and a learning pathway toward embodied agents that move beyond recognizing events to understanding and reasoning about the physical processes behind them.",
@@ -66764,7 +66764,7 @@
       "attempts": 0,
       "next_retry_at": "2026-11-03T13:27:24.025593+00:00",
       "last_error": null,
-      "updated_at": "2026-11-03T13:27:24.025611+00:00",
+      "updated_at": "2026-11-03T20:44:30.319788+00:00",
       "paper": {
         "title": "BYOD: Build Your Own DLM - Efficient Autoregressive-to-Diffusion Language Model Conversion",
         "summary": "Unlike autoregressive (AR) models, diffusion language models (DLMs) permit parallel token updates, flexible generation, and bidirectional attention, but leading systems rely on costly pretraining or full-model fine-tuning. We present Build Your Own DLM (BYOD), a generalizable LoRA-only recipe for parameter-efficient AR-to-DLM conversion. Without architecture-specific tuning, BYOD induces diffusion generation in Gemma 2 9B, Llama 3.1 8B, Qwen2.5 7B, and Ministral 8B; to our knowledge, this is the first reported AR-to-DLM conversion of a Mistral model. The adapters comprise 4.1-5.8% of final parameters while every base-model parameter remains frozen; each 25,000-iteration conversion needs at most 102.4M tokens, processed in 3.1-4.0 hours on one Google Colab GPU. All four models generate from fully masked sequences, use bidirectional context in a controlled attention test, and retain substantial parent-model knowledge. BYOD-Gemma is the strongest BYOD conversion on our nine-task evaluation, reaching 50.6% average accuracy compared with 51.9% for LLaDA 8B Instruct in the same harness. Open-generation quality at low network function evaluation (NFE) budgets remains the principal limitation: BYOD perplexity is 8.3-11.1 versus 4.1 for LLaDA and 2.2-3.0 for the AR parents when generating 128 tokens in 64 steps. To enable further experimentation and inspection, we provide a standalone training and evaluation implementation and interactive demos for all four conversions. BYOD thus provides a practical route for extending diffusion generation to other existing model families while identifying the gap that efficient conversion must next close.",
@@ -66784,7 +66784,7 @@
       "attempts": 0,
       "next_retry_at": "2026-11-03T13:27:24.025617+00:00",
       "last_error": null,
-      "updated_at": "2026-11-03T13:27:24.025618+00:00",
+      "updated_at": "2026-11-03T20:44:30.319816+00:00",
       "paper": {
         "title": "SIMIT: Self-Improving Vision-Language Models via Imagination at Test-Time",
         "summary": "We introduce SIMIT, a test-time self-improvement framework in which a vision-language model creates its own query-specific training data before answering an unlabeled test query. Our goal is to improve performance on a given target test set without annotations or external models. To pursue this goal, some test-time methods improve answers through longer reasoning or repeated sampling but leave the model unchanged. Others update the model using rewards based on majority agreement among multiple candidate answers or the model's own judgments of correctness, but such rewards can reinforce existing mistakes. SIMIT instead imagines similar problems whose solutions it controls: a model need not correctly solve the target query to construct useful practice examples. It synthesizes diverse (question, answer, image) triplets by specifying each answer before realizing its image. To support diverse multimodal tasks, SIMIT combines native image generation with an extensible skill library for structured visuals, including documents, charts, and diagrams. Within this pipeline, multi-stage verification checks that images support their assigned answers, while difficulty filtering retains informative examples. Adaptive budgeting further targets this practice by allocating more samples to queries the model is less confident in answering. The resulting data can improve the model in-context (SIMIT-ICL) or in-weight (SIMIT-FT). Across 17 diverse benchmarks, SIMIT outperforms existing self-improvement methods. Its best configuration achieves a +7.20% mean relative gain over BAGEL-7B, while training-free SIMIT-ICL achieves +6.98%.",
@@ -66805,7 +66805,7 @@
       "attempts": 0,
       "next_retry_at": "2026-11-03T13:27:24.025621+00:00",
       "last_error": null,
-      "updated_at": "2026-11-03T13:27:24.025622+00:00",
+      "updated_at": "2026-11-03T20:44:30.319820+00:00",
       "paper": {
         "title": "When Does Latent Prediction Error Support Physical Surprise Claims in Video World Models?",
         "summary": "Prediction errors from video world models are often treated as physical surprise, but they can also reflect appearance, static content, motion, or ordinary prediction difficulty. We present an evaluation framework that separates what frozen representations contain, how they organize appearance and physical differences, and what changes a model's own prediction error. On IntPhys2, a benchmark of physically possible and impossible events, we compare representations from latent prediction, masked pixel reconstruction, and simple visual statistics. Appearance remains easy to decode, while V-JEPA2 exposes modest information about whether events are possible or impossible. Looking at the latent geometry, appearance changes become smaller compared with differences between videos, their directions line up more consistently across scenes, and their overlap with physical changes decreases in deeper layers. Across action-conditioned models, incorrect actions raise prediction error, while appearance changes also produce substantial responses. In Physion++ video clips, repeating a single frame can produce higher error than the original clip, while changing color throughout the clip can lower it. Using Kubric, a simulation and rendering framework, we find that impossible events can produce lower error than possible events. A fixed error threshold also incorrectly flags many possible events as impossible. A model can therefore represent physical information and respond to incorrect actions without its native prediction error reliably measuring physical surprise.",
@@ -66826,7 +66826,7 @@
       "attempts": 0,
       "next_retry_at": "2026-11-03T13:27:24.025626+00:00",
       "last_error": null,
-      "updated_at": "2026-11-03T13:27:24.025626+00:00",
+      "updated_at": "2026-11-03T20:44:30.319830+00:00",
       "paper": {
         "title": "PhotoGuider: Composition-Aware Cropping and 360$^{\\circ}$ View Framing with Explainable Photographic Assessments",
         "summary": "Traditional image cropping assumes the photograph already contains the composition worth keeping, and asks only where to crop. A full 360$^{\\circ}$ scene offers no such guarantee: the viewing direction in a scene has to be discovered before anything can be framed. We present PhotoGuider, a measure-then-frame method that answers both questions with compact learned scorers over one shared set of composition-aware features. The designed features are extracted using foundation and task-specific vision models and structured into four photographic tokens: Subject, Composition, Aesthetics, and Integrity. Our MLLM explainer is fine-tuned to generate composition-related explanations conditioned on images and measured token assessments. To our knowledge, PhotoGuider is the first method to combine explicit composition-based direction selection in 360$^{\\circ}$ panoramas with refined framing, camera-parameter output for native re-rendering, and measurement-conditioned explanations. On two standard 2D cropping benchmarks, PhotoGuider achieves the highest average mIoU performance against ground-truth crops. In a blind ranking study, 120 participants ranked three cropping methods over 100 panoramic scenes from the public Poly Haven HDRI library, placing our framings first in 53.2% of cases, against 27.3% and 19.5% for two strong alternatives. Project page: https://ntuneillee.github.io/research/photoguider/",
@@ -66848,7 +66848,7 @@
       "attempts": 0,
       "next_retry_at": "2026-11-03T13:27:24.025629+00:00",
       "last_error": null,
-      "updated_at": "2026-11-03T13:27:24.025630+00:00",
+      "updated_at": "2026-11-03T20:44:30.319833+00:00",
       "paper": {
         "title": "Library of Layers (LoL): Adaptively Ordering Transformer Layers at Runtime",
         "summary": "Computer programmers chain together the same reusable computational primitives, for example, conditional statements or loops, but in different orders to implement different algorithms. In contrast, existing language model architectures always execute their layers in the same order. We introduce Library of Layers (LoL), an architecture that dynamically orders its layers during inference to solve the problem at hand. LoL has a single hyperparameter, the size of its global library of transformer blocks, that allows it to transition seamlessly between parameter reuse and sparsity, generalizing the parameter-efficiency and FLOPs-efficiency tradeoffs of dense, depth-recurrent, and mixture of experts architectures in one unified family. We show that LoL achieves competitive performance with all three above baselines when pretrained on text data. On synthetic sudoku and maze data, we observe that the model employs distinct layer orderings to implement different solution strategies, and we can intervene on routing to force a model to apply a specific solution strategy to a problem instance. In a multilingual natural language setting, we find that LoL chooses different layer order patterns based on language and script. Similarly, we train LoL on safety data and fit probes to its router outputs, finding that these probes distinguish safe from unsafe text with high AUROC. LoL provides a path toward a future in which models dynamically compose their own computational graph, enabling more efficient and controllable reasoning.",
@@ -66869,10 +66869,10 @@
       "id": "2611_01484v1",
       "filename": "post_2611_01484v1.md",
       "status": "retry",
-      "attempts": 1,
-      "next_retry_at": "2026-11-03T13:57:27.393110+00:00",
+      "attempts": 2,
+      "next_retry_at": "2026-11-03T21:44:33.992778+00:00",
       "last_error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}",
-      "updated_at": "2026-11-03T13:27:27.393130+00:00",
+      "updated_at": "2026-11-03T20:44:33.992795+00:00",
       "paper": {
         "title": "CrossSWE: Benchmarking Cross-Repository Joint Development for Coding Agents",
         "summary": "As coding agents achieve increasingly high success rates on software engineering benchmarks, recent efforts have sought to increase task complexity through longer horizons and more extensive code modifications. However, real-world software development often spans multiple interdependent repositories, introducing additional challenges in dependency reasoning, change propagation, and interface consistency. Rather than further increasing complexity within individual repositories, we introduce CrossSWE, a benchmark for cross-repository joint development comprising 171 real-world instances spanning 165 repositories, 20 technical domains, and 13 programming languages. CrossSWE verifies the necessity of coordinated changes by testing whether partial repository modifications are insufficient to achieve the intended behavior. Our evaluation of five LLMs reveals substantial challenges, with the strongest model, GPT-6.1 Sol, achieving only 58.48% Pass@1. Furthermore, cross-repository inconsistencies emerge as the most prevalent failure mode (44.2%), highlighting the difficulty of maintaining consistency across interdependent repositories.",
@@ -66984,7 +66984,7 @@
       "attempts": 0,
       "next_retry_at": "2026-11-03T13:27:24.025645+00:00",
       "last_error": null,
-      "updated_at": "2026-11-03T13:27:24.025646+00:00",
+      "updated_at": "2026-11-03T20:44:30.319840+00:00",
       "paper": {
         "title": "CUA-Master: Scaling Computer-use Agents through Open-World Recursive Improvements",
         "summary": "Despite recent advances in CUAs, their development remains constrained by the limited diversity, controllability, and reliability of interaction data. Moreover, conventional optimization pipelines lack iterative feedback, while existing recursive improvement approaches often rely on self-generated experiences, limiting ability expansion and yielding diminishing returns. To address these challenges, we introduce CUA-Master, a nested double-loop recursive improvement framework. At the system level, an outer world-data-model flywheel continuously incorporates open-world corpus and leverages evolving model weaknesses to guide subsequent data construction and optimization iterations. At the data level, an inner flywheel couples open-world seeding and autocatalytic propagation. The former mines authentic workflows as seed tasks from instructional videos, and employs visual-semantic dual-path trajectory reconstruction; The latter transforms these seeds into reusable primitives for controllable synthesis of diverse, complex, and verifiable tasks. To enable efficient and reliable trajectory collection, we further introduce a feedback-guided snapshot-rollback retry mechanism in various real environments. Extensive experiments demonstrate that CUA-Master-27B achieves competitive performance across GUI-only and GUI-CLI hybrid benchmarks, scoring 80.2 on OSWorld Verified, 36.9 on OSWorld 2.0, 43.9 on WeaveBench, and 25.0 on Agents' Last Exam. Our framework also substantially improves the quality and efficiency of data synthesis, and exhibits continuous gains across recursive iterations.",
@@ -67020,7 +67020,7 @@
       "attempts": 0,
       "next_retry_at": "2026-11-03T13:27:24.025649+00:00",
       "last_error": null,
-      "updated_at": "2026-11-03T13:27:24.025650+00:00",
+      "updated_at": "2026-11-03T20:44:30.319844+00:00",
       "paper": {
         "title": "Avatar Intelligence: Amplifying Human Agency Through Persistent Personal Agents",
         "summary": "Personal AI agents are increasingly capable of handling long-horizon tasks across applications, yet users often need to invest substantial effort in specifying goals, resolving ambiguity, and verifying outcomes. We argue that progress should be measured by how effectively agents amplify human agency: enabling people to pursue their goals with less routine supervision while retaining control over consequential decisions. We advocate Avatar Intelligence, a paradigm of persistent personal agents that represent users' goals, values, and constraints through sustained decision delegation across contexts and time. We describe a maturity roadmap from human-directed execution to autonomous operation within delegated domains, and introduce the Agentic Oversight Index (AOI) as a framework for evaluating delivered value against agent-side operational cost and human oversight burden. We identify three core research challenges: identity-continuous personalization that carries user preferences across tasks, user-situated evolution through Rehearsal Engineering, and safety mechanisms that combine technical control with accountability and recourse. These directions define a research agenda for reliable decision delegation to personal agents across tasks and over time.",
@@ -67041,10 +67041,55 @@
         "pdf_link": "https://arxiv.org/pdf/2611.03092v1"
       },
       "priority_score": 35
+    },
+    "2611_02112v1": {
+      "id": "2611_02112v1",
+      "filename": "post_2611_02112v1.md",
+      "status": "pending",
+      "attempts": 0,
+      "next_retry_at": "2026-11-03T20:44:30.319809+00:00",
+      "last_error": null,
+      "updated_at": "2026-11-03T20:44:30.319811+00:00",
+      "paper": {
+        "title": "Order-Only On-Policy Distillation",
+        "summary": "On-policy distillation (OPD) trains a student on its own generations by matching the teacher's token probabilities. These probabilities entangle two kinds of information: which tokens the teacher prefers, and how confident it is. The latter reflects the teacher's own capacity and calibration, which a smaller student may be unable to reproduce. Because the teacher temperature changes these values without changing the ordering, OPD is also sensitive to the temperature choice. We ask whether the teacher's ordering of candidate tokens is enough, and propose Order-Only On-Policy Distillation (O$^{3}$PD). At each student-generated prefix, O$^{3}$PD trains the student to reproduce the order of the teacher's top-$K$ tokens, without fitting their probability values. The objective is therefore invariant to the teacher temperature and needs no temperature tuning. Across six teacher--student pairs, O$^{3}$PD outperforms OPD on the average over HMMT25, AIME24, and AIME25 in every pair, by up to 2.9 points, with gains of up to 5.6 points on AIME25. Other ranking losses yield similar gains, so the benefit comes from ordinal supervision itself. Analysis shows that O$^{3}$PD departs further from the teacher's probabilities than OPD, yet reproduces its ranking more faithfully and yields a stronger student. The ranking, not the probability values, thus carries the knowledge that on-policy distillation needs to transfer.",
+        "published": "2026-11-01T18:38:29Z",
+        "authors": [
+          "Guangzeng Han",
+          "Yu Wu",
+          "Xiaolei Huang"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2611.02112v1"
+      },
+      "priority_score": 17
+    },
+    "2611_03097v1": {
+      "id": "2611_03097v1",
+      "filename": "post_2611_03097v1.md",
+      "status": "retry",
+      "attempts": 1,
+      "next_retry_at": "2026-11-03T21:14:35.660817+00:00",
+      "last_error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}",
+      "updated_at": "2026-11-03T20:44:35.660836+00:00",
+      "paper": {
+        "title": "DR Pixel: Page-Native Deep Research with Vision-Language Models",
+        "summary": "Complex documents such as scientific papers contain rich information in tables, figures, and equations; however, existing deep research (DR) agents typically reduce papers to OCR-extracted text. We instead ask whether vision-language models (VLMs) can enable page-native deep research: directly retrieving and reasoning over rendered document page images. We introduce DR Pixel, the first open-source end-to-end multimodal DR agent that uses rendered page images as its sole retrieval and reasoning unit, operating over a corpus of 1.06M pages. To evaluate this setting, we construct DRPixelBench, a benchmark on scientific papers requiring reasoning over text, figures, tables, and equations. Surprisingly, page-native DR already works well without training, outperforming OCR-based baselines across state-of-the-art models like GPT-5.4, Gemini-3.5-Flash, and Qwen3.6-27B, while requiring fewer tool calls. We next turn to DR training. A key challenge is that teacher trajectories for agentic supervised finetuning are noisy, mixing critical reasoning and action steps with redundant or failed attempts. To address this, we introduce counterfactual credit reweighting, a fine-grained credit assignment method that weights individual reasoning and action steps by their counterfactual contribution to the final answer. Our training improves retrieval recall by about 15 points and final accuracy by over 10 points on DRPixelBench, and likewise outperforms the untrained baseline on four existing benchmarks. On out-of-distribution ViDoRe-V3, DR Pixel comes within 1.8 points of an oracle that is given the gold pages directly. Our results suggest that the conventional OCR-then-retrieve pipeline is not only unnecessary but suboptimal: directly retrieving and reasoning over visual document pages makes complex DR both more effective and more efficient.",
+        "published": "2026-11-02T13:13:42Z",
+        "authors": [
+          "Tiansheng Hu",
+          "Yichuan Wang",
+          "James V. Talwar",
+          "Nicholas Tomlin",
+          "Chen Zhao",
+          "Sewon Min"
+        ],
+        "pdf_link": "https://arxiv.org/pdf/2611.03097v1"
+      },
+      "priority_score": 60
     }
   },
   "last_run": {
-    "started_at": "2026-11-03T13:27:24.034135+00:00",
+    "started_at": "2026-11-03T20:44:30.329054+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 0,
@@ -67061,11 +67106,11 @@
         "error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}"
       },
       {
-        "id": "2611_01970v1",
+        "id": "2611_03097v1",
         "error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}"
       },
       {
-        "id": "2610_35385v1",
+        "id": "2611_01970v1",
         "error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}"
       }
     ],
@@ -67078,7 +67123,7 @@
       "total_tokens": 0,
       "estimated_usd": 0.0
     },
-    "finished_at": "2026-11-03T13:27:30.730351+00:00"
+    "finished_at": "2026-11-03T20:44:39.012602+00:00"
   },
   "usage_total": {
     "model": "gemini-3.1-flash-lite",
@@ -67090,7 +67135,7 @@
     "estimated_usd": 5.9986915
   },
   "last_publication_run": {
-    "started_at": "2026-11-03T13:27:24.034135+00:00",
+    "started_at": "2026-11-03T20:44:30.329054+00:00",
     "discovered": 10,
     "selected": 4,
     "generated": 0,
@@ -67107,11 +67152,11 @@
         "error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}"
       },
       {
-        "id": "2611_01970v1",
+        "id": "2611_03097v1",
         "error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}"
       },
       {
-        "id": "2610_35385v1",
+        "id": "2611_01970v1",
         "error": "402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}} | 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}"
       }
     ],
@@ -67124,7 +67169,7 @@
       "total_tokens": 0,
       "estimated_usd": 0.0
     },
-    "finished_at": "2026-11-03T13:27:30.730351+00:00"
+    "finished_at": "2026-11-03T20:44:39.012602+00:00"
   },
   "daily_usage": {
     "date": "2026-11-03",
